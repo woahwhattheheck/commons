@@ -84,7 +84,11 @@ jobs:
           cache-read-only: false
 
       - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v4
+        with:
+          # v3 defaulted to `tools platform-tools`. Google stopped serving
+          # the `tools` package on 2026-09-15 (android-actions/setup-android#537).
+          packages: platform-tools
 
       - name: ensure debug keystore
         run: |

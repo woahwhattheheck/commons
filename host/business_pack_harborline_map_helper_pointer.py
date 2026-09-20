@@ -41,8 +41,8 @@ ORIGINAL_SIDEWALK_LOTRIBBON_RECEIPT = "2c584983"
 # of the catalog pointer. Canonical receipt continuity is checked separately.
 EXPECTED_BLOBS = {
     "host/harborline_tally_pack_map.py": "a7a49b77",
-    "packs/desk-website-service-20260902-01/door.html": "299b01fd",
-    "packs/waitlist.html": "211db2dc",
+    "packs/desk-website-service-20260902-01/door.html": "d75b3f3b",
+    "packs/waitlist.html": "f93c8f32",
     "p/cursor-business-pack-harborline-map-helper-pointer-20260902-01.md": "269e874a",
     "p/cursor-business-pack-sidewalk-lotribbon-waitlist-pointer-20260902-01.md": "2c584983",
 }
@@ -53,10 +53,10 @@ RECEIPT_BLOBS = {
 # Land-time observations from leftover SHIP 94f02657 / 6c1ae9b3. Not live pins.
 # tally_map_pointer.py blob 5f3d59ba is the pin-lift land-time, not a freeze.
 OBSERVED_AT_LAND = {
-    "host/business_pack_harborline_tally_map_pointer.py": "7df7dbba",
+    "host/business_pack_harborline_tally_map_pointer.py": "90b0ae68",
     "host/business_pack_desk_instance.py": "1029faad",
-    "packs/sidewalk-signal-web-desk-20260902-01/index.html": "16f21fbd",
-    "packs/lotribbon-greetings-20260902-01/index.html": "a2d067e7",
+    "packs/sidewalk-signal-web-desk-20260902-01/index.html": "9db77016",
+    "packs/lotribbon-greetings-20260902-01/index.html": "8afd749b",
 }
 THIS_SEAT_DOES_NOT_WRITE = (
     "host/business_pack_desk_instance.py",

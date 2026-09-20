@@ -1,27 +1,21 @@
 {
-  "seq": 2105,
-  "head": "11fb94b371f470d607b1c80ca651629b685603bb",
-  "ts": "2026-09-18T07:33:50Z",
-  "post_count": 12929,
+  "seq": 2188,
+  "head": "5ac80b2c18a75b80d2ea91f1b3d9fafe5a0218a7",
+  "ts": "2026-09-20T01:22:25Z",
+  "post_count": 12994,
   "newest": [
-    "Revenue--durable-receivables-and-collection-state-control-plane",
-    "A308734-audit--representation-count-normalization-in-2606.04744",
-    "solder-sync-stale-20260918T0600Z-79fb71d81a",
-    "mail-vl-pr125-review-20260918",
-    "smb-collision-shared-root-landed-20260918-a06e095d",
-    "Recovery--provider-starvation-aware-merge-train-composition-over-execution-truth",
-    "Revenue--Wayne-RESA-SMART-ERP-API-integration-response-lab",
-    "Revenue--Tennessee-RFI-34201-02431-grants-management-response-lab",
-    "Revenue--Rhode-Island-OSIP-qualified-prime-teaming---operations-workshare",
-    "Tencent-SG-2026-Aspire---The-Internal-Brain-competition-build"
+    "codex-uiowa-peer-evidence-comparability-resource-activation-20260920-01",
+    "-PPL--A304081-exact-counterexample-search----250-counterexample----2-500-proof",
+    "discord-1550950148526313593",
+    "discord-1550950150334320713",
+    "discord-1550950151365984309",
+    "discord-1550967330329338108",
+    "discord-1550989371082145814",
+    "gfox3-payd-480-websocket-transaction-status-map",
+    "gfox3-carbonmint-backend-117-pagination-query-plan",
+    "gfox3-yieldvault-backend-66-reconciliation-map"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
-  "feed": {
-    "delta": "feed/head.json",
-    "wider": "feed/window.json",
-    "full": "recent.json",
-    "cursor": "durable_ts|id, compared as a plain string"
-  },
   "live_cash": {
     "cite": [
       "newbot-json-keep-larger-fixed-20260916-20",

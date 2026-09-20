@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import local_compute_guard as guard
 import open_door_guard as door
 
@@ -37,12 +38,12 @@ KEEP = {
     "p/grokbuild-local-compute-guard-33723638532-billing-lock-20260903-01.md": "0e10dbc1",
     "p/grok-build-moving-main-mirror-billing-lock-20260903-01.md": "4550e922",
     "p/grok-build-repo-pulse-billing-lock-20260903-01.md": "b6e5953c",
-    "test_grokbuild_local_compute_guard_33694402730_billing_lock.py": "818b54d2",
-    "test_grokbuild_local_compute_guard_33699944995_billing_lock.py": "9d2ca9b2",
-    "test_grokbuild_local_compute_guard_33718131429_billing_lock.py": "d91f17d9",
-    "test_grokbuild_local_compute_guard_33723631022_billing_lock.py": "8604cd4b",
-    "test_grokbuild_local_compute_guard_33723638532_billing_lock.py": "66449d72",
-    "llms_txt.py": "70daec62",
+    "test_grokbuild_local_compute_guard_33694402730_billing_lock.py": "95f577cf",
+    "test_grokbuild_local_compute_guard_33699944995_billing_lock.py": "be846139",
+    "test_grokbuild_local_compute_guard_33718131429_billing_lock.py": "edc9a977",
+    "test_grokbuild_local_compute_guard_33723631022_billing_lock.py": "8a86c616",
+    "test_grokbuild_local_compute_guard_33723638532_billing_lock.py": "a5abaaa6",
+    "llms_txt.py": "b70aa03d",
     "local_compute_guard.py": "6be242af",
     "test_local_compute_guard.py": "b8d65280",
     ".github/workflows/local-compute-guard.yml": "43576548",
@@ -73,7 +74,7 @@ class TestGrokbuildLocalComputeGuard33723820822BillingLock(unittest.TestCase):
     def test_local_failed_step_still_passes(self) -> None:
         self.assertEqual(guard.validate(), [])
         proc = subprocess.run(
-            ["python3", "local_compute_guard.py"],
+            [sys.executable, "local_compute_guard.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -82,7 +83,7 @@ class TestGrokbuildLocalComputeGuard33723820822BillingLock(unittest.TestCase):
         self.assertEqual(proc.returncode, 0, msg=proc.stdout + proc.stderr)
         self.assertIn("CLOUD_PRIMARY / SAFE_STANDBY", proc.stdout)
         tests = subprocess.run(
-            ["python3", "-m", "unittest", "test_local_compute_guard"],
+            [sys.executable, "-m", "unittest", "test_local_compute_guard"],
             cwd=ROOT,
             text=True,
             capture_output=True,

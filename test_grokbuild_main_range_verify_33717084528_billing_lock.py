@@ -10,6 +10,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grokbuild-main-range-verify-33717084528-billing-lock-20260903-01.md"
@@ -103,7 +104,7 @@ class TestGrokbuildMainRangeVerify33717084528BillingLock(unittest.TestCase):
             receipt = Path(tmp) / "main-range.json"
             proc = subprocess.run(
                 [
-                    "python3",
+                    sys.executable,
                     "host/main_range.py",
                     "--head",
                     "HEAD",

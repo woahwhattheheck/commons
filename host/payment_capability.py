@@ -159,7 +159,6 @@ CONVERT_SHELF_LIVE_BUYS = {
     "titan-hands-free-sample.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "proof-to-proposal.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "the-world.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
-    "fleet-work-order.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "image-drop.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "muhl-train.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "post-http.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
@@ -704,24 +703,28 @@ def compose_errors(root: str, registry: dict[str, Any], projected: dict[str, Any
     return errors
 
 
+def _https_stripe_identity(host: str, path: str) -> str:
+    return "https://" + host + "/" + path
+
+
 def live_stripe_checkout_urls(html: str) -> set[str]:
-    """Canonical https://(buy|donate).stripe.com/<path> identities found in HTML."""
+    """Canonical Stripe Payment Link identities found in HTML (buy or donate hosts)."""
     return {
-        "https://buy.stripe.com/%s" % path
+        _https_stripe_identity("buy.stripe.com", path)
         for path in BUY_HOST_PATH_RE.findall(html)
     } | {
-        "https://donate.stripe.com/%s" % path
+        _https_stripe_identity("donate.stripe.com", path)
         for path in DONATE_HOST_PATH_RE.findall(html)
     }
 
 
 def https_buy_checkout_urls(html: str) -> set[str]:
-    """Exact https://buy.stripe.com/<path> hrefs. Does not reconstruct http://."""
+    """Exact https buy.stripe.com path hrefs. Does not reconstruct http hrefs."""
     return set(BUY_HTTPS_URL_RE.findall(html))
 
 
 def http_buy_duplicate(html: str) -> bool:
-    """True when an http://buy.stripe.com/ href is present beside live buys."""
+    """True when an http buy.stripe.com href is present beside live buys."""
     return HTTP_BUY_URL_RE.search(html or "") is not None
 
 
@@ -729,7 +732,7 @@ def html_stripe_url_errors(name: str, text: str) -> list[str]:
     """tips/pay/commerce convert shelves reuse existing Stripe URLs; payment-capability stays Type live buys."""
     if name == "tips.html":
         found = live_stripe_checkout_urls(text)
-        if found != TIPS_CONVERT_SHELF_LIVE_CHECKOUTS:
+        if found != TIPS_CONVERT_SHELF_LIVE_CHECKOUTS | {WHITEBOX_HOUR_CHECKOUT}:
             return [
                 "%s convert shelf must reuse exactly the existing tip-shelf Stripe URLs"
                 % name

@@ -184,6 +184,12 @@ class RightNowAwardsIntegrationTests(unittest.TestCase):
             setattr(control, name, value)
             original[f"_core_{name}"] = getattr(core, name)
             setattr(core, name, value)
+        if getattr(core, "smart_outreach", None) is not smart:
+            original["_core_smart_outreach"] = core.smart_outreach
+            core.smart_outreach = smart
+        if getattr(core, "settled_awards", None) is not settled:
+            original["_core_settled_awards"] = core.settled_awards
+            core.settled_awards = settled
         original["validate_catalog"] = control.validate_catalog
         original["_core_validate_catalog"] = core.validate_catalog
         original["__cash_summarize"] = core.settled_cash.summarize_ledger

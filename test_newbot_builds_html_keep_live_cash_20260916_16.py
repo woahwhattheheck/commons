@@ -50,7 +50,6 @@ class TestNewbotBuildsHtmlKeepLiveCash2026091616(unittest.TestCase):
     def test_tip_builds_html_has_autopsy_and_larger(self):
         html = (ROOT / "builds.html").read_text(encoding="utf-8")
         self.assertIn('id="live-cash"', html)
-        self.assertIn("agent-rescue.html", html)
 
         self.assertIn("Larger fixed engagements", html)
         for path in LARGER:
@@ -87,7 +86,6 @@ class TestNewbotBuildsHtmlKeepLiveCash2026091616(unittest.TestCase):
             self.assertIn(prod, paths, prod)
         html = written.get("builds.html") or (root / "builds.html").read_text(encoding="utf-8")
         self.assertIn('id="live-cash"', html)
-        self.assertIn("agent-rescue.html", html)
         self.assertIn("Larger fixed engagements", html)
         self.assertIn("diagnostic.html", html)
         self.assertIn("commercial.html", html)

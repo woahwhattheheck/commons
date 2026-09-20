@@ -50,14 +50,14 @@
     "claims": "https://github.com/woahwhattheheck/commons/blob/9181f47d38ab1800911d44a181a1048f1e7a411a/claims.json"
   },
   "source_blobs": {
-    "presence.json": "c875bbfcb9b2fc7043cf63351f133df5a95747be",
-    "lastseen.json": "65e0cc8f0c4fe3e87581fb7c7f966b0a3cb87166",
+    "presence.json": "e1a78590db4955801bf549f796003d4018fdf0a8",
+    "lastseen.json": "8e9701c04a463281ac2509fffc6a479d36c7ec06",
     "claims.json": "28cb2774e17774052ecda2768d915d2a82d82941"
   },
   "exact_blobs": {
     "host/agent_liveness_index.py": "acb95ee7962f955745a5e354de4da21b4b8a7660",
     "test_agent_liveness_index.py": "95699a1e97817721324d77e686723e4d81ff318e",
-    "inventory/resources/agent_liveness.json": "fb0af585d425d7fcda199b77f31dbd37ed27f567",
+    "inventory/resources/agent_liveness.json": "f8e9c80ee76a630058dd0f5c6b6d6861cb1278a5",
     "ground/RESOURCE_LEDGER.json": "d9bad25e20691547fcd0aa79fb124bbf3976e7d8"
   },
   "verification": {

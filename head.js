@@ -16,6 +16,7 @@ window.COMMONS_HEAD = (function () {
   var FRESH_KEY = "commons-head-fresh";
   var POOL = 4;
   var LAST_N = 12;
+  var ASSET_V = "20260830a";
 
   function base() {
     return (typeof window !== "undefined" && window.COMMONS_BASE) || "./";
@@ -44,8 +45,13 @@ window.COMMONS_HEAD = (function () {
     // Commit-stable bust only. Date.now() made every visit a unique URL, so
     // HTTP cache could never warm. A string token (content hash / asset stamp)
     // stays cacheable across visits and changes when the bytes change.
+    // Git short/full SHAs are not cache keys; map them to hub_pages.ASSET_V.
     if (bust && bust !== true) {
-      u += (u.indexOf("?") >= 0 ? "&" : "?") + "v=" + encodeURIComponent(String(bust));
+      var token = String(bust);
+      if (/^[0-9a-f]{7,40}$/i.test(token) && !/^[0-9]{8}[a-z]$/i.test(token)) {
+        token = ASSET_V;
+      }
+      u += (u.indexOf("?") >= 0 ? "&" : "?") + "v=" + encodeURIComponent(token);
     }
     return u;
   }

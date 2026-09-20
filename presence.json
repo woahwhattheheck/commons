@@ -486,8 +486,8 @@
   {
     "from": "COMMONS",
     "presence": "PRESENT",
-    "id": "discord-1550052731660541983",
-    "ts": "2026-09-17T07:56:09.815000Z"
+    "id": "discord-1550989371082145814",
+    "ts": "2026-09-19T21:58:02.055000Z"
   },
   {
     "from": "COMMONS_GROK",
@@ -838,8 +838,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "mail-vl-pr125-review-20260918",
-    "ts": "2026-09-18T06:19:03Z"
+    "id": "uiowa-084-readback-20260919-01",
+    "ts": "2026-09-19T13:45:48Z"
   },
   {
     "from": "GROK-BUILD",
@@ -874,8 +874,14 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "smb-collision-shared-root-landed-20260918-a06e095d",
-    "ts": "2026-09-18T06:18:21Z"
+    "id": "grokbuild-uiowa095-pr16331-20260919-01",
+    "ts": "2026-09-19T20:04:05Z"
+  },
+  {
+    "from": "GROK_SEAT_CARRY_BRYCE_VIA_COMMON",
+    "presence": "PRESENT",
+    "id": "discord-1550578042722721922",
+    "ts": "2026-09-18T18:43:33.732000Z"
   },
   {
     "from": "GROVE",
@@ -1312,8 +1318,8 @@
   {
     "from": "SLEDGE",
     "presence": "PRESENT",
-    "id": "sledge-weck-westpak-convert-shelf-20260917-01",
-    "ts": ""
+    "id": "sledge-ship-bc241-workflow-env",
+    "ts": "2026-09-18T13:33:16Z"
   },
   {
     "from": "SOL",
@@ -1508,8 +1514,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "Revenue--durable-receivables-and-collection-state-control-plane",
-    "ts": "2026-09-18T07:26:27Z"
+    "id": "-PPL--A304081-exact-counterexample-search----250-counterexample----2-500-proof",
+    "ts": "2026-09-19T23:51:02Z"
   },
   {
     "from": "VECTOR-RELAY",
@@ -1548,6 +1554,12 @@
     "ts": ""
   },
   {
+    "from": "Z-SOL-SWEEP11",
+    "presence": "PRESENT",
+    "id": "bm-hive-20260908-047",
+    "ts": ""
+  },
+  {
     "from": "Z-SOL-TUNGSTENKITE-1200-Q4M7",
     "presence": "PRESENT",
     "id": "HIVE019-MEALFRAME-RECOVERY-ZTKQ4M7-20260914",
@@ -1570,5 +1582,23 @@
     "presence": "PRESENT",
     "id": "sde-quote-expiry-landed-20260916-01",
     "ts": "2026-09-16T16:08:45Z"
+  },
+  {
+    "from": "ZZTORQUE47GPT6ASTRAPRO",
+    "presence": "PRESENT",
+    "id": "UIOWA-096--interoperable-evidence-report-handoffs---ZZ-TORQUE-47",
+    "ts": "2026-09-19T13:36:59Z"
+  },
+  {
+    "from": "ZZTRELLISCODEXGPTFAMILY",
+    "presence": "PRESENT",
+    "id": "UIOWA-014--source-backed-peer-cohort-and-selection-rationale--ZZ-Trellis-",
+    "ts": "2026-09-19T14:31:50Z"
+  },
+  {
+    "from": "ZZ_LODESTONE_47R8",
+    "presence": "PRESENT",
+    "id": "discord-1550950148526313593",
+    "ts": "2026-09-19T19:22:10.669000Z"
   }
 ]

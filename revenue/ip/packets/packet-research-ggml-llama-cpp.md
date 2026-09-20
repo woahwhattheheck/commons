@@ -31,20 +31,20 @@ ANALYSIS: Evaluate exact GGUF metadata, load, and rollback evidence against one 
 
 ### TITAN Hands computer-use substrate (`titan-hands`, `SHIPPED_ON_MAIN`)
 
-- `docs/TITAN_HANDS.md` sha256 `ecdfcc76ec17fb6d18d19cab03b2ac68f3f4f9bf4c6875cadce0d5935161b6b1` (4469 bytes)
-- `titan-hands.html` sha256 `2c8653a18eebc8dffe63f37c4917efb3432368837e9ae39c394713272159a667` (2808 bytes)
-- `titan-hour.html` sha256 `dcc2690e95385b4605dc7d24c6bd98b7ef8db26d4e1c066757fdc9c166730ba3` (6614 bytes)
-- `host/titan_hands/one_tool.py` sha256 `394fd77a09dc01fbf415fef480a1f867fb2eaec1314c74c7f12c9e555aaace31` (7321 bytes)
-- `host/titan_hands/linux_atspi.py` sha256 `8a7552d1f0221e5a6f1adf01a7d87ff25c942de66c21d372998a0bc538009bb3` (39377 bytes)
-- `p/emissary-titan-hands-features-20260826-01.md` sha256 `8d6dcb2e16365feed2e43ee1f6f5dd7056c9bf428dc3f6a0debc5a41ad1da35b` (1727 bytes)
-- `p/coil-titan-hands-linux-atspi-land-20260827-01.md` sha256 `8d12599140243fef315f9a79a5727d8817cec6c9161545e1a6c353852e5f0f59` (1688 bytes)
+- `docs/TITAN_HANDS.md` sha256 `c2b1f3f8ece662c777e655d40e517c7a642dd07a8b1bbddca55b6de255d10611` (4591 bytes)
+- `titan-hands.html` sha256 `2b48bf876edf8287e7ca5b2b72dc62e034ad1a9b2a43a78af698b8283ee720f4` (3448 bytes)
+- `titan-hour.html` sha256 `4262a97485e67832c30326fd137896e5f374aeacd1306bd15e4c29b159764cae` (8682 bytes)
+- `host/titan_hands/one_tool.py` sha256 `c1a8fa32aaef8fd248f4e62a387b394fc9ae1bc56942089caf91bad18e615e9f` (9095 bytes)
+- `host/titan_hands/linux_atspi.py` sha256 `c2b116c3121bc9e71c14f5eba5842ef507cc259bc772a63d14a0d7373816ef36` (40369 bytes)
+- `p/emissary-titan-hands-features-20260826-01.md` sha256 `7ececa66b7b195e2ae5a0ad6181976d8fa0538263c4ee4872510485769fbc5ec` (1745 bytes)
+- `p/coil-titan-hands-linux-atspi-land-20260827-01.md` sha256 `5ec85c651d5535834f47b4627afefc75ee3378a0e7484051da4503f53e92f1c7` (1727 bytes)
 
 ### RINGDELTA Muhlnickel-native lossless organ (`ringdelta-muhlnickel`, `SHIPPED_ON_MAIN`)
 
-- `ground/RINGDELTA.md` sha256 `fd3805866e6bcd18728a4ae311a6643b11ef158ff16b935c5ff73247983e7441` (3016 bytes)
-- `ground/RINGDELTA.json` sha256 `276817af90a9a3b8f34a1e9d535d299e1a5a7a97e3af7d0f5f3a3df93ba2f910` (1560 bytes)
-- `ringdelta.html` sha256 `eccd00d9c5259d8fa992f9906c2b36b233cc0f41aa4227a7d488011773f73218` (3783 bytes)
-- `host/ringdelta.py` sha256 `4262d2cfa81e58026636c240e7878b804781354352cb229e3c14a963ebfbb600` (8543 bytes)
+- `ground/RINGDELTA.md` sha256 `e4a33566ea890168dc8c77ebe0d01863f04ce6387d516c8606821dae4942f8c1` (3539 bytes)
+- `ground/RINGDELTA.json` sha256 `dd4b64d49f2461aea37aa6698c60a62693047dab0cdc75f90c0ffb89ce45fad6` (1611 bytes)
+- `ringdelta.html` sha256 `f0c9703fe36637521566071eb407f23981042d743803c6d34306eb90e15c9def` (5356 bytes)
+- `host/ringdelta.py` sha256 `c6cb0f8d319fe85c5637b631bf283f17694b78b05f5af145dce4a90a73edf543` (8796 bytes)
 - `excerpts/20260828/ringdelta_xor8.mno` sha256 `46fb0cf0c46df7d2afa4957ebb01e66af7604cde3583753ab0f5dc1095f606fa` (300 bytes)
 
 ## Stated funding (not expected value)
@@ -75,8 +75,6 @@ submission_status: `NOT_APPLICABLE`. award_status: `NOT_AWARDED`. cash_received_
 ## Live cash
 
 Verified product pages only — no invented Stripe links.
-
-- [$29 Autopsy checkout](../../../agent-rescue.html)
 - [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../../../referral-intake-completeness.html)
 - [$199 repair diagnostic](../../../repair-booking-preflight.html)

@@ -46,9 +46,14 @@ LISTING_REL = os.path.join("ground", "open-work-listing")
 ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 SHA_RE = re.compile(r"^[0-9a-f]{40}$")
 # A quoted marker is literal. For an unquoted marker, extract_work_ids strips
-# prose-final periods while preserving periods inside the identifier.
+# prose-final periods while preserving periods inside the identifier. The
+# marker must start at a word boundary so a suffix inside words like
+# "paperwork order" cannot fire it. A space-separated all-lowercase marker
+# ("work order some-id") is prose; lowercase forms count only when the id is
+# backtick-quoted or a ":"/"=" separator is present. Mixed/uppercase markers
+# accept quoted and plain ids either way.
 WORK_MARK_RE = re.compile(
-    r"(?:WORK[ \t]+ORDER|OWNER[ \t]+LAND[ \t]+ORDER)\s*[:=]?\s*"
+    r"(?<![A-Za-z0-9])(?P<marker>WORK[ \t]+ORDER|OWNER[ \t]+LAND[ \t]+ORDER)\s*(?P<sep>[:=])?\s*"
     r"(?:`(?P<quoted>[A-Za-z0-9._-]{8,80})`|(?P<plain>[A-Za-z0-9._-]{8,80}))"
     r"(?![A-Za-z0-9._-])",
     re.I,
@@ -181,6 +186,12 @@ def extract_work_ids(text):
     seen = set()
     for match in WORK_MARK_RE.finditer(str(text or "")):
         quoted = match.group("quoted")
+        if (
+            quoted is None
+            and match.group("sep") is None
+            and match.group("marker").islower()
+        ):
+            continue
         ident = quoted if quoted is not None else match.group("plain").rstrip(".")
         if ident not in seen and is_work_id(ident):
             seen.add(ident)
@@ -714,6 +725,26 @@ def self_test():
     ]
     assert extract_work_ids("WORK ORDER `literal-terminal-dot-20260830-01.`") == [
         "literal-terminal-dot-20260830-01."
+    ]
+    assert extract_work_ids("OWNER LAND ORDER missing-work-fixture-20260829-01") == [
+        "missing-work-fixture-20260829-01"
+    ]
+    assert extract_work_ids("the purchasing-paperwork order unclaimed; current-main") == []
+    assert extract_work_ids(
+        "search for `estimate approval invoice contractor work order change-order`"
+    ) == []
+    assert extract_work_ids("work order change-order") == []
+    assert extract_work_ids("Work order open-door-main-push-report-20260830-01.") == [
+        "open-door-main-push-report-20260830-01"
+    ]
+    assert extract_work_ids("work order `kimi-continuity-kit-20260829-01` is CLOSED") == [
+        "kimi-continuity-kit-20260829-01"
+    ]
+    assert extract_work_ids("work\torder: lowercase-sep-work-20260830-01") == [
+        "lowercase-sep-work-20260830-01"
+    ]
+    assert extract_work_ids("owner land order= lowercase-eq-work-20260830-01") == [
+        "lowercase-eq-work-20260830-01"
     ]
     assert classify_record({"work": True}, True) == "LANDED"
     assert classify_record({"work": True}, False) == "OPEN"

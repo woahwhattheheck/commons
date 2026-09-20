@@ -1482,6 +1482,110 @@ class GitHubReadback:
             raise BridgeError("github unavailable") from exc
 
 
+
+def _slack_mapping(value: Any) -> dict[str, Any]:
+    if isinstance(value, dict):
+        return value
+    data = getattr(value, "data", None)
+    if isinstance(data, dict):
+        return data
+    try:
+        mapped = dict(value)
+    except (TypeError, ValueError):
+        return {}
+    return mapped if isinstance(mapped, dict) else {}
+
+
+def _require_internal_slack_channel_payload(
+    payload: dict[str, Any],
+    channel: str,
+    team_id: str,
+) -> None:
+    """Validate one Slack conversation as local, non-shared and bot-accessible."""
+    if not isinstance(team_id, str) or not team_id:
+        raise BridgeError("slack_internal_scope_missing_team")
+    if not isinstance(channel, str) or not channel:
+        raise BridgeError("slack_internal_scope_invalid_channel")
+    info = payload.get("channel")
+    if not isinstance(info, dict) or str(info.get("id") or "") != channel:
+        raise BridgeError("slack_internal_scope_unverified")
+    if any(
+        bool(info.get(name))
+        for name in (
+            "is_shared",
+            "is_ext_shared",
+            "is_org_shared",
+            "is_pending_ext_shared",
+        )
+    ):
+        raise BridgeError("slack_internal_scope_shared_channel")
+    if not bool(info.get("is_im")) and info.get("is_member") is not True:
+        raise BridgeError("slack_internal_scope_not_member")
+    for name in ("context_team_id", "team_id"):
+        value = info.get(name)
+        if value not in (None, "") and str(value) != team_id:
+            raise BridgeError("slack_internal_scope_cross_team")
+    host = info.get("conversation_host_id")
+    if isinstance(host, str) and host.startswith("T") and host != team_id:
+        raise BridgeError("slack_internal_scope_cross_team")
+    shared_team_ids = info.get("shared_team_ids")
+    if isinstance(shared_team_ids, list) and any(
+        str(value) != team_id for value in shared_team_ids if value
+    ):
+        raise BridgeError("slack_internal_scope_cross_team")
+
+
+class InternalSlackScope:
+    """Fail-closed proof that a destination is local to the authenticated workspace."""
+
+    def __init__(self, web_client: Any, team_id: str) -> None:
+        if not isinstance(team_id, str) or not team_id:
+            raise BridgeError("slack_internal_scope_missing_team")
+        self.web_client = web_client
+        self.team_id = team_id
+
+    def require_channel(self, channel: str) -> None:
+        if not isinstance(channel, str) or not channel:
+            raise BridgeError("slack_internal_scope_invalid_channel")
+        try:
+            response = self.web_client.conversations_info(
+                channel=channel,
+                include_num_members=False,
+            )
+        except Exception as exc:
+            raise BridgeError("slack_internal_scope_unverified") from exc
+        _require_internal_slack_channel_payload(
+            _slack_mapping(response),
+            channel,
+            self.team_id,
+        )
+
+
+class SlackWebApiInternalScope:
+    """Apply the same internal-channel proof to raw Slack Web API calls."""
+
+    def __init__(
+        self,
+        token: str,
+        team_id: str,
+        *,
+        opener: Callable[..., Any] | None = None,
+    ) -> None:
+        if not isinstance(team_id, str) or not team_id:
+            raise BridgeError("slack_internal_scope_missing_team")
+        self.token = token
+        self.team_id = team_id
+        self.opener = opener
+
+    def require_channel(self, channel: str) -> None:
+        payload = slack_web_call(
+            "conversations.info",
+            self.token,
+            {"channel": channel, "include_num_members": False},
+            opener=self.opener,
+        )
+        _require_internal_slack_channel_payload(payload, channel, self.team_id)
+
 class SlackTransport:
     """Slack Web API poster with 429 budget, timeout reconcile, and no blind repost."""
 
@@ -1490,11 +1594,13 @@ class SlackTransport:
         web_client: Any,
         store: BridgeStore,
         *,
+        scope: InternalSlackScope,
         retry_budget: int = RETRY_BUDGET,
         sleeper: Callable[[float], None] = time.sleep,
     ) -> None:
         self.web_client = web_client
         self.store = store
+        self.scope = scope
         self.retry_budget = retry_budget
         self.sleeper = sleeper
         self.posts: list[dict[str, Any]] = []
@@ -1511,6 +1617,7 @@ class SlackTransport:
         count: int,
     ) -> SlackSendResult:
         require_publication(text)
+        self.scope.require_channel(channel)
         key = delivery_key(event_id, phase, index, text)
         existing = self.store.get_delivery(key)
         if existing and existing["state"] == "SENT":
@@ -3024,6 +3131,7 @@ def table_proof(
         "secrets_printed": False,
         "read_only_history": False,
         "receipt_posted": False,
+        "internal_scope_verified": False,
         "auth": "none",
         "final_delivery_owner": FINAL_DELIVERY_OWNER,
     }
@@ -3047,6 +3155,12 @@ def table_proof(
         report["latest_ts_present"] = bool(messages[0].get("ts"))
     want_post = bool(post_receipt) if post_receipt is not None else bool(getattr(args, "post_receipt", True))
     if want_post:
+        SlackWebApiInternalScope(
+            bot,
+            str(identity.get("team_id") or ""),
+            opener=opener,
+        ).require_channel(DEFAULT_CHANNEL)
+        report["internal_scope_verified"] = True
         posted = slack_web_call(
             "chat.postMessage",
             bot,
@@ -3102,7 +3216,11 @@ def serve(args: argparse.Namespace) -> int:
     web_client = WebClient(token=bot_token)
     identity = web_client.auth_test()
     bot_user_id = identity.get("user_id")
-    sink = SlackTransport(web_client, store)
+    team_id = identity.get("team_id")
+    if not isinstance(team_id, str) or not team_id:
+        raise BridgeError("auth.test missing team_id")
+    scope = InternalSlackScope(web_client, team_id)
+    sink = SlackTransport(web_client, store, scope=scope)
     git_root = os.environ.get(GIT_ROOT_VAR) or None
     bridge = GrokSlackBridge(
         store, mcp, github, sink,
@@ -3125,6 +3243,8 @@ def serve(args: argparse.Namespace) -> int:
             return
         client.send_socket_mode_response(SocketModeResponse(envelope_id=request.envelope_id))
         payload = request.payload or {}
+        if payload.get("team_id") != team_id:
+            return
         event = payload.get("event") or {}
         event_id = payload.get("event_id")
         if not isinstance(event_id, str) or not isinstance(event, dict):

@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 
 ROOT = Path(__file__).resolve().parent
@@ -20,11 +21,11 @@ WORKFLOW = ROOT / ".github/workflows/source-parses.yml"
 KEEP = {
     "source_parses.py": "abba903d",
     "test_source_parses.py": "71e0c9b6",
-    ".github/workflows/source-parses.yml": "0a8cf371",
+    ".github/workflows/source-parses.yml": "6bcdbde1",
     "p/grokbuild-source-parses-33689088174-billing-lock-20260902-01.md": "3b13ac02",
-    "test_grokbuild_source_parses_33689088174_billing_lock.py": "d6ea6574",
+    "test_grokbuild_source_parses_33689088174_billing_lock.py": "228d22bd",
     "p/grokbuild-open-door-guard-33699286785-billing-lock-20260902-01.md": "d22e0707",
-    "test_grokbuild_open_door_guard_33699286785_billing_lock.py": "5a189dec",
+    "test_grokbuild_open_door_guard_33699286785_billing_lock.py": "d6bf412e",
     "open_door_guard.py": "877e148d",
 }
 
@@ -100,15 +101,15 @@ class TestGrokbuildSourceParses33699928032BillingLock(unittest.TestCase):
 
     def test_local_source_parses_contract_still_green(self) -> None:
         checker = subprocess.run(
-            ["python3", "-m", "unittest", "-v", "test_source_parses.py"],
+            [sys.executable, "-m", "unittest", "-v", "test_source_parses.py"],
             cwd=ROOT,
             capture_output=True,
             text=True,
         )
         self.assertEqual(checker.returncode, 0, msg=checker.stdout + checker.stderr)
-        self.assertIn("Ran 9 tests", checker.stderr + checker.stdout)
+        self.assertIn("Ran 11 tests", checker.stderr + checker.stdout)
         parse = subprocess.run(
-            ["python3", "source_parses.py"],
+            [sys.executable, "source_parses.py"],
             cwd=ROOT,
             capture_output=True,
             text=True,

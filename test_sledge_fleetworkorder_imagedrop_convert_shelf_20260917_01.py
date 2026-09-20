@@ -20,7 +20,6 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent
-FLEET = ROOT / "fleet-work-order.html"
 IMAGEDROP = ROOT / "image-drop.html"
 RECEIPT = ROOT / "p" / "sledge-fleetworkorder-imagedrop-convert-shelf-20260917-01.md"
 
@@ -43,19 +42,14 @@ LIVE_CASH_DOORS = (
 )
 # Per-page extra live-cash markers that must survive the shelf insert.
 LIVE_CASH_EXTRA = {
-    "fleet-work-order.html": (
-        "Larger fixed engagements",
-        "diagnostic.html",
-        "commercial.html",
-    ),
     "image-drop.html": (
         "Larger fixed engagements",
         "diagnostic.html",
         "commercial.html",
     ),
 }
-PAGES = (FLEET, IMAGEDROP)
-ALLOWLIST_PAGES = ("fleet-work-order.html", "image-drop.html")
+PAGES = (IMAGEDROP,)
+ALLOWLIST_PAGES = ("image-drop.html",)
 CITE = "sledge-fleetworkorder-imagedrop-convert-shelf-20260917-01"
 BODY_FOLD_MAX = 2200
 NINE_LINK_EXCLUDED = (
@@ -170,6 +164,7 @@ EXISTING_CONVERT_SHELF_KEYS = (
     "the-world.html",
 )
 FENCED_PAGES = (
+    "fleet-work-order.html",
     "flipbook.html",
     "compress.html",
     "program.html",
