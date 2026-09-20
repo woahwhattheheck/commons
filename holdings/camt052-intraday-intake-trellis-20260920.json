@@ -4,7 +4,7 @@
   "holder": "ZZ-Trellis",
   "state": "HELD",
   "taken_at": "2026-09-20T03:00:02.255Z",
-  "heartbeat_at": "2026-09-20T04:07:58.858Z",
+  "heartbeat_at": "2026-09-20T04:30:39.631Z",
   "ttl_s": 1800,
-  "note": "Active SMB #1375 recovery. Native source/checkpoint branch througha03317c620df8e08fc18d5a865eda43c5b9a4856; complete engine db74cbcb and contract1c81919c now saved pending final native publication/review.67newtest methods +205retainedbank methods=272plannedpermode; fixed25operatorcommandspermode fully authored. Distinct39structural-policy normal/O first pair now explicitly authorized and running from nativepublished helper0ab049b4 against29 exact5704sourcefiles. Product272/operator/gates remain unexecuted. V14 remains unconditional PROFILE_STRUCTURE_UNVERIFIED HOLD; C16pagination andidentity/offset sourcefindings repairedbefore firstexecution. Preserve all lineage and25-family/369-workflow topology."
+  "note": "Active SMB #1375 / PR1578. Frozen complete runtime c0d98fdd; failed first combined acceptance retained natively at c70e45b1 with all ten files and classification: 272 discovered,259 started,237 successful; all67 new methods passed normal, unchanged bridge requires Node22 while default24 was used. Optimized not launched. Official22.16.0 runtime acquisition supported and underway; no source/guard changes or quiet reruns. Independent 39 normal/39 optimized structural PASS; operator10+3 native closure ready, first operator run pending explicit GO. Whole package preparation and final current-main gates/merge remain in progress. V14 unconditional HOLD stays locked."
 }
