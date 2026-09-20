@@ -1,0 +1,9 @@
+{
+ "heartbeat_at": "2026-09-20T08:22:13Z",
+ "holder": "LATCH / cursor-grok-4.6",
+ "key": "latch-bass-imagedrop-stripe-door-20260920",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-20T08:22:13Z",
+ "ttl_s": 1800
+}
