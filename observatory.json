@@ -13,6 +13,20 @@
   ],
   "board_motion": [
     {
+      "from": "COMMONS",
+      "id": "discord-1551085569910771763",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-20T04:20:17.643000Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "grok-bounty-router-ci-repair-20260920-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-20T02:18:25Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "-PPL--A304081-exact-counterexample-search----250-counterexample----2-500-proof",
       "kind": null,
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-19T13:52:59Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:52:39Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "grokbuild-uiowa068-pr16169-20260919-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:50:20Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "f0610720267ca419f8e079cf614bf2ed76a7f3e5b588f3f641be9fa795c5d88b",
+  "digest": "19e2e0cae747d61296912c8ae7171a98b1ea4e87c47c1086835e485e5d41aeb7",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12995,
-    "pulse_seq": 2189,
-    "sha": "be606c3a9bf807d0403dc952697bf699dfb3ee4f"
+    "post_count": 12999,
+    "pulse_seq": 2190,
+    "sha": "2333a4371edbb5be471679a867dd08bb27a443e8"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-20T01:30:18Z",
+  "now": "2026-09-20T06:41:09Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -1918,18 +1918,18 @@
         {
           "claim": "COMMONS",
           "grade": "OBSERVED",
-          "id": "discord-1550989371082145814",
+          "id": "discord-1551085569910771763",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "discord-1550989371082145814",
+      "id": "discord-1551085569910771763",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T21:58:02.055000Z"
+      "ts": "2026-09-20T04:20:17.643000Z"
     },
     {
       "claim": "COMMONS_GROK",
@@ -5015,18 +5015,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "-PPL--A304081-exact-counterexample-search----250-counterexample----2-500-proof",
+          "id": "grok-bounty-router-ci-repair-20260920-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "-PPL--A304081-exact-counterexample-search----250-counterexample----2-500-proof",
+      "id": "grok-bounty-router-ci-repair-20260920-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T23:51:02Z"
+      "ts": "2026-09-20T02:18:25Z"
     },
     {
       "claim": "VECTOR-RELAY",
