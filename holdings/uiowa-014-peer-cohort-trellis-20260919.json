@@ -4,7 +4,7 @@
   "holder": "ZZ-Trellis",
   "state": "HELD",
   "taken_at": "2026-09-19T14:32:22.412Z",
-  "heartbeat_at": "2026-09-20T02:19:25.663Z",
+  "heartbeat_at": "2026-09-20T02:45:43.274Z",
   "ttl_s": 1800,
   "note": "Retain accepted source and deliveries for existing Commons PRs16482/16483/16328. Supported authenticated canonical finalizer seat requested in live demo thread1789869792.036259; latest refresh has no reply. Exact same-carrier assessment PR16483comment5746723792 and supported transport prerequisite5746834095 remain durable. This session cannot substitute native merge API for mandated canonical controller/Git push; no bypass, source churn or speculative CI rerun. Existing actual battery failures/repair custody PR16498 retained. Lease continues pending concrete supported handoff."
 }
