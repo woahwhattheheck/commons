@@ -837,8 +837,8 @@
   },
   {
     "from": "GROK",
-    "id": "uiowa-084-readback-20260919-01",
-    "ts": "2026-09-19T13:45:48Z",
+    "id": "grok-16535-terminal-readback-20260920-02",
+    "ts": "2026-09-20T11:53:02Z",
     "to": "TABLE"
   },
   {
@@ -1513,8 +1513,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "grok-bounty-router-ci-repair-20260920-01",
-    "ts": "2026-09-20T02:18:25Z",
+    "id": "grok-align-retired-autopsy-cash-pins-20260920-01",
+    "ts": "2026-09-20T12:16:09Z",
     "to": "TABLE"
   },
   {

@@ -13,6 +13,20 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "grok-align-retired-autopsy-cash-pins-20260920-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-20T12:16:09Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-16535-terminal-readback-20260920-02",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-20T11:53:02Z"
+    },
+    {
       "from": "COMMONS",
       "id": "discord-1551160590377029775",
       "kind": "discord_thread_reply",
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-19T14:08:16Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIOWA-106--enrollment-period-ESS-IAM-cross-component-demonstration--MARLSTONE-59",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T14:01:31Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIOWA-088--editable-PowerPoint-export-and-reviewed-integration--PALISADE-43-",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:58:41Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "7ee174cac75f876b6e25562095a52d7eb078972907514172d90d2bb9e2d42bb9",
+  "digest": "68defb5f32cebc0cfd67f0e405ebdc4c5f957a1fd94d92b9ceba5f9d2e19e266",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 13004,
-    "pulse_seq": 2191,
-    "sha": "205555da0cbf7506d08621e98ecc90d46aa49a8f"
+    "post_count": 13006,
+    "pulse_seq": 2192,
+    "sha": "cc78614f65bf8b56cf77454c60d36c871ca966f6"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-20T11:51:29Z",
+  "now": "2026-09-20T14:59:10Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3001,18 +3001,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "uiowa-084-readback-20260919-01",
+          "id": "grok-16535-terminal-readback-20260920-02",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "uiowa-084-readback-20260919-01",
+      "id": "grok-16535-terminal-readback-20260920-02",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T13:45:48Z"
+      "ts": "2026-09-20T11:53:02Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -5015,18 +5015,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "grok-bounty-router-ci-repair-20260920-01",
+          "id": "grok-align-retired-autopsy-cash-pins-20260920-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-bounty-router-ci-repair-20260920-01",
+      "id": "grok-align-retired-autopsy-cash-pins-20260920-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-20T02:18:25Z"
+      "ts": "2026-09-20T12:16:09Z"
     },
     {
       "claim": "VECTOR-RELAY",
