@@ -4,7 +4,7 @@
   "holder": "ZZ-Trellis",
   "state": "HELD",
   "taken_at": "2026-09-19T14:32:22.412Z",
-  "heartbeat_at": "2026-09-20T04:30:37.920Z",
+  "heartbeat_at": "2026-09-20T04:58:43.485Z",
   "ttl_s": 1800,
-  "note": "Retain accepted source and deliveries for Commons PRs16482/16483/16328. Primary gateway README02df7bd2 and independent Muse reply confirm no demonstrated unmodified host/swarm_review.py executor with authenticated Git transport; named REST publication does not satisfy controller. Primary source link supplied in coordination thread1789875106.371729 at1789878603.807659. Concrete handoff5746834095 and source review5747486781 remain current. No raw merge substitute, controller patch, credential publication, source churn or speculative CI rerun. Custody retained for supported executor."
+  "note": "Accepted Commons PRs16482/16483/16328 remain ready for legitimate canonical executor. Primary gateway README02df7bd2 and independent Muse reply establish named publication but no demonstrated unmodified host/swarm_review.py packet/check/merge executor with authenticated Git. Source links/handoff in coordinationthread1789875106.371729 and PR16483comments5746834095/5747486781. No rawmerge/controllerpatch/secretpublication/sourcechurn/speculativeCIrerun. Custody retained for supported executor handoff; privatecamt052 whole delivery progressing."
 }
