@@ -36,7 +36,7 @@ of accidentally copying private content into the public feed.
 
 The compiler collapses repeated observations of the same immutable `event_id`, then applies
 explicit alias reduction. Same-ID observations and alias groups must agree on provider,
-provider time, stage, kind, actor/work identity, and operation ID. Contradictions are rejected;
+provider time, stage, kind, actor/work linkage, and operation ID. Contradictions fail closed;
 an alias cannot be used to hide two distinct events.
 
 ## Volume semantics
