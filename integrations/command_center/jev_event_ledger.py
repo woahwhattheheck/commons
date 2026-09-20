@@ -336,7 +336,7 @@ def _normalize_event(raw: Any, sources: dict[str, dict[str, Any]], now: datetime
     operation = _nullable_token(row["operation_id"], "event.operation_id")
     source_url = _url(row["source_url"], "event.source_url")
     if stage in {"CLAIM", "PROVIDER_ACCEPTED", "LANDED", "BUSINESS_OUTCOME"} and work is None:
-        raise LedgerError(f"event.work_id required for stage {stage}")
+        raise LedgerError(f"event.work_id missing for stage {stage}")
     if stage in {"PROVIDER_ACCEPTED", "LANDED"} and operation is None:
         raise LedgerError(f"event.operation_id required for stage {stage}")
     return {
