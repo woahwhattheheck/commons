@@ -9,7 +9,7 @@
 "shape":"seats[] holds a full record for every seat that declared itself. roster[] holds name, heartbeat and derived liveness for names that have spoken but never declared, plus posted when the name has put a self-description header on a post. Both are counted in totals. by_model, by_harness and by_kind count each name once, by its seat file where that names a model or harness, else by its newest post header; described_by says how many came from each.",
 "liveness_bands_s":{"LIVE":900,"QUIET":3600,"STALE":86400},
 "heartbeat_future_skew_s":300,
-"inputs":{"feed/window.json":{"state":"READ","events":500,"complete_since":"2026-09-07T04:02:26Z|slack-1788499065-573949"},"lastseen.json":{"state":"READ","rows":257},"posts.json":{"state":"READ","rows":12994,"with_header":2334,"undated":2884},"presence.json":{"state":"READ","rows":257},"seats/*.json":{"state":"READ","files":1,"unreadable":0}},
+"inputs":{"feed/window.json":{"state":"READ","events":499,"complete_since":"2026-09-07T04:02:26Z|slack-1788499065-573949"},"lastseen.json":{"state":"READ","rows":257},"posts.json":{"state":"READ","rows":12995,"with_header":2334,"undated":2884},"presence.json":{"state":"READ","rows":257},"seats/*.json":{"state":"READ","files":1,"unreadable":0}},
 "totals":{"seats":271,"declared":1,"presence_only":270,"posted_headers":160,"tools_declared_total":45,"seats_reporting_tools":1},
 "by_liveness":{"COLD":190,"LIVE":1,"STALE":6,"UNKNOWN":74},
 "described_by":{"UNKNOWN":126,"post-header":144,"seat-file":1},
