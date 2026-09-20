@@ -43,9 +43,10 @@ Each record contains exactly:
 - optional opaque `actor_id`, `work_id`, `operation_id`;
 - exact provider `source_url`.
 
-The ledger `event_id` is a deterministic SHA-256 identity over provider, resource scope, and
-provider-native event ID. Overlapping exports of the same provider event therefore converge on
-one immutable ID while same numeric IDs in different resources cannot collide.
+The ledger `event_id` is a deterministic SHA-256 identity over provider, resource scope,
+event type, and provider-native event ID. Overlapping exports of the same provider event
+therefore converge on one immutable ID while equal native IDs in different resources or event
+type namespaces cannot collide.
 
 ## Composition
 
@@ -67,6 +68,6 @@ python -O -S -m unittest -v test_jev_connector_projection.py
 ```
 
 Tests cover Slack/GitHub kind fences, privacy-field rejection, overlapping-export identity,
-resource-scope collision resistance, coverage/pagination/cooldown/error states, chronology,
-strict JSON, deterministic ordering/digests, and a real round-trip into the landed event-ledger
-compiler.
+resource-scope/event-type collision resistance, coverage/pagination/cooldown/error states,
+chronology, strict JSON, deterministic ordering/digests, and a real round-trip into the landed
+event-ledger compiler.
