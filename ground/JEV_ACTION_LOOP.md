@@ -6,7 +6,7 @@ Issue [#16537](https://github.com/woahwhattheheck/commons/issues/16537) needs Je
 
 Feed `reconcile_observations()` provider observations read through the installed Slack, GitHub, Commons, or CI connector. Every row carries provider/scope/resource/event identity, provider event time, observation time, status, and exact source URL. The immutable `event_key` deduplicates the same provider event; `resource_key` joins successive events for one provider resource.
 
-`provider_event_at` determines chronology. Connector arrival order does not. `DELIVERY_UNCERTAIN` and `UNKNOWN` never erase a known provider state. A later definitive provider event does supersede an earlier uncertain one. Legitimate definitive transitions such as `CLOSED_UNMERGED -> OPEN` and `FAILURE -> QUEUED -> SUCCESS` remain possible. `MERGED -> OPEN` for the same GitHub resource is an impossible regression and HOLDs instead of requeueing work. Same-provider-time contradictory states also HOLD.
+`provider_event_at` determines chronology. Connector arrival order does not. `DELIVERY_UNCERTAIN` and `UNKNOWN` never erase a known provider state. A later definitive provider event does supersede an earlier uncertain one. A newer uncertain read after a known state blocks action rather than executing against stale certainty. Legitimate definitive transitions such as `CLOSED_UNMERGED -> OPEN` and `FAILURE -> QUEUED -> SUCCESS` remain possible. `MERGED -> OPEN` for the same GitHub resource is an impossible regression and HOLDs instead of requeueing work. Same-provider-time contradictory states also HOLD.
 
 The module does **not** authenticate arbitrary JSON. Connector readback is the authority for provider facts. The hashes here bind identity/generation and catch replay or mutation after collection.
 
@@ -44,9 +44,9 @@ Plans have two digests: stable `plan_sha256` binds the write generation across r
 Run:
 
 ```bash
-python -S -m unittest -v test_jev_action_loop.py
+python -S -m unittest -v test_jev_action_loop.py test_jev_action_loop_hardening.py
 ```
 
-The focused suite covers duplicate-key/non-finite ingress, immutable event/resource identity, event-ID collision, same-time contradiction, delivery-uncertain -> definitive supersession, merged-state regression, legitimate PR reopen and CI rerun transitions, stable operation IDs, low-confidence HOLD, confirmed idempotency, uncertain no-replay, same-ID retry, exact operation-marker readback, receipt tamper/transplant, and result-plan tamper.
+The focused suite is split into the 31-case baseline plus 3 hardening cases (34 total) covers duplicate-key/non-finite ingress, immutable event/resource identity, event-ID collision, same-time contradiction, delivery-uncertain -> definitive supersession, merged-state regression, legitimate PR reopen and CI rerun transitions, stable operation IDs, low-confidence HOLD, confirmed idempotency, uncertain no-replay, same-ID retry, exact operation-marker readback, receipt tamper/transplant, and result-plan tamper.
 
 This module intentionally leaves connector execution outside the pure compiler. A controller may call the existing Jev client, compile a plan here, execute only an authorized `ACTION_READY` plan with the installed connector, immediately read the provider resource back, and persist the resulting receipt beside the source event. It must never infer execution from a Jev answer or from a send attempt alone.

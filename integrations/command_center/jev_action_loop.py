@@ -283,13 +283,17 @@ def reconcile_observations(observations: list[dict[str, Any]]) -> dict[str, Any]
             suppressed = [event_key(latest)]
             disposition = "HOLD_IMPOSSIBLE_PROVIDER_REGRESSION"
 
+    latest_observed = max(
+        rows,
+        key=lambda r: (_stamp(r["observed_at"], "latest_observed"), r["event_id"]),
+    )
     return {
         "schema": SCHEMA,
         "resource_key": next(iter(rkeys)),
         "disposition": disposition,
         "effective_status": effective["status"],
         "effective_event_key": event_key(effective),
-        "latest_observed_event_key": event_key(latest),
+        "latest_observed_event_key": event_key(latest_observed),
         "suppressed_event_keys": sorted(set(suppressed)),
         "observation_count": len(rows),
     }
@@ -410,6 +414,7 @@ def compile_action(
         "HOLD_CONTRADICTORY_PROVIDER_TIME",
         "HOLD_LATEST_PROVIDER_STATE_UNCERTAIN",
         "HOLD_IMPOSSIBLE_PROVIDER_REGRESSION",
+        "DEFINITIVE_STATE_HELD_OVER_UNCERTAIN_READ",
     }:
         disposition = "HOLD_PROVIDER_STATE"
     elif dec["selected_action"] == "NO_ACTION":
@@ -476,6 +481,7 @@ def make_readback_receipt(
         "min_confidence_ppm", "plan_sha256", "result_sha256",
     }
     _strict_fields(plan, required, "plan")
+    verify_plan(plan)
     if plan["schema"] != PLAN_SCHEMA:
         raise ActionLoopError("plan: unsupported schema")
     _sha(plan["plan_sha256"], "plan.plan_sha256")
@@ -537,6 +543,18 @@ def verify_plan(plan: Any) -> dict[str, Any]:
         raise ActionLoopError("plan: confidence out of range")
     if type(row["min_confidence_ppm"]) is not int or not 0 <= row["min_confidence_ppm"] <= 1_000_000:
         raise ActionLoopError("plan: minimum confidence out of range")
+    operation_material = {
+        "schema": row["schema"],
+        "resource_key": row["resource_key"],
+        "effective_status": row["effective_status"],
+        "effective_event_key": row["effective_event_key"],
+        "decision_sha256": row["decision_sha256"],
+        "target": row["target"],
+        "selected_action": row["selected_action"],
+    }
+    expected_operation_id = "jev16537-" + _digest(operation_material)[:40]
+    if expected_operation_id != row["operation_id"]:
+        raise ActionLoopError("plan: operation id mismatch")
     core_keys = {
         "schema", "resource_key", "effective_status", "effective_event_key",
         "decision_sha256", "target", "selected_action", "operation_id",
