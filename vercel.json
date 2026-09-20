@@ -6,6 +6,15 @@
     },
     "api/owner_context.py": {
       "maxDuration": 10
+    },
+    "api/jev.py": {
+      "maxDuration": 60
+    },
+    "api/cua_s1.py": {
+      "maxDuration": 60
+    },
+    "api/cua_s1_form.mjs": {
+      "maxDuration": 120
     }
   },
   "rewrites": [
@@ -56,6 +65,30 @@
     {
       "source": "/owner-context/",
       "destination": "/api/owner_context"
+    },
+    {
+      "source": "/jev",
+      "destination": "/api/jev"
+    },
+    {
+      "source": "/jev/",
+      "destination": "/api/jev"
+    },
+    {
+      "source": "/cua-s1",
+      "destination": "/api/cua_s1"
+    },
+    {
+      "source": "/cua-s1/",
+      "destination": "/api/cua_s1"
+    },
+    {
+      "source": "/cua-s1/form",
+      "destination": "/api/cua_s1_form"
+    },
+    {
+      "source": "/cua-s1/form/",
+      "destination": "/api/cua_s1_form"
     }
   ]
 }

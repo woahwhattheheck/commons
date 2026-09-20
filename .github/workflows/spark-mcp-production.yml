@@ -23,6 +23,15 @@ on:
     paths: &mcp_production_paths
       - "api/mcp.py"
       - "api/owner_context.py"
+      - "api/jev.py"
+      - "api/cua_s1.py"
+      - "api/cua_s1_form.mjs"
+      - "api/test_cua_s1_form.mjs"
+      - "host/jev.py"
+      - "host/cua_s1_cloud/**"
+      - "requirements.txt"
+      - "package.json"
+      - "package-lock.json"
       - "commons_mcp.py"
       - "commons_publication_policy.py"
       - "webmcp.html"
@@ -40,6 +49,7 @@ on:
       - ".github/workflows/spark-mcp-production.yml"
       - "test_spark_mcp.py"
       - "test_spark_mcp_production_deploy.py"
+      - "api/test_jev.py"
       - "test_webmcp_door.py"
   pull_request:
     paths: *mcp_production_paths
@@ -62,8 +72,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: install hosted CUA runtime
+        run: python -m pip install --requirement requirements.txt
       - name: adapter surface, discovery 1.4.0, deploy contract
-        run: python -B -W error -m unittest -q test_spark_mcp.py test_spark_mcp_production_deploy.py test_commons_mcp.py test_webmcp_door.py
+        run: python -B -W error -m unittest -q test_spark_mcp.py test_spark_mcp_production_deploy.py test_commons_mcp.py test_webmcp_door.py api.test_jev host.cua_s1_cloud.test_runtime_onnx
+      - name: hosted CUA browser contract
+        run: node --test api/test_cua_s1_form.mjs
 
   deploy:
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
@@ -74,6 +91,7 @@ jobs:
       VERCEL_TOKEN: ${{ secrets.VERCEL_TEAM_TOKEN }}
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
       VERCEL_PROJECT_NAME: commons-spark-mcp
       VERCEL_SCOPE: woahwhatthehecks-projects
       PUBLIC_MCP_URL: https://commons-spark-mcp.vercel.app/mcp
@@ -135,6 +153,16 @@ jobs:
           else
             vercel link --yes --token="${VERCEL_TOKEN}" --project "${VERCEL_PROJECT_NAME}" --scope "${VERCEL_SCOPE}"
           fi
+          if [ -z "${TYPESAFE_API_KEY}" ]; then
+            echo "::error::TYPESAFE_API_KEY is missing from repository Actions secrets."
+            exit 1
+          fi
+          if vercel env ls production --token="${VERCEL_TOKEN}" --scope "${VERCEL_SCOPE}" | grep -Fq 'TYPESAFE_API_KEY'; then
+            echo "TYPESAFE_API_KEY production variable already configured (value not read)"
+          else
+            printf '%s' "${TYPESAFE_API_KEY}" | vercel env add TYPESAFE_API_KEY production --sensitive --token="${VERCEL_TOKEN}" --scope "${VERCEL_SCOPE}"
+            echo "TYPESAFE_API_KEY production variable configured (value not printed)"
+          fi
           STAGE="$(mktemp -d)"
           python3 stage_spark_mcp_bundle.py --src . --dst "${STAGE}"
           if [ -d .vercel ]; then
@@ -170,6 +198,8 @@ jobs:
               "read_commons_resource",
               "route_grokcom_revenue_work",
               "post_to_action_pad",
+              "jev_decide",
+              "cua_s1_score",
           }
           headers = {
               "Content-Type": "application/json",
@@ -273,4 +303,43 @@ jobs:
               time.sleep(10)
           print("STALE_OR_UNVERIFIED", json.dumps(last))
           sys.exit(1)
+          PY
+
+      - name: verify live cloud Jev and CUA endpoints
+        if: steps.creds.outputs.present == 'true'
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, urllib.request
+
+          base = "https://commons-spark-mcp.vercel.app"
+
+          def request(path, payload=None):
+              data = None if payload is None else json.dumps(payload).encode("utf-8")
+              req = urllib.request.Request(
+                  base + path, data=data,
+                  headers={"Content-Type": "application/json"},
+                  method="GET" if data is None else "POST",
+              )
+              with urllib.request.urlopen(req, timeout=90) as resp:
+                  assert resp.status == 200, (path, resp.status)
+                  return json.load(resp)
+
+          jev = request("/jev")
+          assert jev.get("ok") and jev.get("configured") is True, jev
+          decision = request("/jev", {"state": "2 + 2 = 4", "questions": {
+              "truth": {"type": "noul", "instructions": "The statement is mathematically true"},
+          }})
+          assert decision.get("ok") and "truth" in decision.get("answers", {}), decision
+          cua = request("/cua-s1")
+          assert cua.get("ok") and cua.get("artifact_sha256"), cua
+          scored = request("/cua-s1", {"context": "ELEMENT Edit Name", "options": ["fill Name: Ada", "skip"]})
+          assert scored.get("selected_index") in (0, 1) and scored.get("executed") is False, scored
+          browser = request("/cua-s1/form")
+          assert browser.get("ok") and browser.get("browser_runtime") == "vercel-chromium", browser
+          preview = request("/cua-s1/form", {"url": "https://example.com/", "form_title": "Cloud browser smoke", "entities": []})
+          assert preview.get("ok") and preview.get("executed") is False and preview.get("elements_scored") == 0, preview
+          print("LIVE_JEV_PROVIDER")
+          print("LIVE_CUA_MODEL", cua["artifact_sha256"])
+          print("LIVE_CUA_BROWSER_PREVIEW")
           PY

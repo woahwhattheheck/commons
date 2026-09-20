@@ -213,6 +213,13 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             copied = stager.stage_bundle(ROOT, Path(tmp))
         self.assertIn("api/mcp.py", copied)
+        self.assertIn("api/jev.py", copied)
+        self.assertIn("api/cua_s1.py", copied)
+        self.assertIn("api/cua_s1_form.mjs", copied)
+        self.assertIn("host/jev.py", copied)
+        self.assertIn("host/cua_s1_cloud/cua-s1-forms.onnx", copied)
+        self.assertIn("requirements.txt", copied)
+        self.assertIn("package-lock.json", copied)
         self.assertIn("api/owner_context.py", copied)
         self.assertIn("commons_mcp.py", copied)
         self.assertIn("webmcp.html", copied)

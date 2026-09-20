@@ -66,6 +66,46 @@ GET_SEND_LINK_TOOL = {
     },
 }
 
+JEV_DECIDE_TOOL = {
+    "name": "jev_decide",
+    "title": "Jev Typed Decisions",
+    "description": (
+        "Ask the hosted Jev model typed choice, score, or noul questions about "
+        "the supplied state. Returns answers and provider usage."
+    ),
+    "inputSchema": {
+        "type": "object",
+        "properties": {
+            "state": {"type": "string", "description": "State to evaluate."},
+            "questions": {"type": "object", "description": "Named typed Jev questions."},
+        },
+        "required": ["state", "questions"],
+    },
+    "annotations": {"readOnlyHint": True, "destructiveHint": False, "openWorldHint": True},
+}
+
+CUA_S1_SCORE_TOOL = {
+    "name": "cua_s1_score",
+    "title": "CUA-S1 Choice Scoring",
+    "description": (
+        "Score 2 to 32 text choices with the hosted CUA-S1-FORMS model. "
+        "This returns a selected choice and probabilities; it does not open, "
+        "inspect, or operate a browser."
+    ),
+    "inputSchema": {
+        "type": "object",
+        "properties": {
+            "context": {"type": "string", "description": "Text describing the choice context."},
+            "options": {
+                "type": "array", "items": {"type": "string"}, "minItems": 2, "maxItems": 32,
+                "description": "Distinct choices to score.",
+            },
+        },
+        "required": ["context", "options"],
+    },
+    "annotations": {"readOnlyHint": True, "destructiveHint": False, "openWorldHint": False},
+}
+
 SHARED_HTTP_TOOL_NAMES = (
     "discover_commons_capabilities",
     "search_commons",
@@ -84,6 +124,8 @@ SHARED_HTTP_TOOL_NAMES = (
     "project_live_work",
     "continue_from_observation",
     GET_SEND_LINK_TOOL["name"],
+    JEV_DECIDE_TOOL["name"],
+    CUA_S1_SCORE_TOOL["name"],
 )
 _CARRIER_ID_RE = re.compile(r"^[a-z0-9-]+$")
 _CARRIERS_DIR = Path(__file__).resolve().parent.parent / "carriers"
@@ -348,6 +390,34 @@ SEND_LINK_SERVER = cm.MCPServer(SEND_LINK_GATEWAY)
 SEND_LINK_SERVER.tools[GET_SEND_LINK_TOOL["name"]] = GET_SEND_LINK_TOOL
 
 
+class HostedDecisionGateway(cm.CommonsGateway):
+    """Invoke hosted model functions in process, without an HTTP loopback."""
+
+    def jev_decide(self, arguments: dict[str, Any]) -> dict[str, Any]:
+        from api import jev as hosted_jev
+
+        status, body = hosted_jev.handle_request(
+            "POST", "/jev", json.dumps(arguments, ensure_ascii=False).encode("utf-8")
+        )
+        result = json.loads(body)
+        if status != 200:
+            result.setdefault("http_status", status)
+        return result
+
+    def cua_s1_score(self, arguments: dict[str, Any]) -> dict[str, Any]:
+        from api import cua_s1 as hosted_cua_s1
+
+        status, result = hosted_cua_s1.handle_request(
+            "POST", "/api/cua_s1", json.dumps(arguments, ensure_ascii=False).encode("utf-8")
+        )
+        return {"ok": status == 200, **result, **({"http_status": status} if status != 200 else {})}
+
+
+HOSTED_DECISION_SERVER = cm.MCPServer(HostedDecisionGateway(truth=RemoteGitTruth()))
+HOSTED_DECISION_SERVER.tools[JEV_DECIDE_TOOL["name"]] = JEV_DECIDE_TOOL
+HOSTED_DECISION_SERVER.tools[CUA_S1_SCORE_TOOL["name"]] = CUA_S1_SCORE_TOOL
+
+
 def _send_payload_arguments(value: Any) -> dict[str, Any]:
     allowed = {
         "from", "to", "id", "body", "ts", "board", "lane", "subject",
@@ -387,6 +457,15 @@ def handle_json(raw: bytes, headers: Any) -> tuple[int, dict[str, Any] | None]:
                     "text": "[Send to Commons](%s)\n\nOpening this link sends the prepared draft." % url,
                 }]
         return status, response
+    if method == "tools/call" and name in {JEV_DECIDE_TOOL["name"], CUA_S1_SCORE_TOOL["name"]}:
+        status, response = HOSTED_DECISION_SERVER.handle(
+            message, transport="http", cancel_event=cancel_event
+        )
+        if response is not None:
+            result = response.get("result", {})
+            data = result.get("structuredContent", {})
+            result["isError"] = not bool(data.get("ok"))
+        return status, response
     if method == "tools/call" and name in SPARK_FAST_TOOL_NAMES:
         return FAST_SUBMIT_SERVER.handle(
             message, transport="http", cancel_event=cancel_event
@@ -400,6 +479,8 @@ def handle_json(raw: bytes, headers: Any) -> tuple[int, dict[str, Any] | None]:
             if tool.get("name") in SPARK_FAST_TOOL_NAMES:
                 tool["description"] = SPARK_FAST_DESCRIPTION + tool["description"]
         response.get("result", {}).get("tools", []).append(GET_SEND_LINK_TOOL)
+        response.get("result", {}).get("tools", []).append(JEV_DECIDE_TOOL)
+        response.get("result", {}).get("tools", []).append(CUA_S1_SCORE_TOOL)
     return status, response
 
 
@@ -512,7 +593,8 @@ class handler(BaseHTTPRequestHandler):
             self._send_json(
                 200,
                 cm.public_mcp_capability_map(
-                    extra_tools=(GET_SEND_LINK_TOOL["name"],),
+                    extra_tools=(GET_SEND_LINK_TOOL["name"], JEV_DECIDE_TOOL["name"],
+                                 CUA_S1_SCORE_TOOL["name"]),
                     url=PUBLIC_MCP_URL,
                 ),
             )

@@ -28,6 +28,8 @@ evaluate in parallel and independently — decompose instead of compressing.
 
 ## Use it
 
+For cloud calls independent of the laptop, use `POST https://commons-spark-mcp.vercel.app/jev` with JSON `{"state":"...","questions":{"urgent":{"type":"noul","instructions":"Message conveys urgency"}}}` or call the public Commons MCP tool `jev_decide`. The TypeSafe key stays in the Vercel server environment. Check `GET /jev` for `configured:true` and read back a real typed answer before treating a deployment as active.
+
 ```bash
 python3 host/jev_swarm.py classify --file post.md
 python3 host/jev_swarm.py dedup --ask "the new ask" --docket docket.json
