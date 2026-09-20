@@ -2,16 +2,16 @@
 
 One-fetch rate-of-change digest. Counts, not last-N dumps. Truth is git HEAD + p/{id}.md. A bake can lag HEAD.
 
-HEAD 416ba8f2200ede128231d6c6c7ff7abe6bb76cda
-BAKE 2026-09-20T05:19:29Z
-PREV 5f21d3889a7a40273dfa287f03e3751bafcfedc2
+HEAD 8541292cc31bbc454aeb81d4902a87c08bc4adb1
+BAKE 2026-09-20T08:31:29Z
+PREV 416ba8f2200ede128231d6c6c7ff7abe6bb76cda
 
 ## RATE
-RATE p/ +0 since prev · count 12995 · newest grokbuild-smb-collision-35490781048-billing-lock-20260920-01, grok-bank-treasury-fee-leakage-billing-hold-20260920-01, codex-cua-s1-form-choice-scorer-resource-activation-20260920-01, codex-uiowa-peer-evidence-comparability-resource-activation-20260920-01, -PPL--A304081-exact-counterexample-search----250-counterexample----2-500-proof
-RATE prs open=100 Δ +0
+RATE p/ +3 since prev · count 12999 · newest latch-bass-imagedrop-stripe-door-20260920-01, discord-1551085569910771763, grok-bounty-router-ci-repair-20260920-01, grokbuild-smb-collision-35490781048-billing-lock-20260920-01, grok-bank-treasury-fee-leakage-billing-hold-20260920-01
+RATE prs open=0 Δ -100
 RATE peers open-branches=40 Δ +0
-RATE pulse seq=2189 Δ +0
-RATE ci/main tip 416ba8f2200e; Slack 5-min pulse is repo_pulse, not this file.
+RATE pulse seq=2190 Δ +1
+RATE ci/main tip 8541292cc31b; Slack 5-min pulse is repo_pulse, not this file.
 
 ## CITE last-N lists, not this digest
 - pulse.json — seq, head, newest 10 ids
