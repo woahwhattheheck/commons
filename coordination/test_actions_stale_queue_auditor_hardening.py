@@ -298,5 +298,54 @@ class CanonicalWorkBoundaryTests(unittest.TestCase):
             auditor.canonical_json = original_canonical_json
 
 
+    def test_public_helper_graph_rebind_cannot_change_sealed_generation(self):
+        data = packet()
+        data["runs"][0]["provenance"]["pull_requests"] = [
+            {"number": 1, "state": "OPEN", "current_head_sha": SHA_A}
+        ]
+        baseline = auditor.build_report(data)
+        self.assertEqual(baseline["rows"][0]["decision"], "HOLD")
+        self.assertIn("OPEN_PR_CURRENT_HEAD", baseline["rows"][0]["reasons"])
+
+        originals = {
+            "_normalize_run": auditor._normalize_run,
+            "_normalize_pr": auditor._normalize_pr,
+            "_classify": auditor._classify,
+        }
+        had_sorted = hasattr(auditor, "sorted")
+        old_sorted = getattr(auditor, "sorted", None)
+
+        def forged_run(value):
+            forged = copy.deepcopy(originals["_normalize_run"](value))
+            forged["provenance"]["pull_requests"] = [
+                {"number": 1, "state": "CLOSED", "current_head_sha": SHA_B}
+            ]
+            return forged
+
+        auditor._normalize_run = forged_run
+        auditor._normalize_pr = lambda value: {
+            "number": 1, "state": "CLOSED", "current_head_sha": SHA_B
+        }
+        auditor._classify = lambda run, default_branch: (
+            "SAFE_TO_CANCEL", ["ALL_ASSOCIATED_PRS_CLOSED_OR_STALE"]
+        )
+        auditor.sorted = lambda values, *args, **kwargs: []
+
+        try:
+            rebuilt = auditor.build_report(data)
+            self.assertEqual(rebuilt, baseline)
+            self.assertEqual(rebuilt["rows"][0]["decision"], "HOLD")
+            self.assertIn("OPEN_PR_CURRENT_HEAD", rebuilt["rows"][0]["reasons"])
+            self.assertTrue(auditor.verify_report(rebuilt))
+        finally:
+            auditor._normalize_run = originals["_normalize_run"]
+            auditor._normalize_pr = originals["_normalize_pr"]
+            auditor._classify = originals["_classify"]
+            if had_sorted:
+                auditor.sorted = old_sorted
+            else:
+                delattr(auditor, "sorted")
+
+
 if __name__ == "__main__":
     unittest.main()
