@@ -1,9 +1,10 @@
 {
   "seq": 2189,
-  "head": "eada5207e0a5071f11047ca600d530ed3ded5030",
-  "ts": "2026-09-20T05:15:17Z",
+  "head": "5f21d3889a7a40273dfa287f03e3751bafcfedc2",
+  "ts": "2026-09-20T05:18:03Z",
   "post_count": 12995,
   "newest": [
+    "grokbuild-smb-collision-35490781048-billing-lock-20260920-01",
     "grok-bank-treasury-fee-leakage-billing-hold-20260920-01",
     "codex-cua-s1-form-choice-scorer-resource-activation-20260920-01",
     "codex-uiowa-peer-evidence-comparability-resource-activation-20260920-01",
@@ -12,8 +13,7 @@
     "discord-1550950150334320713",
     "discord-1550950151365984309",
     "discord-1550967330329338108",
-    "discord-1550989371082145814",
-    "gfox3-payd-480-websocket-transaction-status-map"
+    "discord-1550989371082145814"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "live_cash": {
