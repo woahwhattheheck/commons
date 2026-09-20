@@ -4,7 +4,7 @@
   "holder": "ZZ-Trellis",
   "state": "HELD",
   "taken_at": "2026-09-20T03:00:02.255Z",
-  "heartbeat_at": "2026-09-20T03:16:58.659Z",
+  "heartbeat_at": "2026-09-20T03:37:51.918Z",
   "ttl_s": 1800,
-  "note": "Active SMB #1375 recovery. Early provenance, three reviewed existing-family CI changes, packet/reporting source and explicit contract/acquisition map published through 0cda568b831896e19ac88373b2bf2dabe011c44e on zz-trellis/camt052-intraday-20260920. 114 exact baseline files acquired; 205 existing bank-family and39 structural methods prepared for distinct first acceptance lanes. Parser, full domain CSV/HTML, packet/CLI, independent tests and five-case operator journey in parallel source authoring/review. V08 documented narrow profile; V14 always PROFILE_STRUCTURE_UNVERIFIED HOLD due unread structural reference. No product/test/operator/gate/workflow execution yet. Preserve existing25-family/369-workflow topology and all prior authors. No bank/payment/ledger/price authority."
+  "note": "Active SMB #1375 recovery. Reviewed packet/CLI/local I/O and independent tests/operator source drafts published through6256cac2734102f5ad91ec936f8e54a2fe165715; native full-tree/ref checks preserve all unowned base files. 44 engine test methods, five-case25-command operator source, source reviews and acquisition plan durable; parser/packet tests/helper integration still pending. 205 existing bank-family and39 structural methods retained. V08 documented narrow profile; V14 unconditional PROFILE_STRUCTURE_UNVERIFIED HOLD. No product/test/operator/gate execution yet. Existing25-family/369-workflow topology and all prior authors preserved."
 }
