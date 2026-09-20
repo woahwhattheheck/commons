@@ -4,7 +4,7 @@
   "holder": "ZZ-Trellis",
   "state": "HELD",
   "taken_at": "2026-09-20T01:26:58.605Z",
-  "heartbeat_at": "2026-09-20T02:19:27.792Z",
+  "heartbeat_at": "2026-09-20T02:45:41.312Z",
   "ttl_s": 1800,
-  "note": "Active private #1286 / PR1576. First128normal+128actual-O tests PASS at native d451f2162da992733727408163610a616ea9b08b; complete literal10file120611B evidence published in TEST_EXECUTION receipt ce13d59b7b6d6fd4631f6fb73986bcf5e1138982, independent auditPASS. First21-command operator per mode17exit0/1reviewexit1/3refusalsexit2 PASS,64 original/copied memberpairs byteidentical, 240account80household scale. Full operator records frozen, independent audit/final docs inprogress. Currentmain0b79d344 and exact ancestry acquired; finalcurrent-main composition/gates/merge/fullpackage pending. Early builder checkpoint f7cc4b72 durably published. No reruns, source/runtime unchanged."
+  "note": "Calendar #1286 / PR1576 merged at c43bd23ac4dfd5dbfa8d09f51f5ecc67d2719eb9. Full independent native readback PASS: 4988 tree entries exact, 4425 prior files preserved, 24 additions. First128 normal+128 actual-O tests and21 operator commands per mode remain accepted without reruns. Both unchanged base-owned gates PASS exact 0b79/ea3 pair. Final reviewed package builder published385eb4d1; final36-source/11-collection metadata frozen. First byte-only archive/extract/rebuild and independent final package audit active; keeping issue open until complete native artifact/Slack handoff."
 }
