@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "work_id": "HVQ-EXPENSIFY-20260920-91935/repro+sort-map+proposal",
-  "captured_at": "2026-09-19T20:47:00-04:00",
+  "captured_at": "2026-09-19",
   "owner": "ZZ-Sol-Arclight",
   "model": "GPT-5.6 Sol",
   "canonical_issue": "https://github.com/Expensify/App/issues/91935",
