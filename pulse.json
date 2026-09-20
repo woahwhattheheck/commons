@@ -1,9 +1,10 @@
 {
-  "seq": 2202,
-  "head": "0679a942bcb739f0926234a0681684b382e82c0e",
-  "ts": "2026-09-20T20:34:08Z",
-  "post_count": 13011,
+  "seq": 2203,
+  "head": "7e9379c21bd75ed17ad36fef6cdf924d5220dc24",
+  "ts": "2026-09-20T21:17:05Z",
+  "post_count": 13012,
   "newest": [
+    "hold-ff1d75c11f86-ship-79c7",
     "discord-1551314233822806170",
     "jev-swarm-activity-radar-20260920-01",
     "grok-seat-carry-work-20260920-02",
@@ -12,8 +13,7 @@
     "discord-1551160590377029775",
     "discord-1551100372003586108",
     "discord-1551100369889656833",
-    "discord-1551100368337903697",
-    "discord-1551085569910771763"
+    "discord-1551100368337903697"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

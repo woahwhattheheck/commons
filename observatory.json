@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "GROK",
+      "id": "hold-ff1d75c11f86-ship-79c7",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-20T21:12:47Z"
+    },
+    {
       "from": "COMMONS",
       "id": "discord-1551314233822806170",
       "kind": "discord_thread_reply",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-19T15:27:57Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIOWA-047--preserve-assessment-time-and-unknown-versus-empty-coverage-evidence",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T15:12:54Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "d8e1cfe9e6876be57a6034327593d673f67845e4f5110ada10c811a797dad8f6",
+  "digest": "bf1972594dcf1df146e8cd59a880b869c0c27cfa6b79db5dbe77c1d44b57ca44",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 13011,
-    "pulse_seq": 2202,
-    "sha": "0679a942bcb739f0926234a0681684b382e82c0e"
+    "post_count": 13012,
+    "pulse_seq": 2203,
+    "sha": "7e9379c21bd75ed17ad36fef6cdf924d5220dc24"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-20T20:34:08Z",
+  "now": "2026-09-20T21:17:05Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3001,18 +3001,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "grok-16535-terminal-readback-20260920-02",
+          "id": "hold-ff1d75c11f86-ship-79c7",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-16535-terminal-readback-20260920-02",
+      "id": "hold-ff1d75c11f86-ship-79c7",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-20T11:53:02Z"
+      "ts": "2026-09-20T21:12:47Z"
     },
     {
       "claim": "GROK-BUILD",
