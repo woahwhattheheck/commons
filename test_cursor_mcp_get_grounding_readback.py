@@ -17,7 +17,7 @@ DOOR = ROOT / "grounding.html"
 
 KEEP = {
     "p/cursor-mcp-get-grounding-20260902-01.md": "0bc79b8c",
-    "grounding.html": "310d63b2",
+    "grounding.html": "abb91caf",
     "test_mcp_get_open.py": "239564b9",
     "test_grounding_door.py": "0908ec95",
     "commons_mcp.py": "8312bc0f",
