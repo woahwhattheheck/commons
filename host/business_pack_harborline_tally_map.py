@@ -40,8 +40,8 @@ EXPECTED_BLOBS = {
     "p/cursor-harborline-tally-pack-map-20260902-01.md": "d3e7312c",
     "p/cursor-business-pack-harborline-tally-map-pointer-20260902-01.md": "e38f1251",
     "p/cursor-business-pack-harborline-tally-map-pointer-helper-20260902-01.md": "6ec23344",
-    "packs/desk-website-service-20260902-01/door.html": "d75b3f3b",
-    "packs/waitlist.html": "f93c8f32",
+    "packs/desk-website-service-20260902-01/door.html": "cd2be48f",
+    "packs/waitlist.html": "b312ed6d",
 }
 RECEIPT_BLOBS = {
     rel: prefix for rel, prefix in EXPECTED_BLOBS.items() if rel.startswith("p/")
@@ -49,9 +49,9 @@ RECEIPT_BLOBS = {
 
 # Land-time observations from leftover SHIP f439bf0a. Not live pins.
 OBSERVED_AT_LAND = {
-    "packs/sidewalk-signal-web-desk-20260902-01/index.html": "9db77016",
-    "packs/lotribbon-greetings-20260902-01/index.html": "8afd749b",
-    "host/business_pack_desk_instance.py": "1029faad",
+    "packs/sidewalk-signal-web-desk-20260902-01/index.html": "638e60b4",
+    "packs/lotribbon-greetings-20260902-01/index.html": "ac60db02",
+    "host/business_pack_desk_instance.py": "a550ae1b",
 }
 THIS_SEAT_DOES_NOT_WRITE = (
     "packs/sidewalk-signal-web-desk-20260902-01/index.html",

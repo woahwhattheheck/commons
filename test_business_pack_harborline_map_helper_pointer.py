@@ -166,6 +166,32 @@ class BusinessPackHarborlineMapHelperPointerTest(unittest.TestCase):
         self.assertEqual(data["missing_files"], [])
         self.assertIs(data["live_instance_blobs_not_pinned"], True)
 
+    def test_pointer_ok_when_live_instance_pages_differ_from_historical_table(self) -> None:
+        live_door = pointer.blob_prefix(
+            "packs/desk-website-service-20260902-01/door.html"
+        )
+        hist_door = pointer.EXPECTED_BLOBS[
+            "packs/desk-website-service-20260902-01/door.html"
+        ]
+        self.assertEqual(hist_door, "299b01fd")
+        self.assertEqual(pointer.EXPECTED_BLOBS["packs/waitlist.html"], "211db2dc")
+        self.assertEqual(
+            pointer.OBSERVED_AT_LAND[
+                "packs/sidewalk-signal-web-desk-20260902-01/index.html"
+            ],
+            "16f21fbd",
+        )
+        self.assertEqual(
+            pointer.OBSERVED_AT_LAND["packs/lotribbon-greetings-20260902-01/index.html"],
+            "a2d067e7",
+        )
+        self.assertTrue(live_door)
+        self.assertTrue(self.result["pointer_ok"])
+        self.assertTrue(self.result["receipt_blobs_match"])
+        self.assertIs(self.result["live_instance_blobs_not_pinned"], True)
+        if live_door != hist_door:
+            self.assertFalse(self.result["blobs_match"])
+
 
 if __name__ == "__main__":
     unittest.main()
