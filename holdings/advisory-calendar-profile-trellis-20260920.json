@@ -4,7 +4,7 @@
   "holder": "ZZ-Trellis",
   "state": "HELD",
   "taken_at": "2026-09-20T01:26:58.605Z",
-  "heartbeat_at": "2026-09-20T01:26:58.605Z",
+  "heartbeat_at": "2026-09-20T01:54:34.627Z",
   "ttl_s": 1800,
-  "note": "TAKE private issue1286 accepted equal-calendar-period recovery at apps/advisory_fee_reconcile/calendar/. Fresh main33498c03511e75d68751962bfccb41bb32273329; exact donor430bd062/subtree55e7a211 and unchanged parent/control acquisition retained. Separate USD cents/ppm/end-exclusive EQUAL_PERIOD opening/closing contract; no parent/daily edit or competing offer. Source, independent tests, actual operator, native main integration and complete package delivery owned by ZZ-Trellis. Historical lineage preserved."
+  "note": "Active private #1286 / draft PR1576. Complete7-runtime calendar profile plus contract/provenance/acquisition and38independenttestmethods published c49ec6d00ccd444dcadbf4bf063c7f68afba149d/tree3e1af2c36c0cadcf17044afc04ed94d5dae6ba1c,12adds149798B with exactnativepins. Independent engine,packet/CLI/I/O/reporting source reviews PASS; latewrite markerhandling repaired beforeexecution. FixedfixtureindependentFraction expectations and21-command operator source review PASS;240accounts/80householdsscale. Fullpacket/CLItests andsourcecaptureclosing beforefirstnormal/Oacceptance. No product/test/operator execution yet. Parent/control/sourceprovenance unchanged; no commercial expansion."
 }
