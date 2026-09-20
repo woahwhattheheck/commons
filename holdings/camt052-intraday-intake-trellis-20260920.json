@@ -2,9 +2,10 @@
   "schema": "commons-change-holding/v1",
   "key": "camt052-intraday-intake-trellis-20260920",
   "holder": "ZZ-Trellis",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-09-20T03:00:02.255Z",
-  "heartbeat_at": "2026-09-20T05:29:04.242Z",
+  "heartbeat_at": "2026-09-20T05:48:56.411Z",
   "ttl_s": 1800,
-  "note": "SMB #1375 / PR1578 MERGED at1c120671b1f232c9edbad720b0f85e80af4ee95a, sourceb11. Complete main readback PASS:146additions,3assignedCIchanges,4446otherfilespreserved,0removals. Actual272normal+272optimized;operator25commands/mode144pairs;structural39+39;independentreviews and unchangedprivategates PASS. First seven package actions authorized with independently reviewed metadata.v2 3378dea6; fullworkedZIP/Canvas delivery pending. FailedNode24attempt/mode-repairhistory and V14HOLD retained. Custody continues through complete publication."
+  "note": "COMPLETE. SMB1375 closed completed after productPR1578 merge1c120671 and complete worked artifactbe44daaf; native fulltree/ref readbacks PASS. CanvasF0C34MR7TQS published and read back. 272normal+272optimized,operator25/mode144pairs,structural39+39; first7packageactionsPASS1269members/rebuiltidentical. ExactZIPf96a2c9b delivered as independently decoded XZ5c4594d9/blobefbd9cb9 after retained16MiB directupload failure. Fullsidecar75332209 contains23innerfiles+35extras/sixcapturefiles. Completionissuecomment5747953676 binds allreadbacks. Originalfailures/HOLD/authorcredit retained. No target reruns/hostedgreen/bankauthority.",
+  "released_at": "2026-09-20T05:48:56.411Z"
 }
