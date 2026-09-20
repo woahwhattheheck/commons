@@ -170,15 +170,17 @@ def _url(value: Any, where: str) -> str:
     return value
 
 
-def _event_id(provider: str, resource_scope: str, provider_event_id: str) -> str:
-    raw = f"{provider}\0{resource_scope}\0{provider_event_id}".encode("utf-8")
+def _event_id(provider: str, resource_scope: str, event_type: str, provider_event_id: str) -> str:
+    # Event type is part of the provider namespace: e.g. a GitHub issue number and
+    # comment id may both be numeric and must never alias merely because they match.
+    raw = f"{provider}\0{resource_scope}\0{event_type}\0{provider_event_id}".encode("utf-8")
     return "evt-" + hashlib.sha256(raw).hexdigest()
 
 
 def _validate_coverage(raw: Any, where: str) -> dict[str, Any]:
     row = dict(_exact(raw, "window_start window_end complete has_more pages_read items_read", where))
-    _utc(row["window_start"], where + ".window_start")
-    _utc(row["window_end"], where + ".window_end")
+    row["window_start"] = _utc(row["window_start"], where + ".window_start")
+    row["window_end"] = _utc(row["window_end"], where + ".window_end")
     if _instant(row["window_start"], where + ".window_start") > _instant(row["window_end"], where + ".window_end"):
         raise ProjectionError(where + ": reversed window")
     if type(row["complete"]) is not bool or type(row["has_more"]) is not bool:
@@ -255,7 +257,7 @@ def _project_source(raw: Any) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     }
 
     events = []
-    seen_native: dict[tuple[str, str], dict[str, Any]] = {}
+    seen_native: dict[tuple[str, str, str], dict[str, Any]] = {}
     for raw_record in records:
         record = dict(_exact(
             raw_record,
@@ -279,7 +281,7 @@ def _project_source(raw: Any) -> tuple[dict[str, Any], list[dict[str, Any]]]:
         work_id = _nullable_token(record["work_id"], "record.work_id")
         operation_id = _nullable_token(record["operation_id"], "record.operation_id")
         event_url = _url(record["source_url"], "record.source_url")
-        identity = (resource_scope, provider_event_id)
+        identity = (resource_scope, event_type, provider_event_id)
         semantic = {
             "provider_event_time": provider_event_time,
             "observed_at": record_observed,
@@ -293,7 +295,7 @@ def _project_source(raw: Any) -> tuple[dict[str, Any], list[dict[str, Any]]]:
             raise ProjectionError("record: provider event identity has contradictory metadata")
         seen_native[identity] = semantic
         events.append({
-            "event_id": _event_id(provider, resource_scope, provider_event_id),
+            "event_id": _event_id(provider, resource_scope, event_type, provider_event_id),
             "source_id": source_id,
             "provider_event_time": provider_event_time,
             "observed_at": record_observed,
