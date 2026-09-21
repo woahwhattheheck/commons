@@ -89,7 +89,7 @@
     {
       "id": "READABLE_CLAIM_PARITY",
       "finding": "The readable table did not originally include all supplied observation/binding claims, limiting interpretation of rejected evidence.",
-      "resolution": "Markdown retains all event claim objects in an exact JSON block plus the event table, including wrong commit/record/digest, observation enum, dispatch reference and posted amount. Claims are explicitly distinguished from accepted facts.",
+      "resolution": "Markdown retains all event statement objects in an exact JSON listing plus the event table, including wrong commit/record/digest, observation enum, dispatch reference and posted amount. Statements are explicitly distinguished from accepted facts.",
       "status": "STATIC_CORRECTION_VERIFIED"
     }
   ],

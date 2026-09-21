@@ -33,15 +33,15 @@
     },
     {
       "path": "revenue/wayne_resa_smart_api/README.md",
-      "bytes": 10227,
-      "sha256": "8f70a7c676f375dba85bf2c1e08d9a35b6e73acf05eb092dce8935dd4adccce6",
-      "git_blob": "3acbdabbf2883209f40555a3ea752b548e75cf79"
+      "bytes": 10230,
+      "sha256": "b6195de59d81281cf535b2f98f000a5cc9f4f407aeda485912b4a358ab79fcf2",
+      "git_blob": "74b7c4f43c1fa59bb245501ec66b3f7d2997ae4a"
     },
     {
       "path": "revenue/wayne_resa_smart_api/REQUIREMENTS.md",
-      "bytes": 20347,
-      "sha256": "9039ed5f79d051578627d57c55abce793c1467295622a9f50f5d5971c0b03289",
-      "git_blob": "6a9fdce2d2136caf8ed85d369653951ab795ef60"
+      "bytes": 20355,
+      "sha256": "85a8b42502182a59dcab5b99ac3ee14268d2bf4ba67ddbd78918ad1eb9eaa681",
+      "git_blob": "53d37d9de5455ff9b5102bb9b3331c57476649a4"
     },
     {
       "path": "revenue/wayne_resa_smart_api/SOURCE_REGISTER.md",
@@ -237,7 +237,7 @@
   "review_corrections_before_freeze": [
     "Malformed long JSON integer decode now raises typed LabError rather than an uncaught ValueError.",
     "NOT_SENT/ACK_LOST require dispatch_event_id; delayed outcomes cannot govern a later attempt.",
-    "Readable reports retain every exact event claim, including rejected commit/record/digest and observation values.",
+    "Readable reports retain every exact event statement, including refused commit/record/digest and observation values.",
     "Published worked-summary scenario labels omit generated-directory links; exact original artifacts retain their own valid links inside the bundle."
   ],
   "failure_history": "No test execution failures occurred before the reported Wayne suite passes. The first and final normal/optimized rehearsals all matched the 18 authored expectations.",

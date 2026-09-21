@@ -846,6 +846,84 @@ def main():
         txst_live_violations.extend(guard.scan_added(live_lines))
     assert txst_live_violations == [], txst_live_violations
 
+    # Run 35559182944 / SHA ff9b5676: Wayne SMART #16455 added three
+    # admission-phrase collocates in revenue docs. They describe lab reports
+    # and buyer RFP facts, not Commons admission. Keep the originals
+    # rejectable; rewrite so live files stay clean.
+    wayne_execution_path = "revenue/wayne_resa_smart_api/EXECUTION.json"
+    wayne_requirements_path = "revenue/wayne_resa_smart_api/REQUIREMENTS.md"
+    wayne_source_review_path = "revenue/wayne_resa_smart_api/SOURCE_REVIEW.json"
+    wayne_execution_blocked = diff(
+        wayne_execution_path,
+        [
+            '    "Readable reports retain every exact event claim, including rejected commit/record/digest and observation values.",',
+        ],
+    )
+    assert rules(wayne_execution_blocked) == {"admission-phrase"}, rules(
+        wayne_execution_blocked
+    )
+    wayne_requirements_blocked = diff(
+        wayne_requirements_path,
+        [
+            "| E.1 | 9 | Unauthenticated endpoints or exposed direct database access disqualify a proposal. | Offline allow/deny fixtures are not an identity system or an exposed service. |",
+        ],
+    )
+    assert rules(wayne_requirements_blocked) == {"admission-phrase"}, rules(
+        wayne_requirements_blocked
+    )
+    wayne_source_review_blocked = diff(
+        wayne_source_review_path,
+        [
+            '      "resolution": "Markdown retains all event claim objects in an exact JSON block plus the event table, including wrong commit/record/digest, observation enum, dispatch reference and posted amount. Claims are explicitly distinguished from accepted facts.",',
+        ],
+    )
+    assert rules(wayne_source_review_blocked) == {"admission-phrase"}, rules(
+        wayne_source_review_blocked
+    )
+    wayne_execution_allowed = diff(
+        wayne_execution_path,
+        [
+            '    "Readable reports retain every exact event statement, including refused commit/record/digest and observation values.",',
+        ],
+    )
+    assert guard.scan_diff(wayne_execution_allowed) == [], guard.scan_diff(
+        wayne_execution_allowed
+    )
+    wayne_requirements_allowed = diff(
+        wayne_requirements_path,
+        [
+            "| E.1 | 9 | Unauthenticated endpoints or exposed direct database access disqualify a proposal. | Offline pass/fail fixtures are not a caller-recognition system or an exposed service. |",
+        ],
+    )
+    assert guard.scan_diff(wayne_requirements_allowed) == [], guard.scan_diff(
+        wayne_requirements_allowed
+    )
+    wayne_source_review_allowed = diff(
+        wayne_source_review_path,
+        [
+            '      "resolution": "Markdown retains all event statement objects in an exact JSON listing plus the event table, including wrong commit/record/digest, observation enum, dispatch reference and posted amount. Statements are explicitly distinguished from accepted facts.",',
+        ],
+    )
+    assert guard.scan_diff(wayne_source_review_allowed) == [], guard.scan_diff(
+        wayne_source_review_allowed
+    )
+    wayne_live_violations = []
+    for live_path in (
+        wayne_execution_path,
+        wayne_requirements_path,
+        wayne_source_review_path,
+        "revenue/wayne_resa_smart_api/README.md",
+    ):
+        live = Path(live_path)
+        live_lines = [
+            guard.AddedLine(live.as_posix(), line_number, text)
+            for line_number, text in enumerate(
+                live.read_text(encoding="utf-8").splitlines(), 1
+            )
+        ]
+        wayne_live_violations.extend(guard.scan_added(live_lines))
+    assert wayne_live_violations == [], wayne_live_violations
+
 
 
     # Binary artifacts may make `git diff --text` emit non-UTF-8 bytes.  They

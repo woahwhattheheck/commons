@@ -54,8 +54,8 @@ python -O -m unittest test_wayne_smart_api_response
 The rehearsal produces 57 files: a JSON and Markdown summary, all 150 expanded
 baseline records, and 18 case directories each containing `transcript.json`,
 `report.json` and `report.md`. Start with `summary.md`, then inspect the complete
-event history in a case report. Every Markdown case retains the exact event claim
-objects, including rejected commit IDs, request digests and observation types.
+event history in a case report. Every Markdown case retains the exact event statement
+objects, including refused commit IDs, request digests and observation types.
 
 The [executed walkthrough](WORKED_REHEARSAL.md) records the normal/optimized
 rehearsal result. [WORKED_REHEARSAL_BUNDLE.json](WORKED_REHEARSAL_BUNDLE.json)
