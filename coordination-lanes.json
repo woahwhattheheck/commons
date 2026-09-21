@@ -5,7 +5,7 @@
   {"canonical":16152,"chain":[16152,16193],"content_keys":["b6515f2cf6908b65","c75452dae3da2604"],"families":["COMMONS-CI-STARVATION-MERGE-TRAIN-20260917-ZSOL"],"lane":"lane-16152","open":[16152],"state":"OPEN","title":"CI review delta: retain distinct latest-run holds and 36-pair regressions"}
  ],
  "note": "lanes with two or more members; an open pull request row without a lane field is a lane of its own",
- "observed_at": "2026-09-21T05:22:51Z",
+ "observed_at": "2026-09-21T11:02:28Z",
  "recent_closed": [
   {"closed_at":"2026-09-19T22:49:44Z","content_key":"e57fe223b3804777","created_at":"2026-09-19T22:45:48Z","head":"6c1fa8a3f521a879a7baabc506acbd98c7936b29","links":[],"markers":[],"number":16497,"state":"MERGED","title":"UIOWA-046: rejoin reviewed test reliability kit to current main"},
   {"closed_at":"2026-09-19T13:52:25Z","content_key":"c75452dae3da2604","created_at":"2026-09-19T13:49:19Z","head":"11d62710e2deba1d7af8931bd5e5e164f41ba5d7","links":[16152],"markers":[],"number":16193,"state":"CLOSED","title":"CI review delta: retain distinct latest-run holds and 36-pair regressions"}
