@@ -70,6 +70,7 @@ class BatteryReportTests(unittest.TestCase):
         self.assertEqual(data["run_id"], "123")
         self.assertEqual(data["workflow_ref"], "owner/repo/.github/workflows/tests.yml@refs/heads/main")
         self.assertEqual(data["results"][0]["source_blob_sha"], self.git("rev-parse", self.sha + ":test_alpha.py"))
+        self.assertIsNone(data["scope"])
 
     def test_moving_head_does_not_change_source_attribution(self):
         raw = self.raw(("python3", "test_alpha.py", 0))
@@ -123,6 +124,8 @@ class BatteryReportTests(unittest.TestCase):
         mismatch = self.raw(("python3", "test_alpha.py", 7), failed=0)
         self.assertEqual(self.build(mismatch, "failure")["conclusion"], "INCOMPLETE")
         self.assertEqual(self.build(self.raw(("python3", "test_alpha.py", 7), failed=1))["conclusion"], "INCOMPLETE")
+        bad_scope = self.raw(("battery_scope", '{"fail_fast":true}', ""))
+        self.assertEqual(self.build(bad_scope)["conclusion"], "INCOMPLETE")
 
     @unittest.skipUnless(os.name == "posix", "fixture filename needs POSIX rules")
     def test_unusual_filename_and_summary_are_lossless_and_escaped(self):
@@ -176,12 +179,17 @@ class BatteryReportTests(unittest.TestCase):
         self.assertTrue(data["complete"])
         self.assertEqual(data["conclusion"], "FAILED")
         self.assertEqual(data["counts"], {"completed_files": 1, "passed_files": 0, "failed_files": 1, "unresolved_source_files": 0})
+        self.assertEqual(data["scope"]["kind"], "full")
+        self.assertTrue(data["scope"]["fail_fast"])
+        self.assertEqual(data["scope"]["planned_files"], 5)
+        self.assertEqual(data["scope"]["discovered_files"], 5)
         codes = {row["path"]: row["exit_code"] for row in data["results"]}
         self.assertEqual(codes, {"infra/test_beta.py": 7})
         self.assertNotIn("test_alpha.py", codes)
         self.assertNotIn("test_omega.py", codes)
         self.assertNotIn("test_node_pass.js", codes)
         self.assertNotIn("test_node_fail.js", codes)
+        self.assertIn("Fail-fast mode was enabled", report.summary(data))
 
     @unittest.skipUnless(shutil.which("bash") and shutil.which("node"), "workflow requires Bash and Node")
     def test_real_workflow_success_and_empty_discovery(self):
