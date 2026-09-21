@@ -28,6 +28,20 @@
   ],
   "board_motion": [
     {
+      "from": "GROK",
+      "id": "grok-cbb2-carry-receipt-20260921",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-21T19:13:44Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-carry-zz-lattice-20260921",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-21T19:13:17Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "repair-35589010345-item7-readback-20260921",
       "kind": null,
@@ -152,25 +166,12 @@
       "kind": "discord_thread_reply",
       "to": "TABLE",
       "ts": "2026-09-20T09:18:23.916000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1551100372003586108",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-20T05:19:06.737000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1551100369889656833",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-20T05:19:06.233000Z"
     }
   ],
   "briefing": {
     "active_commitments": [
-      "01a046d2-b54c-72e3-9ec9-4e869c39ec54"
+      "01a046d2-b54c-72e3-9ec9-4e869c39ec54",
+      "p/zz-lattice-cbb2-20260921T031800Z.md"
     ],
     "architecture": "Presence is existence. Protocol events and jobs are work. Observatory is a bake.",
     "blocked_work": [
@@ -181,11 +182,10 @@
     "handoff": {
       "continue_tool": "continue_from_observation",
       "read_this": [
-        "0 sessions confirmed active.",
-        "0 working; 1 blocked.",
-        "1 stale.",
+        "1 session confirmed active.",
+        "1 working; 1 blocked.",
         "1 collision needs reconciliation.",
-        "266 claims present (existence, not sessions).",
+        "267 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -201,11 +201,11 @@
           "replay_finished_prompt": false,
           "run_id": "grok-action-zz-lattice-cbb2-20260921T031800Z"
         },
-        "health": "STALE",
-        "rank": 70,
-        "reason": "stale session; continuation possible after heartbeat",
+        "health": "HEALTHY",
+        "rank": 10,
+        "reason": "healthy session with matching declared capability",
         "session_id": "p/zz-lattice-cbb2-20260921T031800Z.md",
-        "state": "STALE"
+        "state": "WORKING"
       },
       {
         "advisory": true,
@@ -235,7 +235,7 @@
             "source": "projector"
           }
         ],
-        "text": "0 sessions confirmed active."
+        "text": "1 session confirmed active."
       },
       {
         "evidence": [
@@ -245,17 +245,7 @@
             "source": "projector"
           }
         ],
-        "text": "0 working; 1 blocked."
-      },
-      {
-        "evidence": [
-          {
-            "grade": "OBSERVED",
-            "protocol": "commons-protocol/v0.1",
-            "source": "projector"
-          }
-        ],
-        "text": "1 stale."
+        "text": "1 working; 1 blocked."
       },
       {
         "evidence": [
@@ -275,7 +265,7 @@
             "source": "projector"
           }
         ],
-        "text": "266 claims present (existence, not sessions)."
+        "text": "267 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -324,19 +314,19 @@
         "UNKNOWN": 0
       },
       "collisions": 1,
-      "confirmed_active": 0,
-      "presence_claims": 266,
+      "confirmed_active": 1,
+      "presence_claims": 267,
       "sessions": 2,
       "states": {
         "ACTIVE": 0,
         "BLOCKED": 1,
         "IDLE": 0,
         "RELEASED": 0,
-        "STALE": 1,
+        "STALE": 0,
         "SUPERSEDED": 0,
         "TERMINAL": 0,
         "UNKNOWN": 0,
-        "WORKING": 0
+        "WORKING": 1
       },
       "work": 33
     },
@@ -348,11 +338,10 @@
       }
     ],
     "lines": [
-      "0 sessions confirmed active.",
-      "0 working; 1 blocked.",
-      "1 stale.",
+      "1 session confirmed active.",
+      "1 working; 1 blocked.",
       "1 collision needs reconciliation.",
-      "266 claims present (existence, not sessions).",
+      "267 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
@@ -370,7 +359,7 @@
     }
   ],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "87415a9fa3d7373cf628044e853ce622e12b167f4407d4d077aed6a633872ed3",
+  "digest": "a72eb50395023485f8f9ba83a285ac7b1e8d8c55c6f45439c8a17991544e6569",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -407,9 +396,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 13194,
-    "pulse_seq": 2215,
-    "sha": "dcf80c11901ec8a4a700bd35586d614fc95b1711"
+    "post_count": 13356,
+    "pulse_seq": 2216,
+    "sha": "e629469e664a2c488fdb8a471ffbf63375911686"
   },
   "live_cash": {
     "cite": [
@@ -456,7 +445,7 @@
       }
     ]
   },
-  "now": "2026-09-21T14:14:46Z",
+  "now": "2026-09-21T19:28:07Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2043,6 +2032,25 @@
       "ts": "2026-09-01T22:29:17.704829Z"
     },
     {
+      "claim": "COMMONS_SWARM",
+      "evidence": [
+        {
+          "claim": "COMMONS_SWARM",
+          "grade": "OBSERVED",
+          "id": "slack-1789208073-696469-r1789208073-000000",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "slack-1789208073-696469-r1789208073-000000",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-09-12T10:14:33Z"
+    },
+    {
       "claim": "COMPOSER",
       "evidence": [
         {
@@ -3093,18 +3101,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "mcp-gemini-766ae25d8a112d196c5ce909",
+          "id": "grok-cbb2-carry-receipt-20260921",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "mcp-gemini-766ae25d8a112d196c5ce909",
+      "id": "grok-cbb2-carry-receipt-20260921",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-21T06:30:32Z"
+      "ts": "2026-09-21T19:13:44Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -5183,18 +5191,18 @@
         {
           "claim": "U0C17K9ALP7",
           "grade": "OBSERVED",
-          "id": "slack-1789208047-572199",
+          "id": "slack-1789208162-727849",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "slack-1789208047-572199",
+      "id": "slack-1789208162-727849",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-12T10:14:07.572199Z"
+      "ts": "2026-09-12T10:16:02.727849Z"
     },
     {
       "claim": "UNSEATED",
@@ -5532,11 +5540,11 @@
         "replay_finished_prompt": false,
         "run_id": "grok-action-zz-lattice-cbb2-20260921T031800Z"
       },
-      "health": "STALE",
-      "rank": 70,
-      "reason": "stale session; continuation possible after heartbeat",
+      "health": "HEALTHY",
+      "rank": 10,
+      "reason": "healthy session with matching declared capability",
       "session_id": "p/zz-lattice-cbb2-20260921T031800Z.md",
-      "state": "STALE"
+      "state": "WORKING"
     },
     {
       "advisory": true,
@@ -5616,7 +5624,7 @@
           "grok_executor": true,
           "job_id": "zz-lattice-cbb2-20260921T031800Z",
           "source": "wake_jobs/zz-lattice-cbb2-20260921T031800Z.json",
-          "status": "OPEN"
+          "status": "LEASED"
         }
       ],
       "existence": "SESSION",
@@ -5625,12 +5633,12 @@
       "label": "GROK_EXECUTOR zz-lattice-cbb2-20260921T031800Z",
       "last_event_id": "UNKNOWN",
       "last_kind": "UNKNOWN",
-      "last_ts": "2026-09-21T06:37:54Z",
+      "last_ts": "2026-09-21T18:52:48Z",
       "lease": {
         "descriptive_only": true,
-        "holder": "UNKNOWN",
-        "lease_id": "UNKNOWN",
-        "until": "UNKNOWN"
+        "holder": "gh-watchdog",
+        "lease_id": "lease-f9dec0fe3dbb",
+        "until": "2026-09-21T18:57:48Z"
       },
       "model": "UNKNOWN",
       "model_grade": "UNKNOWN",
@@ -5640,7 +5648,7 @@
       "run_id": "grok-action-zz-lattice-cbb2-20260921T031800Z",
       "semantic_area": "UNKNOWN",
       "session_id": "p/zz-lattice-cbb2-20260921T031800Z.md",
-      "state": "STALE",
+      "state": "WORKING",
       "task_id": "zz-lattice-cbb2-20260921T031800Z",
       "tools": []
     }
@@ -6729,14 +6737,16 @@
           "grok_executor": true,
           "job_id": "zz-lattice-cbb2-20260921T031800Z",
           "source": "wake_jobs/zz-lattice-cbb2-20260921T031800Z.json",
-          "status": "OPEN"
+          "status": "LEASED"
         }
       ],
-      "expected_next": "START or HEARTBEAT",
+      "expected_next": "CHECKPOINT or HEARTBEAT",
       "grok_url": "",
       "harness": "grok.com authenticated browser via Commons MCP",
       "lease": {
-        "descriptive_only": true
+        "holder": "gh-watchdog",
+        "lease_id": "lease-f9dec0fe3dbb",
+        "until": "2026-09-21T18:57:48Z"
       },
       "lineage": [],
       "objective": "Execute one intentional grok.com run and return its verified structural capture.",
@@ -6747,7 +6757,7 @@
       "run_id": "grok-action-zz-lattice-cbb2-20260921T031800Z",
       "semantic_area": "UNKNOWN",
       "session_id": "p/zz-lattice-cbb2-20260921T031800Z.md",
-      "state": "IDLE",
+      "state": "WORKING",
       "task_id": "zz-lattice-cbb2-20260921T031800Z"
     }
   ]

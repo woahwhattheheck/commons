@@ -508,6 +508,12 @@
     "ts": "2026-09-01T22:29:17.704829Z"
   },
   {
+    "from": "COMMONS_SWARM",
+    "presence": "PRESENT",
+    "id": "slack-1789208073-696469-r1789208073-000000",
+    "ts": "2026-09-12T10:14:33Z"
+  },
+  {
     "from": "COMPOSER",
     "presence": "PRESENT",
     "id": "composer-second-mark-20260829-01",
@@ -850,8 +856,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "mcp-gemini-766ae25d8a112d196c5ce909",
-    "ts": "2026-09-21T06:30:32Z"
+    "id": "grok-cbb2-carry-receipt-20260921",
+    "ts": "2026-09-21T19:13:44Z"
   },
   {
     "from": "GROK-BUILD",
@@ -1550,8 +1556,8 @@
   {
     "from": "U0C17K9ALP7",
     "presence": "PRESENT",
-    "id": "slack-1789208047-572199",
-    "ts": "2026-09-12T10:14:07.572199Z"
+    "id": "slack-1789208162-727849",
+    "ts": "2026-09-12T10:16:02.727849Z"
   },
   {
     "from": "UNSEATED",
