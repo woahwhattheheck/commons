@@ -7,11 +7,92 @@ import unittest
 from pathlib import Path
 
 from integrations.gemini_slack.peer_tool_gateway import EventStore, ToolCallStore, ToolGateway, ToolLoop
+from integrations.shared_equipment.provider_io import EquipmentError
 from integrations.shared_equipment.services import CombinedCatalog, ServiceEquipment, redacted
 from integrations.shared_equipment.slack_carrier import SlackEquipmentCarrier, parse_request, slack_timestamp
 
 
 class EquipmentTests(unittest.TestCase):
+    def test_slack_writes_are_read_only_before_token_or_provider(self):
+        def token():
+            self.fail("blocked write must not load the Slack token")
+
+        tool = ServiceEquipment(slack_token_loader=token,
+                                opener=lambda *_a, **_k: self.fail("provider must not run"))
+        result = tool.call("slack_post_message", {
+            "channel_id": "C123",
+            "text": "Neutral status.",
+        })
+        self.assertTrue(result["isError"])
+        self.assertEqual(result["code"], "outbound_sender_identity_unverified")
+        self.assertFalse(result["delivered"])
+        self.assertFalse(result["incident"])
+        self.assertIn("footer-free", result["private_instruction"])
+
+
+    def test_every_unverified_slack_write_holds_before_token_or_provider(self):
+        tool = ServiceEquipment(
+            slack_token_loader=lambda: self.fail("write must not load token"),
+            opener=lambda *_a, **_k: self.fail("provider must not run"),
+        )
+        for method in ("reactions.add", "conversations.invite", "files.upload"):
+            with self.subTest(method=method), self.assertRaises(EquipmentError) as raised:
+                tool.slack(method, {"channel": "C123"})
+            self.assertEqual(
+                raised.exception.code, "outbound_sender_identity_unverified"
+            )
+
+    def test_verified_unmapped_slack_write_still_holds_before_provider(self):
+        tool = ServiceEquipment(
+            slack_token_loader=lambda: self.fail("unmapped write must not load token"),
+            opener=lambda *_a, **_k: self.fail("provider must not run"),
+        )
+        tool._slack_write_route_verified = lambda: True
+        with self.assertRaises(EquipmentError) as raised:
+            tool.slack("reactions.add", {"channel": "C123"})
+        self.assertEqual(raised.exception.code, "outbound_field_mapping_missing")
+
+    def test_slack_identity_denial_reports_visible_field_and_term(self):
+        tool = ServiceEquipment(
+            slack_token_loader=lambda: self.fail("blocked write must not load token"),
+            opener=lambda *_a, **_k: self.fail("provider must not run"),
+        )
+        result = tool.call("slack_post_message", {
+            "channel_id": "C123",
+            "text": "Astra status.",
+        })
+        self.assertTrue(result["isError"])
+        self.assertEqual(result["error"], "PublicationPolicyViolation")
+        self.assertEqual(result["code"], "outbound_identity_attribution")
+        self.assertEqual(result["matched_fields"], ["text"])
+        self.assertEqual(result["matched_terms"], ["Astra"])
+        self.assertTrue(result["private_instruction"].startswith("Remove Astra"))
+
+    def test_slack_invisible_action_values_are_not_identity_matches(self):
+        tool = ServiceEquipment(
+            slack_token_loader=lambda: self.fail("blocked write must not load token"),
+            opener=lambda *_a, **_k: self.fail("provider must not run"),
+        )
+        payload = {
+            "text": "Neutral visible text.",
+            "blocks": [{
+                "type": "actions",
+                "block_id": "Codex",
+                "elements": [{
+                    "type": "button",
+                    "action_id": "Claude",
+                    "value": "Opus Fable Astra Sol Grok",
+                    "text": {"type": "plain_text", "text": "Continue"},
+                }],
+            }],
+        }
+        with self.assertRaises(EquipmentError) as raised:
+            tool.slack("chat.postMessage", payload)
+        self.assertEqual(
+            raised.exception.code, "outbound_sender_identity_unverified"
+        )
+        self.assertEqual(raised.exception.matched_terms, ())
+
     def test_slack_reads_use_query_and_secret_stays_in_header(self):
         requests = []
         def opener(request, **kwargs):
@@ -125,6 +206,36 @@ class EquipmentTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             parse_request('<commons_equipment_request>null</commons_equipment_request>')
 
+
+    def test_unverified_carrier_holds_before_parsing_or_replying(self):
+        class Services:
+            def __init__(self):
+                self.calls = 0
+            def _slack_write_route_verified(self):
+                return False
+            def call(self, _name, _args):
+                self.calls += 1
+                raise AssertionError("unverified route must not reply")
+        class Catalog:
+            def __init__(self):
+                self.services = Services()
+
+        with tempfile.TemporaryDirectory() as directory:
+            catalog = Catalog()
+            carrier = SlackEquipmentCarrier(
+                catalog,
+                None,
+                {"channel_id": "C123"},
+                Path(directory) / "cursor.json",
+            )
+            result = carrier.process({
+                "ts": "1.1",
+                "text": "<commons_equipment_request>null</commons_equipment_request>",
+            })
+            self.assertEqual(result["code"], "outbound_sender_identity_unverified")
+            self.assertFalse(result["delivered"])
+            self.assertEqual(catalog.services.calls, 0)
+
     def test_idle_carrier_cursor_survives_restart(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory)/"cursor.json"
@@ -146,6 +257,7 @@ class EquipmentTests(unittest.TestCase):
         # 1788571985.555399; .463591 returned it. Do not reintroduce clock precision.
         self.assertEqual(slack_timestamp("1788571951.4635916"), "1788571951.463591")
         class Services:
+            def _slack_write_route_verified(self): return True
             def slack(self, method, args):
                 return {"ok": True, "messages": [] if args["oldest"].endswith("5916") else [{"ts":"1788571985.555399", "text":"ordinary coordination"}]}
         class Catalog:
@@ -160,6 +272,7 @@ class EquipmentTests(unittest.TestCase):
     def test_carrier_replay_shares_http_call_key_and_returns_exact_result(self):
         class Services:
             def __init__(self): self.sent = []
+            def _slack_write_route_verified(self): return True
             def call(self, n, a): self.sent.append(a); return {"result": {"ok": True, "ts": "4.1"}}
         class Catalog:
             def __init__(self): self.services = Services(); self.effects = 0

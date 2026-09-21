@@ -1,6 +1,19 @@
 import { CHANNELS, COORDINATION_CHANNEL, OWNER_IDS, candidateThread, classifyThread, incidentNotice, incidentRefs, operatorNotice, refsIn } from './rules.mjs';
 
 export const VERSION = 'commons-slack-shipping-enforcer-2026-09-20.3';
+const PRIVATE_INSTRUCTION = 'Outward chat submission was not attempted. Return this result privately to the invoking agent. Do not create a chat message, email, issue, ticket, incident, or other fallback notification. No content edit can bypass this route hold. Re-enable only after the sender identity and provider-added footer are verified owner-controlled and attribution-free.';
+const OUTBOUND_HOLD = Object.freeze({
+  allowed: false,
+  code: 'outbound_sender_identity_unverified',
+  rule: 'outbound_sender_identity_unverified',
+  message: `Outward operation was not delivered. ${PRIVATE_INSTRUCTION}`,
+  incident: false,
+  delivered: false,
+  matched_fields: Object.freeze([]),
+  matched_terms: Object.freeze([]),
+  private_instruction: PRIVATE_INSTRUCTION
+});
+const privateHold = extra => ({ ...OUTBOUND_HOLD, ...extra, matched_fields: [], matched_terms: [] });
 const JEV_API = 'https://api.typesafe.ai/v1/systemone';
 const ACTIONS = Object.freeze({
   submit_own_patch: { code: 'jev_submit_own_patch', text: 'Carry the completed bounty fix into our eligible upstream PR, run sponsor-required checks, and link the live submission and payment route here.' },
@@ -80,8 +93,13 @@ function maxTs(messages, fallback = '0') {
 }
 
 async function slack(env, method, input) {
-  if (!env.SLACK_BOT_TOKEN) throw new Error('slack_secret_unbound');
   const read = method === 'conversations.history' || method === 'conversations.replies';
+  if (!read) {
+    const error = new Error(OUTBOUND_HOLD.code);
+    error.decision = privateHold({ operation: method });
+    throw error;
+  }
+  if (!env.SLACK_BOT_TOKEN) throw new Error('slack_secret_unbound');
   const url = new URL(API + method);
   if (read) for (const [key, value] of Object.entries(input)) url.searchParams.set(key, String(value));
   const cooldowns = env.FREE_ACTIONS ? (env.SLACK_COOLDOWNS ||= new Map()) : null;
@@ -174,10 +192,9 @@ async function allowedShippingNotice(env, messages, decision) {
   return true;
 }
 
-async function enqueue(env, id, channel, threadTs, kind, body) {
-  await run(env, `INSERT OR IGNORE INTO slack_shipping_outbox
-    (id,channel,thread_ts,kind,body,state,created_at,updated_at)
-    VALUES (?,?,?,?,?,'pending',?,?)`, id, channel, threadTs, kind, body, now(), now());
+async function enqueue(_env, _id, _channel, _threadTs, _kind, _body) {
+  return privateHold({ operation: 'enqueue' });
+
 }
 
 async function scanThreadPage(env, row) {
@@ -335,31 +352,21 @@ async function scanIncidents(env) {
     const baseline = Number.isSafeInteger(requested) && requested >= 0 && env.INCIDENT_START_ROWID !== undefined
       ? Math.min(requested, latest?.rowid || 0) : latest?.rowid || 0;
     await setState(env, 'incident_rowid', baseline);
-    return { baseline: true, queued: 0 };
+    return { baseline: true, queued: 0, held: 0, hold: privateHold({ operation: 'incident_fallback' }) };
   }
-  let queued = 0;
-  const rows = await all(env, `SELECT rowid,id,op_id,reason,destination,email_status FROM incidents
+  let held = 0;
+  const rows = await all(env, `SELECT rowid FROM incidents
     WHERE rowid>? ORDER BY rowid LIMIT ?`, Number(cursor.value), INCIDENT_ROWS_PER_TICK);
   for (const row of rows) {
-    const thread = await findThread(env, incidentRefs(row.destination));
-    await enqueue(env, await digest(`incident:${row.id}`), thread?.channel || COORDINATION_CHANNEL,
-      thread?.root_ts || null, 'incident', incidentNotice(row));
     await setState(env, 'incident_rowid', row.rowid);
-    queued++;
+    held++;
   }
-  return { baseline: false, queued };
+  return { baseline: false, queued: 0, held, hold: privateHold({ operation: 'incident_fallback' }) };
 }
 
 async function queueOperatorNotices(env) {
-  const rows = await all(env, 'SELECT * FROM slack_shipping_operator_notices WHERE queued_at IS NULL ORDER BY created_at LIMIT ?', OPERATOR_ROWS_PER_TICK);
-  for (const row of rows) {
-    const refs = row.repository && row.issue_number ? [`${row.repository.toLowerCase()}#${row.issue_number}`, `${row.repository.toLowerCase()}!${row.issue_number}`] : [];
-    const thread = await findThread(env, refs);
-    await enqueue(env, row.notice_id, thread?.channel || COORDINATION_CHANNEL, thread?.root_ts || null,
-      'operator', operatorNotice(row));
-    await run(env, 'UPDATE slack_shipping_operator_notices SET queued_at=? WHERE notice_id=?', now(), row.notice_id);
-  }
-  return rows.length;
+  const rows = await all(env, 'SELECT notice_id FROM slack_shipping_operator_notices WHERE queued_at IS NULL ORDER BY created_at LIMIT ?', OPERATOR_ROWS_PER_TICK);
+  return { queued: 0, held: rows.length, hold: privateHold({ operation: 'operator_fallback' }) };
 }
 
 async function readbackPage(env, row) {
@@ -385,50 +392,14 @@ async function readbackPage(env, row) {
 }
 
 async function deliver(env) {
-  const rows = await all(env, `SELECT * FROM slack_shipping_outbox
-    WHERE state IN ('pending','sending') OR (state='uncertain' AND readback_complete=0)
-    ORDER BY created_at LIMIT ?`, env.FREE_ACTIONS ? FREE_OUTBOX_ROWS_PER_TICK : OUTBOX_ROWS_PER_TICK);
-  let accepted = 0;
-  for (const row of rows) {
-    const readback = await readbackPage(env, row);
-    if (readback.receipt) {
-      await run(env, `UPDATE slack_shipping_outbox SET state='accepted',slack_ts=?,readback_complete=1,updated_at=? WHERE id=?`,
-        readback.receipt.ts, now(), row.id);
-      accepted++;
-      continue;
-    }
-    if (!readback.complete) continue;
-    if (row.state !== 'pending') {
-      await run(env, `UPDATE slack_shipping_outbox SET state='uncertain',readback_complete=1,updated_at=? WHERE id=?`, now(), row.id);
-      continue;
-    }
-    if (row.kind === 'fork_only' || row.kind === 'packet_only' || row.kind === 'upstream_403' ||
-      row.kind.startsWith('jev_')) {
-      const current = await decideThread(env, readback.messages);
-      if (current?.code !== row.kind || !await allowedShippingNotice(env, readback.messages, current)) {
-        await run(env, `UPDATE slack_shipping_outbox SET state='suppressed',updated_at=? WHERE id=?`, now(), row.id);
-        continue;
-      }
-    }
-    const lock = await run(env, `UPDATE slack_shipping_outbox SET state='sending',updated_at=? WHERE id=? AND state='pending'`, now(), row.id);
-    if (!lock.meta?.changes) continue;
-    const text = `${row.body}\n\nRef: \`ship-${row.id.slice(0, 16)}\``;
-    try {
-      const result = await slack(env, 'chat.postMessage', {
-        channel: row.channel, ...(row.thread_ts ? { thread_ts: row.thread_ts, reply_broadcast: false } : {}),
-        text, unfurl_links: false, unfurl_media: false,
-        metadata: { event_type: 'tjlabs_shipping_enforcer', event_payload: { id: row.id } }
-      });
-      await run(env, `UPDATE slack_shipping_outbox SET state='accepted',slack_ts=?,updated_at=? WHERE id=?`, result.ts, now(), row.id);
-      accepted++;
-    } catch (error) {
-      const preDispatch = /^slack_rate_limited:|^slack_http_4\d\d$|^slack_(?:invalid_auth|not_in_channel|channel_not_found)$/u.test(String(error.message || error));
-      await run(env, `UPDATE slack_shipping_outbox SET state=?,readback_complete=0,
-        readback_cursor=NULL,readback_messages=NULL,updated_at=? WHERE id=?`,
-        preDispatch ? 'pending' : 'uncertain', now(), row.id);
-    }
-  }
-  return accepted;
+  const result = await run(env, `UPDATE slack_shipping_outbox
+    SET state='held',readback_complete=1,readback_cursor=NULL,readback_messages=NULL,updated_at=?
+    WHERE state IN ('pending','sending','uncertain')`, now());
+  return {
+    accepted: 0,
+    held: Number(result.meta?.changes || 0),
+    ...privateHold({ operation: 'chat.postMessage' })
+  };
 }
 
 export async function tick(env) {
@@ -455,7 +426,8 @@ export async function tick(env) {
   try { incidents = await scanIncidents(env); } catch (error) { incidents = { error: String(error.message || error) }; }
   try { operators = await queueOperatorNotices(env); } catch (error) { operators = { error: String(error.message || error) }; }
   try { delivered = await deliver(env); } catch (error) { delivered = { error: String(error.message || error) }; }
-  return { version: VERSION, channels, threads, incidents, operators, delivered,
+  return { version: VERSION, mode: 'read_only', slack_writes: false,
+    outbound: privateHold(), channels, threads, incidents, operators, delivered,
     jev: { ...env.JEV_METRICS, status: env.JEV_METRICS.errors ? 'degraded_static_fallback' : 'ok' } };
 }
 
@@ -492,7 +464,10 @@ export function validNotice(body) {
 
 async function route(request, env) {
   const url = new URL(request.url);
-  if (url.pathname === '/health' && request.method === 'GET') return json({ version: VERSION, status: 'ready' });
+  if (url.pathname === '/health' && request.method === 'GET') return json({
+    version: VERSION, status: 'ready', mode: 'read_only', slack_writes: false,
+    outbound: privateHold()
+  });
   if (!await authorized(request, env)) return json({ error: 'unauthorized' }, 401);
   if (url.pathname === '/v1/status' && request.method === 'GET') {
     const [cursors, threads, outbox, incident] = await Promise.all([
@@ -501,7 +476,8 @@ async function route(request, env) {
       all(env, 'SELECT state,COUNT(*) AS count FROM slack_shipping_outbox GROUP BY state'),
       state(env, 'incident_rowid')
     ]);
-    return json({ version: VERSION, cursors, threads, outbox, incident_cursor: incident?.value || null });
+    return json({ version: VERSION, mode: 'read_only', slack_writes: false,
+      outbound: privateHold(), cursors, threads, outbox, incident_cursor: incident?.value || null });
   }
   if (url.pathname === '/v1/operator-notice' && request.method === 'POST') {
     const length = Number(request.headers.get('Content-Length') || 0);
@@ -513,17 +489,13 @@ async function route(request, env) {
       body = JSON.parse(raw);
     } catch { return json({ error: 'invalid_notice' }, 400); }
     if (!validNotice(body)) return json({ error: 'invalid_notice' }, 400);
-    const existing = await one(env, 'SELECT reason_code,tool_name,operation_id,repository,issue_number FROM slack_shipping_operator_notices WHERE notice_id=?', body.notice_id);
-    if (existing && (existing.reason_code !== body.reason_code || existing.tool_name !== body.tool_name ||
-      (existing.operation_id || null) !== (body.operation_id || null) ||
-      (existing.repository || null) !== (body.repository || null) ||
-      (existing.issue_number || null) !== (body.issue_number || null))) return json({ error: 'notice_id_conflict' }, 409);
-    await run(env, `INSERT OR IGNORE INTO slack_shipping_operator_notices
-      (notice_id,reason_code,tool_name,operation_id,repository,issue_number,created_at)
-      VALUES (?,?,?,?,?,?,?)`, body.notice_id, body.reason_code, body.tool_name,
-      body.operation_id || null, body.repository || null, body.issue_number || null, now());
-    return json({ accepted: true, notice_id: body.notice_id });
+    return json({
+      ...privateHold({ operation: 'operator_notice' }),
+      accepted: false,
+      notice_id: body.notice_id
+    }, 409);
   }
+
   if (url.pathname === '/v1/run' && request.method === 'POST') return json(await tick(env));
   return json({ error: 'not_found' }, 404);
 }

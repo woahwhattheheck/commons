@@ -10,6 +10,7 @@ import json, os, re, subprocess, sys, time
 from datetime import datetime, timezone
 
 import read_mesh
+from commons_publication_policy import check_outbound_identity
 
 ROOT = os.environ.get("GITHUB_WORKSPACE", ".")
 N = 24
@@ -21,6 +22,8 @@ PUBLISH_OUTPUTS = (
     "projection_state.json", "projection/converged", "change.md",
 )
 PUBLISH_TRIES = 5
+PUBLISH_AUTHOR_NAME = "woahwhattheheck"
+PUBLISH_AUTHOR_EMAIL = "293286387+woahwhattheheck@users.noreply.github.com"
 CHANGE_FILE = "change.md"
 CHANGE_MAX_BYTES = 2048
 CHANGE_NEWEST = 5
@@ -60,6 +63,53 @@ def shorthand_bits(p):
         if v:
             bits.append("%s: %s" % (k, v))
     return " ".join(bits)
+
+
+def _filter_projection_rows(rows, prefix="fresh", body_limit=2000, include_subject=False):
+    """Remove held visible values while retaining technical ids and links."""
+    filtered = []
+    holds = []
+    for index, raw in enumerate(rows or []):
+        if not isinstance(raw, dict):
+            continue
+        rec = dict(raw)
+        author = str(rec.get("from") or "").strip() or "?"
+        decision = check_outbound_identity({"%s[%d].from" % (prefix, index): author})
+        if not decision["allowed"]:
+            rec["from"] = ""
+            holds.append(decision)
+        if body_limit is not None:
+            body = one_line(rec.get("body"), body_limit)
+            decision = check_outbound_identity({"%s[%d].body" % (prefix, index): body})
+            if not decision["allowed"]:
+                rec["body"] = ""
+                holds.append(decision)
+        if include_subject:
+            subject = str(rec.get("subject") or "")
+            decision = check_outbound_identity(
+                {"%s[%d].subject" % (prefix, index): subject}
+            )
+            if not decision["allowed"]:
+                rec["subject"] = ""
+                holds.append(decision)
+        filtered.append(rec)
+    return filtered, holds
+
+
+def _emit_identity_holds(holds):
+    """Return content-free correction instructions to the invoking process."""
+    for decision in holds:
+        print(
+            json.dumps(decision, sort_keys=True, separators=(",", ":")),
+            file=sys.stderr,
+            flush=True,
+        )
+
+
+def _status_text(value):
+    if isinstance(value, dict):
+        return json.dumps(value, sort_keys=True, separators=(",", ":"))
+    return str(value)
 
 
 def parse_post(path):
@@ -376,6 +426,12 @@ def branch_tips():
 
 
 def write_peers(rows, src, ts):
+    rows, holds = _filter_projection_rows(
+        rows,
+        prefix="peers",
+        body_limit=240,
+    )
+    _emit_identity_holds(holds)
     lines = [
         "# See each other",
         "",
@@ -489,10 +545,17 @@ def challenge_rows_from_tree(root=None):
     return rows
 
 
-def write_challenge(path=None, root=None):
+def write_challenge(path=None, root=None, rows=None):
     root = root or ROOT
     path = path or os.path.join(root, "challenge.json")
-    rows = challenge_rows_from_tree(root)
+    source_rows = challenge_rows_from_tree(root) if rows is None else rows
+    rows, holds = _filter_projection_rows(
+        source_rows,
+        prefix="challenge",
+        body_limit=None,
+        include_subject=True,
+    )
+    _emit_identity_holds(holds)
     payload = {
         "baked": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "door": "land.html",
@@ -673,8 +736,16 @@ def write_change_rate(rows, ts, head=None, n_tips=None, root=None, p_new=None):
 
 def main(publish_mesh=True):
     git_rows = rows_from_git()
-    rows = git_rows or rows_from_recent()
+    source_rows = git_rows or rows_from_recent()
     src = "git HEAD p/" if git_rows else "recent.json"
+    rows, row_holds = _filter_projection_rows(source_rows)
+    challenge_rows, challenge_holds = _filter_projection_rows(
+        challenge_rows_from_tree(),
+        prefix="challenge",
+        body_limit=None,
+        include_subject=True,
+    )
+    _emit_identity_holds(row_holds + challenge_holds)
     ts = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     build_head = git_head()
     llms = [
@@ -767,7 +838,7 @@ def main(publish_mesh=True):
     with open(os.path.join(ROOT, "fresh.md"), "w", encoding="utf-8") as f:
         f.write("\n".join(fresh))
     n_tips = write_peers(rows, src, ts)
-    n_ch = write_challenge()
+    n_ch = write_challenge(rows=challenge_rows)
     write_head_json(build_head, ts)
     moved = write_head_pulse(rows, head=build_head)
     change_txt = write_change_rate(rows, ts, head=build_head, n_tips=n_tips)
@@ -779,7 +850,7 @@ def main(publish_mesh=True):
             mesh = "err %s" % exc
     print("baked src=%s n=%d pulse=%s peers=%d challenges=%d change=%d mesh=%s" % (
         src, len(rows), "moved" if moved else "same", n_tips, n_ch,
-        len(change_txt.encode("utf-8")), mesh))
+        len(change_txt.encode("utf-8")), _status_text(mesh)))
     return 0
 
 
@@ -858,8 +929,8 @@ def publish_current_main(tries=PUBLISH_TRIES, build=None, outputs=None, pause=No
     pause = pause or time.sleep
     mail = mail or _publish_landed_read_copy
     for args in (
-        ["config", "user.name", "commons-llms"],
-        ["config", "user.email", "commons-board@users.noreply.github.com"],
+        ["config", "user.name", PUBLISH_AUTHOR_NAME],
+        ["config", "user.email", PUBLISH_AUTHOR_EMAIL],
     ):
         rc = _git(args)
         if rc.returncode != 0:
@@ -905,7 +976,9 @@ def publish_current_main(tries=PUBLISH_TRIES, build=None, outputs=None, pause=No
         if pushed.returncode == 0:
             mesh = mail()
             state = "quiet" if quiet else "pushed"
-            print("llms publish %s on attempt %d mesh=%s" % (state, attempt, mesh), flush=True)
+            print("llms publish %s on attempt %d mesh=%s" % (
+                state, attempt, _status_text(mesh)
+            ), flush=True)
             return state
         print("llms publish push race %d/%d; regenerating" % (attempt, tries), flush=True)
     print("llms publish push-fail after %d regenerated attempts" % tries, flush=True)

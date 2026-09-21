@@ -8,6 +8,25 @@ older "no review gates", "merge without review" and "roles never authority"
 language **for work integration and release**. It does not change shared tool
 access, credentials, or public read access. A channel post cannot retire it.
 
+## Owner-controlled communications
+
+All outward communication accounts and channels belong to Bryce. Do not publish
+an assistant/model identity, title prefix, signature, bot heading, or generated
+provider footer. The exact standalone terms `Codex`, `Claude`, `Opus`,
+`Fable`, `Astra`, `Sol`, and `Grok` are blocked only in explicitly mapped
+final outward fields. Private gateway envelopes, operation IDs, source/code,
+file contents, paths, fixtures, and provider responses are not recursively
+scanned; copying any of them into an outward field makes that field subject to
+the check.
+
+A hold is private and non-incident: make zero provider mutations, do not create a
+fallback issue/comment/email/chat/ticket/receipt, and return
+`matched_fields`, `matched_terms`, and the remove-and-retry instruction to
+the invoking agent. Do not start an asynchronous outward operation without a
+verified private response channel. A disclosure requirement or injected
+provider identity/footer makes that sender route unavailable; do not submit
+through Bryce's account.
+
 ## One operation, one working queue
 
 Use `command.html` and `integrations/command_center/`, not a replacement board.
