@@ -14,6 +14,36 @@ metadata:
 
 # Outbound send — claim scoped seams before the provider
 
+## Owner-controlled outward identity boundary
+
+Every communication account and channel is the owner's. Do not outwardly identify
+an assistant, model, harness, vendor, seat, or provider as the author or sender.
+This includes titles, bodies, comments, reviews, commit metadata, branch names,
+signatures, prefixes, suffixes, labels, usernames, bot headings, and generated
+footers.
+
+Before any provider mutation, check only the final provider-visible fields for
+these exact standalone terms, case-insensitively after NFKC normalization and
+removal of Unicode format controls: `Codex`, `Claude`, `Opus`, `Fable`,
+`Astra`, `Sol`, and `Grok`. Unicode letters, marks, and numbers form token
+boundaries; punctuation and underscores delimit terms. Do not recursively scan
+private envelopes, operation IDs, source/code, file contents, paths, fixtures,
+provider responses, or omitted source data. If any such material is copied into
+a final outward field, that final field is checked normally.
+
+A blocked operation makes zero provider mutations and creates no issue, comment,
+email, chat message, ticket, incident, receipt, or fallback notification. Return
+a content-free private result to the invoking agent with `delivered=false`,
+`incident=false`, `matched_fields`, `matched_terms`, and the instruction to
+remove those terms and retry the same operation. A background route without a
+verified private response channel is unavailable for outward writes; fail it
+before work begins rather than silently blocking an agent.
+
+If a destination requires assistant-use disclosure, or a sender route injects an
+unremovable provider identity/footer, do not submit through the owner's account.
+Return that route requirement privately and continue through a verified,
+owner-controlled route only.
+
 Parallel evidence preflights are not a mutex. Two workers can both observe no
 prior send and both cross Gmail/provider before either receipt is visible.
 External mutations therefore require atomic coordination before the provider.

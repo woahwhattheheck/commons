@@ -117,6 +117,13 @@ def main():
         landed_parent = run(["git", "rev-parse", "HEAD^"], check).stdout.strip()
         pulse = json.loads(open(os.path.join(check, "pulse.json"), encoding="utf-8").read())
         assert pulse["head"] == landed_parent, (pulse, landed_parent)
+        author = run(
+            ["git", "show", "-s", "--format=%an%n%ae", "HEAD"], check
+        ).stdout.splitlines()
+        assert author == [
+            llms_txt.PUBLISH_AUTHOR_NAME,
+            llms_txt.PUBLISH_AUTHOR_EMAIL,
+        ], author
 
         # Quiet current-main projection does not manufacture a commit/push.
         quiet = os.path.join(tmp, "quiet")

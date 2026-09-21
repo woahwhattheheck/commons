@@ -13,6 +13,8 @@ import json
 import urllib.error
 import urllib.request
 
+from commons_publication_policy import check_outbound_identity
+
 KIND = "commons-fresh"
 TOPIC = "woahwhattheheck-commons-fresh"
 WRITE_TOPIC = "woahwhattheheck-commons-board"
@@ -64,9 +66,24 @@ def refuse_write_topic(url):
     return WRITE_TOPIC in str(url or "")
 
 
+def _visible_identity_decision(body):
+    """Check only the exact author/plain values retained in the wire payload."""
+    payload = json.loads(body.decode("utf-8"))
+    fields = {}
+    for index, rec in enumerate(payload.get("newest") or []):
+        if not isinstance(rec, dict):
+            continue
+        fields["newest[%d].from" % index] = str(rec.get("from") or "")
+        fields["newest[%d].plain" % index] = str(rec.get("plain") or "")
+    return check_outbound_identity(fields)
+
+
 def publish(rows, head="", ts="", post=None):
     """Best-effort POST. Never the write topic. Never fails the bake."""
     body = compact_payload(rows, head=head, ts=ts)
+    decision = _visible_identity_decision(body)
+    if not decision["allowed"]:
+        return decision
     sender = post or _http_post
     last = ""
     for url in publish_urls():
