@@ -9,6 +9,15 @@
     "body": ""
   },
   {
+    "id": "titan-v4-release-reseal-e5211-20260920-01",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "unfavorable_finding",
+    "ts": "2026-09-21T02:06:43Z",
+    "body": ""
+  },
+  {
     "id": "grok-enforcer-unit-tests-billing-20260920-01",
     "reason": "commons_publication_terms",
     "code": "commons_publication_terms",
