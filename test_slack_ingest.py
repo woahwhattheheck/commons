@@ -460,6 +460,107 @@ edited payload
             ids = client.list_channel_ids()
         self.assertEqual(ids, ["C0BRGMDQB6G", "C0SOMEOTHER1"])
 
+    def test_list_channel_ids_retries_per_type_when_combined_scope_is_missing(self) -> None:
+        client = si.SlackClient("token")
+        calls: list[str] = []
+
+        def fake_call(method: str, params: dict[str, object]) -> dict[str, object]:
+            self.assertEqual(method, "conversations.list")
+            types = str(params.get("types") or "")
+            calls.append(types)
+            if types == "public_channel,private_channel":
+                return {
+                    "ok": False,
+                    "error": "missing_scope",
+                    "needed": "groups:read",
+                    "provided": "channels:read,channels:history",
+                }
+            if types == "public_channel":
+                return {
+                    "ok": True,
+                    "channels": [
+                        {"id": "C0BRGMDQB6G"},
+                        {"id": "C0SOMEOTHER1"},
+                        {"id": "D0IMCHANNEL1", "is_im": True},
+                    ],
+                }
+            if types == "private_channel":
+                return {
+                    "ok": False,
+                    "error": "missing_scope",
+                    "needed": "groups:read",
+                    "provided": "channels:read,channels:history",
+                }
+            raise AssertionError(types)
+
+        client.call = fake_call  # type: ignore[method-assign]
+        with mock.patch.dict(si.os.environ, {"COMMONS_SLACK_CHANNEL": "C0BRGMDQB6G"}):
+            ids = client.list_channel_ids()
+        self.assertEqual(ids, ["C0BRGMDQB6G", "C0SOMEOTHER1"])
+        self.assertEqual(
+            calls,
+            ["public_channel,private_channel", "public_channel", "private_channel"],
+        )
+
+    def test_list_channel_ids_uses_default_when_every_list_scope_is_missing(self) -> None:
+        client = si.SlackClient("token")
+
+        def fake_call(method: str, params: dict[str, object]) -> dict[str, object]:
+            self.assertEqual(method, "conversations.list")
+            return {
+                "ok": False,
+                "error": "missing_scope",
+                "needed": "channels:read,groups:read",
+                "provided": "chat:write",
+            }
+
+        client.call = fake_call  # type: ignore[method-assign]
+        ids = client.list_channel_ids()
+        self.assertEqual(ids, [si.CHANNEL_ID])
+
+    def test_list_channel_ids_still_raises_non_scope_list_errors(self) -> None:
+        client = si.SlackClient("token")
+
+        def fake_call(method: str, params: dict[str, object]) -> dict[str, object]:
+            return {"ok": False, "error": "invalid_auth"}
+
+        client.call = fake_call  # type: ignore[method-assign]
+        with self.assertRaises(si.IngestError) as raised:
+            client.list_channel_ids()
+        self.assertIn("conversations.list", str(raised.exception))
+        self.assertIn("invalid_auth", str(raised.exception))
+
+    def test_events_scan_default_channel_when_list_scope_is_missing(self) -> None:
+        client = si.SlackClient("token")
+
+        def fake_call(method: str, params: dict[str, object]) -> dict[str, object]:
+            if method == "auth.test":
+                return {"ok": True, "team_id": "T0BRETUB5TK"}
+            if method == "conversations.list":
+                return {
+                    "ok": False,
+                    "error": "missing_scope",
+                    "needed": "channels:read",
+                    "provided": "channels:history,chat:write",
+                }
+            if method == "conversations.history":
+                self.assertEqual(params.get("channel"), si.CHANNEL_ID)
+                return {
+                    "ok": True,
+                    "messages": [
+                        {"ts": "10.0", "text": "from: GPT\n\nbody", "user": "U1"}
+                    ],
+                }
+            if method == "users.info":
+                return {"ok": True, "user": {"profile": {"display_name": "GPT"}}}
+            raise AssertionError(method)
+
+        client.call = fake_call  # type: ignore[method-assign]
+        events = client.events("9.0")
+        self.assertEqual([event["ts"] for event in events], ["10.0"])
+        self.assertEqual(events[0]["channel"], si.CHANNEL_ID)
+        self.assertEqual(events[0]["_team_id"], "T0BRETUB5TK")
+
     def test_exact_existing_record_is_noop_and_mismatch_is_immutable(self) -> None:
         event = {"ts": "1787472270.224369", "text": SOURCE, "user": "U1"}
         record = si.issue_record(event)

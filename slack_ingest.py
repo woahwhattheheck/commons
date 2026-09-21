@@ -507,6 +507,19 @@ def _next_cursor(response: dict[str, Any]) -> str:
     return str((response.get("response_metadata") or {}).get("next_cursor") or "").strip()
 
 
+def slack_api_error(method: str, response: dict[str, Any]) -> IngestError:
+    """Keep Slack's method, error, needed, and provided fields in the receipt."""
+    error = str(response.get("error") or "unknown")
+    detail = [error]
+    needed = str(response.get("needed") or "").strip()
+    provided = str(response.get("provided") or "").strip()
+    if needed:
+        detail.append("needed=%s" % needed)
+    if provided:
+        detail.append("provided=%s" % provided)
+    return IngestError("Slack API error: %s (%s)" % (method, "; ".join(detail)))
+
+
 def paged(fetch: Callable[[str], dict[str, Any]]) -> Iterator[dict[str, Any]]:
     """Yield every page exactly once and reject cursor loops."""
     cursor = ""
@@ -517,7 +530,7 @@ def paged(fetch: Callable[[str], dict[str, Any]]) -> Iterator[dict[str, Any]]:
         seen.add(cursor)
         response = fetch(cursor)
         if not response.get("ok", True):
-            raise IngestError("Slack API error: %s" % response.get("error", "unknown"))
+            raise slack_api_error("conversations", response)
         for message in response.get("messages") or []:
             if isinstance(message, dict):
                 yield message
@@ -579,28 +592,49 @@ class SlackClient:
 
         DMs stay off the public board. Owner said use the whole Slack like a
         human; that is MCP send/read. Git ingest is channels, not DMs.
+
+        Slack requires every scope matching a combined ``types`` value. One
+        combined call stays the fast path. A missing_scope on that call is
+        retried per type so a missing groups:read cannot close public_channel
+        listing. This is not an allowlist.
         """
+        combined = self._list_channel_ids_for_types("public_channel,private_channel")
+        if combined is not None:
+            return combined or [self.channel_id]
         ids: list[str] = []
+        seen: set[str] = set()
+        for channel_type in ("public_channel", "private_channel"):
+            part = self._list_channel_ids_for_types(channel_type)
+            if part is None:
+                continue
+            for cid in part:
+                if cid not in seen:
+                    seen.add(cid)
+                    ids.append(cid)
+        return ids or [self.channel_id]
 
-        def fetch(cursor: str) -> dict[str, Any]:
-            params: dict[str, Any] = {
-                "types": "public_channel,private_channel",
-                "exclude_archived": "true",
-                "limit": 200,
-            }
-            if cursor:
-                params["cursor"] = cursor
-            return self.call("conversations.list", params)
-
+    def _list_channel_ids_for_types(self, types: str) -> list[str] | None:
+        """Return reachable channel ids for ``types``, or None on missing_scope."""
+        ids: list[str] = []
         cursor = ""
         seen: set[str] = set()
         while True:
             if cursor in seen:
                 raise IngestError("Slack pagination cursor loop: %s" % cursor)
             seen.add(cursor)
-            response = fetch(cursor)
+            params: dict[str, Any] = {
+                "types": types,
+                "exclude_archived": "true",
+                "limit": 200,
+            }
+            if cursor:
+                params["cursor"] = cursor
+            response = self.call("conversations.list", params)
             if not response.get("ok", True):
-                raise IngestError("Slack API error: %s" % response.get("error", "unknown"))
+                error = str(response.get("error") or "unknown")
+                if error == "missing_scope" and not cursor:
+                    return None
+                raise slack_api_error("conversations.list", response)
             for channel in response.get("channels") or []:
                 if not isinstance(channel, dict):
                     continue
@@ -614,7 +648,7 @@ class SlackClient:
             cursor = _next_cursor(response)
             if not cursor:
                 break
-        return ids or [self.channel_id]
+        return ids
 
     def workspace_id(self) -> str:
         if self._team_id:
