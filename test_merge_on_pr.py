@@ -34,7 +34,7 @@ KEEP = {
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "hub_pages.py": "673dab89",
     "door.js": "5899223c",
-    "api/mcp.py": "393da756",
+    "api/mcp.py": "a2683bf4",
     "repo_pulse.py": "298716e9",
     "autogtm.html": "5c966110",
 }
