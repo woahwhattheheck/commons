@@ -92,8 +92,8 @@ status and receipt; note content is written only to the requested output file.
 | `INCOMPLETE_REVIEW` | At least one input is still unreviewed. | Keep remaining review visible. |
 | `DISPOSITION_DISAGREEMENT` | At least two non-default dispositions differ. | Read both accounts; the command does not adjudicate. |
 | `NOTE_VARIATION_REQUIRES_REVIEW` | Literal note strings differ. | Wording variation is not proof of contradictory evidence. |
-| `SINGLE_DRAFT_ENTRY` | One labeled input has a non-default disposition. | This is not independent corroboration. |
-| `MATCHING_DRAFT_ENTRIES` | All dispositions and literal notes match and are non-default. | Matching drafts are not consensus, acceptance, or authority. |
+| `SINGLE_DRAFT_ENTRY` | One distinct normalized handoff content has a non-default disposition, even under multiple labels. | This is not independent corroboration. |
+| `MATCHING_DRAFT_ENTRIES` | At least two distinct handoff contents agree on this cell: dispositions and literal notes match and are non-default. | Matching drafts are not consensus, acceptance, or authority. |
 
 Reasons can coexist. Counts are per reason, not a partition or a score; their sum can
 exceed twelve. The queue includes every cell except a matching-draft cell. The full
@@ -104,6 +104,9 @@ Exports with identical normalized content are grouped. The normalized hash ignor
 JSON object order and cell order, but preserves exact note strings and dispositions.
 It is not a raw-file hash. Different labels on the same content do not establish
 independent reviews; the output reports both input count and distinct content count.
+Reimporting an unchanged saved handoff under additional labels does not remove cells
+from the review queue. All original labels and notes still appear in the full matrix.
+Distinct contents are not proof of independent people; reviewer identity stays false.
 
 The reconciliation receipt is SHA-256 over compact UTF-8 JSON with sorted object keys,
 no non-finite numbers, and the `reconciliation_sha256` member omitted. It detects
@@ -128,9 +131,9 @@ comparison; it presents notes as literal JSON rather than executable HTML or lin
 ## Acceptance
 
 ```sh
-python -m py_compile handoff_review.py test_handoff_review.py
-UIOWA_REQUIRE_PARENT=1 python -m unittest -v test_handoff_review.py
-UIOWA_REQUIRE_PARENT=1 python -O -m unittest -v test_handoff_review.py
+python -m py_compile handoff_review.py test_handoff_review.py test_handoff_review_duplicates.py
+UIOWA_REQUIRE_PARENT=1 python -m unittest -v test_handoff_review.py test_handoff_review_duplicates.py test_handoff_parent_contract.py
+UIOWA_REQUIRE_PARENT=1 python -O -m unittest -v test_handoff_review.py test_handoff_review_duplicates.py test_handoff_parent_contract.py
 ```
 
 The tests separate explicit stub-based unit checks from two real parent integration

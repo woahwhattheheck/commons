@@ -69,6 +69,9 @@ class ReconciliationTests(unittest.TestCase):
     def test_matching_drafts_are_not_consensus(self):
         for handoff in (self.first, self.second):
             handoff["cell_notes"][0].update(disposition="TECHNICAL_DRAFT_NOTE", analyst_note="FICTIONAL: same words")
+        # Two distinct exports may agree on this cell. A duplicate of a single
+        # export is covered separately by test_handoff_review_duplicates.py.
+        self.second["cell_notes"][1]["analyst_note"] = "FICTIONAL: separate draft context."
         result = self.compare()
         self.assertEqual(result["assessment_cells"][0]["review_reason_codes"], ["MATCHING_DRAFT_ENTRIES"])
         self.assertEqual(len(result["review_queue"]), 11)

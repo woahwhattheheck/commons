@@ -256,7 +256,10 @@ def reconcile(report: Any, handoffs: list[tuple[str, Any]]) -> dict[str, Any]:
         if len({entry["analyst_note"] for entry in entries}) > 1:
             reasons.append("NOTE_VARIATION_REQUIRES_REVIEW")
         if not reasons:
-            reasons.append("SINGLE_DRAFT_ENTRY" if len(labels) == 1 else "MATCHING_DRAFT_ENTRIES")
+            # Reimporting one saved handoff under new labels adds no review
+            # content. Keep its queue membership identical to a single import;
+            # all labels and notes remain preserved in the output entries.
+            reasons.append("SINGLE_DRAFT_ENTRY" if len(content_groups) == 1 else "MATCHING_DRAFT_ENTRIES")
         for reason in reasons:
             counts[reason] = counts.get(reason, 0) + 1
         if reasons != ["MATCHING_DRAFT_ENTRIES"]:
