@@ -7,6 +7,8 @@ from unittest import mock
 
 import commons_mcp as cm
 from api import mcp
+from api import jev as hosted_jev
+from api import cua_s1 as hosted_cua_s1
 
 
 class _Headers(dict):
@@ -47,6 +49,12 @@ class SparkMcpTests(unittest.TestCase):
         self.assertIn("append_model_post", names)
         self.assertIn("read_observatory", names)
         self.assertIn("get_send_link", names)
+        self.assertIn("jev_decide", names)
+        self.assertIn("cua_s1_score", names)
+        scorer = next(tool for tool in response["result"]["tools"]
+                      if tool["name"] == "cua_s1_score")
+        self.assertIn("does not open", scorer["description"])
+        self.assertEqual(scorer["inputSchema"]["properties"]["options"]["maxItems"], 32)
         append = next(
             tool for tool in response["result"]["tools"]
             if tool["name"] == "append_post"
@@ -63,6 +71,93 @@ class SparkMcpTests(unittest.TestCase):
         )
         self.assertTrue(send_link["annotations"]["readOnlyHint"])
         self.assertIn("without posting anything", send_link["description"])
+
+    def test_hosted_jev_tool_calls_python_function_without_local_gateway(self):
+        questions = {"urgent": {"type": "noul", "instructions": "Is this urgent?"}}
+        answer = {"ok": True, "model": "jev-1.13.0", "answers": {"urgent": {"noul": 1.0}},
+                  "usage": {"input_tokens": 4}}
+        with (
+            mock.patch.object(hosted_jev, "handle_request", return_value=(200, json.dumps(answer).encode())) as hosted,
+            mock.patch.object(mcp.SERVER, "handle") as canonical,
+        ):
+            status, response = self.request("tools/call", {
+                "name": "jev_decide", "arguments": {"state": "Please help", "questions": questions},
+            })
+        self.assertEqual(status, 200)
+        self.assertFalse(response["result"]["isError"])
+        self.assertEqual(response["result"]["structuredContent"], answer)
+        args = hosted.call_args.args
+        self.assertEqual(args[:2], ("POST", "/jev"))
+        self.assertEqual(json.loads(args[2]), {"state": "Please help", "questions": questions})
+        canonical.assert_not_called()
+
+    def test_hosted_jev_no_key_is_a_typed_tool_error(self):
+        with mock.patch.dict("os.environ", {"TYPESAFE_API_KEY": ""}):
+            status, response = self.request("tools/call", {
+                "name": "jev_decide",
+                "arguments": {"state": "Private state", "questions": {
+                    "urgent": {"type": "noul", "instructions": "Is this urgent?"},
+                }},
+            })
+        self.assertEqual(status, 200)
+        self.assertTrue(response["result"]["isError"])
+        self.assertEqual(response["result"]["structuredContent"]["error"]["code"], "NO_KEY")
+        self.assertNotIn("Private state", json.dumps(response))
+
+    def test_hosted_jev_tool_reaches_provider_adapter_with_server_key(self):
+        questions = {"urgent": {"type": "noul", "instructions": "Is this urgent?"}}
+        provider_answer = {"model": "jev-1.13.0", "answers": {"urgent": {"noul": 0.9}},
+                           "usage": {"input_tokens": 4}}
+        with (
+            mock.patch.dict("os.environ", {"TYPESAFE_API_KEY": "server-test-key"}),
+            mock.patch.object(hosted_jev.jev, "systemone", return_value=provider_answer) as provider,
+        ):
+            # handle_request binds its evaluator default at definition time, so
+            # inject through a wrapper while retaining the real HTTP boundary.
+            original = hosted_jev.handle_request
+            with mock.patch.object(hosted_jev, "handle_request", side_effect=lambda *args: original(
+                *args, evaluator=provider
+            )):
+                status, response = self.request("tools/call", {
+                    "name": "jev_decide",
+                    "arguments": {"state": "Please help", "questions": questions},
+                })
+        self.assertEqual(status, 200)
+        self.assertFalse(response["result"]["isError"])
+        self.assertEqual(response["result"]["structuredContent"]["answers"], provider_answer["answers"])
+        provider.assert_called_once_with("Please help", questions, model="jev-latest",
+                                         timeout=30, key="server-test-key")
+
+    def test_hosted_cua_score_calls_cloud_function_not_browser(self):
+        score = {"model": "cua-ai/cua-s1-forms", "selected_index": 1,
+                 "choices": [{"index": 0, "probability": 0.1},
+                             {"index": 1, "probability": 0.9}], "executed": False}
+        with (
+            mock.patch.object(hosted_cua_s1, "handle_request", return_value=(200, score)) as hosted,
+            mock.patch.object(mcp.SERVER, "handle") as canonical,
+        ):
+            status, response = self.request("tools/call", {
+                "name": "cua_s1_score",
+                "arguments": {"context": "Choose a field", "options": ["Name", "Email"]},
+            })
+        self.assertEqual(status, 200)
+        self.assertFalse(response["result"]["isError"])
+        self.assertEqual(response["result"]["structuredContent"]["selected_index"], 1)
+        self.assertFalse(response["result"]["structuredContent"]["executed"])
+        args = hosted.call_args.args
+        self.assertEqual(args[:2], ("POST", "/api/cua_s1"))
+        self.assertEqual(json.loads(args[2]), {"context": "Choose a field",
+                                               "options": ["Name", "Email"]})
+        canonical.assert_not_called()
+
+    def test_hosted_cua_score_validation_error_is_typed_tool_error(self):
+        status, response = self.request("tools/call", {
+            "name": "cua_s1_score", "arguments": {"context": "Choose", "options": ["one"]},
+        })
+        self.assertEqual(status, 200)
+        self.assertTrue(response["result"]["isError"])
+        self.assertEqual(response["result"]["structuredContent"]["error"], "invalid_request")
+        self.assertEqual(response["result"]["structuredContent"]["http_status"], 400)
 
     def test_get_send_link_is_read_only_and_carries_draft_in_fragment(self):
         with (

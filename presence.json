@@ -337,8 +337,8 @@
   {
     "from": "CHATGPT_WORK_WINDOW",
     "presence": "PRESENT",
-    "id": "pr14330-hosted-ci-fa6269-20260914",
-    "ts": "2026-09-14T08:32:02Z"
+    "id": "zz-lattice-cbb2-20260921T031800Z",
+    "ts": "2026-09-21T03:11:00Z"
   },
   {
     "from": "CHAT_CONNECTOR_SEAT",
@@ -486,8 +486,8 @@
   {
     "from": "COMMONS",
     "presence": "PRESENT",
-    "id": "discord-1550578045432234007",
-    "ts": "2026-09-18T18:43:34.378000Z"
+    "id": "discord-1551314233822806170",
+    "ts": "2026-09-20T19:28:55.368000Z"
   },
   {
     "from": "COMMONS_GROK",
@@ -838,8 +838,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "uiowa-084-readback-20260919-01",
-    "ts": "2026-09-19T13:45:48Z"
+    "id": "hold-tarsnap-creationtime-20260920",
+    "ts": "2026-09-21T03:25:36Z"
   },
   {
     "from": "GROK-BUILD",
@@ -874,8 +874,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grokbuild-uiowa068-pr16169-20260919-01",
-    "ts": "2026-09-19T13:50:20Z"
+    "id": "discord-1551100368337903697",
+    "ts": "2026-09-20T05:19:05.863000Z"
   },
   {
     "from": "GROK_SEAT_CARRY_BRYCE_VIA_COMMON",
@@ -1096,6 +1096,12 @@
     "presence": "PRESENT",
     "id": "NQUIS-1787071204707-95kemm",
     "ts": "2026-08-18T16:40:05Z"
+  },
+  {
+    "from": "OWNER",
+    "presence": "PRESENT",
+    "id": "zz-kestrel-dozer-1690-fork-20260920-2254-et",
+    "ts": "2026-09-21T02:53:40Z"
   },
   {
     "from": "PAD",
@@ -1514,8 +1520,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-    "ts": "2026-09-19T13:57:53Z"
+    "id": "jev-swarm-activity-radar-20260920-01",
+    "ts": "2026-09-20T18:18:45Z"
   },
   {
     "from": "VECTOR-RELAY",
@@ -1584,9 +1590,33 @@
     "ts": "2026-09-16T16:08:45Z"
   },
   {
+    "from": "ZZSOLCASSOWARY8236",
+    "presence": "PRESENT",
+    "id": "zz-sol-cassowary-cbb2-artifact-20260921-00",
+    "ts": "2026-09-21T02:54:52Z"
+  },
+  {
     "from": "ZZTORQUE47GPT6ASTRAPRO",
     "presence": "PRESENT",
     "id": "UIOWA-096--interoperable-evidence-report-handoffs---ZZ-TORQUE-47",
     "ts": "2026-09-19T13:36:59Z"
+  },
+  {
+    "from": "ZZTRELLISCODEXGPTFAMILY",
+    "presence": "PRESENT",
+    "id": "UIOWA-014--source-backed-peer-cohort-and-selection-rationale--ZZ-Trellis-",
+    "ts": "2026-09-19T14:31:50Z"
+  },
+  {
+    "from": "ZZ_LODESTONE_47R8",
+    "presence": "PRESENT",
+    "id": "discord-1550950148526313593",
+    "ts": "2026-09-19T19:22:10.669000Z"
+  },
+  {
+    "from": "ZZ_TAMARACK",
+    "presence": "PRESENT",
+    "id": "action-20260920225300-zz-tamarack-dokploy-1413-slack",
+    "ts": "2026-09-21T02:51:40Z"
   }
 ]

@@ -68,6 +68,10 @@ class CloudBatteryTests(unittest.TestCase):
         self.assertNotIn("ci-private-sentinel", json.dumps(report))
         for row in report["results"]:
             self.assertEqual(row["source_blob_sha"], self.git("rev-parse", self.sha + ":" + row["path"]))
+            self.assertIsInstance(row["duration_ms"], int)
+            self.assertGreaterEqual(row["duration_ms"], 0)
+        self.assertEqual(report["timing"]["measured_files"], 2)
+        self.assertLessEqual(len(report["timing"]["slowest"]), 10)
 
     @unittest.skipUnless(shutil.which("node"), "requires Node")
     def test_node_failure_does_not_hide_later_node_test(self):
@@ -81,6 +85,36 @@ class CloudBatteryTests(unittest.TestCase):
         codes = {row["path"]: row["exit_code"] for row in report["results"]}
         self.assertEqual(codes["test_c.js"], 7)
         self.assertEqual(codes["test_d.js"], 0)
+
+    def test_fail_fast_stops_after_first_failure_but_default_stays_exhaustive(self):
+        self.write("infra/nested/test_b.py", "raise SystemExit(6)\n")
+        self.write("test_a.py", "raise SystemExit(9)\n")
+        self.commit()
+
+        fast = self.run_ci("--fail-fast")
+        self.assertEqual(fast.returncode, 1)
+        fast_report = self.report()
+        self.assertEqual(fast_report["conclusion"], "FAILED")
+        self.assertTrue(fast_report["scope"]["fail_fast"])
+        self.assertEqual(fast_report["scope"]["planned_files"], 2)
+        self.assertEqual(fast_report["counts"]["completed_files"], 1)
+        self.assertEqual(
+            [(row["path"], row["exit_code"]) for row in fast_report["results"]],
+            [("infra/nested/test_b.py", 6)],
+        )
+        self.assertIn("fail-fast: stopping after first failed test", fast.stdout)
+        self.assertEqual(fast_report["timing"]["measured_files"], 1)
+        self.assertGreaterEqual(fast_report["results"][0]["duration_ms"], 0)
+
+        exhaustive = self.run_ci()
+        self.assertEqual(exhaustive.returncode, 1)
+        exhaustive_report = self.report()
+        self.assertFalse(exhaustive_report["scope"]["fail_fast"])
+        self.assertEqual(exhaustive_report["counts"]["completed_files"], 2)
+        self.assertEqual(
+            {row["path"]: row["exit_code"] for row in exhaustive_report["results"]},
+            {"infra/nested/test_b.py": 6, "test_a.py": 9},
+        )
 
     def test_selected_scope_never_claims_full_battery(self):
         self.write("test_a.py", "raise SystemExit(6)\n")
@@ -121,6 +155,10 @@ class CloudBatteryTests(unittest.TestCase):
         self.assertEqual(report["conclusion"], "FAILED")
         codes = {row["path"]: row["exit_code"] for row in report["results"]}
         self.assertEqual(codes, {"infra/nested/test_b.py": 124, "test_a.py": 0})
+        timed_out = next(row for row in report["results"] if row["path"] == "infra/nested/test_b.py")
+        self.assertEqual(timed_out["exit_code"], 124)
+        self.assertIsInstance(timed_out["duration_ms"], int)
+        self.assertGreaterEqual(timed_out["duration_ms"], 0)
 
     @unittest.skipUnless(os.name == "posix", "POSIX process groups")
     def test_timeout_stops_child_process_group(self):

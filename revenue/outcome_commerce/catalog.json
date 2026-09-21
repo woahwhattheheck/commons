@@ -2759,6 +2759,11 @@
     "note": "Optional tip-shelf product paths with live checkout. Existing outcome_commerce listings above stay canonical. No invent Stripe URLs. Larger fixed engagements are separate product pages (checkout/intent stays there).",
     "products": [
       {
+        "name": "Dealer Service Lead Rescue",
+        "price_usd": 199,
+        "path": "dealer-service-lead-rescue.html"
+      },
+      {
         "name": "Referral Intake Completeness",
         "price_usd": 199,
         "path": "referral-intake-completeness.html"

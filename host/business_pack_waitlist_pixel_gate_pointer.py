@@ -33,9 +33,9 @@ PEER_PACK_HELPER = "host/pack_waitlist_pixel_gate_pointer.py"
 # Historical byte observations; live pages/helpers may evolve independently.
 EXPECTED_BLOBS = {
     "host/pack_waitlist_pixel_gate.py": "4df0f64e",
-    "host/pack_waitlist_pixel_gate_pointer.py": "cc94a911",
-    "packs/waitlist.html": "f93c8f32",
-    "packs/thanks.html": "965a834b",
+    "host/pack_waitlist_pixel_gate_pointer.py": "b3f26525",
+    "packs/waitlist.html": "b312ed6d",
+    "packs/thanks.html": "76388c9a",
     "p/cursor-business-pack-waitlist-pixel-gate-pointer-20260902-01.md": "6f981cf8",
     "p/cursor-business-pack-waitlist-pixel-gate-pointer-helper-20260902-01.md": "af68f245",
     "p/cursor-pack-waitlist-pixel-gate-20260902-01.md": "e3dcb2f8",

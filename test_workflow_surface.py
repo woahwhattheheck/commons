@@ -216,6 +216,48 @@ class WorkflowSurfaceTests(unittest.TestCase):
         self.assertLessEqual(result['active'], data['max_active_workflows'])
         self.assertEqual(result['status'], 'PASS', result['errors'])
 
+    def test_external_opportunity_intake_recipe_stays_archived(self):
+        """Regress run 35482740664: path-scoped intake CI stays archived in the 67-slot budget."""
+        self.assertFalse(Path('.github/workflows/external-opportunity-intake.yml').exists())
+        data = json.loads(Path('ci/workflow-surface.json').read_text(encoding='utf-8'))
+        self.assertNotIn('.github/workflows/external-opportunity-intake.yml', data['retained'])
+        row = next(item for item in data['archived'] if item['archive'].endswith('external-opportunity-intake.yml'))
+        recipe = Path(row['archive']).read_bytes()
+        self.assertEqual(len(recipe), row['bytes'])
+        self.assertEqual(hashlib.sha256(recipe).hexdigest(), row['sha256'])
+        parsed = surface.workflow(recipe)
+        self.assertFalse(surface.duplicate_branch_events(parsed))
+        text = recipe.decode('utf-8')
+        self.assertIn('revenue/external_opportunity_intake/', text)
+        self.assertIn('revenue.external_opportunity_intake.selftest', text)
+        live = Path('.github/workflows/source-parses.yml').read_text(encoding='utf-8')
+        self.assertIn('revenue/external_opportunity_intake/**', live)
+        self.assertIn('python3 -m revenue.external_opportunity_intake.selftest', live)
+        result = surface.check(Path('.'))
+        self.assertLessEqual(result['active'], data['max_active_workflows'])
+        self.assertEqual(result['status'], 'PASS', result['errors'])
+
+    def test_uiowa_068_recovery_evidence_recipe_stays_archived(self):
+        """Regress run 35482740664: path-scoped UIOWA-068 CI stays archived in the 67-slot budget."""
+        self.assertFalse(Path('.github/workflows/uiowa-068-recovery-evidence.yml').exists())
+        data = json.loads(Path('ci/workflow-surface.json').read_text(encoding='utf-8'))
+        self.assertNotIn('.github/workflows/uiowa-068-recovery-evidence.yml', data['retained'])
+        row = next(item for item in data['archived'] if item['archive'].endswith('uiowa-068-recovery-evidence.yml'))
+        recipe = Path(row['archive']).read_bytes()
+        self.assertEqual(len(recipe), row['bytes'])
+        self.assertEqual(hashlib.sha256(recipe).hexdigest(), row['sha256'])
+        parsed = surface.workflow(recipe)
+        self.assertFalse(surface.duplicate_branch_events(parsed))
+        text = recipe.decode('utf-8')
+        self.assertIn('revenue/uiowa_rfq_18649_recovery_evidence/', text)
+        self.assertIn('test_assess_recovery.py', text)
+        live = Path('.github/workflows/source-parses.yml').read_text(encoding='utf-8')
+        self.assertIn('revenue/uiowa_rfq_18649_recovery_evidence/**', live)
+        self.assertIn('test_assess_recovery.py', live)
+        result = surface.check(Path('.'))
+        self.assertLessEqual(result['active'], data['max_active_workflows'])
+        self.assertEqual(result['status'], 'PASS', result['errors'])
+
 
 
 

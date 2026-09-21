@@ -27,7 +27,7 @@ def load(name, path, *, cache=False):
         module = _MODULE_CACHE[key]
         sys.modules[name] = module
         return module
-    spec = importlib.util.spec_from_file_location(name, path)
+    spec = importlib.util.spec_from_file_location(name, key[1])
     module = importlib.util.module_from_spec(spec)
     missing = object()
     previous = sys.modules.get(name, missing)

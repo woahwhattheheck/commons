@@ -70,6 +70,46 @@ class BatteryReportTests(unittest.TestCase):
         self.assertEqual(data["run_id"], "123")
         self.assertEqual(data["workflow_ref"], "owner/repo/.github/workflows/tests.yml@refs/heads/main")
         self.assertEqual(data["results"][0]["source_blob_sha"], self.git("rev-parse", self.sha + ":test_alpha.py"))
+        self.assertIsNone(data["scope"])
+
+    def test_timing_records_are_bound_to_tests_and_slowest_summary_is_bounded(self):
+        records = []
+        for index in range(12):
+            path = "test_timing_%02d.py" % index
+            duration = 9 if index in (0, 1) else index
+            records.extend([
+                ("python3", path, 0),
+                ("timing_ms", path, duration),
+            ])
+        data = self.build(self.raw(*records))
+        self.assertEqual(data["conclusion"], "PASSED")
+        self.assertEqual(data["timing"]["clock"], "monotonic")
+        self.assertEqual(data["timing"]["unit"], "ms")
+        self.assertEqual(data["timing"]["measured_files"], 12)
+        self.assertEqual(data["timing"]["slowest_limit"], 10)
+        self.assertEqual(len(data["timing"]["slowest"]), 10)
+        durations = [row["duration_ms"] for row in data["timing"]["slowest"]]
+        self.assertEqual(durations, sorted(durations, reverse=True))
+        tied_nine = [row["path"] for row in data["timing"]["slowest"] if row["duration_ms"] == 9]
+        self.assertEqual(tied_nine, sorted(tied_nine, key=os.fsencode))
+        self.assertTrue(all(isinstance(row["duration_ms"], int) for row in data["results"]))
+
+    def test_orphan_duplicate_and_malformed_timing_are_incomplete(self):
+        cases = [
+            self.raw(("timing_ms", "test_alpha.py", 3)),
+            self.raw(("python3", "test_alpha.py", 0),
+                     ("timing_ms", "test_alpha.py", 3),
+                     ("timing_ms", "test_alpha.py", 4)),
+            self.raw(("python3", "test_alpha.py", 0),
+                     ("timing_ms", "test_alpha.py", "nan")),
+            self.raw(("python3", "test_alpha.py", 0),
+                     ("timing_ms", "other.py", 3)),
+        ]
+        for raw in cases:
+            with self.subTest(raw=raw):
+                data = self.build(raw)
+                self.assertEqual(data["conclusion"], "INCOMPLETE")
+                self.assertFalse(data["complete"])
 
     def test_moving_head_does_not_change_source_attribution(self):
         raw = self.raw(("python3", "test_alpha.py", 0))
@@ -123,6 +163,8 @@ class BatteryReportTests(unittest.TestCase):
         mismatch = self.raw(("python3", "test_alpha.py", 7), failed=0)
         self.assertEqual(self.build(mismatch, "failure")["conclusion"], "INCOMPLETE")
         self.assertEqual(self.build(self.raw(("python3", "test_alpha.py", 7), failed=1))["conclusion"], "INCOMPLETE")
+        bad_scope = self.raw(("battery_scope", '{"fail_fast":true}', ""))
+        self.assertEqual(self.build(bad_scope)["conclusion"], "INCOMPLETE")
 
     @unittest.skipUnless(os.name == "posix", "fixture filename needs POSIX rules")
     def test_unusual_filename_and_summary_are_lossless_and_escaped(self):
@@ -157,7 +199,7 @@ class BatteryReportTests(unittest.TestCase):
         self.assertNotIn("private-test-value", text + note.read_text(encoding="utf-8") + process.stdout + process.stderr)
 
     @unittest.skipUnless(shutil.which("bash") and shutil.which("node"), "workflow requires Bash and Node")
-    def test_real_workflow_loop_records_exits_and_continues_after_failures(self):
+    def test_real_workflow_fail_fast_records_first_failure_and_stops(self):
         (self.root / "test_omega.py").write_text("print('after earlier failure')\n", encoding="utf-8")
         (self.root / "test_node_pass.js").write_text("process.exit(0);\n", encoding="utf-8")
         (self.root / "test_node_fail.js").write_text("process.exit(4);\n", encoding="utf-8")
@@ -169,16 +211,24 @@ class BatteryReportTests(unittest.TestCase):
         process = subprocess.run(["bash", "--noprofile", "--norc", "-eo", "pipefail", "-c", battery_script()],
                                  cwd=self.root, env=env, capture_output=True, text=True, timeout=30)
         self.assertEqual(process.returncode, 1)
+        self.assertIn("fail-fast: stopping after first failed test", process.stdout)
         path = runner_temp / "commons-battery-results.nul"
         self.assertTrue(path.is_file(), "workflow emitted no structured result stream")
         data = self.build(path.read_bytes(), "failure")
         self.assertTrue(data["complete"])
         self.assertEqual(data["conclusion"], "FAILED")
-        self.assertEqual(data["counts"], {"completed_files": 5, "passed_files": 3, "failed_files": 2, "unresolved_source_files": 0})
+        self.assertEqual(data["counts"], {"completed_files": 1, "passed_files": 0, "failed_files": 1, "unresolved_source_files": 0})
+        self.assertEqual(data["scope"]["kind"], "full")
+        self.assertTrue(data["scope"]["fail_fast"])
+        self.assertEqual(data["scope"]["planned_files"], 5)
+        self.assertEqual(data["scope"]["discovered_files"], 5)
         codes = {row["path"]: row["exit_code"] for row in data["results"]}
-        self.assertEqual(codes["infra/test_beta.py"], 7)
-        self.assertEqual(codes["test_node_fail.js"], 4)
-        self.assertEqual(codes["test_omega.py"], 0)
+        self.assertEqual(codes, {"infra/test_beta.py": 7})
+        self.assertNotIn("test_alpha.py", codes)
+        self.assertNotIn("test_omega.py", codes)
+        self.assertNotIn("test_node_pass.js", codes)
+        self.assertNotIn("test_node_fail.js", codes)
+        self.assertIn("Fail-fast mode was enabled", report.summary(data))
 
     @unittest.skipUnless(shutil.which("bash") and shutil.which("node"), "workflow requires Bash and Node")
     def test_real_workflow_success_and_empty_discovery(self):
@@ -210,6 +260,7 @@ class BatteryReportTests(unittest.TestCase):
         text = (ROOT / ".github/workflows/tests.yml").read_text(encoding="utf-8")
         self.assertIn("id: battery", text)
         self.assertIn("id: checkout", text)
+        self.assertIn("python3 host/ci_battery.py --fail-fast", text)
         self.assertIn("--outcome \"${{ steps.battery.outcome }}\"", text)
         self.assertEqual(text.count("if: ${{ always() && steps.checkout.outcome == 'success' }}"), 2)
         self.assertIn("uses: actions/upload-artifact@v4", text)

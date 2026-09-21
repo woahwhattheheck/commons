@@ -54,7 +54,7 @@ class RetiredCiProviderTest(unittest.TestCase):
         )
         workflow = ACTIONS.read_text(encoding="utf-8")
         self.assertIn(
-            'python3 host/ci_battery.py --results "$RUNNER_TEMP/commons-battery-results.nul"',
+            'python3 host/ci_battery.py --fail-fast --results "$RUNNER_TEMP/commons-battery-results.nul"',
             workflow,
         )
 

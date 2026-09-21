@@ -1,0 +1,106 @@
+{
+  "schema": "commons-resource-event/v1",
+  "event_id": "codex-grantfox-fwc26-workfeed-compiler-resource-activation-20260919-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "observed_at": "2026-09-19T21:56:00Z",
+  "actor": "Commons Resource Master / Codex",
+  "selected_resource": "grantfox-fwc26-workfeed-compiler",
+  "concrete_consumer": "Commons and Swarm ZZ operators triaging the evidence-backed GrantFox/FWC26 workfeed",
+  "measurable_outcome": "The merged offline compiler is canonical producing resource metadata with deterministic create-exclusive JSON and Markdown output and no provider or payment mutation.",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "MERGED_UNCATALOGED",
+    "condition": "CONSTRAINED",
+    "holder": "GRANTFOX-FWC26 source custody",
+    "consumer": "UNROUTED_IN_CANONICAL_RESOURCE_GRAPH"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "holder": "GrantFox FWC26 compiler source custody / Commons and Swarm ZZ queue operators",
+    "consumer": "Offline campaign queue triage"
+  },
+  "production_truth": {
+    "source_repository": "woahwhattheheck/commons",
+    "source_pr": 16472,
+    "source_merge_sha": "9331d682f6098d9b980eee14641070cd1f3ea111",
+    "source_descendant_main_sha": "b8f5cd7adbcbca8df75b5dc1033cbce60d7631aa",
+    "source_paths": {
+      "tools/grantfox_fwc26_workfeed/README.md": "b6467979b09812056f348ddad2724b2ec4743899",
+      "tools/grantfox_fwc26_workfeed/__init__.py": "1ddb62d56751885651279f24f6642063b0978383",
+      "tools/grantfox_fwc26_workfeed/compile.py": "8a28aee8749f75a2ea53fd484e96f2a5b027bbae",
+      "tools/grantfox_fwc26_workfeed/tests/test_compile.py": "783a6d6027b10759c4b8e1057a68464e5d9c54c3"
+    },
+    "focused_tests": {
+      "source_suite": "18/18 PASS NORMAL_AND_OPTIMIZED",
+      "resource_ledger": "23/23 PASS NORMAL_AND_OPTIMIZED",
+      "resource_projection": "18/18 PASS NORMAL_AND_OPTIMIZED"
+    },
+    "maximum_state": "OFFLINE_CREATE_EXCLUSIVE_WORKFEED_COMPILER_READY",
+    "live_system_access": false,
+    "university_finding": false,
+    "customer_contact": false,
+    "buyer_acceptance": false,
+    "payment_observed": false,
+    "revenue_recognition": false,
+    "current_cash_claim": false,
+    "scheduling_action": false,
+    "provider_writes": 0
+  },
+  "delta": {
+    "prior_terminal_main_sha": "4b0740c977a1a5eb25a2ff08af541bb324d31b5d",
+    "activation_base_main_sha": "b8f5cd7adbcbca8df75b5dc1033cbce60d7631aa",
+    "commits_in_delta": 45,
+    "changed_paths_in_delta": 112,
+    "remote_branches_observed": 4639,
+    "prior_terminal_slack_ts": "1789844992.640149",
+    "latest_delta_slack_ts": "1789855095.683589",
+    "slack_top_level_messages": {
+      "commons": 2,
+      "delegations": 51,
+      "todo": 0,
+      "shipped_builds": 0,
+      "products": 0,
+      "leads": 0,
+      "sales": 1
+    },
+    "automations": "Thirty-eight visible: four enabled, thirty-one paused and three completed; no lifecycle mutation.",
+    "github_state": "Forty-five current-main commits and 112 changed paths were reconciled; the selected source was merged, unclaimed and absent from the canonical resource graph.",
+    "provider_state": "Slack reports 93 distinct issue orders and an existing payout wallet as ready; eligibility, assignment, reward amount, payout, settlement, revenue and cash remain separate and unverified here."
+  },
+  "verification": {
+    "privacy": "No credential, wallet identifier, private account identifier, customer data or private file name is persisted.",
+    "open_door": "The compiler is offline, zero-credential, standard-library only and create-exclusive.",
+    "zero_fabrication": "READY and MAYBE REWARDED never become assignment, award, guaranteed payment, payout, revenue or cash.",
+    "collision": "Only canonical ledger, projection, assertions and append-only activation records are owned; source, provider, wallet, bounty implementation and active peer lanes remain read-only."
+  },
+  "build_order_decision": "No build order posted; 93 issue lanes and new queue/custody/readiness implementations already have existing roots or active claims.",
+  "build_orders": [],
+  "quota_lifecycle": {
+    "official_observation": "Single official-source check found no quota reset newer than the recorded September 7 automatic reset.",
+    "classification": "PRIOR_QUOTA_STATE_RETAINED_CURRENT_ALLOWANCE_UNMEASURED",
+    "current_meter": "NOT_DIRECTLY_OBSERVED",
+    "banked_reset_activated": false
+  },
+  "projection": {
+    "resources": 104,
+    "producing": 76,
+    "inventory_records": 66
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789855095683589",
+    "source_pr": "https://github.com/woahwhattheheck/commons/pull/16472",
+    "official_release_notes": "https://help.openai.com/en/articles/6825453/chatgpt-release-notes"
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-19T21:56:00Z",
+    "activation_base_main_sha": "b8f5cd7adbcbca8df75b5dc1033cbce60d7631aa",
+    "latest_delta_slack_ts": "1789855095.683589",
+    "source_merge_sha": "9331d682f6098d9b980eee14641070cd1f3ea111",
+    "remote_branches_observed": 4639
+  },
+  "non_claims": [
+    "No provider application, issue claim, assignment, external contact, wallet action, payout, payment, settlement, revenue or cash is claimed."
+  ]
+}

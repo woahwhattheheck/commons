@@ -174,6 +174,11 @@
       "id": "jev",
       "job": "TypeSafe Jev / typed fast judgment: route, class, score, yes-no",
       "token": ""
+    },
+    {
+      "id": "cua-s1-forms",
+      "job": "CUA-S1-FORMS checkpoint / score form options, do not execute",
+      "token": ""
     }
   ],
   "live_cash": {
