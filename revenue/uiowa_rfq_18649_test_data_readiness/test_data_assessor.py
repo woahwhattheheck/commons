@@ -32,6 +32,20 @@ def _date(value: Any) -> date | None:
         return None
 
 
+def _case_set(value: Any) -> set[str] | None:
+    """Keep absent/invalid evidence distinct from an explicitly empty inventory.
+
+    Case identities are exact nonblank strings. Do not coerce mapping keys,
+    string characters, numbers or nested values into evidence, or normalize
+    distinct identifiers. Duplicates describe the same case, not extra coverage.
+    """
+    if not isinstance(value, list):
+        return None
+    if any(not isinstance(item, str) or not item.strip() for item in value):
+        return None
+    return set(value)
+
+
 def _days_between(start: date, end: date) -> int:
     return (end - start).days
 
@@ -76,6 +90,17 @@ def evaluate_dataset(dataset: Dict[str, Any], as_of: date) -> Dict[str, Any]:
                 UNKNOWN,
                 "No reliable last_refreshed date supplied.",
                 "Locate refresh history or record that refresh timing is not currently evidenced.",
+            )
+        )
+    elif refreshed > as_of:
+        checks.append(
+            _check(
+                "refresh_freshness",
+                UNKNOWN,
+                f"Last refresh {refreshed.isoformat()} is after assessment date "
+                f"{as_of.isoformat()}; it does not evidence refresh as of that date.",
+                "Locate refresh evidence on or before the assessment date, or correct "
+                "the catalog chronology from its source records.",
             )
         )
     elif isinstance(cadence, bool) or not isinstance(cadence, int) or cadence <= 0:
@@ -130,20 +155,30 @@ def evaluate_dataset(dataset: Dict[str, Any], as_of: date) -> Dict[str, Any]:
             )
         )
 
-    required = dataset.get("required_boundary_cases")
-    covered = set(dataset.get("covered_boundary_cases") or [])
-    if not isinstance(required, list) or not required:
+    required = _case_set(dataset.get("required_boundary_cases"))
+    covered = _case_set(dataset.get("covered_boundary_cases"))
+    if not required:
         checks.append(
             _check(
                 "representativeness",
                 UNKNOWN,
-                "No required boundary-case set is documented.",
-                "Define the business or integration boundaries the fixture must represent.",
+                "No valid nonempty required boundary-case list is documented.",
+                "Define the required boundaries as a nonempty list of nonblank string "
+                "case identities; invalid or absent entries do not establish an expectation.",
+            )
+        )
+    elif covered is None:
+        checks.append(
+            _check(
+                "representativeness",
+                UNKNOWN,
+                "No valid covered boundary-case inventory is supplied.",
+                "Record covered cases as a list of nonblank string identities. Use an "
+                "empty list only when the supplied inventory explicitly records no covered cases.",
             )
         )
     else:
-        required_set = set(str(x) for x in required)
-        missing = sorted(required_set - set(str(x) for x in covered))
+        missing = sorted(required - covered)
         if missing:
             checks.append(
                 _check(
@@ -158,7 +193,7 @@ def evaluate_dataset(dataset: Dict[str, Any], as_of: date) -> Dict[str, Any]:
                 _check(
                     "representativeness",
                     EVIDENCED,
-                    f"All {len(required_set)} documented boundary cases are represented.",
+                    f"All {len(required)} documented boundary cases are represented.",
                 )
             )
 
@@ -192,6 +227,17 @@ def evaluate_dataset(dataset: Dict[str, Any], as_of: date) -> Dict[str, Any]:
                 UNKNOWN,
                 "Cleanup is required but no verification date is supplied.",
                 "Demonstrate cleanup/retirement behavior or record why evidence is unavailable.",
+            )
+        )
+    elif cleanup_verified > as_of:
+        checks.append(
+            _check(
+                "cleanup",
+                UNKNOWN,
+                f"Cleanup verification {cleanup_verified.isoformat()} is after assessment "
+                f"date {as_of.isoformat()}; it does not evidence cleanup as of that date.",
+                "Locate verification on or before the assessment date, or correct the "
+                "catalog chronology from its source records.",
             )
         )
     else:

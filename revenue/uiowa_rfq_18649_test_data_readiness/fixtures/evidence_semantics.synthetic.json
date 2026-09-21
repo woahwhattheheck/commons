@@ -1,0 +1,135 @@
+{
+  "label": "FICTIONAL UIOWA-047 evidence semantics rehearsal; not University findings",
+  "as_of": "2026-09-19",
+  "datasets": [
+    {
+      "dataset_id": "SYN-FUTURE",
+      "service": "ESS",
+      "purpose": "FICTIONAL regression rehearsal; not University evidence",
+      "data_origin": "synthetic",
+      "last_refreshed": "2026-09-20",
+      "refresh_cadence_days": 30,
+      "cleanup_required": true,
+      "cleanup_last_verified": "2026-09-20"
+    },
+    {
+      "dataset_id": "SYN-OMITTED",
+      "service": "ESS",
+      "purpose": "FICTIONAL regression rehearsal; not University evidence",
+      "data_origin": "synthetic",
+      "required_boundary_cases": [
+        "empty"
+      ]
+    },
+    {
+      "dataset_id": "SYN-NULL",
+      "service": "ESS",
+      "purpose": "FICTIONAL regression rehearsal; not University evidence",
+      "data_origin": "synthetic",
+      "required_boundary_cases": [
+        "empty"
+      ],
+      "covered_boundary_cases": null
+    },
+    {
+      "dataset_id": "SYN-EMPTY",
+      "service": "ESS",
+      "purpose": "FICTIONAL regression rehearsal; not University evidence",
+      "data_origin": "synthetic",
+      "required_boundary_cases": [
+        "empty"
+      ],
+      "covered_boundary_cases": []
+    },
+    {
+      "dataset_id": "SYN-STRING",
+      "service": "ESS",
+      "purpose": "FICTIONAL regression rehearsal; not University evidence",
+      "data_origin": "synthetic",
+      "required_boundary_cases": [
+        "a"
+      ],
+      "covered_boundary_cases": "a"
+    },
+    {
+      "dataset_id": "SYN-MAPPING",
+      "service": "ESS",
+      "purpose": "FICTIONAL regression rehearsal; not University evidence",
+      "data_origin": "synthetic",
+      "required_boundary_cases": [
+        "empty"
+      ],
+      "covered_boundary_cases": {
+        "empty": false
+      }
+    },
+    {
+      "dataset_id": "SYN-NONSTRING",
+      "service": "ESS",
+      "purpose": "FICTIONAL regression rehearsal; not University evidence",
+      "data_origin": "synthetic",
+      "required_boundary_cases": [
+        1
+      ],
+      "covered_boundary_cases": [
+        "1"
+      ]
+    },
+    {
+      "dataset_id": "SYN-NESTED",
+      "service": "ESS",
+      "purpose": "FICTIONAL regression rehearsal; not University evidence",
+      "data_origin": "synthetic",
+      "required_boundary_cases": [
+        "a"
+      ],
+      "covered_boundary_cases": [
+        "a",
+        {}
+      ]
+    },
+    {
+      "dataset_id": "SYN-CURRENT",
+      "service": "ESS",
+      "purpose": "FICTIONAL regression rehearsal; not University evidence",
+      "data_origin": "synthetic",
+      "last_refreshed": "2026-09-19",
+      "refresh_cadence_days": 30,
+      "cleanup_required": true,
+      "cleanup_last_verified": "2026-09-19",
+      "required_boundary_cases": [
+        "b",
+        "a",
+        "a"
+      ],
+      "covered_boundary_cases": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "dataset_id": "SYN-CADENCE",
+      "service": "ESS",
+      "purpose": "FICTIONAL regression rehearsal; not University evidence",
+      "data_origin": "synthetic",
+      "last_refreshed": "2026-09-18",
+      "refresh_cadence_days": 1
+    },
+    {
+      "dataset_id": "SYN-STALE",
+      "service": "ESS",
+      "purpose": "FICTIONAL regression rehearsal; not University evidence",
+      "data_origin": "synthetic",
+      "last_refreshed": "2026-09-17",
+      "refresh_cadence_days": 1
+    },
+    {
+      "dataset_id": "SYN-NOT-REQUIRED",
+      "service": "ESS",
+      "purpose": "FICTIONAL regression rehearsal; not University evidence",
+      "data_origin": "synthetic",
+      "cleanup_required": false,
+      "cleanup_last_verified": "2026-09-20"
+    }
+  ]
+}
