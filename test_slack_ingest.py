@@ -2,10 +2,13 @@
 
 from __future__ import annotations
 
+import io
 import json
 import tempfile
 import unittest
+import urllib.error
 from contextlib import redirect_stdout
+from email.message import Message
 from io import StringIO
 from pathlib import Path
 from unittest import mock
@@ -740,6 +743,114 @@ PLAIN: Slack :left_right_arrow: Commons exact body.
             payload = json.loads(output.getvalue())
             self.assertEqual(payload["title"], "slack-9-25")
             self.assertEqual(payload["labels"], ["board"])
+
+    def _github_http_error(
+        self, code: int, body: str, retry_after: str | None = None
+    ) -> urllib.error.HTTPError:
+        headers = Message()
+        if retry_after is not None:
+            headers["Retry-After"] = retry_after
+        return urllib.error.HTTPError(
+            "https://api.github.com/repos/woahwhattheheck/commons/issues",
+            code,
+            "Forbidden",
+            headers,
+            io.BytesIO(body.encode("utf-8")),
+        )
+
+    def test_github_rate_limited_helper_matches_measured_bodies(self) -> None:
+        self.assertTrue(si.github_rate_limited(429, ""))
+        self.assertTrue(
+            si.github_rate_limited(
+                403,
+                "You have exceeded a secondary rate limit and have been temporarily blocked from content creation.",
+            )
+        )
+        self.assertFalse(
+            si.github_rate_limited(403, "Resource not accessible by integration")
+        )
+        self.assertFalse(si.github_rate_limited(404, "rate limit"))
+        self.assertEqual(si.github_retry_after({"Retry-After": "7"}), 7)
+
+    def test_github_request_retries_secondary_rate_limit_then_succeeds(self) -> None:
+        client = si.GitHubClient("token")
+        body = (
+            '{"message":"You have exceeded a secondary rate limit and have been '
+            'temporarily blocked from content creation. Please retry your request again later."}'
+        )
+        calls = {"n": 0}
+
+        class FakeResponse:
+            def read(self) -> bytes:
+                return b'{"html_url":"https://github.test/issues/9"}'
+
+            def __enter__(self) -> "FakeResponse":
+                return self
+
+            def __exit__(self, *args: object) -> bool:
+                return False
+
+        def fake_urlopen(_request: object, timeout: int = 30) -> FakeResponse:
+            calls["n"] += 1
+            if calls["n"] == 1:
+                raise self._github_http_error(403, body, "1")
+            return FakeResponse()
+
+        with (
+            mock.patch("urllib.request.urlopen", fake_urlopen),
+            mock.patch.object(si.time, "sleep") as slept,
+        ):
+            data = client.request(
+                "POST",
+                "/repos/woahwhattheheck/commons/issues",
+                {"title": "x"},
+            )
+        self.assertEqual(data["html_url"], "https://github.test/issues/9")
+        self.assertEqual(calls["n"], 2)
+        slept.assert_called_once_with(1)
+
+    def test_github_request_still_raises_non_rate_limit_403(self) -> None:
+        client = si.GitHubClient("token")
+
+        def fake_urlopen(_request: object, timeout: int = 30) -> object:
+            raise self._github_http_error(
+                403, '{"message":"Resource not accessible by integration"}'
+            )
+
+        with (
+            mock.patch("urllib.request.urlopen", fake_urlopen),
+            mock.patch.object(si.time, "sleep") as slept,
+        ):
+            with self.assertRaises(si.IngestError) as raised:
+                client.request(
+                    "POST",
+                    "/repos/woahwhattheheck/commons/issues",
+                    {"title": "x"},
+                )
+        self.assertIn("403", str(raised.exception))
+        self.assertIn("Resource not accessible", str(raised.exception))
+        slept.assert_not_called()
+
+    def test_github_request_raises_after_exhausted_rate_limit_retries(self) -> None:
+        client = si.GitHubClient("token")
+        body = '{"message":"You have exceeded a secondary rate limit"}'
+
+        def fake_urlopen(_request: object, timeout: int = 30) -> object:
+            raise self._github_http_error(403, body, "1")
+
+        with (
+            mock.patch("urllib.request.urlopen", fake_urlopen),
+            mock.patch.object(si.time, "sleep") as slept,
+        ):
+            with self.assertRaises(si.IngestError) as raised:
+                client.request(
+                    "POST",
+                    "/repos/woahwhattheheck/commons/issues",
+                    {"title": "x"},
+                )
+        self.assertIn("403", str(raised.exception))
+        self.assertIn("secondary rate limit", str(raised.exception))
+        self.assertEqual(slept.call_count, 2)
 
 
 if __name__ == "__main__":

@@ -728,6 +728,39 @@ class SlackClient:
         return events
 
 
+def github_rate_limited(status: int, detail: str) -> bool:
+    """True for GitHub request throttles that a later retry can clear.
+
+    429 is the documented rate-limit status. Content-creation secondary
+    limits are often returned as 403 with a rate-limit body. Other 403s
+    stay fatal.
+    """
+    if status == 429:
+        return True
+    if status != 403:
+        return False
+    text = (detail or "").lower()
+    return "rate limit" in text or "secondary rate" in text
+
+
+def github_retry_after(headers: Any, default: int = 15) -> int:
+    """Honor Retry-After when present; keep a bounded fallback."""
+    raw = ""
+    try:
+        raw = str(headers.get("Retry-After") or "").strip()
+    except (TypeError, AttributeError):
+        raw = ""
+    try:
+        seconds = int(float(raw)) if raw else default
+    except (TypeError, ValueError):
+        seconds = default
+    if seconds < 1:
+        seconds = 1
+    if seconds > 90:
+        seconds = 90
+    return seconds
+
+
 class GitHubClient:
     def __init__(self, token: str, repository: str = REPOSITORY):
         if not token.strip():
@@ -738,23 +771,29 @@ class GitHubClient:
 
     def request(self, method: str, path: str, payload: dict[str, Any] | None = None) -> Any:
         data = None if payload is None else json.dumps(payload).encode("utf-8")
-        request = urllib.request.Request(
-            GITHUB_API + path,
-            data=data,
-            method=method,
-            headers={
-                "Accept": "application/vnd.github+json",
-                "Authorization": "Bearer " + self.token,
-                "Content-Type": "application/json",
-                "X-GitHub-Api-Version": "2022-11-28",
-            },
-        )
-        try:
-            with urllib.request.urlopen(request, timeout=30) as response:
-                return json.loads(response.read().decode("utf-8"))
-        except urllib.error.HTTPError as exc:
-            detail = exc.read().decode("utf-8", "replace")
-            raise IngestError("GitHub HTTP %s: %s" % (exc.code, detail[:300])) from exc
+        last_detail = ""
+        for attempt in range(3):
+            request = urllib.request.Request(
+                GITHUB_API + path,
+                data=data,
+                method=method,
+                headers={
+                    "Accept": "application/vnd.github+json",
+                    "Authorization": "Bearer " + self.token,
+                    "Content-Type": "application/json",
+                    "X-GitHub-Api-Version": "2022-11-28",
+                },
+            )
+            try:
+                with urllib.request.urlopen(request, timeout=30) as response:
+                    return json.loads(response.read().decode("utf-8"))
+            except urllib.error.HTTPError as exc:
+                detail = exc.read().decode("utf-8", "replace")
+                last_detail = detail
+                if not github_rate_limited(exc.code, detail) or attempt == 2:
+                    raise IngestError("GitHub HTTP %s: %s" % (exc.code, detail[:300])) from exc
+                time.sleep(github_retry_after(exc.headers))
+        raise IngestError("GitHub HTTP request failed: %s" % last_detail[:300])
 
     def board_issue_bodies(self) -> dict[str, list[str]]:
         """Load all ``label=board`` issue bodies once via the Issues list API.
