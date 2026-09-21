@@ -188,7 +188,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
       jev_errors: result.jev.errors, jev_status: result.jev.status }));
   }).catch(error => {
     // Never print response bodies, request data, Slack text, or raw exception stacks.
-    console.error(`monitor_failed:${/^[a-z_]+$/u.test(error.message) ? error.message : 'provider_failure'}`);
+    console.error(`monitor_failed:${/^[a-z][a-z0-9_]*$/u.test(error.message) ? error.message : 'provider_failure'}`);
     process.exitCode = 1;
   });
 }

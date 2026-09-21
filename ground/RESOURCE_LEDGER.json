@@ -25,6 +25,7 @@
   "priority_queue": [],
   "production_write": false,
   "record_sources": [
+    "inventory/resources/records/codex-jev-connector-projection-resource-activation-20260920-01.json",
     "inventory/resources/records/codex-jev-paid-shipping-monitor-resource-activation-20260920-01.json",
     "inventory/resources/records/codex-cua-s1-form-choice-scorer-resource-activation-20260920-01.json",
     "inventory/resources/records/codex-uiowa-peer-evidence-comparability-resource-activation-20260920-01.json",
@@ -106,15 +107,15 @@
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1789931501.052119",
+  "slack_ts": "1789941300.041829",
   "snapshot": {
-    "base_main_sha": "c306e9d75d29fa4cc195a055f7b0bbb6d6cef0cc",
-    "observed_at": "2026-09-20T19:20:17Z",
+    "base_main_sha": "3e92e7f9bae59b7945087680a5d73a9317934ba7",
+    "observed_at": "2026-09-20T22:10:45Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-jev-paid-shipping-monitor-resource-activation-20260920-01",
+  "source_id": "codex-jev-connector-projection-resource-activation-20260920-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -123,8 +124,9 @@
     "EXERCISED",
     "PRODUCING"
   ],
-  "subject": "MASTER RESOURCE LEDGER — Jev paid-shipping monitor",
+  "subject": "MASTER RESOURCE LEDGER — Jev connector projection",
   "supersedes_source_ids": [
+    "codex-jev-connector-projection-resource-activation-20260920-01",
     "codex-jev-paid-shipping-monitor-resource-activation-20260920-01",
     "codex-cua-s1-form-choice-scorer-resource-activation-20260920-01",
     "codex-uiowa-peer-evidence-comparability-resource-activation-20260920-01",
@@ -2453,6 +2455,28 @@
       "last_receipt": "codex-commons-context-dispatch-compiler-resource-activation-20260913-01",
       "last_used_at": "2026-09-13T13:10:45Z",
       "stale_after": "next compiler, CLI, packet schema, selection/budget policy, source allowlist, pulse/coordination/claim contract, source blob or authority change",
+      "priority": 99
+    },
+    {
+      "name": "jev-connector-projection",
+      "kind": "PRIVACY_SAFE_CONNECTOR_METADATA_TO_EVENT_LEDGER_ADAPTER",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / Jev radar and routing-pipeline operators",
+      "authority": "SHARED_ALL_CARRIERS_PUBLIC_CURRENT_MAIN_READ_RUN_AND_COMPOSE; EXACT_PR16547_HEAD_DAE4CE711C7F21BDCF45FA4DBC9B3A80C9A09FB0_MERGE_0679A942BCB739F0926234A0681684B382E82C0E_AND_THREE_CURRENT_MAIN_BLOBS_REQUIRED; PURE_ADAPTER_ONLY; CONNECTOR_READ_FALSE; RAW_PRIVATE_TEXT_FALSE; PROVIDER_WRITE_FALSE; SEND_FALSE; CLAIM_FALSE; MERGE_FALSE; PAYMENT_FALSE; SCHEDULER_FALSE",
+      "consumer": "The active JEV-16537 routing pipeline, which needs bounded installed Slack/GitHub connector metadata converted into the landed Jev event-ledger schema without retaining raw private text.",
+      "value": "The landed adapter preserves exact provider identity, scope, cursor/high-water, pagination, freshness, cooldown and error coverage; rejects raw body/title/diff fields; produces stable event IDs; and round-trips into the event-ledger compiler without granting transport authority.",
+      "next_action": "The active JEV-16537 composition owner may feed bounded connector metadata through this adapter and the landed event ledger, then retain a typed result and provider readback before any separately authorized action; partial, stale or error coverage must remain explicit.",
+      "source": "integrations/command_center/jev_connector_projection.py, test_jev_connector_projection.py and ground/JEV_CONNECTOR_PROJECTION.md; source PR #16547 head dae4ce711c7f21bdcf45fa4dbc9b3a80c9a09fb0 merge 0679a942bcb739f0926234a0681684b382e82c0e",
+      "evidence_ts": "2026-09-20T22:10:45Z",
+      "auth_surface": "Public current-main source and local focused tests require no Commons login, provider credential, private message body, customer identity or owner approval queue; installed connector access remains a separate caller boundary.",
+      "exact_safe_probe": "Current main 3e92e7f9bae59b7945087680a5d73a9317934ba7 retained all three source blobs: adapter aa58dc2a77d278f06f56ba3731b5a26598bc5372, focused tests 13542a2ff03aea4b65852f827db906961271e914 and operator contract 66a9f43d6969ad80614f03934ff94dd0af01c8c2. The focused suite passes 21/21 normally and 21/21 under python -O, including the real round-trip into the landed event-ledger compiler.",
+      "rate_plan_boundary": "The adapter is pure local compute and does not call or purchase connector, Jev or model allowance. A projected event is observation evidence only; it does not establish a live session, unresolved task, claim, accepted delivery, deployment, payment, revenue or cash.",
+      "assigned_backlog": "Available to the active JEV-16537 routing pipeline; open PR #16549 owns the downstream composition seam, open PR #16546 owns activity-brief presentation, and open PR #16540 owns hosted Jev/client work. This activation creates no new implementation or outreach lane.",
+      "last_receipt": "codex-jev-connector-projection-resource-activation-20260920-01",
+      "last_used_at": "2026-09-20T22:10:45Z",
+      "stale_after": "next adapter, event-ledger schema, connector metadata contract, source blob, privacy boundary, provider identity rule, coverage semantics or concrete consumer change",
       "priority": 99
     },
     {
