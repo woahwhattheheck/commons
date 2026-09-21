@@ -157,8 +157,6 @@ def _route_table(raw: Any) -> dict[str, dict[str, Any]]:
             {"action", "provider", "destination_id", "thread_id"},
             f"route_map.{lane}",
         ))
-        if target["action"] not in action_loop.ACTIONS or target["action"] == "NO_ACTION":
-            raise RoutingPipelineError(f"route_map.{lane}: action is not routable")
         if target["provider"] not in action_loop.PROVIDERS:
             raise RoutingPipelineError(f"route_map.{lane}: unsupported provider")
         target["destination_id"] = _token(target["destination_id"], f"route_map.{lane}.destination_id")
