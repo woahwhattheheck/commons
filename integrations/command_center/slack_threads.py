@@ -51,6 +51,11 @@ def resolve_thread_root(message, channel_id=None):
                 raise ValueError
             if parent.get("thread_ts", parent["ts"]) != parent["ts"]:
                 raise ValueError
+            if ("reply_count" in parent and (type(parent["reply_count"]) is not int
+                    or not 0 <= parent["reply_count"] <= 2147483647)):
+                raise ValueError
+            if parent.get("latest_reply") is not None and not _stamp(parent["latest_reply"]):
+                raise ValueError
             roots["root.ts"] = parent["ts"]
         if "permalink" in message:
             link = message["permalink"]
@@ -93,13 +98,40 @@ def resolve_thread_root(message, channel_id=None):
     return result
 
 
+def _prior_evidence(messages, root):
+    """Combine every structured observation of one root without losing anchors.
+
+    Nested broadcast roots are provider observations, not just identity hints.
+    Counts use the greatest observed value; all latest-reply identities survive
+    separately, even when only the newest is shown in the compact pending row.
+    """
+    counts, anchors = [], set()
+    for message in messages:
+        observations = [message] if message.get("ts") == root else []
+        nested = message.get("root")
+        if (isinstance(nested, dict) and _stamp(nested.get("ts"))
+                and _order(nested["ts"]) == _order(root)):
+            observations.append(nested)
+        for observation in observations:
+            count = observation.get("reply_count")
+            if type(count) is int and 0 <= count <= 2147483647:
+                counts.append(count)
+            anchor = observation.get("latest_reply")
+            if _stamp(anchor):
+                anchors.add(anchor)
+    return {"reply_count": max(counts) if counts else None,
+            "latest_reply": max(anchors, key=_order) if anchors else None}, anchors
+
+
 def _thread_evidence(replies, report, root, prior, required=()):
     """Bind completeness to root, known replies, counts and latest-reply anchors."""
-    parent = replies.get(root, {})
-    counts = [count for count in (prior.get("reply_count"), parent.get("reply_count")) if count is not None]
+    # Reply pages may carry nested root observations too. They constrain the
+    # same observation, even when the top-level parent has a smaller count.
+    fetched, fetched_anchors = _prior_evidence(replies.values(), root)
+    counts = [count for count in (prior.get("reply_count"), fetched.get("reply_count")) if count is not None]
     expected = max(counts) if counts else None
     observed = set(replies) - {root}
-    anchors = {value for value in (prior.get("latest_reply"), parent.get("latest_reply")) if value}
+    anchors = fetched_anchors | ({prior["latest_reply"]} if prior.get("latest_reply") else set())
     if report["complete"] and (root not in replies or expected is None
             or len(observed) != expected or not (anchors | set(required)).issubset(observed)):
         report.update(complete=False, reason="reply_evidence_mismatch")
@@ -129,8 +161,8 @@ def read_thread_context(read, channel_id, message, *, page_size=100, max_pages=2
     root = resolution["thread_ts"]
     replies, report = _read_pages(read, "conversations.replies",
         {"channel": channel_id, "ts": root, "limit": page_size}, max_pages, root=root)
-    prior = message if message["ts"] == root else {}
-    required = {message["ts"]} if message["ts"] != root else set()
+    prior, anchors = _prior_evidence([message], root)
+    required = ({message["ts"]} if message["ts"] != root else set()) | anchors
     metadata.update(_thread_evidence(replies, report, root, prior, required))
     return list(replies.values()), metadata, metadata["complete"]
 
@@ -210,7 +242,7 @@ def _read_pages(read, method, payload, max_pages, *, root=None, propagate_first=
         for row in page:
             old = rows.get(row["ts"])
             if old is not None and any(old.get(key) != row.get(key)
-                    for key in ("reply_count", "latest_reply", "thread_ts", "root", "permalink", "text", "edited")):
+                    for key in ("reply_count", "latest_reply", "thread_ts", "root", "permalink", "text", "edited", "subtype")):
                 changed = True
             rows[row["ts"]] = dict(row)
         limited = limited or page_limited
@@ -247,16 +279,18 @@ def read_channel(read, channel_id, *, page_size, max_pages, max_threads=0, max_t
             raise ValueError(name + " is outside its integer bounds.")
     rows, history = _read_pages(read, "conversations.history",
         {"channel": channel_id, "limit": page_size}, max_pages, propagate_first=True)
-    candidates, required, unresolved = {}, {}, []
+    candidates, required, unresolved, observations = {}, {}, [], {}
     for row in rows.values():
         resolution = resolve_thread_root(row, channel_id)
         if resolution["state"] != "RESOLVED":
             if (row.get("subtype") in ("thread_broadcast", "reply_broadcast")
-                    or resolution["state"] == "CONFLICT" or row.get("thread_ts") or "root" in row):
+                    or resolution["state"] == "CONFLICT" or row.get("thread_ts")
+                    or row.get("latest_reply") or "root" in row):
                 unresolved.append(resolution)
             continue
         root = resolution["thread_ts"]
-        if row.get("reply_count", 0) or root != row["ts"]:
+        observations.setdefault(root, []).append(row)
+        if row.get("reply_count", 0) or row.get("latest_reply") or root != row["ts"]:
             candidates.setdefault(root, {"thread_ts": root, "reply_count": None, "latest_reply": None})
             required.setdefault(root, set())
             if root != row["ts"]:
@@ -264,8 +298,9 @@ def read_channel(read, channel_id, *, page_size, max_pages, max_threads=0, max_t
                 # Preserve the resolved identity for downstream work-item refs.
                 row["thread_ts"] = root
     for root, candidate in candidates.items():
-        if root in rows:
-            candidate.update(reply_count=rows[root].get("reply_count"), latest_reply=rows[root].get("latest_reply"))
+        prior, anchors = _prior_evidence(observations[root], root)
+        candidate.update(prior)
+        required[root].update(anchors)
     ordered = sorted(candidates, key=lambda root: (_order(candidates[root]["latest_reply"] or root), _order(root)), reverse=True)
     evidence, finished = [], set()
     for root in ordered[:max_threads]:

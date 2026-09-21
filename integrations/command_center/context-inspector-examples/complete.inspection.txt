@@ -1,0 +1,22 @@
+Slack captured-context inspection
+
+Classification: SYNTHETIC_REHEARSAL
+Capture time (declared): 2026-01-01T00:00:00Z
+Live freshness: NOT_CHECKED; no provider actions performed.
+Selected message: 1700000020.000003
+Resolved root: 1700000000.000001 (RESOLVED)
+Reader coverage complete: True
+All supplied capture reads reconciled: True
+Reason: None
+Pages read: 2; unused captured reads: 0
+
+Observed messages (literal JSON strings; no inferred claimant):
+{"latest_reply": "1700000020.000003", "reply_count": 2, "text": "FICTION: original work order", "ts": "1700000000.000001"}
+{"text": "FICTION: Rowan already took source review", "thread_ts": "1700000000.000001", "ts": "1700000010.000002"}
+{"permalink": "https://fixture.slack.com/archives/CDEMO/p1700000020000003?thread_ts=1700000000.000001&cid=CDEMO", "subtype": "thread_broadcast", "text": "FICTION: review requested", "thread_ts": "1700000000.000001", "ts": "1700000020.000003"}
+
+Capture diagnostics: []
+Refresh request (NOT executed): {"method": "conversations.replies", "payload": {"channel": "CDEMO", "limit": 2, "ts": "1700000000.000001"}}
+Continuation (NOT executed): null
+
+No result authorizes posting or proves a work slot is free.
