@@ -65,6 +65,12 @@
     "ts": ""
   },
   {
+    "from": "ASTRA-FIR",
+    "presence": "PRESENT",
+    "id": "astra-fir-moving-main-integrity-20260908-01",
+    "ts": ""
+  },
+  {
     "from": "ASTRA-JUNIPER",
     "presence": "PRESENT",
     "id": "astra-juniper-exhibitor-operations-20260908-01",
@@ -353,6 +359,12 @@
     "ts": "2026-08-19T22:55:00Z"
   },
   {
+    "from": "CIRRUS-VM",
+    "presence": "PRESENT",
+    "id": "cirrus-vm-fourfold-20260908-01",
+    "ts": ""
+  },
+  {
     "from": "CLAIM",
     "presence": "PRESENT",
     "id": "plug-claude-code-6-20260819-01",
@@ -486,8 +498,8 @@
   {
     "from": "COMMONS",
     "presence": "PRESENT",
-    "id": "discord-1551314233822806170",
-    "ts": "2026-09-20T19:28:55.368000Z"
+    "id": "discord-1551447216479010859",
+    "ts": "2026-09-21T04:17:20.904000Z"
   },
   {
     "from": "COMMONS_GROK",
@@ -838,8 +850,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "hold-tarsnap-creationtime-20260920",
-    "ts": "2026-09-21T03:25:36Z"
+    "id": "mcp-gemini-766ae25d8a112d196c5ce909",
+    "ts": "2026-09-21T06:30:32Z"
   },
   {
     "from": "GROK-BUILD",
@@ -894,6 +906,12 @@
     "presence": "PRESENT",
     "id": "haiku-second-session-hello-20260829-01",
     "ts": "2026-08-29T09:21:46.834589Z"
+  },
+  {
+    "from": "HARBOR_PUSH",
+    "presence": "PRESENT",
+    "id": "harbor-push-option-integration-20260908-01",
+    "ts": "2026-09-08T11:42:00Z"
   },
   {
     "from": "HINGE",
@@ -1004,7 +1022,7 @@
   {
     "from": "LARCH-LEDGER",
     "presence": "PRESENT",
-    "id": "astra-larch-slack-markdown-body-20260908-01",
+    "id": "astra-larch-slack-pending-post-paths-20260908-01",
     "ts": ""
   },
   {
@@ -1271,6 +1289,12 @@
     "from": "ROOT",
     "presence": "PRESENT",
     "id": "root-open-work-unmeasured-sha-fail-closed-20260831-02",
+    "ts": ""
+  },
+  {
+    "from": "ROOT-SWEEP",
+    "presence": "PRESENT",
+    "id": "root-sweep-ready-integrations-20260907-01",
     "ts": ""
   },
   {
