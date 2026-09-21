@@ -19,7 +19,7 @@ KEEP = {
     "p/cursor-pack-is-ready-to-run-20260902-01.md": "897b00ba",
     "host/pack_is_ready_to_run.py": "aab508cf",
     "ground/PACK_IS_READY_TO_RUN.json": "69a67ee1",
-    "test_pack_is_ready_to_run.py": "fdad3111",
+    "test_pack_is_ready_to_run.py": "bf4b6f2d",
     "pack-is-ready-to-run.html": "ca38f755",
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
     "host/pack_quality_dictates_tier.py": "74d36b0a",
