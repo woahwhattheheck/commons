@@ -1,8 +1,8 @@
 {
   "counts": {
-    "open_issues": 167,
+    "open_issues": 377,
     "open_pull_requests": 83,
-    "runs_in_progress": 5,
+    "runs_in_progress": 6,
     "runs_queued": 70
   },
   "counts_source": "graphql",
@@ -69,13 +69,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "repair/repo-pulse-slack-ingest-list-scope-20260921",
-      "created_at": "2026-09-21T07:14:53Z",
+      "branch": "codex/mainline-goat-pages-boards-pin-lift-20260921",
+      "created_at": "2026-09-21T13:13:15Z",
       "draft": false,
-      "head_sha": "ee9371bc59122ad822c90f581242c1506e576f8e",
-      "number": 16561,
-      "title": "Keep Slack ingest listing when one conversation type lacks scope",
-      "updated_at": "2026-09-21T07:14:53Z"
+      "head_sha": "e3ade29e56cb0fc20a23cdea884e09953050f250",
+      "number": 16726,
+      "title": "Fix goat pages boards KEEP pin",
+      "updated_at": "2026-09-21T14:08:17Z"
     },
     {
       "author": "woahwhattheheck",
@@ -260,12 +260,67 @@
     "16406": "25ec30561ec6d0678c09733b612dcb3f3f82bf72",
     "16431": "f6bd5e0731a84db94e4978a62efe973858549f97",
     "16504": "cc70a743cbe6f4462aaf70b8b27f750bf42d336a",
-    "16561": "ee9371bc59122ad822c90f581242c1506e576f8e"
+    "16726": "e3ade29e56cb0fc20a23cdea884e09953050f250"
   },
   "pulls_listed": 83,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 14.0,
+  "queue_depth_per_runner": 11.7,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "repair/slack-full-body-chunk-readback-keep-lift-20260921",
+      "closed_at": "2026-09-21T10:53:09Z",
+      "head_sha": "f2f755564b1c053ce30de78a4b5923a1550fb573",
+      "merged_at": "2026-09-21T10:53:09Z",
+      "number": 16725,
+      "state": "MERGED",
+      "title": "Lift item-7 chunk readback KEEP pins after ingest remint"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "repair/commons-slack-full-body-chunk-ship-pins-20260921",
+      "closed_at": "2026-09-21T10:44:57Z",
+      "head_sha": "14b3e31c9c5cdc0dc59eace40dbd213bd6a97856",
+      "merged_at": "2026-09-21T10:44:57Z",
+      "number": 16724,
+      "state": "MERGED",
+      "title": "Repair Commons Slack full-body chunk and ship custody pins"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "repair/slack-full-body-revision-pins-20260921",
+      "closed_at": "2026-09-21T08:09:37Z",
+      "head_sha": "e285411ab5ad4d1350111b9629e1491b4fa15edf",
+      "merged_at": null,
+      "number": 16643,
+      "state": "CLOSED",
+      "title": "Repair exact-current Slack full-body revision pins"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "repair/repo-pulse-slack-ingest-github-rate-20260921",
+      "closed_at": "2026-09-21T07:51:16Z",
+      "head_sha": "3cfff93a8421f5df231c6d17ec11aea5f4e63c65",
+      "merged_at": "2026-09-21T07:51:16Z",
+      "number": 16642,
+      "state": "MERGED",
+      "title": "Retry GitHub secondary rate limits during Slack ingest issue writes"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "repair/repo-pulse-slack-ingest-list-scope-20260921",
+      "closed_at": "2026-09-21T07:23:50Z",
+      "head_sha": "c0d2fed0b07d8fa382c7914f98bfdc2f9e48c4c4",
+      "merged_at": "2026-09-21T07:23:50Z",
+      "number": 16561,
+      "state": "MERGED",
+      "title": "Keep Slack ingest listing when one conversation type lacks scope"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -375,65 +430,10 @@
       "number": 15724,
       "state": "MERGED",
       "title": "Close Indiana IOT retained-evidence trust-root defect"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "relay-z/deploy-transport-preflight-15671",
-      "closed_at": "2026-09-21T04:07:28Z",
-      "head_sha": "8efdd09880cc6d37de5122d930091eb90c1409ee",
-      "merged_at": "2026-09-21T04:07:28Z",
-      "number": 15730,
-      "state": "MERGED",
-      "title": "Recover deploy-source preflight and executable source-change rehearsal"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-af1614/exact-head-ship-fence-15676-r2",
-      "closed_at": "2026-09-21T04:07:25Z",
-      "head_sha": "c5cb49ea087f6884ea21ecdad159447927a3d36e",
-      "merged_at": "2026-09-21T04:07:25Z",
-      "number": 15731,
-      "state": "MERGED",
-      "title": "feat: exact-head ship fence for moving-main + CI truth"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "sol-z/bounded-canonical-json-20260917",
-      "closed_at": "2026-09-21T04:07:22Z",
-      "head_sha": "b229fa33e3ac899010b105d1d3c01c727d6062b7",
-      "merged_at": "2026-09-21T04:07:22Z",
-      "number": 15732,
-      "state": "MERGED",
-      "title": "infra: add bounded canonical JSON verifier boundary"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol/revenue-lane-current-state-15750",
-      "closed_at": "2026-09-21T04:07:17Z",
-      "head_sha": "3f6c365bc02476ed9ecaab888d4faf07b0a8b6fc",
-      "merged_at": "2026-09-21T04:07:17Z",
-      "number": 15758,
-      "state": "MERGED",
-      "title": "Revenue coordination: canonical current-state compiler + stale-body guard"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarmz/titan-v5-wheat-carry-14337-20260917",
-      "closed_at": "2026-09-21T04:07:14Z",
-      "head_sha": "0ef83d84641258641f634fe6a68e198e85d555bd",
-      "merged_at": "2026-09-21T04:07:14Z",
-      "number": 15761,
-      "state": "MERGED",
-      "title": "TITAN V5: bind post-auth WHEAT carry census to D2 source"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-21T07:17:42Z",
+  "unchanged_since": "2026-09-21T14:16:10Z",
   "undatable_pulls": []
 }
