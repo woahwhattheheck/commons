@@ -23,9 +23,13 @@ ROOT = Path(__file__).resolve().parent
 DEPENDENCY = ROOT.parent / "uiowa_rfq_18649_delivery_metrics"
 
 
-def git_blob(path: Path) -> str:
-    data = path.read_bytes()
+def _blob(data: bytes) -> str:
     return hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + b"\0" + data).hexdigest()
+
+
+def git_blob(path: Path) -> str:
+    """Compatibility helper; rehearsal receipts hash their captured buffers."""
+    return _blob(path.read_bytes())
 
 
 def _write(path: Path, fields: list[str], rows: list[dict]) -> None:
@@ -40,7 +44,11 @@ def rehearse(expected_calculator_blob: str | None = None) -> dict:
     fixture = DEPENDENCY / "fixtures/synthetic_deployments.csv"
     if not calculator.is_file() or not fixture.is_file():
         raise InputError("full checkout required: sibling delivery_metrics calculator/fixture is missing")
-    blobs = {str(p.relative_to(ROOT.parent)): git_blob(p) for p in (calculator, fixture)}
+    dst_fixture = ROOT / "fixtures/delivery_dst.csv"
+    # Each receipt names the same byte sequence used below, not a later path
+    # read or timestamp-valid .pyc. This is not an atomic multi-file snapshot.
+    captured = {p: p.read_bytes() for p in (calculator, fixture, dst_fixture)}
+    blobs = {str(p.relative_to(ROOT.parent)): _blob(data) for p, data in captured.items()}
     if expected_calculator_blob and blobs["uiowa_rfq_18649_delivery_metrics/calculator.py"] != expected_calculator_blob:
         raise InputError("calculator revision drift: supplied expected blob does not match this checkout")
     name = "_uiowa129_real_delivery_calculator"
@@ -48,20 +56,36 @@ def rehearse(expected_calculator_blob: str | None = None) -> dict:
     if spec is None or spec.loader is None:
         raise InputError("could not load sibling calculator")
     module = importlib.util.module_from_spec(spec)
-    previous = sys.modules.get(name)
+    absent = object()
+    previous = sys.modules.get(name, absent)
     sys.modules[name] = module  # dataclass resolves its defining module during import.
     try:
-        spec.loader.exec_module(module)
+        try:
+            # Preserve module metadata and dataclass lookup, but never ask a
+            # loader to reread source or select cached bytecode after hashing.
+            code = compile(captured[calculator], str(calculator), "exec", dont_inherit=True)
+            exec(code, module.__dict__)
+        except (SyntaxError, ImportError) as exc:
+            raise InputError(f"dependency source could not be loaded: {exc}") from exc
+        if not all(callable(getattr(module, name, None)) for name in ("calculate", "load_deployments")):
+            raise InputError("dependency source must provide calculate and load_deployments callables")
         window = {"window_start": datetime(2026, 9, 1, tzinfo=timezone.utc),
                   "window_end": datetime(2026, 9, 15, tzinfo=timezone.utc),
                   "service": "synthetic-registration"}
-        original = module.calculate(module.load_deployments(fixture), **window)
-        fields, rows = read_rows(fixture)
-        audit = convert_rows(rows)
-        if audit["status"] != "ready":
-            raise InputError("published fixture unexpectedly fails timestamp normalization")
         with tempfile.TemporaryDirectory(prefix="uiowa129-") as temporary:
             temporary = Path(temporary)
+            # The existing calculator accepts paths. Feed it private copies of
+            # the captured fixtures without changing its parser or caller data.
+            original_path = temporary / "original.csv"
+            dst_source = temporary / "dst-source.csv"
+            for target, source in ((original_path, fixture), (dst_source, dst_fixture)):
+                with target.open("xb") as stream:
+                    stream.write(captured[source])
+            original = module.calculate(module.load_deployments(original_path), **window)
+            fields, rows = read_rows(original_path)
+            audit = convert_rows(rows)
+            if audit["status"] != "ready":
+                raise InputError("published fixture unexpectedly fails timestamp normalization")
             normalized = temporary / "normalized.csv"
             _write(normalized, fields, audit["normalized_rows"])
             round_trip = module.calculate(module.load_deployments(normalized), **window)
@@ -81,7 +105,7 @@ def rehearse(expected_calculator_blob: str | None = None) -> dict:
             mixed_path = temporary / "mixed.csv"
             _write(mixed_path, fields, mixed_audit["normalized_rows"])
             mixed_report = module.calculate(module.load_deployments(mixed_path), **window)
-            dst_fields, dst_rows = read_rows(ROOT / "fixtures/delivery_dst.csv")
+            dst_fields, dst_rows = read_rows(dst_source)
             dst_audit = convert_rows(dst_rows)
             if dst_audit["status"] != "ready":
                 raise InputError("DST fixture unresolved; inspect installed timezone data")
@@ -107,7 +131,7 @@ def rehearse(expected_calculator_blob: str | None = None) -> dict:
                 "ambiguous_recovery_diagnostics": [e for e in ambiguous_audit["audit"] if e["normalization"]["status"] != "resolved"],
                 "boundary": "Executed synthetic compatibility rehearsal, not a University finding or proof of recovery."}
     finally:
-        if previous is None:
+        if previous is absent:
             sys.modules.pop(name, None)
         else:
             sys.modules[name] = previous
