@@ -27,6 +27,19 @@ The current public competition requires substantive OpenCV 5 image/video analysi
 
 ## Quickstart
 
+The additive [multi-photo packet extension](PACKET_GUIDE.md) checks required
+views, image quality, duplicates and content custody before human review. Run
+its complete synthetic image-packet rehearsal from repository root:
+
+```bash
+python competitions/opencv-ai-2026/visual-evidence-gate/packet_rehearsal.py ./packet-demo
+```
+
+Open the generated `packet-demo/READOUT.md`; the guide includes local inspection,
+exact receipt verification, the read-only S3 contract and interpretation limits.
+The single-frame gate below retains its original behavior. Run these original
+commands from `competitions/opencv-ai-2026/visual-evidence-gate/`:
+
 ```bash
 python evaluate.py
 python -m unittest discover -s tests -v
