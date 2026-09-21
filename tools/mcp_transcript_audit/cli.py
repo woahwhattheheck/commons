@@ -74,8 +74,12 @@ def _write_exclusive(path: str, data: bytes) -> None:
             raise
 
 
-def _emit(value: dict, output: str | None) -> None:
-    payload = canonical_json_bytes(value)
+def _emit(value: dict, output: str | None, output_format: str = "json") -> None:
+    if output_format == "markdown":
+        from .report import render_markdown
+        payload = render_markdown(value).encode("utf-8")
+    else:
+        payload = canonical_json_bytes(value)
     if output:
         _write_exclusive(output, payload)
     else:
@@ -97,6 +101,11 @@ def _parser() -> argparse.ArgumentParser:
     verify.add_argument("capture")
     verify.add_argument("receipt")
     verify.add_argument("--output", "-o")
+    for command in (audit, verify):
+        command.add_argument(
+            "--format", choices=("json", "markdown"), default="json",
+            help="JSON receipt/result (default), or a readable Markdown view",
+        )
     return parser
 
 
@@ -106,11 +115,11 @@ def main(argv: list[str] | None = None) -> int:
         source = _read_bounded(args.capture, max_bytes=MAX_CAPTURE_BYTES, label="capture")
         if args.command == "audit":
             result = audit_transcript(source)
-            _emit(result, args.output)
+            _emit(result, args.output, args.format)
             return 0 if result["status"] == "PASS" else 3
         receipt = _read_bounded(args.receipt, max_bytes=MAX_RECEIPT_BYTES, label="receipt")
         result = verify_receipt(source, receipt)
-        _emit(result, args.output)
+        _emit(result, args.output, args.format)
         return 0 if result["valid"] else 3
     except (OSError, ValueError) as exc:
         print(f"mcp-transcript-audit: {exc}", file=sys.stderr)
