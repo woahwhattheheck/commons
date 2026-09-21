@@ -20,7 +20,7 @@ KEEP = {
     "host/merge_on_pr.py": "5062c29b",
     "ground/MERGE_ON_PR.json": "4e7967dc",
     "merge-on-pr.html": "f1d0c6d9",
-    "test_merge_on_pr.py": "c2b0212d",
+    "test_merge_on_pr.py": "80ce8cfc",
     "host/sprint_integration.py": "1ba2002c",
     "ground/SPRINT_INTEGRATION.json": "eba10870",
     "host/pr7915_closed_unmerged.py": "9d56ea0e",
@@ -39,7 +39,7 @@ KEEP = {
     "p/cursor-mcp-get-grounding-readback-20260902-01.md": "4d7bc317",
     "hub_pages.py": "673dab89",
     "door.js": "5899223c",
-    "api/mcp.py": "393da756",
+    "api/mcp.py": "a2683bf4",
     "ground/OWNER_NOW.md": "39a0e0c3",
     "autogtm.html": "5c966110",
 }
