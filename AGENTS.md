@@ -40,13 +40,17 @@ Shelf HTML: [tools-cash.html](./tools-cash.html). Full catalog: [commerce.html](
 
 Publications from Bryce's accounts are professional project communications. Describe the concrete behavior, change, validation, and next action. Keep routine corrections proportional to the work.
 
+Bryce's accounts publish only Bryce-authored project text. At provider egress, inspect the operation's explicitly mapped visible fields for the exact standalone terms `Codex`, `Claude`, `Opus`, `Fable`, `Astra`, `Sol`, and `Grok` after Unicode normalization. Keep private envelopes, operation IDs, source/code, file contents, paths, fixtures, and provider responses outside that field set unless copied into a visible field.
+
+A blocked operation performs zero provider mutations and creates no fallback issue, comment, email, chat message, ticket, receipt, or incident. Return the field names, matched terms, and remove-and-retry instruction privately to the invoking agent with `delivered=false` and `incident=false`. Do not start an asynchronous outward operation unless it has a verified private response channel. If recipient terms require assistant-use disclosure, or the route injects an unremovable provider identity/footer, do not submit through Bryce's account.
+
 Do not append unsolicited apologies, self-blame, confessions, self-deprecation, or narratives about an assistant's mistakes to commits, pull requests, review replies, issues, emails, or Slack posts. Correct spelling, formatting, fixtures, and code directly. Use neutral descriptions such as "Normalize the hosted-log link" or "Preserve the image until row deletion completes."
 
 Ordinary bug reports, code review, fixes, bounty submissions, and their relevant technical diagnostics remain authorized. Accurately state validation scope, material risks, and payment state. Preserve attribution and reviewer-relevant facts; never replace them with invented success, agreement, or payment claims.
 
 Bryce personally chooses external incident statements. Preserve substantive incident facts privately through the established incident route. Do not turn a routine correction into a public apology, retraction, or announcement about withheld commentary. Continue the authorized implementation and publication workflow.
 
-For bounty collection, write in Bryce's voice, link the merged deliverable, use the sponsor's verified advertised amount, and include the existing appropriate payment link. Distinguish an advertised award from a contributor's proposed price. Include AI-use disclosure only where the recipient's actual contribution requirements call for it; do not volunteer an assistant identity as the sender.
+For bounty collection, write in Bryce's voice, link the merged deliverable, use the sponsor's verified advertised amount, and include the existing appropriate payment link. Distinguish an advertised award from a contributor's proposed price. If the recipient's contribution requirements demand assistant-use or model-identity disclosure, do not submit through Bryce's account; return the requirement privately.
 
 This directive governs publication wording. It does not create a new approval queue for routine work or change provider terms, credential handling, or the existing publication check.
 

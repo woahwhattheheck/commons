@@ -5,7 +5,7 @@ import argparse
 import json
 import sys
 
-from hook import POLICY_CONTEXT, publication_verdict
+from hook import POLICY_CONTEXT, private_feedback, publication_verdict
 
 
 def handle(event: dict, client: str) -> dict:
@@ -19,8 +19,9 @@ def handle(event: dict, client: str) -> dict:
         verdict = publication_verdict(event)
         if verdict is None or verdict["allowed"]:
             return {"permission": "allow"}
-        return {"permission": "deny", "user_message": verdict["message"],
-                "agent_message": verdict["message"]}
+        feedback = private_feedback(verdict)
+        return {"permission": "deny", "user_message": feedback,
+                "agent_message": feedback}
     if client == "gemini":
         if name in {"SessionStart", "BeforeAgent"}:
             return {"hookSpecificOutput": {"hookEventName": name,
@@ -32,7 +33,7 @@ def handle(event: dict, client: str) -> dict:
             return {}
         # Deny only this proposed publication. continue:false would terminate
         # the agent loop and prevent the requested useful work from continuing.
-        return {"decision": "deny", "reason": verdict["message"]}
+        return {"decision": "deny", "reason": private_feedback(verdict)}
     raise ValueError("unsupported native client")
 
 

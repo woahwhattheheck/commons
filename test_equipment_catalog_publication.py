@@ -34,6 +34,9 @@ class CatalogPublicationTests(unittest.TestCase):
         self.catalog.extensions.append(GeminiEquipment(None))
         self.catalog.services = ServiceEquipment(
             slack_token_loader=lambda: 'synthetic-catalog-fixture', opener=self._http)
+        # These delivery-format tests explicitly simulate a separately verified,
+        # owner-controlled and footer-free route. Production defaults read-only.
+        self.catalog.services._slack_write_route_verified = lambda: True
         self.calls = ToolCallStore(self.root / 'calls.sqlite3')
         self.addCleanup(self.calls.close)
         for target in ('socket.create_connection', 'subprocess.Popen'):
