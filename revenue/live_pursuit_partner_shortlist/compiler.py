@@ -177,7 +177,10 @@ def _validate_impl(raw: Any, authenticate, live_now, generation_sha) -> dict[str
 
         reqs = []
         req_ids = set()
-        for ri, r0 in enumerate(_list(p.get("requirements"), f"pursuit[{pi}].requirements")):
+        raw_requirements = _list(p.get("requirements"), f"pursuit[{pi}].requirements")
+        if not raw_requirements:
+            raise InputError(f"pursuit[{pi}].requirements: at least one retained requirement is required")
+        for ri, r0 in enumerate(raw_requirements):
             r = _obj(r0, f"requirement[{pi}:{ri}]")
             _closed(r, {"requirement_id", "text", "mandatory", "partner_eligible", "category", "capability_key"}, f"requirement[{pi}:{ri}]")
             rid = _id(r, "requirement_id", f"requirement[{pi}:{ri}]")
