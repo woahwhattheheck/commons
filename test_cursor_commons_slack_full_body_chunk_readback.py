@@ -18,13 +18,13 @@ DOOR = ROOT / "commons-slack-chunk.html"
 KEEP = {
     "p/cursor-commons-slack-full-body-chunk-20260902-01.md": "94770f41",
     "host/commons_slack_full_body_chunk.py": "b132f8bb",
-    "ground/COMMONS_SLACK_FULL_BODY_CHUNK.json": "df1d7af1",
-    "test_commons_slack_full_body_chunk.py": "25174d80",
+    "ground/COMMONS_SLACK_FULL_BODY_CHUNK.json": "ebf1c8be",
+    "test_commons_slack_full_body_chunk.py": "2c67acbe",
     "commons-slack-chunk.html": "4d9ebea2",
     "host/commons_slack_full_body.py": "7a6067d7",
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
-    "ground/COMMONS_SLACK_FULL_BODY.json": "5b2bf0e0",
-    "test_commons_slack_full_body.py": "6a66d3f8",
+    "ground/COMMONS_SLACK_FULL_BODY.json": "9f76a6fe",
+    "test_commons_slack_full_body.py": "2daac830",
     "host/slack_mirror.py": "72c0844e",
     "test_slack_mirror.py": "739d5ee8",
     "commons-slack.html": "b7630b56",
@@ -36,7 +36,7 @@ KEEP = {
     "p/grokbuild-occupancy-landed-work-keep-lift-readback-20260902-01.md": "892bc4c0",
     "hub_pages.py": "673dab89",
     "door.js": "5899223c",
-    "api/mcp.py": "393da756",
+    "api/mcp.py": "a2683bf4",
     "ground/OWNER_NOW.md": "39a0e0c3",
 }
 
