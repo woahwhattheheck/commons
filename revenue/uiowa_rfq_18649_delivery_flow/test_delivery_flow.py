@@ -286,6 +286,30 @@ class DeliveryFlowTests(unittest.TestCase):
         self.assertEqual(normal.stderr, b"")
         self.assertEqual(optimized.stderr, b"")
 
+    def test_synthetic_report_matches_cli(self):
+        argv = [str(HERE / "delivery_flow.py"), "--input", str(FIXTURE)]
+        proc = subprocess.run([sys.executable, *argv], capture_output=True, check=False)
+        self.assertEqual((proc.returncode, proc.stderr), (0, b""))
+        self.assertEqual(proc.stdout, (HERE / "synthetic-report.md").read_bytes())
+
+    def test_execution_record_binds_landed_files(self):
+        record = json.loads((HERE / "EXECUTION.json").read_text())
+        root = HERE.parents[1]
+        for path, rec in record["files"].items():
+            raw = (root / path).read_bytes()
+            self.assertEqual(hashlib.sha256(raw).hexdigest(), rec["sha256"], path)
+            header = ("blob %d\0" % len(raw)).encode()
+            self.assertEqual(hashlib.sha1(header + raw).hexdigest(), rec["git_blob"], path)
+
+    def test_execution_json_stdout_and_metrics(self):
+        record = json.loads((HERE / "EXECUTION.json").read_text())
+        argv = [str(HERE / "delivery_flow.py"), "--input", str(FIXTURE), "--format", "json"]
+        proc = subprocess.run([sys.executable, *argv], capture_output=True, check=False)
+        self.assertEqual((proc.returncode, proc.stderr), (0, b""))
+        self.assertEqual(hashlib.sha256(proc.stdout).hexdigest(), record["json_stdout_sha256"])
+        report = json.loads(proc.stdout.decode())
+        self.assertEqual({row["id"]: row["metrics"] for row in report["traces"]}, record["result_metrics"])
+
 
 if __name__ == "__main__":
     unittest.main()

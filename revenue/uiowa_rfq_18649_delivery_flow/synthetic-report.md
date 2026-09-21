@@ -20,6 +20,8 @@ Input SHA-256: `91fdf56e1cc81cc3125e4a30c57992b3366789c6ed1668dc5ea72e5d89acf181
 | attempt\_count | 7 |
 | failed\_attempt\_count | 1 |
 | repeat\_attempt\_count | 1 |
+| failed\_execution\_measure\_counts | {'complete': 1, 'censored': 0, 'unknown': 0} |
+| repeat\_execution\_measure\_counts | {'complete': 1, 'censored': 0, 'unknown': 0} |
 | queue\_measure\_counts | {'complete': 7} |
 | execution\_measure\_counts | {'complete': 7} |
 | observation\_window\_seconds | 3600.0 |
@@ -42,11 +44,14 @@ Input SHA-256: `91fdf56e1cc81cc3125e4a30c57992b3366789c6ed1668dc5ea72e5d89acf181
 | promotion | 1 | {'success': 1} | records_supplied | E1 |
 | deployment | 1 | {'success': 1} | records_supplied | E1 |
 
+Reproducibility corroboration: NOT\_ESTABLISHED\_BY\_TOOL
+
 ### Follow-up
 
 | Code / subject | Question | Evidence |
 |---|---|---|
 | FAILED\_ATTEMPT / V1 | What caused this failure; was the next attempt a rerun or changed work? | E1 |
+| REPRODUCIBILITY\_REVIEW / reproducibility | What comparable input/artifact records and conditions corroborate this supplied reproducibility account? | E1 |
 
 ### Evidence locators
 
@@ -59,6 +64,8 @@ Input SHA-256: `91fdf56e1cc81cc3125e4a30c57992b3366789c6ed1668dc5ea72e5d89acf181
 | attempt\_count | 4 |
 | failed\_attempt\_count | 0 |
 | repeat\_attempt\_count | 0 |
+| failed\_execution\_measure\_counts | {'complete': 0, 'censored': 0, 'unknown': 0} |
+| repeat\_execution\_measure\_counts | {'complete': 0, 'censored': 0, 'unknown': 0} |
 | queue\_measure\_counts | {'censored': 1, 'complete': 2, 'unknown': 1} |
 | execution\_measure\_counts | {'censored': 1, 'complete': 1, 'unknown': 2} |
 | observation\_window\_seconds | 3600.0 |
@@ -81,6 +88,8 @@ Input SHA-256: `91fdf56e1cc81cc3125e4a30c57992b3366789c6ed1668dc5ea72e5d89acf181
 | promotion | 1 | {'unknown': 1} | records_supplied | E1 |
 | deployment | 0 | {} | unknown |  |
 
+Reproducibility corroboration: NOT\_ESTABLISHED\_BY\_TOOL
+
 ### Follow-up
 
 | Code / subject | Question | Evidence |
@@ -90,7 +99,7 @@ Input SHA-256: `91fdf56e1cc81cc3125e4a30c57992b3366789c6ed1668dc5ea72e5d89acf181
 | OWNER\_UNKNOWN / M1 | Which organizational role maintains this step and handles failures? | E1 |
 | TIME\_COVERAGE / M1 | Which queue/start/finish records or current-state observations are missing? | E1 |
 | STAGE\_UNKNOWN / deployment | Is this stage absent, external/shared, combined with another step, or unrecorded? |  |
-| REPRODUCIBILITY\_REVIEW / reproducibility | What comparable input/artifact records and conditions demonstrate a repeatable build? | E1 |
+| REPRODUCIBILITY\_REVIEW / reproducibility | What comparable input/artifact records and conditions corroborate this supplied reproducibility account? | E1 |
 
 ### Evidence locators
 
@@ -103,6 +112,8 @@ Input SHA-256: `91fdf56e1cc81cc3125e4a30c57992b3366789c6ed1668dc5ea72e5d89acf181
 | attempt\_count | 2 |
 | failed\_attempt\_count | 0 |
 | repeat\_attempt\_count | 1 |
+| failed\_execution\_measure\_counts | {'complete': 0, 'censored': 0, 'unknown': 0} |
+| repeat\_execution\_measure\_counts | {'complete': 0, 'censored': 0, 'unknown': 1} |
 | queue\_measure\_counts | {'complete': 1, 'unknown': 1} |
 | execution\_measure\_counts | {'complete': 1, 'unknown': 1} |
 | observation\_window\_seconds | 3600.0 |
@@ -125,6 +136,8 @@ Input SHA-256: `91fdf56e1cc81cc3125e4a30c57992b3366789c6ed1668dc5ea72e5d89acf181
 | promotion | 0 | {} | unknown |  |
 | deployment | 1 | {'success': 1} | records_supplied |  |
 
+Reproducibility corroboration: NOT\_ESTABLISHED\_BY\_TOOL
+
 ### Follow-up
 
 | Code / subject | Question | Evidence |
@@ -136,7 +149,7 @@ Input SHA-256: `91fdf56e1cc81cc3125e4a30c57992b3366789c6ed1668dc5ea72e5d89acf181
 | STAGE\_UNKNOWN / verification | Is this stage absent, external/shared, combined with another step, or unrecorded? |  |
 | STAGE\_UNKNOWN / packaging | Is this stage absent, external/shared, combined with another step, or unrecorded? |  |
 | STAGE\_UNKNOWN / promotion | Is this stage absent, external/shared, combined with another step, or unrecorded? |  |
-| REPRODUCIBILITY\_REVIEW / reproducibility | What comparable input/artifact records and conditions demonstrate a repeatable build? |  |
+| REPRODUCIBILITY\_REVIEW / reproducibility | What comparable input/artifact records and conditions corroborate this supplied reproducibility account? |  |
 
 ### Evidence locators
 
