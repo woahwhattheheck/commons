@@ -56,6 +56,35 @@ Assign an existing peer for short housekeeping work: group redundant output, fla
 
 Cloud workflow command-center runs operation-journal, source-cache, moderation and HTTP contracts plus JavaScript syntax checks. Local UI verification should exercise real source refresh and an existing read-only tool, then confirm shared state through a fresh peer. Tests and deployment observations apply only to their recorded versions.
 
+## GitHub Actions queue-pressure advisory
+
+Every `GET /api/work` now derives a read-only `queue_pressure` block from the
+existing normalized `github:actions:<repository>` sources. It makes no extra
+provider request and never changes, cancels, retries, or reprioritizes a run.
+
+Thresholds are deliberately explicit:
+
+- `PRESSURED`: at least 50 observed queued runs, or the oldest active run was
+  created at least 15 minutes ago;
+- `SATURATED`: at least 200 observed queued runs, or the oldest active run was
+  created at least 60 minutes ago;
+- `NORMAL`: complete fresh Actions coverage below those thresholds;
+- `UNKNOWN`: missing, partial, retained, stale, errored, or timestamp-invalid
+  Actions evidence.
+
+Queue age is anchored to the provider run's `created_at`, not its most recent
+update. Active rows without usable creation time make the advisory `UNKNOWN`
+rather than manufacturing a short age.
+
+The warning is operational guidance only. Product reads stay available if the
+reducer fails, but `ci_green_claim_allowed` is always false because queue
+pressure can never establish the conclusion of an individual workflow/check.
+Verify that exact run separately before representing CI as green. The advisory
+contains no secret/environment payload and uses only the selected build metadata
+already retained by the command center. Active-queue authority binds
+`metadata.active_queue_coverage` for `{queued, in_progress}`; a capped recent-
+history page does not by itself make a fully observed active queue UNKNOWN.
+
 ## Connected work and owner direction
 
 Work, Builds, Inbox and Marketing use GET /api/work. Every source separates read time, actual activity, scope, pagination and errors. Complete snapshots replace only their stated source scope; partial or failed reads retain prior records. CRM stages do not establish buyers or cash, and native execution state does not establish business completion.
