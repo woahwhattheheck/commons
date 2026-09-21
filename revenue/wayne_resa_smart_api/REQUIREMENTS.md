@@ -42,7 +42,7 @@ C.1 requires both data exchange and transactional/synchronization actions across
 
 | ID | Page | Buyer requirement | Lab relevance / remaining evidence |
 |---|---|---|---|
-| E.1 | 9 | Unauthenticated endpoints or exposed direct database access disqualify a proposal. | Offline allow/deny fixtures are not an identity system or an exposed service. |
+| E.1 | 9 | Unauthenticated endpoints or exposed direct database access disqualify a proposal. | Offline permit/refuse fixtures are not a caller-auth system or an exposed service. |
 | E.1.a | 9 | Standard identity protocols with cryptographically protected tokens; OAuth flows and JWTs are examples. | Actual issuer, audience, keys, claims, and token validation are unimplemented unless separately evidenced. |
 | E.1.b | 9 | Enforce granular roles and the precise data scope of each request. | Synthetic scope decisions can be tested; real role-to-data mapping is missing. |
 | E.1.c | 9 | Store integration secrets in environment configuration or a vault, never source code. | No live secrets belong in this lab. Production secret lifecycle remains a deployment deliverable. |
