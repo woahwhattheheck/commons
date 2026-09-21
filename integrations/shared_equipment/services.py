@@ -20,6 +20,7 @@ from time import monotonic
 from typing import Any
 
 from integrations.shared_equipment.outcomes import effect_uncertain, tool_failed
+from commons_publication_policy import PublicationPolicyViolation, check_outbound_identity
 from integrations.shared_equipment.provider_io import (
     EquipmentError, GitHubSlackEquipment, redacted,
 )
@@ -43,6 +44,11 @@ def _quote(value: str) -> str:
     return urllib.parse.quote(value, safe="")
 
 
+def _require_outbound_identity(fields: dict[str, str]) -> None:
+    """Check final mapped text before any provider access."""
+    decision = check_outbound_identity(fields)
+    if not decision["allowed"]:
+        raise PublicationPolicyViolation(decision)
 
 def _schema(name: str, description: str, required: dict[str, Any], optional: dict[str, Any] | None = None) -> dict:
     properties = {k: {"type": v} if isinstance(v, str) else v for k, v in required.items()}
@@ -80,7 +86,7 @@ TOOLS = [
     _schema("credential_retrieve_sealed", "Retrieve an actual credential encrypted to the requester's ephemeral public key. Keep the private key in the requesting runtime; only ciphertext enters this road.", {"credential_ref": "string", "recipient_public_key": "string", "transfer_id": "string", "request_id": "string", "call_id": "string"}),
     _schema("slack_read_channel", "Read a Slack channel using existing workspace access. Follow next_cursor for remaining pages.", {"channel_id": "string"}, {"oldest": "string", "latest": "string", "cursor": "string", "limit": "integer"}),
     _schema("slack_read_thread", "Read a Slack thread. Follow next_cursor for remaining replies.", {"channel_id": "string", "thread_ts": "string"}, {"cursor": "string", "limit": "integer"}),
-    _schema("slack_post_message", "Post a message through the existing workspace app. Return its timestamp and permalink. Preserve explicit model/role attribution in text.", {"channel_id": "string", "text": "string"}, {"thread_ts": "string"}),
+    _schema("slack_post_message", "Chat writes are read-only until the installed sender identity and footer are verified owner-controlled. A call returns a private nondelivery result and performs no provider mutation.", {"channel_id": "string", "text": "string"}, {"thread_ts": "string"}),
     _schema("github_read_file", "Read a UTF-8 source file and resolved blob SHA through the existing gh account. Set ref to pin a version.", {"repository": "string", "path": "string"}, {"ref": "string"}),
     _schema("github_read_issue", "Read a GitHub issue and one comment page; use comment_page for further pages.", {"repository": "string", "issue_number": "integer"}, {"comment_page": "integer"}),
     _schema("github_read_pull_request", "Read PR state, head/base SHAs, changed files and checks. Use page for further file pages.", {"repository": "string", "pull_number": "integer"}, {"page": "integer"}),
@@ -112,9 +118,24 @@ class ServiceEquipment(GitHubSlackEquipment):
             return {"isError": tool_failed(result), "result": redacted(result),
                     "uncertain": effect_uncertain(result)}
         except Exception as exc:
-            return {"isError": True, "error": type(exc).__name__, "message": redacted(str(exc)),
-                    "code": getattr(exc, "code", type(exc).__name__),
-                    "uncertain": bool(getattr(exc, "uncertain", False))}
+            result = {
+                "isError": True,
+                "error": type(exc).__name__,
+                "message": redacted(str(exc)),
+                "code": getattr(exc, "code", type(exc).__name__),
+                "uncertain": bool(getattr(exc, "uncertain", False)),
+            }
+            for attribute in (
+                "incident",
+                "delivered",
+                "matched_fields",
+                "matched_terms",
+                "private_instruction",
+            ):
+                value = getattr(exc, attribute, None)
+                if value is not None:
+                    result[attribute] = list(value) if isinstance(value, tuple) else value
+            return result
 
     def _token_pool_batch(self, selected: list[str]) -> dict:
         observed_at = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
@@ -312,6 +333,9 @@ class ServiceEquipment(GitHubSlackEquipment):
                     outgoing[field] = a[field]
             if not any(field in outgoing for field in fields):
                 raise EquipmentError("supply the intended title or body")
+            _require_outbound_identity({
+                field: outgoing[field] for field in fields if field in outgoing
+            })
             expected = None
             if name == "github_update_pull_request":
                 expected = _string(a, "expected_head")
@@ -355,6 +379,7 @@ class ServiceEquipment(GitHubSlackEquipment):
                 "status": self.github(f"{root}/commits/{sha}/status")}
         if name == "github_create_branch":
             branch = _string(a, "branch")
+            _require_outbound_identity({"branch": branch})
             # A caller names the source; GitHub resolves it. Keep explicit
             # commit callers compatible, including their existing call shape,
             # and accept legacy base_sha='main' without an extra peer round trip.
@@ -386,6 +411,8 @@ class ServiceEquipment(GitHubSlackEquipment):
             return self.github(root + "/git/refs", method="POST", payload={"ref": "refs/heads/" + branch, "sha": sha})
         if name == "github_commit_files":
             branch, expected = _string(a, "branch"), _string(a, "expected_head")
+            message = _string(a, "message")
+            _require_outbound_identity({"branch": branch, "message": message})
             ref = self.github(root + "/git/ref/heads/" + _quote(branch))
             if ref["object"]["sha"] != expected:
                 raise EquipmentError("branch head changed; read current head and reconcile files")
@@ -395,19 +422,88 @@ class ServiceEquipment(GitHubSlackEquipment):
                 raise EquipmentError("files must contain the useful task changes")
             tree = [{"path": _string(f, "path"), "mode": "100644", "type": "blob", "content": _string(f, "content")} for f in files]
             made_tree = self.github(root + "/git/trees", method="POST", payload={"base_tree": parent["tree"]["sha"], "tree": tree})
-            commit = self.github(root + "/git/commits", method="POST", payload={"message": _string(a, "message"), "tree": made_tree["sha"], "parents": [expected]})
+            commit = self.github(root + "/git/commits", method="POST", payload={"message": message, "tree": made_tree["sha"], "parents": [expected]})
             updated = self.github(root + "/git/refs/heads/" + _quote(branch), method="PATCH", payload={"sha": commit["sha"], "force": False})
             return {"commit_sha": commit["sha"], "branch": branch, "ref": updated, "url": commit.get("html_url")}
         if name == "github_create_pull_request":
             owner = repo.split("/")[0]
             head, base = _string(a, "head"), _string(a, "base")
+            title, body = _string(a, "title"), _string(a, "body")
+            _require_outbound_identity({
+                "head": head,
+                "base": base,
+                "title": title,
+                "body": body,
+            })
             query = urllib.parse.urlencode({"state": "open", "head": head if ":" in head else owner + ":" + head, "base": base})
             existing = self.github(root + "/pulls?" + query)
             if existing:
                 return {"created": False, "pull_request": existing[0]}
-            return self.github(root + "/pulls", method="POST", payload={"head": head, "base": base, "title": _string(a, "title"), "body": _string(a, "body"), "draft": bool(a.get("draft", False))})
+            return self.github(root + "/pulls", method="POST", payload={
+                "head": head,
+                "base": base,
+                "title": title,
+                "body": body,
+                "draft": bool(a.get("draft", False)),
+            })
         if name == "github_merge_pull_request":
-            return self.github(f"{root}/pulls/{int(a['pull_number'])}/merge", method="PUT", payload={"sha": _string(a, "expected_head"), "merge_method": a.get("merge_method", "squash")})
+            number = a.get("pull_number")
+            if isinstance(number, bool) or not isinstance(number, int) or number < 1:
+                raise EquipmentError("pull_number must be a positive integer")
+            expected = _string(a, "expected_head")
+            method = a.get("merge_method", "squash")
+            if method not in {"merge", "squash", "rebase"}:
+                raise EquipmentError("merge_method must be merge, squash, or rebase")
+
+            pull = self.github(f"{root}/pulls/{number}")
+            if pull.get("head", {}).get("sha") != expected:
+                raise EquipmentError("PR head changed; read the current PR before merging")
+            inherited = {
+                "pull_request.title": str(pull.get("title") or ""),
+                "pull_request.body": str(pull.get("body") or ""),
+            }
+            if method in {"merge", "rebase"}:
+                for page in range(1, 11):
+                    commits = self.github(
+                        f"{root}/pulls/{number}/commits?per_page=100&page={page}"
+                    )
+                    if not isinstance(commits, list):
+                        raise EquipmentError("GitHub returned invalid PR commit metadata")
+                    for commit in commits:
+                        sha = str(commit.get("sha") or "unknown")
+                        metadata = commit.get("commit", {})
+                        if not isinstance(metadata, dict):
+                            metadata = {}
+                        message = metadata.get("message")
+                        if isinstance(message, str):
+                            inherited[f"commits[{sha}].message"] = message
+                        for role in ("author", "committer"):
+                            person = metadata.get(role)
+                            if isinstance(person, dict):
+                                for key in ("name", "email"):
+                                    value = person.get(key)
+                                    if isinstance(value, str):
+                                        inherited[f"commits[{sha}].{role}.{key}"] = value
+                            account = commit.get(role)
+                            if isinstance(account, dict) and isinstance(account.get("login"), str):
+                                inherited[f"commits[{sha}].{role}.login"] = account["login"]
+                    if len(commits) < 100:
+                        break
+                else:
+                    raise EquipmentError(
+                        "PR commit metadata exceeds the bounded identity preflight"
+                    )
+            _require_outbound_identity(inherited)
+
+            payload = {"sha": expected, "merge_method": method}
+            if method in {"merge", "squash"}:
+                payload.update({
+                    "commit_title": f"Integrate pull request #{number}",
+                    "commit_message": "Integrate the reviewed change.",
+                })
+            return self.github(
+                f"{root}/pulls/{number}/merge", method="PUT", payload=payload
+            )
         raise EquipmentError("unknown equipment tool: " + name)
 
 
@@ -478,8 +574,11 @@ HARNESS_ROADS = [
         "channel_id": "C0BU51F1PL3",
         "thread_ts": "1788567066.179399",
         "discover": "equipment_capability_manifest envelope",
-        "call": "commons_equipment_request / commons_equipment_result",
-        "note": "Same operation schemas over the workspace connector. No secret material in envelopes.",
+        "call": None,
+        "available": False,
+        "write_disabled": True,
+        "code": "outbound_sender_identity_unverified",
+        "note": "Discovery only. Request/return writes stay read-only until the installed sender route is verified owner-controlled and footer-free.",
     },
 ]
 

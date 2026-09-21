@@ -127,7 +127,7 @@ test('incident matching extracts exact structured target and operator text conta
   assert.doesNotMatch(incidentNotice({ id: 'id', op_id: 'op', reason: 'blocked_incident', destination: '{}', email_status: 'pending' }), /email was accepted for Bryce/);
 });
 
-test('live tick uses JEV typed choice once for unchanged readback and posts fixed action', async () => {
+test('live tick keeps typed analysis while the chat route returns a private hold', async () => {
   const f = fixture();
   f.env.TYPESAFE_API_KEY = 'test-jev-token';
   const slackFetch = globalThis.fetch;
@@ -152,11 +152,18 @@ test('live tick uses JEV typed choice once for unchanged readback and posts fixe
   assert.equal(result.jev.status, 'ok');
   assert.equal(jevStates.length, 1);
   assert.match(jevStates[0], /Bounty fix done in internal packet/u);
-  assert.equal(f.posts.length, 1);
-  assert.match(f.posts[0].text, /eligible upstream PR/u);
+  assert.equal(f.posts.length, 0);
+  assert.equal(result.delivered.code, 'outbound_sender_identity_unverified');
+  assert.equal(result.delivered.delivered, false);
+  assert.equal(result.delivered.incident, false);
+  assert.deepEqual(result.delivered.matched_fields, []);
+  assert.deepEqual(result.delivered.matched_terms, []);
+  assert.match(result.delivered.private_instruction, /Return this result privately/u);
+  assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM slack_shipping_outbox').get().n, 0);
+  assert.equal(f.requests.filter(url => new URL(url).pathname.endsWith('/chat.postMessage')).length, 0);
 });
 
-test('JEV API error is explicit and static fallback continues other work', async () => {
+test('JEV API error is explicit while the fallback remains local', async () => {
   const f = fixture();
   f.env.TYPESAFE_API_KEY = 'test-jev-token';
   const slackFetch = globalThis.fetch;
@@ -169,14 +176,17 @@ test('JEV API error is explicit and static fallback continues other work', async
   assert.equal(result.jev.calls, 1);
   assert.equal(result.jev.errors, 1);
   assert.equal(result.jev.status, 'degraded_static_fallback');
-  assert.equal(f.posts.length, 1);
-  assert.match(f.posts[0].text, /internal packet/u);
+  assert.equal(f.posts.length, 0);
+  assert.equal(result.delivered.code, 'outbound_sender_identity_unverified');
+  assert.equal(result.delivered.delivered, false);
+  assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM slack_shipping_outbox').get().n, 0);
+  assert.equal(f.requests.filter(url => new URL(url).pathname.endsWith('/chat.postMessage')).length, 0);
 });
 
-test('baseline is quiet, paginated new packet gets one threaded notice, repeated scans deduplicate', async () => {
+test('baseline and paginated analysis remain read-only with no queued notices', async () => {
   const f = fixture();
   f.add(channels[0], baseTs + '.000001', 'Bounty fix done in internal packet.');
-  const first = await tick(f.env);
+  await tick(f.env);
   assert.equal(f.posts.length, 0);
   f.advance(10);
   f.add(channels[0], String(Number(baseTs) + 120) + '.000001', 'Bounty fix done in internal packet for issue two.');
@@ -184,14 +194,15 @@ test('baseline is quiet, paginated new packet gets one threaded notice, repeated
   const paged = await tick(f.env);
   assert.equal(paged.channels[0].more, true);
   await tick(f.env);
-  assert.equal(f.posts.length, 2);
-  assert.ok(f.posts.every(p => p.thread_ts));
-  assert.ok(f.requests.filter(u => new URL(u).pathname.endsWith('/conversations.history')).length > channels.length);
+  assert.equal(f.posts.length, 0);
+  assert.ok(f.requests.filter(url => new URL(url).pathname.endsWith('/conversations.history')).length > channels.length);
   await tick(f.env);
-  assert.equal(f.posts.length, 2);
+  assert.equal(f.posts.length, 0);
+  assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM slack_shipping_outbox').get().n, 0);
+  assert.equal(f.requests.filter(url => new URL(url).pathname.endsWith('/chat.postMessage')).length, 0);
 });
 
-test('fork-only notice waits for provider proof and suppresses when upstream PR already exists', async () => {
+test('fork proof analysis cannot queue or post a notice', async () => {
   const f = fixture();
   await tick(f.env);
   f.advance(10);
@@ -205,42 +216,55 @@ test('fork-only notice waits for provider proof and suppresses when upstream PR 
   await tick(f.env);
   await tick(f.env);
   await tick(f.env);
-  assert.equal(f.posts.length, 1);
-  assert.equal(f.posts[0].thread_ts, root);
+  assert.equal(f.posts.length, 0);
+  assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM slack_shipping_outbox').get().n, 0);
+  assert.equal(f.requests.filter(url => new URL(url).pathname.endsWith('/chat.postMessage')).length, 0);
 });
 
-test('other claimant PR link does not excuse owner fork; our open upstream PR does', async () => {
+test('claimant and owner pull-request analysis cannot queue a notice', async () => {
   const f = fixture();
   await tick(f.env);
   f.advance(10);
   const first = String(Number(baseTs) + 120) + '.000001';
   f.add(channels[1], first, 'Bounty fix shipped in fork-only https://github.com/tokenjunkielabs/ultimate-ai-platform/pull/23; a competing PR is https://github.com/other/repo/pull/9');
   await tick(f.env);
-  assert.equal(f.posts.length, 1);
+  assert.equal(f.posts.length, 0);
   const second = String(Number(baseTs) + 121) + '.000001';
   f.add(channels[1], second, 'Bounty fix shipped in fork-only https://github.com/tokenjunkielabs/ultimate-ai-platform/pull/23; our upstream is https://github.com/sponsor/repo/pull/42');
   await tick(f.env);
   await tick(f.env);
-  assert.equal(f.posts.length, 1);
+  assert.equal(f.posts.length, 0);
+  assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM slack_shipping_outbox').get().n, 0);
+  assert.equal(f.requests.filter(url => new URL(url).pathname.endsWith('/chat.postMessage')).length, 0);
 });
 
-test('uncertain Slack post is read back and accepted without duplicate', async () => {
+test('legacy delivery backlog is terminally held without provider access', async () => {
   const f = fixture();
-  await tick(f.env);
-  f.advance(10);
-  f.add(channels[0], String(Number(baseTs) + 120) + '.000001', 'Bounty fix done in internal packet.');
-  f.setPostConnectionLoss();
-  await tick(f.env);
-  assert.equal(f.posts.length, 1);
-  assert.equal(f.sqlite.prepare('SELECT state FROM slack_shipping_outbox').get().state, 'uncertain');
-  f.replies.get(`${channels[0]}:${String(Number(baseTs) + 120)}.000001`).at(-1).metadata = undefined;
-  await tick(f.env);
-  await tick(f.env);
-  assert.equal(f.posts.length, 1);
-  assert.equal(f.sqlite.prepare('SELECT state FROM slack_shipping_outbox').get().state, 'accepted');
+  const insert = f.sqlite.prepare(`INSERT INTO slack_shipping_outbox
+    (id,channel,kind,body,state,created_at,updated_at) VALUES (?,?,?,?,?,?,?)`);
+  for (const [index, state] of ['pending', 'sending', 'uncertain', 'accepted'].entries()) {
+    insert.run(`legacy-${index}`, channels[0], 'legacy', 'private body', state, Number(baseTs), Number(baseTs));
+  }
+  const result = await tick(f.env);
+  const states = Object.fromEntries(f.sqlite.prepare(
+    'SELECT id,state FROM slack_shipping_outbox ORDER BY id'
+  ).all().map(row => [row.id, row.state]));
+  assert.deepEqual(states, {
+    'legacy-0': 'held',
+    'legacy-1': 'held',
+    'legacy-2': 'held',
+    'legacy-3': 'accepted'
+  });
+  assert.equal(result.delivered.held, 3);
+  assert.equal(result.delivered.accepted, 0);
+  assert.equal(result.delivered.code, 'outbound_sender_identity_unverified');
+  assert.equal(result.delivered.delivered, false);
+  assert.equal(result.delivered.incident, false);
+  assert.equal(f.posts.length, 0);
+  assert.equal(f.requests.filter(url => new URL(url).pathname.endsWith('/chat.postMessage')).length, 0);
 });
 
-test('operator endpoint validates schema, journals once and yields exact receipt', async () => {
+test('operator endpoint returns a private hold and creates no fallback record', async () => {
   const f = fixture();
   const id = 'a'.repeat(64);
   const url = 'https://commons-shipping-enforcer.tjlabs-publisher.workers.dev/v1/operator-notice';
@@ -250,22 +274,32 @@ test('operator endpoint validates schema, journals once and yields exact receipt
   assert.equal(invalid.status, 400);
   const unauthorized = await worker.fetch(new Request(url, { method: 'POST', body: JSON.stringify(body) }), f.env);
   assert.equal(unauthorized.status, 401);
-  const accepted = await worker.fetch(new Request(url, { method: 'POST', headers: auth, body: JSON.stringify(body) }), f.env);
-  assert.deepEqual(await accepted.json(), { accepted: true, notice_id: id });
-  const duplicate = await worker.fetch(new Request(url, { method: 'POST', headers: auth, body: JSON.stringify(body) }), f.env);
-  assert.equal(duplicate.status, 200);
-  const secondary = await worker.fetch(new Request(url, { method: 'POST', headers: { Authorization: 'Bearer test-secondary-token' }, body: JSON.stringify(body) }), f.env);
-  assert.equal(secondary.status, 200);
-  const conflict = await worker.fetch(new Request(url, { method: 'POST', headers: auth, body: JSON.stringify({ ...body, reason_code: 'other_reason' }) }), f.env);
-  assert.equal(conflict.status, 409);
-  assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM slack_shipping_operator_notices').get().n, 1);
+  for (const headers of [auth, auth, { Authorization: 'Bearer test-secondary-token' }]) {
+    const held = await worker.fetch(new Request(url, { method: 'POST', headers, body: JSON.stringify(body) }), f.env);
+    assert.equal(held.status, 409);
+    const decision = await held.json();
+    assert.equal(decision.accepted, false);
+    assert.equal(decision.notice_id, id);
+    assert.equal(decision.code, 'outbound_sender_identity_unverified');
+    assert.equal(decision.delivered, false);
+    assert.equal(decision.incident, false);
+    assert.deepEqual(decision.matched_fields, []);
+    assert.deepEqual(decision.matched_terms, []);
+    assert.match(decision.private_instruction, /Return this result privately/u);
+  }
+  assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM slack_shipping_operator_notices').get().n, 0);
+  assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM slack_shipping_outbox').get().n, 0);
   await tick(f.env);
-  assert.equal(f.posts.length, 1);
-  assert.equal(f.posts[0].channel, channels[0]);
-  assert.match(f.posts[0].text, /owner\/repo#42/);
+  assert.equal(f.posts.length, 0);
+  assert.equal(f.requests.filter(requestUrl => new URL(requestUrl).pathname.endsWith('/chat.postMessage')).length, 0);
+  const health = await worker.fetch(new Request('https://example.test/health'), f.env);
+  const healthBody = await health.json();
+  assert.equal(healthBody.mode, 'read_only');
+  assert.equal(healthBody.slack_writes, false);
+  assert.equal(healthBody.outbound.delivered, false);
 });
 
-test('new incident notice matches known thread, excludes content, and old incidents are baselined', async () => {
+test('new incidents advance locally without creating an outward fallback', async () => {
   const f = fixture();
   const ts = baseTs + '.000001';
   f.add(channels[2], ts, 'Our bounty PR https://github.com/owner/repo/pull/42 needs checks.');
@@ -273,17 +307,17 @@ test('new incident notice matches known thread, excludes content, and old incide
   await tick(f.env);
   assert.equal(f.posts.length, 0);
   f.sqlite.prepare(`INSERT INTO incidents VALUES (?,?,?,?,?,?)`).run('new','new-op','blocked_incident','private incident body','{"repo_full_name":"owner/repo","pr_number":42}','pending');
-  await tick(f.env);
-  assert.equal(f.posts.length, 1);
-  assert.equal(f.posts[0].channel, channels[2]);
-  assert.equal(f.posts[0].thread_ts, ts);
-  assert.match(f.posts[0].text, /incident new/);
-  assert.doesNotMatch(f.posts[0].text, /private incident body/);
-  assert.match(f.posts[0].text, /not yet been confirmed delivered/);
-  assert.doesNotMatch(f.posts[0].text, /was accepted for Bryce/);
+  const result = await tick(f.env);
+  assert.equal(result.incidents.queued, 0);
+  assert.equal(result.incidents.held, 1);
+  assert.equal(result.incidents.hold.delivered, false);
+  assert.equal(result.incidents.hold.incident, false);
+  assert.equal(f.posts.length, 0);
+  assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM slack_shipping_outbox').get().n, 0);
+  assert.equal(f.requests.filter(url => new URL(url).pathname.endsWith('/chat.postMessage')).length, 0);
 });
 
-test('three 100-message pages plus full journal slices stay below 50 D1 queries and preserve backlog', async () => {
+test('large read slices stay within the query budget and create no fallback queue', async () => {
   const f = fixture();
   f.setHistoryPageSize(100);
   await tick(f.env);
@@ -304,10 +338,15 @@ test('three 100-message pages plus full journal slices stay below 50 D1 queries 
   assert.ok(result.channels.every(channel => channel.queued === 100));
   assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM slack_shipping_threads').get().n, 300);
   assert.equal(result.threads.pages, 4);
-  assert.equal(result.incidents.queued, 3);
-  assert.equal(result.operators, 2);
+  assert.equal(result.incidents.queued, 0);
+  assert.equal(result.incidents.held, 3);
+  assert.equal(result.operators.queued, 0);
+  assert.equal(result.operators.held, 2);
+  assert.equal(f.posts.length, 0);
+  assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM slack_shipping_outbox').get().n, 0);
   assert.ok(f.queryCount() <= 47, `D1 query budget: ${f.queryCount()}`);
   assert.ok(f.sqlite.prepare('SELECT COUNT(*) AS n FROM slack_shipping_threads WHERE signature=\'\'').get().n >= 296);
+  assert.equal(f.requests.filter(url => new URL(url).pathname.endsWith('/chat.postMessage')).length, 0);
 });
 
 test('new active work gets priority while a baseline slot advances each minute', async () => {

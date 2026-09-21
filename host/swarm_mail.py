@@ -36,6 +36,7 @@ MANIFEST_PATH = ROOT / "revenue" / "swarm_mail" / "inboxes.json"
 COMMERCE_PATH = ROOT / "revenue" / "outcome_commerce" / "catalog.json"
 OUTREACH_RECEIPTS = ROOT / "revenue" / "payment_ready" / "outreach_receipts"
 REPLY_INTAKE_PATH = ROOT / "revenue" / "production_survival" / "reply_intake.py"
+PUBLICATION_POLICY_PATH = ROOT / "commons_publication_policy.py"
 SCHEMA_VERSION = "commons-swarm-mail-event/v2"
 KIND = "SWARM_MAIL_PUBLIC_EVENT"
 CLASSIFICATIONS = {
@@ -81,6 +82,55 @@ class CollisionError(SwarmMailError):
 
 class UnknownEffectError(SwarmMailError):
     """Transport may have observed the message; reconciliation is required."""
+
+
+class OutboundIdentityError(SwarmMailError):
+    """A private outward-identity hold; no transport or public event occurred."""
+
+    def __init__(self, decision: dict[str, Any]):
+        self.decision = dict(decision)
+        super().__init__("outbound identity attribution blocked")
+
+
+_IDENTITY_POLICY: Any | None = None
+_IDENTITY_HOLD_FIELDS = (
+    "allowed", "code", "rule", "incident", "delivered",
+    "matched_fields", "matched_terms", "private_instruction",
+)
+
+
+def _identity_checker():
+    global _IDENTITY_POLICY
+    if _IDENTITY_POLICY is None:
+        spec = importlib.util.spec_from_file_location(
+            "commons_swarm_mail_publication_policy", PUBLICATION_POLICY_PATH,
+        )
+        if spec is None or spec.loader is None:
+            raise SwarmMailError("outbound identity policy is unavailable")
+        module = importlib.util.module_from_spec(spec)
+        try:
+            spec.loader.exec_module(module)
+        except Exception as error:
+            raise SwarmMailError("outbound identity policy is unavailable") from error
+        _IDENTITY_POLICY = module
+    checker = getattr(_IDENTITY_POLICY, "check_outbound_identity", None)
+    if not callable(checker):
+        raise SwarmMailError("outbound identity policy is unavailable")
+    return checker
+
+
+def _require_outbound_identity(fields: dict[str, str]) -> dict[str, Any]:
+    decision = _identity_checker()(fields)
+    if not isinstance(decision, dict) or type(decision.get("allowed")) is not bool:
+        raise SwarmMailError("outbound identity policy returned an invalid decision")
+    if decision["allowed"]:
+        return decision
+    missing = [field for field in _IDENTITY_HOLD_FIELDS if field not in decision]
+    if missing or decision.get("incident") is not False or decision.get("delivered") is not False:
+        raise SwarmMailError("outbound identity policy returned an unsafe hold")
+    raise OutboundIdentityError(
+        {field: decision[field] for field in _IDENTITY_HOLD_FIELDS}
+    )
 
 
 def canonical_bytes(value: Any) -> bytes:
@@ -686,6 +736,7 @@ def queue_message(
         raise SwarmMailError("body is empty or over 100 KB")
     if not re.search(r"\b(?:unsubscribe|opt[ -]?out)\b", body, re.IGNORECASE):
         raise SwarmMailError("outreach body must contain a visible unsubscribe or opt-out route")
+    _require_outbound_identity({"subject": subject, "body": body})
     payload = canonical_bytes({
         "inbox_id": spec["inbox_id"], "recipient": normalized, "sku_id": sku_id,
         "prospect_key": prospect_key, "subject": subject, "body": body,
@@ -764,6 +815,11 @@ def _wire_message(connection: sqlite3.Connection, row: sqlite3.Row) -> bytes:
     message["X-Commons-SKU"] = row["sku_id"]
     message["X-Commons-Send-Ref"] = opaque_ref(connection, "send", row["send_key"].encode("utf-8"))
     message.set_content(row["body"])
+    _require_outbound_identity({
+        "from": str(message["From"] or ""),
+        "subject": str(message["Subject"] or ""),
+        "body": row["body"],
+    })
     return message.as_bytes(policy=policy.SMTP)
 
 
@@ -808,7 +864,11 @@ def dispatch_message(connection: sqlite3.Connection, send_key: str, sendmail_bin
         store_public_event(connection, blocked)
         connection.commit()
         raise SwarmMailError("recipient became suppressed before dispatch; no MTA handoff occurred")
-    wire = _wire_message(connection, row)
+    try:
+        wire = _wire_message(connection, row)
+    except OutboundIdentityError:
+        connection.rollback()
+        raise
     dispatch_ref = opaque_ref(connection, "dispatch", secrets.token_bytes(32))
     claim = public_event(
         connection, "DISPATCH_CLAIMED", inbox_id=row["inbox_id"], occurred_at=occurred_at,
@@ -1304,6 +1364,12 @@ def main(argv: list[str] | None = None) -> int:
                 raise AssertionError(args.command)
         sys.stdout.buffer.write(canonical_bytes(result))
         return 0
+    except OutboundIdentityError as error:
+        print(
+            json.dumps(error.decision, sort_keys=True, ensure_ascii=False),
+            file=sys.stderr,
+        )
+        return 4
     except CollisionError as error:
         print(f"COLLISION: {error}", file=sys.stderr)
         return 2
