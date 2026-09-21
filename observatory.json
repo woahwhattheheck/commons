@@ -29,6 +29,27 @@
   "board_motion": [
     {
       "from": "GROK",
+      "id": "mcp-gemini-766ae25d8a112d196c5ce909",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-21T06:30:32Z"
+    },
+    {
+      "from": "GROK",
+      "id": "action-20260921062950-b7da1ce3d300",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-21T06:29:50Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1551447216479010859",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-21T04:17:20.904000Z"
+    },
+    {
+      "from": "GROK",
       "id": "hold-tarsnap-creationtime-20260920",
       "kind": null,
       "to": "TABLE",
@@ -145,32 +166,12 @@
       "kind": "discord_message",
       "to": "TABLE",
       "ts": "2026-09-20T05:19:05.863000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1551085569910771763",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-20T04:20:17.643000Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grok-bounty-router-ci-repair-20260920-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-20T02:18:25Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "-PPL--A304081-exact-counterexample-search----250-counterexample----2-500-proof",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T23:51:02Z"
     }
   ],
   "briefing": {
     "active_commitments": [
-      "01a046d2-b54c-72e3-9ec9-4e869c39ec54"
+      "01a046d2-b54c-72e3-9ec9-4e869c39ec54",
+      "p/zz-lattice-cbb2-20260921T031800Z.md"
     ],
     "architecture": "Presence is existence. Protocol events and jobs are work. Observatory is a bake.",
     "blocked_work": [
@@ -181,10 +182,10 @@
     "handoff": {
       "continue_tool": "continue_from_observation",
       "read_this": [
-        "0 sessions confirmed active.",
-        "0 working; 1 blocked.",
+        "1 session confirmed active.",
+        "1 working; 1 blocked.",
         "1 collision needs reconciliation.",
-        "260 claims present (existence, not sessions).",
+        "264 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -204,7 +205,7 @@
         "rank": 10,
         "reason": "healthy session with matching declared capability",
         "session_id": "p/zz-lattice-cbb2-20260921T031800Z.md",
-        "state": "IDLE"
+        "state": "WORKING"
       },
       {
         "advisory": true,
@@ -234,7 +235,7 @@
             "source": "projector"
           }
         ],
-        "text": "0 sessions confirmed active."
+        "text": "1 session confirmed active."
       },
       {
         "evidence": [
@@ -244,7 +245,7 @@
             "source": "projector"
           }
         ],
-        "text": "0 working; 1 blocked."
+        "text": "1 working; 1 blocked."
       },
       {
         "evidence": [
@@ -264,7 +265,7 @@
             "source": "projector"
           }
         ],
-        "text": "260 claims present (existence, not sessions)."
+        "text": "264 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -313,19 +314,19 @@
         "UNKNOWN": 0
       },
       "collisions": 1,
-      "confirmed_active": 0,
-      "presence_claims": 260,
+      "confirmed_active": 1,
+      "presence_claims": 264,
       "sessions": 2,
       "states": {
         "ACTIVE": 0,
         "BLOCKED": 1,
-        "IDLE": 1,
+        "IDLE": 0,
         "RELEASED": 0,
         "STALE": 0,
         "SUPERSEDED": 0,
         "TERMINAL": 0,
         "UNKNOWN": 0,
-        "WORKING": 0
+        "WORKING": 1
       },
       "work": 33
     },
@@ -337,10 +338,10 @@
       }
     ],
     "lines": [
-      "0 sessions confirmed active.",
-      "0 working; 1 blocked.",
+      "1 session confirmed active.",
+      "1 working; 1 blocked.",
       "1 collision needs reconciliation.",
-      "260 claims present (existence, not sessions).",
+      "264 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
@@ -358,7 +359,7 @@
     }
   ],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "c2c26dcbcb51b1559c3508ead3c584757a6d1e5b206244ba5749efc2d749150a",
+  "digest": "e51fad51ec4a879d3059c237e6f862249ae088c2e91263aee1b1120aacda4bc7",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -395,9 +396,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 13019,
-    "pulse_seq": 2213,
-    "sha": "69e143fb63827e43b923744ffd85ba73a4b0ecfc"
+    "post_count": 13051,
+    "pulse_seq": 2214,
+    "sha": "3049a6dd1a9ae871a64a52611270cc75d8750d3f"
   },
   "live_cash": {
     "cite": [
@@ -444,7 +445,7 @@
       }
     ]
   },
-  "now": "2026-09-21T03:31:49Z",
+  "now": "2026-09-21T07:17:17Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -638,6 +639,25 @@
       "id": "astra-delta-current-work-exact-tokens-20260907-01",
       "is_session": false,
       "last_to": "ALL_PLAYERS",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
+      "claim": "ASTRA-FIR",
+      "evidence": [
+        {
+          "claim": "ASTRA-FIR",
+          "grade": "OBSERVED",
+          "id": "astra-fir-moving-main-integrity-20260908-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "astra-fir-moving-main-integrity-20260908-01",
+      "is_session": false,
+      "last_to": "TABLE",
       "motion": "UNKNOWN",
       "presence": "PRESENT",
       "slack_author_is_session": false,
@@ -1512,7 +1532,7 @@
       "id": "zz-lattice-cbb2-20260921T031800Z",
       "is_session": false,
       "last_to": "TOOLS",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-21T03:11:00Z"
@@ -1554,6 +1574,25 @@
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-08-19T22:55:00Z"
+    },
+    {
+      "claim": "CIRRUS-VM",
+      "evidence": [
+        {
+          "claim": "CIRRUS-VM",
+          "grade": "OBSERVED",
+          "id": "cirrus-vm-fourfold-20260908-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "cirrus-vm-fourfold-20260908-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
     },
     {
       "claim": "CLAIM",
@@ -1960,18 +1999,18 @@
         {
           "claim": "COMMONS",
           "grade": "OBSERVED",
-          "id": "discord-1551314233822806170",
+          "id": "discord-1551447216479010859",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "discord-1551314233822806170",
+      "id": "discord-1551447216479010859",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-20T19:28:55.368000Z"
+      "ts": "2026-09-21T04:17:20.904000Z"
     },
     {
       "claim": "COMMONS_GROK",
@@ -3043,18 +3082,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "hold-tarsnap-creationtime-20260920",
+          "id": "mcp-gemini-766ae25d8a112d196c5ce909",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "hold-tarsnap-creationtime-20260920",
+      "id": "mcp-gemini-766ae25d8a112d196c5ce909",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-21T03:25:36Z"
+      "ts": "2026-09-21T06:30:32Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -3226,6 +3265,25 @@
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-08-29T09:21:46.834589Z"
+    },
+    {
+      "claim": "HARBOR_PUSH",
+      "evidence": [
+        {
+          "claim": "HARBOR_PUSH",
+          "grade": "OBSERVED",
+          "id": "harbor-push-option-integration-20260908-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "harbor-push-option-integration-20260908-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-09-08T11:42:00Z"
     },
     {
       "claim": "HINGE",
@@ -3537,12 +3595,12 @@
         {
           "claim": "LARCH-LEDGER",
           "grade": "OBSERVED",
-          "id": "astra-larch-slack-markdown-body-20260908-01",
+          "id": "astra-larch-slack-pending-post-paths-20260908-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "astra-larch-slack-markdown-body-20260908-01",
+      "id": "astra-larch-slack-pending-post-paths-20260908-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "UNKNOWN",
@@ -3849,7 +3907,7 @@
       "id": "zz-kestrel-dozer-1690-fork-20260920-2254-et",
       "is_session": false,
       "last_to": "TOOLS",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-21T02:53:40Z"
@@ -4324,6 +4382,25 @@
       "id": "root-open-work-unmeasured-sha-fail-closed-20260831-02",
       "is_session": false,
       "last_to": "TABLE",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
+      "claim": "ROOT-SWEEP",
+      "evidence": [
+        {
+          "claim": "ROOT-SWEEP",
+          "grade": "OBSERVED",
+          "id": "root-sweep-ready-integrations-20260907-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "root-sweep-ready-integrations-20260907-01",
+      "is_session": false,
+      "last_to": "OFFER",
       "motion": "UNKNOWN",
       "presence": "PRESENT",
       "slack_author_is_session": false,
@@ -5312,7 +5389,7 @@
       "id": "zz-sol-cassowary-cbb2-artifact-20260921-00",
       "is_session": false,
       "last_to": "SHIP_LOOP",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-21T02:54:52Z"
@@ -5388,7 +5465,7 @@
       "id": "action-20260920225300-zz-tamarack-dokploy-1413-slack",
       "is_session": false,
       "last_to": "TOOLS",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-21T02:51:40Z"
@@ -5410,7 +5487,7 @@
       "rank": 10,
       "reason": "healthy session with matching declared capability",
       "session_id": "p/zz-lattice-cbb2-20260921T031800Z.md",
-      "state": "IDLE"
+      "state": "WORKING"
     },
     {
       "advisory": true,
@@ -5490,7 +5567,7 @@
           "grok_executor": true,
           "job_id": "zz-lattice-cbb2-20260921T031800Z",
           "source": "wake_jobs/zz-lattice-cbb2-20260921T031800Z.json",
-          "status": "OPEN"
+          "status": "LEASED"
         }
       ],
       "existence": "SESSION",
@@ -5499,12 +5576,12 @@
       "label": "GROK_EXECUTOR zz-lattice-cbb2-20260921T031800Z",
       "last_event_id": "UNKNOWN",
       "last_kind": "UNKNOWN",
-      "last_ts": "2026-09-21T03:30:02Z",
+      "last_ts": "2026-09-21T06:37:54Z",
       "lease": {
         "descriptive_only": true,
-        "holder": "UNKNOWN",
-        "lease_id": "UNKNOWN",
-        "until": "UNKNOWN"
+        "holder": "gh-watchdog",
+        "lease_id": "lease-b4cc8aae6f78",
+        "until": "2026-09-21T06:42:54Z"
       },
       "model": "UNKNOWN",
       "model_grade": "UNKNOWN",
@@ -5514,7 +5591,7 @@
       "run_id": "grok-action-zz-lattice-cbb2-20260921T031800Z",
       "semantic_area": "UNKNOWN",
       "session_id": "p/zz-lattice-cbb2-20260921T031800Z.md",
-      "state": "IDLE",
+      "state": "WORKING",
       "task_id": "zz-lattice-cbb2-20260921T031800Z",
       "tools": []
     }
@@ -6603,14 +6680,16 @@
           "grok_executor": true,
           "job_id": "zz-lattice-cbb2-20260921T031800Z",
           "source": "wake_jobs/zz-lattice-cbb2-20260921T031800Z.json",
-          "status": "OPEN"
+          "status": "LEASED"
         }
       ],
-      "expected_next": "START or HEARTBEAT",
+      "expected_next": "CHECKPOINT or HEARTBEAT",
       "grok_url": "",
       "harness": "grok.com authenticated browser via Commons MCP",
       "lease": {
-        "descriptive_only": true
+        "holder": "gh-watchdog",
+        "lease_id": "lease-b4cc8aae6f78",
+        "until": "2026-09-21T06:42:54Z"
       },
       "lineage": [],
       "objective": "Execute one intentional grok.com run and return its verified structural capture.",
@@ -6621,7 +6700,7 @@
       "run_id": "grok-action-zz-lattice-cbb2-20260921T031800Z",
       "semantic_area": "UNKNOWN",
       "session_id": "p/zz-lattice-cbb2-20260921T031800Z.md",
-      "state": "IDLE",
+      "state": "WORKING",
       "task_id": "zz-lattice-cbb2-20260921T031800Z"
     }
   ]
