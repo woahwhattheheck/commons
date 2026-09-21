@@ -1,0 +1,69 @@
+PASS: all pinned original and repaired Git blob identities
+PASS: original 19/19 tests, normal and optimized
+PASS: original source distinguished by 28 failing regression subcases
+PASS: repaired 31/31 tests, normal and optimized
+{
+  "parity": [
+    {
+      "state": "PASS_BOUNDARY_SLICE_PARITY",
+      "optimized": false,
+      "source_head": "9d28247a10ad1b911050eb865b7a74bba6eb5cf2",
+      "changed_functions": [
+        "analyze_certified_window"
+      ],
+      "all_other_function_asts_identical": true,
+      "source_theorem_receipt_identical": true,
+      "counts": {
+        "valid_output_pairs_equal": 221080,
+        "unsupported_helper_windows_rejected": 39188,
+        "upstream_gap_positive_with_minimal_helper": 59991,
+        "inputs_unchanged": 260268
+      },
+      "ordered_output_sha256": "79394989c15de734b43e34c02459e2c78b1c247458c103f21ea090e157a27cbb",
+      "elapsed_seconds": 6.532,
+      "domain": {
+        "stock": "every integer 0..100",
+        "return": "every integer 0..100",
+        "offer": "unique {0,1,2,stock,100}",
+        "required": "valid unique {0,stock+return,threshold-1,threshold,threshold+1,threshold+2,threshold+3}",
+        "threshold": "stock+return-min(stock,offer)"
+      },
+      "limits": [
+        "Boundary slices, not every four-dimensional input.",
+        "Synthetic evidence oracle execution, not the D2 gameplay runtime.",
+        "No empirical candidate or promotion authorization."
+      ]
+    },
+    {
+      "state": "PASS_BOUNDARY_SLICE_PARITY",
+      "optimized": true,
+      "source_head": "9d28247a10ad1b911050eb865b7a74bba6eb5cf2",
+      "changed_functions": [
+        "analyze_certified_window"
+      ],
+      "all_other_function_asts_identical": true,
+      "source_theorem_receipt_identical": true,
+      "counts": {
+        "valid_output_pairs_equal": 221080,
+        "unsupported_helper_windows_rejected": 39188,
+        "upstream_gap_positive_with_minimal_helper": 59991,
+        "inputs_unchanged": 260268
+      },
+      "ordered_output_sha256": "79394989c15de734b43e34c02459e2c78b1c247458c103f21ea090e157a27cbb",
+      "elapsed_seconds": 6.655,
+      "domain": {
+        "stock": "every integer 0..100",
+        "return": "every integer 0..100",
+        "offer": "unique {0,1,2,stock,100}",
+        "required": "valid unique {0,stock+return,threshold-1,threshold,threshold+1,threshold+2,threshold+3}",
+        "threshold": "stock+return-min(stock,offer)"
+      },
+      "limits": [
+        "Boundary slices, not every four-dimensional input.",
+        "Synthetic evidence oracle execution, not the D2 gameplay runtime.",
+        "No empirical candidate or promotion authorization."
+      ]
+    }
+  ]
+}
+SCOPE: pinned diagnostic only; no hosted-CI, gameplay, promotion or publication action
