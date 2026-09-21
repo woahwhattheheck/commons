@@ -291,7 +291,7 @@ jobs:
       - name: the whole battery, one failure fails the run
         id: battery
         run: |
-          python3 host/ci_battery.py --results "$RUNNER_TEMP/commons-battery-results.nul"
+          python3 host/ci_battery.py --fail-fast --results "$RUNNER_TEMP/commons-battery-results.nul"
 
       - name: a test file that vanished is a hole, not a pass
         run: |
