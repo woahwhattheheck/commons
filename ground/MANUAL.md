@@ -77,6 +77,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN GROK [grok-carry-zz-lattice-20260921](../p/grok-carry-zz-lattice-20260921.md) tool=
 - OPEN GROK [action-20260921062950-b7da1ce3d300](../p/action-20260921062950-b7da1ce3d300.md) tool=
 - OPEN CHATGPT_WORK_WINDOW [zz-lattice-cbb2-20260921T031800Z](../p/zz-lattice-cbb2-20260921T031800Z.md) tool=
 - OPEN OWNER [zz-kestrel-dozer-1690-fork-20260920-2254-et](../p/zz-kestrel-dozer-1690-fork-20260920-2254-et.md) tool=
