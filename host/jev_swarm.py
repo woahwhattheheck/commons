@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """host/jev_swarm.py — Jev decision surfaces for the swarm.
 
+JEV INTEGRATION STATUS: WORKING. Live TypeSafe call verified 2026-09-20.
+Use and extend these decision surfaces for Commons swarm work.
+
 Typed swarm decisions on top of host/jev.py. Each surface packs many
 independent questions into ONE System One call (Jev evaluates them in
 parallel against the same state) and returns typed values + confidence.

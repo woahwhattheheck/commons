@@ -44,8 +44,8 @@ def _quote(value: str) -> str:
 
 
 
-def _schema(name: str, description: str, required: dict[str, str], optional: dict[str, Any] | None = None) -> dict:
-    properties = {k: {"type": v} for k, v in required.items()}
+def _schema(name: str, description: str, required: dict[str, Any], optional: dict[str, Any] | None = None) -> dict:
+    properties = {k: {"type": v} if isinstance(v, str) else v for k, v in required.items()}
     for k, v in (optional or {}).items():
         properties[k] = {"type": v} if isinstance(v, str) else v
     return {"name": name, "description": description, "inputSchema": {"type": "object", "properties": properties, "required": list(required)}}
@@ -92,6 +92,9 @@ TOOLS = [
     _schema("github_commit_files", "Commit UTF-8 files to an existing branch, comparing expected_head first. Supply full file contents. Returns commit SHA; never force-updates a ref.", {"repository": "string", "branch": "string", "expected_head": "string", "message": "string"}, {"files": {"type": "array", "items": {"type": "object", "properties": {"path": {"type": "string"}, "content": {"type": "string"}}, "required": ["path", "content"]}}}),
     _schema("github_create_pull_request", "Open a useful PR for existing task work. Returns an existing open PR for the same head/base on retry.", {"repository": "string", "head": "string", "base": "string", "title": "string", "body": "string"}, {"draft": "boolean"}),
     _schema("github_merge_pull_request", "Merge an authorized reviewed PR with expected head SHA. GitHub enforces branch rules. Returns provider result, not an assumed success.", {"repository": "string", "pull_number": "integer", "expected_head": "string"}, {"merge_method": "string"}),
+    _schema("cua_s1_form", "Score a form in one already-open Chrome tab with the official CUA-S1-FORMS checkpoint. Defaults to a dry run; execute and submit are separate explicit booleans. Reports observed actions and failures, and never opens a tab.",
+            {"url": "string", "form_title": "string", "entities": {"type": "array", "items": {"type": "object", "properties": {"label": {"type": "string"}, "value": {"type": "string"}}, "required": ["label", "value"]}}},
+            {"checkpoint": "string", "execute": "boolean", "submit": "boolean", "min_confidence": "number", "cdp_endpoint": "string"}),
 ]
 
 
@@ -168,6 +171,44 @@ class ServiceEquipment(GitHubSlackEquipment):
                 "results": results}
 
     def _call(self, name: str, a: dict) -> dict:
+        if name == "cua_s1_form":
+            from cua_s1.schema import Entity
+            from host.cua_s1_browser import connect_cdp
+            from host.cua_s1_forms import run_with_driver
+
+            url = _string(a, "url")
+            title = _string(a, "form_title")
+            raw_entities = a.get("entities")
+            if not isinstance(raw_entities, list) or any(
+                not isinstance(item, dict) or not isinstance(item.get("label"), str)
+                or not item["label"].strip() or not isinstance(item.get("value"), str)
+                or not item["value"].strip() for item in raw_entities
+            ):
+                raise EquipmentError("entities must be an array of nonempty label/value objects")
+            entities = [Entity(item["label"], item["value"]) for item in raw_entities]
+            execute, submit = a.get("execute", False), a.get("submit", False)
+            if not isinstance(execute, bool) or not isinstance(submit, bool):
+                raise EquipmentError("execute and submit must be booleans")
+            confidence = a.get("min_confidence", 0.5)
+            if isinstance(confidence, bool) or not isinstance(confidence, (int, float)):
+                raise EquipmentError("min_confidence must be a number")
+            checkpoint = a.get("checkpoint")
+            if checkpoint is None:
+                from huggingface_hub import hf_hub_download
+                checkpoint = hf_hub_download("cua-ai/cua-s1-forms", "cua-s1-forms.safetensors", local_files_only=True)
+                hf_hub_download("cua-ai/cua-s1-forms", "cua-s1-forms.json", local_files_only=True)
+            else:
+                checkpoint = _string(a, "checkpoint")
+            endpoint = a.get("cdp_endpoint", "http://127.0.0.1:9222")
+            if not isinstance(endpoint, str) or not endpoint.strip():
+                raise EquipmentError("cdp_endpoint must be a nonempty string")
+            driver, target = connect_cdp(url, endpoint=endpoint, allow_submit=submit)
+            try:
+                return run_with_driver(checkpoint=Path(checkpoint), driver=driver, target=target,
+                                       form_title=title, entities=entities, min_confidence=confidence,
+                                       execute=execute, submit=submit)
+            finally:
+                driver.close()
         if name == "token_pool_status":
             if "provider" in a and "providers" in a:
                 raise EquipmentError("Use provider or providers, not both")

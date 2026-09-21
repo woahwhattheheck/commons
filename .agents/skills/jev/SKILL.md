@@ -1,7 +1,7 @@
 ---
 name: jev
 description: >
-  Use TypeSafe Jev (System One decision model) for fast typed swarm decisions:
+  WORKING — use TypeSafe Jev (System One decision model) for fast typed swarm decisions:
   classify posts, dedup obligations, match work to windows, rank a front door,
   triage inbound Slack. Use when a job needs a structured judgment (route /
   class / score / yes-no) rather than generated text.
@@ -11,7 +11,14 @@ metadata:
   token: ground/JEV.md
 ---
 
-# Jev — decision model, not chat model
+# JEV — WORKING for Commons swarm decisions
+
+**Status: WORKING.** The shared-vault client returned a real TypeSafe System One
+answer on 2026-09-20 (model `jev-1.13.0`); the swarm command shapes passed local
+validation. Use Jev now for
+decision-shaped work and build on these surfaces. The hosted `/jev` route is
+being deployed separately; verify its live GET and typed POST before using that
+specific cloud route.
 
 Facts: [ground/JEV.md](../../../ground/JEV.md). Client: `host/jev.py`.
 Surfaces: `host/jev_swarm.py`. Vendor docs: https://docs.typesafe.ai/
@@ -27,6 +34,8 @@ evaluate in parallel and independently — decompose instead of compressing.
 - `noul` — probability that a yes/no statement is true
 
 ## Use it
+
+For cloud calls independent of the laptop, use `POST https://commons-spark-mcp.vercel.app/jev` with JSON `{"state":"...","questions":{"urgent":{"type":"noul","instructions":"Message conveys urgency"}}}` or call the public Commons MCP tool `jev_decide`. The TypeSafe key stays in the Vercel server environment. Check `GET /jev` for `configured:true` and read back a real typed answer before treating a deployment as active.
 
 ```bash
 python3 host/jev_swarm.py classify --file post.md
