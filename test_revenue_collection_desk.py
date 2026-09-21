@@ -18,6 +18,16 @@ def ev(event_id, at, kind, **extra):
         **extra,
     }
 
+def entitlement_ev(event_id, at, instrument="USD", amount="10.00", **extra):
+    return ev(
+        event_id,
+        at,
+        "ENTITLEMENT_CONFIRMED",
+        entitlement_instrument=instrument,
+        entitlement_amount=amount,
+        **extra,
+    )
+
 def claim(cid="c1", instrument="USD", amount="10.00", events=None, **extra):
     return {
         "claim_id": cid,
@@ -61,7 +71,7 @@ class RevenueCollectionDeskTests(unittest.TestCase):
         cl = claim(events=[
             ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
             ev("e2", "2026-09-02T00:00:00Z", "ACCEPTED"),
-            ev("e3", "2026-09-02T01:00:00Z", "ENTITLEMENT_CONFIRMED"),
+            entitlement_ev("e3", "2026-09-02T01:00:00Z"),
         ])
         out = c.compile_ledger(ledger([cl]))
         row = out["claims"][0]
@@ -70,6 +80,58 @@ class RevenueCollectionDeskTests(unittest.TestCase):
         totals = out["totals_by_instrument"]["USD"]
         self.assertEqual(totals["accepted_outstanding"], "10")
         self.assertEqual(totals["accepted_unconfirmed"], "0")
+
+    def test_entitlement_requires_bound_economics(self):
+        cl = claim(events=[
+            ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
+            ev("e2", "2026-09-02T00:00:00Z", "ACCEPTED"),
+            ev("e3", "2026-09-02T01:00:00Z", "ENTITLEMENT_CONFIRMED"),
+        ])
+        with self.assertRaisesRegex(c.ContractError, "requires entitlement_instrument"):
+            c.compile_ledger(ledger([cl]))
+
+    def test_entitlement_instrument_mismatch_fails(self):
+        cl = claim(events=[
+            ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
+            ev("e2", "2026-09-02T00:00:00Z", "ACCEPTED"),
+            entitlement_ev("e3", "2026-09-02T01:00:00Z", instrument="RTC"),
+        ])
+        with self.assertRaisesRegex(c.ContractError, "instrument does not match"):
+            c.compile_ledger(ledger([cl]))
+
+    def test_entitlement_amount_mismatch_fails(self):
+        cl = claim(events=[
+            ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
+            ev("e2", "2026-09-02T00:00:00Z", "ACCEPTED"),
+            entitlement_ev("e3", "2026-09-02T01:00:00Z", amount="11.00"),
+        ])
+        with self.assertRaisesRegex(c.ContractError, "amount does not match"):
+            c.compile_ledger(ledger([cl]))
+
+    def test_entitlement_decimal_equivalent_amount_is_valid(self):
+        cl = claim(amount="10.00", events=[
+            ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
+            ev("e2", "2026-09-02T00:00:00Z", "ACCEPTED"),
+            entitlement_ev("e3", "2026-09-02T01:00:00Z", amount="10"),
+        ])
+        out = c.compile_ledger(ledger([cl]))
+        self.assertTrue(out["claims"][0]["entitlement_confirmed"])
+
+    def test_entitlement_source_is_bound_into_economics_receipt(self):
+        events = [
+            ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
+            ev("e2", "2026-09-02T00:00:00Z", "ACCEPTED"),
+            entitlement_ev("e3", "2026-09-02T01:00:00Z"),
+        ]
+        one = c.compile_ledger(ledger([claim(events=events)]))["claims"][0]
+        changed = copy.deepcopy(events)
+        changed[2]["source_digest"] = "b" * 64
+        two = c.compile_ledger(ledger([claim(events=changed)]))["claims"][0]
+        self.assertNotEqual(
+            one["economics_receipt_sha256"], two["economics_receipt_sha256"]
+        )
+        self.assertEqual(one["entitlement_evidence"]["instrument"], "USD")
+        self.assertEqual(one["entitlement_evidence"]["amount"], "10.00")
 
     def test_future_payment_hold_waits(self):
         cl = claim(events=[
@@ -129,7 +191,7 @@ class RevenueCollectionDeskTests(unittest.TestCase):
         cl = claim(events=[
             ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
             ev("e2", "2026-09-02T00:00:00Z", "ACCEPTED"),
-            ev("ent", "2026-09-02T12:00:00Z", "ENTITLEMENT_CONFIRMED"),
+            entitlement_ev("ent", "2026-09-02T12:00:00Z"),
             ev("e3", "2026-09-03T00:00:00Z", "COLLECTION_CONTACT_SENT",
                cooldown_until="2026-09-04T00:00:00Z"),
         ])
@@ -143,7 +205,7 @@ class RevenueCollectionDeskTests(unittest.TestCase):
         cl = claim(events=[
             ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
             ev("e2", "2026-09-02T00:00:00Z", "ACCEPTED"),
-            ev("ent", "2026-09-02T12:00:00Z", "ENTITLEMENT_CONFIRMED"),
+            entitlement_ev("ent", "2026-09-02T12:00:00Z"),
             ev("e3", "2026-09-03T00:00:00Z", "COLLECTION_CONTACT_SENT",
                cooldown_until="2026-09-04T00:00:00Z"),
             ev("e4", "2026-09-03T01:00:00Z", "DELIVERY_BOUNCED"),
@@ -157,7 +219,7 @@ class RevenueCollectionDeskTests(unittest.TestCase):
         cl = claim(events=[
             ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
             ev("e2", "2026-09-02T00:00:00Z", "ACCEPTED"),
-            ev("ent", "2026-09-02T12:00:00Z", "ENTITLEMENT_CONFIRMED"),
+            entitlement_ev("ent", "2026-09-02T12:00:00Z"),
             ev("e3", "2026-09-03T00:00:00Z", "COLLECTION_CONTACT_SENT",
                cooldown_until="2026-09-04T00:00:00Z"),
             ev("e4", "2026-09-03T01:00:00Z", "DELIVERY_BOUNCED"),
@@ -170,7 +232,7 @@ class RevenueCollectionDeskTests(unittest.TestCase):
         base = [
             ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
             ev("e2", "2026-09-02T00:00:00Z", "ACCEPTED"),
-            ev("ent", "2026-09-02T12:00:00Z", "ENTITLEMENT_CONFIRMED"),
+            entitlement_ev("ent", "2026-09-02T12:00:00Z"),
             ev("e3", "2026-09-03T00:00:00Z", "COLLECTION_CONTACT_SENT",
                cooldown_until="2026-09-04T00:00:00Z"),
             ev("e4", "2026-09-03T01:00:00Z", "DELIVERY_CONFIRMED"),
@@ -185,7 +247,7 @@ class RevenueCollectionDeskTests(unittest.TestCase):
         cl = claim(events=[
             ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
             ev("e2", "2026-09-02T00:00:00Z", "ACCEPTED"),
-            ev("ent", "2026-09-02T12:00:00Z", "ENTITLEMENT_CONFIRMED"),
+            entitlement_ev("ent", "2026-09-02T12:00:00Z"),
             ev("e3", "2026-09-03T00:00:00Z", "COLLECTION_CONTACT_SENT",
                cooldown_until="2026-09-04T00:00:00Z"),
             ev("e4", "2026-09-05T00:00:00Z", "COLLECTION_CONTACT_SENT",
@@ -208,7 +270,7 @@ class RevenueCollectionDeskTests(unittest.TestCase):
         cl = claim(events=[
             ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
             ev("e2", "2026-09-02T00:00:00Z", "ACCEPTED"),
-            ev("ent", "2026-09-02T12:00:00Z", "ENTITLEMENT_CONFIRMED"),
+            entitlement_ev("ent", "2026-09-02T12:00:00Z"),
             ev("e3", "2026-09-03T00:00:00Z", "COLLECTION_CONTACT_SENT",
                cooldown_until="2026-09-04T00:00:00Z"),
             ev("e4", "2026-09-03T01:00:00Z", "DELIVERY_CONFIRMED"),
@@ -231,8 +293,8 @@ class RevenueCollectionDeskTests(unittest.TestCase):
         cl = claim(events=[
             ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
             ev("e2", "2026-09-02T00:00:00Z", "ACCEPTED"),
-            ev("e3", "2026-09-02T01:00:00Z", "ENTITLEMENT_CONFIRMED"),
-            ev("e4", "2026-09-02T02:00:00Z", "ENTITLEMENT_CONFIRMED"),
+            entitlement_ev("e3", "2026-09-02T01:00:00Z"),
+            entitlement_ev("e4", "2026-09-02T02:00:00Z"),
         ])
         with self.assertRaises(c.ContractError):
             c.compile_ledger(ledger([cl]))
