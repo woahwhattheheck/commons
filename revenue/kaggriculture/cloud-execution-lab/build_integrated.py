@@ -52,7 +52,7 @@ def source_files():
     for directory in ('reference/titan-current','reference/titan-history'):
         for p in (ROOT/directory).rglob('*'):
             if p.is_file() and '__pycache__' not in p.parts:
-                name=str(p.relative_to(ROOT));mapping[name]=name
+                name=p.relative_to(ROOT).as_posix();mapping[name]=name
     # The root selected stack is the live runtime authority. Historical/current
     # snapshots remain available only at their explicit reference paths above.
     # This prevents a landed root correctness fix from being shadowed at release.
