@@ -1,7 +1,7 @@
 {
   "counts": {
     "open_issues": 186,
-    "open_pull_requests": 175,
+    "open_pull_requests": 168,
     "runs_in_progress": 1,
     "runs_queued": 70
   },
@@ -69,28 +69,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zz-cedarwake/jev-routing-pipeline-16537",
-      "created_at": "2026-09-20T21:58:00Z",
-      "draft": false,
-      "head_sha": "fafa19aa0f73232513bc1a61a9d547b12ce43180",
-      "number": 16549,
-      "title": "Jev radar: compose connector ledger with action receipts",
-      "updated_at": "2026-09-20T22:12:05Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/zz-sol-tideglass-4821-jev-activity-brief-16537",
-      "created_at": "2026-09-20T19:54:25Z",
-      "draft": false,
-      "head_sha": "5fa439a7b23d95bb97fb4d3f56463e931ca5b36a",
-      "number": 16546,
-      "title": "Jev radar: add discoverable activity brief and stable update record",
-      "updated_at": "2026-09-20T19:54:25Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "codex/cua-s1-jev-20260919",
       "created_at": "2026-09-20T18:33:52Z",
       "draft": false,
@@ -109,39 +87,6 @@
       "number": 16539,
       "title": "Guard outward owner identity at typed boundaries",
       "updated_at": "2026-09-20T19:38:43Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-sol-solstice/battery-failfast-contract-20260919",
-      "created_at": "2026-09-20T01:44:25Z",
-      "draft": false,
-      "head_sha": "cf0fe076f4106e5a618b339648471c0da843cc67",
-      "number": 16520,
-      "title": "CI: align battery report regression with fail-fast contract",
-      "updated_at": "2026-09-20T01:47:59Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-sol-rook16070/entitlement-binding-rejoin-20260919",
-      "created_at": "2026-09-20T01:41:21Z",
-      "draft": false,
-      "head_sha": "8309e52ed07203e88d5767f2e2227e440e500be0",
-      "number": 16519,
-      "title": "Recover Collection Desk entitlement binding on current main",
-      "updated_at": "2026-09-20T02:19:41Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-helix/ciq2-timing-finalize-r2-20260919",
-      "created_at": "2026-09-20T00:57:11Z",
-      "draft": false,
-      "head_sha": "3a69b58aeea493e6d6ad7a0ff903fe7a258fd8d5",
-      "number": 16515,
-      "title": "CI: add per-test battery wall-time evidence",
-      "updated_at": "2026-09-20T01:00:03Z"
     },
     {
       "author": "woahwhattheheck",
@@ -168,13 +113,68 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zz-sol-17-lantern/ciq4-queue-pressure-20260919",
-      "created_at": "2026-09-19T22:52:08Z",
+      "branch": "zz-trellis/reuseledger-provider-generation-20260919",
+      "created_at": "2026-09-19T22:24:26Z",
       "draft": false,
-      "head_sha": "5006c0604d2d2275c35f7e53c1d569275cc5572b",
-      "number": 16501,
-      "title": "Command center: surface Actions queue pressure",
-      "updated_at": "2026-09-20T01:47:14Z"
+      "head_sha": "4966ec6deac6202d0d6431c7b893233924808d96",
+      "number": 16483,
+      "title": "Preserve reviewed ReuseLedger workflow on a current provider generation",
+      "updated_at": "2026-09-20T03:57:58Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-trellis/precision-current-main-20260919",
+      "created_at": "2026-09-19T22:24:23Z",
+      "draft": false,
+      "head_sha": "2115e54a88beafff92f762706d681f978e767c41",
+      "number": 16482,
+      "title": "Preserve reviewed UIOWA sample precision on current main (successor to #16271)",
+      "updated_at": "2026-09-19T23:17:54Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-keystone-s7m2/uiowa129-rehearsal-binding-integration-20260919",
+      "created_at": "2026-09-19T21:43:48Z",
+      "draft": false,
+      "head_sha": "ba0fa6f67aa7915b13e62c3a85c0031a6d70bfb8",
+      "number": 16468,
+      "title": "UIOWA-129: integrate reviewed rehearsal source binding on current main",
+      "updated_at": "2026-09-20T00:00:27Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "riot/wo-2-owner-meeting-brief-gate",
+      "created_at": "2026-09-19T19:59:15Z",
+      "draft": false,
+      "head_sha": "965b6078bb7093d9010bbae2697216b1acd01ce8",
+      "number": 16465,
+      "title": "WO-2: owner-meeting-brief gate",
+      "updated_at": "2026-09-19T19:59:15Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol-sweep11/media-rights-15965-completion-20260919",
+      "created_at": "2026-09-19T17:18:52Z",
+      "draft": false,
+      "head_sha": "2fe02ef45fc586fcedd1707da53abb8a0ce535f9",
+      "number": 16456,
+      "title": "Complete media-rights precise-time and coherent-read workflow (#15965)",
+      "updated_at": "2026-09-19T17:38:45Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "codex/zz-keystone-43cf-wayne-smart-lab",
+      "created_at": "2026-09-19T17:12:46Z",
+      "draft": false,
+      "head_sha": "7166b76acf4d5db7de524502283d8fd26bb127da",
+      "number": 16455,
+      "title": "Complete Wayne RESA response package and offline API acceptance lab",
+      "updated_at": "2026-09-19T17:23:43Z"
     }
   ],
   "open_heads": {
@@ -342,22 +342,125 @@
     "16468": "ba0fa6f67aa7915b13e62c3a85c0031a6d70bfb8",
     "16482": "2115e54a88beafff92f762706d681f978e767c41",
     "16483": "4966ec6deac6202d0d6431c7b893233924808d96",
-    "16498": "9e9bb0acfe870b0bcc0a41e777930f7448525928",
-    "16501": "5006c0604d2d2275c35f7e53c1d569275cc5572b",
     "16504": "cc70a743cbe6f4462aaf70b8b27f750bf42d336a",
     "16507": "0fcec652c9da5356cf84193db68ec898645af138",
-    "16515": "3a69b58aeea493e6d6ad7a0ff903fe7a258fd8d5",
-    "16519": "8309e52ed07203e88d5767f2e2227e440e500be0",
-    "16520": "cf0fe076f4106e5a618b339648471c0da843cc67",
     "16539": "c5d29dd60315f1d275a98c968c4646826c83db69",
-    "16540": "e9265ac0be62774cdddd9b4e003af4a231a9466f",
-    "16546": "5fa439a7b23d95bb97fb4d3f56463e931ca5b36a",
-    "16549": "fafa19aa0f73232513bc1a61a9d547b12ce43180"
+    "16540": "e9265ac0be62774cdddd9b4e003af4a231a9466f"
   },
-  "pulls_listed": 175,
+  "pulls_listed": 168,
   "pulls_listing": "COMPLETE",
   "queue_depth_per_runner": 70.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-helix/ciq2-timing-finalize-r2-20260919",
+      "closed_at": "2026-09-21T00:42:05Z",
+      "head_sha": "3a69b58aeea493e6d6ad7a0ff903fe7a258fd8d5",
+      "merged_at": null,
+      "number": 16515,
+      "state": "CLOSED",
+      "title": "CI: add per-test battery wall-time evidence"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "grok/ciq2-timing-rejoin-20260920",
+      "closed_at": "2026-09-21T00:42:04Z",
+      "head_sha": "d847717cd14b1373fe347bfeb1276718879ff530",
+      "merged_at": "2026-09-21T00:42:04Z",
+      "number": 16553,
+      "state": "MERGED",
+      "title": "CI: add per-test battery wall-time evidence on current main"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-sol-17-lantern/ciq4-queue-pressure-20260919",
+      "closed_at": "2026-09-21T00:37:55Z",
+      "head_sha": "5006c0604d2d2275c35f7e53c1d569275cc5572b",
+      "merged_at": null,
+      "number": 16501,
+      "state": "CLOSED",
+      "title": "Command center: surface Actions queue pressure"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "grok/ciq4-queue-pressure-rejoin-20260920",
+      "closed_at": "2026-09-21T00:37:54Z",
+      "head_sha": "e3b664fc7065efd29fd226771064e5e370d397ef",
+      "merged_at": "2026-09-21T00:37:54Z",
+      "number": 16552,
+      "state": "MERGED",
+      "title": "Command center: surface Actions queue pressure on current main"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-solforge/ci-fail-fast-evidence-followup-20260919",
+      "closed_at": "2026-09-21T00:34:39Z",
+      "head_sha": "9e9bb0acfe870b0bcc0a41e777930f7448525928",
+      "merged_at": null,
+      "number": 16498,
+      "state": "CLOSED",
+      "title": "CI: bind hosted fail-fast scope into battery evidence"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "grok/ci-fail-fast-scope-rejoin-20260920",
+      "closed_at": "2026-09-21T00:34:38Z",
+      "head_sha": "766425b37b50e86416a2cc782434f2a18caeabb3",
+      "merged_at": "2026-09-21T00:34:38Z",
+      "number": 16551,
+      "state": "MERGED",
+      "title": "CI: restore hosted fail-fast and bind battery_scope into evidence"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-sol-rook16070/entitlement-binding-rejoin-20260919",
+      "closed_at": "2026-09-21T00:25:11Z",
+      "head_sha": "30ec16e2b22bbe2367f9efb05cd90009786122fb",
+      "merged_at": "2026-09-21T00:25:11Z",
+      "number": 16519,
+      "state": "MERGED",
+      "title": "Recover Collection Desk entitlement binding on current main"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-sol-solstice/battery-failfast-contract-20260919",
+      "closed_at": "2026-09-21T00:24:01Z",
+      "head_sha": "cf0fe076f4106e5a618b339648471c0da843cc67",
+      "merged_at": "2026-09-21T00:24:01Z",
+      "number": 16520,
+      "state": "MERGED",
+      "title": "CI: align battery report regression with fail-fast contract"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/zz-sol-tideglass-4821-jev-activity-brief-16537",
+      "closed_at": "2026-09-21T00:23:05Z",
+      "head_sha": "483519c4d2170af9f4e9271d50f663662dde87b0",
+      "merged_at": "2026-09-21T00:23:05Z",
+      "number": 16546,
+      "state": "MERGED",
+      "title": "Jev radar: add discoverable activity brief and stable update record"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-cedarwake/jev-routing-pipeline-16537",
+      "closed_at": "2026-09-21T00:22:19Z",
+      "head_sha": "ec98d9750ba8ed39fafec3f5ce8e091326482579",
+      "merged_at": "2026-09-21T00:22:19Z",
+      "number": 16549,
+      "state": "MERGED",
+      "title": "Jev radar: compose connector ledger with action receipts"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -412,120 +515,10 @@
       "number": 16543,
       "state": "MERGED",
       "title": "Activate Jev paid-shipping monitor resource"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "codex/unc-ap-source-recovery-20260920",
-      "closed_at": "2026-09-20T19:13:02Z",
-      "head_sha": "9145343f71c7dd9c4e6becac27729457a95edae6",
-      "merged_at": "2026-09-20T19:13:02Z",
-      "number": 16542,
-      "state": "MERGED",
-      "title": "Retain UNC AP RFP and distinguish mirror addenda"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/zz-sol-cairn-2584-jev-action-loop-16537",
-      "closed_at": "2026-09-20T19:10:17Z",
-      "head_sha": "852dfc385d04bfe43d1a9db4a67d0a1e8d595be7",
-      "merged_at": "2026-09-20T19:10:17Z",
-      "number": 16541,
-      "state": "MERGED",
-      "title": "Jev action loop: provider supersession and readback receipts"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "grok-build/restore-mcp-grounding-source-rev-keep-20260920",
-      "closed_at": "2026-09-20T18:22:26Z",
-      "head_sha": "597897ad8a328deb26308853c9cb925eefaa80ad",
-      "merged_at": "2026-09-20T18:22:26Z",
-      "number": 16538,
-      "state": "MERGED",
-      "title": "test: restore SOURCE_REV leftover KEEP pins after grounding.html"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "grok/align-retired-autopsy-cash-pins-20260920",
-      "closed_at": "2026-09-20T12:15:01Z",
-      "head_sha": "00197debb821ba6e2ac27b3b19d147ec7d4155b0",
-      "merged_at": "2026-09-20T12:15:01Z",
-      "number": 16536,
-      "state": "MERGED",
-      "title": "Align live-cash pins with retired Autopsy product"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "cursor/latch-harborline-map-helper-test-pins-63f4",
-      "closed_at": "2026-09-20T09:22:01Z",
-      "head_sha": "48d660e3ac356d515195fdd5c99ec2bfc02fcbd5",
-      "merged_at": "2026-09-20T09:22:01Z",
-      "number": 16531,
-      "state": "MERGED",
-      "title": "test: align Harborline map-helper door/waitlist pins with live prefixes"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "cursor/latch-harborline-map-helper-blob-pin-63f4",
-      "closed_at": "2026-09-20T09:16:05Z",
-      "head_sha": "0589a221cc8e90c6354b8fb5bf93e0560721e29a",
-      "merged_at": "2026-09-20T09:16:05Z",
-      "number": 16530,
-      "state": "MERGED",
-      "title": "test: lock Harborline map-helper RECEIPT blob pins on current main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "cursor/latch-main-battery-cua-s1-leftover-63f4",
-      "closed_at": "2026-09-20T09:07:11Z",
-      "head_sha": "9b2f117b588a43eb035429a31eb6f0b6a2a91c3c",
-      "merged_at": "2026-09-20T09:07:11Z",
-      "number": 16529,
-      "state": "MERGED",
-      "title": "fix: restore catalog waitlist land-time prefixes after CUA-S1 fail-fast"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "grok/harborline-historical-prefixes-20260920-01",
-      "closed_at": "2026-09-20T08:43:04Z",
-      "head_sha": "6ba4b23aac22980367f3d9d94bfcf5978aad582c",
-      "merged_at": "2026-09-20T08:43:04Z",
-      "number": 16528,
-      "state": "MERGED",
-      "title": "fix: restore Harborline historical prefixes; do not chase live pages"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "cursor/latch-bass-imagedrop-stripe-door-63f4",
-      "closed_at": "2026-09-20T08:28:36Z",
-      "head_sha": "52ca394a1217839eb71a22f97cd4f156cdcdff37",
-      "merged_at": "2026-09-20T08:28:36Z",
-      "number": 16527,
-      "state": "MERGED",
-      "title": "test: KEEP image-drop convert-shelf PL in bass-doors battery"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-grokbuild/smb-collision-35490781048-billing-lock-20260920",
-      "closed_at": "2026-09-20T05:17:41Z",
-      "head_sha": "59e56e6036de909954b455e674db074f774a071e",
-      "merged_at": "2026-09-20T05:17:41Z",
-      "number": 16525,
-      "state": "MERGED",
-      "title": "board: smb current-main 35490781048 spending-limit receipt"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-20T23:48:52Z",
+  "unchanged_since": "2026-09-21T01:47:31Z",
   "undatable_pulls": []
 }
