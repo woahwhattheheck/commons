@@ -1,0 +1,118 @@
+name: titan-v4-release-reseal-once
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/titan-v4-release-reseal-once.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: titan-v4-release-reseal-once
+  cancel-in-progress: false
+
+jobs:
+  reseal:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+      LAB: revenue/kaggriculture/cloud-execution-lab
+      OLD_SHA: 1cfdd76edd9793bbe425bf93f03158e61afed6d01fe01671107d949d4a07b838
+      OLD_BYTES: '474596'
+      OLD_SOURCE_SHA: 371ec71bcabbea2914ffe00f44e04619833aefdc521b90b68df968fa90d0d67f
+      NEW_SHA: 03bca1691102ec5756bfca4d779c098e637c0d268be599479456e2c305b0e2bc
+      NEW_BYTES: '474886'
+      NEW_SOURCE_SHA: 89d3ef79764efcf7774fc959d5c86a282c28e02a475c718a38503d549e2d016c
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          fetch-depth: 1
+
+      - name: Authenticate exact stale seal and deterministic render
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          python3 -B - <<'PY'
+          import hashlib, importlib.util, json
+          from pathlib import Path
+          lab = Path('revenue/kaggriculture/cloud-execution-lab')
+          old_sha = '1cfdd76edd9793bbe425bf93f03158e61afed6d01fe01671107d949d4a07b838'
+          old_source = '371ec71bcabbea2914ffe00f44e04619833aefdc521b90b68df968fa90d0d67f'
+          new_sha = '03bca1691102ec5756bfca4d779c098e637c0d268be599479456e2c305b0e2bc'
+          new_source = '89d3ef79764efcf7774fc959d5c86a282c28e02a475c718a38503d549e2d016c'
+          archive = (lab / 'exports/titan-current.tar.gz').read_bytes()
+          receipt = json.loads((lab / 'runtime/integrated-selected/CURRENT-ARCHIVE.json').read_text())
+          source = (lab / 'runtime/integrated-selected/CURRENT-SOURCE.json').read_bytes()
+          assert hashlib.sha256(archive).hexdigest() == old_sha
+          assert len(archive) == 474596
+          assert receipt['sha256'] == old_sha and receipt['bytes'] == 474596
+          assert hashlib.sha256(source).hexdigest() == old_source
+          spec = importlib.util.spec_from_file_location('titan_release_builder', lab / 'build_integrated.py')
+          assert spec and spec.loader
+          mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
+          data1, source1, receipt1 = mod.render()
+          data2, source2, receipt2 = mod.render()
+          assert data1 == data2 and source1 == source2 and receipt1 == receipt2
+          assert hashlib.sha256(data1).hexdigest() == new_sha
+          assert len(data1) == 474886
+          assert hashlib.sha256(source1).hexdigest() == new_source
+          assert receipt1['sha256'] == new_sha and receipt1['bytes'] == 474886
+          print(json.dumps(receipt1, sort_keys=True))
+          PY
+
+      - name: Perform build-integrated release-equivalent reseal
+        shell: bash
+        run: |
+          set -euo pipefail
+          (cd "$LAB" && python3 -B build_integrated.py --release)
+          python3 -B - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          lab = Path('revenue/kaggriculture/cloud-execution-lab')
+          old = '1cfdd76edd9793bbe425bf93f03158e61afed6d01fe01671107d949d4a07b838'
+          new = '03bca1691102ec5756bfca4d779c098e637c0d268be599479456e2c305b0e2bc'
+          src = '89d3ef79764efcf7774fc959d5c86a282c28e02a475c718a38503d549e2d016c'
+          hist = lab / 'exports/historical' / f'titan-{old}.tar.gz'
+          current = lab / 'exports/titan-current.tar.gz'
+          manifest = lab / 'runtime/integrated-selected/CURRENT-SOURCE.json'
+          receipt_path = lab / 'runtime/integrated-selected/CURRENT-ARCHIVE.json'
+          assert hist.is_file() and hashlib.sha256(hist.read_bytes()).hexdigest() == old
+          assert hashlib.sha256(current.read_bytes()).hexdigest() == new
+          assert len(current.read_bytes()) == 474886
+          assert hashlib.sha256(manifest.read_bytes()).hexdigest() == src
+          receipt = json.loads(receipt_path.read_text())
+          assert receipt['sha256'] == new and receipt['bytes'] == 474886
+          PY
+          mapfile -t changed < <(git status --porcelain=v1 | sed 's/^...//' | sort)
+          expected=(
+            "$LAB/exports/historical/titan-$OLD_SHA.tar.gz"
+            "$LAB/exports/titan-current.tar.gz"
+            "$LAB/runtime/integrated-selected/CURRENT-ARCHIVE.json"
+            "$LAB/runtime/integrated-selected/CURRENT-SOURCE.json"
+          )
+          mapfile -t expected_sorted < <(printf '%s\n' "${expected[@]}" | sort)
+          test "${changed[*]}" = "${expected_sorted[*]}"
+
+      - name: Fast-forward exact release commit and self-remove
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin main
+          test "$(git rev-parse origin/main)" = "$GITHUB_SHA"
+          git config user.name 'woahwhattheheck'
+          git config user.email 'brycembusiness2@gmail.com'
+          git add \
+            "$LAB/exports/historical/titan-$OLD_SHA.tar.gz" \
+            "$LAB/exports/titan-current.tar.gz" \
+            "$LAB/runtime/integrated-selected/CURRENT-ARCHIVE.json" \
+            "$LAB/runtime/integrated-selected/CURRENT-SOURCE.json"
+          git rm .github/workflows/titan-v4-release-reseal-once.yml
+          git diff --cached --check
+          git commit -m 'TITAN V4: reseal canonical current package'
+          git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:main
