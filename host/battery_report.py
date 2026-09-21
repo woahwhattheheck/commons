@@ -103,6 +103,17 @@ def _parse_result_stream(raw: bytes | None) -> tuple[str, list[dict], bool, list
             else:
                 marker = int(code)
             continue
+        if command == "timing_ms":
+            normalized = PurePosixPath(path)
+            if (not records or not path or normalized.is_absolute()
+                    or ".." in normalized.parts or str(normalized) == "."
+                    or not re.fullmatch(r"[0-9]{1,12}", code)):
+                problems.append("invalid timing record")
+            elif records[-1]["path"] != str(normalized) or records[-1].get("duration_ms") is not None:
+                problems.append("timing record does not follow its test record")
+            else:
+                records[-1]["duration_ms"] = int(code)
+            continue
         if command not in ("python3", "node"):
             problems.append("unknown result command")
             continue
@@ -173,6 +184,8 @@ def build_report(root: Path, raw: bytes | None, outcome: str, environ: Mapping[s
         row["source_blob_sha"] = blobs.get(row["path"])
         row["source_in_checkout_commit"] = row["source_blob_sha"] is not None
     failed = sum(row["exit_code"] != 0 for row in records)
+    timed = [row for row in records if row.get("duration_ms") is not None]
+    slowest = sorted(timed, key=lambda row: (-row["duration_ms"], os.fsencode(row["path"])))[:10]
     if outcome in ("cancelled", "skipped"):
         problems.append("battery step was " + outcome)
         complete = False
@@ -210,6 +223,16 @@ def build_report(root: Path, raw: bytes | None, outcome: str, environ: Mapping[s
             "passed_files": len(records) - failed,
             "failed_files": failed,
             "unresolved_source_files": sum(not row["source_in_checkout_commit"] for row in records),
+        },
+        "timing": {
+            "clock": "monotonic",
+            "unit": "ms",
+            "measured_files": len(timed),
+            "slowest_limit": 10,
+            "slowest": [
+                {"path": row["path"], "duration_ms": row["duration_ms"], "exit_code": row["exit_code"]}
+                for row in slowest
+            ],
         },
         "results": records,
         "problems": problems,
@@ -250,6 +273,14 @@ def summary(report: dict) -> str:
     if counts["unresolved_source_files"]:
         lines += ["", "%d executed file(s) were not resolved to this checkout commit; see the JSON artifact."
                   % counts["unresolved_source_files"]]
+    slowest = report.get("timing", {}).get("slowest", [])
+    if slowest:
+        lines += ["", "### Slowest completed test files", "",
+                  "| Test file | Wall time (ms) | Exit |", "| --- | ---: | ---: |"]
+        for row in slowest:
+            path = html.escape(json.dumps(row["path"], ensure_ascii=True)).replace("|", "&#124;")
+            lines.append("| %s | %d | %d |" % (path, row["duration_ms"], row["exit_code"]))
+        lines += ["", "Timing is diagnostic wall duration from a monotonic clock; it never determines pass/fail.", ""]
     if report["problems"]:
         lines += ["", "Report diagnostics: " + "; ".join(report["problems"]) + "."]
     return "\n".join(lines) + "\n"
