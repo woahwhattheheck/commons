@@ -4,7 +4,7 @@ Issue: [Commons #16537](https://github.com/woahwhattheheck/commons/issues/16537)
 
 `integrations.command_center.jev_activity_brief` is the presentation/continuation seam over the
 landed Jev activity ledger and action-loop receipts. It does not collect from Slack/GitHub,
-call Jev, send a message, claim work, merge a PR, or mutate payment state. Installed connectors
+call Jev, send a message, take work, merge a PR, or mutate payment state. Installed connectors
 and the action controller retain those responsibilities.
 
 The compiler consumes:
@@ -26,7 +26,7 @@ The briefing exposes:
 
 - source count, fresh vs degraded/stale sources, pagination/partial-source count;
 - exact 15-minute, 1-hour, 24-hour, and historical activity windows;
-- separate event, claim, confirmed-session, provider-accepted, landed, and business-outcome
+- separate event, work-taken, confirmed-session, provider-accepted, landed, and business-outcome
   stage counts;
 - `COMPLETE` vs `LOWER_BOUND` coverage inherited from the exact ledger window;
 - recent `ASK`, `OWNER_DIRECTION`, `HANDOFF`, and `COLLISION` event-kind candidates with exact
@@ -75,8 +75,8 @@ verification.
 These digests establish internal integrity only. Provider authenticity still comes from the
 installed connector readback that produced the ledger and action receipts.
 
-The authority block is permanently false for provider send/edit, claim, merge, and payment
-operations, and states that raw private text is absent. A caller cannot turn the compiler into
+The authority flags stay permanently false for provider send/edit, merge, payment, and taking
+work, and state that raw private text is absent. A caller cannot turn the compiler into
 a publishing primitive by changing output fields after compilation without invalidating the
 record receipt.
 
