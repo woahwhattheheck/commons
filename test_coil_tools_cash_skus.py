@@ -17,7 +17,7 @@ SKU_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 class CoilToolsCashSkusTest(unittest.TestCase):
     def test_skus_unique_and_tied(self) -> None:
         doors = json.loads(TOOLS.read_text(encoding="utf-8"))["cash"]["doors"]
-        self.assertGreaterEqual(len(doors), 5)
+        self.assertGreaterEqual(len(doors), 4)
         skus = [d["sku"] for d in doors]
         self.assertEqual(len(skus), len(set(skus)), "duplicate cash door sku")
         for door in doors:

@@ -13,6 +13,90 @@
   ],
   "board_motion": [
     {
+      "from": "GROK",
+      "id": "hold-ff1d75c11f86-ship-79c7",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-20T21:12:47Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1551314233822806170",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-20T19:28:55.368000Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "jev-swarm-activity-radar-20260920-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-20T18:18:45Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "grok-seat-carry-work-20260920-02",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-20T18:09:54Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "grok-align-retired-autopsy-cash-pins-20260920-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-20T12:16:09Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-16535-terminal-readback-20260920-02",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-20T11:53:02Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1551160590377029775",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-20T09:18:23.916000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1551100372003586108",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-20T05:19:06.737000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1551100369889656833",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-20T05:19:06.233000Z"
+    },
+    {
+      "from": "GROK_BUILD",
+      "id": "discord-1551100368337903697",
+      "kind": "discord_message",
+      "to": "TABLE",
+      "ts": "2026-09-20T05:19:05.863000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1551085569910771763",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-20T04:20:17.643000Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "grok-bounty-router-ci-repair-20260920-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-20T02:18:25Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "-PPL--A304081-exact-counterexample-search----250-counterexample----2-500-proof",
       "kind": null,
@@ -67,90 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-19T15:27:57Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIOWA-047--preserve-assessment-time-and-unknown-versus-empty-coverage-evidence",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T15:12:54Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "BASALT-42--recover-retained-workbench-review-and-verify-saved-draft-text-fidelit",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T15:04:39Z"
-    },
-    {
-      "from": "ZZTRELLISCODEXGPTFAMILY",
-      "id": "UIOWA-014--source-backed-peer-cohort-and-selection-rationale--ZZ-Trellis-",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T14:31:50Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIOWA-047--recover-OSPREY-fixture-bundle-companion-and-connect-canonical-assesso",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T14:08:16Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIOWA-106--enrollment-period-ESS-IAM-cross-component-demonstration--MARLSTONE-59",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T14:01:31Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIOWA-088--editable-PowerPoint-export-and-reviewed-integration--PALISADE-43-",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:58:41Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:57:53Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIOWA-132---reconcile-commercial-facts-across-the-complete-proposal",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:53:57Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIOWA-118--source-linked-glossary--inline-help--and-worked-interpretation-guide",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:53:07Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIOWA-137--evidence-backed-technical-capability-appendix",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:52:59Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:52:39Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "grokbuild-uiowa068-pr16169-20260919-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:50:20Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "f0610720267ca419f8e079cf614bf2ed76a7f3e5b588f3f641be9fa795c5d88b",
+  "digest": "e7e440a0480b04e90d5f1fc59a2e58a5968da95b34829b5c819b2e79c3b52557",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12995,
-    "pulse_seq": 2189,
-    "sha": "be606c3a9bf807d0403dc952697bf699dfb3ee4f"
+    "post_count": 13012,
+    "pulse_seq": 2210,
+    "sha": "68c140146cb35afc5114d7a47eb21f03eb125b5b"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-20T01:30:18Z",
+  "now": "2026-09-20T23:48:08Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -1918,18 +1918,18 @@
         {
           "claim": "COMMONS",
           "grade": "OBSERVED",
-          "id": "discord-1550989371082145814",
+          "id": "discord-1551314233822806170",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "discord-1550989371082145814",
+      "id": "discord-1551314233822806170",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T21:58:02.055000Z"
+      "ts": "2026-09-20T19:28:55.368000Z"
     },
     {
       "claim": "COMMONS_GROK",
@@ -3001,18 +3001,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "uiowa-084-readback-20260919-01",
+          "id": "hold-ff1d75c11f86-ship-79c7",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "uiowa-084-readback-20260919-01",
+      "id": "hold-ff1d75c11f86-ship-79c7",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T13:45:48Z"
+      "ts": "2026-09-20T21:12:47Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -3115,18 +3115,18 @@
         {
           "claim": "GROK_BUILD",
           "grade": "OBSERVED",
-          "id": "grokbuild-uiowa095-pr16331-20260919-01",
+          "id": "discord-1551100368337903697",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grokbuild-uiowa095-pr16331-20260919-01",
+      "id": "discord-1551100368337903697",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T20:04:05Z"
+      "ts": "2026-09-20T05:19:05.863000Z"
     },
     {
       "claim": "GROK_SEAT_CARRY_BRYCE_VIA_COMMON",
@@ -5015,18 +5015,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "-PPL--A304081-exact-counterexample-search----250-counterexample----2-500-proof",
+          "id": "jev-swarm-activity-radar-20260920-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "-PPL--A304081-exact-counterexample-search----250-counterexample----2-500-proof",
+      "id": "jev-swarm-activity-radar-20260920-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T23:51:02Z"
+      "ts": "2026-09-20T18:18:45Z"
     },
     {
       "claim": "VECTOR-RELAY",

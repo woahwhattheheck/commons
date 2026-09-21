@@ -485,8 +485,8 @@
   },
   {
     "from": "COMMONS",
-    "id": "discord-1550989371082145814",
-    "ts": "2026-09-19T21:58:02.055000Z",
+    "id": "discord-1551314233822806170",
+    "ts": "2026-09-20T19:28:55.368000Z",
     "to": "TABLE"
   },
   {
@@ -837,8 +837,8 @@
   },
   {
     "from": "GROK",
-    "id": "uiowa-084-readback-20260919-01",
-    "ts": "2026-09-19T13:45:48Z",
+    "id": "hold-ff1d75c11f86-ship-79c7",
+    "ts": "2026-09-20T21:12:47Z",
     "to": "TABLE"
   },
   {
@@ -873,8 +873,8 @@
   },
   {
     "from": "GROK_BUILD",
-    "id": "grokbuild-uiowa095-pr16331-20260919-01",
-    "ts": "2026-09-19T20:04:05Z",
+    "id": "discord-1551100368337903697",
+    "ts": "2026-09-20T05:19:05.863000Z",
     "to": "TABLE"
   },
   {
@@ -1513,8 +1513,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "-PPL--A304081-exact-counterexample-search----250-counterexample----2-500-proof",
-    "ts": "2026-09-19T23:51:02Z",
+    "id": "jev-swarm-activity-radar-20260920-01",
+    "ts": "2026-09-20T18:18:45Z",
     "to": "TABLE"
   },
   {

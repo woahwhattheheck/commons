@@ -1,0 +1,113 @@
+{
+  "schema": "commons-resource-event/v1",
+  "event_id": "codex-cua-s1-form-choice-scorer-resource-activation-20260920-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "observed_at": "2026-09-20T04:09:25Z",
+  "actor": "Commons Resource Master / Codex",
+  "selected_resource": "cua-s1-form-choice-scorer",
+  "concrete_consumer": "Commons form workflows that already have parsed form-element context and explicit candidate options",
+  "measurable_outcome": "The merged local scorer is canonical producing resource metadata with deterministic option-preserving probability output and an explicit executed=false boundary.",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "MERGED_UNCATALOGED",
+    "condition": "CONSTRAINED",
+    "holder": "CUA-S1-FORMS source custody",
+    "consumer": "UNROUTED_IN_CANONICAL_RESOURCE_GRAPH"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "holder": "CUA-S1-FORMS source custody / Commons bounded form-choice analysis operators",
+    "consumer": "Existing parsed-form analysis workflows"
+  },
+  "production_truth": {
+    "source_repository": "woahwhattheheck/commons",
+    "source_pr": 16517,
+    "source_head_sha": "469dfe9502ec38db847c40a4ada1ddaf969ea46d",
+    "source_merge_sha": "8692e26a94925f58f4bb10fcfbd8d6f3a877879c",
+    "source_descendant_main_sha": "b626b13580b6a075a2436f8c985c4c22ad1c6676",
+    "source_paths": {
+      ".agents/skills/cua-s1-forms/SKILL.md": "222d8739b0e4b4abee113ffea9dc8b57573cbbad",
+      "host/CUA_S1_FORMS.md": "989642e17cfdba86fad8c9f8b093bfbf397e5fa3",
+      "host/cua_s1_forms.py": "ecce06285d8bea21e15eea49738b08536c23c06b"
+    },
+    "focused_tests": {
+      "source_contract_probe": "4/4 PASS NORMAL_AND_OPTIMIZED",
+      "resource_ledger": "23/23 PASS NORMAL_AND_OPTIMIZED",
+      "resource_projection": "18/18 PASS NORMAL_AND_OPTIMIZED"
+    },
+    "maximum_state": "LOCAL_FORM_CHOICE_PROPOSAL_READY",
+    "hosted_source_guards": "PATH_MANIFEST_OPEN_DOOR_MUHLNICKEL_SPEC_AND_SOURCE_PARSES_SUCCESS_ON_EXACT_SOURCE_HEAD; BROAD_TEST_FAILURE_NOT_CLAIMED_GREEN",
+    "checkpoint_in_repository": false,
+    "checkpoint_downloaded_by_activation": false,
+    "checkpoint_purchased": false,
+    "browser_control": false,
+    "form_mutation": false,
+    "form_submission": false,
+    "executed": false,
+    "customer_data": false,
+    "customer_contact": false,
+    "buyer_acceptance": false,
+    "payment_observed": false,
+    "revenue_recognition": false,
+    "current_cash_claim": false,
+    "scheduling_action": false,
+    "provider_writes": 0
+  },
+  "delta": {
+    "prior_terminal_main_sha": "5ac80b2c18a75b80d2ea91f1b3d9fafe5a0218a7",
+    "activation_base_main_sha": "b626b13580b6a075a2436f8c985c4c22ad1c6676",
+    "commits_in_delta": 32,
+    "changed_paths_in_delta": 82,
+    "remote_branches_observed": 4641,
+    "prior_terminal_slack_ts": "1789867310.898299",
+    "latest_delta_slack_ts": "1789877169.598919",
+    "slack_top_level_messages": {
+      "commons": 4,
+      "delegations": 122,
+      "todo": 0,
+      "shipped_builds": 0,
+      "products": 0,
+      "leads": 0,
+      "sales": 0
+    },
+    "automations": "Thirty-eight visible: four enabled, thirty-one paused and three completed; no lifecycle mutation.",
+    "github_state": "Thirty-two current-main commits and 82 changed paths were reconciled; the selected source was merged after the prior terminal main, unclaimed in the Slack census and absent from the canonical resource graph.",
+    "provider_state": "Post-watermark provider and bounty lanes already have explicit roots, active claims or terminal receipts; this activation made no provider application, assignment, submission, wallet or payment mutation."
+  },
+  "verification": {
+    "privacy": "No credential, checkpoint bytes, private account identifier, customer data or private file name is persisted.",
+    "open_door": "The wrapper is a local zero-auth scoring surface; model artifacts remain operator-supplied and scoring performs no browser or provider write.",
+    "zero_fabrication": "A returned probability and selected index remain a proposal over caller-supplied options and never become execution, target verification, form submission, model reliability, buyer acceptance, payment, revenue or cash.",
+    "collision": "Only canonical ledger, projection, assertions and append-only activation records are owned; scorer, guide, skill and all active source lanes remain read-only."
+  },
+  "build_order_decision": "No build order posted; the selected bounded scorer is complete for proposal generation, automatic form mutation is intentionally outside its authority, and newly observed gaps already have durable roots or active claims.",
+  "build_orders": [],
+  "quota_lifecycle": {
+    "official_observation": "A single official-source check found no quota reset newer than the previously recorded September 7 automatic reset; the latest visible official release-note entry was September 17, 2026 and described unrelated product changes.",
+    "classification": "PRIOR_QUOTA_STATE_RETAINED_CURRENT_ALLOWANCE_UNMEASURED",
+    "current_meter": "NOT_DIRECTLY_OBSERVED",
+    "banked_reset_activated": false
+  },
+  "projection": {
+    "resources": 106,
+    "producing": 78,
+    "inventory_records": 68
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789877169598919",
+    "source_pr": "https://github.com/woahwhattheheck/commons/pull/16517",
+    "official_release_notes": "https://help.openai.com/en/articles/6825453/chatgpt-release-notes"
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-20T04:09:25Z",
+    "activation_base_main_sha": "b626b13580b6a075a2436f8c985c4c22ad1c6676",
+    "latest_delta_slack_ts": "1789877169.598919",
+    "source_merge_sha": "8692e26a94925f58f4bb10fcfbd8d6f3a877879c",
+    "remote_branches_observed": 4641
+  },
+  "non_claims": [
+    "No checkpoint acquisition, browser control, form mutation, form submission, customer contact, scheduling, provider application, assignment, wallet action, payment, settlement, revenue or cash is claimed."
+  ]
+}

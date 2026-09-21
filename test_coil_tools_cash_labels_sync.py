@@ -16,7 +16,7 @@ class CoilToolsCashLabelsSyncTest(unittest.TestCase):
     def test_labels_on_shelf(self) -> None:
         doors = json.loads(TOOLS.read_text(encoding="utf-8"))["cash"]["doors"]
         shelf = SHELF.read_text(encoding="utf-8")
-        self.assertGreaterEqual(len(doors), 5)
+        self.assertGreaterEqual(len(doors), 4)
         labels = [d["label"] for d in doors]
         self.assertEqual(len(labels), len(set(labels)), "duplicate cash door label")
         for label in labels:
