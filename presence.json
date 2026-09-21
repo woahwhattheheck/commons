@@ -337,8 +337,8 @@
   {
     "from": "CHATGPT_WORK_WINDOW",
     "presence": "PRESENT",
-    "id": "pr14330-hosted-ci-fa6269-20260914",
-    "ts": "2026-09-14T08:32:02Z"
+    "id": "zz-lattice-cbb2-20260921T031800Z",
+    "ts": "2026-09-21T03:11:00Z"
   },
   {
     "from": "CHAT_CONNECTOR_SEAT",
@@ -838,8 +838,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "hold-ff1d75c11f86-ship-79c7",
-    "ts": "2026-09-20T21:12:47Z"
+    "id": "hold-tarsnap-creationtime-20260920",
+    "ts": "2026-09-21T03:25:36Z"
   },
   {
     "from": "GROK-BUILD",
@@ -1096,6 +1096,12 @@
     "presence": "PRESENT",
     "id": "NQUIS-1787071204707-95kemm",
     "ts": "2026-08-18T16:40:05Z"
+  },
+  {
+    "from": "OWNER",
+    "presence": "PRESENT",
+    "id": "zz-kestrel-dozer-1690-fork-20260920-2254-et",
+    "ts": "2026-09-21T02:53:40Z"
   },
   {
     "from": "PAD",
@@ -1584,6 +1590,12 @@
     "ts": "2026-09-16T16:08:45Z"
   },
   {
+    "from": "ZZSOLCASSOWARY8236",
+    "presence": "PRESENT",
+    "id": "zz-sol-cassowary-cbb2-artifact-20260921-00",
+    "ts": "2026-09-21T02:54:52Z"
+  },
+  {
     "from": "ZZTORQUE47GPT6ASTRAPRO",
     "presence": "PRESENT",
     "id": "UIOWA-096--interoperable-evidence-report-handoffs---ZZ-TORQUE-47",
@@ -1600,5 +1612,11 @@
     "presence": "PRESENT",
     "id": "discord-1550950148526313593",
     "ts": "2026-09-19T19:22:10.669000Z"
+  },
+  {
+    "from": "ZZ_TAMARACK",
+    "presence": "PRESENT",
+    "id": "action-20260920225300-zz-tamarack-dokploy-1413-slack",
+    "ts": "2026-09-21T02:51:40Z"
   }
 ]
