@@ -11,6 +11,7 @@ from pathlib import Path
 import subprocess
 import sys
 import tempfile
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -28,22 +29,55 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
 
 OPENER = urllib.request.build_opener(NoRedirect())
 
+def error_payload(exc):
+    try:
+        payload = json.load(exc)
+    except Exception:
+        return {}
+    return payload if isinstance(payload, dict) else {}
+
 def request(url, body=None):
     if not TOKEN:
         raise RuntimeError('commons_token_unbound')
     parsed = urllib.parse.urlsplit(url)
     if parsed.scheme != 'https' or parsed.netloc not in ('api.github.com', 'account-publisher.tjlabs-publisher.workers.dev'):
         raise RuntimeError('unexpected_host')
-    req = urllib.request.Request(url, method='GET' if body is None else 'POST',
-        data=None if body is None else json.dumps(body, separators=(',', ':')).encode(),
-        headers={'Authorization': 'Bearer ' + TOKEN, 'Accept': 'application/vnd.github+json',
-                 'Content-Type': 'application/json', 'User-Agent': 'Commons-GitHub-History/1.0'})
-    try:
-        with OPENER.open(req, timeout=30) as response:
-            return response.status, json.load(response)
-    except urllib.error.HTTPError as exc:
-        if exc.code == 404 and body is None: return 404, None
-        raise RuntimeError('provider_http_' + str(exc.code)) from None
+    publisher = parsed.netloc.endswith('workers.dev')
+    headers = {'Authorization': 'Bearer ' + TOKEN,
+               'Accept': 'application/json' if publisher else 'application/vnd.github+json',
+               'Content-Type': 'application/json', 'User-Agent': 'Commons-GitHub-History/1.0'}
+    attempts = 1 if body is not None else 4
+    last = None
+    for attempt in range(attempts):
+        req = urllib.request.Request(url, method='GET' if body is None else 'POST',
+            data=None if body is None else json.dumps(body, separators=(',', ':')).encode(),
+            headers=headers)
+        try:
+            with OPENER.open(req, timeout=30) as response:
+                return response.status, json.load(response)
+        except urllib.error.HTTPError as exc:
+            last = exc
+            payload = error_payload(exc)
+            if exc.code == 404 and body is None:
+                return 404, None
+            if body is not None:
+                # Return the held publication as-is. write_private names the
+                # publisher reason and retries only RESOURCE_BUSY.
+                return exc.code, payload
+            retryable = (
+                exc.code in (500, 502, 503, 504) or
+                (exc.code in (403, 429) and (
+                    exc.headers.get('X-RateLimit-Remaining') == '0' or
+                    bool(exc.headers.get('Retry-After')))))
+            if retryable and attempt + 1 < attempts:
+                try:
+                    delay = float(exc.headers.get('Retry-After') or 0)
+                except ValueError:
+                    delay = 0
+                time.sleep(max(1, min(delay or 2 ** attempt, 20)))
+                continue
+            raise RuntimeError('provider_http_' + str(exc.code) + '_github') from None
+    raise RuntimeError('provider_http_' + str(getattr(last, 'code', 0)) + '_github')
 
 def private_path(account, filename):
     return PREFIX + account + '/' + filename
@@ -64,10 +98,16 @@ def write_private(path, raw, old_sha=None):
        'owner': 'woahwhattheheck', 'repo': 'commons-ship-enforcer', 'path': path,
        'message': 'Advance private GitHub history checkpoint',
        'content': base64.b64encode(raw).decode(), **({'sha': old_sha} if old_sha else {})}}
-    status, result = request(PUBLISHER, payload)
-    if status not in (200, 201) or result.get('allow') is not True or not result.get('receipt'):
+    status = result = None
+    for attempt in range(8):
+        status, result = request(PUBLISHER, payload)
+        if status == 409 and (result or {}).get('error') == 'RESOURCE_BUSY':
+            time.sleep(min(2 ** attempt, 30))
+            continue
+        break
+    if status not in (200, 201) or not result or result.get('allow') is not True or not result.get('receipt'):
         # Do not retry a held exact publication by changing content or carrier.
-        raise RuntimeError('publisher_' + str(result.get('reason_code') or status))
+        raise RuntimeError('publisher_' + str((result or {}).get('reason_code') or (result or {}).get('error') or status))
     observed, _ = read_private(path)
     if observed != raw:
         raise RuntimeError('private_readback_differs')
