@@ -69,6 +69,24 @@ class TestCursorPackQualityDictatesTierReadback(unittest.TestCase):
                 f"{rel} reminted: want {prefix} got {blob[:8]}",
             )
 
+    def test_readback_keep_shared_paths_follow_inner_keep(self) -> None:
+        import test_pack_quality_dictates_tier as inner
+
+        for rel, prefix in inner.KEEP.items():
+            if rel not in KEEP:
+                continue
+            self.assertEqual(
+                KEEP[rel],
+                prefix,
+                f"readback KEEP lagged INNER KEEP for {rel}: readback={KEEP[rel]} inner={prefix}",
+            )
+        inner_blob = git_blob("test_pack_quality_dictates_tier.py")
+        self.assertTrue(
+            inner_blob.startswith(KEEP["test_pack_quality_dictates_tier.py"]),
+            inner_blob,
+        )
+        self.assertFalse(inner_blob.startswith("5ceadfba"), inner_blob)
+
     def test_leftover_json_still_renders_without_inventing_tos(self) -> None:
         proc = run_helper("--json")
         self.assertEqual(proc.returncode, 0, msg=proc.stdout + proc.stderr)
