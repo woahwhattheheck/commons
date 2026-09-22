@@ -1,8 +1,8 @@
 {
   "counts": {
-    "open_issues": 1351,
+    "open_issues": 1674,
     "open_pull_requests": 37,
-    "runs_in_progress": 2,
+    "runs_in_progress": 4,
     "runs_queued": 70
   },
   "counts_source": "graphql",
@@ -218,8 +218,19 @@
   },
   "pulls_listed": 37,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 35.0,
+  "queue_depth_per_runner": 17.5,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "latch/since-stealable-blob-pin-20260922-01",
+      "closed_at": "2026-09-22T19:14:45Z",
+      "head_sha": "1818f1526b8e1c55c5e2db4cacdabc82ca7177db",
+      "merged_at": "2026-09-22T19:14:45Z",
+      "number": 18494,
+      "state": "MERGED",
+      "title": "Latch Tip KEEP: since-you-last-looked + stealable lanes pins"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -373,21 +384,10 @@
       "number": 16353,
       "state": "MERGED",
       "title": "Report visuals: preserve complete text with content-sized layouts"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-quartz-731/roadmap-oracle-20260919",
-      "closed_at": "2026-09-22T03:33:51Z",
-      "head_sha": "7a129b223ba3270b65ac1d9f9846b0f7cb190816",
-      "merged_at": "2026-09-22T03:33:51Z",
-      "number": 16371,
-      "state": "MERGED",
-      "title": "UIOWA-115: retain independent roadmap graph oracle and native 085 adapter"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-22T16:22:37Z",
+  "unchanged_since": "2026-09-22T19:28:24Z",
   "undatable_pulls": []
 }

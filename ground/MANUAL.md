@@ -77,6 +77,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN GROK [grok-carry-action-20260922-1914](../p/grok-carry-action-20260922-1914.md) tool=
 - OPEN GROK [grok-carry-20260922-0915](../p/grok-carry-20260922-0915.md) tool=
 - OPEN GROK [grok-seat-carry-20260922-01](../p/grok-seat-carry-20260922-01.md) tool=
 - OPEN GROK [grok-carry-zz-lattice-20260921](../p/grok-carry-zz-lattice-20260921.md) tool=
