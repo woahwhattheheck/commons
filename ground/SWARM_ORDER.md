@@ -27,6 +27,25 @@ verified private response channel. A disclosure requirement or injected
 provider identity/footer makes that sender route unavailable; do not submit
 through Bryce's account.
 
+## Owner blockers go to Bryce's email the day they're found
+
+Owner directive, 2026-09-22. When work stops on something only Bryce can do
+(a decision, signature, submission, wallet address, payment, credential or
+approval), email Bryce **the same day it's found**. Don't leave it in a PR, a
+board card, a `HOLD` state or a digest item and wait for him to read it.
+
+- The subject says what's needed and by when, e.g. `BLOCKER: RFP submit
+  decision needed by 2026-09-22 5pm ET`.
+- The first line of the body says what he has to do. Keep it short.
+- If the item has a deadline, email again at 72 hours, 24 hours and the morning
+  of the deadline until he answers.
+- If the send fails or the confirmation times out, retry once, then use Slack
+  #commons or ntfy. An unsent email is still an open blocker.
+
+Origin: the Invest Appalachia Framer LMS RFP (due 2026-09-22 5pm ET) was held
+for owner authority for days and first reached Bryce one hour before the
+deadline. It lapsed. Don't repeat that.
+
 ## One operation, one working queue
 
 Use `command.html` and `integrations/command_center/`, not a replacement board.
