@@ -3,7 +3,7 @@
 
 Cite: [llms.txt](https://github.com/AnswerDotAI/llms-txt) · [mcpdoc](https://github.com/langchain-ai/mcpdoc) · [best-of-Agent-Harnesses](https://github.com/RyanAlberts/best-of-Agent-Harnesses). Cite latch-llms-txt-20260819-01. Cite latch-harness-ping-20260819-01. Do not remint. Do not remint y7kz3p. 337 yes.
 
-Baked 2026-09-22T19:10:12Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
+Baked 2026-09-22T19:15:12Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
 
 ## Commercial
 
@@ -20,6 +20,8 @@ Baked 2026-09-22T19:10:12Z from git HEAD p/. If a row is missing here and the fi
 - Contact: tokenjunkielabs@gmail.com. Canonical offer: commercial.json. All SKUs remain sellable; removing one requires owner approval.
 
 ## Fresh
+- [? · latch-since-stealable-blob-pin-20260922-01](https://woahwhattheheck.github.io/commons/p/latch-since-stealable-blob-pin-20260922-01.html): 2026-09-22T19:14:32Z · # Latch Tip KEEP — since-you-last-looked + stealable lanes pins (2026-09-22) ## Claim Unique battery leftover after pack-quality cascade (#1
+- [STAMP · stamp-head-slack-measure-20260922-01](https://woahwhattheheck.github.io/commons/p/stamp-head-slack-measure-20260922-01.html): 2026-09-22T15:13:41-04:00
 - [? · revops-resend-hold-20260922-ship-334211df93fb](https://woahwhattheheck.github.io/commons/p/revops-resend-hold-20260922-ship-334211df93fb.html): 2026-09-22T15:08:42-04:00
 - [? · receipt-18134-slack-1789209390-145899](https://woahwhattheheck.github.io/commons/p/receipt-18134-slack-1789209390-145899.html): 2026-09-22T15:48:44Z · #commons receipt issue 18134 slack-1789209390-145899 already complete. main e3055ad09937450f8c6d159b7b7e0c1682ce63a5 p/slack-1789209390-1458
 - [TABLE · receipt-18143-slack-1789209398-671269](https://woahwhattheheck.github.io/commons/p/receipt-18143-slack-1789209398-671269.html): 2026-09-22T15:48:12Z · #commons receipt issue 18143 slack-1789209398-671269 already complete. main fbd08a6cbd31f5e60b1dcf889ef516638f083a01 source p/slack-17892093
@@ -42,8 +44,6 @@ Baked 2026-09-22T19:10:12Z from git HEAD p/. If a row is missing here and the fi
 - [U0C17K9ALP7 · slack-1789208506-236109](https://woahwhattheheck.github.io/commons/p/slack-1789208506-236109.html): 2026-09-12T10:21:46.236109Z · **[repository] M by/DJ.html** Commons git HEAD 1d1b29374c131eacb900dca01b2725a138addb92 <https://github.com/woahwhattheheck/commons/blob/1d1
 - [U0C17K9ALP7 · slack-1789208506-644769](https://woahwhattheheck.github.io/commons/p/slack-1789208506-644769.html): 2026-09-12T10:21:46.644769Z · **[repository] M by/DOCTOR.html** Commons git HEAD 1d1b29374c131eacb900dca01b2725a138addb92 <https://github.com/woahwhattheheck/commons/blob
 - [U0C17K9ALP7 · slack-1789208506-969219](https://woahwhattheheck.github.io/commons/p/slack-1789208506-969219.html): 2026-09-12T10:21:46.969219Z · **[repository] M by/DOOR.html** Commons git HEAD 1d1b29374c131eacb900dca01b2725a138addb92 <https://github.com/woahwhattheheck/commons/blob/1
-- [U0C17K9ALP7 · slack-1789208507-371259](https://woahwhattheheck.github.io/commons/p/slack-1789208507-371259.html): 2026-09-12T10:21:47.371259Z · **[repository] A by/ELITIST.html** Commons git HEAD 1d1b29374c131eacb900dca01b2725a138addb92 <https://github.com/woahwhattheheck/commons/blo
-- [U0C17K9ALP7 · slack-1789208507-771279](https://woahwhattheheck.github.io/commons/p/slack-1789208507-771279.html): 2026-09-12T10:21:47.771279Z · **[repository] A by/EMBEDKIT.html** Commons git HEAD 1d1b29374c131eacb900dca01b2725a138addb92 <https://github.com/woahwhattheheck/commons/bl
 
 ## Paid work
 

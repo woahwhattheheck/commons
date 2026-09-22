@@ -1,9 +1,11 @@
 {
   "seq": 2225,
-  "head": "cf8300b313ffe8b8da9857781a3ede08bac811e6",
-  "ts": "2026-09-22T19:10:13Z",
+  "head": "14f0aacacae8834ef68077f1e154bae081a9362b",
+  "ts": "2026-09-22T19:15:13Z",
   "post_count": 14588,
   "newest": [
+    "latch-since-stealable-blob-pin-20260922-01",
+    "stamp-head-slack-measure-20260922-01",
     "revops-resend-hold-20260922-ship-334211df93fb",
     "receipt-18134-slack-1789209390-145899",
     "receipt-18143-slack-1789209398-671269",
@@ -11,9 +13,7 @@
     "slack-1789208484-008459",
     "slack-1789208484-318579",
     "slack-1789208485-934059",
-    "slack-1789208486-157449",
-    "slack-1789208487-734209",
-    "slack-1789208488-047199"
+    "slack-1789208486-157449"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "live_cash": {
