@@ -1,6 +1,6 @@
 {
  "note": "paths each open pull request changes since its merge-base (first 40; drift --pr N prints all)",
- "observed_at": "2026-09-22T09:51:08Z",
+ "observed_at": "2026-09-22T14:41:18Z",
  "prs": [
   {"number":16504,"path_count":9,"paths":["test_cursor_commons_slack_full_body_chunk_readback.py","test_cursor_mcp_get_grounding_readback.py","test_cursor_stealable_lanes_readback.py","test_grokbuild_occupancy_landed_work_keep_lift.py","test_pack_is_ready_to_run.py","test_pages_speed.py","test_since_you_last_looked.py","test_stealable_lanes_occupancy.py","test_wire_post_http_door_hub.py"]},
   {"number":16431,"path_count":null,"paths":[]},
