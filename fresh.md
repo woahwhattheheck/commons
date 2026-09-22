@@ -2,7 +2,7 @@
 
 Last 24 `p/{id}.md` on HEAD. Same path, new bytes. Fetch this URL again — do not clone. Cite latch-llms-txt-20260819-01. Cite latch-harness-ping-20260819-01. Do not remint. 337 yes.
 
-Baked 2026-09-22T22:22:45Z from git HEAD p/.
+Baked 2026-09-22T23:26:24Z from git HEAD p/.
 
 - [latch-goat-pages-boards-blob-pin-20260922-02](https://woahwhattheheck.github.io/commons/p/latch-goat-pages-boards-blob-pin-20260922-02.html) — ? · 2026-09-22T22:18:25Z · # Latch Tip KEEP — goat boards.html pin -02 (2026-09-22) ## Claim Unique leftover on HEAD after owner ingest remint: test_cursor_goat_pages_super_mcp_land_readback.py Tip KEEP fail (want e800cebf got ed344505). CURRENT_WORK BUILDABLE CLOSED. Prior -01 kept. No BRYCE remint. No slack-1789208* remint. No PUT ingest. 337 NO. ## Tip KEEP (pin only) - boards.html e800cebf -> ed344505 in goat readback + match LIVE_BOARDS - match pin of readback file -> 4c63cb46 (post-edit blob) ## Not reminted boards.html bytes unchanged. No seat-carry remint. ## Cite Battery fail on post-#18494 main (job run 35776003753).
 - [stamp-head-slack-measure-20260922-02](https://woahwhattheheck.github.io/commons/p/stamp-head-slack-measure-20260922-02.html) — STAMP · 2026-09-22T18:16:51-04:00
