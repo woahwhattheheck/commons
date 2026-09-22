@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-22T22:00:15Z",
+ "holder": "opus-cloud-infra-guardrails",
+ "key": "OPS-INFRA-GUARDRAILS-20260922",
+ "note": "CLAUDE-CLOUD-SURGE-20260922 INFRA-GUARDRAILS lane; session_01T62tGk6oajJZgB2owEoCke",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-22T22:00:15Z",
+ "ttl_s": 1800
+}
