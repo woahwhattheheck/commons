@@ -19,10 +19,10 @@ COIL = ROOT / "p/coil-tools-super-mcp-fold-20260902-01.md"
 
 KEEP = {
     "p/cursor-goat-pages-super-mcp-land-readback-20260902-01.md": "f98887bf",
-    "test_cursor_goat_pages_super_mcp_land_readback.py": "6d528983",
+    "test_cursor_goat_pages_super_mcp_land_readback.py": "0eec19c8",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
     "catalog.html": "68b9b066",
-    "boards.html": "9a690bbe",
+    "boards.html": "baf6b47c",
     "wire.html": "623602a7",
     "ground/WIRE_SUPER_MCP.md": "626b07f7",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
@@ -44,6 +44,11 @@ KEEP = {
     "p/coil-tools-super-mcp-fold-20260902-01.md": "6948bdc1",
 }
 
+STALE_INNER_TEST = "6d528983"
+STALE_BOARDS = "9a690bbe"
+LIVE_INNER_TEST = "0eec19c8"
+LIVE_BOARDS = "baf6b47c"
+
 
 def git_blob(rel: str) -> str:
     return subprocess.check_output(
@@ -59,6 +64,27 @@ class TestCursorGoatPagesSuperMcpLandReadbackMatch(unittest.TestCase):
                 blob.startswith(prefix),
                 f"{rel} reminted: want {prefix} got {blob[:8]}",
             )
+
+    def test_match_keep_shared_paths_follow_inner_keep(self) -> None:
+        import test_cursor_goat_pages_super_mcp_land_readback as inner
+
+        for rel, prefix in inner.KEEP.items():
+            if rel not in KEEP:
+                continue
+            self.assertEqual(
+                KEEP[rel],
+                prefix,
+                f"MATCH KEEP lagged INNER KEEP for {rel}: match={KEEP[rel]} inner={prefix}",
+            )
+        inner_blob = git_blob("test_cursor_goat_pages_super_mcp_land_readback.py")
+        boards_blob = git_blob("boards.html")
+        self.assertTrue(inner_blob.startswith(LIVE_INNER_TEST), inner_blob)
+        self.assertTrue(boards_blob.startswith(LIVE_BOARDS), boards_blob)
+        self.assertFalse(inner_blob.startswith(STALE_INNER_TEST), inner_blob)
+        self.assertFalse(boards_blob.startswith(STALE_BOARDS), boards_blob)
+        self.assertEqual(KEEP["test_cursor_goat_pages_super_mcp_land_readback.py"], LIVE_INNER_TEST)
+        self.assertEqual(KEEP["boards.html"], LIVE_BOARDS)
+        self.assertEqual(inner.KEEP["boards.html"], LIVE_BOARDS)
 
     def test_leftover_unique_pack_tests_still_pass(self) -> None:
         leftover = subprocess.run(
