@@ -110,6 +110,7 @@ class IssueRecord:
     body: str
     kind: str
     target: str = ""
+    clock: str = ""
 
     def as_issue(self) -> dict[str, Any]:
         return {"title": self.title, "body": self.body, "labels": ["board"]}
@@ -370,7 +371,14 @@ def issue_record(message: dict[str, Any], channel_id: str | None = None) -> Issu
     header = "\n".join("%s: %s" % pair for pair in envelope)
     payload = "Slack message deleted; prior canonical record remains immutable.\n" if deleted else exact_body_redact.redact_private_spans(text)
     body = header + "\n---\n" + payload
-    return IssueRecord(native_ts=native_ts, title=ident, body=body, kind=kind, target=target)
+    return IssueRecord(
+        native_ts=native_ts,
+        title=ident,
+        body=body,
+        kind=kind,
+        target=target,
+        clock=clock,
+    )
 
 
 def _record_body(text: str) -> str:
@@ -743,6 +751,10 @@ def github_rate_limited(status: int, detail: str) -> bool:
     return "rate limit" in text or "secondary rate" in text
 
 
+GITHUB_CONTENT_CREATE_INTERVAL_SEC = 2.0
+GITHUB_CONTENT_CREATE_RETRY_DEFAULT_SEC = 60
+
+
 def github_retry_after(headers: Any, default: int = 15) -> int:
     """Honor Retry-After when present; keep a bounded fallback."""
     raw = ""
@@ -768,6 +780,7 @@ class GitHubClient:
         self.token = token.strip()
         self.repository = repository
         self._board_issue_bodies: dict[str, list[str]] | None = None
+        self._next_content_create = 0.0
 
     def request(self, method: str, path: str, payload: dict[str, Any] | None = None) -> Any:
         data = None if payload is None else json.dumps(payload).encode("utf-8")
@@ -792,7 +805,10 @@ class GitHubClient:
                 last_detail = detail
                 if not github_rate_limited(exc.code, detail) or attempt == 2:
                     raise IngestError("GitHub HTTP %s: %s" % (exc.code, detail[:300])) from exc
-                time.sleep(github_retry_after(exc.headers))
+                wait_default = 15
+                if method in {"POST", "PUT", "PATCH"} or "content creation" in detail.lower():
+                    wait_default = GITHUB_CONTENT_CREATE_RETRY_DEFAULT_SEC
+                time.sleep(github_retry_after(exc.headers, default=wait_default))
         raise IngestError("GitHub HTTP request failed: %s" % last_detail[:300])
 
     def board_issue_bodies(self) -> dict[str, list[str]]:
@@ -842,7 +858,17 @@ class GitHubClient:
             )
         return True
 
+    def _pace_content_create(self) -> None:
+        """Space issue POSTs so GitHub content-creation limits are not burst."""
+        now = time.monotonic()
+        wait = self._next_content_create - now
+        if wait > 0:
+            time.sleep(wait)
+            now = time.monotonic()
+        self._next_content_create = now + GITHUB_CONTENT_CREATE_INTERVAL_SEC
+
     def create_issue(self, record: IssueRecord) -> str:
+        self._pace_content_create()
         data = self.request(
             "POST",
             "/repos/%s/issues" % self.repository,
@@ -920,14 +946,31 @@ def cmd_sync(
     events = slack.events(oldest)
     records = plan(events)
     created: list[dict[str, str]] = []
-    for record in records:
-        if github.issue_exists(record):
-            continue
-        created.append({"id": record.title, "issue": github.create_issue(record)})
-    cursor = max(
-        [_cursor_decimal(oldest), *(_decimal_ts(event_clock(event)) for event in events)],
-    )
-    write_state(state_path, format(cursor, "f"))
+    applied = _cursor_decimal(oldest)
+    pending = {record.title: record for record in records}
+    try:
+        for event in events:
+            clock = _decimal_ts(event_clock(event))
+            if should_skip(event):
+                applied = max(applied, clock)
+                continue
+            record = issue_record(event)
+            planned = pending.get(record.title)
+            if planned is None:
+                applied = max(applied, clock)
+                continue
+            if not github.issue_exists(planned):
+                created.append(
+                    {"id": planned.title, "issue": github.create_issue(planned)}
+                )
+            applied = max(applied, clock)
+        cursor = max(
+            [applied, *(_decimal_ts(event_clock(event)) for event in events)],
+        )
+        write_state(state_path, format(cursor, "f"))
+    except IngestError:
+        write_state(state_path, format(applied, "f"))
+        raise
     print(
         json.dumps(
             {
