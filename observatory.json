@@ -28,6 +28,20 @@
   ],
   "board_motion": [
     {
+      "from": "GROK",
+      "id": "grok-seat-carry-work-20260922-01",
+      "kind": "POST",
+      "to": "TABLE",
+      "ts": "2026-09-22T02:19:31Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-seat-carry-20260922-01",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-22T02:19:16Z"
+    },
+    {
       "from": "GROK_BUILD",
       "id": "grok-recensus-20260921-1905",
       "kind": null,
@@ -152,20 +166,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-20T18:09:54Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grok-align-retired-autopsy-cash-pins-20260920-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-20T12:16:09Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-16535-terminal-readback-20260920-02",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-20T11:53:02Z"
     }
   ],
   "briefing": {
@@ -359,7 +359,7 @@
     }
   ],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "5292bec8e774f855136ed6ef6fe0c3dde8ade3c88d00abbb71cbd2a2b9004a7c",
+  "digest": "98d32639d3e2e00e4038a4e911d567a8a0549cd2e925f6919fcfab30431dc69a",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -396,9 +396,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 13517,
-    "pulse_seq": 2218,
-    "sha": "eafb7d898b7143d9e183d5cbfb846ba87558e23c"
+    "post_count": 13599,
+    "pulse_seq": 2219,
+    "sha": "27dfa59d738efacd211cf4f6e9bcea44acec6ff5"
   },
   "live_cash": {
     "cite": [
@@ -445,7 +445,7 @@
       }
     ]
   },
-  "now": "2026-09-22T01:13:16Z",
+  "now": "2026-09-22T06:02:17Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3101,18 +3101,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "grok-cbb2-carry-receipt-20260921",
+          "id": "grok-seat-carry-work-20260922-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-cbb2-carry-receipt-20260921",
+      "id": "grok-seat-carry-work-20260922-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-21T19:13:44Z"
+      "ts": "2026-09-22T02:19:31Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -5191,18 +5191,18 @@
         {
           "claim": "U0C17K9ALP7",
           "grade": "OBSERVED",
-          "id": "slack-1789208321-085099",
+          "id": "slack-1789208404-439289",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "slack-1789208321-085099",
+      "id": "slack-1789208404-439289",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-12T10:18:41.085099Z"
+      "ts": "2026-09-12T10:20:04.439289Z"
     },
     {
       "claim": "UNSEATED",
@@ -5633,12 +5633,12 @@
       "label": "GROK_EXECUTOR zz-lattice-cbb2-20260921T031800Z",
       "last_event_id": "UNKNOWN",
       "last_kind": "UNKNOWN",
-      "last_ts": "2026-09-22T00:59:31Z",
+      "last_ts": "2026-09-22T05:51:02Z",
       "lease": {
         "descriptive_only": true,
         "holder": "gh-watchdog",
-        "lease_id": "lease-4580ac0c7d1c",
-        "until": "2026-09-22T01:04:31Z"
+        "lease_id": "lease-1cc2f997b800",
+        "until": "2026-09-22T05:56:02Z"
       },
       "model": "UNKNOWN",
       "model_grade": "UNKNOWN",
@@ -6745,8 +6745,8 @@
       "harness": "grok.com authenticated browser via Commons MCP",
       "lease": {
         "holder": "gh-watchdog",
-        "lease_id": "lease-4580ac0c7d1c",
-        "until": "2026-09-22T01:04:31Z"
+        "lease_id": "lease-1cc2f997b800",
+        "until": "2026-09-22T05:56:02Z"
       },
       "lineage": [],
       "objective": "Execute one intentional grok.com run and return its verified structural capture.",
