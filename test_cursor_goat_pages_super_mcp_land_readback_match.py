@@ -22,7 +22,7 @@ KEEP = {
     "test_cursor_goat_pages_super_mcp_land_readback.py": "0eec19c8",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
     "catalog.html": "68b9b066",
-    "boards.html": "baf6b47c",
+    "boards.html": "e800cebf",
     "wire.html": "623602a7",
     "ground/WIRE_SUPER_MCP.md": "626b07f7",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
@@ -47,7 +47,7 @@ KEEP = {
 STALE_INNER_TEST = "6d528983"
 STALE_BOARDS = "9a690bbe"
 LIVE_INNER_TEST = "0eec19c8"
-LIVE_BOARDS = "baf6b47c"
+LIVE_BOARDS = "e800cebf"
 
 
 def git_blob(rel: str) -> str:
