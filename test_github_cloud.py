@@ -3,9 +3,13 @@
 from __future__ import annotations
 
 from pathlib import Path
+import email.message
+import io
+import json
 import sys
 import tempfile
 import unittest
+import urllib.error
 from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parent
@@ -183,6 +187,152 @@ class CollectEmitTests(unittest.TestCase):
             out = reader.emit("notifications", "00001", [{"id": "live"}], {"count": 1})
             self.assertEqual(Path(out), target)
             self.assertEqual(target.read_bytes(), FIRST)
+
+
+class FakeResponse(io.BytesIO):
+    def __init__(self, status, payload):
+        super().__init__(json.dumps(payload).encode())
+        self.status = status
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *args):
+        return False
+
+
+class FakeOpener:
+    def __init__(self, outcomes):
+        self.outcomes = list(outcomes)
+        self.calls = []
+
+    def open(self, req, timeout=30):
+        self.calls.append(req)
+        outcome = self.outcomes.pop(0)
+        if isinstance(outcome, BaseException):
+            raise outcome
+        status, payload = outcome
+        return FakeResponse(status, payload)
+
+
+def http_error(url, code, payload=None, headers=None, raw=None):
+    hdrs = email.message.Message()
+    for key, value in (headers or {}).items():
+        hdrs[key] = value
+    body = io.BytesIO(json.dumps(payload).encode() if raw is None else raw)
+    return urllib.error.HTTPError(url, code, "error", hdrs, body)
+
+
+GITHUB_CONTENTS = "https://api.github.com/repos/woahwhattheheck/commons-ship-enforcer/contents/checkpoint.json?ref=main"
+
+
+class RequestContractTests(unittest.TestCase):
+    def setUp(self):
+        self.token = patch.object(github_cloud, "TOKEN", "synthetic-token")
+        self.token.start()
+        self.addCleanup(self.token.stop)
+
+    def test_github_get_uses_github_accept(self):
+        opener = FakeOpener([(200, {"ok": True})])
+        with patch.object(github_cloud, "OPENER", opener):
+            status, payload = github_cloud.request(GITHUB_CONTENTS)
+        self.assertEqual(status, 200)
+        self.assertEqual(payload, {"ok": True})
+        self.assertEqual(opener.calls[0].get_header("Accept"), "application/vnd.github+json")
+        self.assertEqual(opener.calls[0].get_method(), "GET")
+
+    def test_publisher_post_uses_json_accept(self):
+        opener = FakeOpener([(200, {"allow": True, "receipt": {"ok": True}})])
+        with patch.object(github_cloud, "OPENER", opener):
+            status, payload = github_cloud.request(github_cloud.PUBLISHER, {"operation": "file.put"})
+        self.assertEqual(status, 200)
+        self.assertEqual(payload["allow"], True)
+        self.assertEqual(opener.calls[0].get_header("Accept"), "application/json")
+        self.assertEqual(opener.calls[0].get_method(), "POST")
+
+    def test_github_permission_403_is_tagged_and_not_retried(self):
+        opener = FakeOpener([
+            http_error(GITHUB_CONTENTS, 403, {"message": "denied"}, headers={"X-RateLimit-Remaining": "12"}),
+        ])
+        slept = []
+        with patch.object(github_cloud, "OPENER", opener), patch.object(github_cloud.time, "sleep", slept.append):
+            with self.assertRaisesRegex(RuntimeError, r"^provider_http_403_github$"):
+                github_cloud.request(GITHUB_CONTENTS)
+        self.assertEqual(len(opener.calls), 1)
+        self.assertEqual(slept, [])
+
+    def test_github_rate_limit_403_retries_then_succeeds(self):
+        opener = FakeOpener([
+            http_error(
+                GITHUB_CONTENTS,
+                403,
+                {"message": "rate"},
+                headers={"X-RateLimit-Remaining": "0", "Retry-After": "2"},
+            ),
+            (200, {"type": "file", "sha": "abc", "content": ""}),
+        ])
+        slept = []
+        with patch.object(github_cloud, "OPENER", opener), patch.object(github_cloud.time, "sleep", slept.append):
+            status, payload = github_cloud.request(GITHUB_CONTENTS)
+        self.assertEqual(status, 200)
+        self.assertEqual(payload["sha"], "abc")
+        self.assertEqual(len(opener.calls), 2)
+        self.assertEqual(slept, [2.0])
+
+    def test_publisher_post_403_returns_body_without_retry(self):
+        opener = FakeOpener([
+            http_error(github_cloud.PUBLISHER, 403, {"reason_code": "HELD", "allow": False}),
+        ])
+        slept = []
+        with patch.object(github_cloud, "OPENER", opener), patch.object(github_cloud.time, "sleep", slept.append):
+            status, payload = github_cloud.request(github_cloud.PUBLISHER, {"operation": "file.put"})
+        self.assertEqual(status, 403)
+        self.assertEqual(payload["reason_code"], "HELD")
+        self.assertEqual(len(opener.calls), 1)
+        self.assertEqual(slept, [])
+
+
+class WritePrivateTests(unittest.TestCase):
+    def setUp(self):
+        self.token = patch.object(github_cloud, "TOKEN", "synthetic-token")
+        self.token.start()
+        self.addCleanup(self.token.stop)
+        self.raw = b'{"schema":"github-history-checkpoint-v1"}'
+
+    def test_publisher_403_surfaces_reason_code(self):
+        opener = FakeOpener([
+            http_error(github_cloud.PUBLISHER, 403, {"reason_code": "HELD", "allow": False}),
+        ])
+        with patch.object(github_cloud, "OPENER", opener), patch.object(github_cloud.time, "sleep") as slept:
+            with self.assertRaisesRegex(RuntimeError, r"^publisher_HELD$"):
+                github_cloud.write_private("history-review/x/checkpoint.json", self.raw)
+        self.assertEqual(len(opener.calls), 1)
+        slept.assert_not_called()
+
+    def test_publisher_html_403_is_named_publisher_403(self):
+        opener = FakeOpener([
+            http_error(github_cloud.PUBLISHER, 403, raw=b"<html>denied</html>"),
+        ])
+        with patch.object(github_cloud, "OPENER", opener):
+            with self.assertRaisesRegex(RuntimeError, r"^publisher_403$"):
+                github_cloud.write_private("history-review/x/checkpoint.json", self.raw)
+
+    def test_resource_busy_retries_same_payload_then_writes(self):
+        opener = FakeOpener([
+            http_error(github_cloud.PUBLISHER, 409, {"error": "RESOURCE_BUSY"}),
+            (200, {"allow": True, "receipt": {"commit": {"oid": "1"}}}),
+        ])
+        slept = []
+        with patch.object(github_cloud, "OPENER", opener), patch.object(
+            github_cloud.time, "sleep", slept.append
+        ), patch.object(github_cloud, "read_private", return_value=(self.raw, "sha-1")):
+            github_cloud.write_private("history-review/x/checkpoint.json", self.raw)
+        self.assertEqual(len(opener.calls), 2)
+        self.assertEqual(slept, [1])
+        first = json.loads(opener.calls[0].data.decode())
+        second = json.loads(opener.calls[1].data.decode())
+        self.assertEqual(first["operation_id"], second["operation_id"])
+        self.assertEqual(first["operation"], "file.put")
 
 
 if __name__ == "__main__":
