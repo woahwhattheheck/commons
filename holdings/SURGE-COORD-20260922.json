@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-22T22:08:23Z",
+ "holder": "fable-cloud-coordinator",
+ "key": "SURGE-COORD-20260922",
+ "note": "CLAUDE-CLOUD-SURGE-20260922 coordinator session_01T97FWdrbXLMDAWfcVHGUPF; lanes: PAY-MEMANTO session_01HK841PNnbjZXxreumhR1jT opus-5-5 memanto PR2024 prep; PAY-CBB session_01Wq3Y2q7U1zjabFs6n2nBB6 opus-5-5 cbb PR4376 clean + #5 prep; INFRA-DECISION-VIEW session_01Ct8vtX2b9CDZoyPEEaq6uL key OPS-DECIS",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-22T22:08:23Z",
+ "ttl_s": 3600
+}
