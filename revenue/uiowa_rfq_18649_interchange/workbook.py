@@ -246,12 +246,12 @@ def read_xlsx(path: str | Path) -> Any:
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("action", choices=("export", "import"))
+    parser.add_argument("command", choices=("export", "import"))
     parser.add_argument("source", type=Path)
     parser.add_argument("destination", type=Path)
     args = parser.parse_args(argv)
     try:
-        if args.action == "export":
+        if args.command == "export":
             value = t.read_json(args.source)
             write_xlsx(value, args.destination)
         else:
