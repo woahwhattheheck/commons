@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { gzipSync } from 'node:zlib';
-import { openState, runMonitor, serializeState } from './runner.mjs';
+import { openState, putPrivateFile, runMonitor, serializeState } from './runner.mjs';
 
 test('SQLite state round-trips through private text snapshot', () => {
   const opened = openState();
@@ -122,4 +122,62 @@ test('runner bootstraps private state, imports durable notice, uses GET reads an
     assert.equal(second.imported, 0);
     assert.equal(posts.length, 1);
   } finally { globalThis.fetch = originalFetch; }
+});
+
+test('publisher 403 surfaces reason_code and does not retry a held publication', async () => {
+  const originalFetch = globalThis.fetch;
+  const calls = [];
+  globalThis.fetch = async (rawUrl, options = {}) => {
+    calls.push({ url: String(rawUrl), body: options.body, accept: options.headers.Accept });
+    return Response.json({ allow: false, reason_code: 'invalid_candidate' }, { status: 403 });
+  };
+  try {
+    await assert.rejects(
+      putPrivateFile({ COMMONS_GITHUB_TOKEN: 'fixture' }, 'paid-work/shipping-state.json', '{"ok":true}\n'),
+      /publisher_state_invalid_candidate/u);
+    assert.equal(calls.length, 1);
+    assert.equal(calls[0].accept, 'application/json');
+    assert.equal(JSON.parse(calls[0].body).operation, 'file.put');
+  } finally { globalThis.fetch = originalFetch; }
+});
+
+test('publisher HTML 403 is named publisher_state_403', async () => {
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async () => new Response('<html>denied</html>', {
+    status: 403, headers: { 'Content-Type': 'text/html' }
+  });
+  try {
+    await assert.rejects(
+      putPrivateFile({ COMMONS_GITHUB_TOKEN: 'fixture' }, 'paid-work/shipping-state.json', '{"ok":true}\n'),
+      /publisher_state_403/u);
+  } finally { globalThis.fetch = originalFetch; }
+});
+
+test('RESOURCE_BUSY retries the same payload then writes', async () => {
+  const originalFetch = globalThis.fetch;
+  const originalTimeout = globalThis.setTimeout;
+  const delays = [];
+  globalThis.setTimeout = (fn, ms) => {
+    delays.push(ms);
+    return originalTimeout(fn, 0);
+  };
+  const calls = [];
+  globalThis.fetch = async (rawUrl, options = {}) => {
+    const body = JSON.parse(options.body);
+    calls.push(body.operation_id);
+    if (calls.length === 1)
+      return Response.json({ error: 'RESOURCE_BUSY' }, { status: 409 });
+    return Response.json({ allow: true, receipt: { commit: { oid: 'b'.repeat(40) } } });
+  };
+  try {
+    const oid = await putPrivateFile({ COMMONS_GITHUB_TOKEN: 'fixture' },
+      'paid-work/shipping-state.json', '{"ok":true}\n', 'a'.repeat(40));
+    assert.equal(oid, 'b'.repeat(40));
+    assert.equal(calls.length, 2);
+    assert.equal(calls[0], calls[1]);
+    assert.deepEqual(delays, [1000]);
+  } finally {
+    globalThis.fetch = originalFetch;
+    globalThis.setTimeout = originalTimeout;
+  }
 });

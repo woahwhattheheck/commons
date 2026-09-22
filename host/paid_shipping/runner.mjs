@@ -40,19 +40,34 @@ async function readFile(env, path) {
   return { sha: entry.sha, text: unb64(entry.content) };
 }
 
-async function putPrivateFile(env, path, text, previousSha) {
+function publisherStateError(result, status) {
+  const reason = String((result && (result.reason_code || result.error)) || status || 'unknown')
+    .toLowerCase().replace(/[^a-z0-9_]+/g, '_').replace(/^_+|_+$/g, '') || 'unknown';
+  return new Error(`publisher_state_${reason}`);
+}
+
+export async function putPrivateFile(env, path, text, previousSha) {
   if (Buffer.byteLength(text, 'utf8') > 390_000) throw new Error('private_file_too_large');
   const operationId = `ship-${sha256(`${path}\n${previousSha || 'new'}\n${sha256(text)}`)}`;
   const args = { owner: 'woahwhattheheck', repo: 'commons-ship-enforcer', path,
     message: `Update shipping monitor state ${operationId.slice(5, 17)}`,
     content: b64(text), ...(previousSha ? { sha: previousSha } : {}) };
-  const response = await fetch(`${PUBLISHER}/v1/publish`, { method: 'POST', headers: {
-    Authorization: `Bearer ${env.COMMONS_GITHUB_TOKEN}`, 'Content-Type': 'application/json',
-    'User-Agent': 'Commons-Shipping-Enforcer/1.0'
-  }, body: JSON.stringify({ operation_id: operationId, operation: 'file.put', args }) });
-  const result = await response.json().catch(() => ({}));
+  const payload = { operation_id: operationId, operation: 'file.put', args };
+  let response, result = {};
+  for (let attempt = 0; attempt < 8; attempt++) {
+    response = await fetch(`${PUBLISHER}/v1/publish`, { method: 'POST', headers: {
+      Authorization: `Bearer ${env.COMMONS_GITHUB_TOKEN}`, Accept: 'application/json',
+      'Content-Type': 'application/json', 'User-Agent': 'Commons-Shipping-Enforcer/1.0'
+    }, body: JSON.stringify(payload) });
+    result = await response.json().catch(() => ({}));
+    if (response.status === 409 && result.error === 'RESOURCE_BUSY') {
+      await new Promise(resolve => setTimeout(resolve, Math.min(2 ** attempt, 30) * 1000));
+      continue;
+    }
+    break;
+  }
   if (!response.ok || result.allow !== true || !result.receipt?.commit?.oid)
-    throw new Error(`publisher_state_${result.error || response.status}`);
+    throw publisherStateError(result, response.status);
   return result.receipt.commit.oid;
 }
 
