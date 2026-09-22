@@ -56,8 +56,8 @@ export async function putPrivateFile(env, path, text, previousSha) {
   let response, result = {};
   for (let attempt = 0; attempt < 8; attempt++) {
     response = await fetch(`${PUBLISHER}/v1/publish`, { method: 'POST', headers: {
-      Authorization: `Bearer ${env.COMMONS_GITHUB_TOKEN}`, 'Content-Type': 'application/json',
-      'User-Agent': 'Commons-Shipping-Enforcer/1.0'
+      Authorization: `Bearer ${env.COMMONS_GITHUB_TOKEN}`, Accept: 'application/json',
+      'Content-Type': 'application/json', 'User-Agent': 'Commons-Shipping-Enforcer/1.0'
     }, body: JSON.stringify(payload) });
     result = await response.json().catch(() => ({}));
     if (response.status === 409 && result.error === 'RESOURCE_BUSY') {

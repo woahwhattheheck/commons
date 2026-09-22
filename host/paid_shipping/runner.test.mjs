@@ -128,7 +128,7 @@ test('publisher 403 surfaces reason_code and does not retry a held publication',
   const originalFetch = globalThis.fetch;
   const calls = [];
   globalThis.fetch = async (rawUrl, options = {}) => {
-    calls.push({ url: String(rawUrl), body: options.body });
+    calls.push({ url: String(rawUrl), body: options.body, accept: options.headers.Accept });
     return Response.json({ allow: false, reason_code: 'invalid_candidate' }, { status: 403 });
   };
   try {
@@ -136,6 +136,7 @@ test('publisher 403 surfaces reason_code and does not retry a held publication',
       putPrivateFile({ COMMONS_GITHUB_TOKEN: 'fixture' }, 'paid-work/shipping-state.json', '{"ok":true}\n'),
       /publisher_state_invalid_candidate/u);
     assert.equal(calls.length, 1);
+    assert.equal(calls[0].accept, 'application/json');
     assert.equal(JSON.parse(calls[0].body).operation, 'file.put');
   } finally { globalThis.fetch = originalFetch; }
 });
