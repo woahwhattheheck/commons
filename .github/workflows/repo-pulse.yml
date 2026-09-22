@@ -218,8 +218,8 @@ jobs:
             --posts-json /tmp/slack-ingest/posts.json
           echo "state_ready=true" >> "$GITHUB_OUTPUT"
 
-      - name: Save the last fully processed Slack event cursor
-        if: success() && steps.sync.outputs.state_ready == 'true'
+      - name: Save the Slack event cursor after progress
+        if: always() && github.event_name != 'pull_request' && hashFiles('.slack-ingest-state.json') != ''
         uses: actions/cache/save@v4
         with:
           path: .slack-ingest-state.json
