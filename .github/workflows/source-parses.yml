@@ -15,6 +15,7 @@ on:
       - "tools/provider_cost_truth/**"
       - "revenue/pilot_delivery_renewal_expansion_gate/**"
       - "test_pilot_delivery_renewal_expansion_gate.py"
+      - "test_pilot_delivery_renewal_reload_trust_root.py"
       - "test_discord_push_scope.py"
       - ".github/workflows/source-parses.yml"
       - ".github/workflows/commons-discord-cloud.yml"
@@ -177,14 +178,16 @@ jobs:
           revenue/pilot_delivery_renewal_expansion_gate/common.py
           revenue/pilot_delivery_renewal_expansion_gate/model.py
           revenue/pilot_delivery_renewal_expansion_gate/engine.py
+          revenue/pilot_delivery_renewal_expansion_gate/_trusted_runtime.py
           revenue/pilot_delivery_renewal_expansion_gate/test_gate.py
           test_pilot_delivery_renewal_expansion_gate.py
+          test_pilot_delivery_renewal_reload_trust_root.py
 
       - name: Normal pilot delivery / renewal / expansion contract
-        run: python -m unittest -v test_pilot_delivery_renewal_expansion_gate
+        run: python -m unittest -v test_pilot_delivery_renewal_expansion_gate test_pilot_delivery_renewal_reload_trust_root
 
       - name: Optimized pilot delivery / renewal / expansion contract
-        run: python -O -m unittest -v test_pilot_delivery_renewal_expansion_gate
+        run: python -O -m unittest -v test_pilot_delivery_renewal_expansion_gate test_pilot_delivery_renewal_reload_trust_root
 
       - name: Compile provider-cost source
         run: python -m py_compile tools/provider_cost_truth/*.py
