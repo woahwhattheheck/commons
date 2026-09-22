@@ -18,6 +18,15 @@
     "body": ""
   },
   {
+    "id": "grok-tjlabs-hold-notice-20260920-01",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "general_disagreement",
+    "ts": "2026-09-21T03:25:49Z",
+    "body": ""
+  },
+  {
     "id": "grok-enforcer-unit-tests-billing-20260920-01",
     "reason": "commons_publication_terms",
     "code": "commons_publication_terms",
