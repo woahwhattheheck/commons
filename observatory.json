@@ -14,6 +14,20 @@
   "board_motion": [
     {
       "from": "GROK",
+      "id": "receipt-18134-slack-1789209390-145899",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-22T15:48:44Z"
+    },
+    {
+      "from": "TABLE",
+      "id": "receipt-18143-slack-1789209398-671269",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-22T15:48:12Z"
+    },
+    {
+      "from": "GROK",
       "id": "grok-carry-receipt-20260922-0915",
       "kind": null,
       "to": "TABLE",
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TOOLS",
       "ts": "2026-09-21T02:51:40Z"
-    },
-    {
-      "from": "GROK",
-      "id": "hold-ff1d75c11f86-ship-79c7",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-20T21:12:47Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1551314233822806170",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-20T19:28:55.368000Z"
     }
   ],
   "briefing": {
@@ -169,7 +169,7 @@
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
         "0 collisions need reconciliation.",
-        "267 claims present (existence, not sessions).",
+        "268 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -234,7 +234,7 @@
             "source": "projector"
           }
         ],
-        "text": "267 claims present (existence, not sessions)."
+        "text": "268 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -283,7 +283,7 @@
       },
       "collisions": 0,
       "confirmed_active": 0,
-      "presence_claims": 267,
+      "presence_claims": 268,
       "sessions": 1,
       "states": {
         "ACTIVE": 0,
@@ -309,14 +309,14 @@
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
       "0 collisions need reconciliation.",
-      "267 claims present (existence, not sessions).",
+      "268 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "142eca4f1b6de7a2e4ee621ed92fe7ddb86a10a4aae18a0c4adb41d4eb32455a",
+  "digest": "3d71a4985c120a204a19dd6746f86242af6701ce95e1993f8da63362f2cd4947",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 14586,
-    "pulse_seq": 2224,
-    "sha": "9a90483c6ee5f13c9e15a046655c74523f71793c"
+    "post_count": 14588,
+    "pulse_seq": 2225,
+    "sha": "09c37695e64e21d34bd70efb6636aaded16253d6"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-22T15:46:57Z",
+  "now": "2026-09-22T16:21:16Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3058,18 +3058,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "grok-carry-receipt-20260922-0915",
+          "id": "receipt-18134-slack-1789209390-145899",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-carry-receipt-20260922-0915",
+      "id": "receipt-18134-slack-1789209390-145899",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-22T09:15:33Z"
+      "ts": "2026-09-22T15:48:44Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -4989,6 +4989,25 @@
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "UNKNOWN"
+    },
+    {
+      "claim": "TABLE",
+      "evidence": [
+        {
+          "claim": "TABLE",
+          "grade": "OBSERVED",
+          "id": "receipt-18143-slack-1789209398-671269",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "receipt-18143-slack-1789209398-671269",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "ACTIVE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-09-22T15:48:12Z"
     },
     {
       "claim": "TENON",

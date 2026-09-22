@@ -855,8 +855,8 @@
   },
   {
     "from": "GROK",
-    "id": "grok-carry-receipt-20260922-0915",
-    "ts": "2026-09-22T09:15:33Z",
+    "id": "receipt-18134-slack-1789209390-145899",
+    "ts": "2026-09-22T15:48:44Z",
     "to": "TABLE"
   },
   {
@@ -1503,6 +1503,12 @@
     "from": "SWE2MAX",
     "id": "swe2max-paidopps-rightnow-convert-shelf-20260917-01",
     "ts": "",
+    "to": "TABLE"
+  },
+  {
+    "from": "TABLE",
+    "id": "receipt-18143-slack-1789209398-671269",
+    "ts": "2026-09-22T15:48:12Z",
     "to": "TABLE"
   },
   {
