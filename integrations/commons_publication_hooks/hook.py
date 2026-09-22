@@ -24,12 +24,11 @@ from commons_publication_policy import (
 )
 
 SWARM_CONTEXT = (
-    "Standing owner directive 2026-09-12: read ground/SWARM_ORDER.md "
-    "and the existing command center before starting or handing off work. "
-    "GPTs are major builders and integration leads. Claude, Muse, Grok and "
-    "unknown/mixed work require an exact-change GPT pass before integration "
-    "or release. Batch reviews; reuse unchanged approvals when GPT tokens "
-    "are exhausted. This supersedes older no-review rules for integration. "
+    "Standing owner rules: read RULES.md before starting work. "
+    "GPTs are major builders and leads. No agent peer review: agents don't "
+    "review, approve or gate each other's work, and nobody waits on a review "
+    "before merging (owner, 2026-09-22). Don't write tests or run test suites; "
+    "run the real thing and read the exit code. "
     "Outward communications must use the owner's identity only. "
 )
 
