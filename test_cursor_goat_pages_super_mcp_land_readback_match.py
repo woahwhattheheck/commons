@@ -19,10 +19,10 @@ COIL = ROOT / "p/coil-tools-super-mcp-fold-20260902-01.md"
 
 KEEP = {
     "p/cursor-goat-pages-super-mcp-land-readback-20260902-01.md": "f98887bf",
-    "test_cursor_goat_pages_super_mcp_land_readback.py": "a5b5595c",
+    "test_cursor_goat_pages_super_mcp_land_readback.py": "4c63cb46",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
     "catalog.html": "68b9b066",
-    "boards.html": "e800cebf",
+    "boards.html": "ed344505",
     "wire.html": "623602a7",
     "ground/WIRE_SUPER_MCP.md": "626b07f7",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
@@ -46,8 +46,8 @@ KEEP = {
 
 STALE_INNER_TEST = "0eec19c8"
 STALE_BOARDS = "9a690bbe"
-LIVE_INNER_TEST = "a5b5595c"
-LIVE_BOARDS = "e800cebf"
+LIVE_INNER_TEST = "4c63cb46"
+LIVE_BOARDS = "ed344505"
 
 
 def git_blob(rel: str) -> str:
