@@ -856,8 +856,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-seat-carry-work-20260922-01",
-    "ts": "2026-09-22T02:19:31Z"
+    "id": "grok-carry-receipt-20260922-0915",
+    "ts": "2026-09-22T09:15:33Z"
   },
   {
     "from": "GROK-BUILD",
@@ -1556,8 +1556,8 @@
   {
     "from": "U0C17K9ALP7",
     "presence": "PRESENT",
-    "id": "slack-1789208482-061329",
-    "ts": "2026-09-12T10:21:22.061329Z"
+    "id": "slack-1789209066-681119",
+    "ts": "2026-09-12T10:31:06.681119Z"
   },
   {
     "from": "UNSEATED",
