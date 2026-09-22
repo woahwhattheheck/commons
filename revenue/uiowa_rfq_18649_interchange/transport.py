@@ -289,15 +289,15 @@ def project_pdf(path: str | Path) -> dict[str, Any]:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("action", choices=("export", "import", "compare"))
+    parser.add_argument("command", choices=("export", "import", "compare"))
     parser.add_argument("source", type=Path)
     parser.add_argument("destination", type=Path)
     args = parser.parse_args(argv)
     try:
-        if args.action == "export":
+        if args.command == "export":
             document = read_json(args.source)
             write_csv(document, args.destination)
-        elif args.action == "import":
+        elif args.command == "import":
             document = read_csv(args.source)
             write_json(document, args.destination)
         else:
