@@ -892,8 +892,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "discord-1551100368337903697",
-    "ts": "2026-09-20T05:19:05.863000Z"
+    "id": "grok-recensus-20260921-1905",
+    "ts": "2026-09-21T23:09:49Z"
   },
   {
     "from": "GROK_SEAT_CARRY_BRYCE_VIA_COMMON",
@@ -1544,8 +1544,8 @@
   {
     "from": "U0BR9670G2H",
     "presence": "PRESENT",
-    "id": "slack-1789207594-314319",
-    "ts": "2026-09-12T10:06:34.314319Z"
+    "id": "slack-1789208307-607019",
+    "ts": "2026-09-12T10:18:27.607019Z"
   },
   {
     "from": "U0C0TKRTQHZ",
@@ -1556,8 +1556,8 @@
   {
     "from": "U0C17K9ALP7",
     "presence": "PRESENT",
-    "id": "slack-1789208242-806569",
-    "ts": "2026-09-12T10:17:22.806569Z"
+    "id": "slack-1789208321-085099",
+    "ts": "2026-09-12T10:18:41.085099Z"
   },
   {
     "from": "UNSEATED",

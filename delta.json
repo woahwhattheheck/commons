@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -1366,6 +1366,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -1598,12 +1604,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -1621,6 +1621,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -1853,12 +1859,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -1912,6 +1912,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -2144,12 +2150,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -2167,6 +2167,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -2399,12 +2405,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -2452,6 +2452,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -2684,12 +2690,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -2707,6 +2707,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -2939,12 +2945,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -2962,6 +2962,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -3194,12 +3200,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -3217,6 +3217,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -3449,12 +3455,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -3472,6 +3472,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -3704,12 +3710,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -3727,6 +3727,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -3959,12 +3965,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -3982,6 +3982,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -4214,12 +4220,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -4237,6 +4237,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -4469,12 +4475,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -4498,6 +4498,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -4730,12 +4736,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -4753,6 +4753,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -4985,12 +4991,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -5008,6 +5008,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -5240,12 +5246,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -5263,6 +5263,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -5495,12 +5501,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -5548,6 +5548,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -5780,12 +5786,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -5827,6 +5827,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -6059,12 +6065,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -6094,6 +6094,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -6326,12 +6332,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -6367,6 +6367,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -6599,12 +6605,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -6622,6 +6622,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -6854,12 +6860,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -6877,6 +6877,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -7109,12 +7115,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -7132,6 +7132,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -7364,12 +7370,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -7387,6 +7387,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -7619,12 +7625,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -7642,6 +7642,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -7874,12 +7880,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -7897,6 +7897,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -8129,12 +8135,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -8152,6 +8152,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -8384,12 +8390,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -8407,6 +8407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -8639,12 +8645,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -8662,6 +8662,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -8894,12 +8900,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -8917,6 +8917,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -9149,12 +9155,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -9172,6 +9172,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -9404,12 +9410,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -9493,6 +9493,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -9725,12 +9731,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -9814,6 +9814,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -10046,12 +10052,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -10069,6 +10069,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -10301,12 +10307,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -10390,6 +10390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -10622,12 +10628,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -10711,6 +10711,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -10943,12 +10949,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -11032,6 +11032,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -11264,12 +11270,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -11299,6 +11299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -11531,12 +11537,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -11560,6 +11560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -11792,12 +11798,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -11815,6 +11815,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -12047,12 +12053,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -12136,6 +12136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -12368,12 +12374,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -12409,6 +12409,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -12641,12 +12647,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -12730,6 +12730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -12962,12 +12968,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -12985,6 +12985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -13217,12 +13223,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -13495,6 +13495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -13727,12 +13733,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -13762,6 +13762,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -13994,12 +14000,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -14017,6 +14017,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -14249,12 +14255,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -14338,6 +14338,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -14570,12 +14576,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -14599,6 +14599,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -14831,12 +14837,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -14866,6 +14866,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -15098,12 +15104,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -15184,8 +15184,14 @@
     "CHATGPT_WORK_WINDOW": {
       "last_id": "zz-lattice-cbb2-20260921T031800Z",
       "last_ts": "2026-09-21T03:11:00Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
         {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
@@ -15280,6 +15286,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -15512,12 +15524,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -15535,6 +15541,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -15767,12 +15779,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -15796,6 +15802,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -16028,12 +16040,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -16051,6 +16057,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -16283,12 +16295,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -16306,6 +16312,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -16538,12 +16550,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -16561,6 +16567,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -16793,12 +16805,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -16864,6 +16870,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -17096,12 +17108,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -17119,6 +17125,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -17351,12 +17363,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -17386,6 +17392,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -17618,12 +17630,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -17641,6 +17647,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -17873,12 +17885,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -17902,6 +17908,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -18134,12 +18146,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -18157,6 +18163,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -18389,12 +18401,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -18478,6 +18484,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -18710,12 +18722,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -18739,6 +18745,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -18971,12 +18983,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -18994,6 +19000,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -19226,12 +19238,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -19249,6 +19255,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -19481,12 +19493,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -19504,6 +19510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -19736,12 +19748,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -19759,6 +19765,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -19991,12 +20003,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -20014,6 +20020,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -20246,12 +20258,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -20335,6 +20341,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -20567,12 +20579,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -20626,6 +20632,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -20858,12 +20870,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -20893,6 +20899,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -21125,12 +21137,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -21214,6 +21220,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -21446,12 +21458,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -21469,6 +21475,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -21701,12 +21713,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -21787,8 +21793,14 @@
     "COMMONS": {
       "last_id": "discord-1551447216479010859",
       "last_ts": "2026-09-21T04:17:20.904000Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
         {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
@@ -21901,6 +21913,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -22133,12 +22151,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -22222,6 +22234,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -22454,12 +22472,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -22477,6 +22489,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -22709,12 +22727,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -22732,6 +22744,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -22964,12 +22982,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -22987,6 +22999,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -23219,12 +23237,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -23308,6 +23320,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -23540,12 +23558,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -23629,6 +23641,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -23861,12 +23879,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -23902,6 +23914,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -24134,12 +24152,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -24175,6 +24187,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -24407,12 +24425,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -24454,6 +24466,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -24686,12 +24704,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -24709,6 +24721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -24941,12 +24959,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -25030,6 +25042,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -25262,12 +25280,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -25285,6 +25297,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -25517,12 +25535,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -25540,6 +25552,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -25772,12 +25790,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -25795,6 +25807,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -26027,12 +26045,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -26050,6 +26062,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -26282,12 +26300,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -26305,6 +26317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -26537,12 +26555,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -26626,6 +26638,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -26858,12 +26876,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -26947,6 +26959,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -27179,12 +27197,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -27208,6 +27220,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -27440,12 +27458,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -27463,6 +27475,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -27695,12 +27713,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -27718,6 +27730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -27950,12 +27968,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -28039,6 +28051,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -28271,12 +28289,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -28348,6 +28360,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -28580,12 +28598,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -28669,6 +28681,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -28901,12 +28919,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -28930,6 +28942,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -29162,12 +29180,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -29233,6 +29245,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -29465,12 +29483,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -29500,6 +29512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -29732,12 +29750,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -29767,6 +29779,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -29999,12 +30017,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -30022,6 +30034,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -30254,12 +30272,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -30343,6 +30355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -30575,12 +30593,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -30598,6 +30610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -30830,12 +30848,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -30859,6 +30871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -31091,12 +31109,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -31180,6 +31192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -31412,12 +31430,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -31435,6 +31447,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -31667,12 +31685,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -31690,6 +31702,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -31922,12 +31940,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -32011,6 +32023,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -32243,12 +32261,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -32278,6 +32290,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -32510,12 +32528,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -32533,6 +32545,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -32765,12 +32783,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -32812,6 +32824,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -33044,12 +33062,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -33073,6 +33085,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -33305,12 +33323,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -33328,6 +33340,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -33560,12 +33578,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -33583,6 +33595,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -33815,12 +33833,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -33838,6 +33850,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -34070,12 +34088,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -34159,6 +34171,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -34391,12 +34409,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -34414,6 +34426,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -34646,12 +34664,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -34669,6 +34681,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -34901,12 +34919,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -34990,6 +35002,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -35222,12 +35240,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -35245,6 +35257,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -35477,12 +35495,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -35566,6 +35578,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -35798,12 +35816,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -35887,6 +35899,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -36119,12 +36137,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -36148,6 +36160,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -36380,12 +36398,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -36415,6 +36427,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -36647,12 +36665,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -36670,6 +36682,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -36902,12 +36920,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -36937,6 +36949,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -37169,12 +37187,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -37198,6 +37210,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -37430,12 +37448,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -37459,6 +37471,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -37691,12 +37709,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -37777,8 +37789,15 @@
     "GROK": {
       "last_id": "grok-cbb2-carry-receipt-20260921",
       "last_ts": "2026-09-21T19:13:44Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        }
+      ],
       "mine": [
         {
           "id": "grok-cbb2-carry-receipt-20260921",
@@ -37860,6 +37879,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -38092,12 +38117,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -38151,6 +38170,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -38383,12 +38408,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -38418,6 +38437,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -38650,12 +38675,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -38679,6 +38698,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -38911,12 +38936,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -39000,6 +39019,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -39232,12 +39257,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -39262,144 +39281,17 @@
       ]
     },
     "GROK_BUILD": {
-      "last_id": "discord-1551100368337903697",
-      "last_ts": "2026-09-20T05:19:05.863000Z",
-      "n": 22,
-      "since": [
-        {
-          "id": "grok-cbb2-carry-receipt-20260921",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-21T19:13:44Z"
-        },
-        {
-          "id": "grok-carry-zz-lattice-20260921",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-21T19:13:17Z"
-        },
-        {
-          "id": "repair-35589010345-item7-readback-20260921",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-21T10:54:12Z"
-        },
-        {
-          "id": "mcp-gemini-766ae25d8a112d196c5ce909",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-21T06:30:32Z"
-        },
-        {
-          "id": "action-20260921062950-b7da1ce3d300",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-21T06:29:50Z"
-        },
-        {
-          "id": "discord-1551447216479010859",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-21T04:17:20.904000Z"
-        },
-        {
-          "id": "hold-tarsnap-creationtime-20260920",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-21T03:25:36Z"
-        },
-        {
-          "id": "hold-kivaloo-params2-20260920",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-21T03:25:20Z"
-        },
-        {
-          "id": "mcp-gemini-960db288e73cb0dc0eb276e8",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-21T03:24:59Z"
-        },
-        {
-          "id": "zz-lattice-cbb2-20260921T031800Z",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-21T03:11:00Z"
-        },
-        {
-          "id": "zz-sol-cassowary-cbb2-artifact-20260921-00",
-          "from": "ZZSOLCASSOWARY8236",
-          "to": "SHIP_LOOP",
-          "ts": "2026-09-21T02:54:52Z"
-        },
-        {
-          "id": "zz-kestrel-dozer-1690-fork-20260920-2254-et",
-          "from": "owner",
-          "to": "TOOLS",
-          "ts": "2026-09-21T02:53:40Z"
-        },
-        {
-          "id": "action-20260920225300-zz-tamarack-dokploy-1413-slack",
-          "from": "ZZ_TAMARACK",
-          "to": "TOOLS",
-          "ts": "2026-09-21T02:51:40Z"
-        },
-        {
-          "id": "hold-ff1d75c11f86-ship-79c7",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-20T21:12:47Z"
-        },
-        {
-          "id": "discord-1551314233822806170",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-20T19:28:55.368000Z"
-        },
-        {
-          "id": "jev-swarm-activity-radar-20260920-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-20T18:18:45Z"
-        },
-        {
-          "id": "grok-seat-carry-work-20260920-02",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-20T18:09:54Z"
-        },
-        {
-          "id": "grok-align-retired-autopsy-cash-pins-20260920-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-20T12:16:09Z"
-        },
-        {
-          "id": "grok-16535-terminal-readback-20260920-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-20T11:53:02Z"
-        },
-        {
-          "id": "discord-1551160590377029775",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-20T09:18:23.916000Z"
-        },
-        {
-          "id": "discord-1551100372003586108",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-20T05:19:06.737000Z"
-        },
-        {
-          "id": "discord-1551100369889656833",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-20T05:19:06.233000Z"
-        }
-      ],
+      "last_id": "grok-recensus-20260921-1905",
+      "last_ts": "2026-09-21T23:09:49Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
         {
           "id": "discord-1551100368337903697",
           "from": "GROK_BUILD",
@@ -39465,12 +39357,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01-post",
-          "from": "GROK_BUILD",
-          "to": "C0BRGMDQB6G",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ]
     },
@@ -39479,6 +39365,12 @@
       "last_ts": "2026-09-18T18:43:33.732000Z",
       "n": 40,
       "since": [
+        {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
         {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
@@ -39712,12 +39604,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -39735,6 +39621,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -39967,12 +39859,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -39990,6 +39876,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -40222,12 +40114,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -40257,6 +40143,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -40489,12 +40381,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -40512,6 +40398,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -40744,12 +40636,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -40767,6 +40653,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -40999,12 +40891,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -41034,6 +40920,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -41266,12 +41158,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -41355,6 +41241,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -41587,12 +41479,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -41610,6 +41496,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -41842,12 +41734,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -41931,6 +41817,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -42163,12 +42055,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -42252,6 +42138,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -42484,12 +42376,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -42555,6 +42441,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -42787,12 +42679,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -42828,6 +42714,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -43060,12 +42952,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -43113,6 +42999,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -43345,12 +43237,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -43368,6 +43254,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -43600,12 +43492,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -43689,6 +43575,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -43921,12 +43813,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -43944,6 +43830,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -44176,12 +44068,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -44229,6 +44115,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -44461,12 +44353,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -44484,6 +44370,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -44716,12 +44608,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -44739,6 +44625,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -44971,12 +44863,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -44994,6 +44880,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -45226,12 +45118,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -45255,6 +45141,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -45487,12 +45379,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -45510,6 +45396,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -45742,12 +45634,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -45831,6 +45717,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -46063,12 +45955,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -46086,6 +45972,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -46318,12 +46210,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -46341,6 +46227,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -46573,12 +46465,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -46596,6 +46482,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -46828,12 +46720,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -46851,6 +46737,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -47083,12 +46975,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -47106,6 +46992,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -47338,12 +47230,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -47379,6 +47265,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -47611,12 +47503,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -47700,6 +47586,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -47932,12 +47824,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -47955,6 +47841,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -48187,12 +48079,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -48240,6 +48126,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -48472,12 +48364,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -48555,6 +48441,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -48787,12 +48679,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -48810,6 +48696,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -49042,12 +48934,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -49083,6 +48969,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -49315,12 +49207,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -49335,8 +49221,14 @@
     "OWNER": {
       "last_id": "zz-kestrel-dozer-1690-fork-20260920-2254-et",
       "last_ts": "2026-09-21T02:53:40Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
         {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
@@ -49419,6 +49311,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -49651,12 +49549,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -49674,6 +49566,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -49906,12 +49804,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -49929,6 +49821,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -50161,12 +50059,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -50184,6 +50076,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -50416,12 +50314,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -50439,6 +50331,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -50671,12 +50569,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -50694,6 +50586,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -50926,12 +50824,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -51015,6 +50907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -51247,12 +51145,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -51336,6 +51228,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -51568,12 +51466,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -51657,6 +51549,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -51889,12 +51787,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -51936,6 +51828,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -52168,12 +52066,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -52257,6 +52149,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -52489,12 +52387,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -52512,6 +52404,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -52744,12 +52642,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -52767,6 +52659,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -52999,12 +52897,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -53034,6 +52926,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -53266,12 +53164,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -53355,6 +53247,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -53587,12 +53485,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -53616,6 +53508,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -53848,12 +53746,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -53883,6 +53775,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -54115,12 +54013,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -54150,6 +54042,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -54382,12 +54280,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -54471,6 +54363,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -54703,12 +54601,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -54792,6 +54684,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -55024,12 +54922,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -55095,6 +54987,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -55327,12 +55225,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -55356,6 +55248,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -55588,12 +55486,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -55611,6 +55503,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -55843,12 +55741,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -55866,6 +55758,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -56098,12 +55996,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -56187,6 +56079,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -56419,12 +56317,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -56442,6 +56334,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -56674,12 +56572,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -56697,6 +56589,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -56929,12 +56827,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -57018,6 +56910,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -57250,12 +57148,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -57285,6 +57177,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -57517,12 +57415,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -57540,6 +57432,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -57772,12 +57670,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -57861,6 +57753,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -58093,12 +57991,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -58116,6 +58008,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -58348,12 +58246,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -58371,6 +58263,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -58603,12 +58501,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -58692,6 +58584,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -58924,12 +58822,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -58947,6 +58839,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -59179,12 +59077,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -59268,6 +59160,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -59500,12 +59398,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -59541,6 +59433,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -59773,12 +59671,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -59796,6 +59688,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -60028,12 +59926,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -60057,6 +59949,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -60289,12 +60187,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -60312,6 +60204,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -60544,12 +60442,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -60573,6 +60465,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -60805,12 +60703,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -60828,6 +60720,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -61060,12 +60958,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -61083,6 +60975,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -61315,12 +61213,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -61344,6 +61236,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -61576,12 +61474,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -61599,6 +61491,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -61831,12 +61729,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -61860,6 +61752,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -62092,12 +61990,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -62181,6 +62073,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -62413,12 +62311,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -62436,6 +62328,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -62668,12 +62566,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -62691,6 +62583,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -62923,12 +62821,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -62946,6 +62838,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -63178,12 +63076,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -63213,6 +63105,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -63445,12 +63343,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -63534,6 +63426,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -63766,12 +63664,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -63855,6 +63747,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -64087,12 +63985,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -64176,6 +64068,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -64408,12 +64306,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -64431,6 +64323,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -64663,12 +64561,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -64752,6 +64644,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -64984,12 +64882,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -65013,6 +64905,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -65245,12 +65143,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -65268,6 +65160,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -65500,12 +65398,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -65523,6 +65415,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -65755,12 +65653,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -65784,6 +65676,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -66016,12 +65914,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -66105,6 +65997,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -66337,12 +66235,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -66426,6 +66318,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -66658,12 +66556,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -66741,6 +66633,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -66973,12 +66871,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -67032,6 +66924,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -67264,12 +67162,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -67348,10 +67240,16 @@
       ]
     },
     "U0BR9670G2H": {
-      "last_id": "slack-1789207594-314319",
-      "last_ts": "2026-09-12T10:06:34.314319Z",
+      "last_id": "slack-1789208307-607019",
+      "last_ts": "2026-09-12T10:18:27.607019Z",
       "n": 40,
       "since": [
+        {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
         {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
@@ -67585,15 +67483,15 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
+        {
+          "id": "slack-1789208307-607019",
+          "from": "U0BR9670G2H",
+          "to": "TABLE",
+          "ts": "2026-09-12T10:18:27.607019Z"
+        },
         {
           "id": "slack-1789207594-314319",
           "from": "U0BR9670G2H",
@@ -67659,12 +67557,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-09T21:39:24.910709Z"
-        },
-        {
-          "id": "slack-1788989795-274089",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-09T21:36:35.274089Z"
         }
       ]
     },
@@ -67673,6 +67565,12 @@
       "last_ts": "2026-09-11T05:49:45.594059Z",
       "n": 40,
       "since": [
+        {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
         {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
@@ -67906,12 +67804,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -67924,10 +67816,16 @@
       ]
     },
     "U0C17K9ALP7": {
-      "last_id": "slack-1789208242-806569",
-      "last_ts": "2026-09-12T10:17:22.806569Z",
+      "last_id": "slack-1789208321-085099",
+      "last_ts": "2026-09-12T10:18:41.085099Z",
       "n": 40,
       "since": [
+        {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
         {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
@@ -68161,94 +68059,94 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
         {
-          "id": "slack-1789208242-806569",
+          "id": "slack-1789208321-085099",
           "from": "U0C17K9ALP7",
           "to": "TABLE",
-          "ts": "2026-09-12T10:17:22.806569Z"
+          "ts": "2026-09-12T10:18:41.085099Z"
         },
         {
-          "id": "slack-1789208241-081139",
+          "id": "slack-1789208320-795949",
           "from": "U0C17K9ALP7",
           "to": "TABLE",
-          "ts": "2026-09-12T10:17:21.081139Z"
+          "ts": "2026-09-12T10:18:40.795949Z"
         },
         {
-          "id": "slack-1789208240-811649",
+          "id": "slack-1789208319-369839",
           "from": "U0C17K9ALP7",
           "to": "TABLE",
-          "ts": "2026-09-12T10:17:20.811649Z"
+          "ts": "2026-09-12T10:18:39.369839Z"
         },
         {
-          "id": "slack-1789208239-275039",
+          "id": "slack-1789208319-137229",
           "from": "U0C17K9ALP7",
           "to": "TABLE",
-          "ts": "2026-09-12T10:17:19.275039Z"
+          "ts": "2026-09-12T10:18:39.137229Z"
         },
         {
-          "id": "slack-1789208239-053779",
+          "id": "slack-1789208317-570359",
           "from": "U0C17K9ALP7",
           "to": "TABLE",
-          "ts": "2026-09-12T10:17:19.053779Z"
+          "ts": "2026-09-12T10:18:37.570359Z"
         },
         {
-          "id": "slack-1789208237-680669",
+          "id": "slack-1789208316-010939",
           "from": "U0C17K9ALP7",
           "to": "TABLE",
-          "ts": "2026-09-12T10:17:17.680669Z"
+          "ts": "2026-09-12T10:18:36.010939Z"
         },
         {
-          "id": "slack-1789208236-203979",
+          "id": "slack-1789208315-768169",
           "from": "U0C17K9ALP7",
           "to": "TABLE",
-          "ts": "2026-09-12T10:17:16.203979Z"
+          "ts": "2026-09-12T10:18:35.768169Z"
         },
         {
-          "id": "slack-1789208235-867749",
+          "id": "slack-1789208314-025769",
           "from": "U0C17K9ALP7",
           "to": "TABLE",
-          "ts": "2026-09-12T10:17:15.867749Z"
+          "ts": "2026-09-12T10:18:34.025769Z"
         },
         {
-          "id": "slack-1789208234-312749",
+          "id": "slack-1789208313-720039",
           "from": "U0C17K9ALP7",
           "to": "TABLE",
-          "ts": "2026-09-12T10:17:14.312749Z"
+          "ts": "2026-09-12T10:18:33.720039Z"
         },
         {
-          "id": "slack-1789208234-054299",
+          "id": "slack-1789208311-983439",
           "from": "U0C17K9ALP7",
           "to": "TABLE",
-          "ts": "2026-09-12T10:17:14.054299Z"
+          "ts": "2026-09-12T10:18:31.983439Z"
         },
         {
-          "id": "slack-1789208232-309239",
+          "id": "slack-1789208311-669789",
           "from": "U0C17K9ALP7",
           "to": "TABLE",
-          "ts": "2026-09-12T10:17:12.309239Z"
+          "ts": "2026-09-12T10:18:31.669789Z"
         },
         {
-          "id": "slack-1789208231-907569",
+          "id": "slack-1789208310-144289",
           "from": "U0C17K9ALP7",
           "to": "TABLE",
-          "ts": "2026-09-12T10:17:11.907569Z"
+          "ts": "2026-09-12T10:18:30.144289Z"
         }
       ]
     },
     "UNSEATED": {
       "last_id": "repair-35589010345-item7-readback-20260921",
       "last_ts": "2026-09-21T10:54:12Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
         {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
@@ -68343,6 +68241,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -68575,12 +68479,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -68604,6 +68502,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -68836,12 +68740,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -68925,6 +68823,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -69157,12 +69061,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -69246,6 +69144,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -69478,12 +69382,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -69501,6 +69399,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -69733,12 +69637,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -69762,6 +69660,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -69994,12 +69898,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -70017,6 +69915,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -70249,12 +70153,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -70272,6 +70170,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -70504,12 +70408,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -70527,6 +70425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -70759,12 +70663,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -70782,6 +70680,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -71014,12 +70918,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -71103,6 +71001,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -71335,12 +71239,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -71355,8 +71253,14 @@
     "ZZSOLCASSOWARY8236": {
       "last_id": "zz-sol-cassowary-cbb2-artifact-20260921-00",
       "last_ts": "2026-09-21T02:54:52Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
         {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
@@ -71433,6 +71337,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
+        {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
           "to": "TABLE",
@@ -71665,12 +71575,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:58:41Z"
-        },
-        {
-          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:57:53Z"
         }
       ],
       "mine": [
@@ -71685,8 +71589,14 @@
     "ZZTRELLISCODEXGPTFAMILY": {
       "last_id": "UIOWA-014--source-backed-peer-cohort-and-selection-rationale--ZZ-Trellis-",
       "last_ts": "2026-09-19T14:31:50Z",
-      "n": 35,
+      "n": 36,
       "since": [
+        {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
         {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
@@ -71910,8 +71820,14 @@
     "ZZ_LODESTONE_47R8": {
       "last_id": "discord-1550950148526313593",
       "last_ts": "2026-09-19T19:22:10.669000Z",
-      "n": 31,
+      "n": 32,
       "since": [
+        {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
         {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
@@ -72111,8 +72027,14 @@
     "ZZ_TAMARACK": {
       "last_id": "action-20260920225300-zz-tamarack-dokploy-1413-slack",
       "last_ts": "2026-09-21T02:51:40Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "grok-recensus-20260921-1905",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-21T23:09:49Z"
+        },
         {
           "id": "grok-cbb2-carry-receipt-20260921",
           "from": "GROK",
