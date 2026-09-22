@@ -1,8 +1,8 @@
 {
   "counts": {
-    "open_issues": 1674,
+    "open_issues": 1926,
     "open_pull_requests": 37,
-    "runs_in_progress": 4,
+    "runs_in_progress": 2,
     "runs_queued": 70
   },
   "counts_source": "graphql",
@@ -218,8 +218,41 @@
   },
   "pulls_listed": 37,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 17.5,
+  "queue_depth_per_runner": 35.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "sol-purge-crossrepo-review-holding-20260922",
+      "closed_at": "2026-09-22T21:18:57Z",
+      "head_sha": "43bcc646387c43897ec065b1c6c316d6d3e48f2c",
+      "merged_at": "2026-09-22T21:18:57Z",
+      "number": 18514,
+      "state": "MERGED",
+      "title": "Purge agent-authored review-holding merge gate"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "sol-purge-commons-ci-20260922",
+      "closed_at": "2026-09-22T21:15:07Z",
+      "head_sha": "2008edb8f2e2a4f89a938b20fe9f0092d037575e",
+      "merged_at": "2026-09-22T21:15:07Z",
+      "number": 18513,
+      "state": "MERGED",
+      "title": "CI purge: remove root publisher test battery and duplicate validators"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-lattice/evidence-authority-kernel-15664",
+      "closed_at": "2026-09-22T19:47:04Z",
+      "head_sha": "310efeafe686cea65eea2587f0d8e7bbddf7cdf7",
+      "merged_at": "2026-09-22T19:47:03Z",
+      "number": 18511,
+      "state": "MERGED",
+      "title": "Add source-bound evidence authority kernel"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -351,43 +384,10 @@
       "number": 17217,
       "state": "MERGED",
       "title": "Pace Slack ingest issue writes and keep partial cursor progress"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/uiowa-096-tessella57-interchange",
-      "closed_at": "2026-09-22T03:34:06Z",
-      "head_sha": "2ec21082603eaae3ecbd2eaeea18c703624a3bdd",
-      "merged_at": "2026-09-22T03:34:06Z",
-      "number": 16236,
-      "state": "MERGED",
-      "title": "UIOWA-096: lossless evidence transport and portable reader handoffs"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-nacre6t4m/uiowa-135-milestone-packets",
-      "closed_at": "2026-09-22T03:34:02Z",
-      "head_sha": "df6d0058feb8d49895dd9b6b250db679792178f9",
-      "merged_at": "2026-09-22T03:34:02Z",
-      "number": 16287,
-      "state": "MERGED",
-      "title": "UIOWA-135: source-bound milestone delivery packets and synthetic rehearsal"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-copperfinch-82d6/report-visuals-full-text-20260919",
-      "closed_at": "2026-09-22T03:33:56Z",
-      "head_sha": "193c1f752dee2c565fe87d379e7bda74feea49c2",
-      "merged_at": "2026-09-22T03:33:56Z",
-      "number": 16353,
-      "state": "MERGED",
-      "title": "Report visuals: preserve complete text with content-sized layouts"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-22T19:28:24Z",
+  "unchanged_since": "2026-09-22T22:09:11Z",
   "undatable_pulls": []
 }
