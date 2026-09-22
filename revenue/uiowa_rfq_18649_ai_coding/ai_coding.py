@@ -55,6 +55,11 @@ def ident(value: Any, label: str) -> str:
     return value
 
 
+def context_known(value: str | None) -> bool:
+    """Only null and the explicit UNKNOWN sentinel denote missing context."""
+    return value is not None and value.strip().casefold() != "unknown"
+
+
 def stamp(value: Any, label: str) -> datetime:
     text(value, label)
     try:
@@ -155,7 +160,8 @@ def _validate_change(change: dict, registry: dict[str, dict], as_of: datetime,
     ident(change["pair_id"], f"{cid}.pair_id")
     shape(change["context"], set(CONTEXT), f"{cid}.context")
     for field in CONTEXT:
-        text(change["context"][field], f"{cid}.{field}")
+        if change["context"][field] is not None:
+            text(change["context"][field], f"{cid}.{field}")
     start = stamp(change["started_at"], f"{cid}.started_at")
     require(start <= as_of, f"{cid}: future start")
     accepted = stamp(change["accepted_at"], f"{cid}.accepted_at") if change["accepted_at"] else None
@@ -251,14 +257,31 @@ def _assess_change(change: dict, registry: dict[str, dict]) -> dict:
             effective = "unknown"
         practices[name] = {"claimed_state": state, "effective_state": effective,
                            "support": level, "rationale": entry["rationale"],
-                           "evidence_ids": entry["evidence_ids"]}
+                           "evidence_ids": list(entry["evidence_ids"])}
     wall = None
     if acceptance_supported and accepted:
         elapsed = accepted - stamp(change["started_at"], "started_at")
         wall = dec((Decimal(elapsed.days * 86400 + elapsed.seconds) +
                     Decimal(elapsed.microseconds) / Decimal(1000000)) / Decimal(60))
+    # Keep the assessment-to-source edges, not only the global registry. These
+    # are detached values so a caller cannot silently alter an issued report.
+    source_trace = {
+        "started_at": change["started_at"],
+        "accepted_at": change["accepted_at"],
+        "acceptance_evidence_ids": sorted(change["acceptance_evidence_ids"]),
+        "followup": {**followup, "evidence_ids": sorted(followup["evidence_ids"])},
+        "coverage": {stage: {**change["coverage"][stage],
+                    "evidence_ids": sorted(change["coverage"][stage]["evidence_ids"])}
+                    for stage in STAGES},
+        "effort": [{**entry,
+                    "minutes": dec(number(entry["minutes"], entry["id"]))
+                               if entry["minutes"] is not None else None,
+                    "evidence_ids": sorted(entry["evidence_ids"])}
+                   for entry in sorted(change["effort"], key=lambda item: item["id"])],
+    }
     return {"id": change["id"], "group": change["group"], "mode": change["mode"],
-            "pair_id": change["pair_id"], "context": change["context"], "stages": stages,
+            "pair_id": change["pair_id"], "context": dict(change["context"]), "stages": stages,
+            "source_trace": source_trace,
             "acceptance_supported": acceptance_supported, "wall_delivery_minutes": wall,
             "delivery_effort_minutes": total(STAGES[:-1]), "lifecycle_effort_minutes": total(STAGES),
             "recorded_effort_minutes": dec(sum((Decimal(stages[s]["recorded_minutes"]) for s in STAGES), Decimal(0))),
@@ -277,7 +300,13 @@ def _compare(pair_id: str, changes: list[dict]) -> dict:
     if assisted and manual:
         if assisted["group"] != manual["group"]:
             reasons.append("group_mismatch")
-        reasons.extend(f"{key}_mismatch" for key in CONTEXT if assisted["context"][key] != manual["context"][key])
+        for key in CONTEXT:
+            unknown = [row for row in (assisted, manual)
+                       if not context_known(row["context"][key])]
+            if unknown:
+                reasons.extend(f"{row['mode']}_{key}_unknown" for row in unknown)
+            elif assisted["context"][key] != manual["context"][key]:
+                reasons.append(f"{key}_mismatch")
         if assisted["followup_days"] != manual["followup_days"]:
             reasons.append("followup_window_mismatch")
         for row in (assisted, manual):
@@ -368,9 +397,25 @@ def markdown(report: dict) -> str:
     lines += ["## Practice and effort trace", ""]
     for row in report["changes"]:
         lines += [f"### {row['id']}", ""]
+        trace = row["source_trace"]
+        citation = lambda ids: ", ".join(f"[{sid}](#{sid.lower()})" for sid in ids) or "no evidence"
+        lines.append(f"- Started: {display(trace['started_at'])}; accepted: {display(trace['accepted_at'])}; "
+                     f"acceptance evidence: {citation(trace['acceptance_evidence_ids'])}.")
+        followup = trace["followup"]
+        lines.append(f"- Follow-up: {followup['days']} days after acceptance; observed through "
+                     f"{display(followup['observed_through'])}; coverage {followup['coverage']}; "
+                     f"reported faults {display(followup['reported_faults'])}; "
+                     f"evidence: {citation(followup['evidence_ids'])}.")
         for stage, entry in row["stages"].items():
             refs = ", ".join(f"[{sid}](#{sid.lower()})" for sid in entry["evidence_ids"]) or "no evidence"
             lines.append(f"- {stage}: recorded {entry['recorded_minutes']} min; full total {display(entry['complete_minutes'])}; {', '.join(entry['reasons']) or 'complete supplied records'}; {refs}.")
+            coverage = trace["coverage"][stage]
+            lines.append(f"  Coverage: {coverage['state']}; {escape(coverage['basis'])}; "
+                         f"evidence: {citation(coverage['evidence_ids'])}.")
+            for allocation in trace["effort"]:
+                if allocation["stage"] == stage:
+                    lines.append(f"  Allocation {allocation['id']}: {display(allocation['minutes'])} min; "
+                                 f"evidence: {citation(allocation['evidence_ids'])}.")
         for name, entry in row["practices"].items():
             refs = ", ".join(f"[{sid}](#{sid.lower()})" for sid in entry["evidence_ids"]) or "no evidence"
             lines.append(f"- {name}: **{entry['effective_state']}** (claimed {entry['claimed_state']}; {entry['support']}). {escape(entry['rationale'])} Evidence: {refs}.")
