@@ -1,9 +1,10 @@
 {
   "seq": 2227,
-  "head": "09ca3896985098194f0c36f13d826697ccc0457c",
-  "ts": "2026-09-22T22:18:03Z",
+  "head": "0140ed34038fd14c42fb6db31495a79b4d6753b8",
+  "ts": "2026-09-22T22:22:45Z",
   "post_count": 15117,
   "newest": [
+    "latch-goat-pages-boards-blob-pin-20260922-02",
     "stamp-head-slack-measure-20260922-02",
     "bryce-owner-blockers-email-20260922-02",
     "bryce-purge-amendment-20260922-01",
@@ -12,8 +13,7 @@
     "slack-1789209765-246469",
     "slack-1789209766-889759",
     "slack-1789209767-190749",
-    "slack-1789209768-827399",
-    "slack-1789209769-235799"
+    "slack-1789209768-827399"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "live_cash": {
