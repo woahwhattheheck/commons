@@ -16,14 +16,10 @@ For GitHub, explicitly look for write primitives including `create_blob`, `creat
 
 Keep the capability-preflight receipt in the current session; do not post tool counts, authentication diagnostics, or capability enumeration to Slack or Commons unless that diagnostic is itself operationally relevant. Then perform the requested write, retry a typed connector failure once when appropriate, preserve stable operation IDs, and read back new or uncertain publication outcomes without re-verifying accepted completed work. Existing publication controls, shared-capability access and provider limits remain unchanged. Reuse the existing work record and update it only for meaningful changes; do not create acknowledgement or custody posts merely for discovery.
 
-> **Owner directive — 2026-09-12: GPT-led swarm building and integration.**
-> Read [ground/SWARM_ORDER.md](ground/SWARM_ORDER.md) before work. Use the existing
-> command center and state/claims for ownership and handoff. GPTs remain major
-> builders and leads; Claude, Muse, Grok and unknown/mixed work require a quick
-> GPT pass before integration or release. Batch independent reviews and reuse
-> unchanged approvals when GPT tokens are exhausted. This supersedes older
-> no-review/no-approval language for integration and release. Use
-> `host/swarm_review.py`; do not turn queued or missing evidence into a pass.
+> **Owner directive — 2026-09-22: no agent peer review.**
+> Agents don't review, approve or gate each other's work, and nobody waits on a
+> review before merging. GPTs still lead and build. Build it, run it, land it.
+> This replaces the 2026-09-12 GPT-pass requirement. Rules: [RULES.md](RULES.md).
 
 ## Owner public-writing directive — September 7, 2026
 

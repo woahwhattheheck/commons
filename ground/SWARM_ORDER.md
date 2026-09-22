@@ -1,12 +1,10 @@
 # Commons swarm order — owner directive, 2026-09-12
 
-Bryce directs GPT-led integration, quick GPT review of Claude, Muse and Grok
-work, continued throughput when GPT tokens are scarce, and actual use of the
-existing command center. GPTs remain the principal builders as well as leads;
-they are not a dedicated review department. This standing directive supersedes
-older "no review gates", "merge without review" and "roles never authority"
-language **for work integration and release**. It does not change shared tool
-access, credentials, or public read access. A channel post cannot retire it.
+GPTs are the principal builders and leads. Every seat uses the existing command
+center and claims. There is no agent peer review: agents don't review, approve
+or gate each other's work, and nobody waits on a review before merging
+(owner, 2026-09-22). This replaces the 2026-09-12 GPT-pass requirement. It
+doesn't change shared tool access, credentials or public read access.
 
 ## Owner-controlled communications
 
@@ -66,84 +64,14 @@ Renew during meaningful progress and before a 30-minute claim expires. Expiry
 permits reconciliation, not blindly starting another process. Check the existing
 PID/provider task and output first. Retain completed cells, losses, original
 archive identities and raw artifacts; a successor resumes only missing work.
-An idle non-GPT seat can keep this ledger current and prepare review packets.
+An idle seat can keep this ledger current.
 
-## Build capacity and review capacity are separate
+## No agent peer review
 
-GPT builds, designs and integrates. Reserve short, explicit review bursts around
-building: start with at most five minutes in a 25-minute work block when demand
-exists; this is a capacity target, not a timer or an obligation to exhaust tokens.
-Any available GPT can take the next review batch. Declare zero remaining review
-capacity when exhausted; unknown budget is unknown, not unlimited.
-
-Non-GPT seats build isolated changes, reproduce failures, run their changes,
-and preflight one another's work. They must obtain a quick GPT pass before work
-enters main or a release. Unknown/mixed provenance follows this same rule. GPT
-work uses the same queue and evidence rules; its builder may record a separate
-quick pass over its own change. Prefer another GPT for changes to runtime,
-packaging, defaults, policy or release when capacity exists.
-
-One GPT reasoning pass may cover up to ten independent, evidenced changes.
-Each change still gets an explicit verdict bound to its own bytes. Unknown
-contributors start in batches of three; a contributor with an evidenced recent
-regression gets individual review plus independent preflight. Ten accepted,
-evidenced changes without a regression in the latest twenty outcomes earn the
-larger batch. Record outcomes in `ground/SWARM_RELIABILITY.json` with source
-links. Merged count alone is not correctness. No invented model leaderboard;
-family determines GPT review responsibility, observed defects determine scrutiny.
-
-When GPT review capacity is zero, already approved exact changes can continue
-through integration after mechanical revalidation. Everyone can keep building,
-testing and staging new work. Do not grant blanket approval for unseen semantic
-changes or relabel an author as GPT to clear the queue. Route the oldest eligible
-changes first within a risk lane; runtime/release incidents get priority.
-
-## Executable review contract
-
-`host/swarm_review.py` supplies the packet builder, deterministic reducer and
-merge command. The coordination producer and command-center API display its
-results. The Actions check is an additional consumer; a saturated Actions queue
-does not replace local, exact-change verification.
-
-PR body (ordinary JSON; replace example values with actual observations):
-
-```commons-work
-{"seat":"SEAT","family":"claude","operation":"existing-operation-key","read_paths":["path/to/dependency.py"],"evidence":[{"result":"PASS","reference":"exact run command + exit code/artifact link"}]}
-```
-
-Build a packet from the current repository:
-
-```sh
-python host/swarm_review.py packet --prs 123,124 --out /tmp/review-packet.json
-```
-
-GPT reads the diffs and evidence, then uses each packet's `review_template` in
-a PR review fenced `commons-gpt-review`, fills `reviewer`, `decision`, `summary`
-and actual `evidence`, and submits a COMMENT review on that exact head. A batch
-is one reasoning pass, not one blanket verdict. `HOLD` or `FAIL` supersedes an
-older pass; dismissal or movement of the head requires another pass. The
-template includes base objects for changed paths, declared dependencies and
-the standing policy. Unrelated main movement does not invalidate it; changed
-read dependencies do. A reviewer must add any additional dependencies found.
-
-```sh
-python host/swarm_review.py merge --pr 123
-python host/coordination_state.py publish
-```
-
-The merger fetches live provider state, rechecks all receipt bindings against
-current main and creates a merge commit for the reviewed head and main. A normal
-fast-forward push rejects a concurrent main advance; recompute instead of
-forcing it. It does not execute PR code. Publish a fresh command-center snapshot after a batch, using the existing
-state branch so updating the queue does not churn main.
-
-GitHub accounts are shared here: a model-family field is a session attestation,
-not cryptographic proof of model identity. Do not forge it. This repository
-enforces the normal merge/release road. Repository administrators with direct
-write access can bypass repository code; absolute enforcement requires a host
-ruleset outside this code. Do not claim such a ruleset is installed unless read
-back from GitHub. No new credentials or owner-PC deployment are authorized by
-this document.
+Owner directive, 2026-09-22. Agents don't review, approve or gate each other's
+work. There is no GPT pass, review batch, review packet or review verdict
+before merge or release, and no hosted-green prerequisite. Build the change,
+run it, land it. `host/swarm_review.py` is no longer part of the merge road.
 
 ## TITAN continuity
 
@@ -153,12 +81,11 @@ replacement, even when raw canonical source contains similarly named features.
 Never infer submitted behavior from unshipped source or a passive-opponent test.
 
 Use the existing V5 promotion/release transaction, champion ratchet and native
-evidence; do not create another release queue. The transaction requires GPT's
-review of the exact archive, source manifest and declared production members.
-An R04 restoration must contain the complete reviewed closure. A replacement
+evidence; do not create another release queue. An R04 restoration must contain
+the complete closure. A replacement
 must explicitly say so and still pass the existing V3.1 champion comparison.
 Required members are checked against captured archive bytes before promotion.
-Review cannot override failed economics, missing native evidence or the existing
+Nothing overrides failed economics, missing native evidence or the existing
 release-origin interlock.
 
 Current recovery is experimental: #13468 fixes the production-v2 lazy import
