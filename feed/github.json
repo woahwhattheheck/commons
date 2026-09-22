@@ -1,6 +1,6 @@
 {
   "counts": {
-    "open_issues": 1076,
+    "open_issues": 1387,
     "open_pull_requests": 37,
     "runs_in_progress": 1,
     "runs_queued": 70
@@ -223,6 +223,61 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "latch/pack-quality-readback-follow-inner-20260922-01",
+      "closed_at": "2026-09-22T12:56:44Z",
+      "head_sha": "cd7038ab93ef70cbc3c0c681800e5b954ad10774",
+      "merged_at": "2026-09-22T12:56:44Z",
+      "number": 17811,
+      "state": "MERGED",
+      "title": "Latch Tip KEEP: pack-quality readback follow INNER remint"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "latch/pack-quality-keep-cascade-20260922-01",
+      "closed_at": "2026-09-22T12:56:40Z",
+      "head_sha": "29b2742e85e1a9819da403d3427623ae8f820992",
+      "merged_at": "2026-09-22T12:56:40Z",
+      "number": 17810,
+      "state": "MERGED",
+      "title": "Latch Tip KEEP cascade: pack-quality readback 3f2758e8"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "latch/pack-quality-readback-blob-pin-20260922-01",
+      "closed_at": "2026-09-22T12:56:36Z",
+      "head_sha": "6772800c57faec239f325a4daf5a5a1a265ba45c",
+      "merged_at": "2026-09-22T12:56:36Z",
+      "number": 17809,
+      "state": "MERGED",
+      "title": "Latch Tip KEEP: pack-quality readback pins 3f2758e8"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "latch/goat-match-inner-test-pin-a5b5595c-20260922-01",
+      "closed_at": "2026-09-22T12:53:21Z",
+      "head_sha": "cdafa911b497cc7899b56c6ee539bde8b7f767ec",
+      "merged_at": "2026-09-22T12:53:21Z",
+      "number": 17808,
+      "state": "MERGED",
+      "title": "Latch Tip KEEP: goat MATCH inner-test pin a5b5595c"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "latch/pack-quality-slack-ingest-boards-pin-20260922-01",
+      "closed_at": "2026-09-22T12:45:19Z",
+      "head_sha": "4e2ad12e7c3e8c719a3ca425a6e6cb29725c2682",
+      "merged_at": "2026-09-22T12:45:19Z",
+      "number": 17807,
+      "state": "MERGED",
+      "title": "Latch Tip KEEP: pack-quality slack_ingest+api/mcp + goat boards pin"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "latch/goat-pages-readback-match-blob-pin-20260922-01",
       "closed_at": "2026-09-22T09:39:06Z",
       "head_sha": "ee745cb65306affee5bfd8c82574d5933499e904",
@@ -329,65 +384,10 @@
       "number": 16139,
       "state": "MERGED",
       "title": "UIOWA-039 + UIOWA-094: version-bound review and revised-report rehearsal (ORRERY-K47)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "codex/zz-lattice-framer-source-generation",
-      "closed_at": "2026-09-22T03:33:40Z",
-      "head_sha": "542c8d04bbd9643c58655aa16ad3daac2c250fc3",
-      "merged_at": "2026-09-22T03:33:40Z",
-      "number": 16383,
-      "state": "MERGED",
-      "title": "Align Framer runtime with recovered sources without upgrading qualification or budget"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/zz-lantern-8j2q/uiowa114-delivery-20260919",
-      "closed_at": "2026-09-22T03:33:35Z",
-      "head_sha": "25ec30561ec6d0678c09733b612dcb3f3f82bf72",
-      "merged_at": "2026-09-22T03:33:35Z",
-      "number": 16406,
-      "state": "MERGED",
-      "title": "UIOWA-114: recover question-card generator with reference and export integrity"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-z/pilot-renewal-reseal-clock-fix-15641",
-      "closed_at": "2026-09-22T03:17:22Z",
-      "head_sha": "1cda939013aa6b574abf6f549665e0d51d946eeb",
-      "merged_at": "2026-09-22T03:17:22Z",
-      "number": 15643,
-      "state": "MERGED",
-      "title": "Fix pilot-renewal receipt reseal and current-clock authority"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol17/okaloosa-15586-clean-current-main-20260917",
-      "closed_at": "2026-09-22T03:16:14Z",
-      "head_sha": "d67e7d6c3c44f361b13718dc59f200bd8c4e8866",
-      "merged_at": "2026-09-22T03:16:14Z",
-      "number": 15657,
-      "state": "MERGED",
-      "title": "Recover Okaloosa root-schema authority closure on current main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarmz/claim-publication-fence-20260917",
-      "closed_at": "2026-09-22T03:16:06Z",
-      "head_sha": "a5aca2b07b41ca47fc3e914b172584fbc3712788",
-      "merged_at": "2026-09-22T03:16:06Z",
-      "number": 15684,
-      "state": "MERGED",
-      "title": "Swarm: add search-index-lag-safe custody publication fence"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-22T11:37:27Z",
+  "unchanged_since": "2026-09-22T15:48:21Z",
   "undatable_pulls": []
 }
