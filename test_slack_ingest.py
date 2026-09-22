@@ -852,6 +852,113 @@ PLAIN: Slack :left_right_arrow: Commons exact body.
         self.assertIn("secondary rate limit", str(raised.exception))
         self.assertEqual(slept.call_count, 2)
 
+    def test_github_request_waits_one_minute_when_content_creation_block_omits_retry_after(self) -> None:
+        client = si.GitHubClient("token")
+        body = (
+            '{"message":"You have exceeded a secondary rate limit and have been '
+            'temporarily blocked from content creation. Please retry your request again later."}'
+        )
+        calls = {"n": 0}
+
+        class FakeResponse:
+            def read(self) -> bytes:
+                return b'{"html_url":"https://github.test/issues/9"}'
+
+            def __enter__(self) -> "FakeResponse":
+                return self
+
+            def __exit__(self, *args: object) -> bool:
+                return False
+
+        def fake_urlopen(_request: object, timeout: int = 30) -> FakeResponse:
+            calls["n"] += 1
+            if calls["n"] == 1:
+                raise self._github_http_error(403, body)
+            return FakeResponse()
+
+        with (
+            mock.patch("urllib.request.urlopen", fake_urlopen),
+            mock.patch.object(si.time, "sleep") as slept,
+        ):
+            data = client.request(
+                "POST",
+                "/repos/woahwhattheheck/commons/issues",
+                {"title": "x"},
+            )
+        self.assertEqual(data["html_url"], "https://github.test/issues/9")
+        self.assertEqual(calls["n"], 2)
+        slept.assert_called_once_with(60)
+
+    def test_create_issue_paces_successive_content_creation_posts(self) -> None:
+        client = si.GitHubClient("token")
+        record = si.issue_record({"ts": "12.0", "text": "from: GPT\n\none", "user": "U1"})
+        later = si.issue_record({"ts": "13.0", "text": "from: GPT\n\ntwo", "user": "U1"})
+        ticks = iter([0.0, 0.0, 2.0])
+
+        class FakeResponse:
+            def read(self) -> bytes:
+                return b'{"html_url":"https://github.test/issues/9"}'
+
+            def __enter__(self) -> "FakeResponse":
+                return self
+
+            def __exit__(self, *args: object) -> bool:
+                return False
+
+        with (
+            mock.patch("urllib.request.urlopen", lambda *_args, **_kwargs: FakeResponse()),
+            mock.patch.object(si.time, "monotonic", side_effect=lambda: next(ticks)),
+            mock.patch.object(si.time, "sleep") as slept,
+        ):
+            client.create_issue(record)
+            client.create_issue(later)
+        slept.assert_called_once_with(si.GITHUB_CONTENT_CREATE_INTERVAL_SEC)
+
+    def test_sync_keeps_cursor_of_written_records_when_a_later_create_fails(self) -> None:
+        events = [
+            {"ts": "12.0", "text": "from: GPT\n\nfirst", "user": "U1"},
+            {"ts": "13.0", "text": "from: GPT\n\nsecond", "user": "U1"},
+        ]
+        created: list[str] = []
+
+        class FakeSlack:
+            def __init__(self, _token: str):
+                pass
+
+            def events(self, _oldest: str) -> list[dict[str, str]]:
+                return events
+
+        class FakeGitHub:
+            def __init__(self, _token: str):
+                pass
+
+            def issue_exists(self, _record: object) -> bool:
+                return False
+
+            def create_issue(self, record: si.IssueRecord) -> str:
+                if record.title == "slack-13-0":
+                    raise si.IngestError(
+                        "GitHub HTTP 403: You have exceeded a secondary rate limit "
+                        "and have been temporarily blocked from content creation."
+                    )
+                created.append(record.title)
+                return "https://github.test/issues/1"
+
+        with tempfile.TemporaryDirectory() as tmp:
+            state = Path(tmp) / "state.json"
+            state.write_text('{"cursor":"11.25"}\n', encoding="utf-8")
+            with (
+                mock.patch.object(si, "SlackClient", FakeSlack),
+                mock.patch.object(si, "GitHubClient", FakeGitHub),
+                mock.patch.object(si, "high_water", return_value="10.0"),
+                mock.patch.dict(si.os.environ, {"SLACK_BOT_TOKEN": "x", "GITHUB_TOKEN": "y"}),
+            ):
+                with self.assertRaises(si.IngestError) as raised:
+                    si.cmd_sync(None, state)
+            self.assertIn("secondary rate limit", str(raised.exception))
+            self.assertEqual(created, ["slack-12-0"])
+            self.assertEqual(si.read_state(state), "12.0")
+
 
 if __name__ == "__main__":
     unittest.main()
