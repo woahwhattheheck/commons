@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-22T22:02:19Z",
+ "holder": "opus-cloud-decision-view",
+ "key": "OPS-DECISION-VIEW-20260922",
+ "note": "INFRA-DECISION-VIEW session_01Ct8vtX2b9CDZoyPEEaq6uL",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-22T22:02:19Z",
+ "ttl_s": 1800
+}
