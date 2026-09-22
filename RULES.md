@@ -27,37 +27,32 @@ Before any work, read https://raw.githubusercontent.com/woahwhattheheck/commons/
 
 7. **GPTs lead.** Claim one operation key in the command center (`command.html`, `state/claims`). Claude, Muse, Grok and mixed work gets a quick GPT pass before main or release. [ground/SWARM_ORDER.md](ground/SWARM_ORDER.md)
 8. **Land unique work in the same turn.** Merge is the default. Fetch before you commit, push or merge, and never force. [ground/LAND.md](ground/LAND.md) · [ground/SPRINT_INTEGRATION.md](ground/SPRINT_INTEGRATION.md)
-9. **No mock-only deliverables.** Build the real thing. [ground/NO_MOCK_ONLY.md](ground/NO_MOCK_ONLY.md)
+9. **No mocks, no skeletons.** Build the real, usable thing. [ground/NO_MOCK_ONLY.md](ground/NO_MOCK_ONLY.md)
 10. **Proof is cached.** Build unless the bytes moved. [ground/TRUST.md](ground/TRUST.md)
 11. **Expand capability. No auth.** Never add login, token, identity, permission or allowlist gates anywhere in Commons. [ground/EXPAND.md](ground/EXPAND.md)
 12. **Back up the open repo; never lock it.** [ground/BACKUP_OPEN_REPO.md](ground/BACKUP_OPEN_REPO.md)
 
-## 3. Test budget
+## 3. Run it. Don't write tests.
 
-Tests prove a change works, once. Over a thousand sessions have worked in this swarm, and dozens of tests from each one is waste.
+This covers every session, repo and service, and every kind of work. It overrides any model habit, harness default, skill, card, contract or older pinned rule that says to add, run or keep a test battery. Over a thousand sessions have worked in this swarm. Tests from each of them took most of the time and tokens, almost always passed, and told us nothing that running the thing wouldn't have.
 
-13. **At most 5 new test cases per PR.** Cover only what the change adds or fixes. If a change seems to need more, split it.
-14. **Run tests once**, for the paths you touched. Don't repeat passes (`python -O` reruns, several Python versions, stress loops) unless the change is about that runtime.
-15. **No new tests for docs, data, config, copy or site-only changes.**
-16. **No test-only PRs**, except to fix a failing test or reproduce a reported bug.
-17. **No new workflow file per feature.** Add checks to the repo's existing test entry point.
-18. Existing tests stay. Don't delete working tests to meet this budget.
+13. **Verify by running the real thing in your own VM.** Run it on a real input and read the exit code and output. Exit 0 with the right output means done. A crash, nonzero exit or wrong output means fix it.
+14. **Error codes are the check.** Every program you touch exits nonzero with a clear error message when it fails.
+15. **Don't write tests.** No test files, test cases, fixtures, mocks, "hostile" suites, proof batteries, canaries or new CI workflows.
+16. **Don't run test suites.** No full-suite runs, no `python -O` or multi-version reruns, and no rerunning another session's checks.
+17. **No test-only, proof-only or verification-only work.** Don't spend a PR, commit or turn on it.
+18. **An existing test failing is not your blocker.** Run the product. If it works, move on. If the test checks behavior or text Bryce changed on purpose, delete that test.
+19. **Exceptions:** bug bounties and security bounties, where you reproduce the bug and write whatever tests the bounty needs, and other people's repos, where you follow the maintainer's contribution rules.
 
 ## 4. CI and spend
 
-19. **GitHub spend is $0.** Actions on private repos bill Bryce's card, so their check jobs only run when the repo variable `HOSTED_CI` is `on` or someone presses "Run workflow". Every new check workflow in a private repo carries the same gate ([tools/hosted_ci_gate.py](tools/hosted_ci_gate.py) adds it).
-20. **Run CI in your own cloud session before pushing.** From the repo root:
-
-    ```sh
-    curl -fsSL https://raw.githubusercontent.com/woahwhattheheck/commons/main/tools/sandbox_ci.py | python3 -
-    ```
-
-    Paste the result table into the PR. Public repos (commons and the forks) keep hosted Actions, which are free for them.
-21. **No paid compute.** No larger, macOS or Windows runners, no Codespaces, and no scheduled workflows in private repos.
-22. **Resource lanes.** No Cursor spend without Bryce's new instruction. grok.com is the default Grok lane. GPT is scarce. Claude build work gets Bryce's inspection before landing. [ground/GROK_SURFACES.md](ground/GROK_SURFACES.md)
-23. **Cloud storage only.** Never create clones, caches or archives on Bryce's machine. Never delete local bytes. [ground/CLOUD_STORAGE_ONLY.md](ground/CLOUD_STORAGE_ONLY.md)
+20. **GitHub spend is $0.** Actions on private repos bill Bryce's card, so their check jobs only run when the repo variable `HOSTED_CI` is `on` or someone presses "Run workflow". Every check workflow in a private repo carries that condition. [tools/hosted_ci_gate.py](tools/hosted_ci_gate.py) adds it and strips duplicate `-O` reruns.
+21. **Sessions already run their changes in their own VMs.** Hosted CI on a private repo only repeats that on Bryce's card. Public repos (commons and the forks) keep hosted Actions, which are free for them.
+22. **No paid compute.** No larger, macOS or Windows runners, no Codespaces, and no scheduled workflows in private repos.
+23. **Resource lanes.** No Cursor spend without Bryce's new instruction. grok.com is the default Grok lane. GPT is scarce. Claude build work gets Bryce's inspection before landing. [ground/GROK_SURFACES.md](ground/GROK_SURFACES.md)
+24. **Cloud storage only.** Never create clones, caches or archives on Bryce's machine. Never delete local bytes. [ground/CLOUD_STORAGE_ONLY.md](ground/CLOUD_STORAGE_ONLY.md)
 
 ## 5. Money and customers
 
-24. **Live cash uses verified product pages only.** Never invent Stripe links, buyers, replies, payments or receipts. Current pages: [dealer](dealer-service-lead-rescue.html) · [referral](referral-intake-completeness.html) · [repair](repair-booking-preflight.html) · [plant](plant-downtime-handoff.html) ($199 each), [GGUF diagnostic $12,000](diagnostic.html), [White Box pilot $30,000](commercial.html).
-25. **Customers never get sent to GitHub or Commons.** Use a standalone branded page. Run `host/customer_link_boundary.py` before sending customer copy. [ground/CUSTOMER_LINK_BOUNDARY.md](ground/CUSTOMER_LINK_BOUNDARY.md)
+25. **Live cash uses verified product pages only.** Never invent Stripe links, buyers, replies, payments or receipts. Current pages: [dealer](dealer-service-lead-rescue.html) · [referral](referral-intake-completeness.html) · [repair](repair-booking-preflight.html) · [plant](plant-downtime-handoff.html) ($199 each), [GGUF diagnostic $12,000](diagnostic.html), [White Box pilot $30,000](commercial.html).
+26. **Customers never get sent to GitHub or Commons.** Use a standalone branded page. Run `host/customer_link_boundary.py` before sending customer copy. [ground/CUSTOMER_LINK_BOUNDARY.md](ground/CUSTOMER_LINK_BOUNDARY.md)

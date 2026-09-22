@@ -76,7 +76,7 @@ exists; this is a capacity target, not a timer or an obligation to exhaust token
 Any available GPT can take the next review batch. Declare zero remaining review
 capacity when exhausted; unknown budget is unknown, not unlimited.
 
-Non-GPT seats build isolated changes, reproduce failures, run applicable tests,
+Non-GPT seats build isolated changes, reproduce failures, run their changes,
 and preflight one another's work. They must obtain a quick GPT pass before work
 enters main or a release. Unknown/mixed provenance follows this same rule. GPT
 work uses the same queue and evidence rules; its builder may record a separate
@@ -108,7 +108,7 @@ does not replace local, exact-change verification.
 PR body (ordinary JSON; replace example values with actual observations):
 
 ```commons-work
-{"seat":"SEAT","family":"claude","operation":"existing-operation-key","read_paths":["path/to/dependency.py"],"evidence":[{"result":"PASS","reference":"exact test command + result/artifact link"}]}
+{"seat":"SEAT","family":"claude","operation":"existing-operation-key","read_paths":["path/to/dependency.py"],"evidence":[{"result":"PASS","reference":"exact run command + exit code/artifact link"}]}
 ```
 
 Build a packet from the current repository:

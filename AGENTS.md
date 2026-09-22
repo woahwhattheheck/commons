@@ -210,9 +210,9 @@ This explicit September 5 owner directive supersedes older language that prohibi
 >
 > A named leftover is resumed by the owning harness watchdog until DONE. Do not bounce to Bryce because a turn ended. Cursor inbound is Grok Bot CloudAgent launch/reply + GH job-watchdog. ChatGPT/Claude doorbells are out of this land. Idle other-bc resume is UNMEASURED and fail-closed. Law: [ground/WAKE_LOOP.md](./ground/WAKE_LOOP.md).
 >
-> **Pinned owner rule — NO MOCK-ONLY DELIVERABLES.**
+> **Pinned owner rule — NO MOCKS, NO TESTS, NO SKELETONS.**
 >
-> Scope: no mock-only deliverables. Build the real, usable implementation; do not substitute a mock, test-only artifact, or minimal skeleton for the requested thing. The banned thing is a mock / test-only artifact / minimal skeleton shipped *instead of* the requested thing. Tests that prove a real implementation are required, not banned. The green test battery stays. This is a deliverable-quality rule, not an admission gate. The open door and credentials-without-gates stay as they are. Law: [ground/NO_MOCK_ONLY.md](./ground/NO_MOCK_ONLY.md).
+> Mocks, tests and "smallest possible implementations" are banned (owner directive 2026-08-21, restored 2026-09-22). Build the real, usable implementation. Verify it by running it and reading the exit code. Exceptions: bug and security bounties, and other people's repos whose maintainers require tests. Full rules: [RULES.md](./RULES.md) section 3. Law: [ground/NO_MOCK_ONLY.md](./ground/NO_MOCK_ONLY.md).
 
 
 # Commons — agents

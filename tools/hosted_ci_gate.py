@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
 """Stop a private repo's CI workflows from auto-running on billed GitHub runners.
 
-Adds this condition to every job of every check workflow (a workflow whose only
+Two edits to every check workflow (only push, pull_request, workflow_dispatch
+or merge_group triggers):
+
+1. Drop duplicate `python -O` reruns. A step that only reruns the suite under
+   -O is deleted; -O command lines inside a larger step are removed.
+2. Add this condition to every job of every check workflow (a workflow whose only
 triggers are push, pull_request, workflow_dispatch or merge_group):
 
     if: ${{ (vars.HOSTED_CI == 'on' || github.event_name == 'workflow_dispatch') && (<existing if>) }}
@@ -9,13 +14,13 @@ triggers are push, pull_request, workflow_dispatch or merge_group):
 Skipped jobs use no Actions minutes. The "Run workflow" button still runs the
 job, and setting the repo variable HOSTED_CI=on turns automatic runs back on.
 Workflows with other triggers (schedule, issues, issue_comment, ...) are left
-alone. Checks run in the session instead: tools/sandbox_ci.py.
+alone. Sessions already run their changes in their own VMs.
 
     python3 hosted_ci_gate.py [REPO_ROOT]           # apply
     python3 hosted_ci_gate.py --check [REPO_ROOT]   # exit 1 if any check job is ungated
 
-Idempotent. Each edited file is re-parsed and must equal the original except
-for the job `if:` values.
+Idempotent. Each edited file is re-parsed and must equal the original with
+exactly those two edits applied to its parsed form.
 """
 
 import os
@@ -43,6 +48,90 @@ def unwrap(expr):
         expr = expr[1:-1]
     m = re.fullmatch(r"\$\{\{\s*(.*?)\s*\}\}", expr, re.S)
     return m.group(1) if m else expr
+
+
+RERUN_LINE = re.compile(r"^(?:\w+=\S*\s+)*python[\w.]*\s.*?(?<!\S)-O+(?!\S)")
+STEP = re.compile(r"^(\s*)- ")
+RUN = re.compile(r"^(\s*)(?:- )?run:\s*(.*?)\s*$")
+
+
+def drop_rerun_lines(lines, strip=lambda l: l.strip()):
+    out, cont = [], False
+    for line in lines:
+        if cont:
+            cont = line.rstrip().endswith("\\")
+            continue
+        if RERUN_LINE.match(strip(line)):
+            cont = line.rstrip().endswith("\\")
+            continue
+        out.append(line)
+    return out
+
+
+def drop_reruns_text(text):
+    lines = text.split("\n")
+    out, i = [], 0
+    while i < len(lines):
+        m = STEP.match(lines[i])
+        if not m:
+            out.append(lines[i])
+            i += 1
+            continue
+        indent = len(m.group(1))
+        end = i + 1
+        while end < len(lines) and (not lines[end].strip()
+                                    or len(lines[end]) - len(lines[end].lstrip()) > indent):
+            end += 1
+        while end > i + 1 and not lines[end - 1].strip():
+            end -= 1
+        out.extend(edit_step(lines[i:end]))
+        i = end
+    return "\n".join(out)
+
+
+def edit_step(block):
+    for n, line in enumerate(block):
+        m = RUN.match(line)
+        if not m:
+            continue
+        value = m.group(2)
+        if value in ("|", "|-", "|+"):
+            key_indent = len(m.group(1)) + (2 if line.lstrip().startswith("- ") else 0)
+            end = n + 1
+            while end < len(block) and (not block[end].strip()
+                                        or len(block[end]) - len(block[end].lstrip()) > key_indent):
+                end += 1
+            body = drop_rerun_lines(block[n + 1:end])
+            if not any(l.strip() for l in body):
+                return []
+            return block[:n + 1] + body + block[end:]
+        if value in (">", ">-", ">+"):
+            folded = " ".join(l.strip() for l in block[n + 1:] if l.strip()
+                              and len(l) - len(l.lstrip()) > len(m.group(1)))
+            return [] if RERUN_LINE.match(folded) else block
+        if value and RERUN_LINE.match(value.strip("'\"")):
+            return []
+        return block
+    return block
+
+
+def drop_reruns_doc(doc):
+    for job in (doc.get("jobs") or {}).values():
+        steps = (job or {}).get("steps")
+        if not isinstance(steps, list):
+            continue
+        kept = []
+        for step in steps:
+            run = step.get("run") if isinstance(step, dict) else None
+            if isinstance(run, str):
+                trail = run.endswith("\n")
+                body = drop_rerun_lines(run.rstrip("\n").split("\n"))
+                if not any(l.strip() for l in body):
+                    continue
+                step = dict(step, run="\n".join(body) + ("\n" if trail else ""))
+            kept.append(step)
+        job["steps"] = kept
+    return doc
 
 
 def gate_text(text):
@@ -92,6 +181,11 @@ def gate_job(body):
     return [f"    if: ${{{{ {GATE} }}}}"] + body
 
 
+def step_ids(doc):
+    return {step["id"] for job in (doc.get("jobs") or {}).values()
+            for step in (job or {}).get("steps") or [] if isinstance(step, dict) and "id" in step}
+
+
 def strip_ifs(doc):
     for job in (doc.get("jobs") or {}).values():
         if isinstance(job, dict):
@@ -104,11 +198,26 @@ def ungated_jobs(doc):
             if "vars.HOSTED_CI" not in str((job or {}).get("if", ""))]
 
 
+def edit(text, drop):
+    """Apply the edits; None if the result does not re-parse to the expected document."""
+    new = gate_text(drop_reruns_text(text) if drop else text)
+    new_doc = yaml.safe_load(new)
+    original = yaml.safe_load(text)
+    expected = drop_reruns_doc(yaml.safe_load(text)) if drop else original
+    dropped_ids = step_ids(original) - step_ids(new_doc)
+    if any(f"steps.{sid}." in new for sid in dropped_ids) or ungated_jobs(new_doc) \
+            or strip_ifs(new_doc) != strip_ifs(expected) \
+            or any(not (job or {}).get("steps") for job in (new_doc.get("jobs") or {}).values()
+                   if "uses" not in (job or {})):
+        return None
+    return new
+
+
 def main(argv):
     check = "--check" in argv
     args = [a for a in argv if a != "--check"]
     wf_dir = os.path.join(args[0] if args else ".", ".github", "workflows")
-    changed, missing = 0, []
+    changed, missing, skipped, kept_reruns = 0, [], [], []
     for name in sorted(os.listdir(wf_dir)):
         if not name.endswith((".yml", ".yaml")):
             continue
@@ -121,12 +230,15 @@ def main(argv):
         if check:
             missing += [f"{name}:{job}" for job in ungated_jobs(doc)]
             continue
-        new = gate_text(text)
+        new = edit(text, drop=True)
+        if new is None:
+            new = edit(text, drop=False)
+            kept_reruns.append(name)
+        if new is None:
+            skipped.append(name)
+            continue
         if new == text:
             continue
-        new_doc = yaml.safe_load(new)
-        if ungated_jobs(new_doc) or strip_ifs(new_doc) != strip_ifs(yaml.safe_load(text)):
-            sys.exit(f"hosted_ci_gate: refusing to write {name}; edit did not round-trip")
         with open(path, "w", encoding="utf-8") as fh:
             fh.write(new)
         changed += 1
@@ -134,7 +246,13 @@ def main(argv):
         for item in missing:
             print(f"ungated: {item}")
         return 1 if missing else 0
-    print(f"hosted_ci_gate: gated {changed} workflow file(s) in {wf_dir}")
+    print(f"hosted_ci_gate: edited {changed} workflow file(s) in {wf_dir}")
+    for name in kept_reruns:
+        print(f"  gated, -O rerun kept (a later step reads its result): {name}")
+    for name in skipped:
+        print(f"  not edited (edit did not round-trip, fix by hand): {name}")
+    if skipped:
+        return 1
     return 0
 
 
