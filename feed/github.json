@@ -1,6 +1,6 @@
 {
   "counts": {
-    "open_issues": 543,
+    "open_issues": 522,
     "open_pull_requests": 37,
     "runs_in_progress": 4,
     "runs_queued": 70
@@ -223,6 +223,17 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "repair/github-history-publisher-403-name-20260922",
+      "closed_at": "2026-09-22T06:40:41Z",
+      "head_sha": "f3e1b93537ca4dd9a9f971e4c339458b39545f86",
+      "merged_at": "2026-09-22T06:40:41Z",
+      "number": 17219,
+      "state": "MERGED",
+      "title": "Name GitHub history publisher 403s and retry GET rate limits"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "repair/github-history-keep-first-batch-20260922",
       "closed_at": "2026-09-22T06:27:04Z",
       "head_sha": "7493a1470866989b17e09e4623aba2bc56d94b6c",
@@ -373,21 +384,10 @@
       "number": 15807,
       "state": "MERGED",
       "title": "Revenue: add fail-closed Colorado CHSD partner-first carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/jev-credential-source-conflict-fence-20260917",
-      "closed_at": "2026-09-22T03:15:46Z",
-      "head_sha": "55425f3e43f2109844f65f9362808893b702c71e",
-      "merged_at": "2026-09-22T03:15:46Z",
-      "number": 15812,
-      "state": "MERGED",
-      "title": "Harden JEV credential generation selection after key exposure"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-22T06:33:59Z",
+  "unchanged_since": "2026-09-22T06:47:33Z",
   "undatable_pulls": []
 }
