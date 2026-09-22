@@ -3,20 +3,20 @@
   "drift": {
    "contained": 0,
    "current": 0,
-   "disjoint": 43,
-   "overlap": 37,
+   "disjoint": 2,
+   "overlap": 33,
    "unknown": 2
   },
   "hosted": {
-   "CANCELLED_NOT_RUN": 4,
-   "FAILED": 51,
-   "SUCCESS": 27
+   "CANCELLED_NOT_RUN": 1,
+   "FAILED": 24,
+   "SUCCESS": 12
   },
-  "lanes_open": 81,
+  "lanes_open": 36,
   "lanes_with_several_open": 1,
-  "listed_open": 82,
-  "listed_recent_closed": 136,
-  "open_prs": 82
+  "listed_open": 37,
+  "listed_recent_closed": 181,
+  "open_prs": 37
  },
  "degraded": [],
  "files": {
@@ -24,13 +24,13 @@
   "full": "coordination.json"
  },
  "main": {
-  "committed_at": "2026-09-21T23:50:50Z",
-  "sha": "2174369055bc83e9c56e74ee5ef73c53da9f1b42"
+  "committed_at": "2026-09-22T03:51:18Z",
+  "sha": "87c4cfebfdbd72ca28d9b81c231469f9d69e372e"
  },
- "observed_at": "2026-09-22T00:01:40Z",
+ "observed_at": "2026-09-22T04:41:19Z",
  "queue": {
   "in_progress": 2,
-  "oldest_queued_age_s": 2917536,
+  "oldest_queued_age_s": 2934315,
   "queued": 70
  },
  "schema": "commons-coordination-head/v1",
@@ -44,14 +44,13 @@
   }
  ],
  "swarm": {
-  "batches": 1,
+  "batches": 0,
   "capacity": null,
   "counts": {
-   "BUILDING": 1,
-   "HOLD": 36,
-   "NEEDS_PACKET": 36,
-   "UNKNOWN": 6,
-   "WAIT_GPT": 3
+   "HOLD": 12,
+   "NEEDS_EVIDENCE": 1,
+   "NEEDS_PACKET": 19,
+   "UNKNOWN": 5
   }
  }
 }
