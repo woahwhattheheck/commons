@@ -72,6 +72,24 @@ def write_private(path, raw, old_sha=None):
     if observed != raw:
         raise RuntimeError('private_readback_differs')
 
+def put_immutable_batch(account, path):
+    """Land a new batch, or keep the first snapshot of an existing name.
+
+    GitHub notification/search/issue pages are not byte-stable. A retry that
+    re-collects an already-named batch must not overwrite it and must not
+    abort cursor advancement — otherwise intake stays wedged on the same page.
+    """
+    raw = path.read_bytes()
+    key = private_path(account, path.name)
+    existing, _ = read_private(key)
+    if existing is None:
+        write_private(key, raw)
+        return 'written'
+    if existing != raw:
+        path.write_bytes(existing)
+        return 'kept'
+    return 'matched'
+
 def run(account):
     if account == collector.ACCOUNTS[1] and not os.environ.get('GH_TOKEN_SECONDARY'):
         return {'account': account, 'status': 'credential_unbound', 'private_readback': False}
@@ -86,19 +104,23 @@ def run(account):
             (home / 'checkpoint.json').write_bytes(snapshot)
         reader = collector.Reader(account, budget=3)
         result = reader.run()
-        # A batch is immutable. Put every batch before advancing the cursor.
+        # A batch is immutable. Put every new batch before advancing the cursor.
+        # An already-landed name keeps its first snapshot; live re-fetch bytes are discarded.
         files = sorted(home.glob('github-*.json'))
+        written = kept = matched = 0
         for path in files:
-            key = private_path(account, path.name)
-            existing, _ = read_private(key)
-            if existing is None:
-                write_private(key, path.read_bytes())
-            elif existing != path.read_bytes():
-                raise RuntimeError('immutable_batch_differs')
+            status = put_immutable_batch(account, path)
+            if status == 'written':
+                written += 1
+            elif status == 'kept':
+                kept += 1
+            else:
+                matched += 1
         cursor = (home / 'checkpoint.json').read_bytes()
         if cursor != snapshot:
             write_private(private_path(account, 'checkpoint.json'), cursor, sha)
         return {'account': account, 'requests': result['requests'], 'batches': len(files),
+                'written': written, 'kept': kept, 'matched': matched,
                 'queued_details': result['queued_details'], 'queued_repositories': result['queued_repositories'],
                 'gaps': result['gaps'], 'private_readback': True}
 
