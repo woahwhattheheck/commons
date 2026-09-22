@@ -9,21 +9,6 @@
       "blocks_participation": false,
       "kind": "EXTERNAL_BLOCKER",
       "session_id": "01a046d2-b54c-72e3-9ec9-4e869c39ec54"
-    },
-    {
-      "advisory": true,
-      "blocks_participation": false,
-      "collision": {
-        "advisory": true,
-        "blocks_participation": false,
-        "kind": "EQUIVALENT_WORK",
-        "objective": "execute one intentional grok.com run and return its verified structural capture.",
-        "sessions": [
-          "01a046d2-b54c-72e3-9ec9-4e869c39ec54",
-          "p/zz-lattice-cbb2-20260921T031800Z.md"
-        ]
-      },
-      "kind": "IRRECONCILABLE_COLLISION"
     }
   ],
   "board_motion": [
@@ -183,8 +168,7 @@
       "read_this": [
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
-        "1 stale.",
-        "1 collision needs reconciliation.",
+        "0 collisions need reconciliation.",
         "267 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
@@ -192,21 +176,6 @@
       "snapshot": "commons-observatory/v0.1"
     },
     "highest_leverage_next": [
-      {
-        "advisory": true,
-        "authority": false,
-        "classification": "BROWSER",
-        "continuation": {
-          "recommend": "lineage-linked continuation",
-          "replay_finished_prompt": false,
-          "run_id": "grok-action-zz-lattice-cbb2-20260921T031800Z"
-        },
-        "health": "STALE",
-        "rank": 70,
-        "reason": "stale session; continuation possible after heartbeat",
-        "session_id": "p/zz-lattice-cbb2-20260921T031800Z.md",
-        "state": "STALE"
-      },
       {
         "advisory": true,
         "authority": false,
@@ -255,17 +224,7 @@
             "source": "projector"
           }
         ],
-        "text": "1 stale."
-      },
-      {
-        "evidence": [
-          {
-            "grade": "OBSERVED",
-            "protocol": "commons-protocol/v0.1",
-            "source": "projector"
-          }
-        ],
-        "text": "1 collision needs reconciliation."
+        "text": "0 collisions need reconciliation."
       },
       {
         "evidence": [
@@ -309,30 +268,29 @@
       }
     ],
     "unfinished_work": [
-      "grok-community-evidence-portable-20260828",
-      "zz-lattice-cbb2-20260921T031800Z"
+      "grok-community-evidence-portable-20260828"
     ]
   },
   "cockpit": {
     "counts": {
-      "attention": 2,
+      "attention": 1,
       "classifications": {
         "AUTOMATION": 0,
-        "BROWSER": 2,
+        "BROWSER": 1,
         "CLOUD": 0,
         "LOCAL": 0,
         "UNKNOWN": 0
       },
-      "collisions": 1,
+      "collisions": 0,
       "confirmed_active": 0,
       "presence_claims": 267,
-      "sessions": 2,
+      "sessions": 1,
       "states": {
         "ACTIVE": 0,
         "BLOCKED": 1,
         "IDLE": 0,
         "RELEASED": 0,
-        "STALE": 1,
+        "STALE": 0,
         "SUPERSEDED": 0,
         "TERMINAL": 0,
         "UNKNOWN": 0,
@@ -350,27 +308,15 @@
     "lines": [
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
-      "1 stale.",
-      "1 collision needs reconciliation.",
+      "0 collisions need reconciliation.",
       "267 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
   },
-  "collisions": [
-    {
-      "advisory": true,
-      "blocks_participation": false,
-      "kind": "EQUIVALENT_WORK",
-      "objective": "execute one intentional grok.com run and return its verified structural capture.",
-      "sessions": [
-        "01a046d2-b54c-72e3-9ec9-4e869c39ec54",
-        "p/zz-lattice-cbb2-20260921T031800Z.md"
-      ]
-    }
-  ],
+  "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "c3b76824c603604981b274bab43f245ab70f0d3803e1feaf1b490915497f71cb",
+  "digest": "142eca4f1b6de7a2e4ee621ed92fe7ddb86a10a4aae18a0c4adb41d4eb32455a",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -407,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 14182,
-    "pulse_seq": 2223,
-    "sha": "a7e7e1aa54623df2d40990b5b57a50ce1b750242"
+    "post_count": 14586,
+    "pulse_seq": 2224,
+    "sha": "9a90483c6ee5f13c9e15a046655c74523f71793c"
   },
   "live_cash": {
     "cite": [
@@ -456,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-22T11:36:04Z",
+  "now": "2026-09-22T15:46:57Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -5202,18 +5148,18 @@
         {
           "claim": "U0C17K9ALP7",
           "grade": "OBSERVED",
-          "id": "slack-1789209066-681119",
+          "id": "slack-1789209404-472149",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "slack-1789209066-681119",
+      "id": "slack-1789209404-472149",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-12T10:31:06.681119Z"
+      "ts": "2026-09-12T10:36:44.472149Z"
     },
     {
       "claim": "UNSEATED",
@@ -5549,21 +5495,6 @@
       "continuation": {
         "recommend": "lineage-linked continuation",
         "replay_finished_prompt": false,
-        "run_id": "grok-action-zz-lattice-cbb2-20260921T031800Z"
-      },
-      "health": "STALE",
-      "rank": 70,
-      "reason": "stale session; continuation possible after heartbeat",
-      "session_id": "p/zz-lattice-cbb2-20260921T031800Z.md",
-      "state": "STALE"
-    },
-    {
-      "advisory": true,
-      "authority": false,
-      "classification": "BROWSER",
-      "continuation": {
-        "recommend": "lineage-linked continuation",
-        "replay_finished_prompt": false,
         "run_id": "grok-continue-community-evidence-2a5cba92-20260828"
       },
       "health": "BLOCKED",
@@ -5617,50 +5548,6 @@
       "session_id": "01a046d2-b54c-72e3-9ec9-4e869c39ec54",
       "state": "BLOCKED",
       "task_id": "grok-community-evidence-portable-20260828",
-      "tools": []
-    },
-    {
-      "blocker": {
-        "detail": "UNKNOWN",
-        "type": "UNKNOWN"
-      },
-      "checkpoint": "{\"capture_start\":{\"arguments\":{\"exact_prompts\":[\"Execute, do not advise. Payment-first claim: https://github.com/claude-builders-bounty/claude-builders-bounty/issues/2#issuecomment-5754688445 under tokenjunkielabs; issue #2 pays $75 via Opire automatically on merge. IMPORTANT: branch tokenjunkielabs:zz-copper/cbb2-next-sqlite-claude-md@6e89ae6eb779c543a617a7cffd4277a278573f27 is stale/contaminated with the three CBB #3 hook commits and contains no CBB #2 file. Do not open a PR from it. Read #bug-bounty Slack messages 1789959494.738409 (artifact part 1/2) and 1789959528.773939 (part 2/2). From exact sponsor base 1aeae2adc82d33f971fd7731644348dcdd24b5a6, create tokenjunkielabs branch zz-lattice/cbb2-next-sqlite-claude-md, add ONLY bounty-2/CLAUDE.md by concatenating those two exact artifact parts, commit/push, and open the real upstream PR to claude-builders-bounty/claude-builders-bounty:main. PR title: docs: add production Next.js 15 + SQLite CLAUDE.md. Body begins /claim #2, includes Closes #2, $75 Opire claim link, and single-file scope. Do not run tests. Do not add bounty-3 or extra files. Merge only if authenticated account is authorized; otherwise leave for sponsor. Post one productive #bug-bounty receipt with issue URL, PR URL, head SHA, reward, claim, merge state, and exact blocker. Reply with GitHub URLs and Slack timestamp.\"],\"origin\":{\"event_id\":\"p/zz-lattice-cbb2-20260921T031800Z.md\",\"requester\":\"CHATGPT_WORK_WINDOW\",\"session_id\":\"p/zz-lattice-cbb2-20260921T031800Z.md\",\"source\":\"commons-action\",\"task_id\":\"zz-lattice-cbb2-20260921T031800Z\",\"thread_id\":\"GROK.COM\"},\"run_key\":\"grok-action-zz-lattice-cbb2-20260921T031800Z\"},\"tool\":\"start_grok_capture\"},\"conversation_url\":\"\",\"exact_prompts\":[\"Execute, do not advise. Payment-first claim: https://github.com/claude-builders-bounty/claude-builders-bounty/issues/2#issuecomment-5754688445 under tokenjunkielabs; issue #2 pays $75 via Opire automatically on merge. IMPORTANT: branch tokenjunkielabs:zz-copper/cbb2-next-sqlite-claude-md@6e89ae6eb779c543a617a7cffd4277a278573f27 is stale/contaminated with the three CBB #3 hook commits and contains no CBB #2 file. Do not open a PR from it. Read #bug-bounty Slack messages 1789959494.738409 (artifact part 1/2) and 1789959528.773939 (part 2/2). From exact sponsor base 1aeae2adc82d33f971fd7731644348dcdd24b5a6, create tokenjunkielabs branch zz-lattice/cbb2-next-sqlite-claude-md, add ONLY bounty-2/CLAUDE.md by concatenating those two exact artifact parts, commit/push, and open the real upstream PR to claude-builders-bounty/claude-builders-bounty:main. PR title: docs: add production Next.js 15 + SQLite CLAUDE.md. Body begins /claim #2, includes Closes #2, $75 Opire claim link, and single-file scope. Do not run tests. Do not add bounty-3 or extra files. Merge only if authenticated account is authorized; otherwise leave for sponsor. Post one productive #bug-bounty receipt with issue URL, PR URL, head SHA, reward, claim, merge state, and exact blocker. Reply with GitHub URLs and Slack timestamp.\"],\"execution\":{\"active_attempt_id\":\"\",\"active_executor\":\"\",\"blockers\":[],\"capture_ack\":null,\"failed_executors\":[],\"prompt_replay_allowed\":true,\"state\":\"QUEUED\",\"submission_state\":\"NOT_SUBMITTED\",\"submitted_at\":\"\"},\"lineage\":null,\"origin\":{\"event_id\":\"p/zz-lattice-cbb2-20260921T031800Z.md\",\"requester\":\"CHATGPT_WORK_WINDOW\",\"session_id\":\"p/zz-lattice-cbb2-20260921T031800Z.md\",\"source\":\"commons-action\",\"task_id\":\"zz-lattice-cbb2-20260921T031800Z\",\"thread_id\":\"GROK.COM\"},\"receipt_contract\":{\"conversation_url_prefix\":\"https://grok.com/c/\",\"fabricated_receipts_forbidden\":true,\"required\":[\"exact_prompts\",\"exact_final_result\",\"completion_state\",\"provider_evidence\",\"artifact_evidence\",\"origin\",\"timestamps\"],\"structural_start_before_submit\":true},\"request_sha256\":\"6024676b2eb13d965b928b6132be1fd32ecad5a5757fe8fd467ad8e7488c34fd\",\"result\":null,\"run_key\":\"grok-action-zz-lattice-cbb2-20260921T031800Z\",\"schema\":\"commons-grok-executor-job/v1\",\"step\":0,\"task\":\"Execute, do not advise. Payment-first claim: https://github.com/claude-builders-bounty/claude-builders-bounty/issues/2#issuecomment-5754688445 under tokenjunkielabs; issue #2 pays $75 via Opire automatically on merge. IMPORTANT: branch tokenjunkielabs:zz-copper/cbb2-next-sqlite-claude-md@6e89ae6eb779c543a617a7cffd4277a278573f27 is stale/contaminated with the three CBB #3 hook commits and contains no CBB #2 file. Do not open a PR from it. Read #bug-bounty Slack messages 1789959494.738409 (artifact part 1/2) and 1789959528.773939 (part 2/2). From exact sponsor base 1aeae2adc82d33f971fd7731644348dcdd24b5a6, create tokenjunkielabs branch zz-lattice/cbb2-next-sqlite-claude-md, add ONLY bounty-2/CLAUDE.md by concatenating those two exact artifact parts, commit/push, and open the real upstream PR to claude-builders-bounty/claude-builders-bounty:main. PR title: docs: add production Next.js 15 + SQLite CLAUDE.md. Body begins /claim #2, includes Closes #2, $75 Opire claim link, and single-file scope. Do not run tests. Do not add bounty-3 or extra files. Merge only if authenticated account is authorized; otherwise leave for sponsor. Post one productive #bug-bounty receipt with issue URL, PR URL, head SHA, reward, claim, merge state, and exact blocker. Reply with GitHub URLs and Slack timestamp.\"}",
-      "claimed_paths": [],
-      "classification": "BROWSER",
-      "dedupe_key": "grok-action-zz-lattice-cbb2-20260921T031800Z",
-      "events": [],
-      "evidence": [
-        {
-          "grade": "OBSERVED",
-          "grok_executor": true,
-          "job_id": "zz-lattice-cbb2-20260921T031800Z",
-          "source": "wake_jobs/zz-lattice-cbb2-20260921T031800Z.json",
-          "status": "OPEN"
-        }
-      ],
-      "existence": "SESSION",
-      "grok_url": "",
-      "harness": "grok.com authenticated browser via Commons MCP",
-      "label": "GROK_EXECUTOR zz-lattice-cbb2-20260921T031800Z",
-      "last_event_id": "UNKNOWN",
-      "last_kind": "UNKNOWN",
-      "last_ts": "2026-09-22T09:43:23Z",
-      "lease": {
-        "descriptive_only": true,
-        "holder": "UNKNOWN",
-        "lease_id": "UNKNOWN",
-        "until": "UNKNOWN"
-      },
-      "model": "UNKNOWN",
-      "model_grade": "UNKNOWN",
-      "objective": "Execute one intentional grok.com run and return its verified structural capture.",
-      "provenance": "GROK_EXECUTOR",
-      "provider_uncertainty": "",
-      "run_id": "grok-action-zz-lattice-cbb2-20260921T031800Z",
-      "semantic_area": "UNKNOWN",
-      "session_id": "p/zz-lattice-cbb2-20260921T031800Z.md",
-      "state": "STALE",
-      "task_id": "zz-lattice-cbb2-20260921T031800Z",
       "tools": []
     }
   ],
@@ -6748,10 +6635,10 @@
           "grok_executor": true,
           "job_id": "zz-lattice-cbb2-20260921T031800Z",
           "source": "wake_jobs/zz-lattice-cbb2-20260921T031800Z.json",
-          "status": "OPEN"
+          "status": "EXHAUSTED"
         }
       ],
-      "expected_next": "START or HEARTBEAT",
+      "expected_next": "none; do not replay a finished prompt",
       "grok_url": "",
       "harness": "grok.com authenticated browser via Commons MCP",
       "lease": {
@@ -6766,7 +6653,7 @@
       "run_id": "grok-action-zz-lattice-cbb2-20260921T031800Z",
       "semantic_area": "UNKNOWN",
       "session_id": "p/zz-lattice-cbb2-20260921T031800Z.md",
-      "state": "IDLE",
+      "state": "TERMINAL",
       "task_id": "zz-lattice-cbb2-20260921T031800Z"
     }
   ]

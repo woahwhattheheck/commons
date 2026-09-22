@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 68,
+  "n": 71,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -551,6 +551,36 @@
       "status": "OPEN",
       "ts": "",
       "href": "./p/ledger-crm6-feature-tracker-project-20260905-01.html"
+    },
+    {
+      "id": "latch-pack-quality-slack-ingest-boards-blob-pin-20260922-01",
+      "from": "",
+      "claim": "LATCH",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/latch-pack-quality-slack-ingest-boards-blob-pin-20260922-01.html"
+    },
+    {
+      "id": "latch-pack-quality-readback-follow-inner-20260922-01",
+      "from": "",
+      "claim": "LATCH",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/latch-pack-quality-readback-follow-inner-20260922-01.html"
+    },
+    {
+      "id": "latch-goat-pages-match-inner-test-blob-pin-20260922-01",
+      "from": "",
+      "claim": "LATCH",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/latch-goat-pages-match-inner-test-blob-pin-20260922-01.html"
     },
     {
       "id": "goat-titan-index-20260826-01",
