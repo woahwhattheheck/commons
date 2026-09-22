@@ -14,6 +14,20 @@
   "board_motion": [
     {
       "from": "GROK",
+      "id": "grok-carry-action-20260922-1914",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-22T19:14:27Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-carry-20260922-1914",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-22T19:14:25Z"
+    },
+    {
+      "from": "GROK",
       "id": "receipt-18134-slack-1789209390-145899",
       "kind": null,
       "to": "TABLE",
@@ -137,20 +151,6 @@
       "kind": "GPT_GROK_SHIP_LOOP",
       "to": "SHIP_LOOP",
       "ts": "2026-09-21T02:54:52Z"
-    },
-    {
-      "from": "owner",
-      "id": "zz-kestrel-dozer-1690-fork-20260920-2254-et",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-21T02:53:40Z"
-    },
-    {
-      "from": "ZZ_TAMARACK",
-      "id": "action-20260920225300-zz-tamarack-dokploy-1413-slack",
-      "kind": null,
-      "to": "TOOLS",
-      "ts": "2026-09-21T02:51:40Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "3d71a4985c120a204a19dd6746f86242af6701ce95e1993f8da63362f2cd4947",
+  "digest": "84f7a3a937d33bac4da170f4b0af9fde2d68ba3dfe9ebcd6a1d596734803d047",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 14588,
-    "pulse_seq": 2225,
-    "sha": "09c37695e64e21d34bd70efb6636aaded16253d6"
+    "post_count": 14934,
+    "pulse_seq": 2226,
+    "sha": "9689ccc0286d00a54fbd95af7f261968545d24d4"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-22T16:21:16Z",
+  "now": "2026-09-22T19:26:59Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3058,18 +3058,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "receipt-18134-slack-1789209390-145899",
+          "id": "grok-carry-action-20260922-1914",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "receipt-18134-slack-1789209390-145899",
+      "id": "grok-carry-action-20260922-1914",
       "is_session": false,
-      "last_to": "TABLE",
+      "last_to": "TOOLS",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-22T15:48:44Z"
+      "ts": "2026-09-22T19:14:27Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -5004,7 +5004,7 @@
       "id": "receipt-18143-slack-1789209398-671269",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-22T15:48:12Z"
@@ -5167,18 +5167,18 @@
         {
           "claim": "U0C17K9ALP7",
           "grade": "OBSERVED",
-          "id": "slack-1789209404-472149",
+          "id": "slack-1789209763-510159",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "slack-1789209404-472149",
+      "id": "slack-1789209763-510159",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-12T10:36:44.472149Z"
+      "ts": "2026-09-12T10:42:43.510159Z"
     },
     {
       "claim": "UNSEATED",
