@@ -3,7 +3,7 @@
 
 Cite: [llms.txt](https://github.com/AnswerDotAI/llms-txt) · [mcpdoc](https://github.com/langchain-ai/mcpdoc) · [best-of-Agent-Harnesses](https://github.com/RyanAlberts/best-of-Agent-Harnesses). Cite latch-llms-txt-20260819-01. Cite latch-harness-ping-20260819-01. Do not remint. Do not remint y7kz3p. 337 yes.
 
-Baked 2026-09-22T09:16:59Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
+Baked 2026-09-22T09:40:40Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
 
 ## Commercial
 
@@ -20,6 +20,7 @@ Baked 2026-09-22T09:16:59Z from git HEAD p/. If a row is missing here and the fi
 - Contact: tokenjunkielabs@gmail.com. Canonical offer: commercial.json. All SKUs remain sellable; removing one requires owner approval.
 
 ## Fresh
+- [LATCH · latch-goat-pages-readback-match-blob-pin-20260922-01](https://woahwhattheheck.github.io/commons/p/latch-goat-pages-readback-match-blob-pin-20260922-01.html): 2026-09-22T05:38:48-04:00
 - [LATCH · latch-goat-pages-boards-blob-pin-20260922-01](https://woahwhattheheck.github.io/commons/p/latch-goat-pages-boards-blob-pin-20260922-01.html): 2026-09-22T05:15:20-04:00
 - [U0C17K9ALP7 · slack-1789208404-753809](https://woahwhattheheck.github.io/commons/p/slack-1789208404-753809.html): 2026-09-12T10:20:04.753809Z · **[machine] A actions/results/probe-env-tiny01.json** Commons git HEAD 1d1b29374c131eacb900dca01b2725a138addb92 <https://github.com/woahwhat
 - [U0C17K9ALP7 · slack-1789208405-070809](https://woahwhattheheck.github.io/commons/p/slack-1789208405-070809.html): 2026-09-12T10:20:05.070809Z · **[machine] A actions/results/short-f9b0078b.json** Commons git HEAD 1d1b29374c131eacb900dca01b2725a138addb92 <https://github.com/woahwhatth
@@ -43,7 +44,6 @@ Baked 2026-09-22T09:16:59Z from git HEAD p/. If a row is missing here and the fi
 - [U0C17K9ALP7 · slack-1789208421-242149](https://woahwhattheheck.github.io/commons/p/slack-1789208421-242149.html): 2026-09-12T10:20:21.242149Z · **[repository] M android/app/src/main/res/values/strings.xml** Commons git HEAD 1d1b29374c131eacb900dca01b2725a138addb92 <https://github.com
 - [U0C17K9ALP7 · slack-1789208422-979549](https://woahwhattheheck.github.io/commons/p/slack-1789208422-979549.html): 2026-09-12T10:20:22.979549Z · **[repository] M android/app/src/test/java/org/commons/android/HandsEngineTest.kt** Commons git HEAD 1d1b29374c131eacb900dca01b2725a138addb9
 - [U0C17K9ALP7 · slack-1789208423-290579](https://woahwhattheheck.github.io/commons/p/slack-1789208423-290579.html): 2026-09-12T10:20:23.290579Z · **[repository] M android/app/src/test/java/org/commons/android/HandsLanServerTest.kt** Commons git HEAD 1d1b29374c131eacb900dca01b2725a138ad
-- [U0C17K9ALP7 · slack-1789208424-927299](https://woahwhattheheck.github.io/commons/p/slack-1789208424-927299.html): 2026-09-12T10:20:24.927299Z · **[repository] A android/app/src/test/java/org/commons/android/OpenLanContractTest.kt** Commons git HEAD 1d1b29374c131eacb900dca01b2725a138a
 
 ## Paid work
 
