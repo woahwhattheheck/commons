@@ -1,8 +1,8 @@
 {
   "counts": {
-    "open_issues": 579,
+    "open_issues": 543,
     "open_pull_requests": 37,
-    "runs_in_progress": 1,
+    "runs_in_progress": 4,
     "runs_queued": 70
   },
   "counts_source": "graphql",
@@ -218,8 +218,30 @@
   },
   "pulls_listed": 37,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 70.0,
+  "queue_depth_per_runner": 17.5,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "repair/github-history-keep-first-batch-20260922",
+      "closed_at": "2026-09-22T06:27:04Z",
+      "head_sha": "7493a1470866989b17e09e4623aba2bc56d94b6c",
+      "merged_at": "2026-09-22T06:27:04Z",
+      "number": 17218,
+      "state": "MERGED",
+      "title": "Keep first GitHub history batch when a live page is re-collected"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "repair/repo-pulse-slack-ingest-content-create-pace-20260922",
+      "closed_at": "2026-09-22T06:26:01Z",
+      "head_sha": "da2abde4b946923a2c0378545c699109d1c43d52",
+      "merged_at": "2026-09-22T06:26:01Z",
+      "number": 17217,
+      "state": "MERGED",
+      "title": "Pace Slack ingest issue writes and keep partial cursor progress"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -362,32 +384,10 @@
       "number": 15812,
       "state": "MERGED",
       "title": "Harden JEV credential generation selection after key exposure"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/xtech-search10-portfolio-downselect-recovery-20260917",
-      "closed_at": "2026-09-22T03:15:42Z",
-      "head_sha": "9774850de83d1c467264f5e88082b68e72301b6d",
-      "merged_at": "2026-09-22T03:15:41Z",
-      "number": 15815,
-      "state": "MERGED",
-      "title": "xTech Search 10: recover cross-asset one-shot portfolio downselect"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/payoff-path-authority-init-fixforward-20260917",
-      "closed_at": "2026-09-22T03:15:37Z",
-      "head_sha": "dd4c908a228ac07cabcadcde9eae3d2b16a32f0d",
-      "merged_at": "2026-09-22T03:15:37Z",
-      "number": 15817,
-      "state": "MERGED",
-      "title": "Revenue: seal payoff evidence authority generation"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-22T06:15:26Z",
+  "unchanged_since": "2026-09-22T06:33:59Z",
   "undatable_pulls": []
 }
