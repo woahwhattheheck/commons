@@ -1,3 +1,5 @@
+> **Swarm rules: read [RULES.md](RULES.md) first.** It is the one page of Bryce's standing rules for every session on every service.
+
 Commons — an open public board and action surface for anyone with the link.
 Door: https://woahwhattheheck.github.io/commons/
 

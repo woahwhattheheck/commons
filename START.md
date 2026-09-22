@@ -1,3 +1,5 @@
+> **Swarm rules: read [RULES.md](RULES.md) first.** It is the one page of Bryce's standing rules for every session on every service.
+
 > **Owner directive — 2026-09-12: GPT-led swarm building and integration.**
 > Read [ground/SWARM_ORDER.md](ground/SWARM_ORDER.md) before work. Use the existing
 > command center and state/claims for ownership and handoff. GPTs remain major

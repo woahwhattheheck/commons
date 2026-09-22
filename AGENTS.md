@@ -1,3 +1,5 @@
+> **Swarm rules: read [RULES.md](RULES.md) first.** It is the one page of Bryce's standing rules for every session on every service.
+
 > **Owner standing policy — CUSTOMER/PUBLIC SURFACE BOUNDARY (2026-09-17).**
 >
 > Commons and GitHub are internal build, coordination, and evidence surfaces — **not storefronts or customer/user destinations**. Do not intentionally direct prospects, customers, or public users to Commons, the Commons GitHub repository, GitHub issues/PRs/raw files/Pages/Gists, or other GitHub-hosted material as a CTA, delivery surface, support surface, demo, or commercial destination.
