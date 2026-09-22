@@ -1,8 +1,7 @@
 {
  "note": "paths each open pull request changes since its merge-base (first 40; drift --pr N prints all)",
- "observed_at": "2026-09-21T20:58:48Z",
+ "observed_at": "2026-09-22T00:01:40Z",
  "prs": [
-  {"number":16975,"path_count":1,"paths":["test_cursor_pack_is_ready_to_run_readback.py"]},
   {"number":16504,"path_count":9,"paths":["test_cursor_commons_slack_full_body_chunk_readback.py","test_cursor_mcp_get_grounding_readback.py","test_cursor_stealable_lanes_readback.py","test_grokbuild_occupancy_landed_work_keep_lift.py","test_pack_is_ready_to_run.py","test_pages_speed.py","test_since_you_last_looked.py","test_stealable_lanes_occupancy.py","test_wire_post_http_door_hub.py"]},
   {"number":16431,"path_count":null,"paths":[]},
   {"number":16406,"path_count":18,"paths":["revenue/uiowa_rfq_18649_question_cards/DELIVERY.md","revenue/uiowa_rfq_18649_question_cards/EXPORT_PUBLICATION.md","revenue/uiowa_rfq_18649_question_cards/LATTICE_FULL_EXECUTION.md","revenue/uiowa_rfq_18649_question_cards/README.md","revenue/uiowa_rfq_18649_question_cards/data/interview_register.json","revenue/uiowa_rfq_18649_question_cards/data/observations.json","revenue/uiowa_rfq_18649_question_cards/data/observations_hostile.json","revenue/uiowa_rfq_18649_question_cards/data/sources.json","revenue/uiowa_rfq_18649_question_cards/data/templates.json","revenue/uiowa_rfq_18649_question_cards/evidence/lattice-full93-execution.json.gz","revenue/uiowa_rfq_18649_question_cards/examples/cards.csv","revenue/uiowa_rfq_18649_question_cards/examples/cards.json","revenue/uiowa_rfq_18649_question_cards/examples/question_cards.md","revenue/uiowa_rfq_18649_question_cards/export_publication.py","revenue/uiowa_rfq_18649_question_cards/question_cards.py","revenue/uiowa_rfq_18649_question_cards/test_delivery_integrity.py","revenue/uiowa_rfq_18649_question_cards/test_export_publication.py","revenue/uiowa_rfq_18649_question_cards/test_question_cards.py"]},
