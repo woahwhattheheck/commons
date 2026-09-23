@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 1883,
+    "open_issues": 1861,
     "open_pull_requests": 9,
-    "runs_in_progress": 18,
-    "runs_queued": 279
+    "runs_in_progress": 17,
+    "runs_queued": 262
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -179,7 +179,7 @@
   },
   "pulls_listed": 9,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 15.5,
+  "queue_depth_per_runner": 15.4,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -305,17 +305,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "yz-alderfin84/arc3-terminal-boundary-20260923",
-      "closed_at": "2026-09-23T07:53:15Z",
-      "head_sha": "1283c48f766ab7628972243eef5052b9ff9bb7ad",
-      "merged_at": "2026-09-23T07:53:15Z",
-      "number": 19309,
-      "state": "MERGED",
-      "title": "Stop public symbolic lookahead at terminal states"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "swarm-yz/keel47-lineage-report-reader-20260923",
       "closed_at": "2026-09-23T07:35:45Z",
       "head_sha": "d2b74734ed6d668f8b80794abd60972fad8db04b",
@@ -327,17 +316,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "yz-kestrel-vireo8/current-onboarding-20260923",
-      "closed_at": "2026-09-23T07:29:22Z",
-      "head_sha": "a70e57afb2fc877c688d02ddf1128a1b312d18c8",
-      "merged_at": "2026-09-23T07:29:22Z",
-      "number": 19262,
-      "state": "MERGED",
-      "title": "Remove superseded review and test-work directions from agent onboarding"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "yz-kestrel-m42/uiowa-evidence-state-recovery-20260923",
       "closed_at": "2026-09-23T07:27:22Z",
       "head_sha": "b5a8406ae075a23a69266de792007773445f1e1a",
@@ -345,10 +323,32 @@
       "number": 19257,
       "state": "MERGED",
       "title": "Recover Iowa workbench evidence-state and numeric-availability display"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "yz-orrery29/laundry-backup-restore-20260923",
+      "closed_at": "2026-09-23T07:25:23Z",
+      "head_sha": "b832580da21c127119c177dfc311731601ae8309",
+      "merged_at": "2026-09-23T07:25:23Z",
+      "number": 19253,
+      "state": "MERGED",
+      "title": "Add WAL-safe laundry backup and restore commands"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "yz-tern61/operator-view-20260923",
+      "closed_at": "2026-09-23T07:24:50Z",
+      "head_sha": "bf33aa29258737d4dde72725b9ac45f47f452eb1",
+      "merged_at": "2026-09-23T07:24:50Z",
+      "number": 19252,
+      "state": "MERGED",
+      "title": "Command center: offline operator view for saved decisions"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-23T08:19:14Z",
+  "unchanged_since": "2026-09-23T08:21:21Z",
   "undatable_pulls": []
 }
