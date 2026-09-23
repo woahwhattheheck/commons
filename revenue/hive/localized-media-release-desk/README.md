@@ -32,7 +32,7 @@ Open `new-review/review.html` to search, filter, print and download complete JSO
 
 ## Quick demo
 
-All bundled demo media/text is fictional and self-authored.
+All bundled demo media/text is fictional and self-authored. Choose a **new, non-existing workspace under an existing parent**. The demo refuses existing directories, files and symlinks before opening its database; it never deletes a previous package or reuses an existing database. On failure, inspect any newly created partial workspace and choose a new path for a retry. Existing product databases remain usable through the normal CLI and the read-only review; the demo is not their reset/retry command.
 
 ```bash
 cd revenue/hive/localized-media-release-desk
@@ -41,7 +41,7 @@ python -B desk.py --db /tmp/localized-release-demo/localized-release.sqlite3 sta
 python -B desk.py --db /tmp/localized-release-demo/localized-release.sqlite3 verify --title-id demo-title --package /tmp/localized-release-demo/localized-release-demo.zip
 ```
 
-A successful demo finishes at `READY_FOR_LOCAL_HANDOFF`; it does **not** authorize external publication.
+A successful demo finishes at `READY_FOR_LOCAL_HANDOFF`; it does **not** authorize external publication. Repeating the demo command with the same directory returns a nonzero error instead of replacing artifacts.
 
 ## CLI workflow
 
