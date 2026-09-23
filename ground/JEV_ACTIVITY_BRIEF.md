@@ -95,6 +95,7 @@ order, and limit to `--attention-cursor` to create `attention-page-2.json`. Cont
 next cursor is `null`. `attention.previous_cursor` supports back navigation. For a readable
 export, add `--format markdown`; Markdown includes the next-page arguments when more remain.
 Omitting `--output` writes to standard output. Existing destinations are never overwritten.
+Optional provider-readback records are a separate JSON array passed with `--receipts`.
 Malformed JSON, invalid paging options, changed snapshots, and I/O failures return exit 2 with
 a diagnostic; success returns 0.
 
