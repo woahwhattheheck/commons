@@ -40,7 +40,7 @@ rely on it for.
 
 | State | Means | Next action |
 | --- | --- | --- |
-| `COMPLETED` | a dated change record **with an evidence locator** confirms it happened | none; retain the locator for closeout |
+| `COMPLETED` | the supplied dated change records have evidence locators and no remaining recorded blocker | retain the locators; this is not external verification |
 | `UNRESOLVED_OWNERSHIP` | the departing contractor still owns it and **no successor is recorded** | name an accountable owner before the last day — this is a live gap |
 | `NO_EVIDENCE` | no record establishes either outcome | ask for the change record or export that would settle it |
 
@@ -99,11 +99,10 @@ of these makes the whole packet undeliverable and the CLI renders nothing:
 host — a fictional address under any other TLD is one somebody might actually
 try.
 
-**The guard proves it can fail.** `test_the_guard_proves_it_can_fail` takes the
-packet that passes clean, injects one real-looking address, and asserts it
-flips from deliverable to refused. A guard that has never gone red is worth
-nothing. A separate test asserts the clean packet produces **zero** safety
-issues, because a guard that fires on everything gets switched off.
+These checks recognize documented shapes, not every possible kind of personal
+information. Do not insert real account data into the rehearsal. Programmatic
+callers must consult `scenario.is_deliverable(issues)` before distributing a
+report; lower-level renderers are not a redaction service.
 
 **Safety and integrity are treated differently on purpose.** A broken
 reference is a *finding* — the report still renders so somebody can see it.
@@ -119,7 +118,6 @@ cd revenue/uiowa_rfq_18649_contractor_transition
 
 python3 transition.py --input fixtures/contractor_transition.json --outdir out
 python3 transition.py --input fixtures/contractor_transition.json --print
-python3 transition.py --input fixtures/contractor_transition_unsafe.json    # refuses
 ```
 
 Exit codes are a contract: **0** transition closed · **1** report produced,
@@ -134,6 +132,13 @@ later run. Output failures produce a clear diagnostic and exit 2; cleanup
 removes only files created by that invocation whose identities still match.
 This is not an atomic directory installation: consume the bundle only after
 the command finishes with exit 0 or 1.
+
+Partial files can be observable during writing. Failed cleanup can leave
+partial artifacts, and created directories may remain after a refusal. No
+power-loss or adversarial-filesystem guarantee is provided. The create-only
+contract belongs to the CLI's `publish_artifacts` path, not the older
+low-level `write_csv` helper. Do not delete previous evidence to make a later
+invocation succeed; select a new destination.
 
 Measured on the synthetic packet:
 
@@ -154,9 +159,7 @@ outcome claimed (the gaps).
 | `scenario.py` | packet schema, the realism guard, referential integrity |
 | `transition.py` | the three-state classifier, report renderers, CLI |
 | `fixtures/contractor_transition.json` | the coherent fictional scenario — 3 people, 2 applications, 2 service identities, 2 runbooks, 4 change records |
-| `fixtures/contractor_transition_unsafe.json` | deliberately unsafe packet; exists to prove the guard goes red |
 | `sample_output/` | retained fictional example output |
-| `test_transition.py` | original retained 34-case suite |
 
 ## What is working vs. draft
 
@@ -169,6 +172,18 @@ swarm rules use product execution rather than new test or receipt packages.
 acceptable evidence locator for a completed revocation at the University is
 unknown, and the `evidence_ref`-required rule should be confirmed against what
 their systems can actually export before it classifies a real transition.
+
+The supplied inventory is not proved exhaustive. The tool does not fetch or
+authenticate a locator, establish that a declared action happened, or verify
+any real person's access. It does not infer that one historical request
+supersedes another; the packet author must reconcile those records explicitly.
+
+**Implementation history.** [Integration #19233](https://github.com/woahwhattheheck/commons/pull/19233)
+combined the contributions discussed in [#16359](https://github.com/woahwhattheheck/commons/pull/16359),
+[#16363](https://github.com/woahwhattheheck/commons/pull/16363) and
+[#16417](https://github.com/woahwhattheheck/commons/pull/16417).
+Historical tests, replay logs and donor patches remain in Git history and
+those discussions, not in the current operator package.
 
 ## Scope
 
