@@ -17,13 +17,13 @@ DOOR = ROOT / "grounding.html"
 
 KEEP = {
     "p/cursor-mcp-get-grounding-20260902-01.md": "0bc79b8c",
-    "grounding.html": "310d63b2",
+    "grounding.html": "abb91caf",
     "test_mcp_get_open.py": "239564b9",
-    "test_grounding_door.py": "0908ec95",
-    "commons_mcp.py": "8312bc0f",
-    "hub_pages.py": "7bc61c8b",
+    "test_grounding_door.py": "ef9a7982",
+    "commons_mcp.py": "23996ca3",
+    "hub_pages.py": "5ac12648",
     "door.js": "dc59355d",
-    "api/mcp.py": "393da756",
+    "api/mcp.py": "9ae34f64",
     "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md": "b2df1cf1",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
@@ -32,25 +32,36 @@ KEEP = {
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",
-    "ground/OWNER_NOW.md": "4b2a58ed",
-    "autogtm.html": "2fe108f4",
+    "ground/OWNER_NOW.md": "59b1fd37",
+    "autogtm.html": "9d8b3e85",
 }
 
 
-def git_blob(rel: str) -> str:
+def git_blob(rel: str, rev: str = SOURCE_REV) -> str:
     return subprocess.check_output(
-        ["git", "rev-parse", f"{SOURCE_REV}:{rel}"], cwd=ROOT, text=True
+        ["git", "rev-parse", f"{rev}:{rel}"], cwd=ROOT, text=True
     ).strip()
 
 
 class TestCursorMcpGetGroundingReadback(unittest.TestCase):
     def test_keep_leftover_hub_and_unread_packs(self) -> None:
+        mismatches = []
         for rel, prefix in KEEP.items():
             blob = git_blob(rel)
-            self.assertTrue(
-                blob.startswith(prefix),
-                f"{rel} reminted: want {prefix} got {blob[:8]}",
-            )
+            if not blob.startswith(prefix):
+                mismatches.append(f"{rel} reminted: want {prefix} got {blob[:8]}")
+        self.assertEqual(mismatches, [], msg="; ".join(mismatches))
+
+    def test_keep_map_is_source_rev_not_living_head(self) -> None:
+        living_lifts = []
+        for rel, prefix in KEEP.items():
+            src = git_blob(rel)
+            head = git_blob(rel, "HEAD")
+            if head.startswith(prefix) and not src.startswith(prefix):
+                living_lifts.append(
+                    f"{rel} KEEP-lifted to HEAD {head[:8]} while SOURCE_REV is {src[:8]}"
+                )
+        self.assertEqual(living_lifts, [], msg="; ".join(living_lifts))
 
     def test_leftover_capability_map_has_no_login(self) -> None:
         import commons_mcp as cm

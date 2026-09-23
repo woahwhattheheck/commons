@@ -2,6 +2,94 @@
   "law": "Share the machine. One job per PC button press. Oldest open job first. Prefer a claim that is not already waiting on another open job. Not a hard ceiling - you may post more than one. Refuse 9000x parallel, 10-wide, tensor scrapes, titan/dc mmap storms, fire 337, inject 0x01, pulse 78, light 7913. HTTP is not the computer. CUT ports stay on 127.0.0.1. White Box fabrication is one-and-done; this site does not start :7862.",
   "open": [
     {
+      "id": "grok-carry-action-20260922-1914",
+      "from": "GROK",
+      "ts": "2026-09-22T19:14:27Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "grok-carry-20260922-0915",
+      "from": "GROK",
+      "ts": "2026-09-22T09:15:21Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "grok-seat-carry-20260922-01",
+      "from": "GROK",
+      "ts": "2026-09-22T02:19:16Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "grok-carry-zz-lattice-20260921",
+      "from": "GROK",
+      "ts": "2026-09-21T19:13:17Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "action-20260921062950-b7da1ce3d300",
+      "from": "GROK",
+      "ts": "2026-09-21T06:29:50Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "zz-lattice-cbb2-20260921T031800Z",
+      "from": "CHATGPT_WORK_WINDOW",
+      "ts": "2026-09-21T03:11:00Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "zz-kestrel-dozer-1690-fork-20260920-2254-et",
+      "from": "OWNER",
+      "ts": "2026-09-21T02:53:40Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "action-20260920225300-zz-tamarack-dokploy-1413-slack",
+      "from": "ZZ_TAMARACK",
+      "ts": "2026-09-21T02:51:40Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "action-20260919110812-22a675665683",
       "from": "GROK",
       "ts": "2026-09-19T11:08:12Z",
@@ -3109,12 +3197,14 @@
     }
   ],
   "open_per_claim": {
-    "GROK": 21,
+    "GROK": 26,
+    "CHATGPT_WORK_WINDOW": 2,
+    "OWNER": 1,
+    "ZZ_TAMARACK": 1,
     "UNSEATED": 43,
     "DEVIN_LOCAL": 1,
     "SWARMZFORGE": 2,
     "GROK_BUILD": 7,
-    "CHATGPT_WORK_WINDOW": 1,
     "ASTRA_SOL": 1,
     "TITAN": 2,
     "CODEX": 3,

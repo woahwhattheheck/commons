@@ -1,0 +1,16 @@
+test_csv_supplied_accept_never_becomes_an_import_decision (__main__.NativeRehearsalIntegrationTests.test_csv_supplied_accept_never_becomes_an_import_decision) ... ok
+test_duplicate_multiline_comment_retains_both_source_rows (__main__.NativeRehearsalIntegrationTests.test_duplicate_multiline_comment_retains_both_source_rows) ... ok
+test_existing_rehearsal_output_is_not_overwritten (__main__.NativeRehearsalIntegrationTests.test_existing_rehearsal_output_is_not_overwritten) ... ok
+test_extra_bundle_artifact_is_rejected (__main__.NativeRehearsalIntegrationTests.test_extra_bundle_artifact_is_rejected) ... ok
+test_modified_response_is_rejected_by_native_regeneration (__main__.NativeRehearsalIntegrationTests.test_modified_response_is_rejected_by_native_regeneration) ... ok
+test_native_cli_regenerates_both_bundles (__main__.NativeRehearsalIntegrationTests.test_native_cli_regenerates_both_bundles) ... ok
+test_optimized_and_hash_seed_parity_covers_every_file (__main__.NativeRehearsalIntegrationTests.test_optimized_and_hash_seed_parity_covers_every_file) ... ok
+test_public_cli_receipts_match_written_receipts (__main__.NativeRehearsalIntegrationTests.test_public_cli_receipts_match_written_receipts) ... ok
+test_rehashed_semantically_changed_report_is_rejected (__main__.NativeRehearsalIntegrationTests.test_rehashed_semantically_changed_report_is_rejected) ... ok
+test_synthetic_disposition_changes_only_title_and_keeps_disagreement (__main__.NativeRehearsalIntegrationTests.test_synthetic_disposition_changes_only_title_and_keeps_disagreement) ... ok
+test_unresolved_references_remain_explicit (__main__.NativeRehearsalIntegrationTests.test_unresolved_references_remain_explicit) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 15.999s
+
+OK

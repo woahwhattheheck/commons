@@ -58,6 +58,7 @@ Shelf: [tools-cash.html](../tools-cash.html) · [commerce.html](../commerce.html
 | crawler/fetch blocked / Google AI Mode hall pass | [google-ai-mode-hall-pass](../.agents/skills/google-ai-mode-hall-pass/SKILL.md) | [tokens/google-ai-mode-hall-pass](../ground/tokens/google-ai-mode-hall-pass.md) |
 | shared super MCP / thin-harness residual reach | [super-mcp](../.agents/skills/super-mcp/SKILL.md) | [tokens/super-mcp](../ground/tokens/super-mcp.md) |
 | TypeSafe Jev / typed fast judgment: route, class, score, yes-no | [jev](../.agents/skills/jev/SKILL.md) | — |
+| CUA-S1-FORMS checkpoint / score form options, do not execute | [cua-s1-forms](../.agents/skills/cua-s1-forms/SKILL.md) | — |
 
 Door: [skills.html](../skills.html). Receipt: `python3 skills/check.py`.
 

@@ -18,6 +18,10 @@ HOBBY_UPLOAD_CAP = 5000
 RUNTIME_FILES = (
     "api/mcp.py",
     "api/owner_context.py",
+    "api/jev.py",
+    "api/cua_s1.py",
+    "api/cua_s1_form.mjs",
+    "api/cua_s1_fixture.mjs",
     "commons_mcp.py",
     "commons_publication_policy.py",
     "commons_mcp_app.html",
@@ -29,9 +33,16 @@ RUNTIME_FILES = (
     "owner_net.py",
     "host/observatory.py",
     "host/owner_context.py",
+    "host/jev.py",
+    "host/cua_s1_cloud/__init__.py",
+    "host/cua_s1_cloud/runtime_onnx.py",
+    "host/cua_s1_cloud/cua-s1-forms.onnx",
     "hub_pages.py",  # static import from host/observatory.py
     "memory_board.py",  # continue_from_observation session-memory opt-in
     "vercel.json",
+    "requirements.txt",
+    "package.json",
+    "package-lock.json",
 )
 
 RUNTIME_TREES = (

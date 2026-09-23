@@ -1,0 +1,20 @@
+CHROMIUM_VERSION=144.0.7559.96; ASSET_ROOT=/mnt/data/basalt42-replay/zz-basalt42-workbench-review/patched
+test_authorityFile_duplicate_escaped (__main__.BrowserIntakeTests.test_authorityFile_duplicate_escaped) ... ok
+test_authorityFile_duplicate_nested (__main__.BrowserIntakeTests.test_authorityFile_duplicate_nested) ... ok
+test_authorityFile_duplicate_root (__main__.BrowserIntakeTests.test_authorityFile_duplicate_root) ... ok
+test_authorityFile_malformed_utf8 (__main__.BrowserIntakeTests.test_authorityFile_malformed_utf8) ... ok
+test_authorityFile_overflowing_number (__main__.BrowserIntakeTests.test_authorityFile_overflowing_number) ... ok
+test_candidateFile_duplicate_escaped (__main__.BrowserIntakeTests.test_candidateFile_duplicate_escaped) ... ok
+test_candidateFile_duplicate_nested (__main__.BrowserIntakeTests.test_candidateFile_duplicate_nested) ... ok
+test_candidateFile_duplicate_root (__main__.BrowserIntakeTests.test_candidateFile_duplicate_root) ... ok
+test_candidateFile_malformed_utf8 (__main__.BrowserIntakeTests.test_candidateFile_malformed_utf8) ... ok
+test_candidateFile_overflowing_number (__main__.BrowserIntakeTests.test_candidateFile_overflowing_number) ... ok
+test_clear_during_real_file_read_prevents_dispatch (__main__.BrowserIntakeTests.test_clear_during_real_file_read_prevents_dispatch) ... ok
+test_json_restore_and_markdown_download_preserve_the_composed_exporter (__main__.BrowserIntakeTests.test_json_restore_and_markdown_download_preserve_the_composed_exporter) ... ok
+test_newer_demo_notes_survive_older_transport_success (__main__.BrowserIntakeTests.test_newer_demo_notes_survive_older_transport_success) ... ok
+test_valid_upload_uses_actual_bytes_and_retains_unicode_and_numbers (__main__.BrowserIntakeTests.test_valid_upload_uses_actual_bytes_and_retains_unicode_and_numbers) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 5.111s
+
+OK

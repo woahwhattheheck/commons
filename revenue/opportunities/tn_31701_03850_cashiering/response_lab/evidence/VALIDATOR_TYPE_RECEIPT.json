@@ -1,0 +1,157 @@
+{
+  "schema": "tn-response-validator-regression-receipt/v1",
+  "operation": "tn-response-validator-types-rivettn-20260919",
+  "seat": "ZZ-RIVET-TN",
+  "model": "GPT-6 Astra Pro",
+  "observed_utc_date": "2026-09-19",
+  "environment": {
+    "execution": "ephemeral cloud Python process",
+    "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41"
+  },
+  "base_commit": "c15683f2a67dd8254db1f13e00c7f93e3129a74d",
+  "original_blobs": {
+    "revenue/opportunities/tn_31701_03850_cashiering/response_lab/validator.py": "14f47579b9ff93ba50ec7424b4fc3661fb247243",
+    "revenue/opportunities/tn_31701_03850_cashiering/response_lab/response_manifest.json": "3b3bed9cefdfa288406c988d4377ddb45c2768f7",
+    "revenue/opportunities/tn_31701_03850_cashiering/response_lab/requirement_crosswalk.csv": "ca57a03cbb034c3e35f690013fa7339fe78240b6",
+    "tests/test_tn_cashiering_response_lab.py": "44f79c82ac590985615bb0f5239d8e4ef30bc6c0"
+  },
+  "tested_blobs": {
+    "revenue/opportunities/tn_31701_03850_cashiering/response_lab/validator.py": {
+      "git_blob": "b3edc6644d2d58a4729b5227902a98150ca066d4",
+      "sha256": "c02145a069b461eae0cf1a9846cf1c1d65663d1b6e0b8668a59603f423d55662"
+    },
+    "tests/test_tn_cashiering_response_validation_types.py": {
+      "git_blob": "42c953576b5d4f29a46c5ff65517f8a5609055d0",
+      "sha256": "98cebbe1ddf53457a9a9093df1952511f55297a849774c8b3262a2f2836f4d94"
+    }
+  },
+  "baseline": {
+    "existing_tests": 8,
+    "existing_exit_code": 0,
+    "before_fix_new_suite": {
+      "tests": 30,
+      "subtest_inclusive_failures": 55,
+      "errors": 9,
+      "exit_code": 1
+    },
+    "reproductions": [
+      {
+        "case": "authority_integer_zero",
+        "original_result": "ACCEPTED",
+        "requirements": 120
+      },
+      {
+        "case": "authority_float_zero",
+        "original_result": "ACCEPTED",
+        "requirements": 120
+      },
+      {
+        "case": "question_count_boolean_true",
+        "original_result": "ACCEPTED",
+        "requirements": 120
+      },
+      {
+        "case": "external_link_integer_zero",
+        "original_result": "ACCEPTED",
+        "requirements": 120
+      },
+      {
+        "case": "page_count_float",
+        "original_result": "ACCEPTED",
+        "requirements": 120
+      },
+      {
+        "case": "font_size_float",
+        "original_result": "ACCEPTED",
+        "requirements": 120
+      },
+      {
+        "case": "question_count_float",
+        "original_result": "ACCEPTED",
+        "requirements": 120
+      },
+      {
+        "case": "crosswalk_count_float",
+        "original_result": "ACCEPTED",
+        "requirements": 120
+      },
+      {
+        "case": "proposed_fee_float",
+        "original_result": "ACCEPTED",
+        "requirements": 120
+      },
+      {
+        "case": "duplicate_summary_header_with_valid_digest",
+        "original_result": "ACCEPTED",
+        "requirements": 120
+      }
+    ]
+  },
+  "final_execution": [
+    {
+      "command": "python -m unittest discover -s tests -p 'test_tn_cashiering_response*.py' -v",
+      "tests": 39,
+      "exit_code": 0,
+      "tail": [
+        "----------------------------------------------------------------------",
+        "Ran 39 tests in 1.770s",
+        "",
+        "OK"
+      ]
+    },
+    {
+      "command": "python -O -m unittest discover -s tests -p 'test_tn_cashiering_response*.py' -v",
+      "tests": 39,
+      "exit_code": 0,
+      "tail": [
+        "----------------------------------------------------------------------",
+        "Ran 39 tests in 1.728s",
+        "",
+        "OK"
+      ]
+    },
+    {
+      "command": "python -m py_compile revenue/opportunities/tn_31701_03850_cashiering/response_lab/validator.py tests/test_tn_cashiering_response_lab.py tests/test_tn_cashiering_response_validation_types.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python revenue/opportunities/tn_31701_03850_cashiering/response_lab/validator.py",
+      "exit_code": 0,
+      "json_output": {
+        "authority": {
+          "buyer_contact": false,
+          "contract_acceptance": false,
+          "partner_contact": false,
+          "payment": false,
+          "question_submission": false,
+          "response_submission": false,
+          "revenue_recognized": false
+        },
+        "optional": 8,
+        "postures": {
+          "DEMO_SUPPORTED": 12,
+          "GAP_QUESTION": 4,
+          "PRIME_PRODUCT_EVIDENCE": 51,
+          "SPECIALIST_WORKSHARE": 53
+        },
+        "required": 112,
+        "requirements": 120
+      }
+    }
+  ],
+  "unchanged": [
+    "source manifest",
+    "120-row crosswalk",
+    "original eight-test suite",
+    "proposed fee and acceptance state",
+    "external-action flags",
+    "acceptance arithmetic lab"
+  ],
+  "limits": [
+    "Component execution only; not a GitHub Actions or whole-repository CI receipt.",
+    "Schema validation does not verify State requirements, bidder qualification, platform compliance, acceptance, payment or authority to contact or submit.",
+    "Before-fix adversarial run contained 30 test methods; the final suite adds a single-read regression, yielding 31 new plus eight retained methods.",
+    "Baseline failures count subtest assertions; they are not 55 separately collected test methods."
+  ]
+}

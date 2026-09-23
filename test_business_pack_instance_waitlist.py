@@ -139,6 +139,29 @@ class BusinessPackInstanceWaitlistTest(unittest.TestCase):
         )
         self.assertEqual(data["checkout"], "NOT_MINTED")
 
+    def test_pointer_ok_when_live_instance_pages_differ_from_historical_table(self) -> None:
+        live_waitlist = helper.blob_prefix("packs/waitlist.html")
+        hist_waitlist = helper.EXPECTED_BLOBS["packs/waitlist.html"]
+        live_sidewalk = helper.blob_prefix(
+            "packs/sidewalk-signal-web-desk-20260902-01/index.html"
+        )
+        hist_sidewalk = helper.OBSERVED_AT_LAND[
+            "packs/sidewalk-signal-web-desk-20260902-01/index.html"
+        ]
+        self.assertEqual(hist_waitlist, "b312ed6d")
+        self.assertEqual(hist_sidewalk, "638e60b4")
+        self.assertEqual(
+            helper.OBSERVED_AT_LAND["host/business_pack_desk_instance.py"],
+            "a550ae1b",
+        )
+        self.assertTrue(live_waitlist)
+        self.assertTrue(live_sidewalk)
+        self.assertTrue(self.result["pointer_ok"])
+        self.assertTrue(self.result["receipt_blobs_match"])
+        self.assertIs(self.result["live_instance_blobs_not_pinned"], True)
+        if live_waitlist != hist_waitlist:
+            self.assertFalse(self.result["waitlist_blob_ok"])
+
 
 if __name__ == "__main__":
     unittest.main()

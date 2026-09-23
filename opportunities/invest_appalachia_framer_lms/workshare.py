@@ -5,12 +5,14 @@ import json
 from pathlib import Path
 from typing import Any
 
-# Public compatibility constants. Runtime semantics below capture an independent
-# immutable generation at import time and do not late-resolve these globals.
+# Compatibility constants. Runtime semantics capture an independent immutable
+# generation at import time and do not late-resolve these globals.
 SCHEMA = "invest_appalachia_framer_lms.partner_workshare.v1"
 OPPORTUNITY_ID = "INVEST-APPALACHIA-FRAMER-LMS-20260916"
-QUALIFICATION_GENERATION_SHA256 = "13018ee1b2fe14b3b8171acc734e0ea57a52006a5e96f095600e88bcbca63a02"
-WORKSHARE_SHA256 = "9825e29c23028dffb23158f7b1db8fb751ba45c0ecedad681764d77bc5ac3b4d"
+QUALIFICATION_GENERATION_SHA256 = "79e1bfc46617239e1c05b4c22e97e4d6672743103041e2b6b7b3e71bd6d1b30d"
+WORKSHARE_SHA256 = "33548cdf0b30a664b847eeea0eb6ad6d7a06b2a8d35ddfa91be0953d1f564636"
+REQUIREMENTS_SHA256 = "5d012da1612cb220cfe0d7c4c02c47175a726bad1254855240c24afa6926ef66"
+SOURCE_MANIFEST_SHA256 = "a70c78c77a7084ef9cf1499f0e7831e2031d4e635405c8955df25b57c6f01093"
 PRICE_USD = 24000
 BUYER_CAP_USD = 60000
 
@@ -21,11 +23,14 @@ class WorkshareError(ValueError):
 
 def _make_semantic_generation():
     """Capture the reviewed commercial generation against post-import rebinding."""
-
     schema = "invest_appalachia_framer_lms.partner_workshare.v1"
     opportunity_id = "INVEST-APPALACHIA-FRAMER-LMS-20260916"
-    qualification_sha256 = "13018ee1b2fe14b3b8171acc734e0ea57a52006a5e96f095600e88bcbca63a02"
-    workshare_sha256 = "9825e29c23028dffb23158f7b1db8fb751ba45c0ecedad681764d77bc5ac3b4d"
+    qualification_sha256 = "79e1bfc46617239e1c05b4c22e97e4d6672743103041e2b6b7b3e71bd6d1b30d"
+    workshare_sha256 = "33548cdf0b30a664b847eeea0eb6ad6d7a06b2a8d35ddfa91be0953d1f564636"
+    requirements_sha256 = "5d012da1612cb220cfe0d7c4c02c47175a726bad1254855240c24afa6926ef66"
+    source_sha256 = "a70c78c77a7084ef9cf1499f0e7831e2031d4e635405c8955df25b57c6f01093"
+    source_binding = {"generation_id": "framer-reviewed-sources-20260919", "source_manifest_sha256": source_sha256, "requirements_sha256": requirements_sha256}
+    base = Path(__file__).resolve().parent
     price_usd = 24000
     buyer_cap_usd = 60000
 
@@ -91,19 +96,29 @@ def _make_semantic_generation():
         except (os_error, unicode_error, json_decode_error, value_error, recursion_error, overflow_error) as exc:
             raise error(f"invalid JSON: {exc}") from exc
 
+    def validate_sources(requirements=None, source_manifest=None) -> None:
+        requirements = load(base / "requirements.json") if requirements is None else requirements
+        source_manifest = load(base / "source_generation.json") if source_manifest is None else source_manifest
+        if dgst(requirements) != requirements_sha256:
+            raise error("requirements do not match reviewed source generation")
+        if dgst(source_manifest) != source_sha256:
+            raise error("source manifest does not match reviewed source generation")
+
     def validate_qualification(current_packet: Any) -> None:
         if dgst(current_packet) != qualification_sha256:
             raise error("qualification generation changed; workshare requires review")
 
     def validate_ws(value: Any) -> dict[str, Any]:
-        if dgst(value) != workshare_sha256:
+        captured = canon(value)
+        if sha256(captured).hexdigest() != workshare_sha256:
             raise error("workshare does not match reviewed commercial generation")
         ws = exact(
-            value,
+            json_loads(captured),
             {
                 "schema",
                 "opportunity_id",
                 "qualification_generation_sha256",
+                "source_generation",
                 "commercial",
                 "scope",
                 "excludes",
@@ -117,6 +132,8 @@ def _make_semantic_generation():
             raise error("workshare identity mismatch")
         if ws["qualification_generation_sha256"] != qualification_sha256:
             raise error("qualification-generation binding mismatch")
+        if ws["source_generation"] != source_binding:
+            raise error("source-generation binding mismatch")
 
         commercial = exact(
             ws["commercial"],
@@ -163,14 +180,19 @@ def _make_semantic_generation():
             raise error("external/commercial authority must remain all false")
         return ws
 
-    def evaluate_generation(current_packet: Any, workshare: Any) -> dict[str, Any]:
+    def evaluate_generation(current_packet: Any, workshare: Any, requirements=None, source_manifest=None) -> dict[str, Any]:
         validate_qualification(current_packet)
+        validate_sources(requirements, source_manifest)
         ws = validate_ws(workshare)
         receipt = {
-            "schema": "invest_appalachia_framer_lms.partner_workshare_receipt.v1",
+            "schema": "invest_appalachia_framer_lms.partner_workshare_receipt.v2",
             "opportunity_id": opportunity_id,
             "qualification_generation_sha256": qualification_sha256,
             "workshare_sha256": workshare_sha256,
+            "source_generation": dict_type(source_binding),
+            "buyer_source_status": "RECOVERED_BUYER_DOCUMENTS",
+            "bidder_response_status": "INCOMPLETE",
+            "us_prime_eligibility": "UNVERIFIED",
             "prime_posture": "NO_CHANGE_PRIME_HOLD",
             "workshare_posture": "READY_FOR_INTERNAL_QUALIFIED_PRIME_SELECTION",
             "specialist_price_usd": price_usd,
@@ -200,27 +222,29 @@ def _make_semantic_generation():
 del _make_semantic_generation
 
 
-def _make_main(evaluate_fn, load_fn, path_type, json_dumps):
-    def main() -> int:
+def _make_main(evaluate_fn, load_fn, path_type, json_dumps, error_type):
+    base = path_type(__file__).resolve().parent
+
+    def main(argv=None) -> int:
         import argparse
 
         parser = argparse.ArgumentParser()
         parser.add_argument("--current-packet", required=True, type=path_type)
         parser.add_argument("--workshare", required=True, type=path_type)
-        args = parser.parse_args()
-        print(
-            json_dumps(
-                evaluate_fn(load_fn(args.current_packet), load_fn(args.workshare)),
-                indent=2,
-                sort_keys=True,
-            )
-        )
+        parser.add_argument("--requirements", type=path_type, default=base / "requirements.json")
+        parser.add_argument("--source-manifest", type=path_type, default=base / "source_generation.json")
+        args = parser.parse_args(argv)
+        try:
+            receipt = evaluate_fn(load_fn(args.current_packet), load_fn(args.workshare), load_fn(args.requirements), load_fn(args.source_manifest))
+        except error_type as exc:
+            parser.error(str(exc))
+        print(json_dumps(receipt, indent=2, sort_keys=True))
         return 0
 
     return main
 
 
-main = _make_main(evaluate, load_json, Path, json.dumps)
+main = _make_main(evaluate, load_json, Path, json.dumps, WorkshareError)
 del _make_main
 
 

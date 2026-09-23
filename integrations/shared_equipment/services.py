@@ -20,6 +20,7 @@ from time import monotonic
 from typing import Any
 
 from integrations.shared_equipment.outcomes import effect_uncertain, tool_failed
+from commons_publication_policy import PublicationPolicyViolation, check_outbound_identity
 from integrations.shared_equipment.provider_io import (
     EquipmentError, GitHubSlackEquipment, redacted,
 )
@@ -43,9 +44,14 @@ def _quote(value: str) -> str:
     return urllib.parse.quote(value, safe="")
 
 
+def _require_outbound_identity(fields: dict[str, str]) -> None:
+    """Check final mapped text before any provider access."""
+    decision = check_outbound_identity(fields)
+    if not decision["allowed"]:
+        raise PublicationPolicyViolation(decision)
 
-def _schema(name: str, description: str, required: dict[str, str], optional: dict[str, Any] | None = None) -> dict:
-    properties = {k: {"type": v} for k, v in required.items()}
+def _schema(name: str, description: str, required: dict[str, Any], optional: dict[str, Any] | None = None) -> dict:
+    properties = {k: {"type": v} if isinstance(v, str) else v for k, v in required.items()}
     for k, v in (optional or {}).items():
         properties[k] = {"type": v} if isinstance(v, str) else v
     return {"name": name, "description": description, "inputSchema": {"type": "object", "properties": properties, "required": list(required)}}
@@ -80,7 +86,7 @@ TOOLS = [
     _schema("credential_retrieve_sealed", "Retrieve an actual credential encrypted to the requester's ephemeral public key. Keep the private key in the requesting runtime; only ciphertext enters this road.", {"credential_ref": "string", "recipient_public_key": "string", "transfer_id": "string", "request_id": "string", "call_id": "string"}),
     _schema("slack_read_channel", "Read a Slack channel using existing workspace access. Follow next_cursor for remaining pages.", {"channel_id": "string"}, {"oldest": "string", "latest": "string", "cursor": "string", "limit": "integer"}),
     _schema("slack_read_thread", "Read a Slack thread. Follow next_cursor for remaining replies.", {"channel_id": "string", "thread_ts": "string"}, {"cursor": "string", "limit": "integer"}),
-    _schema("slack_post_message", "Post a message through the existing workspace app. Return its timestamp and permalink. Preserve explicit model/role attribution in text.", {"channel_id": "string", "text": "string"}, {"thread_ts": "string"}),
+    _schema("slack_post_message", "Chat writes are read-only until the installed sender identity and footer are verified owner-controlled. A call returns a private nondelivery result and performs no provider mutation.", {"channel_id": "string", "text": "string"}, {"thread_ts": "string"}),
     _schema("github_read_file", "Read a UTF-8 source file and resolved blob SHA through the existing gh account. Set ref to pin a version.", {"repository": "string", "path": "string"}, {"ref": "string"}),
     _schema("github_read_issue", "Read a GitHub issue and one comment page; use comment_page for further pages.", {"repository": "string", "issue_number": "integer"}, {"comment_page": "integer"}),
     _schema("github_read_pull_request", "Read PR state, head/base SHAs, changed files and checks. Use page for further file pages.", {"repository": "string", "pull_number": "integer"}, {"page": "integer"}),
@@ -92,6 +98,9 @@ TOOLS = [
     _schema("github_commit_files", "Commit UTF-8 files to an existing branch, comparing expected_head first. Supply full file contents. Returns commit SHA; never force-updates a ref.", {"repository": "string", "branch": "string", "expected_head": "string", "message": "string"}, {"files": {"type": "array", "items": {"type": "object", "properties": {"path": {"type": "string"}, "content": {"type": "string"}}, "required": ["path", "content"]}}}),
     _schema("github_create_pull_request", "Open a useful PR for existing task work. Returns an existing open PR for the same head/base on retry.", {"repository": "string", "head": "string", "base": "string", "title": "string", "body": "string"}, {"draft": "boolean"}),
     _schema("github_merge_pull_request", "Merge an authorized reviewed PR with expected head SHA. GitHub enforces branch rules. Returns provider result, not an assumed success.", {"repository": "string", "pull_number": "integer", "expected_head": "string"}, {"merge_method": "string"}),
+    _schema("cua_s1_form", "Score a form in one already-open Chrome tab with the official CUA-S1-FORMS checkpoint. Defaults to a dry run; execute and submit are separate explicit booleans. Reports observed actions and failures, and never opens a tab.",
+            {"url": "string", "form_title": "string", "entities": {"type": "array", "items": {"type": "object", "properties": {"label": {"type": "string"}, "value": {"type": "string"}}, "required": ["label", "value"]}}},
+            {"checkpoint": "string", "execute": "boolean", "submit": "boolean", "min_confidence": "number", "cdp_endpoint": "string"}),
 ]
 
 
@@ -109,9 +118,24 @@ class ServiceEquipment(GitHubSlackEquipment):
             return {"isError": tool_failed(result), "result": redacted(result),
                     "uncertain": effect_uncertain(result)}
         except Exception as exc:
-            return {"isError": True, "error": type(exc).__name__, "message": redacted(str(exc)),
-                    "code": getattr(exc, "code", type(exc).__name__),
-                    "uncertain": bool(getattr(exc, "uncertain", False))}
+            result = {
+                "isError": True,
+                "error": type(exc).__name__,
+                "message": redacted(str(exc)),
+                "code": getattr(exc, "code", type(exc).__name__),
+                "uncertain": bool(getattr(exc, "uncertain", False)),
+            }
+            for attribute in (
+                "incident",
+                "delivered",
+                "matched_fields",
+                "matched_terms",
+                "private_instruction",
+            ):
+                value = getattr(exc, attribute, None)
+                if value is not None:
+                    result[attribute] = list(value) if isinstance(value, tuple) else value
+            return result
 
     def _token_pool_batch(self, selected: list[str]) -> dict:
         observed_at = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
@@ -168,6 +192,44 @@ class ServiceEquipment(GitHubSlackEquipment):
                 "results": results}
 
     def _call(self, name: str, a: dict) -> dict:
+        if name == "cua_s1_form":
+            from cua_s1.schema import Entity
+            from host.cua_s1_browser import connect_cdp
+            from host.cua_s1_forms import run_with_driver
+
+            url = _string(a, "url")
+            title = _string(a, "form_title")
+            raw_entities = a.get("entities")
+            if not isinstance(raw_entities, list) or any(
+                not isinstance(item, dict) or not isinstance(item.get("label"), str)
+                or not item["label"].strip() or not isinstance(item.get("value"), str)
+                or not item["value"].strip() for item in raw_entities
+            ):
+                raise EquipmentError("entities must be an array of nonempty label/value objects")
+            entities = [Entity(item["label"], item["value"]) for item in raw_entities]
+            execute, submit = a.get("execute", False), a.get("submit", False)
+            if not isinstance(execute, bool) or not isinstance(submit, bool):
+                raise EquipmentError("execute and submit must be booleans")
+            confidence = a.get("min_confidence", 0.5)
+            if isinstance(confidence, bool) or not isinstance(confidence, (int, float)):
+                raise EquipmentError("min_confidence must be a number")
+            checkpoint = a.get("checkpoint")
+            if checkpoint is None:
+                from huggingface_hub import hf_hub_download
+                checkpoint = hf_hub_download("cua-ai/cua-s1-forms", "cua-s1-forms.safetensors", local_files_only=True)
+                hf_hub_download("cua-ai/cua-s1-forms", "cua-s1-forms.json", local_files_only=True)
+            else:
+                checkpoint = _string(a, "checkpoint")
+            endpoint = a.get("cdp_endpoint", "http://127.0.0.1:9222")
+            if not isinstance(endpoint, str) or not endpoint.strip():
+                raise EquipmentError("cdp_endpoint must be a nonempty string")
+            driver, target = connect_cdp(url, endpoint=endpoint, allow_submit=submit)
+            try:
+                return run_with_driver(checkpoint=Path(checkpoint), driver=driver, target=target,
+                                       form_title=title, entities=entities, min_confidence=confidence,
+                                       execute=execute, submit=submit)
+            finally:
+                driver.close()
         if name == "token_pool_status":
             if "provider" in a and "providers" in a:
                 raise EquipmentError("Use provider or providers, not both")
@@ -271,6 +333,9 @@ class ServiceEquipment(GitHubSlackEquipment):
                     outgoing[field] = a[field]
             if not any(field in outgoing for field in fields):
                 raise EquipmentError("supply the intended title or body")
+            _require_outbound_identity({
+                field: outgoing[field] for field in fields if field in outgoing
+            })
             expected = None
             if name == "github_update_pull_request":
                 expected = _string(a, "expected_head")
@@ -314,6 +379,7 @@ class ServiceEquipment(GitHubSlackEquipment):
                 "status": self.github(f"{root}/commits/{sha}/status")}
         if name == "github_create_branch":
             branch = _string(a, "branch")
+            _require_outbound_identity({"branch": branch})
             # A caller names the source; GitHub resolves it. Keep explicit
             # commit callers compatible, including their existing call shape,
             # and accept legacy base_sha='main' without an extra peer round trip.
@@ -345,6 +411,8 @@ class ServiceEquipment(GitHubSlackEquipment):
             return self.github(root + "/git/refs", method="POST", payload={"ref": "refs/heads/" + branch, "sha": sha})
         if name == "github_commit_files":
             branch, expected = _string(a, "branch"), _string(a, "expected_head")
+            message = _string(a, "message")
+            _require_outbound_identity({"branch": branch, "message": message})
             ref = self.github(root + "/git/ref/heads/" + _quote(branch))
             if ref["object"]["sha"] != expected:
                 raise EquipmentError("branch head changed; read current head and reconcile files")
@@ -354,19 +422,88 @@ class ServiceEquipment(GitHubSlackEquipment):
                 raise EquipmentError("files must contain the useful task changes")
             tree = [{"path": _string(f, "path"), "mode": "100644", "type": "blob", "content": _string(f, "content")} for f in files]
             made_tree = self.github(root + "/git/trees", method="POST", payload={"base_tree": parent["tree"]["sha"], "tree": tree})
-            commit = self.github(root + "/git/commits", method="POST", payload={"message": _string(a, "message"), "tree": made_tree["sha"], "parents": [expected]})
+            commit = self.github(root + "/git/commits", method="POST", payload={"message": message, "tree": made_tree["sha"], "parents": [expected]})
             updated = self.github(root + "/git/refs/heads/" + _quote(branch), method="PATCH", payload={"sha": commit["sha"], "force": False})
             return {"commit_sha": commit["sha"], "branch": branch, "ref": updated, "url": commit.get("html_url")}
         if name == "github_create_pull_request":
             owner = repo.split("/")[0]
             head, base = _string(a, "head"), _string(a, "base")
+            title, body = _string(a, "title"), _string(a, "body")
+            _require_outbound_identity({
+                "head": head,
+                "base": base,
+                "title": title,
+                "body": body,
+            })
             query = urllib.parse.urlencode({"state": "open", "head": head if ":" in head else owner + ":" + head, "base": base})
             existing = self.github(root + "/pulls?" + query)
             if existing:
                 return {"created": False, "pull_request": existing[0]}
-            return self.github(root + "/pulls", method="POST", payload={"head": head, "base": base, "title": _string(a, "title"), "body": _string(a, "body"), "draft": bool(a.get("draft", False))})
+            return self.github(root + "/pulls", method="POST", payload={
+                "head": head,
+                "base": base,
+                "title": title,
+                "body": body,
+                "draft": bool(a.get("draft", False)),
+            })
         if name == "github_merge_pull_request":
-            return self.github(f"{root}/pulls/{int(a['pull_number'])}/merge", method="PUT", payload={"sha": _string(a, "expected_head"), "merge_method": a.get("merge_method", "squash")})
+            number = a.get("pull_number")
+            if isinstance(number, bool) or not isinstance(number, int) or number < 1:
+                raise EquipmentError("pull_number must be a positive integer")
+            expected = _string(a, "expected_head")
+            method = a.get("merge_method", "squash")
+            if method not in {"merge", "squash", "rebase"}:
+                raise EquipmentError("merge_method must be merge, squash, or rebase")
+
+            pull = self.github(f"{root}/pulls/{number}")
+            if pull.get("head", {}).get("sha") != expected:
+                raise EquipmentError("PR head changed; read the current PR before merging")
+            inherited = {
+                "pull_request.title": str(pull.get("title") or ""),
+                "pull_request.body": str(pull.get("body") or ""),
+            }
+            if method in {"merge", "rebase"}:
+                for page in range(1, 11):
+                    commits = self.github(
+                        f"{root}/pulls/{number}/commits?per_page=100&page={page}"
+                    )
+                    if not isinstance(commits, list):
+                        raise EquipmentError("GitHub returned invalid PR commit metadata")
+                    for commit in commits:
+                        sha = str(commit.get("sha") or "unknown")
+                        metadata = commit.get("commit", {})
+                        if not isinstance(metadata, dict):
+                            metadata = {}
+                        message = metadata.get("message")
+                        if isinstance(message, str):
+                            inherited[f"commits[{sha}].message"] = message
+                        for role in ("author", "committer"):
+                            person = metadata.get(role)
+                            if isinstance(person, dict):
+                                for key in ("name", "email"):
+                                    value = person.get(key)
+                                    if isinstance(value, str):
+                                        inherited[f"commits[{sha}].{role}.{key}"] = value
+                            account = commit.get(role)
+                            if isinstance(account, dict) and isinstance(account.get("login"), str):
+                                inherited[f"commits[{sha}].{role}.login"] = account["login"]
+                    if len(commits) < 100:
+                        break
+                else:
+                    raise EquipmentError(
+                        "PR commit metadata exceeds the bounded identity preflight"
+                    )
+            _require_outbound_identity(inherited)
+
+            payload = {"sha": expected, "merge_method": method}
+            if method in {"merge", "squash"}:
+                payload.update({
+                    "commit_title": f"Integrate pull request #{number}",
+                    "commit_message": "Integrate the reviewed change.",
+                })
+            return self.github(
+                f"{root}/pulls/{number}/merge", method="PUT", payload=payload
+            )
         raise EquipmentError("unknown equipment tool: " + name)
 
 
@@ -437,8 +574,11 @@ HARNESS_ROADS = [
         "channel_id": "C0BU51F1PL3",
         "thread_ts": "1788567066.179399",
         "discover": "equipment_capability_manifest envelope",
-        "call": "commons_equipment_request / commons_equipment_result",
-        "note": "Same operation schemas over the workspace connector. No secret material in envelopes.",
+        "call": None,
+        "available": False,
+        "write_disabled": True,
+        "code": "outbound_sender_identity_unverified",
+        "note": "Discovery only. Request/return writes stay read-only until the installed sender route is verified owner-controlled and footer-free.",
     },
 ]
 

@@ -20,9 +20,9 @@ STATIC_FILES = {
     "/": ("index.html", "text/html; charset=utf-8"),
     "/index.html": ("index.html", "text/html; charset=utf-8"),
     "/app.js": ("app.js", "text/javascript; charset=utf-8"),
+    "/style.css": ("style.css", "text/css; charset=utf-8"),
     "/review_navigation.js": ("review_navigation.js", "text/javascript; charset=utf-8"),
     "/review_navigation.css": ("review_navigation.css", "text/css; charset=utf-8"),
-    "/style.css": ("style.css", "text/css; charset=utf-8"),
 }
 
 
@@ -174,7 +174,7 @@ class _Handler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:  # noqa: N802
         if self._reject_bad_host():
             return
-        entry = STATIC_FILES.get(self.path)
+        entry = STATIC_FILES.get(urlsplit(self.path).path)
         if entry is None:
             self._send_json(404, {"error": "not found"})
             return

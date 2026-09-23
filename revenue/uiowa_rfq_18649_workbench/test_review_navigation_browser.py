@@ -52,13 +52,19 @@ class NavigationBrowserTests(unittest.TestCase):
         self.errors = []
         self.page.on('pageerror', lambda e:self.errors.append(str(e)))
         self.load_workbench()
-        self.page.locator('#demoBtn').click()
+        self.click_import_control('#demoBtn')
         self.page.locator('#reviewDemoBtn').click()
         self.packet = self.page.evaluate('UIowaReviewNavigation.syntheticPacket()')
 
     def tearDown(self):
         self.context.close()
         self.assertEqual(self.errors, [])
+
+    def click_import_control(self, selector):
+        # The current workbench collapses intake after installing a report.
+        if not self.page.locator('#importPanel').evaluate('(panel) => panel.open'):
+            self.page.locator('#importPanel > summary').click()
+        self.page.locator(selector).click()
 
     def load_workbench(self):
         if not DOM_ONLY:
@@ -106,7 +112,7 @@ class NavigationBrowserTests(unittest.TestCase):
         self.comment(); saved = self.page.url
         self.reload_workbench(); self.status('WAITING_FOR_REPORT')
         self.assertEqual(self.page.url, saved)
-        self.page.locator('#demoBtn').click(); self.status('WAITING_FOR_RECORDS')
+        self.click_import_control('#demoBtn'); self.status('WAITING_FOR_RECORDS')
         self.upload(self.packet); self.status('FOUND')
         expect(self.page.locator('#reviewDetail h3')).to_contain_text('COMMENT-SYN-128/é + #1')
         self.assertEqual(self.page.url, saved)
@@ -115,12 +121,12 @@ class NavigationBrowserTests(unittest.TestCase):
         self.page.locator('#reviewSources summary').click()
         self.page.locator('#reviewSourceQueue a').first.click(); self.status('FOUND')
         self.reload_workbench(); self.status('WAITING_FOR_REPORT')
-        self.page.locator('#demoBtn').click(); self.status('FOUND')
+        self.click_import_control('#demoBtn'); self.status('FOUND')
         expect(self.page.locator('#reviewDetail h3')).to_contain_text('source')
 
     def test_same_receipt_reimport_clears_records_and_notes(self):
         self.comment(); self.page.locator('#note').fill('draft note retained only for this generation')
-        self.page.locator('#demoBtn').click(); self.status('WAITING_FOR_RECORDS')
+        self.click_import_control('#demoBtn'); self.status('WAITING_FOR_RECORDS')
         expect(self.page.locator('#note')).to_be_disabled()
         self.assertEqual(self.page.locator('#note').input_value(),'')
         expect(self.page.locator('#reviewPacketBtn')).to_be_disabled()
@@ -133,7 +139,7 @@ class NavigationBrowserTests(unittest.TestCase):
         self.status('REPORT_MISMATCH')
         expect(self.page.locator('#note')).to_be_disabled()
         expect(self.page.locator('#detail')).to_contain_text('No cell selected')
-        self.page.locator('#demoBtn').click();self.page.locator('#reviewDemoBtn').click()
+        self.click_import_control('#demoBtn');self.page.locator('#reviewDemoBtn').click()
         self.page.evaluate("location.hash=UIowaReviewNavigation.routeFor('d'.repeat(64),{...UIowaReviewNavigation.syntheticPacket().records[2],revision:'missing-v2'})")
         self.status('MISSING_RECORD')
         expect(self.page.locator('#reviewDetail')).to_contain_text('available_versions_not_substituted')
@@ -156,7 +162,7 @@ class NavigationBrowserTests(unittest.TestCase):
         }""")
         self.upload(self.packet)
         self.page.wait_for_function('window.releaseRead !== null')
-        self.page.locator('#resetBtn').click();self.status('WAITING_FOR_REPORT')
+        self.click_import_control('#resetBtn');self.status('WAITING_FOR_REPORT')
         self.page.evaluate('(p)=>window.releaseRead(JSON.stringify(p))', self.packet)
         self.page.wait_for_timeout(50)
         self.status('WAITING_FOR_REPORT')

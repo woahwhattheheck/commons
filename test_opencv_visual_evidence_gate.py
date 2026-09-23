@@ -6,7 +6,7 @@ import sys
 import unittest
 
 ROOT = Path(__file__).resolve().parent
-NESTED = ROOT / "competitions/opencv-ai-2026/visual-evidence-gate/tests/test_visual_gate.py"
+NESTED = ROOT / "competitions/opencv-ai-2026/visual-evidence-gate/tests"
 
 
 def _deps_available() -> bool:
@@ -16,19 +16,19 @@ def _deps_available() -> bool:
 def _nested_suite():
     if not _deps_available():
         return unittest.TestSuite([unittest.FunctionTestCase(lambda: None, description="OpenCV dependency absent: dedicated workflow owns execution")])
-    spec = importlib.util.spec_from_file_location("opencv_visual_gate_tests", NESTED)
-    module = importlib.util.module_from_spec(spec)
-    if spec.loader is None:
-        raise RuntimeError("nested test loader unavailable")
-    spec.loader.exec_module(module)
-    return unittest.defaultTestLoader.loadTestsFromModule(module)
+    return unittest.TestLoader().discover(
+        str(NESTED), pattern="test_*.py", top_level_dir=str(NESTED)
+    )
 
 
 class OptimizedModeProof(unittest.TestCase):
     def test_nested_suite_under_python_optimized(self):
         if not _deps_available():
             self.skipTest("OpenCV dependency absent; dedicated workflow installs pinned test runtime")
-        run = subprocess.run([sys.executable, "-O", str(NESTED)], cwd=str(NESTED.parent), capture_output=True, text=True)
+        run = subprocess.run(
+            [sys.executable, "-O", "-m", "unittest", "discover", "-s", str(NESTED), "-p", "test_*.py", "-v"],
+            cwd=str(NESTED.parent), capture_output=True, text=True,
+        )
         self.assertEqual(run.returncode, 0, run.stdout + run.stderr)
 
 

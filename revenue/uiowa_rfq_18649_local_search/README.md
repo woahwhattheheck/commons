@@ -2,6 +2,8 @@
 
 A deterministic, offline search component over **already-merged synthetic RFQ 18649 preparation records**. It indexes source metadata, traceability observations, findings, and locator-preserving extracted text without an external model or network service at runtime.
 
+The retained component is Solstice's [PR #16212](https://github.com/woahwhattheheck/commons/pull/16212). The complementary [provenance and exact-ID repair](PROVENANCE.md) preserves its original nine tests and ranking formula, verifies supplied source bytes, and distinguishes delivered record citations from absent underlying documents.
+
 ## Provenance contract
 
 Every normalized record carries:
@@ -9,36 +11,40 @@ Every normalized record carries:
 - its stable record ID and record type;
 - the exact upstream repository path and Git blob SHA used to prepare the fixture;
 - its native source locator;
-- the native source reference when one exists (`synthetic://…` for workshare authority records), otherwise the exact GitHub file URL;
+- the native source reference when one exists (`synthetic://…` for workshare authority records), otherwise the GitHub file URL;
 - linked IDs for finding → evidence relationships.
 
-The committed fixture manifest pins the upstream blob SHAs. Search never invents a source link or fills a missing record with an answer.
+The committed fixture manifest pins upstream blob SHAs and immutable revisions. Manifest loading verifies local bytes, and results add `record_url`, physical CSV row locations, original content, exact snippet offsets and explicit missing-source diagnostics. Integrity checks are not publisher authentication. Search never fills a missing record with an answer.
 
 ## Corpus used by the worked example
 
 - 12 source-metadata records from `uiowa_rfq_18649_workshare/fixtures/synthetic_authority.json`;
 - 8 observation/evidence records from `uiowa_rfq_18649_traceability_rehearsal/evidence.csv`;
 - 3 findings from `uiowa_rfq_18649_traceability_rehearsal/findings.csv`;
-- 4 locator-preserving segments produced from the merged document-extraction sample text.
+- 4 retained extraction segments prepared from the merged document-extraction sample text. The replay suite separately executes the real extractor and checks its actual returned segments and locators.
 
 Total: **27 records**. All are synthetic preparation artifacts, not University of Iowa findings.
 
 ## Ranking
 
-The search is transparent lexical retrieval: Unicode case-folded word tokens; each matched term contributes `idf(term) × (1 + ln(tf))`; an exact normalized query phrase adds 1.0; ties break by stable record ID. No opaque embeddings, personalisation, model inference, or current clock enters ranking.
+The search is transparent lexical retrieval: Unicode case-folded word tokens; each matched term contributes `idf(term) × (1 + ln(tf))`; an exact normalized query phrase adds 1.0; ties break by stable record ID. No opaque embeddings, personalisation, model inference, or current clock enters ranking. Native extra fields and source warnings are also searchable after rebuilding.
+
+Exact-ID `lookup` is separate from lexical `query`: it never tokenizes or aliases the requested identity and returns no relevance score.
 
 ## Run
 
 ```bash
-python3 evidence_search.py build fixtures/manifest.json examples/index.json
-python3 evidence_search.py query examples/index.json "vulnerability ownership"
-python3 evidence_search.py query examples/index.json "end to end propagation"
-python3 evidence_search.py query examples/index.json "independent review before merge"
-python3 -m unittest -v test_evidence_search.py
-python3 -O -m unittest -v test_evidence_search.py
+python3 evidence_search.py build fixtures/manifest.json review-index.json
+python3 evidence_search.py query review-index.json "vulnerability ownership"
+python3 evidence_search.py query review-index.json "end to end propagation"
+python3 evidence_search.py lookup review-index.json F-002
+python3 evidence_search.py lookup review-index.json E-005
+python3 evidence_search.py query review-index.json "independent review before merge"
+python3 -m unittest discover -v
+python3 -O -m unittest discover -v
 ```
 
-See `examples/question-walkthrough.md` for expected reviewer flows and provenance readback.
+Choose a disposable output path; `build` writes that named file. See [PROVENANCE.md](PROVENANCE.md) for the exact-source reviewer flow, fields, migration rules and execution boundaries. `examples/question-walkthrough.md` remains the original worked flow; rebuild its legacy index to add the new provenance fields.
 
 ## Scope boundary
 

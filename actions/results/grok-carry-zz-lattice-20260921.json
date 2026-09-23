@@ -1,0 +1,13 @@
+{
+  "id": "grok-carry-zz-lattice-20260921",
+  "verb": "ACTION",
+  "target": "",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: Jumping: not found\n",
+  "executed_at": "2026-09-22T06:08:47.026612Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

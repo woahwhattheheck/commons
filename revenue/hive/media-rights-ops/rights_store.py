@@ -9,7 +9,7 @@ def connect(path):
 def initialize(path):
     path.parent.mkdir(parents=True,exist_ok=True); con=connect(path)
     try:
-        con.executescript('''CREATE TABLE IF NOT EXISTS meta(key TEXT PRIMARY KEY,value TEXT NOT NULL);CREATE TABLE IF NOT EXISTS assets(asset_id TEXT PRIMARY KEY,sha256 TEXT NOT NULL,parent_asset_id TEXT REFERENCES assets(asset_id));CREATE TABLE IF NOT EXISTS grants(grant_id TEXT PRIMARY KEY,asset_id TEXT NOT NULL REFERENCES assets(asset_id),authority_ref TEXT NOT NULL,valid_from TEXT NOT NULL,valid_until TEXT NOT NULL,channels_json TEXT NOT NULL,territories_json TEXT NOT NULL,revoked_at TEXT);CREATE TABLE IF NOT EXISTS placements(request_id TEXT PRIMARY KEY,intent_sha256 TEXT NOT NULL,asset_id TEXT NOT NULL REFERENCES assets(asset_id),channel TEXT NOT NULL,territory TEXT NOT NULL,starts_at TEXT NOT NULL,ends_at TEXT NOT NULL,grant_id TEXT NOT NULL REFERENCES grants(grant_id),recorded_at TEXT NOT NULL);CREATE TABLE IF NOT EXISTS audit(seq INTEGER PRIMARY KEY AUTOINCREMENT,event_type TEXT NOT NULL,ref_id TEXT NOT NULL,at TEXT NOT NULL,payload_sha256 TEXT NOT NULL);'''); con.execute("INSERT OR IGNORE INTO meta(key,value) VALUES('schema',?)",(SCHEMA,))
+        con.executescript("CREATE TABLE IF NOT EXISTS meta(key TEXT PRIMARY KEY,value TEXT NOT NULL);CREATE TABLE IF NOT EXISTS assets(asset_id TEXT PRIMARY KEY,sha256 TEXT NOT NULL,parent_asset_id TEXT REFERENCES assets(asset_id));CREATE TABLE IF NOT EXISTS grants(grant_id TEXT PRIMARY KEY,asset_id TEXT NOT NULL REFERENCES assets(asset_id),authority_ref TEXT NOT NULL,valid_from TEXT NOT NULL,valid_until TEXT NOT NULL,channels_json TEXT NOT NULL,territories_json TEXT NOT NULL,revoked_at TEXT);CREATE TABLE IF NOT EXISTS placements(request_id TEXT PRIMARY KEY,intent_sha256 TEXT NOT NULL,asset_id TEXT NOT NULL REFERENCES assets(asset_id),channel TEXT NOT NULL,territory TEXT NOT NULL,starts_at TEXT NOT NULL,ends_at TEXT NOT NULL,grant_id TEXT NOT NULL REFERENCES grants(grant_id),recorded_at TEXT NOT NULL);CREATE TABLE IF NOT EXISTS audit(seq INTEGER PRIMARY KEY AUTOINCREMENT,event_type TEXT NOT NULL,ref_id TEXT NOT NULL,at TEXT NOT NULL,payload_sha256 TEXT NOT NULL);"); con.execute("INSERT OR IGNORE INTO meta(key,value) VALUES('schema',?)",(SCHEMA,))
     finally: con.close()
 def lineage(con,aid):
     row=con.execute('SELECT asset_id,parent_asset_id FROM assets WHERE asset_id=?',(aid,)).fetchone(); require(row is not None,f'unknown asset_id: {aid}'); out=[]; seen=set()
@@ -47,8 +47,12 @@ def _evaluate(con,n):
     return {'status':'READY_ON_SUPPLIED_AUTHORITY','selected_grant_id':sorted(good)[0],'reasons':[],'intent_sha256':digest} if good else {'status':'HOLD','selected_grant_id':None,'reasons':sorted(failures),'intent_sha256':digest}
 def evaluate(path,intent):
     n=normalize_intent(intent); con=connect(path)
-    try: return _evaluate(con,n)
-    finally: con.close()
+    try:
+        con.execute('BEGIN')
+        return _evaluate(con,n)
+    finally:
+        if con.in_transaction: con.execute('ROLLBACK')
+        con.close()
 def record_placement(path,intent,recorded_at):
     n=normalize_intent(intent,True); at=norm_time(recorded_at,'recorded_at'); rid=n['request_id']; content={k:n[k] for k in ('request_id','asset_id','channel','territory','starts_at','ends_at')}; digest=sha256_bytes(canonical_bytes(content)); con=connect(path)
     try:
@@ -71,21 +75,36 @@ def revoke_grant(path,grant_id,revoked_at):
         if con.in_transaction: con.execute('ROLLBACK')
         raise
     finally: con.close()
+def _queues_from_connection(con,as_of,horizon_days=30):
+    require(type(horizon_days) is int and 0<=horizon_days<=3650,'horizon_days must be an integer 0..3650'); now=parse_time(as_of,'as_of'); end=now+timedelta(days=horizon_days)
+    renewal=[]
+    for r in con.execute('SELECT * FROM grants ORDER BY grant_id'):
+        until=parse_time(r['valid_until'],'valid_until')
+        if r['revoked_at'] is None and until<now: renewal.append({'grant_id':r['grant_id'],'asset_id':r['asset_id'],'state':'EXPIRED','valid_until':r['valid_until'],'authority_ref':r['authority_ref']})
+        elif r['revoked_at'] is None and until<=end: renewal.append({'grant_id':r['grant_id'],'asset_id':r['asset_id'],'state':'EXPIRING','valid_until':r['valid_until'],'authority_ref':r['authority_ref']})
+    retract=[]
+    rows=con.execute('SELECT p.request_id,p.asset_id,p.channel,p.territory,p.starts_at,p.ends_at,p.grant_id,g.revoked_at FROM placements p JOIN grants g ON g.grant_id=p.grant_id WHERE g.revoked_at IS NOT NULL ORDER BY p.request_id')
+    for r in rows:
+        if parse_time(r['ends_at'],'ends_at')>parse_time(r['revoked_at'],'revoked_at'):
+            retract.append(dict(r))
+    return {'as_of':norm_time(as_of,'as_of'),'horizon_days':horizon_days,'renewal_review':renewal,'retraction_review':retract}
 def queues(path,as_of,horizon_days=30):
-    require(type(horizon_days) is int and 0<=horizon_days<=3650,'horizon_days must be an integer 0..3650'); now=parse_time(as_of,'as_of'); end=now+timedelta(days=horizon_days); con=connect(path)
+    con=connect(path)
     try:
-        renewal=[]
-        for r in con.execute('SELECT * FROM grants ORDER BY grant_id'):
-            until=parse_time(r['valid_until'],'valid_until')
-            if r['revoked_at'] is None and until<now: renewal.append({'grant_id':r['grant_id'],'asset_id':r['asset_id'],'state':'EXPIRED','valid_until':r['valid_until'],'authority_ref':r['authority_ref']})
-            elif r['revoked_at'] is None and until<=end: renewal.append({'grant_id':r['grant_id'],'asset_id':r['asset_id'],'state':'EXPIRING','valid_until':r['valid_until'],'authority_ref':r['authority_ref']})
-        retract=[dict(r) for r in con.execute('SELECT p.request_id,p.asset_id,p.channel,p.territory,p.starts_at,p.ends_at,p.grant_id,g.revoked_at FROM placements p JOIN grants g ON g.grant_id=p.grant_id WHERE g.revoked_at IS NOT NULL AND p.ends_at>g.revoked_at ORDER BY p.request_id')]
-        return {'as_of':norm_time(as_of,'as_of'),'horizon_days':horizon_days,'renewal_review':renewal,'retraction_review':retract}
-    finally: con.close()
+        con.execute('BEGIN')
+        return _queues_from_connection(con,as_of,horizon_days)
+    finally:
+        if con.in_transaction: con.execute('ROLLBACK')
+        con.close()
+def _snapshot_from_connection(con):
+    assets=[dict(r) for r in con.execute('SELECT asset_id,sha256,parent_asset_id FROM assets ORDER BY asset_id')]; grants=[]
+    for r in con.execute('SELECT * FROM grants ORDER BY grant_id'): grants.append({'grant_id':r['grant_id'],'asset_id':r['asset_id'],'authority_ref':r['authority_ref'],'valid_from':r['valid_from'],'valid_until':r['valid_until'],'channels':json.loads(r['channels_json']),'territories':json.loads(r['territories_json']),'revoked_at':r['revoked_at']})
+    placements=[dict(r) for r in con.execute('SELECT request_id,intent_sha256,asset_id,channel,territory,starts_at,ends_at,grant_id,recorded_at FROM placements ORDER BY request_id')]; audit=[dict(r) for r in con.execute('SELECT seq,event_type,ref_id,at,payload_sha256 FROM audit ORDER BY seq')]; row=con.execute("SELECT value FROM meta WHERE key='manifest_sha256'").fetchone(); body={'schema':EXPORT_SCHEMA,'manifest_sha256':None if row is None else row[0],'assets':assets,'grants':grants,'placements':placements,'audit':audit}; body['snapshot_sha256']=sha256_bytes(canonical_bytes(body)); return body
 def snapshot(path):
     con=connect(path)
     try:
-        assets=[dict(r) for r in con.execute('SELECT asset_id,sha256,parent_asset_id FROM assets ORDER BY asset_id')]; grants=[]
-        for r in con.execute('SELECT * FROM grants ORDER BY grant_id'): grants.append({'grant_id':r['grant_id'],'asset_id':r['asset_id'],'authority_ref':r['authority_ref'],'valid_from':r['valid_from'],'valid_until':r['valid_until'],'channels':json.loads(r['channels_json']),'territories':json.loads(r['territories_json']),'revoked_at':r['revoked_at']})
-        placements=[dict(r) for r in con.execute('SELECT request_id,intent_sha256,asset_id,channel,territory,starts_at,ends_at,grant_id,recorded_at FROM placements ORDER BY request_id')]; audit=[dict(r) for r in con.execute('SELECT seq,event_type,ref_id,at,payload_sha256 FROM audit ORDER BY seq')]; row=con.execute("SELECT value FROM meta WHERE key='manifest_sha256'").fetchone(); body={'schema':EXPORT_SCHEMA,'manifest_sha256':None if row is None else row[0],'assets':assets,'grants':grants,'placements':placements,'audit':audit}; body['snapshot_sha256']=sha256_bytes(canonical_bytes(body)); return body
-    finally: con.close()
+        con.execute('BEGIN')
+        return _snapshot_from_connection(con)
+    finally:
+        if con.in_transaction: con.execute('ROLLBACK')
+        con.close()

@@ -15,7 +15,7 @@ RECEIPT = ROOT / "p" / "group-chat-cross-carrier-spec-20260830-01.md"
 PEERS = ROOT / "peers.html"
 TELEGRAM_PIN = ROOT / "p" / "commons-peers-telegram-20260829-01.md"
 # Page includes BLINK's additive Live-cash section from 0f42f409; original pin stays exact.
-TELEGRAM_HTML_BLOB = "c28b412332d1fe185d3079fdda31c18963973913"
+TELEGRAM_HTML_BLOB = "c6064ea9c5c8f46c0508dfb077ab65d2b6ec7a06"
 TELEGRAM_PIN_BLOB = "b75cbc844c4e9dcf3af3c545a3f091f85d5af77e"
 NEW_PATHS = (SPEC, RECEIPT)
 

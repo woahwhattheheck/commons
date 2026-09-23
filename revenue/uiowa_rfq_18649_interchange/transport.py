@@ -1,321 +1,315 @@
-"""Typed JSON-Pointer interchange for synthetic assessment envelopes.
+"""Lossless JSON transport for assessment evidence; standard library only.
 
-Whole existing JSON envelopes are retained. This module does not translate
-or elevate assessment or authority fields.
+CSV cells use explicit p:/j: prefixes. No cell is interpreted as a formula,
+number, date, or missing value by this codec. This is not an authority verifier.
 """
 from __future__ import annotations
 
+import argparse
 import csv
+from decimal import Decimal
+import hashlib
 import io
 import json
-import zipfile
+import math
 from pathlib import Path
-from typing import Any
-from xml.etree import ElementTree as ET
+from typing import Any, Iterable
 
-ABSENT = "absent"
-EMPTY = "empty"
-NULL = "null"
-PRESENT = "present"
-
-SCALAR_TYPES = ("string", "integer", "float", "bool", "null")
+FORMAT = "uiowa-json-interchange/v1"
+HEADER = ["pointer", "kind", "value"]
+MAX_DEPTH = 128
+CSV_FIELD_LIMIT = 16 * 1024 * 1024
 
 
-class TransportError(ValueError):
-    pass
+class InterchangeError(ValueError):
+    """The supplied transport cannot be decoded without changing its meaning."""
 
 
-def _classify(value: Any) -> tuple[str, str, str]:
-    if value is None:
-        return "null", "", NULL
-    if isinstance(value, bool):
-        return "bool", "true" if value else "false", PRESENT
-    if isinstance(value, int) and not isinstance(value, bool):
-        return "integer", str(value), PRESENT
-    if isinstance(value, float):
-        return "float", repr(value), PRESENT
-    if isinstance(value, str):
-        return "string", value, EMPTY if value == "" else PRESENT
-    raise TransportError(f"unsupported scalar: {type(value).__name__}")
+def _pairs(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    result: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in result:
+            raise InterchangeError(f"duplicate JSON key: {key!r}")
+        result[key] = value
+    return result
 
 
-def _escape_pointer_token(token: str) -> str:
-    return token.replace("~", "~0").replace("/", "~1")
+def _constant(value: str) -> Any:
+    raise InterchangeError(f"non-finite JSON constant: {value}")
 
 
-def to_rows(document: Any, prefix: str = "") -> list[dict[str, str]]:
-    rows: list[dict[str, str]] = []
+def _float_token(token: str) -> float:
+    """Reject source precision loss before a binary float can hide it.
 
-    def walk(node: Any, pointer: str) -> None:
-        if isinstance(node, dict):
-            if not node:
-                rows.append({"pointer": pointer or "/", "type": "object", "value": "", "presence": EMPTY})
-                return
-            for key, child in node.items():
-                walk(child, f"{pointer}/{_escape_pointer_token(str(key))}")
-            return
-        if isinstance(node, list):
-            if not node:
-                rows.append({"pointer": pointer or "/", "type": "array", "value": "", "presence": EMPTY})
-                return
-            for i, child in enumerate(node):
-                walk(child, f"{pointer}/{i}")
-            return
-        typ, value, presence = _classify(node)
-        rows.append({"pointer": pointer or "/", "type": typ, "value": value, "presence": presence})
+    Compare decimal numeric values before/after Python's JSON float rendering;
+    lexical trailing zeroes/exponent spelling are not source-byte identity.
+    """
+    value = float(token)
+    if not math.isfinite(value):
+        raise InterchangeError("non-finite JSON number")
+    if Decimal(token) != Decimal(repr(value)):
+        raise InterchangeError(
+            "JSON floating token would lose precision; retain it as explicit decimal text")
+    return value
 
-    walk(document, prefix)
+
+def _check(value: Any, depth: int = 0) -> None:
+    if depth > MAX_DEPTH:
+        raise InterchangeError(f"JSON nesting exceeds supported depth {MAX_DEPTH}")
+    if type(value) is dict:
+        for key, child in value.items():
+            if type(key) is not str:
+                raise InterchangeError("JSON object keys must be strings")
+            key.encode("utf-8", errors="strict")
+            _check(child, depth + 1)
+    elif type(value) is list:
+        for child in value:
+            _check(child, depth + 1)
+    elif type(value) is str:
+        value.encode("utf-8", errors="strict")
+    elif type(value) is float:
+        if not math.isfinite(value):
+            raise InterchangeError("non-finite JSON number")
+    elif value is not None and type(value) not in (bool, int):
+        raise InterchangeError(f"not a JSON value: {type(value).__name__}")
+
+
+def loads(text: str) -> Any:
+    """Read JSON with duplicate-key, non-finite and Unicode-scalar checks."""
+    try:
+        value = json.loads(text, object_pairs_hook=_pairs, parse_constant=_constant,
+                           parse_float=_float_token)
+        _check(value)
+        return value
+    except (ValueError, UnicodeError, RecursionError, OverflowError) as exc:
+        raise InterchangeError(str(exc)) from exc
+
+
+def canonical_json(value: Any) -> str:
+    """Deterministic semantic receipt; not the source file's byte identity."""
+    try:
+        _check(value)
+        return json.dumps(value, ensure_ascii=False, sort_keys=True,
+                          separators=(",", ":"), allow_nan=False)
+    except (ValueError, TypeError, UnicodeError, RecursionError) as exc:
+        raise InterchangeError(str(exc)) from exc
+
+
+def document_sha256(value: Any) -> str:
+    return hashlib.sha256(canonical_json(value).encode("utf-8")).hexdigest()
+
+
+def _literal(value: Any) -> str:
+    return "j:" + json.dumps(value, ensure_ascii=False, separators=(",", ":"),
+                              allow_nan=False)
+
+
+def _escape(part: str) -> str:
+    return part.replace("~", "~0").replace("/", "~1")
+
+
+def _unescape(part: str) -> str:
+    value = part.replace("~1", "/").replace("~0", "~")
+    if _escape(value) != part:
+        raise InterchangeError(f"non-canonical JSON pointer segment: {part!r}")
+    return value
+
+
+def to_rows(document: Any) -> list[list[str]]:
+    """Serialize every JSON node in preorder, retaining null/empty/absent states.
+
+    Object and array values are child counts. Leaf values are strict JSON
+    literals. Object member order is retained; receipts ignore member order.
+    """
+    canonical_json(document)
+    rows = [[FORMAT, "", ""], HEADER.copy()]
+
+    def visit(value: Any, pointer: str) -> None:
+        kind = {dict: "object", list: "array", str: "string", int: "integer",
+                float: "float", bool: "boolean", type(None): "null"}[type(value)]
+        rows.append(["p:" + json.dumps(pointer, ensure_ascii=False), kind,
+                     _literal(len(value) if kind in ("object", "array") else value)])
+        if kind == "object":
+            for key, child in value.items():
+                visit(child, pointer + "/" + _escape(key))
+        elif kind == "array":
+            for i, child in enumerate(value):
+                visit(child, pointer + "/" + str(i))
+
+    visit(document, "")
     return rows
 
 
-def _unescape(token: str) -> str:
-    return token.replace("~1", "/").replace("~0", "~")
+def from_rows(rows: Iterable[Iterable[str]]) -> Any:
+    """Decode a complete typed table, rejecting omitted/reordered/extra nodes."""
+    table = [list(row) for row in rows]
+    if len(table) < 3 or table[0] != [FORMAT, "", ""] or table[1] != HEADER:
+        raise InterchangeError("missing or unsupported interchange header")
+    if any(len(row) != 3 or any(type(cell) is not str for cell in row)
+           for row in table):
+        raise InterchangeError("every transport row must contain exactly three text cells")
+    index = 2
 
+    def parse_row(row: list[str]) -> tuple[str, str, Any]:
+        p, kind, literal = row
+        if not p.startswith("p:") or not literal.startswith("j:"):
+            raise InterchangeError("pointer/value cells require p:/j: prefixes")
+        pointer, value = loads(p[2:]), loads(literal[2:])
+        if type(pointer) is not str:
+            raise InterchangeError("pointer must be a JSON string")
+        return pointer, kind, value
 
-def _parse_scalar(typ: str, value: str, presence: str) -> Any:
-    if presence == NULL or typ == "null":
-        return None
-    if typ == "bool":
-        if value not in ("true", "false"):
-            raise TransportError(f"bad bool: {value!r}")
-        return value == "true"
-    if typ == "integer":
-        return int(value)
-    if typ == "float":
-        return float(value)
-    if typ == "string":
+    def take(expected: str, depth: int) -> Any:
+        nonlocal index
+        if depth > MAX_DEPTH:
+            raise InterchangeError(f"JSON nesting exceeds supported depth {MAX_DEPTH}")
+        if index >= len(table):
+            raise InterchangeError(f"missing node at {expected!r}")
+        pointer, kind, value = parse_row(table[index])
+        index += 1
+        if pointer != expected:
+            raise InterchangeError(f"expected pointer {expected!r}; got {pointer!r}")
+        if kind in ("object", "array"):
+            if type(value) is not int or value < 0 or value > len(table) - index:
+                raise InterchangeError(f"invalid child count at {pointer!r}")
+            children: Any = {} if kind == "object" else []
+            for i in range(value):
+                if kind == "array":
+                    children.append(take(pointer + "/" + str(i), depth + 1))
+                    continue
+                if index >= len(table):
+                    raise InterchangeError(f"missing object child at {pointer!r}")
+                next_pointer, _, _ = parse_row(table[index])
+                prefix = pointer + "/"
+                if not next_pointer.startswith(prefix):
+                    raise InterchangeError(f"object child not under {pointer!r}")
+                segment = next_pointer[len(prefix):]
+                if "/" in segment:
+                    raise InterchangeError("object child must be an immediate descendant")
+                key = _unescape(segment)
+                if key in children:
+                    raise InterchangeError(f"duplicate object member at {next_pointer!r}")
+                children[key] = take(next_pointer, depth + 1)
+            return children
+        types = {"string": str, "integer": int, "float": float,
+                 "boolean": bool, "null": type(None)}
+        if kind not in types or type(value) is not types[kind]:
+            raise InterchangeError(f"kind/literal mismatch at {pointer!r}: {kind}")
         return value
-    raise TransportError(f"unknown scalar type {typ}")
+
+    result = take("", 0)
+    if index != len(table):
+        raise InterchangeError("extra rows after the complete document")
+    canonical_json(result)
+    return result
 
 
-def from_rows(rows: list[dict[str, str]]) -> Any:
-    if not rows:
-        raise TransportError("no rows")
-    root: Any = None
-    initialized = False
-
-    for row in rows:
-        pointer = row.get("pointer") or "/"
-        typ = row.get("type") or "string"
-        value = row.get("value", "")
-        presence = row.get("presence") or PRESENT
-        if not pointer.startswith("/"):
-            raise TransportError(f"pointer must start with /: {pointer}")
-        tokens = [] if pointer == "/" else [_unescape(t) for t in pointer[1:].split("/")]
-        if typ in ("object", "array") and presence == EMPTY and not tokens:
-            return {} if typ == "object" else []
-        if not tokens:
-            return _parse_scalar(typ, value, presence)
-
-        if not initialized:
-            root = [] if tokens[0].isdigit() else {}
-            initialized = True
-
-        cursor = root
-        for i, token in enumerate(tokens):
-            last = i == len(tokens) - 1
-            nxt = tokens[i + 1] if not last else None
-            next_index = bool(nxt is not None and nxt.isdigit())
-            if last:
-                payload: Any
-                if typ == "object":
-                    payload = {}
-                elif typ == "array":
-                    payload = []
-                else:
-                    payload = _parse_scalar(typ, value, presence)
-                if isinstance(cursor, list):
-                    idx = int(token)
-                    while len(cursor) <= idx:
-                        cursor.append(None)
-                    cursor[idx] = payload
-                elif isinstance(cursor, dict):
-                    cursor[token] = payload
-                else:
-                    raise TransportError("cannot assign into scalar")
-            else:
-                if isinstance(cursor, list):
-                    idx = int(token)
-                    while len(cursor) <= idx:
-                        cursor.append(None)
-                    if cursor[idx] is None:
-                        cursor[idx] = [] if next_index else {}
-                    cursor = cursor[idx]
-                elif isinstance(cursor, dict):
-                    if token not in cursor or cursor[token] is None:
-                        cursor[token] = [] if next_index else {}
-                    cursor = cursor[token]
-                else:
-                    raise TransportError("cannot descend into scalar")
-    return root
-
-
-def write_csv(document: Any, path: str | Path) -> Path:
-    path = Path(path)
+def write_csv(document: Any, path: str | Path) -> None:
+    """Create a standalone UTF-8 CSV; refuse to overwrite an existing file."""
     rows = to_rows(document)
-    with path.open("w", encoding="utf-8", newline="") as fh:
-        writer = csv.DictWriter(fh, fieldnames=["pointer", "type", "value", "presence"])
-        writer.writeheader()
-        writer.writerows(rows)
-    return path
+    if any(len(cell) > CSV_FIELD_LIMIT for row in rows for cell in row):
+        raise InterchangeError("CSV field exceeds supported 16 Mi characters; use JSON")
+    with Path(path).open("x", encoding="utf-8", newline="") as stream:
+        csv.writer(stream, lineterminator="\r\n").writerows(rows)
 
 
 def read_csv(path: str | Path) -> Any:
-    path = Path(path)
-    text = path.read_text(encoding="utf-8")
-    reader = csv.DictReader(io.StringIO(text))
-    if reader.fieldnames is None:
-        raise TransportError("csv missing header")
-    required = {"pointer", "type", "value", "presence"}
-    if set(reader.fieldnames) < required:
-        raise TransportError("csv missing required columns")
-    rows = list(reader)
-    return from_rows(rows)
-
-
-def write_xlsx(document: Any, path: str | Path) -> Path:
-    path = Path(path)
-    rows = to_rows(document)
-    ns = "http://schemas.openxmlformats.org/spreadsheetml/2006/main"
-    ssrel = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
-
-    def cell(ref: str, text: str) -> ET.Element:
-        c = ET.Element("c", r=ref, t="inlineStr")
-        is_el = ET.SubElement(c, "is")
-        t_el = ET.SubElement(is_el, "t")
-        t_el.text = text
-        return c
-
-    sheet = ET.Element("worksheet", xmlns=ns)
-    sheet_data = ET.SubElement(sheet, "sheetData")
-    headers = ["pointer", "type", "value", "presence"]
-    header_row = ET.SubElement(sheet_data, "row", r="1")
-    for i, h in enumerate(headers):
-        header_row.append(cell(f"{chr(65+i)}1", h))
-    for ridx, row in enumerate(rows, start=2):
-        xml_row = ET.SubElement(sheet_data, "row", r=str(ridx))
-        for i, h in enumerate(headers):
-            xml_row.append(cell(f"{chr(65+i)}{ridx}", row[h]))
-    sheet_xml = ET.tostring(sheet, encoding="utf-8", xml_declaration=True)
-
-    workbook = (
-        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
-        f"<workbook xmlns=\"{ns}\" xmlns:r=\"{ssrel}\">"
-        "<sheets><sheet name=\"transport\" sheetId=\"1\" r:id=\"rId1\"/></sheets>"
-        "</workbook>"
-    ).encode("utf-8")
-    rels = (
-        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
-        "<Relationships xmlns=\"http://schemas.openxmlformats.org/package/2006/relationships\">"
-        "<Relationship Id=\"rId1\" Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument\" Target=\"xl/workbook.xml\"/>"
-        "</Relationships>"
-    ).encode("utf-8")
-    wb_rels = (
-        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
-        "<Relationships xmlns=\"http://schemas.openxmlformats.org/package/2006/relationships\">"
-        "<Relationship Id=\"rId1\" Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet\" Target=\"worksheets/sheet1.xml\"/>"
-        "</Relationships>"
-    ).encode("utf-8")
-    ctypes = (
-        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
-        "<Types xmlns=\"http://schemas.openxmlformats.org/package/2006/content-types\">"
-        "<Default Extension=\"rels\" ContentType=\"application/vnd.openxmlformats-package.relationships+xml\"/>"
-        "<Default Extension=\"xml\" ContentType=\"application/xml\"/>"
-        "<Override PartName=\"/xl/workbook.xml\" ContentType=\"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml\"/>"
-        "<Override PartName=\"/xl/worksheets/sheet1.xml\" ContentType=\"application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml\"/>"
-        "</Types>"
-    ).encode("utf-8")
-
-    with zipfile.ZipFile(path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
-        zf.writestr("[Content_Types].xml", ctypes)
-        zf.writestr("_rels/.rels", rels)
-        zf.writestr("xl/workbook.xml", workbook)
-        zf.writestr("xl/_rels/workbook.xml.rels", wb_rels)
-        zf.writestr("xl/worksheets/sheet1.xml", sheet_xml)
-    return path
-
-
-def read_xlsx(path: str | Path) -> Any:
-    path = Path(path)
-    with zipfile.ZipFile(path) as zf:
-        names = zf.namelist()
-        sheet_name = next((n for n in names if n.startswith("xl/worksheets/") and n.endswith(".xml")), None)
-        if not sheet_name:
-            raise TransportError("xlsx missing worksheet")
-        root = ET.fromstring(zf.read(sheet_name))
-    ns = {"m": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
-    values: list[list[str]] = []
-    for row in root.findall(".//m:sheetData/m:row", ns):
-        cells = []
-        for c in row.findall("m:c", ns):
-            t = c.find("m:is/m:t", ns)
-            cells.append("" if t is None or t.text is None else t.text)
-        if cells:
-            values.append(cells)
-    if not values:
-        raise TransportError("xlsx empty")
-    header, *body = values
-    if header[:4] != ["pointer", "type", "value", "presence"]:
-        raise TransportError("xlsx unexpected header")
-    rows = [
-        {"pointer": r[0], "type": r[1], "value": r[2] if len(r) > 2 else "", "presence": r[3] if len(r) > 3 else PRESENT}
-        for r in body
-    ]
-    return from_rows(rows)
-
-
-def project_docx(path: str | Path) -> dict[str, Any]:
-    path = Path(path)
-    warnings: list[str] = []
-    texts: list[str] = []
+    # The stdlib CSV parser defaults to 128 KiB per field. The interchange
+    # format intentionally permits larger notes; keep the change scoped.
+    previous = csv.field_size_limit()
     try:
-        with zipfile.ZipFile(path) as zf:
-            xml = zf.read("word/document.xml")
-    except (KeyError, zipfile.BadZipFile) as exc:
-        raise TransportError(f"docx unreadable: {exc}") from exc
-    root = ET.fromstring(xml)
-    w = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
-    for p in root.iter(f"{w}p"):
-        parts = [t.text or "" for t in p.iter(f"{w}t")]
-        line = "".join(parts)
-        if line:
-            texts.append(line)
-    warnings.append("DOCX projection is paragraph text only; layout and page numbers are unknown.")
-    return {
-        "schema": "uiowa.interchange.docx-projection.v1",
-        "source": path.name,
-        "status": "partial" if texts else "unreadable",
-        "warnings": warnings,
-        "paragraphs": texts,
-        "authority": "none",
-        "assessment": "not_elevated",
-    }
+        csv.field_size_limit(CSV_FIELD_LIMIT)
+        with Path(path).open("r", encoding="utf-8-sig", newline="") as stream:
+            return from_rows(csv.reader(stream, strict=True))
+    except (csv.Error, UnicodeError) as exc:
+        raise InterchangeError(str(exc)) from exc
+    finally:
+        csv.field_size_limit(previous)
 
 
-def project_pdf(path: str | Path) -> dict[str, Any]:
-    path = Path(path)
-    warnings = [
-        "PDF projection does not perform OCR.",
-        "Without a PDF parser dependency this reader reports bytes only and marks text as unknown.",
-    ]
-    data = path.read_bytes()
-    return {
-        "schema": "uiowa.interchange.pdf-projection.v1",
-        "source": path.name,
-        "status": "unknown_text",
-        "bytes": len(data),
-        "warnings": warnings,
-        "text": "",
-        "authority": "none",
-        "assessment": "not_elevated",
-    }
+def csv_text(document: Any) -> str:
+    stream = io.StringIO(newline="")
+    csv.writer(stream, lineterminator="\r\n").writerows(to_rows(document))
+    return stream.getvalue()
 
 
-def load_json(path: str | Path) -> Any:
-    return json.loads(Path(path).read_text(encoding="utf-8"))
+def read_json(path: str | Path) -> Any:
+    return loads(Path(path).read_text(encoding="utf-8-sig"))
+
+
+def write_json(document: Any, path: str | Path) -> None:
+    text = canonical_json(document) + "\n"
+    with Path(path).open("x", encoding="utf-8", newline="\n") as stream:
+        stream.write(text)
+
+
+# Public names retained from merged PR #16197. Legacy leaf-only CSV is not
+# guessed: import it only via the source-confirmed recovery companion.
+TransportError = InterchangeError
+load_json = read_json
 
 
 def dump_json(document: Any, path: str | Path) -> Path:
-    path = Path(path)
-    path.write_text(json.dumps(document, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    return path
+    write_json(document, path)
+    return Path(path)
+
+
+def write_xlsx(document: Any, path: str | Path) -> Path:
+    try:
+        from .workbook import write_xlsx as writer
+    except ImportError:
+        from workbook import write_xlsx as writer
+    writer(document, path)
+    return Path(path)
+
+
+def read_xlsx(path: str | Path) -> Any:
+    try:
+        from .workbook import read_xlsx as reader
+    except ImportError:
+        from workbook import read_xlsx as reader
+    return reader(path)
+
+
+def project_docx(path: str | Path) -> dict[str, Any]:
+    try:
+        from .projection_io import project_docx as reader
+    except ImportError:
+        from projection_io import project_docx as reader
+    return reader(path)
+
+
+def project_pdf(path: str | Path) -> dict[str, Any]:
+    try:
+        from .projection_io import project_pdf as reader
+    except ImportError:
+        from projection_io import project_pdf as reader
+    return reader(path)
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("command", choices=("export", "import", "compare"))
+    parser.add_argument("source", type=Path)
+    parser.add_argument("destination", type=Path)
+    args = parser.parse_args(argv)
+    try:
+        if args.command == "export":
+            document = read_json(args.source)
+            write_csv(document, args.destination)
+        elif args.command == "import":
+            document = read_csv(args.source)
+            write_json(document, args.destination)
+        else:
+            document = read_json(args.source)
+            if canonical_json(document) != canonical_json(read_json(args.destination)):
+                raise InterchangeError("documents differ (including JSON types)")
+        print(json.dumps({"result": "PASS", "document_sha256": document_sha256(document),
+                          "authority": "FORMAT_INTEGRITY_ONLY"}))
+        return 0
+    except (OSError, InterchangeError) as exc:
+        parser.exit(2, f"interchange: {exc}\n")
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
