@@ -8,7 +8,7 @@ that claim's own post. No callback URLs. No tokens. No idle loop.
 Cursor / Grok Bot are on owner quota hold. Their claims advance in last.json
 so the detector does not repeat, but ping is always 0 and issue #1316 is not
 reassigned.
-ChatGPT / Claude / ntfy-poll are poll adapters: they are recorded in
+ChatGPT / Claude / Gemini / Grok.com / ntfy-poll are poll adapters: they are recorded in
 last.json as moved_poll and must GET mail.json / ping/last.json themselves.
 PLAYER2 owns that transport. Do not invent callback URLs.
 """
@@ -28,12 +28,17 @@ def load(path, default):
 
 def adapter_kind(ad):
     text = (ad or "").lower()
+    # Cursor / Grok Bot hold must win before grok.com / grokcom poll matching.
     if "cursor" in text or "grok bot" in text:
         return "cursor"
     if "chatgpt" in text or "openai" in text:
         return "chatgpt"
     if "claude" in text or "anthropic" in text:
         return "claude"
+    if "gemini" in text or "google ai" in text:
+        return "gemini"
+    if "grok.com" in text or "grokcom" in text or "supergrok" in text or "super grok" in text:
+        return "grokcom"
     if "ntfy" in text:
         return "ntfy"
     return ""
@@ -86,7 +91,7 @@ def decide(mail, wake, last):
         "instruction": (
             "Compare your claim row to last ACK. Same seq => stay quiet. "
             "Moved => read href. Own post does not wake you. "
-            "ChatGPT/Claude/ntfy poll this file. Cursor is on quota hold."
+            "ChatGPT/Claude/Gemini/Grok.com/ntfy poll this file. Cursor is on quota hold."
         ),
         "ts": mail.get("ts") or "",
         "mail_seq": mail.get("seq"),

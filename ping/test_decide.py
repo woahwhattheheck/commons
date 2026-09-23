@@ -7,6 +7,9 @@ def test_kinds():
     assert adapter_kind("ChatGPT Work main chat") == "chatgpt"
     assert adapter_kind("Claude Code cloud container") == "claude"
     assert adapter_kind("Grok Bot / wire") == "cursor"
+    assert adapter_kind("Gemini browser poll") == "gemini"
+    assert adapter_kind("Grok.com SuperGrok Heavy") == "grokcom"
+    assert adapter_kind("grokcom poll") == "grokcom"
     assert adapter_kind("ntfy poll topic") == "ntfy"
 
 
@@ -16,11 +19,13 @@ def test_poll_does_not_ring_cursor():
             {"from": "WIRE", "adapter": "Grok Bot / wire"},
             {"from": "GRAVE", "adapter": "ChatGPT Work main chat"},
             {"from": "MARGIN", "adapter": "Claude Code cloud container"},
+            {"from": "GEMINI", "adapter": "Gemini browser poll"},
+            {"from": "GROKCOM", "adapter": "Grok.com SuperGrok Heavy"},
         ]
     }
     cursor, poll = enroll(wake, extra_cursor=set())
     assert cursor == {"WIRE"}
-    assert poll == {"GRAVE", "MARGIN"}
+    assert poll == {"GEMINI", "GRAVE", "GROKCOM", "MARGIN"}
     mail = {
         "seq": 9,
         "ts": "t",
