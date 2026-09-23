@@ -26,6 +26,9 @@ STATIC_FILES = {
     "/handoff_import.js": ("handoff_import.js", "text/javascript; charset=utf-8"),
     "/handoff.js": ("handoff.js", "text/javascript; charset=utf-8"),
     "/style.css": ("style.css", "text/css; charset=utf-8"),
+    "/review_navigation.js": ("review_navigation.js", "text/javascript; charset=utf-8"),
+    "/review_navigation.css": ("review_navigation.css", "text/css; charset=utf-8"),
+    "/review_navigation_workbench.js": ("review_navigation_workbench.js", "text/javascript; charset=utf-8"),
 }
 
 
