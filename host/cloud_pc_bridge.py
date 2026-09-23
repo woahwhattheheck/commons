@@ -19,9 +19,10 @@ import shutil
 import subprocess
 import sys
 import time
+from contextlib import contextmanager
 from datetime import datetime, timedelta, timezone
 from urllib.parse import quote
-from typing import Any
+from typing import Any, Iterator
 
 
 OWNER = "woahwhattheheck"
@@ -35,6 +36,8 @@ ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 MAX_JOB_BYTES = 256 * 1024
 MAX_RESULT_BYTES = 512 * 1024
 STARTED_STALE_SECONDS = 1800
+# Retain only the current in-flight result in memory; never create a PC cache.
+_pending_result: dict[str, Any] | None = None
 
 TOKEN_PATTERNS = (
     re.compile(r"\bgh[pousr]_[A-Za-z0-9_]{20,}\b"),
@@ -254,11 +257,11 @@ def _parse_time(value: Any) -> datetime | None:
         return None
     try:
         stamp = datetime.fromisoformat(value.replace("Z", "+00:00"))
-    except ValueError:
+        if stamp.tzinfo is None:
+            stamp = stamp.replace(tzinfo=timezone.utc)
+        return stamp.astimezone(timezone.utc)
+    except (ValueError, OverflowError):
         return None
-    if stamp.tzinfo is None:
-        stamp = stamp.replace(tzinfo=timezone.utc)
-    return stamp.astimezone(timezone.utc)
 
 
 def _result_record(job_id: str, *, state: str, started_at: str | None,
@@ -303,14 +306,88 @@ def _run_hands(request: dict[str, Any]) -> dict[str, Any]:
         hands.close()
 
 
+@contextmanager
+def _worker_lock() -> Iterator[None]:
+    """Serialize patched workers on this host without a lock file or local cache."""
+    import ctypes
+    from ctypes import wintypes
+
+    try:
+        kernel = ctypes.WinDLL("kernel32.dll", use_last_error=True)
+    except OSError as exc:
+        raise BridgeError("MUTEX_UNAVAILABLE", "Cannot load the Windows worker mutex API.") from exc
+    kernel.CreateMutexW.argtypes = [wintypes.LPVOID, wintypes.BOOL, wintypes.LPCWSTR]
+    kernel.CreateMutexW.restype = wintypes.HANDLE
+    kernel.WaitForSingleObject.argtypes = [wintypes.HANDLE, wintypes.DWORD]
+    kernel.WaitForSingleObject.restype = wintypes.DWORD
+    kernel.ReleaseMutex.argtypes = [wintypes.HANDLE]
+    kernel.ReleaseMutex.restype = wintypes.BOOL
+    kernel.CloseHandle.argtypes = [wintypes.HANDLE]
+    kernel.CloseHandle.restype = wintypes.BOOL
+    handle = kernel.CreateMutexW(None, False, r"Global\CommonsCloudPCBridge-woahwhattheheck-pc-bridge")
+    if not handle:
+        raise BridgeError("MUTEX_UNAVAILABLE", "Cannot open the Windows worker mutex (%s)." % ctypes.get_last_error())
+    owned = False
+    try:
+        wait = kernel.WaitForSingleObject(handle, 0)
+        if wait == 0x102:  # WAIT_TIMEOUT: another bridge is active.
+            raise BridgeError("BRIDGE_BUSY", "Another bridge process is active on this Windows host.")
+        if wait not in (0, 0x80):  # WAIT_OBJECT_0 or WAIT_ABANDONED grants ownership.
+            raise BridgeError("MUTEX_UNAVAILABLE", "Cannot acquire the Windows worker mutex (%s)." % ctypes.get_last_error())
+        owned = True
+        yield
+    finally:
+        released = not owned or bool(kernel.ReleaseMutex(handle))
+        closed = bool(kernel.CloseHandle(handle))
+        if not released or not closed:
+            raise BridgeError("MUTEX_UNAVAILABLE", "Cannot release the Windows worker mutex.")
+
+
+def _deliver_pending() -> dict[str, Any]:
+    global _pending_result
+    record = _pending_result
+    if record is None:
+        raise BridgeError("NO_PENDING_RESULT", "There is no result awaiting delivery.")
+    job_id = record["job_id"]
+    path = "pc_bridge/results/%s.json" % job_id
+    _write_json(path, record, "pc bridge: result %s" % job_id)
+    observed = _read_file(path, missing_ok=True)
+    if observed is None:
+        raise BridgeError("RESULT_UNCONFIRMED", "Result readback is missing; delivery remains pending in this process.")
+    if observed != _json_bytes(record):
+        raise BridgeError("RESULT_CONFLICT", "A different result exists; it was not overwritten. Do not replay the job.")
+    _pending_result = None
+    return {"state": record["state"], "processed": True, "job_id": job_id, "result_published": True}
+
+
+def _finish(record: dict[str, Any]) -> dict[str, Any]:
+    global _pending_result
+    if _pending_result is not None:
+        raise BridgeError("RESULT_PENDING", "Deliver the previous result before processing another job.")
+    _pending_result = record
+    return _deliver_pending()
+
+
+def queue_status() -> dict[str, Any]:
+    """Read queue metadata only; no claims, result writes or broker import."""
+    _require_queue_branch()
+    inbox = set(_list_json("pc_bridge/inbox"))
+    started = set(_list_json("pc_bridge/started"))
+    results = set(_list_json("pc_bridge/results"))
+    return {"state": "STATUS", "processed": False, "queued": len(inbox - started - results),
+            "started_without_result": len(started - results), "result_files": len(results),
+            "worker_running": "UNKNOWN", "queue_snapshot_atomic": False}
+
+
 def process_one() -> dict[str, Any]:
+    """Poll under the process-lifetime worker mutex held by main()."""
+    if _pending_result is not None:
+        return _deliver_pending()
     _require_queue_branch()
     inbox = _list_json("pc_bridge/inbox")
-    if not inbox:
-        return {"state": "IDLE", "processed": False}
     started = _list_json("pc_bridge/started")
     results = _list_json("pc_bridge/results")
-    for job_id in sorted(inbox):
+    for job_id in sorted(set(inbox) | set(started)):
         if job_id in results:
             continue
         if job_id in started:
@@ -321,19 +398,21 @@ def process_one() -> dict[str, Any]:
                 marker = {}
             started_at = str(marker.get("started_at") or "") if isinstance(marker, dict) else ""
             stamp = _parse_time(started_at)
-            if stamp is not None and (datetime.now(timezone.utc) - stamp).total_seconds() > STARTED_STALE_SECONDS:
-                uncertain = _result_record(job_id, state="UNCERTAIN", started_at=started_at,
-                                           message="Execution started but no result was saved. The bridge will not replay it.")
-                if _write_json("pc_bridge/results/%s.json" % job_id, uncertain, "pc bridge: uncertain %s" % job_id):
-                    return {"state": "UNCERTAIN", "processed": True, "job_id": job_id}
+            now = datetime.now(timezone.utc)
+            invalid_marker = (not isinstance(marker, dict) or marker.get("schema") != START_SCHEMA
+                              or marker.get("job_id") != job_id or stamp is None
+                              or stamp > now + timedelta(minutes=5))
+            if invalid_marker or (now - stamp).total_seconds() > STARTED_STALE_SECONDS:
+                uncertain = _result_record(job_id, state="UNCERTAIN", started_at=started_at or None,
+                                           message="A start marker exists but no result was saved. "
+                                                   "Execution outcome is unknown; the bridge will not replay it.")
+                return _finish(uncertain)
             continue
         try:
             job = _load_job(job_id, inbox[job_id])
         except RequestError as exc:
             invalid = _result_record(job_id, state="INVALID_REQUEST", started_at=None, message=str(exc))
-            if _write_json("pc_bridge/results/%s.json" % job_id, invalid, "pc bridge: invalid %s" % job_id):
-                return {"state": "INVALID_REQUEST", "processed": True, "job_id": job_id}
-            continue
+            return _finish(invalid)
         started_at = utc_now()
         marker = {"schema": START_SCHEMA, "job_id": job_id, "started_at": started_at}
         if not _write_json("pc_bridge/started/%s.json" % job_id, marker, "pc bridge: started %s" % job_id):
@@ -343,36 +422,41 @@ def process_one() -> dict[str, Any]:
             state = "DONE" if result.get("ok") is True else "FAILED"
             record = _result_record(job_id, state=state, started_at=started_at, result=result)
         except Exception as exc:
-            record = _result_record(job_id, state="FAILED", started_at=started_at,
+            record = _result_record(job_id, state="UNCERTAIN", started_at=started_at,
                                     message="%s: %s" % (type(exc).__name__, str(exc)[:2000]))
-        _write_json("pc_bridge/results/%s.json" % job_id, record, "pc bridge: result %s" % job_id)
-        return {"state": record["state"], "processed": True, "job_id": job_id}
-    return {"state": "IDLE", "processed": False}
+        return _finish(record)
+    return {"state": "WAITING_RESULT" if set(started) - set(results) else "IDLE", "processed": False}
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Lightweight private cloud-to-PC bridge using TITAN Hands.")
-    parser.add_argument("--once", action="store_true", help="poll and process at most one request, then exit")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--once", action="store_true", help="poll and process at most one request, then exit")
+    mode.add_argument("--status", action="store_true", help="read queue metadata without executing jobs or writing results")
     parser.add_argument("--poll-seconds", type=int, default=30)
     args = parser.parse_args(argv)
     if args.poll_seconds < 5:
         parser.error("--poll-seconds must be at least 5")
-    if os.name != "nt":
+    if os.name != "nt" and not args.status:
         print(json.dumps({"state": "WINDOWS_REQUIRED", "ok": False}, sort_keys=True))
         return 2
     try:
-        if args.once:
-            outcome = process_one()
-            print(json.dumps(outcome, ensure_ascii=True, sort_keys=True))
+        if args.status:
+            print(json.dumps(queue_status(), ensure_ascii=True, sort_keys=True))
             return 0
-        while True:
-            try:
+        with _worker_lock():
+            if args.once:
                 outcome = process_one()
-                if outcome.get("processed"):
-                    print(json.dumps(outcome, ensure_ascii=True, sort_keys=True), flush=True)
-            except BridgeError as exc:
-                print("CLOUD_PC_BRIDGE %s" % exc.code, file=sys.stderr, flush=True)
-            time.sleep(args.poll_seconds)
+                print(json.dumps(outcome, ensure_ascii=True, sort_keys=True))
+                return 0 if outcome["state"] in {"DONE", "IDLE"} else 1
+            while True:
+                try:
+                    outcome = process_one()
+                    if outcome.get("processed"):
+                        print(json.dumps(outcome, ensure_ascii=True, sort_keys=True), flush=True)
+                except BridgeError as exc:
+                    print("CLOUD_PC_BRIDGE %s" % exc.code, file=sys.stderr, flush=True)
+                time.sleep(args.poll_seconds)
     except BridgeError as exc:
         print("CLOUD_PC_BRIDGE %s" % exc.code, file=sys.stderr)
         return 2
