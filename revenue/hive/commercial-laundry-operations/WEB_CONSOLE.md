@@ -21,15 +21,27 @@ python web_console.py /path/to/laundry-work/new-shift.sqlite3 --init
 Open the loopback URL printed in the terminal. The default port is 8765;
 `--port 0` selects an available port. Keep a consistent port when resuming a
 browser's saved request, because browser storage is scoped to its origin.
-The server binds only to `127.0.0.1`. No account, login, token, or payment setup
-is needed. This is not a public-hosting or LAN-deployment package.
+The server binds only to `127.0.0.1`. The printed private address includes a
+fresh per-server session key in its fragment. Do not share that address or key.
+The page removes the fragment and retains only the key in tab-scoped session
+storage for reload; API reads and writes require it. The unlock form accepts
+the current key directly. No account, external login or payment setup is needed.
+This is not a public-hosting or LAN-deployment package.
 `--init` never overwrites an existing file; startup failures exit nonzero.
+
+The existing `operator_console.py` command launches this same implementation;
+its automatic-port default is retained. Use an explicit `--port` for consistent
+browser recovery storage. **Lock console** clears displayed records and the
+tab's saved key, but deliberately retains any unconfirmed operation in local
+storage. Locking does not undo a write or stop the server. Stop with Ctrl+C when
+finished. A server restart generates a new session key; reopening the private
+address lets you reconcile a pending request for the same database file.
 
 ## Record a shift
 
 Use the **Operation** selector to create a customer, site, dated price agreement,
 and recurring service plan. Prices are integer cents; weekdays are Monday=0
-through Sunday=6. Then create a daily manifest for the plan's route and date.
+through Sunday=6. Then create the daily manifest for the plan's route and date.
 The setup catalogs display 100 records per page and an exact matching total;
 use **Next 100**, **First page**, and the date filter rather than assuming the
 first page is the whole database. Catalog identifiers open customer exports,
@@ -83,3 +95,8 @@ This surface records operator facts and creates invoice **DRAFTS** only. It does
 not issue invoices, mutate accounting, collect payment, contact customers,
 certify quality, or claim revenue. All eight existing authority flags remain false.
 Use the [operator guide](OPERATOR_GUIDE.md) for engine rules and CLI details.
+
+The shared console combines the session boundary and locking from #19279
+(yZ-Cairn-47) with the paged workspace and durable retry recovery from #19294
+(yZ-Feldspar-2E3582). Both launchers use the same implementation, not competing
+web applications. Backup and restore remain in the [existing CLI](BACKUP.md).

@@ -11,8 +11,12 @@
 </style>
 </head>
 <body>
-<header><div><div class="eyebrow">LOCAL OPERATIONS</div><h1>Laundry Desk</h1><small>Route planning · Linen custody · Invoice drafts</small></div><div><div id="database">Connecting…</div><small>No customer sends or payment actions</small></div></header>
-<main>
+<header><div><div class="eyebrow">LOCAL OPERATIONS</div><h1>Laundry Desk</h1><small>Route planning · Linen custody · Invoice drafts</small></div><div><div id="database">Locked workspace</div><small>No customer sends or payment actions</small><button id="lock" type="button" hidden>Lock console</button></div></header>
+<section id="unlock-panel" class="panel" style="max-width:640px;margin:24px auto">
+<h2>Open your local session</h2><p>Open the private address printed by either console launcher, or paste its session key below. The key changes when the server restarts.</p>
+<form id="unlock-form"><label for="session-key">Session key</label><input id="session-key" type="password" autocomplete="off" required><button class="primary full" type="submit">Unlock workspace</button></form>
+<p id="unlock-status" role="status" aria-live="polite"></p></section>
+<main id="workspace" hidden>
 <div id="status" class="notice" role="status" aria-live="polite">Opening the selected local database…</div>
 <section id="pending" class="panel" hidden aria-labelledby="pending-title"><h2 id="pending-title">Unconfirmed operation</h2><p id="pending-note">This exact request is retained in this browser. Retrying uses the same operation key; it does not create a new copy.</p><pre id="pending-json"></pre><div class="row"><button id="retry" class="primary">Retry exact request</button><button id="save-pending">Save pending request</button><button id="dismiss-pending">Dismiss after reconciliation</button></div></section>
 <div class="grid">
@@ -32,6 +36,8 @@
 "use strict";
 const $ = id => document.getElementById(id);
 const storageKey = "laundry-console-pending-v1";
+const sessionStorageKey = "laundry-console-session-key";
+let sessionKey = "", epoch = 0;
 const titles = {customer:"Create customer",site:"Create site",agreement:"Record price agreement",plan:"Create recurring service plan",manifest:"Create daily manifest",pickup:"Record pickup",process:"Record plant processing",deliver:"Record delivery",resolve:"Resolve an exception","invoice-draft":"Create invoice DRAFT"};
 const labels = {customer_id:"Customer ID",site_id:"Site ID",name:"Name",agreement_id:"Agreement ID",item_code:"Linen item code",unit_price_cents:"Unit price (integer cents)",active_from:"Effective from",active_to:"Effective through (optional)",plan_id:"Plan ID",route_code:"Route code",weekday:"Weekday",stop_sequence:"Stop sequence",service_date:"Service date",stop_id:"Stop ID",linen_counts:"Picked-up quantities",processed_counts:"Good processed quantities",damaged_counts:"Damaged quantities (optional)",delivered_counts:"Delivered quantities",container_ids:"Container IDs",exception_id:"Exception ID",resolution_code:"Resolution code",note:"Resolution note"};
 let info, pending = null, unreadablePending = null, busy = false, routeId = null, customerId = null;
@@ -43,10 +49,19 @@ function localDay() { const date = new Date(); return [date.getFullYear(),String
 function newKey() { return "web:" + crypto.randomUUID(); }
 function money(cents) { if (!Number.isSafeInteger(cents) || cents < 0) return "Invalid amount"; return "$" + Math.floor(cents/100).toLocaleString("en-US") + "." + String(cents%100).padStart(2,"0"); }
 function human(value) { return String(value).replaceAll("_"," "); }
-async function get(path) { const response = await fetch(path,{cache:"no-store"}); const value = await response.json(); if (!response.ok) throw new Error(value.message || "Local read failed"); return value; }
+function savedSession(value) { try { if(value === undefined)return sessionStorage.getItem(sessionStorageKey); if(value === null)sessionStorage.removeItem(sessionStorageKey); else sessionStorage.setItem(sessionStorageKey,value); } catch {} return null; }
+async function get(path, download=false) {
+ const generation=epoch;
+ const response=await fetch(path,{cache:"no-store",credentials:"omit",headers:{Authorization:"Bearer "+sessionKey}});
+ const value=response.ok && download ? await response.blob() : await response.json();
+ if(generation!==epoch)throw new Error("The console session changed; reopen the workspace.");
+ if(response.status===401){lockConsole();throw new Error("Unlock with the current session key; pending operations remain saved.");}
+ if(!response.ok)throw new Error(value.message || "Local read failed");return value;
+}
 function query(path,args) { return path + "?" + new URLSearchParams(args); }
 function badge(text,kind="") { return node("span",human(text),{class:"badge " + kind}); }
-function downloads(kind,id) { const links = node("div",null,{class:"links"}); for (const format of ["json","csv","markdown"]) links.append(node("a",format.toUpperCase(),{class:"download",href:query("/api/export",{kind,id,format}),download:""})); return links; }
+function downloadBlob(blob, filename) { const url=URL.createObjectURL(blob), anchor=node("a",null,{href:url,download:filename}); document.body.append(anchor);anchor.click();anchor.remove();setTimeout(()=>URL.revokeObjectURL(url),1000); }
+function downloads(kind,id) { const links=node("div",null,{class:"links"});for(const format of ["json","csv","markdown"])links.append(button(format.toUpperCase(),async()=>{const blob=await get(query("/api/export",{kind,id,format}),true);downloadBlob(blob,"laundry-"+kind+"."+(format==="markdown"?"md":format));}));return links; }
 function saveJSON(value,filename) { const url = URL.createObjectURL(new Blob([typeof value === "string" ? value : JSON.stringify(value,null,2)],{type:"application/json"})); const anchor = node("a",null,{href:url,download:filename}); document.body.append(anchor); anchor.click(); anchor.remove(); setTimeout(() => URL.revokeObjectURL(url),1000); }
 function exactInteger(text) { if (!/^[0-9]+$/.test(text)) throw new Error("Quantities, prices and sequence numbers must be non-negative whole numbers."); const value = Number(text); if (!Number.isSafeInteger(value)) throw new Error("Integer exceeds exact browser representation."); return value; }
 function counts(text) { const result = Object.create(null); for (const line of text.split(/\r?\n/).filter(line=>line.trim())) { const match = line.match(/^\s*([^=\s]+)\s*=\s*([0-9]+)\s*$/); if (!match) throw new Error("Enter quantities as ITEM=COUNT, one per line."); if (Object.hasOwn(result,match[1])) throw new Error("Duplicate linen item: " + match[1]); result[match[1]] = exactInteger(match[2]); } if (!Object.keys(result).length) throw new Error("At least one linen item is required."); return result; }
@@ -79,7 +94,7 @@ function renderPending() {
  $("pending-json").textContent=unreadablePending || (pending ? JSON.stringify(pending,null,2) : "");
  const same=info && pending && pending.database_key === info.database_key;
  $("retry").disabled=busy || !same;
- $("dismiss-pending").disabled=busy;
+ $("dismiss-pending").disabled=busy; $("lock").disabled=busy;
  $("pending-note").textContent=unreadablePending ? "The retained request cannot be decoded. Save it and reconcile before clearing it; nothing was sent." : same ? "This exact request is retained in this browser. Retrying uses its original key and payload; it never runs automatically." : "This request belongs to a different database. Reopen that database to retry, or save and reconcile it before dismissal.";
 }
 function clearPending() { pending=null; unreadablePending=null; try { localStorage.removeItem(storageKey); } catch { notice("Operation outcome is known, but the browser could not remove its saved recovery copy. Save the result before clearing browser data.","error"); } renderPending(); }
@@ -89,9 +104,10 @@ async function postPending() {
  try { request.attempts=(Number.isSafeInteger(request.attempts)?request.attempts:1)+1; localStorage.setItem(storageKey,JSON.stringify(request)); } catch(error) { notice("Nothing sent: unable to save the attempt for recovery. "+error.message,"error"); return; }
  busy=true; renderPending(); notice("Recording " + request.command + " with its retained operation key…");
  let response, value;
- try { response=await fetch("/api/operate/"+encodeURIComponent(request.command),{method:"POST",headers:{"Content-Type":"application/json","X-Laundry-Database":request.database_key},body:JSON.stringify(request.payload),signal:AbortSignal.timeout(30000)}); value=await response.json(); }
+ try { response=await fetch("/api/operate/"+encodeURIComponent(request.command),{method:"POST",headers:{"Content-Type":"application/json","X-Laundry-Database":request.database_key,Authorization:"Bearer "+sessionKey},body:JSON.stringify(request.payload),signal:AbortSignal.timeout(30000)}); value=await response.json(); }
  catch (error) { notice("Outcome unconfirmed: " + error.message + ". Keep the saved request; use Retry exact request, not a new operation.","error"); busy=false; renderPending(); return; }
  busy=false;
+ if(response.status===401){lockConsole();$("unlock-status").textContent="Session expired. Unlock again; the exact pending request remains saved.";return;}
  if (response.ok && ["APPLIED","REPLAYED"].includes(value.status)) {
   clearPending(); $("result").textContent=JSON.stringify(value,null,2); $("result-details").open=true;
   $("operation-key").value=newKey(); updatePreview(); notice(value.status + " — " + titles[request.command] + ". " + (value.status === "REPLAYED" ? "The prior result was returned; no second operation was appended." : "The engine recorded the operation."),"success");
@@ -150,14 +166,32 @@ $("catalog-kind").onchange=()=>{catalogCursor="";loadCatalog().catch(error=>noti
 $("catalog-first").onclick=()=>{catalogCursor="";loadCatalog().catch(error=>notice(error.message,"error"));};
 async function start(){
  $("route-date").value=localDay();$("operation-fields").disabled=true;
- info=await get("/api/info");$("database").textContent=info.database;
+ info=await get("/api/info");$("database").textContent=info.database; $("command").replaceChildren();
  for(const command of Object.keys(info.commands))$("command").append(node("option",titles[command]||command,{value:command}));
  let raw=null;try{raw=localStorage.getItem(storageKey);if(raw){const candidate=JSON.parse(raw);if(candidate.version!==1||typeof candidate.database_key!=="string"||typeof candidate.command!=="string"||!candidate.payload||typeof candidate.payload!=="object")throw new Error("invalid pending request");pending=candidate;}}catch(error){if(raw)unreadablePending=raw;else notice("Browser recovery storage is unavailable. An operation will not be sent unless its recovery copy can be saved.","error");}
  if(pending&&Object.hasOwn(info.commands,pending.command)){$("command").value=pending.command;buildForm(pending.payload);}else buildForm();
  await refreshViews();if(!pending&&!unreadablePending)notice("Connected to "+info.database+". Reads do not initialize or modify the database. Choose an operation to record new work.");
  renderPending();
 }
-start().catch(error=>notice("Console unavailable: "+error.message+". No operation was sent.","error"));
+function lockConsole() {
+ if(busy)return;
+ epoch++;routeGeneration++;listGeneration++;catalogGeneration++;sessionKey="";savedSession(null);info=null;routeId=null;customerId=null;pending=null;unreadablePending=null;routeCursor="";catalogCursor="";
+ $("workspace").hidden=true;$("lock").hidden=true;$("unlock-panel").hidden=false;$("database").textContent="Locked workspace";
+ for(const id of ["routes","catalog","customer-view","fields","result","pending-json","preview","route-panel","route-count","catalog-count"])$(id).replaceChildren();
+ $("session-key").value="";$("operation-key").value="";$("status").textContent="";$("operation-fields").disabled=true;
+ $("session-key").focus();
+}
+async function unlock(value) {
+ if(busy)return;
+ sessionKey=value;const generation=++epoch;$("unlock-status").textContent="Opening the local workspace…";
+ try{await start();if(generation!==epoch)return;savedSession(sessionKey);$("workspace").hidden=false;$("lock").hidden=false;$("unlock-panel").hidden=true;$("session-key").value="";}
+ catch(error){if(generation===epoch){lockConsole();$("unlock-status").textContent=error.message;}else if(!sessionKey)$("unlock-status").textContent=error.message;}
+}
+$("unlock-form").addEventListener("submit",event=>{event.preventDefault();unlock($("session-key").value.trim());});
+$("lock").onclick=lockConsole;
+const incoming=new URLSearchParams(location.hash.slice(1)).get("key");
+if(location.hash)history.replaceState(null,"",location.pathname);
+const initial=incoming || savedSession();if(initial)unlock(initial);
 </script>
 </body>
 </html>
