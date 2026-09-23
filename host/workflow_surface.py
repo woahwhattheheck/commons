@@ -184,7 +184,11 @@ def check(root: Path) -> dict:
             workflow(raw)
             archived += 1
             inventory.append(row["archive"])
-            if (root / row["source"]).exists():
+            source = root / row["source"]
+            # An explicitly retained live revision can coexist with its distinct
+            # historical recipe. Do not reactivate an unretained recipe or keep
+            # the same bytes active twice merely to satisfy inventory accounting.
+            if source.exists() and (row["source"] not in retained or source.read_bytes() == raw):
                 errors.append("archived recipe remains active: " + row["source"])
         actual = {p.relative_to(root).as_posix() for p in (root / "ci/workflow-recipes").glob("*.y*ml")}
         if actual != set(inventory):
