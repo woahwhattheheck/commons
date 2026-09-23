@@ -255,5 +255,31 @@ class CurrentFreshnessOptimizedBridgeTests(unittest.TestCase):
         self.assertIn("OK", completed.stdout)
 
 
+class PublicSurfaceRegressionTests(unittest.TestCase):
+    def test_package_root_exports_current_api(self):
+        package = importlib.import_module("revenue.swarmops_dossier")
+        importlib.reload(package)
+        live = importlib.import_module("revenue.swarmops_dossier.current")
+        self.assertIs(package.compile_current_dossier, live.compile_current_dossier)
+        self.assertIs(package.verify_current_dossier, live.verify_current_dossier)
+        self.assertIs(package.compile_historical_dossier, live.compile_historical_dossier)
+        self.assertIs(package.verify_historical_dossier, live.verify_historical_dossier)
+
+    def test_manifest_records_landed_v4_contract(self):
+        manifest = json.loads(
+            (Path(__file__).resolve().parent / "manifest.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual(manifest["output_schema"], current_module.OUTPUT_SCHEMA)
+        self.assertEqual(manifest["core_output_schema"], "commons.swarmops-dossier-output/v3")
+        self.assertEqual(
+            manifest["evaluation_modes"],
+            [current_module.CURRENT_MODE, current_module.HISTORICAL_MODE],
+        )
+        self.assertEqual(
+            manifest["commercial_truth_authority"],
+            "independent_typed_commercial_event_map",
+        )
+
+
 if __name__ == "__main__":
     unittest.main()

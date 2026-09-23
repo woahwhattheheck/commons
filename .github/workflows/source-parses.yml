@@ -13,6 +13,7 @@ on:
       - "tests/test_multi_framework_evidence_freshness*.py"
       - "competitions/nebius-proofpatch-2026/**"
       - "tools/provider_cost_truth/**"
+      - "revenue/swarmops_dossier/**"
       - "revenue/pilot_delivery_renewal_expansion_gate/**"
       - "test_pilot_delivery_renewal_expansion_gate.py"
       - "test_pilot_delivery_renewal_reload_trust_root.py"
@@ -105,6 +106,18 @@ jobs:
           if [ -f host/slack_mirror_state.py ] && [ -f test_slack_mirror_delivery.py ]; then
             python3 -m unittest -v test_slack_mirror test_slack_mirror_state test_slack_mirror_delivery test_slack_mirror_receipt_commit
             python3 -O -m unittest -v test_slack_mirror test_slack_mirror_state test_slack_mirror_delivery test_slack_mirror_receipt_commit
+          fi
+
+      - name: Verify SwarmOps currentness contract when present
+        shell: bash
+        run: |
+          if [ -f revenue/swarmops_dossier/test_current.py ]; then
+            python3 -m unittest -v \
+              revenue.swarmops_dossier.test_current \
+              revenue.swarmops_dossier.test_current_hardening
+            python3 -O -m unittest -v \
+              revenue.swarmops_dossier.test_current \
+              revenue.swarmops_dossier.test_current_hardening
           fi
 
       - name: Verify Nebius ProofPatch trust split when present
