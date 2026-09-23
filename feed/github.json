@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 1708,
+    "open_issues": 1665,
     "open_pull_requests": 9,
     "runs_in_progress": 19,
-    "runs_queued": 205
+    "runs_queued": 182
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -179,7 +179,7 @@
   },
   "pulls_listed": 9,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 10.8,
+  "queue_depth_per_runner": 9.6,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -228,50 +228,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "yz/tern7v6-localized-media-review",
-      "closed_at": "2026-09-23T08:12:48Z",
-      "head_sha": "f22a5606d5ec4e1847f036432bc30cd29a09ea23",
-      "merged_at": "2026-09-23T08:12:48Z",
-      "number": 19321,
-      "state": "MERGED",
-      "title": "Add read-only localized-media portfolio review with complete native exports"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "yz-kestrel-v68/unify-parity-workbench-19307",
-      "closed_at": "2026-09-23T08:07:55Z",
-      "head_sha": "dc102c9f0c3a014d92273ad5d6848f8f86273632",
-      "merged_at": "2026-09-23T08:07:55Z",
-      "number": 19320,
-      "state": "MERGED",
-      "title": "Consolidate migration intake into one workbench with reusable plans and private replay"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "yz/tern7v6-localized-media-purge",
-      "closed_at": "2026-09-23T08:06:09Z",
-      "head_sha": "d7dfdfab0cf1dac8939a66d1831c7e13054494da",
-      "merged_at": "2026-09-23T08:06:09Z",
-      "number": 19319,
-      "state": "MERGED",
-      "title": "Delete localized-media generated suites and obsolete execution blocks"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "yz-cairn-7f2/jev-operation-brief-20260923",
-      "closed_at": "2026-09-23T08:05:55Z",
-      "head_sha": "d8ff68967cbbbf5ea8b6b7f9d37bcb6fd6d9330c",
-      "merged_at": "2026-09-23T08:05:55Z",
-      "number": 19317,
-      "state": "MERGED",
-      "title": "Show effective Jev operation state without replaying confirmed history"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "swarm-zz/rivet-uiowa128-navigation-20260919",
       "closed_at": "2026-09-23T07:57:19Z",
       "head_sha": "ffb4be3d9c50f4d4e0bc2f8f2d7bcfb270345fda",
@@ -279,6 +235,50 @@
       "number": 16304,
       "state": "MERGED",
       "title": "UIOWA-128: receipt-bound reviewer links, actual workbench view and portable linked guide"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-sol/lane-10-pages-live-receipt",
+      "closed_at": "2026-09-23T07:36:52Z",
+      "head_sha": "bf4d5c7be7ba5dc9e0ce16d2538060038e9a240b",
+      "merged_at": "2026-09-23T07:36:52Z",
+      "number": 19282,
+      "state": "MERGED",
+      "title": "fix(pages): verify live deployment receipt"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "yz-kestrel/lineage-csv-bundle-20260923",
+      "closed_at": "2026-09-23T07:36:36Z",
+      "head_sha": "1decb3dc497421eebacc11865e6bf20a3b5015e7",
+      "merged_at": "2026-09-23T07:36:36Z",
+      "number": 19281,
+      "state": "MERGED",
+      "title": "Build complete offline evidence reports from CSV registers"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "runner-efficiency-20260923",
+      "closed_at": "2026-09-23T07:36:34Z",
+      "head_sha": "669d72888e7d30b3f4fbffa702d157618bf4a712",
+      "merged_at": "2026-09-23T07:36:34Z",
+      "number": 19280,
+      "state": "MERGED",
+      "title": "Avoid idle range replays and unnecessary historical blob downloads"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "yz-kestrel7f3/credential-ci-lock-20260923",
+      "closed_at": "2026-09-23T07:36:16Z",
+      "head_sha": "75176979a4e91bb3b59bb8981576f9e824143b32",
+      "merged_at": "2026-09-23T07:36:16Z",
+      "number": 19277,
+      "state": "MERGED",
+      "title": "Hash-lock credential-transfer CI binary dependencies"
     },
     {
       "author": "woahwhattheheck",
@@ -349,6 +349,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-23T08:32:12Z",
+  "unchanged_since": "2026-09-23T08:34:43Z",
   "undatable_pulls": []
 }
