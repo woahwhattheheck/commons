@@ -2,6 +2,8 @@
 from __future__ import annotations
 
 import argparse
+import base64
+import binascii
 import hashlib
 import json
 import os
@@ -12,7 +14,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from . import guard, route_lifecycle
+from . import dsn_authority, guard, route_lifecycle
 
 BUNDLE_SCHEMA = "outbound-route-quarantine-bundle/v1"
 RECEIPT_SCHEMA = "outbound-route-aware-send-receipt/v1"
@@ -95,7 +97,10 @@ def _fmt(value: datetime) -> str:
 
 
 def canonical_bytes(value: Any) -> bytes:
-    return (json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":")) + "\n").encode("utf-8")
+    try:
+        return (json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), allow_nan=False) + "\n").encode("utf-8")
+    except (TypeError, ValueError, UnicodeError, RecursionError) as exc:
+        raise QuarantineError("value is not strict canonical JSON") from exc
 
 
 def digest_object(value: Any) -> str:
@@ -103,6 +108,8 @@ def digest_object(value: Any) -> str:
 
 
 def parse_json_bytes(raw: bytes, label: str) -> dict[str, Any]:
+    if len(raw) > MAX_INPUT_BYTES:
+        raise QuarantineError(f"{label} exceeds {MAX_INPUT_BYTES} bytes")
     try:
         text = raw.decode("utf-8", errors="strict")
     except UnicodeDecodeError as exc:
@@ -117,9 +124,13 @@ def parse_json_bytes(raw: bytes, label: str) -> dict[str, Any]:
         )
     except QuarantineError:
         raise
-    except json.JSONDecodeError as exc:
-        raise QuarantineError(f"{label} is not valid JSON: {exc.msg}") from exc
+    except (ValueError, RecursionError) as exc:
+        raise QuarantineError(f"{label} is not valid bounded JSON") from exc
     return _dict(value, label)
+
+
+def _snapshot(value: Any, label: str) -> dict[str, Any]:
+    return parse_json_bytes(canonical_bytes(_dict(value, label)), label)
 
 
 def _only(obj: dict[str, Any], allowed: set[str], label: str) -> None:
@@ -186,17 +197,93 @@ def _provider_outbounds(send_evidence: dict[str, Any], recipient: str) -> dict[s
     return out
 
 
+def _retained_dsn_events(
+    raw: dict[str, Any] | None, recipient: str, as_of: datetime, outbounds: dict[str, datetime],
+) -> dict[str, dict[str, dict[str, Any]]]:
+    """Recompute a separate capture input; never synthesize it from a route claim."""
+    if raw is None:
+        return {}
+    _only(raw, {"sources"}, "dsn_sources")
+    by_provider: dict[str, dict[str, dict[str, Any]]] = {}
+    source_ids: set[str] = set()
+    for index, item in enumerate(_list(raw.get("sources"), "dsn_sources.sources")):
+        label = f"dsn_sources.sources[{index}]"
+        source = _dict(item, label)
+        _only(source, {"raw_mime_base64", "binding", "receipt"}, label)
+        encoded = source.get("raw_mime_base64")
+        if type(encoded) is not str or not encoded or len(encoded) > MAX_INPUT_BYTES:
+            raise QuarantineError(f"{label}.raw_mime_base64 must be a bounded nonempty string")
+        try:
+            mime = base64.b64decode(encoded, validate=True)
+            if base64.b64encode(mime).decode("ascii") != encoded:
+                raise ValueError("noncanonical base64")
+        except (ValueError, binascii.Error) as exc:
+            raise QuarantineError(f"{label}.raw_mime_base64 must be canonical base64") from exc
+        binding = _dict(source.get("binding"), f"{label}.binding")
+        claimed = _dict(source.get("receipt"), f"{label}.receipt")
+        try:
+            recomputed = dsn_authority.authoritative_receipt(claimed, mime, binding)
+        except (ValueError, TypeError, RecursionError) as exc:
+            raise QuarantineError(f"{label}: retained DSN recomputation failed: {exc}") from exc
+        event = recomputed["event"]
+        provider = event["provider_message_id"]
+        if event["recipient"] != recipient or provider not in outbounds:
+            raise QuarantineError(f"{label}: retained DSN is outside the recipient/provider send scope")
+        if _time(binding.get("sent_at"), f"{label}.binding.sent_at") != outbounds[provider]:
+            raise QuarantineError(f"{label}: retained binding disagrees with the provider send time")
+        if _time(binding.get("captured_at"), f"{label}.binding.captured_at") > as_of:
+            raise QuarantineError(f"{label}: retained capture is after the route bundle boundary")
+        source_id = event["source_id"]
+        if source_id in source_ids:
+            raise QuarantineError(f"{label}: duplicate retained DSN source identity")
+        source_ids.add(source_id)
+        events = by_provider.setdefault(provider, {})
+        if event["event_id"] in events:
+            raise QuarantineError(f"{label}: duplicate retained DSN event identity")
+        events[event["event_id"]] = recomputed
+    return by_provider
+
+
+def _source_authority(
+    check: dict[str, Any], retained: dict[str, dict[str, Any]],
+) -> tuple[list[str], list[str]]:
+    matched: set[str] = set()
+    problems: list[str] = []
+    for index, event in enumerate(check["events"]):
+        if event["kind"] != "dsn":
+            problems.append(f"event {index}: {event['kind']} has no retained-source authority adapter")
+            continue
+        source = retained.get(event["event_id"])
+        if source is None:
+            problems.append(f"event {index}: matching retained DSN source is missing")
+        elif canonical_bytes(event) != canonical_bytes(source["event"]):
+            problems.append(f"event {index}: claim differs from the complete source-recomputed DSN event")
+        else:
+            matched.add(event["event_id"])
+    missing = sorted(set(retained) - matched)
+    if missing:
+        problems.append("retained DSN events omitted or substituted in the route check: " + ", ".join(missing))
+    return problems, sorted(matched)
+
+
 def evaluate(
     intent_raw: dict[str, Any],
     send_evidence_raw: dict[str, Any],
     route_bundle_raw: dict[str, Any],
+    *,
+    dsn_sources_raw: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    """Compose normal send preflight with complete route-health coverage.
+    """Compose normal send preflight with source-bound route-health coverage.
 
-    This function never authorizes a side effect. `ALLOW_NEW` means only that both
-    read-only gates are clear for a later sender to consume under its own authority.
+    Retained MIME, binding and normalizer receipts are a separate trusted capture
+    input, not reconstructed from route checks. No result authorizes a side effect.
     """
-
+    # Downstream parsing and hashing consume the same detached JSON generations.
+    intent_raw = _snapshot(intent_raw, "intent")
+    send_evidence_raw = _snapshot(send_evidence_raw, "send_evidence")
+    route_bundle_raw = _snapshot(route_bundle_raw, "route_bundle")
+    if dsn_sources_raw is not None:
+        dsn_sources_raw = _snapshot(dsn_sources_raw, "dsn_sources")
     try:
         send_guard = guard.evaluate(intent_raw, send_evidence_raw)
     except Exception as exc:
@@ -212,7 +299,8 @@ def evaluate(
         raise QuarantineError("route_bundle.as_of must equal send_evidence.generated_at")
 
     outbounds = _provider_outbounds(send_evidence_raw, recipient)
-    by_provider: dict[str, tuple[dict[str, Any], dict[str, Any]]] = {}
+    retained = _retained_dsn_events(dsn_sources_raw, recipient, bundle_as_of, outbounds)
+    by_provider: dict[str, tuple[dict[str, Any], dict[str, Any], list[str], list[str]]] = {}
     for index, check in enumerate(checks):
         try:
             route_receipt = route_lifecycle.evaluate(check, source_sha256=digest_object(check))
@@ -237,7 +325,8 @@ def evaluate(
             raise QuarantineError(f"route check references provider message {provider_message_id!r} absent from send evidence")
         if sent_at != expected_sent_at:
             raise QuarantineError(f"route check {provider_message_id!r} sent_at disagrees with send evidence")
-        by_provider[provider_message_id] = (check, route_receipt)
+        problems, matched = _source_authority(check, retained.get(provider_message_id, {}))
+        by_provider[provider_message_id] = (check, route_receipt, problems, matched)
 
     missing = sorted(set(outbounds) - set(by_provider))
     if missing:
@@ -245,7 +334,10 @@ def evaluate(
             "route lifecycle coverage is incomplete for provider outbound messages: " + ", ".join(missing)
         )
 
-    decisions = [entry[1]["payload"]["decision"] for entry in by_provider.values()]
+    # A self-hash authenticates neither a DSN nor a delivery/recipient-intent claim.
+    # Keep the classifier receipt for traceability, but only consume its decision
+    # after every claimed event and every supplied retained event is reconciled.
+    decisions = ["HOLD_ROUTE" if entry[2] else entry[1]["payload"]["decision"] for entry in by_provider.values()]
     if any(decision == "BLOCK_ROUTE" for decision in decisions):
         route_state = "BLOCKED"
     elif any(decision == "HOLD_ROUTE" for decision in decisions):
@@ -259,12 +351,15 @@ def evaluate(
     if guard_decision not in {"ALLOW_NEW", "REPLY_ONLY", "HOLD", "DO_NOT_RESEND"}:
         raise QuarantineError(f"unexpected send guard decision {guard_decision!r}")
 
-    if route_state == "BLOCKED":
+    if guard_decision == "DO_NOT_RESEND":
+        decision = "DO_NOT_RESEND"
+        reasons = ["terminal send-guard prohibition preserved regardless of route-source review state"]
+    elif route_state == "BLOCKED":
         decision = "DO_NOT_USE_ROUTE"
-        reasons = ["authoritative route lifecycle evidence blocks this email route"]
+        reasons = ["source-recomputed DSN lifecycle evidence blocks this email route"]
     elif route_state == "HOLD":
         decision = "HOLD"
-        reasons = ["route lifecycle evidence requires review before any same-route send"]
+        reasons = ["route lifecycle or retained-source reconciliation requires review before any same-route send"]
     else:
         decision = guard_decision
         reasons = [f"send guard decision preserved under clear route lifecycle coverage: {guard_decision}"]
@@ -272,13 +367,27 @@ def evaluate(
 
     route_receipts = []
     for provider_message_id in sorted(by_provider):
-        check, receipt = by_provider[provider_message_id]
+        check, receipt, problems, matched = by_provider[provider_message_id]
+        sources = retained.get(provider_message_id, {})
         route_receipts.append(
             {
                 "provider_message_id": provider_message_id,
                 "route_evidence_sha256": digest_object(check),
                 "route_receipt_sha256": _text(receipt.get("receipt_sha256"), "route receipt digest", 64),
-                "decision": receipt["payload"]["decision"],
+                "claimed_lifecycle_decision": receipt["payload"]["decision"],
+                "decision": "HOLD_ROUTE" if problems else receipt["payload"]["decision"],
+                "source_authority_problems": problems,
+                "source_matched_event_ids": matched,
+                "retained_dsn_receipts": [
+                    {
+                        "event_id": event_id,
+                        "source_id": sources[event_id]["source_id"],
+                        "source_sha256": sources[event_id]["source_sha256"],
+                        "binding_sha256": sources[event_id]["binding_sha256"],
+                        "receipt_sha256": sources[event_id]["receipt_sha256"],
+                    }
+                    for event_id in sorted(sources)
+                ],
             }
         )
 
@@ -295,10 +404,9 @@ def evaluate(
         "intent_sha256": digest_object(intent_raw),
         "send_evidence_sha256": digest_object(send_evidence_raw),
         "route_bundle_sha256": digest_object(route_bundle_raw),
+        "dsn_sources_sha256": digest_object(dsn_sources_raw) if dsn_sources_raw is not None else None,
         "send_guard_receipt_sha256": _text(send_guard.get("receipt_sha256"), "send guard digest", 64),
-        # A route block is transport truth about this exact recipient only. It must
-        # never manufacture a duty to hunt another alias or create a new contact
-        # generation. Deliberate alternate-route work starts outside this receipt.
+        # A route block never creates an obligation to hunt another alias.
         "alternate_route_research_required": False,
         "research_obligation": None,
         "route_review_required": route_state == "HOLD",
@@ -314,10 +422,12 @@ def verify(
     intent_raw: dict[str, Any],
     send_evidence_raw: dict[str, Any],
     route_bundle_raw: dict[str, Any],
+    *,
+    dsn_sources_raw: dict[str, Any] | None = None,
 ) -> bool:
-    claimed = _dict(receipt_raw, "receipt")
+    claimed = _snapshot(receipt_raw, "receipt")
     _only(claimed, {"payload", "receipt_sha256"}, "receipt")
-    recomputed = evaluate(intent_raw, send_evidence_raw, route_bundle_raw)
+    recomputed = evaluate(intent_raw, send_evidence_raw, route_bundle_raw, dsn_sources_raw=dsn_sources_raw)
     return canonical_bytes(claimed) == canonical_bytes(recomputed)
 
 
@@ -363,19 +473,21 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--intent", type=Path, required=True)
     parser.add_argument("--send-evidence", type=Path, required=True)
     parser.add_argument("--route-bundle", type=Path, required=True)
+    parser.add_argument("--dsn-sources", type=Path, help="separate retained MIME/binding/normalizer-receipt input")
     parser.add_argument("--receipt", type=Path, help="optional receipt to verify instead of compiling")
     args = parser.parse_args(argv)
     try:
         intent = _load(args.intent, "intent")
         evidence = _load(args.send_evidence, "send evidence")
         bundle = _load(args.route_bundle, "route bundle")
+        sources = _load(args.dsn_sources, "DSN sources") if args.dsn_sources is not None else None
         if args.receipt is not None:
             receipt = _load(args.receipt, "receipt")
-            if not verify(receipt, intent, evidence, bundle):
+            if not verify(receipt, intent, evidence, bundle, dsn_sources_raw=sources):
                 raise QuarantineError("receipt does not exactly recompute from supplied sources")
             print("VERIFIED")
             return 0
-        receipt = evaluate(intent, evidence, bundle)
+        receipt = evaluate(intent, evidence, bundle, dsn_sources_raw=sources)
         sys.stdout.buffer.write(canonical_bytes(receipt))
         decision = receipt["payload"]["decision"]
         return {"ALLOW_NEW": 0, "REPLY_ONLY": 3, "HOLD": 4, "DO_NOT_RESEND": 5, "DO_NOT_USE_ROUTE": 6}[decision]
