@@ -73,8 +73,15 @@ def resolve_range(head: str, base: str | None, lookback_minutes: int) -> tuple[s
     if base:
         frozen_base = git("rev-parse", f"{base}^{{commit}}")
     else:
-        commits = git("rev-list", "--reverse", f"--since={lookback_minutes} minutes ago", frozen_head).splitlines()
-        oldest = commits[0] if commits else frozen_head
+        # Commit timestamps need not follow parent order. Do not mistake an
+        # older-dated tip for an empty window, or replay its previous merge.
+        commits = git(
+            "rev-list", "--reverse", "--topo-order",
+            f"--since-as-filter={lookback_minutes} minutes ago", frozen_head,
+        ).splitlines()
+        if not commits:
+            return frozen_head, frozen_head, 0
+        oldest = commits[0]
         parent = git("rev-parse", f"{oldest}^", check=False)
         frozen_base = parent or oldest
     count = int(git("rev-list", "--count", f"{frozen_base}..{frozen_head}") or "0")
@@ -95,8 +102,10 @@ def verification_paths(paths: list[str]) -> list[str]:
     ]
 
 
-def plan(paths: list[str]) -> list[tuple[str, list[str]]]:
-    """A verifier appears at most once, regardless of commit count."""
+def plan(paths: list[str], *, audit_unchanged: bool = False) -> list[tuple[str, list[str]]]:
+    """Batch changed content once; an explicit base can also audit unchanged HEAD."""
+    if not paths and not audit_unchanged:
+        return []
     commands = [
         ("imports", [sys.executable, "-c", "import sys; sys.path.insert(0,'.'); import hub_pages,memory_board,capability_declaration,board_ingest,builds_ledger,file_drop,commons_mcp,action_executor,action_land,device_action_state"]),
         ("open-door", [sys.executable, "open_door_guard.py", "--diff", "{base}", "{head}"]),
@@ -162,10 +171,12 @@ def finding_provenance(
     }
 
 
-def run_batch(base: str, head: str, paths: list[str]) -> tuple[list[dict], bool]:
+def run_batch(
+    base: str, head: str, paths: list[str], *, audit_unchanged: bool = False,
+) -> tuple[list[dict], bool]:
     results = []
     ok = True
-    for name, template in plan(paths):
+    for name, template in plan(paths, audit_unchanged=audit_unchanged):
         command = [part.format(base=base, head=head) for part in template]
         proc = subprocess.run(command, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         results.append({
@@ -182,8 +193,14 @@ def run_batch(base: str, head: str, paths: list[str]) -> tuple[list[dict], bool]
 def build_receipt(head: str, base: str | None, lookback_minutes: int, execute: bool) -> dict:
     frozen_base, frozen_head, commit_count = resolve_range(head, base, lookback_minutes)
     paths = changed_paths(frozen_base, frozen_head)
-    tasks = [name for name, _ in plan(paths)]
-    results, ok = run_batch(frozen_base, frozen_head, paths) if execute else ([], True)
+    # --base is an explicit audit request, including --base HEAD. Automatic
+    # samples with no content changes keep their receipt without running checks.
+    audit_unchanged = base is not None
+    tasks = [name for name, _ in plan(paths, audit_unchanged=audit_unchanged)]
+    results, ok = (
+        run_batch(frozen_base, frozen_head, paths, audit_unchanged=audit_unchanged)
+        if execute and tasks else ([], True)
+    )
     verification = verification_paths(paths)
     findings = [result for result in results if result["exit_code"] != 0]
     return {
@@ -210,6 +227,7 @@ def build_receipt(head: str, base: str | None, lookback_minutes: int, execute: b
         "tasks": tasks,
         "results": results,
         "status": "PASS" if ok else "FINDINGS",
+        "execution_state": "IDLE" if not tasks else "EXECUTED" if execute else "PLANNED",
         "main_movement_policy": "freeze_then_next_range",
         "velocity": main_velocity.measure(frozen_head),
     }
