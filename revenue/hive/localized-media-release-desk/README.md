@@ -18,7 +18,7 @@ A local-first operations desk for teams that already possess source media and ow
 
 ## Database startup
 
-The ordinary CLI distinguishes three cases. A missing database, or one with no tables, is initialized in a single transaction: the five desk tables are created or the attempt is rolled back. An existing desk whose tables, columns, keys and constraints match the current desk is reopened and its schema is left untouched. Any other nonempty database, including one with extra views or triggers, is refused. Refusal does not alter that file's schema or rows. Recognition uses the schema on the connection reserved for startup, not the pathname, so a concurrent replacement is not treated as solved by inspecting the path. The read-only review still opens an existing database itself and does not run this startup.
+The ordinary CLI distinguishes three cases. A missing database, or one with no user schema objects, is initialized in a single transaction: the five desk tables are created or the attempt is rolled back. An existing desk whose tables, columns, keys and constraints match the current desk is reopened and its schema is left untouched. Any other nonempty database, including one whose only object is a view or trigger, is refused. Refusal does not alter that file's schema or rows. Recognition uses the schema on the connection reserved for startup, not the pathname, so a concurrent replacement is not treated as solved by inspecting the path. The read-only review still opens an existing database itself and does not run this startup.
 
 ## Authority ceiling
 
