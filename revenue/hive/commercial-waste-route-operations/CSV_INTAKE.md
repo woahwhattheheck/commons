@@ -14,7 +14,7 @@ The output directory must already exist. The named output must not exist: exclus
 
 Without `--out`, the complete manifest is written to standard output. `--preview` instead returns a JSON object with `counts`, `business_timezone`, and `manifest_text`. No partial manifest is produced for invalid input.
 
-Open the console from [WEB_CONSOLE.md](WEB_CONSOLE.md). In **Workspace**, choose a CSV file or paste the same twelve columns, enter the business timezone, and press **Preview CSV**. Preview calls `csv_manifest.preview` through the loopback console and copies `manifest_text` into the manifest editor verbatim. It shows customer, site, container, and plan counts. Invalid input stays a single structural error with its line; nothing is imported. **Download valid manifest** saves that same text. **Initialize this workspace** is still the explicit command, and an initialized database cannot be replaced. A JSON file can still be loaded directly.
+Open the console from [WEB_CONSOLE.md](WEB_CONSOLE.md). In **Workspace**, choose a CSV file or paste the same twelve columns, enter the business timezone, and press **Preview CSV**. Preview calls `csv_manifest.preview` through the loopback console and copies `manifest_text` into the manifest editor verbatim. It shows customer, site, container, and plan counts. Invalid input stays a single structural error with its line; nothing is imported, and a rejected preview does not replace an already reviewed manifest or clear its download. A non-UTF-8 or oversize file does not replace the paste box. **Download valid manifest** saves that same text. **Initialize this workspace** is still the explicit command, and an initialized database cannot be replaced. A JSON file can still be loaded directly.
 
 ## Required CSV columns
 
