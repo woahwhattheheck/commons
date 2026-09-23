@@ -14,7 +14,7 @@ import math
 import re
 from urllib.parse import parse_qsl, urlencode, urlsplit
 
-from .summary import epoch, item_freshness, source_freshness
+from .summary import epoch, item_freshness, reduce_source_health, source_freshness
 
 SCHEMA = "commons-deathstar-context/v1"
 DEFAULT_LIMIT = 20
@@ -249,11 +249,14 @@ def build_index(work, now=None):
             missing.add(source_id)
     rows.sort(key=_sort_key)
     source_rows = [_source(sources.get(key, {}), key, tick) for key in sorted(set(sources) | missing)]
+    # All-source health is independent of item filters/pages; empty pages still expose it.
+    source_health = reduce_source_health(sources, tick)
     content = {"schema": SCHEMA, "items": rows, "sources": source_rows}
     return {**content, "content_revision": _hash(content),
             "evaluated_at": current.astimezone(timezone.utc).isoformat().replace("+00:00", "Z"),
             "store_observed_at": _stamp(work.get("observed_at")),
-            "input_source_count": len(sources)}
+            "input_source_count": len(sources),
+            "source_health": source_health}
 
 
 def select(index, limit=DEFAULT_LIMIT, offset=0, query="", owner="", provider="",
@@ -265,7 +268,7 @@ def select(index, limit=DEFAULT_LIMIT, offset=0, query="", owner="", provider=""
     Exact filters compare original normalized values, never truncated display text.
     Search examines only the returned compact fields, never hidden body/notes.
     Revision binds the inventory, selection, offset and limit. On unchanged,
-    items=[] means reuse the previous identical page; sources/envelope stay present.
+    items=[] means reuse the previous identical page; sources and source_health stay present.
     Offset navigation is stable within a revision, not a historical snapshot.
     Optional seat/oldest ordering changes discovery only, never eligibility or
     ownership. All orders retain explicit priority bands and the same filters.
@@ -304,10 +307,14 @@ def select(index, limit=DEFAULT_LIMIT, offset=0, query="", owner="", provider=""
     page = matches[offset:offset + limit]
     source_ids = {row["source_id"] for row in page}
     page_sources = [row for row in index["sources"] if row["source_id"] in source_ids]
-    selection = {"content": index["content_revision"], "filters": filters, "limit": limit, "offset": offset}
+    health = index.get("source_health") or reduce_source_health({}, 0)
+    # Bind visible all-source health into the opaque revision so empty/filtered
+    # pages still invalidate when source freshness/coverage debt moves.
+    selection = {"content": index["content_revision"], "filters": filters, "limit": limit, "offset": offset,
+                 "source_health": {"state": health.get("state"), "coverage_debt_count": health.get("coverage_debt_count"),
+                                   "freshness": health.get("freshness"), "total": health.get("total")}}
     if order != "priority":
         selection["ordering"] = {"order": order, "seat": seat}
-    # Preserve the legacy default revision and response shape exactly.
     revision = _hash(selection)
     unchanged = if_revision == revision
     before = min(offset, len(matches))
@@ -331,7 +338,8 @@ def select(index, limit=DEFAULT_LIMIT, offset=0, query="", owner="", provider=""
                      "off_page_sources": len(index["sources"]) - len(page_sources)},
         "items": [] if unchanged else [{key: value for key, value in row.items() if key != "_exact_filters"} for row in page],
         "sources": page_sources,
-        "scope": "Existing normalized observations only; filters/pages do not restrict peer access. owner is a provider label; assigned_owner is explicit direction. No body or event history.",
+        "source_health": health,
+        "scope": "Existing normalized observations only; filters/pages do not restrict peer access. owner is a provider label; assigned_owner is explicit direction. No body or event history. source_health is all cached sources, independent of item filters and page membership.",
     }
     if order != "priority":
         result["ordering"] = {

@@ -90,6 +90,67 @@ def scalar(value, limit=160):
     return short(value, limit) if isinstance(value, str) else None
 
 
+def reduce_source_health(sources, tick, max_rows=MAX_ROWS):
+    """Bounded all-source health / coverage debt. Independent of item filters.
+
+    `sources` is a dict of id -> raw source objects (WorkstreamStore shape).
+    Distinguishes fresh-complete observation from unknown/degraded. Exception
+    details stay bounded; raw errors and credentials never leave.
+    Shared by Deathstar summary and context discovery pages.
+    """
+    if isinstance(sources, dict):
+        pairs = list(sources.items())
+    else:
+        pairs = []
+        for row in sources or []:
+            if not isinstance(row, dict):
+                continue
+            key = row.get("id")
+            if isinstance(key, str) and key:
+                pairs.append((key, row))
+    counts = Counter()
+    debt = []
+    for key, source in pairs:
+        if not isinstance(source, dict):
+            continue
+        fresh = source_freshness(source, tick)
+        counts[fresh] += 1
+        declared = (source.get("coverage") or {}).get("complete")
+        meta = source.get("metadata") or {}
+        if fresh != "fresh" or declared is not True:
+            debt.append({
+                "id": short(key, 512), "label": short(source.get("label") or key),
+                "freshness": fresh, "complete": declared is True,
+                "mode": short(source.get("sync_mode") or "unknown", 40),
+                "last_good_observed_at": source.get("last_good_observed_at"),
+                "last_attempt_at": source.get("last_attempt_at"),
+                "pagination_remaining": scalar((source.get("coverage") or {}).get("pagination_remaining")),
+                "threads_pending": scalar(meta.get("threads_pending_count")),
+                "repositories_pending": scalar(meta.get("action_repositories_pending_count")),
+                "has_error": bool(source.get("error")),
+                "retained_last_good": source.get("retained_last_good") is True,
+            })
+    total = len(pairs)
+    if total == 0:
+        state = "unknown"
+    elif not debt:
+        state = "fresh_complete"
+    elif counts.get("unknown", 0) == total:
+        state = "unknown"
+    else:
+        state = "degraded"
+    return {
+        "schema": "commons-source-health/v1",
+        "total": total,
+        "freshness": {key: counts.get(key, 0) for key in ("fresh", "retained", "stale", "unknown")},
+        "state": state,
+        "coverage_debt_count": len(debt),
+        "coverage_debt": debt[:max_rows],
+        "coverage_debt_omitted": max(0, len(debt) - max_rows),
+        "independent_of_item_filters": True,
+    }
+
+
 def compact_counts(values):
     counted = Counter(values)
     pairs = counted.most_common(MAX_ROWS)
@@ -189,24 +250,14 @@ def build_summary(work, now=None):
             elif seen == payments[identity][0] and (currency, status, amount) != payments[identity][1:]:
                 money_conflicts.add(identity)
 
+    health = reduce_source_health(sources, tick)
+    source_counts.update(health["freshness"])
     coverage = []
-    for key, source in sources.items():
-        fresh = source_freshness(source, tick)
-        source_counts[fresh] += 1
-        declared = (source.get("coverage") or {}).get("complete")
-        meta = source.get("metadata") or {}
-        if fresh != "fresh" or declared is not True:
-            coverage.append({
-                "id": short(key, 512), "label": short(source.get("label") or key),
-                "freshness": fresh, "complete": declared is True,
-                "mode": short(source.get("sync_mode") or "unknown", 40),
-                "last_good_observed_at": source.get("last_good_observed_at"),
-                "last_attempt_at": source.get("last_attempt_at"),
-                "pagination_remaining": scalar((source.get("coverage") or {}).get("pagination_remaining")),
-                "threads_pending": scalar(meta.get("threads_pending_count")),
-                "repositories_pending": scalar(meta.get("action_repositories_pending_count")),
-                **source_rows[key],
-            })
+    for row in health["coverage_debt"]:
+        key = row["id"]
+        coverage.append({**row, **source_rows.get(key, {"records": 0, "retained_records": 0, "oldest_ingested_at": None})})
+    # Preserve omitted count after record merge (same bound).
+    coverage_omitted = health["coverage_debt_omitted"]
     sums = {}
     for identity, (_, currency, status, amount) in payments.items():
         if identity in money_conflicts:
@@ -240,8 +291,9 @@ def build_summary(work, now=None):
         "generated_at": current.isoformat().replace("+00:00", "Z"),
         "provider_requests": 0,
         "sources": {"total": len(sources), **{k: source_counts[k] for k in work_counts},
-                    "coverage_debt_count": len(coverage), "coverage_debt": coverage[:MAX_ROWS],
-                    "coverage_debt_omitted": max(0, len(coverage) - MAX_ROWS)},
+                    "coverage_debt_count": health["coverage_debt_count"], "coverage_debt": coverage[:MAX_ROWS],
+                    "coverage_debt_omitted": coverage_omitted,
+                    "health_state": health["state"]},
         "work": {"total": total_work, "control_records": controls, "freshness": work_counts,
                  "open": open_counts, "attention": attention_counts,
                  "statuses": compact_counts(statuses),

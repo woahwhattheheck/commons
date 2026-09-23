@@ -52,3 +52,22 @@ new claim or approval mechanism.
 
 The source/API capability requires the running process to load the updated
 code. A repository merge alone is not deployment evidence.
+
+## All-source health on every page
+
+Every context response includes `source_health` from the shared
+`reduce_source_health` reducer (same classification Deathstar summary uses for
+coverage debt). It covers **all** cached sources, including when the page has
+zero matching items or `unchanged=true`.
+
+- `state`: `fresh_complete` | `degraded` | `unknown`
+- `freshness`: counts for fresh / retained / stale / unknown
+- `coverage_debt` / `coverage_debt_count` / `coverage_debt_omitted`: bounded debt rows
+- `independent_of_item_filters`: always true — empty or filtered pages are not
+  proof that providers are healthy or that no work exists
+
+Page-specific `sources` still list only sources that contributed items on the
+current page. Visible health (`state`, debt counts, freshness totals) is bound
+into the opaque `revision` so a later evaluation with moved source health does
+not silently reuse a stale empty-page revision.
+
