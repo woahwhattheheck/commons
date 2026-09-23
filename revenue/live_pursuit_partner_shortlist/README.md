@@ -47,23 +47,20 @@ The compiler canonicalizes unordered inputs, writes:
 
 The receipt binds canonical input, crosswalk, shortlist, Markdown bytes, status, and blockers with SHA-256. `verify` recompiles from source input and byte-compares all four outputs. Writes are create-exclusive and use `O_NOFOLLOW` when available.
 
-## Retained CI
-
-Commons has a bounded active-workflow budget. This product therefore does not consume a dedicated workflow slot. Root bridge `test_live_pursuit_partner_shortlist.py` is discovered by the existing retained `tests` battery and runs the nested suite under normal and real `python -O`, plus a real CLI compile→verify round trip. `source-parses` also wakes on the Python carrier.
-
 ## Run
 
+Choose a new output directory. Change the example path if it already exists;
+do not remove an earlier output merely to rerun this example.
+
 ```bash
-rm -rf /tmp/partner-shortlist
 python revenue/live_pursuit_partner_shortlist/compiler.py compile \
   --input revenue/live_pursuit_partner_shortlist/fixtures/pursuits.synthetic.json \
-  --out-dir /tmp/partner-shortlist
+  --out-dir /tmp/partner-shortlist-new
 python revenue/live_pursuit_partner_shortlist/compiler.py verify \
   --input revenue/live_pursuit_partner_shortlist/fixtures/pursuits.synthetic.json \
-  --out-dir /tmp/partner-shortlist
-python -m unittest discover -s revenue/live_pursuit_partner_shortlist/tests -p 'test_*.py' -v
-python -O -m unittest discover -s revenue/live_pursuit_partner_shortlist/tests -p 'test_*.py' -v
-python test_live_pursuit_partner_shortlist.py -v
+  --out-dir /tmp/partner-shortlist-new
 ```
 
-The runtime is stdlib-only and performs no network calls.
+The runtime is stdlib-only and performs no network calls. The compiler, its
+runtime verifier, and the loaded synthetic trust-generation files remain
+production dependencies; removing generated test suites does not change them.
