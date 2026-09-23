@@ -4259,8 +4259,6 @@ def _handle_completion_issue_event(ev):
     if type(number) is not int or number < 1:
         print("COMPLETION_HOLD reason=missing_issue_number", flush=True)
         return 0
-    if action != "closed" and action != "reopened":
-        return 0
     try:
         canonical_issue = _gh_api(
             "https://api.github.com/repos/woahwhattheheck/commons/issues/%s" % number
