@@ -53,12 +53,18 @@ def classify_execution(evidence: GrantFoxExecutionEvidence) -> dict:
 
     This reducer performs no network I/O and does not claim or assign work.
     Research/baseline work remains available in every non-terminal state.
+    Missing or malformed observations require refresh, not inferred closure or
+    eligibility; positive provider observations must be actual booleans.
     """
-    if evidence.issue_state.strip().lower() != "open" or evidence.overlap_verdict in {
+    issue_state = _normalized(evidence.issue_state)
+    if issue_state == "closed" or evidence.overlap_verdict in {
         ISSUE_CLOSED,
         SATISFIED_DEFAULT_BRANCH,
     }:
         return _result(evidence, CLOSED_OR_SATISFIED)
+
+    if issue_state != "open":
+        return _result(evidence, NEEDS_REFRESH)
 
     if evidence.overlap_verdict == OVERLAP_OPEN_PR:
         return _result(evidence, OVERLAP_EXISTING_WORK)
@@ -69,7 +75,7 @@ def classify_execution(evidence: GrantFoxExecutionEvidence) -> dict:
     if evidence.overlap_verdict != READY:
         return _result(evidence, NEEDS_REFRESH)
 
-    if not evidence.grantfox_candidate_verified or not evidence.provider_state_observed:
+    if evidence.grantfox_candidate_verified is not True or evidence.provider_state_observed is not True:
         return _result(evidence, NEEDS_REFRESH)
 
     application_state = _normalized(evidence.application_state)
@@ -98,7 +104,7 @@ def classify_execution(evidence: GrantFoxExecutionEvidence) -> dict:
 
 
 def _normalized(value: str | None) -> str:
-    return "" if value is None else value.strip().lower()
+    return value.strip().lower() if isinstance(value, str) else ""
 
 
 def _result(evidence: GrantFoxExecutionEvidence, verdict: str) -> dict:
