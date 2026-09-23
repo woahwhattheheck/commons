@@ -23,19 +23,61 @@ const evidenceStates = {
   UNTRUSTED_EVIDENCE_CONSISTENT: { label: "Evidence consistent", tone: "consistent", next: "Review the supporting records in context, then capture the observation or follow-up that belongs in the assessment." },
   HOLD_MISSING_EVIDENCE: { label: "Evidence needed", tone: "needed", next: "Identify the specific artifact or example needed to understand this practice. An empty evidence set leaves the assessment open." },
   HOLD_CONFLICT: { label: "Sources disagree", tone: "conflict", next: "Compare the sources' definitions, dates, and scope. Record what would resolve the disagreement before selecting a conclusion." },
-  HOLD_STALE_EVIDENCE: { label: "Update source", tone: "stale", next: "Request a recent example of this practice. Keep the older record as context and check what has changed." }
+  HOLD_STALE_EVIDENCE: { label: "Update source", tone: "stale", next: "Request a recent example of this practice. Keep the older record as context and check what has changed." },
+  NOT_ASSESSED: { label: "Not assessed", tone: "unassessed", next: "Determine what assessment work is still needed; no outcome is established." },
+  NOT_APPLICABLE: { label: "Not applicable", tone: "inapplicable", next: "Retain the stated applicability decision and its basis; this is not a zero or a pass." },
+  UNKNOWN: { label: "Unknown", tone: "unknown", next: "Resolve the missing context before assigning an assessment outcome." }
 };
-function evidenceState(cell) { return evidenceStates[cell.status] || { label: "Review evidence", tone: "needed", next: "Review the source record and its technical details." }; }
+function evidenceState(cell) {
+  return typeof cell.status === "string" && Object.prototype.hasOwnProperty.call(evidenceStates, cell.status)
+    ? evidenceStates[cell.status]
+    : { label: "Unrecognized status", tone: "unknown", next: "Review the original status code and source record; no outcome is inferred." };
+}
+
+// Presentation recovered from UIOWA-126 (#16265). This never creates a compiler
+// state or score: the original report and exported handoff remain unchanged.
+const CELL_PRESENTATION = Object.freeze({
+  UNTRUSTED_EVIDENCE_CONSISTENT: ["consistent", "[=]", "Supplied records agree; no current review authority."],
+  HOLD_MISSING_EVIDENCE: ["missing", "[?]", "No supporting record in this cell; not a poor-performance finding."],
+  HOLD_CONFLICT: ["conflict", "[!]", "Differing records remain unresolved; do not average them into a score."],
+  HOLD_STALE_EVIDENCE: ["stale", "[~]", "Evidence exceeds its configured age window; not a finding about current practice."],
+  NOT_ASSESSED: ["unassessed", "[-]", "No assessment outcome is established for this cell."],
+  NOT_APPLICABLE: ["inapplicable", "[/]", "Declared outside the applicable assessment; not a zero or a pass."],
+  UNKNOWN: ["unknown", "[?]", "The supplied status does not establish an outcome."]
+});
+function cellPresentation(cell) {
+  const row = typeof cell.status === "string" && Object.prototype.hasOwnProperty.call(CELL_PRESENTATION, cell.status)
+    ? CELL_PRESENTATION[cell.status]
+    : ["unrecognized", "[?]", "Read the original code and evidence; no outcome is inferred."];
+  return { kind: row[0], marker: row[1], explanation: row[2] };
+}
+function valuePresentation(cell, field) {
+  if (!Object.prototype.hasOwnProperty.call(cell, field)) return "Not supplied (field absent)";
+  const value = cell[field];
+  if (value === null) {
+    return cell.status === "UNTRUSTED_EVIDENCE_CONSISTENT"
+      ? "Not reported in untrusted inspection (null)"
+      : "Not determined (null)";
+  }
+  if (typeof value !== "number" || !Number.isFinite(value)) return "Non-numeric or invalid value; inspect original record";
+  return `Supplied value: ${Object.is(value, -0) ? "-0" : String(value)} (display only)`;
+}
 function appendText(parent, tag, value, className="") {
   const node = document.createElement(tag); node.textContent = value;
   if (className) node.className = className;
   parent.append(node); return node;
 }
+function appendCellValues(parent, cell) {
+  appendText(parent, "span", `Source status: ${text(cell.status)}`, "source-status");
+  appendText(parent, "span", cellPresentation(cell).explanation, "state-explanation");
+  appendText(parent, "span", `Maturity: ${valuePresentation(cell, "maturity")}`, "value-state");
+  appendText(parent, "span", `Confidence (basis points): ${valuePresentation(cell, "confidence_bp")}`, "value-state");
+}
 function statusBadge(cell, className="status") {
   const badge = document.createElement("span"); badge.className = className;
   badge.dataset.tone = evidenceState(cell).tone;
   const dot = document.createElement("span"); dot.className = "status-dot"; dot.setAttribute("aria-hidden", "true");
-  badge.append(dot, document.createTextNode(evidenceState(cell).label)); return badge;
+  badge.append(dot, document.createTextNode(`${cellPresentation(cell).marker} ${evidenceState(cell).label}`)); return badge;
 }
 
 function returnToSelectedCell() {
@@ -193,12 +235,21 @@ function installReport(report) {
 
 function renderSummary() {
   el.summary.replaceChildren();
-  for (const [code, presentation] of Object.entries(evidenceStates)) {
+  const codes = [...new Set([
+    "UNTRUSTED_EVIDENCE_CONSISTENT", "HOLD_MISSING_EVIDENCE", "HOLD_CONFLICT", "HOLD_STALE_EVIDENCE",
+    ...state.cells.map(cell => cell.status)
+  ])];
+  for (const code of codes) {
     const item = document.createElement("div");
-    appendText(item, "dt", presentation.label);
+    appendText(item, "dt", evidenceState({ status: code }).label);
     appendText(item, "dd", String(state.cells.filter(cell => cell.status === code).length));
+    if (!Object.prototype.hasOwnProperty.call(evidenceStates, code)) appendText(item, "small", text(code), "source-status");
     el.summary.append(item);
   }
+  const guide = document.createElement("div"); guide.className = "reading-guide";
+  appendText(guide, "dt", "Reading the evidence");
+  appendText(guide, "dd", "Zero is a supplied numeric value, not missing data. Missing evidence, not assessed, not applicable, stale and conflicting records remain distinct. Null is not a score or a finding. Labels and border patterns work without color.");
+  el.summary.append(guide);
   const sources = state.report.evidence_authority?.sources || [];
   const syntheticEvidence = sources.length > 0 && sources.every(source => String(source.source_ref || "").startsWith("synthetic://"));
   el.sampleBadge.hidden = false;
@@ -215,7 +266,7 @@ function renderSummary() {
 function rebuildStatuses() {
   const current = el.statusFilter.value;
   const statuses = [...new Set(state.cells.map(c => c.status))].sort();
-  el.statusFilter.replaceChildren(new Option("All evidence states", ""), ...statuses.map(s => new Option(evidenceState({status:s}).label, s)));
+  el.statusFilter.replaceChildren(new Option("All evidence states", ""), ...statuses.map(s => new Option(`${evidenceState({status:s}).label} · ${text(s)}`, s)));
   if (statuses.includes(current)) el.statusFilter.value = current;
 }
 
@@ -247,11 +298,13 @@ function renderMatrix() {
     button.className = "cell";
     button.dataset.key = key;
     button.dataset.tone = evidenceState(cell).tone;
+    button.dataset.evidenceState = cellPresentation(cell).kind;
     button.setAttribute("aria-controls", "detailPanel");
-    button.setAttribute("aria-label", `${cell.group}: ${areaLabels[cell.dimension] || cell.dimension}, ${evidenceState(cell).label}. Open evidence and notes.`);
+    button.setAttribute("aria-label", `${cell.group}: ${areaLabels[cell.dimension] || cell.dimension}, ${evidenceState(cell).label}. Maturity: ${valuePresentation(cell, "maturity")}. Confidence in basis points: ${valuePresentation(cell, "confidence_bp")}. Open evidence and notes.`);
     button.setAttribute("aria-current", state.selectedKey === key ? "true" : "false");
     appendText(button, "span", areaLabels[cell.dimension] || cell.dimension, "area");
     button.append(statusBadge(cell));
+    appendCellValues(button, cell);
     const count = (cell.source_ids || []).length;
     appendText(button, "span", `${count} source${count === 1 ? "" : "s"}`, "source-count");
     button.addEventListener("click", () => selectCell(key));
@@ -280,6 +333,8 @@ function selectCell(key, focusDetail = true) {
   el.backToCellBtn.disabled = false;
   appendText(el.cellSummary, "p", groupLabels[cell.group] || cell.group, "team-context");
   el.cellSummary.append(statusBadge(cell, "evidence-status"));
+  const values = document.createElement("div"); values.className = "cell-values";
+  appendCellValues(values, cell); el.cellSummary.append(values);
   const next = document.createElement("p"); next.className = "next-step";
   appendText(next, "strong", "Useful next step"); next.append(document.createTextNode(evidenceState(cell).next)); el.cellSummary.append(next);
   el.sourceList.replaceChildren();
