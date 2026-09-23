@@ -16,7 +16,6 @@ from api import mcp as adapter
 
 ROOT = Path(__file__).resolve().parent
 WORKFLOW = ROOT / ".github" / "workflows" / "spark-mcp-production.yml"
-TESTS_YML = ROOT / ".github" / "workflows" / "tests.yml"
 VERCELIGNORE = ROOT / ".vercelignore"
 
 REQUIRED_WATCH = (
@@ -147,8 +146,9 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
         self.assertIn("VERCEL_TEAM_TOKEN is not present in GitHub Actions secrets.", text)
         self.assertNotRegex(text, r"\b[A-Za-z0-9_]{24,}\.[A-Za-z0-9_]{10,}\b")
 
-    def test_tests_yml_watches_the_adapter(self) -> None:
-        text = TESTS_YML.read_text(encoding="utf-8")
+    def test_production_workflow_watches_the_adapter(self) -> None:
+        """tests.yml was retired for workflow-surface budget; spark-mcp-production.yml is the live adapter watch."""
+        text = WORKFLOW.read_text(encoding="utf-8")
         self.assertGreaterEqual(text.count("api/mcp.py"), 2)
         self.assertIn("commons_mcp.py", text)
         self.assertIn("vercel.json", text)
