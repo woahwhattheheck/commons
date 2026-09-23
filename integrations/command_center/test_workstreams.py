@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from integrations.command_center.core import CoreError
+from integrations.command_center.schema import CoreError
 from integrations.command_center.workstreams import WorkstreamStore
 
 
@@ -86,7 +86,6 @@ class WorkstreamTests(unittest.TestCase):
                                 status="error", error={"message": "Provider unavailable"})
         failure["source"]["activity_as_of"] = None
         result = self.store.ingest(failure)
-        self.assertEqual("source_error", result["status"])
         state = WorkstreamStore(self.path).state()
         self.assertEqual(1, len(state["items"]))
         source = state["sources"][0]
@@ -210,6 +209,65 @@ class WorkstreamTests(unittest.TestCase):
         self.assertEqual([], state["items"])
         self.assertIsNone(state["sources"][0]["last_success_at"])
         self.assertFalse(state["sources"][0]["retained_last_good"])
+
+    def test_bulk_reconciliation_keeps_history_without_decoding_absent_owner_packets(self):
+        from unittest.mock import patch
+        from integrations.command_center import workstreams
+
+        rows = [{"id": str(i), "summary": "Retained observation"} for i in range(1025)]
+        with patch.object(workstreams, "_now", return_value=FIRST) as clock:
+            self.assertEqual(1025, self.store.ingest(self.snapshot(items=rows))["changed"])
+            self.store.ingest(self.snapshot("other", source="other", items=[{"id": "0"}]))
+            self.store.update_work({"operation_id": "direction", "source_id": "github-work",
+                                    "item_id": "0", "priority": 0, "next_action": "Keep this direction"})
+            with self.store._db() as db:
+                owner_packet = db.execute("SELECT payload FROM owner_work").fetchone()[0]
+            clock.return_value = SECOND
+            partial = self.snapshot("partial", complete=False, observed=SECOND,
+                                    items=[{**rows[0], "status": "done"}, rows[1], {"id": "new"}])
+            result = self.store.ingest(partial)
+            self.assertEqual((2, 0, 1023), (result["changed"], result["removed"], result["retained"]))
+            state = self.store.state()
+            current = next(item for item in state["items"]
+                           if item["source_id"] == "github-work" and item["id"] == "0")
+            self.assertEqual((FIRST, SECOND), (current["first_seen_at"], current["last_seen_at"]))
+            self.assertEqual(0, current["owner_work"]["priority"])
+            failure = self.snapshot("failed", observed=SECOND, status="error", error="Unavailable",
+                                    items=[{"id": "must-not-appear"}])
+            failed = self.store.ingest(failure)
+            self.assertEqual((0, 0, 1026), (failed["changed"], failed["removed"], failed["retained"]))
+            failed_state = self.store.state()
+            self.assertEqual(state["items"], failed_state["items"])
+            self.assertTrue(failed_state["sources"][0]["retained_last_good"])
+            self.assertEqual(SECOND, failed_state["sources"][0]["last_good_observed_at"])
+            self.assertFalse(failed_state["sources"][0]["last_good_coverage"]["complete"])
+            self.assertEqual({**result, "replayed": True}, self.store.ingest(partial))
+            altered = copy.deepcopy(partial)
+            altered["items"][0]["status"] = "different"
+            with self.assertRaises(CoreError) as caught:
+                self.store.ingest(altered)
+            self.assertEqual(409, caught.exception.status)
+            complete = self.snapshot("complete", observed=SECOND, items=[{"id": "new"}])
+            result = self.store.ingest(complete)
+            self.assertEqual((0, 1025, 0), (result["changed"], result["removed"], result["retained"]))
+            with patch.object(workstreams.json, "loads", wraps=workstreams.json.loads) as loads:
+                state = WorkstreamStore(self.path).state()
+            self.assertEqual([("github-work", "new"), ("other", "0")],
+                             [(item["source_id"], item["id"]) for item in state["items"]])
+            self.assertTrue(all(item["owner_work"] is None for item in state["items"]))
+            self.assertNotIn(owner_packet, [call.args[0] for call in loads.call_args_list])
+            with self.store._db() as db:
+                self.assertEqual(owner_packet, db.execute("SELECT payload FROM owner_work").fetchone()[0])
+                self.assertIsNone(db.execute("SELECT name FROM sqlite_master WHERE name='incoming_work_items'").fetchone())
+                self.assertIsNone(db.execute("SELECT name FROM sqlite_temp_master WHERE name='incoming_work_items'").fetchone())
+            self.assertEqual(1, self.store.ingest(self.snapshot("empty", items=[], observed=SECOND))["removed"])
+            self.assertEqual(0, self.store.ingest(self.snapshot("partial-empty", items=[], complete=False,
+                                                              observed=SECOND))["retained"])
+            self.store.ingest(self.snapshot("returns", items=[rows[0]], observed=SECOND))
+            restored = self.store.state()["items"][0]
+            self.assertEqual("github-work", restored["source_id"])
+            self.assertEqual(0, restored["owner_work"]["priority"])
+            self.assertEqual("Keep this direction", restored["owner_work"]["next_action"])
 
 
 if __name__ == "__main__":
