@@ -195,8 +195,9 @@ class UpstreamExecutionTests(unittest.TestCase):
             self.assertIn('receipt-change-clears-notes-and-same-receipt-restores', receipt['checks'])
             workbench = app.parent
             page = (workbench / 'index.html').read_text(encoding='utf-8')
+            # Live workbench loads navigation/sample/draft helpers between core scripts.
             self.assertIn(
-                '<script src="/handoff.js" defer></script><script src="/handoff_import.js" defer></script><script src="/app.js" defer></script>',
+                '<script src="/handoff.js" defer></script><script src="/handoff_import.js" defer></script><script src="/review_navigation.js" defer></script><script src="/app.js" defer></script><script src="/review_navigation_workbench.js" defer></script><script src="/sample_session.js" defer></script><script src="/draft_bundle.js" defer></script>',
                 page)
             self.assertEqual(receipt['page_scripts'], ['handoff.js', 'handoff_import.js', app.name])
             for name in ('handoff.js', 'handoff_import.js'):
