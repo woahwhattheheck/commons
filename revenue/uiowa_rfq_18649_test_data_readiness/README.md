@@ -89,6 +89,15 @@ from `[]`, false and zero, and refuses existing output paths. See
 [CSV intake](CSV_INTAKE.md) for the exact format, safe-save limits and one focused
 end-to-end regression. Assessment semantics and the original starter are unchanged.
 
+## Preserve catalog and report files
+
+The assessor's `--output` refuses source-catalog aliases and symbolic-link outputs.
+It stages a new report beside its destination before replacing a distinct regular
+report, so conversion/write failures do not truncate the previous report. This
+recovers the original #16408 runtime donor; assessment and rendering are unchanged.
+See [report preservation](OUTPUT_PRESERVATION.md) for the retained demonstration
+and filesystem limits. The CSV importer has its separate create-new-only contract.
+
 ## Test discovery
 
 Run the full component suite from this directory:

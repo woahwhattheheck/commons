@@ -9,6 +9,9 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
+import stat
+import tempfile
 from collections import Counter
 from datetime import date, datetime
 from pathlib import Path
@@ -404,6 +407,47 @@ def load_json(path: Path) -> Dict[str, Any]:
     return payload
 
 
+def _check_output_target(output: Path, catalog: Path) -> None:
+    """Reject catalog aliases and ambiguous destinations before any replacement."""
+    if output.is_symlink():
+        raise ValueError("output must not be a symbolic link; choose a regular report path")
+    if output.resolve() == catalog.resolve():
+        raise ValueError("output must not replace the source catalog")
+    try:
+        if output.samefile(catalog):
+            raise ValueError("output must not alias the source catalog")
+    except FileNotFoundError:
+        pass  # A new, distinct report path is supported.
+    if output.exists() and not output.is_file():
+        raise ValueError("output must name a regular report file")
+
+
+def _write_report(output: Path, rendered: str, catalog: Path) -> None:
+    """Stage beside the destination; preserve input/prior report until replacement.
+
+    Replacement of a distinct ordinary report remains supported. This is a
+    per-file operation, not a multi-file transaction or power-loss durability
+    guarantee. Concurrent external path mutation is outside this CLI contract.
+    """
+    _check_output_target(output, catalog)
+    fd, name = tempfile.mkstemp(prefix=".uiowa047-", suffix=".tmp", dir=output.parent)
+    staging = Path(name)
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8", newline="") as stream:
+            fd = -1  # The stream now owns the descriptor, including on failure.
+            stream.write(rendered)
+            stream.flush()
+            os.fsync(stream.fileno())
+        _check_output_target(output, catalog)
+        if output.exists():
+            os.chmod(staging, stat.S_IMODE(output.stat().st_mode))
+        os.replace(staging, output)
+    finally:
+        if fd >= 0:
+            os.close(fd)
+        staging.unlink(missing_ok=True)
+
+
 def main(argv: Iterable[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("catalog", type=Path, help="JSON catalog to evaluate")
@@ -421,7 +465,10 @@ def main(argv: Iterable[str] | None = None) -> int:
         rendered = render_markdown(report)
 
     if args.output:
-        args.output.write_text(rendered, encoding="utf-8")
+        try:
+            _write_report(args.output, rendered, args.catalog)
+        except (OSError, ValueError) as exc:
+            parser.error(f"cannot write report: {exc}")
     else:
         print(rendered, end="" if rendered.endswith("\n") else "\n")
     return 0
