@@ -407,6 +407,155 @@ edited payload
             client.board_issue_bodies()
         self.assertIn("cursor loop", str(raised.exception))
 
+    def test_board_census_keeps_pages_after_late_http_400_or_422(self) -> None:
+        for status in (400, 422):
+            calls: list[str] = []
+
+            class FakeGitHub(si.GitHubClient):
+                def request(self, method: str, path: str, payload: dict | None = None):
+                    calls.append(path)
+                    if "after=" not in path:
+                        self._last_response_headers = {
+                            "Link": (
+                                "<https://api.github.com/repositories/1/issues"
+                                "?after=CURSOR_A>; rel=\"next\""
+                            )
+                        }
+                        return [{"title": "id-1", "body": "kept"}]
+                    raise si.IngestError(
+                        "GitHub HTTP %s: malformed request" % status,
+                        status=status,
+                    )
+
+            client = FakeGitHub("token")
+            bodies = client.board_issue_bodies()
+            self.assertEqual(bodies, {"id-1": ["kept"]})
+            self.assertEqual(len(calls), 2)
+            self.assertNotIn("&page=", calls[0])
+            self.assertNotIn("?page=", calls[0])
+            self.assertNotIn("&page=", calls[1])
+            self.assertNotIn("?page=", calls[1])
+            self.assertIs(client.board_issue_bodies(), bodies)
+
+    def test_board_census_first_list_http_400_stays_fatal(self) -> None:
+        class FakeGitHub(si.GitHubClient):
+            def request(self, method: str, path: str, payload: dict | None = None):
+                raise si.IngestError("GitHub HTTP 400: malformed request", status=400)
+
+        client = FakeGitHub("token")
+        with self.assertRaises(si.IngestError) as raised:
+            client.board_issue_bodies()
+        self.assertEqual(raised.exception.status, 400)
+        self.assertIsNone(client._board_issue_bodies)
+
+    def test_board_census_late_http_500_stays_fatal(self) -> None:
+        class FakeGitHub(si.GitHubClient):
+            def request(self, method: str, path: str, payload: dict | None = None):
+                if "after=" not in path:
+                    self._last_response_headers = {
+                        "Link": (
+                            "<https://api.github.com/repositories/1/issues"
+                            "?after=CURSOR_A>; rel=\"next\""
+                        )
+                    }
+                    return [{"title": "id-1", "body": "kept"}]
+                raise si.IngestError("GitHub HTTP 500: boom", status=500)
+
+        client = FakeGitHub("token")
+        with self.assertRaises(si.IngestError) as raised:
+            client.board_issue_bodies()
+        self.assertEqual(raised.exception.status, 500)
+        self.assertIsNone(client._board_issue_bodies)
+
+    def test_census_deadline_uses_shared_clock_or_ingest_budget(self) -> None:
+        shared = si.GitHubClient("token")
+        shared._census_deadline_at = 3.5
+        self.assertEqual(shared._census_deadline(), 3.5)
+        unset = si.GitHubClient("token")
+        unset._census_deadline_at = None
+        self.assertIsNone(unset._census_deadline())
+        derived = si.GitHubClient("token")
+        with (
+            mock.patch.dict(si.os.environ, {"SLACK_INGEST_BUDGET_SEC": "5"}),
+            mock.patch.object(si.time, "monotonic", return_value=10.0),
+        ):
+            self.assertEqual(derived._census_deadline(), 15.0)
+
+    def test_board_census_stops_at_budget_and_keeps_pages(self) -> None:
+        calls: list[str] = []
+
+        class FakeGitHub(si.GitHubClient):
+            def request(self, method: str, path: str, payload: dict | None = None):
+                calls.append(path)
+                self._last_response_headers = {
+                    "Link": (
+                        "<https://api.github.com/repositories/1/issues"
+                        "?after=CURSOR_A>; rel=\"next\""
+                    )
+                }
+                return [{"title": "id-1", "body": "kept"}]
+
+        client = FakeGitHub("token")
+        client._census_deadline_at = 5.0
+        with mock.patch.object(si.time, "monotonic", side_effect=[0.0, 10.0]):
+            bodies = client.board_issue_bodies()
+        self.assertEqual(bodies, {"id-1": ["kept"]})
+        self.assertEqual(len(calls), 1)
+        self.assertNotIn("&page=", calls[0])
+        self.assertNotIn("?page=", calls[0])
+        self.assertIs(client.board_issue_bodies(), bodies)
+
+    def test_sync_keeps_partial_census_after_late_http_400(self) -> None:
+        event = {"ts": "12.0", "text": "fresh body", "user": "U1"}
+        calls: list[str] = []
+
+        class FakeSlack:
+            def __init__(self, _token: str):
+                pass
+
+            def events(self, _oldest: str) -> list[dict[str, str]]:
+                return [event]
+
+        class PartialGitHub(si.GitHubClient):
+            def request(self, method: str, path: str, payload: dict | None = None):
+                calls.append("%s %s" % (method, path))
+                if method == "GET" and "/issues?" in path:
+                    if "after=" not in path:
+                        self._last_response_headers = {
+                            "Link": (
+                                "<https://api.github.com/repositories/1/issues"
+                                "?after=NEXT>; rel=\"next\""
+                            )
+                        }
+                        return [{"title": "other-id", "body": "kept"}]
+                    raise si.IngestError("GitHub HTTP 400: malformed request", status=400)
+                if method == "POST" and path.endswith("/issues"):
+                    return {"html_url": "https://github.test/issues/9"}
+                raise AssertionError("%s %s" % (method, path))
+
+        with tempfile.TemporaryDirectory() as tmp:
+            state = Path(tmp) / "state.json"
+            state.write_text('{"cursor":"11.0"}\n', encoding="utf-8")
+            stdout = StringIO()
+            with (
+                mock.patch.object(si, "SlackClient", FakeSlack),
+                mock.patch.object(si, "GitHubClient", PartialGitHub),
+                mock.patch.object(si, "high_water", return_value="10.0"),
+                mock.patch.dict(
+                    si.os.environ,
+                    {"SLACK_BOT_TOKEN": "x", "GITHUB_TOKEN": "y"},
+                    clear=True,
+                ),
+                redirect_stdout(stdout),
+            ):
+                self.assertEqual(si.cmd_sync(None, state), 0)
+            payload = json.loads(stdout.getvalue())
+            self.assertEqual(si.read_state(state), "12.0")
+            self.assertEqual(payload["cursor"], "12.0")
+            self.assertEqual(payload["created"][0]["id"], "slack-12-0")
+            self.assertTrue(any(call.startswith("POST ") for call in calls))
+            self.assertTrue(all("&page=" not in call and "?page=" not in call for call in calls))
+
     def test_sync_rejects_divergent_remote_body_without_advancing_cursor(self) -> None:
         event = {"ts": "10.1", "text": "new immutable bytes", "user": "U1"}
         old = si.issue_record({"ts": "10.1", "text": "old immutable bytes", "user": "U1"})
