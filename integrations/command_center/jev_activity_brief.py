@@ -113,6 +113,7 @@ def _receipt_projection(receipts: list[dict[str, Any]], evaluated_at: datetime) 
         seen.add(digest)
         output.append({
             "operation_id": verified["operation_id"],
+            "plan_sha256": raw["plan_sha256"],
             "provider": raw["provider"],
             "destination_id": raw["destination_id"],
             "provider_resource_id": raw["provider_resource_id"],
@@ -122,7 +123,116 @@ def _receipt_projection(receipts: list[dict[str, Any]], evaluated_at: datetime) 
             "source_url": raw["source_url"],
             "receipt_sha256": digest,
         })
-    return sorted(output, key=lambda row: (row["observed_at"], row["operation_id"], row["receipt_sha256"]))
+    return sorted(output, key=lambda row: (
+        _time(row["observed_at"], "receipt.observed_at"),
+        row["operation_id"], row["receipt_sha256"],
+    ))
+
+
+def _operation_projection(receipts: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Summarize verified history using the existing action-loop replay semantics."""
+    grouped: dict[str, list[dict[str, Any]]] = {}
+    for row in receipts:
+        grouped.setdefault(row["operation_id"], []).append(row)
+    output = []
+    for operation_id, history in grouped.items():
+        bindings = {
+            (row["provider"], row["destination_id"], row["plan_sha256"])
+            for row in history
+        }
+        if len(bindings) != 1:
+            raise ActivityBriefError("action receipts: one operation binds different plans or targets")
+        history = sorted(history, key=lambda row: (
+            _time(row["observed_at"], "receipt.observed_at"), row["receipt_sha256"],
+        ))
+        confirmed = [row for row in history if row["confirmed"]]
+        uncertain = [row for row in history if row["outcome"] == "DELIVERY_UNCERTAIN"]
+        # A later rejection cannot prove an earlier uncertain attempt was not delivered.
+        # Conversely, any exact confirmation prevents replay, even after a later error.
+        effective = (confirmed or uncertain or history)[-1]
+        resources = sorted({row["provider_resource_id"] for row in confirmed})
+        next_action = (
+            "CHECK_DUPLICATE_DELIVERY_DO_NOT_REPLAY" if len(resources) > 1 else
+            "DO_NOT_REPLAY" if confirmed else
+            "READ_BACK_EXISTING_OPERATION" if uncertain else
+            "RETRY_SAME_OPERATION_ID"
+        )
+        output.append({
+            "operation_id": operation_id,
+            "plan_sha256": effective["plan_sha256"],
+            "provider": effective["provider"],
+            "destination_id": effective["destination_id"],
+            "provider_resource_id": effective["provider_resource_id"],
+            "outcome": effective["outcome"],
+            "confirmed": bool(confirmed),
+            "next_action": next_action,
+            "observed_at": effective["observed_at"],
+            "first_observed_at": history[0]["observed_at"],
+            "last_observed_at": history[-1]["observed_at"],
+            "source_url": effective["source_url"],
+            "source_urls": sorted({row["source_url"] for row in history}),
+            "receipt_count": len(history),
+            "receipt_sha256": effective["receipt_sha256"],
+            "confirmed_resource_ids": resources,
+        })
+    return sorted(output, key=lambda row: (
+        _time(row["last_observed_at"], "operation.last_observed_at"), row["operation_id"],
+    ))
+
+
+def _action_summary(receipts: list[dict[str, Any]], operations: list[dict[str, Any]]) -> dict[str, int]:
+    history_counts = Counter(row["outcome"] for row in receipts)
+    operation_counts = Counter(row["outcome"] for row in operations)
+    return {
+        # Keep these established fields as receipt-history counts for existing consumers.
+        "receipt_count": len(receipts),
+        "confirmed": history_counts.get("CONFIRMED", 0),
+        "delivery_uncertain": history_counts.get("DELIVERY_UNCERTAIN", 0),
+        "rejected": history_counts.get("REJECTED", 0),
+        "operation_count": len(operations),
+        "confirmed_operations": operation_counts.get("CONFIRMED", 0),
+        "delivery_uncertain_operations": operation_counts.get("DELIVERY_UNCERTAIN", 0),
+        "rejected_operations": operation_counts.get("REJECTED", 0),
+        "duplicate_delivery_operations": sum(len(row["confirmed_resource_ids"]) > 1 for row in operations),
+    }
+
+
+def _render_action_lines(record: dict[str, Any]) -> list[str]:
+    action = record["actions"]
+    # Preserve the exact rendering of older saved v1 records and their existing digests.
+    if "action_operations" not in record:
+        lines = ["", "## Action receipts", ""]
+        lines.append(
+            f"Supplied verified receipts: **{action['receipt_count']}** · confirmed **{action['confirmed']}** · "
+            f"delivery-uncertain **{action['delivery_uncertain']}** · rejected **{action['rejected']}**."
+        )
+        for row in record["action_receipts"][-8:]:
+            link = _safe_link(row["source_url"])
+            lines.append(f"- `{row['operation_id']}` · **{row['outcome']}** · <{link}>")
+        return lines
+    lines = ["", "## Action operations", ""]
+    lines.append(
+        f"Distinct operations in supplied history: **{action['operation_count']}** · "
+        f"confirmed **{action['confirmed_operations']}** · "
+        f"delivery-uncertain **{action['delivery_uncertain_operations']}** · "
+        f"rejected **{action['rejected_operations']}**."
+    )
+    lines.append(f"Retained receipt history: **{action['receipt_count']}** records; not a count of distinct actions or Jev-processed events.")
+    if action["duplicate_delivery_operations"]:
+        lines.append(f"Operations confirmed at multiple provider resources: **{action['duplicate_delivery_operations']}**; inspect existing resources, do not replay.")
+    # Show unresolved delivery observations before confirmations, oldest first in each class.
+    operations = sorted(record["action_operations"], key=lambda row: (
+        0 if len(row["confirmed_resource_ids"]) > 1 else
+        {"DELIVERY_UNCERTAIN": 1, "REJECTED": 2, "CONFIRMED": 3}[row["outcome"]],
+        _time(row["first_observed_at"], "operation.first_observed_at"), row["operation_id"],
+    ))
+    for row in operations[:8]:
+        link = _safe_link(row["source_url"])
+        lines.append(f"- `{row['operation_id']}` · **{row['outcome']}** · `{row['next_action']}` · <{link}>")
+    if len(operations) > 8:
+        lines.append(f"Showing 8 of {len(operations)} operation states; all are retained in JSON `action_operations`.")
+    lines.append("Next actions describe existing receipt state, not permission to send, claim work, or treat an obligation as resolved.")
+    return lines
 
 
 def _attention(
@@ -218,7 +328,6 @@ def _render_markdown(record: dict[str, Any]) -> str:
     source = record["source"]
     freshness = record["freshness"]
     windows = {row["label"]: row for row in record["windows"]}
-    action = record["actions"]
     lines = [
         "# Jev swarm activity brief",
         "",
@@ -283,14 +392,7 @@ def _render_markdown(record: dict[str, Any]) -> str:
             )
     lines.extend(["", "These are event-kind candidates, not assertions that an obligation remains unanswered or that an actor is currently active."])
 
-    lines.extend(["", "## Action receipts", ""])
-    lines.append(
-        f"Supplied verified receipts: **{action['receipt_count']}** · confirmed **{action['confirmed']}** · "
-        f"delivery-uncertain **{action['delivery_uncertain']}** · rejected **{action['rejected']}**."
-    )
-    for row in record["action_receipts"][-8:]:
-        link = _safe_link(row["source_url"])
-        lines.append(f"- `{row['operation_id']}` · **{row['outcome']}** · <{link}>")
+    lines.extend(_render_action_lines(record))
 
     lines.extend([
         "",
@@ -353,7 +455,7 @@ def compile_brief(
             "source_window_receipt_sha256": row.get("window_receipt_sha256"),
         })
 
-    outcome_counts = Counter(row["outcome"] for row in receipts)
+    operations = _operation_projection(receipts)
     record = {
         "schema": SCHEMA,
         "operation_id": OPERATION_ID,
@@ -375,13 +477,9 @@ def compile_brief(
         "windows": projected_windows,
         "attention_candidates": attention_rows,
         "attention": attention_summary,
-        "actions": {
-            "receipt_count": len(receipts),
-            "confirmed": sum(1 for row in receipts if row["confirmed"]),
-            "delivery_uncertain": outcome_counts.get("DELIVERY_UNCERTAIN", 0),
-            "rejected": outcome_counts.get("REJECTED", 0),
-        },
+        "actions": _action_summary(receipts, operations),
         "action_receipts": receipts,
+        "action_operations": operations,
         "publication": {
             "mode": "EDIT_EXISTING_OR_CREATE_ONCE",
             "operation_marker": OPERATION_ID,
