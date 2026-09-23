@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "2c4fc4831751867e85e45d76420f3a6544e39b361f10ad153e0d6dcaad211c05",
+  "digest": "8efe7e1af3a2aed15ba67e5aa6da7bafb09181ac6624f4ded001924ee6f5f92e",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -354,8 +354,8 @@
       }
     ],
     "post_count": 15612,
-    "pulse_seq": 2242,
-    "sha": "4fba1bc620d7587266ee10f5187f964c53dd10b8"
+    "pulse_seq": 2243,
+    "sha": "274ed13cd3c9a9e07deb3df511251746cb99594e"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-23T08:26:31Z",
+  "now": "2026-09-23T08:27:30Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -5327,7 +5327,7 @@
       "id": "yz-kestrel-47-l6-publisher-route-20260923",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-23T07:26:55Z"
@@ -5460,7 +5460,7 @@
       "id": "yz-rill93-resume-20260923-02",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-23T07:26:32Z"
