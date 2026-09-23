@@ -2,7 +2,7 @@
 
 One exception queue and one row per active operation; receipts and typed
 stage records are drilldowns. Pure reducer plus a reader that reuses the
-existing work_state() and observability() readers. Adds no collector,
+existing local work snapshot and coordination-head cache. Adds no collector,
 provider call or data store.
 """
 from __future__ import annotations
@@ -10,6 +10,7 @@ from __future__ import annotations
 from datetime import datetime, timezone
 from decimal import Decimal, InvalidOperation
 import math
+import time
 
 from .observability import _heartbeat_state, LIVE_S, QUIET_S, STALE_S
 from .summary import MAX_ROWS, MONEY_KINDS, canonical_pr, epoch, scalar, short, source_freshness
@@ -68,6 +69,15 @@ def _stage_name(value):
     return text if text in STAGES else None
 
 
+def _observed_at(item):
+    """Provider update/read time, then ingestion time; never stage-entry time."""
+    for name in ("updated_at", "activity_observed_at", "last_seen_at"):
+        value = item.get(name)
+        if epoch(value) is not None:
+            return value
+    return None
+
+
 def stage_record(item):
     """A typed stage record from explicit fields, else typed PR/payment facts."""
     meta, refs = _dict(item.get("metadata")), _dict(item.get("refs"))
@@ -87,13 +97,15 @@ def stage_record(item):
     state = ("done" if raw in STATE_DONE or stage == "accepted_or_merged" and (refs.get("merged_at") or status == "merged")
              or stage == "paid" and raw in PAID_STATES
              else "missing" if raw in STATE_MISSING else "refused" if raw in STATE_REFUSED
-             else "pending" if raw else UNKNOWN)
+             else UNKNOWN if raw in {"", "unknown", "unavailable", "unverified"} else "pending")
     who = short(meta.get("who_acts"), 20).lower()
     if who not in {"us", "them", "owner_only"}:
         who = ("us" if state in {"missing", "refused"} else DEFAULT_WHO_ACTS.get(stage, "them")
                if state == "pending" else UNKNOWN)
     entered = (meta.get("stage_entered_at") or (refs.get("merged_at") if stage == "accepted_or_merged" else None)
                or item.get("updated_at") or item.get("activity_observed_at"))
+    observed = meta.get("stage_observed_at")
+    observed = observed if epoch(observed) is not None else _observed_at(item)
     deadline = meta.get("deadline") or item.get("due_at")
     url = short(item.get("url") or meta.get("evidence_url"), 1024)
     return {"stage": stage, "state": state, "who_acts": who,
@@ -102,6 +114,7 @@ def stage_record(item):
             "owner_account": short(meta.get("owner_account") or item.get("owner"), 120) or UNKNOWN,
             "deadline": deadline if epoch(deadline) is not None else None,
             "entered_at": entered if epoch(entered) is not None else None,
+            "observed_at": observed,
             "evidence": url if url.startswith(("https://", "http://")) else
                         "unknown: " + short(meta.get("answer_source") or "provider record for this stage", 200),
             "action": short((item.get("owner_work") or {}).get("next_action") or item.get("next_action")
@@ -253,7 +266,7 @@ def build_decisions(work, now=None, operator_control=None):
                 status = short(item.get("status")).lower()
                 state = (declared if declared in {"blocked", "active", "idle"}
                          else "blocked" if status == "blocked" or item.get("needs_attention") is True
-                         else UNKNOWN if beat is None or liveness == UNKNOWN
+                         else UNKNOWN if beat is None or str(liveness).lower() == UNKNOWN
                          else "active" if liveness == "LIVE" else "idle")
                 agent = {"seat": scalar(meta.get("seat")) or UNKNOWN,
                          "model_family": scalar(meta.get("model_family") or meta.get("family")) or UNKNOWN,
@@ -266,8 +279,14 @@ def build_decisions(work, now=None, operator_control=None):
         latest = {}
         for record in records:
             prior = latest.get(record["stage"])
-            if prior is None or (epoch(record["entered_at"]) or 0) >= (epoch(prior["entered_at"]) or 0):
+            seen = epoch(record["observed_at"]) or 0
+            prior_seen = (epoch(prior["observed_at"]) or 0) if prior else 0
+            if prior is None or seen > prior_seen:
                 latest[record["stage"]] = record
+            elif seen == prior_seen and (record["state"], record["who_acts"]) != (prior["state"], prior["who_acts"]):
+                latest[record["stage"]] = {**prior, "state": UNKNOWN, "who_acts": UNKNOWN,
+                    "action": "Reconcile conflicting observations of this stage.",
+                    "evidence": "unknown: provider stage records disagree at the same observation time"}
         records = sorted(latest.values(), key=lambda r: STAGES.index(r["stage"]))
         waiting_on, waiting_for, blocking, next_action = _waiting(records)
         reasons = ["stage:" + blocking["stage"]] if blocking else []
@@ -426,13 +445,23 @@ def build_decisions(work, now=None, operator_control=None):
 
 
 def read(center, repo_root=None):
-    """Decision view from the existing readers; missing inputs read unknown."""
-    work = center.work_state()
-    control = None
-    try:
-        coordination = center.observability(1, repo_root).get("coordination")
-        control = _dict(coordination).get("operator_control") if isinstance(coordination, dict) else None
-        control = control if isinstance(control, dict) else None
-    except Exception:
-        control = {"mode": UNKNOWN}
-    return build_decisions(work, operator_control=control)
+    """Cache-only reader; work_state()/observability() can start provider reads."""
+    with center._summary_lock:
+        work, cache = center._shared_work_snapshot_locked()
+    with center._bakes_lock:
+        cached = dict(center._bakes.get("\0coordination-head") or {})
+    observed = _dict(cached.get("read"))
+    age = time.time() - cached.get("fetched", 0)
+    fresh = observed.get("ok") is True and 0 <= age < center.BAKE_TTL
+    control = {"mode": UNKNOWN, "note": "Coordination cache is missing or stale; refresh the existing observability view."}
+    if fresh:
+        value = _dict(observed.get("value"))
+        control = value.get("operator_control")
+        # A successfully observed head with no override preserves the RUN default.
+        if control is not None and not isinstance(control, dict):
+            control = {"mode": UNKNOWN}
+    result = build_decisions(work, operator_control=control)
+    result["cache"] = cache
+    result["operator_control_source"] = {"cache_only": True, "fresh": fresh,
+                                          "observed_at": scalar(observed.get("observed_at"))}
+    return result
