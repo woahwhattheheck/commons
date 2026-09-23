@@ -1078,6 +1078,115 @@ PLAIN: Slack :left_right_arrow: Commons exact body.
             self.assertEqual(created, ["slack-12-0"])
             self.assertEqual(si.read_state(state), "12.0")
 
+    def test_ingest_budget_sec_reads_positive_seconds_only(self) -> None:
+        with mock.patch.dict(si.os.environ, {}, clear=True):
+            self.assertEqual(si.ingest_budget_sec(), 0.0)
+        for raw, expected in (("0", 0.0), ("-1", 0.0), ("nope", 0.0), ("5", 5.0), ("4500", 4500.0)):
+            with mock.patch.dict(si.os.environ, {"SLACK_INGEST_BUDGET_SEC": raw}):
+                self.assertEqual(si.ingest_budget_sec(), expected)
+
+    def test_sync_stops_at_budget_and_keeps_applied_cursor(self) -> None:
+        events = [
+            {"ts": "12.0", "text": "first", "user": "U1"},
+            {"ts": "13.0", "text": "second", "user": "U1"},
+            {"ts": "14.0", "text": "third", "user": "U1"},
+        ]
+        created: list[str] = []
+        clocks = iter([100.0, 100.1, 200.0])
+
+        class FakeSlack:
+            def __init__(self, _token: str):
+                pass
+
+            def events(self, _oldest: str) -> list[dict[str, str]]:
+                return events
+
+        class FakeGitHub:
+            def __init__(self, _token: str):
+                pass
+
+            def issue_exists(self, _record: object) -> bool:
+                return False
+
+            def create_issue(self, record: si.IssueRecord) -> str:
+                created.append(record.title)
+                return "https://github.test/issues/1"
+
+        with tempfile.TemporaryDirectory() as tmp:
+            state = Path(tmp) / "state.json"
+            state.write_text('{"cursor":"11.0"}\n', encoding="utf-8")
+            stdout = StringIO()
+            with (
+                mock.patch.object(si, "SlackClient", FakeSlack),
+                mock.patch.object(si, "GitHubClient", FakeGitHub),
+                mock.patch.object(si, "high_water", return_value="10.0"),
+                mock.patch.object(si.time, "monotonic", side_effect=lambda: next(clocks)),
+                mock.patch.dict(
+                    si.os.environ,
+                    {
+                        "SLACK_BOT_TOKEN": "x",
+                        "GITHUB_TOKEN": "y",
+                        "SLACK_INGEST_BUDGET_SEC": "5",
+                    },
+                ),
+                redirect_stdout(stdout),
+            ):
+                self.assertEqual(si.cmd_sync(None, state), 0)
+            payload = json.loads(stdout.getvalue())
+            self.assertEqual(created, ["slack-12-0"])
+            self.assertEqual(si.read_state(state), "12.0")
+            self.assertTrue(payload["truncated"])
+            self.assertEqual(payload["cursor"], "12.0")
+            self.assertEqual(payload["planned"], 3)
+            self.assertEqual(len(payload["created"]), 1)
+
+    def test_sync_without_budget_creates_every_planned_record(self) -> None:
+        events = [
+            {"ts": "12.0", "text": "first", "user": "U1"},
+            {"ts": "13.0", "text": "second", "user": "U1"},
+        ]
+        created: list[str] = []
+
+        class FakeSlack:
+            def __init__(self, _token: str):
+                pass
+
+            def events(self, _oldest: str) -> list[dict[str, str]]:
+                return events
+
+        class FakeGitHub:
+            def __init__(self, _token: str):
+                pass
+
+            def issue_exists(self, _record: object) -> bool:
+                return False
+
+            def create_issue(self, record: si.IssueRecord) -> str:
+                created.append(record.title)
+                return "https://github.test/issues/1"
+
+        with tempfile.TemporaryDirectory() as tmp:
+            state = Path(tmp) / "state.json"
+            state.write_text('{"cursor":"11.0"}\n', encoding="utf-8")
+            env = {
+                "SLACK_BOT_TOKEN": "x",
+                "GITHUB_TOKEN": "y",
+            }
+            stdout = StringIO()
+            with (
+                mock.patch.object(si, "SlackClient", FakeSlack),
+                mock.patch.object(si, "GitHubClient", FakeGitHub),
+                mock.patch.object(si, "high_water", return_value="10.0"),
+                mock.patch.dict(si.os.environ, env, clear=True),
+                redirect_stdout(stdout),
+            ):
+                self.assertEqual(si.cmd_sync(None, state), 0)
+            payload = json.loads(stdout.getvalue())
+            self.assertEqual(created, ["slack-12-0", "slack-13-0"])
+            self.assertEqual(si.read_state(state), "13.0")
+            self.assertNotIn("truncated", payload)
+
+
 
 if __name__ == "__main__":
     unittest.main()
