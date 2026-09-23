@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 4899,
+    "open_issues": 5013,
     "open_pull_requests": 2,
-    "runs_in_progress": 15,
-    "runs_queued": 86
+    "runs_in_progress": 14,
+    "runs_queued": 91
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -62,8 +62,19 @@
   },
   "pulls_listed": 2,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 5.7,
+  "queue_depth_per_runner": 6.5,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "latch/spark-mcp-muhl-scrub-20260923-01",
+      "closed_at": "2026-09-23T18:12:57Z",
+      "head_sha": "f24a5e2380e4cc08c07a8b79bab0b9cd4e175655",
+      "merged_at": "2026-09-23T18:12:57Z",
+      "number": 23058,
+      "state": "MERGED",
+      "title": "Latch: spark-mcp muhlnickel scrub for deploy test"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -217,21 +228,10 @@
       "number": 22091,
       "state": "MERGED",
       "title": "Pin Discord board-title contract tests to the Link cursor"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol/v4-floor-current-rebind-20260923",
-      "closed_at": "2026-09-23T17:38:23Z",
-      "head_sha": "2946186a2b918a379d5ef8926071677ec416f308",
-      "merged_at": "2026-09-23T17:38:23Z",
-      "number": 19688,
-      "state": "MERGED",
-      "title": "TITAN V4: rebind #12096 economic-floor repair to current SELL seam"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-23T18:12:01Z",
+  "unchanged_since": "2026-09-23T18:17:02Z",
   "undatable_pulls": []
 }
