@@ -167,7 +167,7 @@ W(p_*)&\le\frac1e\left(\frac{e\mu}{k}\right)^k\\
 \end{aligned}
 $$
 
-Here log(1−1/k)≤−1/k proves the penultimate exponential estimate. The constants require only 2<e<20/7. For example the exponential series gives e>2 and e≤8/3+5/96=87/32<20/7: after 1/3!, each term starting at 1/4! is at most 1/5 times the preceding one. No numerical approximation or finite parameter search is needed.
+Here log(1−1/k)≤−1/k proves the penultimate exponential estimate. The constants require only 2<e<20/7. For example the exponential series gives e>2 and e≤8/3+5/96=87/32<20/7: the tail beginning with 1/4! has first term 1/24, and each subsequent term is at most 1/5 times its predecessor, so that tail is at most (1/24)/(1−1/5)=5/96. No numerical approximation or finite parameter search is needed.
 
 We have proved W(p_*)<1/4 in every positive-capacity case. The increasing-ratio argument proves W(p)≤δ(p), completing the lemma.
 
