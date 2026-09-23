@@ -3,7 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 
-from .engine import compile_dossier, render_markdown, verify_dossier
+from .engine import OUTPUT_SCHEMA, compile_dossier, render_markdown, verify_dossier
 
 
 def h(label: str) -> str:
@@ -89,7 +89,9 @@ def fixture():
 def main() -> int:
     packet, policy = fixture()
     out = compile_dossier(packet, policy, "2026-09-13T14:00:00Z")
-    assert out["status"] == "READY_FOR_OWNER_REVIEW"
+    assert out["schema"] == OUTPUT_SCHEMA
+    assert out["evaluation_mode"] == "HISTORICAL_REPLAY"
+    assert out["status"] == "HISTORICAL_READY"
     assert out["summary"] == {"DEMONSTRATED":2,"LIMITED":2,"HELD":0,"UNKNOWN":0,"required_capabilities":["deterministic-verification","guarded-shipping"],"missing_required_capabilities":[]}
     assert out["external_truth"] == {"buyer_accepted":False,"paid":False,"revenue_recognized":False}
     assert len(out["what_we_can_show_now"]) == 2

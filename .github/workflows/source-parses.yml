@@ -111,13 +111,15 @@ jobs:
       - name: Verify SwarmOps currentness contract when present
         shell: bash
         run: |
-          if [ -f revenue/swarmops_dossier/test_current.py ]; then
+          if [ -f revenue/swarmops_dossier/test_v4_contract.py ]; then
             python3 -m unittest -v \
-              revenue.swarmops_dossier.test_current \
-              revenue.swarmops_dossier.test_current_hardening
+              revenue.swarmops_dossier.test_engine \
+              revenue.swarmops_dossier.test_cli_ingress \
+              revenue.swarmops_dossier.test_v4_contract
             python3 -O -m unittest -v \
-              revenue.swarmops_dossier.test_current \
-              revenue.swarmops_dossier.test_current_hardening
+              revenue.swarmops_dossier.test_engine \
+              revenue.swarmops_dossier.test_cli_ingress \
+              revenue.swarmops_dossier.test_v4_contract
           fi
 
       - name: Verify Nebius ProofPatch trust split when present
