@@ -71,3 +71,15 @@ current page. Visible health (`state`, debt counts, freshness totals) is bound
 into the opaque `revision` so a later evaluation with moved source health does
 not silently reuse a stale empty-page revision.
 
+## Opt-in source portion
+
+`source_health=true` on `command_center_context`, or `source_health=1` on
+`GET /api/context`, adds `source_health_opt_in`. That object reuses the shared
+summary's source portion (`build_summary` coverage debt, including sources
+with zero items). It does not change the default page or the existing
+`revision`. The envelope has its own `revision`.
+
+`page_condition` is one of `no_cached_records`, `no_matches`, `past_end`,
+`unchanged_page`, or `page`. An empty item page is not provider coverage.
+Omit the flag to keep the previous response shape.
+
