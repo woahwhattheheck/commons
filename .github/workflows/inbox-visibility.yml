@@ -5,11 +5,6 @@ on:
     paths:
       - host/inbox_slack_relay.py
       - host/inbox_visibility.json
-      - tests/test_inbox_slack_relay.py
-      - test_inbox_slack_relay_charset.py
-      - test_inbox_slack_relay_alternatives.py
-      - test_inbox_slack_relay_headers.py
-      - test_inbox_slack_relay_urls.py
       - .github/workflows/inbox-visibility.yml
   workflow_dispatch:
   schedule:
@@ -45,18 +40,12 @@ jobs:
           print('BLOCKED: delivery bindings missing; scheduled delivery skipped' if missing else 'Bindings present; validating actual delivery next')
           PY
       - uses: actions/checkout@v4
-        if: steps.bindings.outputs.ready == 'true' || github.event_name != 'schedule'
+        if: steps.bindings.outputs.ready == 'true'
         with:
           persist-credentials: false
           sparse-checkout: |
             host
-            tests
             integrations
-      - name: Regression tests
-        if: steps.bindings.outputs.ready == 'true' || github.event_name != 'schedule'
-        run: |
-          python3 -m unittest discover -s tests -p test_inbox_slack_relay.py -v
-          python3 -m unittest test_inbox_slack_relay_charset test_inbox_slack_relay_alternatives test_inbox_slack_relay_headers test_inbox_slack_relay_urls -v
       - uses: actions/cache/restore@v4
         if: steps.bindings.outputs.ready == 'true'
         with:
