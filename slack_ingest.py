@@ -98,6 +98,10 @@ DELETE_SUBTYPES = {"message_deleted", "tombstone"}
 class IngestError(RuntimeError):
     """The source event or destination state cannot be mirrored safely."""
 
+    def __init__(self, message: str, status: int | None = None) -> None:
+        super().__init__(message)
+        self.status = status
+
 
 class ImmutableMismatch(IngestError):
     """A canonical id exists but does not contain this exact Slack event."""
@@ -865,6 +869,7 @@ class GitHubClient:
     def request(self, method: str, path: str, payload: dict[str, Any] | None = None) -> Any:
         data = None if payload is None else json.dumps(payload).encode("utf-8")
         last_detail = ""
+        last_status: int | None = None
         self._last_response_headers = None
         for attempt in range(3):
             request = urllib.request.Request(
@@ -885,23 +890,54 @@ class GitHubClient:
             except urllib.error.HTTPError as exc:
                 detail = exc.read().decode("utf-8", "replace")
                 last_detail = detail
+                last_status = exc.code
                 retryable = github_rate_limited(exc.code, detail) or github_transient_status(exc.code)
                 if not retryable or attempt == 2:
-                    raise IngestError("GitHub HTTP %s: %s" % (exc.code, detail[:300])) from exc
+                    raise IngestError(
+                        "GitHub HTTP %s: %s" % (exc.code, detail[:300]),
+                        status=exc.code,
+                    ) from exc
                 wait_default = 5 if github_transient_status(exc.code) else 15
                 if method in {"POST", "PUT", "PATCH"} or "content creation" in detail.lower():
                     wait_default = GITHUB_CONTENT_CREATE_RETRY_DEFAULT_SEC
                 time.sleep(github_retry_after(exc.headers, default=wait_default))
-        raise IngestError("GitHub HTTP request failed: %s" % last_detail[:300])
+        raise IngestError(
+            "GitHub HTTP request failed: %s" % last_detail[:300],
+            status=last_status,
+        )
+
+    def _census_deadline(self) -> float | None:
+        """Shared wall clock for the board census and the sync write loop.
+
+        A positive ``SLACK_INGEST_BUDGET_SEC`` stops listing before the job
+        timeout so the write path can still save the Slack event cursor.
+        ``cmd_sync`` sets ``_census_deadline_at``; a direct census call derives it.
+        """
+        if hasattr(self, "_census_deadline_at"):
+            deadline = self._census_deadline_at
+            if isinstance(deadline, (int, float)):
+                return float(deadline)
+            return None
+        budget = ingest_budget_sec()
+        if not budget:
+            self._census_deadline_at = None
+            return None
+        self._census_deadline_at = time.monotonic() + budget
+        return float(self._census_deadline_at)
 
     def board_issue_bodies(self) -> dict[str, list[str]]:
-        """Load all ``label=board`` issue bodies once via the Issues list API.
+        """Load ``label=board`` issue bodies once via the Issues list API.
 
         Per-record ``/search/issues`` is not used: Search has a 30/min cap and
         whole-workspace Slack ingest may plan more than 30 records in one run.
         Pages follow the Link ``after`` cursor. Offset ``page`` is omitted
         whenever that cursor is present, because a deep ``page`` value returns
         HTTP 422 on a large board.
+
+        A later list GET that returns HTTP 400 or HTTP 422 keeps the pages
+        already collected. The same loop stops at ``SLACK_INGEST_BUDGET_SEC``
+        so sync can still write issues and save the Slack event cursor.
+        The first list request is still fatal: there is no page to keep.
         """
         cached = getattr(self, "_board_issue_bodies", None)
         if cached is not None:
@@ -914,7 +950,11 @@ class GitHubClient:
         }
         extra: dict[str, str] = {}
         seen: set[str] = set()
+        pages = 0
+        deadline = self._census_deadline()
         while True:
+            if deadline is not None and time.monotonic() >= deadline:
+                break
             params = dict(base)
             params.update(extra)
             if "after" in params:
@@ -925,7 +965,13 @@ class GitHubClient:
                     raise IngestError("GitHub issue pagination cursor loop")
                 seen.add(marker)
             query = urllib.parse.urlencode(params)
-            data = self.request("GET", "/repos/%s/issues?%s" % (self.repository, query))
+            try:
+                data = self.request("GET", "/repos/%s/issues?%s" % (self.repository, query))
+            except IngestError as exc:
+                if pages and getattr(exc, "status", None) in (400, 422):
+                    break
+                raise
+            pages += 1
             if not isinstance(data, list) or not data:
                 break
             for item in data:
@@ -1050,6 +1096,7 @@ def cmd_sync(
     pending = {record.title: record for record in records}
     budget = ingest_budget_sec()
     deadline = time.monotonic() + budget if budget else None
+    github._census_deadline_at = deadline
     truncated = False
     try:
         for event in events:
