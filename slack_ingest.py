@@ -751,6 +751,11 @@ def github_rate_limited(status: int, detail: str) -> bool:
     return "rate limit" in text or "secondary rate" in text
 
 
+def github_transient_status(status: int) -> bool:
+    """True for gateway failures a later attempt can clear."""
+    return status in {502, 503, 504}
+
+
 GITHUB_CONTENT_CREATE_INTERVAL_SEC = 2.0
 GITHUB_CONTENT_CREATE_RETRY_DEFAULT_SEC = 60
 
@@ -859,9 +864,10 @@ class GitHubClient:
             except urllib.error.HTTPError as exc:
                 detail = exc.read().decode("utf-8", "replace")
                 last_detail = detail
-                if not github_rate_limited(exc.code, detail) or attempt == 2:
+                retryable = github_rate_limited(exc.code, detail) or github_transient_status(exc.code)
+                if not retryable or attempt == 2:
                     raise IngestError("GitHub HTTP %s: %s" % (exc.code, detail[:300])) from exc
-                wait_default = 15
+                wait_default = 5 if github_transient_status(exc.code) else 15
                 if method in {"POST", "PUT", "PATCH"} or "content creation" in detail.lower():
                     wait_default = GITHUB_CONTENT_CREATE_RETRY_DEFAULT_SEC
                 time.sleep(github_retry_after(exc.headers, default=wait_default))
