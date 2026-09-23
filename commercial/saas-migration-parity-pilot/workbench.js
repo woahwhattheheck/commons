@@ -28,7 +28,7 @@ function discardResults() {
   generation += 1;
   downloadUrls.forEach((url) => URL.revokeObjectURL(url));
   downloadUrls = [];
-  ["download-manifest", "download-report", "download-markdown"].forEach((id) => {
+  ["download-manifest", "download-report", "download-markdown", "download-html"].forEach((id) => {
     $(id).removeAttribute("href");
     $(id).removeAttribute("download");
   });
@@ -266,6 +266,7 @@ function renderReport(result) {
   download("download-manifest", "parity-input.json", result.manifest_json, "application/json;charset=utf-8");
   download("download-report", "parity-report.json", result.report_json, "application/json;charset=utf-8");
   download("download-markdown", "parity-report.md", result.report_markdown, "text/markdown;charset=utf-8");
+  download("download-html", "parity-report.html", result.report_html, "text/html;charset=utf-8");
   const all = element("option", "All classifications");
   all.value = "";
   $("classification-filter").replaceChildren(all, ...Object.entries(counts).map(([name, count]) => {
@@ -331,5 +332,8 @@ $("clear-session").addEventListener("click", () => {
   updateControls();
 });
 window.addEventListener("beforeunload", () => downloadUrls.forEach((url) => URL.revokeObjectURL(url)));
+const portableDownload = element("a", "Download printable HTML", "download");
+portableDownload.id = "download-html";
+$("download-markdown").after(portableDownload);
 resetMappings();
 updateControls();

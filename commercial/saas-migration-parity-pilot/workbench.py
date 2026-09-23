@@ -15,6 +15,7 @@ from typing import Any
 
 from errors import ParityError
 from export_intake import build_manifest, parse_export
+from offline_report import render_html
 from parity import compile_bytes
 from parity_schema import _exact_keys, canonical_bytes, loads_strict
 
@@ -31,6 +32,7 @@ def compare_exports(request: Any) -> dict[str, str]:
         "manifest_json": manifest.decode("utf-8"),
         "report_json": canonical_bytes(report).decode("utf-8"),
         "report_markdown": markdown,
+        "report_html": render_html(report),
     }
 
 
