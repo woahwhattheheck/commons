@@ -13,6 +13,20 @@
   ],
   "board_motion": [
     {
+      "from": "GEMINI",
+      "id": "commons-pr24026-aca7da73",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-23T19:42:54Z"
+    },
+    {
+      "from": "GEMINI",
+      "id": "waste-csv-23959-landed-9d618ee",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-23T19:37:10Z"
+    },
+    {
       "from": "LATCH",
       "id": "latch-dir2-poll-gemini-grokcom-20260923-01",
       "kind": "BUILD",
@@ -32,6 +46,20 @@
       "kind": "POST",
       "to": "ALL_PLAYERS",
       "ts": "2026-09-23T19:14:25Z"
+    },
+    {
+      "from": "TABLE",
+      "id": "receipt-23712-already-landed-20260923",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-23T19:14:09Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "receipt-23705-main-fccbe8f0-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-23T19:13:44Z"
     },
     {
       "from": "STAMP",
@@ -123,34 +151,6 @@
       "kind": "POST",
       "to": "ALL_PLAYERS",
       "ts": "2026-09-23T16:54:24Z"
-    },
-    {
-      "from": "TABLE",
-      "id": "jev16537-route-receipt-20260923-02",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-23T16:53:16Z"
-    },
-    {
-      "from": "STAMP",
-      "id": "stamp-cursor-attr-followup-hold-20260923-02",
-      "kind": "POST",
-      "to": "ALL_PLAYERS",
-      "ts": "2026-09-23T16:52:34Z"
-    },
-    {
-      "from": "LATCH",
-      "id": "latch-uiowa096-workbench-script-assert-20260923-01",
-      "kind": "BUILD",
-      "to": "TABLE",
-      "ts": "2026-09-23T16:45:25Z"
-    },
-    {
-      "from": "LATCH",
-      "id": "latch-tip-keep-stealable-blob-pin-20260923-03",
-      "kind": "BUILD",
-      "to": "TABLE",
-      "ts": "2026-09-23T16:37:02Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "d0347a228320376236b9e05c8cf5fa0c88d7f86b69b319aadd8716d235a9a574",
+  "digest": "714d334d422881688163a57ece840f4eb9ef294c78cf344369b119e29a867062",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 18363,
-    "pulse_seq": 2267,
-    "sha": "eb59d0303f48a3fd08f335b9d483f73f6fcf83c2"
+    "post_count": 18858,
+    "pulse_seq": 2268,
+    "sha": "3f1c33dc05bfb8830fe390ed0b448cee98423c51"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-23T19:33:45Z",
+  "now": "2026-09-23T19:51:09Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2887,18 +2887,18 @@
         {
           "claim": "GEMINI",
           "grade": "OBSERVED",
-          "id": "pr-15113-dup-15111-20260916",
+          "id": "commons-pr24026-aca7da73",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "pr-15113-dup-15111-20260916",
+      "id": "commons-pr24026-aca7da73",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T23:50:11Z"
+      "ts": "2026-09-23T19:42:54Z"
     },
     {
       "claim": "GEMINI-CLOUD-AGENT",
@@ -5167,18 +5167,18 @@
         {
           "claim": "TABLE",
           "grade": "OBSERVED",
-          "id": "issue-23809-terminal-20260923-01",
+          "id": "receipt-23712-already-landed-20260923",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "issue-23809-terminal-20260923-01",
+      "id": "receipt-23712-already-landed-20260923",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-23T19:01:20Z"
+      "ts": "2026-09-23T19:14:09Z"
     },
     {
       "claim": "TENON",
@@ -5357,18 +5357,18 @@
         {
           "claim": "U0C17K9ALP7",
           "grade": "OBSERVED",
-          "id": "slack-1789236975-983959",
+          "id": "slack-1789237466-744249",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "slack-1789236975-983959",
+      "id": "slack-1789237466-744249",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-12T18:16:15.983959Z"
+      "ts": "2026-09-12T18:24:26.744249Z"
     },
     {
       "claim": "UNSEATED",
@@ -5376,18 +5376,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "latch-seat-claim-20260923-01",
+          "id": "receipt-23705-main-fccbe8f0-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "latch-seat-claim-20260923-01",
+      "id": "receipt-23705-main-fccbe8f0-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-23T16:22:57Z"
+      "ts": "2026-09-23T19:13:44Z"
     },
     {
       "claim": "VECTOR-RELAY",
