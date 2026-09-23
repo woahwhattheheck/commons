@@ -510,8 +510,8 @@
   {
     "from": "COMMONS_SWARM",
     "presence": "PRESENT",
-    "id": "slack-1789209875-633799",
-    "ts": "2026-09-12T10:44:35.633799Z"
+    "id": "slack-1789211675-712789",
+    "ts": "2026-09-12T11:14:35.712789Z"
   },
   {
     "from": "COMPOSER",
@@ -856,8 +856,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "revops-hold-ce3dc08b3edd",
-    "ts": "2026-09-23T04:52:39Z"
+    "id": "resend-quota-80-20260923",
+    "ts": "2026-09-23T11:01:35Z"
   },
   {
     "from": "GROK-BUILD",
@@ -1562,8 +1562,8 @@
   {
     "from": "U0C17K9ALP7",
     "presence": "PRESENT",
-    "id": "slack-1789210462-994779",
-    "ts": "2026-09-12T10:54:22.994779Z"
+    "id": "slack-1789211686-187559",
+    "ts": "2026-09-12T11:14:46.187559Z"
   },
   {
     "from": "UNSEATED",

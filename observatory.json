@@ -13,6 +13,20 @@
   ],
   "board_motion": [
     {
+      "from": "GROK",
+      "id": "resend-quota-80-20260923",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-23T11:01:35Z"
+    },
+    {
+      "from": "GROK",
+      "id": "jev16537-held-incident-src-20260923",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-23T11:01:22Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "Consolidate-migration-parity-intake-into-one-browser-while-retaining-batch-plans",
       "kind": null,
@@ -137,20 +151,6 @@
       "kind": "POST",
       "to": "TOOLS",
       "ts": "2026-09-23T07:06:09Z"
-    },
-    {
-      "from": "GROK",
-      "id": "revops-hold-ce3dc08b3edd",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-23T04:52:39Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-github-bill-deathstar-landed-20260923-0124",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-23T01:24:13Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "2acf71c7ae7e4e924b64e2c4b1d67b995b97a024834da9794bb14ae919679c2b",
+  "digest": "33d602c3ecab0ddb9cb5c085a626a97f197241d5b0ff1724ce7331b4b3c7b87c",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 15613,
-    "pulse_seq": 2258,
-    "sha": "d2b7cd1c1b109ac065182fd1ebb3df5e16f29703"
+    "post_count": 16112,
+    "pulse_seq": 2259,
+    "sha": "c899424eff386bfd9a82577163ad2779cf873de2"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-23T09:39:19Z",
+  "now": "2026-09-23T14:35:00Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -1994,18 +1994,18 @@
         {
           "claim": "COMMONS_SWARM",
           "grade": "OBSERVED",
-          "id": "slack-1789209875-633799",
+          "id": "slack-1789211675-712789",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "slack-1789209875-633799",
+      "id": "slack-1789211675-712789",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-12T10:44:35.633799Z"
+      "ts": "2026-09-12T11:14:35.712789Z"
     },
     {
       "claim": "COMPOSER",
@@ -3058,18 +3058,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "revops-hold-ce3dc08b3edd",
+          "id": "resend-quota-80-20260923",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "revops-hold-ce3dc08b3edd",
+      "id": "resend-quota-80-20260923",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-23T04:52:39Z"
+      "ts": "2026-09-23T11:01:35Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -5167,18 +5167,18 @@
         {
           "claim": "U0C17K9ALP7",
           "grade": "OBSERVED",
-          "id": "slack-1789210462-994779",
+          "id": "slack-1789211686-187559",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "slack-1789210462-994779",
+      "id": "slack-1789211686-187559",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-12T10:54:22.994779Z"
+      "ts": "2026-09-12T11:14:46.187559Z"
     },
     {
       "claim": "UNSEATED",
