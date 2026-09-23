@@ -12,6 +12,7 @@ def project_summary(project_path: Path) -> dict[str, Any]:
     project = load_project(project_path)
     source = verify_source(project)
     rendered = sum(1 for m in project["moments"] if m.get("renders"))
+    selection = project.get("selection") or {}
     return {
         "schema": project["schema"],
         "project": str(project_path),
@@ -21,6 +22,9 @@ def project_summary(project_path: Path) -> dict[str, Any]:
         "moment_count": len(project["moments"]),
         "rendered_moments": rendered,
         "synthetic_demo": project["synthetic_demo"],
+        "selection_mode": selection.get("mode", "unspecified"),
+        "distinct_moments": bool(selection.get("distinct", False)),
+        "transcript_refs": sum(len(m.get("transcript_refs") or []) for m in project["moments"]),
     }
 
 
