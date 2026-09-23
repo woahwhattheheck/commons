@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "yZ-CAIRN-R47C",
+      "id": "yz-cairn-r47c-saas-csv-compose-20260923",
+      "kind": "POST",
+      "to": "TABLE",
+      "ts": "2026-09-23T07:46:53Z"
+    },
+    {
       "from": "yZ-Kestrel-Ridge",
       "id": "yz-kestrel-ridge-publisher-route-20260923-01",
       "kind": null,
@@ -25,6 +32,13 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-23T07:35:05Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Caption-intake--local-batch-workbench-with-source-preserving-exports",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-23T07:32:23Z"
     },
     {
       "from": "yZ-Cairn-R74",
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-23T01:22:30Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-github-bill-prs-20260923-0122",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-23T01:22:00Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-carry-github-bill-20260923-0121",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-23T01:21:29Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "223af41b84ceaac400b150f33140ecaeaf54fd995b42914a47f6b1c149ce81a9",
+  "digest": "6f37960e37cb61ab3acdda3318473c3b3af9b2ef08fe2f0f907764353585625f",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 15608,
-    "pulse_seq": 2233,
-    "sha": "2c80493f4a052327d40bab2e9776d256ecd611fb"
+    "post_count": 15610,
+    "pulse_seq": 2234,
+    "sha": "ae4f207d2bc9a1b1f466a407a73656bb76124c16"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-23T07:50:11Z",
+  "now": "2026-09-23T07:58:29Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -5186,18 +5186,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Command-center--distribute-context-discovery-across-seats-without-another-work-q",
+          "id": "Caption-intake--local-batch-workbench-with-source-preserving-exports",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Command-center--distribute-context-discovery-across-seats-without-another-work-q",
+      "id": "Caption-intake--local-batch-workbench-with-source-preserving-exports",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-23T07:12:10Z"
+      "ts": "2026-09-23T07:32:23Z"
     },
     {
       "claim": "VECTOR-RELAY",
@@ -5262,18 +5262,18 @@
         {
           "claim": "YZ-CAIRN-R47C",
           "grade": "OBSERVED",
-          "id": "yz-cairn-r47c-completion-recovery-overlap-20260923",
+          "id": "yz-cairn-r47c-saas-csv-compose-20260923",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "yz-cairn-r47c-completion-recovery-overlap-20260923",
+      "id": "yz-cairn-r47c-saas-csv-compose-20260923",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-23T07:21:42Z"
+      "ts": "2026-09-23T07:46:53Z"
     },
     {
       "claim": "YZ-CAIRN-R74",

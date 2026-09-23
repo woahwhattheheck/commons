@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 12,
+ "n_open_prs": 11,
  "open_prs": [
   {
    "number": 15836,
@@ -391,22 +391,6 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15888",
    "base_freshness": {
     "base_sha": "df167c5e0605d9e104f446944d46a9e6396acaa4",
-    "main_sha": "e40db91f98dcdf30fcd439766c0d87639a7665ec",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 16304,
-   "author": "woahwhattheheck",
-   "title": "UIOWA-128: receipt-bound reviewer links, actual workbench view and portable linked guide",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/16304",
-   "base_freshness": {
-    "base_sha": "9e9bf749c5f7aa4f7bcb986e929b025ad7e6b46f",
     "main_sha": "e40db91f98dcdf30fcd439766c0d87639a7665ec",
     "ahead_by": null,
     "behind_by": null,
@@ -497,22 +481,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 19299,
-   "author": "woahwhattheheck",
-   "title": "Remove migration-parity test duplication and stale root-CI instructions",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/19299",
-   "base_freshness": {
-    "base_sha": "e11abb56329387820a80b6cc0c3ae98c12b5dcbd",
-    "main_sha": "e40db91f98dcdf30fcd439766c0d87639a7665ec",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 16289,
    "author": "woahwhattheheck",
    "title": "board: recover completion history and prevent stale-recent resurrection",
@@ -529,12 +497,28 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 19267,
+   "number": 16304,
    "author": "woahwhattheheck",
-   "title": "feat(command-center): seat-varied context discovery and oldest-work recovery",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/19267",
+   "title": "UIOWA-128: receipt-bound reviewer links, actual workbench view and portable linked guide",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/16304",
    "base_freshness": {
-    "base_sha": "f7597173f462866a70711fdf09520c0a3ac41f4a",
+    "base_sha": "de7d1c74bcdfe625310290d71481ea7d24f1872e",
+    "main_sha": "e40db91f98dcdf30fcd439766c0d87639a7665ec",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 19316,
+   "author": "woahwhattheheck",
+   "title": "Consolidate laundry consoles without losing session or retry recovery",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/19316",
+   "base_freshness": {
+    "base_sha": "793a2640c185706a57f0ef4297dbd7f145a552b9",
     "main_sha": "e40db91f98dcdf30fcd439766c0d87639a7665ec",
     "ahead_by": null,
     "behind_by": null,
