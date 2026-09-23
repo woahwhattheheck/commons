@@ -71,7 +71,7 @@ def _ts(rec):
     now = datetime.now(timezone.utc)
     slack = timedelta(seconds=120)
     for key in ("durable_ts", "ts", "carrier_ts"):
-        val = str(rec.get("key") or "").strip()
+        val = str(rec.get(key) or "").strip()
         if not val:
             continue
         parsed = _as_dt(val)
