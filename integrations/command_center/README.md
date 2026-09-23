@@ -233,3 +233,22 @@ Per-source state comes from `state.source_health`
 `last_success_at` / `last_success_age_seconds`, `last_cycle`,
 `last_cycle_reason` and `cooldown.active` / `retry_not_before`, plus its
 `coverage` counts and `cooldowns`. Any missing key renders `unknown`.
+
+### Payment progress
+
+`paid` describes a transaction stage, not full operation settlement. Rows also
+carry `settlement_state`: `not_observed`, `partial`, `amount_unknown`, or
+`covered`. An installment stays active with its remaining amount and a
+`partial_payout` exception. Missing totals, unquantified paid amounts or
+unmatched currencies stay active with `unreconciled_payout`.
+
+`metadata.advertised_amount` is the operation total for its currency, not a
+per-PR line item. Use distinct operation IDs for distinct bounties; repeated
+operation totals are not added. This is advertised face value, not approved
+revenue. Only explicit matching-currency paid amounts reduce it; no exchange
+rate, fee allowance, write-off or final-settlement assertion is inferred.
+Known collected amounts remain visible when another payment needs reconciliation,
+and the UI labels that amount as a known portion rather than complete cash.
+Even a covered total remains active while a recorded stage or publication action
+is outstanding. Payment-specific owner next actions and their recorded acting
+party are preserved; existing stage and publication blockers still take priority.

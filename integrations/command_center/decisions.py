@@ -306,19 +306,29 @@ def build_decisions(work, now=None, operator_control=None):
         # Never net currencies or replace a remaining advertised amount with zero.
         at_risk = {c: max(Decimal(0), v - collected.get(c, Decimal(0))) for c, v in advertised.items()}
         remaining = {c: v for c, v in at_risk.items() if v > 0}
+        # Closing an operation requires a known total and matching-currency cash.
+        # Missing totals and unmatched currencies are reconciliation, not zero due.
+        unreconciled_basis = paid_stage and (not advertised or not collected
+                            or "UNKNOWN" in advertised or bool(set(collected) - set(advertised)))
+        settlement = ("amount_unknown" if unresolved_payment or unreconciled_basis else
+                      "partial" if paid_stage and remaining else "covered" if paid_stage else "not_observed")
         payout_issue, payout_action, payout_actor = None, None, "them"
-        if unresolved_payment:
+        if unresolved_payment or unreconciled_basis:
             payout_issue, payout_actor = "unreconciled_payout", "us"
-            payout_action = "Reconcile conflicting or incomplete payment records with the provider; retain the operation."
+            payout_action = "Reconcile the operation total and latest payment amounts/currencies with the provider; retain the operation."
         elif paid_stage and remaining:
             payout_issue = "partial_payout"
             balance = "; ".join(f"{c} {v}" for c, v in sorted(remaining.items()))
             payout_action = "Follow up on the remaining advertised amount: " + balance + "."
+        recorded_payout_action = (recorded_next or (stage or {}).get("action")) if payout_issue else None
         if payout_issue:
+            payout_action = recorded_payout_action or payout_action
+            if (stage or {}).get("action") and stage["who_acts"] in {"us", "them", "owner_only"}:
+                payout_actor = stage["who_acts"]
             reasons.append("payout:" + payout_issue)
             if blocking is None:
-                waiting_on = "waiting_on_us" if payout_actor == "us" else "waiting_on_them"
-                waiting_for = "payment reconciliation" if payout_actor == "us" else "remaining advertised amount"
+                waiting_on = "waiting_on_us" if payout_actor in {"us", "owner_only"} else "waiting_on_them"
+                waiting_for = "payment reconciliation" if payout_issue == "unreconciled_payout" else "remaining advertised amount"
                 next_action = payout_action
         if publication and publication["state"] != "clear":
             waiting_on, waiting_for = "waiting_on_us", "held outward write (" + publication["state"] + ")"
@@ -370,6 +380,8 @@ def build_decisions(work, now=None, operator_control=None):
         unknowns = [{"field": "stage", "answer_source": "provider stage on the operation record (stage or metadata.provider_stage)"}] if not records else []
         if not advertised:
             unknowns.append({"field": "money_at_risk", "answer_source": "advertised amount on the bounty/program listing (metadata.advertised_amount)"})
+        if unreconciled_basis:
+            unknowns.append({"field": "settlement", "answer_source": "advertised operation total and matching-currency paid amounts on provider records"})
         if unresolved_payment:
             unknowns.append({"field": "money_collected", "answer_source": "latest provider payment records; displayed amounts include only unconflicted payments with known amounts and currencies"})
         if account == UNKNOWN:
@@ -382,11 +394,12 @@ def build_decisions(work, now=None, operator_control=None):
             "operation": key, "stage": stage["stage"] if stage else UNKNOWN,
             "stage_state": ("partial" if payout_issue == "partial_payout" else "unreconciled"
                             if payout_issue else stage["state"]) if stage else UNKNOWN,
+            "settlement_state": settlement,
             "stages": [{k: v for k, v in r.items() if k != "item"} for r in records],
             "stage_age_days": age_days, "gate_window_days": window, "gate_stale": stalled,
             "merged_prs": len(merged_prs),
             "waiting_on": waiting_on, "waiting_for": waiting_for, "waiting_reasons": reasons,
-            "next_action": short(next_action, 280), "next_action_recorded": bool(recorded_next or (blocking or {}).get("action")),
+            "next_action": short(next_action, 280), "next_action_recorded": bool(recorded_next or (blocking or {}).get("action") or recorded_payout_action),
             "owner": {"owner_account": account, "seat": owner.get("seat") or UNKNOWN},
             "publication_state": publication["state"] if publication else "clear",
             "publication": publication,

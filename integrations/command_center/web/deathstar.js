@@ -23,8 +23,9 @@
   const money = value => Array.isArray(value) ? (value.map(v => v.currency + ' ' + v.amount).join(' + ') || '0') : 'unknown';
   const age = seconds => typeof seconds === 'number' ? (seconds < 3600 ? Math.round(seconds / 60) + 'm' : seconds < 172800 ? Math.round(seconds / 3600) + 'h' : Math.round(seconds / 86400) + 'd') : 'unknown';
   const WAIT = {waiting_on_us: 'on us', waiting_on_them: 'on them', none: 'nothing', unknown: 'unknown'};
+  const SETTLEMENT = {partial: 'partly paid', amount_unknown: 'reconcile payment amount', covered: 'advertised amount covered'};
   // Exceptions first, then one row per active operation; stages and receipts are drilldowns.
-  const REASON = {deadline_past: 'DEADLINE PASSED', deadline_within_7d: 'due within 7d', stalled: 'stalled', owner_only: 'owner only'};
+  const REASON = {deadline_past: 'DEADLINE PASSED', deadline_within_7d: 'due within 7d', stalled: 'stalled', owner_only: 'owner only', partial_payout: 'partial payment', unreconciled_payout: 'reconcile payment amount'};
   function decisions(d) {
     const out = [];
     const exceptions = d.exceptions || [], blocked = d.blocked_agents || [];
@@ -45,11 +46,11 @@
         ' · ' + e.who_acts.replace('_', ' ') + ' · account ' + e.account + ' · ' + e.action));
     out.push(line('Blocked agents:', blocked.length ? blocked.map(a => a.operation + ' · ' + a.seat + ' (' + a.model_family + ', heartbeat ' + age(a.heartbeat_age_seconds) + ')' + (a.blocker ? ' · ' + a.blocker : '')).join('; ') : 'None observed.'));
     const m = d.money || {};
-    out.push(line('Operations:', (d.operations ? d.operations.active : 0) + ' active · at risk ' + money(m.at_risk) + ' · collected ' + money(m.collected) + '.'));
+    out.push(line('Operations:', (d.operations ? d.operations.active : 0) + ' active · advertised remaining ' + money(m.at_risk) + ' · known collected ' + money(m.collected) + '.'));
     const rows = d.rows || [];
     if (!rows.length) return out;
     const table = el('table', undefined, 'work-table decision-table'), head = el('tr');
-    for (const name of ['Operation', 'Stage', 'Waiting', 'Next action', 'Owner', 'Agents', 'Sources', 'At risk', 'Collected'])
+    for (const name of ['Operation', 'Stage', 'Waiting', 'Next action', 'Owner', 'Agents', 'Sources', 'Advertised remaining', 'Known collected'])
       head.append(el('th', name));
     table.append(head);
     for (const r of rows) {
@@ -57,13 +58,13 @@
       const unknown = (r.unknown || []).map(u => u.field + ' unknown: ' + u.answer_source).join('; ');
       const cells = [
         r.operation + (r.publication_state !== 'clear' ? ' · ' + r.publication_state : ''),
-        r.stage.replaceAll('_', ' ') + ' (' + r.stage_state + ')' + (r.merged_prs ? ' · ' + r.merged_prs + ' merged' : '') + (r.stage_age_days != null ? ' · ' + r.stage_age_days + 'd' : '') + (r.gate_stale ? ' · STALLED' : ''),
+        r.stage.replaceAll('_', ' ') + ' (' + r.stage_state + ')' + (r.merged_prs ? ' · ' + r.merged_prs + ' merged' : '') + (r.stage_age_days != null ? ' · ' + r.stage_age_days + 'd' : '') + (r.gate_stale ? ' · STALLED' : '') + (SETTLEMENT[r.settlement_state] ? ' · ' + SETTLEMENT[r.settlement_state] : ''),
         (WAIT[r.waiting_on] || r.waiting_on) + ': ' + r.waiting_for,
         r.next_action,
         r.owner.owner_account + ' / ' + r.owner.seat,
         (r.agents || []).map(a => a.seat + ' ' + a.model_family + ' ' + a.state + ' ' + age(a.heartbeat_age_seconds)).join('; ') || 'unknown',
         (r.sources || []).map(v => v.id + ' (' + v.collector + ') ' + v.freshness + ' ' + age(v.last_success_age_seconds) + ' · last cycle ' + v.last_cycle + ' · cooldown ' + v.cooldown + ' · coverage ' + v.coverage).join('; ') || 'unknown',
-        money(r.money_at_risk), money(r.money_collected),
+        money(r.money_at_risk), money(r.money_collected) + (Array.isArray(r.money_collected) && (r.unknown || []).some(u => u.field === 'money_collected') ? ' (known portion; reconciliation pending)' : ''),
       ];
       for (const text of cells) tr.append(el('td', text));
       table.append(tr);
@@ -122,7 +123,7 @@
       const rows = s.work.top_attention || [];
       for (const row of rows.slice(0, 4))
         nextBody.append(line(row.title || row.id, row.freshness + ' · ' + row.status + ' · ' + (row.next_action || 'No next action recorded')));
-      const nextStatus = 'Shared snapshot ' + new Date(s.generated_at).toLocaleTimeString() + ' · summary is cache-only; decision refresh may read providers · ' + (s.cache.hit ? 'cache hit' : s.telemetry.projection_ms + 'ms projection');
+      const nextStatus = 'Shared snapshot ' + new Date(s.generated_at).toLocaleTimeString() + ' · summary and decision reads are cache-only · ' + (s.cache.hit ? 'cache hit' : s.telemetry.projection_ms + 'ms projection');
       body.replaceChildren(...nextBody.children);
       status.textContent = nextStatus;
     } catch (error) {
