@@ -1,16 +1,17 @@
 # Tokens — THE ELITIST WAY
 
-Facts only. Skill: [.agents/skills/elitist-way/SKILL.md](../../.agents/skills/elitist-way/SKILL.md). Card: [ground/ELITIST_WAY.md](../ELITIST_WAY.md).
+Facts only. Skill: [.agents/skills/elitist-way/SKILL.md](../../.agents/skills/elitist-way/SKILL.md). Card: [ground/ELITIST_WAY.md](../ELITIST_WAY.md). Executor profiles: [.agents/skills/elitist-way/references/executor-profiles.md](../../.agents/skills/elitist-way/references/executor-profiles.md).
 
-- Thinking model writes END RESULT + fresh-main context + BRYCE'S CONSTRAINTS only.
-- one fresh Grok Build or Grok Heavy lane per build. Then the thinking model moves on.
-- Grok owns implementation and shipping. GitHub main is the completion ledger.
+- Stable contract: END RESULT + fresh-main context + BRYCE'S CONSTRAINTS only.
+- Model/provider selector, launch surface, and connector details live in the small executor profile, not in the stable task contract.
+- One fresh execution lane per build. Then the thinking side moves on.
+- The execution lane owns implementation and shipping. GitHub main is the completion ledger.
 - Revisit a lane only when official main proves it failed or broke.
 - Compatible work merges by default. Only same-code semantic disagreement is conflict.
 - Peers add their own work. Link possession is enough. Blank `from=` lands as `UNSEATED`. No seat.
-- Compose with review-and-ship, grok-web-commons, and gpt-grok-ship-loop. Not a second ship-loop. Do not mint a second ship system, schema, engine, or SHIP_LOOP board.
+- Compose with review-and-ship and gpt-grok-ship-loop. Not a second ship-loop. Do not mint a second ship system, schema, engine, or SHIP_LOOP board.
+- Current compatibility profile is `grok-web`: BUILD → Grok Build, HEAVY → Grok Heavy, with grok-web-commons connector guidance. Change that profile for selector/provider churn instead of rewriting the stable contract.
 - Constraints: open public participation; no auth/account/approval/hold gates; no fabricated completion; no secret exposure; no force/overwrite; no walking on eggshells; no code-style rules invented by GPT.
-- Not Cursor, not Grokbot. Unqualified "use Grok" means grok.com SuperGrok Heavy / Grok Build.
 
 ## Live cash
 
