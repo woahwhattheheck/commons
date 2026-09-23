@@ -358,21 +358,72 @@ class OpenWorkContract(unittest.TestCase):
         finally:
             shutil.rmtree(tmp, ignore_errors=True)
 
+    def test_prefix_companion_receipt_lands_short_uiowa_id(self):
+        """Short id is LANDED from p/{id}--*.md; exact p/{id}.md still wins."""
+        tmp = tempfile.mkdtemp(prefix="open-work-prefix-")
+        ident = "UIOWA-138"
+        long_name = (
+            "UIOWA-138--exercised-analyst-to-analyst-continuation-packet--ZZ-BOREAL-138Q-.md"
+        )
+        try:
+            _write(
+                os.path.join(tmp, "p", long_name),
+                "from: TEST\nid: UIOWA-138--x\n\nbody\n",
+            )
+            _write(
+                os.path.join(tmp, "p", "UIOWA-1380--other-packet.md"),
+                "id: UIOWA-1380--other\n\nbody\n",
+            )
+            _write(
+                os.path.join(tmp, "p", "UIOWA-138-not-companion.md"),
+                "id: UIOWA-138-not-companion\n\nbody\n",
+            )
+            self.assertEqual(
+                ow.resolve_receipt(tmp, ident, ""),
+                "p/%s" % long_name,
+            )
+            sha = _commit_tree(tmp)
+            self.assertEqual(
+                ow.resolve_receipt(tmp, ident, sha),
+                "p/%s" % long_name,
+            )
+            row = ow.classify_id(ident, tmp, main_sha=sha)
+            self.assertEqual(row["class"], "LANDED")
+            self.assertEqual(row["receipt"], "p/%s" % long_name)
+            self.assertEqual(row["errors"], [])
+            missing = ow.classify_id(ident, tmp, main_sha="a" * 40)
+            self.assertEqual(missing["class"], "OPEN")
+            self.assertEqual(missing["receipt"], "404")
+            _write(
+                os.path.join(tmp, "p", "%s.md" % ident),
+                "id: %s\n\n---\n\nWORK ORDER %s\n" % (ident, ident),
+            )
+            subprocess.check_call(["git", "add", "."], cwd=tmp)
+            subprocess.check_call(
+                [
+                    "git",
+                    "-c",
+                    "user.name=Commons Test",
+                    "-c",
+                    "user.email=commons-test@example.invalid",
+                    "commit",
+                    "-qm",
+                    "exact",
+                ],
+                cwd=tmp,
+            )
+            sha_exact = subprocess.check_output(
+                ["git", "rev-parse", "HEAD"],
+                cwd=tmp,
+                text=True,
+            ).strip().lower()
+            exact = ow.classify_id(ident, tmp, main_sha=sha_exact)
+            self.assertEqual(exact["class"], "LANDED")
+            self.assertEqual(exact["receipt"], "p/%s.md" % ident)
+            self.assertEqual(exact["errors"], [])
+        finally:
+            shutil.rmtree(tmp, ignore_errors=True)
+
 
 if __name__ == "__main__":
     unittest.main()
-
-
-def test_prefix_companion_receipt_lands_short_uiowa_id(tmp_path):
-    """UIOWA-138 short id is LANDED when only p/UIOWA-138--*.md exists."""
-    import host.open_work as ow
-    root = tmp_path
-    (root / "p").mkdir(parents=True, exist_ok=True)
-    long_name = "UIOWA-138--exercised-analyst-to-analyst-continuation-packet--ZZ-BOREAL-138Q-.md"
-    (root / "p" / long_name).write_text("from: TEST\nid: UIOWA-138--x\n\nbody\n", encoding="utf-8")
-    # no exact p/UIOWA-138.md
-    assert ow.resolve_receipt(str(root), "UIOWA-138", "") == "p/%s" % long_name
-    assert ow.receipt_exists(str(root), "UIOWA-138", "") is True
-    row = ow.classify_id("UIOWA-138", str(root), main_sha="")
-    assert row["class"] == "LANDED"
-    assert row["receipt"].startswith("p/UIOWA-138--")
