@@ -23,6 +23,10 @@ python demo.py
 
 This demonstration uses actual SQLite persistence and the product engine, not a replacement implementation. It shows a clean stop and a stop whose damage/count exceptions block invoice drafting until an explicit example resolution. The demonstration is not customer evidence, a deployment, or revenue.
 
+## Browser console
+
+Run `python web_console.py /path/to/desk.sqlite3` and open the printed loopback URL for guided setup, all ten operations, route/exception views, retry recovery, and direct downloads. Follow [the browser operator guide](WEB_CONSOLE.md) for startup and connection-loss handling. No browser build or external service is required. For backup and restore through the existing CLI, see [BACKUP.md](BACKUP.md).
+
 ## What the desk records
 
 - Customers, sites, dated service agreements and item prices in integer cents.
@@ -62,6 +66,6 @@ The original offer hypothesis is **$4,500 setup plus $499/month**, explicitly **
 
 Original product/specification: Z-Sol-22. Recovery lineage: Z-IronWeave, SCREE-Z and Z-HARBOR. Operator interface and guide: ZZ-QUARTZ-S7D9. Production-only integration: yZ-Cairn-47, September 23, 2026.
 
-The six executable source files are recovered unchanged from `61b90f87acb3ae59853e2095300f7ceeb676d8ed` (the prior #15843 carrier for #14558). There is one implementation class: `laundry_desk.py` and `laundry_desk_core.py` load the same retained engine. The internal `.py.disabled` filename is intentional; the core loads it explicitly.
+The original production-only recovery imported six executable source files unchanged from `61b90f87acb3ae59853e2095300f7ceeb676d8ed` (the prior #15843 carrier for #14558). There is one implementation class: `laundry_desk.py` and `laundry_desk_core.py` load the same retained engine. The internal `.py.disabled` filename is intentional; the core loads it explicitly.
 
 This recovery does not import the old test files, validation/receipt documents, or shared workflow edits. Historical branches retain their provenance; this directory is the runnable product and its operator documentation.
