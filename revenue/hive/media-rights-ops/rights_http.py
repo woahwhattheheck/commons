@@ -5,6 +5,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 from rights_model import *
 from rights_store import evaluate,queues,snapshot
+from rights_batch import review_csv
 HTTP_MUTATIONS=frozenset({'/api/place','/api/revoke'})
 class ApiHandler(BaseHTTPRequestHandler):
     server_version='MediaRightsDesk/1'
@@ -26,6 +27,10 @@ class ApiHandler(BaseHTTPRequestHandler):
             if path in HTTP_MUTATIONS: return self.reply(405,{'error':'HTTP state mutation is disabled; use the local CLI for place/revoke'})
             body=self.body()
             if path=='/api/evaluate': return self.reply(200,evaluate(self.db,body))
+            if path=='/api/batch':
+                x=strict_object(body,{'csv'},'request')
+                require(isinstance(x['csv'],str),'csv must be a string')
+                return self.reply(200,review_csv(self.db,x['csv']))
             if path=='/api/queues': x=strict_object(body,{'as_of','horizon_days'},'request'); return self.reply(200,queues(self.db,x['as_of'],x['horizon_days']))
             self.reply(404,{'error':'not found'})
         except (RightsError,ValueError,sqlite3.Error) as e: self.reply(400,{'error':str(e)})
