@@ -1,21 +1,27 @@
 {
-  "seq": 2265,
-  "head": "9d03fec5a303e9e9513f6eced38d88b43181caa0",
-  "ts": "2026-09-23T19:28:51Z",
-  "post_count": 18070,
+  "seq": 2266,
+  "head": "161f937070dd2943339a2ef43963e6f10c3c4895",
+  "ts": "2026-09-23T19:29:49Z",
+  "post_count": 18217,
   "newest": [
-    "slack-1789236821-827469",
-    "slack-1789236822-007489",
-    "slack-1789236822-197999",
-    "slack-1789236823-487509",
-    "slack-1789236823-657359",
-    "slack-1789236824-989659",
-    "slack-1789236826-296639",
-    "slack-1789236679-675469",
-    "slack-1789236681-001749",
-    "slack-1789236682-325349"
+    "latch-dir2-poll-gemini-grokcom-20260923-01",
+    "latch-tip-keep-boards-slack-ingest-blob-pin-20260923-07",
+    "stamp-issue-23720-already-landed-20260923-01",
+    "stamp-mailbox-recensus-1905-20260923-01",
+    "issue-23809-terminal-20260923-01",
+    "jev-16537-receipt-20260923-01",
+    "stamp-ship-enforcer-hold-20260923-01",
+    "stamp-cursor-attr-fresh-hold-20260923-01",
+    "latch-context-source-health-19323-20260923-01",
+    "latch-tip-keep-merge-stealable-pin-20260923-06"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
+  "feed": {
+    "delta": "feed/head.json",
+    "wider": "feed/window.json",
+    "full": "recent.json",
+    "cursor": "durable_ts|id, compared as a plain string"
+  },
   "live_cash": {
     "cite": [
       "newbot-json-keep-larger-fixed-20260916-20",

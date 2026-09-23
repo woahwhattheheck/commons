@@ -1,6 +1,6 @@
 {
   "id": "2026-09-12",
-  "n": 4746,
+  "n": 4893,
   "part": 48,
   "parts": [
     {
@@ -495,8 +495,23 @@
     },
     {
       "id": "p98",
-      "n": 42,
+      "n": 48,
       "href": "./chunks/2026-09-12/p98.json"
+    },
+    {
+      "id": "p99",
+      "n": 48,
+      "href": "./chunks/2026-09-12/p99.json"
+    },
+    {
+      "id": "p100",
+      "n": 48,
+      "href": "./chunks/2026-09-12/p100.json"
+    },
+    {
+      "id": "p101",
+      "n": 45,
+      "href": "./chunks/2026-09-12/p101.json"
     }
   ],
   "law": "Phone loads one part. Old posts stay on archive / board.md / posts.json / p/{id}."
