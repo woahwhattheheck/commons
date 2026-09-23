@@ -230,9 +230,6 @@ class WorkflowSurfaceTests(unittest.TestCase):
         text = recipe.decode('utf-8')
         self.assertIn('revenue/external_opportunity_intake/', text)
         self.assertIn('revenue.external_opportunity_intake.selftest', text)
-        live = Path('.github/workflows/source-parses.yml').read_text(encoding='utf-8')
-        self.assertIn('revenue/external_opportunity_intake/**', live)
-        self.assertIn('python3 -m revenue.external_opportunity_intake.selftest', live)
         result = surface.check(Path('.'))
         self.assertLessEqual(result['active'], data['max_active_workflows'])
         self.assertEqual(result['status'], 'PASS', result['errors'])
@@ -251,9 +248,6 @@ class WorkflowSurfaceTests(unittest.TestCase):
         text = recipe.decode('utf-8')
         self.assertIn('revenue/uiowa_rfq_18649_recovery_evidence/', text)
         self.assertIn('test_assess_recovery.py', text)
-        live = Path('.github/workflows/source-parses.yml').read_text(encoding='utf-8')
-        self.assertIn('revenue/uiowa_rfq_18649_recovery_evidence/**', live)
-        self.assertIn('test_assess_recovery.py', live)
         result = surface.check(Path('.'))
         self.assertLessEqual(result['active'], data['max_active_workflows'])
         self.assertEqual(result['status'], 'PASS', result['errors'])
@@ -264,34 +258,49 @@ class WorkflowSurfaceTests(unittest.TestCase):
 
 
 
-    def test_pilot_contract_is_consolidated_into_retained_source_parses(self):
-        """Regress 68>67: pilot proof stays live without a standalone workflow slot."""
-        pilot = Path('.github/workflows/pilot-delivery-renewal-expansion-gate.yml')
-        self.assertFalse(pilot.exists())
+    def test_retired_launchers_and_reactivated_archives_stay_inside_budget(self):
+        """Regress 68>67 and source-parses retirement: purged launchers stay gone."""
+        absent = (
+            'header-census.yml',
+            'import-check.yml',
+            'ky-fin-reporting-discovery.yml',
+            'lacsd-04252-ap-acceptance.yml',
+            'pilot-delivery-renewal-expansion-gate.yml',
+            'render-check.yml',
+            'review-holding-check.yml',
+            'source-parses.yml',
+            'tests.yml',
+        )
+        keepers = (
+            'nm-ocs-tprm.yml',
+            'uiowa-001-131-ebid-pack.yml',
+            'uiowa-100-operator-portability.yml',
+            'uiowa-100-run-evidence.yml',
+            'uiowa096-compatibility.yml',
+        )
         data = json.loads(Path('ci/workflow-surface.json').read_text(encoding='utf-8'))
+        for name in absent:
+            self.assertFalse(Path('.github/workflows', name).exists(), name)
+            source = '.github/workflows/' + name
+            self.assertNotIn(source, data['retained'])
+        for name in ('ky-fin-reporting-discovery.yml', 'lacsd-04252-ap-acceptance.yml'):
+            row = next(item for item in data['archived'] if item['archive'].endswith(name))
+            recipe = Path(row['archive']).read_bytes()
+            self.assertEqual(len(recipe), row['bytes'])
+            self.assertEqual(hashlib.sha256(recipe).hexdigest(), row['sha256'])
+            parsed = surface.workflow(recipe)
+            self.assertFalse(surface.duplicate_branch_events(parsed))
+        for name in keepers:
+            path = Path('.github/workflows', name)
+            self.assertTrue(path.is_file(), name)
+            self.assertIn('.github/workflows/' + name, data['retained'])
+            parsed = surface.workflow(path.read_bytes())
+            self.assertFalse(surface.duplicate_branch_events(parsed), name)
         result = surface.check(Path('.'))
         self.assertEqual(data['max_active_workflows'], 67)
-        self.assertEqual(result['active'], 67)
+        self.assertLessEqual(result['active'], 67)
         self.assertEqual(result['status'], 'PASS', result['errors'])
-
-        path = Path('.github/workflows/source-parses.yml')
-        parsed = surface.workflow(path.read_bytes())
-        self.assertIn(
-            'revenue/pilot_delivery_renewal_expansion_gate/**',
-            parsed['on']['push']['paths'],
-        )
-        self.assertIn(
-            'test_pilot_delivery_renewal_expansion_gate.py',
-            parsed['on']['push']['paths'],
-        )
-        job = parsed['jobs']['provider-cost-truth']
-        self.assertEqual(job['strategy']['matrix']['python-version'], ['3.11', '3.13'])
-        commands = '\n'.join(
-            str(step.get('run', '')) for step in job['steps'] if isinstance(step, dict)
-        )
-        self.assertIn('revenue/pilot_delivery_renewal_expansion_gate/common.py', commands)
-        self.assertIn('python -m unittest -v test_pilot_delivery_renewal_expansion_gate', commands)
-        self.assertIn('python -O -m unittest -v test_pilot_delivery_renewal_expansion_gate', commands)
+        self.assertEqual(len(data['retained']) + len(data['archived']), data['source_workflows'])
 
     def test_pollers_throttle_and_isolate_schedule_concurrency(self):
         """Scheduled runs may supersede schedules, never push/manual generations."""

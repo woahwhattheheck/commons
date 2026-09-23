@@ -1,7 +1,7 @@
 {
   "schema": "commons.workflow-surface.v1",
   "source_commit": "4592104ca9fd37f7546b0b39f01badb83f8a1300",
-  "source_workflows": 438,
+  "source_workflows": 439,
   "max_active_workflows": 67,
   "retained": [
     ".github/workflows/affordable-housing-compliance-demo.yml",
@@ -24,8 +24,6 @@
     ".github/workflows/fsu-itn-6769-4.yml",
     ".github/workflows/harness-ping.yml",
     ".github/workflows/harness-wakeup.yml",
-    ".github/workflows/header-census.yml",
-    ".github/workflows/import-check.yml",
     ".github/workflows/inbox-visibility.yml",
     ".github/workflows/job-watchdog.yml",
     ".github/workflows/lattice-delta-backup-refs.yml",
@@ -38,6 +36,7 @@
     ".github/workflows/moving-main-mirror.yml",
     ".github/workflows/muhlnickel-foundry-cloud.yml",
     ".github/workflows/muhlnickel-spec-guard.yml",
+    ".github/workflows/nm-ocs-tprm.yml",
     ".github/workflows/ohsu-digital-pathology-evidence.yml",
     ".github/workflows/open-door-guard.yml",
     ".github/workflows/open-repo-backup.yml",
@@ -46,18 +45,14 @@
     ".github/workflows/path-manifest.yml",
     ".github/workflows/pr-collision-notice.yml",
     ".github/workflows/record-guard.yml",
-    ".github/workflows/render-check.yml",
     ".github/workflows/reply-to-revenue.yml",
     ".github/workflows/repo-pulse.yml",
     ".github/workflows/resources-tab-freshness.yml",
     ".github/workflows/revenue-hardening.yml",
-    ".github/workflows/review-holding-check.yml",
     ".github/workflows/road-ocr-v2.yml",
     ".github/workflows/slack-service-tags.yml",
-    ".github/workflows/source-parses.yml",
     ".github/workflows/spark-mcp-production.yml",
     ".github/workflows/staleness-alarm.yml",
-    ".github/workflows/tests.yml",
     ".github/workflows/titan-reset-invariance.yml",
     ".github/workflows/titan-s05-experiment.yml",
     ".github/workflows/titan-s24-champion-freeze.yml",
@@ -69,6 +64,10 @@
     ".github/workflows/titan-v4-plumbing.yml",
     ".github/workflows/titan-v5-promotion-release-gates.yml",
     ".github/workflows/titan-v5-v31-champion-ratchet-authority.yml",
+    ".github/workflows/uiowa-001-131-ebid-pack.yml",
+    ".github/workflows/uiowa-100-operator-portability.yml",
+    ".github/workflows/uiowa-100-run-evidence.yml",
+    ".github/workflows/uiowa096-compatibility.yml",
     ".github/workflows/webmcp-pad-production.yml",
     ".github/workflows/workflow-surface.yml"
   ],
@@ -1020,6 +1019,12 @@
       "archive": "ci/workflow-recipes/pazhou-offboardmesh.yml",
       "sha256": "f4694414d6ba4d858cdf025d6eacaa3e1d6544c4faa3ebc38b0f3ca8aea96dce",
       "bytes": 1274
+    },
+    {
+      "source": ".github/workflows/pilot-renewal-expansion-gate.yml",
+      "archive": "ci/workflow-recipes/pilot-renewal-expansion-gate.yml",
+      "sha256": "2885e42f0b568f2faef8051f1aaf26f837a425b0c68677672ce99557daf8481f",
+      "bytes": 583
     },
     {
       "source": ".github/workflows/pinellas-26-0732-teaming.yml",
@@ -2274,6 +2279,12 @@
       "archive": "ci/workflow-recipes/wuhu-robot-qc.yml",
       "sha256": "3790ca8ff7c819ca58d57cb200b5206ef01f9396009df4c704e1c02d8adaf8e4",
       "bytes": 1101
+    },
+    {
+      "source": ".github/workflows/xtech-search10-portfolio-downselect.yml",
+      "archive": "ci/workflow-recipes/xtech-search10-portfolio-downselect.yml",
+      "sha256": "803c641fd429cd6f56982c6cc215ec896478ad5b7d43b9c68a2dab94ef86b9e7",
+      "bytes": 3623
     },
     {
       "source": ".github/workflows/xtech-search10-sustainproof.yml",
