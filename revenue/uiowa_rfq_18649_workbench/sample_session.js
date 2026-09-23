@@ -5,7 +5,6 @@
 // it does not replace the renderer, parser, report format or async counters.
 (() => {
   let parked = null;
-  const originalDemoLabel = el.demoBtn.textContent;
   const originalClearLabel = el.resetBtn.textContent;
   const panel = document.createElement("section");
   panel.className = "import-panel";
@@ -107,7 +106,9 @@
       setError(prior.error);
       parked = null;
       updateControls();
-      el.demoBtn.focus();
+      // The sample panel is now hidden and the original intake may be collapsed.
+      // Restore focus to a visible heading, not the hidden demo/leave buttons.
+      document.getElementById(prior.report ? "selectedCellHeading" : "summary-heading").focus();
     } catch (err) {
       // Keep the parked snapshot reachable through Leave rather than discarding it.
       preservationError(err);
