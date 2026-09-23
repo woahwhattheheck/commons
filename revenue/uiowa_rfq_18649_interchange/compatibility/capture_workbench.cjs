@@ -13,27 +13,65 @@ async function main() {
   const [appPath, outDir, reportPath] = process.argv.slice(2);
   if (!appPath || !outDir) throw new Error('usage: node capture_workbench.cjs APP_JS NEW_OUTPUT_DIR [COMPILER_REPORT_JSON]');
   const source = fs.readFileSync(appPath);
+  const workbenchDir = path.dirname(path.resolve(appPath));
+  const pageScripts = ['handoff.js', 'handoff_import.js'];
+  const pageSources = pageScripts.map(name => {
+    const full = path.join(workbenchDir, name);
+    return { name, bytes: fs.readFileSync(full) };
+  });
   const exports = [];
   class Element {
-    constructor() { this.children = []; this.dataset = {}; this.value = ''; this.events = {}; this.textContent = ''; }
+    constructor() {
+      this.children = []; this.dataset = {}; this.value = ''; this.events = {}; this.textContent = '';
+      this.className = ''; this.disabled = false; this.hidden = false; this.id = '';
+    }
     append(...children) { this.children.push(...children); }
     replaceChildren(...children) { this.children = children; }
     addEventListener(name, callback) { this.events[name] = callback; }
-    setAttribute() {}
+    setAttribute(name, value) { this.attributes = this.attributes || {}; this.attributes[name] = String(value); }
     click() { if (this.events.click) this.events.click(); }
     remove() {}
+    focus() { document.activeElement = this; }
+    contains(node) {
+      if (!node) return false;
+      if (node === this) return true;
+      return this.children.some(child => child && typeof child.contains === 'function' && child.contains(node));
+    }
+    querySelectorAll(selector) {
+      const wanted = selector.startsWith('.') ? selector.slice(1) : null;
+      const found = [];
+      const walk = node => {
+        if (!node || typeof node !== 'object') return;
+        if (wanted && typeof node.className === 'string' && node.className.split(/\s+/).includes(wanted)) found.push(node);
+        for (const child of node.children || []) walk(child);
+      };
+      walk(this);
+      return found;
+    }
     get childElementCount() { return this.children.length; }
   }
   const elements = new Map();
+  const document = {
+    activeElement: null,
+    createElement: () => new Element(),
+    createTextNode: text => ({ textContent: String(text), children: [] }),
+    getElementById: id => { if (!elements.has(id)) elements.set(id, new Element()); return elements.get(id); }
+  };
+  document.body = new Element();
   const sandbox = {
-    document: { body: new Element(), createElement: () => new Element(),
-      getElementById: id => { if (!elements.has(id)) elements.set(id, new Element()); return elements.get(id); } },
+    document,
     Option: function(label, value) { this.text = label; this.value = value; },
-    Blob, URLSearchParams, location: { search: '' },
+    Blob, URLSearchParams, TextEncoder, TextDecoder, structuredClone, location: { search: '' },
+    setTimeout: fn => { fn(); return 0; },
+    clearTimeout() {},
     URL: { createObjectURL: blob => { exports.push(blob); return 'blob:synthetic-local'; }, revokeObjectURL() {} },
     fetch: async () => { throw new Error('NETWORK_DISABLED_IN_REHEARSAL'); }
   };
+  sandbox.window = sandbox;
   vm.createContext(sandbox);
+  for (const script of pageSources) {
+    vm.runInContext(script.bytes.toString('utf8'), sandbox, { filename: path.join(workbenchDir, script.name), timeout: 5000 });
+  }
   vm.runInContext(source.toString('utf8'), sandbox, { filename: appPath, timeout: 5000 });
   const report = reportPath ? JSON.parse(fs.readFileSync(reportPath, 'utf8')) : vm.runInContext('syntheticReport()', sandbox);
   sandbox.suppliedReport = report;
@@ -61,12 +99,35 @@ async function main() {
   handoff.cell_notes.forEach((row, i) => assert.equal(row.analyst_note, sandbox.testNotes[i]));
   assert.ok(Object.values(handoff.authority).every(value => value === false));
   assert.ok(handoff.cell_notes.every(row => !('source_ids' in row)), 'source evidence belongs in the paired report');
-  vm.runInContext('installReport(suppliedReport); exportDraft();', sandbox, { timeout: 5000 });
+  vm.runInContext(`
+    const other = structuredClone(suppliedReport);
+    other.receipt_sha256 = 'e'.repeat(64);
+    installReport(other);
+    exportDraft();
+  `, sandbox, { timeout: 5000 });
   const reset = JSON.parse(await exports[1].text());
   assert.ok(reset.cell_notes.every(row => row.analyst_note === '' && row.disposition === 'UNREVIEWED'));
+  assert.equal(reset.report_receipt_sha256, 'e'.repeat(64));
+  vm.runInContext(`
+    installReport(suppliedReport);
+    state.cells.forEach((cell, i) => {
+      const note = state.notes.get(keyFor(cell)) || '';
+      if (note !== testNotes[i]) throw new Error('same receipt did not restore note ' + i);
+    });
+  `, sandbox, { timeout: 5000 });
   // Parsing failure must invalidate the prior generation, not leave its export active.
-  vm.runInContext(`el.candidateFile.files = [{size: 1, text: async () => '{'}];
-    el.authorityFile.files = [{size: 2, text: async () => '{}'}];`, sandbox);
+  vm.runInContext(`
+    function rehearsalFile(text) {
+      const data = new TextEncoder().encode(text);
+      return {
+        size: data.byteLength,
+        text: async () => text,
+        arrayBuffer: async () => data.buffer.slice(data.byteOffset, data.byteOffset + data.byteLength)
+      };
+    }
+    el.candidateFile.files = [rehearsalFile('{')];
+    el.authorityFile.files = [rehearsalFile('{}')];
+  `, sandbox);
   await vm.runInContext('inspectFiles()', sandbox, { timeout: 5000 });
   vm.runInContext('exportDraft()', sandbox);
   assert.equal(exports.length, 2, 'failed replacement must not export the previous generation');
@@ -75,7 +136,9 @@ async function main() {
   const receipt = {
     schema: 'uiowa-096-workbench-capture/v1', synthetic_note_inputs: true,
     report_synthetic_label: report.synthetic_demo === true,
-    runtime: process.version, execution: 'actual-app-js-with-minimal-dom-no-network',
+    runtime: process.version, execution: 'actual-page-scripts-with-minimal-dom-no-network',
+    page_scripts: [...pageScripts, path.basename(appPath)],
+    page_script_sha256: Object.fromEntries(pageSources.map(script => [script.name, crypto.createHash('sha256').update(script.bytes).digest('hex')])),
     source_git_blob_sha1: crypto.createHash('sha1').update(bytes).digest('hex'),
     source_sha256: crypto.createHash('sha256').update(source).digest('hex'),
     report_origin: reportPath ? 'supplied-report-see-operator-provenance' : 'actual-built-in-ui-demo-NOT-compiler-output',
@@ -83,7 +146,7 @@ async function main() {
     handoff_sha256: crypto.createHash('sha256').update(handoffText).digest('hex'),
     checks: ['12-cell-export-despite-empty-filter', '12-note-exact-string-preservation',
       'all-handoff-authorities-literal-false', 'report-required-for-source-evidence',
-      'reimport-clears-notes-and-dispositions', 'invalid-replacement-clears-export'],
+      'receipt-change-clears-notes-and-same-receipt-restores', 'invalid-replacement-clears-export'],
     result: 'PASS', visual_browser_validation: 'NOT_RUN'
   };
   fs.mkdirSync(outDir); // Refuse overwriting a prior capture directory.
