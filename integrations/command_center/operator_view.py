@@ -107,6 +107,8 @@ def selection(data, rows, mode, offset, limit):
         "mode": mode, "snapshot_generated_at": data.get("generated_at"),
         "source_note": data.get("source_note"),
         "operator_control": data.get("operator_control"),
+        "operator_control_source": data.get("operator_control_source"),
+        "cache": data.get("cache"),
         "collection": data.get("collection"),
         "exceptions_omitted": data.get("exceptions_omitted"),
         "snapshot_rows": len(data["rows"]), "active_reported": active,
@@ -134,7 +136,18 @@ def render(data, rows, view, details=False):
     except (AttributeError, ValueError, OverflowError):
         pass
     yield f"OPERATOR VIEW | {view['mode']} | control {text(mode)}"
-    yield f"Saved {text(stamp)} | snapshot age {age} | collection {coverage}"
+    yield f"Generated {text(stamp)} | snapshot age {age} | collection {coverage}"
+    control_source = data.get("operator_control_source")
+    control_source = control_source if isinstance(control_source, dict) else {}
+    fresh = control_source.get("fresh")
+    freshness = "fresh" if fresh is True else "stale or unavailable" if fresh is False else "unknown"
+    yield (f"Control evidence at snapshot: {freshness} | "
+           f"observed {text(control_source.get('observed_at'))}")
+    cache = data.get("cache")
+    cache = cache if isinstance(cache, dict) else {}
+    hit = "hit" if cache.get("hit") is True else "miss" if cache.get("hit") is False else "unknown"
+    yield (f"Projection cache at snapshot: {hit} | age {text(cache.get('age_seconds'))}s | "
+           f"TTL {text(cache.get('ttl_seconds'))}s; not provider freshness.")
     if isinstance(data.get("source_note"), str):
         yield "Input scope: " + text(data["source_note"])
     if count(data.get("exceptions_omitted")):
@@ -173,7 +186,8 @@ def render(data, rows, view, details=False):
                        f"{text(receipt.get('title') or receipt.get('item_id'))} | {text(receipt.get('url'))}")
             for stage in row.get("stages", []):
                 yield (f"  Stage: {text(stage.get('stage'))} / {text(stage.get('state'))} | "
-                       f"{text(stage.get('who_acts'))} | {text(stage.get('evidence'))}")
+                       f"{text(stage.get('who_acts'))} | observed {text(stage.get('observed_at'))} | "
+                       f"{text(stage.get('evidence'))}")
     if view["remaining_matching_rows"]:
         yield f"\n{view['remaining_matching_rows']} more matching rows: use --offset {view['offset'] + len(rows)}."
 
