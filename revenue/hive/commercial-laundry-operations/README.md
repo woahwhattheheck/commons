@@ -23,6 +23,22 @@ python demo.py
 
 This demonstration uses actual SQLite persistence and the product engine, not a replacement implementation. It shows a clean stop and a stop whose damage/count exceptions block invoice drafting until an explicit example resolution. The demonstration is not customer evidence, a deployment, or revenue.
 
+## Local browser workbench
+
+After explicitly initializing a database, start the optional browser interface:
+
+```sh
+python workbench.py laundry-work/shift.sqlite3 --port 8899
+```
+
+Open the printed `http://127.0.0.1:8899/` address on the same machine. Stop with Ctrl-C. The server binds only to loopback; it is not an internet-facing customer portal and has no accounts or external services. It requires an existing database and never initializes one implicitly. Keep the database directory private and do not expose this server through a public proxy.
+
+The route board displays observed pickup, good, damaged and delivered counts, container custody, open/resolved exceptions, and invoice DRAFTS. Its action buttons select the existing engine operation and copy only the relevant stop/exception ID; quantities are not inferred or prefilled. Forms cover customer, site, dated price, recurring plan, manifest, pickup, processing, delivery, resolution and invoice drafting. Enter counts as `sheet=100, towel=60`, container IDs separated by commas, and prices in integer cents.
+
+An operation key remains visible after submission. Retry an uncertain outcome with exactly that key and payload; use **New operation key** for a different operation. Route/customer JSON, CSV and Markdown downloads reuse the existing renderers and do not send anything to a customer or accounting system. Selectors show up to 200 records and disclose the total; exact-ID fields open records outside those lists. Use **Refresh** to read current state.
+
+Verification boundary for the initial browser addition: the retained engine completed a real two-account CLI workflow, the new server started, and Python/JavaScript source parsing passed. The available browser refused loopback navigation with `ERR_BLOCKED_BY_ADMINISTRATOR` before page load. Browser forms and download interaction therefore remain unverified in that environment; source/parser success is not browser or production validation. No new test, fixture, receipt or workflow files are added.
+
 ## What the desk records
 
 - Customers, sites, dated service agreements and item prices in integer cents.
@@ -60,8 +76,8 @@ The original offer hypothesis is **$4,500 setup plus $499/month**, explicitly **
 
 ## Source lineage
 
-Original product/specification: Z-Sol-22. Recovery lineage: Z-IronWeave, SCREE-Z and Z-HARBOR. Operator interface and guide: ZZ-QUARTZ-S7D9. Production-only integration: yZ-Cairn-47, September 23, 2026.
+Original product/specification: Z-Sol-22. Recovery lineage: Z-IronWeave, SCREE-Z and Z-HARBOR. Operator interface and guide: ZZ-QUARTZ-S7D9. Production-only integration: yZ-Cairn-47, September 23, 2026. Local browser workbench: yZ-Cairn-Linen72, September 23, 2026.
 
-The six executable source files are recovered unchanged from `61b90f87acb3ae59853e2095300f7ceeb676d8ed` (the prior #15843 carrier for #14558). There is one implementation class: `laundry_desk.py` and `laundry_desk_core.py` load the same retained engine. The internal `.py.disabled` filename is intentional; the core loads it explicitly.
+The six executable source files are recovered unchanged from `61b90f87acb3ae59853e2095300f7ceeb676d8ed` (the prior #15843 carrier for #14558). There is one implementation class: `laundry_desk.py` and `laundry_desk_core.py` load the same retained engine. The internal `.py.disabled` filename is intentional; the core loads it explicitly. The additional `workbench.py` calls these existing operations rather than implementing another business engine.
 
 This recovery does not import the old test files, validation/receipt documents, or shared workflow edits. Historical branches retain their provenance; this directory is the runnable product and its operator documentation.
