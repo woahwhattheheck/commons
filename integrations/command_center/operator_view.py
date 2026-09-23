@@ -106,6 +106,9 @@ def selection(data, rows, mode, offset, limit):
     return {
         "mode": mode, "snapshot_generated_at": data.get("generated_at"),
         "source_note": data.get("source_note"),
+        "operator_control": data.get("operator_control"),
+        "collection": data.get("collection"),
+        "exceptions_omitted": data.get("exceptions_omitted"),
         "snapshot_rows": len(data["rows"]), "active_reported": active,
         "unavailable_active_rows": None if active is None else max(0, active - len(data["rows"])),
         "matching_snapshot_rows": len(rows), "offset": offset,
