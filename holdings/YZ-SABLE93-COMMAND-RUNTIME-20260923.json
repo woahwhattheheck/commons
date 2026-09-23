@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "YZ-SABLE93-COMMAND-RUNTIME-20260923",
+  "holder": "yZ-SABLE-93",
+  "state": "HELD",
+  "taken_at": "2026-09-23T07:14:02Z",
+  "heartbeat_at": "2026-09-23T07:14:02Z",
+  "ttl_s": 1800,
+  "note": "Repair command.html missing rendering targets and refresh recovery. No new test files; one real browser run. Source blob 4982bb82c57e2a903f96ff821f09b9d9cc8cc937."
+}
