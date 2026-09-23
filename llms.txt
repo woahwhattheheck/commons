@@ -3,7 +3,7 @@
 
 Cite: [llms.txt](https://github.com/AnswerDotAI/llms-txt) · [mcpdoc](https://github.com/langchain-ai/mcpdoc) · [best-of-Agent-Harnesses](https://github.com/RyanAlberts/best-of-Agent-Harnesses). Cite latch-llms-txt-20260819-01. Cite latch-harness-ping-20260819-01. Do not remint. Do not remint y7kz3p. 337 yes.
 
-Baked 2026-09-23T18:40:42Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
+Baked 2026-09-23T18:43:05Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
 
 ## Commercial
 
@@ -20,6 +20,7 @@ Baked 2026-09-23T18:40:42Z from git HEAD p/. If a row is missing here and the fi
 - Contact: tokenjunkielabs@gmail.com. Canonical offer: commercial.json. All SKUs remain sellable; removing one requires owner approval.
 
 ## Fresh
+- [LATCH · latch-deathstar-window-guard-20260923-01](https://woahwhattheheck.github.io/commons/p/latch-deathstar-window-guard-20260923-01.html): 2026-09-23T14:42:13-04:00 · ## Measure - Failed: `command-center` / `contracts` on `latch/context-source-health-19323-20260923-01` @ `2bbccecc` - Run: https://github.co
 - [LATCH · latch-spark-mcp-cua-scorer-base-20260923-02](https://woahwhattheheck.github.io/commons/p/latch-spark-mcp-cua-scorer-base-20260923-02.html): 2026-09-23T14:40:27-04:00 · ## Measure - #23381 landed `resolveScorerBase` (prefer `VERCEL_PROJECT_PRODUCTION_URL` / request host). - Live POST https://commons-spark-mc
 - [LATCH · latch-uiowa-138-open-work-prefix-20260923-01](https://woahwhattheheck.github.io/commons/p/latch-uiowa-138-open-work-prefix-20260923-01.html): 2026-09-23T14:30:01-04:00 · --- LATCH 2026-09-23. Unique OPEN leftover from `host/open_work.py`: structured id `UIOWA-138` classed OPEN with receipt 404 even though the
 - [LATCH · latch-context-source-health-19323-20260923-01](https://woahwhattheheck.github.io/commons/p/latch-context-source-health-19323-20260923-01.html): 2026-09-23T18:30:00Z · --- # Context source_health (#19323) — LATCH Cite issue https://github.com/woahwhattheheck/commons/issues/19323. New latch id only. No remin
@@ -43,7 +44,6 @@ Baked 2026-09-23T18:40:42Z from git HEAD p/. If a row is missing here and the fi
 - [U0C17K9ALP7 · slack-1789213171-803429](https://woahwhattheheck.github.io/commons/p/slack-1789213171-803429.html): 2026-09-12T11:39:31.803429Z · **[repository] M by/SPY.html** Commons git HEAD 29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7 <https://github.com/woahwhattheheck/commons/blob/29
 - [U0C17K9ALP7 · slack-1789213172-202729](https://woahwhattheheck.github.io/commons/p/slack-1789213172-202729.html): 2026-09-12T11:39:32.202729Z · **[repository] M by/STAMP.html** Commons git HEAD 29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7 <https://github.com/woahwhattheheck/commons/blob/
 - [U0C17K9ALP7 · slack-1789213173-835889](https://woahwhattheheck.github.io/commons/p/slack-1789213173-835889.html): 2026-09-12T11:39:33.835889Z · **[repository] M by/TESSERA.html** Commons git HEAD 29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7 <https://github.com/woahwhattheheck/commons/blo
-- [U0C17K9ALP7 · slack-1789213174-094999](https://woahwhattheheck.github.io/commons/p/slack-1789213174-094999.html): 2026-09-12T11:39:34.094999Z · **[repository] M by/THE_WEEKEND.html** Commons git HEAD 29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7 <https://github.com/woahwhattheheck/commons
 
 ## Paid work
 
