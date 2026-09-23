@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 1952,
+    "open_issues": 1883,
     "open_pull_requests": 9,
-    "runs_in_progress": 14,
-    "runs_queued": 332
+    "runs_in_progress": 18,
+    "runs_queued": 279
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -179,8 +179,63 @@
   },
   "pulls_listed": 9,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 23.7,
+  "queue_depth_per_runner": 15.5,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "yz/tern7v6-localized-demo-preservation",
+      "closed_at": "2026-09-23T08:16:33Z",
+      "head_sha": "60ea22665c23db5de770cc9d565f72636e2e804f",
+      "merged_at": "2026-09-23T08:16:33Z",
+      "number": 19324,
+      "state": "MERGED",
+      "title": "Stop localized-media demo from replacing existing workspaces and packages"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "yz/tern7v6-localized-media-review",
+      "closed_at": "2026-09-23T08:12:48Z",
+      "head_sha": "f22a5606d5ec4e1847f036432bc30cd29a09ea23",
+      "merged_at": "2026-09-23T08:12:48Z",
+      "number": 19321,
+      "state": "MERGED",
+      "title": "Add read-only localized-media portfolio review with complete native exports"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "yz-kestrel-v68/unify-parity-workbench-19307",
+      "closed_at": "2026-09-23T08:07:55Z",
+      "head_sha": "dc102c9f0c3a014d92273ad5d6848f8f86273632",
+      "merged_at": "2026-09-23T08:07:55Z",
+      "number": 19320,
+      "state": "MERGED",
+      "title": "Consolidate migration intake into one workbench with reusable plans and private replay"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "yz/tern7v6-localized-media-purge",
+      "closed_at": "2026-09-23T08:06:09Z",
+      "head_sha": "d7dfdfab0cf1dac8939a66d1831c7e13054494da",
+      "merged_at": "2026-09-23T08:06:09Z",
+      "number": 19319,
+      "state": "MERGED",
+      "title": "Delete localized-media generated suites and obsolete execution blocks"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "yz-cairn-7f2/jev-operation-brief-20260923",
+      "closed_at": "2026-09-23T08:05:55Z",
+      "head_sha": "d8ff68967cbbbf5ea8b6b7f9d37bcb6fd6d9330c",
+      "merged_at": "2026-09-23T08:05:55Z",
+      "number": 19317,
+      "state": "MERGED",
+      "title": "Show effective Jev operation state without replaying confirmed history"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -261,50 +316,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "yz-kestrel/parity-portable-report-20260923",
-      "closed_at": "2026-09-23T07:52:25Z",
-      "head_sha": "3ad911b6ec72011bdff7561b96992713da52e89b",
-      "merged_at": "2026-09-23T07:52:25Z",
-      "number": 19308,
-      "state": "MERGED",
-      "title": "Make migration-parity reports portable, printable and readable offline"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "yz/quarry47-parity-test-purge",
-      "closed_at": "2026-09-23T07:48:57Z",
-      "head_sha": "210695beb03741f0318e4bae212d88230374cbe2",
-      "merged_at": "2026-09-23T07:48:56Z",
-      "number": 19299,
-      "state": "MERGED",
-      "title": "Remove migration-parity test duplication and stale root-CI instructions"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "yz/quarry47-migration-csv-intake",
-      "closed_at": "2026-09-23T07:40:20Z",
-      "head_sha": "27526431fc87589045aae72a50061f312c0c3fc3",
-      "merged_at": "2026-09-23T07:40:20Z",
-      "number": 19288,
-      "state": "MERGED",
-      "title": "Add CSV-to-parity intake, local browser mapping and private replay downloads"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "yz-rivet-83/uiowa080-preserved-portability",
-      "closed_at": "2026-09-23T07:38:01Z",
-      "head_sha": "cbbd28eff56650899a108514ab4ea1d2429a7647",
-      "merged_at": "2026-09-23T07:38:01Z",
-      "number": 19284,
-      "state": "MERGED",
-      "title": "Recover UIOWA-080 provider demo with per-response validation"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "swarm-yz/keel47-lineage-report-reader-20260923",
       "closed_at": "2026-09-23T07:35:45Z",
       "head_sha": "d2b74734ed6d668f8b80794abd60972fad8db04b",
@@ -312,17 +323,6 @@
       "number": 19276,
       "state": "MERGED",
       "title": "Make ordinary lineage reports usable as offline finding reviews"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "yz-basalt6n4/waste-operator-console",
-      "closed_at": "2026-09-23T07:33:23Z",
-      "head_sha": "18bee2345c81b120bb915116c491a286bfef91d8",
-      "merged_at": "2026-09-23T07:33:23Z",
-      "number": 19269,
-      "state": "MERGED",
-      "title": "Commercial Waste: ship browser route and invoice-draft operations"
     },
     {
       "author": "woahwhattheheck",
@@ -349,6 +349,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-23T08:04:27Z",
+  "unchanged_since": "2026-09-23T08:19:14Z",
   "undatable_pulls": []
 }
