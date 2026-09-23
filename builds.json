@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 15,
+ "n_open_prs": 12,
  "open_prs": [
   {
    "number": 15836,
@@ -359,7 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15836",
    "base_freshness": {
     "base_sha": "4d6602f0ea8a69c1399d4cb2b953f84d281071d3",
-    "main_sha": "0055e9cef26da72dad6686a87c5397ad14f5f9d4",
+    "main_sha": "e40db91f98dcdf30fcd439766c0d87639a7665ec",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -375,7 +375,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15751",
    "base_freshness": {
     "base_sha": "eaa9a6484412a03e6b0cd1826c7feedae5f9148b",
-    "main_sha": "0055e9cef26da72dad6686a87c5397ad14f5f9d4",
+    "main_sha": "e40db91f98dcdf30fcd439766c0d87639a7665ec",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -391,23 +391,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15888",
    "base_freshness": {
     "base_sha": "df167c5e0605d9e104f446944d46a9e6396acaa4",
-    "main_sha": "0055e9cef26da72dad6686a87c5397ad14f5f9d4",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15889,
-   "author": "woahwhattheheck",
-   "title": "CI: current-main rejoin for 67-slot recovery + poll reduction",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15889",
-   "base_freshness": {
-    "base_sha": "df167c5e0605d9e104f446944d46a9e6396acaa4",
-    "main_sha": "0055e9cef26da72dad6686a87c5397ad14f5f9d4",
+    "main_sha": "e40db91f98dcdf30fcd439766c0d87639a7665ec",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -423,7 +407,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/16304",
    "base_freshness": {
     "base_sha": "9e9bf749c5f7aa4f7bcb986e929b025ad7e6b46f",
-    "main_sha": "0055e9cef26da72dad6686a87c5397ad14f5f9d4",
+    "main_sha": "e40db91f98dcdf30fcd439766c0d87639a7665ec",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -439,28 +423,12 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/16134",
    "base_freshness": {
     "base_sha": "6654875706a68526563f4e741997a980175b65c5",
-    "main_sha": "0055e9cef26da72dad6686a87c5397ad14f5f9d4",
+    "main_sha": "e40db91f98dcdf30fcd439766c0d87639a7665ec",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 19267,
-   "author": "woahwhattheheck",
-   "title": "feat(command-center): seat-varied context discovery and oldest-work recovery",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/19267",
-   "base_freshness": {
-    "base_sha": "f7597173f462866a70711fdf09520c0a3ac41f4a",
-    "main_sha": "0055e9cef26da72dad6686a87c5397ad14f5f9d4",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
@@ -471,23 +439,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15875",
    "base_freshness": {
     "base_sha": "2735e1c1a70b669aed795f9a8dfde69ab68ab49c",
-    "main_sha": "0055e9cef26da72dad6686a87c5397ad14f5f9d4",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 16195,
-   "author": "woahwhattheheck",
-   "title": "Historical mixed carrier: interchange/handoff reconciliation (UIOWA-033 recovered)",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/16195",
-   "base_freshness": {
-    "base_sha": "d0447137295128b9fbd92a0a687f914a610ec68c",
-    "main_sha": "0055e9cef26da72dad6686a87c5397ad14f5f9d4",
+    "main_sha": "e40db91f98dcdf30fcd439766c0d87639a7665ec",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -503,7 +455,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/19286",
    "base_freshness": {
     "base_sha": "1e74caa5ed7e3f721a5e1e141e7352d32260353f",
-    "main_sha": "0055e9cef26da72dad6686a87c5397ad14f5f9d4",
+    "main_sha": "e40db91f98dcdf30fcd439766c0d87639a7665ec",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -519,7 +471,23 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15613",
    "base_freshness": {
     "base_sha": "cac64873ed5f8be611bd377e7a38e09f94d545e7",
-    "main_sha": "0055e9cef26da72dad6686a87c5397ad14f5f9d4",
+    "main_sha": "e40db91f98dcdf30fcd439766c0d87639a7665ec",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 16195,
+   "author": "woahwhattheheck",
+   "title": "Historical mixed carrier: interchange/handoff reconciliation (UIOWA-033 recovered)",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/16195",
+   "base_freshness": {
+    "base_sha": "d0447137295128b9fbd92a0a687f914a610ec68c",
+    "main_sha": "e40db91f98dcdf30fcd439766c0d87639a7665ec",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -535,23 +503,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/19299",
    "base_freshness": {
     "base_sha": "e11abb56329387820a80b6cc0c3ae98c12b5dcbd",
-    "main_sha": "0055e9cef26da72dad6686a87c5397ad14f5f9d4",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 19300,
-   "author": "woahwhattheheck",
-   "title": "chore(uiowa-108): remove completed test and replay scaffolding",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/19300",
-   "base_freshness": {
-    "base_sha": "e11abb56329387820a80b6cc0c3ae98c12b5dcbd",
-    "main_sha": "0055e9cef26da72dad6686a87c5397ad14f5f9d4",
+    "main_sha": "e40db91f98dcdf30fcd439766c0d87639a7665ec",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -567,7 +519,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/16289",
    "base_freshness": {
     "base_sha": "fc4039f3e6eed7b25e441cb3af18069ae8111e67",
-    "main_sha": "0055e9cef26da72dad6686a87c5397ad14f5f9d4",
+    "main_sha": "e40db91f98dcdf30fcd439766c0d87639a7665ec",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -577,13 +529,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 19301,
+   "number": 19267,
    "author": "woahwhattheheck",
-   "title": "Fix SwarmOps current freshness and preserve explicit historical replay",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/19301",
+   "title": "feat(command-center): seat-varied context discovery and oldest-work recovery",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/19267",
    "base_freshness": {
-    "base_sha": "e11abb56329387820a80b6cc0c3ae98c12b5dcbd",
-    "main_sha": "0055e9cef26da72dad6686a87c5397ad14f5f9d4",
+    "base_sha": "f7597173f462866a70711fdf09520c0a3ac41f4a",
+    "main_sha": "e40db91f98dcdf30fcd439766c0d87639a7665ec",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
