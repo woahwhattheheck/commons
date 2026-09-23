@@ -237,15 +237,31 @@ let csvManifestText = null;
 on("csv-file", "change", async () => {
   const file = $("csv-file").files && $("csv-file").files[0];
   if (!file) return;
-  $("csv-text").value = await file.text();
+  if (file.size > 1024 * 1024) throw new Error("CSV file exceeds the 1 MiB intake limit. The paste box and reviewed manifest were left unchanged.");
+  const bytes = await file.arrayBuffer();
+  let text;
+  try {
+    text = new TextDecoder("utf-8", {fatal: true}).decode(bytes);
+  } catch (_) {
+    throw new Error("CSV must be UTF-8. The paste box and reviewed manifest were left unchanged.");
+  }
+  $("csv-text").value = text;
   say("CSV loaded into the paste box only. Preview before initializing.");
 });
 on("csv-preview", "click", async () => {
-  csvManifestText = null;
-  $("csv-download").disabled = true;
   $("csv-preview-out").textContent = "Previewing…";
-  const result = await json("/api/csv-preview", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({csv_text: $("csv-text").value, timezone_policy: $("csv-timezone").value})});
-  if (typeof result.manifest_text !== "string") throw new Error("Preview did not return manifest text.");
+  let result;
+  try {
+    result = await json("/api/csv-preview", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({csv_text: $("csv-text").value, timezone_policy: $("csv-timezone").value})});
+  } catch (error) {
+    $("csv-preview-out").textContent = error.message || String(error);
+    throw error;
+  }
+  if (typeof result.manifest_text !== "string") {
+    const message = "Preview did not return manifest text.";
+    $("csv-preview-out").textContent = message;
+    throw new Error(message);
+  }
   csvManifestText = result.manifest_text;
   $("manifest").value = result.manifest_text;
   $("csv-download").disabled = false;
