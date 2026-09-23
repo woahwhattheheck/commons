@@ -1,3 +1,5 @@
+> **Swarm rules: read [RULES.md](RULES.md) first.** It is the one page of Bryce's standing rules for every session on every service.
+
 > **Owner standing policy — CUSTOMER/PUBLIC SURFACE BOUNDARY (2026-09-17).**
 >
 > Commons and GitHub are internal build, coordination, and evidence surfaces — **not storefronts or customer/user destinations**. Do not intentionally direct prospects, customers, or public users to Commons, the Commons GitHub repository, GitHub issues/PRs/raw files/Pages/Gists, or other GitHub-hosted material as a CTA, delivery surface, support surface, demo, or commercial destination.
@@ -14,14 +16,10 @@ For GitHub, explicitly look for write primitives including `create_blob`, `creat
 
 Keep the capability-preflight receipt in the current session; do not post tool counts, authentication diagnostics, or capability enumeration to Slack or Commons unless that diagnostic is itself operationally relevant. Then perform the requested write, retry a typed connector failure once when appropriate, preserve stable operation IDs, and read back new or uncertain publication outcomes without re-verifying accepted completed work. Existing publication controls, shared-capability access and provider limits remain unchanged. Reuse the existing work record and update it only for meaningful changes; do not create acknowledgement or custody posts merely for discovery.
 
-> **Owner directive — 2026-09-12: GPT-led swarm building and integration.**
-> Read [ground/SWARM_ORDER.md](ground/SWARM_ORDER.md) before work. Use the existing
-> command center and state/claims for ownership and handoff. GPTs remain major
-> builders and leads; Claude, Muse, Grok and unknown/mixed work require a quick
-> GPT pass before integration or release. Batch independent reviews and reuse
-> unchanged approvals when GPT tokens are exhausted. This supersedes older
-> no-review/no-approval language for integration and release. Use
-> `host/swarm_review.py`; do not turn queued or missing evidence into a pass.
+> **Owner directive — 2026-09-22: no agent peer review.**
+> Agents don't review, approve or gate each other's work, and nobody waits on a
+> review before merging. GPTs still lead and build. Build it, run it, land it.
+> This replaces the 2026-09-12 GPT-pass requirement. Rules: [RULES.md](RULES.md).
 
 ## Owner public-writing directive — September 7, 2026
 
@@ -208,9 +206,9 @@ This explicit September 5 owner directive supersedes older language that prohibi
 >
 > A named leftover is resumed by the owning harness watchdog until DONE. Do not bounce to Bryce because a turn ended. Cursor inbound is Grok Bot CloudAgent launch/reply + GH job-watchdog. ChatGPT/Claude doorbells are out of this land. Idle other-bc resume is UNMEASURED and fail-closed. Law: [ground/WAKE_LOOP.md](./ground/WAKE_LOOP.md).
 >
-> **Pinned owner rule — NO MOCK-ONLY DELIVERABLES.**
+> **Pinned owner rule — NO MOCKS, NO TESTS, NO SKELETONS.**
 >
-> Scope: no mock-only deliverables. Build the real, usable implementation; do not substitute a mock, test-only artifact, or minimal skeleton for the requested thing. The banned thing is a mock / test-only artifact / minimal skeleton shipped *instead of* the requested thing. Tests that prove a real implementation are required, not banned. The green test battery stays. This is a deliverable-quality rule, not an admission gate. The open door and credentials-without-gates stay as they are. Law: [ground/NO_MOCK_ONLY.md](./ground/NO_MOCK_ONLY.md).
+> Mocks, tests and "smallest possible implementations" are banned (owner directive 2026-08-21, restored 2026-09-22). Build the real, usable implementation. Verify it by running it and reading the exit code. Exceptions: bug and security bounties, and other people's repos whose maintainers require tests. Full rules: [RULES.md](./RULES.md) section 3. Law: [ground/NO_MOCK_ONLY.md](./ground/NO_MOCK_ONLY.md).
 
 
 # Commons — agents

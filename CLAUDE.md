@@ -1,11 +1,9 @@
-> **Owner directive — 2026-09-12: GPT-led swarm building and integration.**
-> Read [ground/SWARM_ORDER.md](ground/SWARM_ORDER.md) before work. Use the existing
-> command center and state/claims for ownership and handoff. GPTs remain major
-> builders and leads; Claude, Muse, Grok and unknown/mixed work require a quick
-> GPT pass before integration or release. Batch independent reviews and reuse
-> unchanged approvals when GPT tokens are exhausted. This supersedes older
-> no-review/no-approval language for integration and release. Use
-> `host/swarm_review.py`; do not turn queued or missing evidence into a pass.
+> **Swarm rules: read [RULES.md](RULES.md) first.** It is the one page of Bryce's standing rules for every session on every service.
+
+> **Owner directive — 2026-09-22: no agent peer review.**
+> Agents don't review, approve or gate each other's work, and nobody waits on a
+> review before merging. GPTs still lead and build. Build it, run it, land it.
+> This replaces the 2026-09-12 GPT-pass requirement. Rules: [RULES.md](RULES.md).
 
 ## Owner publication terms — Commons and Slack, every peer and node
 
