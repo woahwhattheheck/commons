@@ -4,9 +4,14 @@ import argparse
 import json
 import os
 import stat
+import sys
 from pathlib import Path
 
-from .engine import DossierError, canonical_bytes, compile_dossier, render_markdown, strict_json_loads, verify_dossier
+from .engine import (
+    DossierError, canonical_bytes, compile_current_dossier,
+    compile_historical_dossier, render_markdown, strict_json_loads,
+    verify_current_dossier, verify_historical_dossier,
+)
 
 MAX_INPUT = 1_048_576
 _READ_CHUNK = 64 * 1024
@@ -87,39 +92,58 @@ def write_new(path: str, data: bytes) -> None:
 
 
 def main(argv: list[str] | None = None) -> int:
-    """Compile/verify the unprivileged prospect-safe surface.
-
-    Deliberately no CLI flag accepts commercial-truth authority. A pathname supplied by
-    the same CLI caller is not independent buyer/payment/accounting provenance. Hosts
-    that have independently authenticated those provider facts must call the engine API
-    with their retained trust map; this CLI always compiles/verifies with an empty map.
-    """
-    ap = argparse.ArgumentParser(description="Compile and verify prospect-safe Commons SwarmOps evidence dossiers")
+    """Current evaluation and explicitly historical replay with no commercial trust flag."""
+    ap = argparse.ArgumentParser(description="Compile current SwarmOps dossiers or replay historical evidence")
     sub = ap.add_subparsers(dest="cmd", required=True)
-    cp = sub.add_parser("compile")
-    cp.add_argument("packet")
-    cp.add_argument("policy")
-    cp.add_argument("--as-of", required=True)
-    cp.add_argument("--json-out", required=True)
-    cp.add_argument("--markdown-out", required=True)
-    vp = sub.add_parser("verify")
-    vp.add_argument("packet")
-    vp.add_argument("policy")
-    vp.add_argument("candidate")
-    vp.add_argument("--as-of", required=True)
+    for command, help_text in (
+        ("compile", "evaluate now using process UTC"),
+        ("replay", "evaluate a past instant; output is not current"),
+        ("verify", "check retained integrity and present evidence classifications"),
+        ("verify-replay", "check historical integrity only, including archived v3 dossiers"),
+    ):
+        parser = sub.add_parser(command, help=help_text)
+        parser.add_argument("packet")
+        parser.add_argument("policy")
+        if command.startswith("verify"):
+            parser.add_argument("candidate")
+        else:
+            parser.add_argument("--json-out", required=True)
+            parser.add_argument("--markdown-out", required=True)
+        if command in {"replay", "verify-replay"}:
+            parser.add_argument("--as-of", required=True, help="past UTC instant in YYYY-MM-DDTHH:MM:SSZ format")
     ns = ap.parse_args(argv)
     try:
         packet = strict_json_loads(read_regular(ns.packet))
         policy = strict_json_loads(read_regular(ns.policy))
-        if ns.cmd == "compile":
-            dossier = compile_dossier(packet, policy, ns.as_of, {})
+        if ns.cmd in {"compile", "replay"}:
+            dossier = (compile_current_dossier(packet, policy, {}) if ns.cmd == "compile" else
+                       compile_historical_dossier(packet, policy, ns.as_of, {}))
             write_new(ns.json_out, canonical_bytes(dossier) + b"\n")
             write_new(ns.markdown_out, render_markdown(dossier).encode("utf-8"))
-            return 0 if dossier["status"] == "READY_FOR_OWNER_REVIEW" else 2
+            print(f"{dossier['evaluation_mode']}: {dossier['status']} at {dossier['as_of']}")
+            for row in dossier["evidence"]:
+                if row["reasons"]:
+                    print(f"{row['source_id']}: {', '.join(row['reasons'])}")
+            missing = dossier["summary"]["missing_required_capabilities"]
+            if missing:
+                print(f"Missing required capabilities: {', '.join(missing)}", file=sys.stderr)
+            return 0 if not missing else 2
         candidate = strict_json_loads(read_regular(ns.candidate))
-        return 0 if verify_dossier(packet, policy, ns.as_of, candidate, {}) else 3
-    except (DossierError, OSError, UnicodeError, json.JSONDecodeError) as exc:
-        print(f"ERROR: {exc}", file=__import__("sys").stderr)
+        if ns.cmd == "verify-replay":
+            if not verify_historical_dossier(packet, policy, ns.as_of, candidate, {}):
+                print("ERROR: historical dossier does not match the supplied evidence, policy and instant", file=sys.stderr)
+                return 3
+            print("HISTORICAL_REPLAY: integrity matches; current readiness was not checked")
+            return 0
+        try:
+            verify_current_dossier(packet, policy, candidate, {})
+        except DossierError as exc:
+            print(f"ERROR: {exc}", file=sys.stderr)
+            return 3
+        print(f"CURRENT: integrity and present classifications match; dossier status is {candidate['status']}")
+        return 0
+    except (DossierError, OSError, UnicodeError, json.JSONDecodeError, RecursionError) as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
         return 4
 
 

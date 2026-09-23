@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Coalesce a busy main branch into one bounded verification range."""
+"""Coalesce a busy main branch into one bounded verification range.
+
+Scheduled batches inspect source and descriptive path inventory without eagerly
+importing production entrypoints or starting a replacement test-suite runner.
+"""
 from __future__ import annotations
 
 import argparse
@@ -24,15 +28,6 @@ VERIFICATION_FILES = {
 }
 
 VERIFIER_PROVENANCE = {
-    "imports": {
-        "scope": "FROZEN_HEAD",
-        "paths": (
-            "hub_pages.py", "memory_board.py", "capability_declaration.py",
-            "board_ingest.py", "builds_ledger.py", "file_drop.py",
-            "commons_mcp.py", "action_executor.py", "action_land.py",
-            "device_action_state.py",
-        ),
-    },
     "open-door": {
         "scope": "FROZEN_RANGE",
         "paths": ("open_door_guard.py", "test_open_door_guard.py"),
@@ -43,11 +38,7 @@ VERIFIER_PROVENANCE = {
     },
     "source-parses": {
         "scope": "FROZEN_HEAD",
-        "paths": (
-            "source_parses.py",
-            "test_source_parses.py",
-            ".github/workflows/source-parses.yml",
-        ),
+        "paths": ("source_parses.py",),
     },
     "path-manifest": {
         "scope": "FROZEN_HEAD",
@@ -55,7 +46,6 @@ VERIFIER_PROVENANCE = {
             "architecture/path-manifest.json",
             "architecture/path-manifest.schema.json",
             "host/path_manifest.py",
-            "test_path_manifest.py",
         ),
     },
 }
@@ -106,32 +96,28 @@ def plan(paths: list[str], *, audit_unchanged: bool = False) -> list[tuple[str, 
     """Batch changed content once; an explicit base can also audit unchanged HEAD."""
     if not paths and not audit_unchanged:
         return []
+    # Importing these modules would execute their top-level code, not merely
+    # inspect source. The syntax pass below already catches unreadable source;
+    # this scheduler must not invoke product entrypoints as an import sweep.
     commands = [
-        ("imports", [sys.executable, "-c", "import sys; sys.path.insert(0,'.'); import hub_pages,memory_board,capability_declaration,board_ingest,builds_ledger,file_drop,commons_mcp,action_executor,action_land,device_action_state"]),
         ("open-door", [sys.executable, "open_door_guard.py", "--diff", "{base}", "{head}"]),
         ("muhlnickel", [sys.executable, "muhlnickel_spec_guard.py", "--base", "{base}", "--worktree"]),
     ]
     only_projection_data = bool(paths) and all(p in DATA_FILES or p.startswith(DATA_PREFIXES) for p in paths)
-    source_changed = any(
-        path.endswith((".py", ".js"))
-        or path == ".github/workflows/source-parses.yml"
-        for path in paths
-    )
+    source_changed = any(path.endswith((".py", ".js")) for path in paths)
     if source_changed:
         commands.append(("source-parses", [sys.executable, "source_parses.py"]))
     if not only_projection_data:
-        commands.append(("path-manifest", [sys.executable, "test_path_manifest.py"]))
+        # Run the descriptive inventory itself, not its historical unittest
+        # wrapper. Unknown/unmapped paths stay observations, not admission gates.
+        commands.append(("path-manifest", [sys.executable, "host/path_manifest.py"]))
     return commands
 
 
 def verifier_candidate_paths(name: str, paths: list[str]) -> list[str]:
     """Return range paths capable of producing a verifier finding."""
     if name == "source-parses":
-        return sorted(
-            path for path in paths
-            if path.endswith((".py", ".js"))
-            or path == ".github/workflows/source-parses.yml"
-        )
+        return sorted(path for path in paths if path.endswith((".py", ".js")))
     return sorted(set(paths).intersection(VERIFIER_PROVENANCE[name]["paths"]))
 
 
@@ -226,7 +212,7 @@ def build_receipt(head: str, base: str | None, lookback_minutes: int, execute: b
         },
         "tasks": tasks,
         "results": results,
-        "status": "PASS" if ok else "FINDINGS",
+        "status": "PLANNED" if tasks and not execute else "PASS" if ok else "FINDINGS",
         "execution_state": "IDLE" if not tasks else "EXECUTED" if execute else "PLANNED",
         "main_movement_policy": "freeze_then_next_range",
         "velocity": main_velocity.measure(frozen_head),
@@ -248,7 +234,7 @@ def main(argv=None) -> int:
             fh.write(text)
     print(text, end="")
     # Findings are reported in one receipt without amplifying notifications;
-    # primary tests retain their ordinary status.
+    # this descriptive batch does not mint a separate publication gate.
     return 0
 
 

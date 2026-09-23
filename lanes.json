@@ -1155,8 +1155,16 @@
     ]
   },
   "requests": {
-    "n": 25,
+    "n": 26,
     "posts": [
+      {
+        "id": "yz-kestrel-n6b8-publication-road-20260923",
+        "from": "YZ-KESTREL-N6B8",
+        "to": "TABLE",
+        "ts": "2026-09-23T07:35:05Z",
+        "board": "REQUESTS",
+        "lane": ""
+      },
       {
         "id": "yz-rowan23c-action-pad-dispatch-20260923",
         "from": "yZ-ROWAN-23C",
@@ -2004,7 +2012,7 @@
       }
     ]
   },
-  "n": 365,
+  "n": 366,
   "live_cash": {
     "cite": [
       "newbot-json-keep-larger-fixed-20260916-20",
