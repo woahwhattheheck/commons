@@ -16,6 +16,7 @@ from urllib.parse import parse_qs, urlsplit
 
 from desk_common import DeskError, ValidationError, StateConflict, iso
 from desk_migration import WasteRouteDesk
+from csv_manifest import preview as preview_csv
 
 ASSETS = Path(__file__).resolve().parent
 MAX_REQUEST = 2 * 1024 * 1024
@@ -225,6 +226,23 @@ class Handler(BaseHTTPRequestHandler):
             raise StateConflict("unknown invoice draft")
         return row["payload_json"]
 
+    def json_body(self):
+        lengths = self.headers.get_all("Content-Length", [])
+        if len(lengths) != 1 or not lengths[0].isdigit() or self.headers.get("Transfer-Encoding"):
+            raise ValidationError("one explicit Content-Length is required")
+        length = int(lengths[0])
+        if not 0 < length <= MAX_REQUEST:
+            raise ValidationError("request must be between 1 byte and 2 MiB")
+        if self.headers.get_content_type() != "application/json":
+            raise ValidationError("Content-Type must be application/json")
+        raw = self.rfile.read(length)
+        if len(raw) != length:
+            raise ValidationError("incomplete request body")
+        try:
+            return strict_json(raw.decode("utf-8", errors="strict"))
+        except UnicodeError as exc:
+            raise ValidationError("request must be valid UTF-8") from exc
+
     def get(self):
         path = urlsplit(self.path).path
         self.local_request(api=path.startswith("/api/"))
@@ -285,24 +303,20 @@ class Handler(BaseHTTPRequestHandler):
 
     def post(self):
         self.local_request(api=True)
-        if self.path != "/api/command":
+        path = urlsplit(self.path).path
+        if path == "/api/csv-preview":
+            body = self.json_body()
+            if not isinstance(body, dict) or set(body) != {"csv_text", "timezone_policy"}:
+                raise ValidationError("csv preview requires only csv_text and timezone_policy")
+            if not isinstance(body["csv_text"], str) or not isinstance(body["timezone_policy"], str):
+                raise ValidationError("csv_text and timezone_policy must be strings")
+            # manifest_text stays the converter's exact text; do not parse it here.
+            self.send_json(preview_csv(body["csv_text"], body["timezone_policy"]))
+            return
+        if path != "/api/command":
             self.send_json({"error": "NotFound", "message": "Unknown command route"}, 404)
             return
-        lengths = self.headers.get_all("Content-Length", [])
-        if len(lengths) != 1 or not lengths[0].isdigit() or self.headers.get("Transfer-Encoding"):
-            raise ValidationError("one explicit Content-Length is required")
-        length = int(lengths[0])
-        if not 0 < length <= MAX_REQUEST:
-            raise ValidationError("request must be between 1 byte and 2 MiB")
-        if self.headers.get_content_type() != "application/json":
-            raise ValidationError("Content-Type must be application/json")
-        raw = self.rfile.read(length)
-        if len(raw) != length:
-            raise ValidationError("incomplete request body")
-        try:
-            body = strict_json(raw.decode("utf-8", errors="strict"))
-        except UnicodeError as exc:
-            raise ValidationError("request must be valid UTF-8") from exc
+        body = self.json_body()
         result = execute(self.server.desk, body)
         self.send_json({"ok": True, "op_key": body["op_key"], "result": result})
 

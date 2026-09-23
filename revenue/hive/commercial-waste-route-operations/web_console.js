@@ -233,6 +233,30 @@ on("manifest-file", "change", async () => {
   say("Original UTF-8 manifest loaded into the editor. It has not been imported.");
 });
 on("load-sample", "click", async () => { $("manifest").value = await (await request("/api/sample")).text(); say("Fictional sample loaded into the editor only. Use a separate demonstration database."); });
+let csvManifestText = null;
+on("csv-file", "change", async () => {
+  const file = $("csv-file").files && $("csv-file").files[0];
+  if (!file) return;
+  $("csv-text").value = await file.text();
+  say("CSV loaded into the paste box only. Preview before initializing.");
+});
+on("csv-preview", "click", async () => {
+  csvManifestText = null;
+  $("csv-download").disabled = true;
+  $("csv-preview-out").textContent = "Previewing…";
+  const result = await json("/api/csv-preview", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({csv_text: $("csv-text").value, timezone_policy: $("csv-timezone").value})});
+  if (typeof result.manifest_text !== "string") throw new Error("Preview did not return manifest text.");
+  csvManifestText = result.manifest_text;
+  $("manifest").value = result.manifest_text;
+  $("csv-download").disabled = false;
+  const counts = result.counts || {};
+  $("csv-preview-out").textContent = `No structural errors. ${counts.customers} customers, ${counts.sites} sites, ${counts.containers} containers, ${counts.plans} plans. Timezone ${result.business_timezone}. Manifest text is in the editor. Initialize is still a separate step.`;
+  say("CSV preview is read-only. Review the manifest, then initialize if this is a new database.");
+});
+on("csv-download", "click", () => {
+  if (!csvManifestText) throw new Error("Preview a valid CSV before downloading its manifest.");
+  saveBlob(new Blob([csvManifestText], {type: "application/json"}), "waste-manifest.json");
+});
 on("manifest-form", "submit", () => { if (confirm("Initialize this database permanently from this manifest and business timezone?")) return perform("import", {manifest_text: $("manifest").value}); });
 on("invoice-form", "submit", () => {
   if (confirm("Create an immutable invoice DRAFT and permanently associate its settled stops? Nothing will be sent or charged.")) return perform("invoice", {customer_id: $("invoice-customer").value, period_start: $("period-start").value, period_end: $("period-end").value});
