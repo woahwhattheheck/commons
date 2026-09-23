@@ -335,6 +335,78 @@ edited payload
         self.assertTrue(all("/search/" not in path for path in paths))
         self.assertEqual(created, ["slack-10-2"])
 
+    def test_issue_next_params_keeps_after_cursor_and_drops_page(self) -> None:
+        link = (
+            '<https://api.github.com/repositories/1/issues?state=all&labels=board'
+            '&per_page=100&page=15&after=ab+c%2Fd%3D>; rel="next", '
+            '<https://api.github.com/repositories/1/issues?page=14>; rel="prev"'
+        )
+        self.assertEqual(si.github_issue_next_params(link), {"after": "ab+c/d="})
+        self.assertEqual(si.github_issue_next_params(""), {})
+        self.assertEqual(
+            si.github_issue_next_params(
+                '<https://api.github.com/repositories/1/issues?per_page=100&page=2>; rel="next"'
+            ),
+            {"page": "2"},
+        )
+
+    def test_board_census_follows_after_cursor_and_never_sends_page(self) -> None:
+        def item(number: int) -> dict[str, str]:
+            return {"title": "id-%d" % number, "body": "b%d" % number}
+
+        calls: list[str] = []
+
+        class FakeGitHub(si.GitHubClient):
+            def request(self, method: str, path: str, payload: dict | None = None):
+                calls.append(path)
+                if "/search/" in path or "&page=" in path or "?page=" in path:
+                    raise AssertionError(path)
+                if "after=" not in path:
+                    self._last_response_headers = {
+                        "Link": (
+                            "<https://api.github.com/repositories/1/issues?state=all"
+                            "&labels=board&per_page=100&page=2&after=CURSOR_A>; rel=\"next\""
+                        )
+                    }
+                    return [item(i) for i in range(100)]
+                if "after=CURSOR_A" in path:
+                    self._last_response_headers = {
+                        "Link": (
+                            "<https://api.github.com/repositories/1/issues?per_page=100"
+                            "&page=16&after=CURSOR_B>; rel=\"next\""
+                        )
+                    }
+                    return [item(i) for i in range(100, 200)]
+                if "after=CURSOR_B" in path:
+                    self._last_response_headers = {}
+                    return [item(200)]
+                raise AssertionError(path)
+
+        client = FakeGitHub("token")
+        bodies = client.board_issue_bodies()
+        self.assertEqual(len(bodies), 201)
+        self.assertEqual(bodies["id-0"], ["b0"])
+        self.assertEqual(bodies["id-200"], ["b200"])
+        self.assertEqual(len(calls), 3)
+        self.assertTrue(all("state=all" in path and "labels=board" in path for path in calls))
+        self.assertTrue(all("&page=" not in path and "?page=" not in path for path in calls))
+        self.assertIs(client.board_issue_bodies(), bodies)
+
+    def test_board_census_rejects_a_repeated_issue_cursor(self) -> None:
+        class FakeGitHub(si.GitHubClient):
+            def request(self, method: str, path: str, payload: dict | None = None):
+                self._last_response_headers = {
+                    "Link": (
+                        "<https://api.github.com/repositories/1/issues?after=SAME>; rel=\"next\""
+                    )
+                }
+                return [{"title": "id-1", "body": "b"}]
+
+        client = FakeGitHub("token")
+        with self.assertRaises(si.IngestError) as raised:
+            client.board_issue_bodies()
+        self.assertIn("cursor loop", str(raised.exception))
+
     def test_sync_rejects_divergent_remote_body_without_advancing_cursor(self) -> None:
         event = {"ts": "10.1", "text": "new immutable bytes", "user": "U1"}
         old = si.issue_record({"ts": "10.1", "text": "old immutable bytes", "user": "U1"})
