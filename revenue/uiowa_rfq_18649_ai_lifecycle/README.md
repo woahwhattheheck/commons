@@ -10,6 +10,15 @@ not University of Iowa findings.** Running the analyzer verifies its arithmetic
 and record handling, not an actual AI model's performance. This is an additive
 UIOWA-079 component, not a replacement evidence compiler or maturity model.
 
+## Collect and review CSV registers
+
+Use the [CSV register intake guide](REGISTERS.md) to create editable templates,
+export an existing lifecycle history into ten tables, or build JSON, Markdown,
+comparison CSV and a portable HTML review from completed registers. The adapter
+reuses this analyzer and its evidence rules; it does not call a model or invent
+missing observations. Output histories/registers include supplied artifact text
+and must stay on an appropriate private surface.
+
 ## Run the complete example
 
 Python 3.10+; standard library only. From this directory:
