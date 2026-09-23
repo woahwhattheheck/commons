@@ -1,6 +1,6 @@
 # Export workbench
 
-Use the existing SaaS Migration Parity Pilot engine from a browser, with explicit CSV/JSON intake and field mapping. The command-line engine remains unchanged.
+One browser entrypoint for the existing SaaS Migration Parity Pilot engine, with explicit CSV/JSON intake, reusable plans, original-file provenance, exception browsing and private replay downloads. The comparison engine and CSV batch CLI remain unchanged.
 
 ## Start
 
@@ -10,32 +10,79 @@ From this directory, with Python 3.10 or newer:
 python workbench.py --port 8767
 ```
 
-Open the printed `http://127.0.0.1:8767/` address on the same machine. `--port 0` chooses an available port. Stop the process with Ctrl+C. This is a local operator tool, not a public hosted service; it listens only on IPv4 loopback. In a cloud development environment, use that environment's existing loopback access route. Do not expose it as a public customer endpoint.
+Open the exact printed `http://127.0.0.1:8767/` address on the same machine. `--port 0` chooses an available port. Stop with Ctrl+C. This local operator tool listens only on IPv4 loopback; do not publish it behind a proxy or expose it as a customer endpoint. Host and Origin must match the printed address, and browser requests carry a per-launch token. Restarting the server requires reloading the page. These checks preserve the previous CSV frontend's local request boundary, not multi-user authentication.
 
-No third-party packages, external assets, SaaS credentials, API calls to external services, upload directory, or persistent job store are required. Missing assets or a bind failure produce `ERROR:` on stderr and exit code 2. Invalid requests produce a non-success HTTP status and a visible browser error rather than a successful report.
+No third-party packages, external assets, SaaS credentials, external API calls, upload directory or persistent job store are required. Missing assets or a bind failure produce `ERROR:` on stderr and exit code 2. Invalid requests produce a non-success HTTP status and a visible error, not a successful report. The duplicate `web_intake.py` / `web_intake.html` frontend has been removed; the command above is the browser launch path for both intake modes.
+
+## Choose the intake contract
+
+The mode is explicit because the existing adapters generate different manifests.
+
+| Mode | Existing adapter | Mapping and retained values | Saved-plan schema |
+| --- | --- | --- | --- |
+| General CSV/JSON | `export_intake.build_manifest` | Original field names; all supplied fields stay in the private manifest, including unmapped fields. Only explicitly mapped fields are compared. CSV uses commas. | `saas-migration-workbench-plan/v1` |
+| Reusable CSV plan | `csv_intake.compile_csv` | Only selected CSV columns enter the private manifest, as `key_1`…`key_4` and `field_1`…`field_32`. Original headers, alias mappings and excluded columns remain in the column map. Delimiters are explicit per source. | Existing `saas-migration-csv-intake/v1` |
+
+Both modes call the same parity engine. Do not assume identical generated-manifest hashes or silently exchange their plans. Import recognizes the schema and selects its adapter; unknown formats are rejected. CSV plans remain compatible with the unchanged batch CLI. General plans are for this workbench, not the CSV batch parser. To move from one contract to another, explicitly choose the new mode and map its columns; no hidden translation is performed.
 
 ## Complete a comparison
 
-1. Load the sanitized source and target exports. Inspection shows field names and record counts without displaying record values. Select CSV or JSON; a recognized filename extension only selects the format, not field types or snapshot metadata.
-2. Enter distinct snapshot IDs, schema revisions, and the actual capture instants in `YYYY-MM-DDTHH:MM:SSZ` form. Declare completeness only for the agreed export scope. Replacing a file clears that side's capture time and completeness declaration.
-3. Set the cutover instant and maximum snapshot age in seconds. The current-UTC button changes only cutover; upload time and file modification time never stand in for capture time.
-4. Explicitly select 1–4 record-key mappings and 1–32 compared-field mappings. Field selection starts blank. Choose `string`, `integer`, or `boolean` for compared fields; keys support string and integer only. Replacing an export resets mappings so old choices are not silently applied to different data.
-5. Compare. Filter classifications, search by opaque key, field name or reason, and open mismatch details to inspect value digests. Rows are paginated in groups of 50.
-6. Download the generated input JSON, exact report JSON, report Markdown, or printable HTML as needed. Editing any input invalidates the displayed result and every download link. A late response for changed inputs is discarded rather than presented as current.
+1. Choose the mode, then load the sanitized source and target exports. Inspection shows field names, record counts, byte counts and SHA-256 of the original UTF-8 bytes, without displaying record values. In general mode, a recognized filename extension selects CSV or JSON, not field types or snapshot facts. CSV-plan mode exposes comma, semicolon and tab selectors.
+2. Enter distinct snapshot IDs, schema revisions and actual capture instants in `YYYY-MM-DDTHH:MM:SSZ` form. Declare completeness only for the agreed scope. Replacing a file clears that side's capture time and completeness declaration.
+3. Set cutover and maximum snapshot age in seconds. The current-UTC button changes only cutover; upload time and file modification time never stand in for capture time.
+4. Explicitly select 1–4 key mappings and 1–32 compared-field mappings. Keys support string and integer; compared fields also support boolean. Choices start blank. Replacing an export resets mappings rather than silently applying old choices to different data.
+5. Compare. Filter classifications, search by opaque key, original field name or reason, and inspect mismatch digests. CSV-plan aliases are shown alongside their original source/target headers. Rows remain paginated in groups of 50.
+6. Download report-only JSON/Markdown/printable HTML, the format-labeled plan, column map/provenance, or explicitly labeled private input/ZIP. Editing inputs invalidates displayed results and download links. Responses for changed inputs are discarded.
 
-Unchecked completeness, stale/future snapshots, duplicate keys, missing or unexpected records, and differences retain the existing engine's classifications. The workbench does not override these states or infer that an omitted record does not exist.
+Unchecked completeness, stale/future snapshots, duplicate keys, missing/unexpected records and mismatches retain the engine's classifications. No omitted record is inferred to be absent. Freshness remains evaluated at the declared cutover, not independently established present-time source authority.
+
+## Save and reuse a plan
+
+**Save current plan** stores mappings, formats/delimiters and declared snapshot metadata after normal input validation. It does not run a comparison or include export records. It requires loaded exports and complete form fields. After comparison, the corresponding exact plan is also a download.
+
+**Load a saved plan** accepts a UTF-8 JSON file up to 100,000 bytes. The server uses the existing strict JSON parser before the browser applies the bounded metadata. Duplicate keys, unsupported schemas, unsafe numeric metadata and malformed plan fields are rejected. Selecting a plan changes the mode explicitly and reinspects any already selected exports through that adapter. Missing mapped columns remain blank and require repair; there is no guessed substitute.
+
+A plan can be loaded before or after selecting exports. Its mappings wait for both inspected inputs. Selecting a different file still clears that side's capture time and completeness, even when a plan supplied them; explicitly update those facts. Loading a saved plan after selecting files restores its recorded metadata, which the operator must review and reconfirm. Importing a plan never attests that an old capture time or completeness claim applies to new records.
+
+General plans have the same top-level metadata, mapping and source/target snapshot structure as the CSV plan, but use their own schema and a `format` (`csv` or `json`) in each snapshot instead of `delimiter`. Neither plan embeds source text. The full legacy CSV plan and batch examples remain in [CSV_INTAKE.md](CSV_INTAKE.md).
+
+## Export formats
+
+Both modes bound each export to 500 records and 4,000,000 bytes, with at most 64 columns. UTF-8 CSV may have a BOM. Invalid UTF-8 is rejected, not replaced. The browser preserves BOM and line endings, allowing the server's UTF-8 encoding to hash the exact original bytes. The generated combined engine manifest retains its existing 4,000,000-byte bound.
+
+**General CSV/JSON:** CSV uses a header and comma delimiter. Column names follow the existing engine grammar: start with a letter, then letters, digits, `.`, `_` or `-`, up to 64 characters. JSON is an array of flat objects, not a prebuilt engine manifest. Duplicate JSON keys, floats/non-finite numbers, nested values, nulls, blank strings and unsupported controls are rejected, not silently discarded. Duplicate CSV headers and inconsistent widths are errors; data is not truncated.
+
+CSV type conversion is explicit: integers use unpadded decimal digits with an optional minus sign; booleans are exactly `true` or `false`; strings are not trimmed, case-folded or guessed. Use string for leading-zero identifiers. Unmapped general CSV cells remain strings. Conflicting types for the same original key/compared field are an error. JSON values keep their existing types; a JSON string is not silently changed into an integer because a mapping requests one.
+
+**Reusable CSV plans:** the existing adapter permits headers up to 256 characters, including spaces, because it maps selected columns to engine-compatible aliases. It rejects duplicate/empty headers, controls, ragged records and malformed quoting. Unmapped values are not interpreted or compared. Exact limits and conversion semantics, including selected-field-only replay, remain in [CSV_INTAKE.md](CSV_INTAKE.md).
+
+Integer record values never pass through JavaScript's number parser. The browser sends original text, Python parses it, and manifest/report/plan downloads preserve returned canonical strings. The browser parses only bounded plan/provenance data and digest-only report metadata for presentation.
+
+## Download fidelity and privacy
+
+Report-only JSON, Markdown and printable HTML omit raw row values but contain metadata, field names and unsalted commitments; hashes do not guarantee anonymization. The column map additionally exposes original headers and source-file hashes. Review each artifact for its intended recipient.
+
+The **private input JSON** is a generated normalized engine manifest, not either original export. The **private replay ZIP** uses the existing five-file bundler: `manifest.json`, exact `report.json`, `report.md`, `intake-plan.json` and `column-map.json`. In general mode, `intake-plan.json` inside the ZIP still carries the distinct general-plan schema. The ZIP contains all retained raw values for that mode: selected CSV columns for CSV plans, all supplied fields for general intake. Original exports, printable HTML and source checkout are not bundled. Preserve the original export files separately.
+
+`original_file_sha256` and byte counts describe original selected UTF-8 files. `generated_manifest_sha256` and the report's `raw_input_sha256` bind the generated engine input. These are separate identities, not source authenticity/completeness proofs. CSV mode also retains its existing `csv_sha256`, aliases and exclusions. Browser provenance adds explanatory fields; ZIP container metadata is not deterministic, and no identical ZIP-byte claim is made between browser and batch runs.
+
+The existing verifier can consume the exact manifest/report downloads or extracted ZIP files:
+
+```bash
+python parity.py verify --input parity-input.json --report-json parity-report.json
+```
+
+The server retains no files between requests. The page holds text/download blobs in memory; clear-session drops working references and revokes URLs, but does not delete downloads or promise secure memory erasure. Browser extensions/tooling, operating-system memory/swap and downloaded files are outside that claim. No cookies, local storage, analytics or background polling are introduced. Browser downloads use ordinary browser save behavior, not the CLI's descriptor-relative filesystem guarantees.
 
 ## Portable browser report
 
-Choose **Download printable HTML** for a report that opens directly in a browser without Python, a running server, or network access. It includes snapshot metadata, explicit mappings, counts, classification/search controls, all row-level reasons and mismatch digests, and an exact JSON download. All results remain readable when JavaScript is disabled; only the interactive controls require it.
+Choose **Printable HTML** for a self-contained report that opens without Python, a server or network access. The existing `offline_report.py` implementation is preserved. It includes snapshot metadata, mappings, counts, classification/search controls, all reasons and mismatch digests, and an exact JSON download. All result rows remain readable without JavaScript; only interactive controls need it.
 
-Printing includes **every report row**, even when screen filters hide some rows. The page states this beside the controls and in the footer, so a filtered screen is not silently presented as a complete printed result.
+Printing includes **every report row**, even when screen filters hide some. Embedded JSON is base64-encoded from canonical report bytes and decoded directly for download, not parsed and reserialized through JavaScript. Content-hashed inline scripts/styles and a restrictive Content Security Policy request no external resources.
 
-The embedded JSON is base64-encoded from the canonical report bytes and decoded directly into a download. It is not parsed and re-serialized through JavaScript. Inline scripts and styles have content hashes in a restrictive Content Security Policy; no external resources or network connections are requested.
+The HTML presents a compiled report; it is not a signature, independent verification run or production-cutover certification. Editing HTML can change its presentation. It embeds report metadata/digests, not input record values, but still needs appropriate privacy handling.
 
-This document is a presentation of the compiled report, not a signature, an independent verification run, or a production-cutover certification. Editing an HTML file can change its presentation; the reported digest is not a substitute for checking the supplied manifest with the existing offline verifier. The HTML contains report metadata and digests, **not the input manifest's record values**. Protect it nonetheless: hashes do not guarantee anonymization.
-
-The same portable output is available from an existing engine manifest without starting the workbench:
+The same portable output is available without starting the workbench:
 
 ```bash
 python offline_report.py \
@@ -44,39 +91,10 @@ python offline_report.py \
   --report-html new-report.html
 ```
 
-Both output paths must be new. This command reuses the existing bounded input reader, comparison engine and paired create-exclusive writer. Browser downloads use the browser's save mechanism and do not claim the CLI's descriptor-relative filesystem guarantees.
+Both output paths must be new. This route reuses the bounded input reader, comparison engine and paired create-exclusive writer. No new verifier or receipt schema is introduced by the browser consolidation.
 
-## Export formats
+## Lineage and boundaries
 
-CSV is UTF-8 with a header row. A leading UTF-8 BOM is accepted. JSON is a UTF-8 array of flat objects, not a prebuilt engine manifest. JSON duplicate keys, floating-point numbers and non-finite numbers are rejected by the existing strict parser.
+Original product/recovery lineage remains in `README.md`. General workbench and portable report: yZ-Kestrel. CSV adapter, plans and private bundler: yZ-Quarry-47. One-browser integration: yZ-Kestrel-V68, issue #19307. The original engine, CSV batch CLI, general export adapter and printable renderer are not reimplemented.
 
-Each export is limited to 500 records and 4,000,000 UTF-8 bytes. At most 64 distinct field names are accepted. Column names must start with a letter and contain only letters, digits, `.`, `_`, or `-`, up to 64 characters. CSV row widths must match the header; duplicate headers or excess records are errors, not silently repaired or truncated. The generated combined engine manifest must also fit the existing 4,000,000-byte limit.
-
-The engine accepts nonempty strings, signed 64-bit integers and booleans. Blank strings, nulls, nested data and control characters are not silently discarded. Resolve unsupported cells in the explicitly agreed sanitized export before loading it; the workbench does not fill in missing facts.
-
-**CSV types are explicit.** String cells retain their bytes after CSV decoding: no trimming, case folding or numeric guessing. Mapped integer cells must use decimal digits with an optional minus sign, no whitespace, and no leading zeros other than zero itself. Mapped boolean cells must be exactly `true` or `false`. Use string for identifiers with leading zeros. Unmapped CSV cells remain strings. Declaring conflicting types for the same key/compared field is an error.
-
-**JSON types are retained.** Integer identifiers never pass through JavaScript's number parser: the browser sends the original export text, Python parses it, and the server returns the generated manifest as an exact string. A JSON string is not silently converted to an integer because a mapping asks for integer; the engine reports the type mismatch. Likewise, booleans are not integers.
-
-## Download fidelity and privacy
-
-The downloaded input is a **generated normalized engine manifest**, not a byte-for-byte copy of either original export. Its `raw_input_sha256` in the report binds that generated manifest. Preserve original export files separately when original-file provenance matters.
-
-The workbench uses `parity.compile_bytes()` for results and `canonical_bytes()` for the report. Downloads preserve the returned strings without parsing and serializing the manifest in JavaScript. The existing CLI can consume them directly:
-
-```bash
-python parity.py verify --input parity-input.json --report-json parity-report.json
-```
-
-The server retains no upload or report files between requests. The page holds loaded export text and download blobs in browser memory; clear-session removes its references and revokes download URLs. This is not a secure-memory-erasure guarantee. Browser history, browser extensions, operating-system memory, and files already downloaded are outside the workbench's control. Clearing the page never deletes downloaded files.
-
-The input download contains supplied field values. Report key/value commitments are hashes, not encryption or guaranteed anonymization. Protect all exported artifacts accordingly. No external provider, customer contact, production migration, contract, payment, or revenue-recognition action is performed.
-
-## Files
-
-- `export_intake.py`: strict export parsing and explicit CSV conversion into the existing manifest.
-- `workbench.py`: stateless loopback HTTP transport and calls into the existing comparison engine.
-- `workbench.html` and `workbench.js`: responsive operator interface, explicit mapping, result browsing, and exact downloads.
-- `offline_report.py`: self-contained printable HTML presentation plus an existing-manifest CLI route.
-
-Original product and comparison-engine lineage remains documented in `README.md`. This workbench adds an operator route; it does not replace that implementation or the existing commercial/outbound ownership.
+No hosted deployment, SaaS/provider access, customer contact, production migration, contract, payment, new price or revenue-recognition action is performed. Existing #14205 commercial/outbound ownership remains unchanged.
