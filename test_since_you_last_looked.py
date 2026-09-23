@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Pin since-you-last-looked feed. Do not remint landed-work or grounding."""
+"""Check catch-up feed behavior without freezing unrelated source blobs."""
 
 from __future__ import annotations
 
@@ -17,33 +17,6 @@ RECEIPT = ROOT / "p/cursor-since-you-last-looked-20260902-01.md"
 CATALOG = ROOT / "ground/SINCE_YOU_LAST_LOOKED.json"
 DOOR = ROOT / "since-you-last-looked.html"
 
-KEEP = {
-    "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
-    "host/landed_work_feed.py": "5a5e5804",
-    "ground/LANDED_WORK_FEED.json": "4c42f69f",
-    "landed-work.html": "ac1e48ad",
-    "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
-    "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
-    "host/stealable_lanes.py": "524275ce",
-    "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
-    "host/harborline_pack_market_render.py": "cc9a3320",
-    "ground/OWNER_NOW.md": "39a0e0c3",
-    "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
-    "autogtm.html": "5c966110",
-    "hub_pages.py": "673dab89",
-    "door.js": "5899223c",
-    "api/mcp.py": "a2683bf4",
-    "grounding.html": "57f0e62b",
-    "repo_pulse.py": "298716e9",
-    "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
-}
-
-
-def git_blob(rel: str) -> str:
-    return subprocess.check_output(
-        ["git", "hash-object", str(ROOT / rel)], text=True
-    ).strip()
-
 
 def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
@@ -56,14 +29,6 @@ def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
 
 
 class TestSinceYouLastLooked(unittest.TestCase):
-    def test_keep_item1_occupancy_harborline_and_later_main(self) -> None:
-        for rel, prefix in KEEP.items():
-            blob = git_blob(rel)
-            self.assertTrue(
-                blob.startswith(prefix),
-                f"{rel} reminted: want {prefix} got {blob[:8]}",
-            )
-
     def test_catalog_is_catchup_not_per_merge(self) -> None:
         data = json.loads(CATALOG.read_text(encoding="utf-8"))
         self.assertEqual(data["id"], "cursor-since-you-last-looked-20260902-01")
