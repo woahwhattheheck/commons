@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 5551,
+    "open_issues": 5508,
     "open_pull_requests": 2,
-    "runs_in_progress": 9,
-    "runs_queued": 102
+    "runs_in_progress": 17,
+    "runs_queued": 82
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -29,7 +29,7 @@
       "head_sha": "bc22a70333c5565e2e3871e863457a5590396b9b",
       "number": 16289,
       "title": "board: recover completion history and prevent stale-recent resurrection",
-      "updated_at": "2026-09-23T18:29:52Z"
+      "updated_at": "2026-09-23T19:02:56Z"
     }
   ],
   "newest_pulls": [
@@ -42,7 +42,7 @@
       "head_sha": "bc22a70333c5565e2e3871e863457a5590396b9b",
       "number": 16289,
       "title": "board: recover completion history and prevent stale-recent resurrection",
-      "updated_at": "2026-09-23T18:29:52Z"
+      "updated_at": "2026-09-23T19:02:56Z"
     },
     {
       "author": "woahwhattheheck",
@@ -62,7 +62,7 @@
   },
   "pulls_listed": 2,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 11.3,
+  "queue_depth_per_runner": 4.8,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -232,6 +232,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-23T19:01:57Z",
+  "unchanged_since": "2026-09-23T19:08:27Z",
   "undatable_pulls": []
 }
