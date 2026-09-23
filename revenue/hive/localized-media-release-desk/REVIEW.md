@@ -15,7 +15,7 @@ The database must already exist. The output directory must **not** exist, and it
 
 Search titles, required variant keys, reviewer names, source hashes, event detail and native hold reasons. Select On hold or Ready for local handoff, expand the visible titles, and inspect exact revision approvals and source-parent bindings. Print current view expands the visible detail panels for printing. Search and status filters affect only what is displayed: **all downloads retain the entire native portfolio projection**, not just matching titles.
 
-The existing fictional demo can supply an example database. Use a new dedicated demo work directory; the older demo's own overwrite behavior is not changed by this reader. The review itself never invokes the demo or initializes a database.
+The existing fictional demo can supply an example database. Its `--workdir` must be a new, non-existing directory under an existing parent; an existing workspace is refused without deleting its package or opening its database. A failed new demo workspace remains for inspection. The review itself never invokes the demo or initializes a database, and can read a previously created product/demo database without rebuilding it.
 
 ## Six local outputs
 
