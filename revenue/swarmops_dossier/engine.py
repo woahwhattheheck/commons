@@ -37,8 +37,17 @@ SAFE_ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:+#/-]{0,159}$")
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
 SAFE_CLAIM = re.compile(r"^[A-Za-z0-9][A-Za-z0-9 .,:;()_+/#\'-]{0,599}$")
 ROW_KEYS = {
-    "capability_id", "source_id", "source_kind", "source_ref", "source_sha256",
-    "observed_state", "observed_at", "freshness_seconds", "prospect_class", "required", "claim",
+    "capability_id",
+    "source_id",
+    "source_kind",
+    "source_ref",
+    "source_sha256",
+    "observed_state",
+    "observed_at",
+    "freshness_seconds",
+    "prospect_class",
+    "required",
+    "claim",
 }
 TRUST_RECORD_KEYS = {"portfolio_id"} | (ROW_KEYS - {"source_id"})
 
@@ -330,7 +339,9 @@ def compile_dossier(packet: Any, policy: Any, as_of: str, trusted_commercial_rec
         "packet_sha256": digest({"schema": SCHEMA, "portfolio_id": portfolio_id, "evidence": [
             {k: r[k] for k in (
                 "capability_id", "source_id", "source_kind", "source_ref", "source_sha256", "observed_state",
-                "observed_at", "freshness_seconds", "prospect_class", "required", "claim"
+                "observed_at", "freshness_seconds", "prospect_class",
+                "required",
+                "claim"
             )} for r in rows
         ]}),
         "policy_sha256": digest(clean_policy),

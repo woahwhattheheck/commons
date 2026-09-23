@@ -36,9 +36,16 @@ def authority(row, *, portfolio_id=PORTFOLIO, **overrides):
         **{
             key: row[key]
             for key in (
-                "capability_id", "source_kind", "source_ref", "source_sha256",
-                "observed_state", "observed_at", "freshness_seconds",
-                "prospect_class", "required", "claim",
+                "capability_id",
+                "source_kind",
+                "source_ref",
+                "source_sha256",
+                "observed_state",
+                "observed_at",
+                "freshness_seconds",
+                "prospect_class",
+                "required",
+                "claim",
             )
         },
     }
@@ -291,7 +298,19 @@ class EngineTests(unittest.TestCase):
             self.compile()
 
     def test_unknown_is_not_demonstrated(self):
-        self.packet["evidence"].append({"capability_id":"future-capability","source_id":"u1","source_kind":"TEST_RECEIPT","source_ref":"receipt:u1","source_sha256":h("u"),"observed_state":"UNVERIFIED","observed_at":"2026-09-13T13:05:00Z","freshness_seconds":86400,"prospect_class":"PUBLIC","required":False,"claim":"This capability remains unverified."})
+        self.packet["evidence"].append({
+            "capability_id": "future-capability",
+            "source_id": "u1",
+            "source_kind": "TEST_RECEIPT",
+            "source_ref": "receipt:u1",
+            "source_sha256": h("u"),
+            "observed_state": "UNVERIFIED",
+            "observed_at": "2026-09-13T13:05:00Z",
+            "freshness_seconds": 86400,
+            "prospect_class": "PUBLIC",
+            "required": False,
+            "claim": "This dossier lane remains unverified.",
+        })
         out = self.compile()
         row = next(r for r in out["evidence"] if r["source_id"] == "u1")
         self.assertEqual(row["classification"], "UNKNOWN")
