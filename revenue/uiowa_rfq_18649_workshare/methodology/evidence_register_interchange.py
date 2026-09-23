@@ -75,7 +75,9 @@ def from_json(text: str) -> dict[str, Any]:
     try:
         packet = json.loads(text, object_pairs_hook=_unique_object,
                             parse_constant=_reject_constant)
-    except (json.JSONDecodeError, RecursionError) as exc:
+    except RegisterError:
+        raise
+    except (ValueError, RecursionError) as exc:
         raise RegisterError(f"JSON input error: {exc}") from exc
     return validate_packet(packet)
 
@@ -122,6 +124,8 @@ def publish_new(path: Path, text: str) -> None:
     """
     payload = text.encode("utf-8")
     temporary: str | None = None
+    publication_error: OSError | ValueError | None = None
+    cleanup_error: OSError | None = None
     try:
         with tempfile.NamedTemporaryFile(mode="wb", dir=path.parent,
                                          prefix=".uiowa031-", delete=False) as stream:
@@ -130,11 +134,25 @@ def publish_new(path: Path, text: str) -> None:
             stream.flush()
             os.fsync(stream.fileno())
         os.link(temporary, path)
-    except OSError as exc:
-        raise RegisterError(f"cannot publish new output {path}: {exc}") from exc
+    except (OSError, ValueError) as exc:
+        publication_error = exc
     finally:
         if temporary is not None:
-            os.unlink(temporary)
+            try:
+                os.unlink(temporary)
+            except OSError as exc:
+                cleanup_error = exc
+    if publication_error is not None:
+        detail = f"cannot publish new output {path}: {publication_error}"
+        if cleanup_error is not None:
+            detail += f"; cannot remove temporary file {temporary}: {cleanup_error}"
+        raise RegisterError(detail) from publication_error
+    if cleanup_error is not None:
+        # Exclusive link creation already committed the complete output. A
+        # cleanup warning must not relabel that successful publication as a
+        # refusal or encourage a retry that would encounter an existing file.
+        print(f"WARNING: output published at {path}; cannot remove temporary "
+              f"file {temporary}: {cleanup_error}", file=sys.stderr)
 
 
 def main(argv: list[str] | None = None) -> int:

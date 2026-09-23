@@ -138,7 +138,9 @@ def dumps(bundle: Any) -> str:
 def loads(text: str) -> dict[str, Any]:
     try:
         bundle = json.loads(text, object_pairs_hook=m._unique_object, parse_constant=m._reject_constant)
-    except (json.JSONDecodeError, RecursionError, TypeError) as exc:
+    except m.RegisterError:
+        raise
+    except (ValueError, RecursionError, TypeError) as exc:
         raise m.RegisterError(f"bridge JSON error: {exc}") from exc
     common_to_native(bundle)
     return bundle
