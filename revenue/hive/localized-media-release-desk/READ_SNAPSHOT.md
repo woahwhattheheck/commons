@@ -23,9 +23,8 @@ A previously exported package may stop verifying against later retained state.
 
 The read does not change schema, request-id idempotency, mutation transactions,
 SQLite journal mode, package format, output collision handling, or filesystem
-custody. WAL is enabled only by concurrency test fixtures; production preserves
-the database's configured mode. Rendering and disk output do not hold the read
-transaction open.
+custody. Production preserves the database's configured journal mode. Rendering
+and disk output do not hold the read transaction open.
 
 ## Defect prevented
 
@@ -35,32 +34,6 @@ one hash-valid packet with `owner_supplied_rights_ready=true`,
 `READY_FOR_LOCAL_HANDOFF`, and a later audit event declaring rights false.
 Source revisions, variant replacements and approval changes could similarly mix
 projection generations. Content hashes cannot repair an incoherent input read.
-
-## Regression commands
-
-No third-party dependencies, network calls or hosted compute are required:
-
-```sh
-cd revenue/hive/localized-media-release-desk
-python -B -m unittest -v test_desk.py test_read_snapshot.py
-python -O -B -m unittest -v test_desk.py test_read_snapshot.py
-python -m py_compile desk.py test_desk.py test_read_snapshot.py
-```
-
-The added suite uses an on-disk WAL database, independent connections and a real
-writer thread executing public desk operations. Events pause the reader at a
-known query boundary until the writer commits. Tests fail when the boundary is
-not reached or the writer does not finish; sleeps do not determine ordering.
-
-Coverage includes revoke/restore, source revisions, a variant change between
-variant and approval queries, approval insertion before audit, multiple-variant
-sweeps, initially missing variants, ZIP JSON/Markdown/receipt consistency,
-export and verification, explicit transaction query tracing, SQL/unknown-title
-failure cleanup, and unchanged deterministic bytes in DELETE and WAL modes.
-The first repair run passed all 14 added cases; the exact predecessor production
-blob `e33700e221a768e264160e4a23a723df2af8a3bf` failed 11 of those cases.
-The combined 16 existing and 14 added tests passed normally and with `python -O`
-on Python 3.13.5 / SQLite 3.46.1. This local evidence is not a hosted-CI claim.
 
 ## Scope and economics
 

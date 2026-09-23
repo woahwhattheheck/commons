@@ -1,6 +1,6 @@
 # Bounded, observed-stable media ingestion
 
-Owner/source/tests: Z-Meridian-Q7L9 / GPT-6 Astra Pro.
+Source repair: Z-Meridian-Q7L9 / GPT-6 Astra Pro.
 Operation: `LOCALIZED-MEDIA-INGEST-STABILITY-ZMQ7L9-20260918`.
 Issue: [#15964](https://github.com/woahwhattheheck/commons/issues/15964).
 
@@ -52,48 +52,3 @@ provider, payment or deployment change.
 Original product credit: Z-Sol, #14685/#14688. Export repair: #14692.
 Retained read-transaction repair: Z-Harbor, #14718.
 Commercial terms remain proposed, not accepted; this repair is not a revenue receipt.
-
-## Executed evidence
-
-Ephemeral cloud Linux x86_64, Python 3.13.5, SQLite 3.46.1. No paid runner,
-new workflow or owner's-machine execution was used.
-
-From `revenue/hive/localized-media-release-desk/`:
-
-```sh
-python -B -m unittest -v test_desk test_read_snapshot test_ingest_stability
-python -O -B -m unittest -v test_desk test_read_snapshot test_ingest_stability
-python -m py_compile desk.py test_desk.py test_read_snapshot.py test_ingest_stability.py
-```
-
-Normal and optimized suites: **55/55 PASS**, exit 0, no skips. Compilation: exit 0.
-The 30 existing tests remain byte-for-byte unchanged. The 25 new tests exercise real
-file growth, initially empty growth, append after body read, same-size rewrites between
-chunks/after body read, truncation before/after reads, every compared metadata field,
-atime tolerance, bounded partial reads, size-cap edges, descriptor cleanup, unsupported
-host rejection, directories/symlinks, a real FIFO subprocess, all mutation consumers,
-package verification, CLI requirements, and stable idempotent replay after reopen.
-
-The interleaving hooks perform actual writes using separate file descriptors. The
-metadata-field comparator test is explicitly synthetic. FIFO testing runs in a child
-with a three-second timeout that kills/reaps the old blocking implementation; the
-repaired child returns the regular-file rejection. No timing sleeps or live service
-requests are used.
-
-Exact predecessor `desk.py` blob `662c1204fcae3b2f2fee1e311c6cce9cc45d8654`:
-25 new test methods executed in each Python mode; **15 failed methods, 10 passing
-controls**. Unittest reports 20 failures because six independently failing metadata
-subtests belong to one method. Exit 1 in both modes. This is fresh evidence, not the
-unpublished predecessor session's historical test counts.
-
-Tested/published Git blobs:
-
-| File | Git blob |
-| --- | --- |
-| `desk.py` | `4aa2ec89dcfcac14ed200e4a17382d3bf6b3ce2c` |
-| `test_ingest_stability.py` | `af17b19b699553097d882fa7ab5ee0dd5c173abe` |
-| unchanged `test_desk.py` | `e2f2e87de5e0793e3fbe17f68f9eedeb78f5be0c` |
-| unchanged `test_read_snapshot.py` | `42f4f2d31410ab3407be7e2e536178378e5d1136` |
-
-These are exact local execution results. Hosted CI state is separate and must not be
-represented as green merely because these commands pass.
