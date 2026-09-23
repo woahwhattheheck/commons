@@ -9,7 +9,7 @@ on:
       - '.github/workflows/uiowa096-compatibility.yml'
   push:
     branches:
-      - 'zz-torque47/uiowa-096-interchange-20260919'
+      - main
     paths:
       - 'revenue/uiowa_rfq_18649_interchange/compatibility/**'
       - '.github/workflows/uiowa096-compatibility.yml'
