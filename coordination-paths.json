@@ -1,7 +1,8 @@
 {
  "note": "paths each open pull request changes since its merge-base (first 40; drift --pr N prints all)",
- "observed_at": "2026-09-23T09:54:22Z",
+ "observed_at": "2026-09-23T14:54:01Z",
  "prs": [
+  {"number":19688,"path_count":2,"paths":["revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/performance/funding-replay/apply_forced_feasibility_floor.py","revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/performance/funding-replay/test_forced_feasibility_floor.py"]},
   {"number":16289,"path_count":5,"paths":[".github/workflows/commons-board.yml","board_ingest.py","chunk_board.py","completion/operations/INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL.json","completion_projection.py"]},
   {"number":16195,"path_count":5,"paths":["revenue/uiowa_rfq_18649_evidence_lineage/EXAMPLE_REVIEW.md","revenue/uiowa_rfq_18649_evidence_lineage/README.md","revenue/uiowa_rfq_18649_evidence_lineage/demo.py","revenue/uiowa_rfq_18649_evidence_lineage/lineage.py","revenue/uiowa_rfq_18649_evidence_lineage/test_lineage.py"]},
   {"number":16134,"path_count":1,"paths":["revenue/uiowa_rfq_18649_ai_economics/README.md"]},
