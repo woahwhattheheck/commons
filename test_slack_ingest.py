@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import io
+import base64
+import hashlib
 import json
 import tempfile
 import unittest
@@ -29,7 +31,144 @@ The exact body stays exact.
 """
 
 
+class FakeArchive:
+    def __init__(self, _token: str):
+        pass
+
+    def put_if_absent(self, _event, _raw, _projected) -> str:
+        return "synthetic-archive-receipt"
+
+
 class SlackIngestTests(unittest.TestCase):
+    def test_public_projection_keeps_route_and_removes_only_terminal_footer(self) -> None:
+        label = SOURCE.split("\nmodel: ", 1)[1].split()[0]
+        event = {
+            "ts": "20.1", "user": "U1",
+            "text": "from: BRYCE\nto: TABLE\n\nA real update.\n*Sent using* <@U999|" + label + ">\n",
+        }
+        raw = si.issue_record(event)
+        projected = si.public_projection_v1(raw)
+        self.assertEqual(si.leading_fields(raw.body), si.leading_fields(projected.body))
+        self.assertTrue(projected.body.endswith("A real update.\n\n"))
+        self.assertNotEqual(projected.body, raw.body)
+        self.assertTrue(si.public_identity_allowed(projected))
+        nonterminal = si.issue_record({"ts": "20.2", "user": "U1", "text": event["text"] + "Next line"})
+        self.assertEqual(si.public_projection_v1(nonterminal), nonterminal)
+        self.assertFalse(si.public_identity_allowed(nonterminal))
+        embedded = si.IssueRecord("20.2", "clean-title", "body: Chat" + bytes.fromhex("475054").decode(), "slack_message")
+        self.assertFalse(si.public_identity_allowed(embedded))
+
+    def test_private_archive_replay_is_exact_and_source_drift_fails_closed(self) -> None:
+        event = {"ts": "20.3", "user": "U1", "text": "from: BRYCE\n\nsource"}
+        raw = si.issue_record(event)
+        projected = si.public_projection_v1(raw)
+        archive = si.SourceArchive("synthetic-token")
+        blobs: dict[str, bytes] = {}
+
+        def request(method: str, path: str, payload=None):
+            if method == "GET":
+                content = blobs.get(path)
+                return None if content is None else {
+                    "encoding": "base64", "content": base64.b64encode(content).decode("ascii")
+                }
+            self.assertEqual(method, "PUT")
+            self.assertNotIn(path, blobs)
+            blobs[path] = base64.b64decode(payload["content"])
+            return {"commit": {"sha": "synthetic-commit"}}
+
+        with mock.patch.object(archive, "_request", side_effect=request):
+            first = archive.put_if_absent(event, raw, projected)
+            second = archive.put_if_absent(event, raw, projected)
+            self.assertEqual(first, second)
+            self.assertEqual(len(blobs), 1)
+            self.assertEqual(hashlib.sha256(next(iter(blobs.values()))).hexdigest(), first)
+            changed = dict(event, text="from: BRYCE\n\nchanged source")
+            with self.assertRaises(si.IngestError):
+                archive.put_if_absent(changed, si.issue_record(changed), si.public_projection_v1(si.issue_record(changed)))
+            self.assertEqual(len(blobs), 1)
+
+    def test_sync_archives_blocked_identity_without_public_issue(self) -> None:
+        label = SOURCE.split("\nmodel: ", 1)[1].split()[0]
+        event = {"ts": "20.4", "user": "U1", "text": "from: " + label + "\n\nA source message."}
+        archived: list[str] = []
+
+        class OneEvent:
+            def __init__(self, _token: str):
+                pass
+
+            def events(self, _oldest: str):
+                return [event]
+
+        class Archive:
+            def __init__(self, _token: str):
+                pass
+
+            def put_if_absent(self, _event, raw, _projected):
+                archived.append(raw.title)
+                return "stored"
+
+        class NoPublicIssue:
+            def __init__(self, _token: str):
+                pass
+
+            def issue_exists(self, *_args, **_kwargs):
+                raise AssertionError("quarantined source reached public issue lookup")
+
+        with tempfile.TemporaryDirectory() as tmp:
+            state = Path(tmp) / "state.json"
+            output = StringIO()
+            with (
+                mock.patch.object(si, "SlackClient", OneEvent),
+                mock.patch.object(si, "SourceArchive", Archive),
+                mock.patch.object(si, "GitHubClient", NoPublicIssue),
+                mock.patch.object(si, "high_water", return_value="0"),
+                mock.patch.dict(si.os.environ, {"SLACK_BOT_TOKEN": "x", "GITHUB_TOKEN": "y"}),
+                redirect_stdout(output),
+            ):
+                self.assertEqual(si.cmd_sync(None, state), 0)
+            self.assertEqual(si.read_state(state), "20.4")
+            self.assertEqual(archived, ["slack-20-4"])
+            self.assertEqual(json.loads(output.getvalue())["private_quarantined"], 1)
+
+    def test_archive_failure_prevents_public_issue_and_cursor_progress(self) -> None:
+        event = {"ts": "20.5", "user": "U1", "text": "from: BRYCE\n\nA source message."}
+
+        class OneEvent:
+            def __init__(self, _token: str):
+                pass
+
+            def events(self, _oldest: str):
+                return [event]
+
+        class FailingArchive:
+            def __init__(self, _token: str):
+                pass
+
+            def put_if_absent(self, *_args):
+                raise si.IngestError("private source archive unavailable")
+
+        class NoPublicIssue:
+            def __init__(self, _token: str):
+                pass
+
+            def issue_exists(self, *_args, **_kwargs):
+                raise AssertionError("unarchived source reached public issue lookup")
+
+        with tempfile.TemporaryDirectory() as tmp:
+            state = Path(tmp) / "state.json"
+            state.write_text('{"cursor":"19.5"}\n', encoding="utf-8")
+            with (
+                mock.patch.object(si, "SlackClient", OneEvent),
+                mock.patch.object(si, "SourceArchive", FailingArchive),
+                mock.patch.object(si, "GitHubClient", NoPublicIssue),
+                mock.patch.object(si, "high_water", return_value="0"),
+                mock.patch.dict(si.os.environ, {"SLACK_BOT_TOKEN": "x", "GITHUB_TOKEN": "y"}),
+                redirect_stdout(StringIO()),
+            ):
+                with self.assertRaises(si.IngestError):
+                    si.cmd_sync(None, state)
+            self.assertEqual(si.read_state(state), "19.5")
+
     def test_valid_declared_id_is_preserved_with_slack_ts_as_provenance(self) -> None:
         text = "from: GPT\nto: TABLE\nid: gpt-caller-id-20260824-01\n\nPLAIN: exact payload"
         record = si.issue_record({"ts": "1787539715.067529", "text": text, "user": "U1"})
@@ -247,7 +386,7 @@ edited payload
         event = {
             "ts": "10.1",
             "edited": {"ts": "12.5"},
-            "text": "from: GPT\n\nnew",
+            "text": "from: BRYCE\n\nnew",
             "user": "U1",
         }
 
@@ -263,7 +402,7 @@ edited payload
             def __init__(self, _token: str):
                 pass
 
-            def issue_exists(self, _title: str) -> bool:
+            def issue_exists(self, _title: str, legacy_record=None) -> bool:
                 return False
 
             def create_issue(self, record: si.IssueRecord) -> str:
@@ -278,6 +417,7 @@ edited payload
             with (
                 mock.patch.object(si, "SlackClient", FakeSlack),
                 mock.patch.object(si, "GitHubClient", FakeGitHub),
+                mock.patch.object(si, "SourceArchive", FakeArchive),
                 mock.patch.object(si, "high_water", return_value="10.0"),
                 mock.patch.dict(si.os.environ, {"SLACK_BOT_TOKEN": "x", "GITHUB_TOKEN": "y"}),
                 redirect_stdout(StringIO()),
@@ -325,6 +465,7 @@ edited payload
             with (
                 mock.patch.object(si, "SlackClient", FakeSlack),
                 mock.patch.object(si, "GitHubClient", FakeGitHub),
+                mock.patch.object(si, "SourceArchive", FakeArchive),
                 mock.patch.object(si, "high_water", return_value="0"),
                 mock.patch.dict(si.os.environ, {"SLACK_BOT_TOKEN": "x", "GITHUB_TOKEN": "y"}),
                 redirect_stdout(StringIO()),
@@ -362,6 +503,7 @@ edited payload
             with (
                 mock.patch.object(si, "SlackClient", FakeSlack),
                 mock.patch.object(si, "GitHubClient", FakeGitHub),
+                mock.patch.object(si, "SourceArchive", FakeArchive),
                 mock.patch.object(si, "high_water", return_value="0"),
                 mock.patch.dict(si.os.environ, {"SLACK_BOT_TOKEN": "x", "GITHUB_TOKEN": "y"}),
                 redirect_stdout(StringIO()),
@@ -372,7 +514,7 @@ edited payload
         self.assertEqual(posted, [])
 
     def test_sync_does_not_advance_cursor_when_issue_creation_fails(self) -> None:
-        event = {"ts": "12.5", "text": "from: GPT\n\nnew", "user": "U1"}
+        event = {"ts": "12.5", "text": "from: BRYCE\n\nnew", "user": "U1"}
 
         class FakeSlack:
             def __init__(self, _token: str):
@@ -385,7 +527,7 @@ edited payload
             def __init__(self, _token: str):
                 pass
 
-            def issue_exists(self, _title: str) -> bool:
+            def issue_exists(self, _title: str, legacy_record=None) -> bool:
                 return False
 
             def create_issue(self, _record: si.IssueRecord) -> str:
@@ -397,6 +539,7 @@ edited payload
             with (
                 mock.patch.object(si, "SlackClient", FakeSlack),
                 mock.patch.object(si, "GitHubClient", FakeGitHub),
+                mock.patch.object(si, "SourceArchive", FakeArchive),
                 mock.patch.object(si, "high_water", return_value="10.0"),
                 mock.patch.dict(si.os.environ, {"SLACK_BOT_TOKEN": "x", "GITHUB_TOKEN": "y"}),
             ):
@@ -916,8 +1059,8 @@ PLAIN: Slack :left_right_arrow: Commons exact body.
 
     def test_sync_keeps_cursor_of_written_records_when_a_later_create_fails(self) -> None:
         events = [
-            {"ts": "12.0", "text": "from: GPT\n\nfirst", "user": "U1"},
-            {"ts": "13.0", "text": "from: GPT\n\nsecond", "user": "U1"},
+            {"ts": "12.0", "text": "from: BRYCE\n\nfirst", "user": "U1"},
+            {"ts": "13.0", "text": "from: BRYCE\n\nsecond", "user": "U1"},
         ]
         created: list[str] = []
 
@@ -932,7 +1075,7 @@ PLAIN: Slack :left_right_arrow: Commons exact body.
             def __init__(self, _token: str):
                 pass
 
-            def issue_exists(self, _record: object) -> bool:
+            def issue_exists(self, _record: object, legacy_record=None) -> bool:
                 return False
 
             def create_issue(self, record: si.IssueRecord) -> str:
@@ -950,6 +1093,7 @@ PLAIN: Slack :left_right_arrow: Commons exact body.
             with (
                 mock.patch.object(si, "SlackClient", FakeSlack),
                 mock.patch.object(si, "GitHubClient", FakeGitHub),
+                mock.patch.object(si, "SourceArchive", FakeArchive),
                 mock.patch.object(si, "high_water", return_value="10.0"),
                 mock.patch.dict(si.os.environ, {"SLACK_BOT_TOKEN": "x", "GITHUB_TOKEN": "y"}),
             ):

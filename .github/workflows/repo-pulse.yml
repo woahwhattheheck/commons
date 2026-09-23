@@ -30,11 +30,16 @@ on:
         description: "Render to the job log instead of posting to Slack"
         type: boolean
         default: false
+      archive_probe:
+        description: "Verify private source archive access using synthetic bytes only"
+        type: boolean
+        default: false
   pull_request:
     paths:
       - "slack_ingest.py"
       - "test_slack_ingest.py"
       - "exact_body_redact.py"
+      - "commons_publication_policy.py"
       - "repo_pulse.py"
       - "test_repo_pulse.py"
       - "host/sprint_integration.py"
@@ -47,6 +52,7 @@ on:
       - "slack_ingest.py"
       - "test_slack_ingest.py"
       - "exact_body_redact.py"
+      - "commons_publication_policy.py"
       - "repo_pulse.py"
       - "test_repo_pulse.py"
       - "host/sprint_integration.py"
@@ -66,6 +72,7 @@ permissions:
 
 jobs:
   pulse:
+    if: inputs.archive_probe != true
     runs-on: ubuntu-latest
     timeout-minutes: 5
     concurrency:
@@ -142,6 +149,7 @@ jobs:
           key: repo-pulse-cursor-${{ github.run_id }}
 
   slack_ingest:
+    if: inputs.archive_probe != true
     runs-on: ubuntu-latest
     timeout-minutes: 30
     concurrency:
@@ -177,6 +185,7 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_SHA: ${{ github.sha }}
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          COMMONS_SLACK_SOURCE_ARCHIVE_TOKEN: ${{ secrets.COMMONS_GITHUB_TOKEN }}
           COMMONS_SLACK_CHANNEL: ${{ vars.SLACK_CHANNEL_ID || 'C0BRGMDQB6G' }}
           SLACK_INGEST_STATE: .slack-ingest-state.json
         run: |
@@ -192,6 +201,7 @@ jobs:
               "${api}/$1?ref=${GITHUB_SHA}" -o "/tmp/slack-ingest/$1"
           }
           fetch exact_body_redact.py
+          fetch commons_publication_policy.py
           fetch slack_ingest.py
           fetch test_slack_ingest.py
           (
@@ -224,3 +234,68 @@ jobs:
         with:
           path: .slack-ingest-state.json
           key: slack-ingest-cursor-${{ github.run_id }}
+
+  archive_probe:
+    if: inputs.archive_probe == true
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    permissions:
+      contents: read
+    steps:
+      - name: Verify private archive write and exact readback
+        env:
+          ARCHIVE_TOKEN: ${{ secrets.COMMONS_GITHUB_TOKEN }}
+        run: |
+          python3 - <<'PY'
+          import base64
+          import hashlib
+          import json
+          import os
+          import secrets
+          import urllib.error
+          import urllib.request
+
+          token = os.environ.get("ARCHIVE_TOKEN", "")
+          if not token:
+              raise SystemExit("archive credential unavailable")
+          repo = "woahwhattheheck/commons-storage-recovery-2026-08-27"
+          api = "https://api.github.com/repos/" + repo
+          headers = {
+              "Authorization": "Bearer " + token,
+              "Accept": "application/vnd.github+json",
+              "Content-Type": "application/json",
+              "X-GitHub-Api-Version": "2022-11-28",
+          }
+
+          def request(method, path, payload=None):
+              data = None if payload is None else json.dumps(payload).encode("utf-8")
+              req = urllib.request.Request(api + path, data=data, method=method, headers=headers)
+              try:
+                  with urllib.request.urlopen(req, timeout=20) as response:
+                      return json.loads(response.read().decode("utf-8"))
+              except urllib.error.HTTPError as exc:
+                  if method == "GET" and exc.code == 404:
+                      return None
+                  raise SystemExit("private archive HTTP " + str(exc.code)) from exc
+
+          meta = request("GET", "")
+          if not meta or not meta.get("private") or not (meta.get("permissions") or {}).get("push"):
+              raise SystemExit("archive is not private and writable for workflow credential")
+          raw = (json.dumps({"schema": "commons-private-archive-actions-probe/v1",
+                             "nonce": secrets.token_hex(16)}, sort_keys=True) + "\n").encode("utf-8")
+          digest = hashlib.sha256(raw).hexdigest()
+          path = "/contents/commons-slack-source-probes/" + digest[:2] + "/" + digest + ".json"
+          if request("GET", path) is not None:
+              raise SystemExit("synthetic probe path already exists")
+          receipt = request("PUT", path, {"message": "chore: verify private source archive access",
+                                          "content": base64.b64encode(raw).decode("ascii")})
+          fetched = request("GET", path)
+          if not fetched or fetched.get("encoding") != "base64":
+              raise SystemExit("private archive readback unavailable")
+          value = base64.b64decode(fetched["content"])
+          if value != raw or hashlib.sha256(value).hexdigest() != digest:
+              raise SystemExit("private archive hash readback mismatch")
+          print(json.dumps({"private": True, "write": True, "fetch_hash_readback": True,
+                            "synthetic_only": True, "sha256": digest,
+                            "commit_sha": receipt["commit"]["sha"]}))
+          PY

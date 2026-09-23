@@ -25,11 +25,14 @@ feed itself.
 from __future__ import annotations
 
 import argparse
+import base64
+import hashlib
 import json
 import os
 import re
 import sys
 import time
+import unicodedata
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -40,6 +43,7 @@ from pathlib import Path
 from typing import Any, Callable, Iterable, Iterator
 
 import exact_body_redact
+import commons_publication_policy
 
 
 ROOT = Path(os.environ.get("GITHUB_WORKSPACE", Path(__file__).resolve().parent))
@@ -49,6 +53,8 @@ CHANNEL_ID = DEFAULT_TABLE  # default table, not an allowlist
 REPOSITORY = os.environ.get("GITHUB_REPOSITORY", "woahwhattheheck/commons")
 SLACK_API = "https://slack.com/api"
 GITHUB_API = "https://api.github.com"
+SOURCE_ARCHIVE_REPOSITORY = "woahwhattheheck/commons-storage-recovery-2026-08-27"
+SOURCE_ARCHIVE_PREFIX = "commons-slack-source/v1"
 ID_RE = re.compile(r"^slack-(\d+)-(\d+)$")
 DECLARED_ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 OBSERVED_SLACK_RE = re.compile(
@@ -58,6 +64,21 @@ CLAIM_RE = re.compile(r"[^A-Z0-9_]+")
 SENDER_DISCLOSURE_RE = re.compile(
     r"\n?\*Sent using\*\s+<@[^>\n]+\|[^>\n]+>\s*$"
 )
+PUBLIC_FOOTER_RE = re.compile(
+    r"(?m)^[ \t]*\*Sent using\*[ \t]*<@[^>\r\n]+>[ \t]*(?=\r?\n?\Z)"
+)
+AUTHORED_ATTRIBUTION_RE = re.compile(r"(?i)\bAI[ -]assisted\b|\b(?:written|built|tested|reviewed) by an AI\b")
+# Digests supplement the shared identity guard without adding prohibited
+# brand words to newly published source. Match substrings, including brands
+# embedded in a longer token.
+EXTRA_IDENTITY_SHA256 = {
+    3: {
+        "053ea4804ef1bb33d4a3d6fb024a614b6d257cebc2bc7cd915da9c9522f37ffc",
+        "487b91042c7cf27a19e23ea8699f5f354b1a0c3af9e418138dc6150d830f970d",
+    },
+    6: {"7d3194f79e645c42e4396dda38be04766810ec6a00d00aced3ffc2a0a1f1a9ef"},
+    9: {"c70eca6b0f88f44d81a41311647e50fda1ac454ec04ffd442b0eb4743a993131"},
+}
 COPY_FIELDS = (
     "is_language_model",
     "model",
@@ -114,6 +135,104 @@ class IssueRecord:
 
     def as_issue(self) -> dict[str, Any]:
         return {"title": self.title, "body": self.body, "labels": ["board"]}
+
+
+def public_projection_v1(record: IssueRecord) -> IssueRecord:
+    """Drop only a terminal sender footer; retain routing and other source text."""
+    body = PUBLIC_FOOTER_RE.sub("", record.body)
+    if leading_fields(body) != leading_fields(record.body):
+        raise IngestError("public projection changed the source envelope")
+    return IssueRecord(record.native_ts, record.title, body, record.kind, record.target, record.clock)
+
+
+def public_identity_allowed(record: IssueRecord) -> bool:
+    """A rejected source remains in the private archive, not a public issue."""
+    visible = {"title": record.title, "body": record.body}
+    if not commons_publication_policy.check_outbound_identity(visible)["allowed"]:
+        return False
+    combined = record.title + "\n" + record.body
+    if AUTHORED_ATTRIBUTION_RE.search(combined):
+        return False
+    normalized = "".join(
+        char for char in unicodedata.normalize("NFKC", combined).casefold()
+        if unicodedata.category(char) != "Cf"
+    )
+    for token in re.findall(r"[a-z]+", normalized):
+        for length, denied in EXTRA_IDENTITY_SHA256.items():
+            for start in range(len(token) - length + 1):
+                if hashlib.sha256(token[start:start + length].encode("ascii")).hexdigest() in denied:
+                    return False
+    return True
+
+
+class SourceArchive:
+    """Append-only private event-key store with exact GET/hash verification."""
+
+    def __init__(self, token: str):
+        if not token:
+            raise IngestError("private source archive credential is unavailable")
+        self.token = token
+
+    def _request(self, method: str, path: str, payload: dict[str, Any] | None = None) -> dict[str, Any] | None:
+        data = None if payload is None else json.dumps(payload).encode("utf-8")
+        request = urllib.request.Request(
+            GITHUB_API + "/repos/" + SOURCE_ARCHIVE_REPOSITORY + "/contents/" + path,
+            data=data, method=method,
+            headers={
+                "Accept": "application/vnd.github+json",
+                "Authorization": "Bearer " + self.token,
+                "Content-Type": "application/json",
+                "X-GitHub-Api-Version": "2022-11-28",
+            },
+        )
+        try:
+            with urllib.request.urlopen(request, timeout=30) as response:
+                return json.loads(response.read().decode("utf-8"))
+        except urllib.error.HTTPError as exc:
+            if method == "GET" and exc.code == 404:
+                return None
+            # Never echo source bytes or a provider error body into Actions logs.
+            raise IngestError("private source archive HTTP %s" % exc.code) from exc
+        except (OSError, UnicodeError, ValueError) as exc:
+            raise IngestError("private source archive transport failed") from exc
+
+    def put_if_absent(self, event: dict[str, Any], raw: IssueRecord, projected: IssueRecord) -> str:
+        observed_event = leading_fields(raw.body).get("observed_event", "")
+        if not observed_event.startswith("slack:"):
+            raise IngestError("Slack event has no stable source key")
+        message = str(event_source(event).get("text") or "").encode("utf-8")
+        raw_body = raw.body.encode("utf-8")
+        projected_body = projected.body.encode("utf-8")
+        document = {
+            "schema": "commons-slack-private-source/v1",
+            "observed_event": observed_event,
+            "record_id": raw.title,
+            "raw_message_utf8_base64": base64.b64encode(message).decode("ascii"),
+            "raw_message_sha256": hashlib.sha256(message).hexdigest(),
+            "raw_issue_body_utf8_base64": base64.b64encode(raw_body).decode("ascii"),
+            "raw_issue_body_sha256": hashlib.sha256(raw_body).hexdigest(),
+            "public_projection_version": "slack-public-v1",
+            "public_issue_body_sha256": hashlib.sha256(projected_body).hexdigest(),
+        }
+        exact = (json.dumps(document, ensure_ascii=True, sort_keys=True, separators=(",", ":")) + "\n").encode("utf-8")
+        event_key = hashlib.sha256(observed_event.encode("utf-8")).hexdigest()
+        path = SOURCE_ARCHIVE_PREFIX + "/" + event_key[:2] + "/" + event_key + ".json"
+        existing = self._request("GET", path)
+        if existing is None:
+            self._request("PUT", path, {
+                "message": "data: retain exact private Slack source event",
+                "content": base64.b64encode(exact).decode("ascii"),
+            })
+            existing = self._request("GET", path)
+        if not isinstance(existing, dict) or existing.get("encoding") != "base64":
+            raise IngestError("private source archive readback is unavailable")
+        try:
+            fetched = base64.b64decode(existing["content"], validate=False)
+        except (KeyError, TypeError, ValueError) as exc:
+            raise IngestError("private source archive readback is invalid") from exc
+        if fetched != exact or hashlib.sha256(fetched).digest() != hashlib.sha256(exact).digest():
+            raise IngestError("private source archive event differs from current source")
+        return hashlib.sha256(exact).hexdigest()
 
 
 def _decimal_ts(value: Any) -> Decimal:
@@ -404,6 +523,18 @@ def verify_existing(path: Path, record: IssueRecord, channel_id: str = CHANNEL_I
         return False
     raw = path.read_text(encoding="utf-8")
     verify_existing_body(raw, record, str(path))
+    return True
+
+
+def verify_existing_public(path: Path, raw_record: IssueRecord, public_record: IssueRecord) -> bool:
+    """Accept an exact legacy raw post or its archived public projection."""
+    if not path.is_file():
+        return False
+    current = path.read_text(encoding="utf-8")
+    try:
+        verify_existing_body(current, public_record, str(path))
+    except ImmutableMismatch:
+        verify_existing_body(current, raw_record, str(path))
     return True
 
 
@@ -846,16 +977,18 @@ class GitHubClient:
         self._board_issue_bodies = issues
         return issues
 
-    def issue_exists(self, record: IssueRecord) -> bool:
+    def issue_exists(self, record: IssueRecord, legacy_record: IssueRecord | None = None) -> bool:
         bodies = self.board_issue_bodies().get(record.title)
         if bodies is None:
             return False
         for index, body in enumerate(bodies, start=1):
-            verify_existing_body(
-                body,
-                record,
-                "GitHub board issue %s[%d]" % (record.title, index),
-            )
+            source = "GitHub board issue %s[%d]" % (record.title, index)
+            try:
+                verify_existing_body(body, record, source)
+            except ImmutableMismatch:
+                if legacy_record is None:
+                    raise
+                verify_existing_body(body, legacy_record, source)
         return True
 
     def _pace_content_create(self) -> None:
@@ -891,7 +1024,10 @@ def load_events(path: Path) -> list[dict[str, Any]]:
     raise IngestError("event input must be an object or array")
 
 
-def plan(events: Iterable[dict[str, Any]], posts_dir: Path = POSTS_DIR) -> list[IssueRecord]:
+def plan(
+    events: Iterable[dict[str, Any]], posts_dir: Path = POSTS_DIR,
+    public_projection: bool = False,
+) -> list[IssueRecord]:
     out: list[IssueRecord] = []
     seen: dict[str, IssueRecord] = {}
     for event in sorted(
@@ -913,7 +1049,12 @@ def plan(events: Iterable[dict[str, Any]], posts_dir: Path = POSTS_DIR) -> list[
                 % (record.title, previous.native_ts, record.native_ts)
             )
         seen[record.title] = record
-        if not verify_existing(posts_dir / (record.title + ".md"), record):
+        if public_projection:
+            projected = public_projection_v1(record)
+            exists = verify_existing_public(posts_dir / (record.title + ".md"), record, projected)
+            if not exists:
+                out.append(projected)
+        elif not verify_existing(posts_dir / (record.title + ".md"), record):
             out.append(record)
     return out
 
@@ -943,9 +1084,11 @@ def cmd_sync(
     oldest = format(max(_cursor_decimal(value) for value in baselines), "f")
     slack = SlackClient(os.environ.get("SLACK_BOT_TOKEN", ""))
     github = GitHubClient(os.environ.get("GITHUB_TOKEN", ""))
+    archive = SourceArchive(os.environ.get("COMMONS_SLACK_SOURCE_ARCHIVE_TOKEN", ""))
     events = slack.events(oldest)
-    records = plan(events)
+    records = plan(events, public_projection=True)
     created: list[dict[str, str]] = []
+    quarantined = 0
     applied = _cursor_decimal(oldest)
     pending = {record.title: record for record in records}
     try:
@@ -954,12 +1097,17 @@ def cmd_sync(
             if should_skip(event):
                 applied = max(applied, clock)
                 continue
-            record = issue_record(event)
-            planned = pending.get(record.title)
+            raw_record = issue_record(event)
+            planned = pending.get(raw_record.title)
             if planned is None:
                 applied = max(applied, clock)
                 continue
-            if not github.issue_exists(planned):
+            archive.put_if_absent(event, raw_record, planned)
+            if not public_identity_allowed(planned):
+                quarantined += 1
+                applied = max(applied, clock)
+                continue
+            if not github.issue_exists(planned, legacy_record=raw_record):
                 created.append(
                     {"id": planned.title, "issue": github.create_issue(planned)}
                 )
@@ -978,6 +1126,7 @@ def cmd_sync(
                 "cursor": format(cursor, "f"),
                 "planned": len(records),
                 "created": created,
+                "private_quarantined": quarantined,
             },
             indent=2,
         )
