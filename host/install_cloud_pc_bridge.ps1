@@ -13,7 +13,7 @@ $identity = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
 $taskName = "Commons Cloud PC Bridge"
 $action = New-ScheduledTaskAction `
     -Execute $runner `
-    -Argument "-m host.cloud_pc_bridge --poll-seconds 30" `
+    -Argument "-B -m host.cloud_pc_bridge --poll-seconds 30" `
     -WorkingDirectory $repoRoot
 $trigger = New-ScheduledTaskTrigger -AtLogOn -User $identity
 $principal = New-ScheduledTaskPrincipal `
