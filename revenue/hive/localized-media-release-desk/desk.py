@@ -131,11 +131,11 @@ class ReleaseDesk:
     def _init(self):
         """Create a new desk, reopen a compatible one, or refuse anything else.
 
-        A missing file or a database with no tables is initialized inside one
-        transaction. An existing desk is recognized from its tables, columns,
-        keys and constraints on the reserved connection, not from its pathname.
-        A foreign or incompatible database is rolled back unchanged. Views and
-        triggers are not part of the ordinary desk and are refused.
+        A missing file or a database with no user schema objects is initialized
+        inside one transaction. An existing desk is recognized from its tables,
+        columns, keys and constraints on the reserved connection, not from its
+        pathname. A foreign or incompatible database, including one whose only
+        object is a view or trigger, is rolled back unchanged.
         """
         expected=_expected_desk_tables()
         with closing(self.conn()) as c:
@@ -143,6 +143,8 @@ class ReleaseDesk:
             try:
                 found={name: sql for name, sql in c.execute("SELECT name, sql FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'")}
                 if not found:
+                    if c.execute("SELECT 1 FROM sqlite_master WHERE name NOT LIKE 'sqlite_%'").fetchone():
+                        raise InvalidState("existing database is not a compatible localized-media release desk; schema and rows were not changed")
                     for stmt in _DESK_SCHEMA: c.execute(stmt)
                 elif set(found)!=set(expected) or any(found[name]!=expected[name] for name in expected):
                     raise InvalidState("existing database is not a compatible localized-media release desk; schema and rows were not changed")
