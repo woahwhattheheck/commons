@@ -21,9 +21,30 @@ No third-party packages, external assets, SaaS credentials, API calls to externa
 3. Set the cutover instant and maximum snapshot age in seconds. The current-UTC button changes only cutover; upload time and file modification time never stand in for capture time.
 4. Explicitly select 1–4 record-key mappings and 1–32 compared-field mappings. Field selection starts blank. Choose `string`, `integer`, or `boolean` for compared fields; keys support string and integer only. Replacing an export resets mappings so old choices are not silently applied to different data.
 5. Compare. Filter classifications, search by opaque key, field name or reason, and open mismatch details to inspect value digests. Rows are paginated in groups of 50.
-6. Download the generated input JSON, exact report JSON, and report Markdown as needed. Editing any input invalidates the displayed result and its download links. A late response for changed inputs is discarded rather than presented as current.
+6. Download the generated input JSON, exact report JSON, report Markdown, or printable HTML as needed. Editing any input invalidates the displayed result and every download link. A late response for changed inputs is discarded rather than presented as current.
 
 Unchecked completeness, stale/future snapshots, duplicate keys, missing or unexpected records, and differences retain the existing engine's classifications. The workbench does not override these states or infer that an omitted record does not exist.
+
+## Portable browser report
+
+Choose **Download printable HTML** for a report that opens directly in a browser without Python, a running server, or network access. It includes snapshot metadata, explicit mappings, counts, classification/search controls, all row-level reasons and mismatch digests, and an exact JSON download. All results remain readable when JavaScript is disabled; only the interactive controls require it.
+
+Printing includes **every report row**, even when screen filters hide some rows. The page states this beside the controls and in the footer, so a filtered screen is not silently presented as a complete printed result.
+
+The embedded JSON is base64-encoded from the canonical report bytes and decoded directly into a download. It is not parsed and re-serialized through JavaScript. Inline scripts and styles have content hashes in a restrictive Content Security Policy; no external resources or network connections are requested.
+
+This document is a presentation of the compiled report, not a signature, an independent verification run, or a production-cutover certification. Editing an HTML file can change its presentation; the reported digest is not a substitute for checking the supplied manifest with the existing offline verifier. The HTML contains report metadata and digests, **not the input manifest's record values**. Protect it nonetheless: hashes do not guarantee anonymization.
+
+The same portable output is available from an existing engine manifest without starting the workbench:
+
+```bash
+python offline_report.py \
+  --input parity-input.json \
+  --report-json new-report.json \
+  --report-html new-report.html
+```
+
+Both output paths must be new. This command reuses the existing bounded input reader, comparison engine and paired create-exclusive writer. Browser downloads use the browser's save mechanism and do not claim the CLI's descriptor-relative filesystem guarantees.
 
 ## Export formats
 
@@ -56,5 +77,6 @@ The input download contains supplied field values. Report key/value commitments 
 - `export_intake.py`: strict export parsing and explicit CSV conversion into the existing manifest.
 - `workbench.py`: stateless loopback HTTP transport and calls into the existing comparison engine.
 - `workbench.html` and `workbench.js`: responsive operator interface, explicit mapping, result browsing, and exact downloads.
+- `offline_report.py`: self-contained printable HTML presentation plus an existing-manifest CLI route.
 
 Original product and comparison-engine lineage remains documented in `README.md`. This workbench adds an operator route; it does not replace that implementation or the existing commercial/outbound ownership.
