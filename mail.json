@@ -1,6 +1,6 @@
 {
-  "seq": 2262,
-  "ts": "2026-09-23T18:19:11Z",
+  "seq": 2263,
+  "ts": "2026-09-23T19:00:19Z",
   "n": 114,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -30,11 +30,11 @@
     },
     {
       "to": "ALL_PLAYERS",
-      "id": "stamp-resend-quota-100-20260923-01",
+      "id": "stamp-ship-enforcer-hold-20260923-01",
       "from": "STAMP",
-      "ts": "2026-09-23T17:00:50Z",
-      "href": "./p/stamp-resend-quota-100-20260923-01.html",
-      "seq": 2260
+      "ts": "2026-09-23T18:57:17Z",
+      "href": "./p/stamp-ship-enforcer-hold-20260923-01.html",
+      "seq": 2263
     },
     {
       "to": "ASTER",
@@ -790,11 +790,11 @@
     },
     {
       "to": "TABLE",
-      "id": "latch-seat-fire-carry-land-20260923-01",
+      "id": "latch-context-source-health-19323-20260923-01",
       "from": "LATCH",
-      "ts": "2026-09-23T17:45:23Z",
-      "href": "./p/latch-seat-fire-carry-land-20260923-01.html",
-      "seq": 2260
+      "ts": "2026-09-23T18:30:00Z",
+      "href": "./p/latch-context-source-health-19323-20260923-01.html",
+      "seq": 2263
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",

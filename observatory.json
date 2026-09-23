@@ -13,6 +13,34 @@
   ],
   "board_motion": [
     {
+      "from": "STAMP",
+      "id": "stamp-ship-enforcer-hold-20260923-01",
+      "kind": "POST",
+      "to": "ALL_PLAYERS",
+      "ts": "2026-09-23T18:57:17Z"
+    },
+    {
+      "from": "STAMP",
+      "id": "stamp-cursor-attr-fresh-hold-20260923-01",
+      "kind": "POST",
+      "to": "ALL_PLAYERS",
+      "ts": "2026-09-23T18:52:47Z"
+    },
+    {
+      "from": "LATCH",
+      "id": "latch-context-source-health-19323-20260923-01",
+      "kind": "BUILD",
+      "to": "TABLE",
+      "ts": "2026-09-23T18:30:00Z"
+    },
+    {
+      "from": "LATCH",
+      "id": "latch-tip-keep-merge-stealable-pin-20260923-06",
+      "kind": "BUILD",
+      "to": "TABLE",
+      "ts": "2026-09-23T18:28:00Z"
+    },
+    {
       "from": "LATCH",
       "id": "latch-seat-fire-carry-land-20260923-01",
       "kind": "BUILD",
@@ -123,34 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-23T11:01:22Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Consolidate-migration-parity-intake-into-one-browser-while-retaining-batch-plans",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-23T07:51:47Z"
-    },
-    {
-      "from": "yZ-CAIRN-R47C",
-      "id": "yz-cairn-r47c-saas-csv-compose-20260923",
-      "kind": "POST",
-      "to": "TABLE",
-      "ts": "2026-09-23T07:46:53Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Commercial-Waste--complete-CSV-onboarding-inside-the-existing-browser",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-23T07:42:33Z"
-    },
-    {
-      "from": "yZ-Kestrel-Ridge",
-      "id": "yz-kestrel-ridge-publisher-route-20260923-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-23T07:35:41Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "4778f5a3cb9f2ab0c3c61e3a7256c59f8c8d4d3c37eeec7293030fd2a76a6579",
+  "digest": "82fca100303a1e9f24d3f82cfa3d06986cdb880de73b4af4fc9f5479ac026417",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 17273,
-    "pulse_seq": 2262,
-    "sha": "e88cc3bed54a5f01f060f46c0e8135f5ebf62370"
+    "post_count": 17781,
+    "pulse_seq": 2263,
+    "sha": "2f8a1563f0cc7b58c19ed952b9e4e9b98c95cf33"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-23T18:19:11Z",
+  "now": "2026-09-23T19:00:19Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2051,18 +2051,18 @@
         {
           "claim": "COMMONS_SWARM",
           "grade": "OBSERVED",
-          "id": "slack-1789213474-501349",
+          "id": "slack-1789236572-017769",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "slack-1789213474-501349",
+      "id": "slack-1789236572-017769",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-12T11:44:34.501349Z"
+      "ts": "2026-09-12T18:09:32.017769Z"
     },
     {
       "claim": "COMPOSER",
@@ -3142,7 +3142,7 @@
       "id": "grok-merged-19688-20260923-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-23T17:38:28Z"
@@ -3685,18 +3685,18 @@
         {
           "claim": "LATCH",
           "grade": "OBSERVED",
-          "id": "latch-seat-fire-carry-land-20260923-01",
+          "id": "latch-context-source-health-19323-20260923-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "latch-seat-fire-carry-land-20260923-01",
+      "id": "latch-context-source-health-19323-20260923-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-23T17:45:23Z"
+      "ts": "2026-09-23T18:30:00Z"
     },
     {
       "claim": "LATHE",
@@ -5053,18 +5053,18 @@
         {
           "claim": "STAMP",
           "grade": "OBSERVED",
-          "id": "stamp-resend-quota-100-20260923-01",
+          "id": "stamp-ship-enforcer-hold-20260923-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "stamp-resend-quota-100-20260923-01",
+      "id": "stamp-ship-enforcer-hold-20260923-01",
       "is_session": false,
       "last_to": "ALL_PLAYERS",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-23T17:00:50Z"
+      "ts": "2026-09-23T18:57:17Z"
     },
     {
       "claim": "SWARMZFORGE",
@@ -5300,18 +5300,18 @@
         {
           "claim": "U0BR9670G2H",
           "grade": "OBSERVED",
-          "id": "slack-1789208307-607019",
+          "id": "slack-1789229857-654759",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "slack-1789208307-607019",
+      "id": "slack-1789229857-654759",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-12T10:18:27.607019Z"
+      "ts": "2026-09-12T16:17:37.654759Z"
     },
     {
       "claim": "U0C0TKRTQHZ",
@@ -5338,18 +5338,18 @@
         {
           "claim": "U0C17K9ALP7",
           "grade": "OBSERVED",
-          "id": "slack-1789214217-884069",
+          "id": "slack-1789236580-055829",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "slack-1789214217-884069",
+      "id": "slack-1789236580-055829",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-12T11:56:57.884069Z"
+      "ts": "2026-09-12T18:09:40.055829Z"
     },
     {
       "claim": "UNSEATED",
