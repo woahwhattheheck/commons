@@ -227,6 +227,21 @@ export async function runForm(input, { launch = launchChromium, resolver = dns.l
   }
 }
 
+
+export function resolveScorerBase(request = {}) {
+  const production = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+  if (production) return `https://${production}`;
+  const headers = request.headers || {};
+  const host = headers['x-forwarded-host'] || headers.host;
+  if (host) {
+    const proto = String(headers['x-forwarded-proto'] || 'https').split(',')[0].trim();
+    return `${proto}://${String(host).split(',')[0].trim()}`;
+  }
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  try { return new URL(request.url || '/', 'http://localhost').origin; }
+  catch { return 'http://localhost'; }
+}
+
 export async function handleRequest(request, deps = {}) {
   if (request.method === 'GET') return { status: 200, body: { ok: true, service: 'commons-cua-s1-form',
     browser_runtime: 'vercel-chromium', scoring_route: '/api/cua_s1' } };
@@ -239,8 +254,10 @@ export async function handleRequest(request, deps = {}) {
     body = JSON.parse(raw);
   } catch { return failure('BAD_JSON'); }
   try {
-    const base = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` :
-      new URL(request.url, 'http://localhost').origin;
+    // Prefer production alias for internal scorer fetch. VERCEL_URL is the
+    // deployment hostname and often hits Deployment Protection / cold-route
+    // 401-502 from Node→self, which surfaces as SCORER_FAILED on /cua-s1/form.
+    const base = resolveScorerBase(request);
     const score = deps.score || (async payload => {
       const response = await fetch(base + '/api/cua_s1', { method: 'POST',
         headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) });
