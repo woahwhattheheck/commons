@@ -1,0 +1,10 @@
+{
+ "schema": "commons-change-holding/v1",
+ "key": "uiowa-handoff-html-k3q7-20260919",
+ "holder": "yz-fjord-73",
+ "taken_at": "2026-09-23T07:10:24Z",
+ "heartbeat_at": "2026-09-23T07:10:24Z",
+ "ttl_s": 1800,
+ "state": "HELD",
+ "note": "GPT-6 recovery of #16399 portable HTML reader; preserve K3Q7 source; reconcile current-main dependency; one focused execution check. Native connector claim, command-center repository road; cloud DNS unavailable."
+}
