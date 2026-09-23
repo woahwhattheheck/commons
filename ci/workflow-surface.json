@@ -1,7 +1,7 @@
 {
   "schema": "commons.workflow-surface.v1",
   "source_commit": "4592104ca9fd37f7546b0b39f01badb83f8a1300",
-  "source_workflows": 439,
+  "source_workflows": 440,
   "max_active_workflows": 67,
   "retained": [
     ".github/workflows/affordable-housing-compliance-demo.yml",
@@ -36,7 +36,6 @@
     ".github/workflows/moving-main-mirror.yml",
     ".github/workflows/muhlnickel-foundry-cloud.yml",
     ".github/workflows/muhlnickel-spec-guard.yml",
-    ".github/workflows/nm-ocs-tprm.yml",
     ".github/workflows/ohsu-digital-pathology-evidence.yml",
     ".github/workflows/open-door-guard.yml",
     ".github/workflows/open-repo-backup.yml",
@@ -51,6 +50,7 @@
     ".github/workflows/revenue-hardening.yml",
     ".github/workflows/road-ocr-v2.yml",
     ".github/workflows/slack-service-tags.yml",
+    ".github/workflows/source-parses.yml",
     ".github/workflows/spark-mcp-production.yml",
     ".github/workflows/staleness-alarm.yml",
     ".github/workflows/titan-reset-invariance.yml",
@@ -64,12 +64,13 @@
     ".github/workflows/titan-v4-plumbing.yml",
     ".github/workflows/titan-v5-promotion-release-gates.yml",
     ".github/workflows/titan-v5-v31-champion-ratchet-authority.yml",
+    ".github/workflows/webmcp-pad-production.yml",
+    ".github/workflows/workflow-surface.yml",
+    ".github/workflows/nm-ocs-tprm.yml",
     ".github/workflows/uiowa-001-131-ebid-pack.yml",
     ".github/workflows/uiowa-100-operator-portability.yml",
     ".github/workflows/uiowa-100-run-evidence.yml",
-    ".github/workflows/uiowa096-compatibility.yml",
-    ".github/workflows/webmcp-pad-production.yml",
-    ".github/workflows/workflow-surface.yml"
+    ".github/workflows/uiowa096-compatibility.yml"
   ],
   "archived": [
     {
@@ -991,6 +992,12 @@
       "bytes": 1178
     },
     {
+      "source": ".github/workflows/pilot-renewal-expansion-gate.yml",
+      "archive": "ci/workflow-recipes/pilot-renewal-expansion-gate.yml",
+      "sha256": "2885e42f0b568f2faef8051f1aaf26f837a425b0c68677672ce99557daf8481f",
+      "bytes": 583
+    },
+    {
       "source": ".github/workflows/partner-workshare-data-room.yml",
       "archive": "ci/workflow-recipes/partner-workshare-data-room.yml",
       "sha256": "f1eb0d265f6662a4413c469d42f2c640d6e9a403c65573b195f271811f2d25a8",
@@ -1019,12 +1026,6 @@
       "archive": "ci/workflow-recipes/pazhou-offboardmesh.yml",
       "sha256": "f4694414d6ba4d858cdf025d6eacaa3e1d6544c4faa3ebc38b0f3ca8aea96dce",
       "bytes": 1274
-    },
-    {
-      "source": ".github/workflows/pilot-renewal-expansion-gate.yml",
-      "archive": "ci/workflow-recipes/pilot-renewal-expansion-gate.yml",
-      "sha256": "2885e42f0b568f2faef8051f1aaf26f837a425b0c68677672ce99557daf8481f",
-      "bytes": 583
     },
     {
       "source": ".github/workflows/pinellas-26-0732-teaming.yml",
