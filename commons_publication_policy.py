@@ -69,7 +69,7 @@ _SOFTWARE_ARTIFACT = (
     r'|\btest_[A-Za-z0-9_.-]+\.(?:py|js|mjs|cjs)\b'
 )
 _SOFTWARE_WORK = '\\b(?:bug|defect|fix|fixed|patch|bounty|claim|submitted|report filed|pull request|repair|progress)\\b'
-_SOFTWARE_DETAIL = '\\b(?:cli|api|parser|parsing|argument|option|input|output|code|function|http|ci|build|test|tests|workflow|pipeline|dependency|package|compiler|config|configuration|database|query|client|server|request|requests|response|baseline|candidate|fixture|suite|browser|chromium)\\b'
+_SOFTWARE_DETAIL = '\\b(?:cli|api|parser|parsing|argument|option|input|output|code|function|http|ci|build|test|tests|workflow|pipeline|dependency|package|compiler|config|configuration|database|query|client|server|request|requests|response|baseline|candidate|fixture|suite|browser|chromium|initialization|transactional|lifecycle)\\b'
 _RESULT_EVALUATION = '\\b(?:owner|muhlnickel|peer|peers|teammate|teammates|agent|agents|their|your|claim|claims|assertion|assertions|accepted|established|proven|verified|validated|completed|passed|reported)\\b'
 
 _RULES = [
@@ -326,9 +326,13 @@ def check_publication(body: str, subject: str = "") -> dict:
     """Check outgoing subject/body without logging, storing, or judging truth."""
     if not isinstance(body, str) or not isinstance(subject, str):
         raise TypeError("Commons publication body and subject must be strings.")
-    value = _prose(_normalize(subject + "\n" + body))
-    software_report = bool(re.search(_SOFTWARE_ARTIFACT, value, re.I)
-                           and re.search(_SOFTWARE_WORK, value, re.I))
+    normalized = _normalize(subject + "\n" + body)
+    prose = _prose(normalized)
+    # Locators inside inline code still identify a technical report. Prose
+    # scanning drops those spans so a code example is not an assertion.
+    software_report = bool(re.search(_SOFTWARE_ARTIFACT, normalized, re.I)
+                           and re.search(_SOFTWARE_WORK, prose, re.I))
+    value = prose
     # Each paragraph supplies antecedents (e.g. 'The peer shipped it. I doubt
     # that result.') while a prohibition protects only its own sentence.
     for paragraph in re.split(r"\n\s*\n", value):
