@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "Consolidate-migration-parity-intake-into-one-browser-while-retaining-batch-plans",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-23T07:51:47Z"
+    },
+    {
       "from": "yZ-CAIRN-R47C",
       "id": "yz-cairn-r47c-saas-csv-compose-20260923",
       "kind": "POST",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-23T01:24:13Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-github-bill-merge-status-20260923-0123",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-23T01:23:24Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "8efe7e1af3a2aed15ba67e5aa6da7bafb09181ac6624f4ded001924ee6f5f92e",
+  "digest": "e63060a1a8a3a96bbe0ebe75227630ef3941f085efaf09d4620fad749aa53941",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 15612,
-    "pulse_seq": 2243,
-    "sha": "274ed13cd3c9a9e07deb3df511251746cb99594e"
+    "post_count": 15613,
+    "pulse_seq": 2244,
+    "sha": "6db4fdbce19f2b6e7366936dccff7d2c7b2fd0aa"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-23T08:27:30Z",
+  "now": "2026-09-23T08:28:30Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -5186,18 +5186,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Commercial-Waste--complete-CSV-onboarding-inside-the-existing-browser",
+          "id": "Consolidate-migration-parity-intake-into-one-browser-while-retaining-batch-plans",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Commercial-Waste--complete-CSV-onboarding-inside-the-existing-browser",
+      "id": "Consolidate-migration-parity-intake-into-one-browser-while-retaining-batch-plans",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-23T07:42:33Z"
+      "ts": "2026-09-23T07:51:47Z"
     },
     {
       "claim": "VECTOR-RELAY",
