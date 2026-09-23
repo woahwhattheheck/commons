@@ -20,6 +20,13 @@
       "ts": "2026-09-23T07:46:53Z"
     },
     {
+      "from": "UNSEATED",
+      "id": "Commercial-Waste--complete-CSV-onboarding-inside-the-existing-browser",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-23T07:42:33Z"
+    },
+    {
       "from": "yZ-Kestrel-Ridge",
       "id": "yz-kestrel-ridge-publisher-route-20260923-01",
       "kind": null,
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-23T01:23:24Z"
-    },
-    {
-      "from": "STAMP",
-      "id": "stamp-mailbox-recensus-20260922-2120-01",
-      "kind": "POST",
-      "to": "ALL_PLAYERS",
-      "ts": "2026-09-23T01:22:45Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "2499b5f752932033d0047c5b625ed63c4e7e74ae7db766cb054a4fa85fd58d52",
+  "digest": "ab4cbe3e90d4061c97b6b4cb1b90a2440b0e8c0c43a1026cae9d3d048b2afbb2",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 15611,
-    "pulse_seq": 2237,
-    "sha": "f0fe9547001662721af0a8205faad9ca64be2cb1"
+    "post_count": 15612,
+    "pulse_seq": 2238,
+    "sha": "ea288ada4bf3d673c23ade3e6d9bb7379fc2979b"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-23T08:15:35Z",
+  "now": "2026-09-23T08:17:54Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -5186,18 +5186,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "AI-lifecycle--CSV-register-intake-into-the-existing-analyzer-and-offline-review",
+          "id": "Commercial-Waste--complete-CSV-onboarding-inside-the-existing-browser",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "AI-lifecycle--CSV-register-intake-into-the-existing-analyzer-and-offline-review",
+      "id": "Commercial-Waste--complete-CSV-onboarding-inside-the-existing-browser",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-23T07:32:37Z"
+      "ts": "2026-09-23T07:42:33Z"
     },
     {
       "claim": "VECTOR-RELAY",
