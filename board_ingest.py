@@ -4159,13 +4159,26 @@ def _completion_merge_is_ancestor(merge_sha):
 
 def _completion_marker_for_closed_issue(issue):
     """Return strongest same-repo main-merge evidence, or None when unproven."""
-    number = issue.get("number")
-    if not isinstance(number, int) or isinstance(number, bool):
+    if not isinstance(issue, dict):
         return None
-    canonical_issue = _gh_api(
-        "https://api.github.com/repos/woahwhattheheck/commons/issues/%s" % number
-    )
-    if not isinstance(canonical_issue, dict):
+    number = issue.get("number")
+    if type(number) is not int or number < 1:
+        return None
+    try:
+        canonical_issue = _gh_api(
+            "https://api.github.com/repos/woahwhattheheck/commons/issues/%s" % number
+        )
+    except (OSError, ValueError, TypeError):
+        print(
+            "COMPLETION_HOLD issue=%s reason=canonical_issue_unavailable" % number,
+            flush=True,
+        )
+        return None
+    if (
+        not isinstance(canonical_issue, dict)
+        or type(canonical_issue.get("number")) is not int
+        or canonical_issue["number"] != number
+    ):
         return None
     issue = canonical_issue
     if issue.get("state") != "closed" or issue.get("state_reason") != "completed":
@@ -4173,17 +4186,38 @@ def _completion_marker_for_closed_issue(issue):
     operation_id = completion_projection.stable_operation_id_from_issue(issue)
     if not operation_id:
         return None
-    timeline = _gh_api(
-        "https://api.github.com/repos/woahwhattheheck/commons/issues/%s/timeline?per_page=100"
-        % number
-    )
-    if not isinstance(timeline, list):
+    timeline = []
+    for page in range(1, 21):
+        try:
+            events = _gh_api(
+                "https://api.github.com/repos/woahwhattheheck/commons/issues/%s/"
+                "timeline?per_page=100&page=%s" % (number, page)
+            )
+        except (OSError, ValueError, TypeError):
+            events = None
+        if not isinstance(events, list):
+            print(
+                "COMPLETION_HOLD issue=%s reason=timeline_incomplete" % number,
+                flush=True,
+            )
+            return None
+        timeline.extend(events)
+        if len(events) < 100:
+            break
+    else:
+        print(
+            "COMPLETION_HOLD issue=%s reason=timeline_incomplete" % number,
+            flush=True,
+        )
         return None
     candidates = []
     for event in timeline:
         if not isinstance(event, dict) or event.get("event") != "cross-referenced":
             continue
-        source_issue = ((event.get("source") or {}).get("issue") or {})
+        source = event.get("source")
+        if not isinstance(source, dict):
+            continue
+        source_issue = source.get("issue")
         if not isinstance(source_issue, dict) or not source_issue.get("pull_request"):
             continue
         if source_issue.get("repository_url") != (
@@ -4191,7 +4225,7 @@ def _completion_marker_for_closed_issue(issue):
         ):
             continue
         pr_number = source_issue.get("number")
-        if not isinstance(pr_number, int) or isinstance(pr_number, bool):
+        if type(pr_number) is not int or pr_number < 1:
             continue
         pr = _gh_api(
             "https://api.github.com/repos/woahwhattheheck/commons/pulls/%s" % pr_number
@@ -4209,20 +4243,42 @@ def _completion_marker_for_closed_issue(issue):
     if not candidates:
         return None
     candidates.sort(
-        key=lambda row: (row["merge"]["merged_at"], row["merge"]["pr_number"])
+        key=lambda row: (
+            completion_projection.parse_timestamp(row["merge"]["merged_at"]),
+            row["merge"]["pr_number"],
+        )
     )
     return candidates[-1]
 
 
 def _handle_completion_issue_event(ev):
-    """Project close/reopen state without re-ingesting the issue as a post."""
+    """Reconcile current issue state without re-ingesting it as a post."""
     action = str(ev.get("action") or "")
-    issue = ev.get("issue") or {}
-    number = issue.get("number")
-    if not isinstance(number, int) or isinstance(number, bool) or number < 1:
+    if action not in ("closed", "reopened"):
+        return 0
+    issue = ev.get("issue")
+    number = issue.get("number") if isinstance(issue, dict) else None
+    if type(number) is not int or number < 1:
         print("COMPLETION_HOLD reason=missing_issue_number", flush=True)
         return 0
-    if action == "reopened":
+    try:
+        canonical_issue = _gh_api(
+            "https://api.github.com/repos/woahwhattheheck/commons/issues/%s" % number
+        )
+    except (OSError, ValueError, TypeError):
+        canonical_issue = None
+    if (
+        not isinstance(canonical_issue, dict)
+        or type(canonical_issue.get("number")) is not int
+        or canonical_issue["number"] != number
+    ):
+        print(
+            "COMPLETION_HOLD issue=%s reason=canonical_issue_unavailable_or_mismatch"
+            % number,
+            flush=True,
+        )
+        return 0
+    if canonical_issue.get("state") == "open":
         removed = completion_projection.remove_markers_for_issue(ROOT, number)
         print(
             "COMPLETION_REOPEN issue=%s removed=%s ids=%s"
@@ -4230,9 +4286,16 @@ def _handle_completion_issue_event(ev):
             flush=True,
         )
         return 0
-    if action != "closed":
+    if (
+        canonical_issue.get("state") != "closed"
+        or canonical_issue.get("state_reason") != "completed"
+    ):
+        print(
+            "COMPLETION_HOLD issue=%s reason=canonical_state_not_completed" % number,
+            flush=True,
+        )
         return 0
-    marker = _completion_marker_for_closed_issue(issue)
+    marker = _completion_marker_for_closed_issue(canonical_issue)
     if marker is None:
         print(
             "COMPLETION_HOLD issue=%s reason=no_verified_main_merge_or_identity"
@@ -4255,11 +4318,8 @@ def _handle_completion_issue_event(ev):
     print(
         "COMPLETION_%s id=%s issue=%s pr=%s merge=%s"
         % (
-            state.upper(),
-            operation_id,
-            number,
-            marker["merge"]["pr_number"],
-            marker["merge"]["merge_commit_sha"],
+            state.upper(), operation_id, number,
+            marker["merge"]["pr_number"], marker["merge"]["merge_commit_sha"],
         ),
         flush=True,
     )
