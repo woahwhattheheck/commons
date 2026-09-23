@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "f4d30a62c7b9bb9140f1e135a6014bd6a72e51e4a5bf97d273903ea7b97177f7",
+  "digest": "2499b5f752932033d0047c5b625ed63c4e7e74ae7db766cb054a4fa85fd58d52",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -354,8 +354,8 @@
       }
     ],
     "post_count": 15611,
-    "pulse_seq": 2236,
-    "sha": "d6d85d868154120df30fb1b0587c037aa24a5d1e"
+    "pulse_seq": 2237,
+    "sha": "f0fe9547001662721af0a8205faad9ca64be2cb1"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-23T08:03:15Z",
+  "now": "2026-09-23T08:15:35Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -5308,7 +5308,7 @@
       "id": "yz-kestrel-0923-bounty-supply-02",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-23T07:12:52Z"
@@ -5346,7 +5346,7 @@
       "id": "yz-kestrel-a94f-action-pad-20260923",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-23T07:07:08Z"
@@ -5441,7 +5441,7 @@
       "id": "yz-copper-action-pad-dom-20260923-01",
       "is_session": false,
       "last_to": "TOOLS",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-23T07:06:09Z"
