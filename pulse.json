@@ -1,9 +1,10 @@
 {
   "seq": 2259,
-  "head": "021fd9492b44d261fa5585a95f10c89dfde3203a",
-  "ts": "2026-09-23T17:52:22Z",
+  "head": "ab3cd2d4ae6aa33dfdabe8dd56ee0e1f64ad5fd7",
+  "ts": "2026-09-23T18:04:48Z",
   "post_count": 16112,
   "newest": [
+    "latch-spark-mcp-tests-yml-retire-20260923-01",
     "latch-swarmops-open-door-scrub-20260923-01",
     "latch-seat-fire-carry-land-20260923-01",
     "latch-swarmops-current-rejoin-20260923-01",
@@ -12,8 +13,7 @@
     "stamp-cursor-attr-followup-hold-20260923-02",
     "repair-same-loop-keep-pin-20260923-04",
     "reconcile-stealable-keep-unread-pins-20260923-04",
-    "latch-uiowa096-workbench-script-assert-20260923-01",
-    "latch-tip-keep-stealable-blob-pin-20260923-03"
+    "latch-uiowa096-workbench-script-assert-20260923-01"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "live_cash": {
