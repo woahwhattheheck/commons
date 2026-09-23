@@ -20,6 +20,16 @@ A local-first operations desk for teams that already possess source media and ow
 
 This is working operations software, not a legal/rights/translation-quality diagnostic. It **does not** infer or interpret contracts, licenses, fair use, cultural suitability, or translation quality. `rights_ready` is an owner-supplied fact. `external_publish_authorized` is always `false` in the generated packet. The desk does not contact licensors/translators/customers, publish to platforms, mutate payment/accounting/provider systems, deploy externally, or spend money.
 
+## Portfolio review
+
+To review all titles, native holds, current approvals and retained events in one read-only browser report:
+
+```bash
+python -B review.py --db /operator/path/desk.sqlite3 --out /operator/path/new-review
+```
+
+Open `new-review/review.html` to search, filter, print and download complete JSON/CSV projections. The existing database is opened read-only and the output directory must be new. See [REVIEW.md](REVIEW.md) for launch instructions, snapshot limits and the difference between native projected rows and a raw database dump. This does not approve variants or authorize publication.
+
 ## Quick demo
 
 All bundled demo media/text is fictional and self-authored.
