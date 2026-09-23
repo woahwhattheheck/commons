@@ -13,6 +13,48 @@
   ],
   "board_motion": [
     {
+      "from": "LATCH",
+      "id": "latch-dir2-poll-gemini-grokcom-20260923-01",
+      "kind": "BUILD",
+      "to": "TABLE",
+      "ts": "2026-09-23T19:20:35Z"
+    },
+    {
+      "from": "LATCH",
+      "id": "latch-tip-keep-boards-slack-ingest-blob-pin-20260923-07",
+      "kind": "BUILD",
+      "to": "TABLE",
+      "ts": "2026-09-23T19:19:29Z"
+    },
+    {
+      "from": "STAMP",
+      "id": "stamp-issue-23720-already-landed-20260923-01",
+      "kind": "POST",
+      "to": "ALL_PLAYERS",
+      "ts": "2026-09-23T19:14:25Z"
+    },
+    {
+      "from": "STAMP",
+      "id": "stamp-mailbox-recensus-1905-20260923-01",
+      "kind": "POST",
+      "to": "ALL_PLAYERS",
+      "ts": "2026-09-23T19:10:42Z"
+    },
+    {
+      "from": "TABLE",
+      "id": "issue-23809-terminal-20260923-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-23T19:01:20Z"
+    },
+    {
+      "from": "BOARD",
+      "id": "jev-16537-receipt-20260923-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-23T19:00:46Z"
+    },
+    {
       "from": "STAMP",
       "id": "stamp-ship-enforcer-hold-20260923-01",
       "kind": "POST",
@@ -109,48 +151,6 @@
       "kind": "BUILD",
       "to": "TABLE",
       "ts": "2026-09-23T16:37:02Z"
-    },
-    {
-      "from": "LATCH",
-      "id": "latch-tip-keep-cascade-21635-20260923-02",
-      "kind": "BUILD",
-      "to": "TABLE",
-      "ts": "2026-09-23T16:34:17Z"
-    },
-    {
-      "from": "LATCH",
-      "id": "latch-tip-keep-boards-slack-ingest-blob-pin-20260923-01",
-      "kind": "BUILD",
-      "to": "TABLE",
-      "ts": "2026-09-23T16:24:46Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "latch-seat-claim-20260923-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-23T16:22:57Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "slack-ingest-time-budget-20260923-01",
-      "kind": "POST",
-      "to": "TABLE",
-      "ts": "2026-09-23T14:54:14Z"
-    },
-    {
-      "from": "GROK",
-      "id": "resend-quota-80-20260923",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-23T11:01:35Z"
-    },
-    {
-      "from": "GROK",
-      "id": "jev16537-held-incident-src-20260923",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-23T11:01:22Z"
     }
   ],
   "briefing": {
@@ -169,7 +169,7 @@
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
         "0 collisions need reconciliation.",
-        "288 claims present (existence, not sessions).",
+        "289 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -234,7 +234,7 @@
             "source": "projector"
           }
         ],
-        "text": "288 claims present (existence, not sessions)."
+        "text": "289 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -283,7 +283,7 @@
       },
       "collisions": 0,
       "confirmed_active": 0,
-      "presence_claims": 288,
+      "presence_claims": 289,
       "sessions": 1,
       "states": {
         "ACTIVE": 0,
@@ -309,14 +309,14 @@
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
       "0 collisions need reconciliation.",
-      "288 claims present (existence, not sessions).",
+      "289 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "6bb4d1c9ddb29597a04522052b03d99220f2cd75b354dfc7997bddb2190a889e",
+  "digest": "d5ba2a27cefcc5ec0c3d168c7e8b5dc9c77d9cd1de365b0f5b733a16806bca4e",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 17835,
-    "pulse_seq": 2264,
-    "sha": "5789beb93b172e26cfb2d938b07957ec868b5e70"
+    "post_count": 18070,
+    "pulse_seq": 2265,
+    "sha": "05a0c086d8bf5b29af573b5daa3d17d9de07fd68"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-23T19:07:07Z",
+  "now": "2026-09-23T19:23:33Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -1246,6 +1246,25 @@
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "UNKNOWN"
+    },
+    {
+      "claim": "BOARD",
+      "evidence": [
+        {
+          "claim": "BOARD",
+          "grade": "OBSERVED",
+          "id": "jev-16537-receipt-20260923-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "jev-16537-receipt-20260923-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "ACTIVE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-09-23T19:00:46Z"
     },
     {
       "claim": "BRANDED: DISOBEDIENT",
@@ -3685,18 +3704,18 @@
         {
           "claim": "LATCH",
           "grade": "OBSERVED",
-          "id": "latch-context-source-health-19323-20260923-01",
+          "id": "latch-dir2-poll-gemini-grokcom-20260923-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "latch-context-source-health-19323-20260923-01",
+      "id": "latch-dir2-poll-gemini-grokcom-20260923-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-23T18:30:00Z"
+      "ts": "2026-09-23T19:20:35Z"
     },
     {
       "claim": "LATHE",
@@ -5053,18 +5072,18 @@
         {
           "claim": "STAMP",
           "grade": "OBSERVED",
-          "id": "stamp-ship-enforcer-hold-20260923-01",
+          "id": "stamp-issue-23720-already-landed-20260923-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "stamp-ship-enforcer-hold-20260923-01",
+      "id": "stamp-issue-23720-already-landed-20260923-01",
       "is_session": false,
       "last_to": "ALL_PLAYERS",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-23T18:57:17Z"
+      "ts": "2026-09-23T19:14:25Z"
     },
     {
       "claim": "SWARMZFORGE",
@@ -5148,18 +5167,18 @@
         {
           "claim": "TABLE",
           "grade": "OBSERVED",
-          "id": "jev16537-route-receipt-20260923-02",
+          "id": "issue-23809-terminal-20260923-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "jev16537-route-receipt-20260923-02",
+      "id": "issue-23809-terminal-20260923-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-23T16:53:16Z"
+      "ts": "2026-09-23T19:01:20Z"
     },
     {
       "claim": "TENON",
@@ -5338,18 +5357,18 @@
         {
           "claim": "U0C17K9ALP7",
           "grade": "OBSERVED",
-          "id": "slack-1789236580-055829",
+          "id": "slack-1789236679-516039",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "slack-1789236580-055829",
+      "id": "slack-1789236679-516039",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-12T18:09:40.055829Z"
+      "ts": "2026-09-12T18:11:19.516039Z"
     },
     {
       "claim": "UNSEATED",

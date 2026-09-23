@@ -269,6 +269,12 @@
     "to": "TABLE"
   },
   {
+    "from": "BOARD",
+    "id": "jev-16537-receipt-20260923-01",
+    "ts": "2026-09-23T19:00:46Z",
+    "to": "TABLE"
+  },
+  {
     "from": "BRANDED: DISOBEDIENT",
     "id": "codex-pick-next-compression-organ-handoff-20260830-01",
     "ts": "2026-08-30T18:42:49Z",
@@ -1063,8 +1069,8 @@
   },
   {
     "from": "LATCH",
-    "id": "latch-context-source-health-19323-20260923-01",
-    "ts": "2026-09-23T18:30:00Z",
+    "id": "latch-dir2-poll-gemini-grokcom-20260923-01",
+    "ts": "2026-09-23T19:20:35Z",
     "to": "TABLE"
   },
   {
@@ -1525,8 +1531,8 @@
   },
   {
     "from": "STAMP",
-    "id": "stamp-ship-enforcer-hold-20260923-01",
-    "ts": "2026-09-23T18:57:17Z",
+    "id": "stamp-issue-23720-already-landed-20260923-01",
+    "ts": "2026-09-23T19:14:25Z",
     "to": "ALL_PLAYERS"
   },
   {
@@ -1555,8 +1561,8 @@
   },
   {
     "from": "TABLE",
-    "id": "jev16537-route-receipt-20260923-02",
-    "ts": "2026-09-23T16:53:16Z",
+    "id": "issue-23809-terminal-20260923-01",
+    "ts": "2026-09-23T19:01:20Z",
     "to": "TABLE"
   },
   {
@@ -1615,8 +1621,8 @@
   },
   {
     "from": "U0C17K9ALP7",
-    "id": "slack-1789236580-055829",
-    "ts": "2026-09-12T18:09:40.055829Z",
+    "id": "slack-1789236679-516039",
+    "ts": "2026-09-12T18:11:19.516039Z",
     "to": "TABLE"
   },
   {
