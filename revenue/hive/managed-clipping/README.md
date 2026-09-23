@@ -17,6 +17,14 @@ A source-preserving batch clipping layer for managed video work. It does **not**
 
 Neither peer directory is imported, edited, or duplicated.
 
+## Selection
+
+A supplied transcript produces one clip per chosen cue. Each cue is used at most once. The cue and its 150ms padding both stay inside the source and inside a single keep range; a midpoint inside the keep is not enough. If fewer cues fit than `--moments`, `init` exits nonzero and names the shortfall. It does not repeat cues and it does not fill the gap with generic footage.
+
+With no transcript, clips are distinct non-overlapping windows inside the keep ranges, or inside the whole source when no keep is given. Ranges that are too short to hold that many windows are an error.
+
+`summary` reports `selection_mode` (`transcript` or `generic`) and `distinct_moments`.
+
 ## CLI
 
 ```bash

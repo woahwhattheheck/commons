@@ -24,9 +24,12 @@ def create_project(
     for start, end in keeps:
         if end > source_info["duration_ms"] + 50:
             raise ManagedClippingError("CEDAR keep range exceeds source duration")
-    moments = _choose_transcript_moments(segments, keeps, moment_count, source_info["duration_ms"])
-    if len(moments) < moment_count:
+    if transcript_document is not None:
+        moments = _choose_transcript_moments(segments, keeps, moment_count, source_info["duration_ms"])
+        selection_mode = "transcript"
+    else:
         moments = _choose_even_moments(keeps, moment_count, source_info["duration_ms"])
+        selection_mode = "generic"
     for moment in moments:
         moment["source_filename"] = source_info["filename"]
     now = _utc_now()
@@ -40,6 +43,12 @@ def create_project(
         "peer_contracts": {
             "cedar_trace": "kept source ranges in seconds or 30fps timeline rows",
             "kestrel_delta": "chronological nonoverlapping transcript segments {id,start,end,speaker?,text,verified?}",
+        },
+        "selection": {
+            "mode": selection_mode,
+            "requested_moments": moment_count,
+            "distinct": True,
+            "padding_ms": 150 if selection_mode == "transcript" else 0,
         },
         "moments": moments,
     }
