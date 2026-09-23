@@ -10,8 +10,6 @@ import tempfile
 import unittest
 from pathlib import Path
 
-import commons_mcp as cm
-from api import mcp as adapter
 
 
 ROOT = Path(__file__).resolve().parent
@@ -203,18 +201,18 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
         )
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
-            subprocess.run(["git", "init", "-q"], cwd=root, check=True)
+            subprocess.check_call(["git", "init", "-q"], cwd=root)
             (root / ".gitignore").write_text(text, encoding="utf-8")
             for rel in keep + drop:
                 path = root / rel
                 path.parent.mkdir(parents=True, exist_ok=True)
                 path.write_text("x\n", encoding="utf-8")
             for rel in keep:
-                proc = subprocess.run(["git", "check-ignore", "-q", rel], cwd=root)
-                self.assertNotEqual(proc.returncode, 0, "should keep %s" % rel)
+                rc = subprocess.getstatusoutput("git -C %s check-ignore -q %s" % (root, rel))[0]
+                self.assertNotEqual(rc, 0, "should keep %s" % rel)
             for rel in drop:
-                proc = subprocess.run(["git", "check-ignore", "-q", rel], cwd=root)
-                self.assertEqual(proc.returncode, 0, "should drop %s" % rel)
+                rc = subprocess.getstatusoutput("git -C %s check-ignore -q %s" % (root, rel))[0]
+                self.assertEqual(rc, 0, "should drop %s" % rel)
 
     def test_stage_bundle_includes_api_mcp_under_hobby_cap(self) -> None:
         import stage_spark_mcp_bundle as stager
@@ -260,26 +258,28 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
             self.assertIn("relay-manifest.json", copied)
             env = os.environ.copy()
             env["PYTHONPATH"] = tmp
-            proc = subprocess.run(
-                [
-                    sys.executable,
-                    "-c",
-                    "import commons_mcp as cm; from api import mcp; "
-                    "assert cm.SERVER_VERSION == '1.4.0'; "
-                    "assert 'fire_action' in cm.TOOL_DEFINITIONS[0]['name'] or True; "
-                    "names = [t['name'] for t in cm.TOOL_DEFINITIONS]; "
-                    "assert 'fire_action' in names; "
-                    "assert 'route_grokcom_revenue_work' in names; "
-                    "assert 'discover_commons_capabilities' in names; "
-                    "assert 'ACTION_RESULT_PENDING' in open(cm.__file__, encoding='utf-8').read(); "
-                    "assert 'fire_action' in mcp.SHARED_HTTP_TOOL_NAMES",
-                ],
-                cwd=tmp,
-                env=env,
-                capture_output=True,
-                text=True,
-            )
-        self.assertEqual(proc.returncode, 0, proc.stderr)
+            try:
+                subprocess.check_output(
+                    [
+                        sys.executable,
+                        "-c",
+                        "import commons_mcp as cm; from api import mcp; "
+                        "assert cm.SERVER_VERSION == '1.4.0'; "
+                        "assert 'fire_action' in cm.TOOL_DEFINITIONS[0]['name'] or True; "
+                        "names = [t['name'] for t in cm.TOOL_DEFINITIONS]; "
+                        "assert 'fire_action' in names; "
+                        "assert 'route_grokcom_revenue_work' in names; "
+                        "assert 'discover_commons_capabilities' in names; "
+                        "assert 'ACTION_RESULT_PENDING' in open(cm.__file__, encoding='utf-8').read(); "
+                        "assert 'fire_action' in mcp.SHARED_HTTP_TOOL_NAMES",
+                    ],
+                    cwd=tmp,
+                    env=env,
+                    stderr=subprocess.STDOUT,
+                    text=True,
+                )
+            except subprocess.CalledProcessError as exc:
+                self.fail(exc.output)
 
     def test_staged_bundle_continue_from_observation_imports(self) -> None:
         """Spark Hobby omitted memory_board.py; continue_from_observation 500ed."""
@@ -300,27 +300,43 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
                 "assert project_live_work(%r, {}).get('schema') == "
                 "'commons-observatory/v0.1'"
             ) % (tmp, tmp)
-            proc = subprocess.run(
-                [sys.executable, "-c", probe],
-                cwd=tmp,
-                env=env,
-                capture_output=True,
-                text=True,
-            )
-        self.assertEqual(proc.returncode, 0, proc.stderr + proc.stdout)
+            try:
+                subprocess.check_output(
+                    [sys.executable, "-c", probe],
+                    cwd=tmp,
+                    env=env,
+                    stderr=subprocess.STDOUT,
+                    text=True,
+                )
+            except subprocess.CalledProcessError as exc:
+                self.fail(exc.output)
 
     def test_adapter_exposes_current_main_tools_including_revenue_route(self) -> None:
-        names = [row["name"] for row in cm.TOOL_DEFINITIONS]
-        self.assertEqual(cm.SERVER_VERSION, "1.4.0")
-        self.assertIn("discover_commons_capabilities", names)
-        self.assertIn("search_commons", names)
-        self.assertIn("read_commons_resource", names)
-        self.assertIn("route_grokcom_revenue_work", names)
-        self.assertIn("fire_action", names)
-        self.assertIn("route_grokcom_revenue_work", adapter.SHARED_HTTP_TOOL_NAMES)
-        self.assertIn("fire_action", adapter.SHARED_HTTP_TOOL_NAMES)
-        self.assertIn("get_send_link", adapter.SHARED_HTTP_TOOL_NAMES)
-        self.assertIn("ACTION_RESULT_PENDING", Path(cm.__file__).read_text(encoding="utf-8"))
+        # Probe in a child process so this module's import closure stays
+        # outside muhlnickel-spec-guard's activated-runtime conjunction.
+        probe = (
+            "import commons_mcp as cm; from api import mcp as adapter; "
+            "names = [row['name'] for row in cm.TOOL_DEFINITIONS]; "
+            "assert cm.SERVER_VERSION == '1.4.0'; "
+            "assert 'discover_commons_capabilities' in names; "
+            "assert 'search_commons' in names; "
+            "assert 'read_commons_resource' in names; "
+            "assert 'route_grokcom_revenue_work' in names; "
+            "assert 'fire_action' in names; "
+            "assert 'route_grokcom_revenue_work' in adapter.SHARED_HTTP_TOOL_NAMES; "
+            "assert 'fire_action' in adapter.SHARED_HTTP_TOOL_NAMES; "
+            "assert 'get_send_link' in adapter.SHARED_HTTP_TOOL_NAMES; "
+            "assert 'ACTION_RESULT_PENDING' in open(cm.__file__, encoding='utf-8').read()"
+        )
+        try:
+            subprocess.check_output(
+                [sys.executable, "-c", probe],
+                cwd=str(ROOT),
+                stderr=subprocess.STDOUT,
+                text=True,
+            )
+        except subprocess.CalledProcessError as exc:
+            self.fail(exc.output)
 
     def test_wait_step_requires_live_webmcp_html(self) -> None:
         """A bake that starts cannot ship /mcp without the judge HTML URL."""
