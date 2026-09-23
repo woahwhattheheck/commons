@@ -107,6 +107,8 @@ class WorkflowSurfaceTests(unittest.TestCase):
             (root / 'ci/workflow-recipes/unit.yml').unlink()
             self.assertIn('source workflow inventory is incomplete', surface.check(root)['errors'])
 
+
+
     def test_live_inventory_is_json_object_not_placeholder_stub(self):
         raw = Path('ci/workflow-surface.json').read_bytes()
         self.assertNotEqual(raw.strip(), b'PLACEHOLDER')
@@ -188,7 +190,6 @@ class WorkflowSurfaceTests(unittest.TestCase):
         concurrency = parsed['concurrency']
         self.assertIn('github.event_name', concurrency['group'])
         self.assertIn('schedule', concurrency['group'])
-        self.assertIn('github.event_id', concurrency['group']) if False else None
         self.assertIn('github.run_id', concurrency['group'])
         self.assertIn('github.event_name', str(concurrency['cancel-in-progress']))
         self.assertIn('schedule', str(concurrency['cancel-in-progress']))
@@ -229,6 +230,9 @@ class WorkflowSurfaceTests(unittest.TestCase):
         text = recipe.decode('utf-8')
         self.assertIn('revenue/external_opportunity_intake/', text)
         self.assertIn('revenue.external_opportunity_intake.selftest', text)
+        live = Path('.github/workflows/source-parses.yml').read_text(encoding='utf-8')
+        self.assertIn('revenue/external_opportunity_intake/**', live)
+        self.assertIn('python3 -m revenue.external_opportunity_intake.selftest', live)
         result = surface.check(Path('.'))
         self.assertLessEqual(result['active'], data['max_active_workflows'])
         self.assertEqual(result['status'], 'PASS', result['errors'])
@@ -247,9 +251,18 @@ class WorkflowSurfaceTests(unittest.TestCase):
         text = recipe.decode('utf-8')
         self.assertIn('revenue/uiowa_rfq_18649_recovery_evidence/', text)
         self.assertIn('test_assess_recovery.py', text)
+        live = Path('.github/workflows/source-parses.yml').read_text(encoding='utf-8')
+        self.assertIn('revenue/uiowa_rfq_18649_recovery_evidence/**', live)
+        self.assertIn('test_assess_recovery.py', live)
         result = surface.check(Path('.'))
         self.assertLessEqual(result['active'], data['max_active_workflows'])
         self.assertEqual(result['status'], 'PASS', result['errors'])
+
+
+
+
+
+
 
     def test_pilot_contract_is_consolidated_into_retained_source_parses(self):
         """Regress 68>67: pilot proof stays live without a standalone workflow slot."""
@@ -258,9 +271,67 @@ class WorkflowSurfaceTests(unittest.TestCase):
         data = json.loads(Path('ci/workflow-surface.json').read_text(encoding='utf-8'))
         result = surface.check(Path('.'))
         self.assertEqual(data['max_active_workflows'], 67)
-        self.assertLessEqual(result['active'], 67)
+        self.assertEqual(result['active'], 67)
         self.assertEqual(result['status'], 'PASS', result['errors'])
-        self.assertTrue(Path('ci/workflow-recipes/pilot-renewal-expansion-gate.yml').is_file())
+
+        path = Path('.github/workflows/source-parses.yml')
+        parsed = surface.workflow(path.read_bytes())
+        self.assertIn(
+            'revenue/pilot_delivery_renewal_expansion_gate/**',
+            parsed['on']['push']['paths'],
+        )
+        self.assertIn(
+            'test_pilot_delivery_renewal_expansion_gate.py',
+            parsed['on']['push']['paths'],
+        )
+        job = parsed['jobs']['provider-cost-truth']
+        self.assertEqual(job['strategy']['matrix']['python-version'], ['3.11', '3.13'])
+        commands = '\n'.join(
+            str(step.get('run', '')) for step in job['steps'] if isinstance(step, dict)
+        )
+        self.assertIn('revenue/pilot_delivery_renewal_expansion_gate/common.py', commands)
+        self.assertIn('python -m unittest -v test_pilot_delivery_renewal_expansion_gate', commands)
+        self.assertIn('python -O -m unittest -v test_pilot_delivery_renewal_expansion_gate', commands)
+
+    def test_run_35888530292_budget_reactivations_stay_archived(self):
+        """Regress run 35888530292: reactivated archives and orphan recipes stay inside 67."""
+        data = json.loads(Path('ci/workflow-surface.json').read_text(encoding='utf-8'))
+        for name in (
+            'ky-fin-reporting-discovery.yml',
+            'lacsd-04252-ap-acceptance.yml',
+        ):
+            self.assertFalse(Path('.github/workflows', name).exists(), name)
+            row = next(item for item in data['archived'] if item['archive'].endswith(name))
+            recipe = Path(row['archive']).read_bytes()
+            self.assertEqual(len(recipe), row['bytes'])
+            self.assertEqual(hashlib.sha256(recipe).hexdigest(), row['sha256'])
+            self.assertFalse((Path('.') / row['source']).exists())
+        for archive in (
+            'ci/workflow-recipes/pilot-renewal-expansion-gate.yml',
+            'ci/workflow-recipes/xtech-search10-portfolio-downselect.yml',
+        ):
+            row = next(item for item in data['archived'] if item['archive'] == archive)
+            recipe = Path(archive).read_bytes()
+            self.assertEqual(len(recipe), row['bytes'])
+            self.assertEqual(hashlib.sha256(recipe).hexdigest(), row['sha256'])
+            surface.workflow(recipe)
+        parsed = surface.workflow(Path('.github/workflows/uiowa096-compatibility.yml').read_bytes())
+        self.assertFalse(surface.duplicate_branch_events(parsed))
+        self.assertEqual(parsed['on']['push']['branches'], ['main'])
+        for retired in (
+            '.github/workflows/header-census.yml',
+            '.github/workflows/import-check.yml',
+            '.github/workflows/render-check.yml',
+            '.github/workflows/review-holding-check.yml',
+            '.github/workflows/tests.yml',
+        ):
+            self.assertNotIn(retired, data['retained'])
+            self.assertFalse(Path(retired).exists())
+        self.assertIn('.github/workflows/source-parses.yml', data['retained'])
+        result = surface.check(Path('.'))
+        self.assertEqual(data['max_active_workflows'], 67)
+        self.assertEqual(result['active'], 67)
+        self.assertEqual(result['status'], 'PASS', result['errors'])
 
     def test_pollers_throttle_and_isolate_schedule_concurrency(self):
         """Scheduled runs may supersede schedules, never push/manual generations."""
