@@ -29,8 +29,8 @@ The briefing exposes:
 - separate event, claim, confirmed-session, provider-accepted, landed, and business-outcome
   stage counts;
 - `COMPLETE` vs `LOWER_BOUND` coverage inherited from the exact ledger window;
-- recent `ASK`, `OWNER_DIRECTION`, `HANDOFF`, and `COLLISION` event-kind candidates with exact
-  provider drill-through links;
+- paged `ASK`, `OWNER_DIRECTION`, `HANDOFF`, and `COLLISION` event-kind candidates with exact
+  provider drill-through links, full snapshot candidate counts, and oldest-first recovery;
 - verified action-receipt totals split into confirmed, delivery-uncertain, and rejected;
 - the stable update marker and source-generation digests needed by the next peer.
 
@@ -80,18 +80,58 @@ operations, and states that raw private text is absent. A caller cannot turn the
 a publishing primitive by changing output fields after compilation without invalidating the
 record receipt.
 
-## Focused validation
+## Read the brief and recover older candidates
+
+Run from the repository root against an existing compiled ledger report. No provider calls,
+package installation, model invocation, or service deployment are needed.
 
 ```bash
-python -S -m unittest -v test_jev_activity_brief.py
-python -O -S -m unittest -v test_jev_activity_brief.py
+python -m integrations.command_center.jev_activity_brief ledger-report.json \
+  --attention-order oldest --attention-limit 12 --output attention-page-1.json
 ```
 
-The suite covers stable update markers across generations, all four windows, separate stage
-counts, attention-kind projection and bounded ordering, stale/partial lower-bound behavior,
-confirmed/uncertain/rejected action receipts, duplicate receipt collapse, chronology rejection,
-ledger/receipt/brief tamper, hard-false authority, update-not-spray publication semantics, and
-input-order determinism.
+Read `attention.next_cursor` in that JSON, then pass its literal value with the same report,
+order, and limit to `--attention-cursor` to create `attention-page-2.json`. Continue until the
+next cursor is `null`. `attention.previous_cursor` supports back navigation. For a readable
+export, add `--format markdown`; Markdown includes the next-page arguments when more remain.
+Omitting `--output` writes to standard output. Existing destinations are never overwritten.
+Malformed JSON, invalid paging options, changed snapshots, and I/O failures return exit 2 with
+a diagnostic; success returns 0.
+
+Default callers still receive the newest 12 candidates. Pages may contain 1–100 candidates,
+sorted by provider timestamp and event ID, with an explicit `oldest` option for recovery.
+The `attention` summary covers all candidate events retained in the supplied snapshot, not
+just the displayed page. It includes total/shown/remaining counts, oldest timestamp and age,
+and breakdowns by kind, provider, and primary source. Primary-source counts count each
+already-deduplicated event once; they are not overlapping source-observation counts.
+
+The historical source-coverage window and its `COMPLETE`/`LOWER_BOUND` label remain explicit.
+The candidate count is exact for the supplied report, not a full-workspace census. Ages are
+measured at the report's `evaluated_at`, not the later export time. Remaining means after this
+page in this traversal, **not unread or unfinished**. `unresolved_count` and `processed_count`
+remain `null`: a candidate event or a rendered page is not proof of resolution or Jev processing.
+
+A cursor binds the ledger digest, sort order, page size, and position. It is an unsigned
+continuation marker, not an access credential. Never carry it onto a freshly collected report;
+start a new traversal when the snapshot changes. The page selection is covered by the existing
+brief generation digest. Old saved v1 briefs without paging metadata remain readable by the
+existing verifier/rendering path.
+
+The same options are available to existing Python callers without another queue:
+
+```python
+first = compile_brief(report, attention_order="oldest", attention_limit=12)
+following = first["attention"]["next_cursor"]
+if following is not None:
+    next_page = compile_brief(
+        report, attention_order="oldest", attention_limit=12,
+        attention_cursor=following,
+    )
+```
+
+Use a real report and read the program's exit code/output when changing this product. Do not
+add a test battery or run normal/optimized suites for this brief; the standing build rules are
+in `RULES.md`.
 
 ## Controller integration
 
@@ -107,3 +147,6 @@ A transport controller can safely use the compiler like this:
 
 Do not replay a send because search/index ingestion is delayed, and do not create a second
 briefing surface when the existing command-center/Commons road can carry the same record.
+
+Keep the shared published brief on its chosen first-page policy. Operator continuation pages
+are reads/exports, not instructions to spray one Slack post per page.

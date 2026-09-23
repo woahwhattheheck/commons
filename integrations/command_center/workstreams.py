@@ -204,24 +204,45 @@ class WorkstreamStore:
                 raise CoreError(409, "Use a distinct source ID for a different collection scope.")
             if prior and observed < _stamp(prior["observed_at"], "stored observed_at"):
                 raise CoreError(409, "Older source snapshots cannot replace newer observations.")
-            old_items = {r["item_id"]: r["payload"] for r in db.execute(
-                "SELECT item_id,payload FROM work_items WHERE source_id=?", (source_id,))}
-            changed = removed = 0
-            if not failed:
-                for item in items:
-                    encoded = _json(item)
-                    if old_items.get(item["id"]) != encoded:
-                        changed += 1
-                    db.execute("""
-                        INSERT INTO work_items VALUES(?,?,?,?,?)
-                        ON CONFLICT(source_id,item_id) DO UPDATE SET
-                          payload=excluded.payload,last_seen_at=excluded.last_seen_at
-                    """, (source_id, item["id"], encoded, now, now))
+            # Reconcile in SQLite instead of copying every historical payload
+            # into Python for each small page or failed provider observation.
+            changed = removed = retained = 0
+            if failed:
+                retained = db.execute(
+                    "SELECT COUNT(*) FROM work_items WHERE source_id=?",
+                    (source_id,)).fetchone()[0]
+            else:
+                # Connection-local staging avoids a variable-length IN clause
+                # and never becomes another durable snapshot/history table.
+                db.execute("""
+                    CREATE TEMP TABLE incoming_work_items(
+                        item_id TEXT PRIMARY KEY, payload TEXT NOT NULL)
+                """)
+                db.executemany("INSERT INTO incoming_work_items VALUES(?,?)",
+                               ((item["id"], _json(item)) for item in items))
+                changed = db.execute("""
+                    SELECT COUNT(*) FROM incoming_work_items AS incoming
+                    LEFT JOIN work_items AS existing
+                      ON existing.source_id=? AND existing.item_id=incoming.item_id
+                    WHERE existing.item_id IS NULL OR existing.payload<>incoming.payload
+                """, (source_id,)).fetchone()[0]
+                # WHERE 1 disambiguates SELECT's ON from the UPSERT clause.
+                db.execute("""
+                    INSERT INTO work_items(source_id,item_id,payload,first_seen_at,last_seen_at)
+                    SELECT ?,item_id,payload,?,? FROM incoming_work_items WHERE 1
+                    ON CONFLICT(source_id,item_id) DO UPDATE SET
+                      payload=excluded.payload,last_seen_at=excluded.last_seen_at
+                """, (source_id, now, now))
+                absent = """
+                    FROM work_items WHERE source_id=? AND NOT EXISTS(
+                        SELECT 1 FROM incoming_work_items AS incoming
+                        WHERE incoming.item_id=work_items.item_id)
+                """
                 if coverage["complete"]:
-                    for missing in old_items.keys() - ids:
-                        db.execute("DELETE FROM work_items WHERE source_id=? AND item_id=?", (source_id, missing))
-                        removed += 1
-            retained = len(old_items) if failed else len(old_items.keys() - ids) if not coverage["complete"] else 0
+                    removed = db.execute("DELETE " + absent, (source_id,)).rowcount
+                else:
+                    retained = db.execute("SELECT COUNT(*) " + absent,
+                                          (source_id,)).fetchone()[0]
             db.execute("""
                 INSERT INTO work_sources VALUES(?,?,?,?,?,?,?)
                 ON CONFLICT(source_id) DO UPDATE SET
@@ -234,7 +255,7 @@ class WorkstreamStore:
                   previous["last_success_at"] if failed and previous else None if failed else now,
                   previous["last_good_observed_at"] if failed and previous else None if failed else source["observed_at"],
                   previous["last_good_coverage"] if failed and previous else None if failed else _json(coverage),
-                  int(failed and bool(old_items))))
+                  int(failed and retained > 0)))
             result = {"ok": True, "operation_id": operation_id, "source_id": source_id,
                       "status": "source_error" if failed else "ingested",
                       "received": len(items), "changed": changed, "removed": removed,
@@ -310,15 +331,21 @@ class WorkstreamStore:
                     "data_stale": None if threshold is None or good_age is None else good_age > threshold})
                 sources.append(source)
             providers = {source["id"]: source["provider"] for source in sources}
-            work = {(row["source_id"], row["item_id"]): {
-                **json.loads(row["payload"]), "updated_at": row["updated_at"]}
-                for row in db.execute("SELECT * FROM owner_work")}
+            # Retain historical owner packets in storage, but decode only the
+            # packets attached to current items. Reappearing items still rejoin.
             items = []
-            for row in db.execute("SELECT * FROM work_items ORDER BY source_id,item_id"):
+            for row in db.execute("""
+                SELECT item.*,owner.payload AS owner_payload,owner.updated_at AS owner_updated_at
+                FROM work_items AS item LEFT JOIN owner_work AS owner
+                  ON owner.source_id=item.source_id AND owner.item_id=item.item_id
+                ORDER BY item.source_id,item.item_id
+            """):
+                work = None if row["owner_payload"] is None else {
+                    **json.loads(row["owner_payload"]), "updated_at": row["owner_updated_at"]}
                 item = json.loads(row["payload"])
                 item.update({"source_id": row["source_id"], "provider": providers[row["source_id"]],
                              "first_seen_at": row["first_seen_at"], "last_seen_at": row["last_seen_at"],
-                             "owner_work": work.get((row["source_id"], row["item_id"]))})
+                             "owner_work": work})
                 items.append(item)
         controls = sum(bool(item.get("control") or item.get("row_type") == "control"
                             or str(item.get("record_type", "")).lower() == "control"

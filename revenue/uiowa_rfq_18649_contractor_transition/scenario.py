@@ -26,6 +26,7 @@ UIOWA-091 so this packet is readable by the same tools.
 """
 
 import re
+from datetime import date, datetime
 
 AUTHORITY = "FICTIONAL_REHEARSAL_ONLY"
 SERVICES = ("ESS", "RIS", "IAM")
@@ -68,6 +69,8 @@ INTEGRITY_CODES = (
     "DUPLICATE_RECORD_ID",
     "UNKNOWN_VOCABULARY_VALUE",
     "MISSING_REQUIRED_FIELD",
+    "INVALID_FIELD_TYPE",
+    "INVALID_COMPLETION_DATE",
     "REFERENCE_KIND_MISMATCH",
 )
 
@@ -76,7 +79,8 @@ class PacketIssue(object):
     __slots__ = ("record_id", "code", "field", "detail")
 
     def __init__(self, record_id, code, field, detail):
-        assert code in SAFETY_CODES + INTEGRITY_CODES, code
+        if code not in SAFETY_CODES + INTEGRITY_CODES:
+            raise ValueError("unknown packet issue code: %s" % code)
         self.record_id = record_id
         self.code = code
         self.field = field
@@ -139,10 +143,67 @@ def check_realism(record_id, record):
     return issues
 
 
+
+# Reference existence is not enough: a successor must name a person, not an
+# application whose identifier happens to resolve.
+REFERENCE_KINDS = {
+    "owner_ref": ("people",),
+    "successor_ref": ("people",),
+    "subject_ref": ("people",),
+    "target_ref": ("applications", "service_identities", "runbooks"),
+    "covers_app_ref": ("applications",),
+    "used_by_app_ref": ("applications",),
+}
+
+
+def valid_completion_date(value):
+    """Accept an exact ISO calendar date or an offset-bearing timestamp.
+
+    This validates the supplied record, not whether an event actually occurred.
+    There is no implicit current date or invented assessment cutoff.
+    """
+    if not isinstance(value, str):
+        return False
+    try:
+        if re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}", value):
+            date.fromisoformat(value)
+            return True
+        if not re.fullmatch(
+            r"[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}"
+            r"(?:\.[0-9]{1,6})?(?:Z|[+-](?:[01][0-9]|2[0-3]):[0-5][0-9])", value
+        ):
+            return False
+        parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+        return parsed.utcoffset() is not None
+    except ValueError:
+        return False
+
+
+def _validate_shapes(packet):
+    """Malformed JSON structures are bad input, not a partly closed packet."""
+    if not isinstance(packet, dict):
+        raise ValueError("packet must be a JSON object")
+    if not isinstance(packet.get("transition", {}), dict):
+        raise ValueError("transition must be a JSON object")
+    for kind in ("people", "applications", "service_identities", "runbooks", "access_changes"):
+        records = packet.get(kind, [])
+        if not isinstance(records, list):
+            raise ValueError("%s must be a JSON array" % kind)
+        for pos, record in enumerate(records):
+            if not isinstance(record, dict):
+                raise ValueError("%s[%d] must be a JSON object" % (kind, pos))
+            rid = record.get("id")
+            if rid is not None and not isinstance(rid, str):
+                raise ValueError("%s[%d].id must be a string" % (kind, pos))
+
+
 def _require(record_id, record, fields, issues):
     for field in fields:
         value = record.get(field)
-        if value is None or (isinstance(value, str) and not value.strip()):
+        if value is not None and not isinstance(value, str):
+            issues.append(PacketIssue(record_id, "INVALID_FIELD_TYPE", field,
+                                      "required field must be a string"))
+        elif value is None or not value.strip():
             issues.append(
                 PacketIssue(record_id, "MISSING_REQUIRED_FIELD", field, "required field is empty")
             )
@@ -154,21 +215,10 @@ def validate_packet(packet):
     `index` maps every record id to (kind, record) so the classifier can
     resolve references without re-walking the packet.
     """
-    if not isinstance(packet, dict):
-        raise ValueError("packet must be a JSON object")
-    if not isinstance(packet.get("transition", {}), dict):
-        raise ValueError("transition must be a JSON object")
+    _validate_shapes(packet)
     issues = []
     index = {}
 
-    ref_fields = ("owner_ref", "successor_ref", "subject_ref", "target_ref",
-                  "covers_app_ref", "used_by_app_ref")
-    ref_kinds = {
-        "owner_ref": ("people",), "successor_ref": ("people",),
-        "subject_ref": ("people",),
-        "target_ref": ("applications", "service_identities", "runbooks"),
-        "covers_app_ref": ("applications",), "used_by_app_ref": ("applications",),
-    }
     sections = (
         ("people", ("id", "role", "employment_type", "service")),
         ("applications", ("id", "name", "owner_ref", "service")),
@@ -178,20 +228,11 @@ def validate_packet(packet):
     )
 
     for kind, required in sections:
-        records = packet.get(kind, [])
-        if records is None:
-            records = []
-        if not isinstance(records, list):
-            raise ValueError("%s must be an array of records" % kind)
-        for record in records:
+        for record in packet.get(kind, []) or []:
             if not isinstance(record, dict):
                 issues.append(PacketIssue("<unreadable>", "MISSING_REQUIRED_FIELD", kind,
                                           "record is not an object"))
                 continue
-            for field in ("id",) + ref_fields:
-                value = record.get(field)
-                if value is not None and not isinstance(value, str):
-                    raise ValueError("%s.%s must be text or null" % (kind, field))
             rid = record.get("id") or "<missing id>"
             if rid in index:
                 issues.append(PacketIssue(rid, "DUPLICATE_RECORD_ID", "id",
@@ -200,6 +241,11 @@ def validate_packet(packet):
                 index[rid] = (kind, record)
             _require(rid, record, required, issues)
             issues.extend(check_realism(rid, record))
+            for field in sorted(set(REFERENCE_KINDS) | {"evidence_ref", "completed_at"}):
+                value = record.get(field)
+                if value is not None and not isinstance(value, str):
+                    issues.append(PacketIssue(rid, "INVALID_FIELD_TYPE", field,
+                                              "expected a string or null"))
 
             service = record.get("service")
             if service is not None and service not in SERVICES:
@@ -215,6 +261,11 @@ def validate_packet(packet):
                 if action is not None and action not in ACCESS_ACTIONS:
                     issues.append(PacketIssue(rid, "UNKNOWN_VOCABULARY_VALUE", "action",
                                               "expected one of %s, got %r" % (list(ACCESS_ACTIONS), action)))
+                if record.get("status") == "COMPLETED":
+                    completed_at = record.get("completed_at")
+                    if not valid_completion_date(completed_at):
+                        issues.append(PacketIssue(rid, "INVALID_COMPLETION_DATE", "completed_at",
+                                                  "completed changes require a valid ISO date or offset-bearing timestamp"))
                 status = record.get("status")
                 if status is not None and status not in ACCESS_STATUSES:
                     issues.append(PacketIssue(rid, "UNKNOWN_VOCABULARY_VALUE", "status",
@@ -222,28 +273,30 @@ def validate_packet(packet):
 
     # Referential integrity, once every id is known.
     for rid, (kind, record) in sorted(index.items()):
-        for field in ref_fields:
+        for field, allowed_kinds in REFERENCE_KINDS.items():
             ref = record.get(field)
-            if ref and ref not in index:
+            if not isinstance(ref, str) or not ref:
+                continue  # Missing and invalidly typed fields are diagnosed above.
+            if ref not in index:
                 issues.append(PacketIssue(rid, "DANGLING_REFERENCE", field,
                                           "%r does not name a record in this packet" % ref))
-            elif ref and index[ref][0] not in ref_kinds[field]:
+            elif index[ref][0] not in allowed_kinds:
                 issues.append(PacketIssue(rid, "REFERENCE_KIND_MISMATCH", field,
-                                          "%r must reference %s, not %s" %
-                                          (ref, "/".join(ref_kinds[field]), index[ref][0])))
+                                          "%r must name one of %s, not %s" % (ref, list(allowed_kinds), index[ref][0])))
 
     departing = packet.get("transition", {}).get("departing_ref")
     if departing is not None and not isinstance(departing, str):
-        raise ValueError("transition.departing_ref must be text or null")
-    if departing and departing not in index:
-        issues.append(PacketIssue("transition", "DANGLING_REFERENCE", "departing_ref",
-                                  "%r does not name a person in this packet" % departing))
-    elif departing and index[departing][0] != "people":
-        issues.append(PacketIssue("transition", "REFERENCE_KIND_MISMATCH", "departing_ref",
-                                  "%r does not name a person in this packet" % departing))
-    elif not departing:
+        issues.append(PacketIssue("transition", "INVALID_FIELD_TYPE", "departing_ref",
+                                  "departing_ref must be a string"))
+    elif not departing or not departing.strip():
         issues.append(PacketIssue("transition", "MISSING_REQUIRED_FIELD", "departing_ref",
                                   "the packet does not say who is leaving"))
+    elif departing not in index:
+        issues.append(PacketIssue("transition", "DANGLING_REFERENCE", "departing_ref",
+                                  "%r does not name a person in this packet" % departing))
+    elif index[departing][0] != "people":
+        issues.append(PacketIssue("transition", "REFERENCE_KIND_MISMATCH", "departing_ref",
+                                  "%r does not name a person in this packet" % departing))
 
     return issues, index
 

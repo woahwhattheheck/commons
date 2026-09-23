@@ -24,7 +24,7 @@ on:
   repository_dispatch:
     types: [commons-board]
   issues:
-    types: [opened]
+    types: [opened, closed, reopened]
 permissions:
   contents: write
   issues: write
@@ -32,13 +32,14 @@ concurrency:
   # Connector bursts used to allocate one full rebuild + carrier poll per
   # Slack event.  Hundreds of distinct issue-number groups then raced the same
   # main ref, while an observer mistook normal queue time for a dead publisher.
-  # Coalesce only slack-connector issue runs.  The running and newest pending
+  # Coalesce only opened slack-connector issue runs. Running and newest pending
   # run both sweep the complete labelled issue queue, so a cancelled pending
   # run owns no unique source bytes. Ordinary issue events keep their distinct
   # groups, and push/schedule/dispatch retain their own recovery groups.
   # v2 rotates future Slack issue events away from the pre-repair run whose
   # already-frozen device tail still owns the original slack-batch group.
-  group: "commons-board-ingest-${{ github.event_name == 'issues' && contains(github.event.issue.body, 'carrier: slack-connector') && 'slack-batch-v2' || github.event_name }}-${{ github.event_name == 'issues' && contains(github.event.issue.body, 'carrier: slack-connector') && 'queue' || github.event.issue.number || 'poll' }}"
+  # Close/reopen events stay issue-scoped so intake cannot displace invalidation.
+  group: "commons-board-ingest-${{ github.event_name == 'issues' && github.event.action == 'opened' && contains(github.event.issue.body, 'carrier: slack-connector') && 'slack-batch-v2' || github.event_name }}-${{ github.event_name == 'issues' && github.event.action == 'opened' && contains(github.event.issue.body, 'carrier: slack-connector') && 'queue' || github.event.issue.number || 'poll' }}"
   cancel-in-progress: false
 jobs:
   ingest:
@@ -69,7 +70,7 @@ jobs:
         # Quote the complete scalar: the literal contains `: `, which YAML
         # otherwise parses as an unexpected mapping separator before Actions
         # can evaluate the expression.
-        if: "${{ github.event_name == 'issues' && !contains(github.event.issue.body, 'carrier: slack-connector') }}"
+        if: "${{ github.event_name == 'issues' && github.event.action == 'opened' && !contains(github.event.issue.body, 'carrier: slack-connector') }}"
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: python3 -m host.ntfy_issue_poll
@@ -78,8 +79,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
           EVENT: ${{ github.event_name }}
+          ACTION: ${{ github.event.action }}
         run: |
-          python3 ntfy_relays.py || true
+          if [ "$EVENT" != "issues" ] || [ "$ACTION" = "opened" ]; then
+            python3 ntfy_relays.py || true
+          fi
           set -u
           # BRYCE-1787164338883-1zu94b: github tried charging the card.
           # Schedule used to POLL 255s (ingest every 20s) every 5 min.
@@ -243,7 +247,7 @@ jobs:
               core.setOutput("state", "SCHEDULE_FALLBACK");
             }
       - name: exact success or rejection receipt on issue
-        if: success() && github.event_name == 'issues'
+        if: success() && github.event_name == 'issues' && github.event.action == 'opened'
         uses: actions/github-script@v7
         with:
           script: |
@@ -316,7 +320,7 @@ jobs:
               body: [headline, ...lines, "Duplicate id stays the original."].join("\n")
             });
       - name: durable failure receipt on issue
-        if: failure() && github.event_name == 'issues'
+        if: failure() && github.event_name == 'issues' && github.event.action == 'opened'
         uses: actions/github-script@v7
         with:
           script: |

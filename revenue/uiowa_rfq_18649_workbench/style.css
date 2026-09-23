@@ -11,3 +11,10 @@
 :where(a,pre,[tabindex]):focus-visible,:where(h2,h3)[tabindex="-1"]:focus{outline:3px solid #5593a7;outline-offset:4px}
 :where(h2,h3,pre,.cell){scroll-margin-block:1rem}.skip-nav{position:relative;z-index:10}.skip-nav a{position:absolute;left:1rem;top:0;transform:translateY(-200%);padding:.8rem;background:#fff;color:#26343a}.skip-nav a:focus{position:relative;display:inline-block;transform:none}#backToCellBtn{justify-self:start;padding-left:0}#selectedCellHeading{overflow-wrap:anywhere}
 @media(forced-colors:active){.cell[aria-current="true"]{border-color:Highlight}:where(a,button,input,select,textarea,pre,[tabindex]):focus-visible{outline-color:CanvasText}}
+#savedDraftStatus{overflow-wrap:anywhere}
+
+/* Evidence presentation: labels, original codes and border patterns remain readable without color. */
+.summary{flex-wrap:wrap;row-gap:18px}.summary>div{min-width:0}.summary>.reading-guide{flex-basis:100%;grid-column:1/-1;padding:0;border:0;max-width:100ch}.summary>.reading-guide dd{font-size:12px;font-weight:400;line-height:1.65;letter-spacing:normal}
+.cell[data-evidence-state]{justify-content:flex-start;border-left-width:4px;overflow-wrap:anywhere}.cell[data-evidence-state=missing]{border-left-style:dashed}.cell[data-evidence-state=conflict]{border-left-style:double}.cell[data-evidence-state=stale]{border-left-style:dotted}.cell[data-evidence-state=unassessed]{border-left-style:dashed}.cell[data-evidence-state=inapplicable]{border-left-style:double}.cell[data-evidence-state=unknown],.cell[data-evidence-state=unrecognized]{border-left-style:dotted}.cell[data-evidence-state] .source-count{margin-top:auto}
+.source-status{display:block;font:10px/1.55 ui-monospace,Consolas,monospace;overflow-wrap:anywhere;max-width:100%}.state-explanation,.value-state{display:block;font-size:11px;font-weight:400;line-height:1.6;overflow-wrap:anywhere}.value-state{border-top:1px solid var(--line);padding-top:6px;width:100%}.cell-values{display:grid;gap:9px;margin-top:13px}
+@media(print){.cell[data-evidence-state]{break-inside:avoid}.source-status,.state-explanation,.value-state{color:#000}.summary>.reading-guide{max-width:none}}

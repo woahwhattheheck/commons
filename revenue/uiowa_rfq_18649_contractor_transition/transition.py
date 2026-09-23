@@ -30,10 +30,9 @@ COMPLETED.
 
 import argparse
 import csv
-from datetime import date, datetime
+import io
 import json
 import os
-import re
 import sys
 
 import scenario
@@ -66,11 +65,18 @@ def _owned_items(index, departing_ref):
     return items
 
 
-def _changes_for(index, target_ref, subject_ref):
+def _changes_for(packet, target_ref, subject_ref):
+    """Retain every matching change occurrence, including duplicate IDs.
+
+    The lookup index deliberately has one entry per ID. It cannot be used as
+    the relationship census: a later duplicate may name another target or
+    subject. Its ID is already invalid, and each matching occurrence must
+    carry that diagnostic into its own item's completion decision. Keep
+    unique IDs in their original deterministic sort order for clean reports.
+    """
     out = []
-    for rid, (kind, record) in sorted(index.items()):
-        if kind != "access_changes":
-            continue
+    for record in sorted(packet.get("access_changes", []),
+                         key=lambda row: row.get("id") or "<missing id>"):
         if record.get("target_ref") != target_ref:
             continue
         if subject_ref and record.get("subject_ref") != subject_ref:
@@ -79,64 +85,55 @@ def _changes_for(index, target_ref, subject_ref):
     return out
 
 
-def _dated(value):
-    """Accept an actual ISO calendar date or a timestamp, not a status word.
-
-    Dates in this fictional rehearsal are not compared with the process clock;
-    this validates the supplied record, not a live-system completion claim.
-    """
-    if not isinstance(value, str):
-        return False
-    if not re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}(?:T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\.[0-9]+)?(?:Z|[+-][0-9]{2}:[0-9]{2})?)?", value):
-        return False
-    try:
-        if len(value) == 10:
-            date.fromisoformat(value)
-        else:
-            datetime.fromisoformat(value[:-1] + "+00:00" if value.endswith("Z") else value)
-    except ValueError:
-        return False
-    return True
-
-
-def _completion_gaps(change, invalid_ids):
-    gaps = []
-    if change.get("id") in invalid_ids:
-        gaps.append("record has unresolved integrity issues")
-    if change.get("action") not in scenario.ACCESS_ACTIONS:
-        gaps.append("action is outside the declared vocabulary")
-    locator = change.get("evidence_ref")
-    if not isinstance(locator, str) or not locator.strip():
-        gaps.append("no evidence locator")
-    if not _dated(change.get("completed_at")):
-        gaps.append("no valid completion date")
-    return gaps
-
-
-def classify_item(record, changes, dangling_refs):
-    """Return (state, reasons, evidence_refs); keep partial action evidence.
-
-    The last argument carries every invalid record id, not just missing refs.
-    One valid action must not erase an unresolved owner or another open action.
-    """
+def classify_item(record, changes, dangling_refs, invalid_refs=None):
+    """Return (state, reasons, evidence_refs)."""
     reasons = []
     evidence = []
-    if any(record.get(key) in dangling_refs for key in ("id", "owner_ref", "successor_ref")):
-        reasons.append("record carries a broken reference or integrity issue; no outcome can be established from it")
+    invalid_refs = set(invalid_refs or ())
+
+    if (record.get("id") or "<missing id>") in dangling_refs:
+        # A broken reference cannot be evidence of anything. Refusing to let
+        # it read as completed is the whole point: a handoff report that says
+        # "done" about a record pointing at nothing is worse than silence.
+        reasons.append("record carries a broken reference; no outcome can be established from it")
         return "NO_EVIDENCE", reasons, evidence
 
+    if ((record.get("id") or "<missing id>") in invalid_refs
+            or any((c.get("id") or "<missing id>") in invalid_refs for c in changes)):
+        reasons.append("record or a related change carries an integrity issue; no outcome can be established from it")
+        return "NO_EVIDENCE", reasons, evidence
+
+    completed = [
+        c for c in changes
+        if c.get("status") == "COMPLETED"
+        and c.get("action") in scenario.ACCESS_ACTIONS
+        and isinstance(c.get("evidence_ref"), str)
+        and c["evidence_ref"].strip()
+        and scenario.valid_completion_date(c.get("completed_at"))
+    ]
+    # MERIDIAN-Q7's semantic review distinguishes a completed action from a
+    # complete handoff. Retain supported action locators while ownership or a
+    # separately declared action remains open; never infer supersession.
+    for c in completed:
+        evidence.append(c["evidence_ref"])
+        reasons.append("%s recorded %s on %s" % (c["id"], c["action"], c["completed_at"]))
+
     incomplete = []
-    for change in changes:
-        cid = change.get("id") or "<missing id>"
-        if change.get("status") != "COMPLETED":
-            incomplete.append("%s is %s, not complete" % (cid, change.get("status", "UNKNOWN")))
+    claimed_complete = [c for c in changes if c.get("status") == "COMPLETED"]
+    for c in claimed_complete:
+        if c in completed:
             continue
-        gaps = _completion_gaps(change, dangling_refs)
-        if gaps:
-            incomplete.append("%s is marked COMPLETED but carries %s" % (cid, "; ".join(gaps)))
-            continue
-        evidence.append(change["evidence_ref"])
-        reasons.append("%s recorded %s on %s" % (cid, change["action"], change["completed_at"]))
+        # Status alone is somebody typing a word into a field.
+        locator = c.get("evidence_ref")
+        if not isinstance(locator, str) or not locator.strip():
+            incomplete.append("%s is marked COMPLETED but carries no evidence locator" % c.get("id", "UNKNOWN"))
+        if not scenario.valid_completion_date(c.get("completed_at")):
+            incomplete.append("%s is marked COMPLETED but carries no valid completion date" % c.get("id", "UNKNOWN"))
+        if c.get("action") not in scenario.ACCESS_ACTIONS:
+            incomplete.append("%s has no recognized completion action" % c.get("id", "UNKNOWN"))
+    for c in changes:
+        if c.get("status") != "COMPLETED":
+            incomplete.append("%s is %s, not complete" % (c.get("id", "UNKNOWN"), c.get("status", "UNKNOWN")))
 
     successor = record.get("successor_ref")
     if not successor or successor == record.get("owner_ref"):
@@ -145,14 +142,14 @@ def classify_item(record, changes, dangling_refs):
         reasons.extend(incomplete)
         return "UNRESOLVED_OWNERSHIP", reasons, evidence
 
-    if evidence and not incomplete:
+    if completed and not incomplete:
         return "COMPLETED", reasons, evidence
 
-    # Preserve the established explanation for uncorroborated completion claims.
-    if any(change.get("status") == "COMPLETED" for change in changes):
+    if claimed_complete:
         reasons.extend(incomplete)
         return "NO_EVIDENCE", reasons, evidence
 
+    # A successor is named. That is a plan, not a handoff.
     reasons.append(
         "successor %s is named but no completed change record shows the handoff occurred; "
         "a named successor is a plan, not evidence" % successor
@@ -168,15 +165,29 @@ class TransitionReport(object):
         self.index = index
         self.departing_ref = packet.get("transition", {}).get("departing_ref")
         self.dangling_refs = set(
-            i.record_id for i in issues
+            i.record_id for i in issues if i.code == "DANGLING_REFERENCE"
         )
+        self.invalid_refs = set(i.record_id for i in issues)
+        # A valid-looking item cannot borrow authority from an invalid owner,
+        # successor, application, or change. Propagate diagnostics to all
+        # referring records; cycles terminate because this set only grows.
+        changed = True
+        while changed:
+            changed = False
+            for rid, (_kind, record) in sorted(index.items()):
+                if rid in self.invalid_refs:
+                    continue
+                if any(isinstance(record.get(field), str) and record[field] in self.invalid_refs
+                       for field in scenario.REFERENCE_KINDS):
+                    self.invalid_refs.add(rid)
+                    changed = True
         self.items = self._build_items()
 
     def _build_items(self):
         items = []
         for rid, kind, record in _owned_items(self.index, self.departing_ref):
-            changes = _changes_for(self.index, rid, self.departing_ref)
-            state, reasons, evidence = classify_item(record, changes, self.dangling_refs)
+            changes = _changes_for(self.packet, rid, self.departing_ref)
+            state, reasons, evidence = classify_item(record, changes, self.dangling_refs, self.invalid_refs)
             items.append(
                 {
                     "item_id": rid,
@@ -203,8 +214,7 @@ class TransitionReport(object):
         """Fail-closed. The transition is closed only when every item is
         COMPLETED. There is no threshold and no percentage -- one unresolved
         service identity is a contractor who still has a way in."""
-        return (not self.issues and bool(self.items)
-                and all(i["state"] == "COMPLETED" for i in self.items))
+        return not self.issues and bool(self.items) and all(i["state"] == "COMPLETED" for i in self.items)
 
     def open_items(self):
         return [i for i in self.items if i["state"] != "COMPLETED"]
@@ -274,6 +284,8 @@ def render_markdown(report):
         lines.append("with an evidence locator.")
     else:
         lines.append("**Transition NOT closed — %d item(s) remain open.**" % len(report.open_items()))
+        if report.issues:
+            lines.append("Closure also requires resolving %d packet issue(s); see Packet issues below." % len(report.issues))
         lines.append("")
         lines.append("There is no completion percentage here on purpose. One unresolved")
         lines.append("service identity is a contractor who still has a way in; averaging it")
@@ -299,7 +311,6 @@ def render_markdown(report):
             lines.append("")
     if report.issues:
         lines.append("## Packet issues")
-        lines.append("Unresolved packet issues also prevent transition closure, even when individual items are complete.")
         lines.append("")
         lines.append("| Class | Record | Code | Field | Detail |")
         lines.append("| --- | --- | --- | --- | --- |")
@@ -337,6 +348,87 @@ def build(packet):
     return TransitionReport(packet, issues, index), issues
 
 
+def _artifact_payloads(report):
+    """Render once before touching output paths; preserve the original bytes."""
+    text = io.StringIO(newline="")
+    writer = csv.writer(text)
+    writer.writerow(CSV_COLUMNS)
+    for item in report.items:
+        writer.writerow([
+            item["item_id"], item["kind"], item["label"], item["service"],
+            item["owner_ref"] or "", item["successor_ref"] or "", item["state"],
+            "; ".join(item["evidence_refs"]), "; ".join(item["reasons"]), item["next_action"],
+        ])
+    return {
+        "transition_items.csv": text.getvalue().encode("utf-8"),
+        "transition_report.json": json.dumps(report.as_dict(), indent=2, sort_keys=True).encode("utf-8"),
+        "transition_report.md": render_markdown(report).encode("utf-8"),
+    }
+
+
+def publish_artifacts(report, outdir):
+    """Create a complete new artifact set without replacing existing entries.
+
+    Empty existing directories and unrelated files are supported. Each target
+    is reserved with O_EXCL, including after the preflight. Thus a source alias,
+    prior report, or entry created concurrently is never opened for writing.
+    Ordinary write failures remove only this call's still-identical files.
+    This is not an atomic directory swap: readers must wait for CLI success
+    (0 for closed, 1 for open) before consuming the three-file bundle.
+    """
+    payloads = _artifact_payloads(report)
+    os.makedirs(outdir, exist_ok=True)
+    paths = [(os.path.join(outdir, name), data) for name, data in payloads.items()]
+    # Diagnose all pre-existing names before reserving any output. lexists
+    # also sees dangling symlinks; existence of the referent is irrelevant.
+    for path, _data in paths:
+        if os.path.lexists(path):
+            raise FileExistsError("output already exists: %s; choose a fresh destination" % path)
+    reserved = []
+    try:
+        for path, data in paths:
+            fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, "O_BINARY", 0), 0o666)
+            entry = {"path": path, "fd": fd, "identity": None, "data": data}
+            reserved.append(entry)
+            info = os.fstat(fd)
+            entry["identity"] = (info.st_dev, info.st_ino)
+        for entry in reserved:
+            remaining = memoryview(entry["data"])
+            while remaining:
+                written = os.write(entry["fd"], remaining)
+                if written <= 0:
+                    raise OSError("output write made no progress: %s" % entry["path"])
+                remaining = remaining[written:]
+            os.fsync(entry["fd"])
+        for entry in reserved:
+            fd, entry["fd"] = entry["fd"], None
+            os.close(fd)
+    except BaseException as exc:
+        # Close before unlink for Windows. Preserve a name replaced by another
+        # writer instead of deleting an entry that this call did not create.
+        cleanup_errors = []
+        for entry in reversed(reserved):
+            if entry["fd"] is not None:
+                try:
+                    os.close(entry["fd"])
+                except OSError as error:
+                    cleanup_errors.append(str(error))
+                entry["fd"] = None
+            try:
+                current = os.stat(entry["path"], follow_symlinks=False)
+                if entry["identity"] == (current.st_dev, current.st_ino):
+                    os.unlink(entry["path"])
+                else:
+                    cleanup_errors.append("output identity changed; retained %s" % entry["path"])
+            except FileNotFoundError:
+                pass
+            except OSError as error:
+                cleanup_errors.append(str(error))
+        if cleanup_errors and isinstance(exc, Exception):
+            raise OSError("%s; cleanup incomplete: %s" % (exc, "; ".join(cleanup_errors))) from exc
+        raise
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Classify a contractor-transition packet.")
     parser.add_argument("--input", required=True)
@@ -362,12 +454,11 @@ def main(argv=None):
         return 3
 
     if args.outdir:
-        os.makedirs(args.outdir, exist_ok=True)
-        write_csv(report, os.path.join(args.outdir, "transition_items.csv"))
-        with open(os.path.join(args.outdir, "transition_report.json"), "w", encoding="utf-8") as fh:
-            json.dump(report.as_dict(), fh, indent=2, sort_keys=True)
-        with open(os.path.join(args.outdir, "transition_report.md"), "w", encoding="utf-8") as fh:
-            fh.write(render_markdown(report))
+        try:
+            publish_artifacts(report, args.outdir)
+        except (OSError, ValueError) as exc:
+            sys.stderr.write("error: cannot publish output: %s\n" % exc)
+            return 2
         sys.stdout.write("wrote 3 files to %s\n" % args.outdir)
 
     if args.do_print or not args.outdir:

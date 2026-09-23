@@ -167,12 +167,20 @@ publication and passing tests do not establish deployment or real-provider refre
 
 `GET /api/decisions` (`decisions.py`) projects the existing `/api/work`
 state into an **exception queue** and **one row per active operation**, not
-per receipt. It reuses `work_state()` and `observability()`; it adds no
-collector or store. `/api/summary` stays cache-only and only links to it
-(`"decisions": "/api/decisions"`). Rows are joinable with `/api/work` items
-and `/api/mail` threads by operation id. The top of the view shows
-`operator_control.mode` (RUN / DRAIN / ABORT, absent reads RUN) from the
-observability coordination head, then collection coverage and cooldowns.
+per receipt. It reuses the local snapshot cache used by `/api/summary`;
+it never calls the refresh-capable `work_state()` or `observability()` methods.
+It adds no collector or store. `/api/summary` stays cache-only and only links
+to it (`"decisions": "/api/decisions"`). Rows are joinable with `/api/work`
+items and `/api/mail` threads by operation id. Existing work and observability
+refresh routes remain available; reading decisions does not trigger them.
+
+The top of the view shows `operator_control.mode` from the existing cached
+coordination head, then collection coverage and cooldowns. Missing, failed
+or expired coordination cache reads `unknown`, not RUN. A successfully observed
+current head with no override retains the RUN default. The response includes
+`cache` for the shared work snapshot and `operator_control_source` with
+`cache_only`, `fresh` and `observed_at`; refresh the existing observability
+view when current operator control is needed.
 
 An item joins an operation only through `metadata.operation`,
 `metadata.operation_id` or `refs.operation`. Eligibility-to-payout is a list
@@ -197,6 +205,14 @@ Per record: `stage` or `metadata.provider_stage`; `metadata.stage_state`
 `metadata.advertised_amount` + `currency`. Agents use `metadata.seat`,
 `model_family`, `session_id`, `heartbeat_at`, `agent_state`, `blocker`.
 
+Stage selection uses `metadata.stage_observed_at` when valid, otherwise the
+first valid `updated_at`, `activity_observed_at` or `last_seen_at`. This is
+returned as `stages[].observed_at`; `entered_at` remains the separate clock
+for stage age. A newer observation can correct an older stage-entry date.
+Equal-time conflicting states read `unknown` with a reconciliation action.
+Explicit unknown stage states and invalid heartbeat timestamps remain unknown,
+not pending work or an idle agent.
+
 The first stage not done decides `waiting_on` (`waiting_on_us`,
 `waiting_on_them`, `none`, `unknown`, as in `mail_tracking.py`), with
 `waiting_for` and `waiting_reasons`. A held outward write,
@@ -217,3 +233,22 @@ Per-source state comes from `state.source_health`
 `last_success_at` / `last_success_age_seconds`, `last_cycle`,
 `last_cycle_reason` and `cooldown.active` / `retry_not_before`, plus its
 `coverage` counts and `cooldowns`. Any missing key renders `unknown`.
+
+### Payment progress
+
+`paid` describes a transaction stage, not full operation settlement. Rows also
+carry `settlement_state`: `not_observed`, `partial`, `amount_unknown`, or
+`covered`. An installment stays active with its remaining amount and a
+`partial_payout` exception. Missing totals, unquantified paid amounts or
+unmatched currencies stay active with `unreconciled_payout`.
+
+`metadata.advertised_amount` is the operation total for its currency, not a
+per-PR line item. Use distinct operation IDs for distinct bounties; repeated
+operation totals are not added. This is advertised face value, not approved
+revenue. Only explicit matching-currency paid amounts reduce it; no exchange
+rate, fee allowance, write-off or final-settlement assertion is inferred.
+Known collected amounts remain visible when another payment needs reconciliation,
+and the UI labels that amount as a known portion rather than complete cash.
+Even a covered total remains active while a recorded stage or publication action
+is outstanding. Payment-specific owner next actions and their recorded acting
+party are preserved; existing stage and publication blockers still take priority.

@@ -35,28 +35,48 @@ evaluate in parallel and independently — decompose instead of compressing.
 
 ## Use it
 
-For cloud calls independent of the laptop, use `POST https://commons-spark-mcp.vercel.app/jev` with JSON `{"state":"...","questions":{"urgent":{"type":"noul","instructions":"Message conveys urgency"}}}` or call the public Commons MCP tool `jev_decide`. The TypeSafe key stays in the Vercel server environment. Check `GET /jev` for `configured:true` and read back a real typed answer before treating a deployment as active.
+For cloud calls independent of the laptop, select `--transport hosted` in the
+existing client or any swarm subcommand. This calls
+`POST https://commons-spark-mcp.vercel.app/jev`; the TypeSafe key stays in the
+Vercel server environment. No local vault or environment key is read, no
+Authorization header is sent, and there is no automatic direct fallback.
+The public Commons MCP tool `jev_decide` remains an alternative already-hosted
+entrypoint. Use only state authorized for the Commons/TypeSafe service.
 
 ```bash
-python3 host/jev_swarm.py classify --file post.md
-python3 host/jev_swarm.py dedup --ask "the new ask" --docket docket.json
-python3 host/jev_swarm.py assign --obligation job.json --windows registry.json
-python3 host/jev_swarm.py frontdoor --window me.json --docket docket.json
-python3 host/jev_swarm.py triage --file slack_msg.txt
-python3 host/jev_swarm.py --self-test          # offline shape check
+python3 host/jev.py --transport hosted --state-file post.md --questions-file q.json
+python3 host/jev_swarm.py classify --transport hosted --file post.md
+python3 host/jev_swarm.py dedup --transport hosted --ask "the new ask" --docket docket.json
+python3 host/jev_swarm.py assign --transport hosted --obligation job.json --windows registry.json
+python3 host/jev_swarm.py frontdoor --transport hosted --window me.json --docket docket.json
+python3 host/jev_swarm.py triage --transport hosted --file slack_msg.txt
 ```
 
-Custom call:
+Omit `--transport hosted` to retain direct local-key operation. Hosted mode
+uses the deployment's `jev-latest`; custom models and `key=` are rejected.
+The complete hosted JSON body must fit 256 KiB, and input is never silently
+truncated or split. Both CLIs exit 2 on Jev errors; inspect `error`, `transport`,
+and an optional numeric `retry_after_seconds` instead of counting the input as
+processed. `HOSTED_NO_KEY` is a server configuration problem, not permission to
+paste a credential into a request. No automatic retries are performed.
+
+Check `GET /jev` for `configured:true` and obtain a real typed answer before
+claiming a deployment is active. A `TRANSPORT` failure, configuration response,
+or offline shape check is not live inference evidence.
+
+Custom cloud call:
 
 ```python
 import sys; sys.path.insert(0, "host")
 import jev
 jev.systemone(state_text, {"urgent": {"type": "noul",
-             "instructions": "Message conveys urgency"}})
+             "instructions": "Message conveys urgency"}}, transport="hosted")
 ```
 
-Key: env `TYPESAFE_API_KEY` or credvault target `commons:typesafe:api-key`.
-`NO_KEY` is a typed result — surface it, don't improvise a fallback model.
+Direct key policy: vaulted `commons:typesafe:api-key` / `typesafe/api-key`
+first; env `TYPESAFE_API_KEY` only if no vaulted key exists. Present copies
+must agree. `NO_KEY`, `KEY_SOURCE_CONFLICT`, and `KEY_SOURCE_UNAVAILABLE` are
+typed failures; do not improvise another credential generation or model.
 
 ## Rules
 

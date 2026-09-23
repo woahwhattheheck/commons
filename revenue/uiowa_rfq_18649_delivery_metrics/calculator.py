@@ -120,7 +120,7 @@ def load_deployments(path: Path) -> list[Deployment]:
     deployments: list[Deployment] = []
     seen: set[str] = set()
 
-    with path.open("r", encoding="utf-8", newline="") as handle:
+    with path.open("r", encoding="utf-8-sig", newline="") as handle:
         reader = csv.DictReader(handle, strict=True)
         headers = reader.fieldnames or []
         if any(not name.strip() for name in headers):
@@ -206,17 +206,39 @@ def _median_mean(values: list[float]) -> tuple[float | None, float | None]:
     return round(statistics.median(values), 3), round(statistics.fmean(values), 3)
 
 
+def _rate_bounds(positive: int, unknown: int, total: int) -> dict:
+    """Logical full-cohort bounds, not imputed rates or confidence intervals."""
+    return {
+        "lower": round(positive / total, 6),
+        "upper": round((positive + unknown) / total, 6),
+        "population": total,
+        "unknown_classifications": unknown,
+        "kind": "MISSING_CLASSIFICATION_BOUNDS_NOT_CONFIDENCE_INTERVAL",
+    }
+
+
 def calculate(
     deployments: Iterable[Deployment],
     *,
     window_start: datetime,
     window_end: datetime,
     service: str | None = None,
+    recovery_observed_through: datetime | None = None,
 ) -> dict:
     window_start = _utc_datetime(window_start, "window_start", "arguments")
     window_end = _utc_datetime(window_end, "window_end", "arguments")
     if window_start >= window_end:
         raise DataError("window_start must be before window_end")
+    if service is not None:
+        if not isinstance(service, str) or not service.strip():
+            raise DataError("service must be nonblank text")
+        service = service.strip()
+    if recovery_observed_through is not None:
+        recovery_observed_through = _utc_datetime(
+            recovery_observed_through, "recovery_observed_through", "arguments"
+        )
+        if recovery_observed_through < window_end:
+            raise DataError("recovery_observed_through must be at or after window_end")
 
     rows: list[Deployment] = []
     seen: set[str] = set()
@@ -258,12 +280,23 @@ def calculate(
     failed_known = [d for d in rows if d.intervention_required is not None]
     failed_missing = len(rows) - len(failed_known)
     failed = [d for d in failed_known if d.intervention_required is True]
-    recovery_values = [
-        _hours(d.recovered_at - d.deployed_at)
-        for d in failed
+    missing_recovery = [d for d in failed if d.recovered_at is None]
+    after_cutoff = [
+        d for d in failed
         if d.recovered_at is not None
+        and recovery_observed_through is not None
+        and d.recovered_at > recovery_observed_through
     ]
-    recovery_missing = sum(d.recovered_at is None for d in failed)
+    observed_recovery = [
+        d for d in failed
+        if d.recovered_at is not None
+        and (recovery_observed_through is None
+             or d.recovered_at <= recovery_observed_through)
+    ]
+    recovery_values = [
+        _hours(d.recovered_at - d.deployed_at) for d in observed_recovery
+    ]
+    recovery_missing = len(missing_recovery) + len(after_cutoff)
     recovery_median, recovery_mean = _median_mean(recovery_values)
 
     rework_known = [d for d in rows if d.unplanned_rework is not None]
@@ -279,6 +312,14 @@ def calculate(
             "window_start": window_start.isoformat().replace("+00:00", "Z"),
             "window_end_exclusive": window_end.isoformat().replace("+00:00", "Z"),
             "deployment_count": len(rows),
+            "recovery_observed_through": (
+                recovery_observed_through.isoformat().replace("+00:00", "Z")
+                if recovery_observed_through is not None else None
+            ),
+            "recovery_follow_up_mode": (
+                "EXPLICIT_RECOVERY_CUTOFF" if recovery_observed_through is not None
+                else "ALL_SUPPLIED_RECORDS_RETROSPECTIVE"
+            ),
         },
         "metrics": {
             "change_lead_time": {
@@ -307,9 +348,20 @@ def calculate(
                     missing=recovery_missing,
                     eligibility_unknown=failed_missing,
                 ),
+                "evidence": {
+                    "observed_recovery_ids": [d.deployment_id for d in observed_recovery],
+                    "missing_recovery_timestamp_ids": [d.deployment_id for d in missing_recovery],
+                    "recovered_after_cutoff_ids": [d.deployment_id for d in after_cutoff],
+                    "unknown_failure_classification_ids": [
+                        d.deployment_id for d in rows if d.intervention_required is None
+                    ],
+                    "known_non_failure_count": len(failed_known) - len(failed),
+                },
             },
             "change_fail_rate": {
                 "failed_deployments": len(failed),
+                "denominator_basis": "KNOWN_CLASSIFICATION_ONLY",
+                "full_cohort_rate_bounds": _rate_bounds(len(failed), failed_missing, len(rows)),
                 "known_deployments": len(failed_known),
                 "rate": round(cfr_rate, 6) if cfr_rate is not None else None,
                 "percent": round(cfr_rate * 100, 3) if cfr_rate is not None else None,
@@ -319,6 +371,8 @@ def calculate(
             },
             "deployment_rework_rate": {
                 "unplanned_rework_deployments": rework_count,
+                "denominator_basis": "KNOWN_CLASSIFICATION_ONLY",
+                "full_cohort_rate_bounds": _rate_bounds(rework_count, rework_missing, len(rows)),
                 "known_deployments": len(rework_known),
                 "rate": round(rework_rate, 6) if rework_rate is not None else None,
                 "percent": round(rework_rate * 100, 3) if rework_rate is not None else None,
@@ -333,6 +387,9 @@ def calculate(
             "individual_productivity_rating": False,
             "maturity_score": False,
             "partial_metrics_must_be_labeled": True,
+            "recovery_statistics_are_observed_case_only": True,
+            "classification_as_of_verified": False,
+            "source_export_completeness_verified": False,
         },
     }
 
@@ -392,6 +449,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--window-start", required=True)
     parser.add_argument("--window-end", required=True)
     parser.add_argument("--service")
+    parser.add_argument(
+        "--recovery-observed-through",
+        help="Inclusive recovery timestamp cutoff; must be at or after window end. "
+             "Omit to use all supplied recovery records retrospectively.",
+    )
     parser.add_argument("--output", type=Path)
     args = parser.parse_args(argv)
 
@@ -401,8 +463,12 @@ def main(argv: list[str] | None = None) -> int:
             window_start=_required_time(args.window_start, "window_start"),
             window_end=_required_time(args.window_end, "window_end"),
             service=args.service,
+            recovery_observed_through=(
+                _required_time(args.recovery_observed_through, "recovery_observed_through")
+                if args.recovery_observed_through is not None else None
+            ),
         )
-        payload = json.dumps(report, indent=2, sort_keys=True) + "\n"
+        payload = json.dumps(report, indent=2, sort_keys=True, allow_nan=False) + "\n"
         if args.output:
             _write_report(payload, args.output, args.csv_path)
         else:

@@ -1155,8 +1155,32 @@
     ]
   },
   "requests": {
-    "n": 23,
+    "n": 26,
     "posts": [
+      {
+        "id": "yz-kestrel-n6b8-publication-road-20260923",
+        "from": "YZ-KESTREL-N6B8",
+        "to": "TABLE",
+        "ts": "2026-09-23T07:35:05Z",
+        "board": "REQUESTS",
+        "lane": ""
+      },
+      {
+        "id": "yz-rowan23c-action-pad-dispatch-20260923",
+        "from": "yZ-ROWAN-23C",
+        "to": "TABLE",
+        "ts": "2026-09-23T07:29:33Z",
+        "board": "REQUESTS",
+        "lane": ""
+      },
+      {
+        "id": "yz-kestrel-47-l6-publisher-route-20260923",
+        "from": "yZ-Kestrel-47-L6",
+        "to": "TABLE",
+        "ts": "2026-09-23T07:26:55Z",
+        "board": "REQUESTS",
+        "lane": ""
+      },
       {
         "id": "p1-request-two-clocks-on-receipt-20260820-40",
         "from": "PLAYER1",
@@ -1988,7 +2012,7 @@
       }
     ]
   },
-  "n": 363,
+  "n": 366,
   "live_cash": {
     "cite": [
       "newbot-json-keep-larger-fixed-20260916-20",

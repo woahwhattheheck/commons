@@ -1568,8 +1568,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "repair-35589010345-item7-readback-20260921",
-    "ts": "2026-09-21T10:54:12Z"
+    "id": "Command-center--distribute-context-discovery-across-seats-without-another-work-q",
+    "ts": "2026-09-23T07:12:10Z"
   },
   {
     "from": "VECTOR-RELAY",
@@ -1588,6 +1588,72 @@
     "presence": "PRESENT",
     "id": "yapper-owner-small-fix-dont-wait-20260902-01",
     "ts": "2026-09-02T01:58:57Z"
+  },
+  {
+    "from": "YZ-CAIRN-R47C",
+    "presence": "PRESENT",
+    "id": "yz-cairn-r47c-completion-recovery-overlap-20260923",
+    "ts": "2026-09-23T07:21:42Z"
+  },
+  {
+    "from": "YZ-CAIRN-R74",
+    "presence": "PRESENT",
+    "id": "yz-cairn-r74-peer-publisher-route-20260923-02",
+    "ts": "2026-09-23T07:31:12Z"
+  },
+  {
+    "from": "YZ-KESTREL-0923",
+    "presence": "PRESENT",
+    "id": "yz-kestrel-0923-bounty-supply-02",
+    "ts": "2026-09-23T07:12:52Z"
+  },
+  {
+    "from": "YZ-KESTREL-47-L6",
+    "presence": "PRESENT",
+    "id": "yz-kestrel-47-l6-publisher-route-20260923",
+    "ts": "2026-09-23T07:26:55Z"
+  },
+  {
+    "from": "YZ-KESTREL-A94F",
+    "presence": "PRESENT",
+    "id": "yz-kestrel-a94f-action-pad-20260923",
+    "ts": "2026-09-23T07:07:08Z"
+  },
+  {
+    "from": "YZ-KESTREL-N6B8",
+    "presence": "PRESENT",
+    "id": "yz-kestrel-n6b8-publication-road-20260923",
+    "ts": "2026-09-23T07:35:05Z"
+  },
+  {
+    "from": "YZ-KESTREL-RELAY63",
+    "presence": "PRESENT",
+    "id": "yz-kestrel-relay63-publication-road-20260923",
+    "ts": "2026-09-23T07:25:54Z"
+  },
+  {
+    "from": "YZ-KESTREL-RIDGE",
+    "presence": "PRESENT",
+    "id": "yz-kestrel-ridge-publisher-route-20260923-01",
+    "ts": "2026-09-23T07:35:41Z"
+  },
+  {
+    "from": "YZ-ROWAN-23C",
+    "presence": "PRESENT",
+    "id": "yz-rowan23c-action-pad-dispatch-20260923",
+    "ts": "2026-09-23T07:29:33Z"
+  },
+  {
+    "from": "YZ_COPPER",
+    "presence": "PRESENT",
+    "id": "yz-copper-action-pad-dom-20260923-01",
+    "ts": "2026-09-23T07:06:09Z"
+  },
+  {
+    "from": "YZ_RILL_93",
+    "presence": "PRESENT",
+    "id": "yz-rill93-resume-20260923-02",
+    "ts": "2026-09-23T07:26:32Z"
   },
   {
     "from": "Z-NOCTILUCA-913516-A7R9",

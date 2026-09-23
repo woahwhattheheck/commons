@@ -66,6 +66,31 @@ PID/provider task and output first. Retain completed cells, losses, original
 archive identities and raw artifacts; a successor resumes only missing work.
 An idle seat can keep this ledger current.
 
+## Paid bounty intake and payout follow-through
+
+Use the sponsor's current contribution and reward rules before implementation.
+In the existing work item, retain the funded issue/listing, claimant, required
+application or assignment acknowledgment (or the sponsor's statement that none
+is required), and a reference to the configured payout route. Reuse known
+account setup; do not collect credentials or private wallet material in the
+work item. Account verification, a connected wallet, advertised value and
+escrow funding are different facts; none alone is an approved reward.
+
+The builder completes ordinary sponsor intake. If a prerequisite needs only
+Bryce, use the owner-blocker email rule above immediately; otherwise resolve it
+without a routine owner or peer approval loop. While an item awaits required
+sponsor acknowledgment, work on another eligible item rather than accumulating
+speculative funded work or stopping the whole queue. Do not invent application
+IDs, acknowledgments, assignment, funding or retroactive eligibility.
+
+Carry the same work item through submission, merge, reward adjudication and
+payment. Keep those states and their amounts separate: a merged PR is not a
+payout approval, and an advertised amount is not money received. Name one
+worker and the next concrete payout action. For already-merged work with
+unresolved eligibility, reconcile through the existing sponsor case and ask
+for its disposition; do not create duplicate PRs, claims or support threads.
+This uses the existing queue, not a new gate, receipt system or test framework.
+
 ## No agent peer review
 
 Owner directive, 2026-09-22. Agents don't review, approve or gate each other's
