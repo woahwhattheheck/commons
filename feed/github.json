@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 2000,
+    "open_issues": 1952,
     "open_pull_requests": 9,
-    "runs_in_progress": 15,
-    "runs_queued": 348
+    "runs_in_progress": 14,
+    "runs_queued": 332
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -179,7 +179,7 @@
   },
   "pulls_listed": 9,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 23.2,
+  "queue_depth_per_runner": 23.7,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -283,28 +283,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "yz-kestrel-r7n2/lifecycle-register-intake",
-      "closed_at": "2026-09-23T07:43:01Z",
-      "head_sha": "8e9b074424048ace08c120fb705e0880c4b405eb",
-      "merged_at": "2026-09-23T07:43:01Z",
-      "number": 19293,
-      "state": "MERGED",
-      "title": "AI lifecycle: editable CSV registers to existing reports and HTML review"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "yz-basalt6n4-waste-csv-intake",
-      "closed_at": "2026-09-23T07:41:03Z",
-      "head_sha": "c1e1584d4c49171597dd496d436be8159d07c12c",
-      "merged_at": "2026-09-23T07:41:03Z",
-      "number": 19289,
-      "state": "MERGED",
-      "title": "Commercial Waste: ship recurring-service CSV onboarding"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "yz/quarry47-migration-csv-intake",
       "closed_at": "2026-09-23T07:40:20Z",
       "head_sha": "27526431fc87589045aae72a50061f312c0c3fc3",
@@ -327,6 +305,17 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "swarm-yz/keel47-lineage-report-reader-20260923",
+      "closed_at": "2026-09-23T07:35:45Z",
+      "head_sha": "d2b74734ed6d668f8b80794abd60972fad8db04b",
+      "merged_at": "2026-09-23T07:35:45Z",
+      "number": 19276,
+      "state": "MERGED",
+      "title": "Make ordinary lineage reports usable as offline finding reviews"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "yz-basalt6n4/waste-operator-console",
       "closed_at": "2026-09-23T07:33:23Z",
       "head_sha": "18bee2345c81b120bb915116c491a286bfef91d8",
@@ -345,10 +334,21 @@
       "number": 19262,
       "state": "MERGED",
       "title": "Remove superseded review and test-work directions from agent onboarding"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "yz-kestrel-m42/uiowa-evidence-state-recovery-20260923",
+      "closed_at": "2026-09-23T07:27:22Z",
+      "head_sha": "b5a8406ae075a23a69266de792007773445f1e1a",
+      "merged_at": "2026-09-23T07:27:22Z",
+      "number": 19257,
+      "state": "MERGED",
+      "title": "Recover Iowa workbench evidence-state and numeric-availability display"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-23T07:59:50Z",
+  "unchanged_since": "2026-09-23T08:04:27Z",
   "undatable_pulls": []
 }
