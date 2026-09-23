@@ -14,6 +14,8 @@ class CommandCenterEquipment:
         return self._center
     def tools(self):
         from .context_view import INPUT_SCHEMA
+        from .context_health import SOURCE_HEALTH_PROPERTY
+        context_properties = {**INPUT_SCHEMA["properties"], "source_health": SOURCE_HEALTH_PROPERTY}
         session_schema = {
             "type": "object", "required": ["id"], "additionalProperties": False,
             "properties": {
@@ -61,7 +63,7 @@ class CommandCenterEquipment:
             }, "additionalProperties": False,
         }
         specs = [
-            ("context", "Read selective cached context, not the full feed. Filter first, page 20 by default and reuse unchanged revisions. Optional order=seat with a public seat label varies discovery; order=oldest surfaces older activity. Neither reserves work. Exact items remain reachable to every peer; owner is a provider-reported label.", INPUT_SCHEMA["properties"], []),
+            ("context", "Read selective cached context, not the full feed. Filter first, page 20 by default and reuse unchanged revisions. Optional order=seat with a public seat label varies discovery; order=oldest surfaces older activity. Neither reserves work. Set source_health=true to retain bounded all-source freshness/coverage on empty or no-match pages, without provider refresh. Exact items remain reachable to every peer; owner is a provider-reported label.", context_properties, []),
             ("context_item", "Read one exact stored normalized observation by source_id and item_id. No provider requests or mutations; independent of context filters.", {"source_id": {"type": "string", "minLength": 1, "maxLength": 2000}, "item_id": {"type": "string", "minLength": 1, "maxLength": 2000}}, ["source_id", "item_id"]),
             ("mail", "Read cached mail threads, last-observed waiting state, priority and next action, explicit deadlines, and sync coverage. No inference, provider reads, or sending.", {"limit": {"type": "integer", "minimum": 1, "maximum": 200}, "offset": {"type": "integer", "minimum": 0}, "query": {"type": "string", "maxLength": 240}, "mode": {"type": "string", "enum": ["all", "waiting_on_us", "waiting_on_them", "unknown", "unread", "overdue"]}}, []),
             ("summary", "Compact Deathstar observation: cache-only work, freshness, coverage debt, lower-bound merge throughput, payment states and provider cooldowns. Never triggers provider calls.", {}, []),
@@ -92,7 +94,8 @@ class CommandCenterEquipment:
         return result
     def call(self, name, arguments):
         if name == "command_center_context":
-            return self.center.work_context(**arguments)
+            from .context_health import read_context
+            return read_context(self.center, **arguments)
         if name == "command_center_context_item":
             return self.center.work_context_item(arguments.get("source_id"), arguments.get("item_id"))
         if name == "command_center_mail":
