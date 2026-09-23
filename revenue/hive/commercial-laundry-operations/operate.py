@@ -15,6 +15,7 @@ import sys
 from typing import Any, Callable
 
 from laundry_desk import LaundryDesk, LaundryDeskError, ValidationError
+from storage import copy_database
 
 MAX_INPUT_BYTES = 1_048_576
 MAX_INPUT_NODES = 10_000
@@ -136,6 +137,15 @@ def _regular_database(path: Path) -> None:
 
 def execute(database: str, command: str, input_file: str | None) -> dict[str, Any]:
     path = Path(database)
+    if command == "restore":
+        if input_file is None:
+            raise ValidationError("restore requires --input with a backup path")
+        payload = load_input(input_file)
+        if (set(payload) != {"backup"} or type(payload["backup"]) is not str
+                or not payload["backup"]):
+            raise ValidationError("restore input must contain only a nonempty backup path")
+        return {"status": "RESTORED", **copy_database(payload["backup"], path),
+            "authority": authority()}
     if command == "init":
         if input_file is not None:
             raise ValidationError("init does not accept an input payload")
@@ -166,12 +176,12 @@ def execute(database: str, command: str, input_file: str | None) -> dict[str, An
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Record offline laundry operations; invoice DRAFTS only")
     parser.add_argument("database", help="operator-owned SQLite database; existing parent directory required")
-    parser.add_argument("command", choices=["init", *COMMANDS])
-    parser.add_argument("--input", dest="input_file", help="one operation's JSON fields; '-' reads piped stdin")
+    parser.add_argument("command", choices=["init", "restore", *COMMANDS])
+    parser.add_argument("--input", dest="input_file", help="operation JSON, or restore's backup path object; '-' reads piped stdin")
     args = parser.parse_args(argv)
     try:
         result = execute(args.database, args.command, args.input_file)
-    except (LaundryDeskError, OSError, sqlite3.Error, OverflowError) as exc:
+    except (LaundryDeskError, OSError, sqlite3.Error, OverflowError, ValueError) as exc:
         print(json.dumps({"status": "REJECTED", "error_type": type(exc).__name__,
             "message": str(exc), "authority": authority()}, sort_keys=True), file=sys.stderr)
         return 2

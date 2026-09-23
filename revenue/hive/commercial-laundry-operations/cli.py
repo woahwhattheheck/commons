@@ -3,9 +3,12 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import sqlite3
+import sys
 from pathlib import Path
 
-from laundry_desk import LaundryDesk
+from laundry_desk import LaundryDesk, LaundryDeskError
+from storage import copy_database
 
 
 def _export_stem(prefix: str, object_id: str) -> str:
@@ -66,7 +69,7 @@ def _cli_authority() -> dict[str, bool]:
     }
 
 
-def main() -> int:
+def _run() -> int:
     parser = argparse.ArgumentParser(description="Commercial Laundry Route & Linen Custody Operations Desk")
     parser.add_argument("database", help="SQLite database path")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -83,7 +86,15 @@ def main() -> int:
     p.add_argument("customer_id")
     p.add_argument("directory")
 
+    p = sub.add_parser("backup", help="write a standalone SQLite backup to a new file")
+    p.add_argument("destination", help="new backup file; parent must already exist")
+
     args = parser.parse_args()
+    if args.command == "backup":
+        result = {"status": "BACKED_UP", **copy_database(args.database, args.destination),
+            "authority": _cli_authority()}
+        print(json.dumps(result, sort_keys=True, indent=2))
+        return 0
     # Every CLI command is observational with respect to the source SQLite
     # database. Export commands may create only their requested handoff bundle.
     desk = LaundryDesk.open_read_only(args.database)
@@ -106,6 +117,16 @@ def main() -> int:
         result = {"created": created, "authority": _cli_authority()}
     print(json.dumps(result, sort_keys=True, indent=2))
     return 0
+
+
+def main() -> int:
+    try:
+        return _run()
+    except (LaundryDeskError, OSError, sqlite3.Error, ValueError) as exc:
+        print(json.dumps({"status": "REJECTED", "error_type": type(exc).__name__,
+            "message": str(exc), "authority": _cli_authority()}, sort_keys=True),
+            file=sys.stderr)
+        return 2
 
 
 if __name__ == "__main__":
