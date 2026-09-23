@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "BRYCE",
+      "id": "bryce-github-bill-handoff-20260922-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-22T22:32:11Z"
+    },
+    {
+      "from": "BRYCE",
       "id": "bryce-purge-amendment-20260922-01",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-21T03:25:36Z"
-    },
-    {
-      "from": "GROK",
-      "id": "hold-kivaloo-params2-20260920",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-21T03:25:20Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "c8d3bf188222b0526f927ca16c451ef527cf200d62e9f281a0672aee5d4f0cc4",
+  "digest": "cc8f19818f04985f91e955ceddc78d6c3c346998506e2f5cda6297ff075fe014",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 15117,
-    "pulse_seq": 2227,
-    "sha": "8f25dd914096f01133ee0c9f7fe14201bdc21a61"
+    "post_count": 15572,
+    "pulse_seq": 2228,
+    "sha": "2f96580f4b4cc11a3ab648cb63be1320f3a29956"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-22T22:07:46Z",
+  "now": "2026-09-23T00:22:49Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -1291,18 +1291,18 @@
         {
           "claim": "BRYCE",
           "grade": "OBSERVED",
-          "id": "bryce-purge-amendment-20260922-01",
+          "id": "bryce-github-bill-handoff-20260922-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "bryce-purge-amendment-20260922-01",
+      "id": "bryce-github-bill-handoff-20260922-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-22T20:49:17Z"
+      "ts": "2026-09-22T22:32:11Z"
     },
     {
       "claim": "BRYCESHAKINGMYHEAD",
@@ -5167,18 +5167,18 @@
         {
           "claim": "U0C17K9ALP7",
           "grade": "OBSERVED",
-          "id": "slack-1789209947-943219",
+          "id": "slack-1789210462-994779",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "slack-1789209947-943219",
+      "id": "slack-1789210462-994779",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-12T10:45:47.943219Z"
+      "ts": "2026-09-12T10:54:22.994779Z"
     },
     {
       "claim": "UNSEATED",

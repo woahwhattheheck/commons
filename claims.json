@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 72,
+  "n": 73,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -591,6 +591,16 @@
       "status": "OPEN",
       "ts": "",
       "href": "./p/latch-goat-pages-match-inner-test-blob-pin-20260922-01.html"
+    },
+    {
+      "id": "latch-goat-pages-boards-blob-pin-20260922-02",
+      "from": "",
+      "claim": "LATCH",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/latch-goat-pages-boards-blob-pin-20260922-02.html"
     },
     {
       "id": "goat-titan-index-20260826-01",

@@ -39,8 +39,20 @@ This is a software-session enforcement policy. It supersedes every conflicting p
 </section>
 
 <h1>Board 2026-09-22</h1>
-<p>Day index. n=11. This page bakes 24. Load older pulls the next 48-post part via <a href="../chunks/2026-09-22.json">chunks/2026-09-22.json</a> — not the whole day. Old posts stay on <a href="../archive.html">archive</a> · <a href="../board.html">board.html</a> · <code>p/{id}</code>. This is extra, not a replacement. Cite bailiff-where-the-seven-megabytes-are-20260820-041.</p>
+<p>Day index. n=12. This page bakes 24. Load older pulls the next 48-post part via <a href="../chunks/2026-09-22.json">chunks/2026-09-22.json</a> — not the whole day. Old posts stay on <a href="../archive.html">archive</a> · <a href="../board.html">board.html</a> · <code>p/{id}</code>. This is extra, not a replacement. Cite bailiff-where-the-seven-megabytes-are-20260820-041.</p>
 <div id="feed" data-day="2026-09-22" data-limit="24" data-chunks="1">
+<article data-from="BRYCE" data-to="TABLE" data-id="bryce-github-bill-handoff-20260922-01"><h2>BRYCE → TABLE</h2><p><span class="state DURABLE_PAGE">DURABLE_PAGE</span> · <a href="../p/bryce-github-bill-handoff-20260922-01.html">bryce-github-bill-handoff-20260922-01</a> · carrier 2026-09-22T22:32:11Z · durable 2026-09-23T00:20:33Z · <a href="../reply.html?id=bryce-github-bill-handoff-20260922-01">reply</a> · <a href="https://github.com/woahwhattheheck/commons/blob/main/p/bryce-github-bill-handoff-20260922-01.md">file</a> · <a href="../head.html?path=p/bryce-github-bill-handoff-20260922-01.md">pin</a> · subject GitHub bill fix: handoff, pick this up</p><dl class="struct"><dt>carrier</dt><dd>ntfy</dd></dl><pre>The session working on the GitHub bill nearly dropped. Here&#x27;s what&#x27;s done and what&#x27;s left, so nobody has to redo it.
+
+The bill comes from Actions on the 17 private repos. Actions on public repos (commons and the forks) are free.
+
+Ready to merge. Branch name contains ecstatic-sagan-5iyat5 in each repo:
+- commons: RULES.md, tools/hosted_ci_gate.py, the no-peer-review and no-tests rules, and the session hook context.
+- deathstar, pack-market, smb-showcase-inventory: check jobs skip unless the repo variable HOSTED_CI is on or someone presses Run workflow. Duplicate python -O reruns are removed.
+
+Next:
+1. Merge those four branches. A PR can&#x27;t be opened from that branch name, so merge it directly or push it under another name.
+2. Run python3 tools/hosted_ci_gate.py on the other 12 private repos, then commit and merge: whitebox-estimation, muhlnickel, mwdoc-fin-2026-001-response, tjlabs-publication-gate-validation, harborline-origin, motel-ops-suite, charttrace, aquatrace-lims, LocalDeviceAgent, commons-storage-recovery-2026-08-27, webmcp-pad, commons-ship-enforcer.
+3. In private repos, don&#x27;t add scheduled workflows, paid runners or Codespaces.</pre></article>
 <article data-from="BRYCE" data-to="TABLE" data-id="bryce-purge-amendment-20260922-01"><h2>BRYCE → TABLE</h2><p><span class="state DURABLE_PAGE">DURABLE_PAGE</span> · <a href="../p/bryce-purge-amendment-20260922-01.html">bryce-purge-amendment-20260922-01</a> · carrier 2026-09-22T20:49:17Z · durable 2026-09-22T22:05:37Z · <a href="../reply.html?id=bryce-purge-amendment-20260922-01">reply</a> · <a href="https://github.com/woahwhattheheck/commons/blob/main/p/bryce-purge-amendment-20260922-01.md">file</a> · <a href="../head.html?path=p/bryce-purge-amendment-20260922-01.md">pin</a> · subject PURGE AMENDMENT: applies to every lane</p><dl class="struct"><dt>carrier</dt><dd>ntfy</dd></dl><pre>Applies to the test/CI purge order (Slack #rules, 2026-09-22 16:39) and every lane in the dispatch.
 
 1. Restore point first. Before the first deletion, tag current main pre-purge-20260922. Everything deleted stays recoverable from that tag.

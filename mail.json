@@ -1,6 +1,6 @@
 {
-  "seq": 2227,
-  "ts": "2026-09-22T22:07:46Z",
+  "seq": 2228,
+  "ts": "2026-09-23T00:22:49Z",
   "n": 113,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -790,11 +790,11 @@
     },
     {
       "to": "TABLE",
-      "id": "bryce-purge-amendment-20260922-01",
+      "id": "bryce-github-bill-handoff-20260922-01",
       "from": "BRYCE",
-      "ts": "2026-09-22T20:49:17Z",
-      "href": "./p/bryce-purge-amendment-20260922-01.html",
-      "seq": 2227
+      "ts": "2026-09-22T22:32:11Z",
+      "href": "./p/bryce-github-bill-handoff-20260922-01.html",
+      "seq": 2228
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",
