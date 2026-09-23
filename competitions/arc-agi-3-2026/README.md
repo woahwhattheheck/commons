@@ -25,7 +25,7 @@ Discarding intermediate animation frames or assuming `ACTION1 == UP` is a resear
   - coordinate candidate reduction for complex actions;
   - successful-trace -> skill induction;
   - precondition/confidence-gated skill replay;
-  - explicit opt-in consumer of the public v3 symbolic planner.
+  - explicit opt-in consumer of the public symbolic planner.
 - `mock_env.py`
   - no-network hidden-control game;
   - action semantics are scrambled per seed;
@@ -66,7 +66,7 @@ agent.learn(observation, decision, next_observation)
 
 The budget defaults, when omitted in enabled mode, are depth 4, width 6, 96 simulated nodes and at most 8 proposed actions. Planning also receives the caller's exact remaining real-action ceiling; its depth cannot exceed that ceiling. The node cap bounds simulated expansions, not the cost of indexing the retained transition history. Planning itself never calls the environment. `actions_left` in enabled mode must be an exact integer in `[1, 1000000]`; a custom budget requires `symbolic_lookahead=True` and must pass the public `PlannerBudget` validation.
 
-Each decision builds a fresh public `SageEvidenceAdapter` over the existing `WorldModel.transitions`. It uses the policy's current coordinate/action candidates for each concrete observation and stops candidate generation at terminal or inactive observations, even when they retain action names. A selected first action must be in the current candidate set and have a unanimous, exact, concrete predecessor/action outcome under the v3 full-animation identity. An abstract, contradictory, losing or exact self-loop first step falls back to the unchanged skill/spatial/exploration policy. A new agent with no transitions also uses that policy. A terminal/inactive root or empty action space raises a clear `ValueError`; malformed evidence and programming errors are not silently swallowed.
+Each decision builds a fresh public `SageEvidenceAdapter` over the existing `WorldModel.transitions`. It uses the policy's current coordinate/action candidates for each concrete observation and stops candidate generation at terminal or inactive observations, even when they retain action names. A selected first action must be in the current candidate set and have a unanimous, exact, concrete predecessor/action outcome under the full-animation identity. An abstract, contradictory, losing or exact self-loop first step falls back to the unchanged skill/spatial/exploration policy. A new agent with no transitions also uses that policy. A terminal/inactive root or empty action space raises a clear `ValueError`; malformed evidence and programming errors are not silently swallowed. The current schema and standalone terminal boundary are documented in [SYMBOLIC_PLANNER.md](SYMBOLIC_PLANNER.md).
 
 An accepted planner decision keeps the public `Decision` shape and uses mode `SYMBOLIC_LOOKAHEAD`. Its numeric evidence includes simulated nodes, proposed prefix length, the remaining real-action ceiling, and the planner's historical confidence/risk basis points. Those metrics are not calibrated win probabilities. `agent.last_plan` exposes the public plan for the current accepted decision only: it is `None` after fallback, the next decision starts afresh, and learning or resetting clears it. **Never execute `last_plan.selected_prefix` as a queued script.** A later suffix may end at an uncertain evidence boundary; observe the first action's actual response and replan.
 
