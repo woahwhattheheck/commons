@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "96c97938bb51c1d363faa8d72fc1ed1680b068497ec0d042f0b026ade7ebdcbe",
+  "digest": "f0cf8afbad5c96d7f7dd5041418dde7b23fdeced275d9e1f9c06bd909152401b",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -354,8 +354,8 @@
       }
     ],
     "post_count": 15613,
-    "pulse_seq": 2254,
-    "sha": "5c3c29149ff97e9907adfab5b24241ce8053426c"
+    "pulse_seq": 2255,
+    "sha": "d26434da8ed4748c9cd61eca6e8b4510d0199f3e"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-23T08:45:25Z",
+  "now": "2026-09-23T08:51:59Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -5194,7 +5194,7 @@
       "id": "Consolidate-migration-parity-intake-into-one-browser-while-retaining-batch-plans",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-23T07:51:47Z"
@@ -5270,7 +5270,7 @@
       "id": "yz-cairn-r47c-saas-csv-compose-20260923",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-23T07:46:53Z"
