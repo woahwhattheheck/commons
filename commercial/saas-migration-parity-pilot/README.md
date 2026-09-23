@@ -6,20 +6,24 @@ This is the implementation carrier for Commons issue **#14205**, originally conc
 
 ## Browser workbench
 
-Load sanitized CSV or JSON exports, enter snapshot metadata, explicitly map keys and compared fields, browse classifications, and download the generated manifest plus exact JSON/Markdown reports. The workbench calls the existing comparison engine rather than maintaining a second implementation.
+Load sanitized exports, choose an explicit intake contract, enter snapshot metadata, map keys and compared fields, browse classifications, and download reports or private replay material. The single workbench uses the existing comparison engine and both retained adapters rather than maintaining a second parity implementation.
 
 ```bash
 cd commercial/saas-migration-parity-pilot
 python workbench.py --port 8767
 ```
 
-Open the printed loopback address on the same machine. Python 3.10+ and the standard library are sufficient. No external services or persistent upload store are used. The server is a local operator tool, not a hosted customer endpoint. Full format, privacy, and download contracts: [WORKBENCH.md](WORKBENCH.md).
+Open the exact printed loopback address on the same machine. Python 3.10+ and the standard library are sufficient. No external services or persistent upload store are used. The local Host/Origin/per-launch-token boundary is retained; this is not a hosted customer endpoint. The former CSV-only `web_intake.py` / `web_intake.html` frontend has been removed. Full format, privacy and download contracts: [WORKBENCH.md](WORKBENCH.md).
 
-JSON integer identifiers remain exact, including values outside JavaScript's safe-integer range. CSV types are explicitly selected, never inferred. Editing an input invalidates the previous report and its download links. The downloaded input contains supplied values; report hashes are not guaranteed anonymization.
+**General CSV/JSON** preserves original field names and all supplied fields in its private manifest. **Reusable CSV plan** preserves the existing batch adapter's explicit selected-column `key_*/field_*` aliases, delimiters and excluded-column map. Plan import selects its format explicitly; no silent translation or identical-manifest-hash claim is made between adapters. JSON integer identifiers stay exact, including values outside JavaScript's safe-integer range. CSV types are selected, never inferred.
+
+Both modes support saved plans, original-file hashes distinct from generated-manifest hashes, searchable exceptions, exact report JSON/Markdown, standalone printable HTML and an explicitly private replay ZIP. Editing inputs invalidates previous results/download links. Raw input values belong to private replay material; report hashes are not guaranteed anonymization.
 
 ## CSV batch and private replay route
 
-For a repeatable CSV mapping plan, original CSV byte hashes and a bundled replay deliverable, see [CSV_INTAKE.md](CSV_INTAKE.md). Its `csv_intake.py` CLI accepts two CSV files plus an explicit plan and writes a new private ZIP; the optional CSV-only intake page is documented there. The general CSV/JSON browser entrypoint above remains available. These adapters share the existing parity engine, but their input/mapping contracts are distinct; do not interchange their plans or assume their generated input hashes will match. The replay ZIP contains selected raw values and must remain private.
+The unchanged `csv_intake.py` CLI accepts two CSV files plus an existing `saas-migration-csv-intake/v1` plan and writes a new private five-file ZIP. The workbench's **Reusable CSV plan** mode imports/exports that same plan contract and reuses the same adapter/bundler. See [CSV_INTAKE.md](CSV_INTAKE.md).
+
+General workbench plans are separately labeled `saas-migration-workbench-plan/v1` and are not CSV batch plans. The ZIP contains the generated manifest, exact report JSON/Markdown, format-labeled plan and column map, not original export files. Retain original files separately. CSV-plan replay includes selected raw values; general replay includes all supplied fields, including unmapped values. Keep both private.
 
 ## Commercial offer
 
@@ -71,7 +75,7 @@ The receipt binds both:
 1. `raw_input_sha256` — the exact input JSON bytes; and
 2. `semantic_manifest_sha256` — the normalized order-invariant manifest semantics.
 
-Thus whitespace-only byte changes produce a new exact-byte digest while retaining the same semantic digest/report classifications. Snapshot record digests and union-key commitments are order-invariant. For workbench intake, the input digest binds the generated engine manifest, not the original pre-conversion CSV/JSON files; retain those files separately when original-file provenance matters.
+Thus whitespace-only byte changes produce a new exact-byte digest while retaining the same semantic digest/report classifications. Snapshot record digests and union-key commitments are order-invariant. For workbench intake, the input digest binds the generated engine manifest. The separate original-file hashes bind the pre-conversion CSV/JSON bytes, including BOM and line endings; retain the original files because the replay ZIP does not include them. Neither digest authenticates a source or proves completeness.
 
 Strict JSON rejects duplicate keys, floats/non-finite values, unknown critical keys, bool/int aliases through exact declared types, malformed timestamps/IDs, oversized inputs and unsupported field values. CLI file ingress and paired report publication use retained descriptor-relative directory custody: every ancestor and final component is opened without following symlinks and parent-generation replacement fails closed when observed. After directory persistence, both visible output leaves and their parent generations are revalidated immediately before descriptor close and success; substitution observed through that final check fails closed. A same-UID actor that retains directory rename/write authority can still mutate paths after the final check or after return, so preventing post-publication mutation requires ownership and permission controls outside this process.
 
@@ -96,4 +100,4 @@ To check a delivered report against its supplied manifest, the product's offline
 python parity.py verify --input parity-input.json --report-json parity-report.json
 ```
 
-Current repository [swarm rules](../../RULES.md) govern development execution. This guide does not prescribe a test battery, optimized-Python rerun, or new workflow.
+Current repository [swarm rules](../../RULES.md) govern development execution. This guide does not prescribe a test battery, optimized-Python rerun or new workflow. CSV adapter/plan/bundler credit remains yZ-Quarry-47; general browser and portable report credit remains yZ-Kestrel. One-browser consolidation is yZ-Kestrel-V68 under #19307; existing product lineage, commercial offer and outbound ownership remain unchanged.
