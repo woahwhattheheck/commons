@@ -18,6 +18,7 @@ ISSUE FORMAT (headers, a line of three dashes alone, then content):
     id: yourname-drop-agentbrain-01
     encoding: text            # or base64
     part: 1/3                 # optional; omit for a single-part file
+    sha256: <64 hex digits>   # optional digest of the complete decoded input
 
     ---
 
@@ -27,6 +28,14 @@ Multi-part: post each part under the SAME id with the same part count. Parts
 land in drop/_staging/<id>/. When every part has arrived they are concatenated
 in order into the target path and the staging directory is removed. Nothing is
 assembled until the set is complete, so a half-arrived file never appears.
+A digest declared by any part is retained for the complete set, even when the
+last-arriving part omits it. Repeated identical parts are harmless; conflicting
+bytes or digest declarations are refused without replacing prior parts. Use a
+new id for a different file. The byte ceiling applies to the complete set, not
+just each part. Failed assembly or destination writes retain the staged input.
+Legacy two-line TARGET records remain readable; they cannot recover a digest
+that an older runner did not retain. As-is image fallback keeps the requested
+filename; only successful image conversion chooses the PNG/thumbnail paths.
 
 The target is used literally. It may be a repository path, an alias/traversal
 path, or an absolute path available to the runner. The link is the authorization
@@ -49,7 +58,7 @@ MAX_BYTES = 5 * 1024 * 1024
 ID_OK = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 
 
-ROUTING_HEADERS = ("drop", "id", "part", "encoding")
+ROUTING_HEADERS = ("drop", "id", "part", "encoding", "sha256")
 
 
 def parse(body):
@@ -198,7 +207,7 @@ def main():
     if content is None:
         reject("no --- separator: headers above it, content below it")
     if dups:
-        reject("duplicate header %s; one drop:/id:/part: only" % ",".join(sorted(set(dups))))
+        reject("duplicate header %s; each routing header may appear only once" % ",".join(sorted(set(dups))))
 
     # The workflow's `if:` can only do a substring test on the raw body, so an
     # ordinary board POST that merely mentions "drop:" in its prose spins this
@@ -210,15 +219,21 @@ def main():
         print("DROP_SKIP: no drop: header above the separator; not a drop")
         return
 
-    path = read_target(head.get("drop", ""))
+    # Keep the requested extension until conversion actually succeeds. Both
+    # Pillow-unavailable and undecodable-image fallbacks preserve original bytes.
+    path = head.get("drop", "")
     did = head.get("id", "")
     if not ID_OK.match(did):
         reject("id must be 8-80 chars of letters, digits, dot, dash, underscore")
 
+    want = (head.get("sha256") or "").strip().lower()
+    if want and not re.fullmatch(r"[0-9a-f]{64}", want):
+        reject("sha256 must contain exactly 64 hexadecimal digits")
     data = decode(content, head.get("encoding", "text").lower())
     if len(data) > MAX_BYTES:
         reject("payload %d bytes exceeds the %d byte ceiling" % (len(data), MAX_BYTES))
     part = head.get("part", "").strip()
+    stage = None
     if part:
         m = re.match(r"^(\d+)\s*/\s*(\d+)$", part)
         if not m:
@@ -230,47 +245,70 @@ def main():
         os.makedirs(stage, exist_ok=True)
         tpath = os.path.join(stage, "TARGET")
         if os.path.exists(tpath):
-            lines = open(tpath, encoding="utf-8").read().splitlines()
-            if len(lines) < 2:
+            with open(tpath, encoding="utf-8") as f:
+                lines = f.read().splitlines()
+            if len(lines) not in (2, 3):
                 reject("TARGET for id %r is malformed" % did)
             want_path, want_total_s = lines[0], lines[1]
             try:
                 want_total = int(want_total_s)
             except ValueError:
                 reject("TARGET total for id %r is malformed" % did)
-            if path != want_path or total != want_total:
+            # Old runners stored the converted PNG target before conversion.
+            # Accept that legacy spelling once, then retain the requested name.
+            legacy_image = len(lines) == 2 and want_path == read_target(path)
+            if (path != want_path and not legacy_image) or total != want_total:
                 reject("part %d/%d for id %r targets %r but the set was opened as %r/%s"
                        % (n, total, did, path, want_path, want_total_s))
-            total = want_total
-            path = want_path
-        else:
-            with open(tpath, "w", encoding="utf-8") as f:
-                f.write("%s\n%d\n" % (path, total))
+            saved_digest = lines[2].strip().lower() if len(lines) == 3 else ""
+            if saved_digest and not re.fullmatch(r"[0-9a-f]{64}", saved_digest):
+                reject("TARGET sha256 for id %r is malformed" % did)
+            if want and saved_digest and want != saved_digest:
+                reject("sha256 for id %r conflicts with the existing set; prior parts were preserved" % did)
+            want = saved_digest or want
+
         chunk = os.path.join(stage, "%04d" % n)
-        with open(chunk, "wb") as f:
-            f.write(data)
-        have = sorted(x for x in os.listdir(stage) if x.isdigit())
-        if len(have) < total:
-            missing = [i for i in range(1, total + 1) if "%04d" % i not in have]
-            print("DROP_PARTIAL: %s %d/%d, waiting on %s" % (did, len(have), total, missing))
-            json.dump({"ok": True, "partial": True, "id": did, "have": len(have),
-                       "total": total, "missing": missing}, open(".drop_receipt", "w"))
+        duplicate = os.path.exists(chunk)
+        if duplicate:
+            with open(chunk, "rb") as f:
+                prior = f.read(MAX_BYTES + 1)
+            if prior != data:
+                reject("part %d/%d for id %r already has different bytes; prior part was preserved. Use a new id for a different file." % (n, total, did))
+        expected = [os.path.join(stage, "%04d" % i) for i in range(1, total + 1)]
+        staged_bytes = len(data) + sum(os.path.getsize(p) for p in expected
+                                       if p != chunk and os.path.isfile(p))
+        if staged_bytes > MAX_BYTES:
+            reject("multipart set would contain %d bytes, exceeding %d; prior parts were preserved" % (staged_bytes, MAX_BYTES))
+        # Three lines distinguish literal targets from legacy normalized names.
+        # Persist a digest on any arrival, not only on the completing request.
+        with open(tpath, "w", encoding="utf-8") as f:
+            f.write("%s\n%d\n%s\n" % (path, total, want))
+        if not duplicate:
+            with open(chunk, "wb") as f:
+                f.write(data)
+        missing = [i for i, p in enumerate(expected, 1) if not os.path.isfile(p)]
+        if missing:
+            have = total - len(missing)
+            print("DROP_PARTIAL: %s %d/%d, waiting on %s" % (did, have, total, missing))
+            with open(".drop_receipt", "w") as f:
+                json.dump({"ok": True, "partial": True, "id": did, "have": have,
+                           "total": total, "missing": missing}, f)
             return
-        blob = b"".join(open(os.path.join(stage, "%04d" % i), "rb").read()
-                        for i in range(1, total + 1))
-        if len(blob) > MAX_BYTES:
-            shutil.rmtree(stage, ignore_errors=True)
-            reject("assembled %d bytes exceeds %d" % (len(blob), MAX_BYTES))
-        want = (head.get("sha256") or "").strip().lower()
+        pieces, assembled_bytes = [], 0
+        for p in expected:
+            with open(p, "rb") as f:
+                piece = f.read(MAX_BYTES - assembled_bytes + 1)
+            assembled_bytes += len(piece)
+            if assembled_bytes > MAX_BYTES:
+                reject("assembled payload exceeds %d; prior parts were preserved" % MAX_BYTES)
+            pieces.append(piece)
+        blob = b"".join(pieces)
         got = hashlib.sha256(blob).hexdigest()
         if want and want != got:
-            shutil.rmtree(stage, ignore_errors=True)
-            reject("assembled sha256 %s does not match the declared %s; the set is corrupt or mixed. Nothing was written." % (got, want))
+            reject("assembled sha256 %s does not match the declared %s; the set is corrupt or mixed. Nothing was written to the target; staged parts were preserved." % (got, want))
         # render only once the whole image exists — a partial JPEG is not an image
         outs, note = render_image(path, blob)
-        shutil.rmtree(stage, ignore_errors=True)
     else:
-        want = (head.get("sha256") or "").strip().lower()
         got = hashlib.sha256(data).hexdigest()
         if want and want != got:
             reject("sha256 %s does not match the declared %s. Nothing was written." % (got, want))
@@ -278,6 +316,9 @@ def main():
 
     for p, blob in outs:
         write(p, blob)
+    # Retain the complete input if rendering or a destination write fails.
+    if stage is not None:
+        shutil.rmtree(stage, ignore_errors=True)
 
     paths = [p for p, _ in outs]
     total_bytes = sum(len(b) for _, b in outs)
