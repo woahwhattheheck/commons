@@ -175,18 +175,43 @@ def _heartbeat_state(heartbeat, now, bands, skew=FUTURE_SKEW_S):
 def _feed_summary(feed, limit):
     events = feed.get("events") or []
     trimmed = []
+    directed = []
     for item in events[:limit]:
         cursor = item.get("c", "")
+        event_id = cursor.split("|", 1)[1] if "|" in cursor else cursor
+        durable_ts = cursor.split("|", 1)[0] if "|" in cursor else ""
+        event_ts = item.get("ts", "") or durable_ts
+        timestamp_source = "author" if item.get("ts", "") else "durable"
+        source_path = "p/%s.md" % event_id if event_id else ""
+        frm = item.get("from", "")
+        to = item.get("to", "")
         trimmed.append({
             "cursor": cursor,
-            "id": cursor.split("|", 1)[1] if "|" in cursor else cursor,
-            "from": item.get("from", ""),
-            "to": item.get("to", ""),
+            "id": event_id,
+            "event_ts": event_ts,
+            "timestamp_source": timestamp_source,
+            "source_path": source_path,
+            "from": frm,
+            "to": to,
             "state": item.get("state", "DURABLE_PAGE"),
             "kind": item.get("kind", ""),
             "lane": item.get("lane", ""),
             "excerpt": item.get("x", ""),
         })
+        # `from` and `to` are durable carrier facts, not role inference. `to`
+        # may name an agent, lane, board, or tool surface. Keep the observable
+        # edge and let consumers decide whether a particular pair is agent-to-agent.
+        if frm and to:
+            directed.append({
+                "event_id": event_id,
+                "event_ts": event_ts,
+                "timestamp_source": timestamp_source,
+                "from_id": frm,
+                "to_id": to,
+                "kind": item.get("kind", ""),
+                "lane": item.get("lane", ""),
+                "source_path": source_path,
+            })
     return {
         "count": feed.get("count", 0),
         "newest": (feed.get("covers") or {}).get("newest", ""),
@@ -194,6 +219,13 @@ def _feed_summary(feed, limit):
         "cursor_rule": feed.get("cursor_rule", ""),
         "undated": feed.get("undated") or [],
         "events": trimmed,
+        "directed_events": directed,
+        "relation_coverage": {
+            "directed_from_to": "OBSERVED",
+            "parent_child": UNKNOWN,
+            "shared_artifact": UNKNOWN,
+            "tool_resource": UNKNOWN,
+        },
     }
 
 
