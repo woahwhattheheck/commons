@@ -3,8 +3,8 @@
  "key": "uiowa-handoff-html-k3q7-20260919",
  "holder": "yz-fjord-73",
  "taken_at": "2026-09-23T07:10:24Z",
- "heartbeat_at": "2026-09-23T07:10:24Z",
+ "heartbeat_at": "2026-09-23T07:20:00Z",
  "ttl_s": 1800,
- "state": "HELD",
- "note": "GPT-6 recovery of #16399 portable HTML reader; preserve K3Q7 source; reconcile current-main dependency; one focused execution check. Native connector claim, command-center repository road; cloud DNS unavailable."
+ "state": "RELEASED",
+ "note": "Canonical Mica82 delivery is #19226, merged 322156c5a9b22e38c0be29cd4323eb30a1fbccb2. FJORD duplicate #19229 closed unmerged. No source overwrite or test run. Slack correction p1790147976043149."
 }
