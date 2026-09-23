@@ -117,6 +117,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: open-door-guard-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   reject-added-locks:
     runs-on: ubuntu-latest
