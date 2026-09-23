@@ -16,6 +16,10 @@ A local-first operations desk for teams that already possess source media and ow
 - recomputes the package from current retained state for exact verification;
 - creates exports with an exclusive, no-follow leaf under a retained parent-directory descriptor, refusing overwrite/symlink targets and attempting to truncate only its retained output descriptor on failure without unlinking a pathname.
 
+## Database startup
+
+The ordinary CLI distinguishes three cases. A missing database, or one with no tables, is initialized in a single transaction: the five desk tables are created or the attempt is rolled back. An existing desk whose tables, columns, keys and constraints match the current desk is reopened and its schema is left untouched. Any other nonempty database, including one with extra views or triggers, is refused. Refusal does not alter that file's schema or rows. Recognition uses the schema on the connection reserved for startup, not the pathname, so a concurrent replacement is not treated as solved by inspecting the path. The read-only review still opens an existing database itself and does not run this startup.
+
 ## Authority ceiling
 
 This is working operations software, not a legal/rights/translation-quality diagnostic. It **does not** infer or interpret contracts, licenses, fair use, cultural suitability, or translation quality. `rights_ready` is an owner-supplied fact. `external_publish_authorized` is always `false` in the generated packet. The desk does not contact licensors/translators/customers, publish to platforms, mutate payment/accounting/provider systems, deploy externally, or spend money.
