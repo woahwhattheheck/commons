@@ -211,6 +211,7 @@ def build_decisions(work, now=None, operator_control=None):
     for key, members in groups.items():
         records, agents, merged_prs, payments, advertised, owner = [], {}, set(), {}, {}, {}
         publication, recorded_next = None, None
+        money_conflicts = set()
         for item in members:
             meta, refs = _dict(item.get("metadata")), _dict(item.get("refs"))
             record = stage_record(item)
@@ -222,10 +223,20 @@ def build_decisions(work, now=None, operator_control=None):
             listed = _amount(meta.get("advertised_amount"))
             if listed is not None:
                 advertised[currency] = max(advertised.get(currency, Decimal(0)), listed)
-            if short(item.get("kind")).lower() in MONEY_KINDS and short(item.get("status")).lower() in PAID_STATES:
-                paid = _amount(item.get("amount"))
-                if paid is not None:
-                    payments[str(refs.get("payment_id") or refs.get("transaction_id") or item.get("id"))] = (currency, paid)
+            if short(item.get("kind")).lower() in MONEY_KINDS:
+                provider = str(item.get("provider") or sources.get(item.get("source_id"), {}).get("provider") or "").lower()
+                payment_id = refs.get("payment_id") or refs.get("transaction_id")
+                # Provider transaction ids are shared; connector-local row ids are not.
+                identity = (("payment", provider, str(payment_id)) if provider and payment_id is not None
+                            else ("source", str(item.get("source_id")), str(item.get("id"))))
+                seen = (epoch(item.get("updated_at")) or epoch(item.get("activity_observed_at"))
+                        or epoch(item.get("last_seen_at")) or 0)
+                value = (currency, short(item.get("status")).lower(), _amount(item.get("amount")))
+                if identity not in payments or seen > payments[identity][0]:
+                    payments[identity] = (seen, *value)
+                    money_conflicts.discard(identity)
+                elif seen == payments[identity][0] and value != payments[identity][1:]:
+                    money_conflicts.add(identity)
             for field in ("owner_account", "seat"):
                 if meta.get(field) and field not in owner:
                     owner[field] = short(meta[field], 120)
@@ -260,19 +271,42 @@ def build_decisions(work, now=None, operator_control=None):
         records = sorted(latest.values(), key=lambda r: STAGES.index(r["stage"]))
         waiting_on, waiting_for, blocking, next_action = _waiting(records)
         reasons = ["stage:" + blocking["stage"]] if blocking else []
+        next_action = recorded_next or next_action
+        reached = [r for r in records if r["state"] in {"done", "pending"}]
+        stage = reached[-1] if reached else (records[-1] if records else None)
+        paid_stage = stage is not None and stage["stage"] == "paid" and stage["state"] == "done"
+        collected, unresolved_payment = {}, bool(money_conflicts)
+        for identity, (_, currency, status, paid) in payments.items():
+            if identity in money_conflicts or status not in PAID_STATES:
+                continue
+            if paid is None or currency == "UNKNOWN":
+                unresolved_payment = True
+                continue
+            collected[currency] = collected.get(currency, Decimal(0)) + paid
+        # A paid transaction can be an installment, not settlement of the operation.
+        # Never net currencies or replace a remaining advertised amount with zero.
+        at_risk = {c: max(Decimal(0), v - collected.get(c, Decimal(0))) for c, v in advertised.items()}
+        remaining = {c: v for c, v in at_risk.items() if v > 0}
+        payout_issue, payout_action, payout_actor = None, None, "them"
+        if unresolved_payment:
+            payout_issue, payout_actor = "unreconciled_payout", "us"
+            payout_action = "Reconcile conflicting or incomplete payment records with the provider; retain the operation."
+        elif paid_stage and remaining:
+            payout_issue = "partial_payout"
+            balance = "; ".join(f"{c} {v}" for c, v in sorted(remaining.items()))
+            payout_action = "Follow up on the remaining advertised amount: " + balance + "."
+        if payout_issue:
+            reasons.append("payout:" + payout_issue)
+            if blocking is None:
+                waiting_on = "waiting_on_us" if payout_actor == "us" else "waiting_on_them"
+                waiting_for = "payment reconciliation" if payout_actor == "us" else "remaining advertised amount"
+                next_action = payout_action
         if publication and publication["state"] != "clear":
             waiting_on, waiting_for = "waiting_on_us", "held outward write (" + publication["state"] + ")"
             next_action = publication["instruction"]
             reasons.insert(0, "publication:" + publication["state"])
-        next_action = recorded_next or next_action
-        reached = [r for r in records if r["state"] in {"done", "pending"}]
-        stage = reached[-1] if reached else (records[-1] if records else None)
-        terminal = stage is not None and stage["stage"] == "paid" and stage["state"] == "done"
-        collected = {}
-        for currency, paid in payments.values():
-            collected[currency] = collected.get(currency, Decimal(0)) + paid
-        at_risk = {c: Decimal(0) if terminal else max(Decimal(0), v - collected.get(c, Decimal(0)))
-                   for c, v in advertised.items()}
+        terminal = bool(paid_stage and not payout_issue and blocking is None
+                        and (publication is None or publication["state"] == "clear"))
         # A gate stalls when the blocking stage, or the furthest stage reached
         # while payout is still open, sits past its window.
         gate, window, age_days, stalled = blocking or stage, None, None, False
@@ -296,6 +330,8 @@ def build_decisions(work, now=None, operator_control=None):
                 found.append(("owner_only", record))
         if stalled:
             found.append(("stalled", gate))
+        if payout_issue:
+            found.append((payout_issue, stage))
         if publication and publication["state"] != "clear":
             found.append(("publication_" + publication["state"].replace(":", "_"), None))
         for reason, record in found:
@@ -304,9 +340,10 @@ def build_decisions(work, now=None, operator_control=None):
                 "deadline": record["deadline"] if record else None,
                 "stage_age_days": age_days if reason == "stalled" else None,
                 "gate_window_days": window if reason == "stalled" else None,
-                "who_acts": ((blocking or {}).get("who_acts") or "us") if reason == "stalled" else record["who_acts"] if record else "us",
+                "who_acts": (payout_actor if reason == payout_issue else
+                             ((blocking or {}).get("who_acts") or "us") if reason == "stalled" else record["who_acts"] if record else "us"),
                 "account": (record["owner_account"] if record and record["owner_account"] != UNKNOWN else account),
-                "action": (next_action if reason == "stalled" else
+                "action": (payout_action if reason == payout_issue else next_action if reason == "stalled" else
                            record["action"] if record and record["action"] else
                            publication["instruction"] if record is None else
                            next_action if record is blocking else f"Complete {record['label']}."),
@@ -314,6 +351,8 @@ def build_decisions(work, now=None, operator_control=None):
         unknowns = [{"field": "stage", "answer_source": "provider stage on the operation record (stage or metadata.provider_stage)"}] if not records else []
         if not advertised:
             unknowns.append({"field": "money_at_risk", "answer_source": "advertised amount on the bounty/program listing (metadata.advertised_amount)"})
+        if unresolved_payment:
+            unknowns.append({"field": "money_collected", "answer_source": "latest provider payment records; displayed amounts include only unconflicted payments with known amounts and currencies"})
         if account == UNKNOWN:
             unknowns.append({"field": "owner", "answer_source": "claim holder in state/claims or metadata.owner_account"})
         if waiting_on == UNKNOWN and blocking is not None:
@@ -322,7 +361,8 @@ def build_decisions(work, now=None, operator_control=None):
         agent_rows = sorted(agents.values(), key=lambda a: (a["state"] != "blocked", a["seat"]))
         rows.append({
             "operation": key, "stage": stage["stage"] if stage else UNKNOWN,
-            "stage_state": stage["state"] if stage else UNKNOWN,
+            "stage_state": ("partial" if payout_issue == "partial_payout" else "unreconciled"
+                            if payout_issue else stage["state"]) if stage else UNKNOWN,
             "stages": [{k: v for k, v in r.items() if k != "item"} for r in records],
             "stage_age_days": age_days, "gate_window_days": window, "gate_stale": stalled,
             "merged_prs": len(merged_prs),
@@ -333,7 +373,8 @@ def build_decisions(work, now=None, operator_control=None):
             "publication": publication,
             "money_at_risk": [_money(v, c) for c, v in sorted(at_risk.items())] or UNKNOWN,
             "money_collected": [_money(v, c) for c, v in sorted(collected.items())] or (
-                [_money(Decimal(0), c) for c in sorted(advertised)] if advertised else UNKNOWN),
+                [_money(Decimal(0), c) for c in sorted(advertised)] if advertised and not unresolved_payment else UNKNOWN),
+            "payment_conflicts": len(money_conflicts),
             "terminal": terminal,
             "agents": agent_rows[:MAX_ROWS],
             "sources": [_source_state(sources[s], health_rows.get(s), tick) for s in used][:MAX_ROWS],
