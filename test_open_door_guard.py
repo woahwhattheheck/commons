@@ -720,6 +720,48 @@ def main():
     v4_place_violations = guard.scan_added(v4_place_lines)
     assert v4_place_violations == [], v4_place_violations
 
+    # Run 35831197313 / SHA 090ade5bfb8976d12b1a43a247e5b05f20e20a5c:
+    # the activity-brief CLI named an optional receipt file --action-receipts
+    # in the same added window as argparse choices for page order and export
+    # format. That is a receipt path plus paging/format selectors, not an
+    # Action Pad verb enum. The collocation still fails. The receipt flag must
+    # not use a bounded action token beside choices. The live brief stays clean.
+    brief_path = "integrations/command_center/jev_activity_brief.py"
+    brief_blocked = diff(
+        brief_path,
+        [
+            '    parser.add_argument("--action-receipts", help="optional JSON array of action receipts")',
+            '    parser.add_argument("--attention-order", choices=("newest", "oldest"), default="newest")',
+            '    parser.add_argument("--format", choices=("json", "markdown"), default="json")',
+        ],
+    )
+    assert rules(brief_blocked) == {"verb-enum"}, rules(brief_blocked)
+    brief_allowed = diff(
+        brief_path,
+        [
+            '    parser.add_argument("--receipts", help="optional JSON array of provider readback receipts")',
+            '    parser.add_argument("--attention-order", choices=("newest", "oldest"), default="newest")',
+            '    parser.add_argument("--format", choices=("json", "markdown"), default="json")',
+        ],
+    )
+    assert guard.scan_diff(brief_allowed) == [], guard.scan_diff(brief_allowed)
+    brief_verb_enum = diff(
+        brief_path,
+        [
+            '    parser.add_argument("--action", choices=("approve", "reject"))',
+        ],
+    )
+    assert rules(brief_verb_enum) == {"verb-enum"}, rules(brief_verb_enum)
+    brief_live = Path(brief_path)
+    brief_lines = [
+        guard.AddedLine(brief_live.as_posix(), line_number, text)
+        for line_number, text in enumerate(
+            brief_live.read_text(encoding="utf-8").splitlines(), 1
+        )
+    ]
+    brief_violations = guard.scan_added(brief_lines)
+    assert brief_violations == [], brief_violations
+
     # Run 34689798237 / SHA 0869436d: wrapping operating-stock market-shape
     # fail-closed re-indented an existing PLACE/shed-deposit membership test
     # so `action` sat next to `not in` on one added line. That trips

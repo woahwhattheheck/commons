@@ -450,7 +450,7 @@ def _read_json(path: str) -> Any:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("report", help="existing compiled event-ledger report JSON")
-    parser.add_argument("--action-receipts", help="optional JSON array of action receipts")
+    parser.add_argument("--receipts", help="optional JSON array of provider readback receipts")
     parser.add_argument("--attention-order", choices=("newest", "oldest"), default="newest")
     parser.add_argument("--attention-limit", type=int, default=MAX_ATTENTION)
     parser.add_argument("--attention-cursor", help="continuation from this same ledger snapshot")
@@ -460,7 +460,7 @@ def main(argv: list[str] | None = None) -> int:
     try:
         record = compile_brief(
             _read_json(args.report),
-            _read_json(args.action_receipts) if args.action_receipts else None,
+            _read_json(args.receipts) if args.receipts else None,
             attention_order=args.attention_order, attention_limit=args.attention_limit,
             attention_cursor=args.attention_cursor,
         )
