@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 1732,
+    "open_issues": 1708,
     "open_pull_requests": 9,
     "runs_in_progress": 19,
-    "runs_queued": 226
+    "runs_queued": 205
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -179,7 +179,7 @@
   },
   "pulls_listed": 9,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 11.9,
+  "queue_depth_per_runner": 10.8,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -283,24 +283,46 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "repair/uiowa096-page-script-rehearsal-20260923",
-      "closed_at": "2026-09-23T07:55:24Z",
-      "head_sha": "029033559db5383c92c49b3e550e2aa6d799fa5b",
-      "merged_at": "2026-09-23T07:55:24Z",
-      "number": 19315,
+      "branch": "yz-moraine/uiowa047-purge-20260923",
+      "closed_at": "2026-09-23T07:35:42Z",
+      "head_sha": "179238c4b9f98bbf79ea8a50ba7e193a127ba081",
+      "merged_at": "2026-09-23T07:35:42Z",
+      "number": 19274,
       "state": "MERGED",
-      "title": "Run Iowa workbench page scripts in the UIOWA096 rehearsal"
+      "title": "UIOWA-047: remove generated suites and historical receipt sprawl"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "swarm-yz/keel47-lineage-report-reader-20260923",
-      "closed_at": "2026-09-23T07:35:45Z",
-      "head_sha": "d2b74734ed6d668f8b80794abd60972fad8db04b",
-      "merged_at": "2026-09-23T07:35:45Z",
-      "number": 19276,
+      "branch": "yz-meridian/evidence-register-csv-20260923",
+      "closed_at": "2026-09-23T07:34:54Z",
+      "head_sha": "ec6533d9726bcbb1f5831e2c04f54d6e836e75c9",
+      "merged_at": "2026-09-23T07:34:54Z",
+      "number": 19275,
       "state": "MERGED",
-      "title": "Make ordinary lineage reports usable as offline finding reviews"
+      "title": "feat(lineage): add end-to-end CSV evidence register intake"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "yz-kestrel-bridge/file-drop-payload-fidelity-20260923",
+      "closed_at": "2026-09-23T07:34:29Z",
+      "head_sha": "4f95f81c72224d2f519bafc1790dd8cc5702c994",
+      "merged_at": "2026-09-23T07:34:29Z",
+      "number": 19272,
+      "state": "MERGED",
+      "title": "Preserve upload filenames and multipart integrity"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "yz-basalt6n4/waste-operator-console",
+      "closed_at": "2026-09-23T07:33:23Z",
+      "head_sha": "18bee2345c81b120bb915116c491a286bfef91d8",
+      "merged_at": "2026-09-23T07:33:23Z",
+      "number": 19269,
+      "state": "MERGED",
+      "title": "Commercial Waste: ship browser route and invoice-draft operations"
     },
     {
       "author": "woahwhattheheck",
@@ -323,32 +345,10 @@
       "number": 15801,
       "state": "MERGED",
       "title": "board: suppress proven-complete UNSEATED work from live queue"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "yz-kestrel/bridge-terminal-outcomes-20260923",
-      "closed_at": "2026-09-23T07:30:32Z",
-      "head_sha": "68927bb9f148cfdfbadc7c22d2f8c8b318dc7d16",
-      "merged_at": "2026-09-23T07:30:31Z",
-      "number": 19263,
-      "state": "MERGED",
-      "title": "fix(pc-bridge): terminal outcomes for unreadable starts and one-shot failures"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "yz-kestrel-vireo8/current-onboarding-20260923",
-      "closed_at": "2026-09-23T07:29:22Z",
-      "head_sha": "a70e57afb2fc877c688d02ddf1128a1b312d18c8",
-      "merged_at": "2026-09-23T07:29:22Z",
-      "number": 19262,
-      "state": "MERGED",
-      "title": "Remove superseded review and test-work directions from agent onboarding"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-23T08:29:52Z",
+  "unchanged_since": "2026-09-23T08:32:12Z",
   "undatable_pulls": []
 }
