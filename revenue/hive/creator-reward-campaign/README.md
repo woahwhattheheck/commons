@@ -35,31 +35,24 @@ A transient pathname swap that is restored between those public-path fences is i
 
 Pinned-file custody alone does not prove that an existing SQLite file belongs to this product. Before **any** identity PRAGMA or product DDL touches a nonempty database, the successor now requires the connection/header identities to agree and compares the complete non-internal `sqlite_master` generation against a canonical fingerprint produced from the exact frozen predecessor DDL. A foreign file with only a `brands` table, an incompatible `brands` schema, extra application objects, or an otherwise foreign schema is refused byte-identically. An exact identity-less legacy generation may be adopted once; an already identified desk must additionally carry the predecessor's positive-odd identity generation. Fresh empty files remain initializable.
 
-The old `_descriptor_proof` helper remains only inside the frozen predecessor module for historical test compatibility; successor `Desk._open` no longer consults it. The old one-table `_adopt` heuristic is overridden and is not used by the successor.
+The old `_descriptor_proof` helper remains inside the frozen predecessor module; successor `Desk._open` no longer consults it. The old one-table `_adopt` heuristic is overridden and is not used by the successor.
 
 ## Files
 
 - `server.py` — successor pinned-FD custody and positive startup-generation authority (`b039a16fa0f0942e21530014dcdc143bed9eb426`)
 - `server_legacy.py` — byte-identical predecessor business logic (`9866c61d2ec81f2e569c7dee548b178de6a06ba2`)
-- `test_desk.py` — successor hostile entrypoint; retains predecessor coverage, replaces obsolete descriptor-delta assertions, and adds foreign-database byte-preservation / exact-legacy-adoption predecessors (`8b294b0b83111d7909bcf2bdc1a49184e7bf2689`)
-- `test_desk_legacy.py` — byte-identical predecessor hostile suite (`e202a2d3beb58950d110f09f2149446790258bf4`)
 - `index.html` — local browser desk
 - `example.json` — synthetic idempotent demo
-- `/test_hive_creator_reward_campaign.py` — root retained-battery bridge; executes the nested suite normally and spawns the full successor suite under `python -O`
 
 ## Run
 
 From this directory:
 
 ```bash
-python -m py_compile server.py server_legacy.py test_desk.py test_desk_legacy.py
-python -W error::ResourceWarning -m unittest -v test_desk.py
-python -O -W error::ResourceWarning -m unittest -v test_desk.py
-python -m json.tool example.json >/dev/null
 python server.py --demo --port 8766
 ```
 
-From repository root, `python test_hive_creator_reward_campaign.py` executes the nested suite through the bridge discovered by Commons' retained `tests` battery and independently requires the full successor suite to pass under optimized Python. No new active GitHub Actions workflow is required, so the repository's 67-slot workflow-surface contract remains unchanged. Hosted state must still be read literally; queued/no-run infrastructure is UNKNOWN, not green.
+The former nested test batteries and their root launcher have been retired. The server entrypoint, business implementation, browser desk, and example input remain unchanged.
 
 ## Authority ceiling
 
