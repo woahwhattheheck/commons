@@ -39,7 +39,7 @@ KEEP = {
     "hub_pages.py": "673dab89",
     "ground/OWNER_NOW.md": "39a0e0c3",
     "host/slack_mirror.py": "72c0844e",
-    "CLAUDE.md": "ac158b12",
+    "CLAUDE.md": "a8f9bba8",
 }
 
 

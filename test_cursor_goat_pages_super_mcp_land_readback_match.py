@@ -19,7 +19,7 @@ COIL = ROOT / "p/coil-tools-super-mcp-fold-20260902-01.md"
 
 KEEP = {
     "p/cursor-goat-pages-super-mcp-land-readback-20260902-01.md": "f98887bf",
-    "test_cursor_goat_pages_super_mcp_land_readback.py": "5f6b99e1",
+    "test_cursor_goat_pages_super_mcp_land_readback.py": "7dda6220",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
     "catalog.html": "68b9b066",
     "boards.html": "68ba5e60",
@@ -36,7 +36,7 @@ KEEP = {
     "test_commerce_agents.py": "f0ff008c",
     "p/cursor-big-huge-commerce-agents-20260902-01.md": "fddb5a7c",
     "host/commerce_agents_same_loop.py": "c90f6e50",
-    "test_commerce_agents_same_loop.py": "c8c8d5e8",
+    "test_commerce_agents_same_loop.py": "4b9b5f4a",
     "p/cursor-claude-commerce-agents-readback-20260902-01.md": "0153924f",
     "p/cursor-harborline-commerce-compose-readback-20260902-01.md": "b33e2e24",
     "p/cursor-harborline-commerce-compose-keep-lift-20260902-01.md": "668dd5c4",
@@ -46,7 +46,7 @@ KEEP = {
 
 STALE_INNER_TEST = "0eec19c8"
 STALE_BOARDS = "9a690bbe"
-LIVE_INNER_TEST = "5f6b99e1"
+LIVE_INNER_TEST = "7dda6220"
 LIVE_BOARDS = "68ba5e60"
 
 
