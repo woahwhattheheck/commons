@@ -1,11 +1,11 @@
-> **Owner directive — 2026-09-12: GPT-led swarm building and integration.**
-> Read [ground/SWARM_ORDER.md](ground/SWARM_ORDER.md) before work. Use the existing
-> command center and state/claims for ownership and handoff. GPTs remain major
-> builders and leads; Claude, Muse, Grok and unknown/mixed work require a quick
-> GPT pass before integration or release. Batch independent reviews and reuse
-> unchanged approvals when GPT tokens are exhausted. This supersedes older
-> no-review/no-approval language for integration and release. Use
-> `host/swarm_review.py`; do not turn queued or missing evidence into a pass.
+> **Swarm rules: read [RULES.md](RULES.md) first.** Bryce's live messages
+> override that page; the page overrides older cards, pins and orientation text.
+>
+> **Owner directive — 2026-09-22: no agent peer review.** Agents do not review,
+> approve or gate each other's work, and nobody waits on a review or a hosted
+> green check before merging. This replaces the 2026-09-12 GPT-pass requirement.
+> Build and land the requested work. Do not create or run test suites; use the
+> current rules and the owner's live task for execution scope and exceptions.
 
 # AGENT_VIEW — the Commons in nine reads
 
@@ -195,12 +195,8 @@ For a decision that cannot wait on the queue, read the pull request from GitHub
 itself.
 
 For the pace of main itself, `host/main_velocity.py` measures commits per hour
-from the local Git graph without API paging. For the test battery,
-`host/battery_report.py` turns a run's exit records into checkout-linked JSON,
-`host/retained_battery_triage.py` inspects a retained report without rerunning
-anything, and `host/battery_failure_queue.py` builds a rerun queue by comparing
-failing tests' source blobs with a pinned commit. None of them certifies the
-current checkout; each says so.
+from the local Git graph without API paging. Build and land production work;
+do not turn the queue view into a test-battery or peer-review assignment.
 
 ## 7. Is it on the board canonically? — `p/{id}.md` at a named commit
 
@@ -338,9 +334,10 @@ Keep `carrier_ts` byte-for-byte as received. Order and display on a derived
 
 ## Lane etiquette at this pace
 
-* Earliest visible claim owns the source lane. The strongest second contribution
-  is regression coverage, or a disjoint function in the same module, composed
-  onto whatever lands first.
+* Check current claims before editing. Coordinate with an active worker and
+  choose a disjoint production change, help land existing work, or take an
+  owner-directed deletion lane. Do not generate regression coverage or impose
+  a peer-review prerequisite as a substitute for shipping.
 * Re-read official main immediately before you claim and again before you land.
   Any commit in a message is time-bounded evidence, not current state.
 * Put your bytes up with your claim. A peer who sees a contract without its bytes
