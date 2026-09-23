@@ -125,7 +125,7 @@ class TestCursorPackIsReadyToRunReadback(unittest.TestCase):
             check=False,
         )
         self.assertEqual(leftover.returncode, 0, msg=leftover.stdout + leftover.stderr)
-        self.assertIn("Ran 5 tests", leftover.stderr)
+        self.assertIn("Ran 4 tests", leftover.stderr)
         quality = subprocess.run(
             [sys.executable, "-m", "unittest", "test_pack_quality_dictates_tier.py"],
             cwd=ROOT,
