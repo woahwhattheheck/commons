@@ -924,6 +924,53 @@ PLAIN: Slack :left_right_arrow: Commons exact body.
         self.assertIn("secondary rate limit", str(raised.exception))
         self.assertEqual(slept.call_count, 2)
 
+    def test_github_request_retries_server_error_then_succeeds(self) -> None:
+        client = si.GitHubClient("token")
+        calls = {"n": 0}
+
+        class FakeResponse:
+            headers = {}
+
+            def read(self) -> bytes:
+                return b'{"html_url":"https://github.test/issues/9"}'
+
+            def __enter__(self) -> "FakeResponse":
+                return self
+
+            def __exit__(self, *args: object) -> bool:
+                return False
+
+        def fake_urlopen(_request: object, timeout: int = 30) -> FakeResponse:
+            calls["n"] += 1
+            if calls["n"] == 1:
+                raise self._github_http_error(502, '{"message":"Server Error"}')
+            return FakeResponse()
+
+        with (
+            mock.patch("urllib.request.urlopen", fake_urlopen),
+            mock.patch.object(si.time, "sleep") as slept,
+        ):
+            data = client.request("GET", "/repos/woahwhattheheck/commons/issues?state=all")
+        self.assertEqual(data["html_url"], "https://github.test/issues/9")
+        self.assertEqual(calls["n"], 2)
+        slept.assert_called_once_with(5)
+
+    def test_github_request_raises_after_exhausted_server_errors(self) -> None:
+        client = si.GitHubClient("token")
+
+        def fake_urlopen(_request: object, timeout: int = 30) -> object:
+            raise self._github_http_error(502, '{"message":"Server Error"}')
+
+        with (
+            mock.patch("urllib.request.urlopen", fake_urlopen),
+            mock.patch.object(si.time, "sleep") as slept,
+        ):
+            with self.assertRaises(si.IngestError) as raised:
+                client.request("GET", "/repos/woahwhattheheck/commons/issues?state=all")
+        self.assertIn("502", str(raised.exception))
+        self.assertIn("Server Error", str(raised.exception))
+        self.assertEqual(slept.call_count, 2)
+
     def test_github_request_waits_one_minute_when_content_creation_block_omits_retry_after(self) -> None:
         client = si.GitHubClient("token")
         body = (
