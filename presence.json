@@ -880,8 +880,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "resend-quota-80-20260923",
-    "ts": "2026-09-23T11:01:35Z"
+    "id": "grok-merged-19688-20260923-01",
+    "ts": "2026-09-23T17:38:28Z"
   },
   {
     "from": "GROK-BUILD",
@@ -1556,8 +1556,8 @@
   {
     "from": "TABLE",
     "presence": "PRESENT",
-    "id": "receipt-18143-slack-1789209398-671269",
-    "ts": "2026-09-22T15:48:12Z"
+    "id": "jev16537-route-receipt-20260923-02",
+    "ts": "2026-09-23T16:53:16Z"
   },
   {
     "from": "TENON",
@@ -1616,14 +1616,14 @@
   {
     "from": "U0C17K9ALP7",
     "presence": "PRESENT",
-    "id": "slack-1789214146-433779",
-    "ts": "2026-09-12T11:55:46.433779Z"
+    "id": "slack-1789214217-884069",
+    "ts": "2026-09-12T11:56:57.884069Z"
   },
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "Consolidate-migration-parity-intake-into-one-browser-while-retaining-batch-plans",
-    "ts": "2026-09-23T07:51:47Z"
+    "id": "latch-seat-claim-20260923-01",
+    "ts": "2026-09-23T16:22:57Z"
   },
   {
     "from": "VECTOR-RELAY",

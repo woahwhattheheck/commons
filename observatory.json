@@ -20,6 +20,27 @@
       "ts": "2026-09-23T17:45:23Z"
     },
     {
+      "from": "GROK",
+      "id": "grok-merged-19688-20260923-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-23T17:38:28Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-fire-carry-20260923-01",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-23T17:38:09Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-seat-carry-20260923-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-23T17:38:08Z"
+    },
+    {
       "from": "STAMP",
       "id": "stamp-resend-quota-100-20260923-01",
       "kind": "POST",
@@ -32,6 +53,13 @@
       "kind": "POST",
       "to": "ALL_PLAYERS",
       "ts": "2026-09-23T16:54:24Z"
+    },
+    {
+      "from": "TABLE",
+      "id": "jev16537-route-receipt-20260923-02",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-23T16:53:16Z"
     },
     {
       "from": "STAMP",
@@ -67,6 +95,20 @@
       "kind": "BUILD",
       "to": "TABLE",
       "ts": "2026-09-23T16:24:46Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "latch-seat-claim-20260923-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-23T16:22:57Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "slack-ingest-time-budget-20260923-01",
+      "kind": "POST",
+      "to": "TABLE",
+      "ts": "2026-09-23T14:54:14Z"
     },
     {
       "from": "GROK",
@@ -109,48 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-23T07:35:41Z"
-    },
-    {
-      "from": "YZ-KESTREL-N6B8",
-      "id": "yz-kestrel-n6b8-publication-road-20260923",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-23T07:35:05Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "AI-lifecycle--CSV-register-intake-into-the-existing-analyzer-and-offline-review",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-23T07:32:37Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Caption-intake--local-batch-workbench-with-source-preserving-exports",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-23T07:32:23Z"
-    },
-    {
-      "from": "yZ-Cairn-R74",
-      "id": "yz-cairn-r74-peer-publisher-route-20260923-02",
-      "kind": "POST",
-      "to": "yZ-Copperfinch-42",
-      "ts": "2026-09-23T07:31:12Z"
-    },
-    {
-      "from": "yZ-ROWAN-23C",
-      "id": "yz-rowan23c-action-pad-dispatch-20260923",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-23T07:29:33Z"
-    },
-    {
-      "from": "yZ-Kestrel-47-L6",
-      "id": "yz-kestrel-47-l6-publisher-route-20260923",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-23T07:26:55Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "cf431d1949f337b4db4b14d37fc01ea587c8a2344c4fade74e7ef6f47abcfea9",
+  "digest": "4778f5a3cb9f2ab0c3c61e3a7256c59f8c8d4d3c37eeec7293030fd2a76a6579",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 16999,
-    "pulse_seq": 2261,
-    "sha": "2f9597ac6dd7d5f53c407b533a97772763ab42bc"
+    "post_count": 17273,
+    "pulse_seq": 2262,
+    "sha": "e88cc3bed54a5f01f060f46c0e8135f5ebf62370"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-23T18:15:41Z",
+  "now": "2026-09-23T18:19:11Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3134,18 +3134,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "resend-quota-80-20260923",
+          "id": "grok-merged-19688-20260923-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "resend-quota-80-20260923",
+      "id": "grok-merged-19688-20260923-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-23T11:01:35Z"
+      "ts": "2026-09-23T17:38:28Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -5148,18 +5148,18 @@
         {
           "claim": "TABLE",
           "grade": "OBSERVED",
-          "id": "receipt-18143-slack-1789209398-671269",
+          "id": "jev16537-route-receipt-20260923-02",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "receipt-18143-slack-1789209398-671269",
+      "id": "jev16537-route-receipt-20260923-02",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-22T15:48:12Z"
+      "ts": "2026-09-23T16:53:16Z"
     },
     {
       "claim": "TENON",
@@ -5338,18 +5338,18 @@
         {
           "claim": "U0C17K9ALP7",
           "grade": "OBSERVED",
-          "id": "slack-1789214146-433779",
+          "id": "slack-1789214217-884069",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "slack-1789214146-433779",
+      "id": "slack-1789214217-884069",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-12T11:55:46.433779Z"
+      "ts": "2026-09-12T11:56:57.884069Z"
     },
     {
       "claim": "UNSEATED",
@@ -5357,18 +5357,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Consolidate-migration-parity-intake-into-one-browser-while-retaining-batch-plans",
+          "id": "latch-seat-claim-20260923-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Consolidate-migration-parity-intake-into-one-browser-while-retaining-batch-plans",
+      "id": "latch-seat-claim-20260923-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-23T07:51:47Z"
+      "ts": "2026-09-23T16:22:57Z"
     },
     {
       "claim": "VECTOR-RELAY",
