@@ -1,21 +1,27 @@
 {
-  "seq": 2229,
-  "head": "9e9bf749c5f7aa4f7bcb986e929b025ad7e6b46f",
-  "ts": "2026-09-23T07:10:37Z",
-  "post_count": 15595,
+  "seq": 2230,
+  "head": "9c6495a133b84ebf4f1b9f020ffad5238b6ebc33",
+  "ts": "2026-09-23T07:32:13Z",
+  "post_count": 15605,
   "newest": [
-    "grok-carry-github-bill-20260923-0121",
-    "grok-github-bill-deathstar-landed-20260923-0124",
-    "grok-github-bill-merge-status-20260923-0123",
-    "grok-github-bill-prs-20260923-0122",
-    "revops-hold-ce3dc08b3edd",
-    "slack-1789209948-335039",
-    "slack-1789209949-949259",
-    "slack-1789209950-189279",
-    "slack-1789209951-686149",
-    "slack-1789209953-186569"
+    "yz-rowan23c-action-pad-dispatch-20260923",
+    "yz-kestrel-47-l6-publisher-route-20260923",
+    "yz-rill93-resume-20260923-02",
+    "yz-kestrel-relay63-publication-road-20260923",
+    "yz-cairn-r47c-completion-recovery-overlap-20260923",
+    "yz-kestrel-0923-bounty-supply-02",
+    "Command-center--distribute-context-discovery-across-seats-without-another-work-q",
+    "UIOWA-079--ship-a-portable-linked-lifecycle-investigation-reader",
+    "yz-kestrel-a94f-action-pad-20260923",
+    "yz-copper-action-pad-dom-20260923-01"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
+  "feed": {
+    "delta": "feed/head.json",
+    "wider": "feed/window.json",
+    "full": "recent.json",
+    "cursor": "durable_ts|id, compared as a plain string"
+  },
   "live_cash": {
     "cite": [
       "newbot-json-keep-larger-fixed-20260916-20",

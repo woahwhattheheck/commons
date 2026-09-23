@@ -293,6 +293,35 @@ def _result_record(job_id: str, *, state: str, started_at: str | None,
     return row
 
 
+def _uncertain_start(job_id: str, raw: bytes | None) -> dict[str, Any] | None:
+    """Finish an unreadable or stale claim without replaying its side effects."""
+    try:
+        marker = json.loads((raw or b"").decode("utf-8"), object_pairs_hook=_unique_object)
+    except (UnicodeDecodeError, json.JSONDecodeError, RequestError):
+        marker = {}
+    started_at = marker.get("started_at") if isinstance(marker, dict) else None
+    stamp = _parse_time(started_at)
+    now = datetime.now(timezone.utc)
+    valid = (isinstance(marker, dict) and marker.get("schema") == START_SCHEMA
+             and marker.get("job_id") == job_id and stamp is not None
+             and stamp <= now + timedelta(minutes=5))
+    if valid:
+        if (now - stamp).total_seconds() <= STARTED_STALE_SECONDS:
+            return None
+        message = "Execution started but no result was saved. The bridge will not replay it."
+    else:
+        message = "Start marker is invalid; execution cannot be determined. The bridge will not replay it."
+    return _result_record(job_id, state="UNCERTAIN",
+                          started_at=started_at if isinstance(started_at, str) else None,
+                          message=message)
+
+
+def _once_exit_code(outcome: dict[str, Any]) -> int:
+    if outcome.get("state") == "IDLE":
+        return 0
+    return 0 if outcome.get("state") == "DONE" and outcome.get("ok") is True else 1
+
+
 def _run_hands(request: dict[str, Any]) -> dict[str, Any]:
     from host.titan_hands.one_tool import TitanHandsOne
 
@@ -357,7 +386,8 @@ def _deliver_pending() -> dict[str, Any]:
     if observed != _json_bytes(record):
         raise BridgeError("RESULT_CONFLICT", "A different result exists; it was not overwritten. Do not replay the job.")
     _pending_result = None
-    return {"state": record["state"], "processed": True, "job_id": job_id, "result_published": True}
+    return {"state": record["state"], "ok": record["ok"], "processed": True,
+            "job_id": job_id, "result_published": True}
 
 
 def _finish(record: dict[str, Any]) -> dict[str, Any]:
@@ -392,20 +422,8 @@ def process_one() -> dict[str, Any]:
             continue
         if job_id in started:
             marker_raw = _read_file(started[job_id], missing_ok=True)
-            try:
-                marker = json.loads((marker_raw or b"").decode("utf-8"))
-            except (UnicodeDecodeError, json.JSONDecodeError):
-                marker = {}
-            started_at = str(marker.get("started_at") or "") if isinstance(marker, dict) else ""
-            stamp = _parse_time(started_at)
-            now = datetime.now(timezone.utc)
-            invalid_marker = (not isinstance(marker, dict) or marker.get("schema") != START_SCHEMA
-                              or marker.get("job_id") != job_id or stamp is None
-                              or stamp > now + timedelta(minutes=5))
-            if invalid_marker or (now - stamp).total_seconds() > STARTED_STALE_SECONDS:
-                uncertain = _result_record(job_id, state="UNCERTAIN", started_at=started_at or None,
-                                           message="A start marker exists but no result was saved. "
-                                                   "Execution outcome is unknown; the bridge will not replay it.")
+            uncertain = _uncertain_start(job_id, marker_raw)
+            if uncertain is not None:
                 return _finish(uncertain)
             continue
         try:
@@ -448,7 +466,7 @@ def main(argv: list[str] | None = None) -> int:
             if args.once:
                 outcome = process_one()
                 print(json.dumps(outcome, ensure_ascii=True, sort_keys=True))
-                return 0 if outcome["state"] in {"DONE", "IDLE"} else 1
+                return _once_exit_code(outcome)
             while True:
                 try:
                     outcome = process_one()

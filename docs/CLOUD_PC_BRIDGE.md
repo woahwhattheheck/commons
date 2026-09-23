@@ -95,7 +95,10 @@ start metadata also becomes `UNCERTAIN`. A broker exception is `UNCERTAIN`, sinc
 it may follow a side effect; an explicit `ok: false` response remains `FAILED`.
 Neither state proves nothing happened. Inspect the affected system before
 issuing a new job ID. `--once` exits 1 for a failed/uncertain/incomplete job and 2
-for a bridge error; exiting also loses any undelivered in-flight result.
+for a bridge error. Exit 0 means the one-shot poll returned `IDLE`, or a stored
+`DONE` result with `ok: true`; it does not mean every queued job completed.
+Exiting also loses any undelivered in-flight result. Continue to read the private
+result file for the job's durable outcome.
 
 To stop without rebooting, first pause new enqueues and allow active work and
 pending delivery to finish. Then disable and stop the task, retaining the cloud
