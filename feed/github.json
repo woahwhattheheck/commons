@@ -1,69 +1,51 @@
 {
   "counts": {
-    "open_issues": 6365,
-    "open_pull_requests": 2,
-    "runs_in_progress": 9,
+    "open_issues": 9201,
+    "open_pull_requests": 0,
+    "runs_in_progress": 4,
     "runs_queued": 70
   },
   "counts_source": "graphql",
-  "degraded": [],
-  "drafts": 0,
-  "longest_open": [
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/15622-current-main-successor-20260917",
-      "created_at": "2026-09-18T02:01:53Z",
-      "draft": false,
-      "head_sha": "6c2b11996ab4ad34059e8203261bcc0255ce4124",
-      "number": 15875,
-      "title": "board: rejoin proven-complete UNSEATED suppression onto current main",
-      "updated_at": "2026-09-23T17:45:05Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/zz-quartz-m7r4-completion-history-20260919",
-      "created_at": "2026-09-19T14:20:26Z",
-      "draft": false,
-      "head_sha": "bc22a70333c5565e2e3871e863457a5590396b9b",
-      "number": 16289,
-      "title": "board: recover completion history and prevent stale-recent resurrection",
-      "updated_at": "2026-09-23T19:02:56Z"
-    }
+  "degraded": [
+    "pulls"
   ],
-  "newest_pulls": [
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/zz-quartz-m7r4-completion-history-20260919",
-      "created_at": "2026-09-19T14:20:26Z",
-      "draft": false,
-      "head_sha": "bc22a70333c5565e2e3871e863457a5590396b9b",
-      "number": 16289,
-      "title": "board: recover completion history and prevent stale-recent resurrection",
-      "updated_at": "2026-09-23T19:02:56Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/15622-current-main-successor-20260917",
-      "created_at": "2026-09-18T02:01:53Z",
-      "draft": false,
-      "head_sha": "6c2b11996ab4ad34059e8203261bcc0255ce4124",
-      "number": 15875,
-      "title": "board: rejoin proven-complete UNSEATED suppression onto current main",
-      "updated_at": "2026-09-23T17:45:05Z"
-    }
-  ],
-  "open_heads": {
-    "15875": "6c2b11996ab4ad34059e8203261bcc0255ce4124",
-    "16289": "bc22a70333c5565e2e3871e863457a5590396b9b"
-  },
-  "pulls_listed": 2,
-  "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 7.8,
+  "pulls_listed": "UNKNOWN",
+  "pulls_listing": "UNKNOWN",
+  "queue_depth_per_runner": 17.5,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "grok/issue-16537",
+      "closed_at": "2026-09-23T21:37:51Z",
+      "head_sha": "ab55db9bac2cfec1a0b0a0e31ffaf647ecd290aa",
+      "merged_at": "2026-09-23T21:37:51Z",
+      "number": 27447,
+      "state": "MERGED",
+      "title": "GitHub issue-update window and 19:24 gap coverage"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/15622-current-main-successor-20260917",
+      "closed_at": "2026-09-23T20:12:05Z",
+      "head_sha": "6c2b11996ab4ad34059e8203261bcc0255ce4124",
+      "merged_at": null,
+      "number": 15875,
+      "state": "CLOSED",
+      "title": "board: rejoin proven-complete UNSEATED suppression onto current main"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/zz-quartz-m7r4-completion-history-20260919",
+      "closed_at": "2026-09-23T20:12:04Z",
+      "head_sha": "bc22a70333c5565e2e3871e863457a5590396b9b",
+      "merged_at": null,
+      "number": 16289,
+      "state": "CLOSED",
+      "title": "board: recover completion history and prevent stale-recent resurrection"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -195,43 +177,9 @@
       "number": 23813,
       "state": "MERGED",
       "title": "Run the UIOWA-138 companion receipt regression"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "repair/slack-ingest-census-keep-pages-20260923-01",
-      "closed_at": "2026-09-23T18:34:11Z",
-      "head_sha": "95d64e8fbc89fb48f69dfcba8d510da3cca0e52b",
-      "merged_at": "2026-09-23T18:34:11Z",
-      "number": 23699,
-      "state": "MERGED",
-      "title": "Keep a partial Slack ingest census after HTTP 400"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "latch/uiowa-138-open-work-prefix-20260923-01",
-      "closed_at": "2026-09-23T18:30:15Z",
-      "head_sha": "c736adb887b74d3f435d24fb90b7bde55a7310c5",
-      "merged_at": "2026-09-23T18:30:15Z",
-      "number": 23587,
-      "state": "MERGED",
-      "title": "Latch: close UIOWA-138 OPEN via companion receipt prefix"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "latch/context-source-health-19323-20260923-01",
-      "closed_at": "2026-09-23T18:28:30Z",
-      "head_sha": "2bbccecc8486baccad4c38b353dc7a1cfc3ba37e",
-      "merged_at": "2026-09-23T18:28:30Z",
-      "number": 23533,
-      "state": "MERGED",
-      "title": "Keep all-source health on empty/filtered context pages (#19323)"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-23T19:52:35Z",
-  "undatable_pulls": []
+  "unchanged_since": "2026-09-23T21:47:28Z"
 }
