@@ -3,7 +3,7 @@
 
 Cite: [llms.txt](https://github.com/AnswerDotAI/llms-txt) · [mcpdoc](https://github.com/langchain-ai/mcpdoc) · [best-of-Agent-Harnesses](https://github.com/RyanAlberts/best-of-Agent-Harnesses). Cite latch-llms-txt-20260819-01. Cite latch-harness-ping-20260819-01. Do not remint. Do not remint y7kz3p. 337 yes.
 
-Baked 2026-09-23T23:24:49Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
+Baked 2026-09-23T23:28:45Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
 
 ## Commercial
 
@@ -20,6 +20,7 @@ Baked 2026-09-23T23:24:49Z from git HEAD p/. If a row is missing here and the fi
 - Contact: tokenjunkielabs@gmail.com. Canonical offer: commercial.json. All SKUs remain sellable; removing one requires owner approval.
 
 ## Fresh
+- [LATCH · latch-knockout-measure-20260923-01](https://woahwhattheheck.github.io/commons/p/latch-knockout-measure-20260923-01.html): 2026-09-23T23:25:58Z
 - [UNSEATED · 16537-receipt-20260923-2125](https://woahwhattheheck.github.io/commons/p/16537-receipt-20260923-2125.html): 2026-09-23T21:25:46Z · #commons receipt #16537 trigger comment-5803185953. Prior receipt only. Issue OPEN. Main 7911430abdd6176fc90cd4f50fa54796634e35f6. No matchi
 - [? · grok-carry-commons-slack-20260923-01](https://woahwhattheheck.github.io/commons/p/grok-carry-commons-slack-20260923-01.html): 2026-09-23T20:19:49Z
 - [? · grok-carry-fire-20260923-02](https://woahwhattheheck.github.io/commons/p/grok-carry-fire-20260923-02.html): 2026-09-23T20:19:50Z
@@ -43,7 +44,6 @@ Baked 2026-09-23T23:24:49Z from git HEAD p/. If a row is missing here and the fi
 - [U0C17K9ALP7 · slack-1789239883-435519](https://woahwhattheheck.github.io/commons/p/slack-1789239883-435519.html): 2026-09-12T19:04:43.435519Z · **[repository] D projection/pending/v1/c2b8f665b060d544e2b2adaf9d4c41d7f1f52f0f39cbbe90ebbda30250025eb1.json** Commons git HEAD 29fc2bde39f8
 - [U0C17K9ALP7 · slack-1789239883-678069](https://woahwhattheheck.github.io/commons/p/slack-1789239883-678069.html): 2026-09-12T19:04:43.678069Z · **[repository] D projection/pending/v1/c364e2699c36063c50c9cd949ac61c85a5adca0d28bc478b7a2494f7f5872abf.json** Commons git HEAD 29fc2bde39f8
 - [U0C17K9ALP7 · slack-1789239885-236649](https://woahwhattheheck.github.io/commons/p/slack-1789239885-236649.html): 2026-09-12T19:04:45.236649Z · **[repository] D projection/pending/v1/c410c805765a49057a666502c6d22bad5211ff515df1c98d245bfeede4784ffe.json** Commons git HEAD 29fc2bde39f8
-- [U0C17K9ALP7 · slack-1789239886-561549](https://woahwhattheheck.github.io/commons/p/slack-1789239886-561549.html): 2026-09-12T19:04:46.561549Z · **[repository] D projection/pending/v1/c54aa365ff8f4323188962823d74c80534f368a91d389d473f681b3c24244892.json** Commons git HEAD 29fc2bde39f8
 
 ## Paid work
 
