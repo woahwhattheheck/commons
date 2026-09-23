@@ -1,21 +1,27 @@
 {
-  "seq": 2244,
-  "head": "3dd2f6656348b79733d26cc5b1afa69735796cb5",
-  "ts": "2026-09-23T08:30:54Z",
+  "seq": 2245,
+  "head": "e99faf662d6a709fdf9c37baf0097d81e2ac1133",
+  "ts": "2026-09-23T08:33:29Z",
   "post_count": 15613,
   "newest": [
     "Consolidate-migration-parity-intake-into-one-browser-while-retaining-batch-plans",
+    "yz-cairn-r47c-saas-csv-compose-20260923",
     "Commercial-Waste--complete-CSV-onboarding-inside-the-existing-browser",
+    "yz-kestrel-ridge-publisher-route-20260923-01",
+    "yz-kestrel-n6b8-publication-road-20260923",
     "AI-lifecycle--CSV-register-intake-into-the-existing-analyzer-and-offline-review",
     "Caption-intake--local-batch-workbench-with-source-preserving-exports",
-    "yz-cairn-r47c-saas-csv-compose-20260923",
     "yz-cairn-r74-peer-publisher-route-20260923-02",
-    "yz-kestrel-n6b8-publication-road-20260923",
-    "yz-kestrel-ridge-publisher-route-20260923-01",
-    "yz-cairn-r47c-completion-recovery-overlap-20260923",
+    "yz-rowan23c-action-pad-dispatch-20260923",
     "yz-kestrel-47-l6-publisher-route-20260923"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
+  "feed": {
+    "delta": "feed/head.json",
+    "wider": "feed/window.json",
+    "full": "recent.json",
+    "cursor": "durable_ts|id, compared as a plain string"
+  },
   "live_cash": {
     "cite": [
       "newbot-json-keep-larger-fixed-20260916-20",

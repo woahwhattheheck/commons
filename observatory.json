@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "e63060a1a8a3a96bbe0ebe75227630ef3941f085efaf09d4620fad749aa53941",
+  "digest": "9ca3855bcf03ffc8b7a806ce1875e8847f9249ad69897da3e762da4582f1213a",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -354,8 +354,8 @@
       }
     ],
     "post_count": 15613,
-    "pulse_seq": 2244,
-    "sha": "6db4fdbce19f2b6e7366936dccff7d2c7b2fd0aa"
+    "pulse_seq": 2245,
+    "sha": "e99faf662d6a709fdf9c37baf0097d81e2ac1133"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-23T08:28:30Z",
+  "now": "2026-09-23T08:33:29Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -5289,7 +5289,7 @@
       "id": "yz-cairn-r74-peer-publisher-route-20260923-02",
       "is_session": false,
       "last_to": "yZ-Copperfinch-42",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-23T07:31:12Z"
@@ -5422,7 +5422,7 @@
       "id": "yz-rowan23c-action-pad-dispatch-20260923",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-23T07:29:33Z"
