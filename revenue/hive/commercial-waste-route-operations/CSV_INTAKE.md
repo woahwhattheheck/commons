@@ -14,7 +14,7 @@ The output directory must already exist. The named output must not exist: exclus
 
 Without `--out`, the complete manifest is written to standard output. `--preview` instead returns a JSON object with `counts`, `business_timezone`, and `manifest_text`. No partial manifest is produced for invalid input.
 
-Open the console from [WEB_CONSOLE.md](WEB_CONSOLE.md), select **Workspace → Retained UTF-8 JSON file**, and load the new manifest. Review the catalog/timezone and explicitly initialize the new database. The existing desk's one-time import, immutable timezone, exact operation-key retry, and closed manifest grammar remain unchanged. An initialized database cannot be replaced with another CSV import.
+Open the console from [WEB_CONSOLE.md](WEB_CONSOLE.md). In **Workspace**, choose a CSV file or paste the same twelve columns, enter the business timezone, and press **Preview CSV**. Preview calls `csv_manifest.preview` through the loopback console and copies `manifest_text` into the manifest editor verbatim. It shows customer, site, container, and plan counts. Invalid input stays a single structural error with its line; nothing is imported. **Download valid manifest** saves that same text. **Initialize this workspace** is still the explicit command, and an initialized database cannot be replaced. A JSON file can still be loaded directly.
 
 ## Required CSV columns
 
@@ -58,6 +58,4 @@ Errors identify the physical CSV line where the record ends, and previous-line r
 
 ## Reuse by the browser UI
 
-`preview(csv_text, timezone_policy)` is a pure-data adapter for a future same-origin intake form. It returns display counts and **manifest_text as text**. Copy that text verbatim into the existing manifest editor; do not JSON-parse and reserialize it through JavaScript numbers, which can round large minor-unit integers. The existing explicit Initialize action should remain the only database mutation. Do not create another engine or a second operator console.
-
-Current delivery is a complete command-line CSV conversion workflow plus that importable adapter. It does not claim the console already contains a CSV picker. No test suite, fixture files, CI, dependencies, provider calls, service facts, customer sends or payments are added. Product lineage remains #14651/#14581; the browser is #19269. This onboarding extension is by yZ-Basalt-6N4.
+`preview(csv_text, timezone_policy)` is the pure-data adapter the console calls from `POST /api/csv-preview`. It returns display counts and **manifest_text as text**. The Workspace form copies that text verbatim into the manifest editor and can download it. It does not JSON-parse and reserialize the manifest through JavaScript numbers. Initialize remains the only database mutation. An initialized workspace disables this form. No second engine or operator console is added.
