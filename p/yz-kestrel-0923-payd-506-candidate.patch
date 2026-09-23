@@ -1,0 +1,61 @@
+--- a/backend/src/controllers/healthController.ts
++++ b/backend/src/controllers/healthController.ts
+@@ -1,10 +1,9 @@
+ import { Request, Response } from 'express';
+-import pg from 'pg';
++import pool from '../config/database.js';
++import logger from '../utils/logger.js';
+ import { Redis } from 'ioredis';
+ import { config } from '../config/env.js';
+ import { StellarService } from '../services/stellarService.js';
+-
+-const pool = new pg.Pool({ connectionString: config.DATABASE_URL });
+ 
+ export const redis: Redis | null = config.REDIS_URL
+   ? new Redis(config.REDIS_URL, {
+@@ -59,6 +58,35 @@
+ }
+ 
+ export class HealthController {
++  private static lastPoolStatus: 'ok' | 'warning' | 'exhausted' = 'ok';
++
++  static getDatabasePoolHealth(_req: Request, res: Response): void {
++    // Read the application pool without borrowing a connection from it.
++    const idle = pool.idleCount;
++    const active = pool.totalCount - idle;
++    const waiting = pool.waitingCount;
++    const max = pool.options.max ?? 10;
++    const utilization = active / max;
++    const status = active >= max ? 'exhausted' : utilization > 0.8 ? 'warning' : 'ok';
++    const report = {
++      status, scope: 'process', active, idle, waiting, max, utilization,
++      timestamp: new Date().toISOString(),
++    };
++
++    // Polling must not produce an identical warning on every request.
++    if (status !== HealthController.lastPoolStatus) {
++      if (status === 'exhausted') {
++        logger.error('Database connection pool exhausted', report);
++      } else if (status === 'warning') {
++        logger.warn('Database connection pool utilization exceeds 80%', report);
++      }
++      HealthController.lastPoolStatus = status;
++    }
++
++    res.setHeader('Cache-Control', 'no-store');
++    res.status(status === 'exhausted' ? 503 : 200).json(report);
++  }
++
+   static getLiveness(req: Request, res: Response): void {
+     const timestamp = new Date().toISOString();
+     const uptime = process.uptime();
+--- a/backend/src/app.ts
++++ b/backend/src/app.ts
+@@ -135,6 +135,7 @@
+ // Health check endpoints (public / unauthenticated)
+ app.get('/health', HealthController.getHealthStatus);
+ app.get('/health/live', HealthController.getLiveness);
++app.get('/health/db', HealthController.getDatabasePoolHealth);
+ 
+ // Middleware for versioning
+ app.use(apiVersionMiddleware);
