@@ -16,6 +16,11 @@ so answers are consumed directly by code — no parsing, no guardrails.
   python3 host/jev.py --self-test
   python3 host/jev.py --questions-file q.json --state-file post.md
   python3 host/jev.py --questions-file q.json --state - < post.md
+  python3 host/jev.py --transport hosted --questions-file q.json --state-file post.md
+
+Direct transport is the compatibility default. Hosted transport is explicit,
+uses the existing Commons endpoint, and never reads or forwards a local key.
+It uses the deployment's jev-latest model; there is no automatic fallback.
 
 Key resolution policy (never printed, never written to the repo):
   1. credvault: Windows Credential Manager generic target
@@ -42,6 +47,9 @@ import urllib.request
 from ctypes import wintypes
 
 API_URL = "https://api.typesafe.ai/v1/systemone"
+HOSTED_URL = "https://commons-spark-mcp.vercel.app/jev"
+TRANSPORTS = ("direct", "hosted")
+MAX_HOSTED_BODY_BYTES = 256 * 1024
 DEFAULT_MODEL = "jev-latest"
 ENV_KEY = "TYPESAFE_API_KEY"
 CREDVAULT_TARGETS = ("commons:typesafe:api-key", "typesafe/api-key")
@@ -52,7 +60,11 @@ MAX_QUESTIONS = 500
 
 
 class JevError(Exception):
-    """Typed failure: key-state / BAD_KEY / HTTP_<status> / TRANSPORT / BAD_REPLY."""
+    """Typed failure, with provider retry delay when a numeric header is supplied."""
+
+    def __init__(self, code: str, *, retry_after_seconds: int | None = None):
+        super().__init__(code)
+        self.retry_after_seconds = retry_after_seconds
 
 
 class CREDENTIALW(ctypes.Structure):
@@ -223,8 +235,31 @@ def validate_questions(questions) -> list:
     return problems
 
 
-def systemone(state, questions, model=DEFAULT_MODEL, timeout=60, key=None):
-    """One System One call. Returns the decoded API response dict."""
+class _NoHostedRedirect(urllib.request.HTTPRedirectHandler):
+    """Do not redirect submitted state away from the selected hosted endpoint."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
+
+
+def _hosted_error(data, fallback):
+    """Expose a bounded error code, never the provider body or submitted state."""
+    error = data.get("error") if isinstance(data, dict) else None
+    code = error.get("code") if isinstance(error, dict) else None
+    if isinstance(code, str) and re.fullmatch(r"[A-Z][A-Z0-9_]{0,63}", code):
+        return "HOSTED_" + code
+    return fallback
+
+
+def systemone(state, questions, model=DEFAULT_MODEL, timeout=60, key=None,
+              *, transport="direct"):
+    """One direct or hosted call; no retries, credential forwarding, or fallback.
+
+    Existing calls remain direct, including the hosted server's own provider
+    call. Select hosted explicitly for a cloud worker without a local key.
+    """
+    if transport not in TRANSPORTS:
+        raise JevError("BAD_TRANSPORT")
     if not isinstance(state, str) or not state.strip():
         raise JevError("EMPTY_STATE")
     if len(state.encode("utf-8")) > MAX_STATE_BYTES:
@@ -232,33 +267,51 @@ def systemone(state, questions, model=DEFAULT_MODEL, timeout=60, key=None):
     problems = validate_questions(questions)
     if problems:
         raise JevError("BAD_QUESTIONS:" + ";".join(problems[:5]))
-    key = key if key is not None else load_key()
-    if not key:
-        raise JevError("NO_KEY")
-    if not _header_safe_key(key):
-        raise JevError("BAD_KEY") from None
+    headers = {"Content-Type": "application/json", "User-Agent": "commons-jev/1.0"}
+    if transport == "hosted":
+        if key is not None:
+            raise JevError("HOSTED_KEY_NOT_ACCEPTED")
+        # api/jev.py deliberately selects DEFAULT_MODEL server-side.
+        if model != DEFAULT_MODEL:
+            raise JevError("HOSTED_MODEL_NOT_SUPPORTED")
+        url = HOSTED_URL
+    else:
+        key = key if key is not None else load_key()
+        if not key:
+            raise JevError("NO_KEY")
+        if not _header_safe_key(key):
+            raise JevError("BAD_KEY") from None
+        headers["Authorization"] = "Bearer " + key
+        url = API_URL
     payload = {"state": state, "model": model, "questions": questions}
-    body = json.dumps(payload).encode("utf-8")
-    req = urllib.request.Request(
-        API_URL,
-        data=body,
-        method="POST",
-        headers={
-            "Authorization": "Bearer " + key,
-            "Content-Type": "application/json",
-            "User-Agent": "commons-jev/1.0",
-        },
-    )
+    body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+    # The hosted limit covers questions and JSON framing as well as state.
+    if transport == "hosted" and len(body) > MAX_HOSTED_BODY_BYTES:
+        raise JevError("HOSTED_BODY_TOO_LARGE")
+    req = urllib.request.Request(url, data=body, method="POST", headers=headers)
+    opener = (urllib.request.build_opener(_NoHostedRedirect()).open
+              if transport == "hosted" else urllib.request.urlopen)
     try:
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
+        with opener(req, timeout=timeout) as resp:
             data = json.load(resp)
     except urllib.error.HTTPError as err:
-        raise JevError(f"HTTP_{err.code}") from None
+        code = f"HTTP_{err.code}"
+        delay = (err.headers.get("Retry-After", "") if err.headers else "").strip()
+        retry_after = int(delay) if re.fullmatch(r"[0-9]{1,9}", delay) else None
+        with err:
+            if transport == "hosted":
+                try:
+                    code = _hosted_error(json.loads(err.read(4096)), code)
+                except (ValueError, OSError):
+                    pass
+        raise JevError(code, retry_after_seconds=retry_after) from None
     except OSError:
         raise JevError("TRANSPORT") from None
-    except ValueError as err:
+    except ValueError:
         raise JevError("BAD_REPLY") from None
-    if not isinstance(data, dict) or "answers" not in data:
+    if transport == "hosted" and (not isinstance(data, dict) or data.get("ok") is not True):
+        raise JevError(_hosted_error(data, "HOSTED_BAD_REPLY"))
+    if not isinstance(data, dict) or not isinstance(data.get("answers"), dict):
         raise JevError("BAD_REPLY")
     return data
 
@@ -305,6 +358,8 @@ def main(argv=None) -> int:
     parser.add_argument("--state-file", help="file containing the state")
     parser.add_argument("--questions-file", help="JSON file of typed questions")
     parser.add_argument("--questions", help="inline JSON of typed questions")
+    parser.add_argument("--transport", choices=TRANSPORTS, default="direct",
+                        help="direct uses a local key; hosted uses the Commons server key")
     parser.add_argument("--model", default=DEFAULT_MODEL)
     parser.add_argument("--timeout", type=int, default=60)
     parser.add_argument("--self-test", action="store_true")
@@ -334,15 +389,21 @@ def main(argv=None) -> int:
         return 2
 
     try:
-        result = systemone(state, questions, model=args.model, timeout=args.timeout)
+        result = systemone(state, questions, model=args.model, timeout=args.timeout,
+                           transport=args.transport)
     except JevError as err:
         code = str(err)
-        out = {"error": code}
+        out = {"error": code, "transport": args.transport}
+        if err.retry_after_seconds is not None:
+            out["retry_after_seconds"] = err.retry_after_seconds
         if code == "NO_KEY":
             out["message"] = (
                 "Set TYPESAFE_API_KEY or store a Windows generic credential at "
-                "'commons:typesafe:api-key'. Dashboard: console.typesafe.ai/settings/keys"
+                "'commons:typesafe:api-key', or explicitly select --transport hosted "
+                "to use the existing Commons deployment without a local key."
             )
+        elif code == "HOSTED_NO_KEY":
+            out["message"] = "The Commons deployment has no server key; no local key was read or sent."
         print(json.dumps(out), file=sys.stderr)
         return 2
     print(json.dumps(result, indent=2))
