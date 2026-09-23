@@ -778,6 +778,27 @@ def github_retry_after(headers: Any, default: int = 15) -> int:
     return seconds
 
 
+def ingest_budget_sec() -> float:
+    """Optional wall-clock budget for one sync so the job can save its cursor.
+
+    GitHub cancels ``slack_ingest`` at ``timeout-minutes`` and skips the
+    cache save. A positive ``SLACK_INGEST_BUDGET_SEC`` stops the write loop
+    with the applied cursor and a zero exit so the next run continues.
+    Unset or non-positive means no budget.
+    """
+    raw = str(os.environ.get("SLACK_INGEST_BUDGET_SEC") or "").strip()
+    if not raw:
+        return 0.0
+    try:
+        seconds = float(raw)
+    except ValueError:
+        return 0.0
+    if seconds <= 0:
+        return 0.0
+    return seconds
+
+
+
 _NEXT_LINK_RE = re.compile(r'<([^>]+)>\s*;\s*rel="next"')
 
 
@@ -1027,8 +1048,14 @@ def cmd_sync(
     created: list[dict[str, str]] = []
     applied = _cursor_decimal(oldest)
     pending = {record.title: record for record in records}
+    budget = ingest_budget_sec()
+    deadline = time.monotonic() + budget if budget else None
+    truncated = False
     try:
         for event in events:
+            if deadline is not None and time.monotonic() >= deadline:
+                truncated = True
+                break
             clock = _decimal_ts(event_clock(event))
             if should_skip(event):
                 applied = max(applied, clock)
@@ -1043,24 +1070,25 @@ def cmd_sync(
                     {"id": planned.title, "issue": github.create_issue(planned)}
                 )
             applied = max(applied, clock)
-        cursor = max(
-            [applied, *(_decimal_ts(event_clock(event)) for event in events)],
-        )
+        if truncated:
+            cursor = applied
+        else:
+            cursor = max(
+                [applied, *(_decimal_ts(event_clock(event)) for event in events)],
+            )
         write_state(state_path, format(cursor, "f"))
     except IngestError:
         write_state(state_path, format(applied, "f"))
         raise
-    print(
-        json.dumps(
-            {
-                "after": oldest,
-                "cursor": format(cursor, "f"),
-                "planned": len(records),
-                "created": created,
-            },
-            indent=2,
-        )
-    )
+    payload = {
+        "after": oldest,
+        "cursor": format(cursor, "f"),
+        "planned": len(records),
+        "created": created,
+    }
+    if truncated:
+        payload["truncated"] = True
+    print(json.dumps(payload, indent=2))
     return 0
 
 
