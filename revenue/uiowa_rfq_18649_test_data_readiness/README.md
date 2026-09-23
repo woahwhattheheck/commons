@@ -77,6 +77,18 @@ python3 -m unittest -v tests/test_assessor.py
 
 The default output is Markdown. JSON output preserves the same checks and evidence states for later report tooling.
 
+## Start from the editable CSV
+
+```bash
+python3 catalog_from_csv.py catalog_template.csv --as-of 2026-09-19 --label 'Synthetic starter' --output catalog.new.json
+python3 test_data_assessor.py catalog.new.json
+```
+
+The importer preserves source bytes and row identity, keeps blank evidence distinct
+from `[]`, false and zero, and refuses existing output paths. See
+[CSV intake](CSV_INTAKE.md) for the exact format, safe-save limits and one focused
+end-to-end regression. Assessment semantics and the original starter are unchanged.
+
 ## Test discovery
 
 Run the full component suite from this directory:
