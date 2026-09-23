@@ -69,15 +69,3 @@ The assessor's separate `--output` path may replace a distinct regular report,
 but refuses source-catalog aliases and symbolic-link outputs. It stages the report
 before replacement; see [report preservation](OUTPUT_PRESERVATION.md). The commands
 above print assessment results. The CSV importer itself never replaces a file.
-
-## One focused regression
-
-```sh
-python3 -O -B -m unittest discover -s tests -p test_csv_intake.py -v
-```
-
-One test executes starter CSV -> importer CLI -> existing assessor CLI, checks a
-refused source alias, and uses a fictional ESS/RIS/IAM catalog for missing/empty,
-missing/false, missing/zero, future-date, multiline Unicode and retained extra-column
-states. It also checks malformed headers/rows and boolean typing. The assessor,
-starter and pre-existing suites are not modified or copied into a new framework.
