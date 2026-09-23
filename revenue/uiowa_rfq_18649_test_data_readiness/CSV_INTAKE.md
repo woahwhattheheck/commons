@@ -65,9 +65,10 @@ choose a new filename after inspecting it. This is no-overwrite protection, not 
 atomic durable-save or adversarial ancestor-swap guarantee. Do not use shell output
 redirection for conversion: the shell can truncate a file before Python starts.
 
-The existing assessor is unchanged and its `--output` still replaces files. The
-commands above deliberately print assessment results instead of overwriting a
-catalog; never give the assessor its input path as its report output.
+The assessor's separate `--output` path may replace a distinct regular report,
+but refuses source-catalog aliases and symbolic-link outputs. It stages the report
+before replacement; see [report preservation](OUTPUT_PRESERVATION.md). The commands
+above print assessment results. The CSV importer itself never replaces a file.
 
 ## One focused regression
 
