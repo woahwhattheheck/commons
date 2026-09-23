@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 1665,
-    "open_pull_requests": 9,
-    "runs_in_progress": 19,
-    "runs_queued": 182
+    "open_issues": 1443,
+    "open_pull_requests": 7,
+    "runs_in_progress": 5,
+    "runs_queued": 70
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -34,17 +34,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsol/org-outbound-chain-current-main-r2-20260918",
-      "created_at": "2026-09-18T01:22:05Z",
-      "draft": false,
-      "head_sha": "a0c47ae54f43d5ade1110b29d63f3b42ec8597a0",
-      "number": 15836,
-      "title": "Outbound: recover mandatory organization-aware provider chain on current main",
-      "updated_at": "2026-09-18T05:56:09Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "zsol/15622-current-main-successor-20260917",
       "created_at": "2026-09-18T02:01:53Z",
       "draft": false,
@@ -63,20 +52,20 @@
       "number": 15888,
       "title": "Revenue: topology-clean rejoin for partner qualification gate",
       "updated_at": "2026-09-23T00:25:22Z"
-    }
-  ],
-  "newest_pulls": [
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "yz-alder731/freudenthal-grid-mean-repair",
-      "created_at": "2026-09-23T07:38:56Z",
+      "branch": "swarm-zz/uiowa-078-orbit27-ai-economics",
+      "created_at": "2026-09-19T13:38:13Z",
       "draft": false,
-      "head_sha": "897696d8a6912701136d62c613a0346bd7e8c497",
-      "number": 19286,
-      "title": "Assemble exact quartic cell-mean repairs over rectangular grids",
-      "updated_at": "2026-09-23T07:38:56Z"
-    },
+      "head_sha": "0d788098b9da196cab9efe387707672a86622516",
+      "number": 16134,
+      "title": "UIOWA-078 companion: formula workbook and independent economics acceptance oracle",
+      "updated_at": "2026-09-23T07:29:25Z"
+    }
+  ],
+  "newest_pulls": [
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -86,7 +75,7 @@
       "head_sha": "1a9a82977a599347f1d123656265db1e322f3880",
       "number": 16289,
       "title": "board: recover completion history and prevent stale-recent resurrection",
-      "updated_at": "2026-09-23T07:47:22Z"
+      "updated_at": "2026-09-23T08:44:58Z"
     },
     {
       "author": "woahwhattheheck",
@@ -135,17 +124,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsol/org-outbound-chain-current-main-r2-20260918",
-      "created_at": "2026-09-18T01:22:05Z",
-      "draft": false,
-      "head_sha": "a0c47ae54f43d5ade1110b29d63f3b42ec8597a0",
-      "number": 15836,
-      "title": "Outbound: recover mandatory organization-aware provider chain on current main",
-      "updated_at": "2026-09-18T05:56:09Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "z-sol/outreach-qualification-firewall-15638-20260917",
       "created_at": "2026-09-17T20:52:18Z",
       "draft": false,
@@ -169,18 +147,49 @@
   "open_heads": {
     "15613": "96be91936b40e03845096e93d906cc9b5d6f1865",
     "15751": "b87f58434b653ee8bed28b8c85bbe3eb49d95905",
-    "15836": "a0c47ae54f43d5ade1110b29d63f3b42ec8597a0",
     "15875": "6c2b11996ab4ad34059e8203261bcc0255ce4124",
     "15888": "abb4d4b8f9e1b223c21a28e644132ebdd3b50085",
     "16134": "0d788098b9da196cab9efe387707672a86622516",
     "16195": "c883b6995c934f8a58ca745dc1cc84cb6131e590",
-    "16289": "1a9a82977a599347f1d123656265db1e322f3880",
-    "19286": "897696d8a6912701136d62c613a0346bd7e8c497"
+    "16289": "1a9a82977a599347f1d123656265db1e322f3880"
   },
-  "pulls_listed": 9,
+  "pulls_listed": 7,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 9.6,
+  "queue_depth_per_runner": 14.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "yz-alder731/freudenthal-grid-mean-repair",
+      "closed_at": "2026-09-23T08:42:30Z",
+      "head_sha": "897696d8a6912701136d62c613a0346bd7e8c497",
+      "merged_at": "2026-09-23T08:42:29Z",
+      "number": 19286,
+      "state": "MERGED",
+      "title": "Assemble exact quartic cell-mean repairs over rectangular grids"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "yz-cairn-82m/outbound-recovery-15836",
+      "closed_at": "2026-09-23T08:41:05Z",
+      "head_sha": "a3eb4390e79be75a2c290022c14e446a81b5c1e7",
+      "merged_at": "2026-09-23T08:41:05Z",
+      "number": 19331,
+      "state": "MERGED",
+      "title": "Recover stranded outbound dependency binding while preserving the live registry"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "yz-lattice-73a/qcover-heterogeneous",
+      "closed_at": "2026-09-23T08:36:55Z",
+      "head_sha": "bedc035ce70cb5904864e3175b75b07213dbff3d",
+      "merged_at": "2026-09-23T08:36:55Z",
+      "number": 19330,
+      "state": "MERGED",
+      "title": "Extend partition-matroid q=4 cover to arbitrary independent biases"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -228,6 +237,61 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "yz/tern7v6-localized-media-review",
+      "closed_at": "2026-09-23T08:12:48Z",
+      "head_sha": "f22a5606d5ec4e1847f036432bc30cd29a09ea23",
+      "merged_at": "2026-09-23T08:12:48Z",
+      "number": 19321,
+      "state": "MERGED",
+      "title": "Add read-only localized-media portfolio review with complete native exports"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "yz-kestrel-v68/unify-parity-workbench-19307",
+      "closed_at": "2026-09-23T08:07:55Z",
+      "head_sha": "dc102c9f0c3a014d92273ad5d6848f8f86273632",
+      "merged_at": "2026-09-23T08:07:55Z",
+      "number": 19320,
+      "state": "MERGED",
+      "title": "Consolidate migration intake into one workbench with reusable plans and private replay"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "yz/tern7v6-localized-media-purge",
+      "closed_at": "2026-09-23T08:06:09Z",
+      "head_sha": "d7dfdfab0cf1dac8939a66d1831c7e13054494da",
+      "merged_at": "2026-09-23T08:06:09Z",
+      "number": 19319,
+      "state": "MERGED",
+      "title": "Delete localized-media generated suites and obsolete execution blocks"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "yz-cairn-7f2/jev-operation-brief-20260923",
+      "closed_at": "2026-09-23T08:05:55Z",
+      "head_sha": "d8ff68967cbbbf5ea8b6b7f9d37bcb6fd6d9330c",
+      "merged_at": "2026-09-23T08:05:55Z",
+      "number": 19317,
+      "state": "MERGED",
+      "title": "Show effective Jev operation state without replaying confirmed history"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "yz-feldspar-2e3582/laundry-console-consolidation",
+      "closed_at": "2026-09-23T07:57:25Z",
+      "head_sha": "b15c4de7f5434716163c9b17de9a193150513b8c",
+      "merged_at": "2026-09-23T07:57:25Z",
+      "number": 19316,
+      "state": "MERGED",
+      "title": "Consolidate laundry consoles without losing session or retry recovery"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "swarm-zz/rivet-uiowa128-navigation-20260919",
       "closed_at": "2026-09-23T07:57:19Z",
       "head_sha": "ffb4be3d9c50f4d4e0bc2f8f2d7bcfb270345fda",
@@ -239,116 +303,28 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zz-sol/lane-10-pages-live-receipt",
-      "closed_at": "2026-09-23T07:36:52Z",
-      "head_sha": "bf4d5c7be7ba5dc9e0ce16d2538060038e9a240b",
-      "merged_at": "2026-09-23T07:36:52Z",
-      "number": 19282,
+      "branch": "repair/uiowa096-page-script-rehearsal-20260923",
+      "closed_at": "2026-09-23T07:55:24Z",
+      "head_sha": "029033559db5383c92c49b3e550e2aa6d799fa5b",
+      "merged_at": "2026-09-23T07:55:24Z",
+      "number": 19315,
       "state": "MERGED",
-      "title": "fix(pages): verify live deployment receipt"
+      "title": "Run Iowa workbench page scripts in the UIOWA096 rehearsal"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "yz-kestrel/lineage-csv-bundle-20260923",
-      "closed_at": "2026-09-23T07:36:36Z",
-      "head_sha": "1decb3dc497421eebacc11865e6bf20a3b5015e7",
-      "merged_at": "2026-09-23T07:36:36Z",
-      "number": 19281,
+      "branch": "repair/open-door-jev-brief-receipt-flag-20260923",
+      "closed_at": "2026-09-23T07:54:52Z",
+      "head_sha": "e1b0c66180c9de2c7ee3365f841513e58ed1ce08",
+      "merged_at": "2026-09-23T07:54:51Z",
+      "number": 19314,
       "state": "MERGED",
-      "title": "Build complete offline evidence reports from CSV registers"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "runner-efficiency-20260923",
-      "closed_at": "2026-09-23T07:36:34Z",
-      "head_sha": "669d72888e7d30b3f4fbffa702d157618bf4a712",
-      "merged_at": "2026-09-23T07:36:34Z",
-      "number": 19280,
-      "state": "MERGED",
-      "title": "Avoid idle range replays and unnecessary historical blob downloads"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "yz-kestrel7f3/credential-ci-lock-20260923",
-      "closed_at": "2026-09-23T07:36:16Z",
-      "head_sha": "75176979a4e91bb3b59bb8981576f9e824143b32",
-      "merged_at": "2026-09-23T07:36:16Z",
-      "number": 19277,
-      "state": "MERGED",
-      "title": "Hash-lock credential-transfer CI binary dependencies"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "yz-moraine/uiowa047-purge-20260923",
-      "closed_at": "2026-09-23T07:35:42Z",
-      "head_sha": "179238c4b9f98bbf79ea8a50ba7e193a127ba081",
-      "merged_at": "2026-09-23T07:35:42Z",
-      "number": 19274,
-      "state": "MERGED",
-      "title": "UIOWA-047: remove generated suites and historical receipt sprawl"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "yz-meridian/evidence-register-csv-20260923",
-      "closed_at": "2026-09-23T07:34:54Z",
-      "head_sha": "ec6533d9726bcbb1f5831e2c04f54d6e836e75c9",
-      "merged_at": "2026-09-23T07:34:54Z",
-      "number": 19275,
-      "state": "MERGED",
-      "title": "feat(lineage): add end-to-end CSV evidence register intake"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "yz-kestrel-bridge/file-drop-payload-fidelity-20260923",
-      "closed_at": "2026-09-23T07:34:29Z",
-      "head_sha": "4f95f81c72224d2f519bafc1790dd8cc5702c994",
-      "merged_at": "2026-09-23T07:34:29Z",
-      "number": 19272,
-      "state": "MERGED",
-      "title": "Preserve upload filenames and multipart integrity"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "yz-basalt6n4/waste-operator-console",
-      "closed_at": "2026-09-23T07:33:23Z",
-      "head_sha": "18bee2345c81b120bb915116c491a286bfef91d8",
-      "merged_at": "2026-09-23T07:33:23Z",
-      "number": 19269,
-      "state": "MERGED",
-      "title": "Commercial Waste: ship browser route and invoice-draft operations"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "yz-copper/action-pad-recovery-20260923",
-      "closed_at": "2026-09-23T07:31:09Z",
-      "head_sha": "09c45c357aa264dfda7386f2dcb78b00ff6d8335",
-      "merged_at": "2026-09-23T07:31:09Z",
-      "number": 19265,
-      "state": "MERGED",
-      "title": "fix(action-pad): restore submission UI and bounded relay recovery"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/unseated-completion-suppression-15622-20260917",
-      "closed_at": "2026-09-23T07:30:35Z",
-      "head_sha": "358551a008eddb1a8f2b02dd60a3af16e0477404",
-      "merged_at": "2026-09-23T07:30:35Z",
-      "number": 15801,
-      "state": "MERGED",
-      "title": "board: suppress proven-complete UNSEATED work from live queue"
+      "title": "Rename the activity-brief receipt flag away from paging choices"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-23T08:34:43Z",
+  "unchanged_since": "2026-09-23T08:46:35Z",
   "undatable_pulls": []
 }
