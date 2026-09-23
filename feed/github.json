@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 5872,
+    "open_issues": 6365,
     "open_pull_requests": 2,
     "runs_in_progress": 9,
-    "runs_queued": 88
+    "runs_queued": 70
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -62,8 +62,19 @@
   },
   "pulls_listed": 2,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 9.8,
+  "queue_depth_per_runner": 7.8,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "work/waste-csv-preview-retain-20260923",
+      "closed_at": "2026-09-23T19:36:10Z",
+      "head_sha": "4d18b0ee8faf1725ffd77f51702f650cbd16d4aa",
+      "merged_at": "2026-09-23T19:36:10Z",
+      "number": 24377,
+      "state": "MERGED",
+      "title": "Keep a reviewed waste CSV manifest when preview fails"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -217,21 +228,10 @@
       "number": 23533,
       "state": "MERGED",
       "title": "Keep all-source health on empty/filtered context pages (#19323)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "latch/tip-keep-merge-stealable-pin-20260923-06",
-      "closed_at": "2026-09-23T18:27:08Z",
-      "head_sha": "bc07b6e02e232a9af20a3d88d29a952556b7a8fb",
-      "merged_at": "2026-09-23T18:27:08Z",
-      "number": 23491,
-      "state": "MERGED",
-      "title": "Tip KEEP: merge-on-pr STEALABLE_LANES pin after #23461 (LATCH)"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-23T19:35:08Z",
+  "unchanged_since": "2026-09-23T19:52:35Z",
   "undatable_pulls": []
 }
