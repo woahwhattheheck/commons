@@ -22,7 +22,7 @@ DOOR = ROOT / "commons-slack.html"
 # These are revision pins; behavioral formatter/chunk tests remain below.
 KEEP = {
     "host/slack_mirror.py": "72c0844e",
-    "slack_ingest.py": "52fc24d6",
+    "slack_ingest.py": "b3176624",
     "test_slack_mirror.py": "739d5ee8",
     "host/landed_work_feed.py": "5a5e5804",
     "repo_pulse.py": "298716e9",
