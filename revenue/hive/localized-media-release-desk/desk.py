@@ -101,20 +101,57 @@ def _open_dir_nofollow(path):
     except Exception:
         os.close(fd); raise
 
+_DESK_SCHEMA = (
+"CREATE TABLE IF NOT EXISTS titles(title_id TEXT PRIMARY KEY,source_name TEXT NOT NULL,source_sha256 TEXT NOT NULL,source_size INTEGER NOT NULL CHECK(source_size>=0),required_json TEXT NOT NULL,rights_ready INTEGER NOT NULL DEFAULT 0 CHECK(rights_ready IN(0,1)),created_at TEXT NOT NULL,updated_at TEXT NOT NULL)",
+"CREATE TABLE IF NOT EXISTS variants(title_id TEXT NOT NULL REFERENCES titles(title_id) ON DELETE CASCADE,locale TEXT NOT NULL,territory TEXT NOT NULL,kind TEXT NOT NULL,revision INTEGER NOT NULL CHECK(revision>=1),artifact_name TEXT NOT NULL,content_sha256 TEXT NOT NULL,content_size INTEGER NOT NULL CHECK(content_size>=0),source_sha256 TEXT NOT NULL,updated_at TEXT NOT NULL,PRIMARY KEY(title_id,locale,territory,kind))",
+"CREATE TABLE IF NOT EXISTS approvals(id INTEGER PRIMARY KEY,title_id TEXT NOT NULL,locale TEXT NOT NULL,territory TEXT NOT NULL,kind TEXT NOT NULL,revision INTEGER NOT NULL,content_sha256 TEXT NOT NULL,reviewer_id TEXT NOT NULL,approved_at TEXT NOT NULL,UNIQUE(title_id,locale,territory,kind,revision,content_sha256,reviewer_id),FOREIGN KEY(title_id,locale,territory,kind) REFERENCES variants(title_id,locale,territory,kind) ON DELETE CASCADE)",
+"CREATE TABLE IF NOT EXISTS events(seq INTEGER PRIMARY KEY,title_id TEXT NOT NULL REFERENCES titles(title_id) ON DELETE CASCADE,event_kind TEXT NOT NULL,detail_json TEXT NOT NULL,at_utc TEXT NOT NULL)",
+"CREATE TABLE IF NOT EXISTS requests(request_id TEXT PRIMARY KEY,op TEXT NOT NULL,payload_sha256 TEXT NOT NULL,result_json TEXT NOT NULL)",
+)
+
+def _canonical_desk_tables():
+    """Stored SQL for the ordinary desk, including keys and constraints."""
+    mem=sqlite3.connect(":memory:")
+    try:
+        for stmt in _DESK_SCHEMA: mem.execute(stmt)
+        return {name: sql for name, sql in mem.execute("SELECT name, sql FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'")}
+    finally: mem.close()
+
+_CANONICAL_DESK_TABLES=None
+def _expected_desk_tables():
+    global _CANONICAL_DESK_TABLES
+    if _CANONICAL_DESK_TABLES is None: _CANONICAL_DESK_TABLES=_canonical_desk_tables()
+    return _CANONICAL_DESK_TABLES
+
 class ReleaseDesk:
     def __init__(self,db_path): self.db_path=os.fspath(db_path); self._init()
     def conn(self):
         c=sqlite3.connect(self.db_path,timeout=30,isolation_level=None); c.row_factory=sqlite3.Row
         c.execute("PRAGMA foreign_keys=ON"); c.execute("PRAGMA busy_timeout=30000"); return c
     def _init(self):
-        sql="""
-CREATE TABLE IF NOT EXISTS titles(title_id TEXT PRIMARY KEY,source_name TEXT NOT NULL,source_sha256 TEXT NOT NULL,source_size INTEGER NOT NULL CHECK(source_size>=0),required_json TEXT NOT NULL,rights_ready INTEGER NOT NULL DEFAULT 0 CHECK(rights_ready IN(0,1)),created_at TEXT NOT NULL,updated_at TEXT NOT NULL);
-CREATE TABLE IF NOT EXISTS variants(title_id TEXT NOT NULL REFERENCES titles(title_id) ON DELETE CASCADE,locale TEXT NOT NULL,territory TEXT NOT NULL,kind TEXT NOT NULL,revision INTEGER NOT NULL CHECK(revision>=1),artifact_name TEXT NOT NULL,content_sha256 TEXT NOT NULL,content_size INTEGER NOT NULL CHECK(content_size>=0),source_sha256 TEXT NOT NULL,updated_at TEXT NOT NULL,PRIMARY KEY(title_id,locale,territory,kind));
-CREATE TABLE IF NOT EXISTS approvals(id INTEGER PRIMARY KEY,title_id TEXT NOT NULL,locale TEXT NOT NULL,territory TEXT NOT NULL,kind TEXT NOT NULL,revision INTEGER NOT NULL,content_sha256 TEXT NOT NULL,reviewer_id TEXT NOT NULL,approved_at TEXT NOT NULL,UNIQUE(title_id,locale,territory,kind,revision,content_sha256,reviewer_id),FOREIGN KEY(title_id,locale,territory,kind) REFERENCES variants(title_id,locale,territory,kind) ON DELETE CASCADE);
-CREATE TABLE IF NOT EXISTS events(seq INTEGER PRIMARY KEY,title_id TEXT NOT NULL REFERENCES titles(title_id) ON DELETE CASCADE,event_kind TEXT NOT NULL,detail_json TEXT NOT NULL,at_utc TEXT NOT NULL);
-CREATE TABLE IF NOT EXISTS requests(request_id TEXT PRIMARY KEY,op TEXT NOT NULL,payload_sha256 TEXT NOT NULL,result_json TEXT NOT NULL);
-"""
-        with closing(self.conn()) as c: c.executescript(sql)
+        """Create a new desk, reopen a compatible one, or refuse anything else.
+
+        A missing file or a database with no tables is initialized inside one
+        transaction. An existing desk is recognized from its tables, columns,
+        keys and constraints on the reserved connection, not from its pathname.
+        A foreign or incompatible database is rolled back unchanged. Views and
+        triggers are not part of the ordinary desk and are refused.
+        """
+        expected=_expected_desk_tables()
+        with closing(self.conn()) as c:
+            c.execute("BEGIN IMMEDIATE")
+            try:
+                found={name: sql for name, sql in c.execute("SELECT name, sql FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'")}
+                if not found:
+                    for stmt in _DESK_SCHEMA: c.execute(stmt)
+                elif set(found)!=set(expected) or any(found[name]!=expected[name] for name in expected):
+                    raise InvalidState("existing database is not a compatible localized-media release desk; schema and rows were not changed")
+                elif c.execute("SELECT 1 FROM sqlite_master WHERE type IN ('view','trigger')").fetchone():
+                    raise InvalidState("existing database has views or triggers the release desk does not own; schema and rows were not changed")
+                c.execute("COMMIT")
+            except Exception:
+                if c.in_transaction: c.execute("ROLLBACK")
+                raise
     def event(self,c,title,kind_,detail,t):
         c.execute("INSERT INTO events(title_id,event_kind,detail_json,at_utc) VALUES(?,?,?,?)",(title,kind_,cj(detail),t)); c.execute("UPDATE titles SET updated_at=? WHERE title_id=?",(t,title))
     def mutate(self,rid,op,payload,fn):
