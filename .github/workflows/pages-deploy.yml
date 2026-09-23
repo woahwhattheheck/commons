@@ -107,3 +107,39 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+      - name: Verify live deployment receipt
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+          EXPECTED_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          import os
+          import time
+          import urllib.request
+
+          page_url = os.environ['PAGE_URL'].rstrip('/')
+          expected_sha = os.environ['EXPECTED_SHA']
+          run_id = os.environ['GITHUB_RUN_ID']
+          run_attempt = os.environ['GITHUB_RUN_ATTEMPT']
+          receipt_url = f"{page_url}/pages-deploy.json?run={run_id}&attempt={run_attempt}"
+          last_seen = None
+
+          for attempt in range(1, 7):
+              try:
+                  with urllib.request.urlopen(receipt_url, timeout=10) as response:
+                      receipt = json.load(response)
+                  last_seen = receipt.get('sha')
+                  if last_seen == expected_sha:
+                      print(f"PAGES_LIVE_RECEIPT_OK url={receipt_url} sha={last_seen} attempt={attempt}")
+                      break
+              except Exception as exc:
+                  last_seen = f"error: {exc}"
+              if attempt < 6:
+                  time.sleep(5)
+          else:
+              raise SystemExit(
+                  f"live Pages receipt mismatch after deploy: expected sha={expected_sha}, last_seen={last_seen!r}"
+              )
+          PY
