@@ -35,6 +35,13 @@
     },
     {
       "from": "UNSEATED",
+      "id": "AI-lifecycle--CSV-register-intake-into-the-existing-analyzer-and-offline-review",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-23T07:32:37Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Caption-intake--local-batch-workbench-with-source-preserving-exports",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": "POST",
       "to": "ALL_PLAYERS",
       "ts": "2026-09-23T01:22:45Z"
-    },
-    {
-      "from": "STAMP",
-      "id": "stamp-github-bill-posts-measure-20260922-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-23T01:22:30Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "6f37960e37cb61ab3acdda3318473c3b3af9b2ef08fe2f0f907764353585625f",
+  "digest": "5a3027e27b5115e86924f76e85e5e17ca05648dd4fdecddca3cbf4de792fc100",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 15610,
-    "pulse_seq": 2234,
-    "sha": "ae4f207d2bc9a1b1f466a407a73656bb76124c16"
+    "post_count": 15611,
+    "pulse_seq": 2235,
+    "sha": "9d6fee8675f5a74c1960b401aebb7b1e9a761743"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-23T07:58:29Z",
+  "now": "2026-09-23T08:02:21Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -5186,18 +5186,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Caption-intake--local-batch-workbench-with-source-preserving-exports",
+          "id": "AI-lifecycle--CSV-register-intake-into-the-existing-analyzer-and-offline-review",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Caption-intake--local-batch-workbench-with-source-preserving-exports",
+      "id": "AI-lifecycle--CSV-register-intake-into-the-existing-analyzer-and-offline-review",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-23T07:32:23Z"
+      "ts": "2026-09-23T07:32:37Z"
     },
     {
       "claim": "VECTOR-RELAY",
