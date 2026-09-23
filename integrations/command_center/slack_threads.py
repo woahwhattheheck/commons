@@ -6,6 +6,7 @@ collectors.py; errors never carry raw exception text or arbitrary provider data.
 from __future__ import annotations
 
 import re
+from copy import deepcopy
 from urllib.parse import parse_qs, urlsplit
 
 
@@ -152,6 +153,7 @@ def read_thread_context(read, channel_id, message, *, page_size=100, max_pages=2
     if not isinstance(channel_id, str) or not re.fullmatch(r"[CG][A-Z0-9]+", channel_id):
         raise ValueError("channel_id must be an existing provider ID.")
     _page({"ok": True, "messages": [message]}, 1)
+    message = deepcopy(message)
     resolution = resolve_thread_root(message, channel_id)
     metadata = {"root_resolution": resolution, "complete": False, "pages_read": 0,
                 "next_cursor": "", "error": None, "reason": resolution["reason"],
@@ -226,8 +228,26 @@ def _error(exc):
     return result
 
 
+def _generation(row):
+    """Capture immutable message evidence before the next provider read.
+
+    Broadcast wrappers and a root's explicit self-thread reference are transport
+    representations of the same message, not changed work. Presentation-only
+    metadata (reactions, profiles) is intentionally outside this comparison.
+    These signatures stay in memory; coverage metadata never includes content.
+    """
+    subtype = row.get("subtype")
+    if subtype in ("thread_broadcast", "reply_broadcast"):
+        subtype = None
+    return (row.get("reply_count"), row.get("latest_reply"),
+            row.get("thread_ts") or row["ts"], row.get("text"),
+            row.get("user"), row.get("bot_id"), subtype,
+            row.get("edited", {}).get("ts"))
+
+
 def _read_pages(read, method, payload, max_pages, *, root=None, propagate_first=False):
     rows, seen, cursor, limited, changed = {}, set(), "", False, False
+    generations = {}
     report = {"pages_read": 0, "complete": False, "next_cursor": "", "error": None}
     for _ in range(max_pages):
         request = {**payload, **({"cursor": cursor} if cursor else {})}
@@ -241,10 +261,14 @@ def _read_pages(read, method, payload, max_pages, *, root=None, propagate_first=
         report["pages_read"] += 1
         for row in page:
             old = rows.get(row["ts"])
-            if old is not None and any(old.get(key) != row.get(key)
-                    for key in ("reply_count", "latest_reply", "thread_ts", "root", "permalink", "text", "edited", "subtype")):
+            generation = _generation(row)
+            if (row["ts"] in generations and generations[row["ts"]] != generation
+                    or old is not None and any(old.get(key) != row.get(key)
+                        for key in ("root", "permalink", "subtype"))):
                 changed = True
-            rows[row["ts"]] = dict(row)
+            generations[row["ts"]] = generation
+            # Keep nested root observations stable if a callback reuses a dict.
+            rows[row["ts"]] = deepcopy(row)
         limited = limited or page_limited
         report["next_cursor"] = next_cursor
         if not next_cursor:
@@ -301,16 +325,24 @@ def read_channel(read, channel_id, *, page_size, max_pages, max_threads=0, max_t
         prior, anchors = _prior_evidence(observations[root], root)
         candidate.update(prior)
         required[root].update(anchors)
+    # Snapshot after root resolution so a nested broadcast and its ordinary
+    # reply share the same identity, while later content changes stay visible.
+    generations = {stamp: _generation(row) for stamp, row in rows.items()}
     ordered = sorted(candidates, key=lambda root: (_order(candidates[root]["latest_reply"] or root), _order(root)), reverse=True)
     evidence, finished = [], set()
     for root in ordered[:max_threads]:
         replies, report = _read_pages(read, "conversations.replies",
             {"channel": channel_id, "ts": root, "limit": page_size}, max_thread_pages, root=root)
         report = _thread_evidence(replies, report, root, candidates[root], required[root])
+        if any(stamp in generations and generations[stamp] != _generation(row)
+                for stamp, row in replies.items()):
+            report["complete"] = False
+            report["reason"] = report.get("reason") or "thread_evidence_changed"
         if report["complete"]:
             finished.add(root)
         # A broadcast and its reply have the same stable message identity.
         rows.update(replies)
+        generations.update((stamp, _generation(row)) for stamp, row in replies.items())
         evidence.append(report)
     pending = [candidates[root] for root in ordered if root not in finished]
     metadata = {"history_complete": history["complete"], "next_cursor": history["next_cursor"],

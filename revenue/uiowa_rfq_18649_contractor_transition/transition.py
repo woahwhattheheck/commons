@@ -1,0 +1,386 @@
+#!/usr/bin/env python3
+"""UIOWA-108 -- classify a contractor transition into the three states the
+work order names, and render the handoff report.
+
+Run:
+    python3 transition.py --input fixtures/contractor_transition.json --outdir out
+    python3 transition.py --input fixtures/contractor_transition.json --print
+
+Python 3 standard library only. No network. Deterministic.
+
+The order: *"The example distinguishes completed access changes, unresolved
+ownership, and missing evidence."*  Those are three different operational
+situations with three different next actions, and a careless handoff report
+collapses all three into one green checkmark:
+
+  COMPLETED            -- a dated change record with an evidence locator says
+                          the change happened.
+  UNRESOLVED_OWNERSHIP -- the departing contractor still owns it and no
+                          successor is recorded. A live gap with a
+                          name-shaped hole in it.
+  NO_EVIDENCE          -- we have no record either way. This includes the
+                          case that matters most in practice: a successor has
+                          been *named* but nothing shows the handoff actually
+                          happened. A plan is not evidence.
+
+None of the three is scored, ranked, weighted, or rolled into a percentage,
+and the transition cannot be reported closed while any item sits outside
+COMPLETED.
+"""
+
+import argparse
+import csv
+from datetime import date, datetime
+import json
+import os
+import re
+import sys
+
+import scenario
+
+STATES = ("COMPLETED", "UNRESOLVED_OWNERSHIP", "NO_EVIDENCE")
+
+STATE_MEANING = {
+    "COMPLETED": "a dated change record with an evidence locator confirms it happened",
+    "UNRESOLVED_OWNERSHIP": "still owned by the departing contractor, no successor recorded",
+    "NO_EVIDENCE": "no record establishes either outcome",
+}
+
+NEXT_ACTION = {
+    "COMPLETED": "None. Retain the evidence locator for the closeout record.",
+    "UNRESOLVED_OWNERSHIP": "Name an accountable owner before the contractor's last day. This is a live gap, not a paperwork gap.",
+    "NO_EVIDENCE": "Ask for the change record or the system export that would settle it. Do not record an outcome without one.",
+}
+
+
+def _owned_items(index, departing_ref):
+    """Every application, service identity and runbook the departing person
+    owns. These are the transition items."""
+    items = []
+    for rid, (kind, record) in sorted(index.items()):
+        if kind not in ("applications", "service_identities", "runbooks"):
+            continue
+        if record.get("owner_ref") != departing_ref:
+            continue
+        items.append((rid, kind, record))
+    return items
+
+
+def _changes_for(index, target_ref, subject_ref):
+    out = []
+    for rid, (kind, record) in sorted(index.items()):
+        if kind != "access_changes":
+            continue
+        if record.get("target_ref") != target_ref:
+            continue
+        if subject_ref and record.get("subject_ref") != subject_ref:
+            continue
+        out.append(record)
+    return out
+
+
+def _dated(value):
+    """Accept an actual ISO calendar date or a timestamp, not a status word.
+
+    Dates in this fictional rehearsal are not compared with the process clock;
+    this validates the supplied record, not a live-system completion claim.
+    """
+    if not isinstance(value, str):
+        return False
+    if not re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}(?:T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\.[0-9]+)?(?:Z|[+-][0-9]{2}:[0-9]{2})?)?", value):
+        return False
+    try:
+        if len(value) == 10:
+            date.fromisoformat(value)
+        else:
+            datetime.fromisoformat(value[:-1] + "+00:00" if value.endswith("Z") else value)
+    except ValueError:
+        return False
+    return True
+
+
+def _completion_gaps(change, invalid_ids):
+    gaps = []
+    if change.get("id") in invalid_ids:
+        gaps.append("record has unresolved integrity issues")
+    if change.get("action") not in scenario.ACCESS_ACTIONS:
+        gaps.append("action is outside the declared vocabulary")
+    locator = change.get("evidence_ref")
+    if not isinstance(locator, str) or not locator.strip():
+        gaps.append("no evidence locator")
+    if not _dated(change.get("completed_at")):
+        gaps.append("no valid completion date")
+    return gaps
+
+
+def classify_item(record, changes, dangling_refs):
+    """Return (state, reasons, evidence_refs); keep partial action evidence.
+
+    The last argument carries every invalid record id, not just missing refs.
+    One valid action must not erase an unresolved owner or another open action.
+    """
+    reasons = []
+    evidence = []
+    if any(record.get(key) in dangling_refs for key in ("id", "owner_ref", "successor_ref")):
+        reasons.append("record carries a broken reference or integrity issue; no outcome can be established from it")
+        return "NO_EVIDENCE", reasons, evidence
+
+    incomplete = []
+    for change in changes:
+        cid = change.get("id") or "<missing id>"
+        if change.get("status") != "COMPLETED":
+            incomplete.append("%s is %s, not complete" % (cid, change.get("status", "UNKNOWN")))
+            continue
+        gaps = _completion_gaps(change, dangling_refs)
+        if gaps:
+            incomplete.append("%s is marked COMPLETED but carries %s" % (cid, "; ".join(gaps)))
+            continue
+        evidence.append(change["evidence_ref"])
+        reasons.append("%s recorded %s on %s" % (cid, change["action"], change["completed_at"]))
+
+    successor = record.get("successor_ref")
+    if not successor or successor == record.get("owner_ref"):
+        reasons.append("still owned by the departing contractor and no successor is recorded"
+                       if not successor else "the departing contractor is also the named successor")
+        reasons.extend(incomplete)
+        return "UNRESOLVED_OWNERSHIP", reasons, evidence
+
+    if evidence and not incomplete:
+        return "COMPLETED", reasons, evidence
+
+    # Preserve the established explanation for uncorroborated completion claims.
+    if any(change.get("status") == "COMPLETED" for change in changes):
+        reasons.extend(incomplete)
+        return "NO_EVIDENCE", reasons, evidence
+
+    reasons.append(
+        "successor %s is named but no completed change record shows the handoff occurred; "
+        "a named successor is a plan, not evidence" % successor
+    )
+    reasons.extend(incomplete)
+    return "NO_EVIDENCE", reasons, evidence
+
+
+class TransitionReport(object):
+    def __init__(self, packet, issues, index):
+        self.packet = packet
+        self.issues = issues
+        self.index = index
+        self.departing_ref = packet.get("transition", {}).get("departing_ref")
+        self.dangling_refs = set(
+            i.record_id for i in issues
+        )
+        self.items = self._build_items()
+
+    def _build_items(self):
+        items = []
+        for rid, kind, record in _owned_items(self.index, self.departing_ref):
+            changes = _changes_for(self.index, rid, self.departing_ref)
+            state, reasons, evidence = classify_item(record, changes, self.dangling_refs)
+            items.append(
+                {
+                    "item_id": rid,
+                    "kind": kind,
+                    "label": record.get("name") or record.get("title") or record.get("account_name") or rid,
+                    "service": record.get("service", "UNKNOWN"),
+                    "owner_ref": record.get("owner_ref"),
+                    "successor_ref": record.get("successor_ref"),
+                    "state": state,
+                    "reasons": reasons,
+                    "evidence_refs": evidence,
+                    "next_action": NEXT_ACTION[state],
+                }
+            )
+        return items
+
+    def counts(self):
+        out = dict((s, 0) for s in STATES)
+        for item in self.items:
+            out[item["state"]] += 1
+        return out
+
+    def transition_closed(self):
+        """Fail-closed. The transition is closed only when every item is
+        COMPLETED. There is no threshold and no percentage -- one unresolved
+        service identity is a contractor who still has a way in."""
+        return (not self.issues and bool(self.items)
+                and all(i["state"] == "COMPLETED" for i in self.items))
+
+    def open_items(self):
+        return [i for i in self.items if i["state"] != "COMPLETED"]
+
+    def as_dict(self):
+        return {
+            "meta": {
+                "work_order": "UIOWA-108",
+                "solicitation_id": "18649",
+                "authority": scenario.AUTHORITY,
+                "synthetic": True,
+                "prohibited_interpretation": [
+                    "University of Iowa finding",
+                    "statement of current University access practice",
+                    "compliance or certification conclusion",
+                    "employee performance assessment",
+                ],
+                "packet_id": self.packet.get("packet_id", "UNKNOWN"),
+                "departing_ref": self.departing_ref,
+            },
+            "counts": self.counts(),
+            "transition_closed": self.transition_closed(),
+            "items": self.items,
+            "issues": [i.as_dict() for i in self.issues],
+        }
+
+
+CSV_COLUMNS = ("item_id", "kind", "label", "service", "owner_ref", "successor_ref",
+               "state", "evidence_refs", "reasons", "next_action")
+
+
+def write_csv(report, path):
+    with open(path, "w", encoding="utf-8", newline="") as fh:
+        writer = csv.writer(fh)
+        writer.writerow(CSV_COLUMNS)
+        for item in report.items:
+            writer.writerow([
+                item["item_id"], item["kind"], item["label"], item["service"],
+                item["owner_ref"] or "", item["successor_ref"] or "", item["state"],
+                "; ".join(item["evidence_refs"]), "; ".join(item["reasons"]), item["next_action"],
+            ])
+
+
+def render_markdown(report):
+    counts = report.counts()
+    lines = []
+    lines.append("# Contractor transition -- handoff evidence (UIOWA-108)")
+    lines.append("")
+    lines.append("**This scenario is fictional.** Every person, application, service identity,")
+    lines.append("runbook and change record below was invented for rehearsal. It is not a")
+    lines.append("University of Iowa finding and not a statement about University access")
+    lines.append("practice. No real account data appears in it, and the packet is refused")
+    lines.append("outright if any is found.")
+    lines.append("")
+    lines.append("Packet `%s`. Departing: `%s`." % (
+        report.packet.get("packet_id", "UNKNOWN"), report.departing_ref))
+    lines.append("")
+    lines.append("## Where the transition stands")
+    lines.append("")
+    lines.append("| State | Items | What it means |")
+    lines.append("| --- | ---: | --- |")
+    for state in STATES:
+        lines.append("| %s | %d | %s |" % (state, counts[state], STATE_MEANING[state]))
+    lines.append("")
+    if report.transition_closed():
+        lines.append("**Transition closed.** Every item carries a completed change record")
+        lines.append("with an evidence locator.")
+    else:
+        lines.append("**Transition NOT closed — %d item(s) remain open.**" % len(report.open_items()))
+        lines.append("")
+        lines.append("There is no completion percentage here on purpose. One unresolved")
+        lines.append("service identity is a contractor who still has a way in; averaging it")
+        lines.append("against completed items would produce a reassuring number that")
+        lines.append("describes nothing anybody can act on.")
+    lines.append("")
+    lines.append("## Items")
+    lines.append("")
+    for state in STATES:
+        rows = [i for i in report.items if i["state"] == state]
+        if not rows:
+            continue
+        lines.append("### %s" % state)
+        lines.append("")
+        for item in rows:
+            lines.append("**%s** — %s (`%s`, %s)" % (item["item_id"], item["label"], item["kind"], item["service"]))
+            lines.append("")
+            for reason in item["reasons"]:
+                lines.append("- %s" % reason)
+            if item["evidence_refs"]:
+                lines.append("- Evidence: %s" % "; ".join("`%s`" % e for e in item["evidence_refs"]))
+            lines.append("- Next: %s" % item["next_action"])
+            lines.append("")
+    if report.issues:
+        lines.append("## Packet issues")
+        lines.append("Unresolved packet issues also prevent transition closure, even when individual items are complete.")
+        lines.append("")
+        lines.append("| Class | Record | Code | Field | Detail |")
+        lines.append("| --- | --- | --- | --- | --- |")
+        for issue in report.issues:
+            d = issue.as_dict()
+            lines.append("| %s | %s | %s | %s | %s |" % (
+                d["class"], d["record_id"], d["code"], d["field"], d["detail"]))
+        lines.append("")
+    lines.append("## Still UNKNOWN (University inputs not collected)")
+    lines.append("")
+    for item in (
+        "the real joiner/mover/leaver process and who authorises each step",
+        "whether service identities are inventoried anywhere authoritative",
+        "how contractor end dates reach the access-management system, if they do",
+        "what evidence the University can actually export for a completed revocation",
+        "who owns a runbook when its author leaves",
+    ):
+        lines.append("- %s" % item)
+    lines.append("")
+    return "\n".join(lines)
+
+
+def load(path):
+    try:
+        with open(path, "r", encoding="utf-8") as fh:
+            return json.load(fh)
+    except json.JSONDecodeError as exc:
+        raise ValueError("%s is not valid JSON: line %d column %d: %s" % (path, exc.lineno, exc.colno, exc.msg))
+    except OSError as exc:
+        raise ValueError("cannot read %s: %s" % (path, exc.strerror))
+
+
+def build(packet):
+    issues, index = scenario.validate_packet(packet)
+    return TransitionReport(packet, issues, index), issues
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description="Classify a contractor-transition packet.")
+    parser.add_argument("--input", required=True)
+    parser.add_argument("--outdir")
+    parser.add_argument("--print", dest="do_print", action="store_true")
+    args = parser.parse_args(argv)
+
+    try:
+        packet = load(args.input)
+        report, issues = build(packet)
+    except ValueError as exc:
+        sys.stderr.write("error: %s\n" % exc)
+        return 2
+
+    if not scenario.is_deliverable(issues):
+        unsafe = [i.as_dict() for i in issues if i.is_safety]
+        sys.stderr.write(
+            "REFUSED: the packet contains %d item(s) that could be mistaken for real "
+            "account data. Nothing was rendered.\n" % len(unsafe)
+        )
+        for u in unsafe:
+            sys.stderr.write("  %s %s.%s -- %s\n" % (u["code"], u["record_id"], u["field"], u["detail"]))
+        return 3
+
+    if args.outdir:
+        os.makedirs(args.outdir, exist_ok=True)
+        write_csv(report, os.path.join(args.outdir, "transition_items.csv"))
+        with open(os.path.join(args.outdir, "transition_report.json"), "w", encoding="utf-8") as fh:
+            json.dump(report.as_dict(), fh, indent=2, sort_keys=True)
+        with open(os.path.join(args.outdir, "transition_report.md"), "w", encoding="utf-8") as fh:
+            fh.write(render_markdown(report))
+        sys.stdout.write("wrote 3 files to %s\n" % args.outdir)
+
+    if args.do_print or not args.outdir:
+        sys.stdout.write(render_markdown(report))
+
+    counts = report.counts()
+    sys.stderr.write(
+        "items=%d completed=%d unresolved=%d no_evidence=%d closed=%s issues=%d\n"
+        % (len(report.items), counts["COMPLETED"], counts["UNRESOLVED_OWNERSHIP"],
+           counts["NO_EVIDENCE"], report.transition_closed(), len(issues))
+    )
+    return 0 if report.transition_closed() else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

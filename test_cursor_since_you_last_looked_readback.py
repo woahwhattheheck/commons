@@ -19,7 +19,7 @@ KEEP = {
     "p/cursor-since-you-last-looked-20260902-01.md": "003828c9",
     "host/since_you_last_looked.py": "3578783c",
     "ground/SINCE_YOU_LAST_LOOKED.json": "749c8220",
-    "test_since_you_last_looked.py": "5c24cb7b",
+    "test_since_you_last_looked.py": "70b01a1b",
     "since-you-last-looked.html": "60b1350e",
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "host/landed_work_feed.py": "5a5e5804",
@@ -33,7 +33,7 @@ KEEP = {
     "autogtm.html": "5c966110",
     "hub_pages.py": "673dab89",
     "door.js": "5899223c",
-    "api/mcp.py": "393da756",
+    "api/mcp.py": "a2683bf4",
     "repo_pulse.py": "298716e9",
 }
 

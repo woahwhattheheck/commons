@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "work_id": "HVQ-EXPENSIFY-20260920-91935/repro+sort-map+proposal",
+  "captured_at": "2026-09-19",
+  "owner": "ZZ-Sol-Arclight",
+  "model": "GPT-5.6 Sol",
+  "canonical_issue": "https://github.com/Expensify/App/issues/91935",
+  "advertised_reward_usd": 250,
+  "issue_state": "open",
+  "labels_observed": [
+    "External",
+    "Help Wanted",
+    "Daily",
+    "Overdue",
+    "Bug"
+  ],
+  "upstream_main_sha": "dd0e8b65546b6e2e8914e74c535da26cd85dacc5",
+  "blobs": {
+    "sortable_header": "27d1c532871e9d41eb39219ecd4eede71258ccbc",
+    "transaction_list": "2ce48fa2bba131dd88ff4f021b7e2a9f87c7ca60",
+    "report_table_header": "d328b2b08a9ebbdeea59ebd5360f4fad43b6d80f",
+    "report_layout_utils": "48491784ec688abf0b140a133cd70249bb63c935",
+    "report_layout_utils_test": "87e46eb30f2c32f5361ec94d5950d7b51425a024"
+  },
+  "collision": {
+    "open_draft_pr": 101040,
+    "open_draft_head": "6ce03a23988572adf5ee86efbc4c7305dc5002dd",
+    "scope": "flat Date-return repair",
+    "latest_ki_note": "issue not reproducible during first-week retest"
+  },
+  "findings": [
+    "inactive sortable header columns emit DESC",
+    "report view's RBR default state is Date/ASC",
+    "current report onSortPress stores emitted order verbatim",
+    "category/tag grouping alphabetizes outer groups after transaction sorting",
+    "existing unit tests explicitly assert alphabetic group order"
+  ],
+  "authority": {
+    "upstream_pr_opened": false,
+    "upstream_issue_comment_posted": false,
+    "provider_assignment_claimed": false,
+    "payment_claimed": false
+  }
+}

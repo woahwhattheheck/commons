@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "work_id": "HV-MICROG-2843/PR3204-current-pairing-contract-review",
+  "captured_date": "2026-09-19",
+  "canonical_issue": "https://github.com/microg/GmsCore/issues/2843",
+  "advertised_issue_amount_usd": 2340,
+  "carrier_pr": "https://github.com/microg/GmsCore/pull/3204",
+  "carrier_state": "open_draft",
+  "carrier_head": "020add37dc5fc8dc1f5d41d3cfb55772e843f803",
+  "carrier_base": "352f2d72fa52c6c3c4fdd79d575a071a0da72ad1",
+  "upstream_master": "4c74e5acb79479004428be755547432294639878",
+  "topology": {
+    "status": "diverged",
+    "ahead_by": 86,
+    "behind_by": 107,
+    "mergeable": false
+  },
+  "public_api_stubs": {
+    "NodeApiImpl": {
+      "blob": "197b6e81cad80550d56091a652d8f42d2c77931e",
+      "unsupported_operation_exceptions": 4
+    },
+    "DataApiImpl": {
+      "blob": "25b9c835e4a7767bbd1566f85a1b120a48638bfc",
+      "unsupported_operation_exceptions": 9
+    },
+    "MessageApiImpl": {
+      "blob": "7f9d5fc1421971323e5ae1cd1d102cc5ba980a0c",
+      "unsupported_operation_exceptions": 2
+    },
+    "ChannelImpl": {
+      "blob": "ddf4fff57a7c04e7251aa43d4a297ad16e9bfa20",
+      "unimplemented_methods_returning_null": 9
+    }
+  },
+  "donor_history": {
+    "pr": 3798,
+    "state": "closed_unmerged",
+    "use": "reference only; preserve attribution"
+  },
+  "upstream_publication": {
+    "attempted": true,
+    "attempts": 2,
+    "result": "forbidden",
+    "provider_error": "403 Resource not accessible by integration"
+  },
+  "claims": {
+    "physical_watch_reproduced_by_this_seat": false,
+    "bounty_claimed": false,
+    "payout_claimed": false,
+    "upstream_code_mutated": false
+  }
+}

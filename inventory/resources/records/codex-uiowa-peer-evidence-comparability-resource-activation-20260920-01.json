@@ -1,0 +1,111 @@
+{
+  "schema": "commons-resource-event/v1",
+  "event_id": "codex-uiowa-peer-evidence-comparability-resource-activation-20260920-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "observed_at": "2026-09-20T01:12:29Z",
+  "actor": "Commons Resource Master / Codex",
+  "selected_resource": "uiowa-peer-evidence-comparability-compiler",
+  "concrete_consumer": "UIowa peer-research lanes 014–020 and their public-source research operators",
+  "measurable_outcome": "The merged offline compiler is canonical producing resource metadata with deterministic source-linked JSON, Markdown and CSV output and no private-data, provider or commercial mutation.",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "MERGED_UNCATALOGED",
+    "condition": "CONSTRAINED",
+    "holder": "UIOWA-PEER-COMPARABILITY source custody",
+    "consumer": "UNROUTED_IN_CANONICAL_RESOURCE_GRAPH"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "holder": "UIowa peer-evidence compiler source custody / Commons public-source research operators",
+    "consumer": "UIowa peer-research lanes 014–020"
+  },
+  "production_truth": {
+    "source_repository": "woahwhattheheck/commons",
+    "source_pr": 16198,
+    "source_head_sha": "0223e01708f2fbe1c7aefc71fa7064ab8a38ef11",
+    "source_merge_sha": "637657f64f27ed3ed5a6f192b97280b8da4f9d85",
+    "source_descendant_main_sha": "eac6dca49f718e8c3ebebd881b2c4bfcff930b4d",
+    "source_paths": {
+      "revenue/uiowa_peer_evidence/README.md": "7f022ece8f8bcce1a38ccde356e798467dd4fb42",
+      "revenue/uiowa_peer_evidence/REHEARSAL.md": "96289e32ffdb643f9dc3dea85ea614aee1d7f348",
+      "revenue/uiowa_peer_evidence/example.json": "f47f4bec6305fc18dee2c21ee0b8929490b3abe4",
+      "revenue/uiowa_peer_evidence/peer_evidence.py": "fc528ec39cee8791b4afe4a5278295cd8ddd5916",
+      "revenue/uiowa_peer_evidence/test_peer_evidence.py": "924d3ea5ab3a69782bc7c5ee9b3de20a61999a9c"
+    },
+    "focused_tests": {
+      "source_suite": "45/45 PASS NORMAL_AND_OPTIMIZED",
+      "resource_ledger": "23/23 PASS NORMAL_AND_OPTIMIZED",
+      "resource_projection": "18/18 PASS NORMAL_AND_OPTIMIZED"
+    },
+    "maximum_state": "OFFLINE_PEER_CONTEXT_COMPILER_READY",
+    "hosted_source_guards": "FOUR_TERMINAL_SUCCESS_ON_EXACT_SOURCE_HEAD_PER_PR_REVIEW_5258091530",
+    "source_authentication": false,
+    "local_assessment": false,
+    "private_university_data": false,
+    "customer_contact": false,
+    "buyer_acceptance": false,
+    "payment_observed": false,
+    "revenue_recognition": false,
+    "current_cash_claim": false,
+    "scheduling_action": false,
+    "provider_writes": 0
+  },
+  "delta": {
+    "prior_terminal_main_sha": "70847f5dd8298e1a2f4bc190ed8817543f1efb30",
+    "activation_base_main_sha": "eac6dca49f718e8c3ebebd881b2c4bfcff930b4d",
+    "commits_in_delta": 55,
+    "changed_paths_in_delta": 125,
+    "remote_branches_observed": 4641,
+    "prior_terminal_slack_ts": "1789855789.463319",
+    "latest_delta_slack_ts": "1789866503.109939",
+    "slack_top_level_messages": {
+      "commons": 6,
+      "delegations": 168,
+      "todo": 0,
+      "shipped_builds": 5,
+      "products": 0,
+      "leads": 0,
+      "sales": 0
+    },
+    "automations": "Thirty-eight visible: four enabled, thirty-one paused and three completed; no lifecycle mutation.",
+    "github_state": "Fifty-five current-main commits and 125 changed paths were reconciled; the selected source was merged, unclaimed after the watermark and absent from the canonical resource graph.",
+    "provider_state": "Post-watermark provider and bounty lanes already have explicit roots or active claims; this activation made no provider application, assignment, submission, wallet or payment mutation."
+  },
+  "verification": {
+    "privacy": "No credential, private account identifier, customer data, private University data or private file name is persisted.",
+    "open_door": "The compiler is offline, zero-credential and standard-library only.",
+    "zero_fabrication": "Metadata alignment remains analyst-review context and never becomes source authentication, local assessment, ranking, procurement recommendation, buyer acceptance, payment, revenue or cash.",
+    "collision": "Only canonical ledger, projection, assertions and append-only activation records are owned; compiler source and active peer lanes remain read-only."
+  },
+  "build_order_decision": "No build order posted; post-watermark capability gaps already had durable roots or active claims, and the selected resource is complete for its bounded producing use.",
+  "build_orders": [],
+  "quota_lifecycle": {
+    "official_observation": "A single official-source check found no quota reset newer than the previously recorded September 7 automatic reset; the latest visible official release-note entry was September 14, 2026 and described unrelated product changes.",
+    "classification": "PRIOR_QUOTA_STATE_RETAINED_CURRENT_ALLOWANCE_UNMEASURED",
+    "current_meter": "NOT_DIRECTLY_OBSERVED",
+    "banked_reset_activated": false
+  },
+  "projection": {
+    "resources": 105,
+    "producing": 77,
+    "inventory_records": 67
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789866009733409",
+    "source_pr": "https://github.com/woahwhattheheck/commons/pull/16198",
+    "source_review": "https://github.com/woahwhattheheck/commons/pull/16198#pullrequestreview-5258091530",
+    "official_release_notes": "https://help.openai.com/en/articles/6825453/chatgpt-release-notes"
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-20T01:12:29Z",
+    "activation_base_main_sha": "eac6dca49f718e8c3ebebd881b2c4bfcff930b4d",
+    "latest_delta_slack_ts": "1789866503.109939",
+    "source_merge_sha": "637657f64f27ed3ed5a6f192b97280b8da4f9d85",
+    "remote_branches_observed": 4641
+  },
+  "non_claims": [
+    "No private University finding, customer contact, scheduling, provider application, assignment, submission, wallet action, payment, settlement, revenue or cash is claimed."
+  ]
+}

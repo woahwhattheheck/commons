@@ -24,14 +24,14 @@ SHARED_WAITLIST = "packs/waitlist.html"
 # Land-time observations from catalog pointer SHIP e9c5e8aa / receipt 2c584983.
 # Not live pins: instance owners may change their doors and TALLY helper.
 OBSERVED_AT_LAND = {
-    "packs/sidewalk-signal-web-desk-20260902-01/index.html": "9db77016",
-    "packs/lotribbon-greetings-20260902-01/index.html": "8afd749b",
-    "packs/desk-website-service-20260902-01/door.html": "d75b3f3b",
-    "host/business_pack_desk_instance.py": "1029faad",
+    "packs/sidewalk-signal-web-desk-20260902-01/index.html": "638e60b4",
+    "packs/lotribbon-greetings-20260902-01/index.html": "ac60db02",
+    "packs/desk-website-service-20260902-01/door.html": "cd2be48f",
+    "host/business_pack_desk_instance.py": "a550ae1b",
 }
 # Historical byte observations; live pages/helpers may evolve independently.
 EXPECTED_BLOBS = {
-    "packs/waitlist.html": "f93c8f32",
+    "packs/waitlist.html": "b312ed6d",
 }
 RECEIPT_BLOBS = {f"p/{POINTER_ID}.md": "2c584983"}
 

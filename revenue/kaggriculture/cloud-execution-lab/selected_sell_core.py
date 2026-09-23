@@ -187,16 +187,33 @@ def _acceptance_rule(config):
     return rule if rule in ('strict','expected_downside','minimax_regret') else 'strict'
 
 
+def _e18_nonnegative_finite(value):
+    """Use the existing zero fallback for invalid or non-finite risk inputs."""
+    from math import isfinite
+    try:
+        number=float(value)
+    except (TypeError,ValueError,OverflowError):
+        return 0.0
+    return max(0.0,number) if isfinite(number) else 0.0
+
+
 def _scenario_weights(names, config):
+    from math import isfinite
     raw=(config or {}).get('sellScenarioWeights',{})
     weights=[]
     if isinstance(raw,dict):
         for name in names:
-            try:weights.append(max(0.0,float(raw.get(name,0.0))))
-            except (TypeError,ValueError):weights.append(0.0)
-    if len(weights)!=len(names) or sum(weights)<=0:
-        weights=[1.0 for _ in names]
+            weights.append(_e18_nonnegative_finite(raw.get(name,0.0)))
     total=sum(weights)
+    if len(weights)!=len(names) or total<=0:
+        weights=[1.0 for _ in names]
+        total=sum(weights)
+    elif not isfinite(total):
+        # Individually finite weights can overflow their sum. Scale only in
+        # that case: ordinary inputs retain their exact historical rounding.
+        scale=max(weights)
+        weights=[weight/scale for weight in weights]
+        total=sum(weights)
     return {name:weight/total for name,weight in zip(names,weights)}
 
 
@@ -232,8 +249,7 @@ def optimize_lot(*,item,quantity,inventory,params,shops,config,now,dates,
     rule=_acceptance_rule(config)
     names=[name for name,_,_ in scenarios]
     weights=_scenario_weights(names,config)
-    try:downside_bound=max(0.0,float((config or {}).get('sellDownsideBound',0.0)))
-    except (TypeError,ValueError):downside_bound=0.0
+    downside_bound=_e18_nonnegative_finite((config or {}).get('sellDownsideBound',0.0))
     accepted=False
     acceptance_score=0.0
     weighted_expected_gain=0.0

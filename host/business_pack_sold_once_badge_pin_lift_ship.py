@@ -32,12 +32,12 @@ TALLY_HELPER = "host/business_pack_desk_instance.py"
 LEFTOVER_HELPER = "host/business_pack_sold_once_badge_pointer.py"
 CANDIDATE_SHA = "f080fbbb241a1550b3eb5d94c9041c21cd264d82"
 # Historical ship receipt still cites land-time leftover helper `80602a55`
-# and is not reminted. Live leftover helper is current HEAD after Latch Pad KEEP
-# / live-cash tails on the template and LotRibbon creative_brief pins.
+# and is not reminted. Live leftover helper is current HEAD after restoring
+# land-time sidewalk/desk OBSERVED prefixes (catalog pointer leftover).
 EXPECTED_BLOBS = {
     f"p/{PIN_LIFT_ID}.md": "da2d1ef5",
     f"p/{POINTER_ID}.md": "1cc11a5f",
-    LEFTOVER_HELPER: "b268d766",
+    LEFTOVER_HELPER: "4e96b44d",
 }
 OBSERVED_AT_LAND = {
     TALLY_HELPER: "a550ae1b",

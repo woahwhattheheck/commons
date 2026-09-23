@@ -18,6 +18,7 @@ import signal
 import subprocess
 import sys
 import tempfile
+import time
 
 # Importing the local report helper must not manufacture an ignored __pycache__
 # before the checkout preflight inventories ignored working-tree inputs.
@@ -114,6 +115,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--shard-count", type=int, default=1)
     parser.add_argument("--shard-index", type=int, default=0, help="zero-based shard number")
     parser.add_argument("--timeout", type=float, default=0, help="per-file seconds; 0 preserves the unbounded battery")
+    parser.add_argument("--fail-fast", action="store_true", help="stop after the first failed test while preserving default exhaustive execution")
     parser.add_argument("--list", action="store_true", help="list selected commands without executing")
     args = parser.parse_args(argv)
     if args.output_dir and args.results:
@@ -152,7 +154,8 @@ def main(argv: list[str] | None = None) -> int:
     file_hashes = {}
     scope = {"kind": "selected" if requested else "full", "requested": requested,
              "shard_index": args.shard_index, "shard_count": args.shard_count,
-             "discovered_files": len(discovered), "planned_files": len(selected)}
+             "discovered_files": len(discovered), "planned_files": len(selected),
+             "fail_fast": args.fail_fast}
     if args.shard_count > 1:
         scope["kind"] = "selected-shard" if requested else "shard"
     dirty = None
@@ -176,6 +179,7 @@ def main(argv: list[str] | None = None) -> int:
         ignored_paths = ignored_worktree_paths(root)
         with results.open("wb") as handle:
             record(handle, "checkout_sha", sha, "")
+            record(handle, "battery_scope", json.dumps(scope, sort_keys=True, separators=(",", ":")), "")
             if dirty:
                 print("checkout is dirty; refusing source-linked passing evidence",
                       file=sys.stderr, flush=True)
@@ -199,10 +203,16 @@ def main(argv: list[str] | None = None) -> int:
                         file_hashes[path] = hashlib.sha256((root / path).read_bytes()).hexdigest()
                     except OSError:
                         file_hashes[path] = None
+                    started = time.monotonic()
                     rc = execute(root, command, path, args.timeout or None)
+                    duration_ms = max(0, round((time.monotonic() - started) * 1000))
                     record(handle, command, "./" + path, rc)
+                    record(handle, "timing_ms", "./" + path, duration_ms)
                     code = int(bool(code or rc))
                     print(("ok   " if rc == 0 else "FAIL ") + json.dumps(path), flush=True)
+                    if rc and args.fail_fast:
+                        print("fail-fast: stopping after first failed test", flush=True)
+                        break
                 record(handle, "battery_complete", "", code)
                 outcome = "failure" if code else "success"
                 if not selected:

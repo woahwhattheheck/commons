@@ -209,12 +209,20 @@ def assess(catalog: dict[str, Any], as_of: str) -> dict[str, Any]:
             note(f, "REFRESH_OVERDUE", "RECORDED", "The latest refresh is older than the supplied refresh interval.",
                  "Refresh and rerun affected cases, or record a revised service-specific interval.", [refresh["evidence_ref"]])
         cleanup = _latest(f["cleanups"], clock)
-        cleaned = bool(cleanup and cleanup["outcome"] == "succeeded" and _backed(cleanup)
-                       and (not refresh or instant(cleanup["at"]) >= instant(refresh["at"])))
+        # Completion changes the fixture generation; a later failed or unbacked
+        # attempt cannot undo it. Keep latest-attempt diagnostics above, while
+        # comparing the last demonstrated cleanup and recreation independently.
+        completed_cleanup = _latest([e for e in f["cleanups"]
+                                     if e["outcome"] == "succeeded" and _backed(e)], clock)
+        completed_refresh = _latest([e for e in f["refreshes"]
+                                     if e["outcome"] == "succeeded" and _backed(e)], clock)
+        cleaned = bool(completed_cleanup and
+                       (not completed_refresh or
+                        instant(completed_cleanup["at"]) >= instant(completed_refresh["at"])))
         if cleaned and f["state"] == "active":
             eligible = False
             note(f, "ACTIVE_AFTER_CLEANUP", "CONTRADICTED", "An active fixture is recorded as cleaned without a later refresh.",
-                 "Reconcile inventory state or provide a later successful recreation receipt.", [cleanup["evidence_ref"]])
+                 "Reconcile inventory state or provide a later successful recreation receipt.", [completed_cleanup["evidence_ref"]])
         if f["cleanup_due_at"] is None:
             note(f, "CLEANUP_HORIZON_UNKNOWN", "UNKNOWN", "Cleanup or retained-fixture review timing is unspecified.",
                  "Set a proportionate cleanup/review horizon and accountable owner.")

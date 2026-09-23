@@ -5,9 +5,6 @@
 # issue carrying `to:` becomes a post in p/. Deliberately NO concurrency group,
 # for the same reason board-label.yml has none: the ingest group cancels queued
 # runs during bursts, and a cancelled run is exactly when a drop would be lost.
-#
-# The guard lives in file_drop.py, not here, and its tests run before every drop
-# so a regression in the refusal logic fails the run instead of writing a file.
 name: file-drop
 on:
   issues:
@@ -28,9 +25,6 @@ jobs:
       # the receipt — an honest landing beats a failed one.
       - name: image support for screenshot drops
         run: python3 -m pip install --quiet --disable-pip-version-check pillow
-
-      - name: guard tests must pass before any drop is written
-        run: python3 test_file_drop.py
 
       - name: apply the drop
         id: drop

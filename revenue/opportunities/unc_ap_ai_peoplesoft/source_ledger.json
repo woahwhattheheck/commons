@@ -5,6 +5,14 @@
   "status": "OPEN",
   "observed_at": "2026-09-17T21:15:00-04:00",
   "offer_due_at": "2026-09-25T12:00:00-04:00",
+  "base_rfp_first_party_sha256": "247966e1966414e26d34fc1723899f86c17f48d77329e79a70f853779c33355f",
+  "base_rfp_first_party_path": "source/original_rfp.pdf",
+  "addenda_mirror_only": [
+    "43551044eaf9c3b84e6dc9556658c22c0c8c76ea46d83ad291c72c5383dfc958",
+    "26101b9ca6b4654690e24f99463ee87668d23ed9ad402a4215c838aa3988c8dc",
+    "a4a52046b86eb004fc7cdf14b04e7024f5e86caeaad4f7d5ff1f1d8dae7c3101",
+    "28e876d95d0f8102404805c0817056dabc8a44a57d9f7e4bdbf0bc71fe58f029"
+  ],
   "exact_current_bytes_sha256": null,
   "addenda_complete": false
 }

@@ -10,31 +10,50 @@ def require(ok,msg):
     if not ok: raise RightsError(msg)
 def canonical_bytes(v): return (json.dumps(v,sort_keys=True,separators=(',',':'),ensure_ascii=False)+'\n').encode()
 def sha256_bytes(b): return hashlib.sha256(b).hexdigest()
-def parse_time(v,at):
-    """Accept only timestamps representable by the v1 whole-second ledger.
+def _fraction_groups(text):
+    """Yield non-separator fractional digit groups accepted by fromisoformat.
 
-    Inspect original fractions: datetime can discard sub-microsecond digits
-    and fractions on a zero UTC offset before the caller sees the value.
-    A dot/comma separating a complete ISO date from its time is not a fraction.
+    A dot/comma immediately after a complete ISO date may be the legal single
+    date/time separator. Everything else is a numeric fractional component.
     """
-    require(isinstance(v,str) and v,f'{at} must be an offset-aware timestamp')
-    text=v[:-1]+'+00:00' if v.endswith('Z') else v
-    try: dt=datetime.fromisoformat(text)
-    except ValueError as e: raise RightsError(f'{at} must be an ISO-8601 timestamp') from e
-    require(dt.tzinfo is not None and dt.utcoffset() is not None,f'{at} must include an offset')
     for match in re.finditer(r'[.,]([0-9]+)',text):
         prefix=text[:match.start()]
         try:
             date.fromisoformat(prefix)
             datetime.fromisoformat(prefix+'T00:00:00')
         except ValueError:
-            require(not any(digit!='0' for digit in match.group(1)),
-                    f'{at} must use whole-second precision; nonzero fractions are unsupported')
+            yield match
+def parse_time(v,at):
+    """Parse an offset-aware ISO instant without silently discarding precision.
+
+    V1 accepts whole seconds and microsecond precision (1..6 supplied digits).
+    CPython accepts some >6-digit and zero-offset fractional forms by silently
+    dropping digits. Detect every numeric fraction in the original text and
+    fail closed unless it is exactly representable by datetime.
+    """
+    require(isinstance(v,str) and v,f'{at} must be an offset-aware timestamp')
+    text=v[:-1]+'+00:00' if v.endswith('Z') else v
+    try: dt=datetime.fromisoformat(text)
+    except ValueError as e: raise RightsError(f'{at} must be an ISO-8601 timestamp') from e
+    require(dt.tzinfo is not None and dt.utcoffset() is not None,f'{at} must include an offset')
+    for match in _fraction_groups(text):
+        digits=match.group(1)
+        nonzero=any(digit!='0' for digit in digits)
+        require(len(digits)<=6 or not nonzero,f'{at} supports at most 6 nonzero fractional digits')
+        if nonzero:
+            offset_sign=max(text.rfind('+',10,match.start()),text.rfind('-',10,match.start()))
+            require(offset_sign<0,f'{at} fractional UTC offsets are unsupported')
+            zeroed=text[:match.start()+1]+('0'*len(digits))+text[match.end():]
+            try: zero_dt=datetime.fromisoformat(zeroed)
+            except ValueError as e: raise RightsError(f'{at} must be an ISO-8601 timestamp') from e
+            require(zero_dt!=dt,f'{at} contains fractional precision that the runtime discards')
     try: utc=dt.astimezone(timezone.utc)
     except (ValueError,OverflowError) as e: raise RightsError(f'{at} is outside the supported UTC range') from e
-    require(utc.microsecond==0,f'{at} must use whole-second precision')
     return utc
-def norm_time(v,at): return parse_time(v,at).isoformat(timespec='seconds').replace('+00:00','Z')
+def norm_time(v,at):
+    utc=parse_time(v,at)
+    timespec='microseconds' if utc.microsecond else 'seconds'
+    return utc.isoformat(timespec=timespec).replace('+00:00','Z')
 def strict_object(v,keys,at): require(isinstance(v,dict),f'{at} must be an object'); require(set(v)==keys,f'{at} keys invalid: expected {sorted(keys)}'); return v
 def strict_id(v,at): require(isinstance(v,str) and ID_RE.fullmatch(v) is not None,f'{at} invalid'); return v
 def strict_text(v,at,max_len=300):

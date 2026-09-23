@@ -1,0 +1,224 @@
+{
+  "attempt_count": 8,
+  "backoff_seconds": 600,
+  "blocker": null,
+  "budget_tokens": 1000000,
+  "checkpoint": {
+    "capture_start": {
+      "arguments": {
+        "exact_prompts": [
+          "Execute, do not advise. Payment-first claim: https://github.com/claude-builders-bounty/claude-builders-bounty/issues/2#issuecomment-5754688445 under tokenjunkielabs; issue #2 pays $75 via Opire automatically on merge. IMPORTANT: branch tokenjunkielabs:zz-copper/cbb2-next-sqlite-claude-md@6e89ae6eb779c543a617a7cffd4277a278573f27 is stale/contaminated with the three CBB #3 hook commits and contains no CBB #2 file. Do not open a PR from it. Read #bug-bounty Slack messages 1789959494.738409 (artifact part 1/2) and 1789959528.773939 (part 2/2). From exact sponsor base 1aeae2adc82d33f971fd7731644348dcdd24b5a6, create tokenjunkielabs branch zz-lattice/cbb2-next-sqlite-claude-md, add ONLY bounty-2/CLAUDE.md by concatenating those two exact artifact parts, commit/push, and open the real upstream PR to claude-builders-bounty/claude-builders-bounty:main. PR title: docs: add production Next.js 15 + SQLite CLAUDE.md. Body begins /claim #2, includes Closes #2, $75 Opire claim link, and single-file scope. Do not run tests. Do not add bounty-3 or extra files. Merge only if authenticated account is authorized; otherwise leave for sponsor. Post one productive #bug-bounty receipt with issue URL, PR URL, head SHA, reward, claim, merge state, and exact blocker. Reply with GitHub URLs and Slack timestamp."
+        ],
+        "origin": {
+          "event_id": "p/zz-lattice-cbb2-20260921T031800Z.md",
+          "requester": "CHATGPT_WORK_WINDOW",
+          "session_id": "p/zz-lattice-cbb2-20260921T031800Z.md",
+          "source": "commons-action",
+          "task_id": "zz-lattice-cbb2-20260921T031800Z",
+          "thread_id": "GROK.COM"
+        },
+        "run_key": "grok-action-zz-lattice-cbb2-20260921T031800Z"
+      },
+      "tool": "start_grok_capture"
+    },
+    "conversation_url": "",
+    "exact_prompts": [
+      "Execute, do not advise. Payment-first claim: https://github.com/claude-builders-bounty/claude-builders-bounty/issues/2#issuecomment-5754688445 under tokenjunkielabs; issue #2 pays $75 via Opire automatically on merge. IMPORTANT: branch tokenjunkielabs:zz-copper/cbb2-next-sqlite-claude-md@6e89ae6eb779c543a617a7cffd4277a278573f27 is stale/contaminated with the three CBB #3 hook commits and contains no CBB #2 file. Do not open a PR from it. Read #bug-bounty Slack messages 1789959494.738409 (artifact part 1/2) and 1789959528.773939 (part 2/2). From exact sponsor base 1aeae2adc82d33f971fd7731644348dcdd24b5a6, create tokenjunkielabs branch zz-lattice/cbb2-next-sqlite-claude-md, add ONLY bounty-2/CLAUDE.md by concatenating those two exact artifact parts, commit/push, and open the real upstream PR to claude-builders-bounty/claude-builders-bounty:main. PR title: docs: add production Next.js 15 + SQLite CLAUDE.md. Body begins /claim #2, includes Closes #2, $75 Opire claim link, and single-file scope. Do not run tests. Do not add bounty-3 or extra files. Merge only if authenticated account is authorized; otherwise leave for sponsor. Post one productive #bug-bounty receipt with issue URL, PR URL, head SHA, reward, claim, merge state, and exact blocker. Reply with GitHub URLs and Slack timestamp."
+    ],
+    "execution": {
+      "active_attempt_id": "",
+      "active_executor": "",
+      "blockers": [],
+      "capture_ack": null,
+      "failed_executors": [],
+      "prompt_replay_allowed": true,
+      "state": "QUEUED",
+      "submission_state": "NOT_SUBMITTED",
+      "submitted_at": ""
+    },
+    "lineage": null,
+    "origin": {
+      "event_id": "p/zz-lattice-cbb2-20260921T031800Z.md",
+      "requester": "CHATGPT_WORK_WINDOW",
+      "session_id": "p/zz-lattice-cbb2-20260921T031800Z.md",
+      "source": "commons-action",
+      "task_id": "zz-lattice-cbb2-20260921T031800Z",
+      "thread_id": "GROK.COM"
+    },
+    "receipt_contract": {
+      "conversation_url_prefix": "https://grok.com/c/",
+      "fabricated_receipts_forbidden": true,
+      "required": [
+        "exact_prompts",
+        "exact_final_result",
+        "completion_state",
+        "provider_evidence",
+        "artifact_evidence",
+        "origin",
+        "timestamps"
+      ],
+      "structural_start_before_submit": true
+    },
+    "request_sha256": "6024676b2eb13d965b928b6132be1fd32ecad5a5757fe8fd467ad8e7488c34fd",
+    "result": null,
+    "run_key": "grok-action-zz-lattice-cbb2-20260921T031800Z",
+    "schema": "commons-grok-executor-job/v1",
+    "step": 0,
+    "task": "Execute, do not advise. Payment-first claim: https://github.com/claude-builders-bounty/claude-builders-bounty/issues/2#issuecomment-5754688445 under tokenjunkielabs; issue #2 pays $75 via Opire automatically on merge. IMPORTANT: branch tokenjunkielabs:zz-copper/cbb2-next-sqlite-claude-md@6e89ae6eb779c543a617a7cffd4277a278573f27 is stale/contaminated with the three CBB #3 hook commits and contains no CBB #2 file. Do not open a PR from it. Read #bug-bounty Slack messages 1789959494.738409 (artifact part 1/2) and 1789959528.773939 (part 2/2). From exact sponsor base 1aeae2adc82d33f971fd7731644348dcdd24b5a6, create tokenjunkielabs branch zz-lattice/cbb2-next-sqlite-claude-md, add ONLY bounty-2/CLAUDE.md by concatenating those two exact artifact parts, commit/push, and open the real upstream PR to claude-builders-bounty/claude-builders-bounty:main. PR title: docs: add production Next.js 15 + SQLite CLAUDE.md. Body begins /claim #2, includes Closes #2, $75 Opire claim link, and single-file scope. Do not run tests. Do not add bounty-3 or extra files. Merge only if authenticated account is authorized; otherwise leave for sponsor. Post one productive #bug-bounty receipt with issue URL, PR URL, head SHA, reward, claim, merge state, and exact blocker. Reply with GitHub URLs and Slack timestamp."
+  },
+  "completion_predicate": {
+    "type": "result_address_on_head"
+  },
+  "created_at": "2026-09-21T03:30:02Z",
+  "deadline": "2026-10-21T03:30:02Z",
+  "event_receipts": [
+    {
+      "attempt_id": "zz-lattice-cbb2-20260921T031800Z-a01",
+      "event": "wake",
+      "lease_id": "lease-281c7f280ae4",
+      "ts": "2026-09-21T04:18:24Z",
+      "worker_id": "gh-watchdog"
+    },
+    {
+      "attempt_id": "zz-lattice-cbb2-20260921T031800Z-a01",
+      "carrier": "MAIL",
+      "event": "deliver",
+      "host": "https://ntfy.sh/woahwhattheheck-commons-board",
+      "http_status": 200,
+      "id": "zz-lattice-cbb2-20260921T031800Z",
+      "ts": "2026-09-21T04:18:24Z"
+    },
+    {
+      "attempt_id": "zz-lattice-cbb2-20260921T031800Z-a02",
+      "event": "wake",
+      "lease_id": "lease-b4cc8aae6f78",
+      "ts": "2026-09-21T06:37:54Z",
+      "worker_id": "gh-watchdog"
+    },
+    {
+      "attempt_id": "zz-lattice-cbb2-20260921T031800Z-a02",
+      "carrier": "MAIL",
+      "event": "deliver",
+      "host": "https://ntfy.sh/woahwhattheheck-commons-board",
+      "http_status": 200,
+      "id": "zz-lattice-cbb2-20260921T031800Z",
+      "ts": "2026-09-21T06:37:54Z"
+    },
+    {
+      "attempt_id": "zz-lattice-cbb2-20260921T031800Z-a03",
+      "event": "wake",
+      "lease_id": "lease-f9dec0fe3dbb",
+      "ts": "2026-09-21T18:52:48Z",
+      "worker_id": "gh-watchdog"
+    },
+    {
+      "attempt_id": "zz-lattice-cbb2-20260921T031800Z-a03",
+      "carrier": "MAIL",
+      "event": "deliver",
+      "host": "https://ntfy.sh/woahwhattheheck-commons-board",
+      "http_status": 200,
+      "id": "zz-lattice-cbb2-20260921T031800Z",
+      "ts": "2026-09-21T18:52:48Z"
+    },
+    {
+      "attempt_id": "zz-lattice-cbb2-20260921T031800Z-a04",
+      "event": "wake",
+      "lease_id": "lease-4580ac0c7d1c",
+      "ts": "2026-09-22T00:59:31Z",
+      "worker_id": "gh-watchdog"
+    },
+    {
+      "attempt_id": "zz-lattice-cbb2-20260921T031800Z-a04",
+      "carrier": "MAIL",
+      "event": "deliver",
+      "host": "https://ntfy.sh/woahwhattheheck-commons-board",
+      "http_status": 200,
+      "id": "zz-lattice-cbb2-20260921T031800Z",
+      "ts": "2026-09-22T00:59:31Z"
+    },
+    {
+      "attempt_id": "zz-lattice-cbb2-20260921T031800Z-a05",
+      "event": "wake",
+      "lease_id": "lease-1cc2f997b800",
+      "ts": "2026-09-22T05:51:02Z",
+      "worker_id": "gh-watchdog"
+    },
+    {
+      "attempt_id": "zz-lattice-cbb2-20260921T031800Z-a05",
+      "carrier": "MAIL",
+      "event": "deliver",
+      "host": "https://ntfy.sh/woahwhattheheck-commons-board",
+      "http_status": 200,
+      "id": "zz-lattice-cbb2-20260921T031800Z",
+      "ts": "2026-09-22T05:51:02Z"
+    },
+    {
+      "attempt_id": "zz-lattice-cbb2-20260921T031800Z-a06",
+      "event": "wake",
+      "lease_id": "lease-b991af16d7d3",
+      "ts": "2026-09-22T09:43:23Z",
+      "worker_id": "gh-watchdog"
+    },
+    {
+      "attempt_id": "zz-lattice-cbb2-20260921T031800Z-a06",
+      "carrier": "MAIL",
+      "event": "deliver",
+      "host": "https://ntfy.sh/woahwhattheheck-commons-board",
+      "http_status": 200,
+      "id": "zz-lattice-cbb2-20260921T031800Z",
+      "ts": "2026-09-22T09:43:23Z"
+    },
+    {
+      "attempt_id": "zz-lattice-cbb2-20260921T031800Z-a07",
+      "event": "wake",
+      "lease_id": "lease-c84a867082a2",
+      "ts": "2026-09-22T12:48:19Z",
+      "worker_id": "gh-watchdog"
+    },
+    {
+      "attempt_id": "zz-lattice-cbb2-20260921T031800Z-a07",
+      "carrier": "MAIL",
+      "event": "deliver",
+      "host": "https://ntfy.sh/woahwhattheheck-commons-board",
+      "http_status": 200,
+      "id": "zz-lattice-cbb2-20260921T031800Z",
+      "ts": "2026-09-22T12:48:19Z"
+    },
+    {
+      "attempt_id": "zz-lattice-cbb2-20260921T031800Z-a08",
+      "event": "wake",
+      "lease_id": "lease-956680503993",
+      "ts": "2026-09-22T15:27:16Z",
+      "worker_id": "gh-watchdog"
+    },
+    {
+      "attempt_id": "zz-lattice-cbb2-20260921T031800Z-a08",
+      "carrier": "MAIL",
+      "event": "deliver",
+      "host": "https://ntfy.sh/woahwhattheheck-commons-board",
+      "http_status": 200,
+      "id": "zz-lattice-cbb2-20260921T031800Z",
+      "ts": "2026-09-22T15:27:16Z"
+    }
+  ],
+  "exhausted_reason": "MAX_ATTEMPTS",
+  "harness": "grok.com authenticated browser via Commons MCP",
+  "in_backoff": false,
+  "job_id": "zz-lattice-cbb2-20260921T031800Z",
+  "last_wake_at": "2026-09-22T15:27:16Z",
+  "last_wake_checkpoint_fp": "f27d6e80be4f45c1",
+  "last_wake_checkpoint_sha256": "f27d6e80be4f45c1396f4367faaab46fdcbe2ecee6be52f442465ec3432946a4",
+  "lease": null,
+  "lease_seconds": 300,
+  "max_attempts": 8,
+  "max_backoff_seconds": 600,
+  "next_wake_at": "2026-09-22T13:15:29Z",
+  "no_progress_count": 7,
+  "objective": "Execute one intentional grok.com run and return its verified structural capture.",
+  "owner_claim": "GROK_EXECUTOR",
+  "result_address": "",
+  "status": "EXHAUSTED",
+  "tokens_used": 0,
+  "updated_at": "2026-09-22T15:43:44Z",
+  "woke_once": true
+}
