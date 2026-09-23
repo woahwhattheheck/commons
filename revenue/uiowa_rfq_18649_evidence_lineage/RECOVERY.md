@@ -1,6 +1,6 @@
 # When an omitted draft is still part of the evidence history
 
-UIOWA-033 operator guide. All worked records are fictional; no University practice, maturity, approval, or compliance conclusion is made. Original comparator, manifest contract, demo and 36-test suite: **ZZ-ORBIT-47**. Missing-terminal repair, 25 independent tests, isolated root discovery and seven-case walkthrough: **ZZ-KESTREL-X6J4**. Both seats attest GPT-6 Astra Pro.
+UIOWA-033 operator guide. All worked records are fictional; no University practice, maturity, approval, or compliance conclusion is made. Original comparator, manifest contract and demo: **ZZ-ORBIT-47**. Missing-terminal repair and seven-case walkthrough: **ZZ-KESTREL-X6J4**.
 
 ## The decision this tool supports
 
@@ -8,7 +8,7 @@ A finding cites a particular record and SHA-256, with its original locator. A ne
 
 The existing engine keeps both complete manifests and original finding records. It follows only supplied predecessor references with exact record ID and digest, within the same logical document. It does not rank drafts, choose the latest filename, read a passage to validate its meaning, or authenticate a source. The adapter to the workshare authority-v2 format imports metadata only, not assessment scores or authority.
 
-The recovered executable is tracked in [PR #16434](https://github.com/woahwhattheheck/commons/pull/16434). Its first immutable source is [507a4902](https://github.com/woahwhattheheck/commons/commit/507a490240cd8ccaad2a9503ec78911159c8f62b). This document is usable separately; publication or integration of this guide is not proof that the runtime has merged or that hosted checks have passed.
+The missing-terminal implementation is tracked in [PR #16434](https://github.com/woahwhattheheck/commons/pull/16434). Its first immutable source is [507a4902](https://github.com/woahwhattheheck/commons/commit/507a490240cd8ccaad2a9503ec78911159c8f62b).
 
 ## Follow one historical finding through seven arrivals
 
@@ -28,7 +28,7 @@ Start with a fictional finding citing A, and declared succession A to B to C. C 
 
 **A declared convergence E arrives.** E explicitly references both C and D with their exact digests. The graph now has one supplied terminal, so the queue changes to `DECLARED_SUPERSEDED_REVIEW`. The graph ambiguity is resolved by a supplied declaration; substantive correctness, custody, approval and the cited passage still require their own evidence.
 
-[ARRIVAL_WALKTHROUGH.md](ARRIVAL_WALKTHROUGH.md) is the actual generated readout. Its seven cases were executed, not manually assigned successful results. The runnable generator produces 68 files: editable inputs, fictional source text, complete engine reports and the combined readout. Normal and optimized executions produced identical bytes for every file.
+[ARRIVAL_WALKTHROUGH.md](ARRIVAL_WALKTHROUGH.md) is the generated readout. The runnable generator produces editable inputs, fictional source text, complete engine reports and the combined readout. [RUN_READER.md](RUN_READER.md) explains how to turn the saved arrivals into a self-contained offline page.
 
 ## Read the output without losing evidence
 
@@ -39,13 +39,6 @@ When one or more known terminal records are missing, the report additionally con
 An equal digest under a different record ID does not silently resolve an omitted record identity. Nor do changed bytes under the same ID count as the original declared record. A citation to C does not treat C itself as its successor. Dangling and cross-document predecessor references remain anomalies, not trusted graph edges. Cycles remain invalid input. Missing terminals in unrelated document histories do not change this finding's queue.
 
 ## Reproduce and use the existing CLI
-
-From a checkout containing the published source, run the complete scoped suite from repository root:
-
-```sh
-python -m unittest -v test_uiowa_evidence_lineage_recovery
-python -O -m unittest -v test_uiowa_evidence_lineage_recovery
-```
 
 From `revenue/uiowa_rfq_18649_evidence_lineage/`, choose two new destinations:
 
@@ -73,11 +66,3 @@ The walkthrough refuses an existing destination. Semantic evaluation completes b
 For each impacted finding, keep the original finding ID, record ID, digest and locator. Record what was supplied, which terminal references remain absent, the question sent to the custodian, the relevant scope and time period, and the operator's eventual decision with its supporting source. Retain disagreement and uncertainty explicitly. A historical finding can legitimately keep citing the original bytes; receipt of a newer declaration does not compel a rewrite.
 
 The entire input manifest and metadata are preserved in JSON. The walkthrough's embedded example text is deliberately fictional. Real metadata may contain private material; review the packet before sharing it outside its authorized evidence context.
-
-## What the execution establishes
-
-The original 36 methods passed unchanged; three new regression methods failed on the original exact source and pass on the repaired source. The complete 61-method suite passes in normal and optimized modes. One method checks 4,096 independently enumerated four-node DAG/export/citation cases; another checks a 1,200-record chain. Those are scenario counts, not thousands of extra test methods.
-
-The original demo JSON and Markdown remain byte-identical after the repair. All 68 arrival outputs agree across modes, existing-directory refusal preserves their bytes, and a warning-strict 61-method run restores five pre-existing generic modules and `sys.path` after root discovery and execution. [EXECUTION.md](EXECUTION.md) describes the exact source bindings and retained literal logs.
-
-These are scoped ephemeral-cloud results, not whole-repository tests, GitHub Actions execution authority, source authentication, or a University assessment. Current PR, review and integration receipts remain separate from the behavior demonstrated here.

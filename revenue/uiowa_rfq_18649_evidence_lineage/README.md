@@ -15,8 +15,6 @@ python demo.py /tmp/uiowa-lineage-rehearsal
 python lineage.py compare /tmp/uiowa-lineage-rehearsal/before.json \
   /tmp/uiowa-lineage-rehearsal/after.json \
   --findings /tmp/uiowa-lineage-rehearsal/findings.json --format markdown
-python -m unittest -v test_lineage.py
-python -O -m unittest -v test_lineage.py
 ```
 
 Choose a **new** rehearsal directory; `demo.py` refuses to reuse an existing
