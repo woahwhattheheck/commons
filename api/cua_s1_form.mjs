@@ -227,6 +227,43 @@ export async function runForm(input, { launch = launchChromium, resolver = dns.l
   }
 }
 
+/** Prefer the public production alias for function-to-function scorer calls.
+ * Deployment URLs (VERCEL_URL) often sit behind Vercel Authentication and return
+ * non-OK JSON to the form runner, which surfaces as SCORER_FAILED / HTTP 502.
+ */
+export function scorerBase(request, env = process.env) {
+  const explicit = env.COMMONS_CUA_SCORER_BASE || env.CUA_SCORER_BASE;
+  if (typeof explicit === 'string' && explicit.trim()) return explicit.replace(/\/$/, '');
+  const production = env.VERCEL_PROJECT_PRODUCTION_URL;
+  if (typeof production === 'string' && production.trim()) {
+    return `https://${production.replace(/^https?:\/\//, '').replace(/\/$/, '')}`;
+  }
+  // Stable Commons spark-mcp production host (CI + live verify target).
+  if (env.VERCEL_ENV === 'production' || env.VERCEL === '1') {
+    return 'https://commons-spark-mcp.vercel.app';
+  }
+  if (typeof env.VERCEL_URL === 'string' && env.VERCEL_URL.trim()) {
+    return `https://${env.VERCEL_URL.replace(/^https?:\/\//, '').replace(/\/$/, '')}`;
+  }
+  try { return new URL(request.url, 'http://localhost').origin; }
+  catch { return 'https://commons-spark-mcp.vercel.app'; }
+}
+
+async function fetchScorer(base, payload, fetchImpl = fetch) {
+  let lastStatus = 0;
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const response = await fetchImpl(base + '/api/cua_s1', { method: 'POST',
+      headers: { 'content-type': 'application/json', 'cache-control': 'no-store' },
+      body: JSON.stringify(payload) });
+    lastStatus = response.status;
+    if (response.ok) return response.json();
+    // Retry transient platform / cold-start failures only.
+    if (![502, 503, 504].includes(response.status) || attempt === 2) break;
+    await new Promise(r => setTimeout(r, 250 * (attempt + 1)));
+  }
+  throw new Error('SCORER_FAILED');
+}
+
 export async function handleRequest(request, deps = {}) {
   if (request.method === 'GET') return { status: 200, body: { ok: true, service: 'commons-cua-s1-form',
     browser_runtime: 'vercel-chromium', scoring_route: '/api/cua_s1' } };
@@ -239,15 +276,8 @@ export async function handleRequest(request, deps = {}) {
     body = JSON.parse(raw);
   } catch { return failure('BAD_JSON'); }
   try {
-    const base = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` :
-      new URL(request.url, 'http://localhost').origin;
-    const score = deps.score || (async payload => {
-      const response = await fetch(base + '/api/cua_s1', { method: 'POST',
-        headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) });
-      const result = await response.json();
-      if (!response.ok) throw new Error('SCORER_FAILED');
-      return result;
-    });
+    const base = deps.scorerBase || scorerBase(request, deps.env || process.env);
+    const score = deps.score || (async payload => fetchScorer(base, payload, deps.fetch || fetch));
     return { status: 200, body: await runForm(body, { ...deps, score }) };
   } catch (error) {
     const code = typeof error?.message === 'string' && /^[A-Z_]+$/.test(error.message) ? error.message : 'BROWSER_FAILED';

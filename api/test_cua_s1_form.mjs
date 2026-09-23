@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { browserNetworkRules, handleRequest, runForm, scoreOptions, validateRequest, validateUrl } from './cua_s1_form.mjs';
+import { browserNetworkRules, handleRequest, runForm, scoreOptions, scorerBase, validateRequest, validateUrl } from './cua_s1_form.mjs';
 import fixtureHandler from './cua_s1_fixture.mjs';
 
 const input = { url: 'https://example.com/form', form_title: 'Contact',
@@ -128,4 +128,17 @@ test('hosted fixture has one labeled field and no submission control', () => {
   assert.match(response.body, /<label for="cua-name">Name<\/label>/);
   assert.match(response.body, /<input id="cua-name"/);
   assert.doesNotMatch(response.body, /<button|type="submit"/);
+});
+
+test('scorerBase prefers production alias over deployment VERCEL_URL', () => {
+  const req = { url: 'https://commons-spark-mcp-git-preview.vercel.app/api/cua_s1_form' };
+  assert.equal(scorerBase(req, { COMMONS_CUA_SCORER_BASE: 'https://scorer.example' }),
+    'https://scorer.example');
+  assert.equal(scorerBase(req, { VERCEL_PROJECT_PRODUCTION_URL: 'commons-spark-mcp.vercel.app',
+    VERCEL_URL: 'commons-spark-mcp-git-preview.vercel.app' }),
+    'https://commons-spark-mcp.vercel.app');
+  assert.equal(scorerBase(req, { VERCEL_ENV: 'production', VERCEL_URL: 'deploy-only.vercel.app' }),
+    'https://commons-spark-mcp.vercel.app');
+  assert.equal(scorerBase(req, { VERCEL_URL: 'deploy-only.vercel.app' }),
+    'https://deploy-only.vercel.app');
 });
