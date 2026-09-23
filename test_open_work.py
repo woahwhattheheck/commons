@@ -361,3 +361,18 @@ class OpenWorkContract(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def test_prefix_companion_receipt_lands_short_uiowa_id(tmp_path):
+    """UIOWA-138 short id is LANDED when only p/UIOWA-138--*.md exists."""
+    import host.open_work as ow
+    root = tmp_path
+    (root / "p").mkdir(parents=True, exist_ok=True)
+    long_name = "UIOWA-138--exercised-analyst-to-analyst-continuation-packet--ZZ-BOREAL-138Q-.md"
+    (root / "p" / long_name).write_text("from: TEST\nid: UIOWA-138--x\n\nbody\n", encoding="utf-8")
+    # no exact p/UIOWA-138.md
+    assert ow.resolve_receipt(str(root), "UIOWA-138", "") == "p/%s" % long_name
+    assert ow.receipt_exists(str(root), "UIOWA-138", "") is True
+    row = ow.classify_id("UIOWA-138", str(root), main_sha="")
+    assert row["class"] == "LANDED"
+    assert row["receipt"].startswith("p/UIOWA-138--")

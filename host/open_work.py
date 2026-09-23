@@ -127,15 +127,60 @@ def _git_object_exists(root, spec):
     return True
 
 
-def receipt_exists(root, ident, main_sha=""):
+def _prefix_receipt_names(ident):
+    """Long-slug companions share p/{id}--*.md when the short id has no exact file."""
+    return "%s--" % str(ident or "")
+
+
+def _fs_prefix_receipt(root, ident):
+    folder = os.path.join(root, "p")
+    prefix = _prefix_receipt_names(ident)
+    if not prefix or not os.path.isdir(folder):
+        return None
+    for name in sorted(os.listdir(folder)):
+        if name.startswith(prefix) and name.endswith(".md"):
+            return "p/%s" % name
+    return None
+
+
+def _git_prefix_receipt(root, sha, ident):
+    prefix = "p/%s" % _prefix_receipt_names(ident)
+    if prefix == "p/":
+        return None
+    try:
+        out = subprocess.check_output(
+            ["git", "ls-tree", "--name-only", sha, "p/"],
+            cwd=root,
+            stderr=subprocess.DEVNULL,
+            text=True,
+        )
+    except (OSError, subprocess.CalledProcessError):
+        return None
+    for line in out.splitlines():
+        rel = line.strip()
+        if rel.startswith(prefix) and rel.endswith(".md"):
+            return rel
+    return None
+
+
+def resolve_receipt(root, ident, main_sha=""):
+    """Exact p/{id}.md first; else first landed p/{id}--*.md companion."""
     rel = receipt_path(ident).replace(os.sep, "/")
     sha = str(main_sha or "").strip().lower()
     if SHA_RE.match(sha):
         commit_exists = _git_object_exists(root, "%s^{commit}" % sha)
-        if commit_exists is True:
-            return _git_object_exists(root, "%s:%s" % (sha, rel)) is True
-        return False
-    return os.path.isfile(os.path.join(root, receipt_path(ident)))
+        if commit_exists is not True:
+            return None
+        if _git_object_exists(root, "%s:%s" % (sha, rel)) is True:
+            return rel
+        return _git_prefix_receipt(root, sha, ident)
+    if os.path.isfile(os.path.join(root, rel)):
+        return rel
+    return _fs_prefix_receipt(root, ident)
+
+
+def receipt_exists(root, ident, main_sha=""):
+    return resolve_receipt(root, ident, main_sha) is not None
 
 
 def is_work_id(ident):
@@ -297,7 +342,8 @@ def classify_id(ident, root, extra=None, record=None, main_sha=""):
     measured = bool(SHA_RE.match(sha)) and _git_object_exists(
         root, "%s^{commit}" % sha
     ) is True
-    exists = receipt_exists(root, ident, sha)
+    resolved = resolve_receipt(root, ident, sha)
+    exists = resolved is not None
     row_record = dict(record or {})
     row_record.setdefault("work", True)
     klass = classify_record(row_record, exists, slack_claimed=ident in claimed)
@@ -307,7 +353,7 @@ def classify_id(ident, root, extra=None, record=None, main_sha=""):
     return {
         "id": ident,
         "class": klass,
-        "receipt": receipt_path(ident) if exists else "404",
+        "receipt": resolved if exists else "404",
         "last_sha": sha,
         "errors": errors,
     }
@@ -479,7 +525,8 @@ def project(root, main_sha="", extra=None, include_salon=False):
     items = []
     for ident in sorted(by_id):
         record = by_id[ident]
-        exists = receipt_exists(root, ident, sha)
+        resolved = resolve_receipt(root, ident, sha)
+        exists = resolved is not None
         slack_claimed = bool(record.get("slack_claimed")) or ident in set(
             extra.get("slack_claimed") or []
         )
@@ -489,7 +536,7 @@ def project(root, main_sha="", extra=None, include_salon=False):
             {
                 "id": ident,
                 "class": klass,
-                "receipt": receipt_path(ident) if exists else "404",
+                "receipt": resolved if exists else "404",
                 "last_sha": sha,
                 "title_filename": listing_filename(ident, klass) if titled else "",
             }
