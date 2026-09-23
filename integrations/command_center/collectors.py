@@ -17,7 +17,7 @@ from time import monotonic
 from urllib.parse import quote, urlencode
 
 from .request_budget import RequestBudget, RequestDeferred
-from .slack_threads import read_channel
+from .slack_threads import read_channel, resolve_thread_root
 
 REPO = re.compile(r"^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$")
 HOUSEKEEPING = {"channel_join", "channel_leave", "channel_topic", "channel_purpose",
@@ -303,6 +303,7 @@ class LiveCollectors:
             if row.get("subtype") in HOUSEKEEPING or not row.get("ts"):
                 continue
             ts = str(row["ts"])
+            resolution = resolve_thread_root(row, channel_id)
             body = text(row.get("text"))
             url = workspace.rstrip("/") + "/archives/" + channel_id + "/p" + ts.replace(".", "") if workspace else None
             updated = timestamp(row.get("edited", {}).get("ts") or ts)
@@ -312,13 +313,15 @@ class LiveCollectors:
                 "project": channel.get("project") or label, "updated_at": updated,
                 "activity_observed_at": updated, "url": url, "summary": body,
                 "next_action": None, "refs": {"channel_id": channel_id, "message_ts": ts,
-                    "thread_ts": row.get("thread_ts") or ts, "reply_count": row.get("reply_count", 0),
+                    "thread_ts": resolution["thread_ts"], "root_resolution": resolution["state"],
+                    "root_reason": resolution["reason"], "reply_count": row.get("reply_count"),
                     "latest_reply": row.get("latest_reply")}, "actions": link(url)})
         batch = self._batch({**source, "metadata": metadata}, items, complete,
             ["Membership housekeeping omitted from work view; original Slack history remains unchanged.",
              "Reply coverage applies only to threads discovered in this bounded channel history.",
              "Partial valid pages are ingested; missing pages and threads never authorize removal."])
-        if metadata["history"]["error"] or any(row["error"] for row in metadata["thread_coverage"]):
+        if (metadata["history"]["error"] or metadata["unresolved_thread_roots_count"]
+                or any(row["error"] for row in metadata["thread_coverage"])):
             # source.error would make WorkstreamStore discard even valid rows.
             # Preserve per-slice failures in metadata, with incomplete coverage.
             batch["source"]["status"] = "degraded"
