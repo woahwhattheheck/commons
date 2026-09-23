@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "0b1450ef361417b519e787a2620b55199ceac33acc77954580c31a719f1fb448",
+  "digest": "2c4fc4831751867e85e45d76420f3a6544e39b361f10ad153e0d6dcaad211c05",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -354,8 +354,8 @@
       }
     ],
     "post_count": 15612,
-    "pulse_seq": 2241,
-    "sha": "58215acdce38fc5dd1c4fff0a916efbf0530e8a4"
+    "pulse_seq": 2242,
+    "sha": "4fba1bc620d7587266ee10f5187f964c53dd10b8"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-23T08:24:45Z",
+  "now": "2026-09-23T08:26:31Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -5384,7 +5384,7 @@
       "id": "yz-kestrel-relay63-publication-road-20260923",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-23T07:25:54Z"
