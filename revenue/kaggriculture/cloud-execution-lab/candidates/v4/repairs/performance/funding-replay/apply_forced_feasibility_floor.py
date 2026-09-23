@@ -1,16 +1,29 @@
 # SPDX-License-Identifier: Apache-2.0
 """Source-bound current-ABI port of TITAN #12096's forced-feasibility floor.
 
-This materializer is deliberately source-only. It reads the three current SELL
-planning surfaces, verifies their exact Git blob identities, writes only caller-
-chosen scratch outputs, and never mutates canonical runtime/config/COMPOSITION/
-INTEGRATION/archive/Kaggle state.
+This is the existing V4 source-only repair carrier, rebound to the active SELL
+path after selected_sell_core evolved. It never mutates canonical runtime,
+default/config, CURRENT/CANONICAL, COMPOSITION/INTEGRATION, archive, release, or
+Kaggle state. It writes only caller-chosen scratch outputs.
 
-The preserved theorem is narrow:
-* a physically forced rescue must have nonnegative worst relative gain;
-* it must also have nonnegative worst own-receipt gain;
-* an ordinary accepted positive-gain candidate outranks a value-neutral forced
-  rescue because ranking is gain-first, not forced-boolean-first.
+Current active seam:
+    selected_sell_core.optimize_lot -> exec_pace_runtime.apply_candidate
+    -> frozen_selected.seller_choice_rank
+
+Preserved theorem:
+* feasible references keep the incumbent strict-positive relative-improvement
+  requirement;
+* physically forced rescue requires nonnegative worst relative gain and
+  nonnegative worst own-receipt gain;
+* forced feasibility is annotation / same-score tie-break only and cannot
+  outrank a better ordinary economic candidate;
+* EXEC-PACE remains timing-only: it preserves optimizer diagnostics and keeps
+  its intentional forced-feasibility timing bypass.
+
+The earlier #16061 carrier remains exact Git history. Its historical source
+bindings and reconstructed scheduler edge are retained below as custody only;
+the dormant scheduler transform is deliberately not replayed into this current
+active-path rebind.
 """
 from __future__ import annotations
 
@@ -19,13 +32,20 @@ import hashlib
 from pathlib import Path
 
 EXPECTED_BLOBS = {
-    "scheduler": "fcfed4d59e17f211e6744e246e86167ea82a0b87",
-    "selected_sell_core": "d460678b6504833e86e3f28ee30edc6dff13de83",
+    "selected_sell_core": "cca43d372e74886ded7089fc400ef924e74a8347",
     "frozen_selected": "6a95505388ea1b5eba38bd1f927a2a2bf084490c",
+    "exec_pace_runtime": "76cbb062760f58e0c47f3bfd29e3652362180218",
 }
 
-# The missing historical scheduler postimages were independently reconstructed
-# from the pinned V4 recipe before this current-ABI port was authored.
+PREVIOUS_CARRIER = {
+    "merge": "02ae1236f1d4beee2b4b1eadd1f3ec814535cb2c",
+    "materializer_blob": "a06f504083bd9a4d64cdb225ce5101b8541591bc",
+    "test_blob": "07676d7f621fe8a146a60c7060e4abaa64aa8399",
+    "scheduler_source": "fcfed4d59e17f211e6744e246e86167ea82a0b87",
+    "selected_sell_core_source": "d460678b6504833e86e3f28ee30edc6dff13de83",
+    "frozen_selected_source": "6a95505388ea1b5eba38bd1f927a2a2bf084490c",
+}
+
 RECONSTRUCTED_SCHEDULER_EDGE = {
     "funding_capacity_output": "eb289f87adebb7dc7e90046bfbec31a307cb5aaa",
     "scoped_construction_output": "b29d1e9887f517506c5b3d858baa9bda5848e73f",
@@ -50,75 +70,6 @@ def _replace_once(source: str, old: str, new: str, label: str) -> str:
 def _compile(source: str, label: str) -> str:
     compile(source, label, "exec")
     return source
-
-
-def transform_scheduler(source: str) -> str:
-    source = _replace_once(
-        source,
-        "    found_feasible=reference_feasible\n"
-        "    candidates={tuple(reference)}\n",
-        "    found_feasible=reference_feasible\n"
-        "    physical_feasible_found=reference_feasible\n"
-        "    economic_floor_rejections=0\n"
-        "    candidates={tuple(reference)}\n",
-        "scheduler state",
-    )
-    source = _replace_once(
-        source,
-        "        else:\n"
-        "            if capacity_ok and not capacity_ok(plan):continue\n"
-        "            scores=[model.score(plan,quantity,r,a,end==last) for _,r,a in scenarios]\n"
-        "        deltas=[s[0]-b[0] for s,b in zip(scores,baseline)]\n"
-        "        key=(round(min(deltas),8),round(sum(deltas),8),float(dict(plan).get(now,0)))\n"
-        "        # Require improvement in every explicit scenario; ties preserve reference.\n"
-        "        if (key[0]>0 or not reference_feasible) and key>best_key:\n"
-        "            best_key,best_plan,best_scores=key,plan,scores\n"
-        "            found_feasible=True\n",
-        "        else:\n"
-        "            if capacity_ok and not capacity_ok(plan):continue\n"
-        "            physical_feasible_found=True\n"
-        "            scores=[model.score(plan,quantity,r,a,end==last) for _,r,a in scenarios]\n"
-        "        deltas=[s[0]-b[0] for s,b in zip(scores,baseline)]\n"
-        "        own_deltas=[s[1]-b[1] for s,b in zip(scores,baseline)]\n"
-        "        key=(round(min(deltas),8),round(sum(deltas),8),float(dict(plan).get(now,0)))\n"
-        "        worst_own_gain=round(min(own_deltas),8)\n"
-        "        economic_floor=(key[0]>0 if reference_feasible\n"
-        "                        else key[0]>=0 and worst_own_gain>=0)\n"
-        "        # Forced physical feasibility cannot waive the nonnegative own/relative floor.\n"
-        "        if economic_floor and key>best_key:\n"
-        "            best_key,best_plan,best_scores=key,plan,scores\n"
-        "            found_feasible=True\n"
-        "        elif not reference_feasible and not economic_floor:\n"
-        "            economic_floor_rejections+=1\n",
-        "scheduler economic floor",
-    )
-    source = _replace_once(
-        source,
-        "        'worst_relative_gain':best_key[0] if found_feasible else 0.0,'forced_feasibility':not reference_feasible and found_feasible,\n"
-        "        'feasible':found_feasible,'plans_evaluated':len(candidates)}\n",
-        "        'worst_relative_gain':best_key[0] if found_feasible else 0.0,\n"
-        "        'worst_own_gain':round(min((s[1]-b[1] for s,b in zip(best_scores,baseline)),default=0.0),8) if found_feasible else 0.0,\n"
-        "        'reference_feasible':reference_feasible,'physical_feasible_found':physical_feasible_found,\n"
-        "        'economic_floor_rejections':economic_floor_rejections,\n"
-        "        'forced_feasibility':not reference_feasible and found_feasible,\n"
-        "        'feasible':found_feasible,'plans_evaluated':len(candidates)}\n",
-        "scheduler receipt",
-    )
-    source = _replace_once(
-        source,
-        "            eligible=info['worst_relative_gain']>0 or info.get('forced_feasibility',False)\n"
-        "            rank=(info.get('forced_feasibility',False),info['worst_relative_gain'])\n"
-        "            if eligible and (best is None or rank>(best[2].get('forced_feasibility',False),best[2]['worst_relative_gain'])):best=(item,plan,info)\n",
-        "            gain=float(info['worst_relative_gain'])\n"
-        "            forced=bool(info.get('forced_feasibility',False))\n"
-        "            own_gain=float(info.get('worst_own_gain',0.0))\n"
-        "            eligible=((forced and gain>=0 and own_gain>=0) or (not forced and gain>0))\n"
-        "            rank=(gain,forced)\n"
-        "            prior=(-float('inf'),False) if best is None else (float(best[2]['worst_relative_gain']),bool(best[2].get('forced_feasibility',False)))\n"
-        "            if eligible and rank>prior:best=(item,plan,info)\n",
-        "scheduler caller rank",
-    )
-    return _compile(source, "titan_v4_forced_feasibility_scheduler")
 
 
 def transform_selected_sell_core(source: str) -> str:
@@ -147,8 +98,8 @@ def transform_selected_sell_core(source: str) -> str:
         "            deltas=[s[0]-b[0] for s,b in zip(scores,baseline)]\n"
         "            own_deltas=[s[1]-b[1] for s,b in zip(scores,baseline)]\n"
         "            key=(round(min(deltas),8),round(sum(deltas),8),float(dict(plan).get(now,0)))\n"
-        "            worst_own_gain=round(min(own_deltas),8)\n"
-        "            if key[0]<0 or worst_own_gain<0:\n"
+        "            worst_own=round(min(own_deltas),8)\n"
+        "            if key[0]<0 or worst_own<0:\n"
         "                economic_floor_rejections+=1\n"
         "                continue\n"
         "            if key>best_key:\n"
@@ -190,7 +141,7 @@ def transform_frozen_selected(source: str) -> str:
         "    score=float(info.get('acceptance_score',info.get('worst_relative_gain',0.0)))\n"
         "    return forced or accepted,(forced,score)\n",
         "def seller_choice_rank(info):\n"
-        "    \"\"\"Admit forced rescue only above its floor; rank economic gain first.\"\"\"\n"
+        "    \"\"\"Admit forced rescue only above its floor; rank economic score first.\"\"\"\n"
         "    forced=bool(info.get('forced_feasibility',False))\n"
         "    gain=float(info.get('worst_relative_gain',0.0))\n"
         "    own_gain=float(info.get('worst_own_gain',0.0))\n"
@@ -211,10 +162,23 @@ def transform_frozen_selected(source: str) -> str:
     return _compile(source, "titan_v4_forced_feasibility_frozen")
 
 
+def verify_exec_pace_runtime(source: str) -> str:
+    anchors = (
+        "current_info = dict(info or {})",
+        'if current_info.get("forced_feasibility", False):',
+        '"reason": "forced-feasibility-bypass"',
+        "return candidate, current_info",
+    )
+    missing = [anchor for anchor in anchors if anchor not in source]
+    if missing:
+        raise ValueError(f"exec pace current-path anchors missing: {missing}")
+    return _compile(source, "titan_v4_forced_feasibility_exec_pace_context")
+
+
 TRANSFORMS = {
-    "scheduler": transform_scheduler,
     "selected_sell_core": transform_selected_sell_core,
     "frozen_selected": transform_frozen_selected,
+    "exec_pace_runtime": verify_exec_pace_runtime,
 }
 
 
@@ -239,21 +203,23 @@ def materialize(kind: str, source_path: Path, output_path: Path) -> dict[str, st
 
 def main(argv=None) -> int:
     p = argparse.ArgumentParser()
-    p.add_argument("--scheduler", type=Path, required=True)
     p.add_argument("--selected-core", type=Path, required=True)
     p.add_argument("--frozen", type=Path, required=True)
+    p.add_argument("--exec-pace", type=Path, required=True)
     p.add_argument("--output-dir", type=Path, required=True)
     args = p.parse_args(argv)
     if args.output_dir.exists() and any(args.output_dir.iterdir()):
         raise ValueError("output directory must be new or empty")
     args.output_dir.mkdir(parents=True, exist_ok=True)
     rows = {
-        "scheduler": materialize("scheduler", args.scheduler, args.output_dir / "scheduler.py"),
         "selected_sell_core": materialize(
             "selected_sell_core", args.selected_core, args.output_dir / "selected_sell_core.py"
         ),
         "frozen_selected": materialize(
             "frozen_selected", args.frozen, args.output_dir / "frozen_selected.py"
+        ),
+        "exec_pace_runtime": materialize(
+            "exec_pace_runtime", args.exec_pace, args.output_dir / "exec_pace_runtime.py"
         ),
     }
     for name, row in rows.items():
