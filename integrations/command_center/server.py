@@ -31,7 +31,7 @@ MANIFEST = {
     "direct_work_refresh": "POST /api/work/refresh; status is included in GET /api/work",
     "owner_work": "POST /api/work/item: operation_id, source_id, item_id, priority, next_action, optional prepared job",
     "mail": "GET /api/mail?limit=100&offset=0&q=&mode=all: deterministic thread tracking; selected metadata only, no provider requests. Modes: all, waiting_on_us, waiting_on_them, unknown, unread, overdue. Existing work-item API preserves priorities and next actions. Coverage and sync age remain explicit.",
-    "context": "GET /api/context?limit=20&offset=0&q=&owner=&provider=&source=&kind=&status=&if_revision=: bounded selective metadata, explicit omissions and stable revision. No provider reads. owner is the provider-reported label, not worker assignment.",
+    "context": "GET /api/context?limit=20&offset=0&q=&owner=&provider=&source=&kind=&status=&order=priority&seat=&if_revision=: bounded selective metadata, explicit omissions and stable revision. No provider reads. owner is the provider-reported label, not worker assignment. order selects priority, oldest or seat; seat is an optional routing label, not a claim or assignment.",
     "context_item": "GET /api/context/item?source_id=...&item_id=...: one exact stored normalized observation, independent of filtered visibility.",
     "summary": "GET /api/summary: bounded cache-only Deathstar view; no provider calls, freshness and observed lower-bound throughput, typed money records and request cooldowns",
     "decisions": "GET /api/decisions: Deathstar decision rows over the /api/work state (source_health included) and operator_control mode, one per active operation (explicit metadata.operation key): provider stage, waiting_on_us/them and what, next action, owner, agents with heartbeat age, source freshness/cooldown/coverage, money at risk/collected; exceptions (deadlines, stalled gates, owner_only, held publications) and blocked agents at top level; typed stages and receipts as drilldown. Unknown fields name the source that would answer them.",
@@ -95,7 +95,9 @@ class Handler(BaseHTTPRequestHandler):
                            for key in ("owner", "provider", "source", "kind", "status")}
                 self.send_json(200, self.server.center.work_context(
                     limit=limit, offset=offset, query=query.get("q", [""])[0],
-                    if_revision=query.get("if_revision", [None])[0], **filters))
+                    if_revision=query.get("if_revision", [None])[0],
+                    order=query.get("order", ["priority"])[0],
+                    seat=query.get("seat", [""])[0], **filters))
             elif parsed.path == "/api/context/item":
                 query = parse_qs(parsed.query)
                 self.send_json(200, self.server.center.work_context_item(

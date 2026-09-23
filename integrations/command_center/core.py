@@ -935,7 +935,8 @@ class CommandCenter:
         return snapshot, {"hit": False, "ttl_seconds": 5, "age_seconds": 0}
 
     def work_context(self, limit=20, offset=0, query="", owner="", provider="",
-                     source="", kind="", status="", if_revision=None):
+                     source="", kind="", status="", if_revision=None,
+                     order="priority", seat=""):
         """Read a selective shared context page, with unchanged-page reuse."""
         from .context_view import build_index, select
         started = time.monotonic()
@@ -951,7 +952,7 @@ class CommandCenter:
                 result = select(cached["index"], limit=limit, offset=offset,
                                 query=query, owner=owner, provider=provider,
                                 source=source, kind=kind, status=status,
-                                if_revision=if_revision)
+                                if_revision=if_revision, order=order, seat=seat)
             except ValueError as exc:
                 raise CoreError(400, str(exc)) from None
             result["cache"] = cache
