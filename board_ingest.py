@@ -4253,7 +4253,6 @@ def _completion_marker_for_closed_issue(issue):
 
 def _handle_completion_issue_event(ev):
     """Reconcile current issue state without re-ingesting it as a post."""
-    action = str(ev.get("action") or "")
     issue = ev.get("issue")
     number = issue.get("number") if isinstance(issue, dict) else None
     if type(number) is not int or number < 1:
@@ -4276,7 +4275,7 @@ def _handle_completion_issue_event(ev):
             flush=True,
         )
         return 0
-    if action == "reopened" or canonical_issue.get("state") == "open":
+    if canonical_issue.get("state") == "open":
         removed = completion_projection.remove_markers_for_issue(ROOT, number)
         print(
             "COMPLETION_REOPEN issue=%s removed=%s ids=%s"
