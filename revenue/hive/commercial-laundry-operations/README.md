@@ -25,7 +25,7 @@ This demonstration uses actual SQLite persistence and the product engine, not a 
 
 ## Browser console
 
-Run `python web_console.py /path/to/desk.sqlite3` and open the printed loopback URL for guided setup, all ten operations, route/exception views, retry recovery, and direct downloads. Follow [the browser operator guide](WEB_CONSOLE.md) for startup and connection-loss handling. No browser build or external service is required. For backup and restore through the existing CLI, see [BACKUP.md](BACKUP.md).
+Run `python web_console.py /path/to/desk.sqlite3` and open the printed private session URL for guided setup, all ten operations, route/exception views, retry recovery, and direct downloads. Follow [the browser operator guide](WEB_CONSOLE.md) for startup and connection-loss handling. The older `operator_console.py` command launches the same console; there is one shared implementation. No browser build or external service is required. For backup and restore through the existing CLI, see [BACKUP.md](BACKUP.md).
 
 ## What the desk records
 

@@ -10,6 +10,8 @@ import base64
 from contextlib import closing
 from datetime import date, datetime, timezone
 import hashlib
+import hmac
+import secrets
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
 from pathlib import Path
@@ -34,6 +36,12 @@ FORMATS = {"json": ("application/json", "json"), "csv": ("text/csv", "csv"),
            "markdown": ("text/markdown", "md")}
 
 
+class ConsoleDenied(LaundryDeskError):
+    def __init__(self, status: int, message: str):
+        super().__init__(message)
+        self.status = status
+
+
 class DatabaseChanged(LaundryDeskError):
     """A pending request may refer to a previous database; preserve it."""
 
@@ -45,6 +53,7 @@ class ConsoleServer(ThreadingHTTPServer):
         operate._regular_database(database)
         LaundryDesk.open_read_only(database)
         self.database = database.absolute()
+        self.token = secrets.token_urlsafe(32)
         self.identity = self.file_identity()
         # Not a credential: binds a browser's pending operation to this file,
         # including across server restarts, rather than merely its display name.
@@ -100,20 +109,26 @@ class ConsoleHandler(BaseHTTPRequestHandler):
         self.send_bytes(status, json.dumps(value, ensure_ascii=True, allow_nan=False,
                                           separators=(",", ":")).encode(), "application/json")
 
-    def browser_origin(self) -> None:
+    def browser_origin(self, *, api: bool, mutate: bool) -> None:
         port = self.server.server_port
         hosts = {f"127.0.0.1:{port}", f"localhost:{port}"}
-        host = self.headers.get("Host", "")
-        if host not in hosts:
-            raise ValidationError("open the printed loopback URL directly")
-        origin = self.headers.get("Origin")
-        if origin is not None and origin != "http://" + host:
-            raise ValidationError("cross-origin browser requests are not supported")
+        supplied_hosts = self.headers.get_all("Host", [])
+        if len(supplied_hosts) != 1 or supplied_hosts[0] not in hosts:
+            raise ConsoleDenied(403, "open the printed loopback URL directly")
+        origin = self.headers.get_all("Origin", [])
+        expected_origin = "http://" + supplied_hosts[0]
+        if (origin and origin != [expected_origin]) or (mutate and not origin):
+            raise ConsoleDenied(403, "a same-origin browser request is required")
+        if api:
+            supplied = self.headers.get_all("Authorization", [])
+            expected = ("Bearer " + self.server.token).encode("ascii")
+            if len(supplied) != 1 or not hmac.compare_digest(supplied[0].encode("utf-8"), expected):
+                raise ConsoleDenied(401, "unlock with the current console session key")
 
     def run_request(self, mutate: bool = False) -> None:
         try:
-            self.browser_origin()
             parsed = urlsplit(self.path)
+            self.browser_origin(api=parsed.path != "/" or mutate, mutate=mutate)
             query = parse_qs(parsed.query, keep_blank_values=True, max_num_fields=8)
             if any(len(values) != 1 for values in query.values()):
                 raise ValidationError("query parameters must occur once")
@@ -139,6 +154,8 @@ class ConsoleHandler(BaseHTTPRequestHandler):
                 self.export(args)
             else:
                 self.send_json(404, {"status": "REJECTED", "message": "unknown endpoint"})
+        except ConsoleDenied as exc:
+            self.send_json(exc.status, {"status": "LOCKED", "message": str(exc)})
         except DatabaseChanged as exc:
             self.send_json(409, {"status": "DATABASE_CHANGED", "message": str(exc),
                                  "authority": operate.authority()})
@@ -228,11 +245,11 @@ class ConsoleHandler(BaseHTTPRequestHandler):
         self.send_bytes(200, exports[format_name].encode("utf-8"), mime, filename)
 
 
-def main(argv: list[str] | None = None) -> int:
+def main(argv: list[str] | None = None, *, default_port: int = 8765) -> int:
     parser = argparse.ArgumentParser(description="Local laundry operations console; draft invoices only")
     parser.add_argument("database", type=Path, help="existing operator-owned SQLite file")
     parser.add_argument("--init", action="store_true", help="explicitly initialize a NEW file; never overwrite")
-    parser.add_argument("--port", type=int, default=8765, help="loopback port (0 chooses an available port)")
+    parser.add_argument("--port", type=int, default=default_port, help="loopback port (0 chooses an available port)")
     args = parser.parse_args(argv)
     try:
         if not 0 <= args.port <= 65535:
@@ -240,7 +257,8 @@ def main(argv: list[str] | None = None) -> int:
         if args.init:
             operate.execute(str(args.database), "init", None)
         with ConsoleServer(args.database, args.port) as server:
-            print(f"Laundry desk: http://127.0.0.1:{server.server_port}/ — {args.database.name}", flush=True)
+            print(f"Open http://127.0.0.1:{server.server_port}/#key={server.token}", flush=True)
+            print("Private session address: do not share it. Lock clears the browser, not the server.", flush=True)
             print("Local operator records only. No customer sends, payment, or accounting writes.", flush=True)
             server.serve_forever()
     except KeyboardInterrupt:
