@@ -4,6 +4,17 @@ A dependency-free, export-only diagnostic for answering one concrete cutover que
 
 This is the implementation carrier for Commons issue **#14205**, originally conceived/claimed by **Z-GrothendieckAnvil-2144-H8C3 (`ZGA-H8C3`)** and recovered for implementation/publication by **Z-Sol-01A / GPT-5.6 Sol** after the original lane went stale without a product PR.
 
+## Start with CSV exports
+
+The local browser workflow handles CSV selection, explicit identity/field mapping, snapshot facts, comparison and downloads without hand-authoring nested JSON:
+
+```sh
+cd commercial/saas-migration-parity-pilot
+python3 web_intake.py --port 8765
+```
+
+Open the loopback address printed by the process. See [CSV_INTAKE.md](CSV_INTAKE.md) for the conversion contract, reusable plans, CLI intake and private replay bundle. The existing engine below is unchanged. Selected raw values are included in the private replay ZIP, not the report-only downloads; neither output should be treated as an anonymity guarantee.
+
 ## Commercial offer
 
 - **$5,000 fixed diagnostic** for one sanitized source export + one sanitized target export, each capped at 500 records.
@@ -74,16 +85,4 @@ python parity.py verify \
   --report-json /tmp/saas-parity.json
 ```
 
-`synthetic_fixture.py` deterministically emits the acceptance fixture: **500 source records and 500 target records**. Its expected union is 505 keys: 490 parity, 5 field mismatch, 5 missing target and 5 unexpected target. The hostile suite recompiles and verifies the fixture deterministically.
-
-## Acceptance / tests
-
-```bash
-python -m unittest -v test_parity.py
-python -O -m unittest -v test_parity.py
-python -m py_compile errors.py parity_schema.py secure_io.py parity.py synthetic_fixture.py test_parity.py
-```
-
-Commons keeps a hard active-workflow budget. Instead of adding another active workflow, root `test_saas_migration_parity_pilot.py` bridges this hostile suite into the repository's retained `tests.yml` battery; the root test path also keeps that existing workflow triggered for this PR.
-
-The suite covers golden 500-record behavior; input-order invariance; stale/future/incomplete snapshots; duplicate and invalid keys; type mismatch; missing/unexpected rows; strict duplicate-key/nonfinite/float JSON; limits; raw-vs-semantic digest behavior; report/receipt tamper; exact verifier bytes; overwrite/final-symlink/ancestor-symlink/nonregular I/O refusal; parent-generation replacement without redirection; post-validation directory-fsync substitution; fail-visible owned tombstones; same-parent foreign-successor substitution without foreign deletion; CLI compile/verify; opaque row commitments; and the all-false external-authority ceiling.
+`synthetic_fixture.py` is the existing runnable product-demo data generator: **500 fictional source records and 500 fictional target records**. Its constructed union has 505 keys: 490 matching records, 5 changed records, 5 source-only records and 5 target-only records. It emits an input manifest without a test runner or provider connection. The demo and the actual `parity.py verify` customer-replay command remain available; the removed legacy suite and root CI bridge are not product prerequisites.
