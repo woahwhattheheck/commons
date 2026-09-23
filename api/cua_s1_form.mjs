@@ -228,18 +228,58 @@ export async function runForm(input, { launch = launchChromium, resolver = dns.l
 }
 
 
-export function resolveScorerBase(request = {}) {
-  const production = process.env.VERCEL_PROJECT_PRODUCTION_URL;
-  if (production) return `https://${production}`;
-  const headers = request.headers || {};
-  const host = headers['x-forwarded-host'] || headers.host;
+function headerValue(headers, name) {
+  if (!headers) return undefined;
+  if (typeof headers.get === 'function') {
+    return headers.get(name) || headers.get(name.toLowerCase()) || undefined;
+  }
+  return headers[name] || headers[name.toLowerCase()] || undefined;
+}
+
+/** Prefer the public production alias for function-to-function scorer calls.
+ * Deployment URLs (VERCEL_URL) often sit behind Vercel Authentication and return
+ * non-OK to the form runner → SCORER_FAILED / HTTP 502. Web Request headers need
+ * Headers.get, not plain-object indexing.
+ */
+export function resolveScorerBase(request = {}, env = process.env) {
+  const explicit = env.COMMONS_CUA_SCORER_BASE || env.CUA_SCORER_BASE;
+  if (typeof explicit === 'string' && explicit.trim()) {
+    return explicit.replace(/\/$/, '');
+  }
+  const production = env.VERCEL_PROJECT_PRODUCTION_URL;
+  if (typeof production === 'string' && production.trim()) {
+    return `https://${production.replace(/^https?:\/\//, '').replace(/\/$/, '')}`;
+  }
+  const host = headerValue(request.headers, 'x-forwarded-host') || headerValue(request.headers, 'host');
   if (host) {
-    const proto = String(headers['x-forwarded-proto'] || 'https').split(',')[0].trim();
+    const proto = String(headerValue(request.headers, 'x-forwarded-proto') || 'https')
+      .split(',')[0].trim();
     return `${proto}://${String(host).split(',')[0].trim()}`;
   }
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  // On any Vercel runtime, hard-prefer the stable production alias before
+  // falling back to the protected deployment hostname.
+  if (env.VERCEL_ENV === 'production' || env.VERCEL === '1') {
+    return 'https://commons-spark-mcp.vercel.app';
+  }
+  if (typeof env.VERCEL_URL === 'string' && env.VERCEL_URL.trim()) {
+    return `https://${env.VERCEL_URL.replace(/^https?:\/\//, '').replace(/\/$/, '')}`;
+  }
   try { return new URL(request.url || '/', 'http://localhost').origin; }
-  catch { return 'http://localhost'; }
+  catch { return 'https://commons-spark-mcp.vercel.app'; }
+}
+
+async function fetchScorer(base, payload, fetchImpl = fetch) {
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const response = await fetchImpl(base + '/api/cua_s1', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', 'cache-control': 'no-store' },
+      body: JSON.stringify(payload),
+    });
+    if (response.ok) return response.json();
+    if (![502, 503, 504].includes(response.status) || attempt === 2) break;
+    await new Promise(r => setTimeout(r, 250 * (attempt + 1)));
+  }
+  throw new Error('SCORER_FAILED');
 }
 
 export async function handleRequest(request, deps = {}) {
@@ -257,14 +297,8 @@ export async function handleRequest(request, deps = {}) {
     // Prefer production alias for internal scorer fetch. VERCEL_URL is the
     // deployment hostname and often hits Deployment Protection / cold-route
     // 401-502 from Node→self, which surfaces as SCORER_FAILED on /cua-s1/form.
-    const base = resolveScorerBase(request);
-    const score = deps.score || (async payload => {
-      const response = await fetch(base + '/api/cua_s1', { method: 'POST',
-        headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) });
-      const result = await response.json();
-      if (!response.ok) throw new Error('SCORER_FAILED');
-      return result;
-    });
+    const base = deps.scorerBase || resolveScorerBase(request, deps.env || process.env);
+    const score = deps.score || (async payload => fetchScorer(base, payload, deps.fetch || fetch));
     return { status: 200, body: await runForm(body, { ...deps, score }) };
   } catch (error) {
     const code = typeof error?.message === 'string' && /^[A-Z_]+$/.test(error.message) ? error.message : 'BROWSER_FAILED';

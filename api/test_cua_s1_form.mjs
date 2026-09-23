@@ -130,36 +130,30 @@ test('hosted fixture has one labeled field and no submission control', () => {
   assert.doesNotMatch(response.body, /<button|type="submit"/);
 });
 
-test('resolveScorerBase prefers VERCEL_PROJECT_PRODUCTION_URL over VERCEL_URL', () => {
-  const prevProd = process.env.VERCEL_PROJECT_PRODUCTION_URL;
-  const prevUrl = process.env.VERCEL_URL;
-  process.env.VERCEL_PROJECT_PRODUCTION_URL = 'commons-spark-mcp.vercel.app';
-  process.env.VERCEL_URL = 'commons-spark-mcp-git-main-deadbeef.vercel.app';
-  try {
-    assert.equal(resolveScorerBase({ url: '/cua-s1/form', headers: { host: 'ignored.example' } }),
-      'https://commons-spark-mcp.vercel.app');
-  } finally {
-    if (prevProd === undefined) delete process.env.VERCEL_PROJECT_PRODUCTION_URL;
-    else process.env.VERCEL_PROJECT_PRODUCTION_URL = prevProd;
-    if (prevUrl === undefined) delete process.env.VERCEL_URL;
-    else process.env.VERCEL_URL = prevUrl;
-  }
-});
-
-test('resolveScorerBase falls back to request host before VERCEL_URL', () => {
-  const prevProd = process.env.VERCEL_PROJECT_PRODUCTION_URL;
-  const prevUrl = process.env.VERCEL_URL;
-  delete process.env.VERCEL_PROJECT_PRODUCTION_URL;
-  process.env.VERCEL_URL = 'deployment-hash.vercel.app';
-  try {
-    assert.equal(resolveScorerBase({
-      url: '/cua-s1/form',
-      headers: { host: 'commons-spark-mcp.vercel.app', 'x-forwarded-proto': 'https' },
-    }), 'https://commons-spark-mcp.vercel.app');
-  } finally {
-    if (prevProd === undefined) delete process.env.VERCEL_PROJECT_PRODUCTION_URL;
-    else process.env.VERCEL_PROJECT_PRODUCTION_URL = prevProd;
-    if (prevUrl === undefined) delete process.env.VERCEL_URL;
-    else process.env.VERCEL_URL = prevUrl;
-  }
+test('resolveScorerBase prefers production alias and Web Headers.get', () => {
+  const req = { url: '/cua-s1/form' };
+  assert.equal(resolveScorerBase(req, {
+    COMMONS_CUA_SCORER_BASE: 'https://scorer.example/',
+    VERCEL_URL: 'deploy.vercel.app',
+  }), 'https://scorer.example');
+  assert.equal(resolveScorerBase(req, {
+    VERCEL_PROJECT_PRODUCTION_URL: 'commons-spark-mcp.vercel.app',
+    VERCEL_URL: 'deploy.vercel.app',
+  }), 'https://commons-spark-mcp.vercel.app');
+  const webHeaders = { get(name) {
+    const key = String(name).toLowerCase();
+    if (key === 'x-forwarded-host') return 'commons-spark-mcp.vercel.app';
+    if (key === 'x-forwarded-proto') return 'https';
+    return null;
+  } };
+  assert.equal(resolveScorerBase({ url: '/cua-s1/form', headers: webHeaders }, {
+    VERCEL_URL: 'deploy.vercel.app',
+  }), 'https://commons-spark-mcp.vercel.app');
+  assert.equal(resolveScorerBase(req, {
+    VERCEL: '1', VERCEL_URL: 'deploy.vercel.app',
+  }), 'https://commons-spark-mcp.vercel.app');
+  assert.equal(resolveScorerBase({
+    url: '/cua-s1/form',
+    headers: { host: 'commons-spark-mcp.vercel.app', 'x-forwarded-proto': 'https' },
+  }, { VERCEL_URL: 'deploy.vercel.app' }), 'https://commons-spark-mcp.vercel.app');
 });
