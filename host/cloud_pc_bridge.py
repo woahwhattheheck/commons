@@ -254,11 +254,11 @@ def _parse_time(value: Any) -> datetime | None:
         return None
     try:
         stamp = datetime.fromisoformat(value.replace("Z", "+00:00"))
-    except ValueError:
+        if stamp.tzinfo is None:
+            stamp = stamp.replace(tzinfo=timezone.utc)
+        return stamp.astimezone(timezone.utc)
+    except (ValueError, OverflowError):
         return None
-    if stamp.tzinfo is None:
-        stamp = stamp.replace(tzinfo=timezone.utc)
-    return stamp.astimezone(timezone.utc)
 
 
 def _result_record(job_id: str, *, state: str, started_at: str | None,
@@ -290,6 +290,33 @@ def _result_record(job_id: str, *, state: str, started_at: str | None,
     return row
 
 
+def _uncertain_start(job_id: str, raw: bytes | None) -> dict[str, Any] | None:
+    """Finish an unreadable or stale claim without replaying its side effects."""
+    try:
+        marker = json.loads((raw or b"").decode("utf-8"), object_pairs_hook=_unique_object)
+    except (UnicodeDecodeError, json.JSONDecodeError, RequestError):
+        marker = {}
+    started_at = marker.get("started_at") if isinstance(marker, dict) else None
+    stamp = _parse_time(started_at)
+    valid = (isinstance(marker, dict) and marker.get("schema") == START_SCHEMA
+             and marker.get("job_id") == job_id and stamp is not None)
+    if valid:
+        if (datetime.now(timezone.utc) - stamp).total_seconds() <= STARTED_STALE_SECONDS:
+            return None
+        message = "Execution started but no result was saved. The bridge will not replay it."
+    else:
+        message = "Start marker is invalid; execution cannot be determined. The bridge will not replay it."
+    return _result_record(job_id, state="UNCERTAIN",
+                          started_at=started_at if isinstance(started_at, str) else None,
+                          message=message)
+
+
+def _once_exit_code(outcome: dict[str, Any]) -> int:
+    if outcome.get("state") == "IDLE":
+        return 0
+    return 0 if outcome.get("state") == "DONE" and outcome.get("ok") is True else 1
+
+
 def _run_hands(request: dict[str, Any]) -> dict[str, Any]:
     from host.titan_hands.one_tool import TitanHandsOne
 
@@ -315,24 +342,17 @@ def process_one() -> dict[str, Any]:
             continue
         if job_id in started:
             marker_raw = _read_file(started[job_id], missing_ok=True)
-            try:
-                marker = json.loads((marker_raw or b"").decode("utf-8"))
-            except (UnicodeDecodeError, json.JSONDecodeError):
-                marker = {}
-            started_at = str(marker.get("started_at") or "") if isinstance(marker, dict) else ""
-            stamp = _parse_time(started_at)
-            if stamp is not None and (datetime.now(timezone.utc) - stamp).total_seconds() > STARTED_STALE_SECONDS:
-                uncertain = _result_record(job_id, state="UNCERTAIN", started_at=started_at,
-                                           message="Execution started but no result was saved. The bridge will not replay it.")
+            uncertain = _uncertain_start(job_id, marker_raw)
+            if uncertain is not None:
                 if _write_json("pc_bridge/results/%s.json" % job_id, uncertain, "pc bridge: uncertain %s" % job_id):
-                    return {"state": "UNCERTAIN", "processed": True, "job_id": job_id}
+                    return {"state": "UNCERTAIN", "ok": False, "processed": True, "job_id": job_id}
             continue
         try:
             job = _load_job(job_id, inbox[job_id])
         except RequestError as exc:
             invalid = _result_record(job_id, state="INVALID_REQUEST", started_at=None, message=str(exc))
             if _write_json("pc_bridge/results/%s.json" % job_id, invalid, "pc bridge: invalid %s" % job_id):
-                return {"state": "INVALID_REQUEST", "processed": True, "job_id": job_id}
+                return {"state": "INVALID_REQUEST", "ok": False, "processed": True, "job_id": job_id}
             continue
         started_at = utc_now()
         marker = {"schema": START_SCHEMA, "job_id": job_id, "started_at": started_at}
@@ -346,7 +366,7 @@ def process_one() -> dict[str, Any]:
             record = _result_record(job_id, state="FAILED", started_at=started_at,
                                     message="%s: %s" % (type(exc).__name__, str(exc)[:2000]))
         _write_json("pc_bridge/results/%s.json" % job_id, record, "pc bridge: result %s" % job_id)
-        return {"state": record["state"], "processed": True, "job_id": job_id}
+        return {"state": record["state"], "ok": record["ok"], "processed": True, "job_id": job_id}
     return {"state": "IDLE", "processed": False}
 
 
@@ -364,7 +384,7 @@ def main(argv: list[str] | None = None) -> int:
         if args.once:
             outcome = process_one()
             print(json.dumps(outcome, ensure_ascii=True, sort_keys=True))
-            return 0
+            return _once_exit_code(outcome)
         while True:
             try:
                 outcome = process_one()
