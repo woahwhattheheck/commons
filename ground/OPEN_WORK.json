@@ -1,7 +1,7 @@
 {
-  "canonical_human": "ground\\open-work-structured-ids-on-current-main.md",
-  "canonical_machine": "ground\\open-work-structured-ids-on-current-main.json",
-  "listing": "ground\\open-work-listing",
-  "main_sha": "3a588b7625e35a180ea930ed1bc503e79fa100d1",
+  "canonical_human": "ground/open-work-structured-ids-on-current-main.md",
+  "canonical_machine": "ground/open-work-structured-ids-on-current-main.json",
+  "listing": "ground/open-work-listing",
+  "main_sha": "489b3d26c86ec37222b6d7d2eec3a07f5e495356",
   "schema": "commons-open-work-v1"
 }
