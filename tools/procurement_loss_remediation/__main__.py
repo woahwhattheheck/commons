@@ -6,6 +6,7 @@ import argparse
 import json
 import sys
 
+from tools.procurement_win_loss import OutcomeError
 from tools.procurement_win_loss.compiler import load_json_file
 
 from .core import RemediationError
@@ -28,7 +29,7 @@ def main(argv: list[str] | None = None) -> int:
             result = compile_plan(load_json_file(args.input))
         else:
             result = verify_plan(load_json_file(args.input), load_json_file(args.receipt))
-    except (RemediationError, RemediationVerificationError, OSError) as exc:
+    except (OutcomeError, RemediationError, RemediationVerificationError, OSError, RecursionError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 2
 
