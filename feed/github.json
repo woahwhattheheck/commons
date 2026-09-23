@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 1861,
+    "open_issues": 1732,
     "open_pull_requests": 9,
-    "runs_in_progress": 17,
-    "runs_queued": 262
+    "runs_in_progress": 19,
+    "runs_queued": 226
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -179,8 +179,41 @@
   },
   "pulls_listed": 9,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 15.4,
+  "queue_depth_per_runner": 11.9,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "yz/osprey41c9-partition-qcover",
+      "closed_at": "2026-09-23T08:25:46Z",
+      "head_sha": "e5e9ab125c173372c3309ef48cbe92bd8a40728e",
+      "merged_at": "2026-09-23T08:25:46Z",
+      "number": 19329,
+      "state": "MERGED",
+      "title": "Research: dimension-free q=4 cover for partition-matroid families"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "yz-lattice-73a/procurement-remediation-15154",
+      "closed_at": "2026-09-23T08:25:38Z",
+      "head_sha": "b837de3e20f83284ac8bf8d2392e88055af7a4bb",
+      "merged_at": "2026-09-23T08:25:38Z",
+      "number": 19328,
+      "state": "MERGED",
+      "title": "Recover stranded procurement remediation and deliver offline operator review"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "yz/cairn73-route-quarantine-source-20260923",
+      "closed_at": "2026-09-23T08:23:10Z",
+      "head_sha": "6e59790c88f86ff86c8229650085ab90e100a8e7",
+      "merged_at": "2026-09-23T08:23:10Z",
+      "number": 19327,
+      "state": "MERGED",
+      "title": "Bind route quarantine to retained DSN source authority"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -239,17 +272,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "yz-feldspar-2e3582/laundry-console-consolidation",
-      "closed_at": "2026-09-23T07:57:25Z",
-      "head_sha": "b15c4de7f5434716163c9b17de9a193150513b8c",
-      "merged_at": "2026-09-23T07:57:25Z",
-      "number": 19316,
-      "state": "MERGED",
-      "title": "Consolidate laundry consoles without losing session or retry recovery"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "swarm-zz/rivet-uiowa128-navigation-20260919",
       "closed_at": "2026-09-23T07:57:19Z",
       "head_sha": "ffb4be3d9c50f4d4e0bc2f8f2d7bcfb270345fda",
@@ -272,39 +294,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "repair/open-door-jev-brief-receipt-flag-20260923",
-      "closed_at": "2026-09-23T07:54:52Z",
-      "head_sha": "e1b0c66180c9de2c7ee3365f841513e58ed1ce08",
-      "merged_at": "2026-09-23T07:54:51Z",
-      "number": 19314,
-      "state": "MERGED",
-      "title": "Rename the activity-brief receipt flag away from paging choices"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "yz-kestrel-m42/uiowa-draft-bundles-20260923",
-      "closed_at": "2026-09-23T07:53:26Z",
-      "head_sha": "be0a302a7c956190acfa9f700a2e414502275bc3",
-      "merged_at": "2026-09-23T07:53:26Z",
-      "number": 19310,
-      "state": "MERGED",
-      "title": "Back up multiple Iowa working drafts in one portable file"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "yz-basalt-23/creator-reward-test-retirement",
-      "closed_at": "2026-09-23T07:53:23Z",
-      "head_sha": "f1b32186a726005bfda6abd1cd4db0d174852f99",
-      "merged_at": "2026-09-23T07:53:23Z",
-      "number": 19311,
-      "state": "MERGED",
-      "title": "Retire creator-reward test batteries and duplicate root launcher"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "swarm-yz/keel47-lineage-report-reader-20260923",
       "closed_at": "2026-09-23T07:35:45Z",
       "head_sha": "d2b74734ed6d668f8b80794abd60972fad8db04b",
@@ -316,39 +305,50 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "yz-kestrel-m42/uiowa-evidence-state-recovery-20260923",
-      "closed_at": "2026-09-23T07:27:22Z",
-      "head_sha": "b5a8406ae075a23a69266de792007773445f1e1a",
-      "merged_at": "2026-09-23T07:27:22Z",
-      "number": 19257,
+      "branch": "yz-copper/action-pad-recovery-20260923",
+      "closed_at": "2026-09-23T07:31:09Z",
+      "head_sha": "09c45c357aa264dfda7386f2dcb78b00ff6d8335",
+      "merged_at": "2026-09-23T07:31:09Z",
+      "number": 19265,
       "state": "MERGED",
-      "title": "Recover Iowa workbench evidence-state and numeric-availability display"
+      "title": "fix(action-pad): restore submission UI and bounded relay recovery"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "yz-orrery29/laundry-backup-restore-20260923",
-      "closed_at": "2026-09-23T07:25:23Z",
-      "head_sha": "b832580da21c127119c177dfc311731601ae8309",
-      "merged_at": "2026-09-23T07:25:23Z",
-      "number": 19253,
+      "branch": "zsol/unseated-completion-suppression-15622-20260917",
+      "closed_at": "2026-09-23T07:30:35Z",
+      "head_sha": "358551a008eddb1a8f2b02dd60a3af16e0477404",
+      "merged_at": "2026-09-23T07:30:35Z",
+      "number": 15801,
       "state": "MERGED",
-      "title": "Add WAL-safe laundry backup and restore commands"
+      "title": "board: suppress proven-complete UNSEATED work from live queue"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "yz-tern61/operator-view-20260923",
-      "closed_at": "2026-09-23T07:24:50Z",
-      "head_sha": "bf33aa29258737d4dde72725b9ac45f47f452eb1",
-      "merged_at": "2026-09-23T07:24:50Z",
-      "number": 19252,
+      "branch": "yz-kestrel/bridge-terminal-outcomes-20260923",
+      "closed_at": "2026-09-23T07:30:32Z",
+      "head_sha": "68927bb9f148cfdfbadc7c22d2f8c8b318dc7d16",
+      "merged_at": "2026-09-23T07:30:31Z",
+      "number": 19263,
       "state": "MERGED",
-      "title": "Command center: offline operator view for saved decisions"
+      "title": "fix(pc-bridge): terminal outcomes for unreadable starts and one-shot failures"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "yz-kestrel-vireo8/current-onboarding-20260923",
+      "closed_at": "2026-09-23T07:29:22Z",
+      "head_sha": "a70e57afb2fc877c688d02ddf1128a1b312d18c8",
+      "merged_at": "2026-09-23T07:29:22Z",
+      "number": 19262,
+      "state": "MERGED",
+      "title": "Remove superseded review and test-work directions from agent onboarding"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-23T08:21:21Z",
+  "unchanged_since": "2026-09-23T08:29:52Z",
   "undatable_pulls": []
 }
