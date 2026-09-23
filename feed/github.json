@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 5508,
+    "open_issues": 5788,
     "open_pull_requests": 2,
-    "runs_in_progress": 17,
-    "runs_queued": 82
+    "runs_in_progress": 12,
+    "runs_queued": 90
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -62,8 +62,85 @@
   },
   "pulls_listed": 2,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 4.8,
+  "queue_depth_per_runner": 7.5,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "work/context-source-health-20260923",
+      "closed_at": "2026-09-23T19:24:26Z",
+      "head_sha": "aca7da7328384b9f53a4f9fc0e9aed8363df3143",
+      "merged_at": "2026-09-23T19:24:25Z",
+      "number": 24026,
+      "state": "MERGED",
+      "title": "Context discovery: opt-in all-source health on empty pages"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "work/waste-csv-browser-20260923",
+      "closed_at": "2026-09-23T19:22:14Z",
+      "head_sha": "29ebd3203783b45b395b1c064c830f098d339198",
+      "merged_at": "2026-09-23T19:22:14Z",
+      "number": 23959,
+      "state": "MERGED",
+      "title": "Commercial waste: CSV preview inside the existing desk"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "latch/dir2-poll-gemini-grokcom-20260923-01",
+      "closed_at": "2026-09-23T19:21:19Z",
+      "head_sha": "c6bad52a2f676cf466f492ef98f26911aef22832",
+      "merged_at": "2026-09-23T19:21:19Z",
+      "number": 23915,
+      "state": "MERGED",
+      "title": "Latch: dir2 Gemini + Grok.com GET poll adapters"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "work/media-rights-batch-csv-20260923",
+      "closed_at": "2026-09-23T19:20:12Z",
+      "head_sha": "d7d2800ecc387b3a209b63a5fd1e29f97c70123d",
+      "merged_at": "2026-09-23T19:20:12Z",
+      "number": 23896,
+      "state": "MERGED",
+      "title": "Media-rights desk: batch CSV review on one snapshot"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "latch/tip-keep-boards-slack-20260923-07",
+      "closed_at": "2026-09-23T19:19:49Z",
+      "head_sha": "d5ffd889098fcafb78caea59d8eb2f7cbe62387a",
+      "merged_at": "2026-09-23T19:19:49Z",
+      "number": 23883,
+      "state": "MERGED",
+      "title": "Latch: Tip KEEP pin boards.html + slack_ingest.py (cascade 07)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "latch-commons-board-ci-20260923-01",
+      "closed_at": "2026-09-23T19:17:45Z",
+      "head_sha": "d90dd05b6d025a0e80d104d22062351311c9a4e7",
+      "merged_at": "2026-09-23T19:17:45Z",
+      "number": 23817,
+      "state": "MERGED",
+      "title": "Latch: KEEP receipt for commons-board schedule red (publisher held-pub)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "work/managed-clipping-distinct-cues-20260923",
+      "closed_at": "2026-09-23T19:17:21Z",
+      "head_sha": "b6c7a3535afde34eca21467c4488875f3874416c",
+      "merged_at": "2026-09-23T19:17:21Z",
+      "number": 23818,
+      "state": "MERGED",
+      "title": "Managed clipping: distinct source-contained moments"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -151,87 +228,10 @@
       "number": 23491,
       "state": "MERGED",
       "title": "Tip KEEP: merge-on-pr STEALABLE_LANES pin after #23461 (LATCH)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "latch/tip-keep-lanes-blob-pin-20260923-05",
-      "closed_at": "2026-09-23T18:26:09Z",
-      "head_sha": "a2ad7ed239ec720a59fe49034d1748a5eeea3a72",
-      "merged_at": "2026-09-23T18:26:09Z",
-      "number": 23461,
-      "state": "MERGED",
-      "title": "Tip KEEP: stealable lanes.json blob pin (LATCH)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "latch/spark-mcp-cua-scorer-base-20260923-01",
-      "closed_at": "2026-09-23T18:24:57Z",
-      "head_sha": "e81ebb2a29446f595e4ac226787baa9ff2412b03",
-      "merged_at": null,
-      "number": 23406,
-      "state": "CLOSED",
-      "title": "Latch: CUA form scorer base (SCORER_FAILED 502)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "repair/slack-ingest-census-400-20260923-01",
-      "closed_at": "2026-09-23T18:24:35Z",
-      "head_sha": "255b37c9b53a6e84784ef71720b1ee6c12b93387",
-      "merged_at": "2026-09-23T18:24:35Z",
-      "number": 23412,
-      "state": "MERGED",
-      "title": "Keep Slack ingest census pages after a late GitHub 400"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "latch/spark-mcp-cua-form-502-20260923-01",
-      "closed_at": "2026-09-23T18:23:38Z",
-      "head_sha": "9458e79dbe00799ccafba146aecd37ccefb57549",
-      "merged_at": "2026-09-23T18:23:38Z",
-      "number": 23381,
-      "state": "MERGED",
-      "title": "Latch: fix spark-mcp CUA form SCORER_FAILED 502"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "latch/spark-mcp-muhl-scrub-20260923-01",
-      "closed_at": "2026-09-23T18:12:57Z",
-      "head_sha": "f24a5e2380e4cc08c07a8b79bab0b9cd4e175655",
-      "merged_at": "2026-09-23T18:12:57Z",
-      "number": 23058,
-      "state": "MERGED",
-      "title": "Latch: spark-mcp muhlnickel scrub for deploy test"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "repair/swarmops-v4-contract-20260923-01",
-      "closed_at": "2026-09-23T18:07:49Z",
-      "head_sha": "693d161af3d5a09dd1d8646f9eb4e187445e3f80",
-      "merged_at": "2026-09-23T18:07:49Z",
-      "number": 22900,
-      "state": "MERGED",
-      "title": "Restore SwarmOps v4 current and historical replay contract"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "repair/localized-media-view-only-startup-20260923",
-      "closed_at": "2026-09-23T18:07:39Z",
-      "head_sha": "bcb72c857fb2ac0a99a19a99278b58f9c706aac2",
-      "merged_at": "2026-09-23T18:07:39Z",
-      "number": 22898,
-      "state": "MERGED",
-      "title": "Refuse view-only databases before localized-media desk startup"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-23T19:08:27Z",
+  "unchanged_since": "2026-09-23T19:31:13Z",
   "undatable_pulls": []
 }
