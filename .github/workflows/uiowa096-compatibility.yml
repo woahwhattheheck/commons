@@ -7,6 +7,12 @@ on:
       - 'revenue/uiowa_rfq_18649_workbench/**'
       - 'revenue/uiowa_rfq_18649_workshare/**'
       - '.github/workflows/uiowa096-compatibility.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'revenue/uiowa_rfq_18649_interchange/compatibility/**'
+      - '.github/workflows/uiowa096-compatibility.yml'
 
 permissions:
   contents: read

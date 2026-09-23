@@ -107,8 +107,6 @@ class WorkflowSurfaceTests(unittest.TestCase):
             (root / 'ci/workflow-recipes/unit.yml').unlink()
             self.assertIn('source workflow inventory is incomplete', surface.check(root)['errors'])
 
-
-
     def test_live_inventory_is_json_object_not_placeholder_stub(self):
         raw = Path('ci/workflow-surface.json').read_bytes()
         self.assertNotEqual(raw.strip(), b'PLACEHOLDER')
@@ -252,12 +250,6 @@ class WorkflowSurfaceTests(unittest.TestCase):
         self.assertLessEqual(result['active'], data['max_active_workflows'])
         self.assertEqual(result['status'], 'PASS', result['errors'])
 
-
-
-
-
-
-
     def test_retired_launchers_and_reactivated_archives_stay_inside_budget(self):
         """Regress 68>67 and source-parses retirement: purged launchers stay gone."""
         absent = (
@@ -301,6 +293,7 @@ class WorkflowSurfaceTests(unittest.TestCase):
         self.assertLessEqual(result['active'], 67)
         self.assertEqual(result['status'], 'PASS', result['errors'])
         self.assertEqual(len(data['retained']) + len(data['archived']), data['source_workflows'])
+        self.assertTrue(Path('ci/workflow-recipes/pilot-renewal-expansion-gate.yml').is_file())
 
     def test_pollers_throttle_and_isolate_schedule_concurrency(self):
         """Scheduled runs may supersede schedules, never push/manual generations."""
