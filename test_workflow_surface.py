@@ -328,6 +328,15 @@ class WorkflowSurfaceTests(unittest.TestCase):
             self.assertNotIn(retired, data['retained'])
             self.assertFalse(Path(retired).exists())
         self.assertIn('.github/workflows/source-parses.yml', data['retained'])
+        for keeper in (
+            '.github/workflows/nm-ocs-tprm.yml',
+            '.github/workflows/uiowa-001-131-ebid-pack.yml',
+            '.github/workflows/uiowa-100-operator-portability.yml',
+            '.github/workflows/uiowa-100-run-evidence.yml',
+            '.github/workflows/uiowa096-compatibility.yml',
+        ):
+            self.assertTrue(Path(keeper).is_file(), keeper)
+            self.assertIn(keeper, data['retained'])
         result = surface.check(Path('.'))
         self.assertEqual(data['max_active_workflows'], 67)
         self.assertEqual(result['active'], 67)

@@ -1,7 +1,7 @@
 {
   "schema": "commons.workflow-surface.v1",
   "source_commit": "4592104ca9fd37f7546b0b39f01badb83f8a1300",
-  "source_workflows": 435,
+  "source_workflows": 440,
   "max_active_workflows": 67,
   "retained": [
     ".github/workflows/affordable-housing-compliance-demo.yml",
@@ -65,7 +65,12 @@
     ".github/workflows/titan-v5-promotion-release-gates.yml",
     ".github/workflows/titan-v5-v31-champion-ratchet-authority.yml",
     ".github/workflows/webmcp-pad-production.yml",
-    ".github/workflows/workflow-surface.yml"
+    ".github/workflows/workflow-surface.yml",
+    ".github/workflows/nm-ocs-tprm.yml",
+    ".github/workflows/uiowa-001-131-ebid-pack.yml",
+    ".github/workflows/uiowa-100-operator-portability.yml",
+    ".github/workflows/uiowa-100-run-evidence.yml",
+    ".github/workflows/uiowa096-compatibility.yml"
   ],
   "archived": [
     {
