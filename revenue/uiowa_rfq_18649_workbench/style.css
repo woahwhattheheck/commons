@@ -11,3 +11,4 @@
 :where(a,pre,[tabindex]):focus-visible,:where(h2,h3)[tabindex="-1"]:focus{outline:3px solid #5593a7;outline-offset:4px}
 :where(h2,h3,pre,.cell){scroll-margin-block:1rem}.skip-nav{position:relative;z-index:10}.skip-nav a{position:absolute;left:1rem;top:0;transform:translateY(-200%);padding:.8rem;background:#fff;color:#26343a}.skip-nav a:focus{position:relative;display:inline-block;transform:none}#backToCellBtn{justify-self:start;padding-left:0}#selectedCellHeading{overflow-wrap:anywhere}
 @media(forced-colors:active){.cell[aria-current="true"]{border-color:Highlight}:where(a,button,input,select,textarea,pre,[tabindex]):focus-visible{outline-color:CanvasText}}
+#savedDraftStatus{overflow-wrap:anywhere}
