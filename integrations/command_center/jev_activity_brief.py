@@ -7,20 +7,23 @@ reuse the stable operation marker and provider readback rather than spraying dup
 """
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
+import re
+import sys
 from collections import Counter
 from datetime import datetime, timezone
 from typing import Any
 
-from integrations.command_center.jev_action_loop import ActionLoopError, verify_receipt
 from integrations.command_center.jev_event_ledger import REPORT_SCHEMA as LEDGER_SCHEMA
-from integrations.command_center.jev_event_ledger import verify_report
+from integrations.command_center.jev_event_ledger import MAX_BYTES, LedgerError, verify_report
 
 SCHEMA = "commons.jev_activity_brief/v1"
 OPERATION_ID = "jev16537-activity-brief-v1"
 MAX_RECEIPTS = 256
 MAX_ATTENTION = 12
+MAX_ATTENTION_PAGE = 100
 ATTENTION_KINDS = {"ASK", "OWNER_DIRECTION", "HANDOFF", "COLLISION"}
 AUTHORITY = {
     "provider_send_authority": False,
@@ -90,6 +93,10 @@ def _window_map(report: dict[str, Any]) -> dict[str, dict[str, Any]]:
 def _receipt_projection(receipts: list[dict[str, Any]], evaluated_at: datetime) -> list[dict[str, Any]]:
     if type(receipts) is not list or len(receipts) > MAX_RECEIPTS:
         raise ActivityBriefError("action receipts: invalid count")
+    if not receipts:
+        return []
+    from integrations.command_center.jev_action_loop import ActionLoopError, verify_receipt
+
     output = []
     seen = set()
     for raw in receipts:
@@ -118,7 +125,15 @@ def _receipt_projection(receipts: list[dict[str, Any]], evaluated_at: datetime) 
     return sorted(output, key=lambda row: (row["observed_at"], row["operation_id"], row["receipt_sha256"]))
 
 
-def _attention(report: dict[str, Any], evaluated_at: datetime) -> list[dict[str, Any]]:
+def _attention(
+    report: dict[str, Any], evaluated_at: datetime, *, order: str = "newest",
+    limit: int = MAX_ATTENTION, cursor: str | None = None,
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    """Page candidate events, not inferred unresolved obligations or unread messages."""
+    if type(order) is not str or order not in {"newest", "oldest"}:
+        raise ActivityBriefError("attention order must be newest or oldest")
+    if type(limit) is not int or not 1 <= limit <= MAX_ATTENTION_PAGE:
+        raise ActivityBriefError(f"attention limit must be 1..{MAX_ATTENTION_PAGE}")
     events = report.get("events")
     if type(events) is not list:
         raise ActivityBriefError("ledger events missing")
@@ -141,10 +156,62 @@ def _attention(report: dict[str, Any], evaluated_at: datetime) -> list[dict[str,
             "actor_id": event.get("actor_id"),
             "provider_event_time": event.get("provider_event_time"),
             "age_seconds": age_seconds,
+            "primary_source_id": event["primary_source_id"],
             "source_urls": sorted(set(urls)),
         })
-    rows.sort(key=lambda row: (row["provider_event_time"], str(row["event_id"])), reverse=True)
-    return rows[:MAX_ATTENTION]
+    rows.sort(key=lambda row: (
+        _time(row["provider_event_time"], "event.provider_event_time"), str(row["event_id"])
+    ))
+    oldest, newest = (rows[0], rows[-1]) if rows else (None, None)
+    if order == "newest":
+        rows.reverse()
+    total = len(rows)
+    offset = 0
+    ledger_digest = report["ledger_receipt_sha256"]
+    if cursor is not None:
+        match = re.fullmatch(
+            r"v1:([0-9a-f]{64}):(newest|oldest):([0-9]{1,3}):([0-9]{1,6})", cursor
+        ) if type(cursor) is str else None
+        if match is None:
+            raise ActivityBriefError("invalid attention cursor")
+        digest, cursor_order, cursor_limit, cursor_offset = match.groups()
+        if digest != ledger_digest:
+            raise ActivityBriefError("attention snapshot changed; restart without a cursor")
+        if cursor_order != order or int(cursor_limit) != limit:
+            raise ActivityBriefError("attention cursor requires the same order and limit")
+        offset = int(cursor_offset)
+        if offset and offset >= total:
+            raise ActivityBriefError("attention cursor is outside this snapshot")
+    page = rows[offset:offset + limit]
+    end = offset + len(page)
+
+    def continuation(position: int) -> str:
+        return f"v1:{ledger_digest}:{order}:{limit}:{position}"
+
+    historical = _window_map(report)["historical"]
+    coverage = historical["coverage"]
+    summary = {
+        "total_candidates": total,
+        "shown_candidates": len(page),
+        "remaining_candidates": total - end,
+        "offset": offset,
+        "limit": limit,
+        "order": order,
+        "next_cursor": continuation(end) if end < total else None,
+        "previous_cursor": continuation(max(0, offset - limit)) if offset else None,
+        "oldest_candidate_at": oldest["provider_event_time"] if oldest else None,
+        "oldest_age_seconds": oldest["age_seconds"] if oldest else None,
+        "newest_candidate_at": newest["provider_event_time"] if newest else None,
+        "by_kind": dict(sorted(Counter(row["kind"] for row in rows).items())),
+        "by_provider": dict(sorted(Counter(row["provider"] for row in rows).items())),
+        "by_primary_source": dict(sorted(Counter(row["primary_source_id"] for row in rows).items())),
+        "coverage_state": coverage["state"],
+        "coverage_window": {"start": historical["start"], "end": historical["end"]},
+        "incomplete_or_stale_sources": coverage["incomplete_or_stale_sources"],
+        "unresolved_count": None,
+        "processed_count": None,
+    }
+    return page, summary
 
 
 def _render_markdown(record: dict[str, Any]) -> str:
@@ -181,6 +248,30 @@ def _render_markdown(record: dict[str, Any]) -> str:
         ])
 
     lines.extend(["", "## Attention candidates", ""])
+    attention = record.get("attention")
+    if attention is not None:
+        first = attention["offset"] + 1 if attention["shown_candidates"] else 0
+        last = attention["offset"] + attention["shown_candidates"]
+        lines.extend([
+            f"Candidate events in supplied snapshot: **{attention['total_candidates']}**; "
+            f"source coverage **{attention['coverage_state']}**. "
+            f"Showing {first}–{last}, {attention['order']} first; "
+            f"{attention['remaining_candidates']} remain after this page.",
+            "",
+        ])
+        if attention["oldest_candidate_at"] is not None:
+            lines.extend([
+                f"Oldest candidate: `{attention['oldest_candidate_at']}` "
+                f"(age {attention['oldest_age_seconds']}s at the snapshot).",
+                "",
+            ])
+        if attention["next_cursor"] is not None:
+            lines.extend([
+                f"Next page: `--attention-order {attention['order']} "
+                f"--attention-limit {attention['limit']} "
+                f"--attention-cursor {attention['next_cursor']}` on the same report.",
+                "",
+            ])
     if not record["attention_candidates"]:
         lines.append("No ASK / OWNER_DIRECTION / HANDOFF / COLLISION events are present in this bounded ledger snapshot.")
     else:
@@ -212,7 +303,11 @@ def _render_markdown(record: dict[str, Any]) -> str:
     return "\n".join(lines) + "\n"
 
 
-def compile_brief(ledger_report: dict[str, Any], action_receipts: list[dict[str, Any]] | None = None) -> dict[str, Any]:
+def compile_brief(
+    ledger_report: dict[str, Any], action_receipts: list[dict[str, Any]] | None = None, *,
+    attention_order: str = "newest", attention_limit: int = MAX_ATTENTION,
+    attention_cursor: str | None = None,
+) -> dict[str, Any]:
     """Verify a ledger generation and compile one deterministic operator/shared record."""
     if type(ledger_report) is not dict or ledger_report.get("schema") != LEDGER_SCHEMA:
         raise ActivityBriefError("unsupported ledger report schema")
@@ -220,7 +315,11 @@ def compile_brief(ledger_report: dict[str, Any], action_receipts: list[dict[str,
         raise ActivityBriefError("ledger report failed integrity verification")
     evaluated_at = _time(ledger_report.get("evaluated_at"), "ledger.evaluated_at")
     windows = _window_map(ledger_report)
-    receipts = _receipt_projection(action_receipts or [], evaluated_at)
+    receipts = _receipt_projection([] if action_receipts is None else action_receipts, evaluated_at)
+    attention_rows, attention_summary = _attention(
+        ledger_report, evaluated_at, order=attention_order,
+        limit=attention_limit, cursor=attention_cursor,
+    )
 
     source_summary = ledger_report.get("source_summary")
     if type(source_summary) is not dict:
@@ -274,7 +373,8 @@ def compile_brief(ledger_report: dict[str, Any], action_receipts: list[dict[str,
             "partial_or_paginated_source_ids": sorted(set(partial_ids)),
         },
         "windows": projected_windows,
-        "attention_candidates": _attention(ledger_report, evaluated_at),
+        "attention_candidates": attention_rows,
+        "attention": attention_summary,
         "actions": {
             "receipt_count": len(receipts),
             "confirmed": sum(1 for row in receipts if row["confirmed"]),
@@ -328,4 +428,59 @@ def verify_brief(record: dict[str, Any]) -> bool:
         return False
 
 
-__all__ = ["ActivityBriefError", "OPERATION_ID", "SCHEMA", "compile_brief", "verify_brief"]
+def _read_json(path: str) -> Any:
+    def pairs(items):
+        result = {}
+        for key, value in items:
+            if key in result:
+                raise ActivityBriefError("duplicate JSON key")
+            result[key] = value
+        return result
+
+    def constant(value):
+        raise ActivityBriefError(f"non-finite JSON constant: {value}")
+
+    with open(path, "rb") as handle:
+        data = handle.read(MAX_BYTES + 1)
+    if len(data) > MAX_BYTES:
+        raise ActivityBriefError(f"{path}: input exceeds {MAX_BYTES} bytes")
+    return json.loads(data.decode("utf-8"), object_pairs_hook=pairs, parse_constant=constant)
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("report", help="existing compiled event-ledger report JSON")
+    parser.add_argument("--action-receipts", help="optional JSON array of action receipts")
+    parser.add_argument("--attention-order", choices=("newest", "oldest"), default="newest")
+    parser.add_argument("--attention-limit", type=int, default=MAX_ATTENTION)
+    parser.add_argument("--attention-cursor", help="continuation from this same ledger snapshot")
+    parser.add_argument("--format", choices=("json", "markdown"), default="json")
+    parser.add_argument("--output", help="create a new file; default is standard output")
+    args = parser.parse_args(argv)
+    try:
+        record = compile_brief(
+            _read_json(args.report),
+            _read_json(args.action_receipts) if args.action_receipts else None,
+            attention_order=args.attention_order, attention_limit=args.attention_limit,
+            attention_cursor=args.attention_cursor,
+        )
+        output = record["markdown"] if args.format == "markdown" else json.dumps(
+            record, ensure_ascii=False, sort_keys=True, indent=2, allow_nan=False
+        ) + "\n"
+        if args.output:
+            with open(args.output, "x", encoding="utf-8", newline="\n") as handle:
+                handle.write(output)
+        else:
+            sys.stdout.write(output)
+        return 0
+    except (OSError, ActivityBriefError, LedgerError, ValueError, TypeError,
+            KeyError, RecursionError) as exc:
+        print(f"jev_activity_brief: {exc}", file=sys.stderr)
+        return 2
+
+
+__all__ = ["ActivityBriefError", "OPERATION_ID", "SCHEMA", "compile_brief", "verify_brief", "main"]
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
