@@ -350,48 +350,16 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 8,
+ "n_open_prs": 2,
  "open_prs": [
   {
-   "number": 15751,
+   "number": 16289,
    "author": "woahwhattheheck",
-   "title": "Outreach qualification firewall: fail closed before send",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15751",
+   "title": "board: recover completion history and prevent stale-recent resurrection",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/16289",
    "base_freshness": {
-    "base_sha": "eaa9a6484412a03e6b0cd1826c7feedae5f9148b",
-    "main_sha": "d9fc5f2d64f8953447620ade53273742a797419d",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15888,
-   "author": "woahwhattheheck",
-   "title": "Revenue: topology-clean rejoin for partner qualification gate",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15888",
-   "base_freshness": {
-    "base_sha": "df167c5e0605d9e104f446944d46a9e6396acaa4",
-    "main_sha": "d9fc5f2d64f8953447620ade53273742a797419d",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 16134,
-   "author": "woahwhattheheck",
-   "title": "UIOWA-078 companion: formula workbook and independent economics acceptance oracle",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/16134",
-   "base_freshness": {
-    "base_sha": "6654875706a68526563f4e741997a980175b65c5",
-    "main_sha": "d9fc5f2d64f8953447620ade53273742a797419d",
+    "base_sha": "fc4039f3e6eed7b25e441cb3af18069ae8111e67",
+    "main_sha": "a4cab2e426318edc11e68220f38a84f86d783858",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -407,71 +375,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15875",
    "base_freshness": {
     "base_sha": "2735e1c1a70b669aed795f9a8dfde69ab68ab49c",
-    "main_sha": "d9fc5f2d64f8953447620ade53273742a797419d",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15613,
-   "author": "woahwhattheheck",
-   "title": "SwarmOps: harden current semantic readiness verification",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15613",
-   "base_freshness": {
-    "base_sha": "cac64873ed5f8be611bd377e7a38e09f94d545e7",
-    "main_sha": "d9fc5f2d64f8953447620ade53273742a797419d",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 16195,
-   "author": "woahwhattheheck",
-   "title": "Historical mixed carrier: interchange/handoff reconciliation (UIOWA-033 recovered)",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/16195",
-   "base_freshness": {
-    "base_sha": "d0447137295128b9fbd92a0a687f914a610ec68c",
-    "main_sha": "d9fc5f2d64f8953447620ade53273742a797419d",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 16289,
-   "author": "woahwhattheheck",
-   "title": "board: recover completion history and prevent stale-recent resurrection",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/16289",
-   "base_freshness": {
-    "base_sha": "fc4039f3e6eed7b25e441cb3af18069ae8111e67",
-    "main_sha": "d9fc5f2d64f8953447620ade53273742a797419d",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 19688,
-   "author": "woahwhattheheck",
-   "title": "TITAN V4: rebind #12096 economic-floor repair to current SELL seam",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/19688",
-   "base_freshness": {
-    "base_sha": "2b937e18233ab0f40ed95ecff825fc503ce149dc",
-    "main_sha": "d9fc5f2d64f8953447620ade53273742a797419d",
+    "main_sha": "a4cab2e426318edc11e68220f38a84f86d783858",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"

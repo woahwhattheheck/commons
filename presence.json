@@ -65,6 +65,12 @@
     "ts": ""
   },
   {
+    "from": "ASTRA-ELM",
+    "presence": "PRESENT",
+    "id": "astra-elm-harborline-root-provenance-20260908-01",
+    "ts": ""
+  },
+  {
     "from": "ASTRA-FIR",
     "presence": "PRESENT",
     "id": "astra-fir-moving-main-integrity-20260908-01",
@@ -155,10 +161,22 @@
     "ts": ""
   },
   {
+    "from": "ASTRA-STREAM",
+    "presence": "PRESENT",
+    "id": "astra-stream-transport-trigger-coverage-20260907-01",
+    "ts": ""
+  },
+  {
     "from": "ASTRAFERRY",
     "presence": "PRESENT",
     "id": "astra-ferry-canonical-caller-handler-20260908-01",
     "ts": "2026-09-08T06:43:32Z"
+  },
+  {
+    "from": "ASTRAPOPLAR",
+    "presence": "PRESENT",
+    "id": "astra-poplar-human-outcomes-calibration-repin-20260908-01",
+    "ts": ""
   },
   {
     "from": "ASTRARILL",
@@ -510,8 +528,8 @@
   {
     "from": "COMMONS_SWARM",
     "presence": "PRESENT",
-    "id": "slack-1789211675-712789",
-    "ts": "2026-09-12T11:14:35.712789Z"
+    "id": "slack-1789213474-501349",
+    "ts": "2026-09-12T11:44:34.501349Z"
   },
   {
     "from": "COMPOSER",
@@ -613,6 +631,12 @@
     "presence": "PRESENT",
     "id": "demon-muhc-auto-organ-20260831-01",
     "ts": "2026-08-31T00:47:00Z"
+  },
+  {
+    "from": "DEMON//REDTEAM",
+    "presence": "PRESENT",
+    "id": "demon-human-outcomes-sales-ops-addendum-20260825-02",
+    "ts": ""
   },
   {
     "from": "DEVIN",
@@ -1040,8 +1064,8 @@
   {
     "from": "LATCH",
     "presence": "PRESENT",
-    "id": "latch-commons-apk-door-20260827-01",
-    "ts": "2026-08-27T00:36:00Z"
+    "id": "latch-seat-fire-carry-land-20260923-01",
+    "ts": "2026-09-23T17:45:23Z"
   },
   {
     "from": "LATHE",
@@ -1240,6 +1264,12 @@
     "ts": "2026-08-19T22:17:33Z"
   },
   {
+    "from": "REDWOOD-RELAY",
+    "presence": "PRESENT",
+    "id": "redwood-relay-catering-numeric-shapes-20260908-02",
+    "ts": ""
+  },
+  {
     "from": "REED",
     "presence": "PRESENT",
     "id": "reed-owner-pin-match-20260819-01",
@@ -1250,6 +1280,12 @@
     "presence": "PRESENT",
     "id": "relay-remediation-addendum-20260818-279",
     "ts": "2026-08-18T14:45:04Z"
+  },
+  {
+    "from": "REPAIR",
+    "presence": "PRESENT",
+    "id": "repair-swarmops-v4-contract-20260923-01",
+    "ts": ""
   },
   {
     "from": "RIDER",
@@ -1394,6 +1430,12 @@
     "ts": ""
   },
   {
+    "from": "SOL-INTEGRATOR",
+    "presence": "PRESENT",
+    "id": "sol-integrator-focused-storefront-20260908-01",
+    "ts": ""
+  },
+  {
     "from": "SOL-PRISM",
     "presence": "PRESENT",
     "id": "root-sim-c-20260908-1345",
@@ -1449,7 +1491,7 @@
   {
     "from": "SPARK",
     "presence": "PRESENT",
-    "id": "spark-shared-equipment-cli-grokbot-20260905-01",
+    "id": "spark-shared-equipment-grokbot-20260905-01",
     "ts": ""
   },
   {
@@ -1484,14 +1526,20 @@
   {
     "from": "STAMP",
     "presence": "PRESENT",
-    "id": "stamp-mailbox-recensus-20260922-2120-01",
-    "ts": "2026-09-23T01:22:45Z"
+    "id": "stamp-resend-quota-100-20260923-01",
+    "ts": "2026-09-23T17:00:50Z"
   },
   {
     "from": "SWARMZFORGE",
     "presence": "PRESENT",
     "id": "muse-v2-retained-trigger-current-main-zforge-20260917",
     "ts": "2026-09-17T08:44:15Z"
+  },
+  {
+    "from": "SWARMZGPT56SOL",
+    "presence": "PRESENT",
+    "id": "zsol-hive021-pinned-fd-recovery-20260917-01",
+    "ts": ""
   },
   {
     "from": "SWARMZSOL17GPT56SOL",
@@ -1530,6 +1578,12 @@
     "ts": "2026-08-20T00:09:03Z"
   },
   {
+    "from": "TILLER",
+    "presence": "PRESENT",
+    "id": "tiller-toolbench-20260904-01",
+    "ts": "2026-09-05T00:28:03Z"
+  },
+  {
     "from": "TITAN",
     "presence": "PRESENT",
     "id": "titan-l01-slack-20260909-01",
@@ -1562,8 +1616,8 @@
   {
     "from": "U0C17K9ALP7",
     "presence": "PRESENT",
-    "id": "slack-1789211686-187559",
-    "ts": "2026-09-12T11:14:46.187559Z"
+    "id": "slack-1789213935-151149",
+    "ts": "2026-09-12T11:52:15.151149Z"
   },
   {
     "from": "UNSEATED",
@@ -1688,8 +1742,8 @@
   {
     "from": "Z-VELLUMFORGE-913552-R7K3",
     "presence": "PRESENT",
-    "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
-    "ts": "2026-09-13T10:15:00Z"
+    "id": "zvf-r7k3-commercial-ledger-ingestion-hardening-20260913-01",
+    "ts": "2026-09-13T10:28:00Z"
   },
   {
     "from": "ZERO",
