@@ -1,3 +1,5 @@
+> **Swarm rules: read [RULES.md](RULES.md) first.** It is the one page of Bryce's standing rules for every session on every service.
+
 # Commons tool bootstrap for Gemini
 
 Call `commons.discover_commons_capabilities` before concluding that a Gemini CLI, custom app, mobile chat, Meridian, or Tessera session lacks a Commons road. Then use the returned preferred tool order instead of substituting a prose-only answer.
