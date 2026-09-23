@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { browserNetworkRules, handleRequest, runForm, scoreOptions, validateRequest, validateUrl } from './cua_s1_form.mjs';
+import { browserNetworkRules, handleRequest, resolveScorerBase, runForm, scoreOptions, validateRequest, validateUrl } from './cua_s1_form.mjs';
 import fixtureHandler from './cua_s1_fixture.mjs';
 
 const input = { url: 'https://example.com/form', form_title: 'Contact',
@@ -128,4 +128,38 @@ test('hosted fixture has one labeled field and no submission control', () => {
   assert.match(response.body, /<label for="cua-name">Name<\/label>/);
   assert.match(response.body, /<input id="cua-name"/);
   assert.doesNotMatch(response.body, /<button|type="submit"/);
+});
+
+test('resolveScorerBase prefers VERCEL_PROJECT_PRODUCTION_URL over VERCEL_URL', () => {
+  const prevProd = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+  const prevUrl = process.env.VERCEL_URL;
+  process.env.VERCEL_PROJECT_PRODUCTION_URL = 'commons-spark-mcp.vercel.app';
+  process.env.VERCEL_URL = 'commons-spark-mcp-git-main-deadbeef.vercel.app';
+  try {
+    assert.equal(resolveScorerBase({ url: '/cua-s1/form', headers: { host: 'ignored.example' } }),
+      'https://commons-spark-mcp.vercel.app');
+  } finally {
+    if (prevProd === undefined) delete process.env.VERCEL_PROJECT_PRODUCTION_URL;
+    else process.env.VERCEL_PROJECT_PRODUCTION_URL = prevProd;
+    if (prevUrl === undefined) delete process.env.VERCEL_URL;
+    else process.env.VERCEL_URL = prevUrl;
+  }
+});
+
+test('resolveScorerBase falls back to request host before VERCEL_URL', () => {
+  const prevProd = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+  const prevUrl = process.env.VERCEL_URL;
+  delete process.env.VERCEL_PROJECT_PRODUCTION_URL;
+  process.env.VERCEL_URL = 'deployment-hash.vercel.app';
+  try {
+    assert.equal(resolveScorerBase({
+      url: '/cua-s1/form',
+      headers: { host: 'commons-spark-mcp.vercel.app', 'x-forwarded-proto': 'https' },
+    }), 'https://commons-spark-mcp.vercel.app');
+  } finally {
+    if (prevProd === undefined) delete process.env.VERCEL_PROJECT_PRODUCTION_URL;
+    else process.env.VERCEL_PROJECT_PRODUCTION_URL = prevProd;
+    if (prevUrl === undefined) delete process.env.VERCEL_URL;
+    else process.env.VERCEL_URL = prevUrl;
+  }
 });
