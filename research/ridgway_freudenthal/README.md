@@ -2,45 +2,35 @@
 
 Issue: https://github.com/woahwhattheheck/commons/issues/14999
 
-This directory is the isolated research surface required by the issue.
-It does **not** claim the $1,000 prize and does **not** submit anything
-to the Ridgway Scott Foundation.
+This is the isolated research surface for the Freudenthal/Kuhn divergence problem. It does not submit anything to the Ridgway Scott Foundation or claim a prize.
 
-## Pinned claim (from the sponsor PDF)
+## Usable two-cube quartic mean repair
 
-Spaces, on a Freudenthal/Kuhn tetrahedral mesh of a cubical domain, with vanishing velocity on the boundary:
+[The constructed operator and derivation](P4_MEAN_REPAIR.md) realize any twelve zero-sum cell-average divergences with a continuous piecewise-quartic velocity, zero boundary trace, and zero divergence on every tetrahedral edge.
 
-V_h^k = continuous vector P_k vanishing on the boundary
-Pi_h = div V_h^k
+```sh
+python research/ridgway_freudenthal/p4_mean_repair.py \
+  --means 1 0 0 0 0 0 0 0 0 0 0 -1
+```
 
-Advertised theorem: gamma > 0 independent of h for all k >= 4.
-Zhang proved k >= 6. Open advertised cases: k = 4 and k = 5.
+Python 3.10+, standard library only. The reusable sparse rational operator is `p4_mean_repair_basis.json`. Its tetrahedra and Bernstein coefficient ordering are explicit. The exact construction has 189 unknowns, edge rank 122, combined edge/mean rank 133, and 202 nonzero operator coefficients. It establishes the local mean-repair image, not the full mesh-uniform theorem.
 
-Sponsor sources:
+## Original problem
+
+On a Freudenthal tetrahedral mesh of a cubical domain, let `V_h^k` be the continuous vector degree-k polynomial space with zero boundary trace, and let `Q_h^k = div V_h^k`.
+
+The sponsor's original question asks for an inf-sup constant independent of mesh size for every fixed `k ≥ 4`; Zhang established the higher-degree `k ≥ 6` case. The September 2026 Alfyorov preprint proposes a proof for the two lower degrees. Its complete argument and sponsor disposition are not certified here.
+
+Sponsor and original research sources:
 - https://people.cs.uchicago.edu/~ridg/prizes/kuhnprize.pdf
 - https://people.cs.uchicago.edu/~ridg/prizes/prizes.html
-- Farrell-Mitchell-Scott, arXiv:2211.05494
+- Farrell–Mitchell–Scott, arXiv:2211.05494
+- Alfyorov, Research Square DOI `10.21203/rs.3.rs-10887173/v1`
 
-## Certified here
+## Existing results retained
 
-1. Exact six-tet Kuhn cube; each 6*Vol = +1; n-grid has 6 n^3 tets.
-2. dim P_k(R^3) = binom(k+3,3).
-3. Exact Q-rank of local div : [P_k]^3 -> P_{k-1} equals dim P_{k-1} for k=1..6.
-   Continuity, boundary vanishing, and singular-vertex constraints are not included.
+The original `kuhn.py` supplies the six exact positively oriented tetrahedra, with each six-times-volume equal to one. The earlier local divergence calculation covers a single unrestricted polynomial cell and does not encode inter-cell continuity or boundary conditions.
 
-## Not certified
+[The earlier Zhang-import audit](verification_alfyorov/ZHANG_IMPORT_AUDIT.md) distinguishes raw edge matching, already available at degree four, from the degree-six element-mean correction used in Zhang's construction. The new two-cube operator supplies a degree-four local mean correction; it does not by itself establish the separate protected edge-star lifting.
 
-- Mesh-uniform gamma for k=4 or k=5.
-- Assembled-mesh structure of div V_h^k.
-- Prize, payment, or sponsor submission.
-- Alfyorov Research Square rs-10887173 (2026-09-02) is EXTERNAL UNVERIFIED.
-
-## Zhang degree cut
-
-Zhang needs interior/face bubbles rich enough to kill residual edge-star modes after a Fortin correction. That inventory is enough at k>=6 on this family. k=4,5 leave a raw edge-star residual. That is the open algebraic gap.
-
-## Run
-
-python3 test_certificates.py
-
-Receipt: receipts/local_div_rank.json.
+Still unresolved in this lane: the full protected-map/census reconstruction, its actual global source-space compatibility, and the mesh-uniform theorem. No prize, payment, or submission is asserted.

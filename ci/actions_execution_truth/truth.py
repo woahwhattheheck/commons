@@ -26,6 +26,8 @@ def classify_case(run_raw: Any, jobs_raw: Any) -> dict[str, Any]:
         job_executed = 0
         job_hard = False
         for step in job["steps"]:
+            if job["status"] == "completed" and step["status"] != "completed":
+                reasons.append(f"TERMINAL_JOB_HAS_NONTERMINAL_STEP:{job['id']}:{step['number']}")
             conclusion = step["conclusion"]
             if step["status"] == "completed" and conclusion in EXECUTED_STEP_CONCLUSIONS:
                 executed.append((job["id"], step["number"], conclusion)); job_executed += 1

@@ -1,9 +1,15 @@
 {
-  "source": "Official RFP main document, retrieved 2026-09-16",
+  "source": "Retained September 16 RFP/Attachments A-D recovery and reviewed September 17 FAQ; integrated 2026-09-19. No new bidder-evidence audit.",
   "deadline_utc": "2026-09-22T21:00:00Z",
   "budget_cap_usd": 60000,
   "narrative_page_limit": 5,
-  "user_groups": ["Licensed Affiliates", "Certified Facilitators", "Participants", "Guest Speakers", "System Administrators"],
+  "user_groups": [
+    "Licensed Affiliates",
+    "Certified Facilitators",
+    "Participants",
+    "Guest Speakers",
+    "System Administrators"
+  ],
   "required_scope": [
     "Recommend LMS platform and explain fit/costs",
     "Configure architecture, roles, permissions, affiliates/cohorts, navigation, branding, dashboards and reporting boundaries",
@@ -18,14 +24,38 @@
     "Support practical export of IA content/files/reports/user data and identify proprietary dependencies"
   ],
   "milestones": [
-    ["Vendor Kickoff Meeting", "2026-10-13"],
-    ["Early Build Review", "2026-10-28"],
-    ["Mid-Build Showcase", "2026-11-18"],
-    ["Pre-Beta Review", "2026-12-08"],
-    ["Beta Testing Milestone", "2026-12-15"],
-    ["Final Change Requests", "2027-01-15"],
-    ["Final Revisions Complete", "2027-01-31"],
-    ["Post-Implementation Support Ends", "2027-04-30"]
+    [
+      "Vendor Kickoff Meeting",
+      "2026-10-13"
+    ],
+    [
+      "Early Build Review",
+      "2026-10-28"
+    ],
+    [
+      "Mid-Build Showcase",
+      "2026-11-18"
+    ],
+    [
+      "Pre-Beta Review",
+      "2026-12-08"
+    ],
+    [
+      "Beta Testing Milestone",
+      "2026-12-15"
+    ],
+    [
+      "Final Change Requests",
+      "2027-01-15"
+    ],
+    [
+      "Final Revisions Complete",
+      "2027-01-31"
+    ],
+    [
+      "Post-Implementation Support Ends",
+      "2027-04-30"
+    ]
   ],
   "evaluation_points": {
     "lms_implementation_experience": 15,
@@ -46,10 +76,81 @@
     "external_send_authorized_by_repository_artifact": false
   },
   "attachment_status": {
-    "main_rfp": "RETRIEVED",
-    "attachment_a_functional_requirements": "ZIP_NOT_MATERIALIZED_YET",
-    "attachment_b_selection_rubric": "MAIN_RFP_SUMMARY_RETRIEVED; TEMPLATE_NOT_MATERIALIZED_YET",
-    "attachment_c_budget_template": "ZIP_NOT_MATERIALIZED_YET",
-    "attachment_d_optional_response_template": "ZIP_NOT_MATERIALIZED_YET"
+    "main_rfp": "RECOVERED_BUYER_SOURCE",
+    "attachment_a_functional_requirements": "RECOVERED_BUYER_SOURCE",
+    "attachment_b_selection_rubric": "RECOVERED_BUYER_SOURCE",
+    "attachment_c_budget_template": "RECOVERED_BUYER_SOURCE",
+    "attachment_d_optional_response_template": "RECOVERED_BUYER_SOURCE",
+    "faq_20260917": "RECOVERED_AND_REVIEWED_20260919"
+  },
+  "source_generation_id": "framer-reviewed-sources-20260919",
+  "source_manifest_sha256": "a70c78c77a7084ef9cf1499f0e7831e2031d4e635405c8955df25b57c6f01093",
+  "bidder_response": {
+    "status": "INCOMPLETE",
+    "completed_response_evidence_refs": [],
+    "budget_attachment_c": "UNFILLED",
+    "optional_template_d": "NOT_FILLED_OPTIONAL",
+    "buyer_rubric_b": "NOT_A_BIDDER_RESPONSE",
+    "detailed_attachment_a_response": "NOT_PREPARED_OPTIONAL"
+  },
+  "qualification_evidence_rules": {
+    "us_prime": {
+      "source": "FAQ Q1, printed p.3",
+      "required": "U.S.-registered prime able to provide completed W-9; W-8BEN-E is not a substitute.",
+      "verification": "UNVERIFIED"
+    },
+    "two_lms_platform_implementations": {
+      "source": "FAQ Q5/Q6, printed pp.3-4",
+      "evidence_route": "COLLECTIVE_NAMED_KEY_PERSONNEL_INCLUDING_NAMED_SPECIALIST",
+      "minimum_distinct_platforms": 2,
+      "accepted_attributed_roles": [
+        "consultant",
+        "subcontractor",
+        "technical lead"
+      ],
+      "required_attribution": [
+        "named person",
+        "platform",
+        "hands-on implementation/configuration responsibilities",
+        "evidence locator",
+        "reference basis",
+        "planned project contribution",
+        "subcontractor involvement"
+      ],
+      "unnamed_potential_specialist_counts_as_experience": false,
+      "recovered_buyer_source_counts_as_team_evidence": false
+    },
+    "unfilled_specialist": {
+      "source": "FAQ Q7, printed p.4",
+      "state": "UNFILLED_ROLE_IS_NOT_NAMED_EXPERIENCE",
+      "required_qualifications_and_anticipated_costs_may_be_described": true
+    },
+    "insurance": {
+      "source": "FAQ Q4, printed p.3",
+      "roughly_one_million_is_preference_not_universal_floor": true,
+      "underlying_documentation_waived": false,
+      "adequacy_verified": false
+    },
+    "existing_nine_qualification_records": "HISTORICAL_STATES_AND_EVIDENCE_PRESERVED; NO_REAUDIT"
+  },
+  "budget_structure": {
+    "source": "Recovered Attachment C",
+    "line_items": [
+      "Vendor Implementation Services",
+      "Subject Matter Experts (SMEs)",
+      "LMS Platform / Software Licensing",
+      "Third-Party Tools / Integrations",
+      "Three-Month Post-Implementation Support",
+      "Other"
+    ],
+    "recurring_fields": [
+      "Platform / Tool",
+      "Purpose",
+      "Year 1 Cost (Included in Budget)",
+      "Estimated Annual Cost After Year 1"
+    ],
+    "year1_costs_in_cap": true,
+    "blank_or_zero_is_priced_evidence": false,
+    "filled_bidder_budget_supplied": false
   }
 }

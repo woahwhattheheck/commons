@@ -1,0 +1,128 @@
+{
+  "schema": "invest_appalachia_framer_lms.source_generation_execution.v1",
+  "operation": "framer-source-generation-lattice-20260919",
+  "observer": "ZZ-Lattice / GPT-6 Astra Pro",
+  "execution_environment": {
+    "type": "EPHEMERAL_CLOUD_CONTAINER",
+    "python": "3.13.5",
+    "system": "Linux",
+    "whole_repository_checkout": false,
+    "network_used_by_tests": false
+  },
+  "source_candidate_commit": "27449dfa4a3dd022348feea1d350fd0f52739c57",
+  "source_readback": "All six source/data Git blob IDs matched native GitHub contents readback at source_candidate_commit. Test blobs identify the executed retained/new suites.",
+  "input_git_blobs": {
+    "opportunities/invest_appalachia_framer_lms/source_generation.json": "77444206a24dfc12585a5c8224c3edab698f9d89",
+    "opportunities/invest_appalachia_framer_lms/requirements.json": "7356e2e41d61efd8c82759171b827d4337cfa027",
+    "opportunities/invest_appalachia_framer_lms/current_packet.json": "1dc2f6517ac21f61f97ffc0820731b7ec25db880",
+    "opportunities/invest_appalachia_framer_lms/partner_workshare.json": "70715ca48a93ffd7b92eba2ec84db1e7a25e15d8",
+    "opportunities/invest_appalachia_framer_lms/carrier.py": "898b485120177231c0c50280d778571fa9b63e37",
+    "opportunities/invest_appalachia_framer_lms/workshare.py": "67ddd683a26facac11a48112919189a92c6b9ae2",
+    "tests/test_invest_appalachia_framer_lms.py": "54eda36e5d8512234965cf4ed9a93550604bd814",
+    "tests/test_invest_appalachia_framer_lms_workshare.py": "ad350dcf43388600fed4ad9d93dc3290afc6ba38",
+    "tests/test_invest_appalachia_framer_lms_source_generation.py": "4d333e1f81c3b68594afe117be859231525b39d7"
+  },
+  "results": [
+    {
+      "command": "python -m unittest -v tests.test_invest_appalachia_framer_lms tests.test_invest_appalachia_framer_lms_workshare tests.test_invest_appalachia_framer_lms_source_generation",
+      "mode": "normal",
+      "exit_code": 0,
+      "tests_run": 43,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "verbatim_summary": "Ran 43 tests in 11.274s\n\nOK"
+    },
+    {
+      "command": "python -O -m unittest -v tests.test_invest_appalachia_framer_lms tests.test_invest_appalachia_framer_lms_workshare tests.test_invest_appalachia_framer_lms_source_generation",
+      "mode": "optimized",
+      "exit_code": 0,
+      "tests_run": 43,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "verbatim_summary": "Ran 43 tests in 16.262s\n\nOK"
+    }
+  ],
+  "pursuit_receipt": {
+    "schema": "invest_appalachia_framer_lms.pursuit_receipt.v4",
+    "opportunity_id": "INVEST-APPALACHIA-FRAMER-LMS-20260916",
+    "prime_status": "PRIME_HOLD",
+    "teaming_status": "TEAMING_ROUTE_OPEN_INTERNAL",
+    "unverified_or_missing_gates": [
+      "adult_learning_packaging",
+      "cybersecurity_insurance_available",
+      "general_liability_available",
+      "professional_liability_available",
+      "start_capacity_2026_10_13",
+      "two_lms_platform_implementations",
+      "two_prior_client_references",
+      "two_relevant_project_examples",
+      "w9_available"
+    ],
+    "us_prime_eligibility": "UNVERIFIED",
+    "attachments_status": "RECOVERED_BUYER_DOCUMENTS",
+    "bidder_response_status": "INCOMPLETE",
+    "proposal_budget_state": "HOLD_UNPRICED_ATTACHMENTS_INCOMPLETE",
+    "proposal_budget_within_cap": false,
+    "submission_deadline_utc": "2026-09-22T21:00:00Z",
+    "deadline_currentness_authoritative": false,
+    "fresh_deadline_recensus_required_before_action": true,
+    "qualification_generation_sha256": "79e1bfc46617239e1c05b4c22e97e4d6672743103041e2b6b7b3e71bd6d1b30d",
+    "source_generation": {
+      "generation_id": "framer-reviewed-sources-20260919",
+      "source_manifest_sha256": "a70c78c77a7084ef9cf1499f0e7831e2031d4e635405c8955df25b57c6f01093",
+      "requirements_sha256": "5d012da1612cb220cfe0d7c4c02c47175a726bad1254855240c24afa6926ef66"
+    },
+    "source_identity_basis": "RETAINED_REVIEW_RECORDS_NOT_NEW_DOWNLOAD",
+    "experience_evidence_route": "COLLECTIVE_NAMED_KEY_PERSONNEL_INCLUDING_NAMED_SPECIALIST",
+    "external_contact_authorized": false,
+    "submission_authorized": false,
+    "signature_authorized": false,
+    "contract_acceptance_authorized": false,
+    "spend_authorized": false,
+    "payment_authorized": false,
+    "award_or_revenue_asserted": false,
+    "normalized_input_sha256": "79e1bfc46617239e1c05b4c22e97e4d6672743103041e2b6b7b3e71bd6d1b30d",
+    "receipt_sha256": "c1ed7e5eef24a49618046d13e9d77eecfb97d293943c86c69a35c673360e5060"
+  },
+  "workshare_receipt": {
+    "schema": "invest_appalachia_framer_lms.partner_workshare_receipt.v2",
+    "opportunity_id": "INVEST-APPALACHIA-FRAMER-LMS-20260916",
+    "qualification_generation_sha256": "79e1bfc46617239e1c05b4c22e97e4d6672743103041e2b6b7b3e71bd6d1b30d",
+    "workshare_sha256": "33548cdf0b30a664b847eeea0eb6ad6d7a06b2a8d35ddfa91be0953d1f564636",
+    "source_generation": {
+      "generation_id": "framer-reviewed-sources-20260919",
+      "source_manifest_sha256": "a70c78c77a7084ef9cf1499f0e7831e2031d4e635405c8955df25b57c6f01093",
+      "requirements_sha256": "5d012da1612cb220cfe0d7c4c02c47175a726bad1254855240c24afa6926ef66"
+    },
+    "buyer_source_status": "RECOVERED_BUYER_DOCUMENTS",
+    "bidder_response_status": "INCOMPLETE",
+    "us_prime_eligibility": "UNVERIFIED",
+    "prime_posture": "NO_CHANGE_PRIME_HOLD",
+    "workshare_posture": "READY_FOR_INTERNAL_QUALIFIED_PRIME_SELECTION",
+    "specialist_price_usd": 24000,
+    "buyer_budget_cap_usd": 60000,
+    "buyer_budget_fit": "UNRESOLVED_QUALIFIED_PRIME_MUST_INTEGRATE_WITH_60000_CAP",
+    "commercial_status": "PROPOSED_NOT_ACCEPTED",
+    "money_state": "NO_ACCEPTANCE_NO_RECEIVABLE_NO_REVENUE",
+    "fresh_opportunity_and_route_census_required": true,
+    "muse_dm_clearance_required": true,
+    "maximum_external_messages_if_cleared": 1,
+    "award_or_revenue_asserted": false,
+    "buyer_contact_authorized": false,
+    "contract_acceptance_authorized": false,
+    "partner_contact_authorized": false,
+    "payment_authorized": false,
+    "signature_authorized": false,
+    "submission_authorized": false,
+    "receipt_sha256": "082898666e70c0e862151e081d718c55b461d6c19666b42ef9aa35a3e4f20582"
+  },
+  "limits": {
+    "github_hosted_execution_claimed": false,
+    "main_integration_claimed": false,
+    "buyer_approval_claimed": false,
+    "fresh_buyer_download_claimed": false,
+    "bidder_evidence_reaudit_claimed": false
+  }
+}

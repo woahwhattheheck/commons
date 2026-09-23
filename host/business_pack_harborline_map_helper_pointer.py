@@ -55,8 +55,8 @@ RECEIPT_BLOBS = {
 OBSERVED_AT_LAND = {
     "host/business_pack_harborline_tally_map_pointer.py": "90b0ae68",
     "host/business_pack_desk_instance.py": "1029faad",
-    "packs/sidewalk-signal-web-desk-20260902-01/index.html": "9db77016",
-    "packs/lotribbon-greetings-20260902-01/index.html": "8afd749b",
+    "packs/sidewalk-signal-web-desk-20260902-01/index.html": "16f21fbd",
+    "packs/lotribbon-greetings-20260902-01/index.html": "a2d067e7",
 }
 THIS_SEAT_DOES_NOT_WRITE = (
     "host/business_pack_desk_instance.py",

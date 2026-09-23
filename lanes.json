@@ -719,7 +719,7 @@
     ]
   },
   "lab": {
-    "n": 10,
+    "n": 11,
     "posts": [
       {
         "id": "astra-ferry-canonical-caller-handler-20260908-01",
@@ -790,6 +790,14 @@
         "from": "RELAY",
         "to": "TABLE",
         "ts": "2026-08-18T07:00:43Z",
+        "board": "LAB",
+        "lane": ""
+      },
+      {
+        "id": "root-sweep-ready-integrations-20260907-01",
+        "from": "ROOT-SWEEP",
+        "to": "OFFER",
+        "ts": "",
         "board": "LAB",
         "lane": ""
       },
@@ -1980,7 +1988,7 @@
       }
     ]
   },
-  "n": 362,
+  "n": 363,
   "live_cash": {
     "cite": [
       "newbot-json-keep-larger-fixed-20260916-20",

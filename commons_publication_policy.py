@@ -16,6 +16,21 @@ POLICY_CONTEXT = "Commons publication terms govern outgoing content on every sub
 
 _REWRITE = "Commons publication terms: this draft was not delivered. Continue the authorized work without publishing this draft, a replacement endorsement, or an explanation of withheld commentary."
 
+# Owner-controlled outward identity policy. These exact standalone terms are
+# blocked only in explicitly selected provider-visible fields. Private control
+# envelopes, source files, paths, identifiers, and provider responses are never
+# recursively inspected.
+OUTBOUND_IDENTITY_TERMS = (
+    "Codex",
+    "Claude",
+    "Opus",
+    "Fable",
+    "Astra",
+    "Sol",
+    "Grok",
+)
+_IDENTITY_RULE = "outbound_identity_attribution"
+
 # These expressions govern outgoing publication on every subject. They are portable
 # between Python re and JavaScript RegExp (case-insensitive, ASCII boundaries).
 _TARGET = (
@@ -164,6 +179,90 @@ _PROHIBITION = (
 )
 
 
+def _identity_token_char(value: str) -> bool:
+    """Return whether one character belongs to a Unicode word token."""
+    return bool(value) and unicodedata.category(value)[0] in {"L", "M", "N"}
+
+
+def _identity_normalize(value: str) -> str:
+    """Normalize display variants without retaining invisible format controls."""
+    return "".join(
+        character
+        for character in unicodedata.normalize("NFKC", value)
+        if unicodedata.category(character) != "Cf"
+    ).casefold()
+
+
+def _identity_terms_in(value: str) -> tuple[str, ...]:
+    normalized = _identity_normalize(value)
+    found: list[str] = []
+    for term in OUTBOUND_IDENTITY_TERMS:
+        needle = term.casefold()
+        offset = 0
+        while True:
+            start = normalized.find(needle, offset)
+            if start < 0:
+                break
+            end = start + len(needle)
+            before = normalized[start - 1] if start else ""
+            after = normalized[end] if end < len(normalized) else ""
+            if not _identity_token_char(before) and not _identity_token_char(after):
+                found.append(term)
+                break
+            offset = start + 1
+    return tuple(found)
+
+
+def check_outbound_identity(fields: dict[str, str]) -> dict:
+    """Check only named provider-visible fields and return a private decision."""
+    if not isinstance(fields, dict):
+        raise TypeError("Outbound identity fields must be a dictionary of strings.")
+
+    matched_fields: list[str] = []
+    matched_by_term: set[str] = set()
+    for field, value in fields.items():
+        if not isinstance(field, str) or not isinstance(value, str):
+            raise TypeError("Outbound identity field names and values must be strings.")
+        matches = _identity_terms_in(value)
+        if matches:
+            matched_fields.append(field)
+            matched_by_term.update(matches)
+
+    if not matched_fields:
+        return {
+            "allowed": True,
+            "code": "allowed",
+            "message": "",
+            "rule": None,
+            "incident": False,
+            "delivered": False,
+            "matched_fields": [],
+            "matched_terms": [],
+            "private_instruction": "",
+        }
+
+    matched_terms = [
+        term for term in OUTBOUND_IDENTITY_TERMS if term in matched_by_term
+    ]
+    fields_text = ", ".join(matched_fields)
+    terms_text = ", ".join(matched_terms)
+    instruction = (
+        f"Remove {terms_text} from outward field(s) {fields_text}, "
+        "then retry the same operation."
+    )
+    return {
+        "allowed": False,
+        "code": _IDENTITY_RULE,
+        "message": "Outward publication was not delivered. " + instruction,
+        "rule": _IDENTITY_RULE,
+        "incident": False,
+        "delivered": False,
+        "matched_fields": matched_fields,
+        "matched_terms": matched_terms,
+        "private_instruction": instruction,
+    }
+
+
 class PublicationPolicyViolation(ValueError):
     """Private outgoing-publication rejection with a content-free decision."""
 
@@ -171,6 +270,11 @@ class PublicationPolicyViolation(ValueError):
         self.decision = dict(decision)
         self.code = decision["code"]
         self.rule = decision["rule"]
+        self.incident = decision.get("incident", False)
+        self.delivered = decision.get("delivered", False)
+        self.matched_fields = tuple(decision.get("matched_fields", ()))
+        self.matched_terms = tuple(decision.get("matched_terms", ()))
+        self.private_instruction = decision.get("private_instruction", "")
         super().__init__(decision["message"])
 
 
@@ -209,7 +313,7 @@ def _protected(sentence: str, start: int) -> bool:
 
 def _software_report_match(sentence: str, context: str, wording: str, rule: str, report: bool) -> bool:
     """Exempt technical diagnostics only, never doubt or reproof language."""
-    if not report or not re.search(_SOFTWARE_DETAIL, sentence, re.I):
+    if not report or not re.search(_SOFTWARE_DETAIL, context, re.I):
         return False
     if re.search(_RESULT_EVALUATION, context, re.I):
         return False

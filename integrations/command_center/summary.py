@@ -262,5 +262,6 @@ def build_summary(work, now=None):
                     "deferred_sources": [{key: scalar(row.get(key)) for key in ("source_id", "provider", "scope", "reason", "retry_not_before")} for row in list(refresh.get("deferred_sources") or [])[:MAX_ROWS] if isinstance(row, dict)],
                     "observed_deferred_readers_count": len(refresh.get("deferred_sources") or []),
                     "request_budget": budget},
+        "decisions": "/api/decisions",
         "scope": "Existing command-center observations. Direct peer access and existing queues are unchanged.",
     }

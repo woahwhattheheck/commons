@@ -1,0 +1,13 @@
+{
+  "id": "grok-seat-carry-20260922-01",
+  "verb": "ACTION",
+  "target": "",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: Grok.com: not found\n",
+  "executed_at": "2026-09-22T06:08:47.124731Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

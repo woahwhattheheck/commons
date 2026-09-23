@@ -1,0 +1,206 @@
+{
+  "schema": "co-chsd-partner-candidates/v2",
+  "opportunity_id": "CO-CHSD-PURSUIT",
+  "state": "RESEARCH_ONLY_NO_CONTACT_AUTHORITY",
+  "candidates": [
+    {
+      "name": "Neudesic (IBM company)",
+      "qualification_state": "STRONG_TECHNICAL_RESEARCH_CANDIDATE_NOT_QUALIFIED",
+      "evidence": [
+        {
+          "url": "https://www.neudesic.com/services/integration-and-apis/",
+          "supports": [
+            "BizTalk HealthCheck and BizTalk-to-Azure integration practice"
+          ]
+        },
+        {
+          "url": "https://www.neudesic.com/services/application-management-services/",
+          "supports": [
+            "BizTalk application managed services"
+          ]
+        },
+        {
+          "url": "https://www.neudesic.com/wp-content/uploads/Neudesic-Migration-Accelerator-BizTalk-Azure.pdf",
+          "supports": [
+            "healthcare-targeted BizTalk/Azure accelerator; FHIR/OAuth/HL7/compliance positioning"
+          ]
+        },
+        {
+          "url": "https://www.neudesic.com/wp-content/uploads/cs_stryker-neudesic-1-1.pdf",
+          "supports": [
+            "Stryker healthcare/medical-device managed-services case with Microsoft BizTalk steady-state environment"
+          ]
+        },
+        {
+          "url": "https://www.neudesic.com/healthcare/",
+          "supports": [
+            "healthcare, Medicare/Medicaid and Microsoft cloud practice"
+          ]
+        },
+        {
+          "url": "https://www.neudesic.com/industries/",
+          "supports": [
+            "government industry practice"
+          ]
+        }
+      ],
+      "unresolved_required_evidence": [
+        "exact current buyer-required Microsoft/BizTalk certification match",
+        "organization-level SOC 2 Type II evidence",
+        "Colorado Vendor Self Service registration",
+        "required similar-project count and buyer-acceptable references",
+        "insurance and exact staffing/operations compliance",
+        "willingness to pursue this exact solicitation and negotiate a paid TJLabs workshare"
+      ],
+      "contact_authorized": false
+    },
+    {
+      "name": "Cognizant / Cognizant Government Solutions",
+      "qualification_state": "STRONG_HEALTHCARE_GOV_RESEARCH_CANDIDATE_NOT_QUALIFIED",
+      "evidence": [
+        {
+          "url": "https://careers.cognizant.com/us-en/jobs/00069649511/qnxt-infrastructure-installation-consultant/",
+          "supports": [
+            "current healthcare role using BizTalk Server, SQL Server, .NET, HIPAA EDI, Azure and security"
+          ]
+        },
+        {
+          "url": "https://www.cognizant.com/us/en/industries/government-technology-solutions",
+          "supports": [
+            "current federal/state/local government practice and contract vehicles"
+          ]
+        },
+        {
+          "url": "https://www.cognizant.com/us/en/industries/healthcare-technology-solutions",
+          "supports": [
+            "healthcare, government Azure and Medicare/Medicaid practice"
+          ]
+        },
+        {
+          "url": "https://www.cognizant.com/us/en/about-cognizant/partners/microsoft",
+          "supports": [
+            "current Microsoft partnership"
+          ]
+        }
+      ],
+      "unresolved_required_evidence": [
+        "exact current buyer-required BizTalk certification",
+        "organization-level SOC 2 Type II evidence",
+        "Colorado Vendor Self Service registration",
+        "required similar projects and buyer-acceptable references",
+        "insurance and exact staffing/operations compliance",
+        "willingness and commercial role"
+      ],
+      "contact_authorized": false
+    },
+    {
+      "name": "TwoConnect",
+      "qualification_state": "PROMISING_RESEARCH_CANDIDATE_NOT_QUALIFIED",
+      "evidence": [
+        {
+          "url": "https://www.twoconnect.com/azure-biztalk-hipaa-hl7",
+          "supports": [
+            "BizTalk healthcare integration",
+            "HIPAA/HL7 integration",
+            "claims and patient-data integration"
+          ]
+        },
+        {
+          "url": "https://partner.microsoft.com/es-es/case-studies/twoconnect-bupa",
+          "supports": [
+            "Microsoft-published Bupa Global healthcare integration case",
+            "Azure and BizTalk delivery"
+          ]
+        },
+        {
+          "url": "https://www.twoconnect.com/biztalk-support",
+          "supports": [
+            "BizTalk support and maintenance",
+            "publicly advertised 24x7x365 support"
+          ]
+        },
+        {
+          "url": "https://www.twoconnect.com/about-us",
+          "supports": [
+            "public Microsoft/Azure/BizTalk integration-partner claims"
+          ]
+        }
+      ],
+      "unresolved_required_evidence": [
+        "exact current buyer-required Microsoft/BizTalk certification match",
+        "organization-level SOC 2 Type II evidence",
+        "Colorado VSS",
+        "three buyer-comparable projects in the required window",
+        "two buyer-acceptable references",
+        "insurance",
+        "willingness and commercial role"
+      ],
+      "contact_authorized": false
+    },
+    {
+      "name": "Art2link / Cerebrum City",
+      "qualification_state": "SECONDARY_RESEARCH_CANDIDATE_NOT_QUALIFIED",
+      "evidence": [
+        {
+          "url": "https://www.art2link.com/",
+          "supports": [
+            "Microsoft Solutions Partner claim",
+            "enterprise integration history",
+            "healthcare/public-sector positioning",
+            "BizTalk lineage"
+          ]
+        },
+        {
+          "url": "https://www.art2link.com/solutions/hl7-fhir-platform/",
+          "supports": [
+            "HL7/FHIR healthcare integration",
+            "Azure deployment",
+            "BizTalk delivery lineage"
+          ]
+        }
+      ],
+      "unresolved_required_evidence": [
+        "current BizTalk operations fit",
+        "exact buyer certification",
+        "SOC 2 Type II",
+        "Colorado VSS",
+        "projects/references",
+        "insurance/staffing",
+        "willingness"
+      ],
+      "contact_authorized": false
+    },
+    {
+      "name": "Beyond BizTalk",
+      "qualification_state": "SPECIALIST_RESEARCH_CANDIDATE_NOT_QUALIFIED",
+      "evidence": [
+        {
+          "url": "https://beyondbiztalk.com/",
+          "supports": [
+            "BizTalk/Azure integration depth",
+            "healthcare integration testimonials",
+            "Rocky Mountain Health Plans testimonial"
+          ]
+        }
+      ],
+      "unresolved_required_evidence": [
+        "prime-scale managed-service capacity",
+        "exact buyer certification",
+        "SOC 2 Type II",
+        "Colorado VSS",
+        "projects/references",
+        "insurance/support coverage",
+        "willingness"
+      ],
+      "contact_authorized": false
+    }
+  ],
+  "outbound_policy": {
+    "muse_single_writer_required": true,
+    "fresh_slack_gmail_github_dedupe_required": true,
+    "max_initial_messages_per_selected_route": 1,
+    "commons_public_backlink_forbidden": true,
+    "buyer_contact_authorized": false,
+    "partner_contact_authorized": false
+  }
+}

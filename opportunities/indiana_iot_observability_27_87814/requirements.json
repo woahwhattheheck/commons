@@ -1,0 +1,15 @@
+{
+  "schema": "indiana-iot-observability-requirements/v1",
+  "opportunity_id": "27-87814",
+  "requirements": [
+    {"id": "controlling_package", "state": "UNKNOWN", "evidence": [], "note": "State ZIP not retained in carrier."},
+    {"id": "submission_mechanics", "state": "UNKNOWN", "evidence": [], "note": "Mirror says electronic portal; controlling package not retained."},
+    {"id": "questions_and_prebid", "state": "UNKNOWN", "evidence": [], "note": "Mirror dates are discovery-only until package retention."},
+    {"id": "teaming_rules", "state": "UNKNOWN", "evidence": [], "note": "No controlling teaming/subcontract terms retained."},
+    {"id": "prime_platform_qualification", "state": "UNKNOWN", "evidence": [], "note": "No owner platform credential or qualifying reference asserted."},
+    {"id": "security_compliance", "state": "UNKNOWN", "evidence": [], "note": "No controlling security schedule retained."},
+    {"id": "staffing_capacity", "state": "UNKNOWN", "evidence": [], "note": "No owner staffing commitment asserted."},
+    {"id": "pricing_forms", "state": "UNKNOWN", "evidence": [], "note": "No controlling pricing workbook retained."},
+    {"id": "paid_specialist_workshare", "state": "PROPOSED", "evidence": [], "note": "Internal commercial hypothesis only; requires partner demand and controlling rules."}
+  ]
+}

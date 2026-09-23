@@ -43,6 +43,12 @@ def load_renderer(source_path: Path, root: Path) -> dict:
         "datetime": FixedDatetime, "timezone": timezone,
         "rows_from_git": Mock(return_value=[]),
         "rows_from_recent": Mock(return_value=[]),
+        "_filter_projection_rows": Mock(
+            side_effect=lambda rows, **_kwargs: (list(rows), [])
+        ),
+        "challenge_rows_from_tree": Mock(return_value=[]),
+        "_emit_identity_holds": Mock(),
+        "_status_text": str,
         "git_head": Mock(return_value="7" * 40),
         "write_peers": Mock(return_value=0),
         "write_challenge": Mock(return_value=0),

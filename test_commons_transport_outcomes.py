@@ -59,6 +59,12 @@ def endpoint(dispatch):
 
 
 class CommonsTransportOutcomesTests(unittest.TestCase):
+    @staticmethod
+    def _verified_slack_equipment(**kwargs):
+        equipment = ServiceEquipment(**kwargs)
+        equipment._slack_write_route_verified = lambda: True
+        return equipment
+
     def test_native_failure_and_uncertainty_remain_distinct_from_job_status(self):
         value = {"isError": True, "structuredContent": {"ok": False,
                  "error": {"code": "submission_outcome_unknown", "uncertain": True}}}
@@ -210,7 +216,7 @@ class CommonsTransportOutcomesTests(unittest.TestCase):
             if request.get_method() == "POST":
                 return io.BytesIO(b'{"ok":true,"channel":"C-fixture","ts":"1.2","message":{"text":"sent"}}')
             raise OSError("fixture link failure")
-        equipment = ServiceEquipment(slack_token_loader=lambda: "fixture", opener=opener)
+        equipment = self._verified_slack_equipment(slack_token_loader=lambda: "fixture", opener=opener)
         result = equipment.call("slack_post_message", {"channel_id": "C-fixture", "text": "Completed fixture operation."})
         self.assertFalse(result["isError"])
         self.assertEqual("1.2", result["result"]["ts"])
@@ -224,7 +230,7 @@ class CommonsTransportOutcomesTests(unittest.TestCase):
                     return io.BytesIO(json.dumps({"ok": True, "channel": "C-fixture",
                                                   "ts": "1.2", "message": message}).encode())
                 raise OSError("fixture link failure")
-            equipment = ServiceEquipment(slack_token_loader=lambda: "fixture", opener=opener)
+            equipment = self._verified_slack_equipment(slack_token_loader=lambda: "fixture", opener=opener)
             result = equipment.call("slack_post_message", {"channel_id": "C-fixture",
                                      "text": "Completed fixture operation."})
             self.assertFalse(result["isError"])
@@ -238,7 +244,7 @@ class CommonsTransportOutcomesTests(unittest.TestCase):
                                           {"Retry-After": "17"}, stream)
             def opener(*args, **kwargs):
                 raise error
-            equipment = ServiceEquipment(slack_token_loader=lambda: "fixture", opener=opener)
+            equipment = self._verified_slack_equipment(slack_token_loader=lambda: "fixture", opener=opener)
             result = equipment.call("slack_post_message", {"channel_id": "C-fixture", "text": "Completed fixture operation."})
             self.assertTrue(stream.closed)
             self.assertTrue(result["isError"])
@@ -251,7 +257,7 @@ class CommonsTransportOutcomesTests(unittest.TestCase):
             def opener(request, **kwargs):
                 calls.append(request)
                 return io.BytesIO(json.dumps({"ok": False, "error": error}).encode())
-            equipment = ServiceEquipment(slack_token_loader=lambda: "fixture", opener=opener)
+            equipment = self._verified_slack_equipment(slack_token_loader=lambda: "fixture", opener=opener)
             observed = equipment.slack("conversations.history", {"channel": "C-fixture"})
             self.assertFalse(effect_uncertain(observed))
             with tempfile.TemporaryDirectory() as root:

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "lane": "HVQ-EXPENSIFY-20260920-96135/data-map+test-matrix",
+  "worker": "ZZ-Sol-Asterion-641",
+  "model": "GPT-5.6 Sol",
+  "upstream_repo": "Expensify/App",
+  "issue_number": 96135,
+  "advertised_usd": 250,
+  "upstream_main_sha": "dd0e8b65546b6e2e8914e74c535da26cd85dacc5",
+  "issue_state": {
+    "open": true,
+    "labels": [
+      "External",
+      "Help Wanted",
+      "Daily",
+      "Overdue",
+      "Bug"
+    ],
+    "issue_owner": "Gonals",
+    "c_plus_reviewer": "sobitneupane",
+    "internal_engineer_input_pending": true,
+    "provider_assignment_for_this_worker": false
+  },
+  "source_blobs": {
+    "src/libs/actions/Policy/DistanceRate.ts": "8022dda15b06c6fac6553a229428f1cd73992297",
+    "src/pages/workspace/distanceRates/PolicyCommuterExclusionsPage.tsx": "6a8beb4ad1e5fa6309a3f342c7c1e49a47e38a97",
+    "src/pages/workspace/distanceRates/PolicyDistanceRatesSettingsPage.tsx": "d8bd1d0b2779fd3543815376eda4b8c139508294",
+    "src/libs/DistanceRequestUtils.ts": "90de2b0481eafd618f5dce6a3b23ce090dcf1fcf",
+    "src/libs/API/parameters/SetPolicyCommuterExclusionsParams.ts": "9c55f16f7a67bac62b8ad084d7d8ad205ec1db42",
+    "src/types/onyx/Policy.ts": "26963e55f4d0df34d4c4f65466879272597be834"
+  },
+  "issue_evidence": {
+    "c_plus_semantic_checkpoint_comment_id": 5509650093,
+    "stored_pair_editor_defect_comment_id": 5003823819
+  },
+  "findings": {
+    "invariant": "fixedDistance and fixedDistanceUnit are one persisted physical measurement",
+    "summary": "current settings summary preserves the stored pair; label-only replacement can misrepresent physical distance",
+    "editor": "current editor combines stored number with live workspace unit and can re-stamp an unchanged number into a new unit",
+    "manual_unit_change": "updates custom-unit attributes, not commuterExclusions",
+    "auto_unit_correction": "government auto-update can correct custom-unit attributes.unit without migrating commuterExclusions",
+    "calculation": "runtime converts the persisted pair from its stored unit into the request unit before subtracting it",
+    "precision_blocker": "editor is integer-only and strips non-digits, so ordinary km/mi conversion cannot round-trip decimals safely",
+    "hostile_legacy_edge": "missing fixedDistanceUnit falls back to current workspace unit in summary but to miles in runtime calculation"
+  },
+  "recommended_acceptance": [
+    "preserve the fixedDistance+fixedDistanceUnit physical measurement",
+    "never pair a stored numeric value with a different unit label without conversion",
+    "no-edit Save after unit drift must not change physical distance",
+    "cover manual and government-auto unit changes",
+    "define precision/rounding before automatic conversion",
+    "make legacy missing-unit fallback consistent between UI and calculation"
+  ],
+  "production_reproduced": false,
+  "upstream_tests_executed": false,
+  "upstream_pr_opened": false,
+  "upstream_comment_posted": false,
+  "upwork_application_submitted": false,
+  "payout_claimed": false,
+  "classification": "SOURCE_VERIFIED_PRE_ASSIGNMENT_SEMANTIC_MATRIX"
+}

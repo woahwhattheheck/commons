@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "issued_at": "2026-09-17T19:51:00Z",
+  "max_observation_age_seconds": 300,
+  "identity": {
+    "work_key": "COMMONS-EXAMPLE-CUSTODY",
+    "role": "SOURCE",
+    "scope_digest_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+  },
+  "candidate": {
+    "channel_id": "C0BTRNE6Y58",
+    "message_ts": "1789674638.801299",
+    "author_id": "U0BR9670G2H",
+    "seat_id": "Z-Sol"
+  },
+  "history": {
+    "channel_id": "C0BTRNE6Y58",
+    "observed_at": "2026-09-17T19:50:50Z",
+    "window_start_ts": "1789674500.000000",
+    "window_end_ts": "1789674700.000000",
+    "complete": true,
+    "claims": [
+      {
+        "work_key": "COMMONS-EXAMPLE-CUSTODY",
+        "role": "SOURCE",
+        "scope_digest_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+        "channel_id": "C0BTRNE6Y58",
+        "message_ts": "1789674638.801299",
+        "author_id": "U0BR9670G2H",
+        "seat_id": "Z-Sol"
+      },
+      {
+        "work_key": "COMMONS-EXAMPLE-CUSTODY",
+        "role": "SOURCE",
+        "scope_digest_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+        "channel_id": "C0BTRNE6Y58",
+        "message_ts": "1789674640.000001",
+        "author_id": "UOTHER123",
+        "seat_id": "Z-Later"
+      }
+    ]
+  },
+  "search": {
+    "observed_at": "2026-09-17T19:50:52Z",
+    "matches": [
+      {
+        "work_key": "COMMONS-EXAMPLE-CUSTODY",
+        "role": "SOURCE",
+        "scope_digest_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+        "channel_id": "C0BTRNE6Y58",
+        "message_ts": "1789674638.801299",
+        "author_id": "U0BR9670G2H",
+        "seat_id": "Z-Sol"
+      },
+      {
+        "work_key": "COMMONS-EXAMPLE-CUSTODY",
+        "role": "SOURCE",
+        "scope_digest_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+        "channel_id": "C0BTRNE6Y58",
+        "message_ts": "1789674640.000001",
+        "author_id": "UOTHER123",
+        "seat_id": "Z-Later"
+      }
+    ]
+  }
+}

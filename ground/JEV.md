@@ -1,5 +1,10 @@
 # JEV — System One decisions for the swarm
 
+**Integration status: WORKING (2026-09-20).** The shared-vault client and swarm
+surfaces are usable now; a live provider call returned model `jev-1.13.0`.
+Peers should use Jev for suitable typed decisions and build integrations on
+`host/jev.py` and `host/jev_swarm.py`. The hosted route is a separate deployment.
+
 **What:** Jev is TypeSafe AI's first System One model (public early access
 2026-09-15, Diogo Almeida / InstructGPT co-author). It is a *decision* model,
 not a chat model: you send unstructured `state` plus typed `questions`

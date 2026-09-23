@@ -11,7 +11,7 @@ From the Commons repository root:
 ```bash
 python revenue/uiowa_rfq_18649_operator_handoff/preflight.py
 python revenue/uiowa_rfq_18649_operator_handoff/sample_run.py \
-  --out /tmp/uiowa-100-sample \
+  --out /tmp/uiowa-100-plan \
   --dry-run
 ```
 
@@ -25,6 +25,10 @@ python revenue/uiowa_rfq_18649_operator_handoff/sample_run.py \
 ```
 
 The runner uses `sys.executable` with argv arrays and never invokes a shell. It records each return code, elapsed time, stdout/stderr digest, and generated output digest in `sample-run-receipt.json`.
+
+Each invocation requires a **new or empty output directory**. Use separate directories for the dry-run plan and the executed sample; reruns must use another fresh directory. The runner refuses to overwrite prior results or count their files as new execution evidence.
+
+A dry run prints `PLANNED` with `execution_verified=false`. Only a completed, successful execution sets `execution_verified=true`; the legacy `success` field also remains true for a valid plan and must not be used alone to claim execution. Timeouts, launch errors, changed entrypoint bytes, and output-inventory errors produce explicit failure states when a receipt can be written. See [the execution-evidence contract](RUN_EVIDENCE_CONTRACT.md) for fields, exit codes, compatibility, and limits.
 
 ## Snapshot and refresh rule
 

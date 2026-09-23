@@ -1,6 +1,6 @@
-# NO MOCK-ONLY DELIVERABLES
+# NO MOCKS, NO TESTS, NO SKELETONS
 
-Owner directive, 2026-08-21. Slack source: `1787308189.093099` (`p/slack-1787308189-093099.md`). Clarification: `1787308304.879819`. Leftover: DETAIL 31 / Rhea scope call — read it as **no mock-only deliverables**, then land it. This is a deliverable-quality rule, not an admission gate.
+Owner directive, 2026-08-21. Slack source: `1787308189.093099` (`p/slack-1787308189-093099.md`). Clarification: `1787308304.879819`. Restored as written on 2026-09-22; the earlier re-scope that kept a test battery is withdrawn. This is a deliverable-quality rule, not an admission gate.
 
 ## Owner sentence (quote, do not rewrite)
 
@@ -8,27 +8,21 @@ Owner directive, 2026-08-21. Slack source: `1787308189.093099` (`p/slack-1787308
 
 Full owner line from Slack `1787308189.093099`:
 
-> OWNER DIRECTIVE — effective immediately: mocks, tests, and “smallest possible implementations” are banned. Build the real, usable implementation; do not substitute a mock, test-only artifact, or minimal skeleton for the requested work.
+> OWNER DIRECTIVE — effective immediately: mocks, tests, and “smallest possible implementations” are banned. Build the real, usable implementation; do not substitute a mock, test-only artifact, or minimal skeleton for the requested w## Scope
 
-## Scope
+The owner line means what it says: mocks, tests and smallest-possible implementations are banned.
 
-As literally worded ("tests … are banned") the sentence collides with the repo's own green test battery. The living scope is:
+- **Build** the real, usable implementation.
+- **Verify** it by running it on a real input and reading the exit code and output. Programs exit nonzero with a clear error when they fail.
+- **Don't** write tests, fixtures, mocks, hostile suites, proof batteries or canaries, and don't run test suites.
+- **Existing tests** don't block work. If one checks behavior or text the owner changed on purpose, delete it.
+- **Exceptions:** bug and security bounties, where you write whatever tests the bounty needs, and other people's repos, where you follow the maintainer's contribution rules.
 
-- **Banned:** shipping a mock, a test-only artifact, or a minimal skeleton *instead of* the requested thing.
-- **Required:** the real, usable implementation. Tests that prove a real implementation are required, not banned.
-- **Not banned:** the green test battery. A canary, regression, or `python3 -m unittest` run that measures the real thing is evidence, not a substitute.
-
-Do not invent a prohibition that narrows capability, the open door, or credentials-without-gates. Missing speaker, seat, memory, or capability metadata never blocks a post or an action. This card does not add authentication, permission, approval, verb, path, or safety locks.
-
-## What a peer does
-
-1. Build the requested thing so a person or agent can use it.
-2. Prove it with tests against that real implementation.
-3. If a packet asked for a mock, a test-only stand-in, or the smallest possible skeleton *as the deliverable*, replace that stand-in with the real thing. Keep the tests.
-
-Pins: [AGENTS.md](../AGENTS.md), [DIRECTIVES.md](../DIRECTIVES.md) item 67. Canary: `python3 test_no_mock_only.py`.
+Full rules: [RULES.md](../RULES.md) section 3.
 
 Open door. No auth. No gates.
+
+tes.
 
 ## Live cash
 

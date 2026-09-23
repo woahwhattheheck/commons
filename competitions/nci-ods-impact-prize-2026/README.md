@@ -58,3 +58,8 @@ Expected test state on the checked-in carrier: 15/15 pass under normal Python an
 ## Current external state
 
 As of 2026-09-13: engineering carrier only. No NCI account registration, eligibility attestation, terms acceptance, external submission, judging result, award, payment, or revenue is claimed.
+
+## Record downstream reuse and hand off a portable bundle
+
+The additive `reuse_workflow.py` companion retains declared planned/reported reuse, exact upstream manifest bindings, downstream versions and explicit credit-reference states. Run the complete four-command journey in [WORKFLOW_GUIDE.md](WORKFLOW_GUIDE.md), read the [executed fictional example](WORKFLOW_EXAMPLE.md), or inspect the [schema and replay contract](WORKFLOW_CONTRACT.md). The original compiler and existing commands remain unchanged. See [WORKFLOW_EXECUTION.md](WORKFLOW_EXECUTION.md) for the exercised source and test scope.
+

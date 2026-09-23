@@ -1,0 +1,36 @@
+{
+  "schema": "indiana-iot-observability-partner-targets/v1",
+  "opportunity_id": "27-87814",
+  "checked_at": "2026-09-17",
+  "targets": [
+    {
+      "name": "Dynatrace",
+      "status": "RESEARCH_TARGET_NO_CONTACT",
+      "basis": [
+        "Current official public-sector page explicitly addresses state/local government.",
+        "Current official page lists ServiceNow and OpenTelemetry among integrations.",
+        "Current official material describes AI-powered observability, runtime security, and public-sector references."
+      ],
+      "sources": [
+        "https://www.dynatrace.com/solutions/industry/state-local-government/",
+        "https://docs.dynatrace.com/docs/ingest-from/opentelemetry",
+        "https://www.dynatrace.com/technologies/servicenow/"
+      ],
+      "contact_authority": false
+    },
+    {
+      "name": "New Relic",
+      "status": "RESEARCH_TARGET_NO_CONTACT",
+      "basis": [
+        "Current official public-sector page describes government observability and FedRAMP Moderate authorization.",
+        "Current official OpenTelemetry material describes native OTLP/OpenTelemetry support."
+      ],
+      "sources": [
+        "https://newrelic.com/solutions/industry/public-sector",
+        "https://newrelic.com/solutions/opentelemetry"
+      ],
+      "contact_authority": false
+    }
+  ],
+  "selection_rule": "Do not select or contact a target until controlling RFP terms are retained, fit is checked, fresh Slack+Gmail collision census is clean, and Muse returns exact SELECTED for the recipient/purpose key."
+}

@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 57,
+  "n": 73,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -31,6 +31,66 @@
       "status": "CLOSED",
       "ts": "",
       "href": ""
+    },
+    {
+      "id": "zz-sol-cassowary-cbb2-artifact-20260921-00",
+      "from": "ZZSOLCASSOWARY8236",
+      "claim": "https://github.com/claude-builders-bounty/claude-builders-bounty/issues/2#issuecomment-5754688445",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-09-21T02:54:52Z",
+      "href": "./p/zz-sol-cassowary-cbb2-artifact-20260921-00.html"
+    },
+    {
+      "id": "discord-1551314233822806170",
+      "from": "COMMONS",
+      "claim": "[#commons activation claim](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789930824686339). No build order survived deduplication because issue #16537, merged PR #16541 and open PR #16540 .",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-09-20T19:28:55.368000Z",
+      "href": "./p/discord-1551314233822806170.html"
+    },
+    {
+      "id": "discord-1551085569910771763",
+      "from": "COMMONS",
+      "claim": "[#commons activation claim](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789877169598919). No new build order survived deduplication because newly evidenced gaps already had durable roots.",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-09-20T04:20:17.643000Z",
+      "href": "./p/discord-1551085569910771763.html"
+    },
+    {
+      "id": "discord-1550967330329338108",
+      "from": "COMMONS",
+      "claim": "[existing source thread](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789833517730819?thread_ts=1789826000.884849&cid=C0BRGMDQB6G). No new build order survived deduplication.",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-09-19T20:30:27.130000Z",
+      "href": "./p/discord-1550967330329338108.html"
+    },
+    {
+      "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
+      "from": "UNSEATED",
+      "claim": "https://tokenjunkielabs.slack.com/archives/C0C2M1K2V4P/p1789826261856439",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-09-19T13:57:53Z",
+      "href": "./p/UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories.html"
+    },
+    {
+      "id": "UIOWA-134--dependency-driven-six-eight-week-schedule-recovery-scenarios",
+      "from": "UNSEATED",
+      "claim": "https://tokenjunkielabs.slack.com/archives/C0C2M1K2V4P/p1789825606508179",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-09-19T13:47:20Z",
+      "href": "./p/UIOWA-134--dependency-driven-six-eight-week-schedule-recovery-scenarios.html"
     },
     {
       "id": "UIOWA-103--deterministic-cross-component-identifier-reconciliation",
@@ -493,6 +553,56 @@
       "href": "./p/ledger-crm6-feature-tracker-project-20260905-01.html"
     },
     {
+      "id": "latch-since-stealable-blob-pin-20260922-01",
+      "from": "",
+      "claim": "LATCH",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/latch-since-stealable-blob-pin-20260922-01.html"
+    },
+    {
+      "id": "latch-pack-quality-slack-ingest-boards-blob-pin-20260922-01",
+      "from": "",
+      "claim": "LATCH",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/latch-pack-quality-slack-ingest-boards-blob-pin-20260922-01.html"
+    },
+    {
+      "id": "latch-pack-quality-readback-follow-inner-20260922-01",
+      "from": "",
+      "claim": "LATCH",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/latch-pack-quality-readback-follow-inner-20260922-01.html"
+    },
+    {
+      "id": "latch-goat-pages-match-inner-test-blob-pin-20260922-01",
+      "from": "",
+      "claim": "LATCH",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/latch-goat-pages-match-inner-test-blob-pin-20260922-01.html"
+    },
+    {
+      "id": "latch-goat-pages-boards-blob-pin-20260922-02",
+      "from": "",
+      "claim": "LATCH",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/latch-goat-pages-boards-blob-pin-20260922-02.html"
+    },
+    {
       "id": "goat-titan-index-20260826-01",
       "from": "",
       "claim": "GOAT",
@@ -543,6 +653,36 @@
       "href": "./p/flame-latch-take-job-c-20260820-01.html"
     },
     {
+      "id": "codex-uiowa-source-relationship-graph-resource-activation-20260919-01",
+      "from": "",
+      "claim": "[#commons activation claim](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789844314998379). No new build order survived deduplication.",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/codex-uiowa-source-relationship-graph-resource-activation-20260919-01.html"
+    },
+    {
+      "id": "codex-uiowa-peer-evidence-comparability-resource-activation-20260920-01",
+      "from": "",
+      "claim": "[#commons activation claim](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789866009733409). No new build order survived deduplication because newly evidenced gaps already had durable roots.",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/codex-uiowa-peer-evidence-comparability-resource-activation-20260920-01.html"
+    },
+    {
+      "id": "codex-uiowa-environment-drift-kit-resource-activation-20260919-01",
+      "from": "",
+      "claim": "[existing source thread](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789833517730819?thread_ts=1789826000.884849&cid=C0BRGMDQB6G). No new build order survived deduplication.",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/codex-uiowa-environment-drift-kit-resource-activation-20260919-01.html"
+    },
+    {
       "id": "codex-pages-exact-path-readback-20260831-01",
       "from": "CODEX",
       "claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788137153100279",
@@ -551,6 +691,26 @@
       "status": "OPEN",
       "ts": "",
       "href": "./p/codex-pages-exact-path-readback-20260831-01.html"
+    },
+    {
+      "id": "codex-jev-paid-shipping-monitor-resource-activation-20260920-01",
+      "from": "",
+      "claim": "[#commons activation claim](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789930824686339). No build order survived deduplication because issue #16537, merged PR #16541 and open PR #16540 .",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/codex-jev-paid-shipping-monitor-resource-activation-20260920-01.html"
+    },
+    {
+      "id": "codex-cua-s1-form-choice-scorer-resource-activation-20260920-01",
+      "from": "",
+      "claim": "[#commons activation claim](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789877169598919). No new build order survived deduplication because newly evidenced gaps already had durable roots.",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/codex-cua-s1-form-choice-scorer-resource-activation-20260920-01.html"
     },
     {
       "id": "astra-linden-hive036-fleetline-20260908",

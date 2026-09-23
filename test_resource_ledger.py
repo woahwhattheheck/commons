@@ -145,10 +145,18 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1789823103.266949")
+        self.assertEqual(catalog["slack_ts"], "1789941300.041829")
         self.assertEqual(
             catalog["source_id"],
-            "codex-whitebox-hour-direct-checkout-road-resource-activation-20260919-01",
+            "codex-jev-connector-projection-resource-activation-20260920-01",
+        )
+        self.assertIn(
+            "codex-jev-paid-shipping-monitor-resource-activation-20260920-01",
+            raw.get("supersedes_source_ids") or [],
+        )
+        self.assertIn(
+            "codex-cua-s1-form-choice-scorer-resource-activation-20260920-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-commons-context-dispatch-compiler-resource-activation-20260913-01",
@@ -351,10 +359,10 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-whitebox-hour-direct-checkout-road-resource-activation-20260919-01.json",
+            "codex-jev-connector-projection-resource-activation-20260920-01.json",
         )
         self.assertIn(
-            "inventory/resources/records/codex-whitebox-hour-direct-checkout-road-resource-activation-20260919-01.json",
+            "inventory/resources/records/codex-jev-connector-projection-resource-activation-20260920-01.json",
             raw.get("record_sources") or [],
         )
         with open(current_activation_path, encoding="utf-8") as handle:
@@ -366,67 +374,53 @@ class TestResourceLedger(unittest.TestCase):
         )
         self.assertEqual(
             current_activation["selected_resource"],
-            "whitebox-hour-direct-checkout-road",
+            "jev-connector-projection",
         )
-        self.assertEqual(current_activation["projection"]["resources"], 101)
-        self.assertEqual(current_activation["projection"]["producing"], 73)
-        self.assertEqual(current_activation["projection"]["inventory_records"], 63)
+        self.assertEqual(current_activation["projection"]["resources"], 108)
+        self.assertEqual(current_activation["projection"]["producing"], 80)
+        self.assertEqual(current_activation["projection"]["inventory_records"], 70)
         self.assertEqual(
             current_activation["production_truth"]["source_repository"],
             "woahwhattheheck/commons",
         )
-        self.assertEqual(current_activation["production_truth"]["source_pr"], 16087)
         self.assertEqual(
-            current_activation["production_truth"]["source_merge_sha"],
-            "5efd6315e893123f0cbcf144904f1e2e5aaeae95",
-        )
-        self.assertEqual(
-            current_activation["production_truth"]["source_head_sha"],
-            "5efd6315e893123f0cbcf144904f1e2e5aaeae95",
+            current_activation["production_truth"]["source_merge_commit"],
+            "0679a942bcb739f0926234a0681684b382e82c0e",
         )
         self.assertEqual(
             set(current_activation["production_truth"]["source_paths"]),
             {
-                "owner-now-revenue.html",
-                "p/latch-owner-now-wb-hour-restore-20260919-01.md",
-                "test_latch_owner_now_wb_hour_restore_20260919_01.py",
-                "test_zeta_owner_now_revenue_gated_checkout_20260917.py",
-                "test_goat_owner_now_revenue_checkout_wire_20260917.py",
-                "test_z_kestrel_owner_now_root_enrollment_20260917.py",
-                "p/action-20260919110812-22a675665683.md",
-                "land/sku-whitebox-hour-20260826.md",
+                "integrations/command_center/jev_connector_projection.py",
+                "test_jev_connector_projection.py",
+                "ground/JEV_CONNECTOR_PROJECTION.md",
             },
         )
         self.assertEqual(
             current_activation["production_truth"]["source_paths"]
-            ["owner-now-revenue.html"],
-            "3d440bc24751e0e8d15d1e577eb8dfabb72f1d19",
+            ["integrations/command_center/jev_connector_projection.py"],
+            "aa58dc2a77d278f06f56ba3731b5a26598bc5372",
         )
         self.assertEqual(
             current_activation["production_truth"]["maximum_state"],
-            "STANDALONE_CHECKOUT_ROAD_ACTIVE_AND_HOUR_DELIVERY_READY",
+            "MERGED_PURE_ADAPTER_WITH_LOCAL_EXACT_HEAD_ROUND_TRIP",
         )
         self.assertEqual(
             current_activation["production_truth"]["focused_tests"]["source_suite"],
-            "54 PASS",
+            "21/21 PASS NORMAL_AND_OPTIMIZED",
         )
-        self.assertFalse(
-            current_activation["production_truth"]["commons_github_or_slack_customer_cta"]
-        )
-        self.assertEqual(
-            current_activation["production_truth"]["customer_public_destination"],
-            "STANDALONE_OWNER_NOW_SURFACE",
-        )
-        self.assertEqual(current_activation["production_truth"]["provider_writes"], 0)
         self.assertFalse(current_activation["production_truth"]["customer_contact"])
         self.assertFalse(current_activation["production_truth"]["payment_observed"])
         self.assertFalse(current_activation["production_truth"]["buyer_acceptance"])
         self.assertFalse(current_activation["production_truth"]["revenue_recognition"])
         self.assertFalse(current_activation["production_truth"]["current_cash_claim"])
-        self.assertFalse(current_activation["production_truth"]["scheduling_action"])
+        self.assertFalse(current_activation["production_truth"]["settlement_observed"])
+        self.assertFalse(current_activation["production_truth"]["deployment_by_activation"])
+        self.assertFalse(current_activation["production_truth"]["spend_by_activation"])
+        self.assertFalse(current_activation["production_truth"]["banked_reset_activated"])
         self.assertEqual(current_activation["build_orders"], [])
-        slack_cite = "p" + catalog["slack_ts"].replace(".", "")
-        self.assertIn(slack_cite, current_activation["evidence"]["slack_claim"])
+        self.assertIn(
+            "p1789942090133169", current_activation["evidence"]["slack_claim"]
+        )
         activation_path = os.path.join(
             ROOT,
             "inventory",

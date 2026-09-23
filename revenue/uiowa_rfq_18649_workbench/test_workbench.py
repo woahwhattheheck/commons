@@ -78,6 +78,17 @@ class WorkbenchHTTPTests(unittest.TestCase):
         self.assertEqual(self.request("GET", "/../server.py")[0], 404)
         self.assertEqual(self.request("GET", "/api/inspect")[0], 404)
 
+    def test_demo_query_loads_the_same_document_and_assets(self):
+        for path in ("/?demo=1", "/index.html?demo=1"):
+            status, headers, body = self.request("GET", path)
+            self.assertEqual(status, 200)
+            self.assertIn("text/html", headers["Content-Type"])
+            self.assertIn(b"Assessment workspace", body)
+        status, headers, body = self.request("GET", "/app.js?presentation=1")
+        self.assertEqual(status, 200)
+        self.assertIn(b"URLSearchParams", body)
+        self.assertEqual(self.request("HEAD", "/?demo=1")[0], 200)
+
     def test_host_must_be_loopback(self):
         status, _, _ = self.request("GET", "/", headers={"Host": "attacker.example"})
         self.assertEqual(status, 421)

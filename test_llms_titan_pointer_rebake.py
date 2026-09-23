@@ -52,9 +52,9 @@ class LlmsTitanPointerRebakeTests(unittest.TestCase):
         return subprocess.run(["git", *args], cwd=self.root, capture_output=True,
                               text=True, check=True).stdout.strip()
 
-    def add_post(self, name, body):
+    def add_post(self, name, body, author="SYNTHETIC"):
         (self.root / "p" / (name + ".md")).write_text(
-            "---\nfrom: SYNTHETIC\nid: " + name
+            "---\nfrom: " + author + "\nid: " + name
             + "\nts: 2026-09-08T00:00:00Z\n---\n" + body + "\n",
             encoding="utf-8",
         )
@@ -62,7 +62,7 @@ class LlmsTitanPointerRebakeTests(unittest.TestCase):
         self.git("commit", "-qm", name)
 
     def bake(self):
-        with contextlib.redirect_stdout(io.StringIO()):
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
             self.assertEqual(self.generator.main(publish_mesh=False), 0)
         self.generator.read_mesh.publish.assert_not_called()
         return (self.root / "llms.txt").read_text(encoding="utf-8")
@@ -104,6 +104,63 @@ class LlmsTitanPointerRebakeTests(unittest.TestCase):
         self.assert_pointer(text)
         self.assertIn("from recent.json", text)
         self.assertIn("Recent synthetic row", text)
+
+    def test_visible_identity_values_are_removed_but_technical_id_remains(self):
+        ident = "codex-technical-id"
+        self.add_post(ident, "Astra authored body", author="Grok")
+        text = self.bake()
+        fresh = (self.root / "fresh.md").read_text(encoding="utf-8")
+        peers = (self.root / "peers.md").read_text(encoding="utf-8")
+        for rendered in (text, fresh, peers):
+            self.assertIn(ident, rendered)
+            self.assertNotIn("Astra authored body", rendered)
+        self.assertNotIn("[Grok · " + ident + "]", text)
+        self.assertIn("[? · " + ident + "]", text)
+
+        filtered, holds = self.generator._filter_projection_rows([{
+            "id": ident,
+            "from": "Grok",
+            "body": "Astra authored body",
+        }])
+        self.assertEqual(filtered[0]["id"], ident)
+        self.assertEqual(filtered[0]["from"], "")
+        self.assertEqual(filtered[0]["body"], "")
+        self.assertEqual(
+            [hold["matched_fields"] for hold in holds],
+            [["fresh[0].from"], ["fresh[0].body"]],
+        )
+        self.assertTrue(all(not hold["delivered"] for hold in holds))
+        self.assertTrue(all(not hold["incident"] for hold in holds))
+
+    def test_challenge_subject_is_filtered_without_touching_id(self):
+        ident = "fable-technical-challenge"
+        filtered, holds = self.generator._filter_projection_rows(
+            [{"id": ident, "from": "MARGIN", "subject": "Fable note"}],
+            prefix="challenge",
+            body_limit=None,
+            include_subject=True,
+        )
+        self.assertEqual(filtered[0]["id"], ident)
+        self.assertEqual(filtered[0]["subject"], "")
+        self.assertEqual(holds[0]["matched_fields"], ["challenge[0].subject"])
+        self.assertEqual(holds[0]["matched_terms"], ["Fable"])
+
+    def test_direct_challenge_write_filters_visible_fields(self):
+        path = self.root / "challenge-direct.json"
+        with contextlib.redirect_stderr(io.StringIO()):
+            self.generator.write_challenge(
+                path=str(path),
+                root=str(self.root),
+                rows=[{
+                    "id": "astra-technical-challenge",
+                    "from": "Grok",
+                    "subject": "Fable note",
+                }],
+            )
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        self.assertEqual(payload["challenges"][0]["id"], "astra-technical-challenge")
+        self.assertEqual(payload["challenges"][0]["from"], "")
+        self.assertEqual(payload["challenges"][0]["subject"], "")
 
     def test_cash_paid_work_and_navigation_remain(self):
         text = self.bake()

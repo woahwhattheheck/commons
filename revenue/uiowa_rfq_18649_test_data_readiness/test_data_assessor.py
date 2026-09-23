@@ -9,6 +9,9 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
+import stat
+import tempfile
 from collections import Counter
 from datetime import date, datetime
 from pathlib import Path
@@ -21,13 +24,29 @@ UNKNOWN = "UNKNOWN"
 VALID_STATES = {EVIDENCED, OBSERVED_GAP, UNKNOWN}
 
 
-def _date(value: str | None) -> date | None:
-    if not value:
+def _date(value: Any) -> date | None:
+    # Catalog dates are calendar dates, not timestamps or arbitrary prefixes.
+    if (not isinstance(value, str) or len(value) != 10
+            or value[4] != "-" or value[7] != "-"):
         return None
     try:
-        return date.fromisoformat(value[:10])
-    except (TypeError, ValueError):
+        return date.fromisoformat(value)
+    except ValueError:
         return None
+
+
+def _case_set(value: Any) -> set[str] | None:
+    """Keep absent/invalid evidence distinct from an explicitly empty inventory.
+
+    Case identities are exact nonblank strings. Do not coerce mapping keys,
+    string characters, numbers or nested values into evidence, or normalize
+    distinct identifiers. Duplicates describe the same case, not extra coverage.
+    """
+    if not isinstance(value, list):
+        return None
+    if any(not isinstance(item, str) or not item.strip() for item in value):
+        return None
+    return set(value)
 
 
 def _days_between(start: date, end: date) -> int:
@@ -76,7 +95,18 @@ def evaluate_dataset(dataset: Dict[str, Any], as_of: date) -> Dict[str, Any]:
                 "Locate refresh history or record that refresh timing is not currently evidenced.",
             )
         )
-    elif not isinstance(cadence, int) or cadence <= 0:
+    elif refreshed > as_of:
+        checks.append(
+            _check(
+                "refresh_freshness",
+                UNKNOWN,
+                f"Last refresh {refreshed.isoformat()} is after assessment date "
+                f"{as_of.isoformat()}; it does not evidence refresh as of that date.",
+                "Locate refresh evidence on or before the assessment date, or correct "
+                "the catalog chronology from its source records.",
+            )
+        )
+    elif isinstance(cadence, bool) or not isinstance(cadence, int) or cadence <= 0:
         checks.append(
             _check(
                 "refresh_freshness",
@@ -128,20 +158,30 @@ def evaluate_dataset(dataset: Dict[str, Any], as_of: date) -> Dict[str, Any]:
             )
         )
 
-    required = dataset.get("required_boundary_cases")
-    covered = set(dataset.get("covered_boundary_cases") or [])
-    if not isinstance(required, list) or not required:
+    required = _case_set(dataset.get("required_boundary_cases"))
+    covered = _case_set(dataset.get("covered_boundary_cases"))
+    if not required:
         checks.append(
             _check(
                 "representativeness",
                 UNKNOWN,
-                "No required boundary-case set is documented.",
-                "Define the business or integration boundaries the fixture must represent.",
+                "No valid nonempty required boundary-case list is documented.",
+                "Define the required boundaries as a nonempty list of nonblank string "
+                "case identities; invalid or absent entries do not establish an expectation.",
+            )
+        )
+    elif covered is None:
+        checks.append(
+            _check(
+                "representativeness",
+                UNKNOWN,
+                "No valid covered boundary-case inventory is supplied.",
+                "Record covered cases as a list of nonblank string identities. Use an "
+                "empty list only when the supplied inventory explicitly records no covered cases.",
             )
         )
     else:
-        required_set = set(str(x) for x in required)
-        missing = sorted(required_set - set(str(x) for x in covered))
+        missing = sorted(required - covered)
         if missing:
             checks.append(
                 _check(
@@ -156,18 +196,31 @@ def evaluate_dataset(dataset: Dict[str, Any], as_of: date) -> Dict[str, Any]:
                 _check(
                     "representativeness",
                     EVIDENCED,
-                    f"All {len(required_set)} documented boundary cases are represented.",
+                    f"All {len(required)} documented boundary cases are represented.",
                 )
             )
 
-    cleanup_required = bool(dataset.get("cleanup_required"))
-    cleanup_verified = _date(dataset.get("cleanup_last_verified"))
-    if not cleanup_required:
+    # Only explicit booleans declare whether cleanup applies. Absence is not False.
+    cleanup_required = dataset.get("cleanup_required")
+    cleanup_verified = (
+        _date(dataset.get("cleanup_last_verified")) if cleanup_required is True else None
+    )
+    if cleanup_required is False:
         checks.append(
             _check(
                 "cleanup",
                 EVIDENCED,
                 "Catalog marks cleanup as not required for this fixture.",
+            )
+        )
+    elif cleanup_required is not True:
+        checks.append(
+            _check(
+                "cleanup",
+                UNKNOWN,
+                "No reliable boolean cleanup_required declaration supplied.",
+                "Record whether cleanup is required; an omitted declaration does not "
+                "establish that cleanup is unnecessary.",
             )
         )
     elif cleanup_verified is None:
@@ -177,6 +230,17 @@ def evaluate_dataset(dataset: Dict[str, Any], as_of: date) -> Dict[str, Any]:
                 UNKNOWN,
                 "Cleanup is required but no verification date is supplied.",
                 "Demonstrate cleanup/retirement behavior or record why evidence is unavailable.",
+            )
+        )
+    elif cleanup_verified > as_of:
+        checks.append(
+            _check(
+                "cleanup",
+                UNKNOWN,
+                f"Cleanup verification {cleanup_verified.isoformat()} is after assessment "
+                f"date {as_of.isoformat()}; it does not evidence cleanup as of that date.",
+                "Locate verification on or before the assessment date, or correct the "
+                "catalog chronology from its source records.",
             )
         )
     else:
@@ -198,7 +262,7 @@ def evaluate_dataset(dataset: Dict[str, Any], as_of: date) -> Dict[str, Any]:
                 "Record the fixture retention/retirement rule and its owner.",
             )
         )
-    elif not isinstance(retention, int) or retention < 0:
+    elif isinstance(retention, bool) or not isinstance(retention, int) or retention < 0:
         checks.append(
             _check(
                 "retention",
@@ -259,13 +323,18 @@ def evaluate_dataset(dataset: Dict[str, Any], as_of: date) -> Dict[str, Any]:
 
 
 def evaluate_catalog(payload: Dict[str, Any]) -> Dict[str, Any]:
+    if not isinstance(payload, dict):
+        raise ValueError("top-level JSON value must be an object")
     as_of = _date(payload.get("as_of"))
     if as_of is None:
         raise ValueError("catalog requires ISO date field 'as_of'")
     datasets = payload.get("datasets")
     if not isinstance(datasets, list):
         raise ValueError("catalog requires a 'datasets' array")
-    results = [evaluate_dataset(d, as_of) for d in datasets if isinstance(d, dict)]
+    for index, dataset in enumerate(datasets):
+        if not isinstance(dataset, dict):
+            raise ValueError(f"datasets[{index}] must be a JSON object")
+    results = [evaluate_dataset(d, as_of) for d in datasets]
     aggregate = Counter()
     for result in results:
         aggregate.update(result["summary"])
@@ -338,6 +407,47 @@ def load_json(path: Path) -> Dict[str, Any]:
     return payload
 
 
+def _check_output_target(output: Path, catalog: Path) -> None:
+    """Reject catalog aliases and ambiguous destinations before any replacement."""
+    if output.is_symlink():
+        raise ValueError("output must not be a symbolic link; choose a regular report path")
+    if output.resolve() == catalog.resolve():
+        raise ValueError("output must not replace the source catalog")
+    try:
+        if output.samefile(catalog):
+            raise ValueError("output must not alias the source catalog")
+    except FileNotFoundError:
+        pass  # A new, distinct report path is supported.
+    if output.exists() and not output.is_file():
+        raise ValueError("output must name a regular report file")
+
+
+def _write_report(output: Path, rendered: str, catalog: Path) -> None:
+    """Stage beside the destination; preserve input/prior report until replacement.
+
+    Replacement of a distinct ordinary report remains supported. This is a
+    per-file operation, not a multi-file transaction or power-loss durability
+    guarantee. Concurrent external path mutation is outside this CLI contract.
+    """
+    _check_output_target(output, catalog)
+    fd, name = tempfile.mkstemp(prefix=".uiowa047-", suffix=".tmp", dir=output.parent)
+    staging = Path(name)
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8", newline="") as stream:
+            fd = -1  # The stream now owns the descriptor, including on failure.
+            stream.write(rendered)
+            stream.flush()
+            os.fsync(stream.fileno())
+        _check_output_target(output, catalog)
+        if output.exists():
+            os.chmod(staging, stat.S_IMODE(output.stat().st_mode))
+        os.replace(staging, output)
+    finally:
+        if fd >= 0:
+            os.close(fd)
+        staging.unlink(missing_ok=True)
+
+
 def main(argv: Iterable[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("catalog", type=Path, help="JSON catalog to evaluate")
@@ -345,14 +455,20 @@ def main(argv: Iterable[str] | None = None) -> int:
     parser.add_argument("--output", type=Path)
     args = parser.parse_args(list(argv) if argv is not None else None)
 
-    report = evaluate_catalog(load_json(args.catalog))
+    try:
+        report = evaluate_catalog(load_json(args.catalog))
+    except (OSError, ValueError) as exc:
+        parser.error(str(exc))
     if args.format == "json":
         rendered = json.dumps(report, indent=2, sort_keys=True) + "\n"
     else:
         rendered = render_markdown(report)
 
     if args.output:
-        args.output.write_text(rendered, encoding="utf-8")
+        try:
+            _write_report(args.output, rendered, args.catalog)
+        except (OSError, ValueError) as exc:
+            parser.error(f"cannot write report: {exc}")
     else:
         print(rendered, end="" if rendered.endswith("\n") else "\n")
     return 0

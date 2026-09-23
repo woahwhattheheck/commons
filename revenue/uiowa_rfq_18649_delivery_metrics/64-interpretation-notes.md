@@ -102,6 +102,30 @@ A precise-looking number can still have weak evidence. For each real metric extr
 
 This allows the assessment to distinguish an operational result from a data-quality limitation.
 
+## Bounded recovery follow-up
+
+Deployment selection uses `[window_start, window_end)`. Recovery follow-up is a separate, inclusive endpoint. Pass `--recovery-observed-through` with an offset-bearing timestamp at or after `--window-end` to exclude later recoveries from the summary. The Python `calculate()` API accepts the same option as an aware `datetime`. All timestamps, including the cutoff, normalize to UTC before comparison.
+
+```bash
+python calculator.py fixtures/synthetic_deployments.csv \
+  --window-start 2026-09-01T00:00:00Z \
+  --window-end 2026-09-08T13:00:00Z \
+  --recovery-observed-through 2026-09-08T13:00:00Z \
+  --output recovery-report.json
+```
+
+This selects five existing fictional deployments. `DEP-002` supplies the only recovery duration available by the cutoff: 4 hours. `DEP-005` recovered at 14:00, after the 13:00 cutoff, so it remains a qualifying failure but is excluded from recovery statistics. Recovery coverage is `PARTIAL`, with two eligible failures, one used and one missing at the cutoff; no zero duration is substituted. The report's recovery `evidence` separates observed recovery IDs, missing timestamps, recoveries after the cutoff, and unknown failure classifications.
+
+Omitting the option preserves the previous arithmetic over all supplied recovery records and labels the scope `ALL_SUPPLIED_RECORDS_RETROSPECTIVE`. An explicit cutoff labels it `EXPLICIT_RECOVERY_CUTOFF`; a recovery exactly at that cutoff is included. Unknown failure classification keeps recovery coverage partial, even when every known failure has a recovery timestamp.
+
+A timestamp filter is not historical source verification. The report does not prove when failure/rework classifications became known, whether a record was actually available at the cutoff, or whether the source export was complete. `classification_as_of_verified` and `source_export_completeness_verified` remain false. Recovery mean and median describe observed cases only; unresolved or slower recoveries can bias those statistics.
+
+## Missing-classification bounds
+
+The existing `rate` and `percent` still use only known classifications. Their `denominator_basis` is explicitly `KNOWN_CLASSIFICATION_ONLY`. Alongside them, `full_cohort_rate_bounds` shows the logical range if every unknown classification were negative versus positive: `positive / total` through `(positive + unknown) / total`, rounded to six decimal places. The population is the selected deployment cohort; bounds use proportions, not percentages.
+
+These are not confidence intervals, peer benchmarks or imputed rates. For example, one known failure, one known non-failure and two unclassified deployments give a known-only rate of 50%, but full-cohort bounds of 25% through 75%. An entirely unclassified cohort retains a null known-only rate and bounds of 0 through 1. Existing empty-selection errors remain unchanged.
+
 ## Recommended assessment use
 
 Use these metrics as one evidence stream alongside interviews, delivery-flow traces, release/recovery records, and service context. Trend the same service over consistently defined windows where possible. When a metric changes materially, use it to generate investigation questions rather than assuming a cause.

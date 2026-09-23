@@ -17,7 +17,7 @@ from time import monotonic
 from urllib.parse import quote, urlencode
 
 from .request_budget import RequestBudget, RequestDeferred
-from .slack_threads import read_channel
+from .slack_threads import read_channel, resolve_thread_root
 
 REPO = re.compile(r"^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$")
 HOUSEKEEPING = {"channel_join", "channel_leave", "channel_topic", "channel_purpose",
@@ -257,11 +257,13 @@ class LiveCollectors:
 
     def _actions(self, repo):
         source = self._source("github:actions:" + repo, "GitHub", repo + " builds", {"repository": repo})
-        rows, complete = {}, True
+        rows, complete, active_complete = {}, True, True
         for status in ("in_progress", "queued", None):
             endpoint = "repos/" + repo + "/actions/runs" + ("?status=" + status if status else "")
             found, page_complete = self._pages(endpoint, "workflow_runs")
             complete = complete and page_complete
+            if status in ("in_progress", "queued"):
+                active_complete = active_complete and page_complete
             for row in found:
                 rows[str(row["id"])] = row
         items = []
@@ -271,6 +273,7 @@ class LiveCollectors:
                 "title": text(row.get("display_title") or row.get("name"), 500),
                 "status": row.get("conclusion") if row.get("status") == "completed" else row.get("status", "unknown"),
                 "owner": row.get("actor", {}).get("login"), "project": repo,
+                "created_at": timestamp(row.get("created_at")),
                 "updated_at": timestamp(row.get("updated_at")),
                 "activity_observed_at": timestamp(row.get("updated_at")), "url": url,
                 "summary": text(row.get("name"), 500), "next_action": None,
@@ -278,8 +281,15 @@ class LiveCollectors:
                          "head_sha": row.get("head_sha"), "head_branch": row.get("head_branch"),
                          "provider_status": row.get("status"), "conclusion": row.get("conclusion")},
                 "actions": link(url)})
+        source = {**source, "metadata": {
+            "active_queue_coverage": {
+                "complete": active_complete,
+                "queried_statuses": ["in_progress", "queued"],
+            }
+        }}
         return self._batch(source, items, complete,
-                           ["Active/queued runs plus bounded recent history; pagination caps stay visible."])
+                           ["Active/queued runs plus bounded recent history; pagination caps stay visible.",
+                            "metadata.active_queue_coverage distinguishes active-run completeness from capped history."])
 
     def _slack(self, channel):
         channel_id, label = channel["id"], channel.get("label", channel["id"])
@@ -293,6 +303,7 @@ class LiveCollectors:
             if row.get("subtype") in HOUSEKEEPING or not row.get("ts"):
                 continue
             ts = str(row["ts"])
+            resolution = resolve_thread_root(row, channel_id)
             body = text(row.get("text"))
             url = workspace.rstrip("/") + "/archives/" + channel_id + "/p" + ts.replace(".", "") if workspace else None
             updated = timestamp(row.get("edited", {}).get("ts") or ts)
@@ -302,13 +313,15 @@ class LiveCollectors:
                 "project": channel.get("project") or label, "updated_at": updated,
                 "activity_observed_at": updated, "url": url, "summary": body,
                 "next_action": None, "refs": {"channel_id": channel_id, "message_ts": ts,
-                    "thread_ts": row.get("thread_ts") or ts, "reply_count": row.get("reply_count", 0),
+                    "thread_ts": resolution["thread_ts"], "root_resolution": resolution["state"],
+                    "root_reason": resolution["reason"], "reply_count": row.get("reply_count"),
                     "latest_reply": row.get("latest_reply")}, "actions": link(url)})
         batch = self._batch({**source, "metadata": metadata}, items, complete,
             ["Membership housekeeping omitted from work view; original Slack history remains unchanged.",
              "Reply coverage applies only to threads discovered in this bounded channel history.",
              "Partial valid pages are ingested; missing pages and threads never authorize removal."])
-        if metadata["history"]["error"] or any(row["error"] for row in metadata["thread_coverage"]):
+        if (metadata["history"]["error"] or metadata["unresolved_thread_roots_count"]
+                or any(row["error"] for row in metadata["thread_coverage"])):
             # source.error would make WorkstreamStore discard even valid rows.
             # Preserve per-slice failures in metadata, with incomplete coverage.
             batch["source"]["status"] = "degraded"
