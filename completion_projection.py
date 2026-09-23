@@ -49,6 +49,11 @@ def _timestamp(value: Any) -> datetime:
         raise CompletionEvidenceError("invalid completion timestamp") from exc
 
 
+def parse_timestamp(value: Any) -> datetime:
+    """Public instant parser for completion-event ordering."""
+    return _timestamp(value)
+
+
 def _unique_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
     row: dict[str, Any] = {}
     for key, value in pairs:
