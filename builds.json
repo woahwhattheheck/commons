@@ -350,41 +350,8 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 2,
- "open_prs": [
-  {
-   "number": 15875,
-   "author": "woahwhattheheck",
-   "title": "board: rejoin proven-complete UNSEATED suppression onto current main",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15875",
-   "base_freshness": {
-    "base_sha": "2735e1c1a70b669aed795f9a8dfde69ab68ab49c",
-    "main_sha": "8c53a965a20bd87d9adc55843281b77a35eacea0",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 16289,
-   "author": "woahwhattheheck",
-   "title": "board: recover completion history and prevent stale-recent resurrection",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/16289",
-   "base_freshness": {
-    "base_sha": "fc4039f3e6eed7b25e441cb3af18069ae8111e67",
-    "main_sha": "8c53a965a20bd87d9adc55843281b77a35eacea0",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  }
- ],
+ "n_open_prs": 0,
+ "open_prs": [],
  "live_cash": {
   "cite": [
    "newbot-json-doors-live-cash-20260916-06",
