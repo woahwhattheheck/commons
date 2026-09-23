@@ -27,7 +27,9 @@
   const TASK_BUDGET_KIND = /^(?:task|run)[ _-]?budget$/i;
   const TASK_BUDGET_WARN_FRACTION = 0.75;
   function taskBudgetLines() {
-    const panel = window.CommonsPanel;
+    // Node/vm harness has no window; browsers expose CommonsPanel on window/globalThis.
+    const rootObj = typeof window !== 'undefined' ? window : globalThis;
+    const panel = rootObj && rootObj.CommonsPanel;
     const state = panel && typeof panel.getState === 'function' ? panel.getState() : null;
     const budgets = state && Array.isArray(state.budgets) ? state.budgets : [];
     const rows = [];
