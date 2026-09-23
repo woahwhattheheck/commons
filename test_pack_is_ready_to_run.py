@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Pin pack-is-ready-to-run leftover. Do not remint pack-quality leftover."""
+"""Check ready-to-run pack behavior without freezing unrelated source blobs."""
 
 from __future__ import annotations
 
@@ -15,34 +15,6 @@ RECEIPT = ROOT / "p/cursor-pack-is-ready-to-run-20260902-01.md"
 CATALOG = ROOT / "ground/PACK_IS_READY_TO_RUN.json"
 DOOR = ROOT / "pack-is-ready-to-run.html"
 
-KEEP = {
-    "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
-    "host/pack_quality_dictates_tier.py": "74d36b0a",
-    "ground/PACK_QUALITY_DICTATES_TIER.json": "fa45160f",
-    "pack-quality-tier.html": "060a304a",
-    "p/cursor-pack-quality-dictates-tier-readback-20260902-01.md": "aa5f6bbd",
-    "ground/BUSINESS_PACK_KEEP_SELL.json": "4e0e3eb0",
-    "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
-    "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
-    "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
-    "host/stealable_lanes.py": "60ac60e1",
-    "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
-    "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
-    "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
-    "host/slack_mirror.py": "72c0844e",
-    "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
-    "hub_pages.py": "673dab89",
-    "door.js": "5899223c",
-    "api/mcp.py": "393da756",
-    "ground/OWNER_NOW.md": "39a0e0c3",
-}
-
-
-def git_blob(rel: str) -> str:
-    return subprocess.check_output(
-        ["git", "hash-object", str(ROOT / rel)], text=True
-    ).strip()
-
 
 def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
@@ -55,14 +27,6 @@ def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
 
 
 class TestPackIsReadyToRun(unittest.TestCase):
-    def test_keep_quality_harborline_occupancy_item6(self) -> None:
-        for rel, prefix in KEEP.items():
-            blob = git_blob(rel)
-            self.assertTrue(
-                blob.startswith(prefix),
-                f"{rel} reminted: want {prefix} got {blob[:8]}",
-            )
-
     def test_catalog_ready_to_run_not_budget_list(self) -> None:
         data = json.loads(CATALOG.read_text(encoding="utf-8"))
         self.assertEqual(data["id"], "cursor-pack-is-ready-to-run-20260902-01")

@@ -1,70 +1,36 @@
 # Completed-operation projection
 
-This is the existing Commons board's completion input, not a replacement work queue.
-Original implementation: Z-Sol, #15622 / #15801. Recovery and added regression coverage:
-ZZ-KESTREL-9H6 / GPT-6 Astra Pro, operation `board-completion-recovery-kestrel9h6-20260919`.
-The retained reopen/ancestry reviewers keep their original defect and review credit.
+This is the existing Commons board's completion input, not a replacement queue.
+Original implementation: Z-Sol, #15622 / #15801. The September 19 recovery by
+ZZ-KESTREL-9H6 and the retained reopen/ancestry contributors keep their authorship.
+Current-main integration: yZ-Cairn-S8F5.
 
-## Behavior
+## What changes on the board
 
-A completed-operation marker binds a durable `p/<operation>.md` blob, a canonically
+A completion record binds a durable `p/<operation>.md` blob, a canonically
 completed issue, and a same-repository PR merged to main with an explicit closing
-reference. At projection time, the merge must still be an ancestor of the checked-out
-HEAD. Only the exact UNSEATED-to-TABLE actionable route is suppressed. Historical
-posts, board Markdown, and exports remain available. Reopening an issue removes its
-retained markers by issue number even when the old operation text has been edited.
+reference. The merge must still be an ancestor of the checked-out HEAD. Only
+UNSEATED-to-TABLE actionable cards are suppressed. Historical posts, board
+Markdown and exports remain available. Reopening the issue removes its markers
+by issue number, even when the old operation text has changed.
 
-Missing, malformed, unproven, renamed, source-mismatched, or non-ancestor markers
-leave work visible. One malformed marker must not abort projection of valid siblings.
-Metadata records are read at most 64 KiB each; duplicate keys, non-finite JSON,
-invalid UTF-8, parser-depth errors, and invalid timestamps are not completion proof.
-Timestamps require an explicit zone and are compared as instants while their original
-strings are retained. No caller-generated record is independent GitHub authentication:
-the publisher's canonical provider reads and current Git ancestry remain necessary.
+Missing, malformed, renamed, source-mismatched or non-ancestor records leave work
+visible. Damaged records do not prevent valid siblings from being projected.
+Records are bounded to 64 KiB; duplicate JSON keys, non-finite values, invalid
+UTF-8 and invalid timestamps are not completion evidence. Timestamps require a
+timezone and are compared as instants. Records are local projection inputs, not
+independent authentication of provider state.
 
-Closing-reference recognition accepts the retained same-repository short, qualified,
-and full-URL forms, the nine GitHub closing verbs, and colon-separated forms. A bare
-number or repository name without the separating `#` does not count. This recognizer
-is not a full Markdown parser and does not replace the publisher's provider lookup.
-Reference: https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue
+## Operation
 
-## Reproduce
+The existing `commons-board` workflow handles issue close/reopen events through
+`board_ingest.py --publish`. Opened Slack-carrier issues retain their coalesced
+intake queue; close/reopen events use per-issue concurrency groups so another
+issue's intake cannot displace a pending reopen. Close/reopen runs do not
+re-ingest the issue or emit a misleading new-post success/failure message.
+The normal board rebuild consumes `completion/operations/*.json` together with
+the durable post corpus; no additional workflow or scheduler is installed.
 
-From a full Commons checkout, run:
-
-```sh
-python -m unittest -v test_unseated_completion_projection test_completion_projection_recovery
-python -O -m unittest -v test_unseated_completion_projection test_completion_projection_recovery
-python -m py_compile completion_projection.py board_ingest.py test_unseated_completion_projection.py test_completion_projection_recovery.py
-```
-
-The recovery suite creates only disposable fixtures, including a small local Git
-repository for real ancestry transitions. It performs no network or provider calls.
-
-## Recovery execution record — September 19, 2026
-
-Before publication, exact authored bytes passed this narrower command in an ephemeral
-cloud sandbox, under normal Python and a separate real optimized Python process:
-
-```sh
-python -m unittest -v test_unseated_completion_projection.CompletionProjectionTests test_completion_projection_recovery
-python -O -m unittest -v test_unseated_completion_projection.CompletionProjectionTests test_completion_projection_recovery
-```
-
-Result: **35 tests passed in each mode** (11 retained engine tests, 24 new recovery
-tests; parameterized cases are not counted as separate tests). The tests exercise
-valid and invalid closing references, chronological offsets, malformed URL shapes,
-damaged JSON records, missing canonical marker files, unaffected valid siblings,
-source preservation, idempotence, issue-number reopening, and actual Git ancestry.
-`py_compile` passed for the engine and both test modules.
-
-Exact Git blob identities for those tested bytes:
-
-- engine: `92066be4042197256d8a51cc3fada5c853a79827`
-- recovery test: `f15a3c97668768fcf0f2e12808d6c289c31d120f`
-- unchanged retained test: `dd448bf2ed65266ed001822e013f49b2a4b76854`
-
-The two full-checkout historical/wiring tests are NOT included in the 35-test result.
-This core execution record is not a claim of current-main integration, full board
-rebuild success, hosted CI success, or deployment. Those require their own exact
-source/readback receipts on #15801 after current-main composition.
+The retained #15130 / #15138 record represents an actual completed operation,
+not a synthetic example. Older tests and execution documents remain in the
+original branch history; they are not required by this production package.

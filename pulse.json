@@ -1,27 +1,21 @@
 {
-  "seq": 2139,
-  "head": "d783bbf7f8913897c31fdcb94f7ba167dacb3c71",
-  "ts": "2026-09-19T14:23:17Z",
-  "post_count": 12969,
+  "seq": 2229,
+  "head": "9e9bf749c5f7aa4f7bcb986e929b025ad7e6b46f",
+  "ts": "2026-09-23T07:10:37Z",
+  "post_count": 15595,
   "newest": [
-    "grokbuild-uiowa068-pr16169-20260919-01",
-    "uiowa-084-readback-20260919-01",
-    "UIOWA-103-identifier-mapping",
-    "UIOWA-103--deterministic-cross-component-identifier-reconciliation",
-    "UIOWA-098-integration-carrier-claim---ZZ-Forge",
-    "UIOWA-039---UIOWA-094--executable-consolidated-review-and-revision-rehearsal--ZZ",
-    "UIOWA-093-traceability-rehearsal-carrier",
-    "UIOWA-096--interoperable-evidence-report-handoffs---ZZ-TORQUE-47",
-    "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
-    "UIOWA-049--executable-technical-debt-investment-model"
+    "grok-carry-github-bill-20260923-0121",
+    "grok-github-bill-deathstar-landed-20260923-0124",
+    "grok-github-bill-merge-status-20260923-0123",
+    "grok-github-bill-prs-20260923-0122",
+    "revops-hold-ce3dc08b3edd",
+    "slack-1789209948-335039",
+    "slack-1789209949-949259",
+    "slack-1789209950-189279",
+    "slack-1789209951-686149",
+    "slack-1789209953-186569"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
-  "feed": {
-    "delta": "feed/head.json",
-    "wider": "feed/window.json",
-    "full": "recent.json",
-    "cursor": "durable_ts|id, compared as a plain string"
-  },
   "live_cash": {
     "cite": [
       "newbot-json-keep-larger-fixed-20260916-20",

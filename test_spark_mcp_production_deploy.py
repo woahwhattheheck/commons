@@ -22,6 +22,7 @@ VERCELIGNORE = ROOT / ".vercelignore"
 REQUIRED_WATCH = (
     "api/mcp.py",
     "api/owner_context.py",
+    "api/cua_s1_fixture.mjs",
     "commons_mcp.py",
     "webmcp.html",
     "vercel.json",
@@ -125,6 +126,14 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
         self.assertIn("cd \"${STAGE}\"", text)
         self.assertIn("vercel deploy --prod", text)
 
+    def test_live_browser_smoke_fills_hosted_fixture_without_submitting(self) -> None:
+        text = WORKFLOW.read_text(encoding="utf-8")
+        self.assertIn('base + "/cua-s1/fixture"', text)
+        self.assertIn('"entities": [{"label": "Name", "value": "Ada"}]', text)
+        self.assertIn('"submit": False', text)
+        self.assertIn('"execute": True', text)
+        self.assertIn('get("verified_value") is True', text)
+
     def test_workflow_uses_named_vercel_secrets_without_values(self) -> None:
         text = WORKFLOW.read_text(encoding="utf-8")
         for name in SECRET_NAMES:
@@ -213,6 +222,14 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             copied = stager.stage_bundle(ROOT, Path(tmp))
         self.assertIn("api/mcp.py", copied)
+        self.assertIn("api/jev.py", copied)
+        self.assertIn("api/cua_s1.py", copied)
+        self.assertIn("api/cua_s1_form.mjs", copied)
+        self.assertIn("api/cua_s1_fixture.mjs", copied)
+        self.assertIn("host/jev.py", copied)
+        self.assertIn("host/cua_s1_cloud/cua-s1-forms.onnx", copied)
+        self.assertIn("requirements.txt", copied)
+        self.assertIn("package-lock.json", copied)
         self.assertIn("api/owner_context.py", copied)
         self.assertIn("commons_mcp.py", copied)
         self.assertIn("webmcp.html", copied)

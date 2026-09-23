@@ -9,6 +9,7 @@ MOUTH.token
 !excerpts/**/*.mno
 .DS_Store
 __pycache__/
+node_modules/
 *.pyc
 .ingest.lock
 .landed_receipt

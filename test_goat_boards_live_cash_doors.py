@@ -20,19 +20,24 @@ class TestGoatBoardsLiveCashDoors(unittest.TestCase):
     def test_boards_surfaces_live_diagnostic_doors(self) -> None:
         raw = PAGE.read_text(encoding="utf-8")
         self.assertIn('id="live-cash-doors"', raw)
+        start = raw.index('id="live-cash-doors"')
+        end = raw.index("</section>", start)
+        section = raw[start:end]
         for sku_id, href, cta in DOORS:
             with self.subTest(sku=sku_id):
-                self.assertIn(f'id="{sku_id}"', raw)
-                self.assertIn(f'href="{href}"', raw)
-                self.assertIn(cta, raw)
-        self.assertNotIn("buy.stripe.com", raw)
-        self.assertNotIn("donate.stripe.com", raw)
+                self.assertIn(f'id="{sku_id}"', section)
+                self.assertIn(f'href="{href}"', section)
+                self.assertIn(cta, section)
+        self.assertNotIn("buy.stripe.com", section)
+        self.assertNotIn("donate.stripe.com", section)
+        self.assertNotIn("agent-rescue.html", section)
+        self.assertNotIn("sku-agent-failure-autopsy", section)
 
     def test_hub_pages_rebuild_keeps_live_cash_doors(self) -> None:
         src = (ROOT / "hub_pages.py").read_text(encoding="utf-8")
         self.assertIn('id="live-cash-doors"', src)
-        self.assertIn('id="sku-agent-failure-autopsy"', src)
-
+        self.assertNotIn('id="sku-agent-failure-autopsy"', src)
+        self.assertNotIn("agent-rescue.html", src)
 
 
 if __name__ == "__main__":

@@ -945,8 +945,8 @@
       "source_path": "selected_action_sell.py"
     },
     "selected_sell_core.py": {
-      "bytes": 17475,
-      "sha256": "72ff8e553091839af16c5e5827dff7699f3a6822cbc94ec05c34ee78ef727557",
+      "bytes": 18019,
+      "sha256": "d51b37d54a2058d3f9e2faf7e3450a166314829d08163fc6fbfa00232d47d371",
       "source_path": "selected_sell_core.py"
     },
     "sell_priority.py": {
@@ -970,8 +970,8 @@
       "source_path": "terminal_history_join.py"
     },
     "titan_runtime.py": {
-      "bytes": 41843,
-      "sha256": "2074ee18cba344020cae6455df5f1de7f4d6c063859cb282882c6d3ee51f08e8",
+      "bytes": 41845,
+      "sha256": "ae89def109b46b52fc768590ab890228a862bef9d1f4a2f3d0fec9c837742fea",
       "source_path": "titan_runtime.py"
     },
     "town_procurement.py": {

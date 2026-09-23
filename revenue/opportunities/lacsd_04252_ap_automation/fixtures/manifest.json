@@ -8,14 +8,27 @@
   "sources": {
     "detail": {
       "url": "https://www.lacsd.org/Home/Components/RFP/RFP/954/488?selsta=4",
-      "captured_at_utc": "2026-09-16T22:20:00Z",
+      "captured_at_utc": "2026-09-18T01:43:04Z",
       "due_utc": "2026-10-15T18:00:00Z"
     },
-    "list": {
-      "url": "https://www.lacsd.org/opportunities/bids-purchasing/purchasing-section-projects/-sortn-RFPTitle",
-      "captured_at_utc": "2026-09-16T22:20:00Z",
-      "due_utc": "2026-09-30T18:00:00Z"
+    "current_list": {
+      "url": "https://www.lacsd.org/about-us/advanced-components/list-detail-pages/rfp-posts-list",
+      "captured_at_utc": "2026-09-18T01:43:04Z",
+      "due_utc": "2026-10-15T18:00:00Z"
+    },
+    "submission_rules": {
+      "url": "https://www.lacsd.org/opportunities/bids-purchasing/purchasing-section-projects",
+      "captured_at_utc": "2026-09-18T01:43:04Z",
+      "authorized_distributor": "QuestCDN",
+      "proper_download_required_for_planholder": true,
+      "planholder_required_to_submit": true,
+      "submission_route": "QUESTCDN_ONLY"
     }
+  },
+  "submission_evidence": {
+    "authorized_packet_retained": false,
+    "proper_download_evidenced": false,
+    "planholder_status": "NOT_ESTABLISHED"
   },
   "requirements": {
     "zero_template_ai_extraction": true,

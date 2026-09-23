@@ -76,10 +76,10 @@ class BusinessPackHarborlineMapHelperPointerTest(unittest.TestCase):
         )
         self.assertTrue(
             pointer.EXPECTED_BLOBS["packs/desk-website-service-20260902-01/door.html"].startswith(
-                "299b01fd"
+                "d75b3f3b"
             )
         )
-        self.assertTrue(pointer.EXPECTED_BLOBS["packs/waitlist.html"].startswith("211db2dc"))
+        self.assertTrue(pointer.EXPECTED_BLOBS["packs/waitlist.html"].startswith("f93c8f32"))
         self.assertTrue(
             self.result["blobs"][
                 "p/cursor-business-pack-harborline-map-helper-pointer-20260902-01.md"
@@ -165,6 +165,32 @@ class BusinessPackHarborlineMapHelperPointerTest(unittest.TestCase):
         self.assertTrue(data["receipt_blobs_match"])
         self.assertEqual(data["missing_files"], [])
         self.assertIs(data["live_instance_blobs_not_pinned"], True)
+
+    def test_pointer_ok_when_live_instance_pages_differ_from_historical_table(self) -> None:
+        live_door = pointer.blob_prefix(
+            "packs/desk-website-service-20260902-01/door.html"
+        )
+        hist_door = pointer.EXPECTED_BLOBS[
+            "packs/desk-website-service-20260902-01/door.html"
+        ]
+        self.assertEqual(hist_door, "d75b3f3b")
+        self.assertEqual(pointer.EXPECTED_BLOBS["packs/waitlist.html"], "f93c8f32")
+        self.assertEqual(
+            pointer.OBSERVED_AT_LAND[
+                "packs/sidewalk-signal-web-desk-20260902-01/index.html"
+            ],
+            "16f21fbd",
+        )
+        self.assertEqual(
+            pointer.OBSERVED_AT_LAND["packs/lotribbon-greetings-20260902-01/index.html"],
+            "a2d067e7",
+        )
+        self.assertTrue(live_door)
+        self.assertTrue(self.result["pointer_ok"])
+        self.assertTrue(self.result["receipt_blobs_match"])
+        self.assertIs(self.result["live_instance_blobs_not_pinned"], True)
+        if live_door != hist_door:
+            self.assertFalse(self.result["blobs_match"])
 
 
 if __name__ == "__main__":

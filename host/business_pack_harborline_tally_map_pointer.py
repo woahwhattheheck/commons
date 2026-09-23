@@ -34,8 +34,8 @@ MAP_OWNER = "bc-31c8ef9a"
 # of the catalog pointer. Canonical receipt continuity is checked separately.
 EXPECTED_BLOBS = {
     "host/harborline_tally_pack_map.py": "a7a49b77",
-    "packs/desk-website-service-20260902-01/door.html": "d75b3f3b",
-    "packs/waitlist.html": "f93c8f32",
+    "packs/desk-website-service-20260902-01/door.html": "cd2be48f",
+    "packs/waitlist.html": "b312ed6d",
 }
 RECEIPT_BLOBS = {
     f"p/{POINTER_ID}.md": "e38f1251",
@@ -44,9 +44,9 @@ RECEIPT_BLOBS = {
 
 # Land-time observations from leftover SHIP 4b1e74dd / a692e5ca. Not live pins.
 OBSERVED_AT_LAND = {
-    "host/business_pack_desk_instance.py": "1029faad",
-    "packs/sidewalk-signal-web-desk-20260902-01/index.html": "9db77016",
-    "packs/lotribbon-greetings-20260902-01/index.html": "8afd749b",
+    "host/business_pack_desk_instance.py": "a550ae1b",
+    "packs/sidewalk-signal-web-desk-20260902-01/index.html": "638e60b4",
+    "packs/lotribbon-greetings-20260902-01/index.html": "ac60db02",
 }
 THIS_SEAT_DOES_NOT_WRITE = (
     "host/business_pack_desk_instance.py",

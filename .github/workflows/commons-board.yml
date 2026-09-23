@@ -10,6 +10,17 @@ on:
   schedule:
     - cron: "*/5 * * * *"
   workflow_dispatch:
+    inputs:
+      jhipster_174_validation:
+        description: Run exact-head JHipster issue 174 backend validation
+        required: false
+        type: boolean
+        default: false
+      jev_full_history:
+        description: Continue full-body JEV review from verified private history bundles
+        required: false
+        type: boolean
+        default: false
   repository_dispatch:
     types: [commons-board]
   issues:
@@ -27,8 +38,7 @@ concurrency:
   # groups, and push/schedule/dispatch retain their own recovery groups.
   # v2 rotates future Slack issue events away from the pre-repair run whose
   # already-frozen device tail still owns the original slack-batch group.
-  # Close/reopen events invalidate one issue, not the whole intake queue.
-  # Keep them issue-scoped so an unrelated post cannot replace a pending reopen.
+  # Close/reopen events stay issue-scoped so intake cannot displace invalidation.
   group: "commons-board-ingest-${{ github.event_name == 'issues' && github.event.action == 'opened' && contains(github.event.issue.body, 'carrier: slack-connector') && 'slack-batch-v2' || github.event_name }}-${{ github.event_name == 'issues' && github.event.action == 'opened' && contains(github.event.issue.body, 'carrier: slack-connector') && 'queue' || github.event.issue.number || 'poll' }}"
   cancel-in-progress: false
 jobs:
@@ -399,3 +409,111 @@ jobs:
         run: >-
           echo "Pending DEVICE actions remain durable and unexecuted; ordinary board ingest
           does not allocate the owner's self-hosted laptop runner."
+
+  shipping-monitor:
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || github.event_name == 'push')
+    permissions:
+      contents: read
+    concurrency:
+      group: commons-shipping-monitor
+      cancel-in-progress: false
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout: |
+            host/paid_shipping
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Scan and persist private state
+        working-directory: host/paid_shipping
+        env:
+          COMMONS_GITHUB_TOKEN: ${{ secrets.COMMONS_GITHUB_TOKEN }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
+          NODE_OPTIONS: --experimental-sqlite
+        run: node runner.mjs
+
+  github-history:
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
+    permissions:
+      contents: read
+    concurrency:
+      group: commons-github-history
+      cancel-in-progress: false
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout: |
+            host/history
+      - name: Continue private GitHub history intake
+        working-directory: host/history
+        env:
+          COMMONS_GITHUB_TOKEN: ${{ secrets.COMMONS_GITHUB_TOKEN }}
+          GH_TOKEN_PRIMARY: ${{ secrets.COMMONS_GITHUB_TOKEN }}
+          GH_TOKEN_SECONDARY: ${{ secrets.GH_TOKEN_SECONDARY }}
+        run: python3 github_cloud.py
+
+  jev-full-history:
+    if: github.event_name == 'workflow_dispatch' && inputs.jev_full_history
+    permissions:
+      contents: read
+    concurrency:
+      group: commons-jev-full-history
+      cancel-in-progress: false
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout: |
+            host/history
+      - uses: actions/checkout@v4
+        with:
+          repository: woahwhattheheck/commons-ship-enforcer
+          token: ${{ secrets.COMMONS_GITHUB_TOKEN }}
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout: |
+            history-review/2026-09-20/private-bundles
+          path: private-history
+      - name: Review complete archived bodies and retain private receipts
+        env:
+          COMMONS_GITHUB_TOKEN: ${{ secrets.COMMONS_GITHUB_TOKEN }}
+          TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
+          PRIVATE_HISTORY_CHECKOUT: ${{ github.workspace }}/private-history
+        run: python3 host/history/jev_hosted.py
+
+  jhipster-174-validation:
+    if: github.event_name == 'workflow_dispatch' && inputs.jhipster_174_validation
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: woahwhattheheck/jhipster-control-center
+          ref: cc81c944e6bd412f64f490134c5cfb9d1b2c8ef9
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify exact sponsor PR head
+        run: test "$(git rev-parse HEAD)" = cc81c944e6bd412f64f490134c5cfb9d1b2c8ef9
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '11'
+      - name: Run issue 174 regressions
+        run: mvn -ntp -P-webapp test -Dtest=OidcMetadataMtlsAliasesTest,ClientRegistrationsMtlsAliasesTest -DfailIfNoTests=true --batch-mode
+      - name: Run full backend verification
+        run: mvn -ntp -P-webapp verify --batch-mode

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Keep the established UIOWA command names while using the versioned codec."""
 from __future__ import annotations
 
 import argparse
@@ -6,51 +7,48 @@ import json
 import sys
 from pathlib import Path
 
-from transport import dump_json, load_json, project_docx, project_pdf, read_csv, read_xlsx, write_csv, write_xlsx
+try:
+    from . import transport as t
+    from .projection_io import project_docx, project_pdf
+except ImportError:
+    import transport as t
+    from projection_io import project_docx, project_pdf
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="UIOWA-096 typed interchange")
+    parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="cmd", required=True)
-
-    p = sub.add_parser("json-to-csv")
-    p.add_argument("src")
-    p.add_argument("dst")
-
-    p = sub.add_parser("csv-to-json")
-    p.add_argument("src")
-    p.add_argument("dst")
-
-    p = sub.add_parser("json-to-xlsx")
-    p.add_argument("src")
-    p.add_argument("dst")
-
-    p = sub.add_parser("xlsx-to-json")
-    p.add_argument("src")
-    p.add_argument("dst")
-
-    p = sub.add_parser("project-docx")
-    p.add_argument("src")
-
-    p = sub.add_parser("project-pdf")
-    p.add_argument("src")
-
+    for name in ("json-to-csv", "csv-to-json", "json-to-xlsx", "xlsx-to-json",
+                 "json-to-docx", "json-to-pdf"):
+        command = sub.add_parser(name)
+        command.add_argument("src")
+        command.add_argument("dst")
+    for name in ("project-docx", "project-pdf"):
+        sub.add_parser(name).add_argument("src")
     args = parser.parse_args(argv)
-    if args.cmd == "json-to-csv":
-        write_csv(load_json(args.src), args.dst)
-    elif args.cmd == "csv-to-json":
-        dump_json(read_csv(args.src), args.dst)
-    elif args.cmd == "json-to-xlsx":
-        write_xlsx(load_json(args.src), args.dst)
-    elif args.cmd == "xlsx-to-json":
-        dump_json(read_xlsx(args.src), args.dst)
-    elif args.cmd == "project-docx":
-        json.dump(project_docx(args.src), sys.stdout, ensure_ascii=False, indent=2)
-        sys.stdout.write("\n")
-    elif args.cmd == "project-pdf":
-        json.dump(project_pdf(args.src), sys.stdout, ensure_ascii=False, indent=2)
-        sys.stdout.write("\n")
-    return 0
+    try:
+        if args.cmd == "json-to-csv":
+            t.write_csv(t.read_json(args.src), args.dst)
+        elif args.cmd == "csv-to-json":
+            t.write_json(t.read_csv(args.src), args.dst)
+        elif args.cmd == "json-to-xlsx":
+            t.write_xlsx(t.read_json(args.src), args.dst)
+        elif args.cmd == "xlsx-to-json":
+            t.write_json(t.read_xlsx(args.src), args.dst)
+        elif args.cmd in ("json-to-docx", "json-to-pdf"):
+            try:
+                from . import documents
+            except ImportError:
+                import documents
+            writer = documents.write_docx if args.cmd.endswith("docx") else documents.write_pdf
+            writer(t.read_json(args.src), args.dst)
+        else:
+            reader = project_docx if args.cmd == "project-docx" else project_pdf
+            json.dump(reader(args.src), sys.stdout, ensure_ascii=False, indent=2)
+            sys.stdout.write("\n")
+        return 0
+    except (t.InterchangeError, OSError, ImportError) as exc:
+        parser.exit(2, f"interchange: {exc}\n")
 
 
 if __name__ == "__main__":

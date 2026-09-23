@@ -56,6 +56,35 @@ Assign an existing peer for short housekeeping work: group redundant output, fla
 
 Cloud workflow command-center runs operation-journal, source-cache, moderation and HTTP contracts plus JavaScript syntax checks. Local UI verification should exercise real source refresh and an existing read-only tool, then confirm shared state through a fresh peer. Tests and deployment observations apply only to their recorded versions.
 
+## GitHub Actions queue-pressure advisory
+
+Every `GET /api/work` now derives a read-only `queue_pressure` block from the
+existing normalized `github:actions:<repository>` sources. It makes no extra
+provider request and never changes, cancels, retries, or reprioritizes a run.
+
+Thresholds are deliberately explicit:
+
+- `PRESSURED`: at least 50 observed queued runs, or the oldest active run was
+  created at least 15 minutes ago;
+- `SATURATED`: at least 200 observed queued runs, or the oldest active run was
+  created at least 60 minutes ago;
+- `NORMAL`: complete fresh Actions coverage below those thresholds;
+- `UNKNOWN`: missing, partial, retained, stale, errored, or timestamp-invalid
+  Actions evidence.
+
+Queue age is anchored to the provider run's `created_at`, not its most recent
+update. Active rows without usable creation time make the advisory `UNKNOWN`
+rather than manufacturing a short age.
+
+The warning is operational guidance only. Product reads stay available if the
+reducer fails, but `ci_green_claim_allowed` is always false because queue
+pressure can never establish the conclusion of an individual workflow/check.
+Verify that exact run separately before representing CI as green. The advisory
+contains no secret/environment payload and uses only the selected build metadata
+already retained by the command center. Active-queue authority binds
+`metadata.active_queue_coverage` for `{queued, in_progress}`; a capped recent-
+history page does not by itself make a fully observed active queue UNKNOWN.
+
 ## Connected work and owner direction
 
 Work, Builds, Inbox and Marketing use GET /api/work. Every source separates read time, actual activity, scope, pagination and errors. Complete snapshots replace only their stated source scope; partial or failed reads retain prior records. CRM stages do not establish buyers or cash, and native execution state does not establish business completion.
@@ -133,3 +162,74 @@ python -O -B -m unittest integrations.command_center.test_slack_threads integrat
 The later-page shape regression intentionally tests a conservative merge of valid
 rows, rather than the previous all-or-nothing loss of newly fetched pages. Source
 publication and passing tests do not establish deployment or real-provider refresh.
+
+## Deathstar decision view
+
+`GET /api/decisions` (`decisions.py`) projects the existing `/api/work`
+state into an **exception queue** and **one row per active operation**, not
+per receipt. It reuses the local snapshot cache used by `/api/summary`;
+it never calls the refresh-capable `work_state()` or `observability()` methods.
+It adds no collector or store. `/api/summary` stays cache-only and only links
+to it (`"decisions": "/api/decisions"`). Rows are joinable with `/api/work`
+items and `/api/mail` threads by operation id. Existing work and observability
+refresh routes remain available; reading decisions does not trigger them.
+
+The top of the view shows `operator_control.mode` from the existing cached
+coordination head, then collection coverage and cooldowns. Missing, failed
+or expired coordination cache reads `unknown`, not RUN. A successfully observed
+current head with no override retains the RUN default. The response includes
+`cache` for the shared work snapshot and `operator_control_source` with
+`cache_only`, `fresh` and `observed_at`; refresh the existing observability
+view when current operator control is needed.
+
+An item joins an operation only through `metadata.operation`,
+`metadata.operation_id` or `refs.operation`. Eligibility-to-payout is a list
+of typed stage records per program, fed through the existing ingest road:
+
+| stage | examples |
+|---|---|
+| `pre_work_application` | GrantFox application (item `kind: application`; status uses the GrantFox `application_state` vocabulary) |
+| `claim_or_attempt_posted` | PR-side `/claim` or `/opire try` |
+| `platform_import` | BountyHub PR import, distinct from the PR-side claim |
+| `sponsor_pr_open` | open PR (typed from `kind: pull_request`, `status: open`) |
+| `accepted_or_merged` | merged PR (`refs.merged_at`) |
+| `payout_requested` | expense / payout request (pending payment kinds) |
+| `payout_onboarding` | e.g. Stripe Express; `who_acts` defaults to `owner_only` |
+| `paid` | paid payment/payout/bounty record; its `amount` is money collected |
+
+Per record: `stage` or `metadata.provider_stage`; `metadata.stage_state`
+(else item status: done / pending / missing / refused); `metadata.who_acts`
+(`us` / `them` / `owner_only`); `metadata.deadline` or `due_at`;
+`metadata.owner_account`; `metadata.party`; evidence is the item `url`, else
+`unknown: <metadata.answer_source>`. Operation money uses
+`metadata.advertised_amount` + `currency`. Agents use `metadata.seat`,
+`model_family`, `session_id`, `heartbeat_at`, `agent_state`, `blocker`.
+
+Stage selection uses `metadata.stage_observed_at` when valid, otherwise the
+first valid `updated_at`, `activity_observed_at` or `last_seen_at`. This is
+returned as `stages[].observed_at`; `entered_at` remains the separate clock
+for stage age. A newer observation can correct an older stage-entry date.
+Equal-time conflicting states read `unknown` with a reconciliation action.
+Explicit unknown stage states and invalid heartbeat timestamps remain unknown,
+not pending work or an idle agent.
+
+The first stage not done decides `waiting_on` (`waiting_on_us`,
+`waiting_on_them`, `none`, `unknown`, as in `mail_tracking.py`), with
+`waiting_for` and `waiting_reasons`. A held outward write,
+`metadata.publication_state` (`clear`, `held:route`, `held:identity`,
+`held:terms`, `retry_pending`) or `metadata.publication` carrying the
+publication hook's `state`, `matched_fields` and `matched_terms`, makes the row
+`waiting_on_us` with the remove-and-retry instruction.
+
+`exceptions` lists deadlines within 7 days or passed, stages stalled beyond
+their window (pre-work 14d, claim 14d, import 7d, sponsor PR 21d, merged 7d,
+payout requested 30d, onboarding 7d), `owner_only` stages and held
+publications, each with the exact action and account. Blocked agents are
+listed beside them. Missing facts are `unknown` with the source that would
+answer them.
+
+Per-source state comes from `state.source_health`
+(`commons-collector-source-health/v1`): `collector`, `data_stale`,
+`last_success_at` / `last_success_age_seconds`, `last_cycle`,
+`last_cycle_reason` and `cooldown.active` / `retry_not_before`, plus its
+`coverage` counts and `cooldowns`. Any missing key renders `unknown`.

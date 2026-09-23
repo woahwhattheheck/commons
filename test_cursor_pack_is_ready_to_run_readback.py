@@ -19,7 +19,7 @@ KEEP = {
     "p/cursor-pack-is-ready-to-run-20260902-01.md": "897b00ba",
     "host/pack_is_ready_to_run.py": "aab508cf",
     "ground/PACK_IS_READY_TO_RUN.json": "69a67ee1",
-    "test_pack_is_ready_to_run.py": "fdad3111",
+    "test_pack_is_ready_to_run.py": "bf4b6f2d",
     "pack-is-ready-to-run.html": "ca38f755",
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
     "host/pack_quality_dictates_tier.py": "74d36b0a",
@@ -29,7 +29,7 @@ KEEP = {
     "p/cursor-what-a-pack-is-20260902-01.md": "a4e4dd89",
     "host/what_a_pack_is.py": "14df3b8d",
     "ground/WHAT_A_PACK_IS.json": "2f473414",
-    "test_what_a_pack_is.py": "9e13acf0",
+    "test_what_a_pack_is.py": "d2aec575",
     "what-a-pack-is.html": "963184e3",
     "p/cursor-commons-slack-full-body-chunk-20260902-01.md": "94770f41",
     "p/cursor-commons-slack-full-body-chunk-readback-20260902-01.md": "364ae3a4",
@@ -46,7 +46,7 @@ KEEP = {
     "ground/BUSINESS_PACK_KEEP_SELL.json": "4e0e3eb0",
     "hub_pages.py": "673dab89",
     "door.js": "5899223c",
-    "api/mcp.py": "393da756",
+    "api/mcp.py": "a2683bf4",
     "ground/OWNER_NOW.md": "39a0e0c3",
 }
 

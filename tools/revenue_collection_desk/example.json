@@ -27,6 +27,8 @@
           "event_id": "a3",
           "at": "2026-09-12T11:00:00Z",
           "kind": "ENTITLEMENT_CONFIRMED",
+          "entitlement_instrument": "USD",
+          "entitlement_amount": "90.00",
           "source_ref": "bounty-or-agreement-1",
           "source_digest": "2222222222222222222222222222222222222222222222222222222222222222"
         }

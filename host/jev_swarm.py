@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """host/jev_swarm.py — Jev decision surfaces for the swarm.
 
+JEV INTEGRATION STATUS: WORKING. Live TypeSafe call verified 2026-09-20.
+Use and extend these decision surfaces for Commons swarm work.
+
 Typed swarm decisions on top of host/jev.py. Each surface packs many
 independent questions into ONE System One call (Jev evaluates them in
 parallel against the same state) and returns typed values + confidence.
@@ -18,6 +21,7 @@ or writes by itself — it returns decisions callers may route on.
   python3 host/jev_swarm.py assign --obligation job.json --windows registry.json
   python3 host/jev_swarm.py frontdoor --window me.json --docket docket.json
   python3 host/jev_swarm.py triage --file msg.txt
+  python3 host/jev_swarm.py triage --transport hosted --file msg.txt
   python3 host/jev_swarm.py --self-test
 """
 from __future__ import annotations
@@ -192,14 +196,20 @@ def _gate(answer, min_confidence):
 
 def run_surface(name, state, questions, decode, args):
     started = time.monotonic()
+    transport = getattr(args, "transport", "direct")
     try:
-        resp = jev.systemone(state, questions, model=args.model, timeout=args.timeout)
+        resp = jev.systemone(state, questions, model=args.model, timeout=args.timeout,
+                             transport=transport)
     except jev.JevError as err:
-        return {"surface": name, "error": str(err)}
+        out = {"surface": name, "error": str(err), "transport": transport}
+        if err.retry_after_seconds is not None:
+            out["retry_after_seconds"] = err.retry_after_seconds
+        return out
     elapsed_ms = round((time.monotonic() - started) * 1000)
     answers = resp.get("answers") or {}
     return {
         "surface": name,
+        "transport": transport,
         "model": resp.get("model", args.model),
         "elapsed_ms": elapsed_ms,
         "answers": answers,
@@ -358,6 +368,8 @@ def main(argv=None) -> int:
         p.add_argument("--windows")
         p.add_argument("--window")
         p.add_argument("--limit", type=int, default=25)
+        p.add_argument("--transport", choices=jev.TRANSPORTS, default="direct",
+                       help="direct uses a local key; hosted uses the Commons server key")
         p.add_argument("--model", default=jev.DEFAULT_MODEL)
         p.add_argument("--timeout", type=int, default=60)
     parser.add_argument("--self-test", action="store_true")
@@ -386,8 +398,9 @@ def main(argv=None) -> int:
     if args.cmd == "frontdoor" and not (args.window and args.docket):
         print("frontdoor needs --window and --docket", file=sys.stderr)
         return 2
-    print(json.dumps(handler(args), indent=2))
-    return 0
+    result = handler(args)
+    print(json.dumps(result, indent=2))
+    return 2 if "error" in result else 0
 
 
 if __name__ == "__main__":

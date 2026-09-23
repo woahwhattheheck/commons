@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import sys
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -20,6 +21,8 @@ STATIC_FILES = {
     "/": ("index.html", "text/html; charset=utf-8"),
     "/index.html": ("index.html", "text/html; charset=utf-8"),
     "/app.js": ("app.js", "text/javascript; charset=utf-8"),
+    "/handoff_import.js": ("handoff_import.js", "text/javascript; charset=utf-8"),
+    "/handoff.js": ("handoff.js", "text/javascript; charset=utf-8"),
     "/style.css": ("style.css", "text/css; charset=utf-8"),
 }
 
@@ -32,9 +35,43 @@ def _strict_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
     out: dict[str, Any] = {}
     for key, value in pairs:
         if key in out:
-            raise WorkbenchError(f"duplicate JSON key: {key}")
+            raise WorkbenchError(f"duplicate JSON key: {ascii(key)}")
         out[key] = value
     return out
+
+
+def _reject_constant(token: str) -> Any:
+    raise WorkbenchError("non-finite JSON numeric constants are not supported")
+
+
+def _finite_float(token: str) -> float:
+    # Preserve the compiler's existing Python-float interface. Do not silently
+    # introduce Decimal into its schemas or claim arbitrary decimal precision.
+    value = float(token)
+    if not math.isfinite(value):
+        raise WorkbenchError("JSON number overflows the supported finite numeric range")
+    significand = token.lower().partition("e")[0]
+    if value == 0.0 and any(digit in "123456789" for digit in significand):
+        raise WorkbenchError("JSON number underflows the supported numeric range; not treated as zero")
+    return value
+
+
+def _check_scalar_text(value: Any) -> None:
+    # JSON escapes can encode lone surrogates even when the input bytes are valid
+    # UTF-8. Check both keys and values before compiler or response serialization.
+    pending = [value]
+    while pending:
+        item = pending.pop()
+        if isinstance(item, str):
+            try:
+                item.encode("utf-8", errors="strict")
+            except UnicodeEncodeError as exc:
+                raise WorkbenchError("JSON strings must contain valid Unicode scalar values") from exc
+        elif isinstance(item, dict):
+            pending.extend(item.keys())
+            pending.extend(item.values())
+        elif isinstance(item, list):
+            pending.extend(item)
 
 
 def loads_strict_json(raw: bytes) -> Any:
@@ -43,11 +80,16 @@ def loads_strict_json(raw: bytes) -> Any:
     except UnicodeDecodeError as exc:
         raise WorkbenchError("request body must be valid UTF-8") from exc
     try:
-        return json.loads(text, object_pairs_hook=_strict_object)
+        value = json.loads(
+            text, object_pairs_hook=_strict_object,
+            parse_constant=_reject_constant, parse_float=_finite_float,
+        )
+        _check_scalar_text(value)
+        return value
     except WorkbenchError:
         raise
-    except (json.JSONDecodeError, ValueError) as exc:
-        raise WorkbenchError("request body must be strict JSON") from exc
+    except (json.JSONDecodeError, ValueError, RecursionError, OverflowError) as exc:
+        raise WorkbenchError("request body must be strict JSON within supported parsing limits") from exc
 
 
 def _exact_keys(value: Any, expected: set[str], label: str) -> dict[str, Any]:
@@ -172,7 +214,7 @@ class _Handler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:  # noqa: N802
         if self._reject_bad_host():
             return
-        entry = STATIC_FILES.get(self.path)
+        entry = STATIC_FILES.get(urlsplit(self.path).path)
         if entry is None:
             self._send_json(404, {"error": "not found"})
             return

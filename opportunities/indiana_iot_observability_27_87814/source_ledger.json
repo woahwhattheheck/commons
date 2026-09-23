@@ -1,0 +1,59 @@
+{
+  "schema": "indiana-iot-observability-sources/v1",
+  "opportunity_id": "27-87814",
+  "event_id": "000670000087814",
+  "checked_at": "2026-09-17T19:20:00Z",
+  "sources": [
+    {
+      "id": "idoa-current-business-opportunities",
+      "authority": "OFFICIAL_PUBLIC_NOTICE",
+      "retained": false,
+      "url": "https://secure.in.gov/idoa/procurement/current-business-opportunities/",
+      "claims": {
+        "title": "RFP 27-87814 Enterprise Observability Platform",
+        "event_id": "000670000087814",
+        "response_deadline": "2026-10-28T15:00:00-04:00",
+        "buyer_contact": "StephNelson@idoa.IN.gov",
+        "portfolio_target_applications": 500,
+        "outcome_goals": [
+          "maintain coverage without service interruption",
+          "improve detection outcomes",
+          "improve resolution outcomes",
+          "improve alert-quality outcomes"
+        ]
+      },
+      "controls": []
+    },
+    {
+      "id": "idoa-bid-package",
+      "authority": "OFFICIAL_CONTROLLING_PACKAGE",
+      "retained": false,
+      "url": "https://secure.in.gov/idoa/proc/solicitations/files/000670000087814.zip",
+      "claims": {},
+      "controls": []
+    },
+    {
+      "id": "publicbidsearch-mirror",
+      "authority": "DISCOVERY_MIRROR",
+      "retained": false,
+      "url": "https://publicbidsearch.com/bids/rfp-27-87814-enterprise-observability-platform-in-2b1772",
+      "claims": {
+        "prebid": "2026-09-30T09:30:00-04:00",
+        "question_deadline": "2026-10-07T15:00:00-04:00",
+        "contract_term": "3 years + two 1-year renewals",
+        "submission": "electronic portal",
+        "scope_hints": [
+          "APM",
+          "DEM",
+          "network",
+          "infrastructure",
+          "application security",
+          "ServiceNow",
+          "OpenTelemetry",
+          "AI-assisted troubleshooting"
+        ]
+      },
+      "controls": []
+    }
+  ]
+}

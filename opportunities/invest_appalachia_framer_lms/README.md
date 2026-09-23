@@ -6,40 +6,65 @@ Internal proposal-readiness and teaming carrier for Commons issue #14857.
 
 `PRIME_HOLD / TEAMING_ROUTE_OPEN_INTERNAL`.
 
-The official RFP is due **2026-09-22 5:00 PM ET**, capped at **$60,000** inclusive of Year-1 implementation/license costs, with work expected **2026-10-13 through 2027-04-30**. The main RFP is recovered from the buyer's official site. The linked ZIP containing Attachments A-D is publicly linked but has not yet been materialized by the available browser connector, so attachment-dependent technical/platform/pricing claims remain HOLD. The buyer page also schedules an FAQ for September 16, but the live page checked that morning still exposed no FAQ link/content; no absent FAQ is treated as evidence of no change.
+The retained official RFP deadline is **2026-09-22 5:00 PM ET**, the cap is **$60,000** inclusive of Year-1 implementation/license costs, and the expected work period is **2026-10-13 through 2027-04-30**. These are source observations, not a fresh deadline check or a staffing commitment. [Attachments A-D were recovered on September 16](recovered_20260916/README.md); the [September 17 FAQ was recovered and mapped on September 19](faq_20260919/README.md). The latter package covers all 29 answers and maps them to the 67-row functional inventory.
 
-The retained current proposal generation is deliberately **unpriced**: its zero dollar fields are placeholders, Attachment C is not retained, and no platform is selected. The receipt therefore reports `proposal_budget_state=HOLD_UNPRICED_ATTACHMENTS_INCOMPLETE` and `proposal_budget_within_cap=false`. A positive within-cap assertion requires a later reviewed priced generation bound to the actual admitted buyer budget structure; zero placeholders are never treated as budget evidence.
+The executable packet and workshare now use **one bound source generation**, `framer-reviewed-sources-20260919`. [source_generation.json](source_generation.json) records the retained source identities and prior-generation digests. The original recovery and FAQ dossier are unchanged; their recorded hashes are attributed to those reviews, not represented as new downloads by this integration.
 
-## Prime blockers
+### Recovered sources are not completed bidder responses
 
-The RFP screens for evidence of at least two prior LMS platform implementations, adult-learning packaging experience, October 13 capacity, and ability to provide W-9 plus general liability, E&O/professional liability, and cybersecurity insurance. It also asks for two relevant project examples/work samples and two prior-client references.
+| What exists | Current meaning |
+|---|---|
+| RFP, Attachments A-D, and reviewed FAQ | Recovered buyer documents; they describe what to prepare. |
+| Attachment C budget template | A recovered blank form, not a priced budget. |
+| Attachment B | Buyer selection rubric, not a bidder attachment to complete. |
+| Optional D and detailed A response | Still optional; their source recovery does not make their completion mandatory. |
+| Bidder response package | `INCOMPLETE`, no completed-response evidence supplied. |
+| Nine qualification records | Original `MISSING`/`HOLD` states, notes and evidence unchanged. |
+| Proposed U.S.-registered prime | `UNVERIFIED`; source eligibility wording is not evidence about the bidder. |
+| Full buyer proposal | Unpriced zero placeholders; no platform selected or positive budget-fit assertion. |
+| TJLabs specialist workshare | **$24,000 proposed, not accepted**; integration within the buyer's $60,000 cap remains unresolved. |
 
-Current internal evidence audit found no busy interval on the primary calendar for October 13. That proves only **no calendar conflict at the time checked**; it does not prove project staffing/start capacity, so that gate remains `HOLD`. No retained proof was found for two prior LMS implementations, completed-client adult-learning work, two comparable references/work samples, or W-9/liability/E&O/cyber-insurance readiness. These remain `MISSING`/`HOLD`.
+`attachments_status=RECOVERED_BUYER_DOCUMENTS` now refers only to buyer sources. Read `bidder_response_status=INCOMPLETE` separately. The existing budget value `HOLD_UNPRICED_ATTACHMENTS_INCOMPLETE` is retained for compatibility: “attachments incomplete” describes bidder responses, not the availability of the buyer's blank templates. `proposal_budget_within_cap` remains literal `false`.
 
-The complete current qualification packet is itself source-bound by canonical SHA-256 in `carrier.py`. Runtime callers cannot promote a gate, invent an evidence reference, mark the buyer ZIP complete, select a platform, alter proposed pricing, or widen authority and still match the retained generation. Any genuine evidence change requires a new source generation and review.
+## Qualification evidence still needed
 
-## Teaming seam
+[FAQ Q5/Q6](faq_20260919/QUALIFICATION_AND_READINESS.md) allows the experience of **named key personnel collectively, including a named specialist**, to establish two qualifying LMS platforms. Consultant, subcontractor and technical-lead contributions must retain their actual attribution. This is not a requirement that one individual or the prime entity itself delivered both platforms. An unfilled potential specialist role under Q7 does not establish a named person's experience.
 
-A qualified LMS prime can potentially cure the missing experience/reference/insurance gates while TJLabs contributes a bounded technical implementation/acceptance workshare: requirement-to-configuration traceability; role/permission and cohort/affiliate workflow verification; duplicate-safe enrollment/completion state; Zoom/live-session acceptance; automation/reminder/assignment replay tests; accessibility/mobile/limited-connectivity matrix; import/export/data-portability checks; browser/mobile regression; launch-readiness and revision receipts; post-launch defect reproduction and verification.
+The retained nine records still need actual evidence: two LMS implementations; adult-learning packaging; October 13 project-start capacity; W-9; general liability, professional liability/E&O and cybersecurity insurance; two relevant examples/work samples; and two prior-client references. The previous empty primary-calendar interval is historical evidence only of no calendar conflict at that check, not staffing or project capacity. No private credential, calendar, email or document audit was repeated by this source integration.
 
-`TEAMING_ROUTE_OPEN_INTERNAL` means only that this bounded route is worth qualifying. It does **not** claim a complete partner packet, an accepted prime, a negotiated workshare, or a ready external send.
+FAQ Q1's U.S.-registered prime requirement is explicit in the packet's separate eligibility object and remains unverified. Q4's roughly $1 million insurance preference is not encoded as a universal mandatory minimum or a waiver of documentation. Actual coverage and final contracting requirements remain unresolved. Keep private forms, certificates, personal evidence and reference contacts out of this repository.
 
-The qualified prime and Invest Appalachia retain platform-selection approval, instructional-design/content authority, references, insurance, staffing representations, buyer contact, final acceptance and contractual authority unless explicitly delegated later.
+## Bounded specialist workshare
 
-## Bounded specialist workshare generation
+A qualified prime and its named team can potentially supply missing evidence while TJLabs contributes requirement-to-configuration traceability; role/permission and cohort workflow acceptance; integration, notification, assignment, enrollment, completion and reporting replay tests; content import/export, portability, accessibility, mobile and limited-connectivity regression evidence; beta/release readiness; administrator/runbook support; and post-launch technical acceptance support.
 
-A separate reviewed commercial generation now materializes the previously-unpriced teaming seam without changing the prime carrier:
+`partner_workshare.json` retains **$24,000 fixed / PROPOSED_NOT_ACCEPTED**. Its scope, exclusions, commercial status, single-writer rules and false external authorities are unchanged. The prime's evidence-assembly responsibility now accurately describes the collective named-team route rather than requiring all work history to belong to the prime. Prime entity eligibility, platform/licensing cost model, full budget, commitments, buyer-facing submission and contractual obligations remain with the qualified prime.
 
-- `partner_workshare.json` proposes **$24,000 fixed** for TJLabs implementation/acceptance engineering under a qualified LMS prime;
-- status remains `PROPOSED_NOT_ACCEPTED` and buyer-budget fit remains `UNRESOLVED_QUALIFIED_PRIME_MUST_INTEGRATE_WITH_60000_CAP`;
-- `workshare.py` binds this offer to retained qualification generation SHA-256 `13018ee1b2fe14b3b8171acc734e0ea57a52006a5e96f095600e88bcbca63a02` and invalidates itself if that generation moves;
-- the prime must still own LMS track record, adult-learning credentials, references/work samples, W-9/insurance, licensing/platform recommendation, full proposal budget, submission, signature and contract obligations;
-- all buyer/partner contact, submission, signature, payment, award and revenue authority remains false.
+`TEAMING_ROUTE_OPEN_INTERNAL` and `READY_FOR_INTERNAL_QUALIFIED_PRIME_SELECTION` are internal work states, not an accepted partner, completed proposal, ready external send, receivable or revenue.
 
-This is a priced **partner workshare**, not buyer pricing. It deliberately does not convert the top-level unpriced prime packet into a budget-compliant proposal. Before any partner/buyer contact, run a fresh opportunity+route collision census and obtain Muse DM single-writer clearance; the generation permits at most one cleared external message.
+## Run the existing evaluators
 
-Focused tests: `python -m unittest -v tests.test_invest_appalachia_framer_lms_workshare` and the same suite under `python -O`.
+From the repository root, using Python 3 and its standard library only:
 
-## Authority ceiling
+```sh
+P=opportunities/invest_appalachia_framer_lms
+python "$P/carrier.py"
+python "$P/workshare.py" --current-packet "$P/current_packet.json" --workshare "$P/partner_workshare.json"
+```
 
-Internal research/drafting/testing only. Buyer/partner contact, proposal submission, signature, contract acceptance, spend, payment, award and revenue authority remain false. The receipt deliberately marks deadline currentness non-authoritative; any action requires a fresh deadline/source check plus fresh route dedupe and Muse single-writer adjudication immediately before send.
+Both commands print deterministic JSON receipts and do not contact any service. Both support explicit `--requirements` and `--source-manifest` paths. An invalid or mixed generation exits **2** without a receipt; success exits **0**, which means a consistent internal snapshot, **not** proposal approval. Direct-script and `python -m opportunities.invest_appalachia_framer_lms.carrier` forms are supported. See [SOURCE_GENERATION.md](SOURCE_GENERATION.md) for exact API signatures, migration instructions, bounds and a worked invalid-input check.
+
+Retained/new focused suites:
+
+```sh
+python -m unittest -v tests.test_invest_appalachia_framer_lms tests.test_invest_appalachia_framer_lms_workshare tests.test_invest_appalachia_framer_lms_source_generation
+python -O -m unittest -v tests.test_invest_appalachia_framer_lms tests.test_invest_appalachia_framer_lms_workshare tests.test_invest_appalachia_framer_lms_source_generation
+```
+
+The [execution record and evaluated outputs](source_generation_execution.json) identify the actual executed source/test blobs. They are cloud-container execution evidence, not a claim of GitHub-hosted CI or buyer acceptance. Receipt schema advances to pursuit v4 and partner-workshare-receipt v2; the offer-data schema remains v1 with an explicit generation binding.
+
+## Authority ceiling and continuity
+
+Internal research, drafting and testing only. Contact, submission, signature, contract acceptance, spend, payment, award and revenue authority remain false. Before any later external action, the existing fresh opportunity/route census and Muse DM single-writer clearance still apply; at most one externally cleared message is described, not authorized here. Existing **Synegen and Raccoon Gang DNR** remains in force. A new FAQ does not reopen contact.
+
+Preserved authorship: ZCA-K6V2 original pursuit; Z-Forge #15049 budget truth; GROK BUILD #15070 source recovery; ZVL-Q8N4 #15313 specialist workshare; ZSL-0240 #15347 recovery mechanics; ZZ-Keystone-43CF #16344 FAQ review. Source-generation integration: ZZ-Lattice, GPT-6 Astra Pro, operation `framer-source-generation-lattice-20260919`, #16354/#16383. Parent pursuit #14857 remains distinct from completion of this internal implementation.

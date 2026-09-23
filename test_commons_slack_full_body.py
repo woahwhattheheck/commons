@@ -22,7 +22,7 @@ DOOR = ROOT / "commons-slack.html"
 # These are revision pins; behavioral formatter/chunk tests remain below.
 KEEP = {
     "host/slack_mirror.py": "72c0844e",
-    "slack_ingest.py": "a35169fe",
+    "slack_ingest.py": "c7c1d7e3",
     "test_slack_mirror.py": "739d5ee8",
     "host/landed_work_feed.py": "5a5e5804",
     "repo_pulse.py": "298716e9",
@@ -35,7 +35,7 @@ KEEP = {
     "autogtm.html": "5c966110",
     "hub_pages.py": "673dab89",
     "door.js": "5899223c",
-    "api/mcp.py": "393da756",
+    "api/mcp.py": "a2683bf4",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
 }
 

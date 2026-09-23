@@ -5,14 +5,141 @@ import json
 import re
 import subprocess
 import sys
+import unicodedata
 from pathlib import Path
 
+from commons_publication_policy import check_publication
 from integrations.shared_equipment.provider_io import EquipmentError, redacted
+
+
+_IDENTITY_TERMS = ("Codex", "Claude", "Opus", "Fable", "Astra", "Sol", "Grok")
+_VISIBLE_FIELDS = {
+    "issue.create": ("title", "body"),
+    "issue.update": ("title", "body"),
+    "issue.comment.create": ("body", "comment"),
+    "issue.comment.update": ("body", "comment"),
+    "pull.create": ("title", "body", "head", "base"),
+    "pull.update": ("title", "body", "base"),
+    "pull.comment.create": ("body", "comment"),
+    "pull.comment.update": ("body", "comment"),
+    "pull.review.create": ("body", "review"),
+    "commit.create": ("message",),
+    "commit.merge": ("commit_title", "commit_message", "message"),
+    "branch.create": ("branch", "branch_name", "ref"),
+    "branch.update": ("branch", "branch_name", "ref"),
+    "release.create": ("name", "title", "body", "tag_name"),
+    "release.update": ("name", "title", "body", "tag_name"),
+}
+_PROSE_OPERATIONS = {
+    "issue.create",
+    "issue.update",
+    "issue.comment.create",
+    "issue.comment.update",
+    "pull.create",
+    "pull.update",
+    "pull.comment.create",
+    "pull.comment.update",
+    "pull.review.create",
+    "release.create",
+    "release.update",
+}
+
+
+def _identity_token_char(value: str) -> bool:
+    return bool(value) and unicodedata.category(value)[0] in {"L", "M", "N"}
+
+
+def _identity_matches(value: str) -> tuple[str, ...]:
+    normalized = "".join(
+        character
+        for character in unicodedata.normalize("NFKC", value)
+        if unicodedata.category(character) != "Cf"
+    ).casefold()
+    found = []
+    for term in _IDENTITY_TERMS:
+        needle = term.casefold()
+        offset = 0
+        while True:
+            start = normalized.find(needle, offset)
+            if start < 0:
+                break
+            end = start + len(needle)
+            before = normalized[start - 1] if start else ""
+            after = normalized[end] if end < len(normalized) else ""
+            if not _identity_token_char(before) and not _identity_token_char(after):
+                found.append(term)
+                break
+            offset = start + 1
+    return tuple(found)
+
+
+def _private_hold(code: str, instruction: str, *, fields=(), terms=()):
+    error = EquipmentError(
+        "publication held privately before provider dispatch; " + instruction,
+        code=code,
+        uncertain=False,
+    )
+    error.incident = False
+    error.delivered = False
+    error.matched_fields = tuple(fields)
+    error.matched_terms = tuple(terms)
+    error.private_instruction = instruction
+    return error
+
+
+def _preflight(operation, arguments):
+    if not isinstance(arguments, dict):
+        raise _private_hold(
+            "outbound_field_mapping_missing",
+            "supply a mapped GitHub publication argument object and retry the same operation",
+        )
+    names = _VISIBLE_FIELDS.get(operation)
+    if names is None:
+        raise _private_hold(
+            "outbound_field_mapping_missing",
+            "use a mapped GitHub publication operation and retry; no fallback notification was created",
+        )
+    fields = {
+        name: arguments[name]
+        for name in names
+        if isinstance(arguments.get(name), str)
+    }
+    matched_fields = []
+    matched_terms = set()
+    for name, value in fields.items():
+        terms = _identity_matches(value)
+        if terms:
+            matched_fields.append(name)
+            matched_terms.update(terms)
+    if matched_fields:
+        ordered_terms = [term for term in _IDENTITY_TERMS if term in matched_terms]
+        raise _private_hold(
+            "outbound_identity_attribution",
+            "remove " + ", ".join(ordered_terms) + " from outward field(s) "
+            + ", ".join(matched_fields) + ", then retry the same operation",
+            fields=matched_fields,
+            terms=ordered_terms,
+        )
+    if operation in _PROSE_OPERATIONS:
+        title = fields.get("title", "")
+        body = "\n".join(
+            fields[name]
+            for name in ("body", "comment", "review")
+            if fields.get(name)
+        )
+        decision = check_publication(body, title)
+        if not decision["allowed"]:
+            raise _private_hold(
+                decision["code"],
+                "revise the provider-visible title or body and retry the same operation; no fallback notification was created",
+                fields=tuple(fields),
+            )
 
 
 def publish(operation, arguments, operation_id, *, runner=None, client=None):
     if not isinstance(operation_id, str) or not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.:-]{0,199}", operation_id):
         raise EquipmentError("operation_id must be a stable publication ID")
+    _preflight(operation, arguments)
     client = Path(client) if client is not None else Path.home() / ".commons/tjlabs-publication/publish.py"
     if not client.is_file():
         raise EquipmentError("existing account publishing client is unavailable; restore its shared installation")

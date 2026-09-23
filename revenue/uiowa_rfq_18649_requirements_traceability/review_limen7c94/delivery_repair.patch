@@ -1,0 +1,94 @@
+--- a/revenue/uiowa_rfq_18649_requirements_traceability/trace.py
++++ b/revenue/uiowa_rfq_18649_requirements_traceability/trace.py
+@@ -346,8 +346,12 @@
+         }
+ 
+ 
++# The original ten columns keep their order and criterion-level meaning.
++# Packet diagnostics repeat on each row; an orphan is not a fake criterion.
+ SHEET_COLUMNS = ("example_id", "delivery_style", "request_id", "criterion_id", "revision",
+-                 "state", "closed", "detail", "follow_up", "text")
++                 "state", "closed", "detail", "follow_up", "text",
++                 "packet_verdict", "packet_open_criteria", "packet_dangling_link_count",
++                 "packet_dangling_links", "packet_follow_up")
+ 
+ 
+ def write_sheet(examples, path):
+@@ -355,10 +359,17 @@
+         w = csv.writer(fh)
+         w.writerow(SHEET_COLUMNS)
+         for ex in examples:
++            dangling = ex.dangling_links()
++            packet_fields = [ex.verdict(), len(ex.open_criteria()), len(dangling),
++                             json.dumps(dangling, ensure_ascii=False, sort_keys=True),
++                             ("Resolve the listed record references before closing this packet."
++                              if dangling else
++                              ("Review the open criterion follow-ups."
++                               if ex.open_criteria() else "No open packet question."))]
+             for r in ex.results:
+                 w.writerow([ex.example_id, ex.style, r["request_id"], r["criterion_id"],
+                             r["revision"], r["state"], r["closed"], "; ".join(r["detail"]),
+-                            r["follow_up"], r["text"]])
++                            r["follow_up"], r["text"]] + packet_fields)
+ 
+ 
+ def render_markdown(examples):
+@@ -447,6 +458,33 @@
+         raise ValueError("cannot read %s: %s" % (path, exc.strerror))
+ 
+ 
++def _same_file(left, right):
++    """Detect stable path, symlink and hardlink aliases before any output write.
++
++    This is a preflight, not a lock or a concurrent-filesystem guarantee.
++    """
++    if os.path.normcase(os.path.realpath(left)) == os.path.normcase(os.path.realpath(right)):
++        return True
++    try:
++        return os.path.samefile(left, right)
++    except FileNotFoundError:
++        return False
++
++
++def _output_paths(inputs, outdir):
++    paths = [os.path.join(outdir, name) for name in
++             ("traceability_sheet.csv", "traceability.json", "traceability_report.md")]
++    for index, target in enumerate(paths):
++        for source in inputs:
++            if _same_file(source, target):
++                raise TraceError("output %s aliases input %s; choose a separate output directory"
++                                 % (target, source))
++        for previous in paths[:index]:
++            if _same_file(previous, target):
++                raise TraceError("output files alias each other: %s and %s" % (previous, target))
++    return paths
++
++
+ def main(argv=None):
+     p = argparse.ArgumentParser(description="Requirements-to-acceptance traceability.")
+     p.add_argument("--input", required=True, nargs="+")
+@@ -463,12 +501,18 @@
+             return 2
+ 
+     if args.outdir:
+-        os.makedirs(args.outdir, exist_ok=True)
+-        write_sheet(examples, os.path.join(args.outdir, "traceability_sheet.csv"))
+-        with open(os.path.join(args.outdir, "traceability.json"), "w", encoding="utf-8") as fh:
+-            json.dump([e.as_dict() for e in examples], fh, indent=2, sort_keys=True)
+-        with open(os.path.join(args.outdir, "traceability_report.md"), "w", encoding="utf-8") as fh:
+-            fh.write(render_markdown(examples))
++        try:
++            # Resolve every collision before creating a directory or replacing any report.
++            sheet_path, json_path, markdown_path = _output_paths(args.input, args.outdir)
++            os.makedirs(args.outdir, exist_ok=True)
++            write_sheet(examples, sheet_path)
++            with open(json_path, "w", encoding="utf-8") as fh:
++                json.dump([e.as_dict() for e in examples], fh, indent=2, sort_keys=True)
++            with open(markdown_path, "w", encoding="utf-8") as fh:
++                fh.write(render_markdown(examples))
++        except (OSError, ValueError) as exc:
++            sys.stderr.write("error: cannot publish reports: %s\n" % exc)
++            return 2
+         sys.stdout.write("wrote 3 files to %s\n" % args.outdir)
+ 
+     if args.do_print or not args.outdir:
