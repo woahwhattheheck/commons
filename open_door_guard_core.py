@@ -172,7 +172,7 @@ LINE_RULES = (
     ),
     _rule(
         "unlisted-action",
-        r"\b(?:unlisted|unsupported|unknown)\s+(?:verb|action)s?\b|\b(?:verb|action)\b.{0,32}\bnot\s+in\b",
+        r"\b(?:unlisted|unsupported|unknown)\s+(?:verb|action)s?\b|\b(?:verb|action)\b.{0,32}\bnot\s+in\b|\bif\s+action\s*!=\s*[\"']closed[\"']\s+and\s+action\s*!=\s*[\"']reopened[\"']",
         "unlisted actions may not be rejected",
     ),
     _rule(

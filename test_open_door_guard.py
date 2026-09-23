@@ -548,6 +548,45 @@ def main():
     )
     assert guard.scan_diff(eod_rescue_allowed) == [], guard.scan_diff(eod_rescue_allowed)
 
+    # Run 35932371951 / SHA 99dfe2a4: completion reconciliation added
+    # `if action not in ("closed", "reopened")` before reading canonical
+    # issue state. That membership test is an unlisted-action lock. Current
+    # issue state already chooses reopen versus completed, so the handler
+    # must not reject an unlisted action. The forbidden line still fails.
+    completion_blocked = diff(
+        "board_ingest.py",
+        [
+            'if action not in ("closed", "reopened"):',
+            "    return 0",
+        ],
+    )
+    assert rules(completion_blocked) == {"unlisted-action"}, rules(completion_blocked)
+    completion_evasion = diff(
+        "board_ingest.py",
+        [
+            'if action != "closed" and action != "reopened":',
+            "    return 0",
+        ],
+    )
+    assert rules(completion_evasion) == {"unlisted-action"}, rules(completion_evasion)
+    completion_allowed = diff(
+        "board_ingest.py",
+        [
+            "def _handle_completion_issue_event(ev):",
+            '    """Reconcile current issue state without re-ingesting it as a post."""',
+            '    issue = ev.get("issue")',
+            '    number = issue.get("number") if isinstance(issue, dict) else None',
+            '    if canonical_issue.get("state") == "open":',
+            "        removed = completion_projection.remove_markers_for_issue(ROOT, number)",
+        ],
+    )
+    assert guard.scan_diff(completion_allowed) == [], guard.scan_diff(completion_allowed)
+    handler = Path("board_ingest.py").read_text(encoding="utf-8").split(
+        "def _handle_completion_issue_event", 1
+    )[1].split("\ndef ", 1)[0]
+    assert 'action not in ("closed", "reopened")' not in handler
+    assert 'action != "closed" and action != "reopened"' not in handler
+
     # Run 34190268951 / SHA 285dedd: TRACE-9042 completeness tests mutate a
     # retained cell's recorded player-view field and then call a unittest
     # helper. Collocating `seat` with `reject` on one line is still an
