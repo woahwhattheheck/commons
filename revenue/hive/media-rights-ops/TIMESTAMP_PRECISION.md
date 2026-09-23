@@ -1,68 +1,56 @@
-# Timestamp precision and upgrade note
+# Timestamp precision and consistency contract
 
-Operation: `MEDIA-RIGHTS-TIMESTAMP-PRECISION-ZKR7P9-20260918`.
-Repair: Z-Kestrel-Rights-7P9 / GPT-6 Astra Pro. The existing Content Rights & Usage-Window Operations Desk and all prior product, export-custody, donor, review and integration credits remain with their original contributors. This is a repair of the landed product from #14863, not a new product or a revival of superseded #14670.
+The Content Rights & Usage-Window Operations Desk supports exact offset-aware timestamps through **microsecond precision** while preserving the existing whole-second canonical representation. This completes the broader temporal/read-consistency work requested in #15965 while retaining Z-Kestrel-Rights-7P9's #15973 parser hardening and the original product/export-custody lineage.
 
-## Supported v1 representation
+## Representable timestamps
 
-The v1 ledger, hashes, snapshots and SQL retraction ordering use whole UTC seconds (`YYYY-MM-DDTHH:MM:SSZ`). Every caller of `parse_time` / `norm_time` now rejects nonzero fractional time or offset components rather than discarding them. This applies to grant windows, placement windows, import/record/revocation clocks, queue clocks and the exporter through its existing model calls.
-
-Zero-only fractions are equivalent syntax and remain accepted, including more than six zero digits. Whole-second offset equivalence, basic/week-date ISO forms accepted by the interpreter, and dot/comma date-time separators are preserved. UTC normalization beyond years 1..9999 raises the product's `RightsError` rather than leaking `OverflowError`.
+`parse_time` / `norm_time` accept whole seconds and supplied fractional **seconds** with one through six digits. Values normalize to UTC. Whole seconds remain `YYYY-MM-DDTHH:MM:SSZ`; nonzero microseconds use six canonical digits.
 
 Examples:
 
-| Supplied value | Result |
+| Supplied value | Canonical result |
 | --- | --- |
-| `2026-09-18T12:00:00Z` | Unchanged |
-| `2026-09-18T14:00:00.000000000+02:00` | `2026-09-18T12:00:00Z` |
-| `2026-09-18.123456Z` | `2026-09-18T12:34:56Z` (the dot is a date-time separator) |
-| `2026-09-18T12:00:00.1Z` | `RightsError`, no rounding |
-| `2026-09-18T12:00:00.0000001Z` | `RightsError`, even below datetime precision |
-| `2026-09-18T12:00:00+00:00:00.1` | `RightsError`, even when datetime discards this offset fraction |
-| `0001-01-01T00:00:00+00:01` | `RightsError`, UTC range overflow |
+| `2026-09-18T12:00:00Z` | `2026-09-18T12:00:00Z` |
+| `2026-09-18T14:00:00.1+02:00` | `2026-09-18T12:00:00.100000Z` |
+| `2026-09-18T12:00:00.123456Z` | `2026-09-18T12:00:00.123456Z` |
+| `2026-09-18T12:00:00.000000000Z` | `2026-09-18T12:00:00Z` |
+| `2026-09-18.123456Z` | `2026-09-18T12:34:56Z` (dot is the ISO date/time separator) |
+| `2026-09-18T12:00:00.1234567Z` | `RightsError` |
+| `2026W38112.0000001+00:00` | `RightsError` |
+| `2026-09-18T12:00:00+00:00:00.1` | `RightsError` |
 
-The parser checks original fractional digits as well as the resulting datetime. Checking only `datetime.microsecond` is insufficient. It recognizes a date-time dot/comma separator only when its prefix is a complete ISO date; that separator must not be mistaken for a fraction. Compact week-date strings with trailing time digits (for example `2026W38112.0000001Z`) must not use the date-prefix exemption.
+The parser inspects the original fractional digits, not only the `datetime` result. This matters because CPython accepts some forms while silently discarding excess or offset precision. A dot/comma is exempted as a date/time separator only when the prefix is a complete ISO date, preserving the compact-week-date hostile found during #15973 review.
 
-## Why not just persist fractions?
+Fractional UTC-offset components are intentionally unsupported: they fail closed rather than expanding the stored-input contract. UTC normalization outside years 1..9999 remains a product-domain `RightsError`.
 
-The current SQL retraction predicate compares normalized timestamp text. Mixing `...00Z` with `...00.100000Z` would not preserve chronological lexical order. Simply changing `isoformat(timespec='seconds')` would therefore introduce a separate queue error and would change stored request identities. Subsecond support requires a separately designed storage/ordering/receipt migration, not a formatting-only change.
+## Queue ordering
 
-This repair makes the existing whole-second representation explicit. It does not claim subsecond support, infer a replacement timestamp, widen a grant, or add a schema migration. Callers must not silently round rejected input to obtain acceptance.
+Persisted timestamps are canonical strings, but lexical ordering is not chronological when whole-second and fractional forms are mixed: `...00Z` and `...00.500000Z` place `Z` and `.` differently in text order. Retraction eligibility therefore no longer uses a SQL text comparison. The shared queue projector loads the candidate rows and compares `ends_at` and `revoked_at` as parsed instants.
 
-## Existing data
+Standalone `queues()` and exported `queues.json` use that same projector, so they cannot disagree merely because one path retained the old text predicate.
 
-The earlier implementation could truncate both grants and placements before hashing and recording them. Precision discarded by that implementation cannot be recovered from the stored timestamp or hash. Installing this repair does not retrospectively certify those records.
+## Read generations
 
-Preserve original inputs and existing ledger/export bytes. Reconcile any previously fractional records against the original owner-supplied authority; construct a separate corrected ledger only from confirmed, representable facts. Do not overwrite old audit history or manufacture missing precision. This repair itself performs no migration, external publication/removal, provider operation, contact, payment or revenue mutation.
+`evaluate()`, `queues()`, and `snapshot()` each hold one SQLite read transaction across their complete public projection. Under WAL, a supported concurrent writer may commit while that read is in progress, but the reader remains on one database generation instead of splicing pre-write and post-write rows.
 
-## Reproducible validation
+The export path retains its existing stronger `BEGIN IMMEDIATE` connection guard and descriptor-relative filesystem publication/custody logic. Only its queue semantics delegate to the shared parsed-instant projector.
 
-From the repository root:
+## Historical data and compatibility
+
+Whole-second input, hashes, request replay, fixed fixture snapshot identity, and export semantics remain compatible. Existing historical receipts are never rewritten. If an older version discarded fractional digits before hashing or storage, those missing digits cannot be recovered from the ledger; any corrected record must come from separately confirmed original evidence.
+
+## Validation
+
+From this directory:
 
 ```sh
-cd revenue/hive/media-rights-ops
-python -m unittest -v test_timestamp_precision
-python -O -m unittest -v test_timestamp_precision
-python -m py_compile rights_model.py rights_store.py test_timestamp_precision.py
+python -m unittest -q \
+  test_rights_ops.py test_export_generation.py test_export_custody.py \
+  test_timestamp_precision.py test_temporal_completion.py
+python -O -m unittest -q \
+  test_rights_ops.py test_export_generation.py test_export_custody.py \
+  test_timestamp_precision.py test_temporal_completion.py
+python -m py_compile rights_model.py rights_store.py rights_export.py rights_ops.py rights_http.py operator_rehearsal.py
 ```
 
-Observed on predecessor repair head `fe99e2584db2ca1f8946cf04f84048f7bfaa7672` in the ephemeral cloud execution environment: Python 3.13.5, SQLite 3.46.1, Linux x86_64. Both normal and optimized runs passed **24/24 tests**, exit 0; compilation passed. Repeating with `-S` also passed 24/24 in both modes. Independent review then found and added a regression for compact week-date time digits masking a nonzero fractional tail; the final exact-head rerun is recorded in the PR conversation before integration. This is focused model/store execution, not a claim that the entire legacy export/HTTP suite or a hosted Python-version matrix ran in this session.
-
-Source was reconstructed from exact GitHub blobs and checked with Git's blob SHA-1 before execution:
-
-| File | Git blob |
-| --- | --- |
-| predecessor `rights_model.py` | `7df374a730546f38656ad6f07d47c0d8c52dd2c1` |
-| repaired `rights_model.py` | `1a715898d69d7182c192d5917730f73ef043c1a3` |
-| unchanged `rights_store.py` | `4f24b26360980b68a37f8f1e196bc2120f4ebae6` |
-| new `test_timestamp_precision.py` | `b94f571bce32c7c56f4e185a8b6e248b1a56cf0c` |
-
-The same 24-test suite against the predecessor exited 1 with 35 failed subcases and 4 errors. Cases cover fractional seconds/offsets, precision beyond microseconds, UTC overflow, import-before-directory-creation, placement/revocation replay collisions, no ledger/audit mutation on rejection, exact whole-second grant edges, legitimate replay, and renewal/retraction behavior.
-
-The fixed whole-second import -> placement -> revocation -> snapshot fixture has identical predecessor/repaired snapshot SHA-256:
-
-`ab5b6c418059575b5b5b1a06adf7f27ac254087085202d53145cd70f63972dce`
-
-That value is asserted in the regression suite. It establishes compatibility for this executed fixture, not a blanket equivalence claim for every possible ledger.
-
-No new workflow, runner spend, repository-visibility change, buyer acceptance, payment or revenue is asserted by this work.
+The focused temporal tests include exact microsecond normalization, seventh-digit/compact-week rejection, fractional-offset refusal, replay identity, parsed retraction boundaries, and real two-connection WAL interleavings for both snapshot and queue readers. `operator_rehearsal.py` supplies the separate end-to-end CLI/readback exercise.

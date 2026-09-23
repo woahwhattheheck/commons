@@ -2,10 +2,13 @@
 
 from __future__ import annotations
 
+import io
 import json
 import tempfile
 import unittest
+import urllib.error
 from contextlib import redirect_stdout
+from email.message import Message
 from io import StringIO
 from pathlib import Path
 from unittest import mock
@@ -460,6 +463,107 @@ edited payload
             ids = client.list_channel_ids()
         self.assertEqual(ids, ["C0BRGMDQB6G", "C0SOMEOTHER1"])
 
+    def test_list_channel_ids_retries_per_type_when_combined_scope_is_missing(self) -> None:
+        client = si.SlackClient("token")
+        calls: list[str] = []
+
+        def fake_call(method: str, params: dict[str, object]) -> dict[str, object]:
+            self.assertEqual(method, "conversations.list")
+            types = str(params.get("types") or "")
+            calls.append(types)
+            if types == "public_channel,private_channel":
+                return {
+                    "ok": False,
+                    "error": "missing_scope",
+                    "needed": "groups:read",
+                    "provided": "channels:read,channels:history",
+                }
+            if types == "public_channel":
+                return {
+                    "ok": True,
+                    "channels": [
+                        {"id": "C0BRGMDQB6G"},
+                        {"id": "C0SOMEOTHER1"},
+                        {"id": "D0IMCHANNEL1", "is_im": True},
+                    ],
+                }
+            if types == "private_channel":
+                return {
+                    "ok": False,
+                    "error": "missing_scope",
+                    "needed": "groups:read",
+                    "provided": "channels:read,channels:history",
+                }
+            raise AssertionError(types)
+
+        client.call = fake_call  # type: ignore[method-assign]
+        with mock.patch.dict(si.os.environ, {"COMMONS_SLACK_CHANNEL": "C0BRGMDQB6G"}):
+            ids = client.list_channel_ids()
+        self.assertEqual(ids, ["C0BRGMDQB6G", "C0SOMEOTHER1"])
+        self.assertEqual(
+            calls,
+            ["public_channel,private_channel", "public_channel", "private_channel"],
+        )
+
+    def test_list_channel_ids_uses_default_when_every_list_scope_is_missing(self) -> None:
+        client = si.SlackClient("token")
+
+        def fake_call(method: str, params: dict[str, object]) -> dict[str, object]:
+            self.assertEqual(method, "conversations.list")
+            return {
+                "ok": False,
+                "error": "missing_scope",
+                "needed": "channels:read,groups:read",
+                "provided": "chat:write",
+            }
+
+        client.call = fake_call  # type: ignore[method-assign]
+        ids = client.list_channel_ids()
+        self.assertEqual(ids, [si.CHANNEL_ID])
+
+    def test_list_channel_ids_still_raises_non_scope_list_errors(self) -> None:
+        client = si.SlackClient("token")
+
+        def fake_call(method: str, params: dict[str, object]) -> dict[str, object]:
+            return {"ok": False, "error": "invalid_auth"}
+
+        client.call = fake_call  # type: ignore[method-assign]
+        with self.assertRaises(si.IngestError) as raised:
+            client.list_channel_ids()
+        self.assertIn("conversations.list", str(raised.exception))
+        self.assertIn("invalid_auth", str(raised.exception))
+
+    def test_events_scan_default_channel_when_list_scope_is_missing(self) -> None:
+        client = si.SlackClient("token")
+
+        def fake_call(method: str, params: dict[str, object]) -> dict[str, object]:
+            if method == "auth.test":
+                return {"ok": True, "team_id": "T0BRETUB5TK"}
+            if method == "conversations.list":
+                return {
+                    "ok": False,
+                    "error": "missing_scope",
+                    "needed": "channels:read",
+                    "provided": "channels:history,chat:write",
+                }
+            if method == "conversations.history":
+                self.assertEqual(params.get("channel"), si.CHANNEL_ID)
+                return {
+                    "ok": True,
+                    "messages": [
+                        {"ts": "10.0", "text": "from: GPT\n\nbody", "user": "U1"}
+                    ],
+                }
+            if method == "users.info":
+                return {"ok": True, "user": {"profile": {"display_name": "GPT"}}}
+            raise AssertionError(method)
+
+        client.call = fake_call  # type: ignore[method-assign]
+        events = client.events("9.0")
+        self.assertEqual([event["ts"] for event in events], ["10.0"])
+        self.assertEqual(events[0]["channel"], si.CHANNEL_ID)
+        self.assertEqual(events[0]["_team_id"], "T0BRETUB5TK")
+
     def test_exact_existing_record_is_noop_and_mismatch_is_immutable(self) -> None:
         event = {"ts": "1787472270.224369", "text": SOURCE, "user": "U1"}
         record = si.issue_record(event)
@@ -639,6 +743,221 @@ PLAIN: Slack :left_right_arrow: Commons exact body.
             payload = json.loads(output.getvalue())
             self.assertEqual(payload["title"], "slack-9-25")
             self.assertEqual(payload["labels"], ["board"])
+
+    def _github_http_error(
+        self, code: int, body: str, retry_after: str | None = None
+    ) -> urllib.error.HTTPError:
+        headers = Message()
+        if retry_after is not None:
+            headers["Retry-After"] = retry_after
+        return urllib.error.HTTPError(
+            "https://api.github.com/repos/woahwhattheheck/commons/issues",
+            code,
+            "Forbidden",
+            headers,
+            io.BytesIO(body.encode("utf-8")),
+        )
+
+    def test_github_rate_limited_helper_matches_measured_bodies(self) -> None:
+        self.assertTrue(si.github_rate_limited(429, ""))
+        self.assertTrue(
+            si.github_rate_limited(
+                403,
+                "You have exceeded a secondary rate limit and have been temporarily blocked from content creation.",
+            )
+        )
+        self.assertFalse(
+            si.github_rate_limited(403, "Resource not accessible by integration")
+        )
+        self.assertFalse(si.github_rate_limited(404, "rate limit"))
+        self.assertEqual(si.github_retry_after({"Retry-After": "7"}), 7)
+
+    def test_github_request_retries_secondary_rate_limit_then_succeeds(self) -> None:
+        client = si.GitHubClient("token")
+        body = (
+            '{"message":"You have exceeded a secondary rate limit and have been '
+            'temporarily blocked from content creation. Please retry your request again later."}'
+        )
+        calls = {"n": 0}
+
+        class FakeResponse:
+            def read(self) -> bytes:
+                return b'{"html_url":"https://github.test/issues/9"}'
+
+            def __enter__(self) -> "FakeResponse":
+                return self
+
+            def __exit__(self, *args: object) -> bool:
+                return False
+
+        def fake_urlopen(_request: object, timeout: int = 30) -> FakeResponse:
+            calls["n"] += 1
+            if calls["n"] == 1:
+                raise self._github_http_error(403, body, "1")
+            return FakeResponse()
+
+        with (
+            mock.patch("urllib.request.urlopen", fake_urlopen),
+            mock.patch.object(si.time, "sleep") as slept,
+        ):
+            data = client.request(
+                "POST",
+                "/repos/woahwhattheheck/commons/issues",
+                {"title": "x"},
+            )
+        self.assertEqual(data["html_url"], "https://github.test/issues/9")
+        self.assertEqual(calls["n"], 2)
+        slept.assert_called_once_with(1)
+
+    def test_github_request_still_raises_non_rate_limit_403(self) -> None:
+        client = si.GitHubClient("token")
+
+        def fake_urlopen(_request: object, timeout: int = 30) -> object:
+            raise self._github_http_error(
+                403, '{"message":"Resource not accessible by integration"}'
+            )
+
+        with (
+            mock.patch("urllib.request.urlopen", fake_urlopen),
+            mock.patch.object(si.time, "sleep") as slept,
+        ):
+            with self.assertRaises(si.IngestError) as raised:
+                client.request(
+                    "POST",
+                    "/repos/woahwhattheheck/commons/issues",
+                    {"title": "x"},
+                )
+        self.assertIn("403", str(raised.exception))
+        self.assertIn("Resource not accessible", str(raised.exception))
+        slept.assert_not_called()
+
+    def test_github_request_raises_after_exhausted_rate_limit_retries(self) -> None:
+        client = si.GitHubClient("token")
+        body = '{"message":"You have exceeded a secondary rate limit"}'
+
+        def fake_urlopen(_request: object, timeout: int = 30) -> object:
+            raise self._github_http_error(403, body, "1")
+
+        with (
+            mock.patch("urllib.request.urlopen", fake_urlopen),
+            mock.patch.object(si.time, "sleep") as slept,
+        ):
+            with self.assertRaises(si.IngestError) as raised:
+                client.request(
+                    "POST",
+                    "/repos/woahwhattheheck/commons/issues",
+                    {"title": "x"},
+                )
+        self.assertIn("403", str(raised.exception))
+        self.assertIn("secondary rate limit", str(raised.exception))
+        self.assertEqual(slept.call_count, 2)
+
+    def test_github_request_waits_one_minute_when_content_creation_block_omits_retry_after(self) -> None:
+        client = si.GitHubClient("token")
+        body = (
+            '{"message":"You have exceeded a secondary rate limit and have been '
+            'temporarily blocked from content creation. Please retry your request again later."}'
+        )
+        calls = {"n": 0}
+
+        class FakeResponse:
+            def read(self) -> bytes:
+                return b'{"html_url":"https://github.test/issues/9"}'
+
+            def __enter__(self) -> "FakeResponse":
+                return self
+
+            def __exit__(self, *args: object) -> bool:
+                return False
+
+        def fake_urlopen(_request: object, timeout: int = 30) -> FakeResponse:
+            calls["n"] += 1
+            if calls["n"] == 1:
+                raise self._github_http_error(403, body)
+            return FakeResponse()
+
+        with (
+            mock.patch("urllib.request.urlopen", fake_urlopen),
+            mock.patch.object(si.time, "sleep") as slept,
+        ):
+            data = client.request(
+                "POST",
+                "/repos/woahwhattheheck/commons/issues",
+                {"title": "x"},
+            )
+        self.assertEqual(data["html_url"], "https://github.test/issues/9")
+        self.assertEqual(calls["n"], 2)
+        slept.assert_called_once_with(60)
+
+    def test_create_issue_paces_successive_content_creation_posts(self) -> None:
+        client = si.GitHubClient("token")
+        record = si.issue_record({"ts": "12.0", "text": "from: GPT\n\none", "user": "U1"})
+        later = si.issue_record({"ts": "13.0", "text": "from: GPT\n\ntwo", "user": "U1"})
+        ticks = iter([0.0, 0.0, 2.0])
+
+        class FakeResponse:
+            def read(self) -> bytes:
+                return b'{"html_url":"https://github.test/issues/9"}'
+
+            def __enter__(self) -> "FakeResponse":
+                return self
+
+            def __exit__(self, *args: object) -> bool:
+                return False
+
+        with (
+            mock.patch("urllib.request.urlopen", lambda *_args, **_kwargs: FakeResponse()),
+            mock.patch.object(si.time, "monotonic", side_effect=lambda: next(ticks)),
+            mock.patch.object(si.time, "sleep") as slept,
+        ):
+            client.create_issue(record)
+            client.create_issue(later)
+        slept.assert_called_once_with(si.GITHUB_CONTENT_CREATE_INTERVAL_SEC)
+
+    def test_sync_keeps_cursor_of_written_records_when_a_later_create_fails(self) -> None:
+        events = [
+            {"ts": "12.0", "text": "from: GPT\n\nfirst", "user": "U1"},
+            {"ts": "13.0", "text": "from: GPT\n\nsecond", "user": "U1"},
+        ]
+        created: list[str] = []
+
+        class FakeSlack:
+            def __init__(self, _token: str):
+                pass
+
+            def events(self, _oldest: str) -> list[dict[str, str]]:
+                return events
+
+        class FakeGitHub:
+            def __init__(self, _token: str):
+                pass
+
+            def issue_exists(self, _record: object) -> bool:
+                return False
+
+            def create_issue(self, record: si.IssueRecord) -> str:
+                if record.title == "slack-13-0":
+                    raise si.IngestError(
+                        "GitHub HTTP 403: You have exceeded a secondary rate limit "
+                        "and have been temporarily blocked from content creation."
+                    )
+                created.append(record.title)
+                return "https://github.test/issues/1"
+
+        with tempfile.TemporaryDirectory() as tmp:
+            state = Path(tmp) / "state.json"
+            state.write_text('{"cursor":"11.25"}\n', encoding="utf-8")
+            with (
+                mock.patch.object(si, "SlackClient", FakeSlack),
+                mock.patch.object(si, "GitHubClient", FakeGitHub),
+                mock.patch.object(si, "high_water", return_value="10.0"),
+                mock.patch.dict(si.os.environ, {"SLACK_BOT_TOKEN": "x", "GITHUB_TOKEN": "y"}),
+            ):
+                with self.assertRaises(si.IngestError) as raised:
+                    si.cmd_sync(None, state)
+            self.assertIn("secondary rate limit", str(raised.exception))
+            self.assertEqual(created, ["slack-12-0"])
+            self.assertEqual(si.read_state(state), "12.0")
 
 
 if __name__ == "__main__":

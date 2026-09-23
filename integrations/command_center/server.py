@@ -8,6 +8,7 @@ from pathlib import Path
 from urllib.parse import urlsplit, parse_qs
 from .core import CommandCenter, CoreError
 from .telemetry import with_host
+from . import work_feed_evidence
 
 WEB = Path(__file__).with_name("web")
 # integrations/command_center/server.py -> repository root. The observability
@@ -25,6 +26,7 @@ MANIFEST = {
     "mutations": ROUTES,
     "observability": "GET /api/observability; the four board bakes read from main at the current commit (checkout fallback, labelled), liveness recomputed at read time; optional limit=N caps the board events returned, refresh=1 re-reads main now",
     "work": "GET /api/work; any read older than freshness.ttl_seconds since the last completed collection starts one bounded direct-provider read in the background and returns at once, with a freshness block; GET /api/work?refresh=1 starts one now",
+    "dispatch_preview": "POST /api/work/dispatch-preview: bounded normalized exports -> process-time advisory evidence preview; no source reads, state changes, claims or sends. Supplied coverage is not provider authentication.",
     "ingest_work": "POST /api/work/ingest: operation_id, source with explicit scope/coverage/observed_at, selected items",
     "direct_work_refresh": "POST /api/work/refresh; status is included in GET /api/work",
     "owner_work": "POST /api/work/item: operation_id, source_id, item_id, priority, next_action, optional prepared job",
@@ -32,6 +34,7 @@ MANIFEST = {
     "context": "GET /api/context?limit=20&offset=0&q=&owner=&provider=&source=&kind=&status=&if_revision=: bounded selective metadata, explicit omissions and stable revision. No provider reads. owner is the provider-reported label, not worker assignment.",
     "context_item": "GET /api/context/item?source_id=...&item_id=...: one exact stored normalized observation, independent of filtered visibility.",
     "summary": "GET /api/summary: bounded cache-only Deathstar view; no provider calls, freshness and observed lower-bound throughput, typed money records and request cooldowns",
+    "decisions": "GET /api/decisions: Deathstar decision rows over the /api/work state (source_health included) and operator_control mode, one per active operation (explicit metadata.operation key): provider stage, waiting_on_us/them and what, next action, owner, agents with heartbeat age, source freshness/cooldown/coverage, money at risk/collected; exceptions (deadlines, stalled gates, owner_only, held publications) and blocked agents at top level; typed stages and receipts as drilldown. Unknown fields name the source that would answer them.",
     "swarm": "GET /api/swarm: existing PR queue, GPT review batches, exact receipts and freshness; ground/SWARM_ORDER.md governs integration",
     "source_modes": "Direct collectors use existing shared GitHub and Slack service roads. Gmail, Airtable and native task observations are supplied by their actual connector-equipped peers through ingest. A source read does not establish complete fleet coverage or business activity.",
     "sharing": "The human and all current and future Commons peers use the same state and capabilities. Roles coordinate responsibility, never access.",
@@ -107,6 +110,9 @@ class Handler(BaseHTTPRequestHandler):
                 self.send_json(200, self.server.center.work_mail(limit, offset, query.get("q", [""])[0], query.get("mode", ["all"])[0]))
             elif parsed.path == "/api/summary":
                 self.send_json(200, self.server.center.work_summary())
+            elif parsed.path == "/api/decisions":
+                from . import decisions
+                self.send_json(200, decisions.read(self.server.center, REPO_ROOT))
             elif parsed.path == "/api/work":
                 self.send_json(200, self.server.center.work_state(refresh=parse_qs(parsed.query).get("refresh") == ["1"]))
             elif parsed.path == "/api/swarm":
@@ -153,7 +159,7 @@ class Handler(BaseHTTPRequestHandler):
             self.send_json(400, {"error": "invalid_origin"})
             return
         path = urlsplit(self.path).path
-        if path not in ROUTES and path not in {"/api/tools/call", "/api/work/ingest", "/api/work/item", "/api/work/refresh"}:
+        if path not in ROUTES and path not in {"/api/tools/call", "/api/work/ingest", "/api/work/item", "/api/work/refresh", "/api/work/dispatch-preview"}:
             self.send_json(404, {"error": "not_found"})
             return
         try:
@@ -164,10 +170,14 @@ class Handler(BaseHTTPRequestHandler):
             if not 0 < size <= 1048576:
                 self.send_json(413, {"error": "body_size"})
                 return
-            payload = json.loads(self.rfile.read(size).decode("utf-8"))
+            raw_body = self.rfile.read(size)
+            payload = (work_feed_evidence.load_json(raw_body) if path == "/api/work/dispatch-preview"
+                       else json.loads(raw_body.decode("utf-8")))
             if not isinstance(payload, dict):
                 raise ValueError("JSON object required")
-            if path == "/api/work/ingest":
+            if path == "/api/work/dispatch-preview":
+                result = work_feed_evidence.compile_current(payload)
+            elif path == "/api/work/ingest":
                 result = self.server.center.ingest_work(payload)
             elif path == "/api/work/item":
                 result = {**self.server.center.update_work(payload), "status": "completed"}

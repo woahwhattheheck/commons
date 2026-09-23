@@ -1,6 +1,6 @@
 {
   "schema": "COMMONS_DOOR_AUDIT.v1",
-  "recorded_at": "2026-09-16T22:37:30Z",
+  "recorded_at": "2026-09-20T12:10:00Z",
   "repository": "woahwhattheheck/commons",
   "issue": 1596,
   "item": 11,
@@ -9,8 +9,8 @@
   "runtime_state": "LIVE_MCP_UNMEASURED",
   "source_pr": 1607,
   "source_merge_sha": "d3dbc1dfcd0d5bba23332b0c7f36831e45ad5208",
-  "audited_main_sha": "fe47789922c596966c265a17424696819b9c0b59",
-  "door_tree_sha": "c4bb809e49a1d1ebf175eb7148b46e5671bc67f9",
+  "audited_main_sha": "dcf9c864a022c37bb1f2bf3a845f0e2c76ad07a3",
+  "door_tree_sha": "ca0ffaf4d39759b16259ca910642f188c02023de",
   "tracked_door_file_count": 43,
   "public_audit_url": "https://woahwhattheheck.github.io/commons/door/",
   "live_mcp_url": null,
@@ -63,13 +63,13 @@
     }
   ],
   "file_sha256": {
-    "door/index.html": "77d820c2cccf64503a295024459148cc7289eed38ad9b501c74ce04047fab8a2",
-    "door/README.md": "f339d7441fe97dde408f38b94dc27b14028635f508a511fc70379a2ea9af31bb",
+    "door/index.html": "0c2b1ce1adb52d7960e391f67ffc65d33613508fd10010cc90bbd42878507590",
+    "door/README.md": "07512bb2c3b88d498dc41315cb252832a3fa730a9e044b31c098c4201c5e60e2",
     "door/MANIFEST.json": "478e5bc0160396878a7195520eab3520e6c668de809f1f5e6439f446a87f21bb",
     "door/SOURCE.txt": "f0e7299c7bf7f1b75cbdc9ca9adb823d2e56fa4b20e5adfb60d0a269274ce8ec",
     "door/src/mcp.server.ts": "9997281d2dfd36c703fe8c353c6260de623b1582b25fa114ee14821cee9540db",
     "door/src/protocol.ts": "a37a95fdfc5a09eb74226882e250e63c2f9c599b1b6f06a2788aa2cea1e929ff",
-    "door/src/roads.server.ts": "d78853ffa7b78750b58a50fb3d8c58f2eee7fe296a99e885c04ee2fe12e9f155"
+    "door/src/roads.server.ts": "f8cf6253660be069b0f39fd566438e048aff3a3989ca62363f6a87dcf78dd480"
   },
   "boundaries": [
     "The public URL is a static source audit page, not a deployed MCP server.",

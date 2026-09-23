@@ -2,14 +2,14 @@
   "opportunity_id": "065-26/JW",
   "requirements": [
     {"evidence": [], "id": "submission_mechanics", "note": "Controlling packet not retained.", "state": "UNKNOWN"},
-    {"evidence": [], "id": "eligibility", "note": "No official bidder eligibility evidence retained.", "state": "UNKNOWN"},
-    {"evidence": [], "id": "security_compliance", "note": "Mirror mentions NIEM/CJIS/FedRAMP High; not promoted to buyer mandate.", "state": "UNKNOWN"},
-    {"evidence": [], "id": "past_performance", "note": "No owner evidence of required justice integration references retained.", "state": "UNKNOWN"},
-    {"evidence": [], "id": "insurance_legal", "note": "No controlling insurance/legal schedule retained.", "state": "UNKNOWN"},
-    {"evidence": [], "id": "pricing", "note": "No official pricing workbook or authority retained.", "state": "UNKNOWN"},
-    {"evidence": ["commons-public-engineering-carrier"], "id": "integration_engineering", "note": "Internal specialist capability only; not a buyer reference.", "state": "PROVEN"},
-    {"evidence": ["commons-deterministic-evidence-tooling"], "id": "validation_evidence", "note": "Internal specialist capability only.", "state": "PROVEN"},
+    {"evidence": [], "id": "eligibility", "note": "Owner eligibility satisfaction is unproven; requirement text alone cannot satisfy this gate.", "state": "UNKNOWN"},
+    {"evidence": [], "id": "security_compliance", "note": "Mirror mentions NIEM/CJIS/FedRAMP High; no source-owned owner qualification evidence retained.", "state": "UNKNOWN"},
+    {"evidence": [], "id": "past_performance", "note": "No source-owned owner evidence of required justice integration references retained.", "state": "UNKNOWN"},
+    {"evidence": [], "id": "insurance_legal", "note": "No source-owned owner insurance/legal satisfaction evidence retained.", "state": "UNKNOWN"},
+    {"evidence": [], "id": "pricing", "note": "No source-owned owner pricing satisfaction evidence retained.", "state": "UNKNOWN"},
+    {"evidence": [], "id": "integration_engineering", "note": "Prior unbound capability label retired; source-owned owner capability evidence required before PROVEN.", "state": "UNKNOWN"},
+    {"evidence": [], "id": "validation_evidence", "note": "Prior unbound capability label retired; source-owned owner capability evidence required before PROVEN.", "state": "UNKNOWN"},
     {"evidence": [], "id": "delivery_capacity", "note": "Named staffing/capacity for this procurement is unbound.", "state": "UNKNOWN"},
-    {"evidence": [], "id": "partner_prime", "note": "No evidenced prime partner selected.", "state": "UNKNOWN"}
+    {"evidence": [], "id": "partner_prime", "note": "No source-owned due-diligence evidence for a prime partner is retained.", "state": "UNKNOWN"}
   ]
 }

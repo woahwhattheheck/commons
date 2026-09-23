@@ -192,9 +192,19 @@ class BillingsBid1421AcceptanceRunnerTests(unittest.TestCase):
             html = door.read_text(encoding="utf-8").lower()
             self.assertNotIn("login", html)
             self.assertNotIn("price", html)
-            self.assertNotIn("buy now", html)
             self.assertNotIn("mailto:", html)
             self.assertNotIn("<form", html)
+            shelf_at = html.find('id="buy-now-live-checkout"')
+            self.assertNotEqual(shelf_at, -1)
+            live_at = html.find('id="live-cash"')
+            self.assertGreater(live_at, shelf_at)
+            shelf = html[shelf_at:live_at]
+            self.assertIn("buy now", shelf)
+            self.assertIn("sledge-baddl-billingsaccept-convert-shelf-20260917-01", shelf)
+            self.assertNotIn("buy now", html[:shelf_at])
+            self.assertNotIn("buy now", html[live_at:])
+            self.assertIn("working program door", html)
+            self.assertIn("not a city submission", html)
 
 
 if __name__ == "__main__":

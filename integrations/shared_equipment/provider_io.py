@@ -13,12 +13,30 @@ import urllib.parse
 import urllib.request
 from typing import Any
 
-from commons_publication_policy import require_publication
+from commons_publication_policy import (
+    PublicationPolicyViolation,
+    check_outbound_identity,
+    require_publication,
+)
 
 
 class EquipmentError(RuntimeError):
-    def __init__(self, message, *, code="equipment_error", uncertain=False, http_status=None,
-                 retry_after=None, rate_limit_remaining=None, rate_limit_reset=None):
+    def __init__(
+        self,
+        message,
+        *,
+        code="equipment_error",
+        uncertain=False,
+        http_status=None,
+        retry_after=None,
+        rate_limit_remaining=None,
+        rate_limit_reset=None,
+        incident=None,
+        delivered=None,
+        matched_fields=None,
+        matched_terms=None,
+        private_instruction=None,
+    ):
         super().__init__(message)
         self.code = code
         self.uncertain = uncertain
@@ -26,6 +44,11 @@ class EquipmentError(RuntimeError):
         self.retry_after = retry_after
         self.rate_limit_remaining = rate_limit_remaining
         self.rate_limit_reset = rate_limit_reset
+        self.incident = incident
+        self.delivered = delivered
+        self.matched_fields = tuple(matched_fields or ())
+        self.matched_terms = tuple(matched_terms or ())
+        self.private_instruction = private_instruction
 
 
 class _NoRedirect(urllib.request.HTTPRedirectHandler):
@@ -46,23 +69,43 @@ def redacted(value: Any) -> Any:
         return _SECRET_VALUES.sub("[REDACTED]", value)
     return value
 
-def _slack_publication_text(payload: dict) -> str:
-    """Collect displayed Slack prose, including blocks-only message edits."""
-    parts: list[str] = []
+def _slack_publication_fields(payload: dict) -> dict[str, str]:
+    """Select only final Slack-visible text, never IDs or action values."""
+    fields: dict[str, str] = {}
+    block_visible = {"text", "title", "alt_text", "label", "description", "initial_value"}
+    attachment_visible = {
+        "text", "title", "pretext", "fallback", "alt_text", "label",
+        "description", "footer", "author_name",
+    }
 
-    def collect(value: Any) -> None:
+    def collect(value: Any, path: str, visible: set[str], parent: str) -> None:
         if isinstance(value, list):
-            for item in value:
-                collect(item)
-        elif isinstance(value, dict):
-            for key, item in value.items():
-                if key in {"text", "title", "pretext", "fallback", "alt_text", "value"} and isinstance(item, str):
-                    parts.append(item)
-                elif isinstance(item, (dict, list)):
-                    collect(item)
+            for index, item in enumerate(value):
+                collect(item, f"{path}[{index}]", visible, parent)
+            return
+        if not isinstance(value, dict):
+            return
+        for key, item in value.items():
+            child = f"{path}.{key}" if path else key
+            if isinstance(item, str):
+                if key in visible or (key == "value" and parent == "fields"):
+                    fields[child] = item
+            elif isinstance(item, (dict, list)):
+                collect(item, child, visible, key)
 
-    collect({key: payload[key] for key in ("text", "blocks", "attachments") if key in payload})
-    return "\n".join(parts)
+    for key in ("text", "username"):
+        if isinstance(payload.get(key), str):
+            fields[key] = payload[key]
+    if isinstance(payload.get("blocks"), (dict, list)):
+        collect(payload["blocks"], "blocks", block_visible, "blocks")
+    if isinstance(payload.get("attachments"), (dict, list)):
+        collect(payload["attachments"], "attachments", attachment_visible, "attachments")
+    return fields
+
+
+def _slack_publication_text(payload: dict) -> str:
+    return "\n".join(_slack_publication_fields(payload).values())
+
 
 def _github_headers(stdout):
     """Extract only retry evidence from gh --include; never expose raw headers."""
@@ -92,6 +135,10 @@ class GitHubSlackEquipment:
         self.gh_runner = gh_runner or subprocess.run
         self.opener = opener or urllib.request.build_opener(_NoRedirect()).open
 
+    def _slack_write_route_verified(self) -> bool:
+        """Production remains read-only until sender identity/footer are verified."""
+        return False
+
     @staticmethod
     def _load_slack_token() -> str:
         # Consume the current encrypted store in memory. Never inject into model
@@ -104,11 +151,57 @@ class GitHubSlackEquipment:
 
 
     def slack(self, method: str, payload: dict) -> dict:
-        if method in {"chat.postMessage", "chat.update", "chat.postEphemeral", "chat.scheduleMessage"}:
+        read_method = method in {
+            "conversations.history",
+            "conversations.replies",
+            "chat.getPermalink",
+            "auth.test",
+        }
+        supported_write = method in {
+            "chat.postMessage",
+            "chat.update",
+            "chat.postEphemeral",
+            "chat.scheduleMessage",
+        }
+        if not read_method:
+            if supported_write:
+                fields = _slack_publication_fields(payload)
+                identity = check_outbound_identity(fields)
+                if not identity["allowed"]:
+                    raise PublicationPolicyViolation(identity)
+            if not self._slack_write_route_verified():
+                raise EquipmentError(
+                    "Slack write not delivered. The installed sender identity/footer "
+                    "is not verified as owner-controlled and footer-free. Use a "
+                    "verified owner-controlled route, then retry.",
+                    code="outbound_sender_identity_unverified",
+                    uncertain=False,
+                    incident=False,
+                    delivered=False,
+                    matched_fields=(),
+                    matched_terms=(),
+                    private_instruction=(
+                        "Use a verified owner-controlled, footer-free sender route, "
+                        "then retry. Do not create a fallback notification."
+                    ),
+                )
+            if not supported_write:
+                raise EquipmentError(
+                    "Slack write not delivered because its outward fields are not mapped.",
+                    code="outbound_field_mapping_missing",
+                    uncertain=False,
+                    incident=False,
+                    delivered=False,
+                    matched_fields=(),
+                    matched_terms=(),
+                    private_instruction=(
+                        "Add an explicit final-visible-field mapping before retrying. "
+                        "Do not create a fallback notification."
+                    ),
+                )
             require_publication(_slack_publication_text(payload))
         token = self.slack_token_loader()
         # Slack read methods accept query/form arguments, not consistently JSON.
-        read_method = method in {"conversations.history", "conversations.replies", "chat.getPermalink", "auth.test"}
         url = "https://slack.com/api/" + method
         if read_method:
             url += "?" + urllib.parse.urlencode(payload)

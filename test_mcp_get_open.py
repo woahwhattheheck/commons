@@ -54,7 +54,7 @@ class PublicMcpGetOpenTests(unittest.TestCase):
             self.assertEqual(response.status, 200)
             self.assertEqual(payload["auth"], "none")
             self.assertTrue(payload["open_door"])
-            self.assertEqual(payload["toolCount"], 17)
+            self.assertEqual(payload["toolCount"], 19)
             self.assertIn("get_send_link", payload["tools"])
             allow = response.getheader("Access-Control-Allow-Origin")
             self.assertEqual(allow, "*")

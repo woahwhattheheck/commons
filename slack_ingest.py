@@ -110,6 +110,7 @@ class IssueRecord:
     body: str
     kind: str
     target: str = ""
+    clock: str = ""
 
     def as_issue(self) -> dict[str, Any]:
         return {"title": self.title, "body": self.body, "labels": ["board"]}
@@ -370,7 +371,14 @@ def issue_record(message: dict[str, Any], channel_id: str | None = None) -> Issu
     header = "\n".join("%s: %s" % pair for pair in envelope)
     payload = "Slack message deleted; prior canonical record remains immutable.\n" if deleted else exact_body_redact.redact_private_spans(text)
     body = header + "\n---\n" + payload
-    return IssueRecord(native_ts=native_ts, title=ident, body=body, kind=kind, target=target)
+    return IssueRecord(
+        native_ts=native_ts,
+        title=ident,
+        body=body,
+        kind=kind,
+        target=target,
+        clock=clock,
+    )
 
 
 def _record_body(text: str) -> str:
@@ -507,6 +515,19 @@ def _next_cursor(response: dict[str, Any]) -> str:
     return str((response.get("response_metadata") or {}).get("next_cursor") or "").strip()
 
 
+def slack_api_error(method: str, response: dict[str, Any]) -> IngestError:
+    """Keep Slack's method, error, needed, and provided fields in the receipt."""
+    error = str(response.get("error") or "unknown")
+    detail = [error]
+    needed = str(response.get("needed") or "").strip()
+    provided = str(response.get("provided") or "").strip()
+    if needed:
+        detail.append("needed=%s" % needed)
+    if provided:
+        detail.append("provided=%s" % provided)
+    return IngestError("Slack API error: %s (%s)" % (method, "; ".join(detail)))
+
+
 def paged(fetch: Callable[[str], dict[str, Any]]) -> Iterator[dict[str, Any]]:
     """Yield every page exactly once and reject cursor loops."""
     cursor = ""
@@ -517,7 +538,7 @@ def paged(fetch: Callable[[str], dict[str, Any]]) -> Iterator[dict[str, Any]]:
         seen.add(cursor)
         response = fetch(cursor)
         if not response.get("ok", True):
-            raise IngestError("Slack API error: %s" % response.get("error", "unknown"))
+            raise slack_api_error("conversations", response)
         for message in response.get("messages") or []:
             if isinstance(message, dict):
                 yield message
@@ -579,28 +600,49 @@ class SlackClient:
 
         DMs stay off the public board. Owner said use the whole Slack like a
         human; that is MCP send/read. Git ingest is channels, not DMs.
+
+        Slack requires every scope matching a combined ``types`` value. One
+        combined call stays the fast path. A missing_scope on that call is
+        retried per type so a missing groups:read cannot close public_channel
+        listing. This is not an allowlist.
         """
+        combined = self._list_channel_ids_for_types("public_channel,private_channel")
+        if combined is not None:
+            return combined or [self.channel_id]
         ids: list[str] = []
+        seen: set[str] = set()
+        for channel_type in ("public_channel", "private_channel"):
+            part = self._list_channel_ids_for_types(channel_type)
+            if part is None:
+                continue
+            for cid in part:
+                if cid not in seen:
+                    seen.add(cid)
+                    ids.append(cid)
+        return ids or [self.channel_id]
 
-        def fetch(cursor: str) -> dict[str, Any]:
-            params: dict[str, Any] = {
-                "types": "public_channel,private_channel",
-                "exclude_archived": "true",
-                "limit": 200,
-            }
-            if cursor:
-                params["cursor"] = cursor
-            return self.call("conversations.list", params)
-
+    def _list_channel_ids_for_types(self, types: str) -> list[str] | None:
+        """Return reachable channel ids for ``types``, or None on missing_scope."""
+        ids: list[str] = []
         cursor = ""
         seen: set[str] = set()
         while True:
             if cursor in seen:
                 raise IngestError("Slack pagination cursor loop: %s" % cursor)
             seen.add(cursor)
-            response = fetch(cursor)
+            params: dict[str, Any] = {
+                "types": types,
+                "exclude_archived": "true",
+                "limit": 200,
+            }
+            if cursor:
+                params["cursor"] = cursor
+            response = self.call("conversations.list", params)
             if not response.get("ok", True):
-                raise IngestError("Slack API error: %s" % response.get("error", "unknown"))
+                error = str(response.get("error") or "unknown")
+                if error == "missing_scope" and not cursor:
+                    return None
+                raise slack_api_error("conversations.list", response)
             for channel in response.get("channels") or []:
                 if not isinstance(channel, dict):
                     continue
@@ -614,7 +656,7 @@ class SlackClient:
             cursor = _next_cursor(response)
             if not cursor:
                 break
-        return ids or [self.channel_id]
+        return ids
 
     def workspace_id(self) -> str:
         if self._team_id:
@@ -694,6 +736,43 @@ class SlackClient:
         return events
 
 
+def github_rate_limited(status: int, detail: str) -> bool:
+    """True for GitHub request throttles that a later retry can clear.
+
+    429 is the documented rate-limit status. Content-creation secondary
+    limits are often returned as 403 with a rate-limit body. Other 403s
+    stay fatal.
+    """
+    if status == 429:
+        return True
+    if status != 403:
+        return False
+    text = (detail or "").lower()
+    return "rate limit" in text or "secondary rate" in text
+
+
+GITHUB_CONTENT_CREATE_INTERVAL_SEC = 2.0
+GITHUB_CONTENT_CREATE_RETRY_DEFAULT_SEC = 60
+
+
+def github_retry_after(headers: Any, default: int = 15) -> int:
+    """Honor Retry-After when present; keep a bounded fallback."""
+    raw = ""
+    try:
+        raw = str(headers.get("Retry-After") or "").strip()
+    except (TypeError, AttributeError):
+        raw = ""
+    try:
+        seconds = int(float(raw)) if raw else default
+    except (TypeError, ValueError):
+        seconds = default
+    if seconds < 1:
+        seconds = 1
+    if seconds > 90:
+        seconds = 90
+    return seconds
+
+
 class GitHubClient:
     def __init__(self, token: str, repository: str = REPOSITORY):
         if not token.strip():
@@ -701,26 +780,36 @@ class GitHubClient:
         self.token = token.strip()
         self.repository = repository
         self._board_issue_bodies: dict[str, list[str]] | None = None
+        self._next_content_create = 0.0
 
     def request(self, method: str, path: str, payload: dict[str, Any] | None = None) -> Any:
         data = None if payload is None else json.dumps(payload).encode("utf-8")
-        request = urllib.request.Request(
-            GITHUB_API + path,
-            data=data,
-            method=method,
-            headers={
-                "Accept": "application/vnd.github+json",
-                "Authorization": "Bearer " + self.token,
-                "Content-Type": "application/json",
-                "X-GitHub-Api-Version": "2022-11-28",
-            },
-        )
-        try:
-            with urllib.request.urlopen(request, timeout=30) as response:
-                return json.loads(response.read().decode("utf-8"))
-        except urllib.error.HTTPError as exc:
-            detail = exc.read().decode("utf-8", "replace")
-            raise IngestError("GitHub HTTP %s: %s" % (exc.code, detail[:300])) from exc
+        last_detail = ""
+        for attempt in range(3):
+            request = urllib.request.Request(
+                GITHUB_API + path,
+                data=data,
+                method=method,
+                headers={
+                    "Accept": "application/vnd.github+json",
+                    "Authorization": "Bearer " + self.token,
+                    "Content-Type": "application/json",
+                    "X-GitHub-Api-Version": "2022-11-28",
+                },
+            )
+            try:
+                with urllib.request.urlopen(request, timeout=30) as response:
+                    return json.loads(response.read().decode("utf-8"))
+            except urllib.error.HTTPError as exc:
+                detail = exc.read().decode("utf-8", "replace")
+                last_detail = detail
+                if not github_rate_limited(exc.code, detail) or attempt == 2:
+                    raise IngestError("GitHub HTTP %s: %s" % (exc.code, detail[:300])) from exc
+                wait_default = 15
+                if method in {"POST", "PUT", "PATCH"} or "content creation" in detail.lower():
+                    wait_default = GITHUB_CONTENT_CREATE_RETRY_DEFAULT_SEC
+                time.sleep(github_retry_after(exc.headers, default=wait_default))
+        raise IngestError("GitHub HTTP request failed: %s" % last_detail[:300])
 
     def board_issue_bodies(self) -> dict[str, list[str]]:
         """Load all ``label=board`` issue bodies once via the Issues list API.
@@ -769,7 +858,17 @@ class GitHubClient:
             )
         return True
 
+    def _pace_content_create(self) -> None:
+        """Space issue POSTs so GitHub content-creation limits are not burst."""
+        now = time.monotonic()
+        wait = self._next_content_create - now
+        if wait > 0:
+            time.sleep(wait)
+            now = time.monotonic()
+        self._next_content_create = now + GITHUB_CONTENT_CREATE_INTERVAL_SEC
+
     def create_issue(self, record: IssueRecord) -> str:
+        self._pace_content_create()
         data = self.request(
             "POST",
             "/repos/%s/issues" % self.repository,
@@ -847,14 +946,31 @@ def cmd_sync(
     events = slack.events(oldest)
     records = plan(events)
     created: list[dict[str, str]] = []
-    for record in records:
-        if github.issue_exists(record):
-            continue
-        created.append({"id": record.title, "issue": github.create_issue(record)})
-    cursor = max(
-        [_cursor_decimal(oldest), *(_decimal_ts(event_clock(event)) for event in events)],
-    )
-    write_state(state_path, format(cursor, "f"))
+    applied = _cursor_decimal(oldest)
+    pending = {record.title: record for record in records}
+    try:
+        for event in events:
+            clock = _decimal_ts(event_clock(event))
+            if should_skip(event):
+                applied = max(applied, clock)
+                continue
+            record = issue_record(event)
+            planned = pending.get(record.title)
+            if planned is None:
+                applied = max(applied, clock)
+                continue
+            if not github.issue_exists(planned):
+                created.append(
+                    {"id": planned.title, "issue": github.create_issue(planned)}
+                )
+            applied = max(applied, clock)
+        cursor = max(
+            [applied, *(_decimal_ts(event_clock(event)) for event in events)],
+        )
+        write_state(state_path, format(cursor, "f"))
+    except IngestError:
+        write_state(state_path, format(applied, "f"))
+        raise
     print(
         json.dumps(
             {

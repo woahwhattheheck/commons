@@ -18,6 +18,138 @@ class MetadataPublicationTests(unittest.TestCase):
         self.assertTrue({"github_add_issue_comment", "github_update_issue_comment",
                          "github_update_issue", "github_update_pull_request"} <= names)
 
+    def test_identity_term_is_private_and_never_reaches_publisher(self):
+        with patch.object(github_publication, "publish") as publish:
+            result = ServiceEquipment().call("github_add_issue_comment", {
+                "repository": "upstream/project",
+                "issue_number": 9,
+                "body": "Astra status.",
+                "operation_id": "fleet-comment-identity",
+            })
+        self.assertTrue(result["isError"])
+        self.assertEqual(result["code"], "outbound_identity_attribution")
+        self.assertEqual(result["matched_fields"], ["body"])
+        self.assertEqual(result["matched_terms"], ["Astra"])
+        self.assertFalse(result["delivered"])
+        self.assertFalse(result["incident"])
+        self.assertTrue(result["private_instruction"].startswith("Remove Astra"))
+        publish.assert_not_called()
+
+    def test_branch_and_commit_metadata_are_checked_but_source_is_not(self):
+        tool = ServiceEquipment()
+        with patch.object(tool, "github") as github:
+            blocked = tool.call("github_create_branch", {
+                "repository": "owner/repo",
+                "branch": "fix/Astra-attribution",
+            })
+        self.assertTrue(blocked["isError"])
+        self.assertEqual(blocked["matched_fields"], ["branch"])
+        github.assert_not_called()
+
+        expected = "a" * 40
+        tool = ServiceEquipment()
+        responses = [
+            {"object": {"sha": expected}},
+            {"tree": {"sha": "base-tree"}},
+            {"sha": "new-tree"},
+            {"sha": "new-commit", "html_url": "https://example.invalid/commit"},
+            {"object": {"sha": "new-commit"}},
+        ]
+        with patch.object(tool, "github", side_effect=responses) as github:
+            result = tool.call("github_commit_files", {
+                "repository": "owner/repo",
+                "branch": "fix/transport",
+                "expected_head": expected,
+                "message": "Add transport regression coverage",
+                "files": [{
+                    "path": "fixtures/Astra-response.json",
+                    "content": "Codex Claude Opus Fable Astra Sol Grok",
+                }],
+            })
+        self.assertFalse(result["isError"])
+        self.assertEqual(github.call_count, 5)
+
+    def test_pull_request_metadata_is_checked_before_provider_read(self):
+        tool = ServiceEquipment()
+        with patch.object(tool, "github") as github:
+            result = tool.call("github_create_pull_request", {
+                "repository": "owner/repo",
+                "head": "fix/transport",
+                "base": "main",
+                "title": "Astra transport fix",
+                "body": "Neutral details.",
+            })
+        self.assertTrue(result["isError"])
+        self.assertEqual(result["matched_fields"], ["title"])
+        github.assert_not_called()
+
+    def test_merge_checks_inherited_metadata_and_supplies_neutral_commit_text(self):
+        tool = ServiceEquipment()
+        unsafe_pull = {
+            "head": {"sha": "head-sha"},
+            "title": "Astra transport fix",
+            "body": "Neutral details.",
+        }
+        with patch.object(tool, "github", return_value=unsafe_pull) as github:
+            blocked = tool.call("github_merge_pull_request", {
+                "repository": "owner/repo",
+                "pull_number": 9,
+                "expected_head": "head-sha",
+                "merge_method": "squash",
+            })
+        self.assertTrue(blocked["isError"])
+        self.assertEqual(blocked["matched_fields"], ["pull_request.title"])
+        self.assertEqual(github.call_count, 1)
+
+        safe_pull = {
+            "head": {"sha": "head-sha"},
+            "title": "Preserve transport errors",
+            "body": "Neutral details.",
+        }
+        with patch.object(tool, "github", side_effect=[safe_pull, {"merged": True}]) as github:
+            merged = tool.call("github_merge_pull_request", {
+                "repository": "owner/repo",
+                "pull_number": 9,
+                "expected_head": "head-sha",
+                "merge_method": "squash",
+            })
+        self.assertFalse(merged["isError"])
+        payload = github.call_args_list[-1].kwargs["payload"]
+        self.assertEqual(payload["commit_title"], "Integrate pull request #9")
+        self.assertEqual(payload["commit_message"], "Integrate the reviewed change.")
+
+
+    def test_rebase_checks_inherited_commit_attribution(self):
+        tool = ServiceEquipment()
+        pull = {
+            "head": {"sha": "head-sha"},
+            "title": "Preserve transport errors",
+            "body": "Neutral details.",
+        }
+        commits = [{
+            "sha": "commit-sha",
+            "commit": {
+                "message": "Neutral change",
+                "author": {"name": "Astra", "email": "owner@example.invalid"},
+                "committer": {"name": "Owner", "email": "owner@example.invalid"},
+            },
+            "author": {"login": "owner"},
+            "committer": {"login": "owner"},
+        }]
+        with patch.object(tool, "github", side_effect=[pull, commits]) as github:
+            result = tool.call("github_merge_pull_request", {
+                "repository": "owner/repo",
+                "pull_number": 9,
+                "expected_head": "head-sha",
+                "merge_method": "rebase",
+            })
+        self.assertTrue(result["isError"])
+        self.assertEqual(result["code"], "outbound_identity_attribution")
+        self.assertEqual(
+            result["matched_fields"], ["commits[commit-sha].author.name"]
+        )
+        self.assertEqual(github.call_count, 2)
+
     def test_comment_routes_exact_text_and_stable_id_to_publisher(self):
         with patch.object(github_publication, "publish", return_value={"ok": True}) as publish:
             result = ServiceEquipment().call("github_add_issue_comment", {

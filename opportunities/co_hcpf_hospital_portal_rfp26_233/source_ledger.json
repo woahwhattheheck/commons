@@ -1,0 +1,73 @@
+{
+  "schema": "co-hcpf-hospital-portal-source-ledger/v1",
+  "pursuit_id": "CO-HCPF-HOSPITAL-PORTAL",
+  "authority": "CORROBORATION_ONLY_OFFICIAL_BYTES_HOLD",
+  "controlling_source_of_record": {
+    "name": "Colorado VSS / AdvantageVSS",
+    "urls": [
+      "https://prd.co.cgiadvantage.com/PRDVSS1X1/Advantage4",
+      "https://colorado.gov/vss"
+    ],
+    "raw_current_attachment_bytes_retained": false,
+    "sha256_bound": false
+  },
+  "reported_current_generation": {
+    "solicitation_id": "RFP-UHAA-2026000233-3",
+    "updated": "2026-09-09",
+    "proposal_deadline": "2026-09-21T15:00:00-06:00",
+    "inquiry_deadline": "2026-08-18T11:00:00-06:00",
+    "submission_route": "HCPF_BOX",
+    "response_ready_authority": false
+  },
+  "corroborating_mirrors": [
+    {
+      "id": "current-opportunity",
+      "url": "https://govtribe.com/opportunity/state-local-contract-opportunity/hospital-portal-tool-rfpuhaa20260002333"
+    },
+    {
+      "id": "q-and-a",
+      "url": "https://govtribe.com/file/government-file/rfp26-233-inquiriesanswers-dot-pdf"
+    },
+    {
+      "id": "administrative-info",
+      "url": "https://govtribe.com/file/government-file/rfp26-233-appendix-a-administrative-info-dot-pdf-1"
+    },
+    {
+      "id": "it-contract-template",
+      "url": "https://govtribe.com/file/government-file/rfp26-233-appendix-b-it-contract-template-dot-pdf-2"
+    },
+    {
+      "id": "pricing-v3-extraction",
+      "url": "https://govtribe.com/file/government-file/rfp26-233-appendix-f-pricing-worksheet-dot-xlsx-2"
+    }
+  ],
+  "source_clarified_facts": {
+    "proposal_deadline": "2026-09-21 3:00 PM Mountain Time",
+    "inquiry_deadline": "2026-08-18 11:00 AM Mountain Time — closed",
+    "submission": "HCPF Box; not VSS and not hard copy",
+    "pricing_v3": {
+      "annual_cap_usd": 438202,
+      "funded_sfys": 5,
+      "total_usd": 2191010,
+      "note": "v2 redline contains 438212 typo while retaining 2191010 total; do not use typo"
+    },
+    "startup": "Apr-Jun 2027 startup is not separately paid; startup costs are recovered in contract pricing",
+    "teaming": [
+      "Q65 permits subcontractor-employed Project Lead / Key Personnel if role requirements are met",
+      "Q66 permits evaluation of proposed-team experience including proposed subcontractors"
+    ],
+    "security": "HCPF prefers SOC 2 Type II, FedRAMP, StateRAMP, or equivalent third-party assessment; broader Appendix B/OIT/HIPAA duties remain",
+    "accessibility": "WCAG 2.1 AA; new app may defer completed VPAT until delivery if awarded, while proposal artifacts remain accessible"
+  },
+  "authority_ceiling": {
+    "deadline_authority": false,
+    "submit": false,
+    "buyer_contact": false,
+    "partner_contact": false,
+    "legal_registration": false,
+    "price_approval": false,
+    "sign": false,
+    "payment": false,
+    "revenue": false
+  }
+}

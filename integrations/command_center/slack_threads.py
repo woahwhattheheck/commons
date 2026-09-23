@@ -80,8 +80,26 @@ def _error(exc):
     return result
 
 
+def _generation(row):
+    """Capture immutable message evidence before the next provider read.
+
+    Broadcast wrappers and a root's explicit self-thread reference are transport
+    representations of the same message, not changed work. Presentation-only
+    metadata (reactions, profiles) is intentionally outside this comparison.
+    These signatures stay in memory; coverage metadata never includes content.
+    """
+    subtype = row.get("subtype")
+    if subtype in ("thread_broadcast", "reply_broadcast"):
+        subtype = None
+    return (row.get("reply_count"), row.get("latest_reply"),
+            row.get("thread_ts") or row["ts"], row.get("text"),
+            row.get("user"), row.get("bot_id"), subtype,
+            row.get("edited", {}).get("ts"))
+
+
 def _read_pages(read, method, payload, max_pages, *, root=None, propagate_first=False):
     rows, seen, cursor, limited, changed = {}, set(), "", False, False
+    generations = {}
     report = {"pages_read": 0, "complete": False, "next_cursor": "", "error": None}
     for _ in range(max_pages):
         request = {**payload, **({"cursor": cursor} if cursor else {})}
@@ -94,10 +112,10 @@ def _read_pages(read, method, payload, max_pages, *, root=None, propagate_first=
             break
         report["pages_read"] += 1
         for row in page:
-            old = rows.get(row["ts"])
-            if old is not None and any(old.get(key) != row.get(key)
-                    for key in ("reply_count", "latest_reply", "thread_ts")):
+            generation = _generation(row)
+            if row["ts"] in generations and generations[row["ts"]] != generation:
                 changed = True
+            generations[row["ts"]] = generation
             rows[row["ts"]] = row
         limited = limited or page_limited
         report["next_cursor"] = next_cursor
@@ -133,6 +151,8 @@ def read_channel(read, channel_id, *, page_size, max_pages, max_threads=0, max_t
             raise ValueError(name + " is outside its integer bounds.")
     rows, history = _read_pages(read, "conversations.history",
         {"channel": channel_id, "limit": page_size}, max_pages, propagate_first=True)
+    # Preserve the observed generation across subsequent reply callbacks too.
+    generations = {stamp: _generation(row) for stamp, row in rows.items()}
     candidates = {}
     for row in rows.values():
         root = row.get("thread_ts") or row["ts"]
@@ -154,10 +174,15 @@ def read_channel(read, channel_id, *, page_size, max_pages, max_threads=0, max_t
         if report["complete"] and (root not in replies or expected is None
                 or len(observed) != expected or not anchors.issubset(observed)):
             report.update(complete=False, reason="reply_evidence_mismatch")
+        if any(stamp in generations and generations[stamp] != _generation(row)
+                for stamp, row in replies.items()):
+            report["complete"] = False
+            report["reason"] = report.get("reason") or "thread_evidence_changed"
         if report["complete"]:
             finished.add(root)
         # A broadcast and its reply have the same stable message identity.
         rows.update(replies)
+        generations.update((stamp, _generation(row)) for stamp, row in replies.items())
         evidence.append({"thread_ts": root, "expected_replies": expected,
                          "observed_replies": len(observed), **report})
     pending = [candidates[root] for root in ordered if root not in finished]

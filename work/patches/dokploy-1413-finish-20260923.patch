@@ -1,0 +1,56 @@
+Subject: [PATCH] Scope team reservations and preserve enterprise ownership checks
+
+Apply to the existing tokenjunkielabs/dokploy branch
+zz-riftheron/dokploy-1413-org-teams, observed at
+3b7a046d736a498ed60c570de7634ae40e9d50a8.
+
+Target source blob: cdc40831571bdc18af9611fbe38dc3902714b63b.
+Existing sponsor PR: https://github.com/Dokploy/dokploy/pull/5492
+
+These are the three remaining edits from the existing September 21 work
+request, not a replacement feature or separate bounty claim. Keep the
+current team query minimization and atomic capacity reservation intact.
+The current user schema already declares enableEnterpriseFeatures.
+
+Run git apply --check before git apply in the claimant checkout. This
+patch was prepared from the current connector source; application and
+runtime execution have not been performed here. Do not overwrite a moved
+source generation without reconciling its changes.
+
+Separately, change only the first PR-description line from
+C:/Program Files/Git/claim #1413 to /claim #1413. Preserve the existing
+sponsor discussion. A valid claim comment is already present; do not post
+a duplicate claim or assume this body correction establishes eligibility.
+
+This publication does not change the sponsor branch, claim acceptance,
+merge state, payout configuration, or payment status.
+
+---
+diff --git a/apps/dokploy/server/api/routers/organization.ts b/apps/dokploy/server/api/routers/organization.ts
+--- a/apps/dokploy/server/api/routers/organization.ts
++++ b/apps/dokploy/server/api/routers/organization.ts
+@@ -640,6 +640,7 @@
+ 						.where(
+ 							and(
+ 								eq(team.id, targetTeam.id),
++								eq(team.organizationId, orgId),
+ 								sql`${team.memberCount} < ${team.maxMembers}`,
+ 							),
+ 						)
+@@ -833,6 +834,7 @@
+ 			}
+ 
+ 			const hasOwnerBoundEntitlements =
++				currentOwner.enableEnterpriseFeatures ||
+ 				currentOwner.enablePaidFeatures ||
+ 				currentOwner.isValidEnterpriseLicense ||
+ 				currentOwner.licenseKey !== null ||
+@@ -846,7 +848,7 @@
+ 
+ 			if (hasOwnerBoundEntitlements) {
+ 				throw new TRPCError({
+-					code: "BAD_REQUEST",
++					code: "PRECONDITION_FAILED",
+ 					message:
+ 						"Transfer or deactivate the current owner's billing and enterprise entitlements before transferring organization ownership",
+ 				});
