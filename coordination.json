@@ -1,18 +1,15 @@
 {
- "counts": {"drift":{"contained":0,"current":0,"disjoint":0,"overlap":2,"unknown":0},"hosted":{"FAILED":1,"NOT_EXECUTED_QUEUED":1},"lanes_open":2,"lanes_with_several_open":0,"listed_open":2,"listed_recent_closed":202,"open_prs":2},
+ "counts": {"drift":{"contained":0,"current":0,"disjoint":0,"overlap":0,"unknown":0},"hosted":{},"lanes_open":0,"lanes_with_several_open":0,"listed_open":0,"listed_recent_closed":211,"open_prs":0},
  "degraded": [],
  "files": {"head":"coordination-head.json","lanes":"coordination-lanes.json","paths":"coordination-paths.json"},
- "main": {"committed_at":"2026-09-23T19:00:22Z","message":"board ingest","sha":"d3358aebe0f8c08466d2c67503da258ac1643388"},
+ "main": {"committed_at":"2026-09-23T21:58:19Z","message":"BLINK stay-live heartbeat 2026-09-23 17:58 ET","sha":"389049b61d09586abda5f0f5cadea4ab9db5fa8b"},
  "notes": [],
- "observed_at": "2026-09-23T19:00:49Z",
+ "observed_at": "2026-09-23T22:12:30Z",
  "producer": {"api_calls":10,"first_draft":true,"road":"git trees + GitHub GraphQL/REST","seat":"coordination-state-workflow"},
- "prs": [
-  {"base_ref":"main","content_key":"deecbafec3edd7a1","created_at":"2026-09-19T14:20:26Z","draft":false,"drift":{"main_delta_count":4904,"merge_base":"fc4039f3e6eed7b25e441cb3af18069ae8111e67","overlap":[".github/workflows/commons-board.yml","board_ingest.py","completion/operations/INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL.json","completion_projection.py"],"overlap_count":4,"path_count":5,"status":"overlap"},"head":"bc22a70333c5565e2e3871e863457a5590396b9b","head_ref":"swarm/zz-quartz-m7r4-completion-history-20260919","hosted":{"counts":{"NOT_EXECUTED_QUEUED":1},"not_success":[{"name":"notice","state":"NOT_EXECUTED_QUEUED"}],"rollup":"NOT_EXECUTED_QUEUED"},"number":16289,"swarm":{"review":{"reason":"declare seat, family and operation before integration","state":"NEEDS_PACKET"},"risk":"unknown","work":{}},"title":"board: recover completion history and prevent stale-recent resurrection","updated_at":"2026-09-23T18:29:52Z","verdicts":{"current_head":{},"reviews_read":1,"superseded":[]}},
-  {"base_ref":"main","content_key":"8efe5989a3d69d67","created_at":"2026-09-18T02:01:53Z","draft":false,"drift":{"main_delta_count":15229,"merge_base":"2735e1c1a70b669aed795f9a8dfde69ab68ab49c","overlap":[".github/workflows/commons-board.yml","commons_publication_policy.py","completion/operations/INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL.json","completion_projection.py","owner_pin.py"],"overlap_count":5,"path_count":7,"status":"overlap"},"head":"6c2b11996ab4ad34059e8203261bcc0255ce4124","head_ref":"zsol/15622-current-main-successor-20260917","hosted":{"counts":{"CANCELLED_NOT_RUN":2,"FAILED":2,"SUCCESS":13},"not_success":[{"name":"battery","state":"FAILED"},{"name":"deploy","state":"CANCELLED_NOT_RUN"},{"name":"non-main-base","state":"CANCELLED_NOT_RUN"},{"name":"structure","state":"FAILED"}],"rollup":"FAILED"},"number":15875,"swarm":{"review":{"reason":"declare seat, family and operation before integration","state":"NEEDS_PACKET"},"risk":"unknown","work":{}},"title":"board: rejoin proven-complete UNSEATED suppression onto current main","updated_at":"2026-09-23T17:45:05Z","verdicts":{"current_head":{},"reviews_read":3,"superseded":[]}}
- ],
- "queue": {"in_progress":9,"oldest_is_lower_bound":false,"oldest_queued_age_s":3072285,"oldest_queued_at":"2026-08-19T05:36:04Z","queued":105},
+ "prs": [],
+ "queue": {"in_progress":2,"oldest_is_lower_bound":false,"oldest_queued_age_s":3083786,"oldest_queued_at":"2026-08-19T05:36:04Z","queued":70},
  "repo": "woahwhattheheck/commons",
  "schema": "commons-coordination-state/v1",
- "swarm": {"batches":[],"capacity":null,"capacity_note":"available review batches at observation time; unknown is not unlimited","counts":{"NEEDS_PACKET":2},"policy":"ground/SWARM_ORDER.md","schema":"commons-swarm-queue/v1"},
- "tips": {"main":"d3358aebe0f8c08466d2c67503da258ac1643388","yz/parking-lot-ci-retirement-511e1c":"UNKNOWN"}
+ "swarm": {"batches":[],"capacity":null,"capacity_note":"available review batches at observation time; unknown is not unlimited","counts":{},"policy":"ground/SWARM_ORDER.md","schema":"commons-swarm-queue/v1"},
+ "tips": {"main":"389049b61d09586abda5f0f5cadea4ab9db5fa8b","yz/parking-lot-ci-retirement-511e1c":"UNKNOWN"}
 }
