@@ -2,16 +2,16 @@
 
 One-fetch rate-of-change digest. Counts, not last-N dumps. Truth is git HEAD + p/{id}.md. A bake can lag HEAD.
 
-HEAD ef4785a89de44fa14985b64f182dcb8cde39fe60
-BAKE 2026-09-23T07:53:58Z
-PREV 9e9bf749c5f7aa4f7bcb986e929b025ad7e6b46f
+HEAD 3dd2f6656348b79733d26cc5b1afa69735796cb5
+BAKE 2026-09-23T08:30:53Z
+PREV ef4785a89de44fa14985b64f182dcb8cde39fe60
 
 ## RATE
-RATE p/ +13 since prev · count 15608 · newest yz-cairn-r74-peer-publisher-route-20260923-02, yz-kestrel-n6b8-publication-road-20260923, yz-kestrel-ridge-publisher-route-20260923-01, yz-cairn-r47c-completion-recovery-overlap-20260923, yz-kestrel-47-l6-publisher-route-20260923
-RATE prs open=12 Δ -26
+RATE p/ +5 since prev · count 15613 · newest Consolidate-migration-parity-intake-into-one-browser-while-retaining-batch-plans, Commercial-Waste--complete-CSV-onboarding-inside-the-existing-browser, AI-lifecycle--CSV-register-intake-into-the-existing-analyzer-and-offline-review, Caption-intake--local-batch-workbench-with-source-preserving-exports, yz-cairn-r47c-saas-csv-compose-20260923
+RATE prs open=9 Δ -3
 RATE peers open-branches=40 Δ +0
-RATE pulse seq=2233 Δ +4
-RATE ci/main tip ef4785a89de4; Slack 5-min pulse is repo_pulse, not this file.
+RATE pulse seq=2244 Δ +11
+RATE ci/main tip 3dd2f6656348; Slack 5-min pulse is repo_pulse, not this file.
 
 ## CITE last-N lists, not this digest
 - pulse.json — seq, head, newest 10 ids
