@@ -24,6 +24,31 @@
   const age = seconds => typeof seconds === 'number' ? (seconds < 3600 ? Math.round(seconds / 60) + 'm' : seconds < 172800 ? Math.round(seconds / 3600) + 'h' : Math.round(seconds / 86400) + 'd') : 'unknown';
   const WAIT = {waiting_on_us: 'on us', waiting_on_them: 'on them', none: 'nothing', unknown: 'unknown'};
   const SETTLEMENT = {partial: 'partly paid', amount_unknown: 'reconcile payment amount', covered: 'advertised amount covered'};
+  const TASK_BUDGET_KIND = /^(?:task|run)[ _-]?budget$/i;
+  const TASK_BUDGET_WARN_FRACTION = 0.75;
+  function taskBudgetLines() {
+    const panel = window.CommonsPanel;
+    const state = panel && typeof panel.getState === 'function' ? panel.getState() : null;
+    const budgets = state && Array.isArray(state.budgets) ? state.budgets : [];
+    const rows = [];
+    for (const b of budgets) {
+      const kind = String(b.kind || b.measure_type || '').trim();
+      if (!TASK_BUDGET_KIND.test(kind) || typeof b.limit !== 'number' || !Number.isFinite(b.limit) || b.limit <= 0 ||
+          typeof b.used !== 'number' || !Number.isFinite(b.used) || typeof b.observed_at !== 'string' ||
+          !Number.isFinite(Date.parse(b.observed_at)) || typeof b.source_url !== 'string' || !/^https?:\/\//i.test(b.source_url)) continue;
+      const ratio = b.used / b.limit;
+      const unit = b.unit || 'unit unknown';
+      const provider = b.provider || 'provider unknown';
+      const threshold = Math.round(TASK_BUDGET_WARN_FRACTION * 100);
+      let detail = b.used.toLocaleString() + ' / ' + b.limit.toLocaleString() + ' ' + unit +
+        ' (' + Math.round(ratio * 100) + '%) · ' + provider + ' · observed ' + b.observed_at + ' · source ' + b.source_url;
+      if (ratio >= TASK_BUDGET_WARN_FRACTION)
+        detail += ' · WARNING: local ' + threshold + '% task-budget threshold reached; review before the next expensive stage.';
+      else detail += ' · local warning threshold ' + threshold + '%.';
+      rows.push(line((b.label || b.id || 'Task budget') + ':', detail));
+    }
+    return rows;
+  }
   // Exceptions first, then one row per active operation; stages and receipts are drilldowns.
   const REASON = {deadline_past: 'DEADLINE PASSED', deadline_within_7d: 'due within 7d', stalled: 'stalled', owner_only: 'owner only', partial_payout: 'partial payment', unreconciled_payout: 'reconcile payment amount'};
   function decisions(d) {
@@ -118,6 +143,7 @@
       nextBody.append(line('Money:', amounts.length ? amounts.map(v => v.currency + ' ' + v.amount + ' ' + v.status.replaceAll('_',' ')).join(' · ') : 'No typed payment records loaded. Quoted prices are not counted as cash.'));
       const budget = s.refresh.request_budget || {};
       nextBody.append(line('Provider traffic:', (budget.observed_attempts ?? 'Unknown') + ' observed attempts; ' + (budget.deferred_reads ?? 'unknown') + ' deferred reads in the last collector run.'));
+      nextBody.append(...taskBudgetLines());
       for (const scope of (budget.scopes || []).filter(v => v.retry_remaining_seconds > 0).slice(0, 4))
         nextBody.append(line(scope.scope + ':', 'Cooldown until ' + scope.retry_not_before + '. Other work can continue.'));
       const rows = s.work.top_attention || [];
