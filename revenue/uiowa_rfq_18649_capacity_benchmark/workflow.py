@@ -46,6 +46,7 @@ import csv
 import io
 import json
 import re
+import sys
 from collections import defaultdict
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -117,6 +118,12 @@ def import_collection(root: Path) -> Collection:
     say which stages are hot and which merely felt hot.
     """
     root = Path(root)
+    incomplete = root / ".uiowa095-incomplete"
+    if incomplete.exists() or incomplete.is_symlink():
+        raise WorkflowError(
+            "collection generation is incomplete: .uiowa095-incomplete is present; "
+            "generate a new collection and observe a successful exit before consumption"
+        )
     manifest_path = root / "manifest.json"
     if not manifest_path.exists():
         raise WorkflowError("required input is missing: manifest.json")
@@ -274,14 +281,20 @@ def read_label_window_baseline(path: Path) -> str:
 
 
 def read_label_window_optimized(path: Path) -> str:
-    """Same 500 characters, without materialising the rest of the file.
+    """Retain the same 500 characters and validate UTF-8 through end of file.
 
-    ``TextIOWrapper.read(n)`` returns the first n *characters*, exactly what
-    ``read_text()[:n]`` returns, so the label decision is unchanged. Peak
-    memory stops being a function of the largest document in the collection.
+    Both modes must reject malformed text even beyond the label window. Read
+    fixed-size character chunks, not lines or the whole remainder, so a large
+    document (including a single long line) does not become a large allocation.
+    TextIOWrapper preserves the baseline's character and newline semantics.
+    Full-stream validation costs O(file size) I/O; historical prefix-only
+    timings do not measure this implementation.
     """
     with path.open("r", encoding="utf-8") as fh:
-        return fh.read(LABEL_WINDOW_CHARS)
+        head = fh.read(LABEL_WINDOW_CHARS)
+        while fh.read(64 * 1024):
+            pass
+        return head
 
 
 def check_document_labels(root: Path, col: Collection, mode: str) -> list:
@@ -299,7 +312,11 @@ def check_document_labels(root: Path, col: Collection, mode: str) -> list:
         if not path.exists():
             errors.append(f"{doc.get('source_id')}: document listed in manifest is missing on disk: {rel}")
             continue
-        if not _label_ok(read(path)):
+        try:
+            head = read(path)
+        except UnicodeError as exc:
+            raise WorkflowError(f"document is not valid UTF-8: {rel}: {exc}") from exc
+        if not _label_ok(head):
             errors.append(f"{doc.get('source_id')}: no SYNTHETIC label in the first {LABEL_WINDOW_CHARS} characters")
     return errors
 
@@ -477,9 +494,13 @@ def main(argv=None) -> int:
     p.add_argument("--out", type=Path, default=None)
     a = p.parse_args(argv)
 
-    result = run_workflow(a.collection, mode=a.mode)
-    if a.out:
-        export_bundle(result, a.out)
+    try:
+        result = run_workflow(a.collection, mode=a.mode)
+        if a.out:
+            export_bundle(result, a.out)
+    except (WorkflowError, OSError, UnicodeError, ValueError, csv.Error) as exc:
+        print(f"workflow: {exc}", file=sys.stderr)
+        return 2
     print(f"mode={result.mode} rows={result.rows_in} documents={result.documents_in} "
           f"report_chars={result.report_chars}")
     print(f"errors: link={len(result.link_errors)} statement={len(result.statement_errors)} "

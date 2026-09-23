@@ -6,8 +6,12 @@ and re-measures — while proving the output did not change.
 
 Built by seat **OP5-OBSIDIAN** (Claude Opus 5) for RFQ 18649.
 
-**Everything in `results/` was measured on this machine in one run.** No figure
-in this lane is illustrative, estimated, or carried over from an earlier run.
+**The retained `results/` describe the original measured implementation.**
+They are historical measurements, not current-decoder performance. Since
+September 23, 2026 the optimized document reader validates UTF-8 through EOF
+in bounded chunks. The earlier prefix-only document-label timings, overall
+speedups, and whole-workflow memory figures below do not measure that repair.
+No benchmark rerun or new performance claim accompanies the stream repair.
 `results/BENCHMARK_REPORT.md` is *generated from* `results/benchmark_results.json`
 rather than written by hand, so the prose and the data cannot drift apart.
 
@@ -22,9 +26,6 @@ Python 3 standard library only. No pip installs, no network, no services.
 
 ```bash
 cd revenue/uiowa_rfq_18649_capacity_benchmark
-
-# tests
-python3 -m unittest discover -v
 
 # full benchmark: regenerates everything in results/
 python3 benchmark.py
@@ -63,7 +64,7 @@ differ.
 
 ---
 
-## What was found
+## Historical measurements of the original implementation
 
 Two bottlenecks, both traced to patterns in **already-delivered lane tools**, not
 invented for this exercise:
@@ -144,7 +145,25 @@ in the report rather than trimmed out of it.
 
 ## Output correctness
 
-The point of the lane is before/after, so the comparison is gated:
+The optimized reader retains the first 500 decoded characters but consumes the
+whole document in 64-Ki-character chunks, including long single-line files.
+Both modes reject malformed UTF-8 anywhere in a document; the CLI names the
+file, returns exit 2, and emits no success summary or new report bundle. The
+reader trades prefix-only I/O for the baseline's full-stream validity contract
+without retaining the entire document.
+
+The importer also refuses `.uiowa095-incomplete`, including a dangling marker
+symlink, before reading the manifest. A manifest left by an interrupted
+collection generator is not a completed collection. See [OUTPUT_SAFETY.md](OUTPUT_SAFETY.md).
+The marker is a local producer/consumer signal, not an atomic-publication or
+concurrent-writer guarantee.
+
+Expected input, decoding and filesystem failures produce a diagnostic on stderr
+and exit 2. A completed workflow can still report evidence gaps; those existing
+report semantics and output formats are unchanged. An export I/O failure can
+leave partial output, and outputs are not transactionally rolled back.
+
+The existing before/after benchmark compares completed results:
 
 - Baseline and optimized are compared on the **full result** — every link error,
   every statement error, every document error, the entire coverage matrix
@@ -165,9 +184,10 @@ The point of the lane is before/after, so the comparison is gated:
 
 ## What's real vs. draft
 
-**Real and working:** the generator, the workflow, the harness, the tests, and
-every number in `results/`. The two performance repairs are implemented and
-measured, not proposed.
+**Implemented:** the generator, workflow and benchmark harness. The retained
+measurements describe their original source generations; the full-stream UTF-8
+repair has not been rebenchmarked. Historical results are not relabeled as
+measurements of changed code.
 
 **Draft / scoped to this lane:** the workflow here is a faithful re-implementation
 of the preparation stages for benchmarking purposes — it is not a drop-in
