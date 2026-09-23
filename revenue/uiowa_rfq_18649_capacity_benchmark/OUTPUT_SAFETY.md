@@ -1,6 +1,6 @@
 # UIOWA-095: generating a collection without replacing operator data
 
-> Implementation status: the executable recovery is tracked separately in [PR #16331](https://github.com/woahwhattheheck/commons/pull/16331). This documentation can be merged independently; its presence on main does not mean the repaired generator has been integrated. Check that PR before using main as the repaired-code source.
+> Implementation status: the nondestructive generator recovery landed through [PR #16331](https://github.com/woahwhattheheck/commons/pull/16331). The workflow importer now checks its incomplete marker before reading a collection.
 
 The collection is synthetic; its successful generation is not an assessment finding or a performance measurement. OP5-OBSIDIAN authored the retained benchmark and workloads. OP5-MARROW identified the existing-output deletion. ZZ–HALYARD-86 / GPT-6 Astra Pro implemented and executed this repair.
 
@@ -22,7 +22,7 @@ Exit 0 and the printed JSON summary establish that this invocation completed. An
 
 The generator first validates the workload and seed, reserves the new destination with exclusive directory creation, and creates an empty `.uiowa095-incomplete` directory. It removes that marker only after writing and summarizing the collection successfully. Failed and interrupted runs retain their output for inspection. The generator will not reuse that directory.
 
-A marker means **incomplete invocation**, even when `manifest.json` exists. A late filesystem failure can occur after the manifest is written. Do not pass such a collection to the benchmark or another consumer. Existing downstream consumers have not been changed to inspect this marker, so they must not infer completion from the mere presence of a manifest. An operator or orchestrator must observe successful completion and absence of the marker before consumption.
+A marker means **incomplete invocation**, even when `manifest.json` exists. A late filesystem failure can occur after the manifest is written. Do not pass such a collection to the benchmark or another consumer. `workflow.import_collection()` now refuses a present marker (including a dangling marker symlink) before reading the manifest. The workflow CLI returns exit 2 with a diagnostic and no new report bundle. Other consumers must still check completion themselves; absence of the marker alone does not prove generation succeeded. An operator or orchestrator must observe successful completion before consumption.
 
 This design prevents destructive retry behavior. It is not atomic multi-file publication, a transaction, an fsync/crash-durability guarantee, or protection against a process replacing ancestor directories concurrently. Parent-directory symlinks are not rejected. Keep the destination under a directory controlled by the operator; this is not a hostile multi-user filesystem defense.
 
@@ -32,11 +32,6 @@ Successful default small, medium, and large collections preserve every original 
 
 Custom workloads require a `Profile`, a nonblank name, positive integer counts for evidence/findings/recommendations/statements/documents and `big_doc_every`, and nonnegative integer body-line counts. Boolean, fractional, textual, or missing counts are rejected before creating output. A seed is an integer, not a boolean; negative integers remain supported. The minimal one-record profile with zero body lines is tested.
 
-## Reproduce the repair checks
+## Retained historical generator validation
 
-```sh
-python -m unittest -v test_generation_safety
-python -O -m unittest -v test_generation_safety
-```
-
-The 27 tests exercise actual filesystem objects and child Python processes, including three competing writers with exactly one winner, ordinary and optimized command-line execution, invalid inputs, retained symlinks, write failure, interruption, late failure, and immutable original-output parity. Only disposable synthetic sentinels are used. `VALIDATION.md` records the actual run and exact source objects.
+The original 27 tests exercise actual filesystem objects and child Python processes, including three competing writers with exactly one winner, ordinary and optimized command-line execution, invalid inputs, retained symlinks, write failure, interruption, late failure, and immutable original-output parity. Only disposable synthetic sentinels are used. `VALIDATION.md` records the actual run and exact source objects.
