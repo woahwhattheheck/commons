@@ -58,6 +58,9 @@ Official carrier references: [OpenAI Codex MCP](https://learn.chatgpt.com/docs/e
 [Gemini CLI MCP](https://github.com/google-gemini/gemini-cli/blob/main/docs/tools/mcp-server.md), and
 [xAI custom connectors](https://docs.x.ai/grok/connectors).
 
+| Cloud sessions needing private PC data | `pc-bridge` branch in `commons-ship-enforcer`; `python -m host.cloud_pc_bridge` on Windows. | Create `pc_bridge/inbox/<id>.json`; read `pc_bridge/results/<id>.json`. | Private outbound queue; reuses TITAN Hands and does not claim direct local STDIO. |
+
+The private PC route is for machine-local work whose result belongs off the public Commons board. It composes with the public `fire_action` route, which remains available for public addressed actions. Setup and job format: [CLOUD_PC_BRIDGE.md](./CLOUD_PC_BRIDGE.md).
 ## Browser contest pad
 
 Recorded contest-pad entry: [WebMCP Pad](https://webmcp-pad.vercel.app/) — `titanmcp 1.4.5`.
