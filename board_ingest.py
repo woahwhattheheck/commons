@@ -4332,10 +4332,10 @@ def ingest_github_event():
     except json.JSONDecodeError:
         return 0
     action = str(ev.get("action") or "opened")
-    if action in ("closed", "reopened"):
-        return _handle_completion_issue_event(ev)
+    # Open still creates the post. Every other issue event reconciles the
+    # canonical issue; the event name must not skip that read.
     if action != "opened":
-        return 0
+        return _handle_completion_issue_event(ev)
     issue = ev.get("issue") or {}
     src, dest, mid, text, extra = _issue_post_fields(issue)
     # Suppress a no-information duplicate on both webhook and sweep roads. The

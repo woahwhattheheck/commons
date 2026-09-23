@@ -4,7 +4,9 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 import os
+import tempfile
 import unittest
 from pathlib import Path
 from unittest import mock
@@ -124,6 +126,94 @@ class CompletionEventCanonicalStateTests(unittest.TestCase):
                 {"action": "labeled", "issue": {"number": 42}}
             )
         self.assertEqual(result, 0)
+        remove.assert_not_called()
+
+    def _run_ingest(self, payload):
+        subject = self.subject
+        handle, path = tempfile.mkstemp(suffix=".json")
+        os.close(handle)
+        Path(path).write_text(json.dumps(payload), encoding="utf-8")
+        previous = os.environ.get("GITHUB_EVENT_PATH")
+        os.environ["GITHUB_EVENT_PATH"] = path
+        try:
+            return subject.ingest_github_event()
+        finally:
+            if previous is None:
+                os.environ.pop("GITHUB_EVENT_PATH", None)
+            else:
+                os.environ["GITHUB_EVENT_PATH"] = previous
+            os.remove(path)
+
+    def test_ingest_labeled_event_reads_open_canonical_issue(self):
+        subject = self.subject
+        canonical = {"number": 16289, "state": "open"}
+        with (
+            mock.patch.object(subject, "_gh_api", return_value=canonical) as api,
+            mock.patch.object(
+                subject.completion_projection,
+                "remove_markers_for_issue",
+                return_value=("op-16289",),
+            ) as remove,
+        ):
+            result = self._run_ingest(
+                {"action": "labeled", "issue": {"number": 16289}}
+            )
+        self.assertEqual(result, 0)
+        api.assert_called_once()
+        remove.assert_called_once_with(subject.ROOT, 16289)
+
+    def test_ingest_edited_event_follows_completed_canonical_issue(self):
+        subject = self.subject
+        canonical = {
+            "number": 42,
+            "state": "closed",
+            "state_reason": "completed",
+        }
+        with (
+            mock.patch.object(subject, "_gh_api", return_value=canonical),
+            mock.patch.object(
+                subject, "_completion_marker_for_closed_issue", return_value=None
+            ) as marker,
+            mock.patch.object(
+                subject.completion_projection, "remove_markers_for_issue"
+            ) as remove,
+        ):
+            result = self._run_ingest(
+                {"action": "edited", "issue": {"number": 42, "state": "open"}}
+            )
+        self.assertEqual(result, 0)
+        remove.assert_not_called()
+        marker.assert_called_once_with(canonical)
+
+    def test_ingest_opened_event_still_writes_the_post(self):
+        subject = self.subject
+        with (
+            mock.patch.object(subject, "_gh_api") as api,
+            mock.patch.object(subject, "write_post", return_value="wrote") as write,
+            mock.patch.object(
+                subject.completion_projection, "remove_markers_for_issue"
+            ) as remove,
+        ):
+            result = self._run_ingest(
+                {
+                    "action": "opened",
+                    "issue": {
+                        "number": 7,
+                        "title": "note",
+                        "created_at": "2026-09-23T00:00:00Z",
+                        "body": (
+                            "from: UNSEATED\n"
+                            "to: TABLE\n"
+                            "id: ingest-open-canonical-20260923\n"
+                            "\n"
+                            "hello\n"
+                        ),
+                    },
+                }
+            )
+        self.assertEqual(result, 1)
+        write.assert_called_once()
+        api.assert_not_called()
         remove.assert_not_called()
 
 
