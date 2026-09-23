@@ -29,6 +29,10 @@ INPUT_SCHEMA = {
         **{key: {"type": "string", "maxLength": size, "default": ""}
            for key, size in FILTER_LIMITS.items()},
         "if_revision": {"type": ["string", "null"], "maxLength": 64},
+        "order": {"type": "string", "enum": ["priority", "seat", "oldest"],
+                  "default": "priority", "description": "Discovery order within explicit priority bands; never a claim."},
+        "seat": {"type": "string", "maxLength": 128, "pattern": "^[A-Za-z0-9_.:-]*$",
+                 "default": "", "description": "Public routing label required only for order=seat; not a credential or assignment."},
     },
     "additionalProperties": False,
 }
@@ -196,6 +200,18 @@ def _sort_key(row):
             row["source_id"], row["item_id"])
 
 
+def _discovery_key(row, order, seat):
+    rank = row["priority_rank"]
+    priority = (rank is None, rank if rank is not None else 0)
+    identity = (row["source_id"], row["item_id"])
+    if order == "seat":
+        # Exclude the inventory revision: new observations must not reshuffle
+        # the relative order of existing identities within a priority band.
+        return priority + (_hash(["context-seat/v1", seat, *identity]),) + identity
+    activity = epoch(row["activity_at"])
+    return priority + (activity is None, activity if activity is not None else 0) + identity
+
+
 def build_index(work, now=None):
     """Build an unpaginated compact shared index, never a public firehose.
 
@@ -241,7 +257,7 @@ def build_index(work, now=None):
 
 
 def select(index, limit=DEFAULT_LIMIT, offset=0, query="", owner="", provider="",
-           source="", kind="", status="", if_revision=None):
+           source="", kind="", status="", if_revision=None, order="priority", seat=""):
     """Select a bounded page. Exact filters are ANDed; query is a substring.
 
     owner matches the provider-reported item.owner label, NOT an assigned worker.
@@ -251,9 +267,17 @@ def select(index, limit=DEFAULT_LIMIT, offset=0, query="", owner="", provider=""
     Revision binds the inventory, selection, offset and limit. On unchanged,
     items=[] means reuse the previous identical page; sources/envelope stay present.
     Offset navigation is stable within a revision, not a historical snapshot.
+    Optional seat/oldest ordering changes discovery only, never eligibility or
+    ownership. All orders retain explicit priority bands and the same filters.
     """
     if type(limit) is not int or not 1 <= limit <= MAX_LIMIT or type(offset) is not int or offset < 0:
         raise ValueError("Context pagination requires limit 1..100 and nonnegative offset.")
+    if not isinstance(order, str) or order not in {"priority", "seat", "oldest"}:
+        raise ValueError("Context order must be priority, seat or oldest.")
+    if not isinstance(seat, str) or len(seat) > 128 or re.fullmatch(r"[A-Za-z0-9_.:-]*", seat) is None:
+        raise ValueError("Context seat must be a public routing label of at most 128 characters.")
+    if (order == "seat") != bool(seat):
+        raise ValueError("A nonempty seat is required only with context order=seat.")
     raw_filters = {"query": query, "owner": owner, "provider": provider, "source": source, "kind": kind, "status": status}
     filters = {}
     for key, value in raw_filters.items():
@@ -275,10 +299,16 @@ def select(index, limit=DEFAULT_LIMIT, offset=0, query="", owner="", provider=""
         if filters["query"] and filters["query"] not in searchable.casefold():
             continue
         matches.append(row)
+    if order != "priority":
+        matches.sort(key=lambda row: _discovery_key(row, order, seat))
     page = matches[offset:offset + limit]
     source_ids = {row["source_id"] for row in page}
     page_sources = [row for row in index["sources"] if row["source_id"] in source_ids]
-    revision = _hash({"content": index["content_revision"], "filters": filters, "limit": limit, "offset": offset})
+    selection = {"content": index["content_revision"], "filters": filters, "limit": limit, "offset": offset}
+    if order != "priority":
+        selection["ordering"] = {"order": order, "seat": seat}
+    # Preserve the legacy default revision and response shape exactly.
+    revision = _hash(selection)
     unchanged = if_revision == revision
     before = min(offset, len(matches))
     after = max(0, len(matches) - offset - len(page))
@@ -303,6 +333,12 @@ def select(index, limit=DEFAULT_LIMIT, offset=0, query="", owner="", provider=""
         "sources": page_sources,
         "scope": "Existing normalized observations only; filters/pages do not restrict peer access. owner is a provider label; assigned_owner is explicit direction. No body or event history.",
     }
+    if order != "priority":
+        result["ordering"] = {
+            "order": order, "seat": seat, "priority_first": True,
+            "basis": "stable_seat_identity_hash" if order == "seat" else "oldest_known_activity_unknown_last",
+            "scope": "Discovery only; no reservation, eligibility decision or ownership transfer. Recheck source context and current claims before acting.",
+        }
     # Prevent callers from mutating a shared cached index through returned rows.
     return json.loads(_json(result))
 
