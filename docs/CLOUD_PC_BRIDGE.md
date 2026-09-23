@@ -45,7 +45,11 @@ Use the connected GitHub tools to create one JSON file on branch `pc-bridge`:
 
 `request` is passed to the existing `TitanHandsOne.handle()` surface. It can use the same TITAN Hands operations and targets available to a local harness. Do not put credentials in the request. The bridge refuses common credential formats and redacts them from results.
 
-Read the result from `pc_bridge/results/<job_id>.json` on `pc-bridge`. A request is claimed by a durable `pc_bridge/started/<job_id>.json` marker before it runs. If a started job has no result after 30 minutes, the bridge records `UNCERTAIN` and never replays it. Submit a new ID after inspecting that state.
+Read the result from `pc_bridge/results/<job_id>.json` on `pc-bridge`. A request is claimed by a durable `pc_bridge/started/<job_id>.json` marker before it runs. If a started job has no result after 30 minutes, or its start marker is unreadable or invalid, the bridge records `UNCERTAIN` and never replays it.
+
+`UNCERTAIN` is not proof that the action failed: a crash can occur before the action starts, during it, or after it completes but before the result is saved. Inspect the actual outcome before submitting a new ID, because a new ID can repeat side effects. There is still no local result cache or automatic replay after a crash.
+
+`--once` exits **0** for a returned `IDLE` or `DONE` with `ok: true`, **1** for an unsuccessful job outcome (`FAILED`, `INVALID_REQUEST`, `UNCERTAIN`, or `RESULT_TOO_LARGE`), and **2** for a bridge or platform error. These exit codes describe the one-shot poll, not the completion of all queued work. Continue to read the private result file for the job's durable outcome.
 
 Jobs are processed one at a time. Request JSON is limited to 256 KiB; a returned result is limited to 512 KiB. Oversized results return a size and SHA-256 receipt so the cloud caller can ask for a narrower extract.
 
