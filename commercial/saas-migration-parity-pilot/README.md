@@ -17,6 +17,10 @@ Open the printed loopback address on the same machine. Python 3.10+ and the stan
 
 JSON integer identifiers remain exact, including values outside JavaScript's safe-integer range. CSV types are explicitly selected, never inferred. Editing an input invalidates the previous report and its download links. The downloaded input contains supplied values; report hashes are not guaranteed anonymization.
 
+## CSV batch and private replay route
+
+For a repeatable CSV mapping plan, original CSV byte hashes and a bundled replay deliverable, see [CSV_INTAKE.md](CSV_INTAKE.md). Its `csv_intake.py` CLI accepts two CSV files plus an explicit plan and writes a new private ZIP; the optional CSV-only intake page is documented there. The general CSV/JSON browser entrypoint above remains available. These adapters share the existing parity engine, but their input/mapping contracts are distinct; do not interchange their plans or assume their generated input hashes will match. The replay ZIP contains selected raw values and must remain private.
+
 ## Commercial offer
 
 - **$5,000 fixed diagnostic** for one sanitized source export + one sanitized target export, each capped at 500 records.
