@@ -6,12 +6,20 @@ import json
 import os
 import tempfile
 import unittest
+import urllib.parse
 from contextlib import redirect_stdout
 from io import StringIO
 from pathlib import Path
 from unittest import mock
 
 import discord_ingest as di
+
+
+def _has_page_query(path: str) -> bool:
+    query = path.split("?", 1)[1] if "?" in path else ""
+    return "page" in urllib.parse.parse_qs(query, keep_blank_values=True)
+
+
 
 
 class DiscordIngestTests(unittest.TestCase):
@@ -107,27 +115,84 @@ class DiscordIngestTests(unittest.TestCase):
             self.assertEqual(payload["title"], "discord-42")
             self.assertEqual(payload["labels"], ["board"])
 
+    def test_source_is_the_ingest_program(self) -> None:
+        source = Path(di.__file__).read_text(encoding="utf-8")
+        self.assertTrue(source.startswith("#!/usr/bin/env python3\n"))
+        self.assertIn("def github_next_url", source)
+        self.assertIn("def board_titles", source)
+        self.assertNotIn('"page": str(page)', source)
+        compile(source, di.__file__, "exec")
+
+    def test_github_next_url_follows_server_cursor_only(self) -> None:
+        self.assertEqual(di.github_next_url(""), "")
+        self.assertEqual(di.github_next_url(None), "")
+        last_only = '<https://api.github.com/repos/o/r/issues?per_page=100&page=2>; rel="last"'
+        self.assertEqual(di.github_next_url(last_only), "")
+        header = (
+            '<https://api.github.com/repositories/1/issues?state=all&labels=board'
+            '&per_page=100&after=CURSOR&page=2>; rel="next", '
+            '<https://api.github.com/repositories/1/issues?per_page=100&page=9>; rel="last"'
+        )
+        self.assertEqual(
+            di.github_next_url(header),
+            "https://api.github.com/repositories/1/issues?state=all&labels=board"
+            "&per_page=100&after=CURSOR&page=2",
+        )
+
     def test_issue_exists_lists_all_board_issues_once(self) -> None:
         client = di.GitHubClient("token")
         paths: list[str] = []
+        nxt = (
+            '<https://api.github.com/repositories/1/issues?state=all&labels=board'
+            '&per_page=100&after=CURSOR&page=2>; rel="next"'
+        )
 
-        def request(method: str, path: str, payload: dict | None = None):
+        def _request(method: str, path: str, payload: dict | None = None):
             paths.append(path)
             self.assertNotIn("/search/", path)
-            if path.endswith("&page=1"):
-                return [{"title": "keep-me"}] + [{"title": "page1-%s" % i} for i in range(99)]
-            if path.endswith("&page=2"):
-                return [{"title": "last-closed", "state": "closed"}, {"title": "pr-title", "pull_request": {"url": "https://x"}}]
-            raise AssertionError(path)
+            self.assertEqual(method, "GET")
+            if not _has_page_query(path):
+                self.assertIn("state=all", path)
+                self.assertIn("per_page=100", path)
+                return (
+                    [{"title": "keep-me"}] + [{"title": "page1-%s" % i} for i in range(99)],
+                    nxt,
+                )
+            self.assertIn("after=CURSOR", path)
+            self.assertIn("page=2", path)
+            return (
+                [
+                    {"title": "last-closed", "state": "closed"},
+                    {"title": "pr-title", "pull_request": {"url": "https://x"}},
+                ],
+                "",
+            )
 
-        client.request = request  # type: ignore[method-assign]
+        client._request = _request  # type: ignore[method-assign]
         self.assertTrue(client.issue_exists("keep-me"))
         self.assertTrue(client.issue_exists("last-closed"))
         self.assertFalse(client.issue_exists("pr-title"))
         self.assertFalse(client.issue_exists("missing"))
-        self.assertEqual(sum(1 for path in paths if "/issues?" in path), 2)
+        issue_paths = [path for path in paths if "issues?" in path]
+        self.assertEqual(len(issue_paths), 2)
+        self.assertFalse(_has_page_query(issue_paths[0]))
+        self.assertIn("after=CURSOR", issue_paths[1])
         self.assertTrue(all("/search/" not in path for path in paths))
-        self.assertTrue(all("state=all" in path for path in paths if "/issues?" in path))
+        self.assertIn("state=all", issue_paths[0])
+
+    def test_full_page_without_link_does_not_invent_page(self) -> None:
+        client = di.GitHubClient("token")
+        paths: list[str] = []
+
+        def _request(method: str, path: str, payload: dict | None = None):
+            paths.append(path)
+            return ([{"title": "only-%s" % i} for i in range(100)], "")
+
+        client._request = _request  # type: ignore[method-assign]
+        titles = client.board_titles()
+        self.assertEqual(len(titles), 100)
+        self.assertEqual(len(paths), 1)
+        self.assertFalse(_has_page_query(paths[0]))
 
     def test_sync_creates_missing_titles_without_search(self) -> None:
         events = [
@@ -146,15 +211,17 @@ class DiscordIngestTests(unittest.TestCase):
                 return events
 
         class FakeGitHub(di.GitHubClient):
-            def request(self, method: str, path: str, payload: dict | None = None):
+            def _request(self, method: str, path: str, payload: dict | None = None):
                 paths.append(path)
                 if "/search/" in path:
                     raise di.IngestError("GitHub HTTP 403: search must not be used")
                 if method == "GET" and "/issues?" in path:
-                    return [{"title": "discord-1", "state": "closed"}]
+                    if _has_page_query(path):
+                        raise AssertionError(path)
+                    return [{"title": "discord-1", "state": "closed"}], ""
                 if method == "POST" and path.endswith("/issues"):
                     created.append(str((payload or {}).get("title")))
-                    return {"html_url": "https://github.test/issues/9"}
+                    return {"html_url": "https://github.test/issues/9"}, ""
                 raise AssertionError(path)
 
         buf = StringIO()
@@ -183,7 +250,7 @@ class DiscordIngestTests(unittest.TestCase):
                 return [{"id": "1", "channel_id": "c", "content": "hello", "author": {"username": "a"}}]
 
         class FakeGitHub(di.GitHubClient):
-            def request(self, method: str, path: str, payload: dict | None = None):
+            def _request(self, method: str, path: str, payload: dict | None = None):
                 raise di.IngestError(
                     'GitHub HTTP 403: {"message": "API rate limit exceeded for installation."}'
                 )
@@ -330,14 +397,16 @@ class DiscordIngestTests(unittest.TestCase):
                 return events
 
         class FakeGitHub(di.GitHubClient):
-            def request(self, method: str, path: str, payload: dict | None = None):
+            def _request(self, method: str, path: str, payload: dict | None = None):
                 if "/search/" in path:
                     raise di.IngestError("GitHub HTTP 403: search must not be used")
                 if method == "GET" and "/issues?" in path:
-                    return []
+                    if _has_page_query(path):
+                        raise AssertionError(path)
+                    return [], ""
                 if method == "POST" and path.endswith("/issues"):
                     created.append(str((payload or {}).get("title")))
-                    return {"html_url": "https://github.test/issues/1"}
+                    return {"html_url": "https://github.test/issues/1"}, ""
                 raise AssertionError(path)
 
         with tempfile.TemporaryDirectory() as tmp:
