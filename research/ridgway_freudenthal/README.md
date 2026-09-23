@@ -15,6 +15,10 @@ python research/ridgway_freudenthal/p4_mean_repair.py \
 
 Python 3.10+, standard library only. The reusable sparse rational operator is `p4_mean_repair_basis.json`. Its tetrahedra and Bernstein coefficient ordering are explicit. The exact construction has 189 unknowns, edge rank 122, combined edge/mean rank 133, and 202 nonzero operator coefficients. It establishes the local mean-repair image, not the full mesh-uniform theorem.
 
+## Rectangular-grid composition
+
+[The grid solver and derivation](P4_GRID_MEAN_REPAIR.md) extend the local operator to any rectangular Kuhn grid with at least two cubes, including exact translation and isotropic scale. Use `p4_grid_mean_repair.py input.json --output velocity.json`. It matches all zero-sum cell means, preserves zero edge divergence and boundary trace, and returns shared sparse Bernstein coefficients. The guide also gives an explicit fixed-patch bound and explains how to preserve a raw lift's edge traces while removing its cell means. The whole-domain bound depends on the cube count; it is not the mesh-uniform theorem.
+
 ## Original problem
 
 On a Freudenthal tetrahedral mesh of a cubical domain, let `V_h^k` be the continuous vector degree-k polynomial space with zero boundary trace, and let `Q_h^k = div V_h^k`.
