@@ -3,12 +3,11 @@ from __future__ import annotations
 import hashlib
 import json
 import re
-from datetime import datetime, timezone
+from datetime import datetime
 from typing import Any
 
 SCHEMA = "commons.swarmops-dossier/v1"
-LEGACY_OUTPUT_SCHEMA = "commons.swarmops-dossier-output/v3"
-OUTPUT_SCHEMA = "commons.swarmops-dossier-output/v4"
+OUTPUT_SCHEMA = "commons.swarmops-dossier-output/v3"
 
 SOURCE_KINDS = {
     "GIT_COMMIT", "GIT_BLOB", "TEST_RECEIPT", "CI_RUN", "PROVIDER_RECEIPT",
@@ -249,8 +248,7 @@ def _row_class(
     return "UNKNOWN", [row["observed_state"]]
 
 
-def _compile_at(packet: Any, policy: Any, as_of: str, trusted_commercial_receipts: Any = None) -> dict[str, Any]:
-    """Deterministic v3 evaluator, retained for historical content replay."""
+def compile_dossier(packet: Any, policy: Any, as_of: str, trusted_commercial_receipts: Any = None) -> dict[str, Any]:
     as_of_dt = _time(as_of, "as_of")
     clean_policy = _validate_policy(policy)
     trusted = _validate_trusted_commercial_receipts(trusted_commercial_receipts)
@@ -317,7 +315,7 @@ def _compile_at(packet: Any, policy: Any, as_of: str, trusted_commercial_receipt
         "observed_at": r["observed_at"], "classification": r["classification"], "reasons": r["reasons"], "claim": r["claim"],
     } for r in prospect_rows]
     dossier = {
-        "schema": LEGACY_OUTPUT_SCHEMA,
+        "schema": OUTPUT_SCHEMA,
         "portfolio_id": portfolio_id,
         "as_of": as_of,
         "status": "HOLD" if missing_required else "READY_FOR_OWNER_REVIEW",
@@ -342,125 +340,32 @@ def _compile_at(packet: Any, policy: Any, as_of: str, trusted_commercial_receipt
     return dossier
 
 
-def _utc_now() -> str:
-    return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
-
-
-def _temporal_dossier(dossier: dict[str, Any], mode: str) -> dict[str, Any]:
-    result = {key: value for key, value in dossier.items() if key != "receipt_sha256"}
-    result["schema"] = OUTPUT_SCHEMA
-    result["evaluation_mode"] = mode
-    if mode == "HISTORICAL_REPLAY":
-        result["status"] = "HISTORICAL_READY" if dossier["status"] == "READY_FOR_OWNER_REVIEW" else "HISTORICAL_HOLD"
-    result["receipt_sha256"] = digest(result)
-    return result
-
-
-def _reject_future_observations(packet: dict[str, Any], as_of: str) -> None:
-    """Call only after the evaluator has validated the complete packet."""
-    instant = _time(as_of, "as_of")
-    for row in packet["evidence"]:
-        if _time(row["observed_at"], "observed_at") > instant:
-            raise DossierError(f"source {row['source_id']}: observation is later than the evaluation time")
-
-
-def compile_current_dossier(packet: Any, policy: Any, trusted_commercial_receipts: Any = None) -> dict[str, Any]:
-    """Evaluate once at process UTC. No caller-supplied clock is accepted."""
-    as_of = _utc_now()
-    dossier = _compile_at(packet, policy, as_of, trusted_commercial_receipts)
-    _reject_future_observations(packet, as_of)
-    return _temporal_dossier(dossier, "CURRENT")
-
-
-def compile_historical_dossier(packet: Any, policy: Any, as_of: str, trusted_commercial_receipts: Any = None) -> dict[str, Any]:
-    """Replay a past instant, explicitly without a present-readiness claim."""
-    if _time(as_of, "as_of") > _time(_utc_now(), "process UTC"):
-        raise DossierError("historical evaluation time is in the future")
-    dossier = _compile_at(packet, policy, as_of, trusted_commercial_receipts)
-    _reject_future_observations(packet, as_of)
-    return _temporal_dossier(dossier, "HISTORICAL_REPLAY")
-
-
-def compile_dossier(packet: Any, policy: Any, as_of: str, trusted_commercial_receipts: Any = None) -> dict[str, Any]:
-    """Compatibility name for historical replay; use compile_current_dossier for now."""
-    return compile_historical_dossier(packet, policy, as_of, trusted_commercial_receipts)
-
-
-def verify_historical_dossier(packet: Any, policy: Any, as_of: str, candidate: Any, trusted_commercial_receipts: Any = None) -> bool:
-    """Check historical integrity only, including archived v3 dossiers."""
+def verify_dossier(packet: Any, policy: Any, as_of: str, candidate: Any, trusted_commercial_receipts: Any = None) -> bool:
     if not isinstance(candidate, dict):
         return False
     try:
-        if candidate.get("schema") == LEGACY_OUTPUT_SCHEMA:
-            if _time(as_of, "as_of") > _time(_utc_now(), "process UTC"):
-                return False
-            expected = _compile_at(packet, policy, as_of, trusted_commercial_receipts)
-            _reject_future_observations(packet, as_of)
-        else:
-            expected = compile_historical_dossier(packet, policy, as_of, trusted_commercial_receipts)
-        return canonical_bytes(expected) == canonical_bytes(candidate)
-    except (DossierError, TypeError, ValueError, RecursionError):
+        expected = compile_dossier(packet, policy, as_of, trusted_commercial_receipts)
+    except DossierError:
         return False
-
-
-def verify_dossier(packet: Any, policy: Any, as_of: str, candidate: Any, trusted_commercial_receipts: Any = None) -> bool:
-    """Compatibility name: historical integrity is not current verification."""
-    return verify_historical_dossier(packet, policy, as_of, candidate, trusted_commercial_receipts)
-
-
-def verify_current_dossier(packet: Any, policy: Any, candidate: Any, trusted_commercial_receipts: Any = None) -> bool:
-    """Check integrity and today's classifications; raise DossierError on failure.
-
-    The machine clock is sampled once. A current dossier remains valid while its
-    classifications still match, rather than failing whenever the second changes.
-    This reuses retained observations; it does not poll their external providers.
-    """
-    now = _utc_now()
-    if not isinstance(candidate, dict):
-        raise DossierError("candidate must be an object")
-    if candidate.get("schema") != OUTPUT_SCHEMA or candidate.get("evaluation_mode") != "CURRENT":
-        raise DossierError("historical or legacy dossier is not current; use compile without --as-of")
-    recorded_at = candidate.get("as_of")
-    if _time(recorded_at, "candidate.as_of") > _time(now, "process UTC"):
-        raise DossierError("candidate evaluation time is in the future")
-    retained = _compile_at(packet, policy, recorded_at, trusted_commercial_receipts)
-    _reject_future_observations(packet, recorded_at)
-    expected = _temporal_dossier(retained, "CURRENT")
-    if canonical_bytes(expected) != canonical_bytes(candidate):
-        raise DossierError("dossier content, source packet, policy or commercial authority changed; recompile")
-    current = _temporal_dossier(_compile_at(packet, policy, now, trusted_commercial_receipts), "CURRENT")
-    # All other fields must still agree, including optional-row reasons and paid flags.
-    ignored = {"as_of", "receipt_sha256"}
-    if canonical_bytes({k: v for k, v in current.items() if k not in ignored}) != canonical_bytes({k: v for k, v in candidate.items() if k not in ignored}):
-        old_rows = {row["source_id"]: row for row in candidate["evidence"]}
-        changed = [row["source_id"] for row in current["evidence"] if row != old_rows.get(row["source_id"])]
-        detail = ", ".join(changed[:8]) or "required capability or evidence posture"
-        raise DossierError(f"evidence expired or classifications changed at {now}: {detail}; recompile")
-    return True
+    return canonical_bytes(expected) == canonical_bytes(candidate)
 
 
 def render_markdown(dossier: dict[str, Any]) -> str:
     status = dossier["status"]
-    historical = dossier.get("evaluation_mode") != "CURRENT"
     s = dossier["summary"]
     lines = [
         f"# SwarmOps Evidence Dossier — {dossier['portfolio_id']}", "",
         f"Status: **{status}**", f"As of: `{dossier['as_of']}`", f"Receipt: `{dossier['receipt_sha256']}`", "",
-        ("**Historical replay only — not a current readiness statement.**" if historical else
-         "**Current at the recorded instant. Run verify before relying on its freshness.**"), "",
-        "## What was demonstrated at the recorded instant" if historical else "## What we can show now", "",
+        "## What we can show now", "",
     ]
     if dossier["what_we_can_show_now"]:
         for item in dossier["what_we_can_show_now"]:
             lines.append(f"- **{item['capability_id']}** — {item['claim']} (`{item['source_id']}`)")
     else:
-        lines.append("- No prospect-safe demonstrated capability is evidenced at the recorded instant.")
+        lines.append("- No prospect-safe demonstrated capability is currently evidenced.")
     lines += ["", "## Evidence posture", "", f"- Demonstrated: {s['DEMONSTRATED']}", f"- Limited: {s['LIMITED']}", f"- Held: {s['HELD']}", f"- Unknown: {s['UNKNOWN']}"]
     if s["missing_required_capabilities"]:
         lines.append(f"- Missing required: {', '.join(s['missing_required_capabilities'])}")
-    for row in dossier["evidence"]:
-        if row["reasons"]:
-            lines.append(f"- {row['source_id']}: {', '.join(row['reasons'])}")
     x = dossier["external_truth"]
-    lines += ["", "## Commercial observations at the recorded instant", "", f"- Buyer accepted: {str(x['buyer_accepted']).lower()}", f"- Paid: {str(x['paid']).lower()}", f"- Revenue recognized: {str(x['revenue_recognized']).lower()}", "", "## Authority ceiling", "", "This dossier is offline evidence for owner review. It does not authorize sends, deployment, credentials, proposals, pricing commitments, acceptance claims, payment actions, cash assertions, or revenue recognition.", ""]
+    lines += ["", "## External commercial truth", "", f"- Buyer accepted: {str(x['buyer_accepted']).lower()}", f"- Paid: {str(x['paid']).lower()}", f"- Revenue recognized: {str(x['revenue_recognized']).lower()}", "", "## Authority ceiling", "", "This dossier is offline evidence for owner review. It does not authorize sends, deployment, credentials, proposals, pricing commitments, acceptance claims, payment actions, cash assertions, or revenue recognition.", ""]
     return "\n".join(lines)
