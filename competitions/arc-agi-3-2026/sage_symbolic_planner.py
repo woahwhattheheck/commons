@@ -14,6 +14,8 @@ boundary and repairs exact predecessor identity for production SAGE observations
   terminal semantics.
 * unresolved abstract states have no inferred successor action space, so
   lookahead stops at the evidence boundary.
+* terminal or inactive states cannot generate further hypotheses, including
+  GAME_OVER observations that still advertise available action names.
 """
 from __future__ import annotations
 
@@ -26,9 +28,9 @@ except ImportError:  # direct module execution from the competition directory
     import _sage_symbolic_planner_core as _core  # type: ignore
 
 OBSERVATION_IDENTITY_POLICY = "ordered-animation-frames-plus-settled-metadata/v1"
-REACHABILITY_POLICY = "exact-predecessor-full-animation-unanimous-concrete-reachability/v3"
-PLANNER_SCHEMA = "commons.arc3-sage-symbolic-planner/v3"
-PLANNER_VERSION = 3
+REACHABILITY_POLICY = "exact-predecessor-full-animation-unanimous-active-state-reachability/v4"
+PLANNER_SCHEMA = "commons.arc3-sage-symbolic-planner/v4"
+PLANNER_VERSION = 4
 
 # Preserve the historical module surface. Keep the old implementation private
 # and byte-exact; exact identity, SageEvidenceAdapter, plan and verify_receipt are
@@ -181,12 +183,16 @@ class SageEvidenceAdapter(_BaseSageEvidenceAdapter):
         return obs
 
     def hypotheses(self, state):
+        if state.terminal != "NOT_FINISHED":
+            return ()
         obs = self._resolved_observation(state)
         if obs is None:
             # An abstract effect state is an evidence boundary, not a license to
             # reuse the predecessor action space and invent a deeper future.
             return ()
 
+        if getattr(obs, "state", "NOT_FINISHED") != "NOT_FINISHED":
+            return ()
         hypotheses = super().hypotheses(state)
         hardened = []
         for hypothesis in hypotheses:
@@ -236,11 +242,38 @@ class SageEvidenceAdapter(_BaseSageEvidenceAdapter):
         )
 
 
-def _v3_receipt_from_core(receipt):
+def _policy_receipt_from_core(receipt):
     unsealed = {key: receipt[key] for key in receipt if key != "receipt_sha256"}
     unsealed["schema"] = PLANNER_SCHEMA
     unsealed["planner_version"] = PLANNER_VERSION
     return _core._seal_receipt(unsealed)
+
+
+class _ActiveStateAdapter:
+    """Apply the same terminal boundary to SAGE and generic planner adapters."""
+
+    def __init__(self, adapter):
+        self._adapter = adapter
+        self._root = adapter.root_state()
+        if self._root.terminal != "NOT_FINISHED":
+            raise ValueError("planner requires a NOT_FINISHED root state")
+
+    @property
+    def model_digest(self):
+        return self._adapter.model_digest
+
+    def root_state(self):
+        return self._root
+
+    def hypotheses(self, state):
+        if state.terminal != "NOT_FINISHED":
+            return ()
+        return self._adapter.hypotheses(state)
+
+    def simulate(self, state, hypothesis):
+        if state.terminal != "NOT_FINISHED":
+            raise ValueError("cannot simulate from a terminal or inactive state")
+        return self._adapter.simulate(state, hypothesis)
 
 
 def plan(
@@ -250,14 +283,14 @@ def plan(
     budget=_core.PlannerBudget(),
     weights=_core.ScoreWeights(),
 ):
-    """Run the bounded planner and emit a v3 policy-bound receipt."""
+    """Run bounded active-state lookahead and emit a v4 policy-bound receipt."""
     decision = _core.plan(
-        adapter,
+        _ActiveStateAdapter(adapter),
         actions_left=actions_left,
         budget=budget,
         weights=weights,
     )
-    receipt = _v3_receipt_from_core(decision.receipt)
+    receipt = _policy_receipt_from_core(decision.receipt)
     return _core.PlanDecision(
         decision.first_action,
         decision.selected_prefix,
@@ -274,7 +307,7 @@ def verify_receipt(
     budget=_core.PlannerBudget(),
     weights=_core.ScoreWeights(),
 ):
-    """Recompute a v3 receipt and reject tamper, drift or older semantic replay."""
+    """Recompute a v4 receipt and reject tamper, drift or older semantic replay."""
     if not isinstance(receipt, dict) or frozenset(receipt) != _core.RECEIPT_KEYS:
         raise _core.ReceiptVerificationError("receipt field set mismatch")
     supplied_digest = receipt.get("receipt_sha256")
