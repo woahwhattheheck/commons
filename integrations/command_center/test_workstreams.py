@@ -86,6 +86,7 @@ class WorkstreamTests(unittest.TestCase):
                                 status="error", error={"message": "Provider unavailable"})
         failure["source"]["activity_as_of"] = None
         result = self.store.ingest(failure)
+        self.assertEqual("source_error", result["status"])
         state = WorkstreamStore(self.path).state()
         self.assertEqual(1, len(state["items"]))
         source = state["sources"][0]
@@ -169,7 +170,7 @@ class WorkstreamTests(unittest.TestCase):
             with self.assertRaises(CoreError) as caught:
                 self.store.ingest(sample)
             self.assertEqual(400, caught.exception.status)
-        self.assertEqual([], self.store.state()["sources"])
+        self.assertEqual([], self.store.state()["items"])
 
     def test_raw_bodies_and_secret_fields_never_persist(self):
         for dangerous in ({"body": "raw email"}, {"access_token": "not-a-real-secret"}):
