@@ -31,7 +31,7 @@ The briefing exposes:
 - `COMPLETE` vs `LOWER_BOUND` coverage inherited from the exact ledger window;
 - paged `ASK`, `OWNER_DIRECTION`, `HANDOFF`, and `COLLISION` event-kind candidates with exact
   provider drill-through links, full snapshot candidate counts, and oldest-first recovery;
-- verified action-receipt totals split into confirmed, delivery-uncertain, and rejected;
+- distinct action-operation outcomes and next actions, separately from retained receipt history;
 - the stable update marker and source-generation digests needed by the next peer.
 
 The attention list is deliberately modest. An event kind is not proof that an ask remains
@@ -53,13 +53,48 @@ stays lower-bound even though fresh sources continue to contribute observed even
 A zero shown inside a lower-bound window means zero events were observed in the supplied
 bounded data, not that the true provider count is zero.
 
-## Action receipts
+## Action receipts and distinct operation state
 
 Each supplied action receipt is re-verified by `jev_action_loop.verify_receipt()` before it
 enters the briefing. Duplicate receipt digests collapse. A `CONFIRMED` outcome remains confirmed
 only when the action-loop receipt already bound the exact stable operation marker to a provider
 resource/readback. `DELIVERY_UNCERTAIN` and `REJECTED` stay distinct and are never promoted by
 the presentation layer.
+
+`action_receipts` retains that history. The established `actions.receipt_count`, `confirmed`,
+`delivery_uncertain`, and `rejected` fields remain **receipt counts**, not action counts.
+New `action_operations` rows group the supplied verified history by stable operation ID and
+require one consistent plan digest, provider, and destination for each operation. The separate
+`actions.operation_count`, `confirmed_operations`, `delivery_uncertain_operations`, and
+`rejected_operations` fields count those distinct operation states. No record is discarded
+merely because a later readback supersedes its relevance to replay.
+
+State follows the existing action-loop rules, not last-arrival-wins:
+
+- Any exact confirmation means `CONFIRMED` / `DO_NOT_REPLAY`. Earlier uncertain receipts remain
+  in history but no longer count as outstanding delivery-uncertain operations. A later error
+  does not undo a known confirmation.
+- Without confirmation, any uncertain delivery means `DELIVERY_UNCERTAIN` /
+  `READ_BACK_EXISTING_OPERATION`. A later rejected attempt does not prove that the earlier
+  uncertain attempt failed to deliver.
+- Only an all-rejected history produces `REJECTED` / `RETRY_SAME_OPERATION_ID`.
+
+If one operation is confirmed at multiple provider resource IDs, its row retains all those IDs
+and says `CHECK_DUPLICATE_DELIVERY_DO_NOT_REPLAY`; `duplicate_delivery_operations` counts such
+operations. The compiler does not delete, resend, or otherwise repair provider resources.
+
+Ordering uses parsed UTC timestamps, including fractional seconds. Each row preserves its
+first/last observation times, the effective readback time and source URL, all history source
+URLs, the effective receipt digest, and the number of history receipts. Markdown prioritizes
+possible duplicate deliveries, then uncertain operations, then rejected operations, oldest
+first within each class, before confirmations. It displays at most eight operation states and
+explicitly points to the full JSON `action_operations` list when more remain. Headline counts
+always cover all supplied operation states, not just those eight rows.
+
+These are observations of supplied action history, not full-corpus Jev processing counts,
+proof that work is resolved, or new permission to act. The next controller still uses current
+provider state, the existing action plan, and the same operation ID. Old saved v1 briefs without
+`action_operations` retain their original rendering and verification path.
 
 For a coherent point-in-time brief, an action receipt whose provider observation is newer than
 the ledger's `evaluated_at` is rejected; collect a newer ledger snapshot instead of mixing
@@ -89,6 +124,10 @@ package installation, model invocation, or service deployment are needed.
 python -m integrations.command_center.jev_activity_brief ledger-report.json \
   --attention-order oldest --attention-limit 12 --output attention-page-1.json
 ```
+
+Attach the existing controller's action history with `--receipts action-receipts.json`.
+It is the same input array as before; no second registry or checkpoint format is needed. The
+Python call remains `compile_brief(report, action_receipts=receipts, ...)`.
 
 Read `attention.next_cursor` in that JSON, then pass its literal value with the same report,
 order, and limit to `--attention-cursor` to create `attention-page-2.json`. Continue until the
