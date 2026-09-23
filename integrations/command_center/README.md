@@ -167,12 +167,20 @@ publication and passing tests do not establish deployment or real-provider refre
 
 `GET /api/decisions` (`decisions.py`) projects the existing `/api/work`
 state into an **exception queue** and **one row per active operation**, not
-per receipt. It reuses `work_state()` and `observability()`; it adds no
-collector or store. `/api/summary` stays cache-only and only links to it
-(`"decisions": "/api/decisions"`). Rows are joinable with `/api/work` items
-and `/api/mail` threads by operation id. The top of the view shows
-`operator_control.mode` (RUN / DRAIN / ABORT, absent reads RUN) from the
-observability coordination head, then collection coverage and cooldowns.
+per receipt. It reuses the local snapshot cache used by `/api/summary`;
+it never calls the refresh-capable `work_state()` or `observability()` methods.
+It adds no collector or store. `/api/summary` stays cache-only and only links
+to it (`"decisions": "/api/decisions"`). Rows are joinable with `/api/work`
+items and `/api/mail` threads by operation id. Existing work and observability
+refresh routes remain available; reading decisions does not trigger them.
+
+The top of the view shows `operator_control.mode` from the existing cached
+coordination head, then collection coverage and cooldowns. Missing, failed
+or expired coordination cache reads `unknown`, not RUN. A successfully observed
+current head with no override retains the RUN default. The response includes
+`cache` for the shared work snapshot and `operator_control_source` with
+`cache_only`, `fresh` and `observed_at`; refresh the existing observability
+view when current operator control is needed.
 
 An item joins an operation only through `metadata.operation`,
 `metadata.operation_id` or `refs.operation`. Eligibility-to-payout is a list
@@ -196,6 +204,14 @@ Per record: `stage` or `metadata.provider_stage`; `metadata.stage_state`
 `unknown: <metadata.answer_source>`. Operation money uses
 `metadata.advertised_amount` + `currency`. Agents use `metadata.seat`,
 `model_family`, `session_id`, `heartbeat_at`, `agent_state`, `blocker`.
+
+Stage selection uses `metadata.stage_observed_at` when valid, otherwise the
+first valid `updated_at`, `activity_observed_at` or `last_seen_at`. This is
+returned as `stages[].observed_at`; `entered_at` remains the separate clock
+for stage age. A newer observation can correct an older stage-entry date.
+Equal-time conflicting states read `unknown` with a reconciliation action.
+Explicit unknown stage states and invalid heartbeat timestamps remain unknown,
+not pending work or an idle agent.
 
 The first stage not done decides `waiting_on` (`waiting_on_us`,
 `waiting_on_them`, `none`, `unknown`, as in `mail_tracking.py`), with
