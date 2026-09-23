@@ -10,7 +10,9 @@ from pathlib import Path
 
 from revenue.swarmops_dossier.acceptance import fixture
 from revenue.swarmops_dossier.cli import main as cli_main
-from revenue.swarmops_dossier.engine import DossierError, compile_dossier, render_markdown, strict_json_loads, verify_dossier
+from revenue.swarmops_dossier.engine import (
+    DossierError, _compile_at, compile_dossier, render_markdown, strict_json_loads, verify_dossier,
+)
 
 AS_OF = "2026-09-13T14:00:00Z"
 PORTFOLIO = "commons-swarmops-public-demo"
@@ -62,8 +64,9 @@ class EngineTests(unittest.TestCase):
 
     def test_mixed_acceptance_truth(self):
         out = self.compile()
-        self.assertEqual(out["schema"], "commons.swarmops-dossier-output/v3")
-        self.assertEqual(out["status"], "READY_FOR_OWNER_REVIEW")
+        self.assertEqual(out["schema"], "commons.swarmops-dossier-output/v4")
+        self.assertEqual(out["evaluation_mode"], "HISTORICAL_REPLAY")
+        self.assertEqual(out["status"], "HISTORICAL_READY")
         self.assertEqual(out["summary"]["DEMONSTRATED"], 2)
         self.assertEqual(out["summary"]["LIMITED"], 2)
         self.assertEqual(out["external_truth"], {"buyer_accepted": False, "paid": False, "revenue_recognized": False})
@@ -256,22 +259,27 @@ class EngineTests(unittest.TestCase):
 
     def test_future_required_holds(self):
         self.packet["evidence"][0]["observed_at"] = "2026-09-13T15:00:00Z"
-        self.assertEqual(self.compile()["status"], "HOLD")
+        core = _compile_at(self.packet, self.policy, AS_OF)
+        self.assertEqual(core["status"], "HOLD")
+        row = next(item for item in core["evidence"] if item["source_id"] == "merge-receipt-1")
+        self.assertIn("FUTURE_EVIDENCE", row["reasons"])
+        with self.assertRaises(DossierError):
+            self.compile()
 
     def test_stale_required_holds(self):
         self.packet["evidence"][0]["observed_at"] = "2026-09-10T00:00:00Z"
         self.packet["evidence"][0]["freshness_seconds"] = 60
-        self.assertEqual(self.compile()["status"], "HOLD")
+        self.assertEqual(self.compile()["status"], "HISTORICAL_HOLD")
 
     def test_internal_required_holds_and_is_not_projected(self):
         self.packet["evidence"][0]["prospect_class"] = "INTERNAL_ONLY"
         out = self.compile()
-        self.assertEqual(out["status"], "HOLD")
+        self.assertEqual(out["status"], "HISTORICAL_HOLD")
         self.assertFalse(any(r["source_id"] == "merge-receipt-1" for r in out["evidence"]))
 
     def test_owner_approval_required_holds(self):
         self.packet["evidence"][0]["prospect_class"] = "OWNER_APPROVAL_REQUIRED"
-        self.assertEqual(self.compile()["status"], "HOLD")
+        self.assertEqual(self.compile()["status"], "HISTORICAL_HOLD")
 
     def test_changed_duplicate_source_fails(self):
         dup = copy.deepcopy(self.packet["evidence"][0])
@@ -339,7 +347,7 @@ class EngineTests(unittest.TestCase):
 
     def test_missing_required_and_unknown(self):
         self.policy["required_capabilities"].append("not-present")
-        self.assertEqual(self.compile()["status"], "HOLD")
+        self.assertEqual(self.compile()["status"], "HISTORICAL_HOLD")
 
     def test_cli_cannot_self_mint_paid_and_rejects_trust_flag(self):
         row = commercial()
@@ -349,10 +357,10 @@ class EngineTests(unittest.TestCase):
             packet = Path(td, "packet.json"); policy = Path(td, "policy.json"); trust = Path(td, "trust.json")
             out = Path(td, "out.json"); md = Path(td, "out.md")
             packet.write_text(json.dumps(self.packet)); policy.write_text(json.dumps(self.policy)); trust.write_text(json.dumps(trusted))
-            self.assertEqual(cli_main(["compile", str(packet), str(policy), "--as-of", AS_OF, "--json-out", str(out), "--markdown-out", str(md)]), 0)
+            self.assertEqual(cli_main(["replay", str(packet), str(policy), "--as-of", AS_OF, "--json-out", str(out), "--markdown-out", str(md)]), 0)
             self.assertFalse(json.loads(out.read_text())["external_truth"]["paid"])
             with self.assertRaises(SystemExit):
-                cli_main(["compile", str(packet), str(policy), "--as-of", AS_OF, "--trusted-commercial-receipts", str(trust), "--json-out", str(Path(td, "evil.json")), "--markdown-out", str(Path(td, "evil.md"))])
+                cli_main(["replay", str(packet), str(policy), "--as-of", AS_OF, "--trusted-commercial-receipts", str(trust), "--json-out", str(Path(td, "evil.json")), "--markdown-out", str(Path(td, "evil.md"))])
 
     def test_cli_cannot_verify_programmatic_paid_truth(self):
         row = commercial()
@@ -362,14 +370,14 @@ class EngineTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             packet = Path(td, "packet.json"); policy = Path(td, "policy.json"); candidate = Path(td, "paid.json")
             packet.write_text(json.dumps(self.packet)); policy.write_text(json.dumps(self.policy)); candidate.write_text(json.dumps(paid))
-            self.assertEqual(cli_main(["verify", str(packet), str(policy), str(candidate), "--as-of", AS_OF]), 3)
+            self.assertEqual(cli_main(["verify-replay", str(packet), str(policy), str(candidate), "--as-of", AS_OF]), 3)
 
     def test_cli_no_overwrite(self):
         with tempfile.TemporaryDirectory() as td:
             packet = Path(td, "packet.json"); policy = Path(td, "policy.json"); out = Path(td, "out.json"); md = Path(td, "out.md")
             packet.write_text(json.dumps(self.packet)); policy.write_text(json.dumps(self.policy))
-            self.assertEqual(cli_main(["compile", str(packet), str(policy), "--as-of", AS_OF, "--json-out", str(out), "--markdown-out", str(md)]), 0)
-            self.assertEqual(cli_main(["compile", str(packet), str(policy), "--as-of", AS_OF, "--json-out", str(out), "--markdown-out", str(Path(td, "other.md"))]), 4)
+            self.assertEqual(cli_main(["replay", str(packet), str(policy), "--as-of", AS_OF, "--json-out", str(out), "--markdown-out", str(md)]), 0)
+            self.assertEqual(cli_main(["replay", str(packet), str(policy), "--as-of", AS_OF, "--json-out", str(out), "--markdown-out", str(Path(td, "other.md"))]), 4)
 
     def test_cli_rejects_symlink_input(self):
         if not hasattr(os, "symlink"):
@@ -377,7 +385,7 @@ class EngineTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             target = Path(td, "real.json"); target.write_text("{}")
             link = Path(td, "link.json"); os.symlink(target, link)
-            self.assertEqual(cli_main(["verify", str(link), str(target), str(target), "--as-of", AS_OF]), 4)
+            self.assertEqual(cli_main(["verify", str(link), str(target), str(target)]), 4)
 
 
 if __name__ == "__main__":
