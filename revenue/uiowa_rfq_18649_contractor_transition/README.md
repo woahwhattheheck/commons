@@ -7,7 +7,9 @@ changes, unresolved ownership, and missing evidence without inserting real
 account data."*
 
 Built by seat `OP5-KELVIN` (Claude · Opus 5). Python 3 standard library only,
-no network at runtime, deterministic.
+no network at runtime, deterministic. Completion-integrity work by R9V6 and
+Trellis, partial-action semantics by MERIDIAN-Q7, output preservation by
+6D9F-R3; integrated by yZ-HELIOTROPE-7C.
 
 ---
 
@@ -59,15 +61,23 @@ report lies:
 
 ### Closure is fail-closed, and there is no percentage
 
-`transition_closed` is true only when **every** item is `COMPLETED`. There is
-no threshold, no weighting and no completion percentage anywhere in the
-output — a test greps the rendered JSON for `percent`, `score`, `maturity`,
-`rating` and `grade` and fails if any appears. One unresolved service identity
-is a contractor who still has a way in; averaging it against completed items
-produces a reassuring number that describes nothing anybody can act on.
+`transition_closed` is true only when **every** item is `COMPLETED` and no
+packet issues remain. There is no threshold, weighting or completion
+percentage. An empty packet does not close by vacuous truth either — nothing
+to check is not the same as everything checked.
 
-An empty packet does not close by vacuous truth either — nothing to check is
-not the same as everything checked.
+Completed actions retain their evidence locators while a missing/self
+successor or a separate pending action keeps the handoff open. Duplicate
+change IDs retain every occurrence's target and subject relationships; the
+first indexed occurrence cannot hide another affected item. Integrity
+problems propagate through related records rather than being disconnected
+from their completion decisions.
+
+Completed records require an actual ISO calendar date or offset-bearing
+timestamp. Malformed record structures return a controlled input error;
+invalid fields, references and completion dates remain explicit diagnostics.
+These checks describe the supplied fictional records, not whether an event
+actually occurred.
 
 ---
 
@@ -110,11 +120,20 @@ cd revenue/uiowa_rfq_18649_contractor_transition
 python3 transition.py --input fixtures/contractor_transition.json --outdir out
 python3 transition.py --input fixtures/contractor_transition.json --print
 python3 transition.py --input fixtures/contractor_transition_unsafe.json    # refuses
-python3 -m unittest -v test_transition
 ```
 
-Exit codes are a contract: **0** transition closed · **1** open items remain ·
-**2** bad input · **3** refused, packet contains unsafe content.
+Exit codes are a contract: **0** transition closed · **1** report produced,
+open items or packet issues remain · **2** bad input or output publication
+failed · **3** refused, packet contains unsafe content.
+
+`--outdir` creates `transition_items.csv`, `transition_report.json` and
+`transition_report.md`. Existing empty directories and unrelated files are
+supported. Any existing target name, including a symbolic link or input
+alias, is refused without overwriting it. Choose a fresh destination for a
+later run. Output failures produce a clear diagnostic and exit 2; cleanup
+removes only files created by that invocation whose identities still match.
+This is not an atomic directory installation: consume the bundle only after
+the command finishes with exit 0 or 1.
 
 Measured on the synthetic packet:
 
@@ -122,9 +141,9 @@ Measured on the synthetic packet:
 items=6 completed=2 unresolved=2 no_evidence=2 closed=False issues=0
 ```
 
-Two clean completions with real evidence locators (the strength), two items
-nobody owns and two where the record does not support the outcome claimed
-(the gaps).
+Two clean completions with synthetic evidence locators (the strength), two
+items without a successor and two where the record does not support the
+outcome claimed (the gaps).
 
 ---
 
@@ -136,14 +155,15 @@ nobody owns and two where the record does not support the outcome claimed
 | `transition.py` | the three-state classifier, report renderers, CLI |
 | `fixtures/contractor_transition.json` | the coherent fictional scenario — 3 people, 2 applications, 2 service identities, 2 runbooks, 4 change records |
 | `fixtures/contractor_transition_unsafe.json` | deliberately unsafe packet; exists to prove the guard goes red |
-| `sample_output/` | committed output; a test fails if it drifts from the code |
-| `test_transition.py` | 34 unittest cases |
+| `sample_output/` | retained fictional example output |
+| `test_transition.py` | original retained 34-case suite |
 
 ## What is working vs. draft
 
-**Working and tested.** The three-state classifier and all four of its decision
-paths, fail-closed closure, the realism guard including its own failure proof,
-referential integrity, all three output formats, and the four CLI exit codes.
+**Working demonstration.** The three-state classifier, conservative closure,
+realism guard, referential integrity, all three output formats and controlled
+CLI outcomes. The existing fictional packet is the runnable example; current
+swarm rules use product execution rather than new test or receipt packages.
 
 **Draft, pending real evidence.** The scenario is fiction. What counts as an
 acceptable evidence locator for a completed revocation at the University is
