@@ -1,29 +1,57 @@
 # Commons SwarmOps Evidence Dossier
 
-This product turns **owner-curated evidence** about Commons into a deterministic, prospect-safe demo dossier. It exists to sell what Commons can actually demonstrate without collapsing repository activity, queued CI, outbound transport, buyer acceptance, payment, or recognized revenue into the same claim.
+Turn owner-curated evidence into a dossier that distinguishes what is current from what was demonstrated at a past instant. Repository activity, queued CI, outbound transport, buyer acceptance, payment and recognized revenue remain separate observations.
 
-## What it proves
+## Current workflow
 
-Each input row binds one capability to a typed immutable source reference, SHA-256, observed state, observation time/freshness, release class, and bounded factual claim. The compiler separates rows into `DEMONSTRATED`, `LIMITED`, `HELD`, or `UNKNOWN`; required capabilities must have current prospect-safe technical evidence or the dossier is `HOLD`.
+Run from the repository root with the original evidence packet and policy:
 
-Commercial truth has a separate trust root:
+```bash
+python -m revenue.swarmops_dossier.cli compile packet.json policy.json \
+  --json-out dossier.json --markdown-out dossier.md
+python -m revenue.swarmops_dossier.cli verify packet.json policy.json dossier.json
+```
+
+`compile` samples process UTC once. Neither current command accepts `--as-of`. Output schema `commons.swarmops-dossier-output/v4` includes `evaluation_mode: CURRENT`; its `as_of` is a recorded evaluation instant, not a promise of permanent validity. Required capabilities need current prospect-safe technical evidence. Missing or stale required evidence produces `HOLD`, exit 2, and explanations in the console and Markdown.
+
+`verify` first reconstructs the original dossier with the supplied packet, policy and commercial authority. It then evaluates the same evidence at process UTC and compares every field except the evaluation timestamp and receipt digest. An unchanged dossier does not fail just because the clock advanced one second. It does fail when freshness changes a row classification or reason, including optional rows and commercial observations, or changes a required-capability result. Changed source inputs, policy, commercial authority, altered content and future timestamps also fail. Failures identify the problem and request recompilation.
+
+**Successful verification means integrity and present classifications match. It does not mean the status is READY.** A still-accurate `HOLD` dossier can verify successfully; the CLI prints its status.
+
+This is a check of retained observations against their declared freshness windows. It does not reread GitHub, payment providers or other external sources, authenticate source bytes by itself, or protect against an administrator changing the machine clock. Acquire new observations upstream when evidence expires; do not retimestamp old observations to make them appear fresh.
+
+## Historical workflow and migration
+
+Historical analysis remains available, but it is explicitly named and labeled:
+
+```bash
+python -m revenue.swarmops_dossier.cli replay packet.json policy.json \
+  --as-of 2026-09-13T14:00:00Z \
+  --json-out historical.json --markdown-out historical.md
+python -m revenue.swarmops_dossier.cli verify-replay packet.json policy.json \
+  historical.json --as-of 2026-09-13T14:00:00Z
+```
+
+Historical output has `evaluation_mode: HISTORICAL_REPLAY` and status `HISTORICAL_READY` or `HISTORICAL_HOLD`, never current `READY_FOR_OWNER_REVIEW`. The Markdown prominently labels it historical and changes the demonstrated-capabilities heading accordingly. Future evaluation instants and observations later than the evaluation instant are rejected.
+
+Archived v3 dossiers can be checked with `verify-replay` at their recorded instant. They are not accepted by current `verify`, because v3 does not distinguish a caller-selected replay clock from current evaluation. Recompile the original packet and policy with the new `compile` command to obtain a current v4 dossier. Do not edit the schema or mode by hand.
+
+The input packet schema remains `commons.swarmops-dossier/v1`; no input migration is needed. The content digest binds the output mode as well as the established packet, policy and commercial-authority digests. Replay of the same valid past input and instant is deterministic.
+
+## Evidence and commercial semantics
+
+Each evidence row binds a capability to a typed source reference, SHA-256, observed state, observation time, freshness window, release class and factual claim. The compiler separates rows into `DEMONSTRATED`, `LIMITED`, `HELD` or `UNKNOWN`.
+
+Commercial observations have an independent host-supplied basis:
 
 - `SENT_NOT_ACCEPTED` requires a provider receipt and never means acceptance.
-- `BUYER_ACCEPTED` requires a buyer-receipt row **and** exact independently retained buyer-acceptance authority.
-- `PAID` requires a payment-receipt row **and** exact independently retained payment authority.
-- `REVENUE_RECOGNIZED` requires an accounting-receipt row **and** exact independently retained accounting-recognition authority.
+- `BUYER_ACCEPTED`, `PAID` and `REVENUE_RECOGNIZED` require the corresponding buyer, payment or accounting receipt plus independently retained authority for that exact event.
 
-A packet cannot authenticate its own commercial receipt. The host-owned authority generation is keyed by trusted `source_id`, but a digest match alone is insufficient: every authority record also binds the exact portfolio and the complete commercial evidence semantics — capability, source kind/reference/SHA-256, commercial state, observation time/freshness, prospect release class, required flag, and claim. The compiler requires an exact match before a commercial row can become `DEMONSTRATED`.
+A packet cannot authenticate its own commercial receipt. Each trusted source ID binds the exact portfolio and complete row semantics: capability, kind, reference, SHA-256, commercial state, observation time and freshness, prospect class, required flag and claim. Exact matching prevents a retained payment receipt being relabeled as acceptance, moved to another portfolio or re-dated. Malformed, inconsistent or unused authority records fail. The authority digest remains bound into the output.
 
-That prevents semantic transplantation. A retained payment receipt cannot be relabelled as buyer acceptance or accounting recognition; it cannot be moved to another portfolio/capability/reference, have its observation time refreshed or freshness window extended, or have an internal receipt re-released as prospect-safe merely because the source digest is unchanged. Malformed, internally inconsistent, or unused authority records fail closed. The output v3 receipt binds `trusted_commercial_receipts_sha256`, so verification under a substituted authority generation fails.
+The CLI has no `--trusted-commercial-receipts` option and always supplies an empty commercial map. A second caller-authored JSON file is not independent authority. Only an integrating host that independently acquires the underlying evidence should supply its retained typed map to the library. Current evaluation does not turn local bytes into buyer, payment or accounting authority.
 
-**A file supplied by the same CLI caller is not out-of-band authority.** The public CLI therefore exposes no commercial-trust option and always compiles/verifies with an empty commercial trust map. Commercial truth can be promoted only by a trusted host that has independently authenticated buyer/payment/accounting evidence and calls the engine API with its retained authority generation. `compile_dossier(..., trusted_commercial_receipts=...)` and `verify_dossier(..., trusted_commercial_receipts=...)` are host authority-injection boundaries; this package does not authenticate provider/accounting systems by itself.
-
-No state implies another. A merged PR cannot imply payment; a checkout cannot imply payment; a provider send cannot imply buyer acceptance; queued/running CI cannot become green.
-
-## Host authority record
-
-The privileged engine API accepts a map keyed by trusted source ID. Each value must exactly bind the candidate commercial event. Conceptually:
+A host record is keyed by source ID and has this shape:
 
 ```json
 {
@@ -43,29 +71,25 @@ The privileged engine API accepts a map keyed by trusted source ID. Each value m
 }
 ```
 
-This is a **trusted-host integration shape, not a CLI input format**. The trusted host is responsible for acquiring/authenticating the underlying external evidence independently before constructing the record. The engine validates structural and semantic consistency; it does not turn a caller-authored copy of this JSON into authority.
+This describes the existing trusted-host integration format, not a real payment record or CLI input. The host remains responsible for authentication of the original provider evidence.
 
-## Prospect boundary
+## Library entry points
 
-`INTERNAL_ONLY` evidence never appears in the prospect projection. `OWNER_APPROVAL_REQUIRED` cannot satisfy a required capability. Prospect-safe text is screened for common credential/private-path shapes. This is a conservative publication boundary.
+Import these functions from `revenue.swarmops_dossier`:
 
-## Determinism and verification
+| Function | Meaning |
+| --- | --- |
+| `compile_current_dossier(packet, policy, trusted_commercial_receipts=None)` | Current v4 dossier, using process UTC; no clock argument. |
+| `verify_current_dossier(packet, policy, candidate, trusted_commercial_receipts=None)` | Returns true when retained integrity and current classifications match; raises `DossierError` explaining a failure. |
+| `compile_historical_dossier(packet, policy, as_of, trusted_commercial_receipts=None)` | Explicitly historical v4 dossier. |
+| `verify_historical_dossier(packet, policy, as_of, candidate, trusted_commercial_receipts=None)` | Historical integrity only; returns a boolean and supports archived v3. |
 
-The output contains canonical JSON, a content-addressed v3 receipt, deterministic Markdown, exact packet/policy digests, and the typed trusted-commercial authority digest. The engine verifier recompiles from the original packet + policy + trusted `as_of` time + the independently supplied authority generation. Input JSON rejects duplicate keys and non-finite numbers. CLI input must be a bounded regular file; outputs are create-exclusive and will not overwrite an existing file.
+The old `compile_dossier` and `verify_dossier` names remain callable with their old argument order as historical aliases. **The compile alias now emits labeled v4 historical output**, not an unlabeled v3 READY result. Hosts relying on the old schema or status should migrate deliberately to one of the named modes. Use the current functions for present readiness.
 
-## Run
+## Files, results and publication
 
-The CLI is deliberately **unprivileged**: commercial truth remains false even if the packet labels a row `BUYER_ACCEPTED`, `PAID`, or `REVENUE_RECOGNIZED`.
+Input JSON rejects duplicate keys and non-finite constants and is read as a bounded regular file. Outputs remain create-exclusive; choose new names rather than overwriting existing results. `INTERNAL_ONLY` rows are absent from the prospect projection, and `OWNER_APPROVAL_REQUIRED` rows cannot satisfy a required capability.
 
-```bash
-python -m revenue.swarmops_dossier.cli compile packet.json policy.json \
-  --as-of 2026-09-13T14:00:00Z --json-out dossier.json --markdown-out dossier.md
-python -m revenue.swarmops_dossier.cli verify packet.json policy.json dossier.json \
-  --as-of 2026-09-13T14:00:00Z
-```
+Exit codes: 0 means a ready compile or successful requested verification; 2 means a compile completed with missing required capability evidence (or an argument error); 3 means verification did not match; 4 means invalid input or a file/runtime error. A historical exit 0 is only historical success. Error messages go to stderr.
 
-There is intentionally no `--trusted-commercial-receipts` CLI flag. A validating host that truly owns independently authenticated buyer/payment/accounting readback must inject its retained typed authority through the engine API; merely writing a second JSON file beside the candidate packet is not authentication.
-
-## Authority ceiling
-
-Offline owner-review evidence only. It does **not** authorize email/Slack/customer contact, provider/account access, credentials, deployment, proposals/submissions, pricing/staffing/legal/compliance commitments, signatures/contracts, spend, payment actions, buyer-acceptance claims, cash assertions, or revenue recognition.
+No dossier authorizes sends, customer contact, deployment, credentials, proposals, pricing or staffing commitments, signatures, contracts, spending, payment actions, acceptance claims, cash assertions or revenue recognition. Currentness is evidence classification, not additional authority.
