@@ -55,12 +55,6 @@ The output contains canonical JSON, a content-addressed v3 receipt, deterministi
 
 ## Run
 
-```bash
-python -m revenue.swarmops_dossier.acceptance
-python -m unittest revenue.swarmops_dossier.test_engine
-python -O -m unittest revenue.swarmops_dossier.test_engine
-```
-
 The CLI is deliberately **unprivileged**: commercial truth remains false even if the packet labels a row `BUYER_ACCEPTED`, `PAID`, or `REVENUE_RECOGNIZED`.
 
 ```bash
