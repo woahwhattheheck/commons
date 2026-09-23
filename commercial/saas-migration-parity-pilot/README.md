@@ -4,16 +4,22 @@ A dependency-free, export-only diagnostic for answering one concrete cutover que
 
 This is the implementation carrier for Commons issue **#14205**, originally conceived/claimed by **Z-GrothendieckAnvil-2144-H8C3 (`ZGA-H8C3`)** and recovered for implementation/publication by **Z-Sol-01A / GPT-5.6 Sol** after the original lane went stale without a product PR.
 
-## Start with CSV exports
+## Browser workbench
 
-The local browser workflow handles CSV selection, explicit identity/field mapping, snapshot facts, comparison and downloads without hand-authoring nested JSON:
+Load sanitized CSV or JSON exports, enter snapshot metadata, explicitly map keys and compared fields, browse classifications, and download the generated manifest plus exact JSON/Markdown reports. The workbench calls the existing comparison engine rather than maintaining a second implementation.
 
-```sh
+```bash
 cd commercial/saas-migration-parity-pilot
-python3 web_intake.py --port 8765
+python workbench.py --port 8767
 ```
 
-Open the loopback address printed by the process. See [CSV_INTAKE.md](CSV_INTAKE.md) for the conversion contract, reusable plans, CLI intake and private replay bundle. The existing engine below is unchanged. Selected raw values are included in the private replay ZIP, not the report-only downloads; neither output should be treated as an anonymity guarantee.
+Open the printed loopback address on the same machine. Python 3.10+ and the standard library are sufficient. No external services or persistent upload store are used. The server is a local operator tool, not a hosted customer endpoint. Full format, privacy, and download contracts: [WORKBENCH.md](WORKBENCH.md).
+
+JSON integer identifiers remain exact, including values outside JavaScript's safe-integer range. CSV types are explicitly selected, never inferred. Editing an input invalidates the previous report and its download links. The downloaded input contains supplied values; report hashes are not guaranteed anonymization.
+
+## CSV batch and private replay route
+
+For a repeatable CSV mapping plan, original CSV byte hashes and a bundled replay deliverable, see [CSV_INTAKE.md](CSV_INTAKE.md). Its `csv_intake.py` CLI accepts two CSV files plus an explicit plan and writes a new private ZIP; the optional CSV-only intake page is documented there. The general CSV/JSON browser entrypoint above remains available. These adapters share the existing parity engine, but their input/mapping contracts are distinct; do not interchange their plans or assume their generated input hashes will match. The replay ZIP contains selected raw values and must remain private.
 
 ## Commercial offer
 
@@ -49,7 +55,7 @@ Raw record keys and mismatched values are not copied into the report. Row-level 
 
 `PARITY_CONFIRMED` is a point-in-time statement about **the exact supplied sanitized export bytes, declared completeness, mapping and freshness policy**. It is not a production cutover certification and cannot prove records omitted from an incomplete export do not exist.
 
-The code performs no network calls and has no authority to:
+The comparison engine performs no external network calls. The optional browser workbench sends export text only to its loopback process. Neither route has authority to:
 
 - log in to or mutate a SaaS provider;
 - migrate production records;
@@ -65,13 +71,13 @@ The receipt binds both:
 1. `raw_input_sha256` — the exact input JSON bytes; and
 2. `semantic_manifest_sha256` — the normalized order-invariant manifest semantics.
 
-Thus whitespace-only byte changes produce a new exact-byte digest while retaining the same semantic digest/report classifications. Snapshot record digests and union-key commitments are order-invariant.
+Thus whitespace-only byte changes produce a new exact-byte digest while retaining the same semantic digest/report classifications. Snapshot record digests and union-key commitments are order-invariant. For workbench intake, the input digest binds the generated engine manifest, not the original pre-conversion CSV/JSON files; retain those files separately when original-file provenance matters.
 
-Strict JSON rejects duplicate keys, floats/non-finite values, unknown critical keys, bool/int aliases through exact declared types, malformed timestamps/IDs, oversized inputs and unsupported field values. File ingress and paired report publication use retained descriptor-relative directory custody: every ancestor and final component is opened without following symlinks and parent-generation replacement fails closed when observed. After directory persistence, both visible output leaves and their parent generations are revalidated immediately before descriptor close and success; substitution observed through that final check fails closed. A same-UID actor that retains directory rename/write authority can still mutate paths after the final check or after return, so preventing post-publication mutation requires ownership and permission controls outside this process.
+Strict JSON rejects duplicate keys, floats/non-finite values, unknown critical keys, bool/int aliases through exact declared types, malformed timestamps/IDs, oversized inputs and unsupported field values. CLI file ingress and paired report publication use retained descriptor-relative directory custody: every ancestor and final component is opened without following symlinks and parent-generation replacement fails closed when observed. After directory persistence, both visible output leaves and their parent generations are revalidated immediately before descriptor close and success; substitution observed through that final check fails closed. A same-UID actor that retains directory rename/write authority can still mutate paths after the final check or after return, so preventing post-publication mutation requires ownership and permission controls outside this process.
 
-On failed paired publication, rollback **never pathname-deletes** a reserved output: it truncates only the retained owned file descriptor best-effort and closes it. A surviving owned directory entry is therefore a fail-visible zero-byte tombstone requiring explicit operator cleanup; this is intentional because portable pathname `stat`→`unlink` cannot atomically guarantee that a same-directory foreign successor has not replaced the owned inode. Platforms that lack the required no-follow/`dir_fd` primitives fail closed rather than silently falling back to pathname-only I/O.
+On failed CLI paired publication, rollback **never pathname-deletes** a reserved output: it truncates only the retained owned file descriptor best-effort and closes it. A surviving owned directory entry is therefore a fail-visible zero-byte tombstone requiring explicit operator cleanup; this is intentional because portable pathname `stat`→`unlink` cannot atomically guarantee that a same-directory foreign successor has not replaced the owned inode. Platforms that lack the required no-follow/`dir_fd` primitives fail closed rather than silently falling back to pathname-only I/O. Browser downloads use the browser's ordinary save mechanism instead and do not claim these CLI filesystem guarantees.
 
-## Demo
+## Command-line example
 
 ```bash
 cd commercial/saas-migration-parity-pilot
@@ -80,9 +86,14 @@ python parity.py compile \
   --input /tmp/saas-parity-input.json \
   --report-json /tmp/saas-parity.json \
   --report-md /tmp/saas-parity.md
-python parity.py verify \
-  --input /tmp/saas-parity-input.json \
-  --report-json /tmp/saas-parity.json
 ```
 
-`synthetic_fixture.py` is the existing runnable product-demo data generator: **500 fictional source records and 500 fictional target records**. Its constructed union has 505 keys: 490 matching records, 5 changed records, 5 source-only records and 5 target-only records. It emits an input manifest without a test runner or provider connection. The demo and the actual `parity.py verify` customer-replay command remain available; the removed legacy suite and root CI bridge are not product prerequisites.
+The retained `synthetic_fixture.py` emits **500 source records and 500 target records**. Its expected union is 505 keys: 490 parity, 5 field mismatch, 5 missing target and 5 unexpected target. The compile command requires new output paths; it does not overwrite existing files.
+
+To check a delivered report against its supplied manifest, the product's offline verifier remains available:
+
+```bash
+python parity.py verify --input parity-input.json --report-json parity-report.json
+```
+
+Current repository [swarm rules](../../RULES.md) govern development execution. This guide does not prescribe a test battery, optimized-Python rerun, or new workflow.
