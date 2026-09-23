@@ -162,3 +162,58 @@ python -O -B -m unittest integrations.command_center.test_slack_threads integrat
 The later-page shape regression intentionally tests a conservative merge of valid
 rows, rather than the previous all-or-nothing loss of newly fetched pages. Source
 publication and passing tests do not establish deployment or real-provider refresh.
+
+## Deathstar decision view
+
+`GET /api/decisions` (`decisions.py`) projects the existing `/api/work`
+state into an **exception queue** and **one row per active operation**, not
+per receipt. It reuses `work_state()` and `observability()`; it adds no
+collector or store. `/api/summary` stays cache-only and only links to it
+(`"decisions": "/api/decisions"`). Rows are joinable with `/api/work` items
+and `/api/mail` threads by operation id. The top of the view shows
+`operator_control.mode` (RUN / DRAIN / ABORT, absent reads RUN) from the
+observability coordination head, then collection coverage and cooldowns.
+
+An item joins an operation only through `metadata.operation`,
+`metadata.operation_id` or `refs.operation`. Eligibility-to-payout is a list
+of typed stage records per program, fed through the existing ingest road:
+
+| stage | examples |
+|---|---|
+| `pre_work_application` | GrantFox application (item `kind: application`; status uses the GrantFox `application_state` vocabulary) |
+| `claim_or_attempt_posted` | PR-side `/claim` or `/opire try` |
+| `platform_import` | BountyHub PR import, distinct from the PR-side claim |
+| `sponsor_pr_open` | open PR (typed from `kind: pull_request`, `status: open`) |
+| `accepted_or_merged` | merged PR (`refs.merged_at`) |
+| `payout_requested` | expense / payout request (pending payment kinds) |
+| `payout_onboarding` | e.g. Stripe Express; `who_acts` defaults to `owner_only` |
+| `paid` | paid payment/payout/bounty record; its `amount` is money collected |
+
+Per record: `stage` or `metadata.provider_stage`; `metadata.stage_state`
+(else item status: done / pending / missing / refused); `metadata.who_acts`
+(`us` / `them` / `owner_only`); `metadata.deadline` or `due_at`;
+`metadata.owner_account`; `metadata.party`; evidence is the item `url`, else
+`unknown: <metadata.answer_source>`. Operation money uses
+`metadata.advertised_amount` + `currency`. Agents use `metadata.seat`,
+`model_family`, `session_id`, `heartbeat_at`, `agent_state`, `blocker`.
+
+The first stage not done decides `waiting_on` (`waiting_on_us`,
+`waiting_on_them`, `none`, `unknown`, as in `mail_tracking.py`), with
+`waiting_for` and `waiting_reasons`. A held outward write,
+`metadata.publication_state` (`clear`, `held:route`, `held:identity`,
+`held:terms`, `retry_pending`) or `metadata.publication` carrying the
+publication hook's `state`, `matched_fields` and `matched_terms`, makes the row
+`waiting_on_us` with the remove-and-retry instruction.
+
+`exceptions` lists deadlines within 7 days or passed, stages stalled beyond
+their window (pre-work 14d, claim 14d, import 7d, sponsor PR 21d, merged 7d,
+payout requested 30d, onboarding 7d), `owner_only` stages and held
+publications, each with the exact action and account. Blocked agents are
+listed beside them. Missing facts are `unknown` with the source that would
+answer them.
+
+Per-source state comes from `state.source_health`
+(`commons-collector-source-health/v1`): `collector`, `data_stale`,
+`last_success_at` / `last_success_age_seconds`, `last_cycle`,
+`last_cycle_reason` and `cooldown.active` / `retry_not_before`, plus its
+`coverage` counts and `cooldowns`. Any missing key renders `unknown`.

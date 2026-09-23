@@ -34,6 +34,7 @@ MANIFEST = {
     "context": "GET /api/context?limit=20&offset=0&q=&owner=&provider=&source=&kind=&status=&if_revision=: bounded selective metadata, explicit omissions and stable revision. No provider reads. owner is the provider-reported label, not worker assignment.",
     "context_item": "GET /api/context/item?source_id=...&item_id=...: one exact stored normalized observation, independent of filtered visibility.",
     "summary": "GET /api/summary: bounded cache-only Deathstar view; no provider calls, freshness and observed lower-bound throughput, typed money records and request cooldowns",
+    "decisions": "GET /api/decisions: Deathstar decision rows over the /api/work state (source_health included) and operator_control mode, one per active operation (explicit metadata.operation key): provider stage, waiting_on_us/them and what, next action, owner, agents with heartbeat age, source freshness/cooldown/coverage, money at risk/collected; exceptions (deadlines, stalled gates, owner_only, held publications) and blocked agents at top level; typed stages and receipts as drilldown. Unknown fields name the source that would answer them.",
     "swarm": "GET /api/swarm: existing PR queue, GPT review batches, exact receipts and freshness; ground/SWARM_ORDER.md governs integration",
     "source_modes": "Direct collectors use existing shared GitHub and Slack service roads. Gmail, Airtable and native task observations are supplied by their actual connector-equipped peers through ingest. A source read does not establish complete fleet coverage or business activity.",
     "sharing": "The human and all current and future Commons peers use the same state and capabilities. Roles coordinate responsibility, never access.",
@@ -109,6 +110,9 @@ class Handler(BaseHTTPRequestHandler):
                 self.send_json(200, self.server.center.work_mail(limit, offset, query.get("q", [""])[0], query.get("mode", ["all"])[0]))
             elif parsed.path == "/api/summary":
                 self.send_json(200, self.server.center.work_summary())
+            elif parsed.path == "/api/decisions":
+                from . import decisions
+                self.send_json(200, decisions.read(self.server.center, REPO_ROOT))
             elif parsed.path == "/api/work":
                 self.send_json(200, self.server.center.work_state(refresh=parse_qs(parsed.query).get("refresh") == ["1"]))
             elif parsed.path == "/api/swarm":
