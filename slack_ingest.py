@@ -773,6 +773,59 @@ def github_retry_after(headers: Any, default: int = 15) -> int:
     return seconds
 
 
+_NEXT_LINK_RE = re.compile(r'<([^>]+)>\s*;\s*rel="next"')
+
+
+def _link_query(url: str) -> dict[str, str]:
+    """Parse a Link URL query without treating '+' as a space."""
+    parsed: dict[str, str] = {}
+    query = urllib.parse.urlparse(url).query
+    for part in query.split("&"):
+        if not part or "=" not in part:
+            continue
+        key, value = part.split("=", 1)
+        parsed[urllib.parse.unquote(key)] = urllib.parse.unquote(value)
+    return parsed
+
+
+def github_issue_next_params(link_header: str | None) -> dict[str, str]:
+    """Next Issues-list parameters from a Link header.
+
+    Large repositories reject ``page`` with HTTP 422 once the offset is deep
+    and tell the caller to use ``after`` / ``before``. When ``after`` is
+    present, drop ``page`` even if the same Link URL still includes it.
+    A page-only link is kept for small responses that do not offer a cursor.
+    """
+    if not link_header:
+        return {}
+    match = _NEXT_LINK_RE.search(link_header)
+    if not match:
+        return {}
+    query = _link_query(match.group(1))
+    after = query.get("after") or ""
+    if after:
+        return {"after": after}
+    page = query.get("page") or ""
+    if page:
+        return {"page": page}
+    return {}
+
+
+def _response_header(headers: Any, name: str) -> str:
+    if headers is None:
+        return ""
+    if isinstance(headers, str):
+        return headers
+    getter = getattr(headers, "get", None)
+    if not callable(getter):
+        return ""
+    value = getter(name)
+    if value:
+        return str(value)
+    value = getter(name.lower())
+    return str(value or "")
+
+
 class GitHubClient:
     def __init__(self, token: str, repository: str = REPOSITORY):
         if not token.strip():
@@ -780,11 +833,13 @@ class GitHubClient:
         self.token = token.strip()
         self.repository = repository
         self._board_issue_bodies: dict[str, list[str]] | None = None
+        self._last_response_headers: Any = None
         self._next_content_create = 0.0
 
     def request(self, method: str, path: str, payload: dict[str, Any] | None = None) -> Any:
         data = None if payload is None else json.dumps(payload).encode("utf-8")
         last_detail = ""
+        self._last_response_headers = None
         for attempt in range(3):
             request = urllib.request.Request(
                 GITHUB_API + path,
@@ -799,6 +854,7 @@ class GitHubClient:
             )
             try:
                 with urllib.request.urlopen(request, timeout=30) as response:
+                    self._last_response_headers = getattr(response, "headers", None)
                     return json.loads(response.read().decode("utf-8"))
             except urllib.error.HTTPError as exc:
                 detail = exc.read().decode("utf-8", "replace")
@@ -816,21 +872,32 @@ class GitHubClient:
 
         Per-record ``/search/issues`` is not used: Search has a 30/min cap and
         whole-workspace Slack ingest may plan more than 30 records in one run.
+        Pages follow the Link ``after`` cursor. Offset ``page`` is omitted
+        whenever that cursor is present, because a deep ``page`` value returns
+        HTTP 422 on a large board.
         """
         cached = getattr(self, "_board_issue_bodies", None)
         if cached is not None:
             return cached
         issues: dict[str, list[str]] = {}
-        page = 1
+        base = {
+            "state": "all",
+            "labels": "board",
+            "per_page": "100",
+        }
+        extra: dict[str, str] = {}
+        seen: set[str] = set()
         while True:
-            query = urllib.parse.urlencode(
-                {
-                    "state": "all",
-                    "labels": "board",
-                    "per_page": "100",
-                    "page": str(page),
-                }
-            )
+            params = dict(base)
+            params.update(extra)
+            if "after" in params:
+                params.pop("page", None)
+            marker = extra.get("after") or extra.get("page") or ""
+            if marker:
+                if marker in seen:
+                    raise IngestError("GitHub issue pagination cursor loop")
+                seen.add(marker)
+            query = urllib.parse.urlencode(params)
             data = self.request("GET", "/repos/%s/issues?%s" % (self.repository, query))
             if not isinstance(data, list) or not data:
                 break
@@ -840,9 +907,15 @@ class GitHubClient:
                 title = str(item.get("title") or "")
                 if title:
                     issues.setdefault(title, []).append(str(item.get("body") or ""))
-            if len(data) < 100:
+            nxt = github_issue_next_params(
+                _response_header(getattr(self, "_last_response_headers", None), "Link")
+            )
+            token = nxt.get("after") or nxt.get("page") or ""
+            if not token:
                 break
-            page += 1
+            if token in seen:
+                raise IngestError("GitHub issue pagination cursor loop")
+            extra = nxt
         self._board_issue_bodies = issues
         return issues
 
