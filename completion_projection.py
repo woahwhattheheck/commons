@@ -15,6 +15,7 @@ import hashlib
 import json
 import os
 import re
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Callable
 
@@ -23,6 +24,10 @@ STATE = "COMPLETED"
 MARKER_DIR = "completion/operations"
 ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 HEX40_RE = re.compile(r"^[0-9a-f]{40}$")
+TIMESTAMP_RE = re.compile(
+    r"^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}"
+    r"(?:\.[0-9]{1,6})?(?:Z|[+-](?:[01][0-9]|2[0-3]):[0-5][0-9])$"
+)
 CLOSING_RE_TEMPLATE = (
     r"(?im)\b(?:close[sd]?|fix(?:e[sd])?|resolve[sd]?)\s+"
     r"(?:https://github\.com/woahwhattheheck/commons/issues/|"
@@ -32,6 +37,17 @@ CLOSING_RE_TEMPLATE = (
 
 class CompletionEvidenceError(ValueError):
     """Completion evidence is absent, ambiguous, or not strong enough."""
+
+
+def parse_timestamp(value: Any) -> datetime:
+    """Parse an explicit RFC3339 instant; never order evidence lexically."""
+    if not isinstance(value, str) or not TIMESTAMP_RE.fullmatch(value):
+        raise CompletionEvidenceError("completion timestamp must include a timezone")
+    try:
+        parsed = datetime.fromisoformat(value[:-1] + "+00:00" if value.endswith("Z") else value)
+        return parsed.astimezone(timezone.utc)
+    except (ValueError, OverflowError) as exc:
+        raise CompletionEvidenceError("invalid completion timestamp") from exc
 
 
 def _clean_id(operation_id: str) -> str:
@@ -102,35 +118,39 @@ def build_marker(
     pull_request: dict[str, Any],
 ) -> dict[str, Any]:
     operation_id = _clean_id(operation_id)
+    if not isinstance(issue, dict) or not isinstance(pull_request, dict):
+        raise CompletionEvidenceError("completion evidence must be objects")
+    if stable_operation_id_from_issue(issue) != operation_id:
+        raise CompletionEvidenceError("canonical issue does not identify this operation")
     issue_number = issue.get("number")
     if not isinstance(issue_number, int) or isinstance(issue_number, bool) or issue_number < 1:
         raise CompletionEvidenceError("invalid issue number")
     if issue.get("state") != "closed" or issue.get("state_reason") != "completed":
         raise CompletionEvidenceError("issue is not canonically completed")
-    closed_at = str(issue.get("closed_at") or "")
-    if not closed_at:
-        raise CompletionEvidenceError("completed issue lacks closed_at")
+    closed_at = issue.get("closed_at")
+    closed_time = parse_timestamp(closed_at)
 
     pr_number = pull_request.get("number")
     if not isinstance(pr_number, int) or isinstance(pr_number, bool) or pr_number < 1:
         raise CompletionEvidenceError("invalid pull request number")
     if pull_request.get("merged") is not True:
         raise CompletionEvidenceError("pull request is not merged")
-    base = pull_request.get("base") or {}
-    if str(base.get("ref") or "") != "main":
+    base = pull_request.get("base")
+    if not isinstance(base, dict) or base.get("ref") != "main":
         raise CompletionEvidenceError("pull request did not merge to main")
-    merged_at = str(pull_request.get("merged_at") or "")
+    merged_at = pull_request.get("merged_at")
+    merged_time = parse_timestamp(merged_at)
     merge_commit_sha = str(pull_request.get("merge_commit_sha") or "").lower()
-    if not merged_at or not HEX40_RE.fullmatch(merge_commit_sha):
+    if not HEX40_RE.fullmatch(merge_commit_sha):
         raise CompletionEvidenceError("merged pull request lacks immutable merge evidence")
-    if merged_at > closed_at:
+    if merged_time > closed_time:
         raise CompletionEvidenceError("merge happened after canonical completion")
     if not closing_keyword_mentions_issue(str(pull_request.get("body") or ""), issue_number):
         raise CompletionEvidenceError("pull request does not explicitly close canonical issue")
 
     rel, blob_sha1 = _source_blob(root, operation_id)
-    issue_url = str(issue.get("html_url") or issue.get("url") or "")
-    pr_url = str(pull_request.get("html_url") or pull_request.get("url") or "")
+    issue_url = issue.get("html_url") or issue.get("url")
+    pr_url = pull_request.get("html_url") or pull_request.get("url")
     expected_issue_urls = {
         "https://github.com/woahwhattheheck/commons/issues/%s" % issue_number,
         "https://api.github.com/repos/woahwhattheheck/commons/issues/%s" % issue_number,
@@ -139,7 +159,12 @@ def build_marker(
         "https://github.com/woahwhattheheck/commons/pull/%s" % pr_number,
         "https://api.github.com/repos/woahwhattheheck/commons/pulls/%s" % pr_number,
     }
-    if issue_url not in expected_issue_urls or pr_url not in expected_pr_urls:
+    if (
+        not isinstance(issue_url, str)
+        or not isinstance(pr_url, str)
+        or issue_url not in expected_issue_urls
+        or pr_url not in expected_pr_urls
+    ):
         raise CompletionEvidenceError("completion evidence is not from this repository")
     return {
         "schema": SCHEMA,
@@ -257,11 +282,9 @@ def marker_is_valid(
         number = issue.get("number")
         if not isinstance(number, int) or isinstance(number, bool) or number < 1:
             return False
-        closed_at = str(issue.get("closed_at") or "")
-        if not closed_at:
-            return False
-        merged_at = str(merge.get("merged_at") or "")
-        if merge.get("base") != "main" or not merged_at or merged_at > closed_at:
+        closed_time = parse_timestamp(issue.get("closed_at"))
+        merged_time = parse_timestamp(merge.get("merged_at"))
+        if merge.get("base") != "main" or merged_time > closed_time:
             return False
         merge_commit_sha = str(merge.get("merge_commit_sha") or "").lower()
         if not HEX40_RE.fullmatch(merge_commit_sha):
@@ -276,12 +299,16 @@ def marker_is_valid(
         pr_number = merge.get("pr_number")
         if not isinstance(pr_number, int) or isinstance(pr_number, bool) or pr_number < 1:
             return False
-        if issue.get("url") not in {
+        issue_url = issue.get("url")
+        merge_url = merge.get("url")
+        if not isinstance(issue_url, str) or not isinstance(merge_url, str):
+            return False
+        if issue_url not in {
             "https://github.com/woahwhattheheck/commons/issues/%s" % number,
             "https://api.github.com/repos/woahwhattheheck/commons/issues/%s" % number,
         }:
             return False
-        if merge.get("url") not in {
+        if merge_url not in {
             "https://github.com/woahwhattheheck/commons/pull/%s" % pr_number,
             "https://api.github.com/repos/woahwhattheheck/commons/pulls/%s" % pr_number,
         }:
