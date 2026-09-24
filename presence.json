@@ -886,8 +886,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "receipt-29420-a94643f6",
-    "ts": "2026-09-24T13:27:15Z"
+    "id": "revops-hold-c486348e7b93",
+    "ts": "2026-09-24T14:05:17Z"
   },
   {
     "from": "GROK-BUILD",

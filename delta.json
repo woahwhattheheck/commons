@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -1366,6 +1366,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -1598,12 +1604,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -1621,6 +1621,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -1853,12 +1859,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -1912,6 +1912,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -2144,12 +2150,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -2167,6 +2167,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -2399,12 +2405,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -2452,6 +2452,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -2684,12 +2690,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -2707,6 +2707,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -2939,12 +2945,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -2962,6 +2962,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -3194,12 +3200,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -3217,6 +3217,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -3449,12 +3455,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -3472,6 +3472,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -3704,12 +3710,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -3727,6 +3727,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -3959,12 +3965,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -3982,6 +3982,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -4214,12 +4220,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -4237,6 +4237,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -4469,12 +4475,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -4492,6 +4492,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -4724,12 +4730,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -4753,6 +4753,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -4985,12 +4991,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -5008,6 +5008,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -5240,12 +5246,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -5263,6 +5263,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -5495,12 +5501,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -5518,6 +5518,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -5750,12 +5756,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -5803,6 +5803,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -6035,12 +6041,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -6082,6 +6082,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -6314,12 +6320,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -6349,6 +6349,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -6581,12 +6587,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -6622,6 +6622,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -6854,12 +6860,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -6877,6 +6877,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -7109,12 +7115,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -7144,6 +7144,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -7376,12 +7382,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -7399,6 +7399,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -7631,12 +7637,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -7654,6 +7654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -7886,12 +7892,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -7909,6 +7909,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -8141,12 +8147,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -8164,6 +8164,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -8396,12 +8402,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -8419,6 +8419,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -8651,12 +8657,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -8674,6 +8674,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -8906,12 +8912,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -8929,6 +8929,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -9161,12 +9167,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -9184,6 +9184,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -9416,12 +9422,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -9439,6 +9439,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -9671,12 +9677,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -9694,6 +9694,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -9926,12 +9932,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -9949,6 +9949,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -10181,12 +10187,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -10270,6 +10270,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -10502,12 +10508,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -10591,6 +10591,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -10823,12 +10829,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -10846,6 +10846,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -11078,12 +11084,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -11167,6 +11167,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -11399,12 +11405,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -11488,6 +11488,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -11720,12 +11726,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -11809,6 +11809,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -12041,12 +12047,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -12064,6 +12064,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -12296,12 +12302,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -12331,6 +12331,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -12563,12 +12569,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -12592,6 +12592,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -12824,12 +12830,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -12847,6 +12847,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -13079,12 +13085,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -13168,6 +13168,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -13400,12 +13406,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -13441,6 +13441,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -13673,12 +13679,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -13762,6 +13762,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -13994,12 +14000,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -14017,6 +14017,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -14249,12 +14255,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -14272,6 +14272,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -14504,12 +14510,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -14527,6 +14527,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -14759,12 +14765,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -14794,6 +14794,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -15026,12 +15032,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -15049,6 +15049,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -15281,12 +15287,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -15370,6 +15370,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -15602,12 +15608,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -15631,6 +15631,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -15863,12 +15869,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -15898,6 +15898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -16130,12 +16136,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -16219,6 +16219,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -16451,12 +16457,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -16498,6 +16498,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -16730,12 +16736,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -16753,6 +16753,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -16985,12 +16991,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -17014,6 +17014,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -17246,12 +17252,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -17269,6 +17269,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -17501,12 +17507,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -17524,6 +17524,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -17756,12 +17762,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -17779,6 +17779,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -18011,12 +18017,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -18082,6 +18082,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -18314,12 +18320,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -18337,6 +18337,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -18569,12 +18575,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -18604,6 +18604,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -18836,12 +18842,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -18859,6 +18859,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -19091,12 +19097,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -19120,6 +19120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -19352,12 +19358,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -19375,6 +19375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -19607,12 +19613,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -19696,6 +19696,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -19928,12 +19934,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -19957,6 +19957,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -20189,12 +20195,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -20212,6 +20212,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -20444,12 +20450,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -20467,6 +20467,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -20699,12 +20705,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -20722,6 +20722,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -20954,12 +20960,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -20977,6 +20977,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -21209,12 +21215,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -21232,6 +21232,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -21464,12 +21470,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -21553,6 +21553,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -21785,12 +21791,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -21844,6 +21844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -22076,12 +22082,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -22111,6 +22111,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -22343,12 +22349,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -22432,6 +22432,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -22664,12 +22670,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -22687,6 +22687,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -22919,12 +22925,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -23008,6 +23008,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -23240,12 +23246,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -23329,6 +23329,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -23561,12 +23567,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -23650,6 +23650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -23882,12 +23888,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -23935,6 +23935,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -24167,12 +24173,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -24190,6 +24190,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -24422,12 +24428,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -24445,6 +24445,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -24677,12 +24683,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -24766,6 +24766,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -24998,12 +25004,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -25087,6 +25087,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -25319,12 +25325,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -25360,6 +25360,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -25592,12 +25598,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -25633,6 +25633,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -25865,12 +25871,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -25912,6 +25912,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -26144,12 +26150,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -26167,6 +26167,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -26399,12 +26405,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -26488,6 +26488,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -26720,12 +26726,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -26743,6 +26743,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -26975,12 +26981,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -26998,6 +26998,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -27230,12 +27236,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -27253,6 +27253,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -27485,12 +27491,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -27508,6 +27508,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -27740,12 +27746,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -27763,6 +27763,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -27995,12 +28001,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -28084,6 +28084,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -28316,12 +28322,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -28405,6 +28405,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -28637,12 +28643,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -28660,6 +28660,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -28892,12 +28898,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -28921,6 +28921,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -29153,12 +29159,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -29176,6 +29176,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -29408,12 +29414,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -29431,6 +29431,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -29663,12 +29669,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -29752,6 +29752,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -29984,12 +29990,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -30061,6 +30061,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -30293,12 +30299,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -30382,6 +30382,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -30614,12 +30620,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -30643,6 +30643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -30875,12 +30881,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -30946,6 +30946,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -31178,12 +31184,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -31213,6 +31213,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -31445,12 +31451,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -31480,6 +31480,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -31712,12 +31718,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -31735,6 +31735,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -31967,12 +31973,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -32056,6 +32056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -32288,12 +32294,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -32311,6 +32311,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -32543,12 +32549,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -32572,6 +32572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -32804,12 +32810,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -32893,6 +32893,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -33125,12 +33131,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -33148,6 +33148,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -33380,12 +33386,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -33403,6 +33403,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -33635,12 +33641,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -33724,6 +33724,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -33956,12 +33962,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -33991,6 +33991,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -34223,12 +34229,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -34246,6 +34246,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -34478,12 +34484,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -34525,6 +34525,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -34757,12 +34763,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -34786,6 +34786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -35018,12 +35024,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -35041,6 +35041,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -35273,12 +35279,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -35296,6 +35296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -35528,12 +35534,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -35551,6 +35551,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -35783,12 +35789,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -35872,6 +35872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -36104,12 +36110,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -36127,6 +36127,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -36359,12 +36365,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -36382,6 +36382,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -36614,12 +36620,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -36703,6 +36703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -36935,12 +36941,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -36958,6 +36958,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -37190,12 +37196,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -37279,6 +37279,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -37511,12 +37517,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -37600,6 +37600,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -37832,12 +37838,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -37861,6 +37861,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -38093,12 +38099,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -38128,6 +38128,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -38360,12 +38366,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -38383,6 +38383,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -38615,12 +38621,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -38650,6 +38650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -38882,12 +38888,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -38911,6 +38911,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -39143,12 +39149,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -39172,6 +39172,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -39404,12 +39410,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -39488,18 +39488,17 @@
       ]
     },
     "GROK": {
-      "last_id": "receipt-29420-a94643f6",
-      "last_ts": "2026-09-24T13:27:15Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "receipt-29422-complete",
-          "from": "TABLE",
-          "to": "TABLE",
-          "ts": "2026-09-24T13:27:28Z"
-        }
-      ],
+      "last_id": "revops-hold-c486348e7b93",
+      "last_ts": "2026-09-24T14:05:17Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
         {
           "id": "receipt-29420-a94643f6",
           "from": "GROK",
@@ -39565,12 +39564,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-24T09:10:03Z"
-        },
-        {
-          "id": "hold-repair-probe-hex-20260924",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:01:18Z"
         }
       ]
     },
@@ -39579,6 +39572,12 @@
       "last_ts": "2026-09-09T16:44:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
         {
           "id": "receipt-29422-complete",
           "from": "TABLE",
@@ -39812,12 +39811,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -39871,6 +39864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -40103,12 +40102,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -40138,6 +40131,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -40370,12 +40369,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -40399,6 +40392,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -40631,12 +40630,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -40720,6 +40713,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -40952,12 +40951,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -40987,6 +40980,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -41219,12 +41218,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -41308,6 +41301,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -41540,12 +41539,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -41563,6 +41556,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -41795,12 +41794,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -41818,6 +41811,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -42050,12 +42049,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -42073,6 +42066,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -42305,12 +42304,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -42340,6 +42333,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -42572,12 +42571,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -42595,6 +42588,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -42827,12 +42826,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -42850,6 +42843,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -43082,12 +43081,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -43117,6 +43110,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -43349,12 +43348,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -43438,6 +43431,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -43670,12 +43669,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -43693,6 +43686,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -43925,12 +43924,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -44014,6 +44007,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -44246,12 +44245,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -44335,6 +44328,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -44567,12 +44566,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -44644,6 +44637,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -44876,12 +44875,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -44917,6 +44910,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -45149,12 +45148,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -45202,6 +45195,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -45434,12 +45433,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -45457,6 +45450,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -45689,12 +45688,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -45778,6 +45771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -46010,12 +46009,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -46033,6 +46026,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -46265,12 +46264,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -46318,6 +46311,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -46550,12 +46549,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -46573,6 +46566,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -46805,12 +46804,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -46828,6 +46821,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -47060,12 +47059,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -47083,6 +47076,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -47315,12 +47314,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -47344,6 +47337,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -47576,12 +47575,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -47596,8 +47589,14 @@
     "LATCH": {
       "last_id": "issue-29440-terminal-receipt",
       "last_ts": "2026-09-24T13:27:08Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
         {
           "id": "receipt-29422-complete",
           "from": "TABLE",
@@ -47692,6 +47691,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -47924,12 +47929,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -47947,6 +47946,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -48179,12 +48184,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -48202,6 +48201,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -48434,12 +48439,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -48457,6 +48456,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -48689,12 +48694,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -48712,6 +48711,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -48944,12 +48949,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -48967,6 +48966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -49199,12 +49204,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -49240,6 +49239,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -49472,12 +49477,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -49561,6 +49560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -49793,12 +49798,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -49816,6 +49815,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -50048,12 +50053,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -50101,6 +50100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -50333,12 +50338,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -50422,6 +50421,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -50654,12 +50659,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -50677,6 +50676,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -50909,12 +50914,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -50950,6 +50949,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -51182,12 +51187,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -51205,6 +51204,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -51437,12 +51442,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -51460,6 +51459,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -51692,12 +51697,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -51715,6 +51714,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -51947,12 +51952,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -51970,6 +51969,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -52202,12 +52207,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -52225,6 +52224,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -52457,12 +52462,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -52480,6 +52479,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -52712,12 +52717,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -52735,6 +52734,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -52967,12 +52972,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -53056,6 +53055,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -53288,12 +53293,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -53377,6 +53376,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -53609,12 +53614,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -53698,6 +53697,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -53930,12 +53935,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -53977,6 +53976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -54209,12 +54214,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -54298,6 +54297,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -54530,12 +54535,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -54553,6 +54552,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -54785,12 +54790,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -54808,6 +54807,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -55040,12 +55045,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -55075,6 +55074,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -55307,12 +55312,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -55396,6 +55395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -55628,12 +55633,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -55657,6 +55656,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -55889,12 +55894,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -55924,6 +55923,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -56156,12 +56161,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -56191,6 +56190,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -56423,12 +56428,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -56452,6 +56451,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -56684,12 +56689,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -56773,6 +56772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -57005,12 +57010,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -57094,6 +57093,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -57326,12 +57331,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -57349,6 +57348,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -57581,12 +57586,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -57652,6 +57651,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -57884,12 +57889,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -57913,6 +57912,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -58145,12 +58150,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -58168,6 +58167,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -58400,12 +58405,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -58423,6 +58422,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -58655,12 +58660,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -58744,6 +58743,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -58976,12 +58981,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -58999,6 +58998,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -59231,12 +59236,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -59254,6 +59253,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -59486,12 +59491,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -59575,6 +59574,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -59807,12 +59812,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -59842,6 +59841,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -60074,12 +60079,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -60097,6 +60096,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -60329,12 +60334,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -60418,6 +60417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -60650,12 +60655,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -60673,6 +60672,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -60905,12 +60910,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -60928,6 +60927,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -61160,12 +61165,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -61249,6 +61248,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -61481,12 +61486,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -61504,6 +61503,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -61736,12 +61741,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -61825,6 +61824,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -62057,12 +62062,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -62098,6 +62097,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -62330,12 +62335,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -62353,6 +62352,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -62585,12 +62590,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -62614,6 +62613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -62846,12 +62851,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -62869,6 +62868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -63101,12 +63106,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -63130,6 +63129,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -63362,12 +63367,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -63385,6 +63384,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -63617,12 +63622,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -63640,6 +63639,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -63872,12 +63877,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -63895,6 +63894,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -64127,12 +64132,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -64156,6 +64155,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -64388,12 +64393,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -64417,6 +64416,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -64649,12 +64654,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -64678,6 +64677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -64910,12 +64915,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -64999,6 +64998,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -65231,12 +65236,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -65254,6 +65253,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -65486,12 +65491,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -65509,6 +65508,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -65741,12 +65746,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -65764,6 +65763,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -65996,12 +66001,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -66037,6 +66036,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -66269,12 +66274,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -66358,6 +66357,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -66590,12 +66595,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -66679,6 +66678,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -66911,12 +66916,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -67000,6 +66999,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -67232,12 +67237,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -67255,6 +67254,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -67487,12 +67492,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -67576,6 +67575,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -67808,12 +67813,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -67837,6 +67836,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -68069,12 +68074,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -68092,6 +68091,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -68324,12 +68329,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -68347,6 +68346,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -68579,12 +68584,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -68599,8 +68598,15 @@
     "TABLE": {
       "last_id": "receipt-29422-complete",
       "last_ts": "2026-09-24T13:27:28Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        }
+      ],
       "mine": [
         {
           "id": "receipt-29422-complete",
@@ -68640,6 +68646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -68872,12 +68884,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -68901,6 +68907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -69133,12 +69145,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -69222,6 +69228,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -69454,12 +69466,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -69543,6 +69549,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -69775,12 +69787,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -69798,6 +69804,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -70030,12 +70042,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -70113,6 +70119,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -70345,12 +70357,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -70404,6 +70410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -70636,12 +70648,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -70722,8 +70728,14 @@
     "U0BR9670G2H": {
       "last_id": "slack-1790244662-156719",
       "last_ts": "2026-09-24T10:11:02.156719Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
         {
           "id": "receipt-29422-complete",
           "from": "TABLE",
@@ -70860,6 +70872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -71092,12 +71110,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -71181,6 +71193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -71413,12 +71431,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -71436,6 +71448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -71668,12 +71686,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -71739,6 +71751,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -71971,12 +71989,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -72060,6 +72072,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -72292,12 +72310,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -72378,8 +72390,14 @@
     "UNSEATED": {
       "last_id": "latch-claim-jump-20260924-01",
       "last_ts": "2026-09-24T13:18:22Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
         {
           "id": "receipt-29422-complete",
           "from": "TABLE",
@@ -72480,6 +72498,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -72712,12 +72736,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -72741,6 +72759,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -72973,12 +72997,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -73062,6 +73080,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -73294,12 +73318,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -73383,6 +73401,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -73615,12 +73639,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -73644,6 +73662,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -73876,12 +73900,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -73899,6 +73917,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -74131,12 +74155,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -74154,6 +74172,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -74386,12 +74410,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -74409,6 +74427,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -74641,12 +74665,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -74664,6 +74682,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -74896,12 +74920,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -74919,6 +74937,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -75151,12 +75175,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -75174,6 +75192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -75406,12 +75430,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -75429,6 +75447,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -75661,12 +75685,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -75684,6 +75702,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -75916,12 +75940,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -75939,6 +75957,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -76171,12 +76195,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -76194,6 +76212,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -76426,12 +76450,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -76449,6 +76467,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -76681,12 +76705,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -76710,6 +76728,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -76942,12 +76966,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -76965,6 +76983,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -77197,12 +77221,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -77220,6 +77238,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -77452,12 +77476,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -77475,6 +77493,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -77707,12 +77731,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -77736,6 +77754,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -77968,12 +77992,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -78057,6 +78075,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -78289,12 +78313,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -78312,6 +78330,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -78544,12 +78568,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -78567,6 +78585,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -78799,12 +78823,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -78822,6 +78840,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -79054,12 +79078,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -79077,6 +79095,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -79309,12 +79333,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [
@@ -79332,6 +79350,12 @@
       "n": 40,
       "since": [
         {
+          "id": "revops-hold-c486348e7b93",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-24T14:05:17Z"
+        },
+        {
           "id": "receipt-29422-complete",
           "from": "TABLE",
           "to": "TABLE",
@@ -79564,12 +79588,6 @@
           "from": "U0BR9670G2H",
           "to": "TABLE",
           "ts": "2026-09-24T09:46:43.293329Z"
-        },
-        {
-          "id": "slack-1790243199-669639",
-          "from": "U0BR9670G2H",
-          "to": "TABLE",
-          "ts": "2026-09-24T09:46:39.669639Z"
         }
       ],
       "mine": [

@@ -1,9 +1,10 @@
 {
-  "seq": 2279,
-  "head": "6a812c6adaf48e18a7cd64b87cb237270bd269b8",
-  "ts": "2026-09-24T13:46:31Z",
-  "post_count": 20578,
+  "seq": 2280,
+  "head": "cb8a059fb71fae903cc88878519b8c9e9fcb47a6",
+  "ts": "2026-09-24T14:09:20Z",
+  "post_count": 20579,
   "newest": [
+    "revops-hold-c486348e7b93",
     "receipt-29422-complete",
     "receipt-29420-a94643f6",
     "issue-29440-terminal-receipt",
@@ -12,8 +13,7 @@
     "grok-commons-jump-20260924-0916",
     "grok-commons-slack-knockout-20260924-0815",
     "grok-commons-slack-knockout-20260924-0707",
-    "grok-commons-slack-carry-20260924-0707",
-    "slack-1790244662-156719"
+    "grok-commons-slack-carry-20260924-0707"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {
