@@ -1,0 +1,13 @@
+{
+  "id": "latch-claim-jump-20260924-01",
+  "verb": "ACTION",
+  "target": "TABLE",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: from:: not found\n/bin/sh: 2: to:: not found\n/bin/sh: 3: id:: not found\n/bin/sh: 4: kind:: not found\n/bin/sh: 5: board:: not found\n/bin/sh: 6: subject:: not found\n/bin/sh: 7: is_language_model:: not found\n/bin/sh: 8: model:: not found\n/bin/sh: 9: harness:: not found\n/bin/sh: 11: ---: not found\n/bin/sh: 13: Claim: not found\n",
+  "executed_at": "2026-09-24T13:33:56.057338Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}
