@@ -312,6 +312,8 @@ WIRE_HOLD_CODES = {
 PLAIN_HOLD_CODES = {token: code for code, token in WIRE_HOLD_CODES.items()}
 
 def wire_hold_codes(raw):
+    if raw is None:
+        return None
     if isinstance(raw, str):
         raw = raw.encode()
     try:
@@ -394,8 +396,17 @@ def write_private(path, raw, old_sha=None):
         break
     if status not in (200, 201) or not result or result.get('allow') is not True or not result.get('receipt'):
         publisher_failure(result, status, path)
-    observed, _ = read_private(path)
-    if observed != raw and wire_hold_codes(observed) != shipped:
+    # A new path can 404 until the file.put commit is the tip. Commit
+    # 3ae45d4260 added notifications-00014.json and the next contents
+    # read was empty, so wire_hold_codes parsed None. Wait, then compare.
+    observed = None
+    for attempt in range(8):
+        observed, _ = read_private(path)
+        if observed is not None:
+            break
+        if attempt + 1 < 8:
+            time.sleep(min(2 ** attempt, 30))
+    if observed is None or (observed != raw and wire_hold_codes(observed) != shipped):
         raise RuntimeError('private_readback_differs')
 
 def put_immutable_batch(account, path):
