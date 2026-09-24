@@ -1,8 +1,8 @@
 {
   "counts": {
-    "open_issues": 10563,
+    "open_issues": 10533,
     "open_pull_requests": 0,
-    "runs_in_progress": 1,
+    "runs_in_progress": 4,
     "runs_queued": 70
   },
   "counts_source": "graphql",
@@ -11,8 +11,30 @@
   ],
   "pulls_listed": "UNKNOWN",
   "pulls_listing": "UNKNOWN",
-  "queue_depth_per_runner": 70.0,
+  "queue_depth_per_runner": 17.5,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "repair/history-readback-visible-20260924",
+      "closed_at": "2026-09-24T14:02:50Z",
+      "head_sha": "908308e549c10d0184d72544c87cf04b27b58b72",
+      "merged_at": "2026-09-24T14:02:50Z",
+      "number": 29450,
+      "state": "MERGED",
+      "title": "Retry private history readback until a new file is visible"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "fix/github-history-null-json-20260924",
+      "closed_at": "2026-09-24T13:59:34Z",
+      "head_sha": "ef9aa283e8d1981cfef145f8c2ea8edba8049747",
+      "merged_at": "2026-09-24T13:59:33Z",
+      "number": 29449,
+      "state": "MERGED",
+      "title": "Fix commons-board github-history null JSON crash"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -155,31 +177,9 @@
       "number": 29301,
       "state": "MERGED",
       "title": "Latch: knockout continue 20260924-02 (BUILDABLE closed)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "latch/knockout-continue-20260924-01",
-      "closed_at": "2026-09-24T05:22:24Z",
-      "head_sha": "1e7dc07e443dee31c313fb9a584543e5decf749b",
-      "merged_at": "2026-09-24T05:22:24Z",
-      "number": 29300,
-      "state": "MERGED",
-      "title": "Latch: knockout continue 20260924 (BUILDABLE closed)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "latch/knockout-continue-20260923-01",
-      "closed_at": "2026-09-24T03:07:48Z",
-      "head_sha": "ed098b2c8b8d85fd811951a29b408f4c9d7616e5",
-      "merged_at": "2026-09-24T03:07:48Z",
-      "number": 29299,
-      "state": "MERGED",
-      "title": "Latch: knockout continue \u2014 BUILDABLE closed (cite GROK 2305)"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-24T13:47:55Z"
+  "unchanged_since": "2026-09-24T14:10:43Z"
 }
