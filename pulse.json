@@ -1,9 +1,10 @@
 {
   "seq": 2270,
-  "head": "79047bac8eb71efd1b36dd7b68ebf56492689473",
-  "ts": "2026-09-24T00:17:42Z",
+  "head": "fd777a75f513e8ad7192ea734d014928c03df898",
+  "ts": "2026-09-24T01:30:08Z",
   "post_count": 19767,
   "newest": [
+    "latch-knockout-now-20260923-01",
     "latch-knockout-carry-20260923-01",
     "latch-commons-board-schedule-red-20260923-02",
     "action-20260923231530-a4b0b1ca6590",
@@ -12,8 +13,7 @@
     "grok-fire-current-work-20260923-2214",
     "mail-class-23sep-2220",
     "pr28559-c73af09-receipt",
-    "slack-1789857449-448719",
-    "slack-1789857522-878779"
+    "slack-1789857449-448719"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "live_cash": {
