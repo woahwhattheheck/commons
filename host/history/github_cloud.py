@@ -79,6 +79,158 @@ def request(url, body=None):
             raise RuntimeError('provider_http_' + str(exc.code) + '_github') from None
     raise RuntimeError('provider_http_' + str(getattr(last, 'code', 0)) + '_github')
 
+MAX_CHECKPOINT_BYTES = 240_000
+DETAIL_SHARD_SCHEMA = 'github-history-detail-shard-v1'
+
+def dumps(data):
+    return json.dumps(data, ensure_ascii=False, separators=(',', ':')).encode()
+
+def pair_details(details):
+    """Return [kind, url] pairs when every row is the redundant {url,kind,next} shape."""
+    if not isinstance(details, list):
+        return None
+    pairs = []
+    for item in details:
+        if isinstance(item, dict):
+            if set(item) != {'url', 'kind', 'next'}:
+                return None
+            url, kind, nxt = item['url'], item['kind'], item['next']
+            if nxt != url or not isinstance(url, str) or not isinstance(kind, str):
+                return None
+            pairs.append([kind, url])
+        elif (isinstance(item, list) and len(item) == 2 and
+              all(isinstance(part, str) for part in item)):
+            pairs.append([item[0], item[1]])
+        else:
+            return None
+    return pairs
+
+def compact_document(data):
+    if not isinstance(data, dict):
+        return None
+    pairs = pair_details(data.get('details', []))
+    if pairs is None:
+        return None
+    urls = [url for _, url in pairs]
+    if data.get('detail_keys', urls) != urls:
+        return None
+    compact = dict(data)
+    compact['details'] = pairs
+    compact.pop('detail_keys', None)
+    compact.pop('detail_shards', None)
+    return compact
+
+def plan_checkpoint_files(raw):
+    """Fit a checkpoint under the publisher accept ceiling without dropping queue URLs.
+
+    The expanded document stores every URL three times. Pair rows drop that
+    repetition. If the compact document is still over the ceiling, detail pairs
+    move into sibling files and the checkpoint keeps only their names.
+    """
+    data = json.loads(raw)
+    compact = compact_document(data)
+    if compact is None:
+        if len(raw) > MAX_CHECKPOINT_BYTES:
+            raise RuntimeError('checkpoint_over_publisher_ceiling')
+        return [('checkpoint.json', raw if isinstance(raw, bytes) else raw.encode())]
+    blob = dumps(compact)
+    if len(blob) <= MAX_CHECKPOINT_BYTES:
+        return [('checkpoint.json', blob)]
+    files = []
+    current = []
+
+    def flush():
+        if not current:
+            return
+        name = 'details-%04d.json' % len(files)
+        shard = dumps({'schema': DETAIL_SHARD_SCHEMA, 'details': list(current)})
+        if len(shard) > MAX_CHECKPOINT_BYTES:
+            raise RuntimeError('checkpoint_over_publisher_ceiling')
+        files.append((name, shard))
+
+    for pair in compact['details']:
+        trial = dumps({'schema': DETAIL_SHARD_SCHEMA, 'details': current + [pair]})
+        if current and len(trial) > MAX_CHECKPOINT_BYTES:
+            flush()
+            current = [pair]
+        else:
+            current.append(pair)
+    flush()
+    if any(len(shard) > MAX_CHECKPOINT_BYTES for _, shard in files):
+        raise RuntimeError('checkpoint_over_publisher_ceiling')
+    head = dict(compact)
+    head['details'] = []
+    head['detail_shards'] = [name for name, _ in files]
+    head_raw = dumps(head)
+    if len(head_raw) > MAX_CHECKPOINT_BYTES:
+        raise RuntimeError('checkpoint_over_publisher_ceiling')
+    return files + [('checkpoint.json', head_raw)]
+
+def expand_checkpoint(raw, read_shard):
+    """Restore the collector's {url,kind,next} rows and detail_keys list."""
+    data = json.loads(raw)
+    prior = {}
+    shards = data.get('detail_shards')
+    if shards:
+        if data.get('details') not in ([], None) or not isinstance(shards, list):
+            raise RuntimeError('checkpoint_shard_invalid')
+        pairs = []
+        for name in shards:
+            if not isinstance(name, str) or name != Path(name).name or not name.endswith('.json'):
+                raise RuntimeError('checkpoint_shard_invalid')
+            loaded = read_shard(name)
+            if not loaded or loaded[0] is None:
+                raise RuntimeError('checkpoint_shard_missing')
+            sraw, ssha = loaded
+            shard = json.loads(sraw)
+            part = shard.get('details') if shard.get('schema') == DETAIL_SHARD_SCHEMA else None
+            if not isinstance(part, list):
+                raise RuntimeError('checkpoint_shard_invalid')
+            for item in part:
+                if not (isinstance(item, list) and len(item) == 2 and
+                        all(isinstance(piece, str) for piece in item)):
+                    raise RuntimeError('checkpoint_shard_invalid')
+                pairs.append(item)
+            prior[name] = (sraw, ssha)
+        data.pop('detail_shards', None)
+        data['details'] = [{'url': url, 'kind': kind, 'next': url} for kind, url in pairs]
+        data['detail_keys'] = [url for _, url in pairs]
+        return dumps(data), prior
+    pairs = pair_details(data.get('details', []))
+    if pairs is not None and data.get('details') and isinstance(data['details'][0], list):
+        urls = [url for _, url in pairs]
+        if 'detail_keys' in data and data['detail_keys'] != urls:
+            raise RuntimeError('checkpoint_detail_keys_mismatch')
+        data['details'] = [{'url': url, 'kind': kind, 'next': url} for kind, url in pairs]
+        data['detail_keys'] = urls
+        return dumps(data), prior
+    body = raw if isinstance(raw, bytes) else raw.encode()
+    return body, prior
+
+def publish_checkpoint(account, expanded, prior_raw, prior_sha, prior_shards):
+    planned = plan_checkpoint_files(expanded)
+    for name, blob in planned:
+        if name == 'checkpoint.json':
+            continue
+        old = prior_shards.get(name)
+        if old and old[0] == blob:
+            continue
+        write_private(private_path(account, name), blob, old[1] if old else None)
+    checkpoint = dict(planned)['checkpoint.json']
+    if prior_raw is not None and checkpoint == prior_raw:
+        return
+    write_private(private_path(account, 'checkpoint.json'), checkpoint, prior_sha)
+
+def read_account_checkpoint(account):
+    raw, sha = read_private(private_path(account, 'checkpoint.json'))
+    if raw is None:
+        return None, None, None, {}
+    def read_shard(name):
+        return read_private(private_path(account, name))
+    expanded, prior = expand_checkpoint(raw, read_shard)
+    return expanded, raw, sha, prior
+
+
 def private_path(account, filename):
     return PREFIX + account + '/' + filename
 
@@ -139,7 +291,7 @@ def run(account):
         collector.ROOT = root / 'github'
         home = collector.ROOT / account
         home.mkdir(parents=True)
-        snapshot, sha = read_private(private_path(account, 'checkpoint.json'))
+        snapshot, prior_raw, sha, prior_shards = read_account_checkpoint(account)
         if snapshot:
             (home / 'checkpoint.json').write_bytes(snapshot)
         reader = collector.Reader(account, budget=3)
@@ -157,8 +309,7 @@ def run(account):
             else:
                 matched += 1
         cursor = (home / 'checkpoint.json').read_bytes()
-        if cursor != snapshot:
-            write_private(private_path(account, 'checkpoint.json'), cursor, sha)
+        publish_checkpoint(account, cursor, prior_raw, sha, prior_shards)
         return {'account': account, 'requests': result['requests'], 'batches': len(files),
                 'written': written, 'kept': kept, 'matched': matched,
                 'queued_details': result['queued_details'], 'queued_repositories': result['queued_repositories'],
