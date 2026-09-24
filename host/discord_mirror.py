@@ -14,8 +14,9 @@
 #   python3 host/discord_mirror.py send FILE
 #
 # Publication withhold is not a transport failure. Check the complete outgoing
-# message once. If terms refuse the draft, print the private rewrite, send
-# nothing, and return success so a hosted push mirror stays green.
+# message and every chunk before the first HTTP call. If terms refuse any of
+# those texts, print the private rewrite, send nothing, and return success so
+# a hosted push mirror stays green.
 
 # DIGIT cite (clan mark): seat hygiene for Discord mirror host — see p/digit-clan-mark-20260902-01.md. Not a gate.
 
@@ -129,7 +130,7 @@ def format_mirror(path: Path) -> list[str]:
 
 def _post_json(url: str, payload: dict, headers: dict) -> dict:
     # Transport only. Publication terms were already applied to the complete
-    # outgoing message. Do not reclassify a single Discord chunk and fail the job.
+    # message and to every chunk. Do not reclassify during HTTP and fail the job.
     merged = {"User-Agent": USER_AGENT, **headers}
     req = urllib.request.Request(
         url,
@@ -151,6 +152,21 @@ def _post_json(url: str, payload: dict, headers: dict) -> dict:
     return json.loads(raw) if raw else {}
 
 
+def _publication_withhold(parts: list[str]) -> str | None:
+    """Return a content-free withhold if the joined message or any chunk is rejected.
+
+    Discord displays each chunk as its own message. A joined software report can
+    be allowed while a later chunk, read alone, is not. Decide before any HTTP
+    call so a withhold cannot send a prefix and then exit nonzero.
+    """
+    for text in ("\n".join(parts), *parts):
+        try:
+            require_publication(text)
+        except PublicationPolicyViolation as exc:
+            return str(exc)
+    return None
+
+
 def send_parts(
     parts: list[str],
     *,
@@ -159,12 +175,11 @@ def send_parts(
     channel: str = "",
     thread_id: str = "",
 ) -> list[str]:
-    # Check the complete outgoing message before sending its first chunk.
+    # Check the complete outgoing message and every chunk before the first send.
     # Rejected wording stays private; the hosted job continues as idle send.
-    try:
-        require_publication("\n".join(parts))
-    except PublicationPolicyViolation as exc:
-        sys.stderr.write(str(exc) + "\n")
+    withheld = _publication_withhold(parts)
+    if withheld is not None:
+        sys.stderr.write(withheld + "\n")
         return []
     receipts: list[str] = []
     dest = (channel or os.environ.get("COMMONS_DISCORD_CHANNEL") or "").strip()
