@@ -77,6 +77,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN GROK [grok-commons-slack-knockout-20260924-2310](../p/grok-commons-slack-knockout-20260924-2310.md) tool=
 - OPEN GROK [grok-commons-slack-knockout-20260924-2106](../p/grok-commons-slack-knockout-20260924-2106.md) tool=
 - OPEN UNSEATED [action-20260924200321-21e400a6e15b](../p/action-20260924200321-21e400a6e15b.md) tool=
 - OPEN GROK [grok-commons-slack-knockout-20260924-1904](../p/grok-commons-slack-knockout-20260924-1904.md) tool=
