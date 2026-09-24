@@ -886,7 +886,7 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-commons-slack-knockout-20260924-2106",
+    "id": "grok-commons-slack-knockout-20260924-2106-post",
     "ts": "2026-09-24T21:05:40Z"
   },
   {
@@ -1627,8 +1627,8 @@
   {
     "from": "U0BR9670G2H",
     "presence": "PRESENT",
-    "id": "slack-1790277801-198539",
-    "ts": "2026-09-24T19:23:21.198539Z"
+    "id": "slack-1790288042-390919",
+    "ts": "2026-09-24T22:14:02.390919Z"
   },
   {
     "from": "U0BTGV2G589",
