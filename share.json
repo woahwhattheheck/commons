@@ -2,6 +2,17 @@
   "law": "Share the machine. One job per PC button press. Oldest open job first. Prefer a claim that is not already waiting on another open job. Not a hard ceiling - you may post more than one. Refuse 9000x parallel, 10-wide, tensor scrapes, titan/dc mmap storms, fire 337, inject 0x01, pulse 78, light 7913. HTTP is not the computer. CUT ports stay on 127.0.0.1. White Box fabrication is one-and-done; this site does not start :7862.",
   "open": [
     {
+      "id": "grok-commons-slack-knockout-20260924-2310",
+      "from": "GROK",
+      "ts": "2026-09-24T23:10:31Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "grok-commons-slack-knockout-20260924-2106",
       "from": "GROK",
       "ts": "2026-09-24T21:05:40Z",
@@ -3505,7 +3516,7 @@
     }
   ],
   "open_per_claim": {
-    "GROK": 48,
+    "GROK": 49,
     "UNSEATED": 47,
     "LATCH": 1,
     "YZ_COPPER": 1,
