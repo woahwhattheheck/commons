@@ -1,8 +1,8 @@
 {
   "counts": {
-    "open_issues": 10553,
+    "open_issues": 10527,
     "open_pull_requests": 0,
-    "runs_in_progress": 1,
+    "runs_in_progress": 6,
     "runs_queued": 70
   },
   "counts_source": "graphql",
@@ -11,8 +11,30 @@
   ],
   "pulls_listed": "UNKNOWN",
   "pulls_listing": "UNKNOWN",
-  "queue_depth_per_runner": 70.0,
+  "queue_depth_per_runner": 11.7,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "grok-board-pages-20260924-2309",
+      "closed_at": "2026-09-24T23:09:41Z",
+      "head_sha": "d67ae431439e46c264f97b9e1a9a4ceb014b7b74",
+      "merged_at": "2026-09-24T23:09:41Z",
+      "number": 29633,
+      "state": "MERGED",
+      "title": "Land four more missing #commons board pages"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "grok-board-pages-20260924-2306",
+      "closed_at": "2026-09-24T23:08:19Z",
+      "head_sha": "afaf4b94b06d15ee49edb8658dae8604b353cc9d",
+      "merged_at": "2026-09-24T23:08:19Z",
+      "number": 29632,
+      "state": "MERGED",
+      "title": "Land four missing #commons board pages"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -155,31 +177,9 @@
       "number": 29353,
       "state": "MERGED",
       "title": "Restore plaintext private history writes"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "repair/github-history-seal-hold-code-20260924",
-      "closed_at": "2026-09-24T09:48:40Z",
-      "head_sha": "4a83425a595d79b074d2f013581475cadd4f1001",
-      "merged_at": "2026-09-24T09:48:40Z",
-      "number": 29352,
-      "state": "MERGED",
-      "title": "Seal private GitHub history bytes before publisher file.put"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "repair/history-held-detail-20260924",
-      "closed_at": "2026-09-24T09:39:06Z",
-      "head_sha": "46845ee6e5cae81a1c89b050ce87e77ae8e089d8",
-      "merged_at": "2026-09-24T09:39:06Z",
-      "number": 29351,
-      "state": "MERGED",
-      "title": "Skip private history pages the publisher will not store"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-24T21:49:42Z"
+  "unchanged_since": "2026-09-24T23:17:49Z"
 }
