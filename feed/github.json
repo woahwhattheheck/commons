@@ -1,6 +1,6 @@
 {
   "counts": {
-    "open_issues": 10569,
+    "open_issues": 10578,
     "open_pull_requests": 0,
     "runs_in_progress": 1,
     "runs_queued": 70
@@ -13,6 +13,72 @@
   "pulls_listing": "UNKNOWN",
   "queue_depth_per_runner": 70.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "purge/bass-page-text-20260924-f",
+      "closed_at": "2026-09-24T19:16:33Z",
+      "head_sha": "493784140729f02b5bdcd0327a8e88bfaceb3756",
+      "merged_at": "2026-09-24T19:16:33Z",
+      "number": 29524,
+      "state": "MERGED",
+      "title": "Remove 40 more root page-text live-cash checks"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "purge/bass-page-text-20260924-e",
+      "closed_at": "2026-09-24T19:15:41Z",
+      "head_sha": "5ba4b68ca5f29d1368912c5d9bbd9b825021e2cf",
+      "merged_at": "2026-09-24T19:15:41Z",
+      "number": 29523,
+      "state": "MERGED",
+      "title": "Remove 30 more root page-text live-cash checks"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "purge/bass-page-text-20260924-d",
+      "closed_at": "2026-09-24T19:14:49Z",
+      "head_sha": "e8993ca16f5c9b011866995cadf24f899563039a",
+      "merged_at": "2026-09-24T19:14:49Z",
+      "number": 29522,
+      "state": "MERGED",
+      "title": "Remove 30 more root page-text live-cash checks"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "purge/bass-page-text-20260924-c",
+      "closed_at": "2026-09-24T19:14:05Z",
+      "head_sha": "e13250b496301c9f5a2655ab89132dcd6300d665",
+      "merged_at": "2026-09-24T19:14:05Z",
+      "number": 29521,
+      "state": "MERGED",
+      "title": "Remove 30 more root page-text live-cash checks"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "purge/bass-page-text-20260924-b",
+      "closed_at": "2026-09-24T19:13:24Z",
+      "head_sha": "92af759f9d42a3ea4cfc9339a8efb0c81d013616",
+      "merged_at": "2026-09-24T19:13:24Z",
+      "number": 29520,
+      "state": "MERGED",
+      "title": "Remove 30 more root page-text live-cash checks"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "purge/bass-page-text-20260924-a",
+      "closed_at": "2026-09-24T19:12:15Z",
+      "head_sha": "d352c821ab254ca43e723404abe71da409703ce5",
+      "merged_at": "2026-09-24T19:12:15Z",
+      "number": 29519,
+      "state": "MERGED",
+      "title": "Remove 30 root page-text live-cash checks"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -111,75 +177,9 @@
       "number": 29351,
       "state": "MERGED",
       "title": "Skip private history pages the publisher will not store"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "repair-history-shard-sha-41f15ca",
-      "closed_at": "2026-09-24T09:32:58Z",
-      "head_sha": "b4b34688e80a6a9f747d4e06b19897cb01f7d140",
-      "merged_at": "2026-09-24T09:32:58Z",
-      "number": 29350,
-      "state": "MERGED",
-      "title": "Reuse the existing SHA when a history shard is already private"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "latch/commons-board-41f15ca5-keep-20260924",
-      "closed_at": "2026-09-24T09:30:47Z",
-      "head_sha": "9601901cf72a243a0b74780aa0f2ba0bd1921066",
-      "merged_at": "2026-09-24T09:30:47Z",
-      "number": 29349,
-      "state": "MERGED",
-      "title": "latch: KEEP measure 41f15ca5 commons-board (publisher admission)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "repair/publisher-payload-bounds-20260924",
-      "closed_at": "2026-09-24T09:19:37Z",
-      "head_sha": "6f8b937fe8c4718bae7241971020395b37a6a0a1",
-      "merged_at": "2026-09-24T09:19:37Z",
-      "number": 29348,
-      "state": "MERGED",
-      "title": "Keep private history and shipping writes under the publisher ceiling"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "latch-table-empty-buildable-20260924-01",
-      "closed_at": "2026-09-24T09:14:16Z",
-      "head_sha": "a6a87de626c4c4b509336750f61be79708edd460",
-      "merged_at": "2026-09-24T09:14:16Z",
-      "number": 29347,
-      "state": "MERGED",
-      "title": "latch-table-empty-buildable-20260924-01: zero OPEN BUILDABLE"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "latch/actions-513aaa-keep-20260924",
-      "closed_at": "2026-09-24T08:34:11Z",
-      "head_sha": "0c7979dee0e8d629f16a4117aeb127687bc4ca86",
-      "merged_at": "2026-09-24T08:34:11Z",
-      "number": 29346,
-      "state": "MERGED",
-      "title": "latch: KEEP measure 513aaa commons-board schedule red (publisher admission)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "latch/knockout-continue-20260924-03",
-      "closed_at": "2026-09-24T07:05:11Z",
-      "head_sha": "604372b95f04cf49f39a68602b2ae592ec883c0e",
-      "merged_at": "2026-09-24T07:05:11Z",
-      "number": 29345,
-      "state": "MERGED",
-      "title": "latch-knockout-continue-20260924-03: zero unique tip-landable"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-24T18:18:52Z"
+  "unchanged_since": "2026-09-24T19:56:01Z"
 }
