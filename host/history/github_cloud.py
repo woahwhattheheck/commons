@@ -12,6 +12,7 @@ import subprocess
 import sys
 import tempfile
 import time
+import unicodedata
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -81,6 +82,45 @@ def request(url, body=None):
 
 MAX_CHECKPOINT_BYTES = 240_000
 DETAIL_SHARD_SCHEMA = 'github-history-detail-shard-v1'
+HOLD_CODES = {'self_fault_admission', 'invalid_candidate', 'agent_caused_damage', 'authored_attribution'}
+
+class PublisherHold(RuntimeError):
+    def __init__(self, code, path):
+        super().__init__('publisher_' + code)
+        self.code = code
+        self.path = path
+
+def _fallback_identity_terms(value):
+    terms = ('Codex', '\u0043laude', 'Opus', 'Fable', 'Astra', 'Sol', '\u0047rok')
+    normalized = ''.join(character for character in unicodedata.normalize('NFKC', value)
+                         if unicodedata.category(character) != 'Cf').casefold()
+    found = []
+    for term in terms:
+        needle = term.casefold()
+        offset = 0
+        while True:
+            start = normalized.find(needle, offset)
+            if start < 0:
+                break
+            end = start + len(needle)
+            before = normalized[start - 1] if start else ''
+            after = normalized[end] if end < len(normalized) else ''
+            before_ok = unicodedata.category((before or ' ')[:1])[0] not in {'L', 'M', 'N'}
+            after_ok = unicodedata.category((after or ' ')[:1])[0] not in {'L', 'M', 'N'}
+            if before_ok and after_ok:
+                found.append(term)
+                break
+            offset = start + 1
+    return tuple(found)
+
+def identity_terms_in(value):
+    return _fallback_identity_terms(value)
+
+def publisher_failure(result, status, path):
+    code = str((result or {}).get('reason_code') or (result or {}).get('error') or status)
+    if code in HOLD_CODES:
+        raise PublisherHold(code, path)
+    raise RuntimeError('publisher_' + code)
 
 def dumps(data):
     return json.dumps(data, ensure_ascii=False, separators=(',', ':')).encode()
@@ -207,6 +247,27 @@ def expand_checkpoint(raw, read_shard):
     body = raw if isinstance(raw, bytes) else raw.encode()
     return body, prior
 
+def hold_gap(batch_raw, code):
+    """Remember a held page by URL only. Never copy the rejected record body."""
+    batch = json.loads(batch_raw)
+    coverage = batch.get('coverage') if isinstance(batch, dict) else None
+    at = coverage.get('api_url') if isinstance(coverage, dict) else None
+    return {'road': batch.get('road') if isinstance(batch, dict) else None,
+            'at': at, 'reason': 'publisher_hold', 'code': code}
+
+def apply_holds(checkpoint_raw, gaps):
+    state = json.loads(checkpoint_raw)
+    if not isinstance(state, dict):
+        raise RuntimeError('checkpoint_invalid')
+    current = state.get('gaps')
+    if not isinstance(current, list):
+        current = []
+    for gap in gaps:
+        if gap not in current:
+            current.append(gap)
+    state['gaps'] = current
+    return dumps(state)
+
 def publish_checkpoint(account, expanded, prior_raw, prior_sha, prior_shards):
     planned = plan_checkpoint_files(expanded)
     for name, blob in planned:
@@ -264,7 +325,7 @@ def write_private(path, raw, old_sha=None):
         break
     if status not in (200, 201) or not result or result.get('allow') is not True or not result.get('receipt'):
         # Do not retry a held exact publication by changing content or carrier.
-        raise RuntimeError('publisher_' + str((result or {}).get('reason_code') or (result or {}).get('error') or status))
+        publisher_failure(result, status, path)
     observed, _ = read_private(path)
     if observed != raw:
         raise RuntimeError('private_readback_differs')
@@ -305,8 +366,17 @@ def run(account):
         # An already-landed name keeps its first snapshot; live re-fetch bytes are discarded.
         files = sorted(home.glob('github-*.json'))
         written = kept = matched = 0
+        holds = []
         for path in files:
-            status = put_immutable_batch(account, path)
+            raw = path.read_bytes()
+            if identity_terms_in(raw.decode('utf-8', 'replace')):
+                holds.append(hold_gap(raw, 'blocked_identity_term'))
+                continue
+            try:
+                status = put_immutable_batch(account, path)
+            except PublisherHold as exc:
+                holds.append(hold_gap(raw, exc.code))
+                continue
             if status == 'written':
                 written += 1
             elif status == 'kept':
@@ -314,11 +384,13 @@ def run(account):
             else:
                 matched += 1
         cursor = (home / 'checkpoint.json').read_bytes()
+        if holds:
+            cursor = apply_holds(cursor, holds)
         publish_checkpoint(account, cursor, prior_raw, sha, prior_shards)
         return {'account': account, 'requests': result['requests'], 'batches': len(files),
-                'written': written, 'kept': kept, 'matched': matched,
+                'written': written, 'kept': kept, 'matched': matched, 'held': len(holds),
                 'queued_details': result['queued_details'], 'queued_repositories': result['queued_repositories'],
-                'gaps': result['gaps'], 'private_readback': True}
+                'gaps': result['gaps'] + len(holds), 'private_readback': True}
 
 def main():
     for account in collector.ACCOUNTS:

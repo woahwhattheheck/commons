@@ -108,5 +108,26 @@ class CheckpointBoundsTest(unittest.TestCase):
         self.assertEqual(store[prefix + stale_name][0], planned[0][1])
         self.assertEqual(store[prefix + 'checkpoint.json'][0], planned[-1][1])
 
+    def test_held_batch_keeps_the_url_and_not_the_body(self):
+        body = 'blocked body stays out of the checkpoint'
+        batch = github_cloud.dumps({'source': 'github', 'account': 'tokenjunkielabs', 'road': 'details',
+            'coverage': {'api_url': 'https://api.github.com/repos/woahwhattheheck/commons/issues/1'},
+            'records': [{'body': body}]})
+        gap = github_cloud.hold_gap(batch, 'self_fault_admission')
+        self.assertEqual(gap['at'], 'https://api.github.com/repos/woahwhattheheck/commons/issues/1')
+        self.assertNotIn(body, json.dumps(gap))
+        checkpoint = github_cloud.dumps({'schema': 'github-history-checkpoint-v1', 'gaps': [], 'details': []})
+        updated = github_cloud.apply_holds(checkpoint, [gap, gap])
+        restored = json.loads(updated)
+        self.assertEqual(restored['gaps'], [gap])
+        self.assertNotIn(body, updated.decode())
+        self.assertEqual(github_cloud.identity_terms_in('resolve the task'), ())
+        self.assertTrue(github_cloud.identity_terms_in('see Codex now'))
+        with self.assertRaises(github_cloud.PublisherHold) as caught:
+            github_cloud.publisher_failure({'allow': False, 'reason_code': 'self_fault_admission'}, 403,
+                                           'history/details.json')
+        self.assertEqual(caught.exception.code, 'self_fault_admission')
+
+
 if __name__ == '__main__':
     unittest.main()
