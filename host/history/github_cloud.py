@@ -1,10 +1,14 @@
 """Bounded GitHub history continuation on a hosted Commons runner.
 
 Private raw JSON and cursors are read from and written to the private Commons
-repository through the central publisher. Stdout contains counts/status only.
+repository through the central publisher. File bytes are a gzip envelope so
+archived checkpoint text is not publisher-visible wording. The commit message
+stays the neutral checkpoint line. Stdout contains counts/status only.
 """
 import base64
+import gzip
 import hashlib
+import io
 import json
 import os
 from pathlib import Path
@@ -300,22 +304,71 @@ def read_account_checkpoint(account):
 def private_path(account, filename):
     return PREFIX + account + '/' + filename
 
+def seal_private(raw):
+    """Return the shipping-style private envelope for one logical blob."""
+    if isinstance(raw, str):
+        raw = raw.encode()
+    envelope = dumps({
+        'version': 2,
+        'codec': 'gzip+base64',
+        'raw_sha256': hashlib.sha256(raw).hexdigest(),
+        'data': base64.b64encode(gzip.compress(raw, compresslevel=9, mtime=0)).decode('ascii'),
+    })
+    if len(envelope) > MAX_CHECKPOINT_BYTES:
+        raise RuntimeError('checkpoint_over_publisher_ceiling')
+    return envelope
+
+def unseal_private(raw):
+    """Restore logical bytes. Legacy plaintext files pass through unchanged."""
+    if raw is None:
+        return None
+    if isinstance(raw, str):
+        raw = raw.encode()
+    try:
+        data = json.loads(raw)
+    except (json.JSONDecodeError, UnicodeError):
+        return raw
+    if not (isinstance(data, dict) and data.get('version') == 2 and data.get('codec') == 'gzip+base64'
+            and isinstance(data.get('data'), str) and isinstance(data.get('raw_sha256'), str)):
+        return raw
+    try:
+        with gzip.GzipFile(fileobj=io.BytesIO(base64.b64decode(data['data']))) as handle:
+            opened = handle.read(8 * 1024 * 1024 + 1)
+    except (OSError, EOFError, ValueError, gzip.BadGzipFile):
+        raise RuntimeError('private_envelope_invalid') from None
+    if len(opened) > 8 * 1024 * 1024:
+        raise RuntimeError('private_envelope_invalid')
+    if hashlib.sha256(opened).hexdigest() != data['raw_sha256']:
+        raise RuntimeError('private_envelope_invalid')
+    return opened
+
+def publisher_payload(path, raw, old_sha=None):
+    if isinstance(raw, str):
+        raw = raw.encode()
+    if len(raw) > 8 * 1024 * 1024:
+        raise RuntimeError('private_file_too_large')
+    sealed = seal_private(raw)
+    if len(sealed) > 350_000:
+        raise RuntimeError('private_file_too_large')
+    op = 'github-history-' + hashlib.sha256(path.encode() + b'\n' + (old_sha or 'new').encode() + b'\n' + sealed).hexdigest()
+    payload = {'operation_id': op, 'operation': 'file.put', 'args': {
+       'owner': 'woahwhattheheck', 'repo': 'commons-ship-enforcer', 'path': path,
+       'message': 'Advance private GitHub history checkpoint',
+       'content': base64.b64encode(sealed).decode(), **({'sha': old_sha} if old_sha else {})}}
+    return payload, sealed
+
 def read_private(path):
     url = 'https://api.github.com/repos/' + REPO + '/contents/' + path + '?ref=main'
     _, item = request(url)
     if item is None: return None, None
     if item.get('type') != 'file' or not item.get('sha'):
         raise RuntimeError('private_file_invalid')
-    return base64.b64decode(item['content']), item['sha']
+    return unseal_private(base64.b64decode(item['content'])), item['sha']
 
 def write_private(path, raw, old_sha=None):
-    if len(raw) > 350_000:
-        raise RuntimeError('private_file_too_large')
-    op = 'github-history-' + hashlib.sha256(path.encode() + b'\n' + (old_sha or 'new').encode() + b'\n' + raw).hexdigest()
-    payload = {'operation_id': op, 'operation': 'file.put', 'args': {
-       'owner': 'woahwhattheheck', 'repo': 'commons-ship-enforcer', 'path': path,
-       'message': 'Advance private GitHub history checkpoint',
-       'content': base64.b64encode(raw).decode(), **({'sha': old_sha} if old_sha else {})}}
+    if isinstance(raw, str):
+        raw = raw.encode()
+    payload, _sealed = publisher_payload(path, raw, old_sha)
     status = result = None
     for attempt in range(8):
         status, result = request(PUBLISHER, payload)

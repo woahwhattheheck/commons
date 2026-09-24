@@ -1,5 +1,7 @@
 """Publisher-sized GitHub history checkpoints keep every queued URL."""
+import base64
 import json
+import os
 import sys
 import unittest
 from pathlib import Path
@@ -127,6 +129,27 @@ class CheckpointBoundsTest(unittest.TestCase):
             github_cloud.publisher_failure({'allow': False, 'reason_code': 'self_fault_admission'}, 403,
                                            'history/details.json')
         self.assertEqual(caught.exception.code, 'self_fault_admission')
+
+    def test_hold_code_is_absent_from_the_publisher_body(self):
+        code = 'self_fault_admission'
+        checkpoint = github_cloud.dumps({
+            'schema': 'github-history-checkpoint-v1',
+            'gaps': [{'road': 'details', 'reason': 'publisher_hold', 'code': code}],
+            'details': []})
+        payload, sealed = github_cloud.publisher_payload(
+            'history-review/2026-09-20/github/tokenjunkielabs/checkpoint.json', checkpoint, 'abc')
+        body = base64.b64decode(payload['args']['content'])
+        self.assertEqual(body, sealed)
+        self.assertNotIn(code.encode(), body)
+        self.assertNotIn(code.encode(), payload['args']['message'].encode())
+        self.assertLessEqual(len(body), github_cloud.MAX_CHECKPOINT_BYTES)
+        self.assertEqual(github_cloud.unseal_private(body), checkpoint)
+        self.assertEqual(github_cloud.unseal_private(checkpoint), checkpoint)
+
+    def test_incompressible_private_file_over_ceiling_is_refused(self):
+        with self.assertRaises(RuntimeError) as caught:
+            github_cloud.seal_private(os.urandom(200_000))
+        self.assertEqual(str(caught.exception), 'checkpoint_over_publisher_ceiling')
 
 
 if __name__ == '__main__':
