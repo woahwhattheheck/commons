@@ -1,6 +1,6 @@
 {
   "counts": {
-    "open_issues": 10679,
+    "open_issues": 10691,
     "open_pull_requests": 0,
     "runs_in_progress": 1,
     "runs_queued": 70
@@ -13,6 +13,39 @@
   "pulls_listing": "UNKNOWN",
   "queue_depth_per_runner": 70.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "latch/knockout-continue-20260924-03",
+      "closed_at": "2026-09-24T07:05:11Z",
+      "head_sha": "604372b95f04cf49f39a68602b2ae592ec883c0e",
+      "merged_at": "2026-09-24T07:05:11Z",
+      "number": 29345,
+      "state": "MERGED",
+      "title": "latch-knockout-continue-20260924-03: zero unique tip-landable"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "latch/knockout-continue-20260924-02",
+      "closed_at": "2026-09-24T06:07:48Z",
+      "head_sha": "8b6f093218ea93ab1f6ad9229693f33f1afe7d88",
+      "merged_at": "2026-09-24T06:07:48Z",
+      "number": 29301,
+      "state": "MERGED",
+      "title": "Latch: knockout continue 20260924-02 (BUILDABLE closed)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "latch/knockout-continue-20260924-01",
+      "closed_at": "2026-09-24T05:22:24Z",
+      "head_sha": "1e7dc07e443dee31c313fb9a584543e5decf749b",
+      "merged_at": "2026-09-24T05:22:24Z",
+      "number": 29300,
+      "state": "MERGED",
+      "title": "Latch: knockout continue 20260924 (BUILDABLE closed)"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -144,42 +177,9 @@
       "number": 28082,
       "state": "MERGED",
       "title": "Reconcile completion events with current issue state"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "grok/issue-16537",
-      "closed_at": "2026-09-23T21:37:51Z",
-      "head_sha": "ab55db9bac2cfec1a0b0a0e31ffaf647ecd290aa",
-      "merged_at": "2026-09-23T21:37:51Z",
-      "number": 27447,
-      "state": "MERGED",
-      "title": "GitHub issue-update window and 19:24 gap coverage"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/15622-current-main-successor-20260917",
-      "closed_at": "2026-09-23T20:12:05Z",
-      "head_sha": "6c2b11996ab4ad34059e8203261bcc0255ce4124",
-      "merged_at": null,
-      "number": 15875,
-      "state": "CLOSED",
-      "title": "board: rejoin proven-complete UNSEATED suppression onto current main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/zz-quartz-m7r4-completion-history-20260919",
-      "closed_at": "2026-09-23T20:12:04Z",
-      "head_sha": "bc22a70333c5565e2e3871e863457a5590396b9b",
-      "merged_at": null,
-      "number": 16289,
-      "state": "CLOSED",
-      "title": "board: recover completion history and prevent stale-recent resurrection"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-24T03:16:50Z"
+  "unchanged_since": "2026-09-24T08:31:02Z"
 }
