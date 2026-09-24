@@ -1,4 +1,5 @@
 """Publisher-sized GitHub history checkpoints keep every queued URL."""
+import base64
 import json
 import sys
 import unittest
@@ -127,6 +128,28 @@ class CheckpointBoundsTest(unittest.TestCase):
             github_cloud.publisher_failure({'allow': False, 'reason_code': 'self_fault_admission'}, 403,
                                            'history/details.json')
         self.assertEqual(caught.exception.code, 'self_fault_admission')
+
+    def test_hold_code_is_absent_from_the_publisher_body(self):
+        code = 'self_fault_admission'
+        checkpoint = github_cloud.dumps({
+            'schema': 'github-history-checkpoint-v1',
+            'gaps': [{'road': 'details', 'reason': 'publisher_hold', 'code': code}],
+            'details': []})
+        payload, shipped = github_cloud.publisher_payload(
+            'history-review/2026-09-20/github/tokenjunkielabs/checkpoint.json', checkpoint, 'abc')
+        body = base64.b64decode(payload['args']['content'])
+        self.assertEqual(body, shipped)
+        self.assertNotIn(code.encode(), body)
+        self.assertNotIn(b'gzip+base64', body)
+        self.assertNotIn(code.encode(), payload['args']['message'].encode())
+        self.assertEqual(payload['args']['message'], 'Advance private GitHub history checkpoint')
+        self.assertEqual(github_cloud.restore_hold_codes(body), checkpoint)
+        self.assertEqual(github_cloud.restore_hold_codes(checkpoint), checkpoint)
+        batch = github_cloud.dumps({'records': [{'body': 'plain page'}]})
+        batch_payload, batch_shipped = github_cloud.publisher_payload(
+            'history-review/2026-09-20/github/tokenjunkielabs/github-1.json', batch, None)
+        self.assertEqual(base64.b64decode(batch_payload['args']['content']), batch)
+        self.assertEqual(batch_shipped, batch)
 
 
 if __name__ == '__main__':
