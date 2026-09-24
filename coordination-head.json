@@ -11,7 +11,7 @@
   "lanes_open": 0,
   "lanes_with_several_open": 0,
   "listed_open": 0,
-  "listed_recent_closed": 183,
+  "listed_recent_closed": 185,
   "open_prs": 0
  },
  "degraded": [],
@@ -20,13 +20,13 @@
   "full": "coordination.json"
  },
  "main": {
-  "committed_at": "2026-09-24T19:56:01Z",
-  "sha": "946b996e718b8b19b1206f97cd8ef7d93f09ddea"
+  "committed_at": "2026-09-24T23:21:14Z",
+  "sha": "35c0206495623ae4e7896ebf5c62aad94a9795cc"
  },
- "observed_at": "2026-09-24T20:22:23Z",
+ "observed_at": "2026-09-24T23:23:05Z",
  "queue": {
-  "in_progress": 2,
-  "oldest_queued_age_s": 3163579,
+  "in_progress": 3,
+  "oldest_queued_age_s": 3174421,
   "queued": 70
  },
  "schema": "commons-coordination-head/v1",
