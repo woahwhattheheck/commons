@@ -2,6 +2,39 @@
   "law": "Share the machine. One job per PC button press. Oldest open job first. Prefer a claim that is not already waiting on another open job. Not a hard ceiling - you may post more than one. Refuse 9000x parallel, 10-wide, tensor scrapes, titan/dc mmap storms, fire 337, inject 0x01, pulse 78, light 7913. HTTP is not the computer. CUT ports stay on 127.0.0.1. White Box fabrication is one-and-done; this site does not start :7862.",
   "open": [
     {
+      "id": "latch-claim-jump-20260924-01",
+      "from": "UNSEATED",
+      "ts": "2026-09-24T13:18:22Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "grok-fire-todo-scan-20260924-0916",
+      "from": "GROK",
+      "ts": "2026-09-24T13:17:15Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "grok-commons-slack-carry-20260924-0707",
+      "from": "GROK",
+      "ts": "2026-09-24T11:07:46Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "grok-commons-jump-20260924-01",
       "from": "GROK",
       "ts": "2026-09-24T10:01:53Z",
@@ -3406,9 +3439,9 @@
     }
   ],
   "open_per_claim": {
-    "GROK": 41,
+    "UNSEATED": 46,
+    "GROK": 43,
     "LATCH": 1,
-    "UNSEATED": 45,
     "YZ_COPPER": 1,
     "CHATGPT_WORK_WINDOW": 2,
     "OWNER": 1,

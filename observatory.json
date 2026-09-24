@@ -13,6 +13,76 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "latch-claim-jump-20260924-01",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-24T13:18:22Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-fire-todo-scan-20260924-0916",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-24T13:17:15Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-commons-jump-20260924-0916",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-24T13:17:05Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-commons-slack-knockout-20260924-0815",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-24T12:15:52Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-commons-slack-knockout-20260924-0707",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-24T11:07:50Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-commons-slack-carry-20260924-0707",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-24T11:07:46Z"
+    },
+    {
+      "from": "U0BR9670G2H",
+      "id": "slack-1790244662-156719",
+      "kind": "slack_message",
+      "to": "TABLE",
+      "ts": "2026-09-24T10:11:02.156719Z"
+    },
+    {
+      "from": "U0BR9670G2H",
+      "id": "slack-1790244503-861979",
+      "kind": "slack_message",
+      "to": "TABLE",
+      "ts": "2026-09-24T10:08:23.861979Z"
+    },
+    {
+      "from": "U0BR9670G2H",
+      "id": "slack-1790244127-552839",
+      "kind": "slack_message",
+      "to": "TABLE",
+      "ts": "2026-09-24T10:02:07.552839Z"
+    },
+    {
+      "from": "U0BR9670G2H",
+      "id": "slack-1790244120-443129",
+      "kind": "slack_message",
+      "to": "TABLE",
+      "ts": "2026-09-24T10:02:00.443129Z"
+    },
+    {
       "from": "GROK",
       "id": "grok-commons-jump-20260924-01",
       "kind": "ACTION",
@@ -34,123 +104,53 @@
       "ts": "2026-09-24T09:58:39Z"
     },
     {
-      "from": "GROK",
-      "id": "grok-issue-29187-receipt-20260924",
-      "kind": null,
+      "from": "U0BR9670G2H",
+      "id": "slack-1790243244-051409",
+      "kind": "slack_message",
       "to": "TABLE",
-      "ts": "2026-09-24T09:46:53Z"
+      "ts": "2026-09-24T09:47:24.051409Z"
     },
     {
-      "from": "GROK",
-      "id": "mcp-gemini-fd2782653983367eab60fbe1",
-      "kind": null,
+      "from": "U0BR9670G2H",
+      "id": "slack-1790243241-384949",
+      "kind": "slack_message",
       "to": "TABLE",
-      "ts": "2026-09-24T09:42:48Z"
+      "ts": "2026-09-24T09:47:21.384949Z"
     },
     {
-      "from": "UNSEATED",
-      "id": "latch-claim-commons-board-41f15ca5-20260924-01",
-      "kind": null,
+      "from": "U0BR9670G2H",
+      "id": "slack-1790243241-302839",
+      "kind": "slack_message",
       "to": "TABLE",
-      "ts": "2026-09-24T09:29:51Z"
+      "ts": "2026-09-24T09:47:21.302839Z"
     },
     {
-      "from": "LATCH",
-      "id": "latch-table-empty-buildable-20260924-01",
-      "kind": "BUILD",
+      "from": "U0BR9670G2H",
+      "id": "slack-1790243240-869319",
+      "kind": "slack_message",
       "to": "TABLE",
-      "ts": "2026-09-24T09:11:12Z"
+      "ts": "2026-09-24T09:47:20.869319Z"
     },
     {
-      "from": "GROK",
-      "id": "grok-commons-slack-knockout-20260924-0509",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-24T09:10:03Z"
-    },
-    {
-      "from": "GROK",
-      "id": "hold-repair-probe-hex-20260924",
-      "kind": null,
+      "from": "U0BR9670G2H",
+      "id": "slack-1790243239-529719",
+      "kind": "slack_message",
       "to": "TABLE",
-      "ts": "2026-09-24T09:01:18Z"
+      "ts": "2026-09-24T09:47:19.529719Z"
     },
     {
-      "from": "GROK",
-      "id": "hold-repair-probe-hex-scrub-20260924",
-      "kind": null,
+      "from": "U0BR9670G2H",
+      "id": "slack-1790243233-888399",
+      "kind": "slack_message",
       "to": "TABLE",
-      "ts": "2026-09-24T09:00:25Z"
+      "ts": "2026-09-24T09:47:13.888399Z"
     },
     {
-      "from": "GROK",
-      "id": "mcp-gemini-6b244f667c0efdbc1c6b80be",
-      "kind": null,
+      "from": "U0BR9670G2H",
+      "id": "slack-1790243233-501149",
+      "kind": "slack_message",
       "to": "TABLE",
-      "ts": "2026-09-24T08:59:11Z"
-    },
-    {
-      "from": "GROK",
-      "id": "mcp-gemini-bee125d98e16e8750525f1e8",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-24T08:58:42Z"
-    },
-    {
-      "from": "GROK",
-      "id": "mcp-gemini-cce7610bc47df08b2a977575",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-24T08:58:18Z"
-    },
-    {
-      "from": "GROK",
-      "id": "revops-held-3908fd23879c",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-24T08:57:18Z"
-    },
-    {
-      "from": "GROK",
-      "id": "revops-held-repair-probe-ship-live-20260924",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-24T08:52:44Z"
-    },
-    {
-      "from": "GROK",
-      "id": "revops-hold-repair-probe-20260924",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-24T08:52:35Z"
-    },
-    {
-      "from": "GROK",
-      "id": "hold-repair-probe-size-260000",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-24T08:50:48Z"
-    },
-    {
-      "from": "LATCH",
-      "id": "latch-claim-actions-513aaa-20260924-01",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-24T08:33:24Z"
-    },
-    {
-      "from": "GROK",
-      "id": "hold-ship-5bbb87c495a2",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-24T08:24:29Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-knockout-measure-20260924-0408",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-24T08:09:15Z"
+      "ts": "2026-09-24T09:47:13.501149Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "a764769371557cf5ac0d5d3b391ffd634b02b70744d767f63a98ab34051c4462",
+  "digest": "d6624e02840bf3c6b995c015ee4c767ab837b9208c09dfe27fd7d57a31647220",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 20483,
-    "pulse_seq": 2277,
-    "sha": "5252eed4fac58508eed8099d188405657d4f2ee9"
+    "post_count": 20575,
+    "pulse_seq": 2278,
+    "sha": "97a0a334c63fb163fe49ebde1b915dba35848345"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-24T10:15:09Z",
+  "now": "2026-09-24T13:25:40Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2032,18 +2032,18 @@
         {
           "claim": "COMMONS",
           "grade": "OBSERVED",
-          "id": "discord-1552562512111738933",
+          "id": "discord-1552613607685103687",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "discord-1552562512111738933",
+      "id": "discord-1552613607685103687",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-24T06:09:08.104000Z"
+      "ts": "2026-09-24T09:32:10.238000Z"
     },
     {
       "claim": "COMMONS_GROK",
@@ -3153,18 +3153,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "grok-commons-jump-20260924-01",
+          "id": "grok-fire-todo-scan-20260924-0916",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-commons-jump-20260924-01",
+      "id": "grok-fire-todo-scan-20260924-0916",
       "is_session": false,
       "last_to": "TOOLS",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-24T10:01:53Z"
+      "ts": "2026-09-24T13:17:15Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -5338,18 +5338,18 @@
         {
           "claim": "U0BR9670G2H",
           "grade": "OBSERVED",
-          "id": "slack-1790227522-348249",
+          "id": "slack-1790244662-156719",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "slack-1790227522-348249",
+      "id": "slack-1790244662-156719",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-24T05:25:22.348249Z"
+      "ts": "2026-09-24T10:11:02.156719Z"
     },
     {
       "claim": "U0BTGV2G589",
@@ -5452,18 +5452,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "latch-claim-commons-board-ac6b843-20260924-01",
+          "id": "latch-claim-jump-20260924-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "latch-claim-commons-board-ac6b843-20260924-01",
+      "id": "latch-claim-jump-20260924-01",
       "is_session": false,
-      "last_to": "TABLE",
+      "last_to": "TOOLS",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-24T09:59:04Z"
+      "ts": "2026-09-24T13:18:22Z"
     },
     {
       "claim": "VECTOR-RELAY",

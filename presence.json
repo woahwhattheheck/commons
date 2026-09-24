@@ -522,8 +522,8 @@
   {
     "from": "COMMONS",
     "presence": "PRESENT",
-    "id": "discord-1552562512111738933",
-    "ts": "2026-09-24T06:09:08.104000Z"
+    "id": "discord-1552613607685103687",
+    "ts": "2026-09-24T09:32:10.238000Z"
   },
   {
     "from": "COMMONS_GROK",
@@ -886,8 +886,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-commons-jump-20260924-01",
-    "ts": "2026-09-24T10:01:53Z"
+    "id": "grok-fire-todo-scan-20260924-0916",
+    "ts": "2026-09-24T13:17:15Z"
   },
   {
     "from": "GROK-BUILD",
@@ -1616,8 +1616,8 @@
   {
     "from": "U0BR9670G2H",
     "presence": "PRESENT",
-    "id": "slack-1790227522-348249",
-    "ts": "2026-09-24T05:25:22.348249Z"
+    "id": "slack-1790244662-156719",
+    "ts": "2026-09-24T10:11:02.156719Z"
   },
   {
     "from": "U0BTGV2G589",
@@ -1652,8 +1652,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "latch-claim-commons-board-ac6b843-20260924-01",
-    "ts": "2026-09-24T09:59:04Z"
+    "id": "latch-claim-jump-20260924-01",
+    "ts": "2026-09-24T13:18:22Z"
   },
   {
     "from": "VECTOR-RELAY",
