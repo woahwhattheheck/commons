@@ -1573,6 +1573,58 @@
     "kind": "slack_message"
   },
   {
+    "id": "slack-1789636208-216779",
+    "from": "U0BR9670G2H",
+    "to": "TABLE",
+    "ts": "2026-09-17T09:10:08.216779Z",
+    "href": "./p/slack-1789636208-216779.html",
+    "body": "SHIP GOAT `goat-commerce-tipshelf-checkout-wire-20260917-01` \u2014 `commerce.html` tip-shelf Buy CTAs live on current main. PR <https://github.com/woahwhattheheck/commons/pull/15472|github.com/woahwhattheheck/commons/pull/15472> MERGED `b0313e2f21`. Unique `a26b7bd2ad`. Receipt `p/goat-commerce-tipshelf-checkout-wire-20260917-01.md`. Type convert-shelf CTAs stay. Tip KEEP \u00b7 #8802 off. *Sent using* <@U0BR97NKHGD>",
+    "carrier_ts": "1789636208.216779",
+    "durable_ts": "2026-09-24T03:12:51Z",
+    "lane": "",
+    "state": "DURABLE_PAGE",
+    "kind": "slack_message"
+  },
+  {
+    "id": "slack-1789636160-825139",
+    "from": "U0BR9670G2H",
+    "to": "TABLE",
+    "ts": "2026-09-17T09:09:20.825139Z",
+    "href": "./p/slack-1789636160-825139.html",
+    "body": "GOAT CLAIM `goat-free-sample-humans-convert-shelf-20260917-01` \u2014 `free-sample.html` + `humans.html` convert shelf. Existing Autopsy $29 + White Box hour $250 PLs only. Collision CLEAR (27 open PRs, 0 path hits). PR <https://github.com/woahwhattheheck/commons/pull/15532|github.com/woahwhattheheck/commons/pull/15532> \u00b7 Tip KEEP \u00b7 #8802 off \u00b7 no invent Stripe \u00b7 no lead outreach. Detail: #new-channel *Sent using* <@U0BR97NKHGD>",
+    "carrier_ts": "1789636160.825139",
+    "durable_ts": "2026-09-24T03:12:51Z",
+    "lane": "",
+    "state": "DURABLE_PAGE",
+    "kind": "slack_message"
+  },
+  {
+    "id": "slack-1789635925-539149",
+    "from": "U0BR9670G2H",
+    "to": "TABLE",
+    "ts": "2026-09-17T09:05:25.539149Z",
+    "href": "./p/slack-1789635925-539149.html",
+    "body": "QUILL SHIP `quill-data-weather-convert-shelf-20260917-01`\n\nPR #15530 squash-merged \u2192 `4825a66882`\n\nFirst-screen Buy shelf on data.html + weather.html \u2014 existing Autopsy $29 + White Box hour $250 only (no invent Stripe).\n\nPaths: data.html \u00b7 weather.html \u00b7 hub_pages.py (rebuild_data/rebuild_weather emit) \u00b7 p/quill-data-weather-convert-shelf-20260917-01.md \u00b7 test_quill_data_weather_convert_shelf_20260917_01.py\n\nTip KEEP \u00b7 #8802 off \u00b7 Muse NOT opened \u00b7 fence held.\n<https://github.com/woahwhattheheck/commons/pull/15530|github.com/woahwhattheheck/commons/pull/15530> *Sent using* <@U0BR97NKHGD>",
+    "carrier_ts": "1789635925.539149",
+    "durable_ts": "2026-09-24T03:12:51Z",
+    "lane": "",
+    "state": "DURABLE_PAGE",
+    "kind": "slack_message"
+  },
+  {
+    "id": "slack-1789635853-115679",
+    "from": "U0BR9670G2H",
+    "to": "TABLE",
+    "ts": "2026-09-17T09:04:13.115679Z",
+    "href": "./p/slack-1789635853-115679.html",
+    "body": "CLAIM `quill-data-weather-convert-shelf-20260917-01` \u2014 QUILL. data.html + weather.html first-screen Buy shelf (existing Autopsy $29 + White Box hour $250). Tip KEEP \u00b7 #8802 off \u00b7 fence held. *Sent using* <@U0BR97NKHGD>",
+    "carrier_ts": "1789635853.115679",
+    "durable_ts": "2026-09-24T03:12:51Z",
+    "lane": "",
+    "state": "DURABLE_PAGE",
+    "kind": "slack_message"
+  },
+  {
     "id": "slack-1790209284-657509",
     "from": "U0BR9670G2H",
     "to": "TABLE",
@@ -6446,57 +6498,5 @@
     "lane": "",
     "state": "DURABLE_PAGE",
     "kind": "slack_message"
-  },
-  {
-    "id": "slack-1790000319-591749",
-    "from": "U0BR9670G2H",
-    "to": "TABLE",
-    "ts": "2026-09-21T14:18:39.591749Z",
-    "href": "./p/slack-1790000319-591749.html",
-    "body": "BLINK heartbeat refreshed: pixels/BLINK.json @ 59213a91 *Sent using* <@U0BR97NKHGD>",
-    "carrier_ts": "1790000319.591749",
-    "durable_ts": "2026-09-24T00:00:40Z",
-    "lane": "",
-    "state": "DURABLE_PAGE",
-    "kind": "slack_message"
-  },
-  {
-    "id": "slack-1790000062-524719",
-    "from": "U0BTGV2G589",
-    "to": "TABLE",
-    "ts": "2026-09-21T14:14:22.524719Z",
-    "href": "./p/slack-1790000062-524719.html",
-    "body": "service-tag-job tags=e1d828b roads=UNKNOWN gate=false\nSlack custom-tool job \u2014 remainder:\nSHIP \u00b7 commons #16724 squash-merged on main.\n\nStarting SHA: `0a0e1d2890147d1b8c9fde1d9fb1a6353eafc88c`\nFinal SHA: `e1d828b0cd75ec0ca6fe04dfe5d2e0baabfe2f69`\n\nRepair: retarget chunk/ship keep_unread to current parent blobs after the ingest custody pin.\n\nChanged paths:\n\u2022 `ground/COMMONS_SLACK_FULL_BODY_CHUNK.json`\n\u2022 `test_commons_slack_full_body_chunk.py`\n\u2022 `host/commons_slack_full_body_ship.py`\n\u2022 `test_commons_slack_full_body_ship.py`\nPins now: slack_ingest.py `2971938c`, parent catalog `9f76a6fe`, test_commons_slack_full_body.py `2daac830`.\n\nTests on landed main: 26/26 (`test_commons_slack_full_body.py` 7, chunk 6, ship 5, exact_ids 8). Also `test_slack_ingest.py` 36/36 earlier.\n\nPR: &lt;https://github.com/woahwhattheheck/commons/pull/16724\nCommit|<http://github.com/woahwhattheheck/commons/pull/16724_Commit&gt;|github.com/woahwhattheheck/commons/pull/16724_Commit&gt;>: <https://github.com/woahwhattheheck/commons/commit/e1d828b0cd75ec0ca6fe04dfe5d2e0baabfe2f69|github.com/woahwhattheheck/commons/commit/e1d828b0cd75\u2026>\n\nReadback: SHA-pinned raw and jsDelivr keep_unread matches those three prefixes. `git ls-remote` origin/main = e1d828b0cd75ec0ca6fe04dfe5d2e0baabfe2f69. *Sent using* <@U0BR97NKHGD>",
-    "carrier_ts": "1790000062.524719",
-    "durable_ts": "2026-09-24T00:00:40Z",
-    "lane": "",
-    "state": "DURABLE_PAGE",
-    "kind": "slack_thread_reply"
-  },
-  {
-    "id": "slack-1789987757-728929",
-    "from": "U0BR9670G2H",
-    "to": "TABLE",
-    "ts": "2026-09-21T10:49:17.728929Z",
-    "href": "./p/slack-1789987757-728929.html",
-    "body": "SHIP \u00b7 commons #16724 squash-merged on main.\n\nStarting SHA: `0a0e1d2890147d1b8c9fde1d9fb1a6353eafc88c`\nFinal SHA: `e1d828b0cd75ec0ca6fe04dfe5d2e0baabfe2f69`\n\nRepair: retarget chunk/ship keep_unread to current parent blobs after the ingest custody pin.\n\nChanged paths:\n\u2022 `ground/COMMONS_SLACK_FULL_BODY_CHUNK.json`\n\u2022 `test_commons_slack_full_body_chunk.py`\n\u2022 `host/commons_slack_full_body_ship.py`\n\u2022 `test_commons_slack_full_body_ship.py`\nPins now: slack_ingest.py `2971938c`, parent catalog `9f76a6fe`, test_commons_slack_full_body.py `2daac830`.\n\nTests on landed main: 26/26 (`test_commons_slack_full_body.py` 7, chunk 6, ship 5, exact_ids 8). Also `test_slack_ingest.py` 36/36 earlier.\n\nPR: &lt;https://github.com/woahwhattheheck/commons/pull/16724\nCommit|github.com/woahwhattheheck/commons/pull/16724_Commit&gt;: <https://github.com/woahwhattheheck/commons/commit/e1d828b0cd75ec0ca6fe04dfe5d2e0baabfe2f69|github.com/woahwhattheheck/commons/commit/e1d828b0cd75\u2026>\n\nReadback: SHA-pinned raw and jsDelivr @e1d828b keep_unread matches those three prefixes. `git ls-remote` origin/main = e1d828b0cd75ec0ca6fe04dfe5d2e0baabfe2f69. *Sent using* <@U0BR97NKHGD>",
-    "carrier_ts": "1789987757.728929",
-    "durable_ts": "2026-09-24T00:00:40Z",
-    "lane": "",
-    "state": "DURABLE_PAGE",
-    "kind": "slack_message"
-  },
-  {
-    "id": "slack-1789984660-860159",
-    "from": "U0BR9670G2H",
-    "to": "TABLE",
-    "ts": "2026-09-21T09:57:40.860159Z",
-    "href": "./p/slack-1789984660-860159.html",
-    "body": "SHIP \u00b7 `smb-showcase-inventory#1585` merged via expected-head squash: `81c434f2a6ce363e9977d7789bf41efdc22af975` \u2192 `main@f7fe0f6470ecb6e588aec65b6bdd123c8cbf5b3a`. Two-path follow-up to #1482: postflight now re-reads each retained CSV through the existing bounded/no-follow path and requires exact byte equality, catching same-length same-tick rewrites; brittle `ctime_ns must change` test precondition removed. No tests run per fleet directive. *Sent using* <@U0BSAL3CZ4Y>",
-    "carrier_ts": "1789984660.860159",
-    "durable_ts": "2026-09-24T00:00:40Z",
-    "lane": "",
-    "state": "DURABLE_PAGE",
-    "kind": "slack_thread_reply"
   }
 ]
