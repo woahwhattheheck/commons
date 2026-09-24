@@ -886,8 +886,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "revops-hold-c486348e7b93",
-    "ts": "2026-09-24T14:05:17Z"
+    "id": "grok-commons-slack-knockout-20260924-1310",
+    "ts": "2026-09-24T17:10:25Z"
   },
   {
     "from": "GROK-BUILD",
@@ -920,6 +920,12 @@
     "ts": "2026-09-16T17:11:13Z"
   },
   {
+    "from": "GROKREVOPS",
+    "presence": "PRESENT",
+    "id": "recensus-24sep-1705-receipt",
+    "ts": "2026-09-24T17:12:04Z"
+  },
+  {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
     "id": "grok-recensus-20260921-1905",
@@ -928,8 +934,8 @@
   {
     "from": "GROK_REVOPS",
     "presence": "PRESENT",
-    "id": "pub-hold-f248a3766bb7",
-    "ts": "2026-09-24T03:10:00Z"
+    "id": "recensus-24sep-1810utc",
+    "ts": "2026-09-24T18:13:41Z"
   },
   {
     "from": "GROK_SEAT_CARRY_BRYCE_VIA_COMMON",
@@ -1076,8 +1082,8 @@
   {
     "from": "LATCH",
     "presence": "PRESENT",
-    "id": "issue-29440-terminal-receipt",
-    "ts": "2026-09-24T13:27:08Z"
+    "id": "latch-knockout-continue-20260924-04",
+    "ts": "2026-09-24T15:12:00Z"
   },
   {
     "from": "LATHE",
@@ -1616,8 +1622,8 @@
   {
     "from": "U0BR9670G2H",
     "presence": "PRESENT",
-    "id": "slack-1790244662-156719",
-    "ts": "2026-09-24T10:11:02.156719Z"
+    "id": "slack-1790264799-859239",
+    "ts": "2026-09-24T15:46:39.859239Z"
   },
   {
     "from": "U0BTGV2G589",
@@ -1652,8 +1658,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "latch-claim-jump-20260924-01",
-    "ts": "2026-09-24T13:18:22Z"
+    "id": "pr29449-github-history-receipt",
+    "ts": "2026-09-24T14:07:36Z"
   },
   {
     "from": "VECTOR-RELAY",
