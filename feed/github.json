@@ -1,8 +1,8 @@
 {
   "counts": {
-    "open_issues": 9201,
+    "open_issues": 10668,
     "open_pull_requests": 0,
-    "runs_in_progress": 4,
+    "runs_in_progress": 1,
     "runs_queued": 70
   },
   "counts_source": "graphql",
@@ -11,8 +11,74 @@
   ],
   "pulls_listed": "UNKNOWN",
   "pulls_listing": "UNKNOWN",
-  "queue_depth_per_runner": 17.5,
+  "queue_depth_per_runner": 70.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "repair/completion-ingest-event-20260923",
+      "closed_at": "2026-09-23T23:32:40Z",
+      "head_sha": "4e18a23bb18d38b82e7b4cafdff310908e6f3e18",
+      "merged_at": "2026-09-23T23:32:40Z",
+      "number": 28559,
+      "state": "MERGED",
+      "title": "Reconcile every issue event from canonical state"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "repair/open-door-completion-action-f447d3a",
+      "closed_at": "2026-09-23T23:27:54Z",
+      "head_sha": "e8a5ed5b25db83e6ee7265db3dbe1499b713a9a3",
+      "merged_at": "2026-09-23T23:27:54Z",
+      "number": 28352,
+      "state": "MERGED",
+      "title": "Reconcile completion without an unlisted-action return"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "latch/knockout-measure-20260923-01",
+      "closed_at": "2026-09-23T23:26:22Z",
+      "head_sha": "28b04c9a50459891c5f4b0201ab7a5ff2fbed254",
+      "merged_at": "2026-09-23T23:26:22Z",
+      "number": 28370,
+      "state": "MERGED",
+      "title": "LATCH knockout measure \u2014 six leftovers, zero unique tip-landable"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "repair/completion-canonical-state-20260923",
+      "closed_at": "2026-09-23T23:24:41Z",
+      "head_sha": "47f8d9addbc5f219cbadb1d86b1c5e242fd0de8d",
+      "merged_at": "2026-09-23T23:24:41Z",
+      "number": 28268,
+      "state": "MERGED",
+      "title": "Reconcile completion from canonical issue state"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "grok/open-door-completion-event-kind-20260923",
+      "closed_at": "2026-09-23T23:21:16Z",
+      "head_sha": "441a3a8aab10f57376bd78f3a88880421cdf985d",
+      "merged_at": null,
+      "number": 28083,
+      "state": "CLOSED",
+      "title": "fix(open-door): restore board_ingest + event_kind completion gate"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "grok/completion-event-current-state-20260923",
+      "closed_at": "2026-09-23T23:11:59Z",
+      "head_sha": "c1d1d288dce135b66bf253cb522a0c340c4d11ed",
+      "merged_at": "2026-09-23T23:11:59Z",
+      "number": 28082,
+      "state": "MERGED",
+      "title": "Reconcile completion events with current issue state"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -111,75 +177,9 @@
       "number": 23883,
       "state": "MERGED",
       "title": "Latch: Tip KEEP pin boards.html + slack_ingest.py (cascade 07)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "latch-commons-board-ci-20260923-01",
-      "closed_at": "2026-09-23T19:17:45Z",
-      "head_sha": "d90dd05b6d025a0e80d104d22062351311c9a4e7",
-      "merged_at": "2026-09-23T19:17:45Z",
-      "number": 23817,
-      "state": "MERGED",
-      "title": "Latch: KEEP receipt for commons-board schedule red (publisher held-pub)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "work/managed-clipping-distinct-cues-20260923",
-      "closed_at": "2026-09-23T19:17:21Z",
-      "head_sha": "b6c7a3535afde34eca21467c4488875f3874416c",
-      "merged_at": "2026-09-23T19:17:21Z",
-      "number": 23818,
-      "state": "MERGED",
-      "title": "Managed clipping: distinct source-contained moments"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "yz-sol-guard/workflow-surface-main-push-20260923",
-      "closed_at": "2026-09-23T18:49:57Z",
-      "head_sha": "5218fd939327d41e400b4ebe64d29c3dfb0c703a",
-      "merged_at": "2026-09-23T18:49:57Z",
-      "number": 23816,
-      "state": "MERGED",
-      "title": "Cover direct-main workflow-surface changes"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "latch/deathstar-window-guard-20260923-01",
-      "closed_at": "2026-09-23T18:42:27Z",
-      "head_sha": "b02c297ef2df35ab98a26d092c3308cdb782c273",
-      "merged_at": "2026-09-23T18:42:27Z",
-      "number": 23815,
-      "state": "MERGED",
-      "title": "Latch: guard deathstar window for command-center contracts"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "latch/spark-mcp-cua-scorer-base-20260923-02",
-      "closed_at": "2026-09-23T18:40:37Z",
-      "head_sha": "b5c61fee96f15360ac7e79a81e1430544a48b16b",
-      "merged_at": "2026-09-23T18:40:37Z",
-      "number": 23814,
-      "state": "MERGED",
-      "title": "Latch: harden CUA form scorer base (SCORER_FAILED successor)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "repair/uiowa-138-companion-test-20260923",
-      "closed_at": "2026-09-23T18:38:33Z",
-      "head_sha": "7ad638ff34d82bf3f965c355986e429d29cc66bb",
-      "merged_at": "2026-09-23T18:38:32Z",
-      "number": 23813,
-      "state": "MERGED",
-      "title": "Run the UIOWA-138 companion receipt regression"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-23T21:47:28Z"
+  "unchanged_since": "2026-09-24T00:04:30Z"
 }
