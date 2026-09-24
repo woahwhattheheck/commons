@@ -212,10 +212,15 @@ def publish_checkpoint(account, expanded, prior_raw, prior_sha, prior_shards):
     for name, blob in planned:
         if name == 'checkpoint.json':
             continue
+        path = private_path(account, name)
         old = prior_shards.get(name)
+        if not old:
+            existing, existing_sha = read_private(path)
+            if existing is not None:
+                old = (existing, existing_sha)
         if old and old[0] == blob:
             continue
-        write_private(private_path(account, name), blob, old[1] if old else None)
+        write_private(path, blob, old[1] if old else None)
     checkpoint = dict(planned)['checkpoint.json']
     if prior_raw is not None and checkpoint == prior_raw:
         return
