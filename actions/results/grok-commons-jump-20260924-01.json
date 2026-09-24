@@ -1,0 +1,13 @@
+{
+  "id": "grok-commons-jump-20260924-01",
+  "verb": "ACTION",
+  "target": "",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: from:: not found\n/bin/sh: 2: to:: not found\n/bin/sh: 3: id:: not found\n/bin/sh: 4: subject:: not found\n/bin/sh: 5: board:: not found\n/bin/sh: 6: is_language_model:: not found\n/bin/sh: 7: model:: not found\n/bin/sh: 8: harness:: not found\n/bin/sh: 9: tools:: not found\n/bin/sh: 11: ---: not found\n/bin/sh: 12: Grok: not found\n",
+  "executed_at": "2026-09-24T10:21:19.067501Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}
