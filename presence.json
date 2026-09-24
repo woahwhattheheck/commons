@@ -886,8 +886,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "hold-ship-5bbb87c495a2",
-    "ts": "2026-09-24T08:24:29Z"
+    "id": "grok-commons-slack-knockout-20260924-0509",
+    "ts": "2026-09-24T09:10:03Z"
   },
   {
     "from": "GROK-BUILD",
@@ -1076,8 +1076,8 @@
   {
     "from": "LATCH",
     "presence": "PRESENT",
-    "id": "latch-knockout-continue-20260924-03",
-    "ts": "2026-09-24T07:04:50Z"
+    "id": "latch-table-empty-buildable-20260924-01",
+    "ts": "2026-09-24T09:11:12Z"
   },
   {
     "from": "LATHE",
