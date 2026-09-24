@@ -151,6 +151,54 @@ class CheckpointBoundsTest(unittest.TestCase):
         self.assertEqual(base64.b64decode(batch_payload['args']['content']), batch)
         self.assertEqual(batch_shipped, batch)
 
+    def test_missing_readback_is_not_parsed_and_retries_until_visible(self):
+        raw = github_cloud.dumps({'records': [{'body': 'plain page'}]})
+        path = 'history-review/2026-09-20/github/woahwhattheheck/github-woahwhattheheck-notifications-00014.json'
+        reads = []
+        sleeps = []
+
+        def read_private(name):
+            reads.append(name)
+            if len(reads) < 3:
+                return None, None
+            return raw, 'sha-landed'
+
+        def request(url, body=None):
+            return 200, {'allow': True, 'receipt': 'r-landed'}
+
+        original = github_cloud.read_private, github_cloud.request, github_cloud.time.sleep
+        github_cloud.read_private = read_private
+        github_cloud.request = request
+        github_cloud.time.sleep = lambda delay: sleeps.append(delay)
+        try:
+            self.assertIsNone(github_cloud.wire_hold_codes(None))
+            github_cloud.write_private(path, raw, None)
+        finally:
+            github_cloud.read_private, github_cloud.request, github_cloud.time.sleep = original
+        self.assertEqual(reads, [path, path, path])
+        self.assertEqual(sleeps, [1, 2])
+
+    def test_absent_readback_names_the_difference(self):
+        raw = github_cloud.dumps({'records': [{'body': 'plain page'}]})
+        path = 'history-review/2026-09-20/github/woahwhattheheck/missing.json'
+
+        def read_private(name):
+            return None, None
+
+        def request(url, body=None):
+            return 200, {'allow': True, 'receipt': 'r-missing'}
+
+        original = github_cloud.read_private, github_cloud.request, github_cloud.time.sleep
+        github_cloud.read_private = read_private
+        github_cloud.request = request
+        github_cloud.time.sleep = lambda delay: None
+        try:
+            with self.assertRaises(RuntimeError) as caught:
+                github_cloud.write_private(path, raw, None)
+        finally:
+            github_cloud.read_private, github_cloud.request, github_cloud.time.sleep = original
+        self.assertEqual(str(caught.exception), 'private_readback_differs')
+
 
 if __name__ == '__main__':
     unittest.main()
