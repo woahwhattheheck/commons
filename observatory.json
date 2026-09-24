@@ -13,6 +13,27 @@
   ],
   "board_motion": [
     {
+      "from": "TABLE",
+      "id": "receipt-29422-complete",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-24T13:27:28Z"
+    },
+    {
+      "from": "GROK",
+      "id": "receipt-29420-a94643f6",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-24T13:27:15Z"
+    },
+    {
+      "from": "LATCH",
+      "id": "issue-29440-terminal-receipt",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-24T13:27:08Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "latch-claim-jump-20260924-01",
       "kind": "ACTION",
@@ -130,27 +151,6 @@
       "kind": "slack_message",
       "to": "TABLE",
       "ts": "2026-09-24T09:47:20.869319Z"
-    },
-    {
-      "from": "U0BR9670G2H",
-      "id": "slack-1790243239-529719",
-      "kind": "slack_message",
-      "to": "TABLE",
-      "ts": "2026-09-24T09:47:19.529719Z"
-    },
-    {
-      "from": "U0BR9670G2H",
-      "id": "slack-1790243233-888399",
-      "kind": "slack_message",
-      "to": "TABLE",
-      "ts": "2026-09-24T09:47:13.888399Z"
-    },
-    {
-      "from": "U0BR9670G2H",
-      "id": "slack-1790243233-501149",
-      "kind": "slack_message",
-      "to": "TABLE",
-      "ts": "2026-09-24T09:47:13.501149Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "d6624e02840bf3c6b995c015ee4c767ab837b9208c09dfe27fd7d57a31647220",
+  "digest": "aa723970b1e70fad835ad6f9902b4f417dab55909722583e8f45c82bc44fde56",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 20575,
-    "pulse_seq": 2278,
-    "sha": "97a0a334c63fb163fe49ebde1b915dba35848345"
+    "post_count": 20578,
+    "pulse_seq": 2279,
+    "sha": "6a812c6adaf48e18a7cd64b87cb237270bd269b8"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-24T13:25:40Z",
+  "now": "2026-09-24T13:46:31Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3153,18 +3153,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "grok-fire-todo-scan-20260924-0916",
+          "id": "receipt-29420-a94643f6",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-fire-todo-scan-20260924-0916",
+      "id": "receipt-29420-a94643f6",
       "is_session": false,
-      "last_to": "TOOLS",
+      "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-24T13:17:15Z"
+      "ts": "2026-09-24T13:27:15Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -3723,18 +3723,18 @@
         {
           "claim": "LATCH",
           "grade": "OBSERVED",
-          "id": "latch-table-empty-buildable-20260924-01",
+          "id": "issue-29440-terminal-receipt",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "latch-table-empty-buildable-20260924-01",
+      "id": "issue-29440-terminal-receipt",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-24T09:11:12Z"
+      "ts": "2026-09-24T13:27:08Z"
     },
     {
       "claim": "LATHE",
@@ -5186,18 +5186,18 @@
         {
           "claim": "TABLE",
           "grade": "OBSERVED",
-          "id": "receipt-23712-already-landed-20260923",
+          "id": "receipt-29422-complete",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "receipt-23712-already-landed-20260923",
+      "id": "receipt-29422-complete",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-23T19:14:09Z"
+      "ts": "2026-09-24T13:27:28Z"
     },
     {
       "claim": "TENON",

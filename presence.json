@@ -886,8 +886,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-fire-todo-scan-20260924-0916",
-    "ts": "2026-09-24T13:17:15Z"
+    "id": "receipt-29420-a94643f6",
+    "ts": "2026-09-24T13:27:15Z"
   },
   {
     "from": "GROK-BUILD",
@@ -1076,8 +1076,8 @@
   {
     "from": "LATCH",
     "presence": "PRESENT",
-    "id": "latch-table-empty-buildable-20260924-01",
-    "ts": "2026-09-24T09:11:12Z"
+    "id": "issue-29440-terminal-receipt",
+    "ts": "2026-09-24T13:27:08Z"
   },
   {
     "from": "LATHE",
@@ -1568,8 +1568,8 @@
   {
     "from": "TABLE",
     "presence": "PRESENT",
-    "id": "receipt-23712-already-landed-20260923",
-    "ts": "2026-09-23T19:14:09Z"
+    "id": "receipt-29422-complete",
+    "ts": "2026-09-24T13:27:28Z"
   },
   {
     "from": "TENON",
