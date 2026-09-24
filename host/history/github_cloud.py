@@ -33,9 +33,14 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
 
 OPENER = urllib.request.build_opener(NoRedirect())
 
+def loads_or_none(raw):
+    if raw is None or raw == b'' or raw == '':
+        return None
+    return json.loads(raw)
+
 def error_payload(exc):
     try:
-        payload = json.load(exc)
+        payload = loads_or_none(exc.read())
     except Exception:
         return {}
     return payload if isinstance(payload, dict) else {}
@@ -58,15 +63,13 @@ def request(url, body=None):
             headers=headers)
         try:
             with OPENER.open(req, timeout=30) as response:
-                return response.status, json.load(response)
+                return response.status, loads_or_none(response.read())
         except urllib.error.HTTPError as exc:
             last = exc
             payload = error_payload(exc)
             if exc.code == 404 and body is None:
                 return 404, None
             if body is not None:
-                # Return the held publication as-is. write_private names the
-                # publisher reason and retries only RESOURCE_BUSY.
                 return exc.code, payload
             retryable = (
                 exc.code in (500, 502, 503, 504) or
@@ -129,7 +132,6 @@ def dumps(data):
     return json.dumps(data, ensure_ascii=False, separators=(',', ':')).encode()
 
 def pair_details(details):
-    """Return [kind, url] pairs when every row is the redundant {url,kind,next} shape."""
     if not isinstance(details, list):
         return None
     pairs = []
@@ -164,12 +166,8 @@ def compact_document(data):
     return compact
 
 def plan_checkpoint_files(raw):
-    """Fit a checkpoint under the publisher accept ceiling without dropping queue URLs.
-
-    The expanded document stores every URL three times. Pair rows drop that
-    repetition. If the compact document is still over the ceiling, detail pairs
-    move into sibling files and the checkpoint keeps only their names.
-    """
+    if raw is None:
+        raise RuntimeError('checkpoint_missing')
     data = json.loads(raw)
     compact = compact_document(data)
     if compact is None:
@@ -210,8 +208,11 @@ def plan_checkpoint_files(raw):
     return files + [('checkpoint.json', head_raw)]
 
 def expand_checkpoint(raw, read_shard):
-    """Restore the collector's {url,kind,next} rows and detail_keys list."""
+    if raw is None:
+        raise RuntimeError('checkpoint_missing')
     data = json.loads(raw)
+    if not isinstance(data, dict):
+        raise RuntimeError('checkpoint_invalid')
     prior = {}
     shards = data.get('detail_shards')
     if shards:
@@ -251,7 +252,6 @@ def expand_checkpoint(raw, read_shard):
     return body, prior
 
 def hold_gap(batch_raw, code):
-    """Remember a held page by URL only. Never copy the rejected record body."""
     batch = json.loads(batch_raw)
     coverage = batch.get('coverage') if isinstance(batch, dict) else None
     at = coverage.get('api_url') if isinstance(coverage, dict) else None
@@ -299,7 +299,6 @@ def read_account_checkpoint(account):
     expanded, prior = expand_checkpoint(raw, read_shard)
     return expanded, raw, sha, prior
 
-
 def private_path(account, filename):
     return PREFIX + account + '/' + filename
 
@@ -313,7 +312,6 @@ WIRE_HOLD_CODES = {
 PLAIN_HOLD_CODES = {token: code for code, token in WIRE_HOLD_CODES.items()}
 
 def wire_hold_codes(raw):
-    """Return file.put bytes. Gap reason codes are not copied into the body."""
     if isinstance(raw, str):
         raw = raw.encode()
     try:
@@ -331,7 +329,6 @@ def wire_hold_codes(raw):
     return dumps(data) if changed else raw
 
 def restore_hold_codes(raw):
-    """Restore logical gap codes. Legacy files without wired tokens pass through."""
     if raw is None:
         return None
     if isinstance(raw, str):
@@ -363,13 +360,26 @@ def publisher_payload(path, raw, old_sha=None):
        'content': base64.b64encode(shipped).decode(), **({'sha': old_sha} if old_sha else {})}}
     return payload, shipped
 
+def file_bytes(item):
+    content = item.get('content')
+    if isinstance(content, str) and content:
+        return base64.b64decode(content)
+    sha = item.get('sha')
+    if not sha:
+        raise RuntimeError('private_file_invalid')
+    _, blob = request('https://api.github.com/repos/' + REPO + '/git/blobs/' + sha)
+    encoded = blob.get('content') if isinstance(blob, dict) else None
+    if not isinstance(encoded, str) or not encoded:
+        raise RuntimeError('private_blob_unreadable')
+    return base64.b64decode(encoded)
+
 def read_private(path):
     url = 'https://api.github.com/repos/' + REPO + '/contents/' + path + '?ref=main'
     _, item = request(url)
     if item is None: return None, None
     if item.get('type') != 'file' or not item.get('sha'):
         raise RuntimeError('private_file_invalid')
-    return restore_hold_codes(base64.b64decode(item['content'])), item['sha']
+    return restore_hold_codes(file_bytes(item)), item['sha']
 
 def write_private(path, raw, old_sha=None):
     if isinstance(raw, str):
@@ -383,19 +393,12 @@ def write_private(path, raw, old_sha=None):
             continue
         break
     if status not in (200, 201) or not result or result.get('allow') is not True or not result.get('receipt'):
-        # Do not retry a held exact publication by changing content or carrier.
         publisher_failure(result, status, path)
     observed, _ = read_private(path)
     if observed != raw and wire_hold_codes(observed) != shipped:
         raise RuntimeError('private_readback_differs')
 
 def put_immutable_batch(account, path):
-    """Land a new batch, or keep the first snapshot of an existing name.
-
-    GitHub notification/search/issue pages are not byte-stable. A retry that
-    re-collects an already-named batch must not overwrite it and must not
-    abort cursor advancement — otherwise intake stays wedged on the same page.
-    """
     raw = path.read_bytes()
     key = private_path(account, path.name)
     existing, _ = read_private(key)
@@ -421,8 +424,6 @@ def run(account):
             (home / 'checkpoint.json').write_bytes(snapshot)
         reader = collector.Reader(account, budget=3)
         result = reader.run()
-        # A batch is immutable. Put every new batch before advancing the cursor.
-        # An already-landed name keeps its first snapshot; live re-fetch bytes are discarded.
         files = sorted(home.glob('github-*.json'))
         written = kept = matched = 0
         holds = []
