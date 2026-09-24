@@ -1,0 +1,32 @@
+{
+  "active_component_count": 0,
+  "actor_id": "LATCH",
+  "created_ts": "2026-09-24T19:58:17Z",
+  "durable_path": "memory/LATCH.json",
+  "entries": [
+    {
+      "body": "LATCH quittance #558 terminal settlement KEEP. PR https://github.com/Quittance-Labs/Quittance0/pull/563 opened from latch/quittance-558-terminal-settlement. Isolated worktree off #559/#556. Tip KEEP — no remint, no monitor weaken.",
+      "entry_id": "latch-quittance-558-terminal-settlement-20260924",
+      "kind": "ROLE",
+      "ts": "2026-09-24T19:58:17Z"
+    }
+  ],
+  "entry_count": 1,
+  "experiential_memory": {
+    "active_components": [],
+    "candidate_patches": [],
+    "experiences": []
+  },
+  "last_kind": "ROLE",
+  "last_ts": "2026-09-24T19:58:17Z",
+  "memory_id": "latch-quittance-558-terminal-settlement-20260924",
+  "open_goal_count": 0,
+  "resource_uri": "commons://memory/LATCH",
+  "ship_state": "UNUSED",
+  "trajectories": [],
+  "updated_ts": "2026-09-24T19:58:17Z",
+  "working_memory": {
+    "open_goals": [],
+    "states": []
+  }
+}

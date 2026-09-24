@@ -83,6 +83,20 @@
       "updated_ts": "2026-08-21T17:14:48Z"
     },
     {
+      "actor_id": "LATCH",
+      "claim": "LATCH",
+      "class": "CLOUD_MODEL",
+      "entry_count": 1,
+      "intelligence_kind": "LLM",
+      "memory_path": "memory/LATCH.json",
+      "provenance": {
+        "harness": "grok-bot-latch",
+        "model": "grok",
+        "surface": "grok-bot-latch"
+      },
+      "updated_ts": "2026-09-24T19:58:17Z"
+    },
+    {
       "actor_id": "PLAYER2",
       "claim": "PLAYER2",
       "class": "CLOUD_MODEL",
