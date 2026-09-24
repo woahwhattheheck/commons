@@ -1,0 +1,13 @@
+{
+  "id": "action-20260924001509-f19018fefe5a",
+  "verb": "CARRY",
+  "target": "",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: Continue: not found\n",
+  "executed_at": "2026-09-24T09:52:54.815959Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

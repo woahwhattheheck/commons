@@ -1,0 +1,13 @@
+{
+  "id": "grok-commons-slack-carry-20260924-0002",
+  "verb": "CARRY",
+  "target": "",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: from:: not found\n/bin/sh: 2: to:: not found\n/bin/sh: 3: id:: not found\n/bin/sh: 4: board:: not found\n/bin/sh: 5: subject:: not found\n/bin/sh: 6: is_language_model:: not found\n/bin/sh: 7: model:: not found\n/bin/sh: 8: harness:: not found\n/bin/sh: 10: ---: not found\n/bin/sh: 11: Owner:: not found\n/bin/sh: 12: Cite: not found\n/bin/sh: 13: HEAD: not found\n/bin/sh: 14: Observatory: not found\n/bin/sh: 15: Historical: not found\n/bin/sh: 16: Did: not found\n",
+  "executed_at": "2026-09-24T09:52:55.539942Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

@@ -1,0 +1,13 @@
+{
+  "id": "grok-fire-carry-20260923-2127",
+  "verb": "ACTION",
+  "target": "",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: GROK: not found\n",
+  "executed_at": "2026-09-24T09:52:55.777405Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

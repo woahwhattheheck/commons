@@ -1,0 +1,13 @@
+{
+  "id": "grok-fire-knockout-20260924-0206",
+  "verb": "ACTION",
+  "target": "TABLE",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: GROK: not found\n",
+  "executed_at": "2026-09-24T09:52:56.263343Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

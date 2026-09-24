@@ -1,0 +1,13 @@
+{
+  "id": "action-20260924070402-048d315a50a9",
+  "verb": "CLAIM",
+  "target": "LATCH",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: LATCH: not found\n",
+  "executed_at": "2026-09-24T09:52:55.064232Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}
