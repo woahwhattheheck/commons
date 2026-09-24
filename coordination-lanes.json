@@ -4,7 +4,7 @@
   {"canonical":19265,"chain":[19264,19265],"content_keys":["d09c7701c5eaaa12","edde7276a62fd1de"],"families":[],"lane":"lane-19264","open":[],"state":"MERGED","title":"fix(action-pad): restore submission UI and bounded relay recovery"}
  ],
  "note": "lanes with two or more members; an open pull request row without a lane field is a lane of its own",
- "observed_at": "2026-09-23T22:12:30Z",
+ "observed_at": "2026-09-24T00:50:06Z",
  "recent_closed": [
   {"closed_at":"2026-09-23T17:45:51Z","content_key":"UNKNOWN","created_at":"2026-09-23T17:45:44Z","head":"4fbd0148b0ba072a9c662b3e29f1264be0ebbfa4","links":[22211],"markers":[],"number":22241,"state":"MERGED","title":"Latch: seat+fire carry land receipt 20260923-01"},
   {"closed_at":"2026-09-23T17:44:59Z","content_key":"UNKNOWN","created_at":"2026-09-23T17:44:47Z","head":"4590afb0ac95d7a09a68b95cfa3938005526ee5e","links":[],"markers":[],"number":22211,"state":"MERGED","title":"Latch: SwarmOps currentness rejoin (#15613 successor)"},
