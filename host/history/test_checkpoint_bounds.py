@@ -72,5 +72,41 @@ class CheckpointBoundsTest(unittest.TestCase):
         self.assertEqual(str(caught.exception), 'checkpoint_over_publisher_ceiling')
 
 
+
+    def test_existing_unlisted_shard_is_updated_with_its_sha(self):
+        raw = github_cloud.dumps(document(7000))
+        planned = github_cloud.plan_checkpoint_files(raw)
+        prefix = 'history-review/2026-09-20/github/woahwhattheheck/'
+        stale_name = planned[0][0]
+        same_name, same_blob = planned[1]
+        store = {
+            prefix + stale_name: (b'{"schema":"stale"}', 'sha-existing'),
+            prefix + same_name: (same_blob, 'sha-same'),
+        }
+        writes = []
+
+        def read_private(path):
+            return store.get(path, (None, None))
+
+        def write_private(path, blob, old_sha=None):
+            if path in store and not old_sha:
+                raise RuntimeError('publisher_missing_sha')
+            writes.append((path.split('/')[-1], old_sha, blob))
+            store[path] = (blob, old_sha or 'sha-created')
+
+        original = github_cloud.read_private, github_cloud.write_private
+        github_cloud.read_private = read_private
+        github_cloud.write_private = write_private
+        try:
+            github_cloud.publish_checkpoint('woahwhattheheck', raw, None, None, {})
+        finally:
+            github_cloud.read_private, github_cloud.write_private = original
+        by_name = {name: sha for name, sha, _ in writes}
+        self.assertEqual(by_name[stale_name], 'sha-existing')
+        self.assertNotIn(same_name, by_name)
+        self.assertIsNone(by_name['checkpoint.json'])
+        self.assertEqual(store[prefix + stale_name][0], planned[0][1])
+        self.assertEqual(store[prefix + 'checkpoint.json'][0], planned[-1][1])
+
 if __name__ == '__main__':
     unittest.main()
