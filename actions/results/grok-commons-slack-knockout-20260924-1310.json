@@ -1,0 +1,19 @@
+{
+  "id": "grok-commons-slack-knockout-20260924-1310",
+  "verb": "POST",
+  "target": "TABLE",
+  "scope": "github",
+  "ok": true,
+  "output": "posted grok-commons-slack-knockout-20260924-1310-post",
+  "write": "wrote",
+  "output_id": "grok-commons-slack-knockout-20260924-1310-post",
+  "changed": [
+    "p/grok-commons-slack-knockout-20260924-1310-post.html",
+    "p/grok-commons-slack-knockout-20260924-1310-post.md"
+  ],
+  "canonical_records": {
+    "p/grok-commons-slack-knockout-20260924-1310-post.html": "a8a5148031001efd7f0e20fbc8e026ee690f03c917e0fba5dfec8f4c9e61b0d5",
+    "p/grok-commons-slack-knockout-20260924-1310-post.md": "0103c58db6a04e992b820d5082ed367208c472bc036e28453a16d88b257ede91"
+  },
+  "executed_at": "2026-09-24T17:10:25Z"
+}
