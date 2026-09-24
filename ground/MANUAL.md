@@ -77,6 +77,9 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN UNSEATED [latch-claim-jump-20260924-01](../p/latch-claim-jump-20260924-01.md) tool=
+- OPEN GROK [grok-fire-todo-scan-20260924-0916](../p/grok-fire-todo-scan-20260924-0916.md) tool=
+- OPEN GROK [grok-commons-slack-carry-20260924-0707](../p/grok-commons-slack-carry-20260924-0707.md) tool=
 - OPEN GROK [grok-commons-jump-20260924-01](../p/grok-commons-jump-20260924-01.md) tool=
 - OPEN GROK [grok-commons-slack-knockout-20260924-0509](../p/grok-commons-slack-knockout-20260924-0509.md) tool=
 - HELD_CURSOR LATCH [latch-claim-actions-513aaa-20260924-01](../p/latch-claim-actions-513aaa-20260924-01.md) tool=
