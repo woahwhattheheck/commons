@@ -1,6 +1,6 @@
 {
   "counts": {
-    "open_issues": 10668,
+    "open_issues": 10679,
     "open_pull_requests": 0,
     "runs_in_progress": 1,
     "runs_queued": 70
@@ -13,6 +13,72 @@
   "pulls_listing": "UNKNOWN",
   "queue_depth_per_runner": 70.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "latch/knockout-continue-20260923-01",
+      "closed_at": "2026-09-24T03:07:48Z",
+      "head_sha": "ed098b2c8b8d85fd811951a29b408f4c9d7616e5",
+      "merged_at": "2026-09-24T03:07:48Z",
+      "number": 29299,
+      "state": "MERGED",
+      "title": "Latch: knockout continue \u2014 BUILDABLE closed (cite GROK 2305)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "latch/knockout-now-20260923-01",
+      "closed_at": "2026-09-24T01:28:46Z",
+      "head_sha": "baf67b8d3adc44aa8fb3b445f64d210684200f7b",
+      "merged_at": "2026-09-24T01:28:46Z",
+      "number": 29296,
+      "state": "MERGED",
+      "title": "Latch: knockout now measure (zero unique tip-landable)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "repair/discord-chunk-withhold-20260924",
+      "closed_at": "2026-09-24T00:17:11Z",
+      "head_sha": "2613c88bd4772595c13a43558ad8ce1eca681190",
+      "merged_at": "2026-09-24T00:17:11Z",
+      "number": 29251,
+      "state": "MERGED",
+      "title": "Withhold a rejected Discord chunk before any send"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "latch-knockout-carry-20260923-01",
+      "closed_at": "2026-09-24T00:16:20Z",
+      "head_sha": "262a00e620cf497231f00beed1efd73f78fcb279",
+      "merged_at": "2026-09-24T00:16:20Z",
+      "number": 29250,
+      "state": "MERGED",
+      "title": "Latch: thin knockout carry receipt (zero unique tip-landable)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "fix/discord-mirror-policy-withhold-exit",
+      "closed_at": "2026-09-24T00:11:42Z",
+      "head_sha": "79c336aeef4d122d988c13afb18f0364345bc17f",
+      "merged_at": "2026-09-24T00:11:42Z",
+      "number": 29249,
+      "state": "MERGED",
+      "title": "Discord mirror: publication withhold is idle send"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "latch/schedule-red-20260923-02",
+      "closed_at": "2026-09-24T00:08:26Z",
+      "head_sha": "e478881f9b97cca23398430bb66d88cb02091207",
+      "merged_at": "2026-09-24T00:08:26Z",
+      "number": 29248,
+      "state": "MERGED",
+      "title": "Latch: KEEP receipt for commons-board schedule red (authored_attribution)"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -111,75 +177,9 @@
       "number": 16289,
       "state": "CLOSED",
       "title": "board: recover completion history and prevent stale-recent resurrection"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "work/waste-csv-preview-retain-20260923",
-      "closed_at": "2026-09-23T19:36:10Z",
-      "head_sha": "4d18b0ee8faf1725ffd77f51702f650cbd16d4aa",
-      "merged_at": "2026-09-23T19:36:10Z",
-      "number": 24377,
-      "state": "MERGED",
-      "title": "Keep a reviewed waste CSV manifest when preview fails"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "work/context-source-health-20260923",
-      "closed_at": "2026-09-23T19:24:26Z",
-      "head_sha": "aca7da7328384b9f53a4f9fc0e9aed8363df3143",
-      "merged_at": "2026-09-23T19:24:25Z",
-      "number": 24026,
-      "state": "MERGED",
-      "title": "Context discovery: opt-in all-source health on empty pages"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "work/waste-csv-browser-20260923",
-      "closed_at": "2026-09-23T19:22:14Z",
-      "head_sha": "29ebd3203783b45b395b1c064c830f098d339198",
-      "merged_at": "2026-09-23T19:22:14Z",
-      "number": 23959,
-      "state": "MERGED",
-      "title": "Commercial waste: CSV preview inside the existing desk"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "latch/dir2-poll-gemini-grokcom-20260923-01",
-      "closed_at": "2026-09-23T19:21:19Z",
-      "head_sha": "c6bad52a2f676cf466f492ef98f26911aef22832",
-      "merged_at": "2026-09-23T19:21:19Z",
-      "number": 23915,
-      "state": "MERGED",
-      "title": "Latch: dir2 Gemini + Grok.com GET poll adapters"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "work/media-rights-batch-csv-20260923",
-      "closed_at": "2026-09-23T19:20:12Z",
-      "head_sha": "d7d2800ecc387b3a209b63a5fd1e29f97c70123d",
-      "merged_at": "2026-09-23T19:20:12Z",
-      "number": 23896,
-      "state": "MERGED",
-      "title": "Media-rights desk: batch CSV review on one snapshot"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "latch/tip-keep-boards-slack-20260923-07",
-      "closed_at": "2026-09-23T19:19:49Z",
-      "head_sha": "d5ffd889098fcafb78caea59d8eb2f7cbe62387a",
-      "merged_at": "2026-09-23T19:19:49Z",
-      "number": 23883,
-      "state": "MERGED",
-      "title": "Latch: Tip KEEP pin boards.html + slack_ingest.py (cascade 07)"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-24T00:04:30Z"
+  "unchanged_since": "2026-09-24T03:16:50Z"
 }
