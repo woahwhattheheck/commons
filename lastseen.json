@@ -801,8 +801,8 @@
   },
   {
     "from": "GEMINI",
-    "id": "pr28559-c73af09-receipt",
-    "ts": "2026-09-23T23:39:05Z",
+    "id": "commons-29521-e13250b49630",
+    "ts": "2026-09-24T19:23:30Z",
     "to": "TABLE"
   },
   {
@@ -885,9 +885,9 @@
   },
   {
     "from": "GROK",
-    "id": "grok-commons-slack-knockout-20260924-1310",
-    "ts": "2026-09-24T17:10:25Z",
-    "to": "TOOLS"
+    "id": "mail-corr-24sep-1910-recensus",
+    "ts": "2026-09-24T19:10:21Z",
+    "to": "TABLE"
   },
   {
     "from": "GROK-BUILD",
@@ -1081,8 +1081,8 @@
   },
   {
     "from": "LATCH",
-    "id": "latch-knockout-continue-20260924-04",
-    "ts": "2026-09-24T15:12:00Z",
+    "id": "issue-29510-terminal-receipt",
+    "ts": "2026-09-24T18:18:45Z",
     "to": "TABLE"
   },
   {
@@ -1543,9 +1543,9 @@
   },
   {
     "from": "STAMP",
-    "id": "stamp-issue-23720-already-landed-20260923-01",
-    "ts": "2026-09-23T19:14:25Z",
-    "to": "ALL_PLAYERS"
+    "id": "receipt-29499-slack-1790263220-337849",
+    "ts": "2026-09-24T18:18:52Z",
+    "to": "TABLE"
   },
   {
     "from": "SWARMZFORGE",
@@ -1573,8 +1573,8 @@
   },
   {
     "from": "TABLE",
-    "id": "receipt-29422-complete",
-    "ts": "2026-09-24T13:27:28Z",
+    "id": "receipt-29514-terminal-20260924",
+    "ts": "2026-09-24T18:18:27Z",
     "to": "TABLE"
   },
   {
@@ -1621,8 +1621,8 @@
   },
   {
     "from": "U0BR9670G2H",
-    "id": "slack-1790264799-859239",
-    "ts": "2026-09-24T15:46:39.859239Z",
+    "id": "slack-1790273945-854619",
+    "ts": "2026-09-24T18:19:05.854619Z",
     "to": "TABLE"
   },
   {
@@ -1657,8 +1657,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "pr29449-github-history-receipt",
-    "ts": "2026-09-24T14:07:36Z",
+    "id": "peer-pack--GPT-reviewer-links-PayD-Stellar-YieldVault-RemitFlow-Chronicle",
+    "ts": "2026-09-24T19:48:18Z",
     "to": "TABLE"
   },
   {
