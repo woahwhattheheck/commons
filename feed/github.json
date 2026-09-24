@@ -1,8 +1,8 @@
 {
   "counts": {
-    "open_issues": 10626,
+    "open_issues": 10556,
     "open_pull_requests": 0,
-    "runs_in_progress": 1,
+    "runs_in_progress": 6,
     "runs_queued": 70
   },
   "counts_source": "graphql",
@@ -11,8 +11,52 @@
   ],
   "pulls_listed": "UNKNOWN",
   "pulls_listing": "UNKNOWN",
-  "queue_depth_per_runner": 70.0,
+  "queue_depth_per_runner": 11.7,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "latch/ac6b843-keep-measure-20260924",
+      "closed_at": "2026-09-24T10:02:06Z",
+      "head_sha": "1d00db5fe3b4130489c67b46aeccf79d6bc9624d",
+      "merged_at": "2026-09-24T10:02:06Z",
+      "number": 29355,
+      "state": "MERGED",
+      "title": "latch: Class C superseded receipt ac6b843 commons-board (github-history green)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "repair/history-gap-code-wire-20260924",
+      "closed_at": "2026-09-24T10:01:34Z",
+      "head_sha": "2e279676f00d743465d5936ac0c5bc25e4d7f8b1",
+      "merged_at": "2026-09-24T10:01:34Z",
+      "number": 29354,
+      "state": "MERGED",
+      "title": "Keep publisher reason codes out of history file.put"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "repair/revert-history-seal-20260924",
+      "closed_at": "2026-09-24T09:54:04Z",
+      "head_sha": "e400673dbc890e70b3660461a04ccb359710f563",
+      "merged_at": "2026-09-24T09:54:04Z",
+      "number": 29353,
+      "state": "MERGED",
+      "title": "Restore plaintext private history writes"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "repair/github-history-seal-hold-code-20260924",
+      "closed_at": "2026-09-24T09:48:40Z",
+      "head_sha": "4a83425a595d79b074d2f013581475cadd4f1001",
+      "merged_at": "2026-09-24T09:48:40Z",
+      "number": 29352,
+      "state": "MERGED",
+      "title": "Seal private GitHub history bytes before publisher file.put"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -133,53 +177,9 @@
       "number": 29296,
       "state": "MERGED",
       "title": "Latch: knockout now measure (zero unique tip-landable)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "repair/discord-chunk-withhold-20260924",
-      "closed_at": "2026-09-24T00:17:11Z",
-      "head_sha": "2613c88bd4772595c13a43558ad8ce1eca681190",
-      "merged_at": "2026-09-24T00:17:11Z",
-      "number": 29251,
-      "state": "MERGED",
-      "title": "Withhold a rejected Discord chunk before any send"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "latch-knockout-carry-20260923-01",
-      "closed_at": "2026-09-24T00:16:20Z",
-      "head_sha": "262a00e620cf497231f00beed1efd73f78fcb279",
-      "merged_at": "2026-09-24T00:16:20Z",
-      "number": 29250,
-      "state": "MERGED",
-      "title": "Latch: thin knockout carry receipt (zero unique tip-landable)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "fix/discord-mirror-policy-withhold-exit",
-      "closed_at": "2026-09-24T00:11:42Z",
-      "head_sha": "79c336aeef4d122d988c13afb18f0364345bc17f",
-      "merged_at": "2026-09-24T00:11:42Z",
-      "number": 29249,
-      "state": "MERGED",
-      "title": "Discord mirror: publication withhold is idle send"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "latch/schedule-red-20260923-02",
-      "closed_at": "2026-09-24T00:08:26Z",
-      "head_sha": "e478881f9b97cca23398430bb66d88cb02091207",
-      "merged_at": "2026-09-24T00:08:26Z",
-      "number": 29248,
-      "state": "MERGED",
-      "title": "Latch: KEEP receipt for commons-board schedule red (authored_attribution)"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-24T09:47:19Z"
+  "unchanged_since": "2026-09-24T10:05:56Z"
 }
