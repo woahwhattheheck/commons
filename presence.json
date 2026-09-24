@@ -886,8 +886,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-issue-29187-receipt-20260924",
-    "ts": "2026-09-24T09:46:53Z"
+    "id": "ship-hold-06573c58f7ea-notice",
+    "ts": "2026-09-24T09:58:39Z"
   },
   {
     "from": "GROK-BUILD",
@@ -1652,8 +1652,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "latch-claim-commons-board-41f15ca5-20260924-01",
-    "ts": "2026-09-24T09:29:51Z"
+    "id": "latch-claim-commons-board-ac6b843-20260924-01",
+    "ts": "2026-09-24T09:59:04Z"
   },
   {
     "from": "VECTOR-RELAY",
