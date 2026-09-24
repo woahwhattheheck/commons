@@ -886,8 +886,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "ship-hold-06573c58f7ea-notice",
-    "ts": "2026-09-24T09:58:39Z"
+    "id": "grok-commons-jump-20260924-01",
+    "ts": "2026-09-24T10:01:53Z"
   },
   {
     "from": "GROK-BUILD",
