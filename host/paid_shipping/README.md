@@ -18,10 +18,13 @@ intermediate thread content, lives only at private
 It writes that file through the required account publisher `file.put` route
 using the previous GitHub Contents SHA and a deterministic operation ID.
 No Cloudflare monitor/D1 call is made by this runner. Its SQLite database is
-in memory for each tick; a version 2 gzip+base64 JSON envelope with a raw
-SHA-256 checksum is the private durable snapshot. Legacy version 1 plaintext
-JSON loads without dropping rows. Decompression is bounded at 32 MiB; an
-oversized or invalid snapshot fails rather than silently discarding state.
+in memory for each tick. Up to 200 thread rows stay in one version 2
+gzip+base64 JSON envelope with a raw SHA-256 checksum. Above that, thread
+rows are stored 200 at a time as gzip+hex shard files under
+`paid-work/shipping-state/`, and `shipping-state.json` is a version 3 index.
+Legacy version 1 plaintext JSON and version 2 gzip+hex envelopes load without dropping rows.
+Decompression is bounded at 32 MiB; an oversized or invalid snapshot fails
+rather than silently discarding state.
 The publisher request sets `User-Agent: Commons-Shipping-Enforcer/1.0`.
 
 For each new or changed nonbaseline candidate thread, the runner sends the

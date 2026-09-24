@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { gzipSync } from 'node:zlib';
-import { openState, putPrivateFile, runMonitor, serializeState } from './runner.mjs';
+import { gzipSync, gunzipSync } from 'node:zlib';
+import { openState, putPrivateFile, runMonitor, serializeState, planStateFiles } from './runner.mjs';
 
 test('SQLite state round-trips through private text snapshot', () => {
   const opened = openState();
@@ -181,3 +181,58 @@ test('RESOURCE_BUSY retries the same payload then writes', async () => {
     globalThis.setTimeout = originalTimeout;
   }
 });
+
+test('more than 200 thread rows become gzip+hex shards of at most 200', () => {
+  const opened = openState();
+  const insert = opened.sqlite.prepare(`INSERT INTO slack_shipping_threads
+    (channel,root_ts,latest_ts,refs,signature,baseline,active,updated_at)
+    VALUES (?,?,?,?,?,?,?,?)`);
+  for (let i = 1; i <= 201; i++) {
+    insert.run('C0BU51F1PL3', `${i}.000001`, `${i}.000009`, `woahwhattheheck/commons#${i}`,
+      'ab'.repeat(32), 0, 1, i);
+  }
+  const boundary = openState();
+  const one = boundary.sqlite.prepare(`INSERT INTO slack_shipping_threads
+    (channel,root_ts,latest_ts,refs,signature,baseline,active,updated_at)
+    VALUES (?,?,?,?,?,?,?,?)`);
+  for (let i = 1; i <= 200; i++) one.run('C0BU51F1PL3', `${i}.000001`, `${i}.000009`, '[]', 'c'.repeat(64), 1, 1, i);
+  const single = planStateFiles(boundary.sqlite);
+  assert.equal(single.mode, 'single');
+  assert.equal(single.files.length, 1);
+  assert.equal(single.files[0].path, 'paid-work/shipping-state.json');
+  assert.equal(JSON.parse(single.files[0].text).codec, 'gzip+base64');
+  boundary.sqlite.close();
+
+  const plan = planStateFiles(opened.sqlite);
+  opened.sqlite.close();
+  assert.equal(plan.mode, 'sharded');
+  const threads = plan.files.filter(file => file.path.includes('/threads-'));
+  assert.equal(threads.length, 2);
+  let rows = [];
+  for (const file of threads) {
+    const envelope = JSON.parse(file.text);
+    assert.equal(envelope.version, 2);
+    assert.equal(envelope.codec, 'gzip+hex');
+    assert.match(envelope.data, /^[0-9a-f]+$/u);
+    assert.ok(file.text.length < 390_000);
+    const part = JSON.parse(gunzipSync(Buffer.from(envelope.data, 'hex')).toString('utf8'));
+    assert.ok(part.rows.length > 0 && part.rows.length <= 200);
+    rows.push(...part.rows);
+  }
+  assert.equal(rows.length, 201);
+  assert.equal(rows[200].refs, 'woahwhattheheck/commons#201');
+  const restEnvelope = JSON.parse(plan.files.find(file => file.path.endsWith('/rest.json')).text);
+  assert.equal(restEnvelope.codec, 'gzip+hex');
+  const rest = JSON.parse(gunzipSync(Buffer.from(restEnvelope.data, 'hex')).toString('utf8'));
+  rest.tables.slack_shipping_threads = rows;
+  const index = JSON.parse(plan.files.at(-1).text);
+  assert.equal(index.version, 3);
+  assert.equal(index.thread_count, 201);
+  assert.deepEqual(index.shards, ['threads-0000.json', 'threads-0001.json']);
+  const restored = openState(JSON.stringify(rest));
+  assert.equal(restored.sqlite.prepare('SELECT COUNT(*) AS n FROM slack_shipping_threads').get().n, 201);
+  assert.equal(restored.sqlite.prepare('SELECT refs FROM slack_shipping_threads WHERE root_ts=?').get('201.000001').refs,
+    'woahwhattheheck/commons#201');
+  restored.sqlite.close();
+});
+
