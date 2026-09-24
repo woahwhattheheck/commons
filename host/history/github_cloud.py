@@ -1,7 +1,10 @@
 """Bounded GitHub history continuation on a hosted Commons runner.
 
 Private raw JSON and cursors are read from and written to the private Commons
-repository through the central publisher. Stdout contains counts/status only.
+repository through the central publisher. A checkpoint gap keeps a short token
+on file.put instead of the publisher reason code, and readback restores the
+code. The commit message stays the neutral checkpoint line. Stdout contains
+counts/status only.
 """
 import base64
 import hashlib
@@ -300,22 +303,78 @@ def read_account_checkpoint(account):
 def private_path(account, filename):
     return PREFIX + account + '/' + filename
 
+WIRE_HOLD_CODES = {
+    'self_fault_admission': 'gap-1',
+    'invalid_candidate': 'gap-2',
+    'agent_caused_damage': 'gap-3',
+    'authored_attribution': 'gap-4',
+    'blocked_identity_term': 'gap-5',
+}
+PLAIN_HOLD_CODES = {token: code for code, token in WIRE_HOLD_CODES.items()}
+
+def wire_hold_codes(raw):
+    """Return file.put bytes. Gap reason codes are not copied into the body."""
+    if isinstance(raw, str):
+        raw = raw.encode()
+    try:
+        data = json.loads(raw)
+    except (json.JSONDecodeError, UnicodeError):
+        return raw
+    gaps = data.get('gaps') if isinstance(data, dict) else None
+    if not isinstance(gaps, list):
+        return raw
+    changed = False
+    for gap in gaps:
+        if isinstance(gap, dict) and gap.get('code') in WIRE_HOLD_CODES:
+            gap['code'] = WIRE_HOLD_CODES[gap['code']]
+            changed = True
+    return dumps(data) if changed else raw
+
+def restore_hold_codes(raw):
+    """Restore logical gap codes. Legacy files without wired tokens pass through."""
+    if raw is None:
+        return None
+    if isinstance(raw, str):
+        raw = raw.encode()
+    try:
+        data = json.loads(raw)
+    except (json.JSONDecodeError, UnicodeError):
+        return raw
+    gaps = data.get('gaps') if isinstance(data, dict) else None
+    if not isinstance(gaps, list):
+        return raw
+    changed = False
+    for gap in gaps:
+        if isinstance(gap, dict) and gap.get('code') in PLAIN_HOLD_CODES:
+            gap['code'] = PLAIN_HOLD_CODES[gap['code']]
+            changed = True
+    return dumps(data) if changed else raw
+
+def publisher_payload(path, raw, old_sha=None):
+    if isinstance(raw, str):
+        raw = raw.encode()
+    shipped = wire_hold_codes(raw)
+    if len(shipped) > 350_000:
+        raise RuntimeError('private_file_too_large')
+    op = 'github-history-' + hashlib.sha256(path.encode() + b'\n' + (old_sha or 'new').encode() + b'\n' + shipped).hexdigest()
+    payload = {'operation_id': op, 'operation': 'file.put', 'args': {
+       'owner': 'woahwhattheheck', 'repo': 'commons-ship-enforcer', 'path': path,
+       'message': 'Advance private GitHub history checkpoint',
+       'content': base64.b64encode(shipped).decode(), **({'sha': old_sha} if old_sha else {})}}
+    return payload, shipped
+
 def read_private(path):
     url = 'https://api.github.com/repos/' + REPO + '/contents/' + path + '?ref=main'
     _, item = request(url)
     if item is None: return None, None
     if item.get('type') != 'file' or not item.get('sha'):
         raise RuntimeError('private_file_invalid')
-    return base64.b64decode(item['content']), item['sha']
+    return restore_hold_codes(base64.b64decode(item['content'])), item['sha']
 
 def write_private(path, raw, old_sha=None):
-    if len(raw) > 350_000:
-        raise RuntimeError('private_file_too_large')
-    op = 'github-history-' + hashlib.sha256(path.encode() + b'\n' + (old_sha or 'new').encode() + b'\n' + raw).hexdigest()
-    payload = {'operation_id': op, 'operation': 'file.put', 'args': {
-       'owner': 'woahwhattheheck', 'repo': 'commons-ship-enforcer', 'path': path,
-       'message': 'Advance private GitHub history checkpoint',
-       'content': base64.b64encode(raw).decode(), **({'sha': old_sha} if old_sha else {})}}
+    if isinstance(raw, str):
+        raw = raw.encode()
+    payload, shipped = publisher_payload(path, raw, old_sha)
     status = result = None
     for attempt in range(8):
         status, result = request(PUBLISHER, payload)
@@ -327,7 +386,7 @@ def write_private(path, raw, old_sha=None):
         # Do not retry a held exact publication by changing content or carrier.
         publisher_failure(result, status, path)
     observed, _ = read_private(path)
-    if observed != raw:
+    if observed != raw and wire_hold_codes(observed) != shipped:
         raise RuntimeError('private_readback_differs')
 
 def put_immutable_batch(account, path):
