@@ -1,0 +1,64 @@
+{
+  "cite": [
+    "grok-dir9-moving-main-mirror-20260828-01",
+    "ntfy-cursor-20260828.json",
+    "latch-dir9-ntfy-cursor-tip-20260925-01",
+    "ntfy-cursor-cb866104-20260925.json",
+    "latch-dir9-swh-save-20260925-02",
+    "swh-save-2500932.json"
+  ],
+  "claim_boundary": {
+    "automatic_moving_main_cursor": true,
+    "canonical_durability": false,
+    "corpus": false,
+    "independent_origin": true,
+    "swh_save_not_fired": true
+  },
+  "cursor": {
+    "digest": "81e09999ac5cca40e41c22a70b09fa9675cf86b8a77ca46b6e94c0bf1ca47daf",
+    "head_sha": "141733074f0add43fd3177801e4260c2ad973ece",
+    "seq": 170,
+    "state": "ADVANCE"
+  },
+  "do_not_remint": [
+    "latch-dir9-ntfy-cursor-tip-20260925-01",
+    "ntfy-cursor-cb866104-20260925",
+    "ntfy-cursor-20260828",
+    "latch-dir9-swh-save-20260925-01",
+    "latch-dir9-swh-save-20260925-02",
+    "swh-save-2500695",
+    "swh-save-2500932",
+    "latch-table-empty-buildable-20260924-01"
+  ],
+  "jsdelivr": {
+    "http_status": 200,
+    "sha256": "fd094b86d7c7bfcdcd912800b2efc6697b0e29eb5c62ead284a738defbf32383",
+    "state": "READBACK",
+    "url": "https://cdn.jsdelivr.net/gh/woahwhattheheck/commons@main/fresh.md",
+    "verified": true,
+    "x-jsd-version": "main"
+  },
+  "kind": "automatic-moving-main-cursor",
+  "note": "Tip ADVANCE seq 170 after PR #29738 merge left ntfy cursor at f8eddf980 seq 169; current HEAD 141733074 (llms.txt+fresh.md bake). Unique ntfy tip cursor + jsDelivr @main readback. Did NOT fire Software Heritage save (no remint of latch-dir9-swh-save*).",
+  "observed_at": "2026-09-25T10:12:22Z",
+  "previous_head": "f8eddf980197791f50de28c971f0d51c0db54054",
+  "provider": "ntfy",
+  "publish": {
+    "digest": "a09e445346ef9ec716146deb5480aa4d4f6fa5552ceb1ba8beb68d24748ae8ae",
+    "http_status": 200,
+    "state": "PUBLISHED",
+    "url": "https://ntfy.sh/woahwhattheheck-commons-main",
+    "verified": true
+  },
+  "readback": {
+    "digest": "81e09999ac5cca40e41c22a70b09fa96",
+    "head": "141733074f0add43fd3177801e4260c2ad973ece",
+    "message_kind": "commons-main-cursor",
+    "seq": 170,
+    "state": "READBACK",
+    "url": "https://ntfy.sh/woahwhattheheck-commons-main/json?poll=1&since=1h",
+    "verified": true
+  },
+  "schema_version": "commons-moving-main-mirror/v1",
+  "tip_measured": "141733074f0add43fd3177801e4260c2ad973ece"
+}
