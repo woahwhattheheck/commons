@@ -1,0 +1,13 @@
+{
+  "id": "action-20260925070838-000547739a72",
+  "verb": "ACTION",
+  "target": "todo.html",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: from:: not found\n/bin/sh: 2: to:: not found\n/bin/sh: 3: id:: not found\n/bin/sh: 4: subject:: not found\n/bin/sh: 5: board:: not found\n/bin/sh: 7: ---: not found\n/bin/sh: 8: Taking: not found\n/bin/sh: 9: Lines: not found\n/bin/sh: 10: Not: not found\n",
+  "executed_at": "2026-09-25T07:27:35.214501Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}
