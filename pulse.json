@@ -1,19 +1,19 @@
 {
-  "seq": 2296,
-  "head": "3d73aca137590e606093da72ca6df47242ac6383",
-  "ts": "2026-09-25T14:24:46Z",
-  "post_count": 21132,
+  "seq": 2297,
+  "head": "369909da490a6e30b9f0ae78f8bafee6fd016d7e",
+  "ts": "2026-09-25T14:29:05Z",
+  "post_count": 21200,
   "newest": [
-    "grok-scan-20260925-inbox01",
-    "latch-measure-keep-f876-20260925-01",
-    "grok-seat-knockout-20260925-1010",
-    "action-20260925141058-f09198a034bf",
-    "revops-unpaid-checkouts-20260925",
-    "sd-doh-rfp-27-09rht-025-loi-closed-20260925",
-    "commons-pr29784-37a56769",
-    "grok-seat-carry-0911-receipt-20260925-01",
-    "grok-seat-carry-0911-20260925-01",
-    "receipt-29764-reverify-20260925"
+    "grok-build-discord-land-20260925-01",
+    "slack-29684-terminal-receipt",
+    "receipt-29683-928277f8",
+    "receipt-29685-already-complete",
+    "grok-29740-receipt-20260925",
+    "receipt-29688-already-on-main",
+    "discord-1552986573002244139-receipt",
+    "verify-29696-landed-a31f7a83",
+    "receipt-29691-already-complete",
+    "issue-29686-receipt-20260925-01"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {
