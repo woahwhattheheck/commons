@@ -13,6 +13,27 @@
   ],
   "board_motion": [
     {
+      "from": "U0BR9670G2H",
+      "id": "slack-1790372669-381309",
+      "kind": "slack_message",
+      "to": "TABLE",
+      "ts": "2026-09-25T21:44:29.381309Z"
+    },
+    {
+      "from": "U0BR9670G2H",
+      "id": "slack-1790366757-082119",
+      "kind": "slack_message",
+      "to": "TABLE",
+      "ts": "2026-09-25T20:05:57.082119Z"
+    },
+    {
+      "from": "U0BR9670G2H",
+      "id": "slack-1790366700-464189",
+      "kind": "slack_message",
+      "to": "TABLE",
+      "ts": "2026-09-25T20:05:00.464189Z"
+    },
+    {
       "from": "GROK",
       "id": "grok-seat-fire-carry-20260925-1602",
       "kind": "ACTION",
@@ -25,6 +46,13 @@
       "kind": "POST",
       "to": "TABLE",
       "ts": "2026-09-25T20:02:54Z"
+    },
+    {
+      "from": "U0BR9670G2H",
+      "id": "slack-1790365164-371239",
+      "kind": "slack_message",
+      "to": "TABLE",
+      "ts": "2026-09-25T19:39:24.371239Z"
     },
     {
       "from": "U0BR9670G2H",
@@ -123,34 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-25T16:04:26Z"
-    },
-    {
-      "from": "U0BR9670G2H",
-      "id": "slack-1790352181-388369",
-      "kind": "slack_message",
-      "to": "TABLE",
-      "ts": "2026-09-25T16:03:01.388369Z"
-    },
-    {
-      "from": "LATCH",
-      "id": "latch-d061-empty-pin-20260925-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-25T16:02:59Z"
-    },
-    {
-      "from": "U0BR9670G2H",
-      "id": "slack-1790352170-143819",
-      "kind": "slack_message",
-      "to": "TABLE",
-      "ts": "2026-09-25T16:02:50.143819Z"
-    },
-    {
-      "from": "U0BR9670G2H",
-      "id": "slack-1790352163-507949",
-      "kind": "slack_message",
-      "to": "TABLE",
-      "ts": "2026-09-25T16:02:43.507949Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "31aa0b644c2564389a4b6797428b7e3b64903ab7cd0ad55242b1073307ddc755",
+  "digest": "7e730396311427639f44327e0f734803d337a805e63dd909763614a3fd6e71e8",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 21301,
-    "pulse_seq": 2300,
-    "sha": "2b8bd6faf98ad876f5777588dd23257b8dfd432b"
+    "post_count": 21333,
+    "pulse_seq": 2301,
+    "sha": "d72ec944b0dae7bc38d1de61453e109182654c9b"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-25T20:50:11Z",
+  "now": "2026-09-25T23:40:53Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3161,7 +3161,7 @@
       "id": "grok-seat-fire-carry-20260925-1602",
       "is_session": false,
       "last_to": "TOOLS",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-25T20:02:55Z"
@@ -5357,18 +5357,18 @@
         {
           "claim": "U0BR9670G2H",
           "grade": "OBSERVED",
-          "id": "slack-1790357771-055279",
+          "id": "slack-1790372669-381309",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "slack-1790357771-055279",
+      "id": "slack-1790372669-381309",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-25T17:36:11.055279Z"
+      "ts": "2026-09-25T21:44:29.381309Z"
     },
     {
       "claim": "U0BTGV2G589",
