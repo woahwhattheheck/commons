@@ -1,0 +1,50 @@
+{
+  "schema_version": "commons-moving-main-mirror/v1",
+  "provider": "software-heritage",
+  "kind": "independent-origin-git-save",
+  "observed_at": "2026-09-25T09:08:46Z",
+  "tip_measured": "10f07a4cd5638351614c1a0fa837ef8fec41461b",
+  "publish": {
+    "url": "https://archive.softwareheritage.org/api/1/origin/save/git/url/https://github.com/woahwhattheheck/commons/",
+    "save_id": 2500932,
+    "save_request_status": "accepted",
+    "save_task_status": "pending",
+    "loading_task_id": 421904016,
+    "request_url": "https://archive.softwareheritage.org/api/1/origin/save/2500932/",
+    "origin_url": "https://github.com/woahwhattheheck/commons",
+    "save_request_date": "2026-09-25T09:07:47.865813+00:00"
+  },
+  "readback": {
+    "url": "https://archive.softwareheritage.org/api/1/origin/save/2500932/",
+    "http_status": 200,
+    "save_request_status": "accepted",
+    "save_task_status": "succeeded",
+    "visit_status": "full",
+    "visit_date": "2026-09-25T09:07:54.598000+00:00",
+    "snapshot_swhid": "swh:1:snp:f4be039396cad2c5be7c042d3f05fb702280ada3",
+    "snapshot_url": "https://archive.softwareheritage.org/api/1/snapshot/f4be039396cad2c5be7c042d3f05fb702280ada3/",
+    "loading_task_id": 421904016
+  },
+  "claim_boundary": {
+    "zero_new_credential_save": true,
+    "independent_origin": true,
+    "origin_listed": true,
+    "origin_readable": true,
+    "canonical_durability": false
+  },
+  "state": "SNAPSHOT_READY",
+  "cite": [
+    "latch-dir9-swh-save-20260925-01",
+    "swh-save-2500695.json",
+    "grok-dir9-moving-main-mirror-20260828-01",
+    "swh-snapshot-ready-20260830.json"
+  ],
+  "do_not_remint": [
+    "latch-dir9-swh-save-20260925-01",
+    "swh-save-2500695",
+    "latch-dir9-ntfy-cursor-tip-20260925-01",
+    "ntfy-cursor-cb866104-20260925",
+    "latch-table-empty-buildable-20260924-01"
+  ],
+  "note": "NEW Save Code Now 2500932 after tip moved to 10f07a4c (past ce01e1f3 / ntfy-cb866104). Readback succeeded/full with new snapshot. Does NOT remint swh-save-2500695 / latch-dir9-swh-save-20260925-01."
+}
