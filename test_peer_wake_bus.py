@@ -24,6 +24,7 @@ from peer_wake.bus import (
 )
 from peer_wake.adapters import poll as poll_adapter
 from peer_wake.adapters import slack_mention as slack_adapter
+from peer_wake.adapters import slack_table_tip as tip_adapter
 from harness_wake.watchdog import run as watchdog_run
 
 sys.path.insert(0, str(Path(__file__).resolve().parent / "host"))
@@ -330,6 +331,70 @@ class PeerWakeBusTest(unittest.TestCase):
         self.assertFalse(row["live_wake"])
         self.assertTrue(row.get("receipt_present"))
         self.assertEqual(row.get("receipt_path"), "p/grok-peer-wake-bus-20260828-01.md")
+
+
+    def test_slack_table_tip_formats_without_network_or_live_wake(self):
+        target = next(row for row in load_targets(ROOT) if row["peer"] == "CHATGPT")
+        tip_target = {
+            **{k: target[k] for k in ("peer", "wake_target") if k in target},
+            "adapter": "slack_table_tip",
+            "doorbell": "EXTERNAL_PLATFORM_ACTION",
+            "wake_target": {
+                "kind": "slack_table_tip",
+                "channel": "C0BRGMDQB6G",
+                "path": "ping/last.json",
+                "prompt": "ping/chatgpt.md",
+            },
+        }
+        receipt = tip_adapter.signal(
+            tip_target,
+            job_fields(),
+            tick={"attempt_id": "a1"},
+            deliver=False,
+            http=lambda *_a, **_k: self.fail("tip must not network without post_fn deliver"),
+        )
+        self.assertEqual(receipt["state"], "TIP_FORMATTED")
+        self.assertEqual(receipt["doorbell"], "EXTERNAL_PLATFORM_ACTION")
+        self.assertFalse(receipt["live_wake"])
+        self.assertFalse(receipt["invoke_model"])
+        self.assertEqual(receipt["network_calls"], 0)
+        self.assertIn("#commons", receipt["tip"])
+        self.assertIn("C0BRGMDQB6G", receipt["tip"])
+        self.assertIn(JOB_ID, receipt["tip"])
+        self.assertIn("EXTERNAL_PLATFORM_ACTION", receipt["tip"])
+        self.assertIn("grok-peer-wake-bus-20260828-01", receipt["tip"])
+
+    def test_slack_table_tip_injected_post_fn_still_not_a_resume(self):
+        calls = []
+        tip_target = {
+            "peer": "CLAUDE",
+            "adapter": "slack_table_tip",
+            "doorbell": "EXTERNAL_PLATFORM_ACTION",
+            "wake_target": {
+                "kind": "slack_table_tip",
+                "channel": "C0BRGMDQB6G",
+                "path": "ping/last.json",
+                "prompt": "ping/claude.md",
+            },
+        }
+        receipt = tip_adapter.signal(
+            tip_target,
+            job_fields(owner_claim="CLAUDE", harness="CLAUDE"),
+            deliver=True,
+            post_fn=lambda payload: calls.append(payload) or {"state": "TIP_POSTED_VIA_INJECTED", "status": 200},
+        )
+        self.assertEqual(len(calls), 1)
+        self.assertEqual(calls[0]["channel"], "C0BRGMDQB6G")
+        self.assertFalse(calls[0]["live_wake"])
+        self.assertEqual(calls[0]["doorbell"], "EXTERNAL_PLATFORM_ACTION")
+        self.assertEqual(receipt["state"], "TIP_POSTED_VIA_INJECTED")
+        self.assertEqual(receipt["doorbell"], "EXTERNAL_PLATFORM_ACTION")
+        self.assertFalse(receipt["live_wake"])
+        self.assertEqual(receipt["network_calls"], 1)
+        blob = json.dumps(receipt)
+        self.assertNotIn("xoxb", blob.lower())
+        self.assertNotIn(SECRET, blob)
+
 
 
 if __name__ == "__main__":

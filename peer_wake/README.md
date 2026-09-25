@@ -19,6 +19,9 @@ and no auth/account door.
      are already in the process environment**
    - `windows_titan` — local Windows UI doorbell via `host.titan_hands` (UIA
      actuation into a named desktop agent window; deliver-gated, verify-after-act)
+   - `slack_table_tip` — format a #commons same-table wake TIP for GET-only
+     ChatGPT/Claude peers; injectable `post_fn`; doorbell stays
+     `EXTERNAL_PLATFORM_ACTION` (never claims live resume)
 3. Keep one caller-supplied `job_id`. Tick, checkpoint, and complete stay
    idempotent on `independent_commons_mcp.jobs.JobStore`.
 4. Unique events are accepted and never cancelled.

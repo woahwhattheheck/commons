@@ -1,0 +1,43 @@
+{
+  "schema_version": "commons-moving-main-mirror/v1",
+  "provider": "software-heritage",
+  "kind": "independent-origin-git-save",
+  "observed_at": "2026-09-25T07:13:18Z",
+  "publish": {
+    "url": "https://archive.softwareheritage.org/api/1/origin/save/git/url/https://github.com/woahwhattheheck/commons/",
+    "save_id": 2500695,
+    "save_request_status": "accepted",
+    "save_task_status": "pending",
+    "loading_task_id": 421809632,
+    "request_url": "https://archive.softwareheritage.org/api/1/origin/save/2500695/",
+    "origin_url": "https://github.com/woahwhattheheck/commons",
+    "save_request_date": "2026-09-25T07:10:37.669934+00:00"
+  },
+  "readback": {
+    "url": "https://archive.softwareheritage.org/api/1/origin/save/2500695/",
+    "http_status": 200,
+    "save_request_status": "accepted",
+    "save_task_status": "succeeded",
+    "visit_status": "full",
+    "visit_date": "2026-09-25T07:11:29.722000+00:00",
+    "snapshot_swhid": "swh:1:snp:a897b1d129cd3b8db922d5aad99afcdd6603b341",
+    "snapshot_url": "https://archive.softwareheritage.org/api/1/snapshot/a897b1d129cd3b8db922d5aad99afcdd6603b341/",
+    "loading_task_id": 421809632
+  },
+  "claim_boundary": {
+    "zero_new_credential_save": true,
+    "independent_origin": true,
+    "origin_listed": true,
+    "origin_readable": true,
+    "canonical_durability": false
+  },
+  "state": "SNAPSHOT_READY",
+  "cite": [
+    "grok-dir9-swh-origin-listed-20260828-01",
+    "grok-dir9-moving-main-mirror-20260828-01",
+    "swh-save-2456178.json",
+    "swh-origin-listed-20260828.json",
+    "swh-snapshot-ready-20260830.json"
+  ],
+  "note": "NEW save request 2500695 (not a remint of grok-dir9-swh-origin-listed). Accepted this hour; readback poll shows succeeded/full with snapshot_swhid set. Historical origin-listed/snapshot-ready receipts remain authoritative for their own save_ids. Do not claim current-main canonical durability from Observatory alone."
+}
