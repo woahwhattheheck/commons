@@ -1,15 +1,15 @@
 {
- "counts": {"drift":{"contained":0,"current":0,"disjoint":0,"overlap":0,"unknown":0},"hosted":{},"lanes_open":0,"lanes_with_several_open":0,"listed_open":0,"listed_recent_closed":185,"open_prs":0},
+ "counts": {"drift":{"contained":0,"current":0,"disjoint":0,"overlap":0,"unknown":0},"hosted":{},"lanes_open":0,"lanes_with_several_open":0,"listed_open":0,"listed_recent_closed":188,"open_prs":0},
  "degraded": [],
  "files": {"head":"coordination-head.json","lanes":"coordination-lanes.json","paths":"coordination-paths.json"},
- "main": {"committed_at":"2026-09-24T23:21:14Z","message":"pin owner rows and rebuild ground/MANUAL.md from tools.json","sha":"35c0206495623ae4e7896ebf5c62aad94a9795cc"},
+ "main": {"committed_at":"2026-09-25T01:20:48Z","message":"chore: delete two checkout predecessor tests under the owner purge (#…","sha":"b21637f8035daa8c13f98a79a1f32332ad9c20c7"},
  "notes": [],
- "observed_at": "2026-09-24T23:23:05Z",
+ "observed_at": "2026-09-25T01:50:12Z",
  "producer": {"api_calls":9,"first_draft":true,"road":"git trees + GitHub GraphQL/REST","seat":"coordination-state-workflow"},
  "prs": [],
- "queue": {"in_progress":3,"oldest_is_lower_bound":false,"oldest_queued_age_s":3174421,"oldest_queued_at":"2026-08-19T05:36:04Z","queued":70},
+ "queue": {"in_progress":1,"oldest_is_lower_bound":false,"oldest_queued_age_s":3183248,"oldest_queued_at":"2026-08-19T05:36:04Z","queued":70},
  "repo": "woahwhattheheck/commons",
  "schema": "commons-coordination-state/v1",
  "swarm": {"batches":[],"capacity":null,"capacity_note":"available review batches at observation time; unknown is not unlimited","counts":{},"policy":"ground/SWARM_ORDER.md","schema":"commons-swarm-queue/v1"},
- "tips": {"main":"35c0206495623ae4e7896ebf5c62aad94a9795cc","yz/parking-lot-ci-retirement-511e1c":"UNKNOWN"}
+ "tips": {"main":"b21637f8035daa8c13f98a79a1f32332ad9c20c7","yz/parking-lot-ci-retirement-511e1c":"UNKNOWN"}
 }
