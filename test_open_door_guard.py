@@ -31,6 +31,15 @@ def main():
     assert "\n  push:\n    branches: [main]\n" in workflow, "open-door guard must report direct main pushes"
     assert workflow.count("- '!builds.json'\n") == 2, "workflow must skip the builds.json projection on PR and push"
     assert "builds.json" in guard.SKIP_FILES
+    checkout = workflow.split("reject newly added", 1)[0]
+    assert "pull_request.head.sha" not in checkout, (
+        "checkout must stay on the pull_request merge ref, not the single-parent head"
+    )
+    assert "two-parent integration commit" in workflow, (
+        "a pull_request checkout that is not the two-parent integration must not pass"
+    )
+    assert 'open_door_guard.py --diff "$base" HEAD' in workflow
+    assert 'open_door_guard.py --diff "$base" "$head"' not in workflow
 
     test_workflow_diff_base()
 
@@ -1058,14 +1067,14 @@ def test_workflow_diff_base():
         assert old_result.returncode == 1 and 'concurrent.py:' in old_result.stderr
         cases.append('stale-event-base-reproduces-concurrent-finding')
         check_case('actual-merge-base-excludes-concurrent-change', 0, contains='GUARD: PASS')
-        check_case('event-head-sha-not-checkout-second-parent', 0, pr_head=old_base, contains='GUARD: PASS')
+        check_case('wrong-second-parent-is-not-a-pass', 1, pr_head=old_base, absent='GUARD: PASS')
         check_case('push-still-sees-all-pushed-additions', 1, event='push', push_base=old_base,
                    contains='concurrent.py:')
         check_case('push-retains-existing-comparison', 0, event='push', push_base=actual_base,
                    contains='GUARD: PASS')
 
         # A shallow clone retains the raw merge header even when parent objects
-        # are absent. The event base SHA is fetched from this local fixture only.
+        # are absent. The exact base is fetched from this local fixture only.
         git('branch', 'integration', merged)
         bare = tmp / 'remote.git'
         git('clone', '-q', '--bare', str(repo), str(bare), cwd=tmp)
@@ -1075,11 +1084,9 @@ def test_workflow_diff_base():
         shallow = tmp / 'shallow'
         assert git('rev-parse', '--is-shallow-repository', cwd=shallow).stdout.strip() == 'true'
         assert git('cat-file', '-e', actual_base + '^{commit}', cwd=shallow, check=False).returncode != 0
-        assert git('cat-file', '-e', old_base + '^{commit}', cwd=shallow, check=False).returncode != 0
-        check_case('depth-one-checkout-fetches-event-base-sha', 0, cwd=shallow,
+        check_case('depth-one-checkout-fetches-exact-first-parent', 0, cwd=shallow,
                    contains='GUARD: PASS')
-        git('cat-file', '-e', old_base + '^{commit}', cwd=shallow)
-        assert git('cat-file', '-e', actual_base + '^{commit}', cwd=shallow, check=False).returncode != 0
+        git('cat-file', '-e', actual_base + '^{commit}', cwd=shallow)
         assert git('rev-parse', '--is-shallow-repository', cwd=shallow).stdout.strip() == 'true'
         missing = tmp / 'missing-base'
         git('remote', 'set-url', 'origin', str(tmp / 'absent-remote'), cwd=missing)
@@ -1105,7 +1112,7 @@ def test_workflow_diff_base():
         check_case('merge-resolution-finding-remains-visible', 1,
                    contains='resolution.py:', absent='concurrent.py:')
         git('checkout', '-q', '--detach', feature_head)
-        check_case('non-merge-pr-checkout-uses-event-shas', 0, contains='GUARD: PASS')
+        check_case('non-merge-pr-checkout-is-not-a-pass', 1, absent='GUARD: PASS')
 
     print('OPEN DOOR WORKFLOW BASE TEST: ' + str(len(cases)) + ' actual-Git cases pass')
     return cases
