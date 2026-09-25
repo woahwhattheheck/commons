@@ -1065,7 +1065,7 @@ def test_workflow_diff_base():
                    contains='GUARD: PASS')
 
         # A shallow clone retains the raw merge header even when parent objects
-        # are absent. The exact base is fetched from this local fixture only.
+        # are absent. The event base SHA is fetched from this local fixture only.
         git('branch', 'integration', merged)
         bare = tmp / 'remote.git'
         git('clone', '-q', '--bare', str(repo), str(bare), cwd=tmp)
@@ -1075,9 +1075,11 @@ def test_workflow_diff_base():
         shallow = tmp / 'shallow'
         assert git('rev-parse', '--is-shallow-repository', cwd=shallow).stdout.strip() == 'true'
         assert git('cat-file', '-e', actual_base + '^{commit}', cwd=shallow, check=False).returncode != 0
-        check_case('depth-one-checkout-fetches-exact-first-parent', 0, cwd=shallow,
+        assert git('cat-file', '-e', old_base + '^{commit}', cwd=shallow, check=False).returncode != 0
+        check_case('depth-one-checkout-fetches-event-base-sha', 0, cwd=shallow,
                    contains='GUARD: PASS')
-        git('cat-file', '-e', actual_base + '^{commit}', cwd=shallow)
+        git('cat-file', '-e', old_base + '^{commit}', cwd=shallow)
+        assert git('cat-file', '-e', actual_base + '^{commit}', cwd=shallow, check=False).returncode != 0
         assert git('rev-parse', '--is-shallow-repository', cwd=shallow).stdout.strip() == 'true'
         missing = tmp / 'missing-base'
         git('remote', 'set-url', 'origin', str(tmp / 'absent-remote'), cwd=missing)
