@@ -1,8 +1,8 @@
 {
   "counts": {
-    "open_issues": 10251,
+    "open_issues": 10270,
     "open_pull_requests": 0,
-    "runs_in_progress": 2,
+    "runs_in_progress": 1,
     "runs_queued": 70
   },
   "counts_source": "graphql",
@@ -11,8 +11,118 @@
   ],
   "pulls_listed": "UNKNOWN",
   "pulls_listing": "UNKNOWN",
-  "queue_depth_per_runner": 35.0,
+  "queue_depth_per_runner": 70.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "repair/freshness-discover-keeps-commercial-pilot",
+      "closed_at": "2026-09-25T16:32:14Z",
+      "head_sha": "4d5ebc8b4d5ca591337e4810ca543b3c1a2f0631",
+      "merged_at": "2026-09-25T16:32:13Z",
+      "number": 29842,
+      "state": "MERGED",
+      "title": "restore freshness tests the source-parses discover pattern runs"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "repair/open-door-tjlabs-live-scan-36159386014",
+      "closed_at": "2026-09-25T16:30:29Z",
+      "head_sha": "afce058635e1c52e53b92fb4dd4c55cfa4084fac",
+      "merged_at": null,
+      "number": 29840,
+      "state": "CLOSED",
+      "title": "restore tjlabs leftover scanned by open-door-guard"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "fix/open-door-guard-tjlabs-path-after-purge",
+      "closed_at": "2026-09-25T16:27:56Z",
+      "head_sha": "b581a4eb4bee9971c9cf9f59a5ddb5b4546f8cc0",
+      "merged_at": null,
+      "number": 29836,
+      "state": "CLOSED",
+      "title": "restore test_tjlabs_pack_terms.py so open-door-guard matrix can run"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "fix/restore-tjlabs-pack-terms-test-20260925",
+      "closed_at": "2026-09-25T16:27:48Z",
+      "head_sha": "fc89ebec8f55e30d41c1afc5b509d06cee14e694",
+      "merged_at": null,
+      "number": 29838,
+      "state": "CLOSED",
+      "title": "restore test_tjlabs_pack_terms.py for open-door-guard"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "repair/spark-concurrency-29834",
+      "closed_at": "2026-09-25T16:27:40Z",
+      "head_sha": "5802fe30291873b7f56d4073c5ac3809622e0d62",
+      "merged_at": "2026-09-25T16:27:40Z",
+      "number": 29841,
+      "state": "MERGED",
+      "title": "restore workflow concurrency helper removed by root test purge"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "fix/open-door-guard-missing-tjlabs-test",
+      "closed_at": "2026-09-25T16:27:20Z",
+      "head_sha": "d07b5a8861276795af35cbc087af1f93c20bba12",
+      "merged_at": null,
+      "number": 29837,
+      "state": "CLOSED",
+      "title": "drop missing test_tjlabs_pack_terms.py from open-door-guard tests"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "repair/open-door-tjlabs-live-fixture-20260925",
+      "closed_at": "2026-09-25T16:25:16Z",
+      "head_sha": "0d8a849e2581e95fa8ea9551d003f863e1e3de54",
+      "merged_at": "2026-09-25T16:25:16Z",
+      "number": 29839,
+      "state": "MERGED",
+      "title": "restore sold-pack ToS test required by open-door-guard"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "purge/tests-dir-unreferenced-20260925",
+      "closed_at": "2026-09-25T16:15:21Z",
+      "head_sha": "63d9ac4f3202cae0b1e1bcefcc0b8ffa5d2d822d",
+      "merged_at": "2026-09-25T16:15:21Z",
+      "number": 29835,
+      "state": "MERGED",
+      "title": "purge unreferenced tests directory files"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "purge/root-tests-unreferenced-20260925",
+      "closed_at": "2026-09-25T16:13:30Z",
+      "head_sha": "d3c909f1b2828e968f4ba8697b1f42c2725bfb8f",
+      "merged_at": "2026-09-25T16:13:30Z",
+      "number": 29834,
+      "state": "MERGED",
+      "title": "purge unreferenced root test files"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "repair/repo-pulse-backup-http-500-36153564499",
+      "closed_at": "2026-09-25T15:52:27Z",
+      "head_sha": "f54c943b4f7442fc1511e35464cb4b975d347cd1",
+      "merged_at": "2026-09-25T15:52:27Z",
+      "number": 29832,
+      "state": "MERGED",
+      "title": "repair repo-pulse artifacts HTTP 500 so the digest still posts"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -67,119 +177,9 @@
       "number": 29784,
       "state": "MERGED",
       "title": "purge: drop 83 root page and doc string checks"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "purge/root-page-text-20260925d",
-      "closed_at": "2026-09-25T13:10:40Z",
-      "head_sha": "b4350f18bc6adc4b4d74bc662c7f2ba184573881",
-      "merged_at": "2026-09-25T13:10:40Z",
-      "number": 29783,
-      "state": "MERGED",
-      "title": "purge: drop 106 root page and doc string checks"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "purge/root-page-text-20260925c",
-      "closed_at": "2026-09-25T13:09:29Z",
-      "head_sha": "ef9a80adb7fb474483a62a4b7bff8c0b2d88000c",
-      "merged_at": "2026-09-25T13:09:29Z",
-      "number": 29782,
-      "state": "MERGED",
-      "title": "purge: drop 1212 root page-text and doc-string checks"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "purge/root-bass-lc-pins-20260925b",
-      "closed_at": "2026-09-25T13:06:13Z",
-      "head_sha": "c85491d8167e4b9ed116a95555f0a686fb57446a",
-      "merged_at": "2026-09-25T13:06:13Z",
-      "number": 29781,
-      "state": "MERGED",
-      "title": "purge: drop 217 bass live-cash page-text pins"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "purge/root-bass-live-cash-20260925a",
-      "closed_at": "2026-09-25T13:03:55Z",
-      "head_sha": "62f97b45c0870b8246ad62efc8b7165f3f731047",
-      "merged_at": "2026-09-25T13:03:55Z",
-      "number": 29777,
-      "state": "MERGED",
-      "title": "purge: drop eight bass page-text live-cash checks"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "latch/dir9-ntfy-cursor-661785db-20260925",
-      "closed_at": "2026-09-25T11:07:56Z",
-      "head_sha": "14d91464079f720fcda0207adc767945e4118d49",
-      "merged_at": "2026-09-25T11:07:56Z",
-      "number": 29776,
-      "state": "MERGED",
-      "title": "latch(dir9): ntfy tip cursor ADVANCE seq 171 for 661785db"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "latch/dir9-ntfy-cursor-141733074-20260925",
-      "closed_at": "2026-09-25T10:13:02Z",
-      "head_sha": "1cb34f4470d163ddfb3fc1e05c75161c35927a3c",
-      "merged_at": "2026-09-25T10:13:02Z",
-      "number": 29739,
-      "state": "MERGED",
-      "title": "latch(dir9): ntfy tip cursor ADVANCE seq 170 for 141733074"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "latch/dir9-swh-save-2500932-20260925",
-      "closed_at": "2026-09-25T09:12:23Z",
-      "head_sha": "21d930dadf69a9cc64dbe1c6b4cfbeee1766c2cb",
-      "merged_at": "2026-09-25T09:12:23Z",
-      "number": 29738,
-      "state": "MERGED",
-      "title": "latch(dir9): SWH save 2500932 receipt at tip 10f07a4c"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "latch/dir9-ntfy-cursor-tip-20260925",
-      "closed_at": "2026-09-25T08:10:20Z",
-      "head_sha": "bd12d655b488f0424b8d1579ac2af451e3e0cfbe",
-      "merged_at": "2026-09-25T08:10:20Z",
-      "number": 29737,
-      "state": "MERGED",
-      "title": "latch(dir9): ntfy tip cursor ADVANCE seq 168 for cb866104"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "repair/slack-table-tip-http-never-carrier-20260925-01",
-      "closed_at": "2026-09-25T07:23:57Z",
-      "head_sha": "48d4569ca831f37e20b85e76764bcea7b679ba05",
-      "merged_at": "2026-09-25T07:23:57Z",
-      "number": 29734,
-      "state": "MERGED",
-      "title": "fix(peer_wake): slack_table_tip never calls http"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "latch/dir9-swh-save-20260925-01",
-      "closed_at": "2026-09-25T07:14:57Z",
-      "head_sha": "f198751667a1b11c40f18b3b0f915e0f94e88035",
-      "merged_at": "2026-09-25T07:14:57Z",
-      "number": 29733,
-      "state": "MERGED",
-      "title": "latch(dir9): SWH save 2500695 receipt + slack_table_tip"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-25T14:38:33Z"
+  "unchanged_since": "2026-09-25T17:42:30Z"
 }
