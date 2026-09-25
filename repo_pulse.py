@@ -43,6 +43,9 @@ UA = "repo-pulse/2.1"
 SPRINT_CHECKER = "host/sprint_integration.py"
 SPRINT_POLICY = "ground/SPRINT_INTEGRATION.json"
 SPRINT_LAW = "ground/SPRINT_INTEGRATION.md"
+# Exact Actions artifact from open-repo-backup.yml. The unfiltered
+# artifacts collection is large enough for GitHub to answer HTTP 500.
+BACKUP_ARTIFACT = "commons-open-repo-backup"
 SPRINT_TEACH = (
     "MERGE DEFAULT. Parallel branches are not collisions. "
     "CONFLICT only when same effective code disagrees. "
@@ -1139,7 +1142,27 @@ def health(head):
 
 
 def newest_backup(now):
-    payload, _ = gh("/repos/{repo}/actions/artifacts", per_page=100)
+    """Age of the named open-repo backup.
+
+    Ask for that artifact by name. One transient HTTP 5xx is retried.
+    A second 5xx is recorded and the age is omitted so the digest still posts.
+    Other HTTP statuses still propagate.
+    """
+    payload = None
+    for attempt in range(2):
+        try:
+            payload, _ = gh(
+                "/repos/{repo}/actions/artifacts",
+                name=BACKUP_ARTIFACT,
+                per_page=20,
+            )
+            break
+        except urllib.error.HTTPError as exc:
+            if exc.code not in (500, 502, 503, 504):
+                raise
+            if attempt:
+                NOTES.append("backup probe HTTP %s" % exc.code)
+                return None
     artifacts = (payload or {}).get("artifacts") if isinstance(payload, dict) else []
     return parse_backup_age(artifacts, now)
 
