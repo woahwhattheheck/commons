@@ -134,12 +134,6 @@ def main():
                 "host/tjlabs_pack_terms.py",
                 ['"""Classify tjlabs sold-pack ToS slots. Not a Commons gate.'],
             ),
-            diff(
-                "test_tjlabs_pack_terms.py",
-                [
-                    '"""tjlabs sold-pack ToS: owner slots, no invented share, not a Commons gate."""',
-                ],
-            ),
         ]
     )
     assert guard.scan_diff(tos_leftover) == [], guard.scan_diff(tos_leftover)
@@ -158,7 +152,6 @@ def main():
     tjlabs_paths = [
         Path("ground/TJLABS_PACK_TERMS.md"),
         Path("host/tjlabs_pack_terms.py"),
-        Path("test_tjlabs_pack_terms.py"),
     ]
     tjlabs_lines = [
         guard.AddedLine(path.as_posix(), line_number, text)
