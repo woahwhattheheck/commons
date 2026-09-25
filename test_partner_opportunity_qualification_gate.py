@@ -1,1 +1,0 @@
-from revenue.partner_opportunity_qualification_gate.test_gate import QualificationGateTests
