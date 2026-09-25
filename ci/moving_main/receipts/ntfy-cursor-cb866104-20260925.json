@@ -1,0 +1,56 @@
+{
+  "cite": [
+    "grok-dir9-moving-main-mirror-20260828-01",
+    "ntfy-cursor-20260828.json",
+    "latch-dir9-swh-save-20260925-01",
+    "swh-save-2500695.json"
+  ],
+  "claim_boundary": {
+    "automatic_moving_main_cursor": true,
+    "canonical_durability": false,
+    "corpus": false,
+    "independent_origin": true
+  },
+  "cursor": {
+    "digest": "930164d3d6411f84ce9385862c7a636f8daaeb75e9ae8c58ab00cd5b0e06190a",
+    "head_sha": "cb866104af8da91a6b56287fa0edc3b190485352",
+    "seq": 168,
+    "state": "ADVANCE"
+  },
+  "do_not_remint": [
+    "ntfy-cursor-20260828",
+    "swh-save-2500695",
+    "latch-dir9-swh-save-20260925-01",
+    "latch-table-empty-buildable-20260924-01"
+  ],
+  "jsdelivr": {
+    "http_status": 200,
+    "sha256": "1abd4a9643eced144bd85405f22ca84170d55ad8037df0111973a8c8f66d9b48",
+    "state": "READBACK",
+    "url": "https://cdn.jsdelivr.net/gh/woahwhattheheck/commons@main/fresh.md",
+    "verified": true,
+    "x-jsd-version": "main"
+  },
+  "kind": "automatic-moving-main-cursor",
+  "note": "Tip ADVANCE after latch-dir9 SWH 2500695 merge tip d6d056d7; Actions cursor lagged at seq 167. Unique ntfy tip cursor for current HEAD + jsDelivr @main readback. Do not remint ntfy-cursor-20260828 / swh-save-2500695.",
+  "observed_at": "2026-09-25T08:09:34Z",
+  "previous_head": "d6d056d7e515105f5c0e9e83295bf72fc850001a",
+  "provider": "ntfy",
+  "publish": {
+    "digest": "e129463e733fbcb730401a5a0b88f72c994d0479657477fbdebde40b76f88f93",
+    "http_status": 200,
+    "state": "PUBLISHED",
+    "url": "https://ntfy.sh/woahwhattheheck-commons-main",
+    "verified": true
+  },
+  "readback": {
+    "head": "cb866104af8da91a6b56287fa0edc3b190485352",
+    "message_kind": "commons-main-cursor",
+    "seq": 1,
+    "state": "READBACK",
+    "url": "https://ntfy.sh/woahwhattheheck-commons-main/json?poll=1&since=24h",
+    "verified": true
+  },
+  "schema_version": "commons-moving-main-mirror/v1",
+  "tip_measured": "cb866104af8da91a6b56287fa0edc3b190485352"
+}
