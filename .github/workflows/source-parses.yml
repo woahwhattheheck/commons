@@ -254,12 +254,27 @@ jobs:
             revenue/multi_framework_evidence_freshness/golden.py \
             revenue/multi_framework_evidence_freshness/cli.py \
             tests/test_multi_framework_evidence_freshness.py \
-            tests/test_multi_framework_evidence_freshness_custody.py
+            tests/test_multi_framework_evidence_freshness_custody.py \
+            tests/test_multi_framework_evidence_freshness_commercial.py \
+            tests/test_multi_framework_evidence_freshness_pilot.py
 
       - name: Prove focused discovery is non-vacuous
         run: |
           python - <<'PY'
+          import pathlib
           import unittest
+          required = (
+              "tests/test_multi_framework_evidence_freshness.py",
+              "tests/test_multi_framework_evidence_freshness_custody.py",
+              "tests/test_multi_framework_evidence_freshness_commercial.py",
+              "tests/test_multi_framework_evidence_freshness_pilot.py",
+          )
+          missing = [path for path in required if not pathlib.Path(path).is_file()]
+          if missing:
+              raise SystemExit(
+                  "freshness discover pattern lost workflow-invoked tests: "
+                  + ", ".join(missing)
+              )
           suite = unittest.defaultTestLoader.discover(
               "tests", pattern="test_multi_framework_evidence_freshness*.py"
           )
