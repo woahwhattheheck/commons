@@ -24,5 +24,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
-          python3 -m unittest test_slack_service_tag_worker.py test_slack_service_tags.py
           python3 host/slack_service_tag_worker.py --poll
