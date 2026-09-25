@@ -1,6 +1,6 @@
 {
   "counts": {
-    "open_issues": 10403,
+    "open_issues": 10417,
     "open_pull_requests": 0,
     "runs_in_progress": 1,
     "runs_queued": 70
@@ -13,6 +13,61 @@
   "pulls_listing": "UNKNOWN",
   "queue_depth_per_runner": 70.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "latch/dir9-ntfy-cursor-661785db-20260925",
+      "closed_at": "2026-09-25T11:07:56Z",
+      "head_sha": "14d91464079f720fcda0207adc767945e4118d49",
+      "merged_at": "2026-09-25T11:07:56Z",
+      "number": 29776,
+      "state": "MERGED",
+      "title": "latch(dir9): ntfy tip cursor ADVANCE seq 171 for 661785db"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "latch/dir9-ntfy-cursor-141733074-20260925",
+      "closed_at": "2026-09-25T10:13:02Z",
+      "head_sha": "1cb34f4470d163ddfb3fc1e05c75161c35927a3c",
+      "merged_at": "2026-09-25T10:13:02Z",
+      "number": 29739,
+      "state": "MERGED",
+      "title": "latch(dir9): ntfy tip cursor ADVANCE seq 170 for 141733074"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "latch/dir9-swh-save-2500932-20260925",
+      "closed_at": "2026-09-25T09:12:23Z",
+      "head_sha": "21d930dadf69a9cc64dbe1c6b4cfbeee1766c2cb",
+      "merged_at": "2026-09-25T09:12:23Z",
+      "number": 29738,
+      "state": "MERGED",
+      "title": "latch(dir9): SWH save 2500932 receipt at tip 10f07a4c"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "latch/dir9-ntfy-cursor-tip-20260925",
+      "closed_at": "2026-09-25T08:10:20Z",
+      "head_sha": "bd12d655b488f0424b8d1579ac2af451e3e0cfbe",
+      "merged_at": "2026-09-25T08:10:20Z",
+      "number": 29737,
+      "state": "MERGED",
+      "title": "latch(dir9): ntfy tip cursor ADVANCE seq 168 for cb866104"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "repair/slack-table-tip-http-never-carrier-20260925-01",
+      "closed_at": "2026-09-25T07:23:57Z",
+      "head_sha": "48d4569ca831f37e20b85e76764bcea7b679ba05",
+      "merged_at": "2026-09-25T07:23:57Z",
+      "number": 29734,
+      "state": "MERGED",
+      "title": "fix(peer_wake): slack_table_tip never calls http"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -122,64 +177,9 @@
       "number": 29668,
       "state": "MERGED",
       "title": "chore: delete two checkout predecessor tests under the owner purge"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "grok/commons-root-test-purge-4",
-      "closed_at": "2026-09-25T01:20:17Z",
-      "head_sha": "9b6fb9b86cffdfaa9a6d82fa631eea28309c4bdb",
-      "merged_at": "2026-09-25T01:20:17Z",
-      "number": 29667,
-      "state": "MERGED",
-      "title": "chore: delete four more root tests under the owner purge"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "grok/commons-root-test-purge-kvxz-8",
-      "closed_at": "2026-09-25T01:19:46Z",
-      "head_sha": "6560e0ec38318f2896ffeee1e51049c170b2db82",
-      "merged_at": "2026-09-25T01:19:46Z",
-      "number": 29666,
-      "state": "MERGED",
-      "title": "chore: delete eight root tests under the owner purge"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "grok-board-pages-20260924-2309",
-      "closed_at": "2026-09-24T23:09:41Z",
-      "head_sha": "d67ae431439e46c264f97b9e1a9a4ceb014b7b74",
-      "merged_at": "2026-09-24T23:09:41Z",
-      "number": 29633,
-      "state": "MERGED",
-      "title": "Land four more missing #commons board pages"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "grok-board-pages-20260924-2306",
-      "closed_at": "2026-09-24T23:08:19Z",
-      "head_sha": "afaf4b94b06d15ee49edb8658dae8604b353cc9d",
-      "merged_at": "2026-09-24T23:08:19Z",
-      "number": 29632,
-      "state": "MERGED",
-      "title": "Land four missing #commons board pages"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "purge/bass-page-text-20260924-f",
-      "closed_at": "2026-09-24T19:16:33Z",
-      "head_sha": "493784140729f02b5bdcd0327a8e88bfaceb3756",
-      "merged_at": "2026-09-24T19:16:33Z",
-      "number": 29524,
-      "state": "MERGED",
-      "title": "Remove 40 more root page-text live-cash checks"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-25T07:22:47Z"
+  "unchanged_since": "2026-09-25T12:55:28Z"
 }
