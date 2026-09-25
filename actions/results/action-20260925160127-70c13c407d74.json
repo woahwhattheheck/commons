@@ -1,0 +1,13 @@
+{
+  "id": "action-20260925160127-70c13c407d74",
+  "verb": "READ",
+  "target": "ground/CURRENT_WORK.json",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: List: not found\n",
+  "executed_at": "2026-09-25T17:47:27.725718Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}
