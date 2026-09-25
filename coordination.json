@@ -1,15 +1,15 @@
 {
- "counts": {"drift":{"contained":0,"current":0,"disjoint":0,"overlap":0,"unknown":0},"hosted":{},"lanes_open":0,"lanes_with_several_open":0,"listed_open":0,"listed_recent_closed":198,"open_prs":0},
+ "counts": {"drift":{"contained":0,"current":0,"disjoint":0,"overlap":0,"unknown":0},"hosted":{},"lanes_open":0,"lanes_with_several_open":0,"listed_open":0,"listed_recent_closed":57,"open_prs":0},
  "degraded": [],
  "files": {"head":"coordination-head.json","lanes":"coordination-lanes.json","paths":"coordination-paths.json"},
- "main": {"committed_at":"2026-09-25T07:31:58Z","message":"fire addressed Commons actions","sha":"cb866104af8da91a6b56287fa0edc3b190485352"},
+ "main": {"committed_at":"2026-09-25T13:28:39Z","message":"fix: drop purged test_webmcp_door from spark-mcp-production (#29788)","sha":"dc5be98c7cd04a8b48de107f220fea2bb6198379"},
  "notes": [],
- "observed_at": "2026-09-25T07:39:29Z",
- "producer": {"api_calls":9,"first_draft":true,"road":"git trees + GitHub GraphQL/REST","seat":"coordination-state-workflow"},
+ "observed_at": "2026-09-25T13:38:02Z",
+ "producer": {"api_calls":7,"first_draft":true,"road":"git trees + GitHub GraphQL/REST","seat":"coordination-state-workflow"},
  "prs": [],
- "queue": {"in_progress":3,"oldest_is_lower_bound":false,"oldest_queued_age_s":3204205,"oldest_queued_at":"2026-08-19T05:36:04Z","queued":70},
+ "queue": {"in_progress":1,"oldest_is_lower_bound":false,"oldest_queued_age_s":3225718,"oldest_queued_at":"2026-08-19T05:36:04Z","queued":70},
  "repo": "woahwhattheheck/commons",
  "schema": "commons-coordination-state/v1",
  "swarm": {"batches":[],"capacity":null,"capacity_note":"available review batches at observation time; unknown is not unlimited","counts":{},"policy":"ground/SWARM_ORDER.md","schema":"commons-swarm-queue/v1"},
- "tips": {"main":"cb866104af8da91a6b56287fa0edc3b190485352","yz/parking-lot-ci-retirement-511e1c":"UNKNOWN"}
+ "tips": {"main":"dc5be98c7cd04a8b48de107f220fea2bb6198379"}
 }

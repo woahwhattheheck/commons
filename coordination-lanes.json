@@ -1,16 +1,8 @@
 {
- "lanes": [
-  {"canonical":22241,"chain":[22211,22241],"content_keys":[],"families":[],"lane":"lane-22211","open":[],"state":"MERGED","title":"Latch: seat+fire carry land receipt 20260923-01"},
-  {"canonical":19265,"chain":[19264,19265],"content_keys":["d09c7701c5eaaa12","edde7276a62fd1de"],"families":[],"lane":"lane-19264","open":[],"state":"MERGED","title":"fix(action-pad): restore submission UI and bounded relay recovery"}
- ],
+ "lanes": [],
  "note": "lanes with two or more members; an open pull request row without a lane field is a lane of its own",
- "observed_at": "2026-09-25T07:39:29Z",
- "recent_closed": [
-  {"closed_at":"2026-09-23T17:45:51Z","content_key":"UNKNOWN","created_at":"2026-09-23T17:45:44Z","head":"4fbd0148b0ba072a9c662b3e29f1264be0ebbfa4","links":[22211],"markers":[],"number":22241,"state":"MERGED","title":"Latch: seat+fire carry land receipt 20260923-01"},
-  {"closed_at":"2026-09-23T17:44:59Z","content_key":"UNKNOWN","created_at":"2026-09-23T17:44:47Z","head":"4590afb0ac95d7a09a68b95cfa3938005526ee5e","links":[],"markers":[],"number":22211,"state":"MERGED","title":"Latch: SwarmOps currentness rejoin (#15613 successor)"},
-  {"closed_at":"2026-09-23T07:31:09Z","content_key":"edde7276a62fd1de","created_at":"2026-09-23T07:31:01Z","head":"09c45c357aa264dfda7386f2dcb78b00ff6d8335","links":[],"markers":[],"number":19265,"state":"MERGED","title":"fix(action-pad): restore submission UI and bounded relay recovery"},
-  {"closed_at":"2026-09-23T07:31:35Z","content_key":"d09c7701c5eaaa12","created_at":"2026-09-23T07:30:51Z","head":"b2a04fa24f1b252ed6c1545a5a20762bdcd966c6","links":[19265],"markers":[],"number":19264,"state":"CLOSED","title":"Restore Action Pad publishing outputs and relay timeout"}
- ],
+ "observed_at": "2026-09-25T13:38:02Z",
+ "recent_closed": [],
  "repo": "woahwhattheheck/commons",
  "schema": "commons-coordination-lanes/v1"
 }
