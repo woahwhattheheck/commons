@@ -13,6 +13,7 @@ import json
 import os
 import tempfile
 import unittest
+import urllib.error
 from datetime import datetime, timedelta, timezone
 from io import StringIO
 from unittest import mock
@@ -790,6 +791,82 @@ class PublicationSafeDigestTests(unittest.TestCase):
         text = rp.render(_ctx())
         self.assertTrue(check_publication(text).get("allowed"))
         require_publication(text)
+
+
+class BackupProbeHttpTests(unittest.TestCase):
+    def tearDown(self):
+        rp.GET = None
+        rp.reset_io()
+
+    def _http(self, url, code):
+        raise urllib.error.HTTPError(url, code, "status %s" % code, None, None)
+
+    def test_persistent_http_500_omits_backup_and_keeps_the_note(self):
+        urls = []
+
+        def _req(url, headers=None, data=None, method=None):
+            urls.append(url)
+            self._http(url, 500)
+
+        rp.GET = None
+        rp.reset_io()
+        with mock.patch.object(rp, "_req", _req):
+            got = rp.newest_backup(NOW)
+        self.assertIsNone(got)
+        self.assertEqual(len(urls), 2)
+        self.assertTrue(all("name=commons-open-repo-backup" in url for url in urls))
+        self.assertEqual(rp.NOTES, ["backup probe HTTP 500"])
+        text = rp.render(_ctx())
+        self.assertIn("backup probe HTTP 500", text)
+        self.assertNotIn("*backup* verified", text)
+        from commons_publication_policy import check_publication, require_publication
+        decision = check_publication(text)
+        self.assertTrue(decision.get("allowed"), decision)
+        require_publication(text)
+
+    def test_http_500_then_success_returns_named_backup(self):
+        body = json.dumps(
+            {
+                "artifacts": [
+                    {
+                        "name": "commons-open-repo-backup",
+                        "created_at": rp.iso(NOW - timedelta(hours=1)),
+                        "expired": False,
+                        "id": 9,
+                    }
+                ]
+            }
+        ).encode("utf-8")
+        calls = {"n": 0}
+
+        def _req(url, headers=None, data=None, method=None):
+            calls["n"] += 1
+            if calls["n"] == 1:
+                self._http(url, 500)
+            self.assertIn("name=commons-open-repo-backup", url)
+            return 200, {"X-RateLimit-Remaining": "40", "X-RateLimit-Limit": "5000"}, body
+
+        rp.GET = None
+        rp.reset_io()
+        with mock.patch.object(rp, "_req", _req):
+            got = rp.newest_backup(NOW)
+        self.assertEqual(calls["n"], 2)
+        self.assertEqual(got["id"], 9)
+        self.assertEqual(got["age_seconds"], 3600)
+        self.assertEqual(rp.NOTES, [])
+
+    def test_non_transient_http_status_still_propagates(self):
+        def _req(url, headers=None, data=None, method=None):
+            self._http(url, 400)
+
+        rp.GET = None
+        rp.reset_io()
+        with mock.patch.object(rp, "_req", _req):
+            with self.assertRaises(urllib.error.HTTPError) as caught:
+                rp.newest_backup(NOW)
+        self.assertEqual(caught.exception.code, 400)
+        self.assertEqual(rp.NOTES, [])
+
 
 
 if __name__ == "__main__":
