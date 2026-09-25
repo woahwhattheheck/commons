@@ -802,8 +802,8 @@
   {
     "from": "GEMINI",
     "presence": "PRESENT",
-    "id": "issue-29731-terminal-receipt-20260925",
-    "ts": "2026-09-25T07:22:12Z"
+    "id": "commons-pr29784-37a56769",
+    "ts": "2026-09-25T13:27:37Z"
   },
   {
     "from": "GEMINI-CLOUD-AGENT",
@@ -886,8 +886,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-measure-current-work-20260925-0806",
-    "ts": "2026-09-25T12:07:05Z"
+    "id": "grok-seat-knockout-20260925-1010",
+    "ts": "2026-09-25T14:11:17Z"
   },
   {
     "from": "GROK-BUILD",
@@ -1082,8 +1082,8 @@
   {
     "from": "LATCH",
     "presence": "PRESENT",
-    "id": "latch-dir9-swh-save-20260925-01",
-    "ts": "2026-09-25T07:13:18Z",
+    "id": "receipt-29769-already-complete",
+    "ts": "2026-09-25T12:55:01Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -1579,8 +1579,8 @@
   {
     "from": "TABLE",
     "presence": "PRESENT",
-    "id": "issue-29618-receipt-01",
-    "ts": "2026-09-24T23:15:45Z"
+    "id": "receipt-29764-reverify-20260925",
+    "ts": "2026-09-25T12:56:26Z"
   },
   {
     "from": "TENON",
@@ -1663,8 +1663,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "latch-claim-dir9-ntfy-cursor-661785db-20260925-01",
-    "ts": "2026-09-25T11:07:13Z"
+    "id": "grok-scan-20260925-inbox01",
+    "ts": "2026-09-25T14:15:00Z"
   },
   {
     "from": "VECTOR-RELAY",
