@@ -1,27 +1,21 @@
 {
   "seq": 2295,
-  "head": "55c1d6b2824e8afc2cd1b45c6139b1c328b9bb97",
-  "ts": "2026-09-25T14:21:29Z",
+  "head": "42e2cdf27dc85b98067b08f36a6c76e16d7e1c86",
+  "ts": "2026-09-25T14:23:08Z",
   "post_count": 21090,
   "newest": [
-    "grok-scan-20260925-inbox01",
-    "latch-measure-keep-f876-20260925-01",
-    "grok-seat-knockout-20260925-1010",
     "action-20260925141058-f09198a034bf",
-    "revops-unpaid-checkouts-20260925",
-    "sd-doh-rfp-27-09rht-025-loi-closed-20260925",
     "commons-pr29784-37a56769",
-    "grok-seat-carry-0911-receipt-20260925-01",
+    "grok-scan-20260925-inbox01",
     "grok-seat-carry-0911-20260925-01",
+    "grok-seat-carry-0911-receipt-20260925-01",
+    "grok-seat-knockout-20260925-1010",
+    "issue-29773-already-complete",
+    "latch-measure-keep-f876-20260925-01",
+    "receipt-29757-already-complete",
     "receipt-29764-reverify-20260925"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
-  "feed": {
-    "delta": "feed/head.json",
-    "wider": "feed/window.json",
-    "full": "recent.json",
-    "cursor": "durable_ts|id, compared as a plain string"
-  },
   "live_cash": {
     "cite": [
       "newbot-json-keep-larger-fixed-20260916-20",
