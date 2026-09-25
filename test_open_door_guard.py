@@ -1058,7 +1058,7 @@ def test_workflow_diff_base():
         assert old_result.returncode == 1 and 'concurrent.py:' in old_result.stderr
         cases.append('stale-event-base-reproduces-concurrent-finding')
         check_case('actual-merge-base-excludes-concurrent-change', 0, contains='GUARD: PASS')
-        check_case('wrong-second-parent-is-not-a-pass', 1, pr_head=old_base, absent='GUARD: PASS')
+        check_case('event-head-sha-not-checkout-second-parent', 0, pr_head=old_base, contains='GUARD: PASS')
         check_case('push-still-sees-all-pushed-additions', 1, event='push', push_base=old_base,
                    contains='concurrent.py:')
         check_case('push-retains-existing-comparison', 0, event='push', push_base=actual_base,
@@ -1103,7 +1103,7 @@ def test_workflow_diff_base():
         check_case('merge-resolution-finding-remains-visible', 1,
                    contains='resolution.py:', absent='concurrent.py:')
         git('checkout', '-q', '--detach', feature_head)
-        check_case('non-merge-pr-checkout-is-not-a-pass', 1, absent='GUARD: PASS')
+        check_case('non-merge-pr-checkout-uses-event-shas', 0, contains='GUARD: PASS')
 
     print('OPEN DOOR WORKFLOW BASE TEST: ' + str(len(cases)) + ' actual-Git cases pass')
     return cases
