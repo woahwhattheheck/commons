@@ -1,8 +1,8 @@
 {
   "counts": {
-    "open_issues": 10417,
+    "open_issues": 10333,
     "open_pull_requests": 0,
-    "runs_in_progress": 1,
+    "runs_in_progress": 8,
     "runs_queued": 70
   },
   "counts_source": "graphql",
@@ -11,8 +11,107 @@
   ],
   "pulls_listed": "UNKNOWN",
   "pulls_listing": "UNKNOWN",
-  "queue_depth_per_runner": 70.0,
+  "queue_depth_per_runner": 8.8,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "fix/spark-mcp-drop-purged-webmcp-door-test",
+      "closed_at": "2026-09-25T13:28:39Z",
+      "head_sha": "8c729d9f65cec0124573bc8966af812503d6cd20",
+      "merged_at": "2026-09-25T13:28:39Z",
+      "number": 29788,
+      "state": "MERGED",
+      "title": "fix: drop purged test_webmcp_door from spark-mcp-production"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "purge/root-json-string-20260925h",
+      "closed_at": "2026-09-25T13:16:40Z",
+      "head_sha": "a03216b5e9c2bd1874ef6555622ebcd743b9c2c9",
+      "merged_at": "2026-09-25T13:16:40Z",
+      "number": 29787,
+      "state": "MERGED",
+      "title": "purge: drop 53 root JSON and page string checks"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "purge/root-page-text-20260925g",
+      "closed_at": "2026-09-25T13:14:54Z",
+      "head_sha": "dffea3c2bc3708a14feeb3096ed24f6c9e6b2dd0",
+      "merged_at": "2026-09-25T13:14:54Z",
+      "number": 29786,
+      "state": "MERGED",
+      "title": "purge: drop 29 root page and doc string checks"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "purge/strip-unittest-steps-20260925f",
+      "closed_at": "2026-09-25T13:13:42Z",
+      "head_sha": "8d40e649e42acd30d3dc0d3bac9a9c4febf734ee",
+      "merged_at": "2026-09-25T13:13:42Z",
+      "number": 29785,
+      "state": "MERGED",
+      "title": "purge: strip unittest steps from three mixed workflows"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "purge/root-page-text-20260925e",
+      "closed_at": "2026-09-25T13:11:55Z",
+      "head_sha": "37a56769d13b15ee74bf0b6de7886098d641fe53",
+      "merged_at": "2026-09-25T13:11:55Z",
+      "number": 29784,
+      "state": "MERGED",
+      "title": "purge: drop 83 root page and doc string checks"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "purge/root-page-text-20260925d",
+      "closed_at": "2026-09-25T13:10:40Z",
+      "head_sha": "b4350f18bc6adc4b4d74bc662c7f2ba184573881",
+      "merged_at": "2026-09-25T13:10:40Z",
+      "number": 29783,
+      "state": "MERGED",
+      "title": "purge: drop 106 root page and doc string checks"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "purge/root-page-text-20260925c",
+      "closed_at": "2026-09-25T13:09:29Z",
+      "head_sha": "ef9a80adb7fb474483a62a4b7bff8c0b2d88000c",
+      "merged_at": "2026-09-25T13:09:29Z",
+      "number": 29782,
+      "state": "MERGED",
+      "title": "purge: drop 1212 root page-text and doc-string checks"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "purge/root-bass-lc-pins-20260925b",
+      "closed_at": "2026-09-25T13:06:13Z",
+      "head_sha": "c85491d8167e4b9ed116a95555f0a686fb57446a",
+      "merged_at": "2026-09-25T13:06:13Z",
+      "number": 29781,
+      "state": "MERGED",
+      "title": "purge: drop 217 bass live-cash page-text pins"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "purge/root-bass-live-cash-20260925a",
+      "closed_at": "2026-09-25T13:03:55Z",
+      "head_sha": "62f97b45c0870b8246ad62efc8b7165f3f731047",
+      "merged_at": "2026-09-25T13:03:55Z",
+      "number": 29777,
+      "state": "MERGED",
+      "title": "purge: drop eight bass page-text live-cash checks"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -78,108 +177,9 @@
       "number": 29733,
       "state": "MERGED",
       "title": "latch(dir9): SWH save 2500695 receipt + slack_table_tip"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "repair/open-door-guard-two-parent-36085720397",
-      "closed_at": "2026-09-25T02:31:32Z",
-      "head_sha": "7f084cf2046b21f4771de5309c2b18f4701b30c2",
-      "merged_at": "2026-09-25T02:31:31Z",
-      "number": 29675,
-      "state": "MERGED",
-      "title": "fix(open-door-guard): restore two-parent integration diff"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "fix/open-door-guard-event-sha-tests-3",
-      "closed_at": "2026-09-25T02:29:37Z",
-      "head_sha": "3ce6fe156d89de6e43baad88737bf6d3a3bf4c85",
-      "merged_at": "2026-09-25T02:29:37Z",
-      "number": 29676,
-      "state": "MERGED",
-      "title": "fix(open-door-guard): shallow matrix fetches event base SHA"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "fix/open-door-guard-event-sha-tests-2",
-      "closed_at": "2026-09-25T02:24:31Z",
-      "head_sha": "4424b4bb583f8fb46351d6f5d5ca23d72feb33c9",
-      "merged_at": "2026-09-25T02:24:31Z",
-      "number": 29674,
-      "state": "MERGED",
-      "title": "fix(open-door-guard): align matrix tests with event SHA contract"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "purge-root-tests-20260925d",
-      "closed_at": "2026-09-25T02:16:20Z",
-      "head_sha": "472384dfdf718a544608fa38625e2a5cbd3400b3",
-      "merged_at": "2026-09-25T02:16:20Z",
-      "number": 29673,
-      "state": "MERGED",
-      "title": "chore: delete two more AutoGTM root checks"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "purge-root-tests-20260925c",
-      "closed_at": "2026-09-25T02:12:49Z",
-      "head_sha": "3e72843f8e8af56edb1380f70a3ff056b7632121",
-      "merged_at": "2026-09-25T02:12:48Z",
-      "number": 29672,
-      "state": "MERGED",
-      "title": "chore: delete four AutoGTM hash-pin checks"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "latch/latch-claim-empty-ledger-20260924-2208",
-      "closed_at": "2026-09-25T02:09:19Z",
-      "head_sha": "910fa623767a4c54613bc13ad3234fded9bec2a1",
-      "merged_at": "2026-09-25T02:09:19Z",
-      "number": 29671,
-      "state": "MERGED",
-      "title": "LATCH: empty unfinished-now claim latch-claim-empty-ledger-20260924-2208"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "purge-root-tests-20260925b",
-      "closed_at": "2026-09-25T02:08:54Z",
-      "head_sha": "c2aeb6906a03225635213f826bbbdb4dc8dac8f8",
-      "merged_at": "2026-09-25T02:08:54Z",
-      "number": 29670,
-      "state": "MERGED",
-      "title": "chore: delete four more root unittest checks"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "purge-root-tests-20260925a",
-      "closed_at": "2026-09-25T02:08:03Z",
-      "head_sha": "0c64c9288846591a75e2aaf69827490338d623d1",
-      "merged_at": "2026-09-25T02:08:03Z",
-      "number": 29669,
-      "state": "MERGED",
-      "title": "chore: delete four root page-text checks"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "grok/commons-root-test-purge-checkout-2",
-      "closed_at": "2026-09-25T01:20:48Z",
-      "head_sha": "d6d496dc6c4bcac76e8d202780e99ec04ab47419",
-      "merged_at": "2026-09-25T01:20:48Z",
-      "number": 29668,
-      "state": "MERGED",
-      "title": "chore: delete two checkout predecessor tests under the owner purge"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-25T12:55:28Z"
+  "unchanged_since": "2026-09-25T14:22:57Z"
 }
