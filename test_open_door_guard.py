@@ -160,10 +160,17 @@ def main():
         Path("host/tjlabs_pack_terms.py"),
         Path("test_tjlabs_pack_terms.py"),
     ]
+    # Run 36159386014: a workflow-YAML purge deleted test_tjlabs_pack_terms.py
+    # even though this matrix still scans that live leftover. Do not drop a
+    # missing path; the absence is the failure.
+    absent = [path.as_posix() for path in tjlabs_paths if not path.is_file()]
+    assert absent == [], (
+        "live ToS leftover files scanned by this matrix were removed: "
+        + ", ".join(absent)
+    )
     tjlabs_lines = [
         guard.AddedLine(path.as_posix(), line_number, text)
         for path in tjlabs_paths
-        if path.is_file()
         for line_number, text in enumerate(
             path.read_text(encoding="utf-8").splitlines(), 1
         )
