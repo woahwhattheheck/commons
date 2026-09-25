@@ -111,8 +111,11 @@ def signal(
             "slack_table_tip refuses non-EXTERNAL doorbells. "
             "TIP formatted only; no resume fabricated."
         )
-    poster = post_fn if post_fn is not None else http
-    if not deliver or poster is None:
+        return base
+    # ``http`` is bus signature parity only. Never call it. ``post_fn`` is
+    # the only injectable carrier.
+    del http
+    if not deliver or post_fn is None:
         return base
     payload = {
         "channel": base["channel"],
@@ -122,7 +125,7 @@ def signal(
         "doorbell": "EXTERNAL_PLATFORM_ACTION",
         "live_wake": False,
     }
-    result = poster(payload) or {}
+    result = post_fn(payload) or {}
     base["network_calls"] = 1
     base["state"] = result.get("state") or "TIP_POSTED_VIA_INJECTED"
     base["http_status"] = result.get("status")

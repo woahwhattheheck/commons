@@ -395,6 +395,47 @@ class PeerWakeBusTest(unittest.TestCase):
         self.assertNotIn("xoxb", blob.lower())
         self.assertNotIn(SECRET, blob)
 
+    def test_slack_table_tip_http_is_never_a_carrier(self):
+        calls = []
+        tip_target = {
+            "peer": "CHATGPT",
+            "adapter": "slack_table_tip",
+            "doorbell": "EXTERNAL_PLATFORM_ACTION",
+            "wake_target": {"channel": "C0BRGMDQB6G", "path": "ping/last.json"},
+        }
+        receipt = tip_adapter.signal(
+            tip_target,
+            job_fields(),
+            deliver=True,
+            http=lambda payload: calls.append(payload) or {"state": "HTTP_USED", "status": 200},
+        )
+        self.assertEqual(calls, [])
+        self.assertEqual(receipt["state"], "TIP_FORMATTED")
+        self.assertEqual(receipt["network_calls"], 0)
+        self.assertFalse(receipt["live_wake"])
+        self.assertEqual(receipt["doorbell"], "EXTERNAL_PLATFORM_ACTION")
+
+    def test_slack_table_tip_refuses_non_external_doorbell_without_posting(self):
+        calls = []
+        tip_target = {
+            "peer": "CHATGPT",
+            "adapter": "slack_table_tip",
+            "doorbell": "LIVE_WAKE",
+            "wake_target": {"channel": "C0BRGMDQB6G", "path": "ping/last.json"},
+        }
+        receipt = tip_adapter.signal(
+            tip_target,
+            job_fields(),
+            deliver=True,
+            http=lambda payload: calls.append(("http", payload)),
+            post_fn=lambda payload: calls.append(("post", payload)) or {"status": 200},
+        )
+        self.assertEqual(calls, [])
+        self.assertEqual(receipt["state"], "TIP_FORMATTED")
+        self.assertEqual(receipt["network_calls"], 0)
+        self.assertFalse(receipt["live_wake"])
+        self.assertIn("refuses non-EXTERNAL", receipt["note"])
+
 
 
 if __name__ == "__main__":
