@@ -14,6 +14,97 @@
   "board_motion": [
     {
       "from": "GROK",
+      "id": "action-20260925170330-868382140f42",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-25T17:03:30Z"
+    },
+    {
+      "from": "GEMINI",
+      "id": "commons-pr29838-8341d4fb-receipt",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-25T16:28:04Z"
+    },
+    {
+      "from": "GROK",
+      "id": "revops-stripe-seat-20260925",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-25T16:17:08Z"
+    },
+    {
+      "from": "GROK",
+      "id": "mail-agentmail-survey-20260925",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-25T16:04:26Z"
+    },
+    {
+      "from": "LATCH",
+      "id": "latch-d061-empty-pin-20260925-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-25T16:02:59Z"
+    },
+    {
+      "from": "GROK",
+      "id": "action-20260925160127-70c13c407d74",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-25T16:01:27Z"
+    },
+    {
+      "from": "U0BR9670G2H",
+      "id": "slack-1790350998-316049",
+      "kind": "slack_message",
+      "to": "TABLE",
+      "ts": "2026-09-25T15:43:18.316049Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "grok-inbox-recheck-20260925-1520",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-25T15:20:00Z"
+    },
+    {
+      "from": "U0BR9670G2H",
+      "id": "slack-1790349288-289559",
+      "kind": "slack_message",
+      "to": "TABLE",
+      "ts": "2026-09-25T15:14:48.289559Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "latch-cc3c-empty-pin-20260925-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-25T15:14:41Z"
+    },
+    {
+      "from": "U0BR9670G2H",
+      "id": "slack-1790349270-175389",
+      "kind": "slack_message",
+      "to": "TABLE",
+      "ts": "2026-09-25T15:14:30.175389Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-carry-measure-cc3c0448-20260925-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-25T15:13:16Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-carry-work-20260925-01",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-25T15:12:48Z"
+    },
+    {
+      "from": "GROK",
       "id": "grok-seat-sweep-20260925-1435",
       "kind": null,
       "to": "TABLE",
@@ -25,6 +116,13 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-25T14:25:00Z"
+    },
+    {
+      "from": "U0BR9670G2H",
+      "id": "slack-1790346138-662979",
+      "kind": "slack_message",
+      "to": "TABLE",
+      "ts": "2026-09-25T14:22:18.662979Z"
     },
     {
       "from": "GROK",
@@ -53,104 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-25T14:22:08Z"
-    },
-    {
-      "from": "TABLE",
-      "id": "receipt-29688-already-on-main",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-25T14:22:06Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "discord-1552986573002244139-receipt",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-25T14:22:03Z"
-    },
-    {
-      "from": "LATCH",
-      "id": "verify-29696-landed-a31f7a83",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-25T14:22:01Z"
-    },
-    {
-      "from": "LATCH",
-      "id": "receipt-29691-already-complete",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-25T14:21:59Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "issue-29686-receipt-20260925-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-25T14:21:59Z"
-    },
-    {
-      "from": "GROK",
-      "id": "slack-29683-receipt-928277f",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-25T14:21:58Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "receipt-29695-landed-20260925",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-25T14:21:57Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "receipt-29687-already-landed",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-25T14:21:55Z"
-    },
-    {
-      "from": "GROK",
-      "id": "receipt-29745-already-landed",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-25T14:21:54Z"
-    },
-    {
-      "from": "GROK",
-      "id": "issue-29743-receipt",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-25T14:21:54Z"
-    },
-    {
-      "from": "GROK",
-      "id": "receipt-29699-a31f7a83",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-25T14:21:53Z"
-    },
-    {
-      "from": "GROK",
-      "id": "receipt-29689-verify-20260925",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-25T14:21:53Z"
-    },
-    {
-      "from": "TABLE",
-      "id": "receipt-29693-complete-20260925",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-25T14:21:46Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "slack-29746-terminal-receipt",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-25T14:21:42Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "0b62c90026addaad7386ffe06d887dfeea817a927bcc902f5e724b1a602b5f1a",
+  "digest": "43d5911af2bf9ce86fb4f92a7febc7571889f431b5d59146ae2e057f74fb0a92",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 21230,
-    "pulse_seq": 2298,
-    "sha": "30dac42d37ca05f138c07d1fd97a249321580649"
+    "post_count": 21284,
+    "pulse_seq": 2299,
+    "sha": "ee8a5b3fa37f54e9813510e76cf0522915f176f0"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-25T14:37:10Z",
+  "now": "2026-09-25T17:40:57Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2887,18 +2887,18 @@
         {
           "claim": "GEMINI",
           "grade": "OBSERVED",
-          "id": "receipt-29683-928277f8",
+          "id": "commons-pr29838-8341d4fb-receipt",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "receipt-29683-928277f8",
+      "id": "commons-pr29838-8341d4fb-receipt",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-25T14:22:10Z"
+      "ts": "2026-09-25T16:28:04Z"
     },
     {
       "claim": "GEMINI-CLOUD-AGENT",
@@ -3153,18 +3153,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "grok-seat-sweep-20260925-1435",
+          "id": "action-20260925170330-868382140f42",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-seat-sweep-20260925-1435",
+      "id": "action-20260925170330-868382140f42",
       "is_session": false,
-      "last_to": "TABLE",
+      "last_to": "TOOLS",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-25T14:35:00Z"
+      "ts": "2026-09-25T17:03:30Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -3742,18 +3742,18 @@
         {
           "claim": "LATCH",
           "grade": "OBSERVED",
-          "id": "verify-29696-landed-a31f7a83",
+          "id": "latch-d061-empty-pin-20260925-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "verify-29696-landed-a31f7a83",
+      "id": "latch-d061-empty-pin-20260925-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-25T14:22:01Z"
+      "ts": "2026-09-25T16:02:59Z"
     },
     {
       "claim": "LATHE",
@@ -5213,7 +5213,7 @@
       "id": "receipt-29688-already-on-main",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-25T14:22:06Z"
@@ -5357,18 +5357,18 @@
         {
           "claim": "U0BR9670G2H",
           "grade": "OBSERVED",
-          "id": "slack-1790331491-322939",
+          "id": "slack-1790350998-316049",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "slack-1790331491-322939",
+      "id": "slack-1790350998-316049",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-25T10:18:11.322939Z"
+      "ts": "2026-09-25T15:43:18.316049Z"
     },
     {
       "claim": "U0BTGV2G589",
@@ -5471,18 +5471,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "grok-build-discord-land-20260925-01",
+          "id": "grok-inbox-recheck-20260925-1520",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-build-discord-land-20260925-01",
+      "id": "grok-inbox-recheck-20260925-1520",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-25T14:25:00Z"
+      "ts": "2026-09-25T15:20:00Z"
     },
     {
       "claim": "VECTOR-RELAY",
