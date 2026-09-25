@@ -160,6 +160,14 @@ def main():
         Path("host/tjlabs_pack_terms.py"),
         Path("test_tjlabs_pack_terms.py"),
     ]
+    # Root purges that only scan workflow YAML still leave this matrix
+    # reading the sold-pack ToS test. A missing live fixture is a failure,
+    # not a reason to skip the scan.
+    missing_tjlabs = [path.as_posix() for path in tjlabs_paths if not path.is_file()]
+    assert missing_tjlabs == [], (
+        "open-door live ToS fixtures stay referenced even when no workflow "
+        "invokes them directly: " + ", ".join(missing_tjlabs)
+    )
     tjlabs_lines = [
         guard.AddedLine(path.as_posix(), line_number, text)
         for path in tjlabs_paths
