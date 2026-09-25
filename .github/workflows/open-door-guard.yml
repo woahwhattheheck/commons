@@ -126,6 +126,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
         # The guard diffs BASE..HEAD; it needs those two commits' trees, not
         # history.  A full clone of this repo costs the runner ~130-150 s per
         # run (measured on eight green runs, guard itself 0-1 s).  Fetch HEAD
@@ -136,33 +139,39 @@ jobs:
         env:
           EVENT_NAME: ${{ github.event_name }}
           PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
           PUSH_BASE_SHA: ${{ github.event.before }}
         run: |
           set -eu
           if [ "$EVENT_NAME" = "pull_request" ]; then
-            # The event base may predate the tested merge. Read raw headers,
-            # including in a depth-one checkout, and keep merge resolutions.
-            set -- $(git cat-file -p HEAD | sed -n '/^$/q; s/^parent //p')
-            if [ "$#" -ne 2 ] || [ "$2" != "$PR_HEAD_SHA" ]; then
-              echo "PR checkout does not match its two-parent integration commit" >&2
+            # Do not require a two-parent merge checkout. actions/checkout often
+            # lands on a single-parent ref (base or head). Use event SHAs.
+            head="${PR_HEAD_SHA}"
+            base="${PR_BASE_SHA}"
+            if [ -z "$head" ] || [ -z "$base" ]; then
+              echo "missing pull_request head or base sha" >&2
               exit 1
             fi
-            base="$1"
+            if ! git cat-file -e "$head^{commit}" 2>/dev/null; then
+              git fetch --quiet --depth=1 origin "$head"
+            fi
             if ! git cat-file -e "$base^{commit}" 2>/dev/null; then
               git fetch --quiet --depth=1 origin "$base"
             fi
+            git cat-file -e "$head^{commit}"
             git cat-file -e "$base^{commit}"
+            python3 open_door_guard.py --diff "$base" "$head"
           else
             base="$PUSH_BASE_SHA"
+            if [ -n "$base" ] && [ "$base" != "0000000000000000000000000000000000000000" ] && ! git cat-file -e "$base^{commit}" 2>/dev/null; then
+              git fetch --quiet --depth=1 origin "$base" || true
+            fi
+            if [ -z "$base" ] || [ "$base" = "0000000000000000000000000000000000000000" ] || ! git cat-file -e "$base^{commit}"; then
+              git fetch --quiet --deepen=1 origin 2>/dev/null || true
+              base="$(git rev-parse HEAD^ 2>/dev/null || git hash-object -t tree /dev/null)"
+            fi
+            python3 open_door_guard.py --diff "$base" HEAD
           fi
-          if [ -n "$base" ] && [ "$base" != "0000000000000000000000000000000000000000" ] && ! git cat-file -e "$base^{commit}" 2>/dev/null; then
-            git fetch --quiet --depth=1 origin "$base" || true
-          fi
-          if [ -z "$base" ] || [ "$base" = "0000000000000000000000000000000000000000" ] || ! git cat-file -e "$base^{commit}"; then
-            git fetch --quiet --deepen=1 origin 2>/dev/null || true
-            base="$(git rev-parse HEAD^ 2>/dev/null || git hash-object -t tree /dev/null)"
-          fi
-          python3 open_door_guard.py --diff "$base" HEAD
 
       - name: verify the guard's own matrix
         run: |
