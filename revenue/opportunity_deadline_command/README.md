@@ -112,6 +112,19 @@ Priority is transparent (`CRITICAL`, `HIGH`, `NORMAL`, `TERMINAL`, `HOLD`) and d
 
 `markdown_projection()` and `ics_projection()` are deterministic projections of that result. ICS contains only `OFFICIAL` effective deadlines, no attendees/organizers, and a description that repeats the owner-review-only authority ceiling.
 
+Calendar UIDs bind the opportunity and deadline kind, so an amended date keeps
+the same event identity. `SEQUENCE` is the deadline generation minus one; a
+generation-1 event starts at sequence 0. Importers can use the retained UID and
+increased sequence to recognize an update. The model permits only one effective
+deadline per kind. UTF-8 content lines are folded at 75 octets without splitting
+characters, following [RFC 5545](https://www.rfc-editor.org/rfc/rfc5545), sections
+3.1, 3.8.4.7, and 3.8.7.4.
+
+Migration: older exports used generation-specific UIDs. When replacing an old
+import with this format, remove or replace that old imported calendar once to
+avoid retaining its separate legacy events. The exporter does not modify a
+calendar account, and client-specific import/update behavior still applies.
+
 `verify_result()` first reproduces the exact original result from the original inputs/policy/evaluation time, then recompiles against a separately supplied trusted current time. It fails if the current state/priority/controlling deadline has changed. Mere minute-count drift does not invalidate a result until it crosses an operating or priority boundary.
 
 ## CLI
