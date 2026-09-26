@@ -20,17 +20,17 @@ except ImportError:
     from p4_mean_repair import indices, gradients, geometry, construct as mean_operator
 
 
-def raw_geometry():
+def raw_geometry(degree=4):
     cells = kuhn_tets()
     point = lambda t, a: tuple(sum(a[i]*t[i][j] for i in range(4)) for j in range(3))
-    nodes = sorted({point(t, a) for t in cells for a in indices(4)
-                    if all(0 < v < 4 for v in point(t, a))})
+    nodes = sorted({point(t, a) for t in cells for a in indices(degree)
+                    if all(0 < v < degree for v in point(t, a))})
     node_id = {p: i for i, p in enumerate(nodes)}
     protected, target, labels = [], [], []
     for cell_id, cell in enumerate(cells):
         grads = gradients(cell)
         low, high = cell.index((0, 0, 0)), cell.index((1, 1, 1))
-        for beta in indices(3):
+        for beta in indices(degree-1):
             if sum(v > 0 for v in beta) > 2:
                 continue
             row = {}
@@ -42,20 +42,20 @@ def raw_geometry():
                     continue
                 for component in range(3):
                     col = 3*node_id[p]+component
-                    row[col] = row.get(col, 0)+4*grads[i][component]
+                    row[col] = row.get(col, 0)+degree*grads[i][component]
             row = {c: v for c, v in row.items() if v}
             if beta[low] and beta[high]:
                 target.append(row)
                 labels.append({"cell": cell_id, "beta": beta, "high_endpoint_power": beta[high]})
             else:
                 protected.append(row)
-    # Explicit public order: cell order, then high-endpoint power 1,2.
+    # Explicit public order: cell order, then high-endpoint power 1..degree-2.
     order = sorted(range(len(target)), key=lambda i: (labels[i]["cell"], labels[i]["high_endpoint_power"]))
     return cells, nodes, protected, [target[i] for i in order], [labels[i] for i in order]
 
 
 def right_inverse(protected, target, ncols):
-    """Solve all twelve target columns at once over Q; other edges stay zero."""
+    """Solve all target columns at once over Q; other edges stay zero."""
     rows, width = protected+target, len(target)
     pivots = {}
     protected_rank = None
