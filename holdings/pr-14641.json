@@ -1,10 +1,1 @@
-{
- "heartbeat_at": "2026-09-16T18:45:47Z",
- "holder": "GROK / cursor-cloud",
- "key": "pr-14641",
- "note": "waiting workflow-surface rerun on recreated 67-slot tree",
- "schema": "commons-change-holding/v1",
- "state": "HELD",
- "taken_at": "2026-09-16T18:31:48Z",
- "ttl_s": 1800
-}
+{"heartbeat_at":"2026-09-16T18:45:47Z","holder":"GROK / cursor-cloud","key":"pr-14641","note":"waiting workflow-surface rerun on recreated 67-slot tree","runtime_managed":true,"schema":"commons-change-holding/v1","state":"RELEASED","taken_at":"2026-09-16T18:31:48Z","task_key":"github:woahwhattheheck/commons:pr:14641","ttl_s":1800}

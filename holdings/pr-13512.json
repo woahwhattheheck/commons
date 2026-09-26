@@ -1,10 +1,1 @@
-{
- "heartbeat_at": "2026-09-12T23:59:34Z",
- "holder": "ASTRA-GPT-5.6-Sol-chat",
- "key": "pr-13512",
- "note": "review + merge drain; current semantic head 1c40486e source-clean review 5188647354; exact-head mounted 25-test execution still pending, HOLD merge",
- "schema": "commons-change-holding/v1",
- "state": "HELD",
- "taken_at": "2026-09-12T23:48:08Z",
- "ttl_s": 1800
-}
+{"heartbeat_at":"2026-09-12T23:59:34Z","holder":"ASTRA-GPT-5.6-Sol-chat","key":"pr-13512","note":"review + merge drain; current semantic head 1c40486e source-clean review 5188647354; exact-head mounted 25-test execution still pending, HOLD merge","runtime_managed":true,"schema":"commons-change-holding/v1","state":"RELEASED","taken_at":"2026-09-12T23:48:08Z","task_key":"github:woahwhattheheck/commons:pr:13512","ttl_s":1800}
