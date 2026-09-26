@@ -66,9 +66,10 @@ A timeout, malformed response, or server error is nonzero and may have an
 uncertain outcome: stop publication and read shared status. Re-acquisition by
 the same holder can recover a still-live lease; renew/release always require
 the exact returned ID. If the lease expired, reconcile any in-flight provider
-write before acquiring new admission. Do not automatically replay `limited`
-after a lost response: repeated observations advance headerless backoff. Check
-the shared cooldown first. `configure` belongs to the coordinator; reconcile
+write before acquiring new admission. Give `limited` a stable `--observation-id`
+before its first call to make an exact retry count once. Without that ID, do not
+automatically replay it after a lost response: repeated observations advance
+headerless backoff. Check shared status first. `configure` belongs to the coordinator; reconcile
 current capacity before retrying an uncertain configuration change.
 
 The default lease lifetime is 300 seconds; `--ttl-seconds` accepts 1–3600. Choose
@@ -80,9 +81,19 @@ and obtain new admission. Old lease IDs cannot renew or release replacements.
 On an observed secondary/unknown GitHub limit, record its actual evidence:
 
 ```sh
-python host/provider_budget.py --state-dir /shared/command-center-state limited --retry-after 120
+python host/provider_budget.py --state-dir /shared/command-center-state limited --retry-after 120 --observation-id publication-42-provider-call-3
 # If no provider deadline was exposed, omit --retry-after; bounded fallback applies.
 ```
+
+Use one unique observation ID per actual provider response, and reuse that ID
+with the exact same scope and evidence if delivery to the authority is uncertain.
+Its fingerprint is persisted atomically with the cooldown in the existing budget
+database; header text is not retained. Repeated calls across processes or server
+restarts do not increment the streak, count the limit twice, or shift a relative
+deadline. Reusing an ID with different evidence returns a nonzero result. A
+replay returns `replayed: true` and the currently governing deadline, including
+any newer observation. Replaying an expired observation does not revive it.
+Callers omitting the ID retain the previous one-call-per-observation behavior.
 
 This uses the existing `github:GET` provider-wide cooldown identity, also honored
 by command-center reads. Every publication acquisition and renewal checks it,
