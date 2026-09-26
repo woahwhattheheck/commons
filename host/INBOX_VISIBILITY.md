@@ -126,6 +126,15 @@ access and bounded pagination. This is best-effort duplicate prevention, not a
 cross-provider transactional exactly-once guarantee. Do not delete/move Slack
 messages or change channel IDs without a deliberate state migration.
 
+Health uses a stable `relay.health` destination marker too. The first health
+send records its attempt before posting; after an interrupted send, the next
+run recovers the existing message before updating it with the latest report.
+Existing `health_ts` ledgers migrate on their next update. A missing post receipt
+is an uncertain delivery, not success. Health remains outside the source-message
+budget so a capped backlog can still be reported. History access, retention and
+pagination bounds also apply to health recovery; messages sent by older versions
+without the marker need their retained ledger to be identified reliably.
+
 The workflow caches only this sanitized ledger, not provider contents. Treat
 cache eviction as possible; Slack markers remain the recovery source. A process
 lock and scheduler concurrency prevent overlapping finite runs. Slack post
