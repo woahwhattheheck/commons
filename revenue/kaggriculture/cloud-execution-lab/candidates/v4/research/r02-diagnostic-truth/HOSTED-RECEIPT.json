@@ -1,0 +1,44 @@
+{
+  "head": "d77df5cae4f4fee18b3599bb6b492188bd586283",
+  "inputs": {
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py": {
+      "bytes": 21691,
+      "git_blob": "a7f716d742bd9ea45f2e370b2f151f5ee15ba042",
+      "sha256": "eb6d8e558e84bd5aeec2a178007ba9f46a76be01e4d269e7c852f25df8ff45de"
+    },
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_r02.py": {
+      "bytes": 2628,
+      "git_blob": "b5440818f0594272e27325046f0a5ae0feb6ce7f",
+      "sha256": "f03f53a648931360606b51876908d38e588d6c57add72a29eadc66a3f72c9acb"
+    },
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r02_route_bank.py": {
+      "bytes": 5372,
+      "git_blob": "0d869fe81e0ff06eb153ab1720219ac8dfb56f88",
+      "sha256": "a8a4ef25cd46ef19dfdc6b801b418accebb24a1cce5214136262af63c1881dc4"
+    },
+    "revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz": {
+      "bytes": 429604,
+      "git_blob": "f23e7bbf925b71bf2e45db3752cf8430e3a56e65",
+      "sha256": "b567942e4fb4e0571ebf9f8eaaf143d4a9156df3289f09a98db37823ef4d68d9"
+    }
+  },
+  "materialized": {
+    "checks/test_v3_r02.py": {
+      "bytes": 2628,
+      "sha256": "f03f53a648931360606b51876908d38e588d6c57add72a29eadc66a3f72c9acb"
+    },
+    "r02_route_bank.py": {
+      "bytes": 5372,
+      "sha256": "a8a4ef25cd46ef19dfdc6b801b418accebb24a1cce5214136262af63c1881dc4"
+    },
+    "titan_runtime.py": {
+      "bytes": 42866,
+      "sha256": "9f8573cdfcd0c9c0062b5956ee66858a742fc5d0ff4f73fac5a24663f6b9a974"
+    }
+  },
+  "proof_parent": "084e465c9f03ce0b2c5ec0a5cc6fe4ac44a81501",
+  "schema": "titan-v3-r02-focused-materialized-proof-receipt/v2",
+  "scope": "focused proof only; exact canonical archive + reviewed V3 overlay + exact apply_v3 materialize the unchanged R02 suite",
+  "source_parent": "bde26017775a9975bfa2a89d976f02efb208e99b",
+  "test_log_sha256": "dd9c1d46b569575f06e49879ddb73e85a337942c99c2fcbbc6b90af65dd454bb"
+}
