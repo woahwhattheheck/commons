@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "command-work-source-index-20260926",
   "holder": "command-observability",
-  "heartbeat_at": "2026-09-26T12:19:58.764Z",
+  "heartbeat_at": "2026-09-26T12:20:56.273Z",
   "taken_at": "2026-09-26T12:19:58.764Z",
   "ttl_s": 1800,
-  "state": "HELD",
-  "note": "Own integrations/command_center/web/work.js: index source metadata once per snapshot to avoid repeated linear scans in row filtering/sorting/rendering."
+  "state": "RELEASED",
+  "note": "Landed PR #29934 on main 9fcf158ae0f66f27d87da18c8607cac78782603c"
 }
