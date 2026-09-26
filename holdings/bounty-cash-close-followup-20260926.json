@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "bounty-cash-close-followup-20260926",
+  "holder": "high-burn-value-pipeline",
+  "heartbeat_at": "2026-09-26T11:55:00Z",
+  "taken_at": "2026-09-26T11:55:00Z",
+  "ttl_s": 1800,
+  "state": "HELD",
+  "note": "Own revenue/bounty_cash_close/decision.py and README.md; reuse existing bounded follow-up policy before delivery and recognize cleared gates."
+}
