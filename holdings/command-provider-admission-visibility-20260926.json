@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "command-provider-admission-visibility-20260926",
+  "holder": "performance",
+  "state": "HELD",
+  "taken_at": "2026-09-26T15:30:09.443Z",
+  "heartbeat_at": "2026-09-26T15:30:09.443Z",
+  "ttl_s": 1800,
+  "note": "Parent assigned resource UI publication capacity visibility; app.js/index.html only, existing refresh flow and GET /api/provider/admission. No new polling, no lease tokens, no deployment activation. B watcher-only."
+}
