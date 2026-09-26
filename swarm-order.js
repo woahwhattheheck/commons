@@ -1,4 +1,4 @@
-/* The existing command center's review view. No inference or dispatch. */
+/* Existing command-center work observations. No inference or dispatch. */
 (() => {
   "use strict";
   const root = "https://raw.githubusercontent.com/woahwhattheheck/commons/state/coordination/";
@@ -18,40 +18,58 @@
     box.replaceChildren();
     const observed = state && state.observed_at;
     const age = observed ? (Date.now() - Date.parse(observed)) / 1000 : NaN;
-    const stale = !Number.isFinite(age) || age < -300 || age >= 600 || error;
-    document.getElementById("swarm-freshness").textContent = stale ? "STALE / re-read live PRs" : "Current observation";
-    const swarm = state && state.swarm;
-    if (!swarm) {
-      row("li", "Review state has not been published. Run the existing coordination publisher; missing data is not clearance.", box);
+    const stale = !Number.isFinite(age) || age < -300 || age >= 600 || !!error;
+    const freshness = document.getElementById("swarm-freshness");
+    freshness.textContent = !state ? "UNREAD" : stale ? "STALE / refresh live work" : "Current observation";
+    freshness.className = "pill " + (!state ? "UNKNOWN" : stale ? "STALE" : "LIVE");
+    if (!state) {
+      row("li", "Work state could not be read. Open the repository queue or refresh; unread data does not mean no work.", box);
     } else {
-      row("li", Object.entries(swarm.counts || {}).map(([k,v]) => k + ": " + v).join(" · "), box);
-      for (const batch of (swarm.batches || []).slice(0, 12)) {
-        row("li", "GPT batch: " + batch.prs.map(n => "#" + n).join(", ") + " · " + batch.dispatch +
-          (batch.independent_preflight ? " · independent preflight required" : ""), box);
+      const counts = state.counts || {};
+      row("li", "Open PRs: " + (counts.open_prs ?? "unknown") +
+        " · Listed: " + (counts.listed_open ?? "unknown") +
+        " · Main: " + (state.main?.sha?.slice(0, 12) || "unknown"), box);
+      const queue = state.queue || {};
+      row("li", "Hosted runs: " + (queue.queued ?? "unknown") + " queued · " +
+        (queue.in_progress ?? "unknown") + " running", box);
+      if ((state.degraded || []).length) {
+        row("li", "Observation gaps: " + state.degraded.join(" · "), box).className = "note bad";
       }
-      for (const pr of (state.prs || []).filter(p => p.swarm).slice(0, 50)) {
+      const prs = Array.isArray(state.prs) ? state.prs : [];
+      if (!prs.length) row("li", "No open PR rows in this observation.", box);
+      for (const pr of prs.slice(0, 50)) {
         const item = row("li", "", box);
         const link = row("a", "#" + pr.number + " " + pr.title, item);
         link.href = "https://github.com/woahwhattheheck/commons/pull/" + Number(pr.number);
-        row("div", (pr.swarm.work?.seat || "seat undeclared") + " · " +
-          (pr.swarm.review?.state || "UNKNOWN") + " · " + (pr.swarm.review?.reason || ""), item);
+        const work = pr.swarm?.work || {};
+        row("div", (work.seat || "owner undeclared") +
+          (work.operation ? " · " + work.operation : "") +
+          " · " + (pr.draft ? "draft" : "open") +
+          " · source " + (pr.drift?.status || "unknown") +
+          " · head " + (pr.head?.slice(0, 12) || "unknown"), item);
+        if (work.next_action) row("div", "Next: " + work.next_action, item);
+        if (pr.updated_at) row("div", "Updated " + pr.updated_at, item).className = "small muted";
       }
+      if (prs.length > 50) row("li", (prs.length - 50) + " more PRs in the coordination snapshot.", box);
     }
     document.getElementById("swarm-source").textContent =
       "Observed " + (observed || "unknown") + (error ? " · Read failed: " + error : "") +
-      ". GPTs build and lead. This view records observations; integration rechecks live bytes.";
+      ". This snapshot records work, not merge clearance. Reconcile against live source before landing.";
   }
   async function refresh() {
     if (busy || document.visibilityState === "hidden") return;
     busy = true;
+    const button = document.getElementById("swarm-refresh");
+    button.disabled = true;
     try {
       const head = await read("coordination-head.json");
       if (!state || head.observed_at !== previous) {
-        state = await read("coordination.json"); previous = state.observed_at;
+        const next = await read("coordination.json");
+        state = next; previous = state.observed_at;
       }
       render(null);
     } catch (error) { render(String(error.message)); }
-    finally { busy = false; }
+    finally { busy = false; button.disabled = false; }
   }
   document.getElementById("swarm-refresh").addEventListener("click", () => { previous = null; refresh(); });
   document.addEventListener("visibilitychange", refresh);
