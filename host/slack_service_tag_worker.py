@@ -153,6 +153,15 @@ def _api(token: str, method: str, payload: dict[str, Any]) -> dict[str, Any]:
     try:
         with urllib.request.urlopen(req, timeout=20) as resp:
             raw = resp.read().decode("utf-8", errors="replace")
+    except urllib.error.HTTPError as exc:
+        result = {"ok": False, "error": "http_%s" % exc.code, "http_status": exc.code}
+        if exc.code == 429:
+            result["error"] = "ratelimited"
+            try:
+                result["retry_after"] = max(0, int(exc.headers.get("Retry-After", "")))
+            except (AttributeError, TypeError, ValueError):
+                result["retry_after"] = None
+        return result
     except (urllib.error.URLError, TimeoutError, OSError) as exc:
         return {"ok": False, "error": type(exc).__name__}
     try:
@@ -180,10 +189,32 @@ def poll_and_dispatch(
     handled = 0
     skipped = 0
     errors: list[str] = []
+
+    def failed(response: dict[str, Any], where: str, method: str) -> dict[str, Any] | None:
+        errors.append("%s:%s" % (where, response.get("error") or "failed"))
+        if response.get("http_status") == 429 or response.get("error") in (
+            "ratelimited", "rate_limited"
+        ):
+            # Return control to the caller; do not turn one exhausted allowance
+            # into a request for every remaining channel, thread, and post.
+            return {
+                "ok": False,
+                "gate": False,
+                "handled": handled,
+                "skipped": skipped,
+                "errors": errors,
+                "rate_limited": True,
+                "retry_after": response.get("retry_after"),
+                "retry_method": method,
+            }
+        return None
+
     for channel in watch:
         hist = call(token, "conversations.history", {"channel": channel, "limit": str(limit)})
         if not hist.get("ok"):
-            errors.append("%s:%s" % (channel, hist.get("error") or "history_failed"))
+            stopped = failed(hist, channel, "conversations.history")
+            if stopped is not None:
+                return stopped
             continue
         for msg in hist.get("messages") or []:
             if not isinstance(msg, dict):
@@ -202,7 +233,15 @@ def poll_and_dispatch(
                 "conversations.replies",
                 {"channel": channel, "ts": ts, "limit": "20"},
             )
-            replies = replies_pack.get("messages") or [] if replies_pack.get("ok") else []
+            if not replies_pack.get("ok"):
+                # An unreadable deduplication record is unknown, not empty.
+                # Leave the message for a later successful poll before driving
+                # its services again.
+                stopped = failed(replies_pack, "%s:%s:replies" % (channel, ts), "conversations.replies")
+                if stopped is not None:
+                    return stopped
+                continue
+            replies = replies_pack.get("messages") or []
             if already_handled(replies if isinstance(replies, list) else [], marker):
                 skipped += 1
                 continue
@@ -215,7 +254,9 @@ def poll_and_dispatch(
                     continue
                 sent = call(token, "chat.postMessage", post)
                 if not sent.get("ok"):
-                    errors.append("post:%s" % (sent.get("error") or "failed"))
+                    stopped = failed(sent, "post", "chat.postMessage")
+                    if stopped is not None:
+                        return stopped
             handled += 1
     return {
         "ok": not errors,
@@ -242,7 +283,7 @@ def main(argv: list[str] | None = None) -> int:
             return 0
         result = poll_and_dispatch(token, connected=connected)
         print(json.dumps(result, indent=2))
-        return 0 if result.get("ok") or result.get("handled") is not None else 1
+        return 0 if result.get("ok") else 1
     if args.text:
         posts = posts_for_message(args.text, channel=args.channel, ts=args.ts, connected=connected)
         print(json.dumps({"gate": False, "posts": posts}, indent=2))
