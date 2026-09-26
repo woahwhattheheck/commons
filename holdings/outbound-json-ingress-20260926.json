@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "outbound-json-ingress-20260926",
   "holder": "high-burn-value-pipeline",
-  "heartbeat_at": "2026-09-26T12:09:50Z",
+  "heartbeat_at": "2026-09-26T12:11:08Z",
   "taken_at": "2026-09-26T12:09:50Z",
   "ttl_s": 1800,
-  "state": "HELD",
-  "note": "Own revenue/outbound_delivery_reconciliation/cli.py and README.md; preserve unambiguous event observations via strict JSON and bounded ingress reads."
+  "state": "RELEASED",
+  "note": "Completed PR 29910, merge 218219836b05ab594250b48907dd32f35aec76cf; bounded reads and strict duplicate-key/non-finite handling protect reconciliation input."
 }
