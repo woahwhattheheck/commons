@@ -91,8 +91,13 @@ def canary(artifact: Path, ledger: Path) -> tuple[str, list[dict[str, Any]]]:
 
 def classify(digest: str, check_id: str, receipts: Iterable[dict[str, Any]]) -> str:
     rows = [row for row in receipts if row["check_id"] == check_id]
-    if any(row["artifact_sha256"] == digest and row["result"] == "PASS" for row in rows):
-        return "TRUSTED"
+    # Ledger append order is authoritative; timestamps can collide or arrive
+    # out of order. A skipped rerun carries no new evidence about the bytes.
+    for row in reversed(rows):
+        if row["artifact_sha256"] == digest and row["result"] in {"PASS", "FAIL"}:
+            if row["result"] == "PASS":
+                return "TRUSTED"
+            break
     passed_other_bytes = any(row["result"] == "PASS" for row in rows)
     return "STALE" if passed_other_bytes else "UNVERIFIED"
 
@@ -167,29 +172,49 @@ def run_check(
         return snapshot, 0
 
     completed = subprocess.run(command, capture_output=True, check=False)
-    result = "PASS" if completed.returncode == 0 else "FAIL"
+    after_digest = None
+    artifact_error = None
+    try:
+        after_digest = sha256_file(artifact)
+    except TrustCacheError as error:
+        artifact_error = str(error)
+    stable = after_digest == snapshot["artifact_sha256"]
+    event = "ARTIFACT_UNREADABLE" if artifact_error else "ARTIFACT_CHANGED" if not stable else "CHECK_RUN"
+    result = "PASS" if completed.returncode == 0 and stable else "FAIL"
+    # A successful command cannot certify the pre-run bytes when its input
+    # changed or disappeared while the command was running.
+    code = completed.returncode or (0 if stable else 3)
+    evidence = {
+        "event": event,
+        "executed": True,
+        "command": command,
+        "returncode": completed.returncode,
+        "artifact_sha256_after": after_digest,
+        "artifact_unchanged": stable,
+        "stdout_sha256": hashlib.sha256(completed.stdout).hexdigest(),
+        "stderr_sha256": hashlib.sha256(completed.stderr).hexdigest(),
+    }
+    if artifact_error:
+        evidence["artifact_error"] = artifact_error
     append_receipt(
         ledger,
         snapshot["artifact_sha256"],
         check_id,
         result,
-        {
-            "event": "CHECK_RUN",
-            "executed": True,
-            "command": command,
-            "returncode": completed.returncode,
-            "stdout_sha256": hashlib.sha256(completed.stdout).hexdigest(),
-            "stderr_sha256": hashlib.sha256(completed.stderr).hexdigest(),
-        },
+        evidence,
     )
     snapshot.update(
         {
-            "event": result,
+            "event": result if stable else event,
             "executed": True,
-            "returncode": completed.returncode,
+            "returncode": code,
+            "command_returncode": completed.returncode,
+            "artifact_sha256_after": after_digest,
+            "artifact_unchanged": stable,
+            "state": "TRUSTED" if result == "PASS" else "STALE" if not stable else snapshot["state"],
         }
     )
-    return snapshot, completed.returncode
+    return snapshot, code
 
 
 def _command_tail(values: list[str]) -> list[str]:
