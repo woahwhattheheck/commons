@@ -175,13 +175,16 @@ jobs:
   # Manual dispatch retains the full battery; automatic component checks use
   # native path filters in their reusable workflows without a router runner.
   provider-cost-truth:
+    name: Manual full battery - provider cost
     if: ${{ github.event_name == 'workflow_dispatch' }}
     uses: ./.github/workflows/source-parses-provider-cost.yml
 
   multi-framework-evidence-freshness:
+    name: Manual full battery - evidence freshness
     if: ${{ github.event_name == 'workflow_dispatch' }}
     uses: ./.github/workflows/source-parses-freshness.yml
 
   titan-final-spatial-carrier:
+    name: Manual full battery - spatial carrier
     if: ${{ github.event_name == 'workflow_dispatch' }}
     uses: ./.github/workflows/source-parses-spatial-carrier.yml
