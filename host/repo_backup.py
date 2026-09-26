@@ -125,8 +125,8 @@ def _bundle_heads(bundle: Path) -> list[dict[str, str]]:
 
 
 def _repo_heads(source: Path) -> list[dict[str, str]]:
-    # `git bundle --all` records HEAD plus every ref. `for-each-ref` omits HEAD,
-    # so compare against `show-ref --head` or the snapshot rejects a valid bundle.
+    # The bundle records this worktree's HEAD plus every shared ref.
+    # `for-each-ref` omits HEAD, so compare against `show-ref --head`.
     completed = _run(
         ["show-ref", "--head"],
         cwd=source,
@@ -179,7 +179,9 @@ def snapshot(source: Path, output_dir: Path) -> Path:
     # alone cannot protect another snapshot that finishes during generation.
     with tempfile.TemporaryDirectory(prefix=".commons-backup-", dir=output_dir) as staging:
         staged_bundle = Path(staging) / bundle.name
-        _run(["bundle", "create", str(staged_bundle), "--all"], cwd=source)
+        # Other worktrees' pseudo-refs are not ordinary restorable refs. Keep
+        # every shared ref and this source HEAD, matching show-ref --head.
+        _run(["bundle", "create", str(staged_bundle), "--single-worktree", "--all"], cwd=source)
         bundle_heads = _bundle_heads(staged_bundle)
         repo_heads = _repo_heads(source)
         if bundle_heads != repo_heads:
