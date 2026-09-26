@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "transport-snapshot-forks-20260926",
+  "holder": "high-burn-value-pipeline",
+  "taken_at": "2026-09-26T14:53:52Z",
+  "heartbeat_at": "2026-09-26T14:53:52Z",
+  "ttl_s": 1800,
+  "state": "ACTIVE",
+  "note": "Own revenue/outbound_transport_reconcile/reconcile.py + README.md: deterministic full retention of stable-ID snapshot conflicts, preserving HOLD and unique-ID counts."
+}
