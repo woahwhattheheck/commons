@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "runtime-mirror-newer-lease-20260926",
   "holder": "high-burn-lane-a",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-09-26T14:00:52.153Z",
-  "heartbeat_at": "2026-09-26T14:00:52.153Z",
+  "heartbeat_at": "2026-09-26T14:04:36.004Z",
   "ttl_s": 1800,
-  "note": "Own host/swarm_runtime/store.py and README.md; prevent historical terminal task from releasing newer same-holder legacy custody."
+  "note": "Landed #30008 7ed233681f5d0713c2e4118f19ed0f43ecbc83dc; main blobs verified; real GitStore custody cases passed."
 }
