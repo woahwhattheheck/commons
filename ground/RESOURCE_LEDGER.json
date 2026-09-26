@@ -110,8 +110,8 @@
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
   "slack_ts": "1790427763.163799",
   "snapshot": {
-    "base_main_sha": "bd038c2001d93cd074dd961e9d1d2b33a740e337",
-    "observed_at": "2026-09-26T13:18:06Z",
+    "base_main_sha": "71445b060155a3960410c9e79ee6f42da4286c4f",
+    "observed_at": "2026-09-26T13:24:25Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
@@ -2557,15 +2557,15 @@
       "consumer": "The existing UIOWA-038 recommendation register and UIOWA-115 dependency-review lanes, whose stable recommendation identities and dependency edges need a deterministic 0-90, 90-180 and 180+ relative-horizon planning view without inventing approvals or dates.",
       "value": "The released standard-library planner preserves source references and assumptions, propagates optimistic and pessimistic dependency timing, keeps missing or infeasible work visible, round-trips an editable CSV, and exports deterministic JSON, Markdown, HTML and hash evidence.",
       "next_action": "Roadmap operators may feed an approved recommendation export into a new local output directory, review every unknown duration, owner and conflict, and hand the resulting relative-day advisory to the existing report workflow; real calendar commitments and University decisions remain separate owner-authorized actions.",
-      "source": "revenue/uiowa_rfq_18649_roadmap; source PR #29973 head b0eea2d74f924549114d815aa6397b4a861f2974 merge 9b59bee1b2e6a6ff3f9bdef52c144b10a1a485c2",
-      "evidence_ts": "2026-09-26T13:18:06Z",
+      "source": "revenue/uiowa_rfq_18649_roadmap; source PR #29973 head b0eea2d74f924549114d815aa6397b4a861f2974 merge 9b59bee1b2e6a6ff3f9bdef52c144b10a1a485c2; dependency composition PR #29981 head 3e9a45b9d4d870f11fe412072e5c784ac5ef54a2 merge 0f069a19a42cd6146cbd22bb5aa933f4afdcca5b",
+      "evidence_ts": "2026-09-26T13:24:25Z",
       "auth_surface": "Public current-main source plus caller-supplied recommendation metadata; local planning, CSV reimport and output inspection require no Commons login, provider credential, private University data, browser session or repeated owner approval.",
-      "exact_safe_probe": "Current main bd038c2001d93cd074dd961e9d1d2b33a740e337 retained all nine PR #29973 blobs. The 12-item synthetic source produced 10 planned and two unscheduled items, one at-risk phase and one phase conflict; CSV reimport produced the same semantic plan; --require-plannable wrote its report and exited 3; Python compilation passed.",
+      "exact_safe_probe": "Current main 71445b060155a3960410c9e79ee6f42da4286c4f retained all nine source blobs after PR #29981 advanced README to ef2220f565b8cc293bb153712ab6aff75324e049 and roadmap.py to 15eaed3025d40fb8e62cf23391d1b6b434fc6b99. The 12-item source produced 10 planned and two unscheduled items, one at-risk phase and one conflict; CSV reimport preserved the semantic plan; combined dependency analysis was CONSISTENT with zero errors and warnings across all 12 IDs; strict combined mode wrote reports and exited 3; both components compiled.",
       "rate_plan_boundary": "The planner is offline standard-library compute and makes no paid provider call. Relative-day output and a valid manifest do not establish real findings, accepted recommendations, staff capacity, a booked calendar, customer acceptance, submission, payment, revenue or cash.",
       "assigned_backlog": "Available to the existing recommendation-register, dependency-oracle and report-preparation lanes; no second planner, University outreach, scheduling, browser, provider-operation, test-only or verifier-only lane is created.",
       "last_receipt": "codex-uiowa-dependency-roadmap-planner-resource-activation-20260926-01",
-      "last_used_at": "2026-09-26T13:18:06Z",
-      "stale_after": "next planner, schema, phase-boundary, dependency-duration, CSV round-trip, source-reference, source-blob, authority or consumer change",
+      "last_used_at": "2026-09-26T13:24:25Z",
+      "stale_after": "next planner, dependency-oracle composition, schema, phase-boundary, dependency-duration, CSV round-trip, source-reference, source-blob, authority or consumer change",
       "priority": 99
     }
   ],
