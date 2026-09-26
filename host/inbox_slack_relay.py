@@ -224,10 +224,15 @@ class Providers:
                 result = request_json(url, token=self.slack_token, data=data)
         if not isinstance(result, dict) or not result.get("ok"):
             error = str(result.get("error", "invalid_response")) if isinstance(result, dict) else "invalid_response"
-            try:
-                retry = int(result.get("retry_after") or 60) if error in {"ratelimited", "slack_http_error"} else 0
-            except (TypeError, ValueError):
-                retry = 60
+            retry = 0
+            if error in {"ratelimited", "slack_http_error"}:
+                try:
+                    status = 429 if error == "ratelimited" else int(result.get("status") or 0)
+                except (TypeError, ValueError):
+                    status = 0
+                # Existing custody returns the original header, including an
+                # HTTP date. Preserve the same deadline as the direct route.
+                retry = http_retry_after(status, {"Retry-After": result.get("retry_after")}, "slack.com")
             raise RelayError("slack_" + re.sub(r"[^a-zA-Z0-9_]", "", error)[:80],
                              uncertain=(bool(result.get("uncertain")) if isinstance(result, dict) else method.startswith("chat.")) or error in {"internal_error", "fatal_error"}, retry_after=retry)
         return result
