@@ -1,185 +1,229 @@
 {
   "counts": {
-    "open_issues": 10174,
-    "open_pull_requests": 0,
-    "runs_in_progress": 1,
-    "runs_queued": 70
+    "open_issues": 10030,
+    "open_pull_requests": 1,
+    "runs_in_progress": 11,
+    "runs_queued": 492
   },
   "counts_source": "graphql",
-  "degraded": [
-    "pulls"
+  "degraded": [],
+  "drafts": 0,
+  "longest_open": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "fix/open-door-bounty-readme-20260926",
+      "created_at": "2026-09-26T12:06:13Z",
+      "draft": false,
+      "head_sha": "040e0e7e5763de4255b4c31090c48ecc3c7a3a60",
+      "number": 29899,
+      "title": "Reword bounty cash close README for open-door-guard",
+      "updated_at": "2026-09-26T12:06:13Z"
+    }
   ],
-  "pulls_listed": "UNKNOWN",
-  "pulls_listing": "UNKNOWN",
-  "queue_depth_per_runner": 70.0,
+  "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "fix/open-door-bounty-readme-20260926",
+      "created_at": "2026-09-26T12:06:13Z",
+      "draft": false,
+      "head_sha": "040e0e7e5763de4255b4c31090c48ecc3c7a3a60",
+      "number": 29899,
+      "title": "Reword bounty cash close README for open-door-guard",
+      "updated_at": "2026-09-26T12:06:13Z"
+    }
+  ],
+  "open_heads": {
+    "29899": "040e0e7e5763de4255b4c31090c48ecc3c7a3a60"
+  },
+  "pulls_listed": 1,
+  "pulls_listing": "COMPLETE",
+  "queue_depth_per_runner": 44.7,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "grok/mealframe-test-strip-20260925",
-      "closed_at": "2026-09-26T03:17:53Z",
-      "head_sha": "fc1c1c90f3751cc2b02e2829707af9c8945d660f",
-      "merged_at": "2026-09-26T03:17:53Z",
-      "number": 29877,
+      "branch": "feat/roadmap-combined-dependencies-20260926",
+      "closed_at": "2026-09-26T13:15:32Z",
+      "head_sha": "3e9a45b9d4d870f11fe412072e5c784ac5ef54a2",
+      "merge_commit_sha": "UNKNOWN",
+      "merged_at": "2026-09-26T13:15:32Z",
+      "number": 29981,
       "state": "MERGED",
-      "title": "Strip MealFrame tests; keep the journal compile"
+      "title": "Include dependency analysis directly from editable roadmap inputs"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "grok/root-test-purge-20260925",
-      "closed_at": "2026-09-26T03:13:36Z",
-      "head_sha": "31ba8f9b33c2aacbfdacebe35a8e7c282b1040c3",
-      "merged_at": "2026-09-26T03:13:36Z",
-      "number": 29876,
+      "branch": "build/recover-alert-quality-20260926",
+      "closed_at": "2026-09-26T13:15:21Z",
+      "head_sha": "ebb8231e1bf6b1fe5a9a0c842a66918b0fa7d1c9",
+      "merge_commit_sha": "UNKNOWN",
+      "merged_at": "2026-09-26T13:15:21Z",
+      "number": 29980,
       "state": "MERGED",
-      "title": "Remove unreferenced root checks and two test-only workflow steps"
+      "title": "Finish the stranded alert-quality analysis and editable workbook"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "latch/f6b4-zero-unique-20260925-01",
-      "closed_at": "2026-09-25T20:04:32Z",
-      "head_sha": "a0216c308cf36f269821d74a8ffb97aec51a5f09",
-      "merged_at": "2026-09-25T20:04:32Z",
-      "number": 29859,
+      "branch": "recover-uiowa-readout-pptx-20260926",
+      "closed_at": "2026-09-26T13:15:09Z",
+      "head_sha": "92b178cadc9e67c748ffc233aabfa89b6b3a77c2",
+      "merge_commit_sha": "UNKNOWN",
+      "merged_at": "2026-09-26T13:15:09Z",
+      "number": 29979,
       "state": "MERGED",
-      "title": "latch-f6b4-zero-unique-20260925-01: zero unique tip-landable"
+      "title": "Deliver editable PowerPoint export for the recovered readout architecture"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "repair/freshness-discover-keeps-commercial-pilot",
-      "closed_at": "2026-09-25T16:32:14Z",
-      "head_sha": "4d5ebc8b4d5ca591337e4810ca543b3c1a2f0631",
-      "merged_at": "2026-09-25T16:32:13Z",
-      "number": 29842,
+      "branch": "fix/uiowa-unkeyed-review-retention-20260926",
+      "closed_at": "2026-09-26T13:14:00Z",
+      "head_sha": "2cd1d96ca773dd75518421a1722a54d40c670da2",
+      "merge_commit_sha": "UNKNOWN",
+      "merged_at": "2026-09-26T13:14:00Z",
+      "number": 29978,
       "state": "MERGED",
-      "title": "restore freshness tests the source-parses discover pattern runs"
+      "title": "Retain unnumbered Iowa review comments across source reimports"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "repair/open-door-tjlabs-live-scan-36159386014",
-      "closed_at": "2026-09-25T16:30:29Z",
-      "head_sha": "afce058635e1c52e53b92fb4dd4c55cfa4084fac",
-      "merged_at": null,
-      "number": 29840,
-      "state": "CLOSED",
-      "title": "restore tjlabs leftover scanned by open-door-guard"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "fix/open-door-guard-tjlabs-path-after-purge",
-      "closed_at": "2026-09-25T16:27:56Z",
-      "head_sha": "b581a4eb4bee9971c9cf9f59a5ddb5b4546f8cc0",
-      "merged_at": null,
-      "number": 29836,
-      "state": "CLOSED",
-      "title": "restore test_tjlabs_pack_terms.py so open-door-guard matrix can run"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "fix/restore-tjlabs-pack-terms-test-20260925",
-      "closed_at": "2026-09-25T16:27:48Z",
-      "head_sha": "fc89ebec8f55e30d41c1afc5b509d06cee14e694",
-      "merged_at": null,
-      "number": 29838,
-      "state": "CLOSED",
-      "title": "restore test_tjlabs_pack_terms.py for open-door-guard"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "repair/spark-concurrency-29834",
-      "closed_at": "2026-09-25T16:27:40Z",
-      "head_sha": "5802fe30291873b7f56d4073c5ac3809622e0d62",
-      "merged_at": "2026-09-25T16:27:40Z",
-      "number": 29841,
+      "branch": "swarm-zz/uiowa-089-discussion-complete-20260926",
+      "closed_at": "2026-09-26T13:11:35Z",
+      "head_sha": "632ecbcd49b5b73608416f1ed33526cd38e5b658",
+      "merge_commit_sha": "UNKNOWN",
+      "merged_at": "2026-09-26T13:11:35Z",
+      "number": 29977,
       "state": "MERGED",
-      "title": "restore workflow concurrency helper removed by root test purge"
+      "title": "Complete offline source-bound discussion and Q&A kit"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "fix/open-door-guard-missing-tjlabs-test",
-      "closed_at": "2026-09-25T16:27:20Z",
-      "head_sha": "d07b5a8861276795af35cbc087af1f93c20bba12",
-      "merged_at": null,
-      "number": 29837,
-      "state": "CLOSED",
-      "title": "drop missing test_tjlabs_pack_terms.py from open-door-guard tests"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "repair/open-door-tjlabs-live-fixture-20260925",
-      "closed_at": "2026-09-25T16:25:16Z",
-      "head_sha": "0d8a849e2581e95fa8ea9551d003f863e1e3de54",
-      "merged_at": "2026-09-25T16:25:16Z",
-      "number": 29839,
+      "branch": "work/config-lifecycle-recovery-20260926",
+      "closed_at": "2026-09-26T13:10:16Z",
+      "head_sha": "130623e1b8e1bc9ab1ce7c785ebff9d4cbdfe27b",
+      "merge_commit_sha": "UNKNOWN",
+      "merged_at": "2026-09-26T13:10:16Z",
+      "number": 29976,
       "state": "MERGED",
-      "title": "restore sold-pack ToS test required by open-door-guard"
+      "title": "Complete configuration lifecycle and rebuild evidence kit"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "purge/tests-dir-unreferenced-20260925",
-      "closed_at": "2026-09-25T16:15:21Z",
-      "head_sha": "63d9ac4f3202cae0b1e1bcefcc0b8ffa5d2d822d",
-      "merged_at": "2026-09-25T16:15:21Z",
-      "number": 29835,
+      "branch": "finish/case-mix-lab-20260926",
+      "closed_at": "2026-09-26T13:10:01Z",
+      "head_sha": "609f2360694ac3140cf3dfe34c6ddecc3f5dad25",
+      "merge_commit_sha": "UNKNOWN",
+      "merged_at": "2026-09-26T13:10:01Z",
+      "number": 29975,
       "state": "MERGED",
-      "title": "purge unreferenced tests directory files"
+      "title": "Complete recovered case-mix comparison lab"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "purge/root-tests-unreferenced-20260925",
-      "closed_at": "2026-09-25T16:13:30Z",
-      "head_sha": "d3c909f1b2828e968f4ba8697b1f42c2725bfb8f",
-      "merged_at": "2026-09-25T16:13:30Z",
-      "number": 29834,
+      "branch": "feat/uiowa-linked-executive-summary-20260926",
+      "closed_at": "2026-09-26T13:07:33Z",
+      "head_sha": "99d7fa38aaea0060bac84e70ba9481f652580cac",
+      "merge_commit_sha": "UNKNOWN",
+      "merged_at": "2026-09-26T13:07:33Z",
+      "number": 29974,
       "state": "MERGED",
-      "title": "purge unreferenced root test files"
+      "title": "Render evidence-linked Iowa leadership briefings from trace registers"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "repair/repo-pulse-backup-http-500-36153564499",
-      "closed_at": "2026-09-25T15:52:27Z",
-      "head_sha": "f54c943b4f7442fc1511e35464cb4b975d347cd1",
-      "merged_at": "2026-09-25T15:52:27Z",
-      "number": 29832,
+      "branch": "recover/uiowa-085-roadmap-20260926",
+      "closed_at": "2026-09-26T13:06:22Z",
+      "head_sha": "b0eea2d74f924549114d815aa6397b4a861f2974",
+      "merge_commit_sha": "UNKNOWN",
+      "merged_at": "2026-09-26T13:06:22Z",
+      "number": 29973,
       "state": "MERGED",
-      "title": "repair repo-pulse artifacts HTTP 500 so the digest still posts"
+      "title": "Restore the dependency-aware phased roadmap planning kit"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "fix/spark-mcp-drop-purged-webmcp-door-test",
-      "closed_at": "2026-09-25T13:28:39Z",
-      "head_sha": "8c729d9f65cec0124573bc8966af812503d6cd20",
-      "merged_at": "2026-09-25T13:28:39Z",
-      "number": 29788,
+      "branch": "build/backup-verify-restoration-20260926",
+      "closed_at": "2026-09-26T13:05:38Z",
+      "head_sha": "a5baf819683f7a14e83ba9af91e16aab75d03ad8",
+      "merge_commit_sha": "UNKNOWN",
+      "merged_at": "2026-09-26T13:05:38Z",
+      "number": 29972,
       "state": "MERGED",
-      "title": "fix: drop purged test_webmcp_door from spark-mcp-production"
+      "title": "Require a successful temporary restore for backup verification"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "purge/root-json-string-20260925h",
-      "closed_at": "2026-09-25T13:16:40Z",
-      "head_sha": "a03216b5e9c2bd1874ef6555622ebcd743b9c2c9",
-      "merged_at": "2026-09-25T13:16:40Z",
-      "number": 29787,
+      "branch": "integrate-uiowa-decision-records-20260926",
+      "closed_at": "2026-09-26T13:04:43Z",
+      "head_sha": "c59a5915969730196404bb08833404adcab502b5",
+      "merge_commit_sha": "UNKNOWN",
+      "merged_at": "2026-09-26T13:04:43Z",
+      "number": 29971,
       "state": "MERGED",
-      "title": "purge: drop 53 root JSON and page string checks"
+      "title": "Connect AI decision records to canonical lifecycle and economics"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "build/backup-linked-worktree-20260926",
+      "closed_at": "2026-09-26T13:03:14Z",
+      "head_sha": "050f79976dd7eda62d9342d641cdb21a2f6d7a55",
+      "merge_commit_sha": "UNKNOWN",
+      "merged_at": "2026-09-26T13:03:14Z",
+      "number": 29970,
+      "state": "MERGED",
+      "title": "Make repository backups work with linked worktrees"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "build/backup-require-full-history-20260926",
+      "closed_at": "2026-09-26T13:01:08Z",
+      "head_sha": "55a82ff1082c7065903ec5da8783c65559d1d7b4",
+      "merge_commit_sha": "UNKNOWN",
+      "merged_at": "2026-09-26T13:01:08Z",
+      "number": 29969,
+      "state": "MERGED",
+      "title": "Reject shallow sources before publishing full backups"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "finish/uiowa120-register-impact-20260926",
+      "closed_at": "2026-09-26T13:01:06Z",
+      "head_sha": "fa648f6590ee6f339e81d2ff3b70bc087eaf2bf2",
+      "merge_commit_sha": "UNKNOWN",
+      "merged_at": "2026-09-26T13:01:06Z",
+      "number": 29967,
+      "state": "MERGED",
+      "title": "Recover 023 dependency index and complete source-impact composition"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "work/source-control-assessment-20260926",
+      "closed_at": "2026-09-26T13:01:01Z",
+      "head_sha": "3a7ce80f9da3dc0b0868a9efcbbe1b619f23c085",
+      "merge_commit_sha": "UNKNOWN",
+      "merged_at": "2026-09-26T13:01:01Z",
+      "number": 29968,
+      "state": "MERGED",
+      "title": "Complete source-control practice worksheet and workflow comparison"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-26T07:03:30Z"
+  "unchanged_since": "2026-09-26T13:17:52Z",
+  "undatable_pulls": []
 }
