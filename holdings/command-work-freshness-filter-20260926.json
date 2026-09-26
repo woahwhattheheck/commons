@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "command-work-freshness-filter-20260926",
+  "holder": "command-observability",
+  "heartbeat_at": "2026-09-26T12:13:59.005Z",
+  "taken_at": "2026-09-26T12:13:59.005Z",
+  "ttl_s": 1800,
+  "state": "HELD",
+  "note": "Own integrations/command_center/web/work.js: add existing-table freshness filter so retained/stale items remain discoverable beyond the 200-row window."
+}
