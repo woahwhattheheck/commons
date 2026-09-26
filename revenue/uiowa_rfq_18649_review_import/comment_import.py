@@ -100,7 +100,66 @@ def validate_catalog(catalog: dict) -> list[dict]:
 
 
 def empty_state() -> dict:
-    return {"schema": SCHEMA, "comments": []}
+    return {"schema": SCHEMA, "comments": [], "unkeyed_rows": []}
+
+
+def _validate_occurrence(occurrence: dict, source_id: str) -> None:
+    if not isinstance(occurrence, dict) or occurrence.get("source_id") != source_id:
+        raise ValueError("source occurrence identity mismatch")
+    if any(type(occurrence.get(k)) is not int or occurrence[k] < 1
+           for k in ("record_number", "line_start", "line_end")):
+        raise ValueError("invalid source record/line locator")
+    if occurrence["line_start"] > occurrence["line_end"]:
+        raise ValueError("reversed source line locator")
+    source_hash = occurrence.get("sha256", "")
+    if not isinstance(source_hash, str) or len(source_hash) != 64 or any(
+            c not in "0123456789abcdef" for c in source_hash):
+        raise ValueError("invalid source digest")
+
+
+def _unkeyed_index(rows: list) -> dict[bytes, dict]:
+    if not isinstance(rows, list):
+        raise ImportFormatError("prior unkeyed_rows must be an array")
+    indexed = {}
+    for row in rows:
+        try:
+            if not isinstance(row, dict) or row.get("status") != "UNRESOLVED":
+                raise ValueError("invalid unkeyed row status")
+            values, occurrence = row["values"], row["occurrence"]
+            if not isinstance(values, dict) or any(not isinstance(k, str) or not isinstance(v, str) for k, v in values.items()):
+                raise ValueError("invalid source values")
+            if any(k not in values for k in REQUIRED) or values["comment_id"].strip():
+                raise ValueError("unkeyed row must retain required fields and a blank comment_id")
+            source_id = occurrence.get("source_id") if isinstance(occurrence, dict) else None
+            if not isinstance(source_id, str) or not source_id.strip():
+                raise ValueError("invalid unkeyed source identity")
+            _validate_occurrence(occurrence, source_id)
+            if row.get("diagnostics") != [{"code": "MISSING_VALUE", "field": "comment_id"}]:
+                raise ValueError("invalid unkeyed row diagnostic")
+            indexed[canonical(row)] = deepcopy(row)
+        except (KeyError, TypeError, ValueError) as exc:
+            raise ImportFormatError(f"invalid prior unkeyed row: {exc}") from exc
+    return indexed
+
+
+def replay_state(prior: dict | None) -> dict:
+    """Accept state or a saved result, retaining legacy top-level unkeyed rows."""
+    if prior is None:
+        return empty_state()
+    if not isinstance(prior, dict):
+        raise ImportFormatError("prior import must be a state or saved result object")
+    if "staged" in prior:
+        prior = prior["staged"]
+    if not isinstance(prior, dict):
+        raise ImportFormatError("invalid prior staged result")
+    state = deepcopy(prior.get("state", prior))
+    if not isinstance(state, dict):
+        raise ImportFormatError("invalid prior import state")
+    retained = _unkeyed_index(state.get("unkeyed_rows", []))
+    if "state" in prior:
+        retained.update(_unkeyed_index(prior.get("unkeyed_rows", [])))
+    state["unkeyed_rows"] = [retained[key] for key in sorted(retained)]
+    return state
 
 
 def _state_index(state: dict) -> dict[tuple[str, str], dict]:
@@ -129,17 +188,7 @@ def _state_index(state: dict) -> dict[tuple[str, str], dict]:
                 if not isinstance(variant["occurrences"], list) or not variant["occurrences"]:
                     raise ValueError("missing source occurrences")
                 for occurrence in variant["occurrences"]:
-                    if not isinstance(occurrence, dict) or occurrence.get("source_id") != key[0]:
-                        raise ValueError("source occurrence identity mismatch")
-                    if any(type(occurrence.get(k)) is not int or occurrence[k] < 1
-                           for k in ("record_number", "line_start", "line_end")):
-                        raise ValueError("invalid source record/line locator")
-                    if occurrence["line_start"] > occurrence["line_end"]:
-                        raise ValueError("reversed source line locator")
-                    source_hash = occurrence.get("sha256", "")
-                    if not isinstance(source_hash, str) or len(source_hash) != 64 or any(
-                            c not in "0123456789abcdef" for c in source_hash):
-                        raise ValueError("invalid source digest")
+                    _validate_occurrence(occurrence, key[0])
             indexed[key] = item
         except (KeyError, TypeError, ValueError) as exc:
             raise ImportFormatError(f"invalid prior import state: {exc}") from exc
@@ -183,16 +232,17 @@ def stage_comments(raw: bytes, source_id: str, source_name: str,
     """
     parsed = parse_csv(raw, source_id, source_name)
     targets = validate_catalog(catalog)
-    state = deepcopy(prior) if prior is not None else empty_state()
+    state = replay_state(prior)
     indexed = _state_index(state)
-    row_problems = []
+    row_problems = _unkeyed_index(state["unkeyed_rows"])
     for row in parsed["rows"]:
         values = row["values"]
         occurrence = {**parsed["source"], **{k: row[k] for k in ("record_number", "line_start", "line_end")}}
         if not values["comment_id"].strip():
-            row_problems.append({"status": "UNRESOLVED", "values": deepcopy(values),
-                                 "occurrence": occurrence,
-                                 "diagnostics": [{"code": "MISSING_VALUE", "field": "comment_id"}]})
+            problem = {"status": "UNRESOLVED", "values": deepcopy(values),
+                       "occurrence": occurrence,
+                       "diagnostics": [{"code": "MISSING_VALUE", "field": "comment_id"}]}
+            row_problems[canonical(problem)] = problem
             continue
         key = source_id, values["comment_id"]
         fingerprint = digest(values)
@@ -205,6 +255,7 @@ def stage_comments(raw: bytes, source_id: str, source_name: str,
             variant["occurrences"].append(occurrence)
     ready, unresolved = [], []
     state["comments"] = [indexed[k] for k in sorted(indexed)]
+    state["unkeyed_rows"] = [row_problems[k] for k in sorted(row_problems)]
     for item in state["comments"]:
         item["variants"].sort(key=lambda v: v["fingerprint"])
         for v in item["variants"]:
@@ -222,7 +273,7 @@ def stage_comments(raw: bytes, source_id: str, source_name: str,
         (unresolved if problems else ready).append(record)
     return {"schema": SCHEMA, "source": parsed["source"], "catalog_sha256": digest(catalog),
             "state": state, "ready": ready, "unresolved": unresolved,
-            "unkeyed_rows": row_problems,
+            "unkeyed_rows": deepcopy(state["unkeyed_rows"]),
             "summary": {"input_records": len(parsed["rows"]), "unique_comments": len(state["comments"]),
                         "ready": len(ready), "unresolved": len(unresolved), "unkeyed_rows": len(row_problems)}}
 
@@ -244,8 +295,15 @@ def render_report(result: dict) -> str:
                 for o in v["occurrences"]), ""]
         out += ["Diagnostics: " + (", ".join(d["code"] for d in record["diagnostics"]) or "none"), ""]
     for row in result["unkeyed_rows"]:
-        out += [f"## Unkeyed source record {row['occurrence']['record_number']}", "",
-                "MISSING_VALUE: comment_id. Full source content retained in JSON.", ""]
+        import html
+        occurrence = row["occurrence"]
+        out += [f"## Unkeyed source record {occurrence['record_number']}", "",
+                "MISSING_VALUE: comment_id. Retained for explicit source reconciliation.", "",
+                "Source collection: " + html.escape(occurrence["source_id"]),
+                f"Physical lines: {occurrence['line_start']}-{occurrence['line_end']}",
+                "Source SHA-256: " + occurrence["sha256"], ""]
+        out += ["> " + html.escape(line) for line in row["values"]["comment_text"].splitlines()]
+        out += ["", "All original columns remain in JSON.", ""]
     return "\n".join(out)
 
 
@@ -260,8 +318,6 @@ def main() -> int:
     args = parser.parse_args()
     try:
         prior = json.loads(args.prior.read_text(encoding="utf-8")) if args.prior else None
-        if prior is not None and "state" in prior:
-            prior = prior["state"]
         result = stage_comments(args.csv.read_bytes(), args.source_id, args.csv.name,
                                 json.loads(args.catalog.read_text(encoding="utf-8")), prior)
         # Reserve destinations before writing to avoid touching an existing artifact.

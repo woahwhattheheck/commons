@@ -42,7 +42,23 @@ The catalog is supplied reference metadata, not evidence of document authenticit
 
 `source_id` is the operator's stable logical collection identity. Use the same value for revisions of that collection, a different value for another collection. The tool does not infer identity from names, roles, or similar text. Source name, raw-byte SHA-256, byte length, encoding, columns, logical record number (1-based data rows), and inclusive physical line span are retained per occurrence. Quoted multiline fields can span several physical lines; these are not spreadsheet row numbers.
 
-The state key is `(source_id, comment_id)`. Identical values are one variant with every distinct source occurrence, not independent corroboration. A changed value in any column creates a retained variant and `COMMENT_CONTENT_CONFLICT`; it cannot overwrite the previous text or inherit readiness. New imports re-resolve all retained comments against the supplied catalog. Prior JSON state and source files are not mutated. Unnumbered rows remain in `unkeyed_rows` of their import result; retain that original result when reconciling later exports. Comments removed from a later CSV remain in accumulated state, not implicitly withdrawn.
+The state key is `(source_id, comment_id)`. Identical values are one variant with every distinct source occurrence, not independent corroboration. A changed value in any column creates a retained variant and `COMMENT_CONTENT_CONFLICT`; it cannot overwrite the previous text or inherit readiness. New imports re-resolve all retained comments against the supplied catalog. Prior JSON state and source files are not mutated. Comments removed from a later CSV remain in accumulated state, not implicitly withdrawn.
+
+Unnumbered rows now remain in `state.unkeyed_rows` as well as the result's
+`unkeyed_rows`, with exact values, source digest and physical-line locators.
+Identical retained occurrences are deduplicated; different source collections,
+export bytes or record positions are not guessed to be the same comment.
+`summary.unkeyed_rows` counts all retained unresolved occurrences, while
+`summary.input_records` describes the current CSV only. The readable report shows
+their text and source collection so older unresolved rows remain visible.
+
+Pass the complete saved result with `--prior` to migrate an older result whose
+unnumbered rows lived only at top level. Both the CSV CLI and native bridge also
+accept a saved native preparation or the new state object. An old state-only file
+cannot recover rows that it never stored; retain the original full result.
+Assigning an ID in a later export does not silently resolve an earlier unnumbered
+occurrence by text similarity. Reconciliation remains explicit human work; this
+importer neither invents identities nor records a review decision.
 
 The `ready` list is a staging result, not an applied tracker transaction. In particular, a conflicting reimport does not undo a prior tracker action. Human reconciliation must retain both versions and identify the intentional resolution. A role label is context, not authenticated identity. Supplied status/decision/approval columns remain source text only. The core does not grant approvals, close comments, revise findings, schedule events, or contact anyone.
 
