@@ -63,7 +63,24 @@ def _discover_token() -> str:
 
 
 class GitHubError(RuntimeError):
-    pass
+    def __init__(self, message: str, *, status: int | None = None,
+                 rate_limited: bool = False, retry_after: str | None = None):
+        super().__init__(message)
+        self.status = status
+        self.rate_limited = rate_limited
+        self.retry_after = retry_after
+
+
+def _http_error(method: str, path: str, exc: urllib.error.HTTPError) -> GitHubError:
+    detail = exc.read().decode("utf-8", "replace")[:300]
+    headers = exc.headers or {}
+    retry_after = headers.get("Retry-After")
+    limited = exc.code == 429 or (exc.code == 403 and (
+        headers.get("X-RateLimit-Remaining") == "0"
+        or retry_after is not None or "rate limit" in detail.lower()
+    ))
+    return GitHubError(f"{method} {path} -> HTTP {exc.code}: {detail}",
+                       status=exc.code, rate_limited=limited, retry_after=retry_after)
 
 
 class GitHub:
@@ -92,8 +109,7 @@ class GitHub:
             with urllib.request.urlopen(request, timeout=60) as response:
                 return json.loads(response.read().decode("utf-8"))
         except urllib.error.HTTPError as exc:
-            detail = exc.read().decode("utf-8", "replace")[:300]
-            raise GitHubError(f"GET {path} -> HTTP {exc.code}: {detail}") from exc
+            raise _http_error("GET", path, exc) from exc
         except urllib.error.URLError as exc:
             raise GitHubError(f"GET {path} -> {exc}") from exc
 
