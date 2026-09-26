@@ -65,6 +65,32 @@ def _order(event):
     return 2, 0, _iso(_time(event.get("at", event.get("ts")))), str(event.get("id", ""))
 
 
+def _newer_legacy_custody(record, event, now):
+    """Recognize an observed claim generation, not an ordinary attempted TAKE."""
+    from host.coordination_state import repository_claim_key
+
+    if not record["task_key"].startswith("github:") or not _known(event.get("worker")):
+        return False
+    parts = key_parts(record["task_key"])
+    key = repository_claim_key(parts["kind"], parts["number"], parts["repo"])
+    source = "legacy-claim:holdings/" + key + ".json"
+    if event.get("source") != source or not re.fullmatch(
+            re.escape(source) + r":[0-9a-f]{64}:take", str(event.get("id", ""))):
+        return False
+    ttl = event.get("legacy_ttl_s")
+    if type(ttl) is not int or not 1 <= ttl <= 7200:
+        return False
+    taken, started = _time(event.get("at")), _time(event.get("started_at"))
+    heartbeat = _time(event.get("heartbeat"))
+    if taken is None or taken != started or heartbeat is None or heartbeat < taken:
+        return False
+    if seat_census.heartbeat_ahead_s(taken, now) or seat_census.heartbeat_ahead_s(heartbeat, now):
+        return False
+    prior = [stamp for field in ("started_at", "heartbeat")
+             if (stamp := _time(record.get(field))) is not None]
+    return not prior or taken > max(prior)
+
+
 def _record(key, event):
     parts = key_parts(key)
     record = {field: UNKNOWN for field in (
@@ -387,11 +413,18 @@ def project(events, now=None, seats=None, provider_facts=None):
         _provenance(record, event)
         worker = event.get("worker") or UNKNOWN
         if action == "TAKE" and record["state"] == "ACTIVE" and worker != record["worker"]:
-            collision = {"task_key": key, "event_id": event["id"], "worker": worker,
-                         "existing_worker": record["worker"], "reason": "already_active"}
-            collisions.append(collision)
-            record["collision_count"] += 1
-            continue
+            if _newer_legacy_custody(record, event, moment):
+                # The claims branch already changed custody. Seat activity on
+                # other work cannot keep its former task owner in possession.
+                record.update(previous_worker=record["worker"], worker=UNKNOWN,
+                              model=UNKNOWN, harness=UNKNOWN, state="OPEN",
+                              claim_transferred_at=event["at"])
+            else:
+                collision = {"task_key": key, "event_id": event["id"], "worker": worker,
+                             "existing_worker": record["worker"], "reason": "already_active"}
+                collisions.append(collision)
+                record["collision_count"] += 1
+                continue
         if record["state"] in TERMINAL:
             if action == "TAKE":
                 collisions.append({"task_key": key, "event_id": event["id"], "worker": worker,
