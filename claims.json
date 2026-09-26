@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 78,
+  "n": 79,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -731,6 +731,16 @@
       "status": "OPEN",
       "ts": "",
       "href": "./p/codex-uiowa-environment-drift-kit-resource-activation-20260919-01.html"
+    },
+    {
+      "id": "codex-uiowa-dependency-roadmap-planner-resource-activation-20260926-01",
+      "from": "",
+      "claim": "[#commons activation claim](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790428290281839). No build order was posted: the capability is already complete and landed, its concrete consumers.",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/codex-uiowa-dependency-roadmap-planner-resource-activation-20260926-01.html"
     },
     {
       "id": "codex-pages-exact-path-readback-20260831-01",
