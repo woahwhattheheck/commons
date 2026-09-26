@@ -11,7 +11,7 @@ import hashlib
 import json
 import re
 import subprocess
-from concurrent.futures import Future, ThreadPoolExecutor, as_completed
+from concurrent.futures import FIRST_COMPLETED, Future, ThreadPoolExecutor, wait
 from datetime import datetime, timedelta, timezone
 from time import monotonic
 from threading import Lock
@@ -419,14 +419,8 @@ class LiveCollectors:
         return self._batch(source, items, True,
                            ["Canonical source assertions retained; fetching a document does not re-measure its work activity."])
 
-    def collect(self):
-        # Cooperative deadline: in-flight provider reads finish under their own
-        # timeout, and the executor is joined before the caller releases its lock.
-        self.deadline = monotonic() + self.refresh_deadline_seconds
-        # A collector may be reused. Never carry a branch pin into a later
-        # refresh after the upstream ref may have advanced.
-        with self._document_heads_lock:
-            self._document_heads.clear()
+    def _github_discovery(self):
+        """Discover Actions work without delaying independent provider readers."""
         results, tasks, deferred = [], [], []
         if self.github_config.get("enabled", True):
             identity_source = self._source("github:identity", "GitHub", "Existing GitHub account", {})
@@ -473,6 +467,17 @@ class LiveCollectors:
                 extra = getattr(exc, "metadata", {}) if isinstance(exc, SourceFailure) else {}
                 results.append(self._batch({**identity_source, "metadata": {"request_budget": extra}}
                     if extra else identity_source, [], False, error=getattr(exc, "code", type(exc).__name__)))
+        return results, tasks, deferred
+
+    def collect(self):
+        # Cooperative deadline: in-flight provider reads finish under their own
+        # timeout, and the executor is joined before the caller releases its lock.
+        self.deadline = monotonic() + self.refresh_deadline_seconds
+        # A collector may be reused. Never carry a branch pin into a later
+        # refresh after the upstream ref may have advanced.
+        with self._document_heads_lock:
+            self._document_heads.clear()
+        results, tasks, deferred = [], [], []
         for channel in self.slack_config.get("channels", []):
             if not isinstance(channel, dict) or not re.fullmatch(r"[CG][A-Z0-9]+", str(channel.get("id", ""))):
                 raise ValueError("Slack channels need an existing provider id.")
@@ -483,21 +488,40 @@ class LiveCollectors:
                                   spec.get("label", spec["path"]), {"repository": spec["repository"], "path": spec["path"]})
             tasks.append((source, lambda spec=spec: self._document(spec)))
         with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
-            futures = []
-            for source, reader in tasks:
-                try:
-                    self._check_deadline()
-                except SourceFailure as exc:
-                    results.append(self._batch(source, [], False, error=exc.code,
-                        notes=["Collection stopped before dispatch; previous items remain available."]))
-                    continue
-                futures.append(executor.submit(self._safe, source, reader))
-            for future in as_completed(futures):
-                batch = future.result()
-                if "deferred" in batch:
-                    deferred.append(batch["deferred"])
-                else:
-                    results.append(batch)
+            futures = set()
+            discovery = None
+            if self.github_config.get("enabled", True):
+                discovery = executor.submit(self._github_discovery)
+                futures.add(discovery)
+
+            def submit(readers):
+                for source, reader in readers:
+                    try:
+                        self._check_deadline()
+                    except SourceFailure as exc:
+                        results.append(self._batch(source, [], False, error=exc.code,
+                            notes=["Collection stopped before dispatch; previous items remain available."]))
+                        continue
+                    futures.add(executor.submit(self._safe, source, reader))
+
+            submit(tasks)
+            while futures:
+                done, _ = wait(futures, return_when=FIRST_COMPLETED)
+                for future in done:
+                    futures.remove(future)
+                    if future is discovery:
+                        batches, discovered, held = future.result()
+                        results.extend(batches)
+                        deferred.extend(held)
+                        # Discovered work uses the same worker cap, deadline,
+                        # and request budget as already-dispatched readers.
+                        submit(discovered)
+                    else:
+                        batch = future.result()
+                        if "deferred" in batch:
+                            deferred.append(batch["deferred"])
+                        else:
+                            results.append(batch)
         # Serialize writes; provider concurrency never shares a Store transaction.
         for batch in results:
             payload = {key: value for key, value in batch.items() if key != "operation_id"}
