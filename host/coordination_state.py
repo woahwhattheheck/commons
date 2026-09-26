@@ -1255,6 +1255,24 @@ def state_commit(git, files, branch, message, parent=None):
     return git.out(*args, env=_commit_env()).strip()
 
 
+def _superseded_state(git, parent, head):
+    """An older completed build must not replace a newer published observation."""
+    incoming = _parse_ts(head.get("observed_at"))
+    if not parent or incoming is None:
+        return None
+    try:
+        previous = json.loads(git.out("show", parent + ":" + HEAD_FILE))
+    except (GitError, ValueError):
+        return None  # An absent/invalid old head can still be repaired.
+    retained = _parse_ts(previous.get("observed_at")) if isinstance(previous, dict) else None
+    if retained is None or retained <= incoming:
+        return None
+    return {"commit": parent, "parent": parent, "pushed": False,
+            "superseded": True, "observed_at": head.get("observed_at"),
+            "retained_observed_at": previous["observed_at"],
+            "reason": "a newer coordination snapshot is already published"}
+
+
 def publish(git, payload, repo, push=True, remote="origin", branch=STATE_BRANCH, texts=None,
             split=False):
     """Commit the tiers to `branch` on top of its current tip. `texts` (from
@@ -1269,6 +1287,9 @@ def publish(git, payload, repo, push=True, remote="origin", branch=STATE_BRANCH,
     if parent:
         git.fetch([parent], remote)
         _materialize_blobs(git, parent)
+    superseded = _superseded_state(git, parent, head)
+    if superseded:
+        return superseded
     message = "coordination state: main %s, %s open, observed %s" % (
         str((head.get("main") or {}).get("sha", ""))[:10],
         (head.get("counts") or {}).get("open_prs"), head.get("observed_at"))
@@ -1301,6 +1322,9 @@ def publish(git, payload, repo, push=True, remote="origin", branch=STATE_BRANCH,
         if parent:
             git.fetch([parent], remote)
             _materialize_blobs(git, parent)
+        superseded = _superseded_state(git, parent, head)
+        if superseded:
+            return superseded
         commit = state_commit(git, files, branch, message, parent)
         done = _push_ref(git, remote, commit, branch)
     return {"commit": commit, "parent": parent, "pushed": done.returncode == 0,
@@ -1636,7 +1660,7 @@ def main(argv=None):
         result = publish(git, None, args.repo, push=not args.no_push, remote=args.remote,
                          texts=texts, split=args.split)
         print(json.dumps({"head": head, "publish": result}, indent=1))
-        return 0 if (result.get("pushed") or args.no_push) else 1
+        return 0 if (result.get("pushed") or result.get("superseded") or args.no_push) else 1
     github = GitHub(args.repo, discover_token())
     if args.cmd == "drift":
         data = github.graphql(
@@ -1661,7 +1685,7 @@ def main(argv=None):
     result = publish(git, payload, args.repo, push=not args.no_push, remote=args.remote,
                      split=args.split)
     print(json.dumps({"head": head, "publish": result}, indent=1))
-    return 0 if (result.get("pushed") or args.no_push) else 1
+    return 0 if (result.get("pushed") or result.get("superseded") or args.no_push) else 1
 
 
 if __name__ == "__main__":
