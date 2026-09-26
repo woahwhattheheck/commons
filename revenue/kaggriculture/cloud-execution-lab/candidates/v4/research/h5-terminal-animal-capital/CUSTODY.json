@@ -1,0 +1,26 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "historical_lane": "V3.1 H5 terminal animal-capital ROI guard",
+  "source_branch": "astra/v31-h5-capital-only-20260911",
+  "source_head": "5c1a9704e841e76a9bfdff169672584f3e997a7b",
+  "source_tree": "0f08b9c75d9beba07c61191c02925d34fbb3c6af",
+  "merge_base": "508b342fc46fa91e3d7cdc3f0b7e44934a187c14",
+  "unique_commits": 1,
+  "source_path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h5_capital_roi.py",
+  "source_blob": "b258b8c1cb81200015092773aa43979d571e2d3c",
+  "source_claim": "Default-OFF postprocessor blanks terminal BUY_ANIMAL rows after the final-plan boundary when first yield cannot occur before the last action, preserving market row positions.",
+  "owning_pr": null,
+  "exact_head_workflow_runs": [],
+  "current_main_direct_identifier_matches": [],
+  "claim_boundary": [
+    "historical source-only V3.1 experiment",
+    "no owning PR found",
+    "no exact-head hosted workflow receipt",
+    "no focused hosted artifact",
+    "no economics or activation receipt",
+    "no current-ABI/materialized postimage",
+    "no V4 composition edge"
+  ],
+  "disposition": "DIVERGENT_UNVALIDATED_SOURCE_CUSTODY_ONLY",
+  "queue_action": "DO_NOT_REPLAY_CHERRY_PICK_REMINT_OR_ACTIVATE; if revisited, rederive against current ABI and require returned-action plus economic gates on the sole main lineage."
+}
