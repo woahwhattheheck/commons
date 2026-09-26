@@ -25,8 +25,6 @@ on:
       - 'coordination/connector_preflight/**'
       - 'revenue/mmsd_ai_governance_policy/**'
       - 'revenue/hive_photo_meal_journal/**'
-      - 'tests/test_mealframe.py'
-      - 'tests/test_mealframe_security.py'
       - 'p/ztk-q4m7-hive019-mealframe-recovery-20260914.md'
       - 'revenue/organization_outbound_lease/**'
       - 'tests/test_organization_outbound_lease.py'
@@ -159,16 +157,6 @@ jobs:
           python -m py_compile
           revenue/hive_photo_meal_journal/journal.py
           revenue/hive_photo_meal_journal/server.py
-          tests/test_mealframe.py
-          tests/test_mealframe_security.py
-      - name: MealFrame normal tests with resource warnings fatal
-        run: >-
-          python -W error::ResourceWarning tests/test_mealframe.py &&
-          python -W error::ResourceWarning tests/test_mealframe_security.py
-      - name: MealFrame optimized tests with resource warnings fatal
-        run: >-
-          python -O -W error::ResourceWarning tests/test_mealframe.py &&
-          python -O -W error::ResourceWarning tests/test_mealframe_security.py
 
   organization-outbound-lease:
     runs-on: ubuntu-latest

@@ -1,0 +1,69 @@
+{
+  "schema": "titan-v4-historical-salvage-custody/v1",
+  "family": "final-crop-binding",
+  "disposition": "historical_v3_red_current_abi_research_only_no_queue_edge",
+  "canonical_at_reconcile": {
+    "branch": "main",
+    "canonical_blob": "00142be0ff2314dcb23068c8133b34d290661923",
+    "integration_blob": "4e3207af1332266852530ec8494db8969edc1115",
+    "runtime_blob": "72c057552308dbac02dd6165c3049032ddbfa657"
+  },
+  "historical": [
+    {
+      "pr": 11718,
+      "head": "db415ba09600da1507bece659ce4665e5351b29b",
+      "merge_commit": "7cf23ddf2f8db2623a85076fb3fffd84fb65f447",
+      "workflow_run": 34405600822,
+      "job": 102647702072,
+      "outcome": "RED",
+      "passed": [
+        "immutable_head_binding",
+        "compile"
+      ],
+      "failed": [
+        "predecessor_discriminating_contracts"
+      ],
+      "skipped": [
+        "canonical_crop_and_finalizer_contracts",
+        "unchanged_canonical_package"
+      ],
+      "retained_artifacts": 0
+    },
+    {
+      "pr": 11768,
+      "head": "d6459ba6b623c681ac73219f00bf2331a06c6621",
+      "workflow_run": 34406555587,
+      "job": 102650810084,
+      "outcome": "RED",
+      "passed": [
+        "immutable_head_binding",
+        "compile",
+        "predecessor_discriminating_contracts"
+      ],
+      "failed": [
+        "canonical_crop_and_finalizer_contracts"
+      ],
+      "skipped": [
+        "unchanged_canonical_package"
+      ],
+      "retained_artifacts": 0
+    }
+  ],
+  "current_reconciliation": {
+    "runtime_order": [
+      "guard_returned",
+      "guard_crop_returned",
+      "feed_stock_selected",
+      "early_capital_selected",
+      "finish_crop"
+    ],
+    "existing_v4_crop_prefix_readme_blob": "a3303b3483d3163c04f7dcdb964e88bf8a580984",
+    "existing_v4_crop_prefix_receipt_blob": "c1c29bc918989271369132912cc644068302c8df",
+    "note": "The landed crop-input-prefix component is a different executable-prefix theorem and does not authorize transplanting either historical final-binding implementation."
+  },
+  "rules": [
+    "preserve historical heads and hosted RED receipts as evidence",
+    "do not merge, cherry-pick, remint, or activate either historical implementation",
+    "any successor must be rederived on the current ABI and pass fresh final-queue ownership, crop/finalizer, package, and economic gates"
+  ]
+}
