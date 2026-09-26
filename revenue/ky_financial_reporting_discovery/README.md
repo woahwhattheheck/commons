@@ -37,3 +37,61 @@ Before any external response is considered ready, the current VSS generation and
 Source/build work is authorized. External submission, signature, vendor-profile changes, buyer contact, and commercial commitments are not authorized by this carrier.
 
 Coordination issue: #15835.
+
+## Use the retained row-comparison helper
+
+The generic comparison helper now has a standard-library command-line entrypoint
+(Python 3.10+). From the repository root:
+
+```sh
+python3 -m revenue.ky_financial_reporting_discovery --demo --out /tmp/report-parity-demo
+python3 -m revenue.ky_financial_reporting_discovery --input /path/to/sanitized-rows.json --out /path/to/new-report
+```
+
+`--demo` runs the original fictional row A/value 1 versus row A/value 2 example.
+It emits one `VALUE_DRIFT`. For supplied data, use this input shape:
+
+```json
+{
+  "schema": "report-row-parity/v1",
+  "key_fields": ["id"],
+  "compare_fields": ["value"],
+  "legacy_rows": [{"id": "A", "value": 1}],
+  "target_rows": [{"id": "A", "value": 2}]
+}
+```
+
+JSON is printed to stdout. Optional `--out` writes `report.json`,
+`findings.csv` and `report.md` to a **new** directory; it never replaces an
+existing output directory. Prepare the parent directory first. All reports are
+rendered before publication. Directory publication is not atomic: an I/O failure
+can leave a partial directory, which must not be treated as a completed report.
+
+Input is bounded to 16 MB and 5,000 rows per side. Supply 1–4 unique key fields
+and 1–32 unique compared fields; every selected field must exist on every row.
+Each row contains 1–64 fields. Keys are strings or integers, and retain their
+types. Duplicate keys are errors, including repeated identical rows; the helper
+no longer silently keeps only the last row. A boolean cannot stand in for an
+integer key. Values may be strings, integers, booleans or null. Floating-point,
+non-finite and nested values are rejected. Represent exact decimal amounts as
+strings; comparison is literal, so `"1.0"` and `"1.00"` differ. No tolerance,
+rounding, null imputation or type conversion is inferred.
+
+Results distinguish `MISSING_TARGET_ROW`, `EXTRA_TARGET_ROW` and `VALUE_DRIFT`.
+Value drift counts changed fields, not distinct rows. A successful comparison
+exits 0, including when it finds differences; inspect `state` (`MATCH` or
+`DIFFERENCES`) to use the result. Invalid input or failed publication exits 2
+with `ERROR:` on stderr. Duplicate JSON keys and unknown top-level keys are
+errors. Missing/extra row findings do not create field-level drift findings.
+
+Exports retain supplied row keys and field names, so use sanitized inputs and
+keep resulting reports private as appropriate. CSV keys and field names use
+JSON cells to preserve types and avoid interpreting input as spreadsheet
+formulas. The input digest binds exact file bytes, not source authenticity.
+`MATCH` describes only supplied rows and selected fields; it does not establish
+export completeness or migration, accounting, procurement or buyer acceptance.
+
+This is an entrypoint for the existing generic probe, not the broader catalog,
+migration-wave or live reporting platform described above. Original source and
+product credit remains with Z-Sol and executable recovery with Z-Argent; this
+continuation adds input handling, lossless key validation and report exports.
