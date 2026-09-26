@@ -213,8 +213,14 @@ def add_hypothesis(ledger: Mapping[str, Any], hypothesis_id: str, statement: str
         row["labels"] = clean_labels
     row = normalize_hypothesis(row, hypothesis_id)
     existing = current["hypotheses"].get(hypothesis_id)
-    if existing is not None and existing != row:
-        raise ValueError("hypothesis_id already exists with different declaration: %s" % hypothesis_id)
+    if existing is not None:
+        # Evidence advances independently of the immutable declaration. A rerun
+        # of the same declaration must retain, not reject or reset, its benches.
+        declaration = {key: value for key, value in row.items() if key != "benches"}
+        original = {key: value for key, value in existing.items() if key != "benches"}
+        if original != declaration:
+            raise ValueError("hypothesis_id already exists with different declaration: %s" % hypothesis_id)
+        return current
     current["hypotheses"][hypothesis_id] = row
     return validate_ledger(current)
 
