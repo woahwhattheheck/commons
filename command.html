@@ -402,16 +402,19 @@ function renderBeacon(){
     line.textContent = "The freshness beacon could not be read.";
     return;
   }
-  el.className = "pill LIVE";
-  el.textContent = "seq " + state.pulse.seq;
   const counts = state.seats ? currentSeatSnapshot().counts : {};
   const events = state.feed ? state.feed.count : "unread";
   // The bake's own clock. Hours here mean the board bake is waiting for a
   // runner, and the newest work is only in Slack and GitHub.
   const baked = Date.parse(state.pulse.ts);
-  const age = isFinite(baked)
-    ? " (baked " + ago(Math.max(0, Math.round((Date.now() - baked) / 1000))) + ")" : "";
-  line.textContent = state.pulse.ts + age + " · head " +
+  const ageS = Math.round((Date.now() - baked) / 1000);
+  const measurable = Number.isFinite(ageS) && ageS >= -FUTURE_SKEW_S;
+  const band = !measurable ? "UNKNOWN" : ageS >= 600 ? "STALE" : "LIVE";
+  el.className = "pill " + band;
+  el.textContent = band + " · seq " + (known(state.pulse.seq) ?? "unknown");
+  const age = measurable
+    ? " (baked " + ago(Math.max(0, ageS)) + ")" : " (bake time unreadable or ahead of this clock)";
+  line.textContent = (state.pulse.ts || "unknown timestamp") + age + " · head " +
     String(state.pulse.head || "").slice(0,8) + " · " +
     (state.pulse.post_count || "?") + " posts · " +
     (counts.LIVE || 0) + " live · " + events + " events in the shard";
@@ -494,6 +497,9 @@ function renderSeats(){
   if(!state.seats){
     total.textContent = "unread";
     note.textContent = "seats.json could not be read.";
+    document.getElementById("named").replaceChildren();
+    document.getElementById("idle").textContent = "Seat availability is unread.";
+    document.getElementById("activity").textContent = "Posting activity is unread.";
     return;
   }
   const current = currentSeatSnapshot();
