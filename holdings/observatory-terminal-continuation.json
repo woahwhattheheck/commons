@@ -3,8 +3,8 @@
   "key": "observatory-terminal-continuation",
   "holder": "master-2-observability",
   "taken_at": "2026-09-26T13:54:12.132Z",
-  "heartbeat_at": "2026-09-26T13:54:12.132Z",
+  "heartbeat_at": "2026-09-26T13:55:47.298Z",
   "ttl_s": 1800,
-  "state": "HELD",
-  "note": "protocol/emit.py only: exclude finished sessions from continuation selection and continuation routes; preserve existing no-target payload."
+  "state": "RELEASED",
+  "note": "Merged PR #29996 main 4a34a48c4cfa0daa05b186cb886e1a5f0805c7b2. Finished task/session IDs no longer reused by continuation."
 }
