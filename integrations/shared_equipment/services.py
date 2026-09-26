@@ -545,7 +545,24 @@ class CombinedCatalog:
     def call(self, name, arguments):
         for extension in self.extensions:
             if name in {tool["name"] for tool in extension.tools()}:
-                return extension.call(name, arguments)
+                result = extension.call(name, arguments)
+                if name in {"gemini_get_request", "gemini_events", "grokbot_inspect", "grokbot_events"}:
+                    # Use the catalog's existing center and already-read event
+                    # page. Only an exact canonical dispatch binding may roll.
+                    from integrations.command_center.equipment import CommandCenterEquipment
+                    center = next((item for item in self.extensions
+                                   if isinstance(item, CommandCenterEquipment)), None)
+                    if center is not None:
+                        try:
+                            from integrations.command_center.swarm_lifecycle import observe_result
+                            lifecycle = observe_result(center.center, name, result)
+                        except Exception as exc:
+                            lifecycle = {"status": "deferred", "reason": getattr(exc, "kind", type(exc).__name__)}
+                            if getattr(exc, "retry_after", None) is not None:
+                                lifecycle["retry_after"] = exc.retry_after
+                        if isinstance(result, dict):
+                            result = {**result, "swarm_lifecycle": lifecycle}
+                return result
         if name in {tool["name"] for tool in self.services.tools()}:
             return self.services.call(name, arguments)
         return self.commons.call(name, arguments)

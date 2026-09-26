@@ -46,6 +46,37 @@ the ledger. This bounded read model comes from the same Python projector and
 includes the exact ledger's SHA-256 and projection time. It is suitable for a
 static operator view; custody decisions still go through the runtime. Merely
 aging a lease does not write another snapshot or commit.
+The static task panel reads that one bounded branch snapshot through the raw
+content CDN and shares its cache across tabs. It does not spend a GitHub REST
+request resolving the branch for each reader. The displayed observation time
+and ledger digest identify the received snapshot; they do not invent a commit
+pin or claim that a cached projection includes newer work.
+
+The existing `POST /api/tools/call` submit path accepts optional top-level
+`swarm: {"task_key": "github:owner/repo:issue:177", "worker": "SEAT"}`
+metadata for `gemini_submit` and `grokbot_submit`. Omit `task_key` to select next
+work. The worker must match the actual submitted peer/seat; `feed_cursor` and
+`base_sha` may accompany it. Dispatch uses existing seat liveness and capabilities;
+selecting a peer does not renew its heartbeat or advertise new roads. The same
+operation journal reserves delivery before taking work, requires published
+canonical custody, and adds bounded context to the existing prompt. Collision
+routing replaces the original objective with the selected task. Its `swarm`
+receipt records the selected key and claim tip. Retried claims and existing
+task/worker deliveries return their receipts without another provider launch.
+
+Confirmed worker exits are matched to the dispatch's exact provider request/run
+handle in the existing operation journal. Compact observations remain in the
+existing command-center feed, including completions that arrive before the
+submission receipt. An observer stopping, timing out or losing its connection is
+not proof that the remote worker stopped. Worker completion is also not proof
+that a task shipped: bounded reconciliation of that exact task checks provider
+facts before the next assignment. It reuses the same provider cache and cooldowns.
+An unfinished confirmed exit releases only its matching claim generation. A
+currently live, available execution road receives another eligible task through
+the same dispatch path. The planned child operation survives interruption;
+replay reuses its receipt. Failed or cancelled execution, an unconfigured worker,
+and provider cooldowns defer continuation without a retry loop. Existing provider
+callbacks and event reads drive this path; no additional poller is installed.
 
 `--data` reads JSON metadata. For example, a worker that has actually discovered
 these roads can supply:
@@ -78,6 +109,13 @@ configure this policy on the shared service. Provider Retry-After/reset cooldown
 remain authoritative. Saturated callers receive a positive-jitter retry boundary.
 Rate-limit deferrals carry retry information; refresh does
 not sleep while holding a worker. CLI `--max-calls` accepts 0–20, default 4.
+
+Canonical Git pushes also honor an already configured publication capacity in
+the same state directory's existing `request-budget.sqlite3`. The store acquires
+and renews its publication lease immediately before pushing and releases it on
+exit. A capacity or cooldown deferral retains the unpublished proposal and retry
+boundary. This does not configure capacity or turn a task claim into publication
+permission; unconfigured direct Git roads retain their existing behavior.
 
 Provider refresh and ingestion locks work on Windows and Unix using the same
 one-byte `msvcrt` / `flock` pattern as the command center. They release when a

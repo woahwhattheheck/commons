@@ -93,7 +93,7 @@ def _merge_facts(state, incoming):
 class Runtime:
     def __init__(self, root, *, store=None, state_dir=None):
         self.root = Path(root).resolve()
-        self.store = store or GitStore(self.root)
+        self.store = store or GitStore(self.root, state_dir=state_dir)
         if state_dir:
             self.state_dir = Path(state_dir)
         else:

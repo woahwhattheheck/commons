@@ -157,13 +157,19 @@
     if(!assignment||typeof assignment!=='object')return;
     const box=node('div','inline-note');
     const key=canonicalTask(assignment.task_key),worker=text(assignment.worker||'Unknown worker');
-    if(assignment.status==='assigned'&&key){
-      box.append(node('p','',assignment.rerouted?'Assigned another eligible task to '+worker+'.':'Assigned this work to '+worker+'.'));
+    const existing=assignment.status==='existing_dispatch';
+    if(existing)box.append(node('p','','The existing provider job for '+worker+' is retained.'));
+    if((assignment.status==='assigned'||existing)&&key){
+      if(!existing)box.append(node('p','',assignment.rerouted?'Assigned another eligible task to '+worker+'.':'Assigned this work to '+worker+'.'));
       const link=node('a','source-link',key),destination=new URL(location.href);destination.searchParams.set('swarm_task',key);destination.hash='work';link.href=destination.href;box.append(link);
       if(assignment.rerouted)box.append(node('p','field-help','Requested '+text(assignment.requested_task_key||requestedKey)+'. The response above describes the assigned task.'));
-    }else box.append(node('p','',assignment.status==='unpublished'?'Task assignment was not published.':'No task was assigned.'));
+    }else if(!existing)box.append(node('p','',assignment.status==='unpublished'?'Task assignment was not published.':'No task was assigned.'));
+    if(existing){
+      box.append(metadata([['Existing operation',assignment.existing_operation_id],['Existing status',assignment.existing_status]]));
+      if(assignment.existing_provider_refs)box.append(node('pre','',JSON.stringify(safe(assignment.existing_provider_refs),null,2)));
+    }
     if(assignment.reason)box.append(node('p','field-help',text(assignment.reason).slice(0,600)));
-    if(receipt.provider_dispatched===false)box.append(node('p','field-help','No provider job was launched.'));
+    if(receipt.provider_dispatched===false)box.append(node('p','field-help',existing?'No additional provider job was launched.':'No provider job was launched.'));
     target.append(box);
   }
   async function copy(value){try{await navigator.clipboard.writeText(value);api.showToast('Job packet copied.');}catch(_){api.showToast('Clipboard unavailable. Select and copy the displayed packet.');}}

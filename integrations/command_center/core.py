@@ -110,12 +110,16 @@ class CommandCenter:
     )
 
     def __init__(self, state_dir: Path, gateway_url="http://127.0.0.1:8878",
-                 repo="woahwhattheheck/commons", fetcher=None):
+                 repo="woahwhattheheck/commons", fetcher=None, *, initialize=True):
         if not re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", repo):
             raise CoreError(400, "Expected an owner/repository reference.")
         self.state_dir = Path(state_dir)
-        self.state_dir.mkdir(parents=True, exist_ok=True)
         self.database = self.state_dir / "command-center.sqlite3"
+        self._initialize = initialize
+        if initialize:
+            self.state_dir.mkdir(parents=True, exist_ok=True)
+        elif not self.database.is_file():
+            raise FileNotFoundError("Existing command-center.sqlite3 is required.")
         self._summary_lock = threading.Lock()
         self._summary_cache = None
         self._mail_cache = None
@@ -132,6 +136,10 @@ class CommandCenter:
         self.repo = repo
         self.gateway_url = _url(gateway_url, gateway=True)
         self.fetcher = fetcher or self._fetch_http
+        if not initialize:
+            # Local provider exit observers attach to existing custody only.
+            # They must not create a center, schema, or default runtime route.
+            return
         with self._db() as db:
             db.execute("PRAGMA journal_mode=WAL")
             db.executescript("""
@@ -168,7 +176,11 @@ class CommandCenter:
 
     @contextmanager
     def _db(self):
-        db = sqlite3.connect(str(self.database), timeout=30)
+        if self._initialize:
+            db = sqlite3.connect(str(self.database), timeout=30)
+        else:
+            db = sqlite3.connect(self.database.resolve().as_uri() + "?mode=rw",
+                                 timeout=30, uri=True)
         db.row_factory = sqlite3.Row
         try:
             yield db
@@ -517,9 +529,29 @@ class CommandCenter:
                                  {"receipt_received": True, "provider_reported_error": failed,
                                   "execution_complete": status in ("succeeded", "failed", "cancelled"),
                                   "provider_refs": provider_refs, **child_summary})
+        lifecycle = None
+        if swarm is not None or name in {"gemini_get_request", "gemini_events",
+                                         "grokbot_inspect", "grokbot_events"}:
+            # Receipt handles must be durable before a terminal observation can
+            # identify its canonical dispatch. No additional provider read occurs.
+            try:
+                from .swarm_lifecycle import observe_result, consume_operation
+                lifecycle = {"observed": observe_result(self, name, result, runtime_id=runtime_id)}
+                if swarm is not None:
+                    lifecycle["consumed"] = consume_operation(self, operation_id)
+            except Exception as exc:
+                # The provider receipt remains valid if reconciliation defers.
+                lifecycle = {"status": "deferred", "reason": getattr(exc, "kind", type(exc).__name__)}
+                if getattr(exc, "retry_after", None) is not None:
+                    lifecycle["retry_after"] = exc.retry_after
+            with self._db() as db:
+                current = db.execute("SELECT * FROM operations WHERE id=?", (operation_id,)).fetchone()
+            operation = self._operation(current)
+            status = operation["status"]
         return {"operation_id": operation_id, "status": status, "replayed": False,
                 "result_available": True, "result": result, "retry_blocked": True,
-                "operation": operation, **binding}
+                "operation": operation, **binding,
+                **({"swarm_lifecycle": lifecycle} if lifecycle is not None else {})}
 
     @staticmethod
     def _provider_refs(result):

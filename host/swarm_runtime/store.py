@@ -22,6 +22,7 @@ from pathlib import Path
 import tempfile
 import threading
 import time
+import uuid
 
 from host.coordination_state import (
     Git, GitError, HOLDING_SCHEMA, _commit_env, _holding_live, _now,
@@ -39,15 +40,17 @@ NON_LEGACY_PATHS = {STATE_PATH, STATUS_PATH}
 class StoreError(RuntimeError):
     """An observed failure, distinct from an absent claim or empty ledger."""
 
-    def __init__(self, kind, message, retry_after=None):
+    def __init__(self, kind, message, retry_after=None, details=None):
         super().__init__(message)
         self.kind = kind
         self.retry_after = retry_after
+        self.details = details or {}
 
     def as_dict(self):
         result = {"ok": False, "error": self.kind, "reason": str(self)}
         if self.retry_after is not None:
             result.update(deferred=True, retry_after=self.retry_after)
+        result.update(self.details)
         return result
 
 
@@ -152,7 +155,8 @@ class _StoreGit(Git):
 
 
 class GitStore:
-    def __init__(self, root, remote="origin", branch="state/claims", cache_ttl=15):
+    def __init__(self, root, remote="origin", branch="state/claims", cache_ttl=15,
+                 state_dir=None):
         self._mutex = threading.RLock()
         self.git = _StoreGit(str(root))
         self.root, self.remote, self.branch = str(root), remote, branch
@@ -162,6 +166,7 @@ class GitStore:
         self._legacy_oids = {}
         git_dir = self.git.out("rev-parse", "--absolute-git-dir").strip()
         self._common_git_dir = Path(self.git.out("rev-parse", "--path-format=absolute", "--git-common-dir").strip())
+        self.state_dir = Path(state_dir) if state_dir is not None else self._common_git_dir / "swarm-cache"
         self._fetch_lock_path = self._common_git_dir / "swarm-runtime-fetch.lock"
         suffix = hashlib.sha256((remote + "\0" + branch).encode()).hexdigest()[:12]
         self._cache_path = Path(git_dir) / ("swarm-runtime-cache-" + suffix + ".json")
@@ -214,6 +219,69 @@ class GitStore:
             if item["path"] not in NON_LEGACY_PATHS:
                 self._legacy_oids[item["path"]] = item["blob"]
         self._remember(tip, state)
+
+    def _publication_policy(self):
+        """Inspect an existing shared policy; never configure capacity implicitly."""
+        if not (self.state_dir / "request-budget.sqlite3").is_file():
+            return None
+        from integrations.command_center.provider_admission import execute
+
+        status = execute(self.state_dir, {"action": "status"})
+        self._check_publication_budget(status)
+        return status if status.get("capacity") is not None else None
+
+    @staticmethod
+    def _check_publication_budget(reply, receipt=None):
+        if reply.get("ok"):
+            return
+        details = {key: reply[key] for key in ("scope", "retry_not_before") if key in reply}
+        details["publication_budget"] = receipt if receipt is not None else reply
+        deferred = reply.get("error") == "provider_admission_deferred"
+        details["deferred"] = True
+        raise StoreError(reply.get("error", "provider_admission_failed"),
+                         reply.get("reason") or reply.get("message") or "publication budget unavailable",
+                         retry_after=None if deferred else 15, details=details)
+
+    def _push_with_publication_budget(self, commit):
+        """Use configured cooperating leases only around the actual provider write.
+
+        Preparation, reads and no-op operations never acquire a publication slot.
+        Each push attempt has its own holder, renews immediately before the write,
+        and releases the exact returned lease even if the provider call fails.
+        """
+        status = self._publication_policy()
+        if status is None:
+            return _push_ref(self.git, self.remote, commit, self.branch, attempts=1), None
+        from integrations.command_center.provider_admission import execute
+
+        holder = "swarm-git:" + uuid.uuid4().hex
+        receipt = {"scope": status["scope"], "capacity": status["capacity"],
+                   "holder": holder, "successful": False}
+        lease = None
+        try:
+            acquired = execute(self.state_dir, {"action": "acquire", "holder": holder})
+            receipt["acquire"] = acquired
+            self._check_publication_budget(acquired, receipt)
+            lease = acquired["lease_id"]
+            renewed = execute(self.state_dir, {"action": "renew", "holder": holder, "lease_id": lease})
+            receipt["renew"] = renewed
+            self._check_publication_budget(renewed, receipt)
+            done = _push_ref(self.git, self.remote, commit, self.branch, attempts=1)
+            receipt["successful"] = done.returncode == 0
+            if done.returncode and _failure(done.stderr or done.stdout).kind == "rate_limited":
+                # Git exposes no reliable Retry-After/reset headers here. The
+                # existing durable fallback reports that basis explicitly and
+                # informs all cooperating readers/writers of this actual limit.
+                receipt["limited"] = execute(self.state_dir, {"action": "limited"})
+            return done, receipt
+        finally:
+            if lease is not None:
+                # A release problem must not disguise an already confirmed push.
+                # The receipt reports it and the existing lease expiry remains.
+                receipt["release"] = execute(self.state_dir, {
+                    "action": "release", "holder": holder, "lease_id": lease,
+                    "successful": receipt["successful"],
+                })
 
     def _fetch(self, objects, shallow=False):
         if not objects:
@@ -521,6 +589,7 @@ class GitStore:
         if not push:
             return self.prepare(mutator)
         for attempt in range(attempts):
+            tip, result, proposal = None, None, None
             try:
                 tip, state = self.read(refresh=True)
                 result, proposal = self._prepare(mutator, tip, state)
@@ -538,12 +607,18 @@ class GitStore:
                             if kind == "blob":
                                 parent_blobs.append(blob)
                     self._blobs(parent_blobs)
-                done = _push_ref(self.git, self.remote, proposal["commit"], self.branch, attempts=1)
+                done, budget = self._push_with_publication_budget(proposal["commit"])
+                publication = {"publication_budget": budget} if budget is not None else {}
                 if done.returncode == 0:
                     self._remember_publication(proposal["commit"], state, proposal)
                     return {"ok": True, "published": True, "changed": True,
-                            "tip": proposal["commit"], "previous_tip": tip, "result": result}
+                            "tip": proposal["commit"], "previous_tip": tip, "result": result, **publication}
                 failure = _failure(done.stderr or done.stdout)
+                limited = (budget or {}).get("limited", {})
+                if limited.get("ok"):
+                    failure.retry_after = limited.get("retry_after_seconds", failure.retry_after)
+                    failure.details.update({key: limited[key] for key in
+                                            ("scope", "retry_not_before", "retry_basis") if key in limited})
                 # A transport may fail after accepting the ref. Observe it once;
                 # stable event IDs make subsequent caller retries harmless too.
                 observed = None
@@ -555,12 +630,15 @@ class GitStore:
                 if observed == proposal["commit"]:
                     self._remember_publication(observed, state, proposal)
                     return {"ok": True, "published": True, "changed": True,
-                            "tip": observed, "previous_tip": tip, "result": result}
+                            "tip": observed, "previous_tip": tip, "result": result, **publication}
                 if failure.kind == "ref_contention" and attempt + 1 < attempts:
                     continue
                 return dict(failure.as_dict(), published=False, changed=False, tip=tip,
-                            proposal=proposal, result=None, proposed_result=result)
+                            proposal=proposal, result=None, proposed_result=result, **publication)
             except (GitError, StoreError) as exc:
                 failure = exc if isinstance(exc, StoreError) else _failure(exc)
-                return dict(failure.as_dict(), published=False, changed=False, result=None)
+                failed = dict(failure.as_dict(), published=False, changed=False, result=None)
+                if proposal is not None:
+                    failed.update(tip=tip, proposal=proposal, proposed_result=result)
+                return failed
         raise AssertionError("bounded update loop did not return")
