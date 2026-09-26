@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "smart-outreach-receipt-read-20260926",
+  "holder": "high-burn-value-pipeline",
+  "heartbeat_at": "2026-09-26T11:59:00Z",
+  "ttl_s": 1800,
+  "state": "HELD",
+  "note": "Own host/smart_outreach.py and revenue/smart_outreach/README.md; reject unavailable collision-history directory and report planner input errors clearly.",
+  "taken_at": "2026-09-26T11:59:00Z"
+}
