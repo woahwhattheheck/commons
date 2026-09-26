@@ -38,7 +38,7 @@
   let snapshot=null,loading=null,queuedRefresh=null,error='',selected=null,displayedKey=null,peerBusy=false,activePeerOperation=null;
   const kinds={work:null,builds:['build','pull_request','feature'],inbox:['email','slack_thread'],marketing:['campaign','deal']};
   const labels={work:'Work',builds:'Builds',inbox:'Inbox',marketing:'Marketing'};
-  const filters=Object.fromEntries(Object.keys(labels).map(k=>[k,{q:'',project:'all',provider:'all',status:'all',channel:'all',tab:'all'}]));
+  const filters=Object.fromEntries(Object.keys(labels).map(k=>[k,{q:'',project:'all',provider:'all',status:'all',freshness:'all',channel:'all',tab:'all'}]));
   filters.marketing.tab='deal';
   const sources=()=>list(snapshot&&snapshot.sources), items=()=>list(snapshot&&snapshot.items);
   const source=i=>sources().find(s=>s.id===i.source_id)||{};
@@ -66,6 +66,9 @@
     append(h,title,btn('Refresh work',()=>refresh(true)));n.append(h);
     const bar=node('div','filter-bar work-filter-bar'),q=node('input');q.type='search';q.placeholder='Search work, owner, next action…';q.setAttribute('aria-label','Search '+labels[view]);const w=node('label','search-field');w.append(q);bar.append(w);q.addEventListener('input',()=>{filters[view].q=q.value.toLowerCase();renderView(view);});
     ['project','provider','status'].forEach(key=>{const s=node('select');s.id=view+'-filter-'+key;s.setAttribute('aria-label','Filter '+key);s.addEventListener('change',()=>{filters[view][key]=s.value;renderView(view);});bar.append(s);});
+    const freshness=node('select');freshness.id=view+'-filter-freshness';freshness.setAttribute('aria-label','Filter observation freshness');
+    [['all','All observations'],['current','Current observations'],['retained','Retained / stale observations']].forEach(([value,label])=>{const option=node('option','',label);option.value=value;freshness.append(option);});
+    freshness.addEventListener('change',()=>{filters[view].freshness=freshness.value;renderView(view);});bar.append(freshness);
     n.append(bar);
     if(view==='marketing'){const tabs=node('div','work-tabs');[['deal','Canonical pipeline'],['campaign','Campaigns & offers'],['all','All marketing']].forEach(([value,label])=>{const b=btn(label,()=>{filters.marketing.tab=value;renderView('marketing');},'work-tab');b.dataset.marketingTab=value;tabs.append(b);});n.append(tabs);}
     if(view==='inbox'){const tabs=node('div','work-tabs');[['all','All messages'],['email','Email'],['slack_thread','Slack']].forEach(([value,label])=>{const b=btn(label,()=>{filters.inbox.tab=value;renderView('inbox');},'work-tab');b.dataset.inboxTab=value;tabs.append(b);});const ch=node('select');ch.id='inbox-filter-channel';ch.setAttribute('aria-label','Filter Slack channel');ch.addEventListener('change',()=>{filters.inbox.channel=ch.value;renderView('inbox');});tabs.append(ch);n.append(tabs);}
@@ -95,7 +98,7 @@
     fillSelect(view+'-filter-status',all.map(i=>text(i.status||'unknown')),f.status,'All statuses');
     if(view==='inbox'){fillSelect('inbox-filter-channel',all.filter(i=>i.kind==='slack_thread').map(i=>text(first(field(i,'channel'),field(i,'channel_name'),source(i).label))),f.channel,'All Slack channels');document.querySelectorAll('[data-inbox-tab]').forEach(b=>{b.classList.toggle('active',b.dataset.inboxTab===f.tab);b.setAttribute('aria-pressed',String(b.dataset.inboxTab===f.tab));});}
     if(view==='marketing')document.querySelectorAll('[data-marketing-tab]').forEach(b=>{b.classList.toggle('active',b.dataset.marketingTab===f.tab);b.setAttribute('aria-pressed',String(b.dataset.marketingTab===f.tab));});
-    const found=all.filter(i=>(view!=='marketing'||f.tab==='all'||i.kind===f.tab)&&(f.project==='all'||project(i)===f.project)&&(f.provider==='all'||provider(i)===f.provider)&&(f.status==='all'||text(i.status||'unknown')===f.status)&&(view!=='inbox'||(f.tab==='all'||i.kind===f.tab)&&(f.channel==='all'||i.kind==='slack_thread'&&text(first(field(i,'channel'),field(i,'channel_name'),source(i).label))===f.channel))&&[i.title,i.summary,next(i),owner(i),i.id].map(text).join(' ').toLowerCase().includes(f.q));
+    const found=all.filter(i=>(view!=='marketing'||f.tab==='all'||i.kind===f.tab)&&(f.project==='all'||project(i)===f.project)&&(f.provider==='all'||provider(i)===f.provider)&&(f.status==='all'||text(i.status||'unknown')===f.status)&&(f.freshness==='all'||currentObservation(i)===(f.freshness==='current'))&&(view!=='inbox'||(f.tab==='all'||i.kind===f.tab)&&(f.channel==='all'||i.kind==='slack_thread'&&text(first(field(i,'channel'),field(i,'channel_name'),source(i).label))===f.channel))&&[i.title,i.summary,next(i),owner(i),i.id].map(text).join(' ').toLowerCase().includes(f.q));
     found.sort((a,b)=>Number(currentObservation(b))-Number(currentObservation(a))||(Date.parse(activity(b))||0)-(Date.parse(activity(a))||0));
     $(view+'-note').textContent=error?'Refresh failed: '+error+'. Previous work retained.':!snapshot?'Loading connected work…':found.length+' of '+all.length+' source records · '+(snapshot.refresh?'Collector '+text(snapshot.refresh.status||'unknown')+' · ':'')+'open a row for evidence and actions.';
     const panel=$(view+'-rows');panel.replaceChildren();
@@ -297,3 +300,4 @@
   document.addEventListener('visibilitychange',()=>{if(!document.hidden)autoRefresh();});
   api.navigate(location.hash.slice(1));renderAll();if(document.hidden)refresh();else autoRefresh();
 })();
+
