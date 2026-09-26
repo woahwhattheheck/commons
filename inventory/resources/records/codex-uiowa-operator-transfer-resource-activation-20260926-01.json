@@ -1,0 +1,140 @@
+{
+  "schema": "commons-resource-event/v1",
+  "event_id": "codex-uiowa-operator-transfer-resource-activation-20260926-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "observed_at": "2026-09-26T19:07:17Z",
+  "actor": "Commons Resource Master / Codex",
+  "selected_resource": "uiowa-operator-selected-asset-transfer-bundle",
+  "concrete_consumer": "The existing UIOWA-100 operator-handoff lane and a second internal operator who needs all eight declared synthetic CLI assets without a full repository checkout",
+  "measurable_outcome": "The landed transfer bundle was packaged, byte-verified and executed from its portable archive across all eight declared assets with 12/12 steps completed, 18 outputs emitted and execution_verified=true; its seven exact source blobs and authority boundaries are now canonical resource state.",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "MERGED_UNCATALOGED",
+    "condition": "CONSTRAINED",
+    "holder": "Merged PR #30002 and #30006 source custody",
+    "consumer": "EXISTING_UIOWA_100_OPERATOR_HANDOFF_WITHOUT_CANONICAL_RESOURCE_ROUTING"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "holder": "Commons / UIOWA-100 internal handoff operators",
+    "consumer": "UIOWA-100 operator-handoff and selected-asset portability lanes"
+  },
+  "production_truth": {
+    "source_repository": "woahwhattheheck/commons",
+    "source_pr": 30002,
+    "source_head": "60b2e7fe204f8dfef91da1d27e70d459ad71f0a5",
+    "source_merge_commit": "b5f271e0522d4856426c84a7cc7bd5702e14d577",
+    "completion_pr": 30006,
+    "completion_head": "ff14509fe8f85c41e61c45c682be4016f7188d32",
+    "completion_merge_commit": "21cb81c5f51d8dc958277eed5ba9bc684c8217e0",
+    "source_descendant_main_sha": "ef0345cd00c801656526ef4a4453dc52dabfdabf",
+    "source_paths": {
+      "revenue/uiowa_rfq_18649_operator_handoff/100-operator-guide.md": "dea31cf83ce82e77c380d47c21296ae2abb02ff8",
+      "revenue/uiowa_rfq_18649_operator_handoff/bundle.py": "e426b411612a56da41142586dc0ae8fd2916ccea",
+      "revenue/uiowa_rfq_18649_operator_handoff/bundle_inputs.json": "d99c6707a24c0fc989485f3125e1c10ccded73a3",
+      "revenue/uiowa_rfq_18649_operator_handoff/operator_manifest.json": "ef1d6262c3b3c3ac76d67e1fe713a62874b13e53",
+      "revenue/uiowa_rfq_18649_operator_handoff/preflight.py": "d09c643bdecadd3b9cb69df7daf1146c14eae2f4",
+      "revenue/uiowa_rfq_18649_operator_handoff/sample_run.py": "d0879888ac69cb786996aeb30497a163403c4be5",
+      "revenue/uiowa_rfq_18649_operator_portability/uiowa100_portability.py": "39380a6baf59a30387c256bfa2846bdb17dd7154"
+    },
+    "focused_verification": {
+      "operator_handoff_tests": "PASS_8_OF_8",
+      "archive": "PASS_382540_BYTES_SHA256_2F541989E2D43F93ECA906C38DE248AE5F0D3E0C23E2DA83E9D9E34BC351B8FB",
+      "archive_source_inputs": "PASS_55_FILES",
+      "selected_assets": "PASS_8_OF_8",
+      "byte_integrity": "PASS_BYTE_INTEGRITY_VERIFIED",
+      "portable_execution": "PASS_12_OF_12_STEPS_18_OUTPUTS_EXECUTION_VERIFIED_TRUE",
+      "full_reports": "PASS_HANDOFF_4843_BYTES_OUTCOME_4315_BYTES",
+      "python_compile": "PASS",
+      "resource_projection": "PASS_NORMAL_AND_OPTIMIZED",
+      "open_door": "PASS_LOCAL_NO_AUTH"
+    },
+    "hosted_workflow_state": "RED_TWO_STALE_RUN_EVIDENCE_TEST_CONTRACTS; IMPLEMENTATION_EXERCISE_PASSED_LOCALLY",
+    "maximum_state": "MERGED_OFFLINE_SYNTHETIC_TRANSFER_BUNDLE_EXERCISED",
+    "real_university_data_used": false,
+    "source_authenticity_established": false,
+    "university_finding": false,
+    "engagement_complete": false,
+    "scope_accepted": false,
+    "browser_verified": false,
+    "native_os_verified": false,
+    "customer_contact": false,
+    "provider_write": false,
+    "submission": false,
+    "buyer_acceptance": false,
+    "payment_observed": false,
+    "settlement_observed": false,
+    "revenue_recognition": false,
+    "current_cash_claim": false,
+    "deployment_by_activation": false,
+    "spend_by_activation": false,
+    "banked_reset_activated": false
+  },
+  "delta": {
+    "prior_terminal_main_sha": "942de9401f1a92610a9f9926707f8731100c1b75",
+    "activation_base_main_sha": "ef0345cd00c801656526ef4a4453dc52dabfdabf",
+    "commits_in_delta": 236,
+    "non_merge_commits_in_delta": 170,
+    "changed_paths_in_delta": 519,
+    "remote_branches_observed": 4565,
+    "remote_branch_pages": 47,
+    "prior_terminal_slack_ts": "1790429462.972139",
+    "latest_delta_slack_ts": "1790446724.849269",
+    "slack_top_level_messages": {
+      "commons": 2,
+      "todo": 0,
+      "shipped_builds": 0,
+      "products": 0,
+      "leads": 0,
+      "sales": 1
+    },
+    "automations": "Twenty-five visible; the Commons Resource Master remains enabled and no automation lifecycle mutation was made.",
+    "github_state": "The full 236-commit current-main ancestry delta, 170 non-merge commits and 519 changed paths were reconciled; 4,565 current remote branches were paginated across 47 pages; recent PRs, issues and workflow outcomes were searched for claims and completion. PRs #30002 and #30006 are merged and exact source readback is present. Generated projections, repeated Slack messages and cached declarations were not counted as new resources.",
+    "connector_state": "Installed GitHub and Slack read/write operations were discovered before the sweep. No connector presence, checkout, branch, session, account connection or cached receipt was treated as capacity or authority."
+  },
+  "verification": {
+    "privacy": "Only public repository identities, aggregate message counts and synthetic source/output facts are persisted. No credential, private account identifier, customer data, private message body or private file name is stored.",
+    "open_door": "The standard-library pack, verify and run sequence is offline and requires no Commons login, provider credential, private University data or repeated owner approval.",
+    "zero_fabrication": "The bundle is synthetic transfer evidence only and is not a University finding, accepted scope, completed engagement, native/browser verification, submission, deployment, buyer acceptance, payment, revenue or cash.",
+    "collision": "Only canonical ledger, projection and append-only activation records are owned. PR #30002/#30006 source paths, active operator work, peer branches and unrelated artifacts remain untouched."
+  },
+  "build_order_decision": "One new nonduplicate implementation order was posted because the current uiowa-100-run-evidence workflow is red on two stale test contracts while the landed eight-asset operation passes end to end. The order is limited to aligning the existing tests with the current validation/error contract.",
+  "build_orders": [
+    {
+      "id": "UIOWA-100-RUN-EVIDENCE-CONTRACT-REPAIR-20260926-01",
+      "url": "https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1790449584110389"
+    }
+  ],
+  "quota_lifecycle": {
+    "official_observation": "The single official-source check found the September 3-4 banked-reset documentation and September 7 global reset as historical lifecycle evidence, with no newer hard/global reset announcement. No account usage-meter change was directly observed.",
+    "classification": "PRIOR_QUOTA_STATE_RETAINED_CURRENT_ALLOWANCE_UNMEASURED",
+    "current_meter": "NOT_DIRECTLY_OBSERVED",
+    "banked_reset_inventory": "NOT_DIRECTLY_OBSERVED",
+    "banked_reset_activated": false
+  },
+  "projection": {
+    "resources": 110,
+    "producing": 82,
+    "inventory_records": 72
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790449275735329",
+    "source_pr": "https://github.com/woahwhattheheck/commons/pull/30002",
+    "completion_pr": "https://github.com/woahwhattheheck/commons/pull/30006",
+    "build_order": "https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1790449584110389",
+    "official_reset_documentation": "https://help.openai.com/en/articles/20001498-how-banked-codex-resets-work"
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-26T19:07:17Z",
+    "activation_base_main_sha": "ef0345cd00c801656526ef4a4453dc52dabfdabf",
+    "current_main_sha": "ef0345cd00c801656526ef4a4453dc52dabfdabf",
+    "latest_delta_slack_ts": "1790446724.849269",
+    "source_merge_commit": "21cb81c5f51d8dc958277eed5ba9bc684c8217e0",
+    "remote_branches_observed": 4565
+  },
+  "non_claims": [
+    "No University finding, accepted scope, engagement completion, browser/native verification, outreach, provider write, submission, deployment, spend, payment, settlement, revenue or cash is claimed."
+  ]
+}

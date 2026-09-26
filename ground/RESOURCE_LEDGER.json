@@ -25,6 +25,7 @@
   "priority_queue": [],
   "production_write": false,
   "record_sources": [
+    "inventory/resources/records/codex-uiowa-operator-transfer-resource-activation-20260926-01.json",
     "inventory/resources/records/codex-uiowa-dependency-roadmap-planner-resource-activation-20260926-01.json",
     "inventory/resources/records/codex-jev-connector-projection-resource-activation-20260920-01.json",
     "inventory/resources/records/codex-jev-paid-shipping-monitor-resource-activation-20260920-01.json",
@@ -108,10 +109,10 @@
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1790427763.163799",
+  "slack_ts": "1790446724.849269",
   "snapshot": {
-    "base_main_sha": "71445b060155a3960410c9e79ee6f42da4286c4f",
-    "observed_at": "2026-09-26T13:24:25Z",
+    "base_main_sha": "ef0345cd00c801656526ef4a4453dc52dabfdabf",
+    "observed_at": "2026-09-26T19:07:17Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
@@ -197,6 +198,28 @@
     "demon-live-compute-board-20260825-01"
   ],
   "surfaces": [
+    {
+      "name": "uiowa-operator-selected-asset-transfer-bundle",
+      "kind": "OFFLINE_SELECTED_ASSET_OPERATOR_TRANSFER_BUNDLE",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / UIOWA-100 internal handoff operators",
+      "authority": "SHARED_ALL_CARRIERS; PUBLIC_CURRENT_MAIN_READ_PACKAGE_VERIFY_AND_RUN; EXACT_PR30002_HEAD_60B2E7FE204F8DFEF91DA1D27E70D459AD71F0A5_MERGE_B5F271E0522D4856426C84A7CC7BD5702E14D577_PR30006_HEAD_FF14509FE8F85C41E61C45C682BE4016F7188D32_MERGE_21CB81C5F51D8DC958277EED5BA9BC684C8217E0_AND_SEVEN_CURRENT_MAIN_BLOBS_REQUIRED; SYNTHETIC_INPUT_ONLY; SOURCE_AUTHENTICITY_FALSE; UNIVERSITY_FINDING_FALSE; ENGAGEMENT_COMPLETE_FALSE; SCOPE_ACCEPTED_FALSE; BROWSER_VERIFIED_FALSE; NATIVE_OS_VERIFIED_FALSE; CONTACT_FALSE; SUBMISSION_FALSE; PAYMENT_FALSE; REVENUE_FALSE; DEPLOYMENT_FALSE",
+      "consumer": "The existing UIOWA-100 operator-handoff lane and a second internal operator who needs all eight declared synthetic CLI assets without a full repository checkout.",
+      "value": "The released standard-library transfer path creates a deterministic selected-asset ZIP with byte manifest and source closure, verifies the extracted bytes, and executes the synthetic UIOWA-100 sample while preserving complete handoff and outcome reports.",
+      "next_action": "Operators may package an approved synthetic selection, verify it offline, run it in a new directory and review all 18 outputs; separately repair the two stale hosted run-evidence test contracts before treating that workflow as green.",
+      "source": "revenue/uiowa_rfq_18649_operator_handoff and revenue/uiowa_rfq_18649_operator_portability; source PR #30002 head 60b2e7fe204f8dfef91da1d27e70d459ad71f0a5 merge b5f271e0522d4856426c84a7cc7bd5702e14d577; completion PR #30006 head ff14509fe8f85c41e61c45c682be4016f7188d32 merge 21cb81c5f51d8dc958277eed5ba9bc684c8217e0",
+      "evidence_ts": "2026-09-26T19:07:17Z",
+      "auth_surface": "Public current-main synthetic source and local Python 3.10+ standard-library execution; packaging, byte verification and portable execution require no Commons login, provider credential, private University data, browser session or repeated owner approval.",
+      "exact_safe_probe": "Current main ef0345cd00c801656526ef4a4453dc52dabfdabf retained all seven pinned source blobs. The focused handoff suite passed 8/8. An actual 382,540-byte ZIP with SHA-256 2f541989e2d43f93eca906c38de248ae5f0d3e0c23e2da83e9d9e34bc351b8fb preserved 55 inputs and all eight selected assets; byte verification passed; the extracted run completed 12/12 steps with 18 outputs and execution_verified=true; full handoff and outcome reports were 4,843 and 4,315 bytes. Hosted uiowa-100-run-evidence remains red on two stale test contracts and is not claimed green.",
+      "rate_plan_boundary": "The transfer path is offline standard-library compute and makes no paid provider call. Archive presence or a passing synthetic run does not establish source authenticity, a University finding, accepted scope, completed engagement, browser/native verification, submission, buyer acceptance, payment, revenue or cash.",
+      "assigned_backlog": "Available to the existing UIOWA-100 operator-handoff and portability lanes. The only new delegated gap is the test-contract repair in UIOWA-100-RUN-EVIDENCE-CONTRACT-REPAIR-20260926-01; no second bundle, provider operation, outreach or verifier-only loop is created.",
+      "last_receipt": "codex-uiowa-operator-transfer-resource-activation-20260926-01",
+      "last_used_at": "2026-09-26T19:07:17Z",
+      "stale_after": "next bundle schema, selected-asset set, manifest, source-closure, verification, output-retention, source-blob, authority, workflow-contract or consumer change",
+      "priority": 99
+    },
     {
       "assigned_backlog": "Compile supplied GrantFox/FWC26 issue snapshots into deterministic JSON and Markdown queues, preserving assignment, claim-step, reward-evidence and security-sensitive boundaries before operators choose work.",
       "auth_surface": "Current-main standard-library offline compiler with create-exclusive outputs; no provider, network, wallet or account access.",
