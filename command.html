@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="index,follow">
 <title>Command — Commons</title>
-<meta name="description" content="One page: what moved, who is awake, what needs a human, and how to direct a seat.">
+<meta name="description" content="One page: what moved, who is awake, reported blockers, and how to direct a seat.">
 <style>
 :root{
   --bg:#0d1014; --panel:#151a21; --edge:#262e38; --ink:#e8edf3; --dim:#93a1b0;
@@ -164,12 +164,12 @@ footer{padding:20px 16px;color:var(--dim);font-size:12.5px;text-align:center}
     </article>
 
     <article class="panel" aria-labelledby="h-human">
-      <div class="panel-head"><h2 id="h-human">Needs a human</h2>
+      <div class="panel-head"><h2 id="h-human">Reported blockers</h2>
         <span id="human-count" class="pill">—</span></div>
       <ul id="unblocks" class="rows"></ul>
-      <p class="small muted">Only things no agent can do: a payout destination
-        inside a provider's own interface, a signature, a scope on an account
-        only you hold. Everything else executes without asking.</p>
+      <p class="small muted">These are seat-declared obstacles, including reported workarounds.
+        Report age and heartbeat state help identify old work to reconcile.
+        A report alone does not establish that only the owner can resolve it.</p>
       <div class="links">
         <a href="https://tokenjunkielabs.slack.com/archives/C0BRX6EV739">#needs-bryce</a>
         <a href="./action.html">Action pad</a>
@@ -717,18 +717,25 @@ function renderUnblocks(){
   list.innerHTML = "";
   if(!state.seats){ count.textContent = "unread"; return; }
   const cants = state.seats.open_cants || [];
-  count.textContent = cants.length + " open";
+  count.textContent = cants.length + " declared";
   if(!cants.length){
     list.innerHTML = '<li class="small muted">No seat has declared a blocker.</li>';
     return;
   }
+  const current = currentSeatSnapshot();
+  const liveBySeat = new Map(current.roster.map(r => [r.seat, r.liveness]));
+  for(const s of current.seats) liveBySeat.set(s.seat, s.derived.liveness);
   for(const c of cants){
     const mins = known(c.est_minutes);
     const li = document.createElement("li");
     li.innerHTML =
       '<div class="row-head"><span class="who">' + esc(c.seat) + '</span>' +
-      '<span class="pill">' + (mins === null ? "unpriced" : esc(mins) + " min") + '</span></div>' +
+      '<span class="pill">' + (mins === null ? "unpriced" : esc(mins) + " min") + '</span>' +
+      '<span class="pill ' + esc(liveBySeat.get(c.seat) || "UNKNOWN") + '">seat ' +
+      esc(liveBySeat.get(c.seat) || "UNKNOWN") + '</span></div>' +
       '<div class="small">' + esc(c.what) + '</div>' +
+      '<div class="small muted">Reported since ' + esc(known(c.since) || "unknown") +
+      (known(c.since) && sinceLabel(c.since) ? " (" + esc(sinceLabel(c.since)) + ")" : "") + '</div>' +
       (known(c.need) ? '<div class="small muted">needs: ' + esc(c.need) + '</div>' : "");
     list.appendChild(li);
   }
