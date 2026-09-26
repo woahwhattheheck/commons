@@ -92,7 +92,7 @@ def write_claim(git, holder, action, *, issue=None, work=None, ttl_s=1800,
 
 def claim_status(git, *, issue=None, work=None, remote="origin", now=None, repository=None):
     key = claim_key(issue=issue, work=work, repository=repository)
-    snapshot = cs.holdings_list(git, remote=remote, now=now)
+    snapshot = cs.holdings_list(git, remote=remote, now=now, key=key)
     row = next((r for r in snapshot.get("holdings", []) if r.get("key") == key), None)
     unreadable = bool(row and row.get("unreadable"))
     result = {
