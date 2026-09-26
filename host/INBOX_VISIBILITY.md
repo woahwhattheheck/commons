@@ -23,6 +23,10 @@ repository, or launch a model. The native Slack identity must belong to the
 configured workspace and be a member of all three configured channels. The app
 needs message-write and history/replies-read capability. Use existing private
 credential-management surfaces, never Slack/Git/email bodies, for setup.
+Native GitHub reads reuse the shared transport's status and rate-header parsing.
+Quota exhaustion stops the notification pass and retains its retry boundary;
+ordinary authentication/permission HTTP failures remain distinct from quota
+limits. Native stderr and provider error bodies stay out of relay reports.
 
 The GitHub Actions workflow attempts a run on these files' main-branch push,
 allows manual dispatch, and polls at UTC minutes 03/18/33/48. Its existing-secret
