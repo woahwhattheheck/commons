@@ -89,6 +89,15 @@ echo '{"name": "slack_read_channel", "arguments": {"channel_id": "C0BU51F1PL3", 
 ```
 *Note*: Direct CLI execution calls `ServiceEquipment` directly without using `ToolCallStore` SQLite journaling. Consequently, CLI writes do not receive replay suppression.
 
+The CLI preserves the tool's JSON result on stdout and returns its outcome to
+shell callers: `0` for success, `1` for a definite tool failure, `2` for an
+invalid CLI request, and `3` for an uncertain effect. Uncertainty takes
+precedence over failure. A successful status read may describe a failed job;
+that is still a successful read. On exit `3`, preserve the returned operation,
+request and run IDs and reconcile the existing operation before retrying;
+do not blindly repeat a possible mutation. Invalid JSON or request shape is
+reported before tool dispatch.
+
 ### 4. Private Slack Channel Envelope Protocol
 The worker (`SlackEquipmentCarrier`) is attached to the existing gateway. It monitors a configured Slack workspace channel/thread. The current route is thread `1788567066.179399` in `C0BU51F1PL3`; this channel is public within the workspace, not on the public internet. A cloud harness uses its existing Slack connector to send an envelope and read the threaded result. No cloud caller needs the local account credentials.
 
