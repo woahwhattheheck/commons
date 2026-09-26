@@ -10,7 +10,7 @@ import tempfile
 import json
 import math
 import re
-from collections import Counter, defaultdict
+from collections import Counter, defaultdict, deque
 from pathlib import Path
 from typing import Any
 
@@ -266,6 +266,50 @@ def lookup(index: dict[str, Any], record_id: str) -> dict[str, Any] | None:
     return result
 
 
+def trace(index: dict[str, Any], record_id: str, max_records: int = 25) -> dict[str, Any]:
+    """Follow exact outgoing linked_ids within this index, retaining incomplete edges."""
+    if not isinstance(index, dict) or index.get("schema") != SCHEMA:
+        raise SearchError("unexpected index schema")
+    if not isinstance(record_id, str) or not record_id:
+        raise SearchError("record_id must be a nonempty string")
+    if type(max_records) is not int or not 1 <= max_records <= 100:
+        raise SearchError("max_records must be an integer from 1 to 100")
+    verify_index(index)
+    validate_records(index["documents"])
+    docs = {row["record_id"]: row for row in index["documents"]}
+    result = {"schema": SCHEMA + "/trace", "record_id": record_id,
+              "retrieval_mode": "exact_linked_records", "max_records": max_records,
+              "status": "not_found", "complete_in_index": False,
+              "records": [], "edges": [], "missing_linked_ids": [],
+              "unexpanded_record_ids": [], "notice": NOTICE,
+              "scope": "Outgoing declared links in this index only; underlying source documents are not fetched."}
+    if record_id not in docs:
+        return result
+    integrity = "digest_verified" if "content_digest" in index else "legacy_unbound"
+    pending, discovered, returned, missing = deque([record_id]), {record_id}, set(), set()
+    while pending and len(result["records"]) < max_records:
+        current = pending.popleft()
+        returned.add(current)
+        record = _result(docs[current], docs, tokenize(current), None, integrity)
+        record["retrieval_mode"] = "exact_id"
+        result["records"].append(record)
+        for linked in sorted(set(docs[current].get("linked_ids", []))):
+            result["edges"].append({"from_record_id": current, "to_record_id": linked})
+            if linked not in docs:
+                missing.add(linked)
+            elif linked not in discovered:
+                discovered.add(linked)
+                pending.append(linked)
+    for edge in result["edges"]:
+        target = edge["to_record_id"]
+        edge["status"] = "missing" if target in missing else "returned" if target in returned else "not_expanded"
+    result["missing_linked_ids"] = sorted(missing)
+    result["unexpanded_record_ids"] = list(pending)
+    result["complete_in_index"] = not pending and not missing
+    result["status"] = "truncated" if pending else "missing_linked_records" if missing else "complete"
+    return result
+
+
 def load_manifest(path: Path) -> list[dict[str, Any]]:
     records: list[dict[str, Any]] = []
     # Adapt immutable local snapshots, not a path that could change after its digest was checked.
@@ -302,6 +346,10 @@ def main() -> int:
     by_id = sub.add_parser("lookup")
     by_id.add_argument("index", type=Path)
     by_id.add_argument("record_id")
+    linked = sub.add_parser("trace", help="Follow a record's exact linked IDs with explicit limits and missing links")
+    linked.add_argument("index", type=Path)
+    linked.add_argument("record_id")
+    linked.add_argument("--max-records", type=int, default=25)
     args = ap.parse_args()
     if args.cmd == "build":
         index = build_index(load_manifest(args.manifest))
@@ -311,6 +359,10 @@ def main() -> int:
         if args.index.stat().st_size > MAX_BYTES:
             raise SearchError("index exceeds byte limit")
         index = read_json(args.index.read_bytes())
+        if args.cmd == "trace":
+            result = trace(index, args.record_id, args.max_records)
+            print(json.dumps(result, ensure_ascii=False, indent=2))
+            return 0 if result["complete_in_index"] else 1
         if args.cmd == "lookup":
             result = lookup(index, args.record_id)
             print(json.dumps({"status": "found" if result is not None else "not_found",
