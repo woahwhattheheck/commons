@@ -94,11 +94,14 @@ def claim_status(git, *, issue=None, work=None, remote="origin", now=None, repos
     key = claim_key(issue=issue, work=work, repository=repository)
     snapshot = cs.holdings_list(git, remote=remote, now=now)
     row = next((r for r in snapshot.get("holdings", []) if r.get("key") == key), None)
+    unreadable = bool(row and row.get("unreadable"))
     result = {
-        "ok": True, "action": "status", "key": key, "tip": snapshot.get("tip"),
-        "held": bool(row and row.get("state") == "HELD" and row.get("live") is True),
+        "ok": not unreadable, "action": "status", "key": key, "tip": snapshot.get("tip"),
+        "held": None if unreadable else bool(row and row.get("state") == "HELD" and row.get("live") is True),
         "record": row,
     }
+    if unreadable:
+        result["reason"] = "the current holding could not be read; ownership is unknown, not vacant"
     if issue is not None:
         result["issue"] = issue
         result["repository"] = cs.claim_repository(repository)

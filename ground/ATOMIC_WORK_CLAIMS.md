@@ -57,6 +57,12 @@ before switching that work to a scoped key.
 
 Named operations are limited to 200 UTF-8 bytes after normalization so the durable holding note can retain the complete canonical operation plus useful audit context within the existing 300-character note ceiling.
 
+An exact `status` lookup of an unreadable holding returns `ok: false` and
+`held: null`, with its observed tip and unreadable record retained. It exits
+nonzero instead of reporting vacant work. The display-name adapter returns
+`NAME_STATUS_UNAVAILABLE` for this case and recommends reconciliation, not a
+new name, when a write failed without an observed competing holder.
+
 ## Live cash
 
 Verified product pages only — no invented Stripe links.

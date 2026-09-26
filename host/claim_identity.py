@@ -87,7 +87,8 @@ def _decorate(result, display_name, *, action, session_tag=None):
     if action == "take":
         out["verdict"] = (
             "NAME_CLEAR_FOR_COORDINATION" if ok
-            else "NAME_COLLISION_RENAME_RECOMMENDED"
+            else "NAME_COLLISION_RENAME_RECOMMENDED" if out.get("held_by")
+            else "NAME_TAKE_RECONCILE"
         )
     elif action == "renew":
         out["verdict"] = "NAME_RENEWED" if ok else "NAME_RENEW_RECONCILE"
@@ -95,7 +96,8 @@ def _decorate(result, display_name, *, action, session_tag=None):
         out["verdict"] = "NAME_RELEASED" if ok else "NAME_RELEASE_RECONCILE"
     elif action == "status":
         out["verdict"] = (
-            "NAME_LIVE_ADAPTER_CLAIM_OBSERVED" if out.get("held") is True
+            "NAME_STATUS_UNAVAILABLE" if not ok
+            else "NAME_LIVE_ADAPTER_CLAIM_OBSERVED" if out.get("held") is True
             else "NO_LIVE_ADAPTER_CLAIM_OBSERVED"
         )
     return out
