@@ -350,25 +350,8 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 1,
- "open_prs": [
-  {
-   "number": 30071,
-   "author": "woahwhattheheck",
-   "title": "Share publication admission through command-center HTTP and equipment",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/30071",
-   "base_freshness": {
-    "base_sha": "589e204dc0c5cb0857db32099690e07a1ef2dcfe",
-    "main_sha": "7bef914f116cdc4f67ad17706261663f736a8f29",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  }
- ],
+ "n_open_prs": 0,
+ "open_prs": [],
  "live_cash": {
   "cite": [
    "newbot-json-doors-live-cash-20260916-06",
