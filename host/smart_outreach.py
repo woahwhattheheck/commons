@@ -55,7 +55,7 @@ def canonical_text(value: Any) -> str:
 def read_object(path: Path) -> dict[str, Any]:
     try:
         value = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as error:
+    except (OSError, UnicodeError, json.JSONDecodeError) as error:
         raise OutreachError(f"cannot read JSON object {path}: {error}") from error
     if not isinstance(value, dict):
         raise OutreachError(f"{path} must contain one JSON object")
@@ -210,7 +210,13 @@ def validate_input(value: dict[str, Any]) -> dict[str, Any]:
 def receipt_index(directory: Path) -> dict[str, dict[str, list[str]]]:
     emails: dict[str, list[str]] = {}
     organizations: dict[str, list[str]] = {}
-    for path in sorted(directory.glob("*.json")):
+    # glob() treats a missing directory as an empty history and can suppress
+    # directory-read failures. An unavailable history is not zero prior sends.
+    try:
+        paths = sorted(path for path in directory.iterdir() if path.suffix == ".json")
+    except OSError as error:
+        raise OutreachError(f"cannot read outreach receipt directory {directory}: {error}") from error
+    for path in paths:
         receipt = read_object(path)
         dedupe = receipt.get("dedupe")
         if not isinstance(dedupe, dict) or dedupe.get("do_not_resend") is not True:
@@ -375,7 +381,7 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def main(argv: list[str] | None = None) -> int:
+def _run(argv: list[str] | None = None) -> int:
     argv = list(sys.argv[1:] if argv is None else argv)
     if "--send" in argv or argv[:1] == ["send"]:
         sys.stderr.write(
@@ -410,6 +416,14 @@ def main(argv: list[str] | None = None) -> int:
     else:
         print(rendered, end="")
     return 0
+
+
+def main(argv: list[str] | None = None) -> int:
+    try:
+        return _run(argv)
+    except (OutreachError, OSError, UnicodeError) as error:
+        print(f"smart-outreach: {error}", file=sys.stderr)
+        return 2
 
 
 if __name__ == "__main__":
