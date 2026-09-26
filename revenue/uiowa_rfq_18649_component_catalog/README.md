@@ -2,6 +2,36 @@
 
 This package answers a practical operator question: **what can I actually run from the published Iowa RFQ preparation repository, at which source revision, with what input/output contract?**
 
+## Search commands
+
+From the repository root (Python 3.10+; no third-party dependencies):
+
+```sh
+python3 revenue/uiowa_rfq_18649_component_catalog/browse.py "rebuild"
+python3 revenue/uiowa_rfq_18649_component_catalog/browse.py --id recovered_roadmap
+python3 revenue/uiowa_rfq_18649_component_catalog/browse.py --status working --format json
+python3 revenue/uiowa_rfq_18649_component_catalog/browse.py --base-only --format markdown
+```
+
+`browse.py` searches IDs, titles, work orders, commands and input/output contracts.
+All case-insensitive query words must match. It combines the original immutable
+catalog with `recovered_components.json`, an additive catalog of completed tools.
+Every entry retains its own recorded revision, exact source/readme blobs and
+sample-evidence basis. No original entry or original snapshot is silently
+refreshed; newly recovered entries have distinct stable IDs.
+
+The output includes the literal command and working directory. Multi-command
+examples must be run in order; choose fresh output directories. The browser
+never executes commands, imports their engines, fetches dependencies or asserts
+that a different checkout has the same source. Consult the linked component
+README for input preparation, exit states and remaining evidence gaps.
+
+JSON includes complete original entry fields. Text and Markdown show practical
+commands and provenance. `--catalog` and `--supplement` accept explicit local
+catalog paths; `--base-only` omits the supplement. No query matches is a valid
+empty result (exit 0). Missing exact IDs exit 1; unreadable/malformed catalogs or
+duplicate component IDs exit 2. Output goes to stdout; diagnostics go to stderr.
+
 It does not infer readiness from folder names. Every entry is bound to a Git blob SHA. Runnable entries carry a command, working directory, source-contract markers, prerequisites, input/output description, and one synthetic/source-backed sample signal. Static/template/incomplete entries are deliberately separated.
 
 ## Files

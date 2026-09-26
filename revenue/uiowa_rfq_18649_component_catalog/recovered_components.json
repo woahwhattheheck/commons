@@ -1,0 +1,347 @@
+{
+  "schema": "uiowa.component-entry-catalog.supplement.v1",
+  "snapshot": {
+    "repository": "woahwhattheheck/commons",
+    "revision": "7bef914f116cdc4f67ad17706261663f736a8f29",
+    "purpose": "Additive recovered commands with per-entry recorded revisions; original frozen catalog remains unchanged."
+  },
+  "entries": [
+    {
+      "id": "recovered_source_control",
+      "work_order": "UIOWA-043",
+      "title": "Source-control practice worksheet",
+      "status": "working",
+      "kind": "cli",
+      "source": {
+        "path": "revenue/uiowa_rfq_18649_source_control/assess.py",
+        "blob_sha": "a4947cae6edf86a225aca327688034da61aea8ee"
+      },
+      "readme": {
+        "path": "revenue/uiowa_rfq_18649_source_control/README.md",
+        "blob_sha": "055b6da73c6b3291371c1512995297e54d4f2a67"
+      },
+      "revision": "7bef914f116cdc4f67ad17706261663f736a8f29",
+      "command_cwd": ".",
+      "command": "python3 revenue/uiowa_rfq_18649_source_control/assess.py . --ref HEAD --limit 100 --out /tmp/source-control-new",
+      "supported_input": "Local Git repository plus pinned ref and history bound",
+      "produced_output": "History JSON and six-practice editable worksheet",
+      "prerequisites": [
+        "Python 3.10+",
+        "Commons checkout at the recorded revision; adjacent canonical components where referenced"
+      ],
+      "sample_result": {
+        "basis": "owning_builder_actual_cli",
+        "summary": "Actual Commons shallow history plus two exercised fictional Git workflows; incomplete history remains explicit."
+      }
+    },
+    {
+      "id": "recovered_config_lifecycle",
+      "work_order": "UIOWA-069",
+      "title": "Configuration lifecycle and rebuild evidence",
+      "status": "working",
+      "kind": "cli",
+      "source": {
+        "path": "revenue/uiowa_rfq_18649_config_lifecycle/config_lifecycle.py",
+        "blob_sha": "fa06c681fed7ae9e88e520554105606a7bbeda26"
+      },
+      "readme": {
+        "path": "revenue/uiowa_rfq_18649_config_lifecycle/README.md",
+        "blob_sha": "1ed6ae432dfab09f4e5b5ee30c35095908a8e2ec"
+      },
+      "revision": "7bef914f116cdc4f67ad17706261663f736a8f29",
+      "command_cwd": ".",
+      "command": "python3 revenue/uiowa_rfq_18649_config_lifecycle/config_lifecycle.py revenue/uiowa_rfq_18649_config_lifecycle/synthetic.json --out /tmp/config-lifecycle-new",
+      "supported_input": "Configuration, dependency and rebuild evidence JSON",
+      "produced_output": "JSON/Markdown assessment and editable improvement CSV",
+      "prerequisites": [
+        "Python 3.10+",
+        "Commons checkout at the recorded revision; adjacent canonical components where referenced"
+      ],
+      "sample_result": {
+        "basis": "owning_builder_actual_cli",
+        "summary": "Five fictional components, 33 sources and 40 worksheet rows; current rebuild records remain distinct from outdated or missing evidence."
+      }
+    },
+    {
+      "id": "recovered_evidence_requests",
+      "work_order": "UIOWA-113",
+      "title": "Evidence request effort planning",
+      "status": "working",
+      "kind": "cli",
+      "source": {
+        "path": "revenue/uiowa_rfq_18649_evidence_requests/planner.py",
+        "blob_sha": "535856020b3fedb9014be0a4dd719d39103aed44"
+      },
+      "readme": {
+        "path": "revenue/uiowa_rfq_18649_evidence_requests/README.md",
+        "blob_sha": "075752f59ed6d51abeaccc4ae5871de20a7bf5f1"
+      },
+      "revision": "7bef914f116cdc4f67ad17706261663f736a8f29",
+      "command_cwd": ".",
+      "command": "python3 revenue/uiowa_rfq_18649_evidence_requests/planner.py from-register revenue/uiowa_rfq_18649_workshare/methodology/23-synthetic-evidence-register.csv",
+      "supported_input": "Existing 023 evidence register CSV",
+      "produced_output": "Editable request worksheet JSON",
+      "prerequisites": [
+        "Python 3.10+",
+        "Commons checkout at the recorded revision; adjacent canonical components where referenced"
+      ],
+      "sample_result": {
+        "basis": "owning_builder_actual_cli",
+        "summary": "Actual seven-row register yields seven requests and eight questions; collection effort stays unestimated until supplied."
+      }
+    },
+    {
+      "id": "recovered_identifier_adapters",
+      "work_order": "Commons #16165",
+      "title": "Handoff and outcome identity adapters",
+      "status": "working",
+      "kind": "cli",
+      "source": {
+        "path": "revenue/uiowa_rfq_18649_identifier_adapters/adapters.py",
+        "blob_sha": "233457310a8cbe96128a9b603230778c75c65f78"
+      },
+      "readme": {
+        "path": "revenue/uiowa_rfq_18649_identifier_adapters/README.md",
+        "blob_sha": "aa43d2884714f1e224b2a9176b65c633f9eee556"
+      },
+      "revision": "7bef914f116cdc4f67ad17706261663f736a8f29",
+      "command_cwd": ".",
+      "command": "python3 revenue/uiowa_rfq_18649_identifier_adapters/adapters.py handoff revenue/uiowa_rfq_18649_handoff/examples/planned_release.json --namespace handoff --report",
+      "supported_input": "Existing native Handoff JSON or Outcome CSV",
+      "produced_output": "Canonical identifier report or mapper packet with exact source bytes",
+      "prerequisites": [
+        "Python 3.10+",
+        "Commons checkout at the recorded revision; adjacent canonical components where referenced"
+      ],
+      "sample_result": {
+        "basis": "owning_builder_actual_cli",
+        "summary": "Actual Handoff input retained eight occurrences and seven resolved references; Outcome retained three recommendations."
+      }
+    },
+    {
+      "id": "recovered_source_impact_023",
+      "work_order": "Commons #16181",
+      "title": "023 source-impact adapter",
+      "status": "working",
+      "kind": "cli",
+      "source": {
+        "path": "revenue/uiowa_rfq_18649_source_impact_023/register_index.py",
+        "blob_sha": "4dde2e15ebb482a4d0e7241a6299742e2a0fd3d9"
+      },
+      "readme": {
+        "path": "revenue/uiowa_rfq_18649_source_impact_023/README.md",
+        "blob_sha": "0df6d4079403ab6ffb1e7db4dabe162ee77d5003"
+      },
+      "revision": "7bef914f116cdc4f67ad17706261663f736a8f29",
+      "command_cwd": ".",
+      "command": "python3 revenue/uiowa_rfq_18649_source_impact_023/register_index.py --input revenue/uiowa_rfq_18649_identity_map/examples/register_023.csv --format markdown",
+      "supported_input": "Explicit preserved 023 register; companion comparison accepts two revisions",
+      "produced_output": "Documentary index; companion CLI exports canonical source-impact reports",
+      "prerequisites": [
+        "Python 3.10+",
+        "Commons checkout at the recorded revision; adjacent canonical components where referenced"
+      ],
+      "sample_result": {
+        "basis": "owning_builder_actual_cli",
+        "summary": "Actual old/current register comparison retains all seven records and 14 dependency witnesses; graph coverage remains partial."
+      }
+    },
+    {
+      "id": "recovered_equivalent_outcomes",
+      "work_order": "UIOWA-112",
+      "title": "Equivalent outcomes with explicit ratings",
+      "status": "working",
+      "kind": "cli",
+      "source": {
+        "path": "revenue/uiowa_rfq_18649_equivalent_outcomes/compare_outcomes.py",
+        "blob_sha": "8a49385b8ea4e7f8cc1f234df02db364cde24906"
+      },
+      "readme": {
+        "path": "revenue/uiowa_rfq_18649_equivalent_outcomes/README.md",
+        "blob_sha": "876bb2adfb0030f1472451abbe03f07f6f679509"
+      },
+      "revision": "7bef914f116cdc4f67ad17706261663f736a8f29",
+      "command_cwd": ".",
+      "command": "python3 revenue/uiowa_rfq_18649_cross_stack/examples.py --out /tmp/outcomes-input-new\npython3 revenue/uiowa_rfq_18649_equivalent_outcomes/compare_outcomes.py /tmp/outcomes-input-new/synthetic.json --format markdown",
+      "supported_input": "Canonical cross-stack comparison and optional explicit calibration",
+      "produced_output": "Native comparison and rating reports with reviewer table",
+      "prerequisites": [
+        "Python 3.10+",
+        "Commons checkout at the recorded revision; adjacent canonical components where referenced"
+      ],
+      "sample_result": {
+        "basis": "owning_builder_actual_cli",
+        "summary": "Actual twelve-case generator preserves eighteen practices as unassessed when calibration is absent."
+      }
+    },
+    {
+      "id": "recovered_executive_summary",
+      "work_order": "UIOWA-081",
+      "title": "Source-linked leadership summary",
+      "status": "working",
+      "kind": "cli",
+      "source": {
+        "path": "revenue/uiowa_rfq_18649_executive_summary/render_summary.py",
+        "blob_sha": "774cf41e18fa454c512febdb1a263f04a45366b6"
+      },
+      "readme": {
+        "path": "revenue/uiowa_rfq_18649_executive_summary/README.md",
+        "blob_sha": "d86f31014547db4844045fe130fa510819c02beb"
+      },
+      "revision": "7bef914f116cdc4f67ad17706261663f736a8f29",
+      "command_cwd": ".",
+      "command": "python3 revenue/uiowa_rfq_18649_executive_summary/render_summary.py --format json",
+      "supported_input": "Existing six-file traceability rehearsal bundle",
+      "produced_output": "Editable leadership JSON or Markdown with source links",
+      "prerequisites": [
+        "Python 3.10+",
+        "Commons checkout at the recorded revision; adjacent canonical components where referenced"
+      ],
+      "sample_result": {
+        "basis": "owning_builder_actual_cli",
+        "summary": "Actual published bundle retains three findings, two recommendations, eight evidence rows and five statements."
+      }
+    },
+    {
+      "id": "recovered_case_mix",
+      "work_order": "Commons #16206",
+      "title": "Case-mix comparison lab",
+      "status": "working",
+      "kind": "cli",
+      "source": {
+        "path": "revenue/uiowa_rfq_18649_case_mix/case_mix.py",
+        "blob_sha": "0fd51fe480f17ff0cc6499a3143048b182b785be"
+      },
+      "readme": {
+        "path": "revenue/uiowa_rfq_18649_case_mix/README.md",
+        "blob_sha": "4586eae07b06c0ff7e0edb5453018fc455f52fec"
+      },
+      "revision": "7bef914f116cdc4f67ad17706261663f736a8f29",
+      "command_cwd": ".",
+      "command": "python3 revenue/uiowa_rfq_18649_case_mix/case_mix.py compare revenue/uiowa_rfq_18649_case_mix/examples/reversal.json --format json",
+      "supported_input": "Count-based comparison with explicit common category weights",
+      "produced_output": "Exact descriptive rates, bounds and comparability result",
+      "prerequisites": [
+        "Python 3.10+",
+        "Commons checkout at the recorded revision; adjacent canonical components where referenced"
+      ],
+      "sample_result": {
+        "basis": "owning_builder_actual_cli",
+        "summary": "Actual fictional reversal and incomplete-category examples preserve unknown outcomes and eligibility limits."
+      }
+    },
+    {
+      "id": "recovered_roadmap",
+      "work_order": "UIOWA-085",
+      "title": "Dependency-aware phased roadmap",
+      "status": "working",
+      "kind": "cli",
+      "source": {
+        "path": "revenue/uiowa_rfq_18649_roadmap/roadmap.py",
+        "blob_sha": "15eaed3025d40fb8e62cf23391d1b6b434fc6b99"
+      },
+      "readme": {
+        "path": "revenue/uiowa_rfq_18649_roadmap/README.md",
+        "blob_sha": "ef2220f565b8cc293bb153712ab6aff75324e049"
+      },
+      "revision": "fdeaae335dda4dcbe4722abcb16cc4d807125459",
+      "command_cwd": ".",
+      "command": "python3 revenue/uiowa_rfq_18649_roadmap/roadmap.py revenue/uiowa_rfq_18649_roadmap/synthetic_recommendations.json /tmp/roadmap-new --include-dependencies",
+      "supported_input": "Editable recommendation JSON or planning CSV",
+      "produced_output": "Roadmap JSON/Markdown/HTML, editable CSV and file manifest plus native dependency JSON/Markdown/DOT",
+      "prerequisites": [
+        "Python 3.10+",
+        "Commons checkout at the recorded revision; adjacent canonical components where referenced"
+      ],
+      "sample_result": {
+        "basis": "owning_builder_actual_cli",
+        "summary": "Actual twelve-item source produces ten planned and two unscheduled items, one phase risk and one phase conflict. Same parsed editable CSV also produces the canonical dependency graph report; graph consistency and schedule feasibility stay separate."
+      }
+    },
+    {
+      "id": "recovered_alert_quality",
+      "work_order": "UIOWA-066",
+      "title": "Alert usefulness and response readiness",
+      "status": "working",
+      "kind": "cli",
+      "source": {
+        "path": "revenue/uiowa_rfq_18649_alert_quality/alert_quality.py",
+        "blob_sha": "94e842752eb7458bf79321571d7c43ad571306f2"
+      },
+      "readme": {
+        "path": "revenue/uiowa_rfq_18649_alert_quality/README.md",
+        "blob_sha": "1c3c050d53ecfc3fe45804e598eecd9bd99cd849"
+      },
+      "revision": "fdeaae335dda4dcbe4722abcb16cc4d807125459",
+      "command_cwd": ".",
+      "command": "python3 revenue/uiowa_rfq_18649_alert_quality/alert_quality.py revenue/uiowa_rfq_18649_alert_quality/synthetic.json --out /tmp/alert-quality-new",
+      "supported_input": "Fictional notification/episode JSON; synthetic-only evaluator",
+      "produced_output": "JSON/Markdown and four CSVs; checked-in editable workbook available",
+      "prerequisites": [
+        "Python 3.10+",
+        "Commons checkout at the recorded revision; adjacent canonical components where referenced"
+      ],
+      "sample_result": {
+        "basis": "owning_builder_actual_cli",
+        "summary": "Actual fictional input: twelve notifications, six episodes, four duplicates and thirteen recommendations; response median four minutes among three completed cases."
+      }
+    },
+    {
+      "id": "recovered_readout_pptx",
+      "work_order": "UIOWA-088",
+      "title": "Editable readout PowerPoint export",
+      "status": "working",
+      "kind": "cli",
+      "source": {
+        "path": "revenue/uiowa_rfq_18649_readout_pptx/export_pptx.py",
+        "blob_sha": "14ccbd5eb2b822664bcdbbd4f302a92afaf34744"
+      },
+      "readme": {
+        "path": "revenue/uiowa_rfq_18649_readout_pptx/README.md",
+        "blob_sha": "72528287cb6c3cf0c74ba3244e9999d3e5f2be6f"
+      },
+      "revision": "fdeaae335dda4dcbe4722abcb16cc4d807125459",
+      "command_cwd": ".",
+      "command": "python3 revenue/uiowa_rfq_18649_readout_pptx/export_pptx.py --report revenue/uiowa_rfq_18649_readout_deck/data/example-report.json --deck revenue/uiowa_rfq_18649_readout_pptx/data/example-readout-deck.json --out /tmp/readout-new.pptx --font 'Bitstream Charter'",
+      "supported_input": "Native report/deck JSON using the existing agreement checker",
+      "produced_output": "Editable PowerPoint with source claim IDs, notes and internal appendix links",
+      "prerequisites": [
+        "Python 3.10+",
+        "Commons checkout at the recorded revision; adjacent canonical components where referenced",
+        "Node.js with @oai/artifact-tool 2.8.74; selected font installed"
+      ],
+      "sample_result": {
+        "basis": "owning_builder_actual_cli",
+        "summary": "Fourteen finalized slides rendered and visually inspected; fourteen internal links and all speaker prompts retained. Native PowerPoint execution not claimed."
+      }
+    },
+    {
+      "id": "recovered_ai_decision_case",
+      "work_order": "UIOWA-111",
+      "title": "AI document decision-case export",
+      "status": "working",
+      "kind": "cli",
+      "source": {
+        "path": "revenue/uiowa_rfq_18649_ai_decision_case/ai_decision_case.py",
+        "blob_sha": "87ce12929d88e51d77183cb117a846bead7cd543"
+      },
+      "readme": {
+        "path": "revenue/uiowa_rfq_18649_ai_decision_case/README.md",
+        "blob_sha": "1d70ab4f52db21de370e20d9ccb53e88a2e806ed"
+      },
+      "revision": "fdeaae335dda4dcbe4722abcb16cc4d807125459",
+      "command_cwd": ".",
+      "command": "python3 revenue/uiowa_rfq_18649_ai_decision_case/ai_decision_case.py --case revenue/uiowa_rfq_18649_ai_decision_case/examples/beneficial.json --sweep --out /tmp/ai-decision-new",
+      "supported_input": "Fictional document lifecycle, quality and explicit valuation assumptions",
+      "produced_output": "Decision JSON, explanation, effective-case JSON and four CSVs",
+      "prerequisites": [
+        "Python 3.10+",
+        "Commons checkout at the recorded revision; adjacent canonical components where referenced"
+      ],
+      "sample_result": {
+        "basis": "owning_builder_actual_cli",
+        "summary": "Beneficial, unfavorable and missing-effort cases ran; modeled capacity value remains distinct from unknown cash conversion."
+      }
+    }
+  ]
+}
