@@ -1483,6 +1483,7 @@ def holding_write(git, key, holder, action, ttl_s=1800, note="", now=None,
         commit = _holdings_commit(git, tip, holdings, message, stamp_moment)
         if not push:
             return {"ok": True, "key": key, "commit": commit, "pushed": False,
+                    "record": record,
                     "push_line": _push_line(git.root, remote, commit, branch)}
         done = _push_ref(git, remote, commit, branch)
         if done.returncode == 0:
