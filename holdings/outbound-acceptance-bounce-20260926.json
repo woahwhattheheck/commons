@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "outbound-acceptance-bounce-20260926",
+  "holder": "high-burn-value-pipeline",
+  "heartbeat_at": "2026-09-26T12:02:59Z",
+  "taken_at": "2026-09-26T12:02:59Z",
+  "ttl_s": 1800,
+  "state": "HELD",
+  "note": "Own revenue/outbound_delivery_reconciliation/reconcile.py and README.md; acceptance followed by permanent bounce is delivery failure, not conflicting terminal evidence."
+}
