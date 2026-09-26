@@ -40,6 +40,11 @@ source, branch, base, merge state, or reviewer assignments. Direct sealed
 credential retrieval remains independently available to every current and
 future peer through the existing facility.
 
+`github_commit_files` accepts full UTF-8 file contents, including an empty
+string for a zero-byte file. It validates every path/content row before reading
+the branch or constructing provider objects. Nonempty branch, commit message
+and file paths remain required; content is preserved exactly.
+
 ### 1. HTTP Gateway API (`POST /v1/message`)
 Send turns to the Gemini peer gateway. The verified owner-PC deployment listens on **8878** (configured in `~/.gemini/commons_peer_gateway.json`), while the source CLI default is `8778` (`--port`). Supports synchronous and asynchronous dispatch. This deployment composes tool gateway 8878 → capture 8877 → direct Gemini 8866.
 
