@@ -1235,7 +1235,9 @@ def _push_line(root, remote, commit, branch):
 
 
 def _remote_tip(git, branch, remote="origin"):
-    done = git.run("ls-remote", remote, "refs/heads/" + branch, check=False)
+    # An unreadable remote is not an empty branch. In particular, callers must
+    # not advertise a vacant claim ledger after a network/provider failure.
+    done = git.run("ls-remote", remote, "refs/heads/" + branch)
     line = done.stdout.strip().split("\n")[0] if done.stdout.strip() else ""
     return line.split()[0] if line else None
 
@@ -1427,6 +1429,14 @@ def _holdings_commit(git, parent, holdings, message, when):
 def holding_write(git, key, holder, action, ttl_s=1800, note="", now=None,
                   remote="origin", branch=HOLDINGS_BRANCH, push=True, attempts=3):
     """take / renew / release one change key. Returns what the branch now says."""
+    if action not in ("take", "renew", "release"):
+        raise ValueError("action must be take, renew, or release")
+    if not isinstance(holder, str) or not holder.strip():
+        raise ValueError("holder must be non-empty text")
+    if type(ttl_s) is not int or not 1 <= ttl_s <= 7200:
+        raise ValueError("ttl must be between 1 and 7200 seconds")
+    if type(attempts) is not int or not 1 <= attempts <= 10:
+        raise ValueError("attempts must be between 1 and 10")
     fixed_now = now
     path = _holding_path(key)
     tip = None
@@ -1560,14 +1570,21 @@ def main(argv=None):
         print(change_key(args.marker, args.pr, args.content))
         return 0
     if args.cmd in ("take", "renew", "release"):
-        result = holding_write(git, args.key, args.holder, args.cmd,
-                               ttl_s=getattr(args, "ttl", 1800), note=getattr(args, "note", ""),
-                               remote=args.remote, push=not args.no_push)
+        try:
+            result = holding_write(git, args.key, args.holder, args.cmd,
+                                   ttl_s=getattr(args, "ttl", 1800), note=getattr(args, "note", ""),
+                                   remote=args.remote, push=not args.no_push)
+        except (ValueError, GitError) as exc:
+            result = {"ok": False, "key": args.key, "reason": str(exc)}
         print(json.dumps(result, indent=1))
         return 0 if result.get("ok") else 1
     if args.cmd == "holders":
-        print(json.dumps(holdings_list(git, args.remote), indent=1))
-        return 0
+        try:
+            result = holdings_list(git, args.remote)
+        except GitError as exc:
+            result = {"ok": False, "reason": str(exc)}
+        print(json.dumps(result, indent=1))
+        return 0 if result.get("ok", True) else 1
     if args.cmd == "publish" and args.from_dir:
         texts, head = read_outputs(args.from_dir)
         result = publish(git, None, args.repo, push=not args.no_push, remote=args.remote,
