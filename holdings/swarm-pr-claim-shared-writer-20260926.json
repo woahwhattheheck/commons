@@ -2,9 +2,9 @@
  "schema": "commons-change-holding/v1",
  "key": "swarm-pr-claim-shared-writer-20260926",
  "holder": "high-burn-lane-a",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-26T11:58:51Z",
- "heartbeat_at": "2026-09-26T11:58:51Z",
+ "heartbeat_at": "2026-09-26T12:01:01Z",
  "ttl_s": 1800,
- "note": "host/claim_pr.py + host/coordination_state.py; consolidate duplicate PR claim state machine"
+ "note": "Completed PR 29889, merged 5f96a3508ba184f4545790f23c58ea39806fbdd6; exact main readback confirmed."
 }
