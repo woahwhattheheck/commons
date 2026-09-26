@@ -22,8 +22,8 @@ import sys
 from dataclasses import dataclass
 from typing import Any, Callable, Iterable
 from urllib.error import HTTPError, URLError
-from urllib.parse import urlencode
-from urllib.request import Request, urlopen
+from urllib.parse import urlencode, urlsplit
+from urllib.request import HTTPRedirectHandler, Request, build_opener
 
 DEFAULT_REPO = "woahwhattheheck/commons"
 DEFAULT_COORDINATION_URL = (
@@ -32,6 +32,7 @@ DEFAULT_COORDINATION_URL = (
 )
 _HEX40 = re.compile(r"^[0-9a-fA-F]{40}$")
 _PULL_URL = re.compile(r"^https://github\.com/([^/]+/[^/]+)/pull/(\d+)(?:/.*)?$")
+_GITHUB_CREDENTIAL_HOSTS = frozenset({"api.github.com", "raw.githubusercontent.com"})
 
 
 class ResolutionError(RuntimeError):
@@ -346,14 +347,38 @@ class Resolver:
         return {"state": "RESOLVED", "marker": marker, "resolved_via": "github-search", "target": target}
 
 
+def _credential_request(request: Request, token: str | None) -> Request:
+    """Credentials follow the provider endpoint, not a caller-supplied URL."""
+    request.remove_header("Authorization")
+    try:
+        parsed = urlsplit(request.full_url)
+        provider = (parsed.scheme == "https" and parsed.hostname in _GITHUB_CREDENTIAL_HOSTS
+                    and parsed.port in (None, 443) and parsed.username is None)
+    except ValueError:
+        provider = False
+    if token and provider:
+        # urllib does not copy unredirected headers; redirects are scoped again.
+        request.add_unredirected_header("Authorization", f"Bearer {token}")
+    return request
+
+
+class _CredentialRedirectHandler(HTTPRedirectHandler):
+    def __init__(self, token: str | None) -> None:
+        self._token = token
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        request = super().redirect_request(req, fp, code, msg, headers, newurl)
+        return _credential_request(request, self._token) if request is not None else None
+
+
 def _network_getters(token: str | None) -> tuple[JsonGetter, TextGetter]:
     headers = {"Accept": "application/vnd.github+json", "User-Agent": "commons-receipt-resolver/1"}
-    if token:
-        headers["Authorization"] = f"Bearer {token}"
+    opener = build_opener(_CredentialRedirectHandler(token))
 
     def get_text(url: str) -> str:
         try:
-            with urlopen(Request(url, headers=headers), timeout=20) as response:
+            request = _credential_request(Request(url, headers=headers), token)
+            with opener.open(request, timeout=20) as response:
                 return response.read().decode("utf-8")
         except HTTPError as exc:
             raise ResolutionError("HTTP_ERROR", f"HTTP {exc.code} while reading {url}") from exc
