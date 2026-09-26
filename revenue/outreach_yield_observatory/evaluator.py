@@ -58,6 +58,8 @@ class Policy:
     def from_mapping(cls, value: Mapping[str, Any] | None) -> "Policy":
         if value is None:
             return cls()
+        if not isinstance(value, Mapping):
+            raise ObservatoryError("policy must be an object or null")
         allowed = set(cls.__dataclass_fields__)
         unknown = set(value) - allowed
         if unknown:
@@ -251,7 +253,9 @@ def _build_exposures(events: Iterable[Event]) -> list[Exposure]:
         by_type: dict[str, Event] = {}
         for row in rows:
             if row.event in by_type:
-                raise ObservatoryError(f"{key}: duplicate {row.event} event")
+                if row == by_type[row.event]:
+                    continue
+                raise ObservatoryError(f"{key}: conflicting duplicate {row.event} event")
             by_type[row.event] = row
 
         if EVENT_SENT not in by_type:
@@ -369,7 +373,7 @@ def evaluate_document(document: Mapping[str, Any]) -> dict[str, Any]:
     if unknown:
         raise ObservatoryError(f"unknown top-level keys: {sorted(unknown)}")
 
-    if document.get("schema_version") != SCHEMA_VERSION:
+    if type(document.get("schema_version")) is not int or document["schema_version"] != SCHEMA_VERSION:
         raise ObservatoryError(f"schema_version must equal {SCHEMA_VERSION}")
 
     as_of = _parse_iso8601(document.get("as_of"), "as_of")

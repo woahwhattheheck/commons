@@ -81,6 +81,8 @@ Signals are conservative review gates:
 `SCALE_REVIEW` is **not** permission to send. The report explicitly requires a human to re-check current lead claims and provider state before any external action.
 
 Defaults are operational defaults, not universal truths; callers can pass an explicit `policy`.
+The policy value must be an object or `null` for defaults; arrays and scalar
+values are input errors. The schema version must be the integer `1`.
 
 ## CLI
 
@@ -93,11 +95,16 @@ The CLI is file-in/file-out only. It has no provider client or network code.
 
 ## Determinism and fail-closed rules
 
+Exact normalized lifecycle replay is idempotent. Overlapping export pages can
+repeat the same `SENT` or outcome row without aborting the report or inflating
+exposure counts, rates, or evidence signals. A repeated event kind with a changed
+timestamp, evidence reference, or other retained field remains an error.
+
 The evaluator rejects:
 
 - naive or future timestamps;
-- missing/duplicate `SENT`;
-- duplicate lifecycle events for one prospect/experiment;
+- missing `SENT`;
+- conflicting duplicate lifecycle events for one prospect/experiment;
 - inconsistent segment/offer/route within one exposure;
 - reply-path events before `SENT`;
 - positive/accept/payment events missing their explicit evidence chain;
