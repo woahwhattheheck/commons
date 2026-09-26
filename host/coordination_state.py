@@ -1313,6 +1313,29 @@ def publish(git, payload, repo, push=True, remote="origin", branch=STATE_BRANCH,
 _KEY_RE = re.compile(r"[^A-Za-z0-9._-]+")
 
 
+def claim_repository(repository=None):
+    """Canonical GitHub repository metadata for a claim; not an access check."""
+    value = DEFAULT_REPO if repository is None else repository
+    if not isinstance(value, str):
+        raise ValueError("repository must be owner/name text")
+    value = value.strip().lower()
+    if not re.fullmatch(r"[a-z0-9_.-]+/[a-z0-9_.-]+", value):
+        raise ValueError("repository must be owner/name text")
+    return value
+
+
+def repository_claim_key(kind, number, repository=None):
+    """Keep Commons keys stable; separate equal issue/PR numbers in other repos."""
+    if kind not in ("issue", "pr") or type(number) is not int or number <= 0:
+        raise ValueError("claim requires issue or pr and a positive integer")
+    repository = claim_repository(repository)
+    legacy = "%s-%d" % (kind, number)
+    if repository == DEFAULT_REPO.lower():
+        return legacy
+    digest = hashlib.sha256(repository.encode("utf-8")).hexdigest()[:24]
+    return "repo-%s-%s" % (digest, legacy)
+
+
 def change_key(value=None, pr=None, content=None):
     """A stable key for a change. Content digests win; then PR; then marker family."""
     if content:
@@ -1427,7 +1450,8 @@ def _holdings_commit(git, parent, holdings, message, when):
 
 
 def holding_write(git, key, holder, action, ttl_s=1800, note="", now=None,
-                  remote="origin", branch=HOLDINGS_BRANCH, push=True, attempts=3):
+                  remote="origin", branch=HOLDINGS_BRANCH, push=True, attempts=3,
+                  repository=None):
     """take / renew / release one change key. Returns what the branch now says."""
     if action not in ("take", "renew", "release"):
         raise ValueError("action must be take, renew, or release")
@@ -1437,6 +1461,8 @@ def holding_write(git, key, holder, action, ttl_s=1800, note="", now=None,
         raise ValueError("ttl must be between 1 and 7200 seconds")
     if type(attempts) is not int or not 1 <= attempts <= 10:
         raise ValueError("attempts must be between 1 and 10")
+    if repository is not None:
+        repository = claim_repository(repository)
     fixed_now = now
     path = _holding_path(key)
     tip = None
@@ -1471,6 +1497,8 @@ def holding_write(git, key, holder, action, ttl_s=1800, note="", now=None,
         record = dict(current) if isinstance(current, dict) and current.get("schema") == HOLDING_SCHEMA else {}
         record.update({"schema": HOLDING_SCHEMA, "key": key, "holder": holder,
                        "heartbeat_at": stamp, "ttl_s": int(ttl_s)})
+        if repository is not None:
+            record["repository"] = repository
         if action == "take" and (not live or (current or {}).get("holder") != holder):
             record["taken_at"] = stamp
             if current and current.get("holder") and current.get("holder") != holder:
@@ -1509,6 +1537,8 @@ def holdings_list(git, remote="origin", branch=HOLDINGS_BRANCH, now=None):
                "note": record.get("note", "")}
         if isinstance(record, _Preserved):
             row["unreadable"] = True  # reported in the listing only; the blob itself is carried untouched
+        if record.get("repository") is not None:
+            row["repository"] = record["repository"]
         rows.append(row)
     return {"branch": branch, "tip": tip, "holdings": rows}
 
