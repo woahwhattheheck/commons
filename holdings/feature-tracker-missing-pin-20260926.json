@@ -3,8 +3,8 @@
   "key": "feature-tracker-missing-pin-20260926",
   "holder": "high-burn-value-pipeline",
   "taken_at": "2026-09-26T15:07:57.878Z",
-  "heartbeat_at": "2026-09-26T15:07:57.878Z",
+  "heartbeat_at": "2026-09-26T15:10:36.666Z",
   "ttl_s": 1800,
-  "state": "ACTIVE",
-  "note": "Own host/feature_tracker.py and ground/FEATURE_TRACKER.md: missing/unreadable blob-pinned live evidence must degrade. Backend ownership cleared with observability lane."
+  "state": "RELEASED",
+  "note": "Merged #30074 at 57b4cd85d23e761618623a7359486862da1e60ce; actual projection CLI now degrades missing pinned bytes and retains matching/unpinned/sparse/current evidence behavior."
 }
