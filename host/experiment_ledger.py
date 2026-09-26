@@ -253,11 +253,19 @@ def record_bench(ledger: Mapping[str, Any], hypothesis_id: str, bench_name: str,
     return validate_ledger(current)
 
 
-def load_ledger(path: str) -> Dict[str, Any]:
-    if not os.path.exists(path):
-        return empty_ledger()
-    with open(path, "r", encoding="utf-8") as fh:
-        return validate_ledger(loads_strict(fh.read()))
+def load_ledger(path: str, *, allow_missing: bool = True) -> Dict[str, Any]:
+    """Load saved evidence; only explicit initialization may treat absence as empty.
+
+    The default preserves the existing Python initialization API. Read-only CLI
+    operations and recording to an existing hypothesis require a real file.
+    """
+    try:
+        with open(path, "r", encoding="utf-8") as fh:
+            return validate_ledger(loads_strict(fh.read()))
+    except FileNotFoundError:
+        if allow_missing:
+            return empty_ledger()
+        raise
 
 
 def dump_ledger(ledger: Mapping[str, Any]) -> str:
@@ -309,7 +317,7 @@ def main(argv: Optional[List[str]] = None) -> int:
     args = parser.parse_args(argv)
 
     try:
-        ledger = load_ledger(args.ledger)
+        ledger = load_ledger(args.ledger, allow_missing=args.command == "add")
         if args.command == "validate":
             print(dump_ledger(ledger), end="")
             return 0
