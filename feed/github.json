@@ -1,6 +1,6 @@
 {
   "counts": {
-    "open_issues": 10207,
+    "open_issues": 10174,
     "open_pull_requests": 0,
     "runs_in_progress": 1,
     "runs_queued": 70
@@ -13,6 +13,28 @@
   "pulls_listing": "UNKNOWN",
   "queue_depth_per_runner": 70.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "grok/mealframe-test-strip-20260925",
+      "closed_at": "2026-09-26T03:17:53Z",
+      "head_sha": "fc1c1c90f3751cc2b02e2829707af9c8945d660f",
+      "merged_at": "2026-09-26T03:17:53Z",
+      "number": 29877,
+      "state": "MERGED",
+      "title": "Strip MealFrame tests; keep the journal compile"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "grok/root-test-purge-20260925",
+      "closed_at": "2026-09-26T03:13:36Z",
+      "head_sha": "31ba8f9b33c2aacbfdacebe35a8e7c282b1040c3",
+      "merged_at": "2026-09-26T03:13:36Z",
+      "number": 29876,
+      "state": "MERGED",
+      "title": "Remove unreferenced root checks and two test-only workflow steps"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -155,31 +177,9 @@
       "number": 29787,
       "state": "MERGED",
       "title": "purge: drop 53 root JSON and page string checks"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "purge/root-page-text-20260925g",
-      "closed_at": "2026-09-25T13:14:54Z",
-      "head_sha": "dffea3c2bc3708a14feeb3096ed24f6c9e6b2dd0",
-      "merged_at": "2026-09-25T13:14:54Z",
-      "number": 29786,
-      "state": "MERGED",
-      "title": "purge: drop 29 root page and doc string checks"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "purge/strip-unittest-steps-20260925f",
-      "closed_at": "2026-09-25T13:13:42Z",
-      "head_sha": "8d40e649e42acd30d3dc0d3bac9a9c4febf734ee",
-      "merged_at": "2026-09-25T13:13:42Z",
-      "number": 29785,
-      "state": "MERGED",
-      "title": "purge: strip unittest steps from three mixed workflows"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-26T02:02:36Z"
+  "unchanged_since": "2026-09-26T07:03:30Z"
 }
