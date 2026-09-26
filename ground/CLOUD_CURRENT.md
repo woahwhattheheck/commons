@@ -44,7 +44,9 @@ Mode `clone` (default) is an isolated clone — no shared index lock. Mode
 2. Fetch `refs/heads/main` explicitly into `refs/remotes/origin/main`. This also
    works in single-branch feature clones whose configured fetch mapping omits
    main. Fetch failure is `origin_state=STALE`, not a stop.
-3. Clean paths that moved on main take origin.
+3. Clean paths that moved on main take origin, including executable file modes.
+   New upstream scripts remain runnable. Locally changed executable bits stay ours;
+   other existing file permissions are preserved.
 4. Dirty paths unchanged on main stay ours.
 5. Dirty paths that also moved on main: 3-way compose. Same bytes `DEDUPED`.
    JSON key-union / insert-only text `COMPOSE_AND_MERGE`. Same original line

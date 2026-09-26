@@ -26,6 +26,7 @@ import json
 import os
 import re
 import shutil
+import stat
 import subprocess
 import sys
 import tempfile
@@ -274,8 +275,9 @@ def show_at(cwd, rev, rel):
     return out
 
 
-def name_status(cwd, a, b):
-    rc, out, _ = git(["diff", "--name-status", "--no-renames", "-z", a, b], cwd=cwd, check=False)
+def name_status(cwd, a, b, include_modes=False):
+    format_flag = "--raw" if include_modes else "--name-status"
+    rc, out, _ = git(["diff", format_flag, "--no-renames", "-z", a, b], cwd=cwd, check=False)
     if rc != 0:
         return []
     fields = out.split(b"\0")
@@ -283,8 +285,18 @@ def name_status(cwd, a, b):
         fields.pop()
     if len(fields) % 2:
         raise CloudCurrentError("incomplete NUL-delimited git name-status output")
-    return [(os.fsdecode(fields[index]), os.fsdecode(fields[index + 1]))
-            for index in range(0, len(fields), 2)]
+    rows = []
+    for index in range(0, len(fields), 2):
+        status = os.fsdecode(fields[index])
+        rel = os.fsdecode(fields[index + 1])
+        if include_modes:
+            parts = status.split()
+            if len(parts) != 5 or not parts[0].startswith(":"):
+                raise CloudCurrentError("incomplete raw git diff metadata")
+            rows.append((parts[4], rel, parts[0][1:], parts[1]))
+        else:
+            rows.append((status, rel))
+    return rows
 
 
 def porcelain(cwd):
@@ -332,6 +344,26 @@ def write_file_bytes(root, rel, data):
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
     with open(path, "wb") as handle:
         handle.write(data if data is not None else b"")
+
+
+def write_refreshed_file(root, rel, data, base_mode, origin_mode):
+    """Compose the executable bit alongside bytes, preserving local chmods."""
+    path = os.path.join(root, rel)
+    apply_mode = origin_mode in ("100644", "100755")
+    try:
+        current = os.lstat(path)
+    except FileNotFoundError:
+        pass
+    else:
+        # An existing added file or a local chmod carries local intent. Keep it.
+        apply_mode = (apply_mode and stat.S_ISREG(current.st_mode)
+                      and base_mode in ("100644", "100755")
+                      and bool(current.st_mode & stat.S_IXUSR) == (base_mode == "100755"))
+    write_file_bytes(root, rel, data)
+    if apply_mode:
+        mode = stat.S_IMODE(os.stat(path).st_mode)
+        mode = mode | 0o111 if origin_mode == "100755" else mode & ~0o111
+        os.chmod(path, mode)
 
 
 def unlink_if_exists(root, rel):
@@ -781,7 +813,7 @@ def refresh(worktree, peer=None):
     # Compare upstream against the shared ancestor. HEAD-to-origin differences
     # also contain reversals of unique local commits and must not be applied as
     # if upstream had deleted that work.
-    for status, rel in name_status(worktree, shared, origin_sha):
+    for status, rel, base_mode, origin_mode in name_status(worktree, shared, origin_sha, include_modes=True):
         theirs = show_at(worktree, origin_sha, rel)
         base = show_at(worktree, shared, rel)
         local_committed = show_at(worktree, head, rel)
@@ -790,7 +822,7 @@ def refresh(worktree, peer=None):
                 unlink_if_exists(worktree, rel)
                 receipt["actions"].append({"path": rel, "op": "apply_origin_delete"})
             else:
-                write_file_bytes(worktree, rel, theirs)
+                write_refreshed_file(worktree, rel, theirs, base_mode, origin_mode)
                 receipt["actions"].append({"path": rel, "op": "apply_origin"})
             continue
         ours = read_file_bytes(worktree, rel)
@@ -810,7 +842,7 @@ def refresh(worktree, peer=None):
             unlink_if_exists(worktree, rel)
             receipt["actions"].append({"path": rel, "op": "compose_delete", "rule_id": result["rule_id"]})
             continue
-        write_file_bytes(worktree, rel, merged)
+        write_refreshed_file(worktree, rel, merged, base_mode, origin_mode)
         op = "dedupe" if verdict == "DEDUPED" else "compose"
         receipt["actions"].append({"path": rel, "op": op, "rule_id": result["rule_id"]})
         if result.get("origin_kept_in_receipt") and theirs is not None:
