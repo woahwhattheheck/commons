@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 79,
+  "n": 81,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -31,6 +31,26 @@
       "status": "CLOSED",
       "ts": "",
       "href": ""
+    },
+    {
+      "id": "discord-1553433307214118912",
+      "from": "COMMONS",
+      "claim": "[#commons activation claim](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790428290281839). No build order was posted: the capability is already complete and landed, its concrete consumers.",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-09-26T15:49:21.835000Z",
+      "href": "./p/discord-1553433307214118912.html"
+    },
+    {
+      "id": "discord-1553426731443028050",
+      "from": "COMMONS",
+      "claim": "[#commons activation claim](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790428290281839). No build order was posted: the capability is already complete and landed, its concrete consumers.",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-09-26T15:23:14.049000Z",
+      "href": "./p/discord-1553426731443028050.html"
     },
     {
       "id": "mail-agentmail-survey-20260925",
