@@ -27,8 +27,14 @@ with those traces, zero divergence on every other edge, zero patch boundary trac
 and zero cell means. It composes the existing local mean repair on a fixed two-cube
 patch. Run `p4_body_diagonal_lift.py --trace 1 -1 2 -2 3 -3 4 -4 5 -5 6 -6`.
 The exact 189×12 map has 270 nonzeros and a reference seminorm-squared bound of
-1728 times the trace-coefficient norm squared. Other edge classes, degree five,
-neighbor selection/transport and the global theorem remain separate work.
+1728 times the trace-coefficient norm squared.
+
+[The degree-five companion](P5_BODY_DIAGONAL_LIFT.md) accepts eighteen coefficients
+and degree-elevates the same quartic mean correction. Its exact 432×18 map has
+1,763 nonzeros and seminorm-squared bound `39744/49` in trace-coefficient norm.
+Use `p5_body_diagonal_lift.py --trace` with eighteen values, three per cell.
+Other edge classes, neighbor selection/transport and the global theorem remain
+separate work.
 
 ## Original problem
 
