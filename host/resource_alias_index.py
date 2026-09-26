@@ -4,12 +4,16 @@
 Git already stores identical content once. This tool makes the logical aliases
 explicit for consumers without deleting files, rewriting history, or copying
 blob contents. It reads only the named Git tree.
+
+Use --tree-only in a partial clone to inventory aliases without hydrating blobs
+for their sizes. That output has exact path counts and unmeasured byte totals.
 """
 
 from __future__ import annotations
 
 import argparse
 import json
+import os
 import subprocess
 import sys
 from collections import defaultdict
@@ -18,6 +22,7 @@ from typing import Any, Iterable
 
 
 SCHEMA = "commons-resource-alias-index/v1"
+TREE_SCHEMA = "commons-resource-alias-index/tree-v1"
 
 
 class AliasIndexError(ValueError):
@@ -35,13 +40,17 @@ def parse_ls_tree(raw: bytes) -> list[dict[str, Any]]:
             continue
         try:
             metadata, raw_path = record.split(b"\t", 1)
-            mode, object_type, oid, raw_size = metadata.decode("ascii").split()
+            fields = metadata.decode("ascii").split()
+            if len(fields) not in (3, 4):
+                raise ValueError("unexpected ls-tree field count")
+            mode, object_type, oid = fields[:3]
+            raw_size = fields[3] if len(fields) == 4 else None
         except (ValueError, UnicodeDecodeError) as exc:
             raise AliasIndexError("malformed git ls-tree record") from exc
         if object_type != "blob":
             continue
         try:
-            size = int(raw_size)
+            size = int(raw_size) if raw_size is not None else None
         except ValueError as exc:
             raise AliasIndexError(f"blob {oid} has non-integer size") from exc
         path = raw_path.decode("utf-8", "surrogateescape")
@@ -54,6 +63,7 @@ def build_alias_index(
     *,
     source_commit: str,
     source_tree: str,
+    tree_only: bool = False,
 ) -> dict[str, Any]:
     by_oid: dict[str, list[dict[str, Any]]] = defaultdict(list)
     seen_paths: set[str] = set()
@@ -62,12 +72,12 @@ def build_alias_index(
     for raw in entries:
         path = str(raw["path"])
         oid = str(raw["sha"]).lower()
-        size = int(raw["size"])
+        if not tree_only and (type(raw.get("size")) is not int or raw["size"] < 0):
+            raise AliasIndexError(f"missing or invalid measured blob size: {path}")
+        size = None if tree_only else raw["size"]
         mode = str(raw.get("mode") or "100644")
         if path in seen_paths:
             raise AliasIndexError(f"duplicate tracked path: {path}")
-        if size < 0:
-            raise AliasIndexError(f"negative blob size: {path}")
         if len(oid) not in {40, 64} or any(ch not in "0123456789abcdef" for ch in oid):
             raise AliasIndexError(f"invalid Git object id: {oid}")
         seen_paths.add(path)
@@ -95,15 +105,15 @@ def build_alias_index(
                     {"path": member["path"], "mode": member["mode"]}
                     for member in members[1:]
                 ],
-                "logical_bytes": size * len(members),
-                "alias_bytes": size * (len(members) - 1),
+                "logical_bytes": None if tree_only else size * len(members),
+                "alias_bytes": None if tree_only else size * (len(members) - 1),
             }
         )
 
     logical_files = sum(group["path_count"] for group in groups)
     alias_paths = sum(group["path_count"] - 1 for group in groups)
-    return {
-        "schema": SCHEMA,
+    result = {
+        "schema": TREE_SCHEMA if tree_only else SCHEMA,
         "source_commit": source_commit,
         "source_tree": source_tree,
         "scope": "all tracked Git blobs",
@@ -120,43 +130,50 @@ def build_alias_index(
             "duplicate_groups": len(groups),
             "logical_files_in_duplicate_groups": logical_files,
             "extra_alias_paths": alias_paths,
-            "logical_duplicate_bytes": sum(group["logical_bytes"] for group in groups),
-            "alias_bytes": sum(group["alias_bytes"] for group in groups),
+            "logical_duplicate_bytes": None if tree_only else sum(group["logical_bytes"] for group in groups),
+            "alias_bytes": None if tree_only else sum(group["alias_bytes"] for group in groups),
         },
         "groups": groups,
     }
+    if tree_only:
+        result["truth"]["blob_sizes_measured"] = False
+        result["truth"]["lazy_blob_fetch_enabled"] = False
+    return result
 
 
-def git_output(*args: str) -> bytes:
+def git_output(*args: str, no_lazy_fetch: bool = False) -> bytes:
     try:
         return subprocess.check_output(
             ["git", *args],
             stderr=subprocess.PIPE,
+            env=dict(os.environ, GIT_NO_LAZY_FETCH="1") if no_lazy_fetch else None,
         )
     except (OSError, subprocess.CalledProcessError) as exc:
         detail = getattr(exc, "stderr", b"").decode("utf-8", "replace").strip()
         raise AliasIndexError(f"git {' '.join(args)} failed: {detail}") from exc
 
 
-def scan_git(ref: str) -> dict[str, Any]:
-    commit = git_output("rev-parse", f"{ref}^{{commit}}").decode("ascii").strip()
-    tree = git_output("rev-parse", f"{commit}^{{tree}}").decode("ascii").strip()
-    raw = git_output("ls-tree", "-r", "-l", "-z", "--full-tree", commit)
+def scan_git(ref: str, *, tree_only: bool = False) -> dict[str, Any]:
+    commit = git_output("rev-parse", "--verify", "--end-of-options", f"{ref}^{{commit}}", no_lazy_fetch=tree_only).decode("ascii").strip()
+    tree = git_output("rev-parse", f"{commit}^{{tree}}", no_lazy_fetch=tree_only).decode("ascii").strip()
+    options = [] if tree_only else ["-l"]
+    raw = git_output("ls-tree", "-r", *options, "-z", "--full-tree", commit, no_lazy_fetch=tree_only)
     return build_alias_index(
         parse_ls_tree(raw),
         source_commit=commit,
         source_tree=tree,
+        tree_only=tree_only,
     )
 
 
 def check_snapshot(path: Path) -> dict[str, Any]:
     expected = json.loads(path.read_text(encoding="utf-8"))
-    if expected.get("schema") != SCHEMA:
-        raise AliasIndexError(f"{path} is not {SCHEMA}")
+    if not isinstance(expected, dict) or expected.get("schema") not in (SCHEMA, TREE_SCHEMA):
+        raise AliasIndexError(f"{path} is not a supported resource alias index")
     source_commit = expected.get("source_commit")
     if not isinstance(source_commit, str) or not source_commit:
         raise AliasIndexError(f"{path} has no source_commit")
-    actual = scan_git(source_commit)
+    actual = scan_git(source_commit, tree_only=expected["schema"] == TREE_SCHEMA)
     if actual != expected:
         raise AliasIndexError(f"{path} differs from source commit {source_commit}")
     return actual
@@ -165,15 +182,18 @@ def check_snapshot(path: Path) -> dict[str, Any]:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--ref", default="HEAD", help="Git commit or ref to scan")
-    parser.add_argument("--check", type=Path, help="verify a pinned snapshot")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--check", type=Path, help="verify a pinned snapshot using its recorded measurement mode")
     parser.add_argument("--output", type=Path, help="write instead of stdout")
+    mode.add_argument("--tree-only", action="store_true",
+                      help="read tree metadata without downloading blobs; byte sizes remain null")
     return parser
 
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     try:
-        result = check_snapshot(args.check) if args.check else scan_git(args.ref)
+        result = check_snapshot(args.check) if args.check else scan_git(args.ref, tree_only=args.tree_only)
         if args.check:
             summary = result["summary"]
             print(
@@ -181,7 +201,7 @@ def main(argv: list[str] | None = None) -> int:
                 f"{summary['tracked_blobs']} blobs "
                 f"{summary['duplicate_groups']} groups "
                 f"{summary['extra_alias_paths']} aliases "
-                f"{summary['alias_bytes']} alias-bytes"
+                f"{summary['alias_bytes'] if summary['alias_bytes'] is not None else 'UNMEASURED'} alias-bytes"
             )
             return 0
         rendered = canonical_text(result)
