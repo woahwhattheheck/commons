@@ -14,11 +14,15 @@ Commons seat can validate it offline.
 from __future__ import annotations
 
 import argparse
+from contextlib import contextmanager
+import errno
 import hashlib
 import json
+import math
 import os
 import re
 import tempfile
+import time
 from typing import Any, Dict, Iterable, List, Mapping, MutableMapping, Optional
 
 SCHEMA = "commons-artifact-registry/v1"
@@ -300,6 +304,7 @@ def dump_registry(registry: Mapping[str, Any]) -> str:
 
 
 def write_registry(path: str, registry: Mapping[str, Any]) -> None:
+    """Atomically replace one snapshot; use add_artifact_file for shared additions."""
     text = dump_registry(registry)
     directory = os.path.dirname(os.path.abspath(path))
     os.makedirs(directory, exist_ok=True)
@@ -313,6 +318,74 @@ def write_registry(path: str, registry: Mapping[str, Any]) -> None:
     finally:
         if os.path.exists(tmp):
             os.unlink(tmp)
+
+
+@contextmanager
+def _registry_lock(path: str, timeout: float):
+    """Serialize writers without deleting the shared lock inode between updates."""
+    if not math.isfinite(timeout) or timeout < 0:
+        raise ValueError("lock timeout must be a finite non-negative number")
+    directory = os.path.dirname(os.path.abspath(path))
+    os.makedirs(directory, exist_ok=True)
+    # Keep this sidecar after release. Removing it could let a new process lock
+    # a different inode while another writer is still waiting on the old one.
+    with open(path + ".lock", "a+b") as handle:
+        if os.name == "nt":
+            import msvcrt
+
+            if os.fstat(handle.fileno()).st_size == 0:
+                handle.write(b"\0")
+                handle.flush()
+
+            def acquire():
+                handle.seek(0)
+                msvcrt.locking(handle.fileno(), msvcrt.LK_NBLCK, 1)
+
+            def release():
+                handle.seek(0)
+                msvcrt.locking(handle.fileno(), msvcrt.LK_UNLCK, 1)
+        else:
+            import fcntl
+
+            def acquire():
+                fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+
+            def release():
+                fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+
+        deadline = time.monotonic() + timeout
+        while True:
+            try:
+                acquire()
+                break
+            except OSError as error:
+                if error.errno not in (errno.EACCES, errno.EAGAIN, errno.EDEADLK):
+                    raise
+                remaining = deadline - time.monotonic()
+                if remaining <= 0:
+                    raise TimeoutError("registry is busy: %s (waited %.3gs)" % (path, timeout)) from error
+                time.sleep(min(0.05, remaining))
+        try:
+            yield
+        finally:
+            release()
+
+
+def add_artifact_file(path: str, sha256: str, source: Mapping[str, Any],
+                      size_bytes: Optional[int] = None, labels: Optional[Iterable[str]] = None,
+                      *, lock_timeout: float = 10.0) -> Dict[str, Any]:
+    """Load, add and atomically save under one interprocess writer lock.
+
+    Every cooperating writer rereads after acquiring the lock, so both distinct
+    additions and conflicts with another process's newly written locator survive.
+    Reads remain lock-free because write_registry replaces complete snapshots.
+    """
+    path = os.path.abspath(os.fspath(path))
+    with _registry_lock(path, lock_timeout):
+        registry = load_registry(path, missing_ok=True)
+        registry = add_artifact(registry, sha256, source, size_bytes, labels)
+        write_registry(path, registry)
+        return registry
 
 
 def _source_arg(text: str) -> Dict[str, Any]:
@@ -336,6 +409,8 @@ def main(argv: Optional[List[str]] = None) -> int:
     add.add_argument("--source-json", required=True)
     add.add_argument("--size-bytes", type=int)
     add.add_argument("--label", action="append", default=[])
+    add.add_argument("--lock-timeout", type=float, default=10.0,
+                     help="seconds to wait for another registry writer (default: 10)")
     hash_cmd = sub.add_parser("hash", help="hash a local file without changing a registry")
     hash_cmd.add_argument("path")
     args = parser.parse_args(argv)
@@ -345,8 +420,15 @@ def main(argv: Optional[List[str]] = None) -> int:
             digest, size = sha256_file(args.path)
             print(json.dumps({"sha256": digest, "size_bytes": size}, sort_keys=True))
             return 0
-        # Create-on-missing only for the explicit mutation path.
-        registry = load_registry(args.registry, missing_ok=(args.command == "add"))
+        if args.command == "add":
+            registry = add_artifact_file(
+                args.registry, args.sha256, _source_arg(args.source_json),
+                size_bytes=args.size_bytes, labels=args.label, lock_timeout=args.lock_timeout,
+            )
+            print(json.dumps(registry["artifacts"][normalize_sha256(args.sha256)],
+                             sort_keys=True, indent=2) + "\n", end="")
+            return 0
+        registry = load_registry(args.registry)
         if args.command == "validate":
             print(dump_registry(registry), end="")
             return 0
@@ -357,12 +439,6 @@ def main(argv: Optional[List[str]] = None) -> int:
                 raise ValueError("artifact not found: %s" % digest)
             print(json.dumps(row, sort_keys=True, indent=2) + "\n", end="")
             return 0
-        registry = add_artifact(registry, args.sha256, _source_arg(args.source_json),
-                                size_bytes=args.size_bytes, labels=args.label)
-        write_registry(args.registry, registry)
-        print(json.dumps(registry["artifacts"][normalize_sha256(args.sha256)],
-                         sort_keys=True, indent=2) + "\n", end="")
-        return 0
     except (OSError, ValueError, json.JSONDecodeError) as exc:
         parser.error(str(exc))
     return 2
