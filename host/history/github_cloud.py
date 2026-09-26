@@ -4,11 +4,13 @@ Private raw JSON and cursors are read from and written to the private Commons
 repository through the central publisher. A checkpoint gap keeps a short token
 on file.put instead of the publisher reason code, and readback restores the
 code. The commit message stays the neutral checkpoint line. Stdout contains
-counts/status only.
+counts/status only. Provider cooldowns and long read retry deadlines return
+exit 75 with structured rate metadata for the caller to schedule continuation.
 """
 import base64
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import subprocess
@@ -45,6 +47,18 @@ def error_payload(exc):
         return {}
     return payload if isinstance(payload, dict) else {}
 
+class ProviderDeferred(RuntimeError):
+    def __init__(self, status, retry_at, scope='global'):
+        super().__init__('provider_deferred_' + str(status) + '_github')
+        self.status, self.retry_at, self.scope = status, retry_at, scope
+
+    def as_dict(self):
+        return {'error': str(self), 'http_status': self.status,
+                'retry_not_before': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime(math.ceil(self.retry_at))),
+                'retry_after_seconds': max(0, math.ceil(self.retry_at - time.time())),
+                # Same scope/deadline shape as the history Reader checkpoint.
+                'cooldowns': {self.scope: self.retry_at}}
+
 def request(url, body=None):
     if not TOKEN:
         raise RuntimeError('commons_token_unbound')
@@ -67,23 +81,35 @@ def request(url, body=None):
         except urllib.error.HTTPError as exc:
             last = exc
             payload = error_payload(exc)
-            if exc.code == 404 and body is None:
+            status = exc.code
+            retry_headers = {name.lower(): value for name, value in (exc.headers or {}).items()}
+            exc.close()
+            if status == 404 and body is None:
                 return 404, None
             if body is not None:
-                return exc.code, payload
-            retryable = (
-                exc.code in (500, 502, 503, 504) or
-                (exc.code in (403, 429) and (
-                    exc.headers.get('X-RateLimit-Remaining') == '0' or
-                    bool(exc.headers.get('Retry-After')))))
+                return status, payload
+            message = str(payload.get('message', '')).lower()
+            secondary = any(term in message for term in ('secondary rate limit', 'abuse detection mechanism'))
+            limited = status == 429 or status == 403 and (
+                retry_headers.get('x-ratelimit-remaining') == '0' or
+                bool(retry_headers.get('retry-after')) or secondary)
+            if limited:
+                primary = (retry_headers.get('x-ratelimit-remaining') == '0' and not secondary
+                           and retry_headers.get('x-ratelimit-resource') in (None, 'core'))
+                raise ProviderDeferred(status, collector.retry_deadline(retry_headers, time.time(), 60),
+                                       'core' if primary else 'global') from None
+            retryable = status in (500, 502, 503, 504)
+            if retryable and retry_headers.get('retry-after'):
+                retry_at = collector.retry_deadline(retry_headers, time.time(), 2 ** attempt)
+                if retry_at - time.time() > 20:
+                    # Yield a precise deadline instead of retrying before the
+                    # provider permits it or occupying the runner with sleep.
+                    raise ProviderDeferred(status, retry_at) from None
             if retryable and attempt + 1 < attempts:
-                try:
-                    delay = float(exc.headers.get('Retry-After') or 0)
-                except ValueError:
-                    delay = 0
-                time.sleep(max(1, min(delay or 2 ** attempt, 20)))
+                retry_at = collector.retry_deadline(retry_headers, time.time(), 2 ** attempt)
+                time.sleep(max(0, retry_at - time.time()))
                 continue
-            raise RuntimeError('provider_http_' + str(exc.code) + '_github') from None
+            raise RuntimeError('provider_http_' + str(status) + '_github') from None
     raise RuntimeError('provider_http_' + str(getattr(last, 'code', 0)) + '_github')
 
 MAX_CHECKPOINT_BYTES = 240_000
@@ -524,12 +550,16 @@ def run(account):
         return {'account': account, 'requests': result['requests'], 'batches': len(files),
                 'written': written, 'kept': kept, 'matched': matched, 'held': len(holds),
                 'queued_details': result['queued_details'], 'queued_repositories': result['queued_repositories'],
-                'gaps': result['gaps'] + len(holds), 'private_readback': True}
+                'gaps': result['gaps'] + len(holds), 'private_readback': True,
+                'cooldowns': result.get('cooldowns', {})}
 
 def main():
     for account in collector.ACCOUNTS:
         try:
             print(json.dumps(run(account)), flush=True)
+        except ProviderDeferred as exc:
+            print(json.dumps({'account': account, **exc.as_dict()}), flush=True)
+            return 75
         except Exception as exc:
             print(json.dumps({'account': account, 'error': str(exc)}), flush=True)
             return 1
