@@ -238,12 +238,19 @@ class Resolver:
             state = "OPEN"
         else:
             state = "CLOSED"
+        base = pr.get("base") if isinstance(pr.get("base"), dict) else {}
+        base_repo = base.get("repo") if isinstance(base.get("repo"), dict) else {}
         return {
             "state": state,
             "pr": number,
             "url": pr.get("html_url"),
             "head_sha": (pr.get("head") or {}).get("sha") if isinstance(pr.get("head"), dict) else None,
-            "base_sha": (pr.get("base") or {}).get("sha") if isinstance(pr.get("base"), dict) else None,
+            "base_sha": base.get("sha"),
+            "base_ref": base.get("ref"),
+            "base_repository": base_repo.get("full_name"),
+            # GitHub also supplies a prospective merge SHA on unmerged PRs.
+            "merge_commit_sha": pr.get("merge_commit_sha") if merged else None,
+            "merged_at": pr.get("merged_at") if merged else None,
             "mergeable": pr.get("mergeable"),
             "updated_at": pr.get("updated_at"),
         }
