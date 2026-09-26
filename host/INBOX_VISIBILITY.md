@@ -176,7 +176,9 @@ cache eviction as possible; Slack markers remain the recovery source. A process
 lock covers ledger initialization through connection close, so a competing poll
 reports `another_poll_is_running` without opening or changing SQLite. An invalid
 or unavailable database reports `state_database_error` with exit code 2 and is
-left in place for recovery. Scheduler concurrency also prevents overlapping runs. Slack post
+left in place for recovery. Hosted push, manual and scheduled polls share one
+workflow concurrency group, with running polls allowed to finish. The local
+lock cannot serialize separate hosted runners on its own. Slack post
 throttling and Retry-After are honored. Uncertain API errors, incomplete history
 and page caps stop unsafe replay instead of claiming success. Stop automation by
 disabling the workflow or the named OS task; do not delete user source messages.

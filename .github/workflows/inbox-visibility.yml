@@ -12,8 +12,9 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event_name == 'schedule' && 'schedule' || github.run_id }}
-  cancel-in-progress: ${{ github.event_name == 'schedule' }}
+  # All triggers share one ledger and delivery destination across runners.
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
 jobs:
   poll:
     runs-on: ubuntu-latest
