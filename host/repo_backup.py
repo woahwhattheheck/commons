@@ -241,7 +241,7 @@ def read_manifest(manifest_path: Path) -> tuple[dict[str, Any], Path]:
     return manifest, bundle
 
 
-def verify(manifest_path: Path) -> dict[str, Any]:
+def _verify_manifest(manifest_path: Path) -> dict[str, Any]:
     manifest, bundle = read_manifest(manifest_path)
     actual_sha = _sha256(bundle)
     if actual_sha != manifest["bundle_sha256"]:
@@ -273,7 +273,7 @@ def verify(manifest_path: Path) -> dict[str, Any]:
 
 
 def restore(manifest_path: Path, target: Path, bare: bool = False) -> dict[str, Any]:
-    receipt = verify(manifest_path)
+    receipt = _verify_manifest(manifest_path)
     target = target.resolve()
     if target.exists():
         raise BackupError(f"refusing to overwrite restore target: {target}")
@@ -322,6 +322,17 @@ def restore(manifest_path: Path, target: Path, bare: bool = False) -> dict[str, 
             "bare": bare,
         }
     )
+    return receipt
+
+
+def verify(manifest_path: Path) -> dict[str, Any]:
+    # A bundle's checksum and advertised refs cannot establish object
+    # completeness. Exercise the same isolated restore used for recovery.
+    with tempfile.TemporaryDirectory(prefix="commons-backup-verify-") as temporary:
+        receipt = restore(manifest_path, Path(temporary) / "repository.git", bare=True)
+    receipt["state"] = "VERIFIED"
+    for key in ("target", "restored_head_sha", "bare"):
+        del receipt[key]
     return receipt
 
 

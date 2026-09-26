@@ -35,6 +35,14 @@ receipt without a real provider receipt.
 No overwrite is part of restore. Restore into a new absent path, verify, then
 choose the recovery action from evidence.
 
+`verify <manifest>` checks the bundle checksum and ref inventory, then restores
+it into a temporary bare repository and checks the resulting HEAD and refs.
+Only that successful readback returns `VERIFIED`; matching hashes and headers
+alone cannot prove that all required commit parents and objects are present.
+The temporary repository is removed on success or failure. Run verification in
+cloud scratch space with room for an unpacked repository. `restore` performs
+the same checks in its requested destination without an extra temporary copy.
+
 `snapshot --source` and `drill --source` accept both Git work trees and bare
 repositories. A mirror or a recovery created with `restore --bare` can be backed
 up directly, without allocating a work tree. The same bundle ref inventory,
