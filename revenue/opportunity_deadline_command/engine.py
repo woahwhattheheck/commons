@@ -816,6 +816,23 @@ def _ics_time(utc_text: str) -> str:
     return dt.strftime("%Y%m%dT%H%M%SZ")
 
 
+def _ics_fold(line: str) -> str:
+    """Fold content lines to 75 UTF-8 octets without splitting a character."""
+    parts: list[str] = []
+    current: list[str] = []
+    octets = 0
+    for character in line:
+        width = len(character.encode("utf-8"))
+        if octets + width > 75:
+            parts.append("".join(current))
+            current = [" "]
+            octets = 1
+        current.append(character)
+        octets += width
+    parts.append("".join(current))
+    return "\r\n".join(parts)
+
+
 def ics_projection(result: Mapping[str, Any]) -> str:
     manifest = _expect_dict(result.get("manifest"), "$result.manifest")
     rows = _expect_list(result.get("rows"), "$result.rows", max_items=MAX_OPPORTUNITIES)
@@ -831,7 +848,9 @@ def ics_projection(result: Mapping[str, Any]) -> str:
         for deadline in row.get("deadlines", []):
             if deadline["source_authority"] != "OFFICIAL":
                 continue
-            uid_seed = f"{row['opportunity_id']}|{deadline['deadline_id']}|{deadline['generation']}"
+            # There is exactly one effective deadline per kind. Amendments
+            # revise that event instead of creating a second calendar entry.
+            uid_seed = f"opportunity-deadline-v2|{row['opportunity_id']}|{deadline['kind']}"
             uid = hashlib.sha256(uid_seed.encode("utf-8")).hexdigest() + "@commons.local"
             summary = f"[{deadline['kind']}] {row['buyer']} — {row['solicitation_id']}"
             description = (
@@ -842,6 +861,7 @@ def ics_projection(result: Mapping[str, Any]) -> str:
                 [
                     "BEGIN:VEVENT",
                     f"UID:{uid}",
+                    f"SEQUENCE:{deadline['generation'] - 1}",
                     f"DTSTAMP:{dtstamp}",
                     f"DTSTART:{_ics_time(deadline['at'])}",
                     f"SUMMARY:{_ics_escape(summary)}",
@@ -851,7 +871,7 @@ def ics_projection(result: Mapping[str, Any]) -> str:
                 ]
             )
     lines.append("END:VCALENDAR")
-    return "\r\n".join(lines) + "\r\n"
+    return "\r\n".join(_ics_fold(line) for line in lines) + "\r\n"
 
 
 def read_bounded_json(path: str | os.PathLike[str]) -> Any:
