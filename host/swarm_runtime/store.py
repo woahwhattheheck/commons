@@ -100,17 +100,9 @@ def _state(value):
     return value
 
 
-def _persisted(state):
-    result = _state(state)
-    # Derived from sibling blobs at the same claims tip, not a second store.
-    result.pop("legacy_holdings", None)
-    result.pop("legacy_unreadable", None)
-    # Runtime projects before every routing/mutation decision. In particular,
-    # lease.age_s and provider_age_s vary with the reader's clock without any
-    # new event. Persisting that view doubles the ledger and causes idle churn.
-    result.pop("tasks", None)
-    journal_ids = {event["id"] for event in result["events"]
-                   if isinstance(event, dict) and isinstance(event.get("id"), str)}
+def _compact_operation_context(result):
+    """Compact an already copied state without changing a caller's live receipt."""
+    journal_ids = None
     operations = result.get("operations", {})
     for operation in operations.values() if isinstance(operations, dict) else []:
         receipt = operation.get("result") if isinstance(operation, dict) else None
@@ -125,13 +117,28 @@ def _persisted(state):
             # ID instead of copying their bodies into every heartbeat receipt.
             compact = {key: value for key, value in context.items() if value != "UNKNOWN"}
             events = compact.get("events")
-            if isinstance(events, list) and all(
-                    isinstance(event, dict) and isinstance(event.get("id"), str)
-                    and event["id"] in journal_ids for event in events):
-                compact["context_event_ids"] = [event["id"] for event in events]
-                compact.pop("events")
+            if isinstance(events, list):
+                if journal_ids is None:
+                    journal_ids = {event["id"] for event in result.get("events", [])
+                                   if isinstance(event, dict) and isinstance(event.get("id"), str)}
+                if all(isinstance(event, dict) and isinstance(event.get("id"), str)
+                       and event["id"] in journal_ids for event in events):
+                    compact["context_event_ids"] = [event["id"] for event in events]
+                    compact.pop("events")
             receipt[field] = compact
     return result
+
+
+def _persisted(state):
+    result = _state(state)
+    # Derived from sibling blobs at the same claims tip, not a second store.
+    result.pop("legacy_holdings", None)
+    result.pop("legacy_unreadable", None)
+    # Runtime projects before every routing/mutation decision. In particular,
+    # lease.age_s and provider_age_s vary with the reader's clock without any
+    # new event. Persisting that view doubles the ledger and causes idle churn.
+    result.pop("tasks", None)
+    return _compact_operation_context(result)
 
 
 class _StoreGit(Git):
@@ -179,7 +186,7 @@ class GitStore:
 
     def _remember(self, tip, state):
         self._cache = {"schema": SNAPSHOT_SCHEMA, "tip": tip, "branch": self.branch,
-                       "cached_at": time.time(), "state": copy.deepcopy(state),
+                       "cached_at": time.time(), "state": _compact_operation_context(copy.deepcopy(state)),
                        "legacy_oids": self._legacy_oids}
         temporary = None
         try:
