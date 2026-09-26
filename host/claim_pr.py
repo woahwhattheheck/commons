@@ -18,11 +18,11 @@ except ImportError:  # Direct execution as ``python host/claim_pr.py``.
     import coordination_state as cs  # type: ignore
 
 
-def pr_key(pr: int) -> str:
-    """Return the one claim-ledger key for a GitHub pull request number."""
+def pr_key(pr: int, repository=None) -> str:
+    """Return the canonical claim-ledger key for a repository's pull request."""
     if type(pr) is not int or pr <= 0:
         raise ValueError("pull request number must be a positive integer")
-    return cs.change_key(pr=pr)
+    return cs.repository_claim_key("pr", pr, repository)
 
 
 def write_pr_holding(
@@ -37,21 +37,26 @@ def write_pr_holding(
     remote: str = "origin",
     push: bool = True,
     attempts: int = 3,
+    repository=None,
 ) -> dict:
-    """Take, renew, or release the canonical ``pr-N`` holding.
+    """Take, renew, or release the canonical repository/PR holding.
 
     The shared writer re-reads the ledger and production clock after a race,
     preserves future heartbeats, and retries transient publication failures.
     PR/action fields remain available on every ordinary result.
     """
-    key = pr_key(pr)
+    key = pr_key(pr, repository)
+    repository = cs.claim_repository(repository)
+    if repository != cs.DEFAULT_REPO.lower():
+        note = "repository=" + repository + ((" | " + note) if note else "")
     result = cs.holding_write(
         git, key, holder.strip() if isinstance(holder, str) else holder, action,
         ttl_s=ttl_s, note=note, now=now, remote=remote, push=push,
         attempts=attempts,
+        repository=repository,
     )
     result = dict(result)
-    result.update({"pr": pr, "action": action})
+    result.update({"pr": pr, "action": action, "repository": repository})
     return result
 
 
@@ -81,6 +86,7 @@ def main(argv=None) -> int:
     )
     parser.add_argument("action", choices=("take", "renew", "release"))
     parser.add_argument("pr", type=_positive_pr)
+    parser.add_argument("--repository", help="PR source owner/repo; defaults to Commons, not the claim-storage remote")
     parser.add_argument("--holder", required=True)
     parser.add_argument("--ttl", type=_ttl, default=1800)
     parser.add_argument("--note", default="")
@@ -100,6 +106,7 @@ def main(argv=None) -> int:
             note=args.note,
             remote=args.remote,
             push=not args.no_push,
+            repository=args.repository,
         )
     except (ValueError, cs.GitError) as exc:
         result = {"ok": False, "pr": args.pr, "action": args.action, "reason": str(exc)}
@@ -109,4 +116,3 @@ def main(argv=None) -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-
