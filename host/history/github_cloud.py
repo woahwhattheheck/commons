@@ -241,7 +241,10 @@ def expand_checkpoint(raw, read_shard):
         data['detail_keys'] = [url for _, url in pairs]
         return dumps(data), prior
     pairs = pair_details(data.get('details', []))
-    if pairs is not None and data.get('details') and isinstance(data['details'][0], list):
+    # Compact checkpoints omit detail_keys even when their queue is empty.
+    # Restore that index before the collector resumes the saved state.
+    if pairs is not None and ('detail_keys' not in data or
+                              data.get('details') and isinstance(data['details'][0], list)):
         urls = [url for _, url in pairs]
         if 'detail_keys' in data and data['detail_keys'] != urls:
             raise RuntimeError('checkpoint_detail_keys_mismatch')
