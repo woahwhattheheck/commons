@@ -1236,7 +1236,10 @@ class CommandCenter:
         }
 
     def ingest_work(self, payload):
-        return self._work_store_instance().ingest(payload)
+        result = self._work_store_instance().ingest(payload)
+        from .swarm_tasks import after_ingest
+        after_ingest(self)
+        return result
 
     def update_work(self, payload):
         return self._work_store_instance().update_work(payload)
@@ -1313,6 +1316,8 @@ class CommandCenter:
             final["finished_at"] = _now()
             if final.get("status") in ("completed", "completed_with_errors"):
                 final["last_completed_at"] = final["finished_at"]
+                from .swarm_tasks import after_ingest
+                after_ingest(self)
             try:
                 self._save_work_refresh(final)
             finally:

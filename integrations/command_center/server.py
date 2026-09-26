@@ -36,6 +36,7 @@ MANIFEST = {
     "summary": "GET /api/summary: bounded cache-only Deathstar view; no provider calls, freshness and observed lower-bound throughput, typed money records and request cooldowns",
     "decisions": "GET /api/decisions: Deathstar decision rows over the /api/work state (source_health included) and operator_control mode, one per active operation (explicit metadata.operation key): provider stage, waiting_on_us/them and what, next action, owner, agents with heartbeat age, source freshness/cooldown/coverage, money at risk/collected; exceptions (deadlines, stalled gates, owner_only, held publications) and blocked agents at top level; typed stages and receipts as drilldown. Unknown fields name the source that would answer them.",
     "swarm": "GET /api/swarm: existing PR queue, GPT review batches, exact receipts and freshness; ground/SWARM_ORDER.md governs integration",
+    "swarm_tasks": "GET /api/swarm/tasks: canonical task status. POST /api/swarm/tasks: action sync/open/take/heartbeat/ship/block/abandon/next with stable operation_id and worker. Shared state/claims authority; provider reconciliation and automatic next-task routing.",
     "source_modes": "Direct collectors use existing shared GitHub and Slack service roads. Gmail, Airtable and native task observations are supplied by their actual connector-equipped peers through ingest. A source read does not establish complete fleet coverage or business activity.",
     "sharing": "The human and all current and future Commons peers use the same state and capabilities. Roles coordinate responsibility, never access.",
     "operations": "Reuse the same operation_id and exact payload after a transport interruption. Pending or uncertain is not completion. Reconcile at the provider; never remint an ID to force replay.",
@@ -126,6 +127,12 @@ class Handler(BaseHTTPRequestHandler):
                 self.send_json(200, self.server.center.work_state(refresh=parse_qs(parsed.query).get("refresh") == ["1"]))
             elif parsed.path == "/api/swarm":
                 self.send_json(200, self.server.center.swarm_state(refresh=parse_qs(parsed.query).get("refresh") == ["1"]))
+            elif parsed.path == "/api/swarm/tasks":
+                from . import swarm_tasks
+                query = parse_qs(parsed.query)
+                self.send_json(200, swarm_tasks.call(self.server.center, {
+                    "action": "status", "worker": query.get("worker", [None])[0],
+                    "limit": query.get("limit", [100])[0]}))
             elif parsed.path == "/api/event":
                 event_id = (parse_qs(parsed.query).get("event_id") or [""])[0]
                 self.send_json(200, self.server.center.event(event_id))
@@ -168,7 +175,7 @@ class Handler(BaseHTTPRequestHandler):
             self.send_json(400, {"error": "invalid_origin"})
             return
         path = urlsplit(self.path).path
-        if path not in ROUTES and path not in {"/api/tools/call", "/api/work/ingest", "/api/work/item", "/api/work/refresh", "/api/work/dispatch-preview"}:
+        if path not in ROUTES and path not in {"/api/tools/call", "/api/work/ingest", "/api/work/item", "/api/work/refresh", "/api/work/dispatch-preview", "/api/swarm/tasks"}:
             self.send_json(404, {"error": "not_found"})
             return
         try:
@@ -184,7 +191,10 @@ class Handler(BaseHTTPRequestHandler):
                        else json.loads(raw_body.decode("utf-8")))
             if not isinstance(payload, dict):
                 raise ValueError("JSON object required")
-            if path == "/api/work/dispatch-preview":
+            if path == "/api/swarm/tasks":
+                from . import swarm_tasks
+                result = swarm_tasks.call(self.server.center, payload)
+            elif path == "/api/work/dispatch-preview":
                 result = work_feed_evidence.compile_current(payload)
             elif path == "/api/work/ingest":
                 result = self.server.center.ingest_work(payload)

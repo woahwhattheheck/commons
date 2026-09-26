@@ -89,8 +89,13 @@ class CommandCenterEquipment:
             if tool["name"] == "command_center_moderate":
                 tool["inputSchema"]["anyOf"] = [
                     {"required": ["hidden"]}, {"required": ["action"]}]
+        from .swarm_tasks import tool as swarm_task_tool
+        result.append(swarm_task_tool())
         return result
     def call(self, name, arguments):
+        if name == "command_center_swarm_tasks":
+            from .swarm_tasks import call
+            return call(self.center, arguments)
         if name == "command_center_context":
             arguments = dict(arguments or {})
             opted = arguments.pop("source_health", False)
