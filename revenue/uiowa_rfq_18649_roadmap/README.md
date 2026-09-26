@@ -44,6 +44,39 @@ exit 2. Add `--require-plannable` to write a valid report but exit 3 when any
 item remains unscheduled or has a start-phase risk/conflict. This describes
 model feasibility, not approval to do work.
 
+### Combine dependency structure with an edited planning table
+
+The separate dependency oracle consumes the original JSON source contract. The
+planner can pass its parsed JSON or edited CSV to that unchanged component in
+the same invocation:
+
+```sh
+python3 roadmap.py example/planning_table.csv /tmp/roadmap-combined \
+  --include-dependencies
+```
+
+This adds `dependencies.json`, `dependencies.md` and `dependencies.dot` to the
+new directory and its manifest. The HTML links to all three. DOT is portable
+graph source; rendering it is optional and the command installs no software.
+Both component paths, source SHA-256 identities and their input digests are
+recorded in `manifest.json`. The oracle's full-input digest and the planner's
+input digest describe the same parsed source; its graph-projection digest is
+separate. Exact recommendation IDs remain the join key.
+
+Graph and duration outcomes remain distinct. On the supplied edited-table
+source, the graph is `CONSISTENT` with zero errors/warnings while the duration
+plan still contains two unscheduled items, one phase risk and one phase conflict.
+The option does not turn graph consistency into schedule feasibility. With
+`--require-plannable`, either incomplete planning or a non-consistent graph
+produces exit 3 after writing the usable reports. Ordinary combined reports
+exit 0. Invalid inputs accepted by one component but rejected by the other
+produce exit 2 before the output directory is created.
+
+The option requires the sibling
+`uiowa_rfq_18649_roadmap_dependency_oracle/checker.py` already present in this
+repository. A standalone copy of this directory still supports ordinary
+planning; it reports a clear error if the optional oracle is unavailable.
+
 ## Source contract
 
 A JSON document has exactly `schema_version` (integer 1), `title`, `synthetic`

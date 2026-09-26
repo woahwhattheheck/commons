@@ -7,6 +7,7 @@ import csv
 import hashlib
 import heapq
 import html
+import importlib.util
 import io
 import json
 import re
@@ -271,8 +272,16 @@ def markdown(report: dict) -> str:
     return "\n".join(lines)
 
 
-def render_html(report: dict) -> str:
+def render_html(report: dict, dependency_report: dict | None = None) -> str:
     esc = lambda value: html.escape(str(value), quote=True)
+    dependency_links = ""
+    if dependency_report is not None:
+        dependency_links = ("<section aria-label='Dependency structure'><h2>Dependency structure: "
+                            + esc(dependency_report["dependency_check_status"])
+                            + "</h2><p>This structural result is separate from the duration and phase outcomes above.</p>"
+                            "<p><a href='dependencies.md'>Dependency findings</a> · "
+                            "<a href='dependencies.json'>Dependency JSON</a> · "
+                            "<a href='dependencies.dot'>Dependency graph source</a></p></section>")
     rows = []
     for row in report["recommendations"]:
         cells = []
@@ -320,14 +329,48 @@ def render_html(report: dict) -> str:
             "<th scope='col'>90–180 days</th><th scope='col'>180+ days</th></tr></thead><tbody>" + "".join(rows)
             + "</tbody></table></div><h2>Document assumptions</h2><ul>"
             + "".join("<li>" + esc(value) + "</li>" for value in report["assumptions"])
-            + "</ul><p>All details and assumptions are also available in roadmap.md and roadmap.json.</p>"
+            + "</ul>" + dependency_links
+            + "<p>All details and assumptions are also available in roadmap.md and roadmap.json.</p>"
             "<p>Input SHA-256: " + esc(report["input_sha256"]) + "</p></main></html>\n")
 
 
-def write_bundle(report: dict, destination: Path) -> dict:
+def analyze_dependencies(document: dict) -> dict:
+    """Compose the installed dependency oracle with this exact parsed source."""
+    source = Path(__file__).resolve().parent.parent / "uiowa_rfq_18649_roadmap_dependency_oracle" / "checker.py"
+    if not source.is_file():
+        raise PlanError("--include-dependencies requires the sibling roadmap_dependency_oracle/checker.py")
+    spec = importlib.util.spec_from_file_location("uiowa_roadmap_dependency_oracle", source)
+    if spec is None or spec.loader is None:
+        raise PlanError("could not load the installed dependency oracle")
+    checker = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(checker)
+    try:
+        result = checker.analyze_roadmap085(document)
+    except checker.InputError as exc:
+        raise PlanError(f"dependency input: {exc}") from exc
+    return {
+        "report": result,
+        "payloads": {
+            "dependencies.json": json.dumps(result, indent=2, ensure_ascii=False, allow_nan=False) + "\n",
+            "dependencies.md": checker.markdown(result),
+            "dependencies.dot": checker.dot(result),
+        },
+        "component": {
+            "path": "revenue/uiowa_rfq_18649_roadmap_dependency_oracle/checker.py",
+            "source_sha256": hashlib.sha256(source.read_bytes()).hexdigest(),
+            "report_schema": result["schema"],
+            "graph_input_sha256": result["input_sha256"],
+            "full_input_sha256": result["source_projection"]["full_input_sha256"],
+        },
+    }
+
+
+def write_bundle(report: dict, destination: Path, dependency: dict | None = None) -> dict:
     payloads = {"roadmap.json": json.dumps(report, indent=2, ensure_ascii=False) + "\n",
                 "planning_table.csv": table_csv(report), "roadmap.md": markdown(report),
-                "roadmap.html": render_html(report)}
+                "roadmap.html": render_html(report, dependency["report"] if dependency else None)}
+    if dependency is not None:
+        payloads.update(dependency["payloads"])
     destination.mkdir(parents=True, exist_ok=False)
     digests = {}
     for name, text in payloads.items():
@@ -336,6 +379,16 @@ def write_bundle(report: dict, destination: Path) -> dict:
             handle.write(data)
         digests[name] = hashlib.sha256(data).hexdigest()
     receipt = {"planning_state": STATE, "input_sha256": report["input_sha256"], "outputs": digests}
+    if dependency is not None:
+        receipt["components"] = {
+            "roadmap": {
+                "path": "revenue/uiowa_rfq_18649_roadmap/roadmap.py",
+                "source_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+                "schema_version": report["schema_version"],
+                "input_sha256": report["input_sha256"],
+            },
+            "dependencies": dependency["component"],
+        }
     with (destination / "manifest.json").open("x", encoding="utf-8") as handle:
         handle.write(json.dumps(receipt, indent=2, sort_keys=True) + "\n")
     return receipt
@@ -346,14 +399,26 @@ def main(argv=None) -> int:
     parser.add_argument("input", type=Path, help="JSON document or exported editable CSV")
     parser.add_argument("output", type=Path, help="new output directory (never overwritten)")
     parser.add_argument("--require-plannable", action="store_true", help="exit 3 for unscheduled work or phase conflicts/risks")
+    parser.add_argument("--include-dependencies", action="store_true",
+                        help="include the installed dependency oracle's JSON, Markdown and DOT from the same source")
     args = parser.parse_args(argv)
     try:
         text = args.input.read_text(encoding="utf-8-sig")
         document = from_csv(text) if args.input.suffix.lower() == ".csv" else strict_loads(text)
         report = plan(document)
-        write_bundle(report, args.output)
-        print(json.dumps(report["summary"], sort_keys=True))
-        return 3 if args.require_plannable and any(report["summary"][k] for k in ("unscheduled", "phase_conflicts", "phase_at_risk")) else 0
+        dependency = analyze_dependencies(document) if args.include_dependencies else None
+        write_bundle(report, args.output, dependency)
+        summary = dict(report["summary"])
+        dependency_incomplete = False
+        if dependency is not None:
+            graph = dependency["report"]
+            summary.update(dependency_check_status=graph["dependency_check_status"],
+                           dependency_errors=graph["counts"]["errors"],
+                           dependency_warnings=graph["counts"]["warnings"])
+            dependency_incomplete = graph["dependency_check_status"] != "CONSISTENT"
+        print(json.dumps(summary, sort_keys=True))
+        incomplete = any(report["summary"][k] for k in ("unscheduled", "phase_conflicts", "phase_at_risk"))
+        return 3 if args.require_plannable and (incomplete or dependency_incomplete) else 0
     except (PlanError, OSError, UnicodeError, csv.Error) as exc:
         print(f"roadmap: {exc}", file=sys.stderr)
         return 2
