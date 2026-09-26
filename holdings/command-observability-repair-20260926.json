@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "command-observability-repair-20260926",
+  "holder": "command-observability",
+  "heartbeat_at": "2026-09-26T11:54:24.570Z",
+  "taken_at": "2026-09-26T11:54:24.570Z",
+  "ttl_s": 1800,
+  "state": "HELD",
+  "note": "Own command.html and swarm-order.js: restore missing render targets and show current work observations without obsolete review gating."
+}
