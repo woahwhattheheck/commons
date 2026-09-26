@@ -2,9 +2,9 @@
  "schema": "commons-change-holding/v1",
  "key": "receipt-resolver-coordination-repository-20260926",
  "holder": "high-burn-backlog-cleanup",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-26T14:28:50.849Z",
- "heartbeat_at": "2026-09-26T14:28:50.849Z",
+ "heartbeat_at": "2026-09-26T14:31:34.451Z",
  "ttl_s": 1800,
- "note": "Own host/receipt_resolver.py coordination source repository binding for marker/review lookups; no auth changes."
+ "note": "Completed declared coordination repository binding in PR30044, merge 1f3e12bd551aa70b96d5c50a14515654cf4de05e. No unfinished edits."
 }
