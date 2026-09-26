@@ -1,0 +1,72 @@
+{
+  "schema": "titan-v4-historical-donor-custody/v1",
+  "donor": {
+    "branch": "sol-pro/titan-v3-cumulative-seed-row-allocation-20260910-01",
+    "head": "eef44eb74e427a2cfd96eedece6f99ed41ad330a",
+    "pull_request": 12114,
+    "title": "fix(titan): certify seed-capital chronology with whole-row demand",
+    "parent": "8d819b4e9d6c97186e946493dc8a8b6b56d33f2b",
+    "source": {
+      "path": "revenue/kaggriculture/cloud-execution-lab/early_capital.py",
+      "blob": "ac464f49934d9cd0547e4c4f772a7758f47db6e7"
+    },
+    "focused_test": {
+      "path": "revenue/kaggriculture/cloud-execution-lab/test_early_capital_cumulative_seed_rows.py",
+      "blob": "439295e239ae814a98d2ad90fc614dd04a821012"
+    },
+    "workflow": {
+      "path": ".github/workflows/titan-v3-cumulative-seed-row-allocation.yml",
+      "blob": "38b8716273c37f5a07910dd93bc75751476c194d"
+    }
+  },
+  "semantic_delta": {
+    "summary": "Deterministic whole-row BUY_SEED allocation against represented post-unit future crop demand; oversized rows cannot claim partial operating priority.",
+    "current_main_source_blob": "dcbae01a3db703d1bb273a6d31d23ec250a9e773",
+    "current_main_contains_operating_seed_rows": false,
+    "status": "distinct_historical_semantic_not_admitted"
+  },
+  "exact_head_ci": [
+    {
+      "run_id": 34540461519,
+      "name": "open-door-guard",
+      "conclusion": "success"
+    },
+    {
+      "run_id": 34540461459,
+      "name": "titan-selected-projection",
+      "conclusion": "failure"
+    },
+    {
+      "run_id": 34540461504,
+      "name": "titan-v3-seed-capital-chronology",
+      "conclusion": "failure"
+    },
+    {
+      "run_id": 34540461546,
+      "name": "titan-v3-early-capital-executable-prefix",
+      "conclusion": "failure"
+    },
+    {
+      "run_id": 34540461510,
+      "name": "tests",
+      "conclusion": "failure"
+    }
+  ],
+  "disposition": {
+    "class": "quarantine",
+    "reason": "Exact donor has a distinct current-missing semantic, but its canonical selected-projection, dedicated chronology, executable-prefix, and broad test gates are red. Current-ABI rederivation plus fresh one-tree gates are required before any semantic admission.",
+    "queue_edge": false,
+    "replay": false,
+    "cherry_pick": false,
+    "remint": false,
+    "runtime_promotion": false
+  },
+  "preservation": {
+    "exact_bytes_reused_by_git_blob_identity": true,
+    "quarantine_paths": {
+      "source": "quarantine/early_capital.py",
+      "test": "quarantine/test_early_capital_cumulative_seed_rows.py",
+      "workflow": "quarantine/workflow.yml.disabled"
+    }
+  }
+}

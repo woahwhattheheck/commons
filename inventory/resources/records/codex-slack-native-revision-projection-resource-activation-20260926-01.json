@@ -1,0 +1,124 @@
+{
+  "schema": "commons-resource-event/v1",
+  "event_id": "codex-slack-native-revision-projection-resource-activation-20260926-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "observed_at": "2026-09-26T22:04:45Z",
+  "actor": "Commons Resource Master / Codex",
+  "selected_resource": "slack-native-revision-current-truth-projector",
+  "concrete_consumer": "Canonical board and current-truth projections that ingest edited native Slack messages without rewriting append-only evidence",
+  "measurable_outcome": "The merged projector preserves issue-envelope event_ts and revision values, groups native Slack observations by exact workspace/channel/message identity, selects the newest valid revision and marks earlier observations superseded while leaving original p/ records append-only.",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "MERGED_UNCATALOGED",
+    "condition": "CONSTRAINED",
+    "holder": "Merged PR #30104 source custody",
+    "consumer": "CANONICAL_CURRENT_TRUTH_PROJECTIONS_WITHOUT_RESOURCE_ROUTING"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "holder": "Commons projection maintainers",
+    "consumer": "Canonical board and current-truth projection lanes"
+  },
+  "production_truth": {
+    "source_repository": "woahwhattheheck/commons",
+    "source_pr": 30104,
+    "source_head": "5fd71e23a64fdee1981231201a3149876e238221",
+    "source_merge_commit": "975c646886048f3a39c6295a2f4c007c4508aa75",
+    "source_descendant_main_sha": "d62a93ff19b2d6d9124d73de3fc690fe0706f246",
+    "source_paths": {
+      "board_ingest.py": "6cbe7fdf9ab7ad84d5f510af8598b0f576ea38be",
+      "host/correction_link.py": "1333b337455d0fc8ef872e602d1f59573b1bb7f9"
+    },
+    "focused_verification": {
+      "normal_mode": "PASS_17_OF_17_ASSERTIONS",
+      "optimized_mode": "PASS_16_OF_16_ASSERTIONS",
+      "python_compile": "PASS",
+      "resource_projection": "PASS_18_OF_18_NORMAL_AND_OPTIMIZED",
+      "open_door": "PASS_LOCAL_NO_AUTH"
+    },
+    "hosted_workflow_state": "NO_RUNS_PRESENT_AT_SOURCE_MERGE_COMMIT",
+    "maximum_state": "MERGED_OFFLINE_CURRENT_TRUTH_PROJECTION_EXERCISED",
+    "native_connector_revision_observed": false,
+    "slack_write_by_source": false,
+    "slack_delete_by_source": false,
+    "polling_by_source": false,
+    "task_lifecycle_inferred_from_message_revision": false,
+    "customer_contact": false,
+    "provider_write": false,
+    "submission": false,
+    "buyer_acceptance": false,
+    "payment_observed": false,
+    "settlement_observed": false,
+    "revenue_recognition": false,
+    "current_cash_claim": false,
+    "deployment_by_activation": false,
+    "spend_by_activation": false,
+    "banked_reset_activated": false
+  },
+  "delta": {
+    "prior_terminal_main_sha": "67695b6e8e42c037ec0004ec22202364b826e0d4",
+    "activation_base_main_sha": "d62a93ff19b2d6d9124d73de3fc690fe0706f246",
+    "commits_in_delta": 24,
+    "non_merge_commits_in_delta": 23,
+    "changed_paths_in_delta": 356,
+    "terminal_current_main_sha": "527a6f9da75efe312bc30fa6cea705f2e597aac2",
+    "commits_in_delta_to_terminal": 26,
+    "non_merge_commits_in_delta_to_terminal": 25,
+    "changed_paths_in_delta_to_terminal": 360,
+    "remote_branches_observed": 4565,
+    "remote_branch_pages": 47,
+    "prior_terminal_slack_ts": "1790450035.482459",
+    "latest_delta_slack_ts": "1790457064.418649",
+    "slack_top_level_messages": {
+      "commons": 0,
+      "delegations": 1,
+      "todo": 0,
+      "shipped_builds": 0,
+      "products": 0,
+      "leads": 0,
+      "sales": 0
+    },
+    "automations": "Twenty-five visible; the Commons Resource Master remains enabled and no automation lifecycle mutation was made.",
+    "github_state": "The exact 24-commit current-main ancestry delta, 23 non-merge commits and 356 changed paths were reconciled; 4,565 current remote branch heads were observed across 47 pages; recent PRs, issues and workflow outcomes were searched for claims and completion. PR #30104 is merged and exact source readback is present. Generated projection churn, repeated messages and cached declarations were not counted as new resources.",
+    "connector_state": "The required exact api_tool.list_resources discovery call failed because api_tool was undefined. The runtime registry was then read and exposed 89 GitHub and 38 Slack operations, including repository and message write operations; no connector presence, account connection, session or cache was treated as authority or capacity."
+  },
+  "verification": {
+    "privacy": "Only public repository identities, aggregate message counts and synthetic projection facts are persisted. No credential, private account identifier, customer data, private message body or private file name is stored.",
+    "open_door": "The projection code and deterministic self-tests are local standard-library paths and require no Commons login, Slack credential, private message body or repeated owner approval.",
+    "zero_fabrication": "A newer Slack message revision changes only derived current-message truth. It does not establish a broader task transition, deployment, customer action, buyer acceptance, payment, revenue or cash.",
+    "collision": "Only canonical ledger, projection and append-only activation records are owned. PR #30104 source paths, the separate UIOWA-119 browser handoff, peer branches and unrelated artifacts remain untouched."
+  },
+  "build_order_decision": "No new build order was posted. PR #30104 is already merged and complete; the connector response checked by its author did not expose edited.ts, which is an external observation boundary rather than an evidence-backed local implementation gap. A test-only or verifier-only order would violate the no-loop boundary.",
+  "build_orders": [],
+  "quota_lifecycle": {
+    "official_observation": "The single official-source check found the September 3-4 banked-reset documentation and September 7 global reset as historical lifecycle evidence, with no newer hard/global reset announcement. No account usage-meter change was directly observed.",
+    "classification": "PRIOR_QUOTA_STATE_RETAINED_CURRENT_ALLOWANCE_UNMEASURED",
+    "current_meter": "NOT_DIRECTLY_OBSERVED",
+    "banked_reset_inventory": "NOT_DIRECTLY_OBSERVED",
+    "banked_reset_activated": false
+  },
+  "projection": {
+    "resources": 111,
+    "producing": 83,
+    "inventory_records": 73
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790459951782469",
+    "source_pr": "https://github.com/woahwhattheheck/commons/pull/30104",
+    "source_release_receipt": "https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1790457064418649",
+    "official_reset_documentation": "https://help.openai.com/en/articles/20001498-how-banked-codex-resets-work"
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-26T22:04:45Z",
+    "activation_base_main_sha": "d62a93ff19b2d6d9124d73de3fc690fe0706f246",
+    "current_main_sha": "527a6f9da75efe312bc30fa6cea705f2e597aac2",
+    "latest_delta_slack_ts": "1790457064.418649",
+    "source_merge_commit": "975c646886048f3a39c6295a2f4c007c4508aa75",
+    "remote_branches_observed": 4565
+  },
+  "non_claims": [
+    "No live connector edit timestamp, broader task completion, outreach, provider write, submission, deployment, spend, payment, settlement, revenue or cash is claimed."
+  ]
+}
