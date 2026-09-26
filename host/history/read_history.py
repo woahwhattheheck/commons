@@ -3,7 +3,9 @@ import argparse
 import concurrent.futures
 import hashlib
 import json
+import os
 from pathlib import Path
+import tempfile
 import time
 import jev
 
@@ -39,6 +41,19 @@ def batches(records):
                 current=[]
             current.append(segment)
     if current:yield current
+
+def save_receipt(receipt, report):
+    temporary=None
+    try:
+        with tempfile.NamedTemporaryFile(mode='w',encoding='utf-8',dir=receipt.parent,
+                                         prefix=receipt.name+'.',suffix='.tmp',delete=False) as handle:
+            temporary=Path(handle.name)
+            json.dump(report,handle,indent=2)
+            handle.flush();os.fsync(handle.fileno())
+        os.replace(temporary,receipt)
+        temporary=None
+    finally:
+        if temporary is not None:temporary.unlink(missing_ok=True)
 
 def process(batch,out):
     digest=hashlib.sha256(json.dumps(batch,sort_keys=True,ensure_ascii=False).encode()).hexdigest()
@@ -77,7 +92,7 @@ def process(batch,out):
                 'input_tokens':sum((x.get('usage') or {}).get('input_tokens',0) for x in partial)},
                 'elapsed_seconds':round(time.monotonic()-start,3),
                 'records':[r for x in partial for r in x['records']], 'adaptive_split':True}
-            temporary=receipt.with_suffix('.tmp');temporary.write_text(json.dumps(output,indent=2),encoding='utf-8');temporary.replace(receipt)
+            save_receipt(receipt,output)
             return output
         raise
     if set(result.get('answers',{}))!=set(questions):raise ValueError('incomplete_jev_answers')
@@ -89,24 +104,24 @@ def process(batch,out):
                      'action':action,'status':status})
     output={'digest':digest,'model':result.get('model'),'usage':result.get('usage'),
             'elapsed_seconds':round(time.monotonic()-start,3),'records':rows}
-    temporary=receipt.with_suffix('.tmp')
-    temporary.write_text(json.dumps(output,indent=2),encoding='utf-8')
-    temporary.replace(receipt)
+    save_receipt(receipt,output)
     return output
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('source');args=parser.parse_args()
-    source=Path(args.source);data=json.loads(source.read_text(encoding='utf-8'));records=data['records']
+    source=Path(args.source);raw=source.read_bytes();data=json.loads(raw.decode('utf-8'));records=data['records']
+    source_digest=hashlib.sha256(raw).hexdigest()
+    del raw
     out=source.parent/'jev-results';out.mkdir(exist_ok=True)
     todo=list(batches(records))
     with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
         results=list(pool.map(lambda batch:process(batch,out),todo))
-    report={'source_file':source.name,'source':data.get('source'),'messages':len(records),
+    report={'source_file':source.name,'source_sha256':source_digest,'source':data.get('source'),'messages':len(records),
             'body_segments':sum(len(r['records']) for r in results),'batches':len(results),
             'body_chars_read':sum(x['read_chars'] for r in results for x in r['records']),
             'input_tokens':sum((r.get('usage') or {}).get('input_tokens',0) for r in results),
             'models':sorted(set(r.get('model','unknown') for r in results))}
-    (out/(source.stem+'-complete.json')).write_text(json.dumps(report,indent=2),encoding='utf-8')
+    save_receipt(out/(source.stem+'-complete.json'),report)
     print(json.dumps(report),flush=True)
 
 if __name__=='__main__':main()
