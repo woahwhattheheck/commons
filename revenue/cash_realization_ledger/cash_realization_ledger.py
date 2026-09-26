@@ -110,7 +110,14 @@ def evaluate_claim(claim,events,proofs):
    amount=x["amount_minor"] or 0
    if rev+amount>gross: blockers.append(f"{x['event_id']}:REVERSAL_EXCEEDS_RECEIVED")
    else: rev+=amount; latest_cash=x["occurred_at"]
- net=max(0,gross-rev); ref=claim["reference_amount_minor"]; rec=next((x for x in reversed(verified) if x["event_kind"]=="RECONCILED_EVIDENCE"),None)
+ net=max(0,gross-rev); ref=claim["reference_amount_minor"]
+ reconciliations=[x for x in verified if x["event_kind"]=="RECONCILED_EVIDENCE"]; rec=None
+ if reconciliations:
+  latest_at=reconciliations[-1]["occurred_at"]
+  latest_reconciliations=[x for x in reconciliations if x["occurred_at"]==latest_at]
+  if len({x["amount_minor"] for x in latest_reconciliations})>1:
+   blockers.extend(f"{x['event_id']}:CONFLICTING_RECONCILIATIONS" for x in latest_reconciliations)
+  else: rec=latest_reconciliations[-1]
  if rec:
   if rec["amount_minor"]!=net: blockers.append(f"{rec['event_id']}:RECONCILE_AMOUNT_MISMATCH")
   if latest_cash is None: blockers.append(f"{rec['event_id']}:RECONCILE_WITHOUT_RECEIPT")

@@ -80,6 +80,9 @@ python revenue/cash_realization_ledger/cash_realization_ledger.py verify \
 - cumulative receipt evidence above the declared reference amount holds;
 - reversal cannot exceed receipt evidence accumulated up to that point;
 - stale or amount-mismatched reconciliation holds;
+- different amounts at the latest reconciliation timestamp hold as
+  `CONFLICTING_RECONCILIATIONS`; event IDs do not establish chronology. A later
+  unambiguous reconciliation can supersede the older conflicting assertions;
 - zero reconciliation without receipt evidence still holds; it does not create a
   receipt or mark an unpaid claim as paid;
 - duplicate semantic events hold instead of double-counting;
