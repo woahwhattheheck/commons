@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "open-work-explicit-source-environment-20260926",
+  "holder": "high-burn-backlog-cleanup",
+  "state": "HELD",
+  "taken_at": "2026-09-26T15:20:23.417Z",
+  "heartbeat_at": "2026-09-26T15:20:23.417Z",
+  "ttl_s": 1800,
+  "note": "Own host/open_work.py explicit repository read isolation. Actual saved Commons action in dirty requested checkout falsely LANDED from inherited other repo origin/main. Reuse git_source_capsules._git_env for all existing subprocess reads."
+}
