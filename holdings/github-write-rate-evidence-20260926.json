@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "github-write-rate-evidence-20260926",
+  "holder": "performance",
+  "state": "HELD",
+  "taken_at": "2026-09-26T15:09:49.996Z",
+  "heartbeat_at": "2026-09-26T15:09:49.996Z",
+  "ttl_s": 1800,
+  "note": "Preserve HTTP status and provider cooldown headers on existing GitHubSlackEquipment non-GET calls. Scope provider_io.py only; maintain uncertain writes and all publication checks."
+}
