@@ -860,8 +860,10 @@ def refresh(worktree, peer=None):
     ahead = unique_ahead(worktree)
     receipt["unique_local_commits"] = ahead
     if ahead == 0 and origin_sha:
-        git(["update-ref", "HEAD", origin_sha], cwd=worktree, check=False)
-        git(["read-tree", origin_sha], cwd=worktree, check=False)
+        # Refuse a concurrent HEAD change and surface index/ref failures. The
+        # earlier snapshot remains available if refresh finishes only partly.
+        git(["update-ref", "HEAD", origin_sha, head], cwd=worktree)
+        git(["read-tree", origin_sha], cwd=worktree)
         receipt["head_moved"] = head_sha(worktree) == origin_sha
         receipt["head"] = head_sha(worktree)
     else:
