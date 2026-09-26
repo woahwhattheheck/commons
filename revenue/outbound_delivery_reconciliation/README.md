@@ -12,6 +12,11 @@ This package exists because provider transport truth can change after Gmail reco
 
 A provider-accepted event by itself does **not** become a buyer-delivery/read/response claim. This product only reconciles delivery failures.
 
+Provider acceptance followed by a later permanent failure is a normal bounce
+sequence and yields `DELIVERY_FAILED`. Acceptance at the same timestamp as, or
+after, a permanent failure remains conflicting evidence for that exact sent
+generation. Neither sequence grants retry or alternate-route authority.
+
 ## Authority ceiling
 
 `DELIVERY_FAILED` sets `failed_route_dnr=true`. Every report hard-codes:

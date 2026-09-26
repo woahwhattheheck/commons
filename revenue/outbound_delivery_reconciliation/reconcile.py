@@ -175,7 +175,9 @@ def _compile_at(original: Mapping[str, Any], events: Sequence[Mapping[str, Any]]
     if sent > now:
         holds.append("ORIGINAL_SENT_FROM_FUTURE")
 
-    exact_kinds, failure_reasons = set(), set()
+    failure_reasons = set()
+    accepted_times: list[datetime] = []
+    failure_times: list[datetime] = []
     evidence = {original_n["evidence_sha256"]}
     exact_failure = False
     for row in events_n:
@@ -201,12 +203,17 @@ def _compile_at(original: Mapping[str, Any], events: Sequence[Mapping[str, Any]]
             if row[field] != original_n[field]:
                 holds.append(f"{code}:{row['event_id']}")
         if identity_ok and chronology_ok:
-            exact_kinds.add(row["event_kind"])
             if row["event_kind"] == "PERMANENT_FAILURE":
                 exact_failure = True
+                failure_times.append(observed)
                 failure_reasons.add(row["reason_code"])
+            else:
+                accepted_times.append(observed)
 
-    if exact_kinds == EVENT_KINDS:
+    # Provider acceptance is transport progress, not terminal delivery.
+    # A later DSN/bounce normally supersedes it. Acceptance at or after a
+    # permanent failure cannot reopen the same sent generation.
+    if accepted_times and failure_times and max(accepted_times) >= min(failure_times):
         holds.append("INCOMPATIBLE_TERMINAL_PROVIDER_EVIDENCE")
     holds = sorted(set(holds))
     classification = (
