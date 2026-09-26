@@ -45,6 +45,11 @@ Provider event (`outbound-delivery-provider-event/v1`) additionally binds stable
 
 Exact replay of an event ID with identical canonical bytes is idempotent. Same ID with changed bytes HOLDs.
 
+All distinct variants of a forked event ID remain bound into the source-generation
+digest and evidence list, in deterministic order. Reordering or repeating input
+events cannot hide a permanent failure or change the result. Event IDs remain
+unique in the report even when several conflicting variants share one ID.
+
 ## CLI
 
 ```bash
