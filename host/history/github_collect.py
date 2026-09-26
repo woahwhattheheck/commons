@@ -131,7 +131,7 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
 
 class Reader:
     def __init__(self, account, budget):
-        self.account, self.token, self.budget = account, token_for(account), budget
+        self.account, self.token, self.budget = account, None, budget
         self.calls = 0
         self.home = ROOT / account
         self.state_path = self.home / 'checkpoint.json'
@@ -167,6 +167,10 @@ class Reader:
         cooldowns = self.state.setdefault('cooldowns', {})
         if any(cooldowns.get(scope, 0) > current for scope in ('global', resource)):
             raise ReadDeferred('GitHub provider cooldown active')
+        # A deferred restart needs only its checkpoint, not a credential lookup.
+        # Resolve the account token when an actual provider read can begin.
+        if self.token is None:
+            self.token = token_for(self.account)
         if params:
             url += ('&' if parsed.query else '?') + urllib.parse.urlencode(params)
         request = urllib.request.Request(url, method='GET', headers={
