@@ -83,10 +83,13 @@ does not establish the truth of fictional measurements.
 
 ## Integration status
 
-This is the recovered standalone case engine. It does **not** yet bind to the
-canonical evaluation, lifecycle or economics component revisions. Exact-revision
-adapters and a full cash/capacity economics connection remain unfinished in
-UIOWA-111. Do not describe this recovery as completion of that integration.
+The standalone command above preserves the recovered case engine. The separate
+[canonical integration command](INTEGRATION.md) maps these records into the
+existing UIOWA-078 economics and UIOWA-079 lifecycle/evaluation engines, with
+exact source pins, explicit operating assumptions and separate cash outcomes.
+It emits missing-evidence gaps for model revisions, document bytes and paired
+evaluation tasks that the original examples did not record. It does not invent
+that history or establish a fully replayable AI workflow.
 
 `model.py`, `case.py`, `explain.py` and `sensitivity.py` retain the original
 runtime design. `export.py` provides the tabular and effective-input outputs.
