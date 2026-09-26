@@ -3,8 +3,8 @@
   "key": "opportunity-calendar-revisions-20260926",
   "holder": "high-burn-value-pipeline",
   "taken_at": "2026-09-26T14:21:01Z",
-  "heartbeat_at": "2026-09-26T14:21:01Z",
+  "heartbeat_at": "2026-09-26T14:25:09Z",
   "ttl_s": 1800,
-  "state": "ACTIVE",
-  "note": "Own revenue/opportunity_deadline_command/engine.py and README.md: stable event identity across amended deadlines, sequence revisions and UTF-8 calendar line folding. Export only; no calendar writes."
+  "state": "RELEASED",
+  "note": "Merged PR 30038 (69781fe567a31161685171b3b80557f8fccbdccc): stable calendar UID across deadline amendments, revision sequences, UTF-8 line folding; legacy import migration documented."
 }
