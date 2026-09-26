@@ -465,11 +465,15 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--account', choices=ACCOUNTS, action='append')
     parser.add_argument('--max-requests', type=int, default=12)
+    parser.add_argument('--status', action='store_true',
+                        help='show saved progress and active cooldowns without collecting or writing')
     args = parser.parse_args()
     if args.max_requests < 1 or args.max_requests > 200: parser.error('max-requests must be 1..200')
     for account in args.account or ACCOUNTS:
         try:
-            print(json.dumps(Reader(account, args.max_requests).run()), flush=True)
+            reader = Reader(account, args.max_requests)
+            result = reader.summary([]) if args.status else reader.run()
+            print(json.dumps(result), flush=True)
         except Exception as exc:
             print(json.dumps({'account': account, 'error': type(exc).__name__ + ': ' + str(exc)}), flush=True)
             return 1
