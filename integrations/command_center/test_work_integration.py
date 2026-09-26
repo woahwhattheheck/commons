@@ -157,7 +157,7 @@ class WorkstreamIntegrationTests(unittest.TestCase):
         self.assertFalse(fresh["stale"])
         self.assertTrue(fresh["collector_configured"])
         completed = fresh["last_completed_at"]
-        self.assertIsNone(completed)
+        self.assertIsNotNone(completed)
 
         # The next attempt fails after the TTL: the clock stays at the last
         # real collection and the read still says stale.
