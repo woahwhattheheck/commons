@@ -235,11 +235,9 @@ class GitHubSlackEquipment:
         return redacted(result)
 
     def github(self, endpoint: str, *, method: str = "GET", payload: dict | None = None) -> Any:
-        command = [self.gh, "api", "--hostname", "github.com", "--method", method, endpoint]
-        if method == "GET":
-            # After `api`, never immediately before endpoint: callers parse
-            # endpoint as the token after --method.
-            command.insert(2, "--include")
+        # Writes need the same HTTP/cooldown evidence as reads. Keep --include
+        # after `api` so existing --method/endpoint argument parsing stays valid.
+        command = [self.gh, "api", "--include", "--hostname", "github.com", "--method", method, endpoint]
         if payload is not None:
             command += ["--input", "-"]
         try:
@@ -249,7 +247,12 @@ class GitHubSlackEquipment:
         except (OSError, subprocess.TimeoutExpired) as exc:
             raise EquipmentError("existing gh transport unavailable; retain the operation ID before another write",
                                  code="github_transport_failed", uncertain=method != "GET") from None
-        body, status, headers = _github_headers(result.stdout) if method == "GET" else (result.stdout, None, {})
+        try:
+            body, status, headers = _github_headers(result.stdout)
+        except EquipmentError as exc:
+            # An incomplete write response cannot establish whether it landed.
+            exc.uncertain = method != "GET"
+            raise
         if result.returncode or status is not None and status >= 400:
             # Preserve response rate evidence, never stderr, command or raw headers.
             try:
