@@ -107,10 +107,10 @@ class LiveCollectors:
         return {"id": source_id, "provider": provider, "label": label,
                 "sync_mode": "direct", "scope": scope, "stale_after_seconds": 900}
 
-    def _batch(self, source, items, complete=True, notes=None, error=None):
+    def _batch(self, source, items, complete=True, notes=None, error=None, degraded=False):
         observed = self.clock()
         source = {**source, "observed_at": observed, "activity_as_of": latest(items),
-                  "status": "error" if error and not items else ("degraded" if error else "live"),
+                  "status": "error" if error and not items else ("degraded" if error or degraded else "live"),
                   "error": error, "coverage": {"complete": bool(complete and not error),
                   "pagination_remaining": not complete, "notes": notes or []}}
         payload = {"source": source, "items": items}
@@ -175,11 +175,23 @@ class LiveCollectors:
                     **retry}) from None
         return response
 
-    def _pages(self, endpoint, key=None):
+    def _pages(self, endpoint, key=None, *, progress=None, read_label=None):
         result, total, incomplete, seen_ids = [], None, False, set()
         for page in range(1, self.max_pages + 1):
             suffix = "&" if "?" in endpoint else "?"
-            response = self._github(endpoint + suffix + urlencode({"per_page": self.page_size, "page": page}))
+            try:
+                response = self._github(endpoint + suffix + urlencode({"per_page": self.page_size, "page": page}))
+            except Exception as exc:
+                if progress is None or not progress["pages_read"]:
+                    raise
+                failure = {"slice": read_label, "page": page,
+                           "code": getattr(exc, "code", type(exc).__name__)}
+                if isinstance(exc, RequestDeferred):
+                    failure.update({"scope": exc.scope, "retry_not_before": exc.retry_not_before})
+                elif isinstance(exc, SourceFailure) and exc.metadata:
+                    failure["request_budget"] = exc.metadata
+                progress["failures"].append(failure)
+                return result, False
             rows = response.get(key) if key and isinstance(response, dict) else response
             if not isinstance(rows, list):
                 raise SourceFailure("github_response_shape")
@@ -202,10 +214,21 @@ class LiveCollectors:
                         and type(response["incomplete_results"]) is not bool):
                     raise SourceFailure("github_pagination_shape")
                 incomplete = incomplete or bool(response.get("incomplete_results"))
+            if progress is not None:
+                progress["pages_read"] += 1
             if len(rows) < self.page_size:
                 # A short page cannot overrule an explicit larger result count.
                 return result, not incomplete and (total is None or len(result) >= total)
         return result, not incomplete and isinstance(total, int) and len(result) >= total
+
+    def _github_batch(self, source, items, complete, notes, progress):
+        failures = progress["failures"]
+        if failures:
+            source = {**source, "metadata": {**source.get("metadata", {}), "github_reads": progress}}
+            notes = [*notes, "Valid earlier pages retained; failed slices never authorize removal."]
+        return self._batch(source, items, complete, notes,
+                           error=failures[0]["code"] if failures and not progress["pages_read"] else None,
+                           degraded=bool(failures))
 
     @staticmethod
     def _repository(value):
@@ -215,7 +238,9 @@ class LiveCollectors:
 
     def _repository_batch(self, login):
         source = self._source("github:repositories", "GitHub", "Owned repositories", {"owner": login})
-        rows, complete = self._pages("user/repos?affiliation=owner&sort=pushed&direction=desc")
+        progress = {"pages_read": 0, "failures": []}
+        rows, complete = self._pages("user/repos?affiliation=owner&sort=pushed&direction=desc",
+                                     progress=progress, read_label="owned_repositories")
         items = []
         for row in {row["full_name"]: row for row in rows}.values():
             repo = self._repository(row.get("full_name"))
@@ -229,21 +254,27 @@ class LiveCollectors:
                 "refs": {"repository": repo, "default_branch": row.get("default_branch"),
                          "private": row.get("private"), "open_issues_count": row.get("open_issues_count")},
                 "actions": link(url)})
-        return self._batch(source, items, complete,
-                           ["Repository catalog; active means not archived, not an executing job."])
+        return self._github_batch(source, items, complete,
+                           ["Repository catalog; active means not archived, not an executing job."], progress)
 
     def _pull_requests(self, login):
         source = self._source("github:prs", "GitHub", "Open and recently updated pull requests",
                               {"author_or_owner": login})
         since = (datetime.now(UTC) - timedelta(days=self.lookback_days)).date().isoformat()
         rows, complete = {}, True
+        progress = {"pages_read": 0, "failures": []}
         for qualifier in ("author:" + login, "user:" + login):
             for window in ("is:open", "updated:>=" + since):
                 found, page_complete = self._pages("search/issues?" + urlencode({
-                    "q": "is:pr " + qualifier + " " + window, "sort": "updated", "order": "desc"}), "items")
+                    "q": "is:pr " + qualifier + " " + window, "sort": "updated", "order": "desc"}), "items",
+                    progress=progress, read_label=qualifier.partition(":")[0] + ":" + window)
                 complete = complete and page_complete
                 for item in found:
                     rows[str(item.get("id", item.get("html_url")))] = item
+                if progress["failures"]:
+                    break
+            if progress["failures"]:
+                break
         items = []
         for row in rows.values():
             repo = str(row.get("repository_url", "")).removeprefix("https://api.github.com/repos/")
@@ -263,20 +294,27 @@ class LiveCollectors:
                          "assignees": [x.get("login") for x in row.get("assignees", [])],
                          "labels": [x.get("name") for x in row.get("labels", [])]},
                 "actions": link(url)})
-        return self._batch(source, items, complete,
-                           ["Provider state is preserved; a closed PR without merged_at is not labeled merged."])
+        return self._github_batch(source, items, complete,
+                           ["Provider state is preserved; a closed PR without merged_at is not labeled merged."], progress)
 
     def _actions(self, repo):
         source = self._source("github:actions:" + repo, "GitHub", repo + " builds", {"repository": repo})
         rows, complete, active_complete = {}, True, True
+        progress = {"pages_read": 0, "failures": []}
+        queried_statuses = []
         for status in ("in_progress", "queued", None):
             endpoint = "repos/" + repo + "/actions/runs" + ("?status=" + status if status else "")
-            found, page_complete = self._pages(endpoint, "workflow_runs")
+            if status is not None:
+                queried_statuses.append(status)
+            found, page_complete = self._pages(endpoint, "workflow_runs",
+                progress=progress, read_label=status or "recent")
             complete = complete and page_complete
             if status in ("in_progress", "queued"):
                 active_complete = active_complete and page_complete
             for row in found:
                 rows[str(row["id"])] = row
+            if progress["failures"]:
+                break
         items = []
         for row in rows.values():
             url = row.get("html_url")
@@ -295,12 +333,12 @@ class LiveCollectors:
         source = {**source, "metadata": {
             "active_queue_coverage": {
                 "complete": active_complete,
-                "queried_statuses": ["in_progress", "queued"],
+                "queried_statuses": queried_statuses,
             }
         }}
-        return self._batch(source, items, complete,
+        return self._github_batch(source, items, complete,
                            ["Active/queued runs plus bounded recent history; pagination caps stay visible.",
-                            "metadata.active_queue_coverage distinguishes active-run completeness from capped history."])
+                            "metadata.active_queue_coverage distinguishes active-run completeness from capped history."], progress)
 
     def _slack(self, channel):
         channel_id, label = channel["id"], channel.get("label", channel["id"])
