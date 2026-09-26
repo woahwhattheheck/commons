@@ -132,6 +132,10 @@ completion. Its worker must match, and its dates must cover the current take;
 stale releases cannot clear newer work. The next take creates fresh custody.
 Sync rereads custody from the exact claims parent on every transaction attempt,
 after collected events, so a release during collection cannot be overwritten.
+A newer observed legacy claim can also transfer an active task from its former
+owner. Its exact repository/key source, revision ID, take generation, heartbeat,
+and lease must agree; an ordinary attempted take still collides with live custody.
+Fresh seat activity on unrelated work cannot veto an already observed transfer.
 
 ## Facts and implementation
 
