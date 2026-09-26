@@ -102,6 +102,11 @@ holding over a newer claim. Confirm publication before starting assigned work.
 The store retries ref contention at most three times and preserves an unpublished
 proposal on a push failure.
 
+Terminal task history releases a matching legacy holding only when its dated
+closure covers the holding's activity. A newer take or heartbeat is preserved,
+even when the worker name matches; missing closure or holding dates leave custody
+unchanged. Historical task completion cannot revoke a later direct claim.
+
 ## Facts and implementation
 
 Missing values are `UNKNOWN`. Seat liveness is recomputed using `seat_census`
