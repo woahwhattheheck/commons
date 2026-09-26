@@ -95,70 +95,109 @@ def _now() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
+def _observed_json(root: str, rel: str, expected: type) -> tuple[Any, dict[str, Any]]:
+    """Describe the same read that supplies the projection, never a second read."""
+    status: dict[str, Any] = {"source": rel, "state": "OBSERVED"}
+    try:
+        with open(os.path.join(root, rel), encoding="utf-8") as handle:
+            value = json.load(handle)
+    except FileNotFoundError:
+        status["state"] = "MISSING"
+    except (UnicodeError, ValueError) as exc:
+        status.update(state="MALFORMED", error=type(exc).__name__)
+    except OSError as exc:
+        status.update(state="UNREADABLE", error=type(exc).__name__)
+    else:
+        if isinstance(value, expected):
+            return value, status
+        status.update(state="MALFORMED", error="unexpected_json_type")
+    return expected(), status
+
+
+def _collection_status(rel: str, observed: int, errors: list[dict[str, Any]]) -> dict[str, Any]:
+    # Keep diagnostics bounded while retaining the complete rejected count.
+    state = "OBSERVED"
+    if errors:
+        state = "PARTIAL" if observed else ("UNREADABLE" if any(
+            row["state"] in {"UNREADABLE", "MISSING"} for row in errors) else "MALFORMED")
+    return {"source": rel, "state": state, "records_observed": observed,
+            "records_rejected": len(errors), "errors": errors[:20],
+            "errors_truncated": len(errors) > 20}
+
+
+def _observed_directory(root: str, rel: str, *, jobs: bool = False) -> tuple[list, dict[str, Any]]:
+    rows = []
+    errors = []
+    try:
+        names = sorted(os.listdir(os.path.join(root, rel)))
+    except FileNotFoundError:
+        return rows, {"source": rel, "state": "MISSING"}
+    except OSError as exc:
+        return rows, {"source": rel, "state": "UNREADABLE", "error": type(exc).__name__}
+    for name in names:
+        if not name.endswith(".json") or (jobs and name.startswith("_")):
+            continue
+        row, status = _observed_json(root, rel + "/" + name, dict)
+        if status["state"] == "OBSERVED" and jobs and not row.get("job_id"):
+            status.update(state="MALFORMED", error="missing_job_id")
+        if status["state"] == "OBSERVED":
+            rows.append(row)
+        else:
+            errors.append(status)
+    return rows, _collection_status(rel, len(rows), errors)
+
+
+def _observed_jsonl(root: str, rel: str) -> tuple[list, dict[str, Any]]:
+    rows = []
+    errors = []
+    observed = 0
+    try:
+        # Decode per line so one bad encoding does not discard other records.
+        with open(os.path.join(root, rel), "rb") as handle:
+            for number, raw in enumerate(handle, 1):
+                if not raw.strip():
+                    continue
+                try:
+                    line = raw.decode("utf-8").strip()
+                    row = json.loads(line)
+                except (UnicodeError, ValueError) as exc:
+                    errors.append({"source": rel, "line": number,
+                                   "state": "MALFORMED", "error": type(exc).__name__})
+                    rows.append({"parse_state": "MALFORMED", "source": rel, "line": number})
+                    continue
+                if not isinstance(row, dict):
+                    errors.append({"source": rel, "line": number,
+                                   "state": "MALFORMED", "error": "unexpected_json_type"})
+                else:
+                    observed += 1
+                rows.append(row)
+    except FileNotFoundError:
+        return rows, {"source": rel, "state": "MISSING"}
+    except OSError as exc:
+        errors.append({"source": rel, "state": "UNREADABLE", "error": type(exc).__name__})
+    return rows, _collection_status(rel, observed, errors)
+
+
 def load_legacy(root: str | None = None) -> dict[str, Any]:
     root = root or ROOT
-    jobs = []
-    jobs_dir = os.path.join(root, "wake_jobs")
-    if os.path.isdir(jobs_dir):
-        for name in sorted(os.listdir(jobs_dir)):
-            if not name.endswith(".json") or name.startswith("_"):
-                continue
-            row = _read_json(os.path.join(jobs_dir, name), None)
-            if isinstance(row, dict) and row.get("job_id"):
-                jobs.append(row)
-    captures = []
-    cap_dir = os.path.join(root, "artifacts", "grok-captures")
-    if os.path.isdir(cap_dir):
-        for name in sorted(os.listdir(cap_dir)):
-            if name.endswith(".json"):
-                row = _read_json(os.path.join(cap_dir, name), None)
-                if isinstance(row, dict):
-                    captures.append(row)
-    events = _read_json(os.path.join(root, "protocol", "fixtures", "live_events.json"), [])
-    jsonl_path = os.path.join(root, "protocol", "events.jsonl")
-    jsonl_events = []
-    if os.path.isfile(jsonl_path):
-        try:
-            with open(jsonl_path, encoding="utf-8") as handle:
-                for line in handle:
-                    line = line.strip()
-                    if not line:
-                        continue
-                    try:
-                        row = json.loads(line)
-                    except json.JSONDecodeError:
-                        jsonl_events.append({"parse_state": "MALFORMED", "raw": line[:200]})
-                        continue
-                    jsonl_events.append(row)
-        except OSError:
-            pass
-    incoming = []
-    if isinstance(events, list):
-        incoming.extend(events)
-    incoming.extend(jsonl_events)
+    legacy: dict[str, Any] = {}
     coverage = []
-    for rel, expected in (("presence.json", list), ("lastseen.json", list),
-                          ("pulse.json", dict), ("recent.json", list),
-                          ("claims.json", dict), ("revenue/payment_ready/recovery.json", dict),
-                          ("protocol/fixtures/live_events.json", list)):
-        path = os.path.join(root, rel)
-        value = _read_json(path, None)
-        state = "MISSING" if not os.path.isfile(path) else ("OBSERVED" if isinstance(value, expected) else "MALFORMED")
-        coverage.append({"source": rel, "state": state})
-    for rel in ("wake_jobs", "artifacts/grok-captures", "protocol/events.jsonl"):
-        coverage.append({"source": rel, "state": "OBSERVED" if os.path.exists(os.path.join(root, rel)) else "MISSING"})
-    return {
-        "presence": _read_json(os.path.join(root, "presence.json"), []),
-        "lastseen": _read_json(os.path.join(root, "lastseen.json"), []),
-        "pulse": _read_json(os.path.join(root, "pulse.json"), {}),
-        "recent": _read_json(os.path.join(root, "recent.json"), []),
-        "claims": _read_json(os.path.join(root, "claims.json"), {}),
-        "recovery": _read_json(os.path.join(root, "revenue", "payment_ready", "recovery.json"), {}),
-        "jobs": jobs,
-        "grok_captures": captures,
-        "protocol_events": incoming,
-        "source_coverage": coverage,
-    }
+    for key, rel, expected in (
+        ("presence", "presence.json", list), ("lastseen", "lastseen.json", list),
+        ("pulse", "pulse.json", dict), ("recent", "recent.json", list),
+        ("claims", "claims.json", dict), ("recovery", "revenue/payment_ready/recovery.json", dict),
+        ("protocol_events", "protocol/fixtures/live_events.json", list),
+    ):
+        legacy[key], status = _observed_json(root, rel, expected)
+        coverage.append(status)
+    for key, rel in (("jobs", "wake_jobs"), ("grok_captures", "artifacts/grok-captures")):
+        legacy[key], status = _observed_directory(root, rel, jobs=key == "jobs")
+        coverage.append(status)
+    events, status = _observed_jsonl(root, "protocol/events.jsonl")
+    legacy["protocol_events"].extend(events)
+    coverage.append(status)
+    legacy["source_coverage"] = coverage
+    return legacy
 
 
 def snapshot(root: str | None = None, *, now: str | None = None, events: list | None = None) -> dict[str, Any]:
@@ -192,14 +231,14 @@ def write_snapshot(root: str | None = None, *, now: str | None = None) -> dict[s
 def read_observatory(root: str | None = None, arguments: dict[str, Any] | None = None) -> dict[str, Any]:
     arguments = arguments if isinstance(arguments, dict) else {}
     root = root or ROOT
-    path = os.path.join(root, SNAPSHOT_REL)
-    if os.path.isfile(path):
-        snap = _read_json(path, None)
-        if not isinstance(snap, dict):
-            snap = snapshot(root)
-    else:
+    snap, status = _observed_json(root, SNAPSHOT_REL, dict)
+    source = SNAPSHOT_REL
+    if status["state"] != "OBSERVED":
         snap = snapshot(root)
-    return select_snapshot(snap, arguments, source=SNAPSHOT_REL if os.path.isfile(path) else "host.observatory.snapshot")
+        source = "host.observatory.snapshot"
+    result = select_snapshot(snap, arguments, source=source)
+    result["snapshot_source"] = status
+    return result
 
 
 def select_snapshot(snap: dict[str, Any], arguments: dict[str, Any] | None = None, *,
@@ -265,6 +304,8 @@ def observe_work(root: str | None = None, arguments: dict[str, Any] | None = Non
         "collisions": snap.get("collisions"),
         "attention": snap.get("attention"),
         "head": snap.get("head"),
+        "source_coverage": snap.get("source_coverage") or [],
+        "coverage_note": snap.get("coverage_note"),
         "filter": arguments.get("filter") or {},
     }
 
@@ -317,9 +358,15 @@ def main(argv: list[str] | None = None) -> int:
     if "--write" in argv:
         snap = write_snapshot()
         sys.stdout.write("wrote %s digest=%s\n" % (SNAPSHOT_REL, snap.get("digest", "")[:16]))
-        return 0
-    snap = snapshot()
-    sys.stdout.write(json.dumps(snap.get("cockpit"), indent=2, sort_keys=True) + "\n")
+    else:
+        snap = snapshot()
+        sys.stdout.write(json.dumps(snap.get("cockpit"), indent=2, sort_keys=True) + "\n")
+    degraded = [row for row in snap.get("source_coverage", [])
+                if row.get("state") not in {"OBSERVED", "MISSING"}]
+    if degraded:
+        sys.stderr.write("observatory: incomplete source reads: " + ", ".join(
+            str(row.get("source")) + "=" + str(row.get("state")) for row in degraded) + "\n")
+        return 2
     return 0
 
 
