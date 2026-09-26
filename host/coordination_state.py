@@ -1359,10 +1359,13 @@ class _Preserved(dict):
         self.blob = blob
 
 
-def _holding_entries(git, commit):
+def _holding_entries(git, commit, path=None):
     """{path: blob id} for every holdings/*.json in `commit`, read from the tree alone."""
     entries = {}
-    for line in git.out("ls-tree", "-r", commit).splitlines():
+    args = ["ls-tree", "-r", commit]
+    if path is not None:
+        args.extend(["--", path])
+    for line in git.out(*args).splitlines():
         meta, _, path = line.partition("\t")
         parts = meta.split()
         if len(parts) == 3 and parts[1] == "blob" and path.startswith("holdings/") and path.endswith(".json"):
@@ -1523,13 +1526,25 @@ def holding_write(git, key, holder, action, ttl_s=1800, note="", now=None,
             "conflict": "non-fast-forward", "attempts": int(attempts), "tip": tip}
 
 
-def holdings_list(git, remote="origin", branch=HOLDINGS_BRANCH, now=None):
+def holdings_list(git, remote="origin", branch=HOLDINGS_BRANCH, now=None, key=None):
+    """List all holdings, or read only one key without materializing other blobs."""
     now = now or _now()
     tip = _remote_tip(git, branch, remote)
     if tip:
         git.fetch([tip], remote)
+    if key is None:
+        holdings = _read_holdings(git, tip)
+    else:
+        holdings = {}
+        path = _holding_path(key)
+        blob = _holding_entries(git, tip, path).get(path) if tip else None
+        if blob is not None:
+            try:
+                holdings[path] = _read_holding(git, tip, path, blob)
+            except HoldingUnreadable:
+                holdings[path] = _Preserved(blob)
     rows = []
-    for path, record in sorted(_read_holdings(git, tip).items()):
+    for path, record in sorted(holdings.items()):
         live = _holding_live(record, now)
         row = {"key": path[len("holdings/"):-5], "holder": record.get("holder"),
                "state": record.get("state"), "live": live,
