@@ -2,9 +2,9 @@
  "schema": "commons-change-holding/v1",
  "key": "multirepo-claim-namespace-20260926",
  "holder": "high-burn-lane-a",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-26T12:09:30Z",
- "heartbeat_at": "2026-09-26T12:09:30Z",
+ "heartbeat_at": "2026-09-26T12:12:33Z",
  "ttl_s": 1800,
- "note": "host/claim_work.py + claim_pr.py + coordination_state.py; backward-compatible repository-scoped claims"
+ "note": "Completed PR 29914, merged 7cb66e1de9c0ed4d5c76c8d9a9bc06a925bf43ad; all four exact blobs read back on main."
 }
