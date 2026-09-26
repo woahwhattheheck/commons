@@ -1,0 +1,6 @@
+test_replaced_is_per_call_while_total_remains_cumulative (checks.test_v3_r02.R02DiagnosticTruthTests.test_replaced_is_per_call_while_total_remains_cumulative) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.009s
+
+OK

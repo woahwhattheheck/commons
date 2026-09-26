@@ -1,0 +1,16 @@
+{
+  "schema": "titan-v4-research-custody/v1",
+  "recorded_against_main": "d565847463a45d0d87c320b39e87fa27189f31a3",
+  "historical_ref": "sol-priority/titan-v3-inherited-sell-priority-20260910-01",
+  "historical_head": "1e033d183e4cd60b42df6a9e7197430cd5a0591d",
+  "historical_merge_base": "98a98108998efac9e53a8b045f0fb2c85a4b19e2",
+  "historical_topology": {"ahead": 7, "behind": 10810, "status": "diverged"},
+  "terminal_commit_message": "ci(titan): neutralize duplicate priority lane",
+  "terminal_head_workflow_runs": [],
+  "controlling_prs": [11963, 12050],
+  "controlling_heads": [
+    "c3c2668d4822713afb126579f2f253788372f6ea",
+    "a7074432c1b364bda64d9501f89975d00cf0f94d"
+  ],
+  "disposition": "superseded collision residue; preserve exact historical ref; later live-seam evidence controls; no V4 composition edge"
+}

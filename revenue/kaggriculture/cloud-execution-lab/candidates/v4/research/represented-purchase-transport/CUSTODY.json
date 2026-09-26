@@ -1,0 +1,80 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "operation": "represented-purchase-transport-residue-20260925",
+  "disposition": "historical_authenticated_transport_only_semantic_consumed_by_current_v4_no_queue_edge",
+  "historical": {
+    "branch": "gpt56/titan-v3-represented-purchase-executability-20260910-01",
+    "transport_head": "247fa31fd364f0819cb9956f93f3501fb5043461",
+    "immutable_base": "ed65812449a2cd021b0635a60ff9171957f3e386",
+    "pr": 12110,
+    "pr_state": "closed_unmerged",
+    "transport_payload_sha256": "35b0f78a249e5fdf6d4a7e68ee19ea40a124ad9879ff22bac524d74bfdb38e19",
+    "decoded_source": {
+      "intended_detached_commit": "6b949a6abe",
+      "files": [
+        {
+          "path": ".github/workflows/titan-v3-represented-purchase-executability.yml",
+          "bytes": 5730,
+          "sha256": "437b4a232c4195b8dcf2138a133db99c2c0cd4d8d7a884a3caf39a03e9343b7a"
+        },
+        {
+          "path": "analysis/titan_v3_represented_purchase_executability_20260910/README.md",
+          "bytes": 4547,
+          "sha256": "7e27906a1be1180f730e707043d3bea3fb5d298d52e2d1aad0ef23064a793fb9"
+        },
+        {
+          "path": "analysis/titan_v3_represented_purchase_executability_20260910/contract.json",
+          "bytes": 2647,
+          "sha256": "18f301a50964762bb78080b0569b7b63ef3313704186a483fa3c088cb8a96c03"
+        },
+        {
+          "path": "analysis/titan_v3_represented_purchase_executability_20260910/materialize.py",
+          "bytes": 9649,
+          "sha256": "cb1e06d3c9a9fd3257137551414fd591e77dbdf17614da434e3890851204ceb6"
+        },
+        {
+          "path": "analysis/titan_v3_represented_purchase_executability_20260910/test_represented_purchase_executability.py",
+          "bytes": 14301,
+          "sha256": "61eb075dbfdac07e5b0b5d11412fd4193fbe4c454b003d26efbc95cffa179c9c"
+        },
+        {
+          "path": "analysis/titan_v3_represented_purchase_executability_20260910/witness.py",
+          "bytes": 22523,
+          "sha256": "4100903ce6a31df9de6513a3ca943fbe6123a928d096a819fc6b329626e2e14e"
+        }
+      ]
+    },
+    "hosted_transport": {
+      "run": 34538377904,
+      "job": 103075147216,
+      "exact_event_head_checkout": "pass",
+      "transport_head_and_payload_authentication": "pass",
+      "archive_decode_and_postimage_verification": "pass",
+      "clean_source_commit_creation": "pass_detached",
+      "branch_rewrite": "failed",
+      "artifacts": [],
+      "failure": "GitHub App refused update because the rewritten commit contained .github/workflows/titan-v3-represented-purchase-executability.yml and the App lacked workflows permission"
+    }
+  },
+  "semantic": {
+    "theorem": "represented BUY_PRODUCT/BUY_ANIMAL/HIRE state must not be credited unless physical execution is provable; unproven phantom fills can alter returned SELL optimization",
+    "historical_direct_merge": false,
+    "current_v4_owner_pr": 13084,
+    "current_v4_owner_head": "87c8f57471e590679e2993d222ced0be5c7f4934",
+    "current_v4_owner_merge": "306e12763a1d320b0ba73a4dd2b3e4c50fd57dbb",
+    "current_v4_path": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/represented-market-executability/",
+    "current_v4_consumes": [
+      "#12056",
+      "#12110",
+      "#12055"
+    ],
+    "current_main_descends_from_v4_owner_merge": true
+  },
+  "one_tree_action": {
+    "replay_transport_branch": false,
+    "cherry_pick_historical_head": false,
+    "remint_v4_root": false,
+    "add_queue_edge": false,
+    "reason": "the semantic is already consumed by merged current-V4 source custody; this record preserves only the previously unindexed one-use transport and its exact failure receipt"
+  }
+}

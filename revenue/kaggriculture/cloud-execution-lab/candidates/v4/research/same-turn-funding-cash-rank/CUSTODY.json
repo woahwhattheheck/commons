@@ -1,0 +1,75 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "lane": "same-turn-funding-cash-rank",
+  "disposition": "HISTORICAL_REJECTED_PARETO_THEOREM_DIAGNOSTIC_ONLY_NO_V4_QUEUE_EDGE",
+  "historical_pr": 12062,
+  "historical_head": "9cd12ce6ca8d5d7be8e6c13d5ffb3382d2f127ab",
+  "historical_base": "c51049d671b55d282e0fed5df37a0be7c513a838",
+  "exact_source_custody": {
+    "PIN.json": "51126157f8c44985bd68d864af6e40546c8553ab",
+    "README.md": "951aeb13e31f42c7713e52ca5abade6f0547e771",
+    "pareto_rank.py": "c195d6fa01d610e825e6a268bc5fa90653b666d7",
+    "run_current_witness.py": "6749cfeb5ee820aa50a28050234148fda97968ef",
+    "test_pareto_rank.py": "4c3dda9a7db6bd80b8918eb69f8e495c60783ae7",
+    "predecessor_frozen_selected_blob": "fc7baf5c179818a55037f6a61d92984d81d1a21c"
+  },
+  "hosted_receipt": {
+    "run_id": 34526935365,
+    "job_id": 103038009482,
+    "run_conclusion": "failure",
+    "immutable_head_check": "success",
+    "focused_contracts": "success",
+    "materialize_and_current_source_witness": "failure",
+    "artifact_upload": "success",
+    "artifact_id": 10183553865,
+    "artifact_name": "titan-v3-same-turn-funding-pareto-rank-34526935365-1",
+    "artifact_size_bytes": 11357,
+    "artifact_sha256": "0da5e1cee3b1228e14e5ad31bc6e52bd4a95a653ddf98c7be63b50fa51959f8d",
+    "artifact_verified_download_sha256": "0da5e1cee3b1228e14e5ad31bc6e52bd4a95a653ddf98c7be63b50fa51959f8d",
+    "artifact_members": {
+      "MODEL-WITNESS.json": {
+        "bytes": 1098,
+        "sha256": "505041e64f37e4aa6fc8325ce7718816fb54b3e6cd669dbeb650dc1c6f01e536"
+      },
+      "PATCH-RECEIPT.json": {
+        "bytes": 797,
+        "sha256": "a59106f3039eb2a81e9775b9f099deb3c77421fab1da8361e0f54c5c9b643c1e"
+      },
+      "frozen_selected.candidate.py": {
+        "bytes": 37506,
+        "git_blob": "cd2ec0d0024689b7931a421d84cad0e7539e1b9e",
+        "sha256": "7aada58a58d21bf22c318a76ff8e8455b858482fe47959155d184ac167b41bd7"
+      }
+    }
+  },
+  "accepted_counterexample": {
+    "review_id": 5172032621,
+    "acceptance_comment_id": 5625134413,
+    "finding": "The one-line negative-cash tie-break proves only a target-boundary rank inversion, not a Pareto improvement through the full simultaneous market transition.",
+    "predecessor_final_own_cash": 71,
+    "patched_final_own_cash": 70,
+    "own_cash_delta": -1,
+    "margin_delta": -1,
+    "status": "HOLD_DIAGNOSTIC_FACTOR_ONLY"
+  },
+  "later_lineage": {
+    "v4_pr": 13081,
+    "v4_merge": "27dad827c7ca8722369f1c88bde0aa4774ae6727",
+    "v5_pr": 13197,
+    "v5_merge": "6f43a9e6a365db42d2d6a553074ea9457de02704",
+    "current_frozen_selected_blob": "6a95505388ea1b5eba38bd1f927a2a2bf084490c",
+    "note": "Later V4/V5 source-admission lineage independently carries an equivalent negative remaining-cash rank term. This custody record does not invalidate that later lineage; it prevents the rejected V3 Pareto claim from being revived as an unlanded donor or separate queue edge."
+  },
+  "authority": {
+    "canonical_branch": "main",
+    "canonical_blob": "00142be0ff2314dcb23068c8133b34d290661923",
+    "integration_blob": "4e3207af1332266852530ec8494db8969edc1115",
+    "composition_blob": "32dc1e6963702f7e013cd609053d52c434e42158",
+    "production_mutation": false,
+    "runtime_mutation": false,
+    "config_mutation": false,
+    "archive_mutation": false,
+    "kaggle_mutation": false,
+    "queue_edge_created": false
+  }
+}
