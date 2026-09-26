@@ -45,6 +45,7 @@ try:
         GitHub,
         GitHubError,
         _discover_token,
+        _http_error,
         classify_run,
         make_snapshot,
     )
@@ -54,6 +55,7 @@ except ModuleNotFoundError:  # direct ``python host/actions_queue_cancel.py``
         GitHub,
         GitHubError,
         _discover_token,
+        _http_error,
         classify_run,
         make_snapshot,
     )
@@ -84,8 +86,7 @@ class CancelGitHub(GitHub):
                 response.read()
                 return int(response.status)
         except urllib.error.HTTPError as exc:
-            detail = exc.read().decode("utf-8", "replace")[:300]
-            raise GitHubError(f"POST {path} -> HTTP {exc.code}: {detail}") from exc
+            raise _http_error("POST", path, exc) from exc
         except urllib.error.URLError as exc:
             raise GitHubError(f"POST {path} -> {exc}") from exc
 
@@ -181,6 +182,7 @@ def drain_stale_runs(
     candidates_rechecked = 0
     accepted = 0
     holds = 0
+    rate_limit = None
 
     for original, initial_class in candidates:
         run_id = _run_id(original)
@@ -338,8 +340,11 @@ def drain_stale_runs(
                     "error": str(exc)[:300],
                 }
             )
+            if isinstance(exc, GitHubError) and exc.rate_limited:
+                rate_limit = {"http_status": exc.status, "retry_after": exc.retry_after}
+                break
 
-    return {
+    receipt = {
         "schema": SCHEMA,
         "observed_at": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "repo": repo,
@@ -349,6 +354,7 @@ def drain_stale_runs(
         "queued_inventory_complete": isinstance(total, int) and total <= len(runs),
         "initial_cancel_candidates": len(candidates),
         "candidates_rechecked": candidates_rechecked,
+        "candidates_unprocessed": len(candidates) - len(results),
         "max_cancels": max_cancels,
         "min_age_seconds": min_age_seconds,
         "cancel_posts_attempted": posts_attempted,
@@ -364,6 +370,9 @@ def drain_stale_runs(
         },
         "results": results,
     }
+    if rate_limit is not None:
+        receipt.update(stop_reason="RATE_LIMITED", rate_limit=rate_limit)
+    return receipt
 
 
 def _write_receipt(receipt: dict[str, Any], out: Path | None) -> None:
