@@ -163,6 +163,9 @@ If source delivery observes a Slack Retry-After, the local report records
 `health_delivery: deferred_slack_retry_after` and the same pass makes no health
 request. The next existing poll retries after the persisted cooldown; a GitHub
 or Gmail retry delay alone does not defer Slack health reporting.
+Both direct and existing-custody Slack reads honor numeric and HTTP-date retry
+deadlines. Ordinary HTTP authentication failures without a retry header remain
+failures without being reported as a provider cooldown.
 
 The workflow caches only this sanitized ledger, not provider contents. Treat
 cache eviction as possible; Slack markers remain the recovery source. A process
