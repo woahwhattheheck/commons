@@ -8,6 +8,7 @@ Slack authors are not sessions. Missing evidence is UNKNOWN.
 from __future__ import annotations
 
 import hashlib
+import math
 from typing import Any
 
 from protocol.events import canonical_json, classify_runtime, parse_event, parse_events
@@ -378,23 +379,21 @@ def project_economy(legacy: dict[str, Any]) -> dict[str, Any]:
     offer = recovery.get("offer") if isinstance(recovery.get("offer"), dict) else {}
     truth = recovery.get("truth") if isinstance(recovery.get("truth"), dict) else {}
     cash = truth.get("collected_cash_usd")
-    if not isinstance(cash, (int, float)) or isinstance(cash, bool):
+    if (not isinstance(cash, (int, float)) or isinstance(cash, bool)
+            or (isinstance(cash, float) and not math.isfinite(cash))):
         cash = None
-    replies = truth.get("replies_observed")
-    if not isinstance(replies, int) or isinstance(replies, bool):
-        replies = 0
-    contacts = truth.get("distinct_contacts_sent")
-    if not isinstance(contacts, int) or isinstance(contacts, bool):
-        contacts = 0
+    counters = {}
+    for field in ("replies_observed", "distinct_contacts_sent", "provider_transports_observed"):
+        value = truth.get(field)
+        counters[field] = value if type(value) is int and value >= 0 else None
     return {
         "loop": "observed need → independently verified buyer → bounded offer → authorized contact → delivered transport → human reply → accepted scope → delivery → acceptance → payment → cash",
+        "observation_scope": "revenue/payment_ready/recovery.json; other revenue lanes are not aggregated",
         "collected_cash_usd": cash,
         "cash_state": (offer.get("cash_state") or truth.get("bank_available") or UNKNOWN) if cash is not None else UNKNOWN,
         "bank_available": truth.get("bank_available") or UNKNOWN,
         "buyer": truth.get("buyer") or UNKNOWN,
-        "replies_observed": replies,
-        "distinct_contacts_sent": contacts,
-        "provider_transports_observed": truth.get("provider_transports_observed") if isinstance(truth.get("provider_transports_observed"), int) else 0,
+        **counters,
         "never_counted_as_revenue": [
             "draft", "intent", "invoice", "checkout_page", "sandbox_stripe",
             "wallet_capability", "token_balance", "unverified_buyer_interest",
@@ -402,6 +401,9 @@ def project_economy(legacy: dict[str, Any]) -> dict[str, Any]:
         "next_economic_action": "Report only sourced cash; missing evidence is UNKNOWN. Do not send outreach or spend from this projector.",
         "evidence": [
             _evidence("revenue/payment_ready/recovery.json", "OBSERVED" if cash is not None else "UNKNOWN", field="truth.collected_cash_usd"),
+        ] + [
+            _evidence("revenue/payment_ready/recovery.json", "OBSERVED" if value is not None else "UNKNOWN", field="truth." + field)
+            for field, value in counters.items()
         ],
     }
 
@@ -496,7 +498,8 @@ def briefing_from(snapshot_parts: dict[str, Any]) -> dict[str, Any]:
 
 def cash_statement(economy: dict[str, Any]) -> str:
     cash = economy.get("collected_cash_usd")
-    return "Collected cash is UNKNOWN (no numeric cash truth observed)." if cash is None else "Commons revenue remains USD %s." % cash
+    return ("Collected cash is UNKNOWN (no numeric cash truth observed)." if cash is None else
+            "Revenue recovery source reports USD %s collected." % cash)
 
 
 def _presence_rows(legacy: dict[str, Any], now: str, stale_after: int) -> list[dict[str, Any]]:
@@ -814,7 +817,10 @@ def project(
             "s" if len(collisions) == 1 else "",
         ),
         "%s claims present (existence, not sessions)." % len(presence),
-        "No verified positive replies." if economy["replies_observed"] == 0 else "%s human replies observed." % economy["replies_observed"],
+        ("Positive replies are UNKNOWN (no numeric reply observation)."
+         if economy["replies_observed"] is None else
+         "No verified positive replies." if economy["replies_observed"] == 0 else
+         "%s human replies observed." % economy["replies_observed"]),
         cash_statement(economy),
     ]
     if counts["STALE"]:
