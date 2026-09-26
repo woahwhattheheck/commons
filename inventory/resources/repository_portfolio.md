@@ -58,6 +58,13 @@ complete fresh listing leave the current projection; their prior observation
 remains in Git history. A missing canonical head or incomplete listing leaves
 the previous output untouched. Writes replace the destination atomically.
 
+Refreshes reject an older overall observation or an older head observation for
+any repository already in the projection. A later listing timestamp does not
+refresh an earlier captured head. Equal timestamps remain replayable, and dates
+are compared as timezone-aware instants. A rejected replay leaves the output
+untouched. To reproduce an older capture, use its matching historical projection
+as the routing input instead of replacing newer observations.
+
 Commit the source and projection together. `evidence.source_sha256` binds the
 projection to the exact source bytes. Repeating the build from those bytes and
 the same routing roles produces the same projection, without new API reads.
