@@ -114,6 +114,16 @@ class JobError(Exception):
         })
 
 
+def tick_failure(job_id: str, exc: Exception) -> dict[str, Any]:
+    """Keep an independent job failure visible without authorizing a wake."""
+    failure = exc.payload() if isinstance(exc, JobError) else {
+        "ok": False, "state": "ERROR", "code": "JOB_TICK_FAILED",
+        "error_class": type(exc).__name__,
+        "message": "Job state could not be read or advanced; inspect its retained state before retrying.",
+    }
+    return {**failure, "job_id": job_id, "action": "ERROR", "invoke_model": False}
+
+
 def utc_now() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
 
@@ -505,14 +515,19 @@ class JobStore:
     ) -> dict[str, Any]:
         rows = []
         for ident in self.list_ids():
-            rows.append(self.tick(ident, now=now, worker_id=worker_id, page_exists=page_exists))
+            try:
+                rows.append(self.tick(ident, now=now, worker_id=worker_id, page_exists=page_exists))
+            except Exception as exc:
+                rows.append(tick_failure(ident, exc))
+        errors = sum(1 for row in rows if not row.get("ok"))
         wake = sum(1 for row in rows if row.get("action") == "WAKE")
         stop = sum(1 for row in rows if row.get("action") == "STOP")
         backoff = sum(1 for row in rows if row.get("action") == "BACKOFF")
         invoke = sum(1 for row in rows if row.get("invoke_model"))
         summary = {
-            "ok": True,
-            "state": "TICKED",
+            "ok": not errors,
+            "state": "DEGRADED" if errors else "TICKED",
+            "error_count": errors,
             "jobs": rows,
             "wake_count": wake,
             "stop_count": stop,
@@ -1213,11 +1228,13 @@ class JobStore:
     def _write_last_tick(self, summary: dict[str, Any]) -> None:
         self.directory.mkdir(parents=True, exist_ok=True)
         public = {
-            "state": "TICKED",
+            "state": summary.get("state", "TICKED"),
             "ts": utc_now(),
             "wake_count": summary["wake_count"],
             "stop_count": summary["stop_count"],
             "backoff_count": summary["backoff_count"],
+            "error_count": summary.get("error_count", 0),
+            "error_job_ids": [row["job_id"] for row in summary["jobs"] if not row.get("ok")],
             "invoke_model_count": summary["invoke_model_count"],
             "process_model_invocations": 0,
             "wake_job_ids": [row["job_id"] for row in summary["jobs"] if row.get("action") == "WAKE"],
