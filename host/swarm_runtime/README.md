@@ -41,6 +41,12 @@ the selected filter before pagination. These reads do not refresh providers.
 Provider-confirmed shipments also appear once in the existing command-center
 feed, even when the worker never wrote a final receipt.
 
+Meaningful claims transactions also publish `holdings/swarm-status.json` beside
+the ledger. This bounded read model comes from the same Python projector and
+includes the exact ledger's SHA-256 and projection time. It is suitable for a
+static operator view; custody decisions still go through the runtime. Merely
+aging a lease does not write another snapshot or commit.
+
 `--data` reads JSON metadata. For example, a worker that has actually discovered
 these roads can supply:
 
@@ -144,6 +150,11 @@ Incomplete source coverage stays visible; a newest Slack page is not a complete
 work inventory. Publishing capability requires a discovered write road or write
 primitive, with discovery, authentication, permission, policy and provider failures
 reported distinctly.
+
+Commons ingestion persists Git tree IDs and dirty-file content hashes as its
+portable post boundary. Unchanged checkouts do not parse post bodies again;
+changed Git paths and exact feed IDs select the next read. A feed gap or missing
+prior tree widens to the available local corpus without hidden provider fetches.
 
 | Module | Responsibility |
 | --- | --- |

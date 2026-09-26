@@ -28,10 +28,12 @@ from host.coordination_state import (
     _parse_ts, _push_ref, _remote_tip, repository_claim_key,
 )
 from . import locks
+from .snapshot import STATUS_PATH
 
 SCHEMA = "commons-swarm-runtime/v1"
 SNAPSHOT_SCHEMA = "commons-swarm-runtime-snapshot/v1"
 STATE_PATH = "holdings/swarm-runtime.json"
+NON_LEGACY_PATHS = {STATE_PATH, STATUS_PATH}
 
 
 class StoreError(RuntimeError):
@@ -89,6 +91,12 @@ def _state(value):
         value.setdefault(name, default)
         if type(value[name]) is not type(default):
             raise StoreError("invalid_state", "runtime field %s has an invalid type" % name)
+    if isinstance(value.get("legacy_holdings"), dict):
+        value["legacy_holdings"] = {path: row for path, row in value["legacy_holdings"].items()
+                                    if path not in NON_LEGACY_PATHS}
+    if isinstance(value.get("legacy_unreadable"), list):
+        value["legacy_unreadable"] = [path for path in value["legacy_unreadable"]
+                                     if path not in NON_LEGACY_PATHS]
     return value
 
 
@@ -134,13 +142,16 @@ class GitStore:
             try:
                 cached = json.loads(self._cache_path.read_text(encoding="utf-8"))
                 if isinstance(cached, dict) and cached.get("schema") == SNAPSHOT_SCHEMA:
+                    cached["state"] = _state(cached.get("state", {}))
                     self._cache = cached
-                    self._legacy_oids = cached.get("legacy_oids", {})
+                    self._legacy_oids = {path: blob for path, blob in cached.get("legacy_oids", {}).items()
+                                         if path not in NON_LEGACY_PATHS}
+                    cached["legacy_oids"] = self._legacy_oids
                     holdings = cached.get("state", {}).get("legacy_holdings", {})
                     self._blob_records = {blob: copy.deepcopy(holdings[path])
                                           for path, blob in self._legacy_oids.items()
                                           if path in holdings and isinstance(holdings[path], dict)}
-            except (OSError, ValueError, TypeError):
+            except (OSError, ValueError, TypeError, StoreError):
                 pass
         return self._cache
 
@@ -171,7 +182,7 @@ class GitStore:
 
     def _remember_publication(self, tip, state, proposal):
         for item in proposal["files"]:
-            if item["path"] != STATE_PATH:
+            if item["path"] not in NON_LEGACY_PATHS:
                 self._legacy_oids[item["path"]] = item["blob"]
         self._remember(tip, state)
 
@@ -247,7 +258,7 @@ class GitStore:
                 continue
             meta, path = row.split("\t", 1)
             _mode, kind, blob = meta.split()
-            if kind == "blob" and path.endswith(".json"):
+            if kind == "blob" and path.endswith(".json") and path != STATUS_PATH:
                 entries[path] = blob
         wanted = [blob for path, blob in entries.items()
                   if path == STATE_PATH or blob not in self._blob_records]
@@ -262,7 +273,7 @@ class GitStore:
         holdings, unreadable = {}, []
         current_records = {}
         for path, blob in sorted(entries.items()):
-            if path == STATE_PATH:
+            if path in NON_LEGACY_PATHS:
                 continue
             if blob in self._blob_records:
                 record = self._blob_records[blob]
@@ -278,7 +289,7 @@ class GitStore:
             if record.get("unreadable"):
                 unreadable.append(path)
         self._blob_records = current_records
-        self._legacy_oids = {path: blob for path, blob in entries.items() if path != STATE_PATH}
+        self._legacy_oids = {path: blob for path, blob in entries.items() if path not in NON_LEGACY_PATHS}
         state["legacy_holdings"] = holdings
         if unreadable:
             state["legacy_unreadable"] = unreadable
@@ -386,6 +397,8 @@ class GitStore:
         return updates
 
     def _commit(self, tip, content, holdings=None):
+        from .snapshot import build as build_status
+
         fd, index = tempfile.mkstemp(prefix="swarm-runtime-index-")
         os.close(fd)
         os.unlink(index)
@@ -397,6 +410,9 @@ class GitStore:
                 self.git.run("read-tree", "--empty", env=env)
             files = {STATE_PATH: content}
             files.update({path: _json(record) for path, record in (holdings or {}).items()})
+            # _prepare calls this only after a real ledger/holding change. The
+            # projection clock therefore cannot create a no-op status commit.
+            files[STATUS_PATH] = _json(build_status(content, branch=self.branch))
             blobs = {}
             for path, text in sorted(files.items()):
                 blob = self.git.out("hash-object", "-w", "--stdin", input_text=text).strip()

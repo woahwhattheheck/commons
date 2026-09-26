@@ -18,6 +18,7 @@ def _terminal_receipts(state, tasks, tip, observed_at):
     import hashlib
     import json
     from host.swarm_runtime.identity import task_key
+    from host.swarm_runtime.projector import _landed_artifact, normalize_equivalent
 
     def known(value):
         return value not in (None, "", "UNKNOWN")
@@ -47,7 +48,7 @@ def _terminal_receipts(state, tasks, tip, observed_at):
                     fact = facts.get(task_key(repo=task["repo"], kind="pr", number=task["pr"]))
                 except (ValueError, TypeError):
                     fact = None
-            replacement = (fact or {}).get("equivalent") or (fact or {}).get("superseded_by")
+            replacement = normalize_equivalent((fact or {}).get("equivalent") or (fact or {}).get("superseded_by"))
             projected = task.get("superseded_by")
             if isinstance(replacement, dict) and isinstance(projected, dict):
                 merge = replacement.get("merge_sha") or replacement.get("merge_commit_sha")
@@ -56,6 +57,12 @@ def _terminal_receipts(state, tasks, tip, observed_at):
                 if merged and known(merge) and merge == projected_merge:
                     evidence = {"kind": "superseding_merge", "sha": merge}
                     detail = "Provider confirmed replacement merge " + str(merge)
+                elif _landed_artifact(replacement) and _landed_artifact(projected) and (
+                    replacement["artifact_sha"] == projected["artifact_sha"]
+                    and replacement["landed_sha"] == projected["landed_sha"]
+                ):
+                    evidence = {"kind": "superseding_artifact", "sha": replacement["artifact_sha"]}
+                    detail = "Provider confirmed replacement artifact " + replacement["artifact_sha"] + " on " + replacement["landed_sha"]
         if evidence is None:
             continue
         identity = json.dumps([key, terminal, evidence], sort_keys=True, separators=(",", ":"))

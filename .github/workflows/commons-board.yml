@@ -166,7 +166,7 @@ jobs:
           # by closed_at. A failed call removes the file, and the module then
           # names the closed listing as unread instead of showing no closures.
           gh api "repos/$REPO/pulls?state=closed&sort=updated&direction=desc&per_page=30" \
-              --jq '.[]|{number,title,created_at,closed_at,merged_at,merge_commit_sha,user:{login:.user.login},head:{ref:.head.ref,sha:.head.sha},base:{ref:.base.ref}}' \
+              --jq '.[]|{number,title,created_at,closed_at,updated_at,merged_at,merge_commit_sha,user:{login:.user.login},head:{ref:.head.ref,sha:.head.sha},base:{ref:.base.ref}}' \
               > /tmp/closed_pulls.jsonl 2>/dev/null || rm -f /tmp/closed_pulls.jsonl
           # Open counts from the repository's own totals first. The search
           # index is a separate road that can lag: on 2026-09-11 a bake read 4
