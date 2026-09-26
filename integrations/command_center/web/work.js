@@ -197,9 +197,9 @@
     let saving=false;
     form.addEventListener('submit',async e=>{e.preventDefault();if(saving)return;
       let job;try{if(fields.job.value.trim()){job=JSON.parse(fields.job.value);if(job!==null&&(typeof job!=='object'||Array.isArray(job)))throw new Error('Prepared job must be an object or null.');if(job&&(job.status&&!['prepared'].includes(job.status)||job.dispatch_status&&job.dispatch_status!=='not_dispatched'))throw new Error('A prepared packet cannot claim dispatch or completion.');}}catch(error){out.hidden=false;out.replaceChildren(node('p','source-error',error.message));return;}
-      const payload={source_id:i.source_id,item_id:i.id,priority:fields.priority.value.trim()==='0'?0:fields.priority.value.trim()||null,next_action:fields.next_action.value.trim()||null};if(job!==undefined)payload.job=job;
+      const payload={source_id:i.source_id,item_id:i.id,expected_revision:owned(i).revision??0,priority:fields.priority.value.trim()==='0'?0:fields.priority.value.trim()||null,next_action:fields.next_action.value.trim()||null};if(job!==undefined)payload.job=job;
       saving=true;submit.disabled=true;Object.values(fields).forEach(f=>f.disabled=true);
-      try{await api.updateWork('work-item:'+i.source_id+':'+i.id,payload,out);await refresh(false,true);}
+      try{const saved=await api.updateWork('work-item:'+i.source_id+':'+i.id,payload,out);await refresh(false,true);if(saved){dialog.close();api.showToast('Work direction saved.');}}
       finally{saving=false;submit.disabled=false;Object.values(fields).forEach(f=>f.disabled=false);submit.textContent='Save / reconcile unchanged edit';}
     });dialog.append(form);document.body.append(dialog);dialog.addEventListener('close',()=>dialog.remove());dialog.showModal();
   }
