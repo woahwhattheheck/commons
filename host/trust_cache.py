@@ -13,6 +13,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable
 
+try:
+    from host.swarm_runtime import locks as _process_locks
+except ModuleNotFoundError:
+    from swarm_runtime import locks as _process_locks
+
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_LEDGER = ROOT / "trust_cache" / "receipts.jsonl"
@@ -155,7 +160,40 @@ def run_check(
 ) -> tuple[dict[str, Any], int]:
     if not command:
         raise TrustCacheError("run requires a command after --")
+    # Alias paths must share the same custody and append destination. Keep
+    # unrelated artifact/check pairs independent even within one ledger.
+    ledger = ledger.resolve()
     snapshot = status(artifact, check_id, ledger)
+    key = json.dumps([snapshot["artifact_sha256"], check_id], ensure_ascii=True)
+    lock_dir = ledger.parent / (ledger.name + ".locks")
+    lock_dir.mkdir(parents=True, exist_ok=True)
+    lock_path = lock_dir / (hashlib.sha256(key.encode("utf-8")).hexdigest() + ".lock")
+    try:
+        handle = _process_locks.take(lock_path)
+    except _process_locks.LockUnavailable as error:
+        raise TrustCacheError(f"check custody unavailable: {error}") from error
+    if handle is None:
+        snapshot.update({"event": "CHECK_BUSY", "executed": False})
+        return snapshot, 75
+    try:
+        # Proof may have arrived while hashing/selecting the lock. Reuse it
+        # before starting a command, and never run under an old content key.
+        current = status(artifact, check_id, ledger)
+        if current["artifact_sha256"] != snapshot["artifact_sha256"]:
+            current.update({"event": "ARTIFACT_CHANGED_BEFORE_CHECK", "executed": False})
+            return current, 75
+        return _run_check_locked(artifact, check_id, command, ledger, current)
+    finally:
+        _process_locks.release(handle)
+
+
+def _run_check_locked(
+    artifact: Path,
+    check_id: str,
+    command: list[str],
+    ledger: Path,
+    snapshot: dict[str, Any],
+) -> tuple[dict[str, Any], int]:
     if snapshot["state"] == "TRUSTED":
         append_receipt(
             ledger,
