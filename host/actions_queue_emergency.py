@@ -114,6 +114,9 @@ def run_one(
         "returncode": done.returncode, "receipt": str(receipt),
         "error": error, **{field: data[field] for field in FIELDS},
         "queued_inventory_complete": data.get("queued_inventory_complete"),
+        "stop_reason": data.get("stop_reason"),
+        "rate_limit": data.get("rate_limit"),
+        "candidates_unprocessed": data.get("candidates_unprocessed"),
     }
 
 
@@ -145,6 +148,7 @@ def orchestrate(
     run_dir.mkdir(parents=True, exist_ok=False, mode=0o700)
     rows: list[dict[str, Any]] = []
     stop = "ROUND_LIMIT_REACHED"
+    completed_rounds = 0
     for round_number in range(1, rounds + 1):
         current: list[dict[str, Any]] = []
         for repo in selected:
@@ -157,6 +161,15 @@ def orchestrate(
             )
             rows.append(result)
             current.append(result)
+            # Repositories share the provider quota. A worker backoff signal
+            # must stop this pass before starting another repository or round.
+            if result.get("stop_reason") == "RATE_LIMITED":
+                break
+        if len(current) == len(selected):
+            completed_rounds += 1
+        if any(row.get("stop_reason") == "RATE_LIMITED" for row in current):
+            stop = "RATE_LIMITED"
+            break
         if any(row.get("error") for row in current):
             stop = "ORCHESTRATION_ERROR"
             break
@@ -177,7 +190,7 @@ def orchestrate(
         "mode": "execute" if execute else "dry_run",
         "run_id": run_id, "repos": list(selected), "stop_reason": stop,
         "requested_rounds": rounds,
-        "completed_rounds": max((row["round"] for row in rows), default=0),
+        "completed_rounds": completed_rounds,
         "bounds": {"cap_per_repo": cap, "max_cancels_per_repo_round": max_cancels,
                    "min_age_seconds": min_age_seconds},
         "totals": {
@@ -221,8 +234,10 @@ def main(argv: list[str] | None = None) -> int:
         )
     except (OSError, ValueError) as exc:
         parser.exit(2, f"actions_queue_emergency: {exc}\n")
-    print(json.dumps({"summary": str(path), "totals": summary["totals"]}, sort_keys=True))
-    return 2 if summary["totals"]["orchestration_errors"] else 0
+    print(json.dumps({"summary": str(path), "totals": summary["totals"],
+                      "stop_reason": summary["stop_reason"]}, sort_keys=True))
+    return 2 if (summary["totals"]["orchestration_errors"]
+                 or summary["stop_reason"] == "RATE_LIMITED") else 0
 
 
 if __name__ == "__main__":
