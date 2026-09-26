@@ -8,6 +8,7 @@ from pathlib import Path
 
 from .core import PreflightError, compile_current, read_json_file, verify_current, verify_integrity
 from .publication import write_json_exclusive
+from .inventory import snapshot_from_inventory
 
 
 def _emit_error(message: str) -> None:
@@ -17,6 +18,10 @@ def _emit_error(message: str) -> None:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="connector-preflight")
     sub = parser.add_subparsers(dest="command", required=True)
+
+    capture_parser = sub.add_parser("capture", help="adapt a retained full tool registry without re-dating it")
+    capture_parser.add_argument("input", type=Path)
+    capture_parser.add_argument("output", type=Path)
 
     compile_parser = sub.add_parser("compile", help="compile a current preflight bundle")
     compile_parser.add_argument("input", type=Path)
@@ -33,6 +38,13 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     try:
         raw = read_json_file(args.input)
+        if args.command == "capture":
+            snapshot = snapshot_from_inventory(raw)
+            write_json_exclusive(args.output, snapshot)
+            print(json.dumps({"ok": True, "captured_at": snapshot["captured_at"],
+                              "actions": len(snapshot["discoveries"][0]["actions"]),
+                              "output": str(args.output)}, sort_keys=True))
+            return 0
         if args.command == "compile":
             bundle = compile_current(raw)
             write_json_exclusive(args.output, bundle)
