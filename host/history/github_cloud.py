@@ -185,10 +185,10 @@ def plan_checkpoint_files(raw):
     def flush():
         if not current:
             return
-        name = 'details-%04d.json' % len(files)
         shard = dumps({'schema': DETAIL_SHARD_SCHEMA, 'details': list(current)})
         if len(shard) > MAX_CHECKPOINT_BYTES:
             raise RuntimeError('checkpoint_over_publisher_ceiling')
+        name = 'details-%04d-%s.json' % (len(files), hashlib.sha256(shard).hexdigest())
         files.append((name, shard))
 
     for pair in compact['details']:
@@ -232,7 +232,7 @@ def plan_full_checkpoint_files(data):
             blob = encode(current)
             if len(blob) > MAX_CHECKPOINT_BYTES:
                 raise RuntimeError('checkpoint_over_publisher_ceiling')
-            name = 'checkpoint-%s-%04d.json' % (field, len(names))
+            name = 'checkpoint-%s-%04d-%s.json' % (field, len(names), hashlib.sha256(blob).hexdigest())
             names.append(name)
             files.append((name, blob))
 
