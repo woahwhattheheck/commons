@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "runtime-provider-fact-precedence-20260926",
+  "holder": "high-burn-lane-a",
+  "state": "HELD",
+  "taken_at": "2026-09-26T15:05:02.694Z",
+  "heartbeat_at": "2026-09-26T15:05:02.694Z",
+  "ttl_s": 1800,
+  "note": "Own host/swarm_runtime/{projector.py,runtime.py,sources.py,README.md}: reuse existing immutable/time fact merge through every aggregation layer; preserve merged evidence from later stale batches."
+}
