@@ -58,11 +58,11 @@ class GitHubPageEvidenceTests(unittest.TestCase):
         self.assertTrue(complete)
 
     def test_exact_total_at_budget_is_complete(self):
-        (_, complete), _ = self.pages([{"items": [1, 2, 3], "total_count": 3}], max_pages=1)
+        (_, complete), _ = self.pages([{"items": [{"id": 1}, {"id": 2}, {"id": 3}], "total_count": 3}], max_pages=1)
         self.assertTrue(complete)
 
     def test_more_total_at_budget_remains_incomplete(self):
-        (_, complete), _ = self.pages([{"items": [1, 2, 3], "total_count": 4}], max_pages=1)
+        (_, complete), _ = self.pages([{"items": [{"id": 1}, {"id": 2}, {"id": 3}], "total_count": 4}], max_pages=1)
         self.assertFalse(complete)
 
     def test_zero_total_with_empty_page_is_complete(self):
@@ -70,22 +70,22 @@ class GitHubPageEvidenceTests(unittest.TestCase):
         self.assertTrue(complete)
 
     def test_list_endpoint_short_page_needs_no_total(self):
-        (rows, complete), _ = self.pages([[1]], key=None)
-        self.assertEqual(rows, [1])
+        (rows, complete), _ = self.pages([[{"id": 1}]], key=None)
+        self.assertEqual(rows, [{"id": 1}])
         self.assertTrue(complete)
 
     def test_list_endpoint_at_page_budget_is_not_complete(self):
-        (_, complete), _ = self.pages([[1, 2, 3]], key=None, max_pages=1)
+        (_, complete), _ = self.pages([[{"id": 1}, {"id": 2}, {"id": 3}]], key=None, max_pages=1)
         self.assertFalse(complete)
 
     def test_optional_total_can_be_omitted(self):
-        (_, complete), _ = self.pages([{"items": [1]}])
+        (_, complete), _ = self.pages([{"items": [{"id": 1}]}])
         self.assertTrue(complete)
 
     def test_incomplete_flag_persists_across_pages(self):
         (_, complete), _ = self.pages([
-            {"items": [1, 2, 3], "total_count": 4, "incomplete_results": True},
-            {"items": [4], "total_count": 4, "incomplete_results": False},
+            {"items": [{"id": 1}, {"id": 2}, {"id": 3}], "total_count": 4, "incomplete_results": True},
+            {"items": [{"id": 4}], "total_count": 4, "incomplete_results": False},
         ])
         self.assertFalse(complete)
 
@@ -112,6 +112,10 @@ class GitHubPageEvidenceTests(unittest.TestCase):
     def test_malformed_rows_keep_existing_shape_error(self):
         with self.assertRaisesRegex(SourceFailure, "github_response_shape"):
             self.pages([{"items": {}, "total_count": 0}])
+
+    def test_scalar_rows_keep_existing_shape_error(self):
+        with self.assertRaisesRegex(SourceFailure, "github_response_shape"):
+            self.pages([{"items": [1, 2, 3], "total_count": 3}])
 
     def test_overlapping_page_id_does_not_fake_total_completion(self):
         (rows, complete), _ = self.pages([
