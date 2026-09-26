@@ -1,8 +1,8 @@
 {
   "counts": {
-    "open_issues": 8842,
+    "open_issues": 8582,
     "open_pull_requests": 7,
-    "runs_in_progress": 3,
+    "runs_in_progress": 1,
     "runs_queued": 70
   },
   "counts_source": "graphql",
@@ -155,8 +155,34 @@
   },
   "pulls_listed": 7,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 23.3,
+  "queue_depth_per_runner": 70.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "master2/uiowa119-operating-handoff-20260926",
+      "closed_at": "2026-09-26T21:17:03Z",
+      "head_sha": "be57eade182d89f61c72e3bca31a89a8293f02f5",
+      "merge_commit_sha": "0bb7ce2140389376550c27b6ac70a6dc09da1b4c",
+      "merged_at": "2026-09-26T21:17:03Z",
+      "number": 30105,
+      "state": "MERGED",
+      "title": "Complete UIOWA-119 browser handoff and link the working guide [skip ci]",
+      "updated_at": "2026-09-26T21:17:13Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "master2/slack-revision-current-truth-20260926",
+      "closed_at": "2026-09-26T21:16:35Z",
+      "head_sha": "5fd71e23a64fdee1981231201a3149876e238221",
+      "merge_commit_sha": "975c646886048f3a39c6295a2f4c007c4508aa75",
+      "merged_at": "2026-09-26T21:16:35Z",
+      "number": 30104,
+      "state": "MERGED",
+      "title": "Keep native Slack edits current without rewriting history",
+      "updated_at": "2026-09-26T21:16:46Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -325,36 +351,10 @@
       "state": "MERGED",
       "title": "Normalize unknown provider merge evidence",
       "updated_at": "2026-09-26T18:32:09Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "fix/runtime-artifact-context-evidence-20260926",
-      "closed_at": "2026-09-26T15:17:47Z",
-      "head_sha": "2d0c1b1c6c1b336164bc67180f0ed7c07385472a",
-      "merge_commit_sha": "cabd9822301a4daa4967894e7d73e8e9b3e25ef2",
-      "merged_at": "2026-09-26T15:17:47Z",
-      "number": 30080,
-      "state": "MERGED",
-      "title": "Retain artifact landing evidence in worker context",
-      "updated_at": "2026-09-26T18:32:10Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/context-packet-chronology-20260926",
-      "closed_at": "2026-09-26T15:16:36Z",
-      "head_sha": "a22e7620de7828416edeeb9b304a53c73417c86c",
-      "merge_commit_sha": "017ce492c6e3aacd3ecb9cbb47f8ed59039471f7",
-      "merged_at": "2026-09-26T15:16:36Z",
-      "number": 30079,
-      "state": "MERGED",
-      "title": "Order bounded context selections by observation instant",
-      "updated_at": "2026-09-26T18:32:09Z"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-26T19:20:43Z",
+  "unchanged_since": "2026-09-26T21:37:50Z",
   "undatable_pulls": []
 }

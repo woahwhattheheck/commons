@@ -92,11 +92,21 @@ service and stops the server when the command ends.
 python browser_smoke.py /tmp/uiowa-119-example --browser /path/to/chromium
 ```
 
-This cloud runtime blocked both file and loopback browser navigation with
-`net::ERR_BLOCKED_BY_ADMINISTRATOR`. Therefore **browser click/reload verification
-is not claimed**. The stdlib unit/integration tests, source-identity checks, and
-19 destination checks did execute. Run the optional harness in the intended
-review environment before claiming browser navigation coverage there.
+The original September 19 runtime blocked file and loopback navigation with
+`net::ERR_BLOCKED_BY_ADMINISTRATOR`; the historical validation receipts retain
+that observation. It is not a current blocker for the published review guide.
+
+[Open the ready-to-use review guide](https://woahwhattheheck.github.io/commons/revenue/uiowa_rfq_18649_bundle_links/checked_example/review.html).
+On September 26, 2026, actual cloud Chrome interaction followed all four question
+links and reloaded each destination. The correct target and source text remained
+selected: `report.html#L9` (RIS evidence gap), `évidence.html#E-006` (unretained
+interview example), `évidence.html#E-007` (one IAM consumer), and `report.html#L25`
+(the limited recommendation). Both source pages returned to the review guide.
+
+This establishes click/reload behavior for the existing public GitHub Pages
+bundle. It does not claim local-file or loopback browser operation, native
+Windows/macOS coverage, source authenticity, or University findings. The optional
+harness is available if a different delivery environment needs its own check.
 
 ## Ready-to-open checked example
 
