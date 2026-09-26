@@ -96,7 +96,8 @@
     note.textContent = (failure ? "Refresh failed: " + failure + ". Previous pinned snapshot retained." + retry + " " : "") +
       "Projected " + date(snapshot.projected_at) + " · " + tasks.length + " loaded / " + readable(snapshot.total) + " canonical tasks. " +
       "Counts and lifecycle are as projected; current lease ages appear on each active task." +
-      (snapshot.truncated ? " Task list is truncated; filters cover loaded rows only. Use swarmctl status --task for an exact lookup." : "");
+      (snapshot.truncated ? " Task list is truncated; filters cover loaded rows only. Use swarmctl status --task for an exact lookup." : "") +
+      (snapshot.metadata_truncated ? " Some source and summary detail is omitted from this bounded snapshot." : "");
     for (const [state, count] of Object.entries(summary.counts || {})) counts.append(badge(state + " " + count, liveClass(state)));
     counts.append(badge(readable(summary.recoverable_count) + " recoverable", "STALE"),
       badge(readable(summary.stale_seat_count) + " stale seats", "STALE"),
@@ -130,6 +131,7 @@
     const source = node("a", "Open this exact derived snapshot"); source.href = "https://github.com/" + REPO + "/blob/" + pin.sha + "/" + PATH;
     detailBody.append(source, node("p", "Source ledger SHA-256 " + readable(snapshot.source_ledger_sha256), "small mono"),
       node("p", "Consumed feed cursor " + readable(snapshot.feed_cursor), "small mono"));
+    if (snapshot.metadata_truncated) detailBody.append(node("p", "Omitted detail: " + compact(snapshot.omitted_metadata), "small muted"));
     const pools = summary.idle_capabilities || {};
     detailBody.append(node("h3", "Idle capability pools at projection", "small muted"));
     const poolRows = Object.entries(pools);

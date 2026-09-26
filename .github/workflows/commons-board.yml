@@ -155,19 +155,24 @@ jobs:
           # session holding a reviewed or claimed head sees it move from one read.
           PULLS_COMPLETE=""
           if gh api --paginate "repos/$REPO/pulls?state=open&per_page=100&sort=created&direction=desc" \
-              --jq '.[]|{number,title,draft,created_at,updated_at,user:{login:.user.login},head:{ref:.head.ref,sha:.head.sha},base:{ref:.base.ref}}' \
+              --jq '.[]|{number,title,draft,created_at,updated_at,user:{login:.user.login},head:{ref:.head.ref,sha:.head.sha},base:{ref:.base.ref,sha:.base.sha}}' \
               > /tmp/open_pulls.jsonl 2>/dev/null; then
+            date -u +'%Y-%m-%dT%H:%M:%SZ' > /tmp/open_pulls.observed_at
             PULLS_COMPLETE="--pulls-complete"
           else
-            rm -f /tmp/open_pulls.jsonl
+            rm -f /tmp/open_pulls.jsonl /tmp/open_pulls.observed_at
           fi
           # The newest closures, merged or not, with the head that closed. One
           # page of the most recently updated closed pulls; the module orders
           # by closed_at. A failed call removes the file, and the module then
           # names the closed listing as unread instead of showing no closures.
-          gh api "repos/$REPO/pulls?state=closed&sort=updated&direction=desc&per_page=30" \
-              --jq '.[]|{number,title,created_at,closed_at,updated_at,merged_at,merge_commit_sha,user:{login:.user.login},head:{ref:.head.ref,sha:.head.sha},base:{ref:.base.ref}}' \
-              > /tmp/closed_pulls.jsonl 2>/dev/null || rm -f /tmp/closed_pulls.jsonl
+          if gh api "repos/$REPO/pulls?state=closed&sort=updated&direction=desc&per_page=30" \
+              --jq '.[]|{number,title,created_at,closed_at,updated_at,merged_at,merge_commit_sha,user:{login:.user.login},head:{ref:.head.ref,sha:.head.sha},base:{ref:.base.ref,sha:.base.sha}}' \
+              > /tmp/closed_pulls.jsonl 2>/dev/null; then
+            date -u +'%Y-%m-%dT%H:%M:%SZ' > /tmp/closed_pulls.observed_at
+          else
+            rm -f /tmp/closed_pulls.jsonl /tmp/closed_pulls.observed_at
+          fi
           # Open counts from the repository's own totals first. The search
           # index is a separate road that can lag: on 2026-09-11 a bake read 4
           # open pull requests from search while its own listing held 100.
@@ -235,8 +240,17 @@ jobs:
         run: |
           # Reuse this ingest's feed, seats and GitHub snapshot. The existing
           # claims writer bounds ref-contention retries; do not add a poll loop.
+          # Capture times belong to successful provider reads, not to a bake's
+          # unchanged_since or file mtime. /tmp survives a no-change bake exit.
+          python3 - "$RUNNER_TEMP/swarm-read-facts.json" <<'PY'
+          import json, os, pathlib, sys
+          from host.swarm_runtime.sources import github_listing_files
+          facts = github_listing_files(os.environ["GITHUB_REPOSITORY"], "/tmp")
+          pathlib.Path(sys.argv[1]).write_text(json.dumps(facts, sort_keys=True), encoding="utf-8")
+          PY
           status=0
-          python3 host/swarmctl.py --output "$RUNNER_TEMP/swarm-sync.json" sync --cached --max-calls 0 || status=$?
+          python3 host/swarmctl.py --output "$RUNNER_TEMP/swarm-sync.json" sync --cached --max-calls 0 \
+            --facts "$RUNNER_TEMP/swarm-read-facts.json" || status=$?
           python3 - "$RUNNER_TEMP/swarm-sync.json" "$status" <<'PY'
           import json, pathlib, sys
           try:

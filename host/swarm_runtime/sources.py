@@ -11,6 +11,7 @@ import json
 import os
 import re
 import subprocess
+from datetime import datetime, timezone
 from pathlib import Path
 
 from host import feed_delta, seat_census
@@ -376,6 +377,68 @@ def _fact(row, source, repo=None):
         if merged.get(name) is not None:
             fact[name] = copy.deepcopy(merged[name])
     return key, fact
+
+
+def github_listing_facts(repository, *, open_rows=None, open_observed_at=None,
+                         closed_rows=None, closed_observed_at=None):
+    """Reuse successful provider reads with their explicit observation times.
+
+    These transient facts make the already-read open PRs routable without
+    changing the byte-stable feed bake or making another provider request.
+    Missing or invalid timestamps never become a fresh observation.
+    """
+    from host.github_state import _closed
+
+    facts, observed_moments = {}, {}
+    for status, rows, observed in (("OPEN", open_rows, open_observed_at),
+                                   ("CLOSED", closed_rows, closed_observed_at)):
+        if not isinstance(rows, list) or not isinstance(observed, str):
+            continue
+        try:
+            moment = datetime.fromisoformat(observed.strip().replace("Z", "+00:00"))
+        except ValueError:
+            continue
+        if moment.tzinfo is None:
+            continue
+        stamp = moment.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+        source = {"id": "https://api.github.com/repos/" + str(repository) +
+                        "/pulls?state=" + status.lower(),
+                  "observed_at": stamp, "status": "ok"}
+        for row in rows:
+            if not isinstance(row, dict):
+                continue
+            normalized = {**row, "state": status}
+            if status == "CLOSED":
+                # Reuse the bake's merge semantics: a branch head or speculative
+                # merge commit on an unmerged PR is never a landed merge SHA.
+                closure = _closed(row)
+                normalized.update(state=closure["state"], merged_at=closure["merged_at"],
+                                  merge_commit_sha=closure["merge_commit_sha"])
+            else:
+                normalized.update(merged=False, merged_at=None, merge_commit_sha=None)
+            key, fact = _fact(normalized, source, repository)
+            if key:
+                previous = observed_moments.get(key)
+                if previous is None or moment >= previous:
+                    facts[key] = fact
+                    observed_moments[key] = moment
+    return facts
+
+
+def github_listing_files(repository, directory):
+    """Read this ingest job's existing JSONL/observation-sidecar pairs only."""
+    from host.github_state import _read_pulls
+
+    directory, inputs = Path(directory), {}
+    for kind in ("open", "closed"):
+        try:
+            observed = (directory / (kind + "_pulls.observed_at")).read_text(encoding="utf-8").strip()
+            rows = _read_pulls(str(directory / (kind + "_pulls.jsonl")))
+        except (OSError, UnicodeError, ValueError):
+            continue
+        inputs[kind + "_rows"] = rows
+        inputs[kind + "_observed_at"] = observed
+    return github_listing_facts(repository, **inputs)
 
 
 def _github(root):
