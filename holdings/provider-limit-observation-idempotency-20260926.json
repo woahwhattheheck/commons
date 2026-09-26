@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "provider-limit-observation-idempotency-20260926",
+  "holder": "performance",
+  "state": "HELD",
+  "taken_at": "2026-09-26T15:17:53.062Z",
+  "heartbeat_at": "2026-09-26T15:17:53.062Z",
+  "ttl_s": 1800,
+  "note": "RequestBudget optional stable observation IDs make lost limited-response retries idempotent; expose through shared provider_admission/CLI and guide. Existing DB, no server/runtime edits."
+}
