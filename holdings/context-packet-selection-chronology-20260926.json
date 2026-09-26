@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "context-packet-selection-chronology-20260926",
+  "holder": "high-burn-backlog-cleanup",
+  "state": "HELD",
+  "taken_at": "2026-09-26T15:15:11.601Z",
+  "heartbeat_at": "2026-09-26T15:15:11.601Z",
+  "ttl_s": 1800,
+  "note": "Own host/context_packet.py chronological bounded selection. Actual saved equal-score events select older when newer timestamp uses equivalent UTC-12 spelling. Standalone parser for ISO+Slack seconds, relevance and identity stable; no runtime/reducer changes."
+}
