@@ -16,6 +16,7 @@ UNKNOWN = "UNKNOWN"
 TERMINALS = {"SHIPPED", "BLOCKED", "SUPERSEDED", "ABANDONED"}
 LIVE = {"LIVE", "QUIET"}
 LIMIT = 20
+TASK_STATES = {"OPEN", "ACTIVE", *TERMINALS}
 FAILURES = {
     "not_discovered": "not_discovered", "tool_not_discovered": "not_discovered",
     "unknown": "not_discovered", "unauthenticated": "unauthenticated",
@@ -55,6 +56,65 @@ def _tasks(tasks):
     rows = tasks.get("tasks", tasks) if isinstance(tasks, dict) else {}
     return {str(key): dict(task, task_key=task.get("task_key") or str(key))
             for key, task in rows.items() if isinstance(task, dict)}
+
+
+def select_tasks(tasks, *, limit=100, task=None, states=None, owner=None, after=None):
+    """Select a bounded status page without provider reads or projection changes.
+
+    ``task`` and ``after`` accept canonical identities (or an exact GitHub URL).
+    States are exact lifecycle names; owner matches the current worker exactly.
+    ``matched`` counts filtered tasks before the exclusive cursor, while ``total``
+    remains the whole canonical task count. A next cursor exists only when more
+    matching rows remain. Limits retain status's existing 1..1000 clamping.
+    """
+    from .identity import task_key
+
+    if isinstance(limit, bool):
+        raise ValueError("limit must be an integer")
+    try:
+        page_size = max(1, min(1000, int(limit)))
+    except (TypeError, ValueError, OverflowError) as exc:
+        raise ValueError("limit must be an integer") from exc
+
+    def identity(value, name):
+        if value is None:
+            return None
+        if not isinstance(value, str) or not value.strip():
+            raise ValueError(name + " must be a nonempty task identity")
+        return task_key(value)
+
+    exact = identity(task, "task")
+    cursor = identity(after, "after")
+    if owner is not None and (not isinstance(owner, str) or not owner.strip()):
+        raise ValueError("owner must be a nonempty worker name")
+    if states is None:
+        states = []
+    elif isinstance(states, str):
+        states = [states]
+    if not isinstance(states, (list, tuple, set)) or any(
+            not isinstance(state, str) or state not in TASK_STATES for state in states):
+        raise ValueError("states must contain only " + ", ".join(sorted(TASK_STATES)))
+    wanted = set(states)
+    rows = _tasks(tasks)
+    matched, remaining, page = 0, 0, []
+    for key in sorted(rows):
+        row = rows[key]
+        if exact is not None and key != exact:
+            continue
+        if wanted and row.get("state") not in wanted:
+            continue
+        if owner is not None and row.get("worker") != owner:
+            continue
+        matched += 1
+        if cursor is not None and key <= cursor:
+            continue
+        remaining += 1
+        if len(page) < page_size:
+            page.append(row)
+    truncated = remaining > len(page)
+    return {"rows": page, "matched": matched, "total": len(rows),
+            "next_cursor": page[-1]["task_key"] if truncated else None,
+            "truncated": truncated}
 
 
 def _seats(seats, now):

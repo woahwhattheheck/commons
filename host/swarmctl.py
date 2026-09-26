@@ -97,6 +97,12 @@ def main(argv=None):
     status = commands.add_parser("status")
     status.add_argument("--fresh", action="store_true")
     status.add_argument("--limit", type=int, default=100)
+    status.add_argument("--task", help="exact task identity or GitHub issue/PR URL")
+    status.add_argument("--state", dest="states", action="append",
+                        choices=("OPEN", "ACTIVE", "SHIPPED", "BLOCKED", "SUPERSEDED", "ABANDONED"),
+                        help="filter lifecycle state; repeat to include several states")
+    status.add_argument("--owner", help="filter current worker by exact name")
+    status.add_argument("--after", help="exclusive task-key cursor returned by the previous page")
     for name in ("open", "take", "heartbeat", "ship", "block", "abandon", "next"):
         command = commands.add_parser(name)
         command.add_argument("task", nargs="?")
@@ -115,6 +121,9 @@ def main(argv=None):
                        "refresh_providers": not args.cached}
         elif args.command == "status":
             payload = {"refresh": args.fresh, "limit": args.limit, "worker": args.worker}
+            payload.update({key: value for key, value in
+                            (("task", args.task), ("states", args.states),
+                             ("owner", args.owner), ("after", args.after)) if value is not None})
         else:
             payload = load(args.data, {})
             if not isinstance(payload, dict):

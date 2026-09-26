@@ -5,14 +5,82 @@ import os
 from pathlib import Path
 import threading
 
-from .schema import CoreError
+from .schema import CoreError, _text
+
+
+def _terminal_receipts(state, tasks, tip, observed_at):
+    """Derive compact feed rows from immutable provider-backed outcomes.
+
+    The claims journal and provider facts remain the authority. These rows use
+    outcome identities, not observation times, so refreshes and retries cannot
+    create another completion receipt for the same landed work.
+    """
+    import hashlib
+    import json
+    from host.swarm_runtime.identity import task_key
+
+    def known(value):
+        return value not in (None, "", "UNKNOWN")
+
+    facts = {}
+    for key, fact in state.get("provider_facts", {}).items():
+        try:
+            facts[task_key(key)] = fact
+        except (ValueError, TypeError):
+            continue
+    for key, task in sorted(tasks.items()):
+        terminal = task.get("state")
+        evidence = None
+        if terminal == "SHIPPED" and task.get("shipment_source") == "provider":
+            if known(task.get("merge_sha")):
+                evidence = {"kind": "merge", "sha": task["merge_sha"]}
+                detail = "Provider confirmed merge " + str(task["merge_sha"])
+            elif known(task.get("artifact_sha")) and known(task.get("landed_sha")):
+                evidence = {"kind": "landed_artifact", "sha": task["artifact_sha"]}
+                detail = "Provider confirmed artifact " + str(task["artifact_sha"]) + " on " + str(task["landed_sha"])
+        elif terminal == "SUPERSEDED":
+            # A human SUPERSEDE event is already mirrored below. This additional
+            # receipt specifically requires the provider fact used by projection.
+            fact = facts.get(key)
+            if fact is None and known(task.get("repo")) and known(task.get("pr")):
+                try:
+                    fact = facts.get(task_key(repo=task["repo"], kind="pr", number=task["pr"]))
+                except (ValueError, TypeError):
+                    fact = None
+            replacement = (fact or {}).get("equivalent") or (fact or {}).get("superseded_by")
+            projected = task.get("superseded_by")
+            if isinstance(replacement, dict) and isinstance(projected, dict):
+                merge = replacement.get("merge_sha") or replacement.get("merge_commit_sha")
+                projected_merge = projected.get("merge_sha") or projected.get("merge_commit_sha")
+                merged = replacement.get("merged") is True or str(replacement.get("state", "")).upper() == "MERGED"
+                if merged and known(merge) and merge == projected_merge:
+                    evidence = {"kind": "superseding_merge", "sha": merge}
+                    detail = "Provider confirmed replacement merge " + str(merge)
+        if evidence is None:
+            continue
+        identity = json.dumps([key, terminal, evidence], sort_keys=True, separators=(",", ":"))
+        ident = "swarm-terminal:" + hashlib.sha256(identity.encode()).hexdigest()
+        stamp = next((task.get(field) for field in ("closed_at", "provider_observed_at")
+                      if known(task.get(field))), observed_at)
+        source = task.get("provider_source") or "UNKNOWN"
+        yield {"id": ident, "kind": "swarm-task", "observed_at": stamp,
+               "title": terminal + ": " + key, "body": _text(detail, 500),
+               "source_url": _text(source, 1000) if str(source).startswith("https://") else "",
+               "source_ref": _text(source, 1000), "task_key": key, "claim_tip": tip,
+               "summary": {"action": terminal, "canonical_terminal": True,
+                           "shipment_source": "provider", "worker": task.get("worker", "UNKNOWN"),
+                           "closed_at": task.get("closed_at", "UNKNOWN"),
+                           "evidence": evidence}}
 
 
 def _feed(center, engine):
     """Expose canonical events through the existing retained command-center feed."""
     import hashlib
     import json
+    from host.swarm_runtime.runtime import _project, now_iso
     tip, state = engine.store.read(refresh=False)
+    observed_at = now_iso()
+    tasks = _project(state, observed_at)["tasks"]
     with center._db() as db:
         db.execute("BEGIN IMMEDIATE")
         row = db.execute("SELECT data FROM records WHERE kind='usage' AND id='swarm-feed-cursor'").fetchone()
@@ -31,6 +99,9 @@ def _feed(center, engine):
             db.execute("INSERT OR IGNORE INTO source_events(id,observed_at,data) VALUES(?,?,?)",
                        (ident, stamp, json.dumps(item)))
             consumed = max(consumed, event.get("seq", 0))
+        for item in _terminal_receipts(state, tasks, tip, observed_at):
+            db.execute("INSERT OR IGNORE INTO source_events(id,observed_at,data) VALUES(?,?,?)",
+                       (item["id"], item["observed_at"], json.dumps(item)))
         db.execute("INSERT OR REPLACE INTO records(kind,id,data) VALUES('usage','swarm-feed-cursor',?)",
                    (json.dumps({"seq": consumed}),))
 
@@ -52,7 +123,9 @@ def call(center, payload):
         engine = runtime(center)
         if action == "status":
             result = engine.read(refresh=bool(payload.get("refresh", False)),
-                                 worker=payload.get("worker"), limit=payload.get("limit", 100))
+                                 worker=payload.get("worker"), limit=payload.get("limit", 100),
+                                 task=payload.get("task"), states=payload.get("states"),
+                                 owner=payload.get("owner"), after=payload.get("after"))
         elif action == "sync":
             # Source collection is already coalesced by refresh_work(). This
             # consumes its shared snapshot, never launches one reader per seat.

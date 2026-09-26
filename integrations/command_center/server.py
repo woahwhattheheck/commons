@@ -132,7 +132,10 @@ class Handler(BaseHTTPRequestHandler):
                 query = parse_qs(parsed.query)
                 self.send_json(200, swarm_tasks.call(self.server.center, {
                     "action": "status", "worker": query.get("worker", [None])[0],
-                    "limit": query.get("limit", [100])[0]}))
+                    "limit": query.get("limit", [100])[0],
+                    "refresh": query.get("refresh") == ["1"],
+                    "task": query.get("task", [None])[0], "states": query.get("state"),
+                    "owner": query.get("owner", [None])[0], "after": query.get("after", [None])[0]}))
             elif parsed.path == "/api/event":
                 event_id = (parse_qs(parsed.query).get("event_id") or [""])[0]
                 self.send_json(200, self.server.center.event(event_id))

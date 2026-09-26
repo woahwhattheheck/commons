@@ -14,7 +14,7 @@ from pathlib import Path
 
 from .identity import task_key
 from .projector import project
-from .routing import context_bundle, route, status
+from .routing import context_bundle, route, select_tasks, status
 from .store import GitStore
 
 TERMINAL = {"SHIPPED", "BLOCKED", "SUPERSEDED", "ABANDONED"}
@@ -125,7 +125,9 @@ class Runtime:
                 {**(payload.get("seat") or {}), "seat": worker, "heartbeat": moment})
         selected = task_key(payload["task_key"]) if payload.get("task_key") else None
         facts, deferred, remaining, attempted = {}, [], 4, set()
-        for _ in range(4):
+        # The selected owner command may need no provider call; still leave
+        # room to refresh the next candidate within the same four-call budget.
+        for _ in range(5):
             view = _project(state, moment)
             target = selected if selected and selected not in attempted else None
             if target is None:
@@ -143,12 +145,17 @@ class Runtime:
             if target == selected and payload.get("artifact"):
                 row = {**row, "artifact": payload["artifact"], "repo": payload.get("repo") or row.get("repo")}
             artifact = row.get("artifact")
+            attempted.add(target)
             if not target.startswith("github:") and not (
                     isinstance(artifact, dict) and artifact.get("complete") is True):
+                will_roll = row.get("state") in TERMINAL or action in {"block", "abandon"} or (
+                    action == "take" and row.get("state") == "ACTIVE"
+                    and row.get("worker") != worker and not row.get("recoverable"))
+                if target == selected and will_roll:
+                    continue
                 break
-            attempted.add(target)
             if row.get("provider_freshness") in {"CURRENT", "IMMUTABLE"} and row.get("reconciliation_needed") in (None, "UNKNOWN", ""):
-                if action in {"take", "next"}:
+                if action in {"take", "next"} and row.get("state") not in TERMINAL:
                     break
                 continue
             enriched = enrich({target: row}, self.state_dir, max_calls=remaining, now=moment)
@@ -160,15 +167,17 @@ class Runtime:
                 break
         return facts, deferred
 
-    def read(self, *, refresh=False, worker=None, limit=100):
+    def read(self, *, refresh=False, worker=None, limit=100,
+             task=None, states=None, owner=None, after=None):
         tip, state = self.store.read(refresh=refresh)
         moment = now_iso()
         view = _project(state, moment)
-        rows = sorted(view["tasks"].values(), key=lambda row: row["task_key"])
-        limit = max(1, min(1000, int(limit)))
+        page = select_tasks(view["tasks"], limit=limit, task=task,
+                            states=states, owner=owner, after=after)
         return {"ok": True, "authority": "state/claims", "tip": tip,
                 "observed_at": moment, "summary": status(view["tasks"], _seats(state), moment),
-                "tasks": rows[:limit], "total": len(rows), "truncated": len(rows) > limit,
+                "tasks": page["rows"], "total": page["total"], "matched": page["matched"],
+                "truncated": page["truncated"], "next_cursor": page["next_cursor"],
                 "collisions": view.get("collisions", [])[-50:],
                 "rejected": view.get("rejected", [])[-20:],
                 "coverage": state.get("coverage", {}),
@@ -229,6 +238,11 @@ class Runtime:
                     _append(state, [{**event, "id": event["id"] + ":recover", "action": "RECOVER",
                                      "expected_worker": row.get("worker"), "expected_heartbeat": row.get("heartbeat")}])
                 _append(state, [event])
+                # Taking actual next work is meaningful worker activity. Keep
+                # automatic assignment and explicit take on the same seat lease.
+                state.setdefault("workers", {}).setdefault(worker, {}).update(
+                    seat=worker, heartbeat=moment,
+                    dispatch_cursor=state.get("cursors", {}).get("commons", {}).get("feed_cursor", "UNKNOWN"))
                 view = _project(state, moment)
                 assignments.append(context_bundle(view["tasks"][target], state["events"]))
             return {"action": "sync", "ingested": added, "tasks": len(view["tasks"]),

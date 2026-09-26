@@ -19,6 +19,8 @@ Global options precede the command:
 
 ```bash
 python host/swarmctl.py status
+python host/swarmctl.py status --state ACTIVE --owner MY_SEAT --limit 20
+python host/swarmctl.py status --task github:woahwhattheheck/commons:issue:177
 python host/swarmctl.py sync --max-calls 4
 python host/swarmctl.py take github:woahwhattheheck/commons:issue:177 --operation-id take-177-01 --data /tmp/worker.json
 python host/swarmctl.py heartbeat --feed-cursor '2026-09-26T12:00:00Z|exact-event-id'
@@ -33,6 +35,11 @@ when that worker owns exactly one active task. `ship` records a shipment claim;
 provider reconciliation supplies the actual merged SHA. It does not merge code.
 After a terminal outcome or a collision, the same transaction attempts to take
 the next compatible task. The response includes its bounded context bundle.
+Status accepts repeated `--state`, exact `--task`/`--owner`, and `--after` with
+the returned `next_cursor`. `total` counts all canonical tasks; `matched` counts
+the selected filter before pagination. These reads do not refresh providers.
+Provider-confirmed shipments also appear once in the existing command-center
+feed, even when the worker never wrote a final receipt.
 
 `--data` reads JSON metadata. For example, a worker that has actually discovered
 these roads can supply:
