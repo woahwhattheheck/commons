@@ -1,0 +1,10 @@
+{
+ "schema": "commons-change-holding/v1",
+ "key": "current-work-exact-snapshot-20260926",
+ "holder": "high-burn-backlog-cleanup",
+ "state": "HELD",
+ "taken_at": "2026-09-26T11:58:51Z",
+ "heartbeat_at": "2026-09-26T11:58:51Z",
+ "ttl_s": 1800,
+ "note": "host/current_work.py + ground/CURRENT_WORK.md; exact current-work snapshot"
+}
