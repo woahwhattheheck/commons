@@ -83,7 +83,7 @@ def _json(value):
 
 def empty_state():
     return {"schema": SCHEMA, "events": [], "cursors": {}, "workers": {},
-            "provider_facts": {}, "tasks": {}}
+            "provider_facts": {}, "tasks": {}, "legacy_mirror_revisions": {}}
 
 
 def _state(value):
@@ -532,6 +532,8 @@ class GitStore:
                 os.unlink(index)
 
     def _prepare(self, mutator, tip, state):
+        from .sources import _digest
+
         previous = copy.deepcopy(state)
         before = _json(_persisted(state))
         result = mutator(state)
@@ -544,6 +546,13 @@ class GitStore:
             state.pop("legacy_unreadable", None)
         holdings = self._holding_updates(previous, state)
         state["legacy_holdings"].update(holdings)
+        # These sibling bytes already express the canonical mutation. Remember
+        # only exact revisions we wrote, in the same commit, so a retry does not
+        # ingest its own OPEN/TAKE/HEARTBEAT mirror as new external activity.
+        mirrors = {path: revision for path, revision in previous.get("legacy_mirror_revisions", {}).items()
+                   if path in state["legacy_holdings"]}
+        mirrors.update({path: _digest(record) for path, record in holdings.items()})
+        state["legacy_mirror_revisions"] = mirrors
         content = _json(_persisted(state))
         proposal = self._commit(tip, content, holdings) if content != before or holdings else None
         return result, proposal

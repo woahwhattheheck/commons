@@ -110,7 +110,7 @@ class Runtime:
         from .sources import legacy_events
         from .providers import enrich
         _, state = self.store.read(refresh=False)
-        _append(state, legacy_events(state.get("legacy_holdings", {})))
+        _append(state, legacy_events(state.get("legacy_holdings", {}), state.get("legacy_mirror_revisions", {})))
         worker = str(payload.get("worker") or "")
         if worker and worker_activity:
             state.setdefault("workers", {}).setdefault(worker, {}).update(
@@ -192,7 +192,7 @@ class Runtime:
         except ImportError:
             legacy_events = None
         if legacy_events:
-            incoming += legacy_events(prior.get("legacy_holdings", {}))
+            incoming += legacy_events(prior.get("legacy_holdings", {}), prior.get("legacy_mirror_revisions", {}))
         candidate = copy.deepcopy(prior)
         _append(candidate, incoming)
         candidate["seats"] = imported.get("seats", candidate.get("seats", {}))
@@ -216,7 +216,7 @@ class Runtime:
                 # Collection/provider I/O preceded this CAS read. A direct
                 # release or take may have changed a sibling holding meanwhile;
                 # replay that exact current custody after the collected inputs.
-                added += _append(state, legacy_events(state.get("legacy_holdings", {})))
+                added += _append(state, legacy_events(state.get("legacy_holdings", {}), state.get("legacy_mirror_revisions", {})))
             _merge_facts(state, facts)
             state["seats"] = imported.get("seats", state.get("seats", {}))
             # Do not overwrite a concurrent sync's newer boundary with this read.
@@ -293,7 +293,7 @@ class Runtime:
 
         def mutation(state):
             from .sources import legacy_events
-            _append(state, legacy_events(state.get("legacy_holdings", {})))
+            _append(state, legacy_events(state.get("legacy_holdings", {}), state.get("legacy_mirror_revisions", {})))
             _merge_facts(state, fresh_facts)
             operations = state.setdefault("operations", {})
             old = operations.get(operation_id)

@@ -164,6 +164,11 @@ holding over a newer claim. Confirm publication before starting assigned work.
 The store retries ref contention at most three times and preserves an unpublished
 proposal on a push failure.
 
+The ledger acknowledges the exact revision of each legacy holding it mirrors in
+the same transaction. Replaying an operation does not ingest its own mirror as
+new activity. A later direct claim change has different content and is still
+ingested normally; historical events remain intact.
+
 Terminal task history releases a matching legacy holding only when its dated
 closure covers the holding's activity. A newer take or heartbeat is preserved,
 even when the worker name matches; missing closure or holding dates leave custody

@@ -136,12 +136,16 @@ def _events(meta, body, source_id, revision, *, private=False):
     return out
 
 
-def legacy_events(holdings):
+def legacy_events(holdings, mirrored=None):
     """Adapt the existing state/claims holdings without assigning opaque keys."""
+    mirrored = mirrored if isinstance(mirrored, dict) else {}
     rows = holdings.items() if isinstance(holdings, dict) else enumerate(holdings or [])
     events = []
     for path, record in rows:
         if not isinstance(record, dict) or record.get("unreadable"):
+            continue
+        revision = _digest(record)
+        if mirrored.get(str(path)) == revision:
             continue
         raw = str(record.get("key") or Path(str(path)).stem)
         match = re.fullmatch(r"(?:repo-[0-9a-f]{24}-)?(issue|pr)-([1-9][0-9]*)", raw)
@@ -157,7 +161,6 @@ def legacy_events(holdings):
         common = {"task_key": key, "source": source, "source_event_ids": [source],
                   "worker": record.get("holder") or UNKNOWN,
                   "at": record.get("taken_at") or record.get("heartbeat_at") or UNKNOWN}
-        revision = _digest(record)
         events.append({**common, "id": source + ":" + revision + ":open", "action": "OPEN"})
         if record.get("state") == "HELD":
             events.append({**common, "id": source + ":" + revision + ":take", "action": "TAKE",
