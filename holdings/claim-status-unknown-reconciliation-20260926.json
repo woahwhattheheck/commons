@@ -1,0 +1,10 @@
+{
+ "schema": "commons-change-holding/v1",
+ "key": "claim-status-unknown-reconciliation-20260926",
+ "holder": "high-burn-lane-a",
+ "state": "HELD",
+ "taken_at": "2026-09-26T12:13:47Z",
+ "heartbeat_at": "2026-09-26T12:13:47Z",
+ "ttl_s": 1800,
+ "note": "host/claim_work.py + claim_identity.py; unreadable claim status remains unknown"
+}
