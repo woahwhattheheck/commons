@@ -118,6 +118,8 @@ holder, so an older task cannot move a renewed claim's generation backward.
 An explicit legacy release reopens its matching active task without declaring
 completion. Its worker must match, and its dates must cover the current take;
 stale releases cannot clear newer work. The next take creates fresh custody.
+Sync rereads custody from the exact claims parent on every transaction attempt,
+after collected events, so a release during collection cannot be overwritten.
 
 ## Facts and implementation
 
