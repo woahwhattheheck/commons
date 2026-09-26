@@ -23,14 +23,16 @@ def execute(state_dir, payload):
 
     No provider requests or automatic retries. Acquire is idempotent while its
     holder's lease is live; renew/release are fenced by the exact lease ID.
+    Unrecognized verbs read status so callers are not closed out of the pad.
     """
     try:
         if not isinstance(payload, dict):
             raise ValueError("Admission requires a JSON object.")
         action = payload.get("action", "status")
-        if not isinstance(action, str) or action not in FIELDS:
-            raise ValueError("Unknown provider admission action.")
-        if set(payload) - FIELDS[action] - {"action"}:
+        if not isinstance(action, str):
+            action = "status"
+        known = action in FIELDS
+        if known and set(payload) - FIELDS[action] - {"action"}:
             raise ValueError("Unexpected fields for provider admission action.")
         for field in ("successful", "primary_core"):
             if field in payload and type(payload[field]) is not bool:
@@ -43,8 +45,6 @@ def execute(state_dir, payload):
         budget = RequestBudget(state_dir)
         if action == "configure":
             result = budget.set_capacity(SCOPE, payload.get("capacity"))
-        elif action == "status":
-            result = budget.lease_status(SCOPE, shared_scopes=SHARED_SCOPES)
         elif action == "acquire":
             result = budget.acquire_lease(SCOPE, payload.get("holder"),
                 ttl_seconds=payload.get("ttl_seconds", 300), shared_scopes=SHARED_SCOPES)
@@ -55,11 +55,13 @@ def execute(state_dir, payload):
             result = budget.release_lease(SCOPE, payload.get("holder"), payload["lease_id"])
             if result["released"] and payload.get("successful", False):
                 budget.succeeded(SCOPE, shared_scopes=SHARED_SCOPES)
-        else:
+        elif action == "limited":
             primary = payload.get("primary_core", False)
             result = budget.rate_limited("github:GET:core" if primary else "github:GET",
                 payload.get("retry_after"), reset_at=payload.get("reset_at") if primary else None,
                 observation_id=payload.get("observation_id"))
+        else:
+            result = budget.lease_status(SCOPE, shared_scopes=SHARED_SCOPES)
         return {"ok": True, **result}
     except RequestDeferred as exc:
         return {"ok": False, "error": "provider_admission_deferred", "scope": exc.scope,
@@ -75,11 +77,11 @@ def call(center, payload):
 def tool():
     return {
         "name": "command_center_provider_admission",
-        "description": "Coordinate GitHub publication capacity and cooldowns in the shared command-center ledger. Configure capacity once; acquire per unique holder, renew exact lease_id before each write, release finally. No provider writes or publication authority. Never proceed on ok:false; deferred responses give retry_not_before. Expiry cannot cancel in-flight writes. For limited, keep one observation_id per actual provider response and reuse the exact evidence on retry; without it, read status before replaying an uncertain report.",
+        "description": "Coordinate GitHub publication capacity and cooldowns in the shared command-center ledger. Action is a free-form verb. Use configure, status, acquire, renew, release, or limited when those fields apply; any other verb reads status. Acquire per unique holder, renew exact lease_id before each write, release finally. No provider writes or publication authority. Never proceed on ok:false; deferred responses give retry_not_before. Expiry cannot cancel in-flight writes. For limited, keep one observation_id per actual provider response and reuse the exact evidence on retry; without it, read status before replaying an uncertain report.",
         "inputSchema": {
             "type": "object", "required": ["action"], "additionalProperties": False,
             "properties": {
-                "action": {"type": "string", "enum": list(FIELDS)},
+                "action": {"type": "string", "minLength": 1, "maxLength": 64},
                 "capacity": {"type": "integer", "minimum": 1, "maximum": 64},
                 "holder": {"type": "string", "minLength": 1, "maxLength": 200},
                 "lease_id": {"type": "string", "pattern": "^[0-9a-f]{32}$"},
