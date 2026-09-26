@@ -49,7 +49,8 @@ def _seats(state):
     for name, worker in state.get("workers", {}).items():
         old = result.get(name, {})
         declared = dict(old.get("declared") or old)
-        if declared.get("heartbeat") in (None, "", "UNKNOWN") or str(worker.get("heartbeat", "")) >= str(declared.get("heartbeat", "")):
+        observed, previous = _time(worker.get("heartbeat")), _time(declared.get("heartbeat"))
+        if previous is None or (observed is not None and observed >= previous):
             declared.update(worker)
         result[name] = {**old, "seat": name, "declared": declared,
                         "heartbeat": declared.get("heartbeat", "UNKNOWN")}

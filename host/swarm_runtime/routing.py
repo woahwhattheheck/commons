@@ -6,11 +6,12 @@ possible; these decisions govern only automatic assignment.
 """
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import datetime, timezone
 import math
 import re
 
 from host import seat_census
+from .projector import _time
 
 UNKNOWN = "UNKNOWN"
 TERMINALS = {"SHIPPED", "BLOCKED", "SUPERSEDED", "ABANDONED"}
@@ -35,6 +36,11 @@ def _text(value):
 
 def _known(value):
     return value is not None and value != "" and value != UNKNOWN
+
+
+def _sort_time(value, *, missing_last=False):
+    missing = datetime.max if missing_last else datetime.min
+    return _time(value) or missing.replace(tzinfo=timezone.utc)
 
 
 def _names(value):
@@ -265,7 +271,7 @@ def _rank(task, recoverable):
     except (TypeError, ValueError):
         priority = 0
     return (0 if recoverable else 1, -priority,
-            _text(task.get("created_at")) or "~", task["task_key"])
+            _sort_time(task.get("created_at"), missing_last=True), task["task_key"])
 
 
 def route(tasks: dict, worker: str, seats: dict, now: str, required=None):
@@ -380,8 +386,12 @@ def context_bundle(task, events=None, max_events=8):
         bundle["error_truncated"] = True
     rows = events.get("events", []) if isinstance(events, dict) else events or []
     matches = [event for event in rows if isinstance(event, dict) and _related(event, task, ids)]
-    matches.sort(key=lambda event: (_text(event.get("c", event.get("at", event.get("timestamp", event.get("ts"))))),
-                                     _text(event.get("event_id", event.get("id")))))
+    def chronology(event):
+        cursor = _text(event.get("c"))
+        observed = cursor.split("|", 1)[0] if cursor else event.get("at", event.get("timestamp", event.get("ts")))
+        return (_sort_time(observed), cursor, _text(event.get("event_id", event.get("id"))))
+
+    matches.sort(key=chronology)
     cap = max(0, min(int(max_events), 20))
     bundle["events"] = [{key: _bounded(event[key], 400) for key in
                           ("event_id", "id", "c", "at", "timestamp", "ts", "kind", "action", "task_key",
@@ -420,7 +430,7 @@ def status(tasks, seats, now):
             for capability in sorted(groups["any"]):
                 if not _capability_failure(seat, capability):
                     pools.setdefault(capability, []).append(name)
-    shipped.sort(key=lambda task: (_text(task.get("latest_activity", task.get("last_activity_at"))),
+    shipped.sort(key=lambda task: (_sort_time(task.get("latest_activity", task.get("last_activity_at"))),
                                   task["task_key"]), reverse=True)
     return {"counts": counts, "recoverable": recoverable[:LIMIT],
             "recoverable_count": len(recoverable), "stale_seats": stale[:LIMIT],
