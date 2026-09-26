@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "runtime-atomic-mirror-acknowledgement-20260926",
+  "holder": "high-burn-lane-a",
+  "state": "HELD",
+  "taken_at": "2026-09-26T15:23:37.562Z",
+  "heartbeat_at": "2026-09-26T15:23:37.562Z",
+  "ttl_s": 1800,
+  "note": "Own host/swarm_runtime/{store.py,sources.py,runtime.py,README.md}: acknowledge exact atomically written legacy mirror revisions; suppress self-echo commits while retaining changed direct claim ingestion."
+}
