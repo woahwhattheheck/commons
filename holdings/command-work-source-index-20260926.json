@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "command-work-source-index-20260926",
+  "holder": "command-observability",
+  "heartbeat_at": "2026-09-26T12:19:58.764Z",
+  "taken_at": "2026-09-26T12:19:58.764Z",
+  "ttl_s": 1800,
+  "state": "HELD",
+  "note": "Own integrations/command_center/web/work.js: index source metadata once per snapshot to avoid repeated linear scans in row filtering/sorting/rendering."
+}
