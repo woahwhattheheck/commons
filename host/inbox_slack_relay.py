@@ -670,7 +670,7 @@ def mail_header(value: str) -> str:
         return value
 
 
-def gmail_events(get: Callable, config: dict, since: str) -> tuple[list[Event], dict]:
+def gmail_events(get: Callable, config: dict, since: str, seen: Callable = lambda key: "") -> tuple[list[Event], dict]:
     profile = get("profile")
     if str(profile.get("emailAddress", "")).lower() != config["gmail_address"].lower():
         raise RelayError("gmail_account_mismatch")
@@ -689,10 +689,18 @@ def gmail_events(get: Callable, config: dict, since: str) -> tuple[list[Event], 
             break
     if token:
         raise RelayError("gmail_page_limit_pending")
-    info = {"mode": "work-mail-poll", "messages": len(ids), "private_or_auth_omitted": 0,
+    info = {"mode": "work-mail-poll", "messages": len(ids), "unchanged": 0, "private_or_auth_omitted": 0,
             "promotional_omitted": 0, "github_mail_deduped": 0, "unclassified_pending": 0, "source_items_pending": 0, "body_pending": 0}
     events: list[Event] = []
+    groups = []
     for mid in dict.fromkeys(ids):
+        # Received message IDs are immutable. Skip only a completed content
+        # delivery; omitted/partial mail remains eligible on every poll.
+        version = "gmail.delivered." + digest(json.dumps([
+            config["gmail_address"].lower(), config.get("gmail_channel", ""), mid]))
+        if seen(version):
+            info["unchanged"] += 1
+            continue
         try:
             message = get("messages/" + mid, {"format": "full"})
         except RelayError as exc:
@@ -721,7 +729,8 @@ def gmail_events(get: Callable, config: dict, since: str) -> tuple[list[Event], 
             continue
         payload = message.get("payload", {})
         body = mail_body(payload)
-        if not body or "[Body stored as an attachment;" in body or "[Body decoding failed;" in body:
+        complete_body = bool(body) and "[Body stored as an attachment;" not in body and "[Body decoding failed;" not in body
+        if not complete_body:
             info["body_pending"] += 1
         if not (WORK_MAIL.search(title) or domain in config.get("work_sender_domains", []) or address in config.get("work_senders", [])):
             info["unclassified_pending"] += 1
@@ -738,6 +747,8 @@ def gmail_events(get: Callable, config: dict, since: str) -> tuple[list[Event], 
             action = "Acknowledgement only: existing owner track the promised next step; do not treat this as acceptance or payment."
         events.append(Event("gmail", str(message.get("threadId") or mid), mid, title, body,
                             "https://mail.google.com/mail/#all/" + mid, sender, headers.get("date", ""), action))
+        groups.append((version if complete_body else "", 1))
+    info["_delivery_groups"] = groups
     return events, info
 
 
@@ -756,19 +767,16 @@ def run(config: dict, state: State, providers: Providers) -> dict:
     for name, source, channel in [("github", github_events, config["github_channel"]), ("gmail", gmail_events, config["gmail_channel"])]:
         try:
             getter = providers.github if name == "github" else providers.gmail
-            events, info = source(getter, config, since, state.get) if name == "github" else source(getter, config, since)
+            events, info = source(getter, config, since, state.get)
             groups = info.pop("_delivery_groups", [])
             report["sources"][name] = info
             offset = 0
-            if name == "github":
-                for version, count in groups:
-                    for event in events[offset:offset + count]:
-                        report["posted_parts"] += delivery.deliver(event, channel)
-                    state.set(version, "1")
-                    offset += count
-            else:
-                for event in events:
+            for version, count in groups:
+                for event in events[offset:offset + count]:
                     report["posted_parts"] += delivery.deliver(event, channel)
+                if version:
+                    state.set(version, "1")
+                offset += count
             state.set(name + "_last_poll", iso())
             if info.get("source_items_pending", 0):
                 report["errors"][name] = "source_items_pending"
