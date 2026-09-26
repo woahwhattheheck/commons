@@ -135,8 +135,13 @@ NOTES = []
 RATE = {"remaining": None, "limit": None, "truncated": False}
 
 
+class GitHubRateLimited(RuntimeError):
+    """The current read pass must stop without advancing its cursor."""
+
+
 def reset_io():
     NOTES.clear()
+    RATE.clear()
     RATE.update({"remaining": None, "limit": None, "truncated": False})
 
 
@@ -255,9 +260,27 @@ def gh(path, **params):
                 pass
         return json.loads(body.decode("utf-8")), headers
     except urllib.error.HTTPError as exc:
+        if exc.code in (403, 429):
+            headers = exc.headers or {}
+            detail = exc.read().decode("utf-8", "replace").lower()
+            retry_after = headers.get("Retry-After")
+            if (exc.code == 429 or headers.get("X-RateLimit-Remaining") == "0"
+                    or retry_after is not None or "rate limit" in detail):
+                RATE.update(limited=True, http_status=exc.code,
+                            retry_after=retry_after,
+                            reset_at=headers.get("X-RateLimit-Reset"))
+                if headers.get("X-RateLimit-Remaining") == "0":
+                    RATE["remaining"] = 0
+                note = "GitHub HTTP %s rate limit on %s" % (exc.code, path.split("?")[0])
+                if retry_after is not None:
+                    note += "; Retry-After=%s" % retry_after
+                if RATE["reset_at"]:
+                    note += "; reset=%s" % RATE["reset_at"]
+                NOTES.append(note)
+                raise GitHubRateLimited(note) from exc
         if exc.code in (403, 404, 409, 422, 451):
             if exc.code == 403:
-                NOTES.append("rate-limited on %s" % path.split("?")[0])
+                NOTES.append("GitHub HTTP 403 on %s" % path.split("?")[0])
             return None, None
         raise
     except (urllib.error.URLError, TimeoutError, json.JSONDecodeError):
@@ -1256,7 +1279,16 @@ def main(argv=None):
     now = now_utc()
 
     state = load_state(state_path)
-    ctx = build_context(state, now=now, lookback_min=lookback_min)
+    try:
+        ctx = build_context(state, now=now, lookback_min=lookback_min)
+    except GitHubRateLimited as exc:
+        write_evidence(evidence_path, {
+            "generated_at": iso(now), "status": "RATE_LIMITED",
+            "reason": "provider_backoff", "rate_limit": dict(RATE),
+            "notes": list(NOTES), "cursor": state.get("last_event_at"),
+        })
+        print("repo-pulse deferred: %s; cursor unchanged" % exc, file=sys.stderr)
+        return 2
     ctx["repo"] = repo
     ctx["run_url"] = run_url
     ctx["evidence_url"] = run_url
