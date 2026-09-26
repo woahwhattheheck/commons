@@ -7,6 +7,7 @@ uses renewable custody; none of this restricts independent direct work.
 
 from __future__ import annotations
 
+import copy
 import datetime as dt
 import hashlib
 import json
@@ -250,6 +251,44 @@ def normalize_equivalent(value):
     return equivalent
 
 
+def merge_facts(facts, incoming):
+    """Fold observed facts without discarding immutable shipment evidence."""
+    for key, fact in incoming.items():
+        old = copy.deepcopy(facts.get(key, {}))
+        fact = copy.deepcopy(fact)
+        for row in (old, fact):
+            for field in ("equivalent", "superseded_by"):
+                if field in row:
+                    row[field] = normalize_equivalent(row[field])
+        if old:
+            facts[key] = old
+        # A failed or older refresh cannot erase a landed immutable fact.
+        if _merged(old) or _landed_artifact(old):
+            continue
+        observed, previous = _time(fact.get("observed_at")), _time(old.get("observed_at"))
+        # Baked listings deliberately carry UNKNOWN observations. Text ordering
+        # would pin those facts forever and misorder equivalent timezone offsets.
+        # Confirmed shipment is irreversible even when observed before a stale
+        # open listing, or when that listing arrives first in the same batch.
+        immutable = _merged(fact) or _landed_artifact(fact)
+        if immutable and previous is not None and (observed is None or observed < previous):
+            # Keep newer auxiliary details, but retain the shipment fact's own
+            # observation/source and immutable merge or ancestry evidence.
+            for field in ("head_sha", "branch", "base_sha", "updated_at", "pushed_at",
+                          "title", "issue", "issues", "closing_issues"):
+                if _known(old.get(field)):
+                    fact[field] = old[field]
+        if (immutable or previous is None
+                or (observed is not None and observed >= previous)):
+            for field in ("equivalent", "superseded_by"):
+                previous = old.get(field)
+                current = fact.get(field)
+                if isinstance(previous, dict) and (_merged(previous) or _landed_artifact(previous)):
+                    if not isinstance(current, dict) or not (_merged(current) or _landed_artifact(current)):
+                        fact[field] = previous
+            facts[key] = fact
+
+
 def _fact_key(fact):
     try:
         return task_key(fact)
@@ -268,10 +307,7 @@ def _provider_facts(facts, rejected):
         except (ValueError, TypeError) as exc:
             rejected.append({"source": "provider", "reason": str(exc)})
             continue
-        normalized[key] = dict(fact)
-        for field in ("equivalent", "superseded_by"):
-            if field in normalized[key]:
-                normalized[key][field] = normalize_equivalent(normalized[key][field])
+        merge_facts(normalized, {key: dict(fact)})
     return normalized
 
 

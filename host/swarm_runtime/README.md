@@ -151,6 +151,9 @@ observations and actual provider activity have separate timestamps. A known
 merged PR lacking a merge SHA remains undispatched pending reconciliation.
 Provider observations are ordered by parsed time. A dated refresh can replace
 undated baked facts; older or undated refreshes cannot erase a dated observation.
+Confirmed merges and landed artifacts take precedence over observation age.
+Collectors, sync batches, dispatch refreshes, and canonical-key aliases use the
+same fact merge, so later stale inputs cannot erase immutable shipment evidence.
 Heartbeat composition, creation-time dispatch order, recent shipments, and
 bounded event context likewise compare parsed times. Timezone offsets and
 fractional seconds do not reorder custody or displace newer context. Unknown

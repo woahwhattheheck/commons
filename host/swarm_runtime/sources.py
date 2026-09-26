@@ -19,6 +19,7 @@ from integrations.command_center.schema import _text
 from memory_board import parse_record
 
 from .identity import task_key
+from .projector import merge_facts
 
 UNKNOWN = "UNKNOWN"
 _ACTIONS = {"OPEN": "OPEN", "TAKE": "TAKE", "CLAIM": "TAKE",
@@ -389,7 +390,7 @@ def github_listing_facts(repository, *, open_rows=None, open_observed_at=None,
     """
     from host.github_state import _closed
 
-    facts, observed_moments = {}, {}
+    facts = {}
     for status, rows, observed in (("OPEN", open_rows, open_observed_at),
                                    ("CLOSED", closed_rows, closed_observed_at)):
         if not isinstance(rows, list) or not isinstance(observed, str):
@@ -418,10 +419,7 @@ def github_listing_facts(repository, *, open_rows=None, open_observed_at=None,
                 normalized.update(merged=False, merged_at=None, merge_commit_sha=None)
             key, fact = _fact(normalized, source, repository)
             if key:
-                previous = observed_moments.get(key)
-                if previous is None or moment >= previous:
-                    facts[key] = fact
-                    observed_moments[key] = moment
+                merge_facts(facts, {key: fact})
     return facts
 
 
@@ -452,7 +450,7 @@ def _github(root):
             if isinstance(row, dict):
                 key, fact = _fact(row, source, payload.get("repository"))
                 if key:
-                    facts[key] = fact
+                    merge_facts(facts, {key: fact})
     for number, head in (payload.get("open_heads") or {}).items():
         row = head if isinstance(head, dict) else {"head_sha": head}
         key, fact = _fact({"number": number, "state": "OPEN", **row}, source, payload.get("repository"))
@@ -465,7 +463,7 @@ def _github(root):
                 # don't erase branch/activity fields supplied by detailed rows.
                 existing.update(head_sha=fact["head_sha"], state="OPEN", merged=False)
             else:
-                facts[key] = fact
+                merge_facts(facts, {key: fact})
     return facts, {"complete": payload.get("pulls_listing") == "COMPLETE" and not payload.get("degraded"),
                    "scope": "baked PR listing", "observed_at": UNKNOWN,
                    "unchanged_since": payload.get("unchanged_since", UNKNOWN),
@@ -512,7 +510,7 @@ def _workstreams(snapshot, prior):
         if provider == "github" and item.get("kind") == "pull_request":
             key, fact = _fact(item, source)
             if key:
-                facts[key] = fact
+                merge_facts(facts, {key: fact})
                 selected = True
                 if changed and fact["state"] == "OPEN":
                     events.append({"id": iid + ":" + revision, "action": "OPEN", "task_key": key,
@@ -554,7 +552,7 @@ def collect(root: Path, cursors: dict, work_snapshot: dict | None = None) -> dic
     facts, github_coverage = _github(root)
     more, provider_facts, source_cursors, source_coverage = _workstreams(
         work_snapshot or {}, cursors.get("sources", {}))
-    facts.update(provider_facts)
+    merge_facts(facts, provider_facts)
     unique = {event["id"]: event for event in events + more}
     return {"events": sorted(unique.values(), key=lambda e: (str(e.get("at", "")), e["id"])),
             "provider_facts": facts,
