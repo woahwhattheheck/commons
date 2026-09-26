@@ -1,0 +1,10 @@
+{
+ "schema": "commons-change-holding/v1",
+ "key": "context-packet-atomic-output-20260926",
+ "holder": "high-burn-lane-a",
+ "state": "HELD",
+ "taken_at": "2026-09-26T12:05:19Z",
+ "heartbeat_at": "2026-09-26T12:05:19Z",
+ "ttl_s": 1800,
+ "note": "host/context_dispatch.py no-overwrite handoff output under concurrency"
+}
