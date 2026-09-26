@@ -19,7 +19,7 @@ from .identity import _repo as _repo_name, key_parts, task_key
 UNKNOWN = "UNKNOWN"
 SCHEMA = "commons-swarm-runtime/v1"
 TERMINAL = {"SHIPPED", "BLOCKED", "SUPERSEDED", "ABANDONED"}
-ACTIONS = {"OPEN", "TAKE", "HEARTBEAT", "SHIP", "BLOCK", "SUPERSEDE", "ABANDON", "RECOVER"}
+ACTIONS = {"OPEN", "TAKE", "HEARTBEAT", "SHIP", "BLOCK", "SUPERSEDE", "ABANDON", "RECOVER", "RELEASE"}
 PROVENANCE_LIMIT = 32
 PROVIDER_MAX_AGE_S = 300
 _INGEST_FIELDS = {"seq", "sequence", "ingest_seq", "ingestion_seq", "_seq", "ingested_at"}
@@ -62,7 +62,37 @@ def _order(event):
     cursor = event.get("c") or event.get("ingest_cursor")
     if isinstance(cursor, str) and "|" in cursor:
         return 1, 0, cursor, str(event.get("id", ""))
-    return 2, 0, _iso(_time(event.get("at", event.get("ts")))), str(event.get("id", ""))
+    stamp = _time(event.get("at", event.get("ts")))
+    # ISO text puts fractional seconds before the corresponding whole second.
+    # Sequence/cursor order above remains authoritative; only this fallback
+    # compares chronology, with undated events still sorted last.
+    return 2, 0, stamp or dt.datetime.max.replace(tzinfo=dt.timezone.utc), str(event.get("id", ""))
+
+
+def _newer_legacy_custody(record, event, now):
+    """Recognize an observed claim generation, not an ordinary attempted TAKE."""
+    from host.coordination_state import repository_claim_key
+
+    if not record["task_key"].startswith("github:") or not _known(event.get("worker")):
+        return False
+    parts = key_parts(record["task_key"])
+    key = repository_claim_key(parts["kind"], parts["number"], parts["repo"])
+    source = "legacy-claim:holdings/" + key + ".json"
+    if event.get("source") != source or not re.fullmatch(
+            re.escape(source) + r":[0-9a-f]{64}:take", str(event.get("id", ""))):
+        return False
+    ttl = event.get("legacy_ttl_s")
+    if type(ttl) is not int or not 1 <= ttl <= 7200:
+        return False
+    taken, started = _time(event.get("at")), _time(event.get("started_at"))
+    heartbeat = _time(event.get("heartbeat"))
+    if taken is None or taken != started or heartbeat is None or heartbeat < taken:
+        return False
+    if seat_census.heartbeat_ahead_s(taken, now) or seat_census.heartbeat_ahead_s(heartbeat, now):
+        return False
+    prior = [stamp for field in ("started_at", "heartbeat")
+             if (stamp := _time(record.get(field))) is not None]
+    return not prior or taken > max(prior)
 
 
 def _record(key, event):
@@ -189,6 +219,37 @@ def _landed_artifact(fact):
     )
 
 
+def normalize_equivalent(value):
+    """Describe exact-head ancestry as integration, never as a PR merge.
+
+    Older provider snapshots labelled the current main commit ``merge_sha``.
+    Reconstruct those records from their retained comparison proof on read so
+    a cached observation cannot keep asserting a merge that did not happen.
+    Genuine merged-PR equivalents without this ancestry proof are unchanged.
+    """
+    if not isinstance(value, Mapping):
+        return value
+    equivalent = dict(value)
+    proof = equivalent.get("evidence")
+    if not isinstance(proof, Mapping) or proof.get("kind") != "exact_head_ancestry":
+        return equivalent
+    for field in ("merged", "merge_sha", "merge_commit_sha", "merged_at"):
+        equivalent.pop(field, None)
+    if str(equivalent.get("state", "")).upper() == "MERGED":
+        equivalent.pop("state", None)
+    equivalent.update(artifact_landed=True, artifact_sha=proof.get("head_sha", UNKNOWN),
+                      landed_sha=proof.get("target_sha", UNKNOWN))
+    contained = (proof.get("status") in {"ahead", "identical"}
+                 and proof.get("behind_by") == 0
+                 and not isinstance(proof.get("behind_by"), bool)
+                 and proof.get("merge_base_sha") == proof.get("head_sha")
+                 and _landed_artifact(equivalent))
+    equivalent["artifact_landed"] = equivalent["integrated"] = contained
+    if not contained:
+        equivalent["landed_sha"] = UNKNOWN
+    return equivalent
+
+
 def _fact_key(fact):
     try:
         return task_key(fact)
@@ -208,6 +269,9 @@ def _provider_facts(facts, rejected):
             rejected.append({"source": "provider", "reason": str(exc)})
             continue
         normalized[key] = dict(fact)
+        for field in ("equivalent", "superseded_by"):
+            if field in normalized[key]:
+                normalized[key][field] = normalize_equivalent(normalized[key][field])
     return normalized
 
 
@@ -253,10 +317,16 @@ def _reconcile(record, fact, now, exact_task_fact=True):
         record["blocker"] = record["next_action"] = record["superseded_by"] = UNKNOWN
         record["recoverable"] = record["dispatchable"] = False
         record["reconciliation_needed"] = UNKNOWN
-    elif isinstance(equivalent, Mapping) and _merged(equivalent):
+    elif isinstance(equivalent, Mapping) and (
+        _merged(equivalent) or (exact_task_fact and _landed_artifact(equivalent))
+    ):
         record["state"] = "SUPERSEDED"
         record["superseded_by"] = dict(equivalent)
-        record["closed_at"] = equivalent.get("merged_at") or UNKNOWN
+        record["closed_at"] = (equivalent.get("merged_at") or equivalent.get("landed_at")
+                               or equivalent.get("observed_at") or UNKNOWN)
+        record["provider_freshness"] = "IMMUTABLE"
+        if _landed_artifact(equivalent):
+            record["landed_sha"] = equivalent["landed_sha"]
         record["recoverable"] = False
         record["dispatchable"] = False
         record["reconciliation_needed"] = UNKNOWN
@@ -283,7 +353,8 @@ def _dispatch_freshness(record, now):
     if record["state"] in TERMINAL:
         record["dispatchable"] = False
         if record.get("shipment_source") == "provider" or (
-            isinstance(record.get("superseded_by"), Mapping) and _merged(record["superseded_by"])
+            isinstance(record.get("superseded_by"), Mapping) and (
+                _merged(record["superseded_by"]) or _landed_artifact(record["superseded_by"]))
         ):
             record["provider_freshness"] = "IMMUTABLE"
         return
@@ -346,15 +417,38 @@ def project(events, now=None, seats=None, provider_facts=None):
         _provenance(record, event)
         worker = event.get("worker") or UNKNOWN
         if action == "TAKE" and record["state"] == "ACTIVE" and worker != record["worker"]:
-            collision = {"task_key": key, "event_id": event["id"], "worker": worker,
-                         "existing_worker": record["worker"], "reason": "already_active"}
-            collisions.append(collision)
-            record["collision_count"] += 1
-            continue
+            if _newer_legacy_custody(record, event, moment):
+                # The claims branch already changed custody. Seat activity on
+                # other work cannot keep its former task owner in possession.
+                record.update(previous_worker=record["worker"], worker=UNKNOWN,
+                              model=UNKNOWN, harness=UNKNOWN, state="OPEN",
+                              claim_transferred_at=event["at"])
+            else:
+                collision = {"task_key": key, "event_id": event["id"], "worker": worker,
+                             "existing_worker": record["worker"], "reason": "already_active"}
+                collisions.append(collision)
+                record["collision_count"] += 1
+                continue
         if record["state"] in TERMINAL:
             if action == "TAKE":
                 collisions.append({"task_key": key, "event_id": event["id"], "worker": worker,
                                    "reason": "already_terminal", "state": record["state"]})
+            continue
+        if action == "RELEASE":
+            if record["state"] != "ACTIVE":
+                continue
+            started = _time(record["started_at"])
+            expected = _time(event.get("expected_started_at"))
+            if worker == UNKNOWN or worker != record["worker"] or started is None or expected is None or expected < started:
+                rejected.append({"id": event["id"], "task_key": key, "reason": "custody_changed"})
+                continue
+            at, heartbeat = _time(event.get("at")), _time(record["heartbeat"])
+            if at is None or seat_census.heartbeat_ahead_s(at, moment) or at < started or (heartbeat is not None and at < heartbeat):
+                rejected.append({"id": event["id"], "task_key": key, "reason": "release_not_current"})
+                continue
+            record.update(previous_worker=record["worker"], worker=UNKNOWN,
+                          model=UNKNOWN, harness=UNKNOWN, state="OPEN",
+                          released_at=_iso(at), recoverable=False)
             continue
         if action == "RECOVER":
             expected = event.get("expected_worker")

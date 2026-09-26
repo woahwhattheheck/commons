@@ -386,7 +386,10 @@ def _cohort(key: tuple[str, str], campaigns: list[dict[str, Any]], *, policy: Ma
     mature = [c for c in sent_campaigns if c["summary"]["mature"]]
     pending = [c for c in sent_campaigns if c["summary"]["pending"]]
     bounced = [c for c in sent_campaigns if c["summary"]["ever_bounced"]]
-    delivered_mature = [c for c in mature if not c["summary"]["ever_bounced"]]
+    # A retained human reply demonstrates delivery even if the campaign also
+    # has bounce history. Every reply counted below must share this denominator.
+    delivered_mature = [c for c in mature
+                        if not c["summary"]["ever_bounced"] or c["summary"]["human_reply"]]
     human_reply = [c for c in campaigns if c["summary"]["human_reply"]]
     qualified = [c for c in campaigns if c["summary"]["qualified"]]
     proposed = [c for c in campaigns if c["summary"]["proposed"]]

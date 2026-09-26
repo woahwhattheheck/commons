@@ -63,12 +63,24 @@ def _run(
     cwd: Path | None = None,
     check: bool = True,
 ) -> subprocess.CompletedProcess[str]:
+    # Git hooks and parent Git commands can export repository-local selectors.
+    # Explicit source/restore directories must not inherit another repository's
+    # refs, index, or object storage. Keep unrelated configuration and credentials.
+    env = os.environ.copy()
+    for name in (
+        "GIT_DIR", "GIT_WORK_TREE", "GIT_COMMON_DIR", "GIT_INDEX_FILE",
+        "GIT_OBJECT_DIRECTORY", "GIT_ALTERNATE_OBJECT_DIRECTORIES",
+        "GIT_SHALLOW_FILE", "GIT_GRAFT_FILE", "GIT_NAMESPACE", "GIT_PREFIX",
+        "GIT_IMPLICIT_WORK_TREE",
+    ):
+        env.pop(name, None)
     completed = subprocess.run(
         ["git", *args],
         cwd=cwd,
         text=True,
         capture_output=True,
         check=False,
+        env=env,
     )
     if check and completed.returncode:
         detail = completed.stderr.strip() or completed.stdout.strip()

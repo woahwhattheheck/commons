@@ -19,6 +19,33 @@ Python 3.10+, standard library only. The reusable sparse rational operator is `p
 
 [The grid solver and derivation](P4_GRID_MEAN_REPAIR.md) extend the local operator to any rectangular Kuhn grid with at least two cubes, including exact translation and isotropic scale. Use `p4_grid_mean_repair.py input.json --output velocity.json`. It matches all zero-sum cell means, preserves zero edge divergence and boundary trace, and returns shared sparse Bernstein coefficients. The guide also gives an explicit fixed-patch bound and explains how to preserve a raw lift's edge traces while removing its cell means. The whole-domain bound depends on the cube count; it is not the mesh-uniform theorem.
 
+## Protected body-diagonal lift
+
+[The degree-four body-diagonal operator](P4_BODY_DIAGONAL_LIFT.md) now accepts any
+twelve interior cubic edge coefficients and returns a continuous quartic field
+with those traces, zero divergence on every other edge, zero patch boundary trace,
+and zero cell means. It composes the existing local mean repair on a fixed two-cube
+patch. Run `p4_body_diagonal_lift.py --trace 1 -1 2 -2 3 -3 4 -4 5 -5 6 -6`.
+The exact 189×12 map has 270 nonzeros and a reference seminorm-squared bound of
+1728 times the trace-coefficient norm squared.
+
+[The degree-five companion](P5_BODY_DIAGONAL_LIFT.md) accepts eighteen coefficients
+and degree-elevates the same quartic mean correction. Its exact 432×18 map has
+1,763 nonzeros and seminorm-squared bound `39744/49` in trace-coefficient norm.
+Use `p5_body_diagonal_lift.py --trace` with eighteen values, three per cell.
+Other edge classes, neighbor selection/transport and the global theorem remain
+separate work.
+
+## Singular interior face-diagonal lift
+
+[The face-diagonal operator](FACE_DIAGONAL_LIFT.md) supplies both degrees on the
+fixed shared face of two Kuhn cubes. It reconstructs the actual checkerboard
+source relation `y1-y2-y3+y4=0` per mode, then builds a protected, zero-cell-mean
+lift for every compatible trace. Use `face_diagonal_lift.py --degree 4` or
+`--degree 5`, with eight or twelve trace coefficients. Admissible dimensions are
+six and nine; final maps have 34 and 174 nonzero coefficients. Other orientations,
+edge classes, the full census and global assembly remain separate.
+
 ## Original problem
 
 On a Freudenthal tetrahedral mesh of a cubical domain, let `V_h^k` be the continuous vector degree-k polynomial space with zero boundary trace, and let `Q_h^k = div V_h^k`.

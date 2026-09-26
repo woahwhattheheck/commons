@@ -31,9 +31,9 @@ def _text(v,c,p=None):
 def _id(v,c): return _text(v,c,ID_RE)
 def _utc(v,c): return _text(v,c,UTC_RE)
 def _digest(v,c): return _text(v,c,SHA_RE)
-def _money(v,c):
+def _money(v,c,*,allow_zero=False):
  if type(v) is not int: raise ValueError(f"{c} must be an integer minor-unit amount")
- if not 0<v<=MAX_MINOR: raise ValueError(f"{c} outside safe bounds")
+ if not (0 if allow_zero else 1)<=v<=MAX_MINOR: raise ValueError(f"{c} outside safe bounds")
  return v
 def _enum(v,allowed,c):
  x=_text(v,c)
@@ -68,7 +68,7 @@ def validate_packet(packet):
   kind=_enum(e["kind"],EVENT_KINDS,f"event {x}.kind"); _utc(e["occurred_at"],f"event {x}.occurred_at"); eid=_id(e["evidence_id"],f"event {x}.evidence_id")
   if kind in MONEY_EVENTS:
    if "amount_minor" not in e: raise ValueError(f"event {x}: amount_minor required")
-   _money(e["amount_minor"],f"event {x}.amount_minor")
+   _money(e["amount_minor"],f"event {x}.amount_minor",allow_zero=kind=="RECONCILED_EVIDENCE")
   elif "amount_minor" in e: raise ValueError(f"event {x}: amount_minor not allowed for opportunity event")
   if eid in event_by_evidence: raise ValueError(f"evidence {eid}: referenced by multiple events {event_by_evidence[eid]} and {x}")
   event_by_evidence[eid]=x; event_digests[x]=event_sha256(e)
@@ -110,7 +110,14 @@ def evaluate_claim(claim,events,proofs):
    amount=x["amount_minor"] or 0
    if rev+amount>gross: blockers.append(f"{x['event_id']}:REVERSAL_EXCEEDS_RECEIVED")
    else: rev+=amount; latest_cash=x["occurred_at"]
- net=max(0,gross-rev); ref=claim["reference_amount_minor"]; rec=next((x for x in reversed(verified) if x["event_kind"]=="RECONCILED_EVIDENCE"),None)
+ net=max(0,gross-rev); ref=claim["reference_amount_minor"]
+ reconciliations=[x for x in verified if x["event_kind"]=="RECONCILED_EVIDENCE"]; rec=None
+ if reconciliations:
+  latest_at=reconciliations[-1]["occurred_at"]
+  latest_reconciliations=[x for x in reconciliations if x["occurred_at"]==latest_at]
+  if len({x["amount_minor"] for x in latest_reconciliations})>1:
+   blockers.extend(f"{x['event_id']}:CONFLICTING_RECONCILIATIONS" for x in latest_reconciliations)
+  else: rec=latest_reconciliations[-1]
  if rec:
   if rec["amount_minor"]!=net: blockers.append(f"{rec['event_id']}:RECONCILE_AMOUNT_MISMATCH")
   if latest_cash is None: blockers.append(f"{rec['event_id']}:RECONCILE_WITHOUT_RECEIPT")

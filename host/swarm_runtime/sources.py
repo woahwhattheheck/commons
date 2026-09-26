@@ -8,7 +8,10 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
+import os
 import re
+import subprocess
+from datetime import datetime, timezone
 from pathlib import Path
 
 from host import feed_delta, seat_census
@@ -164,8 +167,98 @@ def legacy_events(holdings):
             if record.get("heartbeat_at") and record["heartbeat_at"] != common["at"]:
                 events.append({**common, "id": source + ":" + revision + ":heartbeat",
                                "action": "HEARTBEAT", "at": record["heartbeat_at"]})
-        # RELEASED proves relinquishment, not shipment, abandonment or completion.
+        elif record.get("state") == "RELEASED":
+            # Relinquishment is distinct from shipment, abandonment or completion.
+            # Bind it to the exact take so an old release cannot clear a new one.
+            events.append({**common, "id": source + ":" + revision + ":release",
+                           "action": "RELEASE", "at": record.get("heartbeat_at") or UNKNOWN,
+                           "expected_started_at": record.get("taken_at") or UNKNOWN})
     return events
+
+
+def _git(root, *args):
+    """Local object/index reads only; no fetch, provider request or ref mutation."""
+    try:
+        result = subprocess.run(["git", "--no-optional-locks", "-C", str(root), *args],
+                                capture_output=True, text=True, timeout=15,
+                                env={**os.environ, "GIT_NO_LAZY_FETCH": "1",
+                                     "GIT_TERMINAL_PROMPT": "0"})
+    except (OSError, UnicodeError, subprocess.TimeoutExpired):
+        return None
+    return result.stdout if result.returncode == 0 else None
+
+
+def _post_changes(root, files, prior):
+    """Portable content boundary plus changed paths, independent of checkout age.
+
+    HEAD:p identifies committed bytes. Only dirty/untracked post bodies need
+    content hashes. Both travel safely between fresh workers, unlike mtimes.
+    A missing old tree or a non-Git checkout widens the local read explicitly.
+    """
+    tree = _git(root, "rev-parse", "--verify", "HEAD:p")
+    tree = tree.strip() if tree else ""
+    raw_status = _git(root, "-c", "status.renames=false", "status", "--porcelain=v1",
+                      "-z", "--untracked-files=all", "--", "p") if tree else None
+    git_backed = bool(re.fullmatch(r"[0-9a-f]{40,64}", tree)) and raw_status is not None
+    raw_bodies, unreadable, dirty, changed, deleted = {}, set(), {}, set(), set()
+
+    def read(ident):
+        try:
+            raw = files[ident].read_text(encoding="utf-8")
+        except (OSError, UnicodeError, KeyError):
+            unreadable.add(ident)
+            return "UNREADABLE"
+        raw_bodies[ident] = raw
+        return hashlib.sha256(raw.encode()).hexdigest()
+
+    if not git_backed:
+        # Without Git there is no portable cheap change index. Read actual bytes
+        # instead of presenting a host clock or directory mtime as completeness.
+        content = {ident: read(ident) for ident in sorted(files)}
+        signature = _digest(content)
+        changed = set(files) if signature != prior.get("post_catalog_signature") else set()
+        return {"mode": "content-scan", "reason": "local_git_catalog_unavailable",
+                "signature": signature, "tree": "", "dirty": {}, "changed": changed,
+                "deleted": deleted, "raw_bodies": raw_bodies, "unreadable": unreadable,
+                "full": bool(changed)}
+
+    for entry in raw_status.split("\0"):
+        if len(entry) < 4:
+            continue
+        path = Path(entry[3:])
+        if path.parent.as_posix() != "p" or path.suffix != ".md":
+            continue
+        ident = path.stem
+        if ident in files:
+            dirty[ident] = read(ident)
+        else:
+            dirty[ident] = "DELETED"
+            deleted.add(ident)
+    old_dirty = prior.get("post_dirty", {})
+    changed.update(ident for ident in set(old_dirty) | set(dirty)
+                   if old_dirty.get(ident) != dirty.get(ident))
+    old_tree = prior.get("post_tree", "")
+    full, reason = False, ""
+    if prior.get("post_catalog_version") != 2 or not re.fullmatch(r"[0-9a-f]{40,64}", old_tree):
+        full, reason = True, "catalog_bootstrap"
+    elif old_tree != tree:
+        names = _git(root, "diff-tree", "--no-commit-id", "--name-only", "--no-renames",
+                     "-r", "-z", old_tree, tree, "--")
+        if names is None:
+            full, reason = True, "prior_post_tree_unavailable"
+        else:
+            for name in names.split("\0"):
+                path = Path(name)
+                if name and path.parent.as_posix() == "." and path.suffix == ".md":
+                    changed.add(path.stem)
+                    if path.stem not in files:
+                        deleted.add(path.stem)
+    if full:
+        changed.update(files)
+    return {"mode": "git-tree", "reason": reason,
+            "signature": _digest({"tree": tree, "dirty": dirty}),
+            "tree": tree, "dirty": dirty, "changed": changed, "deleted": deleted,
+            "raw_bodies": raw_bodies, "unreadable": unreadable, "full": full}
 
 
 def _commons(root, prior):
@@ -185,31 +278,27 @@ def _commons(root, prior):
     expected.update(delta.get("undated", []))
     expected.update(prior.get("missing_ids", []))
     revisions = dict(prior.get("post_revisions", {}))
-    files, missing, unreadable, signatures = {}, set(), [], []
-    for path in sorted((root / "p").glob("*.md")):
-        try:
-            stat = path.stat()
-        except OSError:
-            unreadable.append(path.stem)
-            continue
-        files[path.stem] = path
-        signatures.append((path.name, stat.st_size, stat.st_mtime_ns))
-    signature = _digest(signatures)
-    scan = needs_full or signature != prior.get("post_catalog_signature")
+    files = {path.stem: path for path in sorted((root / "p").glob("*.md"))}
+    catalog = _post_changes(root, files, prior)
+    missing, unreadable = set(), set(catalog["unreadable"])
+    selected = set(files) if needs_full or catalog["full"] else catalog["changed"] | expected
     out, high = [], cursor
     full_rows = _read(root / "posts.json", []) if needs_full else []
     if needs_full:
         reads.append("posts.json")
         expected.update(row.get("id") for row in full_rows if isinstance(row, dict) and row.get("id"))
     missing.update(expected - set(files))
-    if scan:
-        reads.append("p/*.md")
-        for ident, path in files.items():
+    missing.update(catalog["deleted"])
+    if selected:
+        reads.append("p/*.md" if needs_full or catalog["full"] else "p/{changed-or-feed-id}.md")
+        for ident in sorted(selected & set(files)):
             try:
-                raw = path.read_text(encoding="utf-8")
+                raw = catalog["raw_bodies"].get(ident)
+                if raw is None:
+                    raw = files[ident].read_text(encoding="utf-8")
                 meta, body = parse_record(raw)
             except (OSError, UnicodeError, ValueError):
-                unreadable.append(ident)
+                unreadable.add(ident)
                 continue
             meta.setdefault("id", ident)
             revision = _digest([meta, body])
@@ -219,6 +308,7 @@ def _commons(root, prior):
             if events:
                 revisions[ident] = revision
                 out.extend(events)
+    if needs_full:
         # Existing ingest snapshots can carry carrier events before p/ lands.
         for row in list(full_rows or []) + list(recent or []):
             if not isinstance(row, dict) or not row.get("id") or row["id"] in files:
@@ -241,15 +331,18 @@ def _commons(root, prior):
         gaps.append({"kind": "feed_unreadable", "after": cursor})
     if missing or unreadable:
         gaps.append({"kind": "durable_posts_missing", "after": cursor,
-                     "ids": sorted(missing | set(unreadable))})
+                     "ids": sorted(missing | unreadable)})
     coverage = {"complete": not gaps, "scope": "available local Commons corpus; provider ingestion may lag",
                 "reads": reads, "feed_state": delta.get("state", UNKNOWN),
                 "complete_since": delta.get("complete_since", UNKNOWN),
                 "pulse_seq": pulse.get("seq", UNKNOWN), "pulse_at": pulse.get("ts", UNKNOWN),
-                "posts_available": len(files), "gaps": gaps}
+                "posts_available": len(files), "catalog_mode": catalog["mode"],
+                "gaps": gaps}
     following = {"feed_cursor": high, "pulse_seq": pulse.get("seq", UNKNOWN),
-                 "post_catalog_signature": signature, "post_revisions": revisions,
-                 "missing_ids": sorted(missing | set(unreadable)), "gaps": gaps}
+                 "post_catalog_version": 2, "post_catalog_signature": catalog["signature"],
+                 "post_tree": catalog["tree"], "post_dirty": catalog["dirty"],
+                 "post_revisions": revisions,
+                 "missing_ids": sorted(missing | unreadable), "gaps": gaps}
     return out, following, coverage
 
 
@@ -286,11 +379,74 @@ def _fact(row, source, repo=None):
     return key, fact
 
 
+def github_listing_facts(repository, *, open_rows=None, open_observed_at=None,
+                         closed_rows=None, closed_observed_at=None):
+    """Reuse successful provider reads with their explicit observation times.
+
+    These transient facts make the already-read open PRs routable without
+    changing the byte-stable feed bake or making another provider request.
+    Missing or invalid timestamps never become a fresh observation.
+    """
+    from host.github_state import _closed
+
+    facts, observed_moments = {}, {}
+    for status, rows, observed in (("OPEN", open_rows, open_observed_at),
+                                   ("CLOSED", closed_rows, closed_observed_at)):
+        if not isinstance(rows, list) or not isinstance(observed, str):
+            continue
+        try:
+            moment = datetime.fromisoformat(observed.strip().replace("Z", "+00:00"))
+        except ValueError:
+            continue
+        if moment.tzinfo is None:
+            continue
+        stamp = moment.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+        source = {"id": "https://api.github.com/repos/" + str(repository) +
+                        "/pulls?state=" + status.lower(),
+                  "observed_at": stamp, "status": "ok"}
+        for row in rows:
+            if not isinstance(row, dict):
+                continue
+            normalized = {**row, "state": status}
+            if status == "CLOSED":
+                # Reuse the bake's merge semantics: a branch head or speculative
+                # merge commit on an unmerged PR is never a landed merge SHA.
+                closure = _closed(row)
+                normalized.update(state=closure["state"], merged_at=closure["merged_at"],
+                                  merge_commit_sha=closure["merge_commit_sha"])
+            else:
+                normalized.update(merged=False, merged_at=None, merge_commit_sha=None)
+            key, fact = _fact(normalized, source, repository)
+            if key:
+                previous = observed_moments.get(key)
+                if previous is None or moment >= previous:
+                    facts[key] = fact
+                    observed_moments[key] = moment
+    return facts
+
+
+def github_listing_files(repository, directory):
+    """Read this ingest job's existing JSONL/observation-sidecar pairs only."""
+    from host.github_state import _read_pulls
+
+    directory, inputs = Path(directory), {}
+    for kind in ("open", "closed"):
+        try:
+            observed = (directory / (kind + "_pulls.observed_at")).read_text(encoding="utf-8").strip()
+            rows = _read_pulls(str(directory / (kind + "_pulls.jsonl")))
+        except (OSError, UnicodeError, ValueError):
+            continue
+        inputs[kind + "_rows"] = rows
+        inputs[kind + "_observed_at"] = observed
+    return github_listing_facts(repository, **inputs)
+
+
 def _github(root):
     payload = _read(root / "feed/github.json", {}) or {}
     source = {"id": "commons:feed/github.json", "degraded": payload.get("degraded", [])}
     facts = {}
-    for name in ("pulls", "newest", "oldest", "recently_closed", "open_pull_requests"):
+    for name in ("pulls", "newest", "oldest", "newest_pulls", "longest_open",
+                 "open_pull_requests", "recently_closed"):
         rows = payload.get(name, [])
         for row in rows if isinstance(rows, list) else []:
             if isinstance(row, dict):
@@ -301,7 +457,15 @@ def _github(root):
         row = head if isinstance(head, dict) else {"head_sha": head}
         key, fact = _fact({"number": number, "state": "OPEN", **row}, source, payload.get("repository"))
         if key:
-            facts[key] = fact
+            existing = facts.get(key)
+            if existing and existing.get("merged"):
+                continue
+            if existing:
+                # The compact map only asserts current head and open state;
+                # don't erase branch/activity fields supplied by detailed rows.
+                existing.update(head_sha=fact["head_sha"], state="OPEN", merged=False)
+            else:
+                facts[key] = fact
     return facts, {"complete": payload.get("pulls_listing") == "COMPLETE" and not payload.get("degraded"),
                    "scope": "baked PR listing", "observed_at": UNKNOWN,
                    "unchanged_since": payload.get("unchanged_since", UNKNOWN),

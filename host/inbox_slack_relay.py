@@ -177,13 +177,33 @@ class Providers:
         self.slack_token = os.environ.get("SLACK_BOT_TOKEN", "")
         self.gmail_token = os.environ.get("GMAIL_ACCESS_TOKEN", "")
         self._equipment = None
+        self._github_equipment = None
 
     def github(self, endpoint: str) -> Any:
         if not endpoint.startswith(("repos/", "notifications?", "search/issues?")) and endpoint != "user":
             raise RelayError("unexpected_github_resource")
         if self.gh_token:
             return request_json("https://api.github.com/" + endpoint, token=self.gh_token)
-        return command_json(["gh", "api", "--hostname", "github.com", "--method", "GET", endpoint])
+        from integrations.shared_equipment.provider_io import EquipmentError, GitHubSlackEquipment
+        if self._github_equipment is None:
+            self._github_equipment = GitHubSlackEquipment()
+        try:
+            return self._github_equipment.github(endpoint)
+        except EquipmentError as exc:
+            # Reuse typed status/header parsing; never expose native stderr or
+            # provider response bodies through the relay's fixed-code report.
+            headers = {name: str(value) for name, value in (
+                ("Retry-After", exc.retry_after),
+                ("X-RateLimit-Remaining", exc.rate_limit_remaining),
+                ("X-RateLimit-Reset", exc.rate_limit_reset),
+            ) if value is not None}
+            retry = http_retry_after(exc.http_status or 0, headers, "api.github.com")
+            if exc.code == "github_rate_limited" and retry <= 0:
+                retry = 60
+            code = {"github_transport_failed": "native_cli_unavailable",
+                    "github_response_invalid": "native_cli_invalid_json",
+                    "github_request_failed": f"http_{exc.http_status}" if exc.http_status else "native_cli_request_failed"}.get(exc.code, exc.code)
+            raise RelayError(code, retry_after=retry) from None
 
     def slack(self, method: str, data: dict) -> dict:
         if method not in {"auth.test", "conversations.history", "conversations.replies", "chat.postMessage", "chat.update"}:
@@ -204,10 +224,15 @@ class Providers:
                 result = request_json(url, token=self.slack_token, data=data)
         if not isinstance(result, dict) or not result.get("ok"):
             error = str(result.get("error", "invalid_response")) if isinstance(result, dict) else "invalid_response"
-            try:
-                retry = int(result.get("retry_after") or 60) if error in {"ratelimited", "slack_http_error"} else 0
-            except (TypeError, ValueError):
-                retry = 60
+            retry = 0
+            if error in {"ratelimited", "slack_http_error"}:
+                try:
+                    status = 429 if error == "ratelimited" else int(result.get("status") or 0)
+                except (TypeError, ValueError):
+                    status = 0
+                # Existing custody returns the original header, including an
+                # HTTP date. Preserve the same deadline as the direct route.
+                retry = http_retry_after(status, {"Retry-After": result.get("retry_after")}, "slack.com")
             raise RelayError("slack_" + re.sub(r"[^a-zA-Z0-9_]", "", error)[:80],
                              uncertain=(bool(result.get("uncertain")) if isinstance(result, dict) else method.startswith("chat.")) or error in {"internal_error", "fatal_error"}, retry_after=retry)
         return result
@@ -387,6 +412,19 @@ class Delivery:
         self.state, self.slack = state, slack
         self.max_pages, self.max_posts, self.posts = max_pages, max_posts, 0
         self.min_interval, self.next_post = min_interval, 0.0
+        self.cooldown_until = 0.0
+
+    def call_slack(self, method: str, data: dict) -> dict:
+        """One observed Slack cooldown covers source and health delivery."""
+        remaining = self.cooldown_until - time.time()
+        if remaining > 0:
+            raise RelayError("slack_retry_after_active", retry_after=math.ceil(remaining))
+        try:
+            return self.slack(method, data)
+        except RelayError as exc:
+            if exc.retry_after > 0:
+                self.cooldown_until = max(self.cooldown_until, time.time() + exc.retry_after)
+            raise
 
     def find(self, channel: str, marker: str, attempted: float, thread: str = "") -> str:
         # Resume a bounded scan instead of rereading its first pages forever.
@@ -411,7 +449,7 @@ class Delivery:
             if thread:
                 data["ts"] = thread
             try:
-                result = self.slack("conversations.replies" if thread else "conversations.history", data)
+                result = self.call_slack("conversations.replies" if thread else "conversations.history", data)
             except RelayError as exc:
                 if exc.code == "slack_invalid_cursor":
                     # Expired provider cursors require a fresh scan, never a send.
@@ -450,7 +488,7 @@ class Delivery:
                 "client_msg_id": str(uuid.uuid5(uuid.NAMESPACE_URL, channel + "\0" + text))}
         if thread:
             data["thread_ts"] = thread
-        result = self.slack("chat.postMessage", data)
+        result = self.call_slack("chat.postMessage", data)
         if not result.get("ts"):
             raise RelayError("slack_missing_receipt", uncertain=True)
         return str(result["ts"])
@@ -473,7 +511,7 @@ class Delivery:
         if ts:
             time.sleep(max(0.0, self.next_post - time.monotonic()))
             self.next_post = time.monotonic() + self.min_interval
-            self.slack("chat.update", {
+            self.call_slack("chat.update", {
                 "channel": channel, "ts": ts, "text": text, "mrkdwn": False,
                 "parse": "none", "link_names": False,
                 "unfurl_links": False, "unfurl_media": False,
@@ -657,7 +695,7 @@ def mail_header(value: str) -> str:
         return value
 
 
-def gmail_events(get: Callable, config: dict, since: str) -> tuple[list[Event], dict]:
+def gmail_events(get: Callable, config: dict, since: str, seen: Callable = lambda key: "") -> tuple[list[Event], dict]:
     profile = get("profile")
     if str(profile.get("emailAddress", "")).lower() != config["gmail_address"].lower():
         raise RelayError("gmail_account_mismatch")
@@ -676,10 +714,18 @@ def gmail_events(get: Callable, config: dict, since: str) -> tuple[list[Event], 
             break
     if token:
         raise RelayError("gmail_page_limit_pending")
-    info = {"mode": "work-mail-poll", "messages": len(ids), "private_or_auth_omitted": 0,
+    info = {"mode": "work-mail-poll", "messages": len(ids), "unchanged": 0, "private_or_auth_omitted": 0,
             "promotional_omitted": 0, "github_mail_deduped": 0, "unclassified_pending": 0, "source_items_pending": 0, "body_pending": 0}
     events: list[Event] = []
+    groups = []
     for mid in dict.fromkeys(ids):
+        # Received message IDs are immutable. Skip only a completed content
+        # delivery; omitted/partial mail remains eligible on every poll.
+        version = "gmail.delivered." + digest(json.dumps([
+            config["gmail_address"].lower(), config.get("gmail_channel", ""), mid]))
+        if seen(version):
+            info["unchanged"] += 1
+            continue
         try:
             message = get("messages/" + mid, {"format": "full"})
         except RelayError as exc:
@@ -708,7 +754,8 @@ def gmail_events(get: Callable, config: dict, since: str) -> tuple[list[Event], 
             continue
         payload = message.get("payload", {})
         body = mail_body(payload)
-        if not body or "[Body stored as an attachment;" in body or "[Body decoding failed;" in body:
+        complete_body = bool(body) and "[Body stored as an attachment;" not in body and "[Body decoding failed;" not in body
+        if not complete_body:
             info["body_pending"] += 1
         if not (WORK_MAIL.search(title) or domain in config.get("work_sender_domains", []) or address in config.get("work_senders", [])):
             info["unclassified_pending"] += 1
@@ -725,6 +772,8 @@ def gmail_events(get: Callable, config: dict, since: str) -> tuple[list[Event], 
             action = "Acknowledgement only: existing owner track the promised next step; do not treat this as acceptance or payment."
         events.append(Event("gmail", str(message.get("threadId") or mid), mid, title, body,
                             "https://mail.google.com/mail/#all/" + mid, sender, headers.get("date", ""), action))
+        groups.append((version if complete_body else "", 1))
+    info["_delivery_groups"] = groups
     return events, info
 
 
@@ -740,22 +789,35 @@ def run(config: dict, state: State, providers: Providers) -> dict:
         raise RelayError("slack_workspace_mismatch")
     delivery = Delivery(state, providers.slack, max_posts=int(config.get("max_posts_per_run", 100)), min_interval=float(config.get("min_post_interval", 1.05)))
     since = state.get("github_since", iso(now - timedelta(days=int(config.get("backfill_days", 14)))))
-    for name, source, channel in [("github", github_events, config["github_channel"]), ("gmail", gmail_events, config["gmail_channel"])]:
+    sources = [("github", github_events, config["github_channel"]), ("gmail", gmail_events, config["gmail_channel"])]
+    if state.get("next_source") == "gmail":
+        sources.reverse()
+    next_source = None
+    for name, source, channel in sources:
+        retry_key = "retry_after." + name
+        if float(state.get(retry_key, "0")) > time.time():
+            report["errors"][name] = "provider_retry_after_active"
+            continue
+        if delivery.posts >= delivery.max_posts:
+            # No source bodies are needed when this pass cannot deliver them.
+            # Give the unserved source the first turn on the next finite pass.
+            next_source = next_source or name
+            report["errors"][name] = "delivery_budget_pending"
+            continue
+        collecting = True
         try:
             getter = providers.github if name == "github" else providers.gmail
-            events, info = source(getter, config, since, state.get) if name == "github" else source(getter, config, since)
+            events, info = source(getter, config, since, state.get)
+            collecting = False
             groups = info.pop("_delivery_groups", [])
             report["sources"][name] = info
             offset = 0
-            if name == "github":
-                for version, count in groups:
-                    for event in events[offset:offset + count]:
-                        report["posted_parts"] += delivery.deliver(event, channel)
-                    state.set(version, "1")
-                    offset += count
-            else:
-                for event in events:
+            for version, count in groups:
+                for event in events[offset:offset + count]:
                     report["posted_parts"] += delivery.deliver(event, channel)
+                if version:
+                    state.set(version, "1")
+                offset += count
             state.set(name + "_last_poll", iso())
             if info.get("source_items_pending", 0):
                 report["errors"][name] = "source_items_pending"
@@ -765,16 +827,30 @@ def run(config: dict, state: State, providers: Providers) -> dict:
                     state.set("github_since", iso(now - timedelta(minutes=10)))
         except RelayError as exc:
             report["errors"][name] = exc.code
+            if exc.code == "delivery_budget_pending":
+                next_source = next_source or ("gmail" if name == "github" else "github")
             if exc.retry_after:
-                state.set("retry_after", time.time() + exc.retry_after)
-                break
+                # A source's API budget is independent of the other source.
+                # Slack delivery (and legacy global deadlines) still pause all.
+                state.set(retry_key if collecting else "retry_after", time.time() + exc.retry_after)
+                if not collecting:
+                    break
         except Exception:
             report["errors"][name] = "unexpected_source_error"
+    if next_source:
+        state.set("next_source", next_source)
+        report["next_source"] = next_source
     report["last_success"] = {name: state.get(name + "_last_success", "never") for name in ("github", "gmail")}
     pending = state.db.execute("SELECT COUNT(*) FROM parts WHERE ts='' ").fetchone()[0]
     report["pending_parts"] = pending
     incomplete = any(info.get("unclassified_pending", 0) or info.get("private_omitted", 0) or info.get("body_pending", 0) for info in report["sources"].values())
     report["status"] = "DEGRADED" if report["errors"] or pending or incomplete else "LIVE"
+    if delivery.cooldown_until > time.time():
+        # Keep the local receipt; the next scheduled pass can update Slack
+        # after its persisted Retry-After boundary. A source-provider cooldown
+        # does not set this Slack-only boundary.
+        report["health_delivery"] = "deferred_slack_retry_after"
+        return report
     health = ("INBOX VISIBILITY — " + report["status"] + "\n" + json.dumps(report, indent=2) +
               "\nDelivered is not resolved. CLAIM / DONE + evidence / BLOCKED live in each source thread. "
               "Private GitHub notifications and unclassified mail require a separate permitted review; zero public deliveries is not an empty inbox. "

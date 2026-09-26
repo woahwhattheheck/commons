@@ -148,7 +148,9 @@ class LiveCollectors:
         # persisted deadlines from older collectors) still pause every read.
         self.request_budget.acquire(scope, shared_scopes=("github:GET",))
         try:
-            return self.equipment.github(endpoint, method="GET")
+            response = self.equipment.github(endpoint, method="GET")
+            self.request_budget.succeeded(scope, shared_scopes=("github:GET",))
+            return response
         except Exception as exc:
             if getattr(exc, "http_status", None) == 429 or getattr(exc, "code", None) == "github_rate_limited":
                 reset = getattr(exc, "rate_limit_reset", None) if getattr(exc, "rate_limit_remaining", None) == 0 else None
@@ -168,6 +170,8 @@ class LiveCollectors:
         scope = "slack:" + method
         self.request_budget.acquire(scope)
         response = self.equipment.slack(method, payload)
+        if isinstance(response, dict) and response.get("ok") is True:
+            self.request_budget.succeeded(scope)
         if isinstance(response, dict) and response.get("ok") is not True:
             if response.get("status") == 429 or response.get("error") == "ratelimited":
                 retry = self.request_budget.rate_limited(scope, response.get("retry_after"))
@@ -216,6 +220,10 @@ class LiveCollectors:
                 incomplete = incomplete or bool(response.get("incomplete_results"))
             if progress is not None:
                 progress["pages_read"] += 1
+            if not incomplete and total is not None and len(result) >= total:
+                # An explicit complete count avoids probing an extra empty
+                # page when the final page exactly fills the requested size.
+                return result, True
             if len(rows) < self.page_size:
                 # A short page cannot overrule an explicit larger result count.
                 return result, not incomplete and (total is None or len(result) >= total)
@@ -264,7 +272,9 @@ class LiveCollectors:
         rows, complete = {}, True
         progress = {"pages_read": 0, "failures": []}
         for qualifier in ("author:" + login, "user:" + login):
-            for window in ("is:open", "updated:>=" + since):
+            # Keep the windows disjoint so recently active open PRs do not
+            # consume the bounded slots intended for recently closed work.
+            for window in ("is:open", "is:closed updated:>=" + since):
                 found, page_complete = self._pages("search/issues?" + urlencode({
                     "q": "is:pr " + qualifier + " " + window, "sort": "updated", "order": "desc"}), "items",
                     progress=progress, read_label=qualifier.partition(":")[0] + ":" + window)

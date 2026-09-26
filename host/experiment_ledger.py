@@ -15,8 +15,14 @@ import math
 import os
 import re
 import tempfile
+import time
 from collections.abc import Mapping
 from typing import Any, Dict, Iterable, List, Optional
+
+try:
+    from host.swarm_runtime import locks as _process_locks
+except ModuleNotFoundError:
+    from swarm_runtime import locks as _process_locks
 
 SCHEMA = "commons-experiment-ledger/v1"
 BENCHES = ("forensic_estimate", "small_gate", "field_gate", "frozen_panel")
@@ -279,6 +285,8 @@ def dump_ledger(ledger: Mapping[str, Any]) -> str:
 
 
 def write_ledger(path: str, ledger: Mapping[str, Any]) -> None:
+    """Replace a snapshot; use the file mutation APIs for shared updates."""
+    path = os.path.realpath(os.fspath(path))
     text = dump_ledger(ledger)
     directory = os.path.dirname(os.path.abspath(path))
     os.makedirs(directory, exist_ok=True)
@@ -292,6 +300,53 @@ def write_ledger(path: str, ledger: Mapping[str, Any]) -> None:
     finally:
         if os.path.exists(tmp):
             os.unlink(tmp)
+
+
+def _update_ledger_file(path, update, *, allow_missing=False, lock_timeout=10.0):
+    if not math.isfinite(lock_timeout) or lock_timeout < 0:
+        raise ValueError("lock timeout must be a finite non-negative number")
+    # Aliases share one publication target and one stable sidecar lock.
+    path = os.path.realpath(os.fspath(path))
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    deadline = time.monotonic() + lock_timeout
+    while True:
+        try:
+            handle = _process_locks.take(path + ".lock")
+        except _process_locks.LockUnavailable as error:
+            raise OSError("experiment ledger lock unavailable: %s" % path) from error
+        if handle is not None:
+            break
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            raise TimeoutError("experiment ledger is busy: %s (waited %.3gs)" % (path, lock_timeout))
+        time.sleep(min(0.05, remaining))
+    try:
+        # Reread after admission so both independent additions and terminal
+        # evidence checks see every preceding writer's completed transaction.
+        ledger = update(load_ledger(path, allow_missing=allow_missing))
+        write_ledger(path, ledger)
+        return ledger
+    finally:
+        _process_locks.release(handle)
+
+
+def add_hypothesis_file(path: str, hypothesis_id: str, statement: str,
+                        objective: Mapping[str, Any], labels: Optional[Iterable[str]] = None,
+                        *, lock_timeout: float = 10.0) -> Dict[str, Any]:
+    """Add a declaration without losing concurrent evidence or declarations."""
+    return _update_ledger_file(
+        path, lambda ledger: add_hypothesis(ledger, hypothesis_id, statement, objective, labels),
+        allow_missing=True, lock_timeout=lock_timeout,
+    )
+
+
+def record_bench_file(path: str, hypothesis_id: str, bench_name: str,
+                      record: Mapping[str, Any], *, lock_timeout: float = 10.0) -> Dict[str, Any]:
+    """Record evidence against the latest ledger while holding its writer lock."""
+    return _update_ledger_file(
+        path, lambda ledger: record_bench(ledger, hypothesis_id, bench_name, record),
+        lock_timeout=lock_timeout,
+    )
 
 
 def _json_object(text: str, field: str) -> Dict[str, Any]:
@@ -320,10 +375,14 @@ def main(argv: Optional[List[str]] = None) -> int:
     record.add_argument("hypothesis_id")
     record.add_argument("bench", choices=BENCHES)
     record.add_argument("--record-json", required=True)
+    for writer in (add, record):
+        writer.add_argument("--lock-timeout", type=float, default=10.0,
+                            help="seconds to wait for another ledger writer (default: 10)")
     args = parser.parse_args(argv)
 
     try:
-        ledger = load_ledger(args.ledger, allow_missing=args.command == "add")
+        if args.command in ("validate", "get"):
+            ledger = load_ledger(args.ledger, allow_missing=False)
         if args.command == "validate":
             print(dump_ledger(ledger), end="")
             return 0
@@ -334,21 +393,22 @@ def main(argv: Optional[List[str]] = None) -> int:
             print(json.dumps(row, sort_keys=True, indent=2, ensure_ascii=False))
             return 0
         if args.command == "add":
-            ledger = add_hypothesis(
-                ledger,
+            ledger = add_hypothesis_file(
+                args.ledger,
                 args.hypothesis_id,
                 args.statement,
                 _json_object(args.objective_json, "--objective-json"),
                 args.label,
+                lock_timeout=args.lock_timeout,
             )
         else:
-            ledger = record_bench(
-                ledger,
+            ledger = record_bench_file(
+                args.ledger,
                 args.hypothesis_id,
                 args.bench,
                 _json_object(args.record_json, "--record-json"),
+                lock_timeout=args.lock_timeout,
             )
-        write_ledger(args.ledger, ledger)
         print(json.dumps(ledger["hypotheses"][args.hypothesis_id], sort_keys=True, indent=2))
         return 0
     except (OSError, ValueError, json.JSONDecodeError) as exc:

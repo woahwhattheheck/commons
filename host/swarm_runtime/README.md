@@ -19,6 +19,8 @@ Global options precede the command:
 
 ```bash
 python host/swarmctl.py status
+python host/swarmctl.py status --state ACTIVE --owner MY_SEAT --limit 20
+python host/swarmctl.py status --task github:woahwhattheheck/commons:issue:177
 python host/swarmctl.py sync --max-calls 4
 python host/swarmctl.py take github:woahwhattheheck/commons:issue:177 --operation-id take-177-01 --data /tmp/worker.json
 python host/swarmctl.py heartbeat --feed-cursor '2026-09-26T12:00:00Z|exact-event-id'
@@ -33,6 +35,17 @@ when that worker owns exactly one active task. `ship` records a shipment claim;
 provider reconciliation supplies the actual merged SHA. It does not merge code.
 After a terminal outcome or a collision, the same transaction attempts to take
 the next compatible task. The response includes its bounded context bundle.
+Status accepts repeated `--state`, exact `--task`/`--owner`, and `--after` with
+the returned `next_cursor`. `total` counts all canonical tasks; `matched` counts
+the selected filter before pagination. These reads do not refresh providers.
+Provider-confirmed shipments also appear once in the existing command-center
+feed, even when the worker never wrote a final receipt.
+
+Meaningful claims transactions also publish `holdings/swarm-status.json` beside
+the ledger. This bounded read model comes from the same Python projector and
+includes the exact ledger's SHA-256 and projection time. It is suitable for a
+static operator view; custody decisions still go through the runtime. Merely
+aging a lease does not write another snapshot or commit.
 
 `--data` reads JSON metadata. For example, a worker that has actually discovered
 these roads can supply:
@@ -45,6 +58,11 @@ Reuse the exact `operation_id` and payload after interruption. Reusing an ID wit
 different content is an error. CLI-generated IDs are printed on stderr; heartbeat
 and next defaults include the current minute, so retain an explicit ID for retries
 across minute boundaries. Read `published` before treating custody as acquired.
+Persisted operation receipts keep known assignment, outcome, error, and request
+evidence. Their context references exact event IDs in the retained journal instead
+of repeating event bodies; `UNKNOWN` placeholders are omitted. Immediate
+and retried operations still return full current context. Context without backing
+journal events remains inline, and structured no-assignment results stay intact.
 
 ## Rate limits and deployment
 
@@ -70,6 +88,12 @@ heartbeat do not refresh GitHub REST data. Dispatch and terminal operations may
 refresh exact candidate identifiers within a four-call budget; canonical claims
 still use git. `status --fresh` refreshes the claims branch, not providers.
 `sync --work-snapshot`, `--facts` and `--events` accept saved JSON inputs.
+
+The existing `commons-board` ingest job runs `sync --cached --max-calls 0` after
+its feed, seat and GitHub bakes. It uses the job's existing Git write credentials
+to reconcile `state/claims`, independently of the command-center host, without
+another provider poll. A failed or unpublished sync emits a workflow warning;
+the next existing ingest retries without invalidating already-durable intake.
 
 Without `--url`, the CLI uses git and defaults its provider cache to
 `swarm-cache` in Git's common directory, shared by linked worktrees;
@@ -106,6 +130,17 @@ Terminal task history releases a matching legacy holding only when its dated
 closure covers the holding's activity. A newer take or heartbeat is preserved,
 even when the worker name matches; missing closure or holding dates leave custody
 unchanged. Historical task completion cannot revoke a later direct claim.
+Active projections also preserve later take and heartbeat times for the same
+holder, so an older task cannot move a renewed claim's generation backward.
+An explicit legacy release reopens its matching active task without declaring
+completion. Its worker must match, and its dates must cover the current take;
+stale releases cannot clear newer work. The next take creates fresh custody.
+Sync rereads custody from the exact claims parent on every transaction attempt,
+after collected events, so a release during collection cannot be overwritten.
+A newer observed legacy claim can also transfer an active task from its former
+owner. Its exact repository/key source, revision ID, take generation, heartbeat,
+and lease must agree; an ordinary attempted take still collides with live custody.
+Fresh seat activity on unrelated work cannot veto an already observed transfer.
 
 ## Facts and implementation
 
@@ -114,10 +149,21 @@ against the reader's clock: LIVE/QUIET retain custody; stale activity becomes
 recoverable. Implausible future heartbeats do not renew leases. Provider
 observations and actual provider activity have separate timestamps. A known
 merged PR lacking a merge SHA remains undispatched pending reconciliation.
+Provider observations are ordered by parsed time. A dated refresh can replace
+undated baked facts; older or undated refreshes cannot erase a dated observation.
+Heartbeat composition, creation-time dispatch order, recent shipments, and
+bounded event context likewise compare parsed times. Timezone offsets and
+fractional seconds do not reorder custody or displace newer context. Unknown
+dates sort after known dates without changing recovery or priority precedence.
 Incomplete source coverage stays visible; a newest Slack page is not a complete
 work inventory. Publishing capability requires a discovered write road or write
 primitive, with discovery, authentication, permission, policy and provider failures
 reported distinctly.
+
+Commons ingestion persists Git tree IDs and dirty-file content hashes as its
+portable post boundary. Unchanged checkouts do not parse post bodies again;
+changed Git paths and exact feed IDs select the next read. A feed gap or missing
+prior tree widens to the available local corpus without hidden provider fetches.
 
 | Module | Responsibility |
 | --- | --- |

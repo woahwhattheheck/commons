@@ -411,6 +411,10 @@ def _schedule(n: dict[str, Any]) -> list[dict[str, Any]]:
             "action_class": action["action_class"],
             "state": action["state"],
             "depends_on": sorted(action["depends_on"]),
+            "waiting_on_action_ids": sorted(
+                dep for dep in action["depends_on"]
+                if amap[dep]["state"] not in {"COMPLETE", "NOT_APPLICABLE"}
+            ),
             "duration_seconds": action["duration_seconds"],
             "handoff_buffer_seconds": action["handoff_buffer_seconds"],
             "latest_safe_start_utc": _ts(latest_start),
@@ -491,11 +495,21 @@ def _decision(n: dict[str, Any], schedule: list[dict[str, Any]]) -> tuple[str, l
 
     pending = [item for item in schedule if item["state"] == "PENDING"]
     owner_pending = [item for item in pending if item["actor_class"] == "OWNER"]
-    if owner_pending:
-        next_owner = min(owner_pending, key=lambda item: (item["latest_safe_start_utc"], item["action_id"]))
+    ready_owner = [item for item in owner_pending if not item["waiting_on_action_ids"]]
+    if ready_owner:
+        next_owner = min(ready_owner, key=lambda item: (item["latest_safe_start_utc"], item["action_id"]))
         owner_actions.append(
             f"next owner action {next_owner['action_id']} no later than {next_owner['latest_safe_start_utc']} UTC"
         )
+    elif owner_pending:
+        next_owner = min(owner_pending, key=lambda item: (item["latest_safe_start_utc"], item["action_id"]))
+        waiting_on = ", ".join(next_owner["waiting_on_action_ids"])
+        owner_actions.append(
+            f"owner action {next_owner['action_id']} waits for {waiting_on}; coordinate prerequisite completion "
+            f"before its latest safe start {next_owner['latest_safe_start_utc']} UTC"
+        )
+    elif pending:
+        owner_actions.append("coordinate remaining planned work before the final owner submission decision")
     else:
         owner_actions.append("owner performs final submission decision outside this compiler")
     owner_actions.append("refresh buyer deadline/amendment evidence immediately before irreversible owner portal action")
@@ -572,12 +586,13 @@ def render_markdown(packet: dict[str, Any]) -> bytes:
         "",
         "## Critical path",
         "",
-        "| action | actor | class | state | latest safe start UTC | latest safe finish UTC | slack seconds |",
-        "| --- | --- | --- | --- | --- | --- | ---: |",
+        "| action | actor | class | state | waiting on | latest safe start UTC | latest safe finish UTC | slack seconds |",
+        "| --- | --- | --- | --- | --- | --- | --- | ---: |",
     ]
     for item in packet["critical_path"]:
         lines.append(
             f"| `{item['action_id']}` | {item['actor_class']} | {item['action_class']} | {item['state']} | "
+            f"{', '.join(item['waiting_on_action_ids']) or '—'} | "
             f"`{item['latest_safe_start_utc']}` | `{item['latest_safe_finish_utc']}` | {item['slack_seconds']} |"
         )
     if packet["blockers"]:

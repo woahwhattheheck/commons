@@ -26,7 +26,6 @@ CONSERVATION = "CONSERVATION"
 KINDS = ("meter", "unavailable", "explicit_reset_applied", "public_signal")
 MIN_CONSUMED_POINTS = 5.0
 MIN_REPLENISHMENT_POINTS = 5.0
-REPLENISHED_REMAINING = 95.0
 
 
 class UsageError(ValueError):
@@ -192,8 +191,12 @@ def record(state, *, account, meter_scope, observed_at, kind, source, evidence,
                               and observed < timestamp(prior_boundary)
                               and observed < timestamp(reset_at))
                 consumed = previous["remaining_percent"] <= 100 - MIN_CONSUMED_POINTS
-                replenished = (remaining_percent >= REPLENISHED_REMAINING
-                               and remaining_percent - previous["remaining_percent"] >= MIN_REPLENISHMENT_POINTS)
+                # Concurrent work can consume a reset allocation before the
+                # next observation. Its absolute level need not remain near
+                # 100%; the material upward jump before the old deadline is
+                # the evidence. Initial/repeated readings still do not count.
+                replenished = (remaining_percent - previous["remaining_percent"]
+                               >= MIN_REPLENISHMENT_POINTS)
                 if same_cycle and consumed and replenished:
                     transition = {
                         "reason": "weekly meter replenished before the ordinary reset",

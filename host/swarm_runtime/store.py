@@ -20,16 +20,20 @@ import json
 import os
 from pathlib import Path
 import tempfile
+import threading
 import time
 
 from host.coordination_state import (
     Git, GitError, HOLDING_SCHEMA, _commit_env, _holding_live, _now,
     _parse_ts, _push_ref, _remote_tip, repository_claim_key,
 )
+from . import locks
+from .snapshot import STATUS_PATH
 
 SCHEMA = "commons-swarm-runtime/v1"
 SNAPSHOT_SCHEMA = "commons-swarm-runtime-snapshot/v1"
 STATE_PATH = "holdings/swarm-runtime.json"
+NON_LEGACY_PATHS = {STATE_PATH, STATUS_PATH}
 
 
 class StoreError(RuntimeError):
@@ -50,6 +54,10 @@ class StoreError(RuntimeError):
 def _failure(message):
     text = str(message)
     lower = text.lower()
+    if "shallow.lock" in lower and any(x in lower for x in ("file exists", "unable to create", "another git process")):
+        return StoreError("local_fetch_in_progress", text, 3)
+    if any(x in lower for x in ("index.lock", "fetch_head.lock", "config.lock")) and "file exists" in lower:
+        return StoreError("workspace_busy", text, 3)
     if any(x in lower for x in ("non-fast-forward", "fetch first", "cannot lock ref", "stale info")):
         return StoreError("ref_contention", text, 3)
     if any(x in lower for x in ("429", "rate limit", "too many requests")):
@@ -83,7 +91,42 @@ def _state(value):
         value.setdefault(name, default)
         if type(value[name]) is not type(default):
             raise StoreError("invalid_state", "runtime field %s has an invalid type" % name)
+    if isinstance(value.get("legacy_holdings"), dict):
+        value["legacy_holdings"] = {path: row for path, row in value["legacy_holdings"].items()
+                                    if path not in NON_LEGACY_PATHS}
+    if isinstance(value.get("legacy_unreadable"), list):
+        value["legacy_unreadable"] = [path for path in value["legacy_unreadable"]
+                                     if path not in NON_LEGACY_PATHS]
     return value
+
+
+def _compact_operation_context(result):
+    """Compact an already copied state without changing a caller's live receipt."""
+    journal_ids = None
+    operations = result.get("operations", {})
+    for operation in operations.values() if isinstance(operations, dict) else []:
+        receipt = operation.get("result") if isinstance(operation, dict) else None
+        if not isinstance(receipt, dict):
+            continue
+        for field in ("task", "next"):
+            context = receipt.get(field)
+            if not isinstance(context, dict) or context.get("task_key") in (None, "", "UNKNOWN"):
+                continue
+            # Retain every known assignment/outcome/error field. Events already
+            # live in the immutable journal; keep exact receipt membership by
+            # ID instead of copying their bodies into every heartbeat receipt.
+            compact = {key: value for key, value in context.items() if value != "UNKNOWN"}
+            events = compact.get("events")
+            if isinstance(events, list):
+                if journal_ids is None:
+                    journal_ids = {event["id"] for event in result.get("events", [])
+                                   if isinstance(event, dict) and isinstance(event.get("id"), str)}
+                if all(isinstance(event, dict) and isinstance(event.get("id"), str)
+                       and event["id"] in journal_ids for event in events):
+                    compact["context_event_ids"] = [event["id"] for event in events]
+                    compact.pop("events")
+            receipt[field] = compact
+    return result
 
 
 def _persisted(state):
@@ -95,7 +138,7 @@ def _persisted(state):
     # lease.age_s and provider_age_s vary with the reader's clock without any
     # new event. Persisting that view doubles the ledger and causes idle churn.
     result.pop("tasks", None)
-    return result
+    return _compact_operation_context(result)
 
 
 class _StoreGit(Git):
@@ -110,12 +153,16 @@ class _StoreGit(Git):
 
 class GitStore:
     def __init__(self, root, remote="origin", branch="state/claims", cache_ttl=15):
+        self._mutex = threading.RLock()
         self.git = _StoreGit(str(root))
         self.root, self.remote, self.branch = str(root), remote, branch
         self.cache_ttl = max(0, float(cache_ttl))
         self._cache = None
         self._blob_records = {}
+        self._legacy_oids = {}
         git_dir = self.git.out("rev-parse", "--absolute-git-dir").strip()
+        self._common_git_dir = Path(self.git.out("rev-parse", "--path-format=absolute", "--git-common-dir").strip())
+        self._fetch_lock_path = self._common_git_dir / "swarm-runtime-fetch.lock"
         suffix = hashlib.sha256((remote + "\0" + branch).encode()).hexdigest()[:12]
         self._cache_path = Path(git_dir) / ("swarm-runtime-cache-" + suffix + ".json")
 
@@ -124,14 +171,23 @@ class GitStore:
             try:
                 cached = json.loads(self._cache_path.read_text(encoding="utf-8"))
                 if isinstance(cached, dict) and cached.get("schema") == SNAPSHOT_SCHEMA:
+                    cached["state"] = _state(cached.get("state", {}))
                     self._cache = cached
-            except (OSError, ValueError, TypeError):
+                    self._legacy_oids = {path: blob for path, blob in cached.get("legacy_oids", {}).items()
+                                         if path not in NON_LEGACY_PATHS}
+                    cached["legacy_oids"] = self._legacy_oids
+                    holdings = cached.get("state", {}).get("legacy_holdings", {})
+                    self._blob_records = {blob: copy.deepcopy(holdings[path])
+                                          for path, blob in self._legacy_oids.items()
+                                          if path in holdings and isinstance(holdings[path], dict)}
+            except (OSError, ValueError, TypeError, StoreError):
                 pass
         return self._cache
 
     def _remember(self, tip, state):
         self._cache = {"schema": SNAPSHOT_SCHEMA, "tip": tip, "branch": self.branch,
-                       "cached_at": time.time(), "state": copy.deepcopy(state)}
+                       "cached_at": time.time(), "state": _compact_operation_context(copy.deepcopy(state)),
+                       "legacy_oids": self._legacy_oids}
         temporary = None
         try:
             with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", dir=self._cache_path.parent,
@@ -153,11 +209,37 @@ class GitStore:
         except GitError as exc:
             raise _failure(exc) from exc
 
-    def _fetch(self, objects):
+    def _remember_publication(self, tip, state, proposal):
+        for item in proposal["files"]:
+            if item["path"] not in NON_LEGACY_PATHS:
+                self._legacy_oids[item["path"]] = item["blob"]
+        self._remember(tip, state)
+
+    def _fetch(self, objects, shallow=False):
         if not objects:
             return
-        done = self.git.run("fetch", "--no-tags", "--no-write-fetch-head", self.remote,
-                            *objects, check=False, env={"GIT_TERMINAL_PROMPT": "0"})
+        # No negotiation walk through the fleet's large partial history. The
+        # ledger needs this exact commit/tree, not every preceding claim commit.
+        args = ["-c", "fetch.negotiationAlgorithm=noop", "fetch", "--no-tags",
+                "--no-write-fetch-head", "--no-auto-maintenance", "--no-recurse-submodules"]
+        if shallow:
+            # Bring the compact ledger and holdings with the tip. blob:none
+            # required another provider round trip on every meaningful update.
+            # Larger unrelated blobs remain deferred and are never fetched one
+            # at a time by a local object lookup.
+            args += ["--depth=1", "--filter=blob:limit=2097152"]
+        # All worktrees share the shallow/object database. Serialize our fetches
+        # with the existing crash-released lock primitive; an external git
+        # writer can still contend and is reported as local workspace activity.
+        with locks.held(self._fetch_lock_path) as acquired:
+            if acquired == "busy":
+                raise StoreError("local_fetch_in_progress", "another swarm process is fetching Git objects", 3)
+            if acquired != "acquired":
+                raise StoreError("local_lock_unavailable", "shared Git fetch lock could not be acquired", 15)
+            if (self._common_git_dir / "shallow.lock").exists():
+                raise StoreError("local_fetch_in_progress", "Git shallow state is locked by another operation", 3)
+            done = self.git.run(*args, self.remote, *objects, check=False,
+                                env={"GIT_TERMINAL_PROMPT": "0"})
         if done.returncode:
             raise _failure(done.stderr or done.stdout)
 
@@ -168,7 +250,8 @@ class GitStore:
             return {}
 
         def read():
-            done = self.git.run("cat-file", "--batch", input_text="\n".join(blob_ids) + "\n")
+            done = self.git.run("cat-file", "--batch", input_text="\n".join(blob_ids) + "\n",
+                                env={"GIT_NO_LAZY_FETCH": "1"})
             raw = done.stdout.encode("utf-8", "surrogateescape")
             result, cursor, missing = {}, 0, []
             for expected in blob_ids:
@@ -197,14 +280,14 @@ class GitStore:
         if not tip:
             return dict(empty_state(), legacy_holdings={})
         if not self.git.has_commit(tip):
-            self._fetch([tip])
+            self._fetch([tip], shallow=True)
         entries = {}
         for row in self.git.out("ls-tree", "-r", "-z", tip, "--", "holdings/").split("\0"):
             if not row:
                 continue
             meta, path = row.split("\t", 1)
             _mode, kind, blob = meta.split()
-            if kind == "blob" and path.endswith(".json"):
+            if kind == "blob" and path.endswith(".json") and path != STATUS_PATH:
                 entries[path] = blob
         wanted = [blob for path, blob in entries.items()
                   if path == STATE_PATH or blob not in self._blob_records]
@@ -219,7 +302,7 @@ class GitStore:
         holdings, unreadable = {}, []
         current_records = {}
         for path, blob in sorted(entries.items()):
-            if path == STATE_PATH:
+            if path in NON_LEGACY_PATHS:
                 continue
             if blob in self._blob_records:
                 record = self._blob_records[blob]
@@ -235,6 +318,7 @@ class GitStore:
             if record.get("unreadable"):
                 unreadable.append(path)
         self._blob_records = current_records
+        self._legacy_oids = {path: blob for path, blob in entries.items() if path not in NON_LEGACY_PATHS}
         state["legacy_holdings"] = holdings
         if unreadable:
             state["legacy_unreadable"] = unreadable
@@ -242,6 +326,12 @@ class GitStore:
 
     def read(self, refresh=True):
         """Return (remote tip, state). Only status callers may set refresh=False."""
+        # The command center shares this instance across request/sync threads.
+        # Keep state, legacy object IDs and their cache publication one snapshot.
+        with self._mutex:
+            return self._read(refresh=refresh)
+
+    def _read(self, refresh=True):
         cached = self._cached()
         if not refresh and cached and 0 <= time.time() - cached.get("cached_at", 0) < self.cache_ttl:
             return cached["tip"], copy.deepcopy(cached["state"])
@@ -305,6 +395,14 @@ class GitStore:
                     record["taken_at"] = started
                 elif current.get("holder") != worker or "taken_at" not in current:
                     record["taken_at"] = heartbeat
+                if current.get("holder") == worker:
+                    # Same-worker TAKE events do not reset an ACTIVE task's
+                    # original start. Keep a later direct claim generation and
+                    # renewal intact when projecting that historical task.
+                    for field in ("taken_at", "heartbeat_at"):
+                        prior, proposed = _parse_ts(current.get(field)), _parse_ts(record.get(field))
+                        if prior is not None and (proposed is None or prior > proposed):
+                            record[field] = current[field]
             else:
                 # Never release another worker's unrelated/newer legacy holding.
                 owned_by = worker if worker not in (None, "", "UNKNOWN") else old.get("worker")
@@ -328,6 +426,8 @@ class GitStore:
         return updates
 
     def _commit(self, tip, content, holdings=None):
+        from .snapshot import build as build_status
+
         fd, index = tempfile.mkstemp(prefix="swarm-runtime-index-")
         os.close(fd)
         os.unlink(index)
@@ -339,6 +439,9 @@ class GitStore:
                 self.git.run("read-tree", "--empty", env=env)
             files = {STATE_PATH: content}
             files.update({path: _json(record) for path, record in (holdings or {}).items()})
+            # _prepare calls this only after a real ledger/holding change. The
+            # projection clock therefore cannot create a no-op status commit.
+            files[STATUS_PATH] = _json(build_status(content, branch=self.branch))
             blobs = {}
             for path, text in sorted(files.items()):
                 blob = self.git.out("hash-object", "-w", "--stdin", input_text=text).strip()
@@ -385,6 +488,10 @@ class GitStore:
         content and base_sha; they must enforce that exact parent and re-run the
         mutation against fresh state when the parent has changed.
         """
+        with self._mutex:
+            return self._prepare_snapshot(mutator, snapshot=snapshot)
+
+    def _prepare_snapshot(self, mutator, snapshot=None):
         if snapshot is None:
             tip, state = self.read()
         else:
@@ -405,6 +512,10 @@ class GitStore:
         revisit work instead of tying up a seat. A push failure retains a native
         connector-ready proposal, but never reports the task as claimed.
         """
+        with self._mutex:
+            return self._update(mutator, attempts=attempts, push=push)
+
+    def _update(self, mutator, attempts=3, push=True):
         if type(attempts) is not int or not 1 <= attempts <= 3:
             raise ValueError("attempts must be an integer from 1 to 3")
         if not push:
@@ -429,7 +540,7 @@ class GitStore:
                     self._blobs(parent_blobs)
                 done = _push_ref(self.git, self.remote, proposal["commit"], self.branch, attempts=1)
                 if done.returncode == 0:
-                    self._remember(proposal["commit"], state)
+                    self._remember_publication(proposal["commit"], state, proposal)
                     return {"ok": True, "published": True, "changed": True,
                             "tip": proposal["commit"], "previous_tip": tip, "result": result}
                 failure = _failure(done.stderr or done.stdout)
@@ -442,7 +553,7 @@ class GitStore:
                     except StoreError:
                         pass
                 if observed == proposal["commit"]:
-                    self._remember(observed, state)
+                    self._remember_publication(observed, state, proposal)
                     return {"ok": True, "published": True, "changed": True,
                             "tip": observed, "previous_tip": tip, "result": result}
                 if failure.kind == "ref_contention" and attempt + 1 < attempts:

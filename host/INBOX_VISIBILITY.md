@@ -23,6 +23,10 @@ repository, or launch a model. The native Slack identity must belong to the
 configured workspace and be a member of all three configured channels. The app
 needs message-write and history/replies-read capability. Use existing private
 credential-management surfaces, never Slack/Git/email bodies, for setup.
+Native GitHub reads reuse the shared transport's status and rate-header parsing.
+Quota exhaustion stops the notification pass and retains its retry boundary;
+ordinary authentication/permission HTTP failures remain distinct from quota
+limits. Native stderr and provider error bodies stay out of relay reports.
 
 The GitHub Actions workflow attempts a run on these files' main-branch push,
 allows manual dispatch, and polls at UTC minutes 03/18/33/48. Its existing-secret
@@ -127,6 +131,13 @@ access and bounded pagination. This is best-effort duplicate prevention, not a
 cross-provider transactional exactly-once guarantee. Do not delete/move Slack
 messages or change channel IDs without a deliberate state migration.
 
+After every part of a selected Gmail message is delivered, the ledger records a
+hashed completion marker scoped to mailbox, destination and immutable message
+ID. Later overlap polls count that message as `unchanged` without downloading
+its full contents again. New messages in the same thread still deliver. Missing
+or undecodable bodies, omitted mail and failed deliveries do not gain a marker;
+they remain eligible for recovery or reclassification on subsequent polls.
+
 Reconciliation checkpoints the next cursor inside a fixed timestamp window.
 Reaching the page budget reports `slack_reconcile_page_limit`; the next poll
 continues the scan instead of restarting its first pages. Before a resumed scan
@@ -143,13 +154,31 @@ is an uncertain delivery, not success. Health remains outside the source-message
 budget so a capped backlog can still be reported. History access, retention and
 pagination bounds also apply to health recovery; messages sent by older versions
 without the marker need their retained ledger to be identified reliably.
+The shared source-post cap also rotates the first source on later polls. When
+one backlog spends the allowance, the other source gets the next turn; SQLite
+retains that choice alongside partial-delivery markers. A source deferred for
+lack of allowance is named in `errors` without downloading its message bodies.
+Provider retry deadlines still take precedence over the next delivery turn.
+GitHub and Gmail collection deadlines are stored separately, so the independent
+source can still progress while one source is cooling down. Slack delivery
+limits pause both sources; global deadlines retained by older ledgers are also
+honored until they expire.
+If source delivery observes a Slack Retry-After, the local report records
+`health_delivery: deferred_slack_retry_after` and the same pass makes no health
+request. The next existing poll retries after the persisted cooldown; a GitHub
+or Gmail retry delay alone does not defer Slack health reporting.
+Both direct and existing-custody Slack reads honor numeric and HTTP-date retry
+deadlines. Ordinary HTTP authentication failures without a retry header remain
+failures without being reported as a provider cooldown.
 
 The workflow caches only this sanitized ledger, not provider contents. Treat
 cache eviction as possible; Slack markers remain the recovery source. A process
 lock covers ledger initialization through connection close, so a competing poll
 reports `another_poll_is_running` without opening or changing SQLite. An invalid
 or unavailable database reports `state_database_error` with exit code 2 and is
-left in place for recovery. Scheduler concurrency also prevents overlapping runs. Slack post
+left in place for recovery. Hosted push, manual and scheduled polls share one
+workflow concurrency group, with running polls allowed to finish. The local
+lock cannot serialize separate hosted runners on its own. Slack post
 throttling and Retry-After are honored. Uncertain API errors, incomplete history
 and page caps stop unsafe replay instead of claiming success. Stop automation by
 disabling the workflow or the named OS task; do not delete user source messages.
@@ -159,6 +188,7 @@ disabling the workflow or the named OS task; do not delete user source messages.
 - https://docs.github.com/en/rest/activity/notifications
 - https://developers.google.com/workspace/gmail/api/reference/rest/v1/users.messages/list
 - https://developers.google.com/workspace/gmail/api/reference/rest/v1/users.messages/get
+- https://developers.google.com/workspace/gmail/api/reference/rest/v1/users.messages
 - https://docs.slack.dev/reference/methods/chat.postMessage/
 - https://github.com/googleworkspace/cli (community-maintained CLI; validate an existing installation)
 

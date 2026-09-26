@@ -9,6 +9,7 @@ from bisect import bisect_left
 from collections import Counter
 import hashlib
 import json
+import os
 from pathlib import Path
 import re
 import subprocess
@@ -54,8 +55,10 @@ def _glob_regex(pattern: str) -> re.Pattern[str]:
         else:
             out.append(re.escape(char))
         index += 1
-    out.append("$")
-    return re.compile("".join(out))
+    # Git permits newlines within filenames. Wildcards include them, while a
+    # literal pattern must not also match a name with an extra final newline.
+    out.append(r"\Z")
+    return re.compile("".join(out), re.DOTALL)
 
 
 def load_manifest(path: Path = DEFAULT_MANIFEST) -> dict:
@@ -84,7 +87,9 @@ def load_manifest(path: Path = DEFAULT_MANIFEST) -> dict:
 
 
 def _normalized(path: str) -> str:
-    value = str(path).replace("\\", "/")
+    # These are Git paths, already separated with '/'. A backslash is a
+    # filename character, not an alternate directory separator.
+    value = str(path)
     while value.startswith("./"):
         value = value[2:]
     if not value or value.startswith("/") or ".." in value.split("/"):
@@ -122,11 +127,22 @@ class PathClassifier:
 
 
 def tracked_files(root: Path = ROOT) -> list[str]:
+    # An explicit report root must not inherit another Git command's index or
+    # repository selectors (for example when launched from a hook).
+    env = os.environ.copy()
+    for name in (
+        "GIT_DIR", "GIT_WORK_TREE", "GIT_COMMON_DIR", "GIT_INDEX_FILE",
+        "GIT_OBJECT_DIRECTORY", "GIT_ALTERNATE_OBJECT_DIRECTORIES",
+        "GIT_SHALLOW_FILE", "GIT_GRAFT_FILE", "GIT_NAMESPACE", "GIT_PREFIX",
+        "GIT_IMPLICIT_WORK_TREE",
+    ):
+        env.pop(name, None)
     result = subprocess.run(
         ["git", "ls-files", "-z"],
         cwd=root,
         check=False,
         capture_output=True,
+        env=env,
     )
     if result.returncode:
         detail = result.stderr.decode("utf-8", errors="replace").strip()
@@ -233,8 +249,8 @@ def build_report(
     selected = sorted(set(paths if paths is not None else tracked_files(root)))
     rows = [classifier.classify(path) for path in selected]
     unmapped = [row["path"] for row in rows if row["classification"] == "UNMAPPED"]
-    root_tests = [path for path in selected if "/" not in path and re.match(r"^test_.*\.(?:py|js)$", path)]
-    nested_tests = [path for path in selected if "/" in path and re.search(r"(?:^|/)test[^/]*\.(?:py|js)$", path)]
+    root_tests = [path for path in selected if "/" not in path and re.match(r"^test_[^/]*\.(?:py|js)\Z", path)]
+    nested_tests = [path for path in selected if "/" in path and re.search(r"(?:^|/)test[^/]*\.(?:py|js)\Z", path)]
     generator_contracts = _generator_inventory(root, manifest, classifier, set(selected))
     generator_unmapped_targets = [
         {"contract_id": item["id"], "path": path}

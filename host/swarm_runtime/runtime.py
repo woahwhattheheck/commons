@@ -13,8 +13,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from .identity import task_key
-from .projector import project
-from .routing import context_bundle, route, status
+from .projector import _landed_artifact, _merged, _time, normalize_equivalent, project
+from .routing import context_bundle, route, select_tasks, status
 from .store import GitStore
 
 TERMINAL = {"SHIPPED", "BLOCKED", "SUPERSEDED", "ABANDONED"}
@@ -49,7 +49,8 @@ def _seats(state):
     for name, worker in state.get("workers", {}).items():
         old = result.get(name, {})
         declared = dict(old.get("declared") or old)
-        if declared.get("heartbeat") in (None, "", "UNKNOWN") or str(worker.get("heartbeat", "")) >= str(declared.get("heartbeat", "")):
+        observed, previous = _time(worker.get("heartbeat")), _time(declared.get("heartbeat"))
+        if previous is None or (observed is not None and observed >= previous):
             declared.update(worker)
         result[name] = {**old, "seat": name, "declared": declared,
                         "heartbeat": declared.get("heartbeat", "UNKNOWN")}
@@ -88,14 +89,28 @@ def _project(state, moment):
 def _merge_facts(state, incoming):
     facts = state.setdefault("provider_facts", {})
     for key, fact in incoming.items():
-        old = facts.get(key, {})
+        old = copy.deepcopy(facts.get(key, {}))
+        fact = copy.deepcopy(fact)
+        for row in (old, fact):
+            for field in ("equivalent", "superseded_by"):
+                if field in row:
+                    row[field] = normalize_equivalent(row[field])
+        if old:
+            facts[key] = old
         # A failed or older refresh cannot erase a landed immutable fact.
-        if old.get("merged") and old.get("merge_sha") not in (None, "", "UNKNOWN"):
+        if _merged(old) or _landed_artifact(old):
             continue
-        if old.get("artifact_landed") and old.get("landed_sha") not in (None, "", "UNKNOWN"):
-            continue
-        if str(fact.get("observed_at", "")) >= str(old.get("observed_at", "")):
-            facts[key] = copy.deepcopy(fact)
+        observed, previous = _time(fact.get("observed_at")), _time(old.get("observed_at"))
+        # Baked listings deliberately carry UNKNOWN observations. Text ordering
+        # would pin those facts forever and misorder equivalent timezone offsets.
+        if previous is None or (observed is not None and observed >= previous):
+            for field in ("equivalent", "superseded_by"):
+                previous = old.get(field)
+                current = fact.get(field)
+                if isinstance(previous, dict) and (_merged(previous) or _landed_artifact(previous)):
+                    if not isinstance(current, dict) or not (_merged(current) or _landed_artifact(current)):
+                        fact[field] = previous
+            facts[key] = fact
 
 
 class Runtime:
@@ -125,7 +140,9 @@ class Runtime:
                 {**(payload.get("seat") or {}), "seat": worker, "heartbeat": moment})
         selected = task_key(payload["task_key"]) if payload.get("task_key") else None
         facts, deferred, remaining, attempted = {}, [], 4, set()
-        for _ in range(4):
+        # The selected owner command may need no provider call; still leave
+        # room to refresh the next candidate within the same four-call budget.
+        for _ in range(5):
             view = _project(state, moment)
             target = selected if selected and selected not in attempted else None
             if target is None:
@@ -143,12 +160,17 @@ class Runtime:
             if target == selected and payload.get("artifact"):
                 row = {**row, "artifact": payload["artifact"], "repo": payload.get("repo") or row.get("repo")}
             artifact = row.get("artifact")
+            attempted.add(target)
             if not target.startswith("github:") and not (
                     isinstance(artifact, dict) and artifact.get("complete") is True):
+                will_roll = row.get("state") in TERMINAL or action in {"block", "abandon"} or (
+                    action == "take" and row.get("state") == "ACTIVE"
+                    and row.get("worker") != worker and not row.get("recoverable"))
+                if target == selected and will_roll:
+                    continue
                 break
-            attempted.add(target)
             if row.get("provider_freshness") in {"CURRENT", "IMMUTABLE"} and row.get("reconciliation_needed") in (None, "UNKNOWN", ""):
-                if action in {"take", "next"}:
+                if action in {"take", "next"} and row.get("state") not in TERMINAL:
                     break
                 continue
             enriched = enrich({target: row}, self.state_dir, max_calls=remaining, now=moment)
@@ -160,15 +182,17 @@ class Runtime:
                 break
         return facts, deferred
 
-    def read(self, *, refresh=False, worker=None, limit=100):
+    def read(self, *, refresh=False, worker=None, limit=100,
+             task=None, states=None, owner=None, after=None):
         tip, state = self.store.read(refresh=refresh)
         moment = now_iso()
         view = _project(state, moment)
-        rows = sorted(view["tasks"].values(), key=lambda row: row["task_key"])
-        limit = max(1, min(1000, int(limit)))
+        page = select_tasks(view["tasks"], limit=limit, task=task,
+                            states=states, owner=owner, after=after)
         return {"ok": True, "authority": "state/claims", "tip": tip,
                 "observed_at": moment, "summary": status(view["tasks"], _seats(state), moment),
-                "tasks": rows[:limit], "total": len(rows), "truncated": len(rows) > limit,
+                "tasks": page["rows"], "total": page["total"], "matched": page["matched"],
+                "truncated": page["truncated"], "next_cursor": page["next_cursor"],
                 "collisions": view.get("collisions", [])[-50:],
                 "rejected": view.get("rejected", [])[-20:],
                 "coverage": state.get("coverage", {}),
@@ -204,6 +228,11 @@ class Runtime:
         def mutation(state):
             before = _project(state, moment)["tasks"]
             added = _append(state, incoming)
+            if legacy_events:
+                # Collection/provider I/O preceded this CAS read. A direct
+                # release or take may have changed a sibling holding meanwhile;
+                # replay that exact current custody after the collected inputs.
+                added += _append(state, legacy_events(state.get("legacy_holdings", {})))
             _merge_facts(state, facts)
             state["seats"] = imported.get("seats", state.get("seats", {}))
             # Do not overwrite a concurrent sync's newer boundary with this read.
@@ -229,6 +258,11 @@ class Runtime:
                     _append(state, [{**event, "id": event["id"] + ":recover", "action": "RECOVER",
                                      "expected_worker": row.get("worker"), "expected_heartbeat": row.get("heartbeat")}])
                 _append(state, [event])
+                # Taking actual next work is meaningful worker activity. Keep
+                # automatic assignment and explicit take on the same seat lease.
+                state.setdefault("workers", {}).setdefault(worker, {}).update(
+                    seat=worker, heartbeat=moment,
+                    dispatch_cursor=state.get("cursors", {}).get("commons", {}).get("feed_cursor", "UNKNOWN"))
                 view = _project(state, moment)
                 assignments.append(context_bundle(view["tasks"][target], state["events"]))
             return {"action": "sync", "ingested": added, "tasks": len(view["tasks"]),

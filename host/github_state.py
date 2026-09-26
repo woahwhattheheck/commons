@@ -163,6 +163,7 @@ def _closed(row):
         "author": pull["author"],
         "state": "MERGED" if merged else "CLOSED",
         "closed_at": _text(row.get("closed_at")) or UNKNOWN,
+        "updated_at": pull["updated_at"],
         "merged_at": merged_at if merged else None,
         "branch": pull["branch"],
         "head_sha": pull["head_sha"],

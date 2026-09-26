@@ -23,6 +23,7 @@ from integrations.command_center.collectors import LiveCollectors
 from integrations.command_center.request_budget import RequestBudget, RequestDeferred
 from integrations.shared_equipment.provider_io import redacted
 from .locks import held
+from .projector import normalize_equivalent
 
 TTL = 60
 TASK = re.compile(r"^github:([A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+):(issue|pr):([1-9][0-9]*)$", re.I)
@@ -274,8 +275,9 @@ class _Refresh:
                 fact["current_base_sha"] = equivalent["current_sha"]
                 fact["ancestry"] = equivalent["evidence"]
                 if equivalent["contains"]:
-                    fact["equivalent"] = {"merged": True, "integrated": True,
-                        "merge_sha": equivalent["current_sha"], "repo": repo,
+                    fact["equivalent"] = {"provider": "github", "integrated": True,
+                        "artifact_landed": True, "artifact_sha": fact["head_sha"],
+                        "landed_sha": equivalent["current_sha"], "repo": repo,
                         "branch": branch, "url": f"https://github.com/{repo}/commit/{equivalent['current_sha']}",
                         "source": equivalent["evidence"]["endpoint"],
                         "evidence": equivalent["evidence"], "observed_at": equivalent["observed_at"]}
@@ -405,6 +407,9 @@ def _cached(path, keys, stamp):
             for key, encoded, expiry in db.execute("SELECT task_key,value,expires_at FROM facts"):
                 if key in keys:
                     fact = _decode(encoded, {})
+                    for field in ("equivalent", "superseded_by"):
+                        if field in fact:
+                            fact[field] = normalize_equivalent(fact[field])
                     if fact.get("freshness") != "immutable" and expiry <= stamp:
                         fact["freshness"] = "stale"
                     result[key] = fact
