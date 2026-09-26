@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "runtime-artifact-context-evidence-20260926",
+  "holder": "high-burn-lane-a",
+  "state": "HELD",
+  "taken_at": "2026-09-26T15:16:28.823Z",
+  "heartbeat_at": "2026-09-26T15:16:28.823Z",
+  "ttl_s": 1800,
+  "note": "Own host/swarm_runtime/routing.py: include existing landed artifact identifiers and shipment evidence in bounded operation/task context."
+}
