@@ -2,7 +2,7 @@
 (() => {
   const $ = id => document.getElementById(id);
   const views = ['focus','work','builds','inbox','marketing','fleet','resources','tools','access','budget','feed'];
-  let state = null, currentView = 'focus', lastSync = null, syncError = '', refreshing = false;
+  let state = null, currentView = 'focus', lastSync = null, syncError = '', refreshing = null, queuedRefresh = null;
   let tools = [], selectedKey = '', busy = false, dialogSpec = null, toastTimer;
   const attemptKey = 'commons.command-center.operations.v1';
   let attempts = {};
@@ -114,14 +114,30 @@
     $('last-sync').textContent=lastSync?'Last sync '+new Date(lastSync).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'}):'No successful sync yet';
     $('sync-error').hidden=!syncError; $('sync-error').textContent=syncError?(syncError+' Prior observations are retained. Use Refresh to try the read again.'):'';
   }
-  async function refresh(force=false) {
-    if(refreshing)return; refreshing=true;$('refresh-button').disabled=true;
-    try { const response=await request(force===true?'/api/state?refresh=1':'/api/state'); const next=response.body;
-      if(!next || typeof next!=='object' || !Array.isArray(next.sources)) throw new Error('State response is missing its source catalog.');
-      state=next; tools=flatten(state.runtimes); lastSync=Date.now();syncError='';
-      arr(state.operations).forEach(op=>Object.values(attempts).forEach(a=>{if(a.id===op.operation_id&&terminal(op.status))a.status=op.status;})); saveAttempts();render();
-    } catch(e) {syncError=e.message;connectionState();}
-    finally {refreshing=false;$('refresh-button').disabled=false;connectionState();}
+  function refresh(force=false,afterCurrent=false) {
+    if(refreshing){
+      if(!force&&!afterCurrent)return refreshing;
+      // Explicit refreshes and completed saves need a read started after the
+      // current request. Coalesce callers while retaining forced refresh intent.
+      if(!queuedRefresh){
+        const queued={force,promise:null};
+        queued.promise=refreshing.then(()=>{queuedRefresh=null;return refresh(queued.force);},
+          error=>{queuedRefresh=null;throw error;});
+        queuedRefresh=queued;
+      }
+      if(force)queuedRefresh.force=true;
+      return queuedRefresh.promise;
+    }
+    refreshing=(async()=>{
+      $('refresh-button').disabled=true;
+      try { const response=await request(force===true?'/api/state?refresh=1':'/api/state'); const next=response.body;
+        if(!next || typeof next!=='object' || !Array.isArray(next.sources)) throw new Error('State response is missing its source catalog.');
+        state=next; tools=flatten(state.runtimes); lastSync=Date.now();syncError='';
+        arr(state.operations).forEach(op=>Object.values(attempts).forEach(a=>{if(a.id===op.operation_id&&terminal(op.status))a.status=op.status;})); saveAttempts();render();
+      } catch(e) {syncError=e.message;connectionState();}
+      finally {refreshing=null;$('refresh-button').disabled=false;connectionState();}
+    })();
+    return refreshing;
   }
   async function reloadTools() {
     $('reload-tools').disabled=true;
@@ -289,7 +305,7 @@
       const reported=str(first(body.status,body.operation&&body.operation.status,body.result&&body.result.status,''));
       a.status=httpStatus===202||pending(reported)?reported||'accepted':terminal(reported)?reported:'uncertain';saveAttempts();
       output(target,a,pending(a.status)?'Request accepted; completion not established':/fail|error|reject/i.test(a.status)?'Operation reported a failure':'Response received',pending(a.status)?'Inspect the operation history. If a manual retry is needed, submit unchanged arguments; the same operation ID will be reused.':'The server response is below. The operation history carries the actual execution status.',body,name);
-      await refresh();return !pending(a.status)&&!/fail|error|reject/i.test(a.status);
+      await refresh(false,true);return !pending(a.status)&&!/fail|error|reject/i.test(a.status);
     } catch(e) {a.status=e.uncertain?'uncertain':'failed';saveAttempts();output(target,a,e.uncertain?'Outcome uncertain':'Request rejected',e.message+(e.uncertain?' Do not assume failure or issue a replacement operation. Inspect provider state; unchanged manual retries retain this operation ID.':''),e.body,name);return false;}
   }
   function form(title,description,fields,callback) {
