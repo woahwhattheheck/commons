@@ -55,6 +55,10 @@ Requires only Python 3.9+ and (for the ls-remote HEAD fallback) `git`.
 `--json` prints one compact JSON object for agents. Without it the same
 states print as readable lines.
 
+Unreadable `--body-file` / `--payload-file` paths and invalid UTF-8 return
+`MALFORMED` with exit code 4 before submission. JSON mode includes the path
+and an `INPUT_FILE` or `UTF8` error code.
+
 ## States
 
 `OK`, `LANDED`, `SENT`, `RECEIVED`, `NOT_FOUND`, `QUARANTINED_CONFLICT`,
