@@ -3,6 +3,7 @@
 The existing refresh OS lock remains the refresh singleflight. This small SQLite
 ledger lets later collector instances honor a provider's Retry-After without
 sleeping through the collection deadline or blocking unrelated providers.
+Repeated limits without a provider deadline use persisted, bounded backoff.
 """
 from __future__ import annotations
 
@@ -36,8 +37,8 @@ def retry_seconds(value, now, fallback):
                 stamp = parsedate_to_datetime(value)
                 if stamp.tzinfo is not None:
                     seconds = stamp.timestamp() - now
-                    if math.isfinite(seconds) and 0 <= seconds <= 3153600000:
-                        return seconds, "provider"
+                    if math.isfinite(seconds) and seconds <= 3153600000:
+                        return max(0, seconds), "provider"
             except (ValueError, TypeError, OverflowError):
                 pass
     return fallback, "configured_fallback"
@@ -67,7 +68,10 @@ class RequestBudget:
                 scope TEXT PRIMARY KEY, retry_until REAL NOT NULL DEFAULT 0, last_attempt REAL,
                 last_limited REAL, attempts INTEGER NOT NULL DEFAULT 0,
                 deferred INTEGER NOT NULL DEFAULT 0, limited INTEGER NOT NULL DEFAULT 0,
-                retry_basis TEXT)""")
+                retry_basis TEXT, fallback_streak INTEGER NOT NULL DEFAULT 0)""")
+            columns = {row["name"] for row in db.execute("PRAGMA table_info(read_budget)")}
+            if "fallback_streak" not in columns:
+                db.execute("ALTER TABLE read_budget ADD COLUMN fallback_streak INTEGER NOT NULL DEFAULT 0")
 
     @contextmanager
     def _transaction(self):
@@ -121,23 +125,45 @@ class RequestBudget:
     def rate_limited(self, scope, retry_after=None, reset_at=None):
         with self._transaction() as db:
             now = self.clock()
+            row = self._row(db, scope)
             seconds, basis = retry_seconds(retry_after, now, self.fallback_seconds)
             if (not isinstance(reset_at, bool) and isinstance(reset_at, (int, float))
                     and math.isfinite(reset_at) and now <= reset_at <= now + 3153600000):
                 seconds = max(reset_at - now, seconds if basis == "provider" else 0)
                 basis = "provider_retry_and_reset" if basis == "provider" else "provider_reset"
+            streak = 0
+            if basis == "configured_fallback":
+                # The streak survives refresh/restart. Even a configured one
+                # second fallback reaches the one-hour cap within 13 failures.
+                streak = min(row["fallback_streak"] + 1, 13)
+                seconds = min(3600, self.fallback_seconds * 2 ** (streak - 1))
+                if streak > 1:
+                    basis = "configured_exponential_backoff"
             if seconds < 1:
                 seconds, basis = 1, basis + "_minimum_delay"
-            row = self._row(db, scope)
             until = now + seconds
             if row["retry_until"] >= until:
                 # Keep the reason for the deadline that still governs this read.
                 until, basis = row["retry_until"], row["retry_basis"] or basis
             db.execute("""UPDATE read_budget SET retry_until=?,last_limited=?,
-                limited=limited+1,retry_basis=? WHERE scope=?""", (until, now, basis, scope))
+                limited=limited+1,retry_basis=?,fallback_streak=? WHERE scope=?""",
+                (until, now, basis, streak, scope))
             self._limited += 1
         return {"scope": scope, "retry_not_before": _iso(until),
                 "retry_after_seconds": max(0, until - now), "retry_basis": basis}
+
+    def succeeded(self, scope, *, shared_scopes=()):
+        """Reset fallback backoff after recovery without clearing a live limit.
+
+        Another in-flight request may have just recorded a new cooldown; that
+        deadline and its streak must survive an older request's success.
+        """
+        scopes = tuple({scope, *shared_scopes})
+        with self._transaction() as db:
+            placeholders = ",".join("?" for _ in scopes)
+            db.execute("UPDATE read_budget SET fallback_streak=0 WHERE scope IN (" +
+                       placeholders + ") AND retry_until<=? AND fallback_streak<>0",
+                       (*scopes, self.clock()))
 
     def metrics(self):
         with self._transaction() as db:
@@ -152,6 +178,7 @@ class RequestBudget:
                     "last_attempt_at": _iso(row["last_attempt"]),
                     "last_rate_limit_at": _iso(row["last_limited"]),
                     "retry_basis": row["retry_basis"],
+                    "fallback_streak": row["fallback_streak"],
                     "total_observed_attempts": row["attempts"],
                     "total_deferred_reads": row["deferred"],
                     "total_rate_limit_responses": row["limited"]})

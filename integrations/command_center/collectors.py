@@ -148,7 +148,9 @@ class LiveCollectors:
         # persisted deadlines from older collectors) still pause every read.
         self.request_budget.acquire(scope, shared_scopes=("github:GET",))
         try:
-            return self.equipment.github(endpoint, method="GET")
+            response = self.equipment.github(endpoint, method="GET")
+            self.request_budget.succeeded(scope, shared_scopes=("github:GET",))
+            return response
         except Exception as exc:
             if getattr(exc, "http_status", None) == 429 or getattr(exc, "code", None) == "github_rate_limited":
                 reset = getattr(exc, "rate_limit_reset", None) if getattr(exc, "rate_limit_remaining", None) == 0 else None
@@ -168,6 +170,8 @@ class LiveCollectors:
         scope = "slack:" + method
         self.request_budget.acquire(scope)
         response = self.equipment.slack(method, payload)
+        if isinstance(response, dict) and response.get("ok") is True:
+            self.request_budget.succeeded(scope)
         if isinstance(response, dict) and response.get("ok") is not True:
             if response.get("status") == 429 or response.get("error") == "ratelimited":
                 retry = self.request_budget.rate_limited(scope, response.get("retry_after"))
