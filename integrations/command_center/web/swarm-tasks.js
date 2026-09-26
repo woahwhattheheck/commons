@@ -47,6 +47,8 @@
   view.querySelector('.page-heading').after(panel);
   let snapshot = null, error = '', inFlight = null, rerun = false, lastAttempt = 0, retryAt = 0, freshnessTimer;
   let selectedState = 'working', query = '';
+  let exactTask = new URLSearchParams(location.search).get('swarm_task') || '';
+  if (exactTask) { selectedState = 'all'; stateFilter.value = 'all'; search.value = exactTask; }
 
   function freshness() {
     if (!snapshot) return 'unread';
@@ -61,6 +63,11 @@
       if (Number.isSafeInteger(number) && number > 0) return 'https://github.com/' + task.repo + '/' + kind + '/' + number;
     }
     return null;
+  }
+  function taskURL(key) {
+    const target = new URL(location.href);
+    target.searchParams.set('swarm_task', key); target.hash = 'work';
+    return target.href;
   }
   function render() {
     clearTimeout(freshnessTimer);
@@ -83,6 +90,7 @@
     const sources = snapshot.coverage && typeof snapshot.coverage === 'object' ? Object.entries(snapshot.coverage) : [];
     const partial = sources.filter(([, source]) => source?.complete !== true).length;
     const matches = tasks.filter(task => {
+      if (exactTask && task.task_key !== exactTask) return false;
       const stateMatches = selectedState === 'all' || selectedState === 'working' && ['OPEN', 'ACTIVE', 'BLOCKED'].includes(task.state) ||
         selectedState === 'recoverable' && task.recoverable === true || task.state === selectedState;
       return stateMatches && [task.task_key, task.title, task.worker, task.blocker, task.next_action, task.exact_error]
@@ -103,7 +111,13 @@
     const metrics = node('p', 'field-help work-stage-note', value(summary.recoverable_count) + ' recoverable · ' +
       value(summary.stale_seat_count) + ' stale seats · ' + value(summary.collision_count) + ' recorded collisions');
     counts.append(metrics);
-    if (!shown.length) rows.append(node('p', 'field-help', 'No matching tasks in the returned snapshot. Source coverage below may be partial.'));
+    if (!shown.length) {
+      let message = 'No matching tasks in the returned snapshot. Source coverage below may be partial.';
+      if (exactTask) message = tasks.some(task => task.task_key === exactTask)
+        ? 'The linked task is outside the selected lifecycle filter. Choose All task states to see it.'
+        : 'Linked task ' + exactTask + ' is not in the returned snapshot. It may be outside the loaded task limit or source coverage.';
+      rows.append(node('p', 'field-help', message));
+    }
     else {
       const table = node('table', 'work-table'), head = node('thead'), headings = node('tr'), body = node('tbody');
       ['Task / next action', 'Lifecycle', 'Worker', 'Activity / evidence'].forEach(label => headings.append(node('th', '', label)));
@@ -113,7 +127,10 @@
         const url = taskLink(task);
         const label = node(url ? 'a' : 'strong', 'work-title', known(task.title) ? task.title : task.task_key);
         if (url) { label.href = url; label.target = '_blank'; label.rel = 'noopener noreferrer'; }
-        taskCell.append(label, node('span', 'work-row-sub', value(task.task_key)), node('p', 'work-next', 'Next: ' + value(task.next_action)));
+        const permalink = node('a', 'work-row-sub', value(task.task_key));
+        permalink.href = taskURL(task.task_key); permalink.target = '_blank'; permalink.rel = 'noopener noreferrer';
+        permalink.title = 'Open current state for this exact task';
+        taskCell.append(label, permalink, node('p', 'work-next', 'Next: ' + value(task.next_action)));
         if (known(task.blocker)) taskCell.append(node('p', 'source-error', 'Blocker: ' + value(task.blocker)));
         if (known(task.exact_error) && task.exact_error !== task.blocker) taskCell.append(node('p', 'source-error', 'Provider: ' + value(task.exact_error)));
         lifecycle.append(badge(value(task.state)));
@@ -171,7 +188,10 @@
     })();
     return inFlight;
   }
-  search.addEventListener('input', () => { query = search.value.trim().toLowerCase(); render(); });
+  search.addEventListener('input', () => {
+    if (exactTask) { const target = new URL(location.href); target.searchParams.delete('swarm_task'); history.replaceState(null, '', target); }
+    exactTask = ''; query = search.value.trim().toLowerCase(); render();
+  });
   stateFilter.addEventListener('change', () => { selectedState = stateFilter.value; render(); });
   refreshButton.addEventListener('click', () => refresh(true));
   document.getElementById('refresh-button').addEventListener('click', () => { if (!view.hidden) refresh(true); });

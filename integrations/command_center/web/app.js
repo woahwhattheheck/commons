@@ -251,6 +251,7 @@
     if(e.hidden&&e.moderation)c.append(make('p','moderation-reason',str(first(e.moderation.reason,e.moderation,'Reason unavailable'))));
     const original=make('details','feed-original');original.open=!e.hidden||protectedEvent(e);original.append(make('summary','','Original event'),make('p','feed-body',e.body||'No body returned.'),raw(e));c.append(original);
     const foot=make('div','feed-footer'),left=make('div');left.append(make('span','small muted',time(activityTime(e))));if(sourceURL(e))left.append(link('Open source ↗',sourceURL(e)));left.append(link('Preserved event ↗','/api/event?event_id='+encodeURIComponent(e.id)));
+    if(e.kind==='swarm-task'&&typeof e.task_key==='string'&&e.task_key.trim()){const target=new URL(location.href);target.searchParams.set('swarm_task',e.task_key);target.hash='work';left.append(link('Open current task ↗',target.href));}
     foot.append(left);if(e.id&&(e.hidden||!protectedEvent(e)))foot.append(button(e.hidden?'Restore to default view':'Hide from default view',()=>moderationForm(e)));else if(protectedEvent(e))foot.append(make('span','small muted','Failures remain visible'));c.append(foot);return c;
   }
   function renderFeed() {
