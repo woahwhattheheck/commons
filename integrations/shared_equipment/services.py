@@ -44,6 +44,22 @@ def _quote(value: str) -> str:
     return urllib.parse.quote(value, safe="")
 
 
+def _file_tree(files: Any) -> list[dict]:
+    """Build the complete Git tree payload before any provider operation."""
+    if not isinstance(files, list) or not files:
+        raise EquipmentError("files must contain the useful task changes")
+    tree = []
+    for index, entry in enumerate(files):
+        if not isinstance(entry, dict):
+            raise EquipmentError(f"files[{index}] must be a path/content object")
+        path = _string(entry, "path")
+        content = entry.get("content")
+        if not isinstance(content, str):
+            raise EquipmentError(f"files[{index}].content must be a string")
+        tree.append({"path": path, "mode": "100644", "type": "blob", "content": content})
+    return tree
+
+
 def _require_outbound_identity(fields: dict[str, str]) -> None:
     """Check final mapped text before any provider access."""
     decision = check_outbound_identity(fields)
@@ -413,14 +429,11 @@ class ServiceEquipment(GitHubSlackEquipment):
             branch, expected = _string(a, "branch"), _string(a, "expected_head")
             message = _string(a, "message")
             _require_outbound_identity({"branch": branch, "message": message})
+            tree = _file_tree(a.get("files"))
             ref = self.github(root + "/git/ref/heads/" + _quote(branch))
             if ref["object"]["sha"] != expected:
                 raise EquipmentError("branch head changed; read current head and reconcile files")
             parent = self.github(root + "/git/commits/" + _quote(expected))
-            files = a.get("files")
-            if not isinstance(files, list) or not files:
-                raise EquipmentError("files must contain the useful task changes")
-            tree = [{"path": _string(f, "path"), "mode": "100644", "type": "blob", "content": _string(f, "content")} for f in files]
             made_tree = self.github(root + "/git/trees", method="POST", payload={"base_tree": parent["tree"]["sha"], "tree": tree})
             commit = self.github(root + "/git/commits", method="POST", payload={"message": message, "tree": made_tree["sha"], "parents": [expected]})
             updated = self.github(root + "/git/refs/heads/" + _quote(branch), method="PATCH", payload={"sha": commit["sha"], "force": False})
@@ -694,5 +707,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
 
