@@ -8,8 +8,10 @@ from __future__ import annotations
 import argparse
 import base64
 from datetime import date, datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import re
@@ -57,6 +59,37 @@ class GitHubReadError(RuntimeError):
     def __init__(self, status):
         self.status = status
         super().__init__(f'GitHub read returned HTTP {status}')
+
+
+class ReadDeferred(Exception):
+    """The provider's persisted cooldown postpones this road, not its queue."""
+
+
+def retry_deadline(headers, now, fallback):
+    deadlines = []
+    value = headers.get('retry-after')
+    if value is not None:
+        try:
+            seconds = float(value)
+            if math.isfinite(seconds) and 0 <= seconds <= 3153600000:
+                deadlines.append(now + seconds)
+        except (TypeError, ValueError, OverflowError):
+            try:
+                stamp = parsedate_to_datetime(value)
+                if stamp.tzinfo is not None:
+                    seconds = stamp.timestamp() - now
+                    if math.isfinite(seconds) and seconds <= 3153600000:
+                        deadlines.append(now + max(0, seconds))
+            except (TypeError, ValueError, OverflowError):
+                pass
+    if headers.get('x-ratelimit-remaining') == '0':
+        try:
+            reset = float(headers.get('x-ratelimit-reset'))
+            if math.isfinite(reset) and now <= reset <= now + 3153600000:
+                deadlines.append(reset)
+        except (TypeError, ValueError, OverflowError):
+            pass
+    return max(now + 1, *deadlines) if deadlines else now + fallback
 
 
 def split_search_job(job):
@@ -129,6 +162,11 @@ class Reader:
         parsed = urllib.parse.urlsplit(url)
         if parsed.scheme != 'https' or parsed.netloc != 'api.github.com':
             raise ValueError('Non-GitHub API URL')
+        resource = 'search' if parsed.path.startswith('/search/') else 'core'
+        current = time.time()
+        cooldowns = self.state.setdefault('cooldowns', {})
+        if any(cooldowns.get(scope, 0) > current for scope in ('global', resource)):
+            raise ReadDeferred('GitHub provider cooldown active')
         if params:
             url += ('&' if parsed.query else '?') + urllib.parse.urlencode(params)
         request = urllib.request.Request(url, method='GET', headers={
@@ -144,18 +182,39 @@ class Reader:
                 headers = {name.lower(): value for name, value in response.headers.items()}
         except urllib.error.HTTPError as exc:
             # Store only code and rate metadata, never provider prose or token.
-            status, headers = exc.code, exc.headers or {}
+            status = exc.code
+            headers = {name.lower(): value for name, value in (exc.headers or {}).items()}
+            secondary = False
+            if status in (403, 429):
+                try:
+                    error = json.loads(exc.read(65536))
+                    message = str(error.get('message', '')).lower() if isinstance(error, dict) else ''
+                    secondary = any(term in message for term in ('secondary rate limit', 'abuse detection mechanism'))
+                except (OSError, ValueError, TypeError):
+                    pass
             limited = status == 429 or status == 403 and (
-                headers.get('X-RateLimit-Remaining') == '0' or
-                bool(headers.get('Retry-After')))
+                headers.get('x-ratelimit-remaining') == '0' or
+                bool(headers.get('retry-after')) or secondary)
             exc.close()
+            if limited:
+                primary = (headers.get('x-ratelimit-remaining') == '0' and not secondary
+                           and headers.get('x-ratelimit-resource') in (None, resource))
+                scope = resource if primary else 'global'
+                backoff = self.state.setdefault('cooldown_backoff', {})
+                attempt = min(backoff.get(scope, 0) + 1, 7)
+                backoff[scope] = attempt
+                until = retry_deadline(headers, time.time(), min(3600, 60 * 2 ** (attempt - 1)))
+                cooldowns[scope] = max(cooldowns.get(scope, 0), until)
             self.state['gaps'].append({'road': self.state.get('active_road'), 'status': status,
-                 'at': url.split('?')[0], 'rate_reset': headers.get('X-RateLimit-Reset'),
+                 'at': url.split('?')[0], 'rate_reset': headers.get('x-ratelimit-reset'),
                  'reason': 'rate_limit' if limited else 'provider_error'})
             self.save()
             if limited:
-                raise StopIteration('GitHub rate limit reached') from None
+                raise ReadDeferred('GitHub rate limit reached') from None
             raise GitHubReadError(status) from None
+        backoff = self.state.get('cooldown_backoff', {})
+        for scope in ('global', resource):
+            backoff.pop(scope, None)
         links = {}
         for piece in headers.get('link', '').split(','):
             match = re.search(r'<([^>]+)>;\s*rel="([^"]+)"', piece)
@@ -372,8 +431,13 @@ class Reader:
             for action in order:
                 if self.calls >= self.budget: break
                 before = self.calls
+                path = None
                 try:
                     path = action()
+                except ReadDeferred:
+                    # Other roads may use an independent quota. With every
+                    # road deferred, the no-progress condition ends this run.
+                    pass
                 except StopIteration:
                     # An action may need several reads; the budget is a normal
                     # checkpoint boundary, even when reached inside that action.
@@ -389,7 +453,9 @@ class Reader:
         return {'account': self.account, 'requests': self.calls, 'files': len(paths),
                 'road_pages': {k: v.get('pages') for k, v in self.state['roads'].items()},
                 'queued_details': len(self.state['details']), 'queued_repositories': len(self.state['repositories']),
-                'gaps': len(self.state['gaps']), 'output': str(self.home)}
+                'gaps': len(self.state['gaps']), 'output': str(self.home),
+                'cooldowns': {scope: until for scope, until in self.state.get('cooldowns', {}).items()
+                              if until > time.time()}}
 
 def main():
     parser = argparse.ArgumentParser()
