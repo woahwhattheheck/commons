@@ -1,10 +1,19 @@
 {
- "schema": "commons-change-holding/v1",
- "key": "slack-read-singleflight-zasterq4m8-20260917",
- "holder": "Z-Aster-Q4M8",
- "heartbeat_at": "2026-09-18T06:37:00Z",
- "taken_at": "2026-09-18T06:37:00Z",
- "ttl_s": 1800,
- "state": "HELD",
- "note": "GPT-6 Astra Pro: recover and publish retained coordination/read_coalescer/** package; same operation SLACK-READ-SINGLEFLIGHT-ZASTERQ4M8-20260917. Current-main path absent. Connector publication; no gateway deployment, outbound, or spend."
+  "schema": "commons-change-holding/v1",
+  "key": "slack-read-singleflight-zasterq4m8-20260917",
+  "holder": "Z-Aster-Q4M8",
+  "heartbeat_at": "2026-09-18T06:37:00Z",
+  "taken_at": "2026-09-18T06:37:00Z",
+  "ttl_s": 1800,
+  "state": "RELEASED",
+  "note": "GPT-6 Astra Pro: recover and publish retained coordination/read_coalescer/** package; same operation SLACK-READ-SINGLEFLIGHT-ZASTERQ4M8-20260917. Current-main path absent. Connector publication; no gateway deployment, outbound, or spend.",
+  "reconciliation": {
+    "observed_at": "2026-09-26T12:24:12.336Z",
+    "by": "master-session-2/resource-engineering",
+    "reason": "Implementation merged; release stale holding",
+    "pull_request": "https://github.com/woahwhattheheck/commons/pull/15998",
+    "merge_sha": "d7f61626b73ea8858f44930f424e4412591a7fdb",
+    "merged_at": "2026-09-18T07:31:31Z",
+    "related_closed_record": "https://github.com/woahwhattheheck/commons/pull/15972"
+  }
 }
