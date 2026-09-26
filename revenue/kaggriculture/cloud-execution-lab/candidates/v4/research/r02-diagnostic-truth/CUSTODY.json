@@ -9,7 +9,11 @@
   "artifact_digest": "sha256:9df777ca9273efd1eb7f3a482a4b69b9902b1d6d1da3b42650b3dc9a6e55362e",
   "source_blob": "0d869fe81e0ff06eb153ab1720219ac8dfb56f88",
   "test_blob": "b5440818f0594272e27325046f0a5ae0feb6ce7f",
-  "current_v4_predecessor_blob": "f96f077ddfcfa8b5e521ecd40bc1c0e5aa338f84",
-  "disposition": "recovered_not_yet_composed",
-  "activation": "none"
+  "current_v4_donor_predecessor_blob": "f96f077ddfcfa8b5e521ecd40bc1c0e5aa338f84",
+  "current_production_runtime_blob": "72c057552308dbac02dd6165c3049032ddbfa657",
+  "current_production_config_blob": "51d5296bb32cec9c662b566b9f6088f9ec40b257",
+  "current_production_reachability": "absent: no r02_route_bank, _v3_r02, or replaced_total runtime seam and no r02_route_bank config key",
+  "disposition": "historical_green_evidence_only_dormant_donor",
+  "activation": "none",
+  "reopen_gate": "only if a future canonical composition explicitly restores an R02 route-bank seam"
 }
