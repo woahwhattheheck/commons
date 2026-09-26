@@ -107,7 +107,7 @@ def parse_identifier(raw: str, repo: str = DEFAULT_REPO) -> ParsedId:
     raise ResolutionError("INVALID_IDENTIFIER", "unsupported identifier syntax", identifier=value)
 
 
-def _coordination_rows(text: str) -> list[dict[str, Any]]:
+def _coordination_rows(text: str, *, expected_repo: str | None = None) -> list[dict[str, Any]]:
     text = text.strip()
     if not text:
         return []
@@ -132,6 +132,17 @@ def _coordination_rows(text: str) -> list[dict[str, Any]]:
             raise ResolutionError("BAD_COORDINATION_STATE", "coordination array contains non-object rows")
         return list(parsed)
     if isinstance(parsed, dict):
+        source_repo = parsed.get("repo")
+        if expected_repo is not None and source_repo is not None:
+            if not isinstance(source_repo, str) or not source_repo.strip():
+                raise ResolutionError("BAD_COORDINATION_STATE", "coordination repo is not a nonempty string")
+            if source_repo.lower() != expected_repo.lower():
+                raise ResolutionError(
+                    "WRONG_COORDINATION_REPOSITORY",
+                    "coordination state belongs to another repository; select a coordination URL for the requested repository",
+                    expected=expected_repo,
+                    actual=source_repo,
+                )
         for key in ("pull_requests", "prs", "rows"):
             rows = parsed.get(key)
             if isinstance(rows, list):
@@ -212,7 +223,9 @@ class Resolver:
 
     def _coord(self) -> list[dict[str, Any]]:
         if self._coord_cache is None:
-            self._coord_cache = _coordination_rows(self.get_text(self.coordination_url))
+            self._coord_cache = _coordination_rows(
+                self.get_text(self.coordination_url), expected_repo=self.repo
+            )
         return self._coord_cache
 
     def resolve(self, raw: str) -> dict[str, Any]:
