@@ -158,12 +158,60 @@ hourly rate, money savings or released-capacity output**. Labor effort is not mo
 capacity available for this work is not capacity released by it. A downstream adapter
 must retain these distinctions and unknowns.
 
-`activities.csv` is an analyst export, not an input schema or lossless JSON round trip.
+`activities.csv` is an analyst export, not a complete plan schema or lossless JSON representation.
 Unknown numeric ranges become empty cells and missing-input names stay explicit. Lists
 are semicolon-joined; use JSON when identifiers contain semicolons. Formula-looking text
 is prefixed with an apostrophe for spreadsheet display, while canonical JSON retains
 the original text. Unicode, quotes, commas and multiline descriptions use normal CSV
 quoting. No formulas or linked workbooks are generated.
+
+### Bring numeric spreadsheet edits back into a plan
+
+Keep the exported `input.json` as the base plan. Edit only these six columns in a
+copy of its `activities.csv`: `units_low`, `units_central`, `units_high`,
+`hours_per_unit_low`, `hours_per_unit_central`, `hours_per_unit_high`. Then run:
+
+```sh
+python revenue/uiowa_rfq_18649_resource_estimator/estimator.py \
+  --input /tmp/uiowa086-release/input.json \
+  --activities-csv /tmp/edited-activities.csv \
+  --output-dir /tmp/uiowa086-release-revised
+```
+
+The overlay updates quantity and unit-effort ranges by stable activity ID, then
+uses the existing estimator to recalculate effort, aggregates and role capacity.
+It preserves the base plan's recommendations, role allocations, assumptions,
+source descriptions, links, planning horizon and row order. Row order in the CSV
+may change. Every original row must still appear exactly once; missing, duplicate,
+unknown or ambiguously spreadsheet-escaped IDs fail explicitly.
+
+For an UNKNOWN range, leave **all three** cells blank. Three numeric zero cells
+mean an explicitly estimated zero. A partly blank range, formula, nonfinite or
+out-of-range number is rejected. The original decimal precision, bounds and
+low/central/high ordering rules still apply. Unchanged numeric values retain the
+original JSON representation, including existing null ranges.
+
+All other CSV columns must equal the base plan's exported display, including
+derived effort and `missing_inputs`; they are recalculated after import. Do not
+edit them in the spreadsheet. Change metadata, assumptions, recommendations or
+capacity directly in the source JSON and export a new sheet. Numeric edits do
+not automatically update the stated assumption basis: review that basis before
+using the resulting plan.
+
+The revised export contains the usual four files plus `source-input.json` (the
+exact previous plan bytes) and `activity-edits.json` (changed activity/range values
+and SHA-256 bindings for source JSON, edited CSV and updated JSON). These are
+lineage records, not independent evidence authentication. The original directory
+is never overwritten. CSV input is UTF-8, optionally with a BOM, and limited to
+2 MiB; CSV parsing errors return exit 2 before output creation.
+
+Actual worked continuation used the existing release plan. Changing only
+REL-INVENTORY's hours-per-unit from 1/2/3 to 2/3/4 produced one-time
+60/92/136 person-hours and three-month 78/122/184 hours. All nonnumeric metadata
+and exact source-plan bytes were retained. The existing reliability plan's
+unchanged sheet round-tripped to byte-identical `input.json` and remained
+INCOMPLETE, preserving its unknown effort. These are fictional planning edits,
+not measured staffing or a new test corpus.
 
 ## Three worked planning conversations
 
