@@ -13,7 +13,7 @@ The scheduled restore drill is
 
 A valid backup contains:
 
-1. a full `git bundle --all` of the actual repository;
+1. a full `git bundle --single-worktree --all` of the actual repository;
 2. a machine-readable inventory of every bundled ref;
 3. the source `HEAD`;
 4. SHA-256 of the bundle;
@@ -47,6 +47,14 @@ look valid while leaving out parents required to restore it. Run
 GitHub Actions checkout, set `fetch-depth: 0`, as the scheduled drill already
 does. Sparse work trees and partial clones are permitted when their history is
 complete; Git may download missing objects while building their bundle.
+
+For repositories with linked work trees, the snapshot contains every shared
+ref (including each work tree's named branch) and the chosen source's HEAD.
+It excludes other work trees' private pseudo-refs, which are not ordinary
+repository refs and cannot be restored by a mirror clone. Back up each detached
+work tree separately if its HEAD is not retained by a shared branch or tag.
+Work tree directories, index state, and uncommitted files are outside this
+Git-object backup.
 
 ```bash
 python3 host/repo_backup.py snapshot --source /cloud/recovered.git --output-dir /cloud/next-backup
