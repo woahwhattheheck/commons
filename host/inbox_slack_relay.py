@@ -387,6 +387,19 @@ class Delivery:
         self.state, self.slack = state, slack
         self.max_pages, self.max_posts, self.posts = max_pages, max_posts, 0
         self.min_interval, self.next_post = min_interval, 0.0
+        self.cooldown_until = 0.0
+
+    def call_slack(self, method: str, data: dict) -> dict:
+        """One observed Slack cooldown covers source and health delivery."""
+        remaining = self.cooldown_until - time.time()
+        if remaining > 0:
+            raise RelayError("slack_retry_after_active", retry_after=math.ceil(remaining))
+        try:
+            return self.slack(method, data)
+        except RelayError as exc:
+            if exc.retry_after > 0:
+                self.cooldown_until = max(self.cooldown_until, time.time() + exc.retry_after)
+            raise
 
     def find(self, channel: str, marker: str, attempted: float, thread: str = "") -> str:
         # Resume a bounded scan instead of rereading its first pages forever.
@@ -411,7 +424,7 @@ class Delivery:
             if thread:
                 data["ts"] = thread
             try:
-                result = self.slack("conversations.replies" if thread else "conversations.history", data)
+                result = self.call_slack("conversations.replies" if thread else "conversations.history", data)
             except RelayError as exc:
                 if exc.code == "slack_invalid_cursor":
                     # Expired provider cursors require a fresh scan, never a send.
@@ -450,7 +463,7 @@ class Delivery:
                 "client_msg_id": str(uuid.uuid5(uuid.NAMESPACE_URL, channel + "\0" + text))}
         if thread:
             data["thread_ts"] = thread
-        result = self.slack("chat.postMessage", data)
+        result = self.call_slack("chat.postMessage", data)
         if not result.get("ts"):
             raise RelayError("slack_missing_receipt", uncertain=True)
         return str(result["ts"])
@@ -473,7 +486,7 @@ class Delivery:
         if ts:
             time.sleep(max(0.0, self.next_post - time.monotonic()))
             self.next_post = time.monotonic() + self.min_interval
-            self.slack("chat.update", {
+            self.call_slack("chat.update", {
                 "channel": channel, "ts": ts, "text": text, "mrkdwn": False,
                 "parse": "none", "link_names": False,
                 "unfurl_links": False, "unfurl_media": False,
@@ -775,6 +788,12 @@ def run(config: dict, state: State, providers: Providers) -> dict:
     report["pending_parts"] = pending
     incomplete = any(info.get("unclassified_pending", 0) or info.get("private_omitted", 0) or info.get("body_pending", 0) for info in report["sources"].values())
     report["status"] = "DEGRADED" if report["errors"] or pending or incomplete else "LIVE"
+    if delivery.cooldown_until > time.time():
+        # Keep the local receipt; the next scheduled pass can update Slack
+        # after its persisted Retry-After boundary. A source-provider cooldown
+        # does not set this Slack-only boundary.
+        report["health_delivery"] = "deferred_slack_retry_after"
+        return report
     health = ("INBOX VISIBILITY — " + report["status"] + "\n" + json.dumps(report, indent=2) +
               "\nDelivered is not resolved. CLAIM / DONE + evidence / BLOCKED live in each source thread. "
               "Private GitHub notifications and unclassified mail require a separate permitted review; zero public deliveries is not an empty inbox. "
