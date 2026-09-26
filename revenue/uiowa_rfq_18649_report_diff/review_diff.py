@@ -236,6 +236,11 @@ def _escape(value: Any) -> str:
 def render_markdown(before: Any, after: Any) -> str:
     """Render directly from verified inputs; never render an unchecked delta."""
     delta = compare_reports(before, after)
+    return _render_verified_delta(delta)
+
+
+def _render_verified_delta(delta: dict[str, Any]) -> str:
+    """Internal renderer for the result of this call's compare_reports()."""
     lines = ["# Inspection revision review", "", f"**{STATUS}**", "",
              "Changes describe supplied records, not verified University findings or practice improvement.",
              "No notes or dispositions have been transferred to another report receipt.", "",
@@ -291,6 +296,33 @@ def write_new(path: Path, raw: bytes) -> None:
         handle.write(raw)
 
 
+def write_bundle(before: Any, after: Any, destination: Path) -> dict[str, Any]:
+    """Compare once and publish paired views with a final manifest."""
+    delta = compare_reports(before, after)
+    outputs = {
+        "delta.json": canonical_json_bytes(delta),
+        "review.md": _render_verified_delta(delta).encode("utf-8"),
+    }
+    manifest = {
+        "schema": "uiowa-rfq18649-inspection-diff-bundle/v1",
+        "status": STATUS,
+        "before": delta["before"],
+        "after": delta["after"],
+        "diff_receipt_sha256": delta["diff_receipt_sha256"],
+        "outputs": {name: {"sha256": hashlib.sha256(raw).hexdigest(), "bytes": len(raw)}
+                    for name, raw in outputs.items()},
+        "external_authority": _external_authority(),
+    }
+    manifest_raw = canonical_json_bytes(manifest)
+    destination.mkdir(mode=0o700, parents=True, exist_ok=False)
+    for name, raw in outputs.items():
+        write_new(destination / name, raw)
+    # A missing final manifest identifies an interrupted output operation.
+    # Preserve already written files; never clean up an operator's evidence.
+    write_new(destination / "manifest.json", manifest_raw)
+    return manifest
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -299,6 +331,10 @@ def main(argv: list[str] | None = None) -> int:
     compare.add_argument("after", type=Path)
     compare.add_argument("output", type=Path)
     compare.add_argument("--format", choices=("json", "markdown"), default="json")
+    bundle = sub.add_parser("bundle", help="create paired JSON/Markdown views and a final manifest in one computation")
+    bundle.add_argument("before", type=Path)
+    bundle.add_argument("after", type=Path)
+    bundle.add_argument("output", type=Path, help="new output directory; never overwritten")
     verify = sub.add_parser("verify", help="recompute a JSON diff using its original reports")
     verify.add_argument("before", type=Path)
     verify.add_argument("after", type=Path)
@@ -309,6 +345,9 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "verify":
             result = verify_diff(before, after, load_json(args.delta))
             print(f"UNTRUSTED_DIFF_INTEGRITY_ONLY {result['diff_receipt_sha256']}")
+        elif args.command == "bundle":
+            result = write_bundle(before, after, args.output)
+            print(f"{STATUS} {result['diff_receipt_sha256']}; output={args.output}")
         else:
             if args.format == "markdown":
                 raw = render_markdown(before, after).encode("utf-8")
