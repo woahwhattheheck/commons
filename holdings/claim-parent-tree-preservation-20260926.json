@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "claim-parent-tree-preservation-20260926",
+  "holder": "high-burn-lane-a",
+  "state": "HELD",
+  "taken_at": "2026-09-26T15:30:46.725Z",
+  "heartbeat_at": "2026-09-26T15:30:46.725Z",
+  "ttl_s": 1800,
+  "note": "Own host/coordination_state.py _holdings_commit: preserve full parent tree, sibling sidecars and existing README while changing only intended holding."
+}
