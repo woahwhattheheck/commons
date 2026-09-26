@@ -88,6 +88,8 @@ def request(url, body=None):
 
 MAX_CHECKPOINT_BYTES = 240_000
 DETAIL_SHARD_SCHEMA = 'github-history-detail-shard-v1'
+CHECKPOINT_SHARD_SCHEMA = 'github-history-checkpoint-shard-v2'
+CHECKPOINT_LIST_FIELDS = ('details', 'detail_keys', 'repositories', 'repository_keys', 'gaps')
 HOLD_CODES = {'self_fault_admission', 'invalid_candidate', 'agent_caused_damage', 'authored_attribution'}
 
 class PublisherHold(RuntimeError):
@@ -172,7 +174,7 @@ def plan_checkpoint_files(raw):
     compact = compact_document(data)
     if compact is None:
         if len(raw) > MAX_CHECKPOINT_BYTES:
-            raise RuntimeError('checkpoint_over_publisher_ceiling')
+            return plan_full_checkpoint_files(data)
         return [('checkpoint.json', raw if isinstance(raw, bytes) else raw.encode())]
     blob = dumps(compact)
     if len(blob) <= MAX_CHECKPOINT_BYTES:
@@ -183,10 +185,10 @@ def plan_checkpoint_files(raw):
     def flush():
         if not current:
             return
-        name = 'details-%04d.json' % len(files)
         shard = dumps({'schema': DETAIL_SHARD_SCHEMA, 'details': list(current)})
         if len(shard) > MAX_CHECKPOINT_BYTES:
             raise RuntimeError('checkpoint_over_publisher_ceiling')
+        name = 'details-%04d-%s.json' % (len(files), hashlib.sha256(shard).hexdigest())
         files.append((name, shard))
 
     for pair in compact['details']:
@@ -204,8 +206,50 @@ def plan_checkpoint_files(raw):
     head['detail_shards'] = [name for name, _ in files]
     head_raw = dumps(head)
     if len(head_raw) > MAX_CHECKPOINT_BYTES:
-        raise RuntimeError('checkpoint_over_publisher_ceiling')
+        return plan_full_checkpoint_files(data)
     return files + [('checkpoint.json', head_raw)]
+
+def plan_full_checkpoint_files(data):
+    """Retain paginated jobs and completed-work indexes in bounded shards."""
+    head = dict(data)
+    files = []
+    references = {}
+    for field in CHECKPOINT_LIST_FIELDS:
+        if field not in data:
+            continue
+        values = data[field]
+        if not isinstance(values, list):
+            raise RuntimeError('checkpoint_invalid')
+        names = []
+        current = []
+
+        def encode(items):
+            return dumps({'schema': CHECKPOINT_SHARD_SCHEMA, 'field': field, 'items': items})
+
+        def flush():
+            if not current:
+                return
+            blob = encode(current)
+            if len(blob) > MAX_CHECKPOINT_BYTES:
+                raise RuntimeError('checkpoint_over_publisher_ceiling')
+            name = 'checkpoint-%s-%04d-%s.json' % (field, len(names), hashlib.sha256(blob).hexdigest())
+            names.append(name)
+            files.append((name, blob))
+
+        for value in values:
+            if current and len(encode(current + [value])) > MAX_CHECKPOINT_BYTES:
+                flush()
+                current = []
+            current.append(value)
+        flush()
+        head[field] = []
+        if names:
+            references[field] = names
+    head['checkpoint_shards'] = references
+    raw = dumps(head)
+    if len(raw) > MAX_CHECKPOINT_BYTES:
+        raise RuntimeError('checkpoint_over_publisher_ceiling')
+    return files + [('checkpoint.json', raw)]
 
 def expand_checkpoint(raw, read_shard):
     if raw is None:
@@ -214,6 +258,31 @@ def expand_checkpoint(raw, read_shard):
     if not isinstance(data, dict):
         raise RuntimeError('checkpoint_invalid')
     prior = {}
+    references = data.pop('checkpoint_shards', None)
+    if references is not None:
+        if not isinstance(references, dict):
+            raise RuntimeError('checkpoint_shard_invalid')
+        for field, names in references.items():
+            if (field not in CHECKPOINT_LIST_FIELDS or data.get(field) != [] or
+                    not isinstance(names, list) or not names):
+                raise RuntimeError('checkpoint_shard_invalid')
+            values = []
+            for name in names:
+                if (not isinstance(name, str) or name != Path(name).name or
+                        '\\' in name or not name.endswith('.json') or name in prior):
+                    raise RuntimeError('checkpoint_shard_invalid')
+                loaded = read_shard(name)
+                if not loaded or loaded[0] is None:
+                    raise RuntimeError('checkpoint_shard_missing')
+                sraw, ssha = loaded
+                shard = json.loads(sraw)
+                if (not isinstance(shard, dict) or shard.get('schema') != CHECKPOINT_SHARD_SCHEMA or
+                        shard.get('field') != field or not isinstance(shard.get('items'), list)):
+                    raise RuntimeError('checkpoint_shard_invalid')
+                values.extend(shard['items'])
+                prior[name] = (sraw, ssha)
+            data[field] = values
+        return dumps(data), prior
     shards = data.get('detail_shards')
     if shards:
         if data.get('details') not in ([], None) or not isinstance(shards, list):
@@ -241,7 +310,10 @@ def expand_checkpoint(raw, read_shard):
         data['detail_keys'] = [url for _, url in pairs]
         return dumps(data), prior
     pairs = pair_details(data.get('details', []))
-    if pairs is not None and data.get('details') and isinstance(data['details'][0], list):
+    # Compact checkpoints omit detail_keys even when their queue is empty.
+    # Restore that index before the collector resumes the saved state.
+    if pairs is not None and ('detail_keys' not in data or
+                              data.get('details') and isinstance(data['details'][0], list)):
         urls = [url for _, url in pairs]
         if 'detail_keys' in data and data['detail_keys'] != urls:
             raise RuntimeError('checkpoint_detail_keys_mismatch')
@@ -320,7 +392,8 @@ def wire_hold_codes(raw):
         data = json.loads(raw)
     except (json.JSONDecodeError, UnicodeError):
         return raw
-    gaps = data.get('gaps') if isinstance(data, dict) else None
+    gaps = (data.get('items') if data.get('schema') == CHECKPOINT_SHARD_SCHEMA and
+            data.get('field') == 'gaps' else data.get('gaps')) if isinstance(data, dict) else None
     if not isinstance(gaps, list):
         return raw
     changed = False
@@ -339,7 +412,8 @@ def restore_hold_codes(raw):
         data = json.loads(raw)
     except (json.JSONDecodeError, UnicodeError):
         return raw
-    gaps = data.get('gaps') if isinstance(data, dict) else None
+    gaps = (data.get('items') if data.get('schema') == CHECKPOINT_SHARD_SCHEMA and
+            data.get('field') == 'gaps' else data.get('gaps')) if isinstance(data, dict) else None
     if not isinstance(gaps, list):
         return raw
     changed = False

@@ -174,11 +174,19 @@ def _tree_rows(repo: Path, oid: str) -> dict[bytes, tuple[str, str]]:
     return rows
 
 
-def _tree_entry(repo: Path, tree_sha: str, path: str) -> tuple[str, str, str]:
+def _tree_entry(
+    repo: Path, tree_sha: str, path: str,
+    *, tree_cache: dict[str, dict[bytes, tuple[str, str]]] | None = None,
+) -> tuple[str, str, str]:
     current_tree = tree_sha
     pieces = path.split("/")
     for index, piece in enumerate(pieces):
-        rows = _tree_rows(repo, current_tree)
+        if tree_cache is None:
+            rows = _tree_rows(repo, current_tree)
+        else:
+            if current_tree not in tree_cache:
+                tree_cache[current_tree] = _tree_rows(repo, current_tree)
+            rows = tree_cache[current_tree]
         item = rows.get(piece.encode("utf-8", "strict"))
         if item is None:
             raise GitSourceError(f"source path is missing from committed tree: {path}")
@@ -278,17 +286,24 @@ def collect_git_source(
     tree_sha = _commit_tree(repo, commit)
     observed_main = _observed_main(repo)
     capsules: list[dict[str, Any]] = []
+    # Git object IDs bind immutable bytes. Reuse only objects verified during
+    # this collection, never an observation from another repository or call.
+    tree_cache: dict[str, dict[bytes, tuple[str, str]]] = {}
+    blob_cache: dict[str, tuple[int, str, str | None, str | None]] = {}
     for path in canonical_paths:
-        mode, _, blob_sha = _tree_entry(repo, tree_sha, path)
-        size_text = _run(repo, ["cat-file", "-s", blob_sha]).decode("ascii", "strict").strip()
-        try:
-            size = int(size_text)
-        except ValueError as exc:
-            raise GitSourceError(f"invalid blob size for {path}") from exc
-        if size < 0:
-            raise GitSourceError(f"negative blob size for {path}")
-        content_sha256, raw = _blob(repo, blob_sha, size, max_file_bytes)
-        text, reason = _text_status(raw, oversized=size > max_file_bytes)
+        mode, _, blob_sha = _tree_entry(repo, tree_sha, path, tree_cache=tree_cache)
+        if blob_sha not in blob_cache:
+            size_text = _run(repo, ["cat-file", "-s", blob_sha]).decode("ascii", "strict").strip()
+            try:
+                size = int(size_text)
+            except ValueError as exc:
+                raise GitSourceError(f"invalid blob size for {path}") from exc
+            if size < 0:
+                raise GitSourceError(f"negative blob size for {path}")
+            content_sha256, raw = _blob(repo, blob_sha, size, max_file_bytes)
+            text, reason = _text_status(raw, oversized=size > max_file_bytes)
+            blob_cache[blob_sha] = (size, content_sha256, text, reason)
+        size, content_sha256, text, reason = blob_cache[blob_sha]
         row: dict[str, Any] = {
             "path": path,
             "mode": mode,

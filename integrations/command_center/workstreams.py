@@ -31,6 +31,7 @@ FORBIDDEN_FIELDS = {
     "provider_response", "provider_result", "raw_result", "transcript",
 }
 ERROR_STATUSES = {"error", "failed", "offline", "unavailable", "blocked"}
+CLOCK_SKEW_SECONDS = 300
 
 
 def _now():
@@ -202,8 +203,18 @@ class WorkstreamStore:
                 raise CoreError(409, "A source ID cannot change provider.")
             if prior and prior.get("scope") != source.get("scope"):
                 raise CoreError(409, "Use a distinct source ID for a different collection scope.")
-            if prior and observed < _stamp(prior["observed_at"], "stored observed_at"):
-                raise CoreError(409, "Older source snapshots cannot replace newer observations.")
+            if prior:
+                previous_observed = _stamp(prior["observed_at"], "stored observed_at")
+                # A provider clock ahead of the host must not prevent a later
+                # corrected observation from restoring usable source freshness.
+                # Retained data with a usable newer clock still wins over it.
+                clocks = [previous_observed]
+                if previous["last_good_observed_at"]:
+                    clocks.append(_stamp(previous["last_good_observed_at"], "last_good_observed_at"))
+                ceiling = _stamp(now, "now") + CLOCK_SKEW_SECONDS
+                usable_clocks = [stamp for stamp in clocks if stamp <= ceiling]
+                if usable_clocks and observed < max(usable_clocks):
+                    raise CoreError(409, "Older source snapshots cannot replace newer observations.")
             # Reconcile in SQLite instead of copying every historical payload
             # into Python for each small page or failed provider observation.
             changed = removed = retained = 0
@@ -332,11 +343,17 @@ class WorkstreamStore:
             for row in db.execute("SELECT * FROM work_sources ORDER BY source_id"):
                 source = json.loads(row["payload"])
                 threshold = source.get("stale_after_seconds", 900)
-                age = max(0, now_epoch - _stamp(source["observed_at"], "observed_at"))
-                good_age = None if not row["last_good_observed_at"] else max(
-                    0, now_epoch - _stamp(row["last_good_observed_at"], "last_good_observed_at"))
+                observed_delta = now_epoch - _stamp(source["observed_at"], "observed_at")
+                good_delta = (None if not row["last_good_observed_at"] else
+                              now_epoch - _stamp(row["last_good_observed_at"], "last_good_observed_at"))
+                future_observation = observed_delta < -CLOCK_SKEW_SECONDS
+                future_data = good_delta is not None and good_delta < -CLOCK_SKEW_SECONDS
+                age = None if future_observation else max(0, observed_delta)
+                good_age = None if good_delta is None or future_data else max(0, good_delta)
                 source.update({
-                    "age_seconds": age, "stale": None if threshold is None else age > threshold,
+                    "age_seconds": age,
+                    "stale": (None if threshold is None or future_observation else age > threshold),
+                    "future_observation": future_observation, "future_data": future_data,
                     "last_attempt_at": row["last_attempt_at"], "last_success_at": row["last_success_at"],
                     "last_good_observed_at": row["last_good_observed_at"],
                     "last_good_coverage": json.loads(row["last_good_coverage"]) if row["last_good_coverage"] else None,

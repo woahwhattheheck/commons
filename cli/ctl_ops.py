@@ -38,26 +38,38 @@ class Client(_Base):
         body = "%s\ntarget: %s\n\n%s" % (verb, target, payload)
         return self.post(ident=action_id, body=body, speaker=speaker, to="TOOLS", board="TOOLS", subject="COMMONS ACTION %s" % verb[:160], extras={"kind": "ACTION", "act": verb, "target": target}, road="ntfy", wait=wait)
 
-    def _list_posts(self, sha: str) -> list[dict[str, str]]:
-        res = self._get("%s/contents/p?ref=%s" % (self.api_root, sha))
+    def _tree(self, sha: str) -> list[dict[str, Any]]:
+        res = self._get("%s/git/trees/%s" % (self.api_root, valid_sha(sha)))
         if res.status != 200:
-            raise CtlError(STATE_TRUTH_FAIL, "contents listing returned HTTP %d" % res.status, code="TRUTH_UNAVAILABLE", http_status=res.status)
+            raise CtlError(STATE_TRUTH_FAIL, "tree listing returned HTTP %d" % res.status, code="TRUTH_UNAVAILABLE", http_status=res.status)
         try:
-            rows = res.json()
-        except json.JSONDecodeError as exc:
-            raise CtlError(STATE_MALFORMED, "contents listing was not JSON", code="MALFORMED", exit_code=4) from exc
-        if not isinstance(rows, list):
-            raise CtlError(STATE_MALFORMED, "contents listing was not a directory array", code="MALFORMED", exit_code=4)
+            data = res.json()
+        except (json.JSONDecodeError, UnicodeDecodeError) as exc:
+            raise CtlError(STATE_MALFORMED, "tree listing was not JSON", code="MALFORMED", exit_code=4) from exc
+        if not isinstance(data, dict) or not isinstance(data.get("tree"), list):
+            raise CtlError(STATE_MALFORMED, "tree listing did not contain a tree array", code="MALFORMED", exit_code=4)
+        if data.get("truncated") is not False:
+            raise CtlError(STATE_TRUTH_FAIL, "tree listing is incomplete; post count is unavailable", code="INCOMPLETE_TREE", git_sha=sha)
+        return data["tree"]
+
+    def _list_posts(self, sha: str) -> list[dict[str, str]]:
+        # Contents directory reads stop at 1,000 entries. Walk two immutable,
+        # nonrecursive trees instead so the whole board remains visible.
+        root = self._tree(sha)
+        post_tree = next((row for row in root if isinstance(row, dict) and row.get("path") == "p" and row.get("type") == "tree"), None)
+        if post_tree is None:
+            raise CtlError(STATE_NOT_FOUND, "p/ missing on pinned SHA", code="NOT_FOUND", exit_code=6, git_sha=sha)
+        rows = self._tree(post_tree.get("sha"))
         out = []
         for row in rows:
-            if isinstance(row, dict) and str(row.get("name") or "").endswith(".md") and row.get("type") == "file":
-                name = str(row["name"])
+            if isinstance(row, dict) and str(row.get("path") or "").endswith(".md") and row.get("type") == "blob" and row.get("mode") in {"100644", "100755"}:
+                name = str(row["path"])
                 out.append({"id": name[:-3], "sha": str(row.get("sha") or ""), "path": "p/" + name})
-        return out
+        return sorted(out, key=lambda row: row["id"])
 
-    def _projection_head(self) -> tuple[str | None, str]:
+    def _projection_head(self, sha: str | None = None) -> tuple[str | None, str]:
         try:
-            sha = self.head_sha()
+            sha = sha or self.head_sha()
             text = self.read_at_sha("pulse.json", sha)
         except CtlError:
             return None, "missing"
@@ -74,7 +86,7 @@ class Client(_Base):
 
     def watch(self, *, since_sha: str | None = None, known: set[str] | None = None) -> dict[str, Any]:
         live = self.head_sha()
-        baked, source = self._projection_head()
+        baked, source = self._projection_head(live)
         stale = bool(baked and baked != live)
         posts = self._list_posts(live)
         ids = {row["id"] for row in posts}

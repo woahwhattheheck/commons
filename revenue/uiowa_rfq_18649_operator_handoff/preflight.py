@@ -44,9 +44,13 @@ def load_manifest(path: Path) -> dict[str, Any]:
     return payload
 
 
-def validate(manifest: dict[str, Any], root: Path) -> dict[str, Any]:
+def validate(
+    manifest: dict[str, Any], root: Path, selected_assets: set[str] | None = None,
+) -> dict[str, Any]:
+    """Validate the catalog, checking source availability only within the chosen scope."""
     errors: list[str] = []
     warnings: list[str] = []
+    selected = set(selected_assets or [])
     assets = manifest.get("assets")
     phases = manifest.get("phases")
 
@@ -78,6 +82,7 @@ def validate(manifest: dict[str, Any], root: Path) -> dict[str, Any]:
             errors.append(f"duplicate asset_id: {asset_id}")
         else:
             ids.add(asset_id)
+        check_files = not selected or asset_id in selected
 
         phase = str(asset.get("phase", ""))
         status = str(asset.get("status", ""))
@@ -94,7 +99,7 @@ def validate(manifest: dict[str, Any], root: Path) -> dict[str, Any]:
 
         rel = str(asset.get("path", "")).strip()
         if status == "pending_at_snapshot":
-            if rel:
+            if rel and check_files:
                 candidate = (root / rel).resolve()
                 if candidate.exists():
                     warnings.append(
@@ -111,9 +116,9 @@ def validate(manifest: dict[str, Any], root: Path) -> dict[str, Any]:
         except ValueError:
             errors.append(f"{asset_id}: path escapes repository root: {rel}")
             continue
-        if not candidate.exists():
+        if check_files and not candidate.exists():
             errors.append(f"{asset_id}: path missing from checkout: {rel}")
-        else:
+        elif check_files:
             resolved_paths.append(rel)
 
         commands = asset.get("sample_commands") or []
@@ -129,7 +134,7 @@ def validate(manifest: dict[str, Any], root: Path) -> dict[str, Any]:
             except ValueError:
                 errors.append(f"{asset_id}: working_dir escapes repository root")
                 continue
-            if not workdir.is_dir():
+            if check_files and not workdir.is_dir():
                 errors.append(f"{asset_id}: working_dir missing: {workdir_rel}")
                 continue
 
@@ -146,11 +151,17 @@ def validate(manifest: dict[str, Any], root: Path) -> dict[str, Any]:
                 except ValueError:
                     errors.append(f"{asset_id}: command[{command_index}] script escapes root")
                     continue
-                if not script.is_file():
+                if check_files and not script.is_file():
                     errors.append(
                         f"{asset_id}: command[{command_index}] script missing: "
                         f"{workdir_rel}/{command[0]}"
                     )
+
+    unknown = selected - ids
+    if unknown:
+        errors.append(f"unknown --asset values: {sorted(unknown)}")
+    if selected:
+        warnings.append("Source availability was checked only for selected assets; this is not a full-catalog preflight.")
 
     missing_phases = sorted(ALLOWED_PHASES - set(phase_counts))
     if missing_phases:
@@ -165,6 +176,9 @@ def validate(manifest: dict[str, Any], root: Path) -> dict[str, Any]:
         "schema": manifest.get("schema"),
         "snapshot_main_sha": manifest.get("snapshot_main_sha"),
         "root": str(root),
+        "filesystem_scope": "selected_assets" if selected else "full_catalog",
+        "selected_assets": sorted(selected),
+        "skipped_assets": sorted(ids - selected) if selected else [],
         "assets": len(assets),
         "executable_assets": executable_assets,
         "phase_counts": dict(sorted(phase_counts.items())),
@@ -180,16 +194,19 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST)
     parser.add_argument("--root", type=Path, default=None)
     parser.add_argument("--json", action="store_true", dest="as_json")
+    parser.add_argument("--asset", action="append", dest="assets",
+                        help="Check source availability only for a named asset; repeat to select multiple.")
     args = parser.parse_args(argv)
 
     manifest = load_manifest(args.manifest)
     root = (args.root or repo_root_from()).resolve()
-    result = validate(manifest, root)
+    result = validate(manifest, root, set(args.assets or []) or None)
     if args.as_json:
         print(json.dumps(result, indent=2, sort_keys=True))
     else:
         print(
             f"UIOWA-100 preflight: {'PASS' if result['ok'] else 'FAIL'} "
+            f"scope={result['filesystem_scope']} "
             f"assets={result['assets']} executable_assets={result['executable_assets']} "
             f"snapshot={result['snapshot_main_sha']}"
         )

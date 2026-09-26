@@ -26,6 +26,7 @@ import json
 import os
 import re
 import shutil
+import stat
 import subprocess
 import sys
 import tempfile
@@ -274,8 +275,9 @@ def show_at(cwd, rev, rel):
     return out
 
 
-def name_status(cwd, a, b):
-    rc, out, _ = git(["diff", "--name-status", "--no-renames", "-z", a, b], cwd=cwd, check=False)
+def name_status(cwd, a, b, include_modes=False):
+    format_flag = "--raw" if include_modes else "--name-status"
+    rc, out, _ = git(["diff", format_flag, "--no-renames", "-z", a, b], cwd=cwd, check=False)
     if rc != 0:
         return []
     fields = out.split(b"\0")
@@ -283,8 +285,18 @@ def name_status(cwd, a, b):
         fields.pop()
     if len(fields) % 2:
         raise CloudCurrentError("incomplete NUL-delimited git name-status output")
-    return [(os.fsdecode(fields[index]), os.fsdecode(fields[index + 1]))
-            for index in range(0, len(fields), 2)]
+    rows = []
+    for index in range(0, len(fields), 2):
+        status = os.fsdecode(fields[index])
+        rel = os.fsdecode(fields[index + 1])
+        if include_modes:
+            parts = status.split()
+            if len(parts) != 5 or not parts[0].startswith(":"):
+                raise CloudCurrentError("incomplete raw git diff metadata")
+            rows.append((parts[4], rel, parts[0][1:], parts[1]))
+        else:
+            rows.append((status, rel))
+    return rows
 
 
 def porcelain(cwd):
@@ -334,6 +346,26 @@ def write_file_bytes(root, rel, data):
         handle.write(data if data is not None else b"")
 
 
+def write_refreshed_file(root, rel, data, base_mode, origin_mode):
+    """Compose the executable bit alongside bytes, preserving local chmods."""
+    path = os.path.join(root, rel)
+    apply_mode = origin_mode in ("100644", "100755")
+    try:
+        current = os.lstat(path)
+    except FileNotFoundError:
+        pass
+    else:
+        # An existing added file or a local chmod carries local intent. Keep it.
+        apply_mode = (apply_mode and stat.S_ISREG(current.st_mode)
+                      and base_mode in ("100644", "100755")
+                      and bool(current.st_mode & stat.S_IXUSR) == (base_mode == "100755"))
+    write_file_bytes(root, rel, data)
+    if apply_mode:
+        mode = stat.S_IMODE(os.stat(path).st_mode)
+        mode = mode | 0o111 if origin_mode == "100755" else mode & ~0o111
+        os.chmod(path, mode)
+
+
 def unlink_if_exists(root, rel):
     path = os.path.join(root, rel)
     if os.path.isfile(path) or os.path.islink(path):
@@ -362,7 +394,13 @@ def save_session(worktree, session):
         json.dump(session, handle, indent=2, ensure_ascii=False)
         handle.write("\n")
     os.replace(tmp, path)
-    exclude = os.path.join(worktree, ".git", "info", "exclude")
+    # Linked worktrees use a .git file. Git resolves info/exclude through the
+    # common Git directory so private session data stays ignored in both modes.
+    rc, exclude, _ = git_text(["rev-parse", "--git-path", "info/exclude"],
+                             cwd=worktree, check=False)
+    if rc or not exclude.strip():
+        return
+    exclude = os.path.join(worktree, exclude.rstrip("\r\n"))
     try:
         os.makedirs(os.path.dirname(exclude), exist_ok=True)
         existing = ""
@@ -718,7 +756,13 @@ def snapshot(worktree, peer=None, command="snapshot"):
 
 
 def fetch_origin_main(worktree):
-    rc, _, err = git(["fetch", "origin", "main"], cwd=worktree, check=False, timeout=180)
+    # A single-branch clone may map only its feature branch in origin.fetch.
+    # Fetching the name "main" then updates FETCH_HEAD but leaves origin/main
+    # absent or stale. Name the destination explicitly before reporting CURRENT.
+    rc, _, err = git(
+        ["fetch", "origin", "refs/heads/main:refs/remotes/origin/main"],
+        cwd=worktree, check=False, timeout=180,
+    )
     sha = rev_sha(worktree, "origin/main")
     if rc != 0:
         state = "STALE" if sha else "UNKNOWN"
@@ -769,7 +813,7 @@ def refresh(worktree, peer=None):
     # Compare upstream against the shared ancestor. HEAD-to-origin differences
     # also contain reversals of unique local commits and must not be applied as
     # if upstream had deleted that work.
-    for status, rel in name_status(worktree, shared, origin_sha):
+    for status, rel, base_mode, origin_mode in name_status(worktree, shared, origin_sha, include_modes=True):
         theirs = show_at(worktree, origin_sha, rel)
         base = show_at(worktree, shared, rel)
         local_committed = show_at(worktree, head, rel)
@@ -778,7 +822,7 @@ def refresh(worktree, peer=None):
                 unlink_if_exists(worktree, rel)
                 receipt["actions"].append({"path": rel, "op": "apply_origin_delete"})
             else:
-                write_file_bytes(worktree, rel, theirs)
+                write_refreshed_file(worktree, rel, theirs, base_mode, origin_mode)
                 receipt["actions"].append({"path": rel, "op": "apply_origin"})
             continue
         ours = read_file_bytes(worktree, rel)
@@ -798,7 +842,7 @@ def refresh(worktree, peer=None):
             unlink_if_exists(worktree, rel)
             receipt["actions"].append({"path": rel, "op": "compose_delete", "rule_id": result["rule_id"]})
             continue
-        write_file_bytes(worktree, rel, merged)
+        write_refreshed_file(worktree, rel, merged, base_mode, origin_mode)
         op = "dedupe" if verdict == "DEDUPED" else "compose"
         receipt["actions"].append({"path": rel, "op": op, "rule_id": result["rule_id"]})
         if result.get("origin_kept_in_receipt") and theirs is not None:
@@ -958,8 +1002,8 @@ def open_worktree(peer="unseated", dest=None, repo=None, mode="clone", source=No
         refuse_owner_disk(source)
         if not git_ok(source):
             raise CloudCurrentError("source is not a git clone: %s" % source)
-        git(["fetch", "origin", "main"], cwd=source, check=False, timeout=180)
-        start = rev_sha(source, "origin/main") or head_sha(source)
+        _origin_state, origin_sha, _fetch_err = fetch_origin_main(source)
+        start = origin_sha or head_sha(source)
         branch = "wt/%s/%s" % (re.sub(r"[^a-z0-9]+", "-", peer.lower()).strip("-") or "unseated", sid)
         git(["branch", branch, start], cwd=source)
         git(["worktree", "add", dest, branch], cwd=source)

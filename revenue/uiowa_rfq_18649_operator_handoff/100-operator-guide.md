@@ -30,6 +30,44 @@ Each invocation requires a **new or empty output directory**. Use separate direc
 
 A dry run prints `PLANNED` with `execution_verified=false`. Only a completed, successful execution sets `execution_verified=true`; the legacy `success` field also remains true for a valid plan and must not be used alone to claim execution. Timeouts, launch errors, changed entrypoint bytes, and output-inventory errors produce explicit failure states when a receipt can be written. See [the execution-evidence contract](RUN_EVIDENCE_CONTRACT.md) for fields, exit codes, compatibility, and limits.
 
+### Run a selected asset from a partial source tree
+
+Use `--asset` on both preflight and the runner when transferring only one or more
+catalog components. Keep their original repository-relative paths and the unchanged
+`operator_manifest.json`; unrelated catalog directories need not be copied.
+
+For the existing rating-composition example, the complete CLI input set is:
+
+- `revenue/uiowa_rfq_18649_operator_handoff/preflight.py`
+- `revenue/uiowa_rfq_18649_operator_handoff/sample_run.py`
+- `revenue/uiowa_rfq_18649_operator_handoff/operator_manifest.json`
+- `revenue/uiowa_rfq_18649_rating_model/rating_model.py`
+- `revenue/uiowa_rfq_18649_rating_model/synthetic_case_critical_gap.json`
+
+From the transferred tree's root, run:
+
+```bash
+python revenue/uiowa_rfq_18649_operator_handoff/preflight.py \
+  --root . --asset rating_composition --json
+python revenue/uiowa_rfq_18649_operator_handoff/sample_run.py \
+  --root . --asset rating_composition --out /tmp/uiowa-rating-sample
+```
+
+Repeat `--asset` to select multiple executable assets. Preflight still validates
+the entire catalog's structure and path boundaries, but checks file availability
+only for the selected assets. Its `filesystem_scope` and the run receipt's
+`preflight_scope` report `selected_assets`; `skipped_assets` and
+`preflight_skipped_assets` name the excluded catalog entries. A selected PASS does
+not establish readiness of those excluded components or the full engagement.
+Omitting `--asset` retains the full-catalog check and run.
+
+For other components, transfer their required local modules and input files too;
+preflight checks entrypoints, not dependency closure or input semantics. The runner
+retains the selected component's real exit status and output hashes. The existing
+compiler/workbench archive workflow lives in
+`revenue/uiowa_rfq_18649_operator_portability/`; use that package for its declared
+source closure instead of treating a selected run as archive verification.
+
 ## Snapshot and refresh rule
 
 This guide freezes a known operator map at one main SHA so its statements are auditable. The repository is moving quickly.

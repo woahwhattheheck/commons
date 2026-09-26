@@ -175,7 +175,13 @@ def render_envelope(fields: dict[str, str], body: str) -> str:
 
 def load_body_arg(raw: str | None, path: str | None) -> str:
     if path:
-        return open(path, "rb").read().decode("utf-8")
+        try:
+            with open(path, "rb") as handle:
+                return handle.read().decode("utf-8")
+        except UnicodeDecodeError as exc:
+            raise CtlError(STATE_MALFORMED, "input file is not valid UTF-8", code="UTF8", exit_code=4, path=path) from exc
+        except OSError as exc:
+            raise CtlError(STATE_MALFORMED, "cannot read input file: %s" % exc.strerror, code="INPUT_FILE", exit_code=4, path=path) from exc
     if raw is None:
         raise CtlError(STATE_MALFORMED, "body is required", code="SCHEMA", exit_code=4)
     return raw

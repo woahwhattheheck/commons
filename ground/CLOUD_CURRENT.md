@@ -41,8 +41,12 @@ Mode `clone` (default) is an isolated clone — no shared index lock. Mode
 
 1. Snapshot dirt first (file copies + optional `git stash create` recovery
    ref). Never `stash drop` / `stash pop`.
-2. `git fetch origin main`. Fetch failure is `origin_state=STALE`, not a stop.
-3. Clean paths that moved on main take origin.
+2. Fetch `refs/heads/main` explicitly into `refs/remotes/origin/main`. This also
+   works in single-branch feature clones whose configured fetch mapping omits
+   main. Fetch failure is `origin_state=STALE`, not a stop.
+3. Clean paths that moved on main take origin, including executable file modes.
+   New upstream scripts remain runnable. Locally changed executable bits stay ours;
+   other existing file permissions are preserved.
 4. Dirty paths unchanged on main stay ours.
 5. Dirty paths that also moved on main: 3-way compose. Same bytes `DEDUPED`.
    JSON key-union / insert-only text `COMPOSE_AND_MERGE`. Same original line
@@ -63,6 +67,8 @@ Every command writes `.commons-worktree/receipts/<id>/receipt.json`.
 fabricated. `destructive`, `deleted_user_work`, and `force` stay false.
 Secret-like filenames are redacted from published receipts (no copy, no hash).
 Do not commit `.commons-worktree/` to Commons.
+Session setup writes the ignore entry to Git's resolved `info/exclude`, including
+the common Git directory used by linked worktrees.
 
 Crash recovery: `snapshot` then later `recover RECEIPT_ID`. Newer dirt in the
 live tree is kept (`kept_newer_dirt`). Missing files restore from the
