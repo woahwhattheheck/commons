@@ -5,6 +5,7 @@ an advisory envelope a caller may post through the existing open carrier.
 """
 from __future__ import annotations
 
+from datetime import datetime, timezone
 from typing import Any
 
 from protocol.events import event_id_for, parse_event
@@ -44,8 +45,12 @@ def continue_from_observation(
     session_id: str = "",
     events: list | None = None,
     legacy: dict | None = None,
-    now: str = "2026-08-28T09:30:00Z",
+    now: str | None = None,
 ) -> dict[str, Any]:
+    # A supplied observation retains its clock unless the caller overrides it.
+    # Direct projection uses the current clock, never the reference examples'.
+    if now is None:
+        now = (snapshot or {}).get("now") or datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     snap = snapshot or project(events or [], now=now, legacy=legacy or {})
     # Completed sessions stay in the observation, but cannot supply a new
     # continuation's identity. Restarting their task under START is a replay.
