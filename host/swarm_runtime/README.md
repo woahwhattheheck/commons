@@ -136,6 +136,10 @@ observations and actual provider activity have separate timestamps. A known
 merged PR lacking a merge SHA remains undispatched pending reconciliation.
 Provider observations are ordered by parsed time. A dated refresh can replace
 undated baked facts; older or undated refreshes cannot erase a dated observation.
+Heartbeat composition, creation-time dispatch order, recent shipments, and
+bounded event context likewise compare parsed times. Timezone offsets and
+fractional seconds do not reorder custody or displace newer context. Unknown
+dates sort after known dates without changing recovery or priority precedence.
 Incomplete source coverage stays visible; a newest Slack page is not a complete
 work inventory. Publishing capability requires a discovered write road or write
 primitive, with discovery, authentication, permission, policy and provider failures
