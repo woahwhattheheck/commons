@@ -96,6 +96,8 @@ def queue_pressure(state, *, now=None):
         if not isinstance(source_id, str) or not source_id:
             return _unknown("invalid_actions_source", repositories=repositories)
         source_ids.add(source_id)
+        if source.get("future_observation") is True or source.get("future_data") is True:
+            return _unknown("actions_source_timestamp_unusable", repositories=repositories)
         if (source.get("error") or source.get("retained_last_good")
                 or source.get("stale") is True or source.get("data_stale") is True):
             return _unknown("actions_coverage_incomplete", repositories=repositories)
