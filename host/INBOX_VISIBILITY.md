@@ -127,6 +127,13 @@ access and bounded pagination. This is best-effort duplicate prevention, not a
 cross-provider transactional exactly-once guarantee. Do not delete/move Slack
 messages or change channel IDs without a deliberate state migration.
 
+After every part of a selected Gmail message is delivered, the ledger records a
+hashed completion marker scoped to mailbox, destination and immutable message
+ID. Later overlap polls count that message as `unchanged` without downloading
+its full contents again. New messages in the same thread still deliver. Missing
+or undecodable bodies, omitted mail and failed deliveries do not gain a marker;
+they remain eligible for recovery or reclassification on subsequent polls.
+
 Reconciliation checkpoints the next cursor inside a fixed timestamp window.
 Reaching the page budget reports `slack_reconcile_page_limit`; the next poll
 continues the scan instead of restarting its first pages. Before a resumed scan
@@ -163,6 +170,7 @@ disabling the workflow or the named OS task; do not delete user source messages.
 - https://docs.github.com/en/rest/activity/notifications
 - https://developers.google.com/workspace/gmail/api/reference/rest/v1/users.messages/list
 - https://developers.google.com/workspace/gmail/api/reference/rest/v1/users.messages/get
+- https://developers.google.com/workspace/gmail/api/reference/rest/v1/users.messages
 - https://docs.slack.dev/reference/methods/chat.postMessage/
 - https://github.com/googleworkspace/cli (community-maintained CLI; validate an existing installation)
 
