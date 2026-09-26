@@ -31,6 +31,10 @@ class _Empty:
         raise AssertionError("commons sidecar must not run")
 
 
+def _gh_include(status, body):
+    return f"HTTP/2 {status}\r\nX-Ratelimit-Remaining: 5000\r\n\r\n{body}"
+
+
 class NewcomerRoadProofTests(unittest.TestCase):
     def _equipment(self):
         requests = []
@@ -42,14 +46,14 @@ class NewcomerRoadProofTests(unittest.TestCase):
 
         def gh_runner(command, **kwargs):
             # ServiceEquipment.github is:
-            #   gh api --hostname github.com --method METHOD ENDPOINT [--input -]
-            # so command[-1] is "-" on writes and command[4] is the flag.
+            #   gh api --include --hostname github.com --method METHOD ENDPOINT [--input -]
+            self.assertEqual(command[1:5], ["api", "--include", "--hostname", "github.com"])
             method_index = command.index("--method") + 1
             method = command[method_index]
             endpoint = command[method_index + 1]
             if method == "GET" and endpoint.endswith("/git/ref/heads/newcomer-proof"):
                 return subprocess.CompletedProcess(
-                    command, 1, '{"message":"Not Found"}', ""
+                    command, 1, _gh_include(404, '{"message":"Not Found"}'), ""
                 )
             if method == "POST" and endpoint.endswith("/git/refs"):
                 payload = json.loads(kwargs["input"])
@@ -57,11 +61,14 @@ class NewcomerRoadProofTests(unittest.TestCase):
                 return subprocess.CompletedProcess(
                     command,
                     0,
-                    json.dumps(
-                        {
-                            "ref": payload["ref"],
-                            "object": {"sha": payload["sha"], "type": "commit"},
-                        }
+                    _gh_include(
+                        201,
+                        json.dumps(
+                            {
+                                "ref": payload["ref"],
+                                "object": {"sha": payload["sha"], "type": "commit"},
+                            }
+                        ),
                     ),
                     "",
                 )
