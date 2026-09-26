@@ -25,8 +25,10 @@ What a session gets from one read, besides the counts:
 * `open_heads` maps every listed open pull to its head SHA. When
   `pulls_listing` is COMPLETE, a number missing from it is not open.
 * `recently_closed` names the newest closures, MERGED or CLOSED, with the head
-  that closed. It comes from the most recently updated page of closed pulls, so
-  it shows recent transitions. It is not a history.
+  that closed and, for merges, GitHub's `merge_commit_sha`. The branch head is
+  not the landed commit after a merge, squash or rebase. It comes from the most
+  recently updated page of closed pulls, so it shows recent transitions. It is
+  not a history.
 
 Honesty rules, the same ones the delta shards keep:
 
@@ -151,7 +153,7 @@ def _pull(row):
 
 
 def _closed(row):
-    """One closed pull request: whether it merged, when, and at which head."""
+    """One closure with its source head and provider-reported landed commit."""
     pull = _pull(row)
     merged_at = _text(row.get("merged_at"))
     merged = _parse_ts(merged_at) is not None
@@ -164,6 +166,9 @@ def _closed(row):
         "merged_at": merged_at if merged else None,
         "branch": pull["branch"],
         "head_sha": pull["head_sha"],
+        # GitHub can return a speculative merge commit for an unmerged pull.
+        # Only retain this as a landed commit when merged_at confirms a merge.
+        "merge_commit_sha": _sha(row.get("merge_commit_sha")) if merged else None,
         "base": pull["base"],
     }
 
