@@ -8,13 +8,13 @@
    "unknown": 0
   },
   "hosted": {
-   "FAILED": 6,
-   "RUNNING": 1
+   "CANCELLED_NOT_RUN": 1,
+   "FAILED": 6
   },
   "lanes_open": 7,
   "lanes_with_several_open": 0,
   "listed_open": 7,
-  "listed_recent_closed": 245,
+  "listed_recent_closed": 249,
   "open_prs": 7
  },
  "degraded": [],
@@ -23,14 +23,14 @@
   "full": "coordination.json"
  },
  "main": {
-  "committed_at": "2026-09-26T18:30:01Z",
-  "sha": "4e2e2210a364d7e482f4a01f271b19500c81f91f"
+  "committed_at": "2026-09-26T21:25:04Z",
+  "sha": "09dd811f360f4f44f0a250e3961c0444efb361d7"
  },
- "observed_at": "2026-09-26T18:30:15Z",
+ "observed_at": "2026-09-26T21:27:13Z",
  "queue": {
-  "in_progress": 18,
-  "oldest_queued_age_s": 3329651,
-  "queued": 155
+  "in_progress": 2,
+  "oldest_queued_age_s": 3340269,
+  "queued": 70
  },
  "schema": "commons-coordination-head/v1",
  "several_open": [],
