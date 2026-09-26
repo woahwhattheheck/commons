@@ -38,6 +38,13 @@ still expose their adapter receipts with delivery disabled. A repeated tick
 therefore respects the job lease and cannot send another signal merely because
 the caller requested delivery for the batch.
 
+An adapter exception becomes an `ADAPTER_ERROR` receipt without exposing its
+exception text or stopping independent signals. A requested delivery is marked
+uncertain, and its existing job lease remains in place; the bus never retries
+that effect. Explicit adapter failures and exceptions set the peer-wake error
+count and make the overall tick degraded, so its CLI exits nonzero with the
+complete batch receipt. Scheduler error counts remain separate.
+
 ```bash
 python3 -m peer_wake doctor
 python3 -m peer_wake register --file peer_wake/targets/chatgpt.json
