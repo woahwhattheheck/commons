@@ -17,8 +17,10 @@ import argparse
 import datetime as dt
 import importlib.util
 import json
+import os
 import re
 import sys
+import tempfile
 from pathlib import Path
 from typing import Any
 
@@ -52,10 +54,43 @@ def canonical_text(value: Any) -> str:
     return json.dumps(value, sort_keys=True, indent=2, ensure_ascii=False) + "\n"
 
 
+def write_plan(path: Path, rendered: str) -> None:
+    """Replace a saved plan only after its complete bytes reach the filesystem."""
+    fd, temporary = tempfile.mkstemp(prefix=f".{path.name}.", suffix=".tmp", dir=path.parent)
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8", newline="\n") as stream:
+            stream.write(rendered)
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.replace(temporary, path)
+    finally:
+        try:
+            os.unlink(temporary)
+        except FileNotFoundError:
+            pass
+
+
+def _unique_json_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    value: dict[str, Any] = {}
+    for key, item in pairs:
+        if key in value:
+            raise OutreachError(f"duplicate JSON field: {key}")
+        value[key] = item
+    return value
+
+
+def _reject_json_constant(value: str) -> Any:
+    raise OutreachError(f"non-finite JSON constant: {value}")
+
+
 def read_object(path: Path) -> dict[str, Any]:
     try:
-        value = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, UnicodeError, json.JSONDecodeError) as error:
+        value = json.loads(
+            path.read_text(encoding="utf-8"),
+            object_pairs_hook=_unique_json_object,
+            parse_constant=_reject_json_constant,
+        )
+    except (OSError, UnicodeError, json.JSONDecodeError, OutreachError) as error:
         raise OutreachError(f"cannot read JSON object {path}: {error}") from error
     if not isinstance(value, dict):
         raise OutreachError(f"{path} must contain one JSON object")
@@ -424,7 +459,7 @@ def _run(argv: list[str] | None = None) -> int:
             return 1
     rendered = canonical_text(plan)
     if args.output:
-        args.output.write_text(rendered, encoding="utf-8")
+        write_plan(args.output, rendered)
     else:
         print(rendered, end="")
     return 0

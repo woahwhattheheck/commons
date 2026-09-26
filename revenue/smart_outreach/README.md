@@ -19,12 +19,15 @@ Reference observed 2026-08-27:
 
 It does not replace `revenue/production_survival`, the canonical commerce
 catalog, Airtable CRM, Apollo receipts, or `host/swarm_mail.py`. It composes
-them. The checked-in cohort intentionally demonstrates three truthful states:
+them. The checked-in cohort is reconciled with current canonical receipts on
+every run. Its recorded dispositions are:
 
-- AnythingLLM is `HOLD_DO_NOT_RESEND` from canonical receipts;
-- Metaforms is `HOLD_OCCUPIED` because another Commons lane already staged it;
-- SigNoz is `RESEARCH_REQUIRED` until a relevant owner and first-party route
-  are identified.
+- AnythingLLM, Metaforms, and Composio are `HOLD_DO_NOT_RESEND` from canonical
+  receipts;
+- SigNoz is `HOLD_DO_NOT_CONTACT` from its recorded do-not-contact disposition.
+
+Missing research fields and historical lane ownership do not replace those
+suppression results.
 
 No checked-in candidate is silently promoted into contact. A prospect becomes
 `READY_TO_DRAFT` only when it has an exact first-party quote with production
@@ -52,6 +55,15 @@ failed directory read, or unreadable/invalid JSON receipt exits with code 2 and
 an error on stderr; it never becomes an empty collision history. An existing
 empty directory remains a valid empty history. Restore the receipt directory
 or correct the path before rerunning the planner.
+
+Candidate and receipt JSON must have unique object fields and finite numeric
+values. Repeated fields such as `do_not_resend` exit with code 2 and identify the
+source file, instead of silently replacing the earlier suppression value.
+
+`plan --output PATH` writes and syncs a temporary file beside the destination,
+then atomically replaces the saved plan. A write or replacement failure exits
+with code 2 and leaves the previous plan intact. Without `--output`, the plan
+continues to print to stdout.
 
 Private drafts can later enter Swarm Mail's existing exact-once and suppression
 path. Replies remain owned by the production-survival reply intake. This planner
