@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import ast
+from bisect import bisect_left
 from collections import Counter
 import hashlib
 import json
@@ -159,6 +160,10 @@ def literal_sequence(source_path: Path, symbol: str) -> list[str]:
 
 def _generator_inventory(root: Path, manifest: dict, classifier: PathClassifier, paths: set[str]) -> list[dict]:
     out = []
+    # Only the first tracked descendant is needed to classify a directory.
+    # Sort once, then seek to each prefix instead of scanning the whole tree
+    # for every declared generator target.
+    ordered_paths = sorted(paths)
     for contract in manifest.get("generator_contracts", []):
         declared = literal_sequence(root / contract["source"], contract["symbol"])
         rows = []
@@ -166,15 +171,18 @@ def _generator_inventory(root: Path, manifest: dict, classifier: PathClassifier,
         unmapped = []
         for item in declared:
             prefix = item.rstrip("/") + "/"
-            descendants = sorted(path for path in paths if path.startswith(prefix))
+            position = bisect_left(ordered_paths, prefix)
+            descendant = (ordered_paths[position]
+                          if position < len(ordered_paths)
+                          and ordered_paths[position].startswith(prefix) else None)
             if item in paths:
                 tracked = True
                 target_kind = "TRACKED_FILE"
                 classification_path = item
-            elif descendants:
+            elif descendant is not None:
                 tracked = True
                 target_kind = "TRACKED_DIRECTORY"
-                classification_path = descendants[0]
+                classification_path = descendant
             else:
                 tracked = False
                 target_kind = "MISSING_PATH"
