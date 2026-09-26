@@ -219,6 +219,23 @@ def gate_text(text):
     return "\n".join(out)
 
 
+def condition_text(value):
+    """Decode one YAML condition scalar into GitHub expression text.
+
+    Strings keep their decoded characters. Booleans and null stay the expression
+    literals `true`, `false` and `null` so an always-on job remains runnable
+    after the standard gate is added.
+    """
+    loaded = yaml.safe_load(value)
+    if isinstance(loaded, str):
+        return loaded
+    if isinstance(loaded, bool):
+        return "true" if loaded else "false"
+    if loaded is None:
+        return "null" if str(value).strip() else ""
+    return str(loaded)
+
+
 def gate_job(body):
     for n, line in enumerate(body):
         m = IF_LINE.match(line)
@@ -231,7 +248,8 @@ def gate_job(body):
             value = " ".join(l.strip() for l in body[n + 1:end] if l.strip())
         # Read the scalar as YAML so inline comments and YAML quoting never
         # become part of the expression inserted inside the new condition.
-        existing = unwrap(str(yaml.safe_load(value)))
+        # Keep GitHub literals: PyYAML spells booleans and null as True/False/None.
+        existing = unwrap(condition_text(value))
         if has_ci_gate(existing):
             return body
         merged = f"    if: ${{{{ ({GATE}) && ({existing}) }}}}"
