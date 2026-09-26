@@ -1,0 +1,10 @@
+{
+ "schema": "commons-change-holding/v1",
+ "key": "swarm-claim-read-failure-20260926",
+ "holder": "high-burn-lane-a",
+ "state": "HELD",
+ "taken_at": "2026-09-26T11:54:14Z",
+ "heartbeat_at": "2026-09-26T11:54:14Z",
+ "ttl_s": 1800,
+ "note": "host/coordination_state.py: preserve unreadable-remote errors and valid lease semantics; no overlapping source PR found"
+}
