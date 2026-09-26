@@ -66,6 +66,9 @@ python revenue/cash_realization_ledger/cash_realization_ledger.py verify \
 ## Invariants
 
 - exact integer minor units; bool/float money rejected;
+- claim reference amounts and monetary events stay strictly positive, except a
+  reconciliation amount may be zero when the exact current net receipt evidence
+  is zero after a full reversal;
 - no implicit FX and no cross-currency grand total;
 - exact evidence authority per event kind;
 - every evidence row commits to exactly one canonical event generation;
@@ -77,6 +80,8 @@ python revenue/cash_realization_ledger/cash_realization_ledger.py verify \
 - cumulative receipt evidence above the declared reference amount holds;
 - reversal cannot exceed receipt evidence accumulated up to that point;
 - stale or amount-mismatched reconciliation holds;
+- zero reconciliation without receipt evidence still holds; it does not create a
+  receipt or mark an unpaid claim as paid;
 - duplicate semantic events hold instead of double-counting;
 - exact deterministic recomputation verifies the JSON packet;
 - no network/provider mutations or external actions.
