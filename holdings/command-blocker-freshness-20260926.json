@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "command-blocker-freshness-20260926",
   "holder": "command-observability",
-  "heartbeat_at": "2026-09-26T12:17:49.131Z",
+  "heartbeat_at": "2026-09-26T12:18:37.658Z",
   "taken_at": "2026-09-26T12:17:49.131Z",
   "ttl_s": 1800,
-  "state": "HELD",
-  "note": "Own command.html: display general declared blockers without inferring owner-only action; expose report age and live seat heartbeat state."
+  "state": "RELEASED",
+  "note": "Landed PR #29930 on main 4c27fd939d055de9756ac3b82fe286aaf50a7ec4"
 }
