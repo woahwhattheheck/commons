@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "cash-reconciliation-ties-20260926",
+  "holder": "high-burn-value-pipeline",
+  "taken_at": "2026-09-26T14:38:14Z",
+  "heartbeat_at": "2026-09-26T14:39:43Z",
+  "ttl_s": 1800,
+  "state": "ACTIVE",
+  "note": "Own revenue/cash_realization_ledger/cash_realization_ledger.py + README.md: same-timestamp reconciliation conflicts must not depend on lexical event ID."
+}
