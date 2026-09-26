@@ -133,6 +133,28 @@ def publisher_failure(result, status, path):
 def dumps(data):
     return json.dumps(data, ensure_ascii=False, separators=(',', ':')).encode()
 
+def checkpoint_shards(metadata, field, values):
+    """Encode each row once while preserving exact compact-JSON boundaries."""
+    # The empty array is the final field: remove only its closing bracket and
+    # the object brace, leaving a byte-identical prefix for every shard.
+    prefix = dumps({**metadata, field: []})[:-2]
+    suffix = b']}'
+    overhead = len(prefix) + len(suffix)
+    current, size = [], overhead
+    for value in values:
+        encoded = dumps(value)
+        added = len(encoded) + bool(current)
+        if current and size + added > MAX_CHECKPOINT_BYTES:
+            yield prefix + b','.join(current) + suffix
+            current, size = [], overhead
+            added = len(encoded)
+        if size + added > MAX_CHECKPOINT_BYTES:
+            raise RuntimeError('checkpoint_over_publisher_ceiling')
+        current.append(encoded)
+        size += added
+    if current:
+        yield prefix + b','.join(current) + suffix
+
 def pair_details(details):
     if not isinstance(details, list):
         return None
@@ -180,27 +202,10 @@ def plan_checkpoint_files(raw):
     if len(blob) <= MAX_CHECKPOINT_BYTES:
         return [('checkpoint.json', blob)]
     files = []
-    current = []
-
-    def flush():
-        if not current:
-            return
-        shard = dumps({'schema': DETAIL_SHARD_SCHEMA, 'details': list(current)})
-        if len(shard) > MAX_CHECKPOINT_BYTES:
-            raise RuntimeError('checkpoint_over_publisher_ceiling')
-        name = 'details-%04d-%s.json' % (len(files), hashlib.sha256(shard).hexdigest())
+    for index, shard in enumerate(checkpoint_shards(
+            {'schema': DETAIL_SHARD_SCHEMA}, 'details', compact['details'])):
+        name = 'details-%04d-%s.json' % (index, hashlib.sha256(shard).hexdigest())
         files.append((name, shard))
-
-    for pair in compact['details']:
-        trial = dumps({'schema': DETAIL_SHARD_SCHEMA, 'details': current + [pair]})
-        if current and len(trial) > MAX_CHECKPOINT_BYTES:
-            flush()
-            current = [pair]
-        else:
-            current.append(pair)
-    flush()
-    if any(len(shard) > MAX_CHECKPOINT_BYTES for _, shard in files):
-        raise RuntimeError('checkpoint_over_publisher_ceiling')
     head = dict(compact)
     head['details'] = []
     head['detail_shards'] = [name for name, _ in files]
@@ -221,27 +226,11 @@ def plan_full_checkpoint_files(data):
         if not isinstance(values, list):
             raise RuntimeError('checkpoint_invalid')
         names = []
-        current = []
-
-        def encode(items):
-            return dumps({'schema': CHECKPOINT_SHARD_SCHEMA, 'field': field, 'items': items})
-
-        def flush():
-            if not current:
-                return
-            blob = encode(current)
-            if len(blob) > MAX_CHECKPOINT_BYTES:
-                raise RuntimeError('checkpoint_over_publisher_ceiling')
-            name = 'checkpoint-%s-%04d-%s.json' % (field, len(names), hashlib.sha256(blob).hexdigest())
+        for index, blob in enumerate(checkpoint_shards(
+                {'schema': CHECKPOINT_SHARD_SCHEMA, 'field': field}, 'items', values)):
+            name = 'checkpoint-%s-%04d-%s.json' % (field, index, hashlib.sha256(blob).hexdigest())
             names.append(name)
             files.append((name, blob))
-
-        for value in values:
-            if current and len(encode(current + [value])) > MAX_CHECKPOINT_BYTES:
-                flush()
-                current = []
-            current.append(value)
-        flush()
         head[field] = []
         if names:
             references[field] = names
