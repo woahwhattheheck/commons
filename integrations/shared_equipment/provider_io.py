@@ -264,7 +264,10 @@ class GitHubSlackEquipment:
                 resource = None
             secondary = status in (403, 429) and any(term in str(message).lower()
                 for term in ("secondary rate limit", "abuse detection mechanism"))
-            limited = status == 429 or status == 403 and (remaining == 0 or secondary)
+            # A 403 may carry Retry-After without quota exhaustion or the
+            # standard secondary-limit prose. Preserve that provider deadline.
+            limited = status == 429 or status == 403 and (
+                remaining == 0 or secondary or bool(headers.get("retry-after")))
             kind = ("secondary" if secondary else "primary" if remaining == 0 else "unknown") if limited else None
             raise EquipmentError(str(message),
                 code="github_rate_limited" if limited else "github_request_failed",
