@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "command-directive-draft-20260926",
   "holder": "command-observability",
-  "heartbeat_at": "2026-09-26T12:03:05.835Z",
+  "heartbeat_at": "2026-09-26T12:04:15.593Z",
   "taken_at": "2026-09-26T12:03:05.835Z",
   "ttl_s": 1800,
-  "state": "HELD",
-  "note": "Own command.html: unique directive draft IDs with stable retry, explicit new draft and valid header separator."
+  "state": "RELEASED",
+  "note": "Landed PR #29897 on main a9caaf54c81a87a379428b90db1183aa78a7f3d5"
 }
