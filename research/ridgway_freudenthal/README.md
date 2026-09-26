@@ -36,6 +36,16 @@ Use `p5_body_diagonal_lift.py --trace` with eighteen values, three per cell.
 Other edge classes, neighbor selection/transport and the global theorem remain
 separate work.
 
+## Singular interior face-diagonal lift
+
+[The face-diagonal operator](FACE_DIAGONAL_LIFT.md) supplies both degrees on the
+fixed shared face of two Kuhn cubes. It reconstructs the actual checkerboard
+source relation `y1-y2-y3+y4=0` per mode, then builds a protected, zero-cell-mean
+lift for every compatible trace. Use `face_diagonal_lift.py --degree 4` or
+`--degree 5`, with eight or twelve trace coefficients. Admissible dimensions are
+six and nine; final maps have 34 and 174 nonzero coefficients. Other orientations,
+edge classes, the full census and global assembly remain separate.
+
 ## Original problem
 
 On a Freudenthal tetrahedral mesh of a cubical domain, let `V_h^k` be the continuous vector degree-k polynomial space with zero boundary trace, and let `Q_h^k = div V_h^k`.

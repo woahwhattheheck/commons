@@ -54,14 +54,17 @@ def raw_geometry(degree=4):
     return cells, nodes, protected, [target[i] for i in order], [labels[i] for i in order]
 
 
-def right_inverse(protected, target, ncols):
+def right_inverse(protected, target, ncols, target_basis=None):
     """Solve all target columns at once over Q; other edges stay zero."""
-    rows, width = protected+target, len(target)
+    if target_basis is None:
+        target_basis = [[int(i == j) for j in range(len(target))] for i in range(len(target))]
+    rows, width = protected+target, len(target_basis[0])
     pivots = {}
     protected_rank = None
     for index, original in enumerate(rows):
         row = {c: F(v) for c, v in original.items()}
-        rhs = [F(int(index == len(protected)+j)) for j in range(width)]
+        rhs = ([F(v) for v in target_basis[index-len(protected)]]
+               if index >= len(protected) else [F(0)]*width)
         while row:
             p = min(row)
             if p not in pivots:
@@ -76,7 +79,7 @@ def right_inverse(protected, target, ncols):
                     del row[c]
             rhs = [v-factor*w for v, w in zip(rhs, previous_rhs)]
         if not row and any(rhs):
-            raise ArithmeticError(f"Body-diagonal target is not surjective at row {index}")
+            raise ArithmeticError(f"Requested target basis is not realizable at row {index}")
         if index+1 == len(protected):
             protected_rank = len(pivots)
     matrix = [[F(0)]*width for _ in range(ncols)]
@@ -86,7 +89,8 @@ def right_inverse(protected, target, ncols):
                      for j in range(width)]
     for index, row in enumerate(rows):
         for j in range(width):
-            if sum(v*matrix[c][j] for c, v in row.items()) != int(index == len(protected)+j):
+            expected = target_basis[index-len(protected)][j] if index >= len(protected) else 0
+            if sum(v*matrix[c][j] for c, v in row.items()) != expected:
                 raise ArithmeticError("Constructed raw protected-map identity failed")
     return matrix, protected_rank, len(pivots)
 
