@@ -1,0 +1,15 @@
+{
+  "schema": "titan-v4-historical-proof-custody/v1",
+  "lane": "R02 diagnostic replacement accounting",
+  "historical_pr": 12204,
+  "historical_head": "d77df5cae4f4fee18b3599bb6b492188bd586283",
+  "dedicated_run": 34679429664,
+  "dedicated_job": 103515140384,
+  "artifact_id": 10299356407,
+  "artifact_digest": "sha256:9df777ca9273efd1eb7f3a482a4b69b9902b1d6d1da3b42650b3dc9a6e55362e",
+  "source_blob": "0d869fe81e0ff06eb153ab1720219ac8dfb56f88",
+  "test_blob": "b5440818f0594272e27325046f0a5ae0feb6ce7f",
+  "current_v4_predecessor_blob": "f96f077ddfcfa8b5e521ecd40bc1c0e5aa338f84",
+  "disposition": "recovered_not_yet_composed",
+  "activation": "none"
+}
