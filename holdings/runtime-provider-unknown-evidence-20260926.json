@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "runtime-provider-unknown-evidence-20260926",
+  "holder": "high-burn-lane-a",
+  "state": "HELD",
+  "taken_at": "2026-09-26T15:19:04.311Z",
+  "heartbeat_at": "2026-09-26T15:19:04.311Z",
+  "ttl_s": 1800,
+  "note": "Own host/swarm_runtime/projector.py and sources.py: UNKNOWN merge timestamps are absent; known merge SHA aliases survive canonical UNKNOWN values."
+}
