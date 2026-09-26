@@ -296,7 +296,7 @@
     }
     const buttons=make('div','button-row');buttons.append(button('Copy operation ID',async()=>{try{await navigator.clipboard.writeText(a.id);showToast('Operation ID copied.');}catch(_){showToast('Copy the displayed operation ID manually.');}},'button button-small button-quiet'),button('Refresh operation state',()=>refresh(true),'button button-small button-quiet'));target.append(buttons);
   }
-  async function mutate(key,path,payload,target,name='') {
+  async function mutate(key,path,payload,target,name='',onReceipt=null) {
     const fp=await fingerprint(payload);let a=attempts[key];
     if(a&&pending(a.status)&&(fp===null||a.fingerprint!==fp)){output(target,a,'Previous outcome still uncertain','Reconcile the displayed operation before changing its request. Restore the original arguments to retry with the same operation ID.');return false;}
     if(!a||terminal(a.status))a={id:id(),fingerprint:fp,status:'submitting',path,started_at:new Date().toISOString(),observed_at:first(payload.session&&payload.session.observed_at,payload.budget&&payload.budget.observed_at)};
@@ -306,6 +306,9 @@
       const reported=str(first(body.status,body.operation&&body.operation.status,body.result&&body.result.status,''));
       a.status=httpStatus===202||pending(reported)?reported||'accepted':terminal(reported)?reported:'uncertain';saveAttempts();
       output(target,a,pending(a.status)?'Request accepted; completion not established':/fail|error|reject/i.test(a.status)?'Operation reported a failure':'Response received',pending(a.status)?'Inspect the operation history. If a manual retry is needed, submit unchanged arguments; the same operation ID will be reused.':'The server response is below. The operation history carries the actual execution status.',body,name);
+      if(typeof onReceipt==='function'){
+        try{await onReceipt(body);}catch(_){showToast('Response received. Inspect the receipt for the current assignment.');}
+      }
       await refresh(false,true);return !pending(a.status)&&!/fail|error|reject/i.test(a.status);
     } catch(e) {a.status=e.uncertain?'uncertain':'failed';saveAttempts();output(target,a,e.uncertain?'Outcome uncertain':'Request rejected',e.message+(e.uncertain?' Do not assume failure or issue a replacement operation. Inspect provider state; unchanged manual retries retain this operation ID.':''),e.body,name);return false;}
   }
@@ -339,7 +342,8 @@
   window.CommonsPanel={
     getState:()=>state,getTools:()=>tools,request,navigate,showToast,
     updateWork:(key,payload,target)=>mutate(key,'/api/work/item',payload,target),
-    callTool:(key,name,args,target,runtime='shared-equipment')=>mutate(key,'/api/tools/call',{runtime_id:runtime,name,arguments:args},target,name),
+    callTool:(key,name,args,target,runtime='shared-equipment',options={})=>mutate(key,'/api/tools/call',
+      {runtime_id:runtime,name,arguments:args,...(options.swarm===undefined?{}:{swarm:options.swarm})},target,name,options.onReceipt),
     openTool:(name,args={},runtime='shared-equipment')=>{if(busy){showToast('A tool operation is still in flight.');return false;}const t=tools.find(x=>x.name===name&&x.runtime_id===runtime);if(!t){showToast('This tool is not exposed by the selected gateway.');return false;}chooseTool(t);$('tool-arguments').value=JSON.stringify(args,null,2);$('tool-search').value='';renderTools();navigate('tools');return true;}
   };
   navigate(location.hash.slice(1));renderFocus();renderResources();renderTools();renderAccess();renderBudgets();renderFeed();refresh();
