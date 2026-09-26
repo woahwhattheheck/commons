@@ -122,7 +122,7 @@ class EquipmentTests(unittest.TestCase):
         equipment = ServiceEquipment(gh_runner=runner)
         equipment.github("repos/owner/repo/git/trees", method="POST", payload={"tree": []})
         command, kwargs = calls[0]
-        self.assertEqual(command[2:4], ["--hostname", "github.com"])
+        self.assertEqual(command[1:5], ["api", "--include", "--hostname", "github.com"])
         self.assertEqual(json.loads(kwargs["input"]), {"tree": []})
         self.assertNotIn("shell", kwargs)
 
