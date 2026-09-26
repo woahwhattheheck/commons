@@ -68,6 +68,38 @@ def connected_from_env(env: dict[str, str] | None = None) -> list[str]:
     return found
 
 
+def _delivery_marker(
+    token: str, channel: str, ts: str, marker: str, call: Callable, page_limit: int
+) -> dict[str, Any]:
+    """Read enough of the thread to find a marker or establish its absence."""
+    cursor = ""
+    seen: set[str] = set()
+    for _ in range(page_limit):
+        payload = {"channel": channel, "ts": ts, "limit": "20"}
+        if cursor:
+            payload["cursor"] = cursor
+        response = call(token, "conversations.replies", payload)
+        if not response.get("ok"):
+            return response
+        replies = response.get("messages")
+        if not isinstance(replies, list) or any(not isinstance(row, dict) for row in replies):
+            return {"ok": False, "error": "invalid_replies"}
+        if already_handled(replies, marker):
+            return {"ok": True, "handled": True}
+        metadata = response.get("response_metadata") or {}
+        if not isinstance(metadata, dict) or not isinstance(metadata.get("next_cursor", ""), str):
+            return {"ok": False, "error": "invalid_replies_cursor"}
+        cursor = metadata.get("next_cursor", "").strip()
+        if not cursor:
+            if response.get("has_more"):
+                return {"ok": False, "error": "incomplete_replies"}
+            return {"ok": True, "handled": False}
+        if cursor in seen:
+            return {"ok": False, "error": "repeated_replies_cursor"}
+        seen.add(cursor)
+    return {"ok": False, "error": "replies_page_limit"}
+
+
 def posts_for_message(
     text: str,
     *,
@@ -179,6 +211,7 @@ def poll_and_dispatch(
     catalog: dict[str, Any] | None = None,
     api: Callable[[str, str, dict[str, Any]], dict[str, Any]] | None = None,
     limit: int = 20,
+    reply_page_limit: int = 10,
 ) -> dict[str, Any]:
     cat = catalog if catalog is not None else sst.load_catalog()
     install = load_install(cat)
@@ -228,11 +261,7 @@ def poll_and_dispatch(
                 continue
             if not sst.extract_tags(text, cat):
                 continue
-            replies_pack = call(
-                token,
-                "conversations.replies",
-                {"channel": channel, "ts": ts, "limit": "20"},
-            )
+            replies_pack = _delivery_marker(token, channel, ts, marker, call, reply_page_limit)
             if not replies_pack.get("ok"):
                 # An unreadable deduplication record is unknown, not empty.
                 # Leave the message for a later successful poll before driving
@@ -241,8 +270,7 @@ def poll_and_dispatch(
                 if stopped is not None:
                     return stopped
                 continue
-            replies = replies_pack.get("messages") or []
-            if already_handled(replies if isinstance(replies, list) else [], marker):
+            if replies_pack.get("handled"):
                 skipped += 1
                 continue
             for post in posts_for_message(
@@ -274,14 +302,18 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--ts", default="")
     parser.add_argument("--connected", default="")
     parser.add_argument("--poll", action="store_true")
+    parser.add_argument("--reply-pages", type=int, default=10,
+                        help="maximum deduplication reply pages per message (default: 10)")
     args = parser.parse_args(argv)
+    if args.reply_pages < 1:
+        parser.error("--reply-pages must be positive")
     connected = [p.strip() for p in str(args.connected).split(",") if p.strip()] or connected_from_env()
     if args.poll:
         token = str(os.environ.get("SLACK_BOT_TOKEN") or "").strip()
         if not token:
             print("idle: SLACK_BOT_TOKEN is not configured", flush=True)
             return 0
-        result = poll_and_dispatch(token, connected=connected)
+        result = poll_and_dispatch(token, connected=connected, reply_page_limit=args.reply_pages)
         print(json.dumps(result, indent=2))
         return 0 if result.get("ok") else 1
     if args.text:

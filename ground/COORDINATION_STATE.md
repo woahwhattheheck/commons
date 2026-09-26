@@ -50,6 +50,14 @@ Across pull requests:
 
 For one pull request, run `python host/coordination_state.py drift --pr N`, which includes the composed tree.
 
+Publication preserves observation order. If the current state branch contains a
+later valid `observed_at`, an older completed build returns `superseded: true`
+and `pushed: false` with the retained commit and observation time. This is a
+successful no-op (exit 0), including `--from` and `--no-push`; it does not claim
+that the old build was published. The comparison is repeated after a
+non-fast-forward race before rebuilding on the winner's commit. It orders the
+recorded observation timestamps, not independently attested producer clocks.
+
 ## Holding a change
 
 For PR review and merge-drain work, use the PR-specific adapter. It derives the

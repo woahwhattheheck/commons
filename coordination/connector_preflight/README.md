@@ -8,11 +8,16 @@ It does **not** call GitHub, Slack, or any other provider. It does not grant per
 
 ## Why
 
-A worker can see an initially narrow tool projection and incorrectly report that publication is blocked. In this environment the complete connector catalog is exposed by a first-pass discovery such as:
+A worker can see an initially narrow tool projection and incorrectly report that publication is blocked. Inspect the current harness's complete available, dynamic and deferred registry. When present, a resource-discovery interface may start with:
 
 ```text
 api_tool.list_resources({"paths":["GitHub","Slack"]})
 ```
+
+If that API is absent or returns an error, use the actual harness registry, such
+as `ALL_TOOLS`, plus available plugin discovery. A discovery API error is not
+a capability verdict. The inventory adapter below handles the current
+`mcp__codex_apps__github_*` and `mcp__codex_apps__slack_*` tool names.
 
 The preflight makes the evidence requirements mechanical:
 
@@ -69,6 +74,48 @@ The input schema is `commons.connector-preflight/v1`.
 
 See `examples/discovery-only.json` and `examples/write-confirmed.json`.
 
+## Capture from the full harness registry
+
+In a harness exposing `ALL_TOOLS`, capture the entire registry before filtering:
+
+```javascript
+text({
+  schema: "commons.connector-tool-inventory/v1",
+  observed_at: new Date().toISOString().replace(/\.\d{3}Z$/, "Z"),
+  complete: true,
+  query: null,
+  tools: ALL_TOOLS.map(({name}) => name)
+});
+```
+
+Retain that JSON as `tool-inventory.json`, then run:
+
+```bash
+python -m coordination.connector_preflight.cli capture tool-inventory.json input.json
+python -m coordination.connector_preflight.cli compile input.json bundle.json
+python -m coordination.connector_preflight.cli verify-current input.json bundle.json
+```
+
+Capture emits an ordinary `CAPABILITY_REPORT` using the existing v1 contract.
+It enumerates all nine required GitHub publishing primitives and Slack
+send/create-conversation/edit primitives, includes every other discovered
+GitHub/Slack action, and preserves the original timestamp, completeness and
+query. It does not turn old input into a fresh observation. Use a new output
+path for each capture; existing paths are preserved.
+
+Known read and write verbs are classified mechanically. A new verb requires a
+metadata row such as `{"name":"...","access":"WRITE"}`, with access taken
+from its actual tool schema. Unrecognized verbs produce a concise diagnostic;
+they never silently become read-only. Descriptions are optional and retained
+only in the source digest. Other providers' tools are not action rows.
+
+This records tool exposure only. Use harmless authenticated profile,
+installation, repository-permission and workspace reads before an access
+claim. Record genuine operation results in the existing `attempts` field;
+never substitute a successful read for a successful write. Keep discovery,
+authentication, permission, policy and provider-operation outcomes distinct.
+No capability diagnostic belongs in Slack unless someone needs to act on it.
+
 ## Python API and CLI
 
 The public explicit-time API is historical-integrity-only:
@@ -98,28 +145,13 @@ python -m coordination.connector_preflight.cli verify-current input.json bundle.
 
 Input reads require one bounded regular-file generation. The descriptor generation is compared before and after the read, and the visible pathname must still identify the same generation. Final symlinks, FIFOs, in-place generation changes, pathname replacement, and growth beyond the ceiling are rejected. Output creation is create-exclusive, mode `0600`, and refuses overwrite/final-symlink publication. The retained writer is closed before the final readback/namespace observation; success therefore proves that the final observation saw the exact retained regular-file generation and exact bytes. It does not claim the pathname is immutable after that point-in-time observation.
 
-## Tests
+## Routine execution check
 
-```bash
-python -m unittest -q \
-  coordination.connector_preflight.test_preflight \
-  coordination.connector_preflight.test_latest \
-  coordination.connector_preflight.test_publication
-python -O -m unittest -q \
-  coordination.connector_preflight.test_preflight \
-  coordination.connector_preflight.test_latest \
-  coordination.connector_preflight.test_publication
-python -m py_compile \
-  coordination/connector_preflight/core.py \
-  coordination/connector_preflight/latest.py \
-  coordination/connector_preflight/cli.py \
-  coordination/connector_preflight/publication.py \
-  coordination/connector_preflight/test_preflight.py \
-  coordination/connector_preflight/test_latest.py \
-  coordination/connector_preflight/test_publication.py
-```
-
-The 63-test hostile suite covers malformed and filtered discovery, incomplete catalogs, caller-selected probe hiding, unauthenticated blocker attempts, read throttling, missing or unknown action attempts, latest-result ordering, same-time conflicts, confirmed write rails, chronology, process-owned current time, code-owned age ceilings, stale/future evidence, duplicate identities, type aliases, order invariance, receipt tamper, currentness drift, strict JSON, FIFO rejection, retained-generation changes, pathname replacement, safe file publication, exceptional-path foreign-successor preservation, and post-close namespace replacement.
+Run capture, compile and verify-current against the real retained tool inventory
+as shown above. The CLI returns nonzero with a JSON diagnostic when input,
+publication or current verification cannot complete. No provider mutation is
+needed to exercise this path. Historical test files remain available; routine
+inventory refresh does not require running the full suite.
 
 ## Authority ceiling
 

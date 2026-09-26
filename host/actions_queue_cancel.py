@@ -14,7 +14,7 @@ Safety contract:
 * the run is fetched one final time immediately before the POST;
 * any moved head, non-queued status, inventory/read error, or reclassification
   to a keep/unknown state fails closed without a POST;
-* ``--max-cancels`` bounds the number of cancellation POSTs in one invocation;
+* ``--max-cancels`` bounds cancellation POSTs, or candidate rechecks in dry-run;
 * the JSON receipt records dry-run / accepted / held outcomes without secrets.
 
 Typical dry run::
@@ -45,6 +45,7 @@ try:
         GitHub,
         GitHubError,
         _discover_token,
+        _http_error,
         classify_run,
         make_snapshot,
     )
@@ -54,6 +55,7 @@ except ModuleNotFoundError:  # direct ``python host/actions_queue_cancel.py``
         GitHub,
         GitHubError,
         _discover_token,
+        _http_error,
         classify_run,
         make_snapshot,
     )
@@ -84,8 +86,7 @@ class CancelGitHub(GitHub):
                 response.read()
                 return int(response.status)
         except urllib.error.HTTPError as exc:
-            detail = exc.read().decode("utf-8", "replace")[:300]
-            raise GitHubError(f"POST {path} -> HTTP {exc.code}: {detail}") from exc
+            raise _http_error("POST", path, exc) from exc
         except urllib.error.URLError as exc:
             raise GitHubError(f"POST {path} -> {exc}") from exc
 
@@ -172,13 +173,16 @@ def drain_stale_runs(
     now = now.astimezone(dt.timezone.utc)
 
     runs, total = github.queued_runs(cap)
-    initial_snapshot = _fresh_snapshot(github, repo)
-    candidates = _sorted_candidates(runs, repo, initial_snapshot)
+    # Empty queues need no branch/PR inventory, which can itself span thousands
+    # of pages on a busy repository.
+    candidates = _sorted_candidates(runs, repo, _fresh_snapshot(github, repo)) if runs else []
 
     results: list[dict[str, Any]] = []
     posts_attempted = 0
+    candidates_rechecked = 0
     accepted = 0
     holds = 0
+    rate_limit = None
 
     for original, initial_class in candidates:
         run_id = _run_id(original)
@@ -208,11 +212,14 @@ def drain_stale_runs(
             )
             continue
 
-        if posts_attempted >= max_cancels:
+        if posts_attempted >= max_cancels or (not execute and candidates_rechecked >= max_cancels):
             results.append({**base, "outcome": "KEEP_BATCH_LIMIT"})
             continue
 
         try:
+            # Dry-run makes no POSTs. Count its expensive rechecks separately
+            # so its batch bound still limits repeated full inventory reads.
+            candidates_rechecked += 1
             live = github.get(f"/repos/{repo}/actions/runs/{run_id}")
             if not isinstance(live, dict):
                 raise GitHubError("run re-read returned non-object")
@@ -333,8 +340,11 @@ def drain_stale_runs(
                     "error": str(exc)[:300],
                 }
             )
+            if isinstance(exc, GitHubError) and exc.rate_limited:
+                rate_limit = {"http_status": exc.status, "retry_after": exc.retry_after}
+                break
 
-    return {
+    receipt = {
         "schema": SCHEMA,
         "observed_at": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "repo": repo,
@@ -343,6 +353,8 @@ def drain_stale_runs(
         "queued_runs_observed": len(runs),
         "queued_inventory_complete": isinstance(total, int) and total <= len(runs),
         "initial_cancel_candidates": len(candidates),
+        "candidates_rechecked": candidates_rechecked,
+        "candidates_unprocessed": len(candidates) - len(results),
         "max_cancels": max_cancels,
         "min_age_seconds": min_age_seconds,
         "cancel_posts_attempted": posts_attempted,
@@ -358,6 +370,9 @@ def drain_stale_runs(
         },
         "results": results,
     }
+    if rate_limit is not None:
+        receipt.update(stop_reason="RATE_LIMITED", rate_limit=rate_limit)
+    return receipt
 
 
 def _write_receipt(receipt: dict[str, Any], out: Path | None) -> None:
@@ -384,7 +399,8 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo", default=DEFAULT_REPO)
     parser.add_argument("--cap", type=int, default=1000)
-    parser.add_argument("--max-cancels", type=int, default=25)
+    parser.add_argument("--max-cancels", type=int, default=25,
+                        help="maximum cancellation POSTs, or dry-run candidate rechecks (default: 25)")
     parser.add_argument("--min-age-seconds", type=int, default=60)
     parser.add_argument("--execute", action="store_true")
     parser.add_argument("--out", type=Path, help="create-exclusive JSON receipt path")

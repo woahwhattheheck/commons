@@ -34,7 +34,7 @@ def _host(value: object) -> str:
     return str(value or "").rstrip("/")
 
 
-def poll(host: str) -> list[dict]:
+def poll(host: str, *, failures: list[str] | None = None) -> list[dict]:
     """Poll one relay and retain both transport and declared origin data."""
     source_host = _host(host)
     url = f"{source_host}/{TOPIC}/json?poll=1&since={SINCE}"
@@ -46,6 +46,8 @@ def poll(host: str) -> list[dict]:
             raw = response.read().decode("utf-8", "replace")
     except (urllib.error.URLError, TimeoutError, OSError) as exc:
         print(f"poll fail {source_host} {exc}")
+        if failures is not None:
+            failures.append(source_host)
         return []
 
     out = []
@@ -57,7 +59,7 @@ def poll(host: str) -> list[dict]:
             event = json.loads(line)
         except json.JSONDecodeError:
             continue
-        if event.get("event") != "message":
+        if not isinstance(event, dict) or event.get("event") != "message":
             continue
 
         message = event.get("message") or ""
@@ -246,11 +248,12 @@ def record_relay_drop(event: dict) -> bool:
 
 def main() -> int:
     polled = []
+    poll_failures = []
     for host in HOSTS:
         # Poll every configured host before deciding what the union contains.
-        polled.extend(poll(host))
+        polled.extend(poll(host, failures=poll_failures))
 
-    replayed = skipped = 0
+    replayed = skipped = replay_failed = 0
     home = _host(HOME)
     union = union_events(polled)
     for event in union:
@@ -266,12 +269,14 @@ def main() -> int:
             replayed += 1
             print(f"replay {post_id} from {event['source_host']}")
         else:
+            replay_failed += 1
             # The same remote event remains pollable, so keep retrying its
             # caller-supplied id while making the failed attempt visible.
             record_relay_drop(event)
             print(f"retry {post_id} from {event['source_host']}")
-    print(f"done unique={len(union)} replayed={replayed} skipped={skipped}")
-    return 0
+    print(f"done unique={len(union)} replayed={replayed} skipped={skipped} "
+          f"poll_failed={len(poll_failures)} replay_failed={replay_failed}")
+    return 1 if poll_failures or replay_failed else 0
 
 
 if __name__ == "__main__":

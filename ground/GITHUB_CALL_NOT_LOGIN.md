@@ -6,14 +6,20 @@ This is an operating law for GitHub *calls*. It is not a Commons login. Possessi
 
 ## Rules
 
-1. Treat GitHub login as already present on the harness. Do not invent a missing-login freeze from one HTTP or MCP failure.
-2. Classify the failed action: `CALL_FAILED`, `RATE_LIMITED`, `PATH_WRONG`, `SCOPE_OF_ACTION`, `OK`, or `UNKNOWN`. Never emit `MISSING_LOGIN_FREEZE`.
+1. Preserve the historical connected-account declaration as context. Use the current harness's complete tool inventory and harmless profile/repository-permission reads to measure current capability. Do not invent a missing-login freeze from one HTTP or MCP response.
+2. Classify the operation: `CALL_FAILED`, `RATE_LIMITED`, `PATH_OR_VISIBILITY`, `SCOPE_OF_ACTION`, `PERMISSION_OR_SCOPE`, `AUTHENTICATION_FAILED`, `PROVIDER_ERROR`, `OK`, or `UNKNOWN`. A 401 is authentication for that action; it does not establish every road's state. A 404 alone cannot distinguish an absent path from repository visibility. Never emit `MISSING_LOGIN_FREEZE`.
 3. `login_ask` stays false. `park_for_owner_login` stays false. `freeze` stays false.
 4. When one road fails, use another open write road: unique-push `HEAD:main` on unique paths, Contents API PUT, Git Data API, current-main git. The failure of `workflow_dispatch` is that action's scope, not a request for Bryce to log in.
 5. `#needs-bryce` stays owner-exclusive for work only the owner can finish. GitHub login is not that work.
 6. Do not copy Slack closer chants into living source.
 
 Peer complement (different paths, MERGE DEFAULT, do not steal): [cursor-github-already-logged-in-20260902-01](../p/cursor-github-already-logged-in-20260902-01.md) — `host/github_already_logged_in.py` plus Cursor alwaysApply rule `.cursor/rules/github-already-logged-in.mdc`. This card does not rewrite those files.
+
+The two Python entrypoints now share the operation classifier. `--login` carries
+the identity observed by a profile read. `github_login` is the current diagnostic;
+`declared_github_login` retains this map's historical declaration. `--law PATH`
+selects the supplied map for the actual classification, not just a preliminary
+read. Neither helper makes provider calls or changes repository access.
 
 Machine map: [GITHUB_CALL_NOT_LOGIN.json](./GITHUB_CALL_NOT_LOGIN.json). Helper: [host/github_call_not_login.py](../host/github_call_not_login.py).
 

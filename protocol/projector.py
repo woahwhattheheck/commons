@@ -8,6 +8,7 @@ Slack authors are not sessions. Missing evidence is UNKNOWN.
 from __future__ import annotations
 
 import hashlib
+import math
 from typing import Any
 
 from protocol.events import canonical_json, classify_runtime, parse_event, parse_events
@@ -54,7 +55,11 @@ def _parse_ts(value: str) -> float:
         text = text[:-1] + "+00:00"
     try:
         from datetime import datetime
-        return datetime.fromisoformat(text).timestamp()
+        parsed = datetime.fromisoformat(text)
+        # A local time cannot be compared consistently across cloud workers.
+        if parsed.tzinfo is None or parsed.utcoffset() is None:
+            return 0.0
+        return parsed.timestamp()
     except Exception:
         return 0.0
 
@@ -62,9 +67,29 @@ def _parse_ts(value: str) -> float:
 def _age_seconds(ts: str, now: str) -> float | None:
     start = _parse_ts(ts)
     end = _parse_ts(now)
-    if start <= 0 or end <= 0:
+    # No implicit clock-skew allowance: a future receipt has unknown age.
+    # Preserve its timestamp rather than converting it to a fresh zero age.
+    if start <= 0 or end <= 0 or start > end:
         return None
-    return max(0.0, end - start)
+    return end - start
+
+
+def _activity_freshness(row: dict[str, Any], now: str, stale_after: int, *, heartbeat: bool = False) -> None:
+    """Keep reported activity distinct from a current activity measurement."""
+    if row.get("state") not in {"WORKING", "ACTIVE", "IDLE"}:
+        return
+    row["reported_state"] = row["state"]
+    row.pop("state_reason", None)
+    age = _age_seconds(row.get("last_ts") or "", now)
+    row["activity_age_seconds"] = age
+    if age is None:
+        row["state"] = "UNKNOWN"
+        row["state_reason"] = "activity timestamp missing, invalid, timezone-free, or later than observation"
+    elif age > stale_after:
+        row["state"] = "STALE"
+        row["state_reason"] = "last observed activity older than stale_after_seconds"
+    elif heartbeat and row["state"] == "WORKING":
+        row["state"] = "ACTIVE"
 
 
 def _canon_url(url: str) -> str:
@@ -155,6 +180,10 @@ def apply_event_to_session(session: dict[str, Any], event: dict[str, Any], now: 
         session["lease"] = event["lease"]
     session["evidence"].append(_evidence("event", "OBSERVED", event_id=event["event_id"], kind=event["kind"]))
     kind = event["kind"]
+    if kind in {"BLOCKED", "LEASE_EXPIRED", "SUPERSEDED", "RELEASE", "TERMINAL", "LANDING"}:
+        # A later disposition supersedes uncertainty about prior activity.
+        for field in ("reported_state", "activity_age_seconds", "state_reason"):
+            session.pop(field, None)
     if kind == "BLOCKED":
         session["state"] = "BLOCKED"
         session["blocker"] = event["blocker"]
@@ -175,12 +204,7 @@ def apply_event_to_session(session: dict[str, Any], event: dict[str, Any], now: 
     elif kind in WORKING_EVENT_KINDS:
         session["state"] = "WORKING"
         session["blocker"] = {"type": UNKNOWN, "detail": UNKNOWN}
-    age = _age_seconds(session.get("last_ts") or "", now)
-    if session["state"] in {"WORKING", "ACTIVE", "IDLE"} and age is not None and age > stale_after:
-        session["state"] = "STALE"
-        session["state_reason"] = "last observed event older than stale_after_seconds"
-    elif session["state"] == "WORKING" and kind == "HEARTBEAT" and (age is None or age <= stale_after):
-        session["state"] = "ACTIVE"
+    _activity_freshness(session, now, stale_after, heartbeat=kind == "HEARTBEAT")
 
 
 def empty_session(session_id: str, *, provenance: str) -> dict[str, Any]:
@@ -355,23 +379,21 @@ def project_economy(legacy: dict[str, Any]) -> dict[str, Any]:
     offer = recovery.get("offer") if isinstance(recovery.get("offer"), dict) else {}
     truth = recovery.get("truth") if isinstance(recovery.get("truth"), dict) else {}
     cash = truth.get("collected_cash_usd")
-    if not isinstance(cash, (int, float)) or isinstance(cash, bool):
+    if (not isinstance(cash, (int, float)) or isinstance(cash, bool)
+            or (isinstance(cash, float) and not math.isfinite(cash))):
         cash = None
-    replies = truth.get("replies_observed")
-    if not isinstance(replies, int) or isinstance(replies, bool):
-        replies = 0
-    contacts = truth.get("distinct_contacts_sent")
-    if not isinstance(contacts, int) or isinstance(contacts, bool):
-        contacts = 0
+    counters = {}
+    for field in ("replies_observed", "distinct_contacts_sent", "provider_transports_observed"):
+        value = truth.get(field)
+        counters[field] = value if type(value) is int and value >= 0 else None
     return {
         "loop": "observed need → independently verified buyer → bounded offer → authorized contact → delivered transport → human reply → accepted scope → delivery → acceptance → payment → cash",
+        "observation_scope": "revenue/payment_ready/recovery.json; other revenue lanes are not aggregated",
         "collected_cash_usd": cash,
         "cash_state": (offer.get("cash_state") or truth.get("bank_available") or UNKNOWN) if cash is not None else UNKNOWN,
         "bank_available": truth.get("bank_available") or UNKNOWN,
         "buyer": truth.get("buyer") or UNKNOWN,
-        "replies_observed": replies,
-        "distinct_contacts_sent": contacts,
-        "provider_transports_observed": truth.get("provider_transports_observed") if isinstance(truth.get("provider_transports_observed"), int) else 0,
+        **counters,
         "never_counted_as_revenue": [
             "draft", "intent", "invoice", "checkout_page", "sandbox_stripe",
             "wallet_capability", "token_balance", "unverified_buyer_interest",
@@ -379,6 +401,9 @@ def project_economy(legacy: dict[str, Any]) -> dict[str, Any]:
         "next_economic_action": "Report only sourced cash; missing evidence is UNKNOWN. Do not send outreach or spend from this projector.",
         "evidence": [
             _evidence("revenue/payment_ready/recovery.json", "OBSERVED" if cash is not None else "UNKNOWN", field="truth.collected_cash_usd"),
+        ] + [
+            _evidence("revenue/payment_ready/recovery.json", "OBSERVED" if value is not None else "UNKNOWN", field="truth." + field)
+            for field, value in counters.items()
         ],
     }
 
@@ -473,7 +498,8 @@ def briefing_from(snapshot_parts: dict[str, Any]) -> dict[str, Any]:
 
 def cash_statement(economy: dict[str, Any]) -> str:
     cash = economy.get("collected_cash_usd")
-    return "Collected cash is UNKNOWN (no numeric cash truth observed)." if cash is None else "Commons revenue remains USD %s." % cash
+    return ("Collected cash is UNKNOWN (no numeric cash truth observed)." if cash is None else
+            "Revenue recovery source reports USD %s collected." % cash)
 
 
 def _presence_rows(legacy: dict[str, Any], now: str, stale_after: int) -> list[dict[str, Any]]:
@@ -580,6 +606,7 @@ def _jobs_as_work(legacy: dict[str, Any], now: str, stale_after: int) -> tuple[l
             "lineage": job.get("parent_ids") or (checkpoint_obj.get("lineage") or []),
             "run_id": run_id,
             "grok_url": grok_url,
+            "last_ts": str(job.get("updated_at") or job.get("created_at") or UNKNOWN),
             "expected_next": EXPECTED_NEXT.get(state, UNKNOWN),
             "provenance": "GROK_EXECUTOR" if is_grok else "JOBSTORE",
             "replay_finished_prompt": False,
@@ -614,9 +641,7 @@ def _jobs_as_work(legacy: dict[str, Any], now: str, stale_after: int) -> tuple[l
                 "until": (job.get("lease") or {}).get("until") if isinstance(job.get("lease"), dict) else UNKNOWN,
                 "descriptive_only": True,
             }
-            age = _age_seconds(session["last_ts"], now)
-            if session["state"] in {"WORKING", "IDLE", "ACTIVE"} and age is not None and age > stale_after:
-                session["state"] = "STALE"
+            _activity_freshness(session, now, stale_after)
             session["evidence"] = task["evidence"]
             sessions.append(session)
     return work, sessions
@@ -768,6 +793,9 @@ def project(
     presence = _presence_rows(legacy, now, stale_after_seconds)
     session_list = [sessions[key] for key in sorted(sessions)]
     work_list = [tasks[key] for key in sorted(tasks)]
+    for task in work_list:
+        _activity_freshness(task, now, stale_after_seconds)
+        task["expected_next"] = EXPECTED_NEXT.get(task["state"], UNKNOWN)
     collisions = derive_collisions(session_list, work_list, head_sha or str((legacy.get("pulse") or {}).get("head") or ""))
     economy = project_economy(legacy)
     attention = derive_attention(session_list, collisions, ordered, economy)
@@ -789,7 +817,10 @@ def project(
             "s" if len(collisions) == 1 else "",
         ),
         "%s claims present (existence, not sessions)." % len(presence),
-        "No verified positive replies." if economy["replies_observed"] == 0 else "%s human replies observed." % economy["replies_observed"],
+        ("Positive replies are UNKNOWN (no numeric reply observation)."
+         if economy["replies_observed"] is None else
+         "No verified positive replies." if economy["replies_observed"] == 0 else
+         "%s human replies observed." % economy["replies_observed"]),
         cash_statement(economy),
     ]
     if counts["STALE"]:

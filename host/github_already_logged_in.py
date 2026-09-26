@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Classify GitHub tool/API failures. Auth is already present on every harness.
+"""Classify one GitHub operation without inferring a global login outage.
 
 Owner hub 1788325694 / #needs-bryce 1788325660.929309:
-a failed call is that action's path, rate-limit, or scope — not a missing login.
-Do not open a GitHub login ask. Do not park. Keep shipping.
+a failed call describes that action, not every available publication road.
+Keep observed identity separate from operation status; do not invent a login
+observation when none was supplied. Continue independent authorized work.
 """
 from __future__ import annotations
 
@@ -45,7 +46,8 @@ def classify(
 ) -> dict[str, Any]:
     text = message or ""
     out: dict[str, Any] = {
-        "auth": "present",
+        "auth": "present" if login else "unmeasured",
+        "identity_observed": bool(login),
         "peer_login": PEER_LOGIN,
         "park": False,
         "needs_bryce": False,
@@ -57,58 +59,80 @@ def classify(
     }
     if login:
         out["login"] = login
-        out["cause"] = "auth_ok"
-        out["next"] = (
-            "retry the failed call with a corrected path, scope, or after rate-limit reset"
-        )
+
+    # Identity from a harmless profile read is useful context. It must not
+    # erase a later 429, 401, 403 or provider failure for a different operation.
+    if status_code is not None and 200 <= status_code < 300:
+        out["cause"] = "call_ok"
+        out["next"] = "continue the requested work; this operation succeeded"
         return out
 
     if RATE_RE.search(text) or status_code == 429:
         out["cause"] = "rate_limit"
-        out["next"] = "wait for reset or use git smart-HTTP; do not open a GitHub login ask"
+        out["next"] = "respect Retry-After or the provider reset time; continue independent work without retry storms"
+        return out
+
+    if status_code == 401:
+        out["auth"] = "failed_for_action"
+        out["cause"] = "authentication"
+        out["next"] = (
+            "inspect this connector's harmless profile response and exact authentication error; "
+            "other authenticated publication roads may remain available"
+        )
+        return out
+
+    if status_code is not None and status_code >= 500:
+        out["cause"] = "provider_error"
+        out["next"] = "retain the exact operation and provider response; retry once when appropriate"
         return out
 
     if status_code == 404 or PATH_RE.search(text):
-        out["cause"] = "path"
-        out["next"] = "fix the path or ref; a missing file is not missing auth"
+        out["cause"] = "path_or_visibility"
+        out["next"] = "check the exact repository, path, ref and repository visibility; a 404 alone does not identify an authentication failure"
         return out
 
     if HTTPS_GIT_RE.search(text):
         out["cause"] = "https_git_not_mcp"
         out["next"] = (
-            "use GitHub MCP create_or_update_file / push_files; "
-            "do not open a login ask"
+            "inspect the full connected GitHub tool inventory and use a discovered publishing action; "
+            "a terminal credential prompt does not establish the connector's authentication state"
         )
         return out
 
-    if status_code in (401, 403) or SCOPE_RE.search(text):
-        out["cause"] = "scope"
+    if status_code == 403 or SCOPE_RE.search(text):
+        out["cause"] = "permission_or_scope"
         out["next"] = (
-            "that one action's token or scope; retry an allowed call; do not park"
+            "inspect the exact provider response and repository-permission probe to distinguish "
+            "account permission, installation scope and repository policy; continue other authorized work"
         )
         return out
 
     if LOGIN_ASK_RE.search(text):
-        out["cause"] = "false_missing_login"
-        out["next"] = "ignore the freeze; GitHub is already signed in; keep shipping"
+        out["cause"] = "unverified_login_claim"
+        out["next"] = "inspect the complete tool inventory and harmless profile response before making an authentication claim"
         return out
 
-    out["cause"] = "call"
-    out["next"] = "fix that call; auth is present; keep shipping unique leftover"
+    if login and status_code is None and not text:
+        out["cause"] = "auth_ok"
+        out["next"] = "use the observed identity and discovered tools for the requested work"
+        return out
+
+    out["cause"] = "call" if status_code is not None or text else "unknown"
+    out["next"] = "retain this operation's exact result and inspect available alternatives; do not infer global authentication state"
     return out
 
 
 def slack_cli_is_not_github(*, slack_cli_logged_in: bool) -> dict[str, Any]:
     return {
-        "auth_github": "present",
+        "auth_github": "unmeasured",
         "slack_cli_logged_in": slack_cli_logged_in,
         "park": False,
         "needs_bryce": False,
         "github_login_ask": False,
         "keep_shipping": True,
         "note": (
-            "Slack CLI session is optional leftover. GitHub MCP already ships. "
-            f"Do not mint a GitHub login ask. Do not treat Slack CLI as {NEEDS_BRYCE} GitHub."
+            "Slack CLI session state does not measure GitHub authentication. "
+            "Use a harmless GitHub profile probe and the complete GitHub tool inventory."
         ),
     }
 

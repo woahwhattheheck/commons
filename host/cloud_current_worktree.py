@@ -264,7 +264,7 @@ def unique_ahead(cwd, tip="HEAD", base="origin/main"):
 
 
 def show_at(cwd, rev, rel):
-    spec = "%s:%s" % (rev, rel.replace("\\", "/"))
+    spec = "%s:%s" % (rev, rel.replace(os.sep, "/"))
     rc, _, _ = git(["cat-file", "-e", spec], cwd=cwd, check=False)
     if rc != 0:
         return None
@@ -275,38 +275,42 @@ def show_at(cwd, rev, rel):
 
 
 def name_status(cwd, a, b):
-    rc, out, _ = git_text(["diff", "--name-status", "--no-renames", a, b], cwd=cwd, check=False)
-    rows = []
+    rc, out, _ = git(["diff", "--name-status", "--no-renames", "-z", a, b], cwd=cwd, check=False)
     if rc != 0:
-        return rows
-    for line in out.splitlines():
-        line = line.strip("\n")
-        if not line:
-            continue
-        parts = line.split("\t", 1)
-        if len(parts) != 2:
-            continue
-        rows.append((parts[0].strip(), parts[1]))
-    return rows
+        return []
+    fields = out.split(b"\0")
+    if fields and fields[-1] == b"":
+        fields.pop()
+    if len(fields) % 2:
+        raise CloudCurrentError("incomplete NUL-delimited git name-status output")
+    return [(os.fsdecode(fields[index]), os.fsdecode(fields[index + 1]))
+            for index in range(0, len(fields), 2)]
 
 
 def porcelain(cwd):
-    rc, out, _ = git_text(["status", "--porcelain=v1", "-uall"], cwd=cwd, check=False)
+    # -z gives literal filenames and uses a separate original-path record for
+    # renames/copies. Line parsing confuses newlines, Git's quoting, and an
+    # ordinary filename that happens to contain the text " -> ".
+    rc, out, _ = git(["status", "--porcelain=v1", "-z", "-uall"], cwd=cwd, check=False)
     if rc != 0:
         return []
+    fields = iter(out.split(b"\0"))
     rows = []
-    for line in out.splitlines():
-        if len(line) < 4:
+    for field in fields:
+        if not field:
             continue
-        rel = line[3:]
-        if rel.startswith('"') and rel.endswith('"'):
-            rel = rel[1:-1].encode("utf-8").decode("unicode_escape")
-        if " -> " in rel:
-            rel = rel.split(" -> ", 1)[1]
-        rel = rel.replace("\\", "/")
+        if len(field) < 4 or field[2:3] != b" ":
+            raise CloudCurrentError("incomplete NUL-delimited git status output")
+        xy = os.fsdecode(field[:2])
+        rel = os.fsdecode(field[3:])
+        if "R" in xy or "C" in xy:
+            # The first filename is the destination in porcelain's -z form.
+            # Consume its source even when the destination is session metadata.
+            if not next(fields, b""):
+                raise CloudCurrentError("git status rename is missing its source path")
         if rel.startswith(SESSION_DIR + "/") or rel == SESSION_DIR:
             continue
-        rows.append((line[:2], rel))
+        rows.append((xy, rel))
     return rows
 
 
@@ -544,19 +548,26 @@ def classify_three_way(base, ours, theirs):
             "reason": "ours equals origin",
             "merged": ours,
         }
-    if theirs is None:
-        return {
-            "verdict": "CONFLICT",
-            "rule_id": "SI-SEMANTIC-DISAGREE",
-            "reason": "origin deleted this path; dirt kept",
-            "merged": ours,
-        }
-    if ours is None:
+    if ours == base:
         return {
             "verdict": "CLEAR_TO_MERGE",
             "rule_id": "SI-DISJOINT",
-            "reason": "no local bytes; take origin",
+            "reason": "local bytes unchanged from shared base; take origin",
             "merged": theirs,
+        }
+    if theirs == base:
+        return {
+            "verdict": "CLEAR_TO_MERGE",
+            "rule_id": "SI-DISJOINT",
+            "reason": "origin bytes unchanged from shared base; keep local",
+            "merged": ours,
+        }
+    if theirs is None or ours is None:
+        return {
+            "verdict": "CONFLICT",
+            "rule_id": "SI-SEMANTIC-DISAGREE",
+            "reason": "one side deleted a path changed by the other; local state kept",
+            "merged": ours,
         }
     ok_l, obj_l = _parse_json(ours)
     ok_r, obj_r = _parse_json(theirs)
@@ -750,11 +761,19 @@ def refresh(worktree, peer=None):
         receipt["unique_local_commits"] = unique_ahead(worktree)
         return write_receipt(worktree, receipt)
     head = receipt["head"] or "HEAD"
-    for status, rel in name_status(worktree, head, "origin/main"):
-        rel = rel.replace("\\", "/")
-        theirs = show_at(worktree, "origin/main", rel)
-        base = show_at(worktree, head, rel)
-        if rel not in dirty:
+    rc, shared, _ = git_text(["merge-base", head, origin_sha], cwd=worktree, check=False)
+    shared = shared.strip()
+    if rc or not shared:
+        raise CloudCurrentError("cannot measure a shared main ancestor; snapshot preserved and working files unchanged")
+    receipt["merge_base"] = shared
+    # Compare upstream against the shared ancestor. HEAD-to-origin differences
+    # also contain reversals of unique local commits and must not be applied as
+    # if upstream had deleted that work.
+    for status, rel in name_status(worktree, shared, origin_sha):
+        theirs = show_at(worktree, origin_sha, rel)
+        base = show_at(worktree, shared, rel)
+        local_committed = show_at(worktree, head, rel)
+        if rel not in dirty and local_committed == base:
             if status.startswith("D") or theirs is None:
                 unlink_if_exists(worktree, rel)
                 receipt["actions"].append({"path": rel, "op": "apply_origin_delete"})
@@ -774,7 +793,10 @@ def refresh(worktree, peer=None):
             continue
         merged = result.get("merged")
         if merged is None:
-            receipt["actions"].append({"path": rel, "op": "keep_ours"})
+            # A non-conflicting None is an agreed deletion, not an absent
+            # merge result. Conflicting local deletions were handled above.
+            unlink_if_exists(worktree, rel)
+            receipt["actions"].append({"path": rel, "op": "compose_delete", "rule_id": result["rule_id"]})
             continue
         write_file_bytes(worktree, rel, merged)
         op = "dedupe" if verdict == "DEDUPED" else "compose"
@@ -855,7 +877,7 @@ def recover(worktree, receipt_id, peer=None):
     for dirpath, _dirs, filenames in os.walk(files_dir):
         for name in filenames:
             full = os.path.join(dirpath, name)
-            rel = os.path.relpath(full, files_dir).replace("\\", "/")
+            rel = os.path.relpath(full, files_dir).replace(os.sep, "/")
             if is_secret_name(rel):
                 out["actions"].append({"path": rel, "op": "redacted"})
                 continue
@@ -1148,3 +1170,4 @@ def main(argv=None):
 
 if __name__ == "__main__":
     sys.exit(main())
+

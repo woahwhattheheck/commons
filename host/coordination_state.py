@@ -1255,6 +1255,24 @@ def state_commit(git, files, branch, message, parent=None):
     return git.out(*args, env=_commit_env()).strip()
 
 
+def _superseded_state(git, parent, head):
+    """An older completed build must not replace a newer published observation."""
+    incoming = _parse_ts(head.get("observed_at"))
+    if not parent or incoming is None:
+        return None
+    try:
+        previous = json.loads(git.out("show", parent + ":" + HEAD_FILE))
+    except (GitError, ValueError):
+        return None  # An absent/invalid old head can still be repaired.
+    retained = _parse_ts(previous.get("observed_at")) if isinstance(previous, dict) else None
+    if retained is None or retained <= incoming:
+        return None
+    return {"commit": parent, "parent": parent, "pushed": False,
+            "superseded": True, "observed_at": head.get("observed_at"),
+            "retained_observed_at": previous["observed_at"],
+            "reason": "a newer coordination snapshot is already published"}
+
+
 def publish(git, payload, repo, push=True, remote="origin", branch=STATE_BRANCH, texts=None,
             split=False):
     """Commit the tiers to `branch` on top of its current tip. `texts` (from
@@ -1269,6 +1287,9 @@ def publish(git, payload, repo, push=True, remote="origin", branch=STATE_BRANCH,
     if parent:
         git.fetch([parent], remote)
         _materialize_blobs(git, parent)
+    superseded = _superseded_state(git, parent, head)
+    if superseded:
+        return superseded
     message = "coordination state: main %s, %s open, observed %s" % (
         str((head.get("main") or {}).get("sha", ""))[:10],
         (head.get("counts") or {}).get("open_prs"), head.get("observed_at"))
@@ -1301,6 +1322,9 @@ def publish(git, payload, repo, push=True, remote="origin", branch=STATE_BRANCH,
         if parent:
             git.fetch([parent], remote)
             _materialize_blobs(git, parent)
+        superseded = _superseded_state(git, parent, head)
+        if superseded:
+            return superseded
         commit = state_commit(git, files, branch, message, parent)
         done = _push_ref(git, remote, commit, branch)
     return {"commit": commit, "parent": parent, "pushed": done.returncode == 0,
@@ -1311,6 +1335,29 @@ def publish(git, payload, repo, push=True, remote="origin", branch=STATE_BRANCH,
 # change holdings: one file per change key on state/claims, fast-forward only
 
 _KEY_RE = re.compile(r"[^A-Za-z0-9._-]+")
+
+
+def claim_repository(repository=None):
+    """Canonical GitHub repository metadata for a claim; not an access check."""
+    value = DEFAULT_REPO if repository is None else repository
+    if not isinstance(value, str):
+        raise ValueError("repository must be owner/name text")
+    value = value.strip().lower()
+    if not re.fullmatch(r"[a-z0-9_.-]+/[a-z0-9_.-]+", value):
+        raise ValueError("repository must be owner/name text")
+    return value
+
+
+def repository_claim_key(kind, number, repository=None):
+    """Keep Commons keys stable; separate equal issue/PR numbers in other repos."""
+    if kind not in ("issue", "pr") or type(number) is not int or number <= 0:
+        raise ValueError("claim requires issue or pr and a positive integer")
+    repository = claim_repository(repository)
+    legacy = "%s-%d" % (kind, number)
+    if repository == DEFAULT_REPO.lower():
+        return legacy
+    digest = hashlib.sha256(repository.encode("utf-8")).hexdigest()[:24]
+    return "repo-%s-%s" % (digest, legacy)
 
 
 def change_key(value=None, pr=None, content=None):
@@ -1336,10 +1383,13 @@ class _Preserved(dict):
         self.blob = blob
 
 
-def _holding_entries(git, commit):
+def _holding_entries(git, commit, path=None):
     """{path: blob id} for every holdings/*.json in `commit`, read from the tree alone."""
     entries = {}
-    for line in git.out("ls-tree", "-r", commit).splitlines():
+    args = ["ls-tree", "-r", commit]
+    if path is not None:
+        args.extend(["--", path])
+    for line in git.out(*args).splitlines():
         meta, _, path = line.partition("\t")
         parts = meta.split()
         if len(parts) == 3 and parts[1] == "blob" and path.startswith("holdings/") and path.endswith(".json"):
@@ -1427,7 +1477,8 @@ def _holdings_commit(git, parent, holdings, message, when):
 
 
 def holding_write(git, key, holder, action, ttl_s=1800, note="", now=None,
-                  remote="origin", branch=HOLDINGS_BRANCH, push=True, attempts=3):
+                  remote="origin", branch=HOLDINGS_BRANCH, push=True, attempts=3,
+                  repository=None):
     """take / renew / release one change key. Returns what the branch now says."""
     if action not in ("take", "renew", "release"):
         raise ValueError("action must be take, renew, or release")
@@ -1437,6 +1488,8 @@ def holding_write(git, key, holder, action, ttl_s=1800, note="", now=None,
         raise ValueError("ttl must be between 1 and 7200 seconds")
     if type(attempts) is not int or not 1 <= attempts <= 10:
         raise ValueError("attempts must be between 1 and 10")
+    if repository is not None:
+        repository = claim_repository(repository)
     fixed_now = now
     path = _holding_path(key)
     tip = None
@@ -1471,6 +1524,8 @@ def holding_write(git, key, holder, action, ttl_s=1800, note="", now=None,
         record = dict(current) if isinstance(current, dict) and current.get("schema") == HOLDING_SCHEMA else {}
         record.update({"schema": HOLDING_SCHEMA, "key": key, "holder": holder,
                        "heartbeat_at": stamp, "ttl_s": int(ttl_s)})
+        if repository is not None:
+            record["repository"] = repository
         if action == "take" and (not live or (current or {}).get("holder") != holder):
             record["taken_at"] = stamp
             if current and current.get("holder") and current.get("holder") != holder:
@@ -1495,13 +1550,25 @@ def holding_write(git, key, holder, action, ttl_s=1800, note="", now=None,
             "conflict": "non-fast-forward", "attempts": int(attempts), "tip": tip}
 
 
-def holdings_list(git, remote="origin", branch=HOLDINGS_BRANCH, now=None):
+def holdings_list(git, remote="origin", branch=HOLDINGS_BRANCH, now=None, key=None):
+    """List all holdings, or read only one key without materializing other blobs."""
     now = now or _now()
     tip = _remote_tip(git, branch, remote)
     if tip:
         git.fetch([tip], remote)
+    if key is None:
+        holdings = _read_holdings(git, tip)
+    else:
+        holdings = {}
+        path = _holding_path(key)
+        blob = _holding_entries(git, tip, path).get(path) if tip else None
+        if blob is not None:
+            try:
+                holdings[path] = _read_holding(git, tip, path, blob)
+            except HoldingUnreadable:
+                holdings[path] = _Preserved(blob)
     rows = []
-    for path, record in sorted(_read_holdings(git, tip).items()):
+    for path, record in sorted(holdings.items()):
         live = _holding_live(record, now)
         row = {"key": path[len("holdings/"):-5], "holder": record.get("holder"),
                "state": record.get("state"), "live": live,
@@ -1509,6 +1576,8 @@ def holdings_list(git, remote="origin", branch=HOLDINGS_BRANCH, now=None):
                "note": record.get("note", "")}
         if isinstance(record, _Preserved):
             row["unreadable"] = True  # reported in the listing only; the blob itself is carried untouched
+        if record.get("repository") is not None:
+            row["repository"] = record["repository"]
         rows.append(row)
     return {"branch": branch, "tip": tip, "holdings": rows}
 
@@ -1591,7 +1660,7 @@ def main(argv=None):
         result = publish(git, None, args.repo, push=not args.no_push, remote=args.remote,
                          texts=texts, split=args.split)
         print(json.dumps({"head": head, "publish": result}, indent=1))
-        return 0 if (result.get("pushed") or args.no_push) else 1
+        return 0 if (result.get("pushed") or result.get("superseded") or args.no_push) else 1
     github = GitHub(args.repo, discover_token())
     if args.cmd == "drift":
         data = github.graphql(
@@ -1616,7 +1685,7 @@ def main(argv=None):
     result = publish(git, payload, args.repo, push=not args.no_push, remote=args.remote,
                      split=args.split)
     print(json.dumps({"head": head, "publish": result}, indent=1))
-    return 0 if (result.get("pushed") or args.no_push) else 1
+    return 0 if (result.get("pushed") or result.get("superseded") or args.no_push) else 1
 
 
 if __name__ == "__main__":
