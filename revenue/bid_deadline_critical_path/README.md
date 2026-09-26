@@ -48,6 +48,16 @@ For each pending action:
 
 Completed or not-applicable actions consume zero remaining duration/buffer. The packet records UTC latest-safe start/finish and slack seconds relative to the supplied evaluation time.
 
+Each action also records `waiting_on_action_ids`: its direct prerequisites whose
+state is neither `COMPLETE` nor `NOT_APPLICABLE`. The Markdown path shows the same
+dependencies. Owner instructions select pending owner work with no remaining
+prerequisites; if every pending owner action is waiting, the instructions name the
+earliest handoff and its prerequisites instead of presenting it as ready to start.
+When only non-owner work remains, they call for completing that work before the
+final owner decision. These are dependency facts within the plan, not action
+authority; source holds, deadline feasibility, and owner-only requirements still
+apply.
+
 Sensitive classes `PORTAL_LOGIN`, `SIGNATURE`, and `SUBMIT` are accepted only when `actor_class` is `OWNER`. This keeps the plan useful without granting the swarm credential/signature/submission authority.
 
 ## Input evidence
@@ -101,12 +111,16 @@ EXACT_CRITICAL_PATH_MATCH
 
 The demo does not represent a real solicitation, deadline, buyer, submission, award, payment, or revenue.
 
-## Focused proof
+Run the retained rehearsal through the ordinary compiler and verifier, using new
+output paths:
 
 ```bash
-python -m py_compile revenue/bid_deadline_critical_path/engine.py test_bid_deadline_critical_path.py
-python -m unittest -v test_bid_deadline_critical_path.py
-python -O -m unittest -v test_bid_deadline_critical_path.py
+python -m revenue.bid_deadline_critical_path.engine compile \
+  revenue/bid_deadline_critical_path/demo/synthetic_bid.json \
+  --packet synthetic-bid.packet.json \
+  --markdown synthetic-bid.md \
+  --receipt synthetic-bid.receipt.json
+python -m revenue.bid_deadline_critical_path.engine verify \
+  revenue/bid_deadline_critical_path/demo/synthetic_bid.json \
+  synthetic-bid.packet.json synthetic-bid.md synthetic-bid.receipt.json
 ```
-
-The focused suite covers backward scheduling, work-induced missed windows, buyer-official source gates, amendment freshness/authority, qualification/workshare holds, DNR, blocked/stale dependencies, owner-only irreversible actions, cycle/missing-reference rejection, strict JSON numeric/key rules, explicit UTC timestamps, credential-shaped unknown fields, deterministic compilation, tamper/replay checks, and no-partial/overwrite CLI publication.
