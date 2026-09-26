@@ -154,6 +154,11 @@ is an uncertain delivery, not success. Health remains outside the source-message
 budget so a capped backlog can still be reported. History access, retention and
 pagination bounds also apply to health recovery; messages sent by older versions
 without the marker need their retained ledger to be identified reliably.
+The shared source-post cap also rotates the first source on later polls. When
+one backlog spends the allowance, the other source gets the next turn; SQLite
+retains that choice alongside partial-delivery markers. A source deferred for
+lack of allowance is named in `errors` without downloading its message bodies.
+Provider retry deadlines still take precedence over the next delivery turn.
 If source delivery observes a Slack Retry-After, the local report records
 `health_delivery: deferred_slack_retry_after` and the same pass makes no health
 request. The next existing poll retries after the persisted cooldown; a GitHub
