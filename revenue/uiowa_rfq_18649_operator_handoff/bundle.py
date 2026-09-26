@@ -82,8 +82,9 @@ The run command verifies the package bytes, then invokes the original sample run
 with exactly the selected assets. It preserves real exit codes, output hashes,
 failure diagnostics and the distinction between PLANNED and executed work.
 Read sample-run-receipt.json in the chosen output directory and the generated
-reports. Stdout-only outputs are retained as excerpts in that existing receipt.
-Outputs outside the captured excerpt are not separately archived by this bundle.
+reports. The handoff and outcome-measurement renderers write their complete
+Markdown reports to output files. Remaining stdout-only validation messages are
+retained as bounded excerpts in the existing receipt.
 
 All data is fictional preparation, never University findings or completed work.
 The public compiler retains UNTRUSTED_INSPECTION and its current authority ceiling.

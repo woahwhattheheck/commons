@@ -73,8 +73,14 @@ exposed a stale security-event command, now corrected to include the required
 `--json-out`; that command's JSON assessment joins the CSV and Markdown outputs.
 The compiler continued to report `HOLD_TRUSTED_AUTHORITY_REQUIRED` and
 `UNTRUSTED_INTEGRITY_ONLY`. This establishes synthetic CLI operation, not University
-findings, accepted engagement work or browser verification. The original runner
-retains stdout-only component output as bounded excerpts rather than full exports.
+findings, accepted engagement work or browser verification.
+
+The handoff and outcome-measurement render commands now also save their full
+Markdown reports as `handoff-readiness.md` and `outcome-measurement.md`. Their real
+transferred run produced 4,843-byte and 4,315-byte files, respectively; both exceed
+the runner's 4,000-character stdout excerpt. These two deliverables now join the
+output inventory and hashes instead of losing their beginning in a log excerpt.
+Remaining stdout-only validation messages retain the existing bounded excerpts.
 
 For manual transfer, the existing selected-run interface is unchanged:
 
