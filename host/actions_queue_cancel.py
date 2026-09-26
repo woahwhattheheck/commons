@@ -14,7 +14,7 @@ Safety contract:
 * the run is fetched one final time immediately before the POST;
 * any moved head, non-queued status, inventory/read error, or reclassification
   to a keep/unknown state fails closed without a POST;
-* ``--max-cancels`` bounds the number of cancellation POSTs in one invocation;
+* ``--max-cancels`` bounds cancellation POSTs, or candidate rechecks in dry-run;
 * the JSON receipt records dry-run / accepted / held outcomes without secrets.
 
 Typical dry run::
@@ -172,11 +172,13 @@ def drain_stale_runs(
     now = now.astimezone(dt.timezone.utc)
 
     runs, total = github.queued_runs(cap)
-    initial_snapshot = _fresh_snapshot(github, repo)
-    candidates = _sorted_candidates(runs, repo, initial_snapshot)
+    # Empty queues need no branch/PR inventory, which can itself span thousands
+    # of pages on a busy repository.
+    candidates = _sorted_candidates(runs, repo, _fresh_snapshot(github, repo)) if runs else []
 
     results: list[dict[str, Any]] = []
     posts_attempted = 0
+    candidates_rechecked = 0
     accepted = 0
     holds = 0
 
@@ -208,11 +210,14 @@ def drain_stale_runs(
             )
             continue
 
-        if posts_attempted >= max_cancels:
+        if posts_attempted >= max_cancels or (not execute and candidates_rechecked >= max_cancels):
             results.append({**base, "outcome": "KEEP_BATCH_LIMIT"})
             continue
 
         try:
+            # Dry-run makes no POSTs. Count its expensive rechecks separately
+            # so its batch bound still limits repeated full inventory reads.
+            candidates_rechecked += 1
             live = github.get(f"/repos/{repo}/actions/runs/{run_id}")
             if not isinstance(live, dict):
                 raise GitHubError("run re-read returned non-object")
@@ -343,6 +348,7 @@ def drain_stale_runs(
         "queued_runs_observed": len(runs),
         "queued_inventory_complete": isinstance(total, int) and total <= len(runs),
         "initial_cancel_candidates": len(candidates),
+        "candidates_rechecked": candidates_rechecked,
         "max_cancels": max_cancels,
         "min_age_seconds": min_age_seconds,
         "cancel_posts_attempted": posts_attempted,
@@ -384,7 +390,8 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo", default=DEFAULT_REPO)
     parser.add_argument("--cap", type=int, default=1000)
-    parser.add_argument("--max-cancels", type=int, default=25)
+    parser.add_argument("--max-cancels", type=int, default=25,
+                        help="maximum cancellation POSTs, or dry-run candidate rechecks (default: 25)")
     parser.add_argument("--min-age-seconds", type=int, default=60)
     parser.add_argument("--execute", action="store_true")
     parser.add_argument("--out", type=Path, help="create-exclusive JSON receipt path")
