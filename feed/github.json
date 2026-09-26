@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 9096,
+    "open_issues": 9057,
     "open_pull_requests": 1,
-    "runs_in_progress": 11,
-    "runs_queued": 795
+    "runs_in_progress": 12,
+    "runs_queued": 753
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -39,7 +39,7 @@
   },
   "pulls_listed": 1,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 72.3,
+  "queue_depth_per_runner": 62.8,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -174,14 +174,27 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "swarm/context-packet-chronology-20260926",
-      "closed_at": "2026-09-26T15:16:36Z",
-      "head_sha": "a22e7620de7828416edeeb9b304a53c73417c86c",
-      "merge_commit_sha": "017ce492c6e3aacd3ecb9cbb47f8ed59039471f7",
-      "merged_at": "2026-09-26T15:16:36Z",
-      "number": 30079,
+      "branch": "swarm-zz/uiowa-097-reviewer-continuation-20260926",
+      "closed_at": "2026-09-26T13:20:45Z",
+      "head_sha": "cba4c7be3e39058433b0e805170c219eb439c382",
+      "merge_commit_sha": "6965f712fddb800f5fb1282b5866328ab10f3e7d",
+      "merged_at": "2026-09-26T13:20:45Z",
+      "number": 29984,
       "state": "MERGED",
-      "title": "Order bounded context selections by observation instant",
+      "title": "Complete reviewer tasks and editable recommendation continuation",
+      "updated_at": "UNKNOWN"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "codex/resource-master-uiowa-roadmap-activation-20260926-01",
+      "closed_at": "2026-09-26T13:20:26Z",
+      "head_sha": "cb419035210c84db5cd5494600da085c3a107275",
+      "merge_commit_sha": "735b39ad3f0831a2631c8e03d13666f6ac7f517a",
+      "merged_at": "2026-09-26T13:20:26Z",
+      "number": 29983,
+      "state": "MERGED",
+      "title": "resources: activate UIowa phased roadmap planner",
       "updated_at": "UNKNOWN"
     },
     {
@@ -222,23 +235,10 @@
       "state": "MERGED",
       "title": "Finish the stranded alert-quality analysis and editable workbook",
       "updated_at": "UNKNOWN"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "recover-uiowa-readout-pptx-20260926",
-      "closed_at": "2026-09-26T13:15:09Z",
-      "head_sha": "92b178cadc9e67c748ffc233aabfa89b6b3a77c2",
-      "merge_commit_sha": "72ee1cdca7e0c496a98833dfd27ade126463a07f",
-      "merged_at": "2026-09-26T13:15:09Z",
-      "number": 29979,
-      "state": "MERGED",
-      "title": "Deliver editable PowerPoint export for the recovered readout architecture",
-      "updated_at": "UNKNOWN"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-26T15:42:19Z",
+  "unchanged_since": "2026-09-26T15:51:35Z",
   "undatable_pulls": []
 }
