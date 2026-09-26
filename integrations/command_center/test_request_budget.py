@@ -215,7 +215,7 @@ class RequestBudgetTests(unittest.TestCase):
             again = reopened.collect()
             self.assertEqual(1, len(calls))
             self.assertEqual(0, again["request_budget"]["observed_attempts"])
-            self.assertEqual("github:GET", again["deferred_sources"][0]["scope"])
+            self.assertEqual("github:GET:core", again["deferred_sources"][0]["scope"])
 
     def test_gh_secondary_limit_and_plain_permission_denial_are_distinct(self):
         for message, remaining, limited in (
