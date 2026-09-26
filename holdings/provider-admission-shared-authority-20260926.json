@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "provider-admission-shared-authority-20260926",
+  "holder": "performance",
+  "state": "HELD",
+  "taken_at": "2026-09-26T15:00:30.391Z",
+  "heartbeat_at": "2026-09-26T15:00:30.391Z",
+  "ttl_s": 1800,
+  "note": "Expose existing RequestBudget through command-center provider_admission.py, server.py/equipment.py, host/provider_budget.py --url and PROVIDER-ADMISSION.md. No core.py/swarm_tasks.py."
+}
