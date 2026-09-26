@@ -19,7 +19,7 @@ from integrations.command_center.schema import _text
 from memory_board import parse_record
 
 from .identity import task_key
-from .projector import _order, merge_facts
+from .projector import _merge_sha, _order, _time, merge_facts
 
 UNKNOWN = "UNKNOWN"
 _ACTIONS = {"OPEN": "OPEN", "TAKE": "TAKE", "CLAIM": "TAKE",
@@ -356,11 +356,11 @@ def _fact(row, source, repo=None):
     if not key or ":pr:" not in key:
         return None, None
     status = str(row.get("state") or row.get("status") or UNKNOWN).upper()
-    is_merged = status == "MERGED" or bool(merged.get("merged_at")) or merged.get("merged") is True
+    is_merged = status == "MERGED" or _time(merged.get("merged_at")) is not None or merged.get("merged") is True
     head = merged.get("head") if isinstance(merged.get("head"), dict) else {}
     base = merged.get("base") if isinstance(merged.get("base"), dict) else {}
-    merge_sha = merged.get("merge_sha") or merged.get("merge_commit_sha")
-    if not merge_sha and isinstance(merged.get("mergeCommit"), dict):
+    merge_sha = _merge_sha(merged)
+    if merge_sha == UNKNOWN and isinstance(merged.get("mergeCommit"), dict):
         merge_sha = merged["mergeCommit"].get("oid")
     fact = {"task_key": key, "repo": key.split(":")[1], "pr": int(key.rsplit(":", 1)[1]),
             "state": "MERGED" if is_merged else status, "merged": is_merged,

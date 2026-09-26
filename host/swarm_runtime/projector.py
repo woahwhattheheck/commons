@@ -203,9 +203,16 @@ def _lease(record, seat, now):
             record["feed_cursor"] = cursor
 
 
+def _merge_sha(fact):
+    for field in ("merge_sha", "merge_commit_sha"):
+        if _known(fact.get(field)):
+            return fact[field]
+    return UNKNOWN
+
+
 def _merged(fact):
     return (fact.get("merged") is True or str(fact.get("state", "")).upper() == "MERGED") and _known(
-        fact.get("merge_sha", fact.get("merge_commit_sha")))
+        _merge_sha(fact))
 
 
 def _landed_artifact(fact):
@@ -333,7 +340,7 @@ def _reconcile(record, fact, now, exact_task_fact=True):
     equivalent = fact.get("equivalent") or fact.get("superseded_by")
     if _merged(fact):
         record["state"] = "SHIPPED"
-        record["merge_sha"] = fact.get("merge_sha") or fact.get("merge_commit_sha")
+        record["merge_sha"] = _merge_sha(fact)
         record["closed_at"] = fact.get("merged_at") or UNKNOWN
         record["shipment_source"] = "provider"
         record["blocker"] = record["next_action"] = UNKNOWN
