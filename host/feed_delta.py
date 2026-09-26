@@ -15,6 +15,13 @@ with no endpoint, no auth and no per-caller state:
     feed/head.json     newest HEAD_N events, each with a bounded excerpt
     feed/window.json   every dated event in the bake, headline only
 
+Read with --since CURSOR --shard auto to try the head and, when needed, the
+window in one call. The reader stops after those two files. A gap beyond the
+window still names recent.json in next_read; no retained shard can promise
+history it does not contain. Auto reads exit 2 while a gap remains and keep
+next_cursor at the supplied cursor. Advance to next_cursor only after processing
+all returned events from a COMPLETE result.
+
 CURSOR
 ------
 The cursor is a single sortable string per event:
@@ -303,6 +310,8 @@ def since(cursor, root=ROOT, shard="head"):
     comparison. Any undated record makes ordering incomplete and forces a full
     read rather than allowing COMPLETE/0 to hide a pulse advance.
     """
+    if shard == "auto":
+        return since_auto(cursor, root)
     path = os.path.join(root, FEED_DIR, "%s.json" % shard)
     payload = _read_json(path)
     if (not isinstance(payload, dict)
@@ -317,6 +326,29 @@ def since(cursor, root=ROOT, shard="head"):
                 "events": [], "undated": [], "requires_full_read": True,
                 "next_read": "feed/window.json" if shard == "head" else "recent.json"}
     return _since_payload(payload, cursor, shard)
+
+
+def since_auto(cursor, root=ROOT):
+    """Read the smallest covering shard, without advancing across a gap.
+
+    Follow only the known head-to-window fallback. An unordered result still
+    requires recent.json, whose full bodies belong to the caller's full-read
+    path. Neither a missing shard nor limited retention becomes an empty,
+    successful refresh. Explicit head/window calls retain their existing API.
+    """
+    sources_read = []
+    for shard in ("head", "window"):
+        result = since(cursor, root, shard)
+        sources_read.append("%s/%s.json" % (FEED_DIR, shard))
+        if result.get("next_read") != "feed/window.json":
+            break
+    result["sources_read"] = sources_read
+    result["next_cursor"] = cursor or ""
+    if result["state"] == "COMPLETE":
+        result["next_cursor"] = max(
+            [cursor or ""] + [row["c"] for row in result["events"]]
+        )
+    return result
 
 
 # --------------------------------------------------------------------------
@@ -397,8 +429,9 @@ def main(argv=None):
     ap.add_argument("--check", action="store_true",
                     help="report shard sizes without writing")
     ap.add_argument("--since", metavar="CURSOR",
-                    help="print events newer than CURSOR from feed/head.json")
-    ap.add_argument("--shard", default="head", choices=("head", "window"))
+                    help="print events newer than CURSOR from the chosen shard")
+    ap.add_argument("--shard", default="head", choices=("head", "window", "auto"),
+                    help="auto follows head to window and returns a safe next_cursor")
     ap.add_argument("--self-test", action="store_true")
     args = ap.parse_args(argv)
 
@@ -408,6 +441,8 @@ def main(argv=None):
     if args.since is not None:
         result = since(args.since, args.root, args.shard)
         print(json.dumps(result, indent=2))
+        if args.shard == "auto" and result["state"] != "COMPLETE":
+            return 2
         return 2 if result["state"] == "FINDER-FAILED" else 0
 
     if args.check:
