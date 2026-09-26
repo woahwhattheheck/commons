@@ -250,7 +250,8 @@ export async function runMonitor(env = process.env) {
     } else {
       await persistShardedState(env, plan, stored);
     }
-    return { imported, channels: result.channels.map(c => ({ channel: c.channel,
+    return { imported, mode: result.mode, slack_writes: result.slack_writes,
+      channels: result.channels.map(c => ({ channel: c.channel,
       messages: c.messages || 0, queued: c.queued || 0,
       recent_messages: c.recent?.messages || 0, recent_queued: c.recent?.queued || 0,
       error: c.error || null })),
@@ -262,6 +263,10 @@ export async function runMonitor(env = process.env) {
       operator_error: result.operators?.error || null,
       delivered: typeof result.delivered === 'number' ? result.delivered : 0,
       delivery_error: result.delivered.error || null,
+      delivery_code: result.delivered.code || null,
+      delivery_held: result.delivered.held || 0,
+      operator_held: result.operators?.held || 0,
+      incident_held: result.incidents.held || 0,
       jev: result.jev };
   } finally { sqlite.close(); }
 }
@@ -274,10 +279,13 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
       result.incident_error || result.operator_error ||
       result.delivery_error && result.delivery_error !== 'slack_rate_limited')
       throw new Error('tick_partial_failure');
-    console.log(JSON.stringify({ channels: result.channels.length,
+    console.log(JSON.stringify({ mode: result.mode, slack_writes: result.slack_writes,
+      channels: result.channels.length,
       messages: result.channels.reduce((n, c) => n + c.messages, 0),
       recent_messages: result.channels.reduce((n, c) => n + c.recent_messages, 0),
       thread_pages: result.thread_pages, imported: result.imported, delivered: result.delivered,
+      delivery_code: result.delivery_code, delivery_held: result.delivery_held,
+      operator_held: result.operator_held, incident_held: result.incident_held,
       thread_rate_limited: result.thread_rate_limited,
       thread_deadline_reached: result.thread_deadline_reached,
       rate_limited: rateLimited,
