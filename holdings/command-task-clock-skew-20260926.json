@@ -1,0 +1,11 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "command-task-clock-skew-20260926",
+  "holder": "command-observability",
+  "state": "HELD",
+  "repository": "woahwhattheheck/commons",
+  "taken_at": "2026-09-26T14:22:58.472Z",
+  "heartbeat_at": "2026-09-26T14:22:58.472Z",
+  "ttl_s": 1800,
+  "note": "Own canonical panel stale timer for accepted clock skew and command-center README operating semantics."
+}
