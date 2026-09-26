@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "command-observability-repair-20260926",
   "holder": "command-observability",
-  "heartbeat_at": "2026-09-26T11:54:24.570Z",
+  "heartbeat_at": "2026-09-26T11:59:48.458Z",
   "taken_at": "2026-09-26T11:54:24.570Z",
   "ttl_s": 1800,
-  "state": "HELD",
-  "note": "Own command.html and swarm-order.js: restore missing render targets and show current work observations without obsolete review gating."
+  "state": "RELEASED",
+  "note": "Landed PR #29887: restore operational panels, refresh recovery and active work observations. Main 8e3041a53c1a5dca2c966a148a95b1de0ca5094a"
 }
