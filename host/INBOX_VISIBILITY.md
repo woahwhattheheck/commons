@@ -143,6 +143,10 @@ is an uncertain delivery, not success. Health remains outside the source-message
 budget so a capped backlog can still be reported. History access, retention and
 pagination bounds also apply to health recovery; messages sent by older versions
 without the marker need their retained ledger to be identified reliably.
+If source delivery observes a Slack Retry-After, the local report records
+`health_delivery: deferred_slack_retry_after` and the same pass makes no health
+request. The next existing poll retries after the persisted cooldown; a GitHub
+or Gmail retry delay alone does not defer Slack health reporting.
 
 The workflow caches only this sanitized ledger, not provider contents. Treat
 cache eviction as possible; Slack markers remain the recovery source. A process
