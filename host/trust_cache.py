@@ -9,6 +9,7 @@ import json
 import os
 import subprocess
 import sys
+import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable
@@ -209,7 +210,17 @@ def _run_check_locked(
         snapshot.update({"event": "WASTE", "executed": False})
         return snapshot, 0
 
-    completed = subprocess.run(command, capture_output=True, check=False)
+    # Receipts keep only hashes. Redirect output to automatically removed
+    # streams so a verbose check cannot retain its entire output in Python.
+    with tempfile.TemporaryFile() as stdout, tempfile.TemporaryFile() as stderr:
+        completed = subprocess.run(command, stdout=stdout, stderr=stderr, check=False)
+        output_hashes = {}
+        for name, stream in (("stdout_sha256", stdout), ("stderr_sha256", stderr)):
+            stream.seek(0)
+            digest = hashlib.sha256()
+            for block in iter(lambda: stream.read(64 * 1024), b""):
+                digest.update(block)
+            output_hashes[name] = digest.hexdigest()
     after_digest = None
     artifact_error = None
     try:
@@ -229,8 +240,7 @@ def _run_check_locked(
         "returncode": completed.returncode,
         "artifact_sha256_after": after_digest,
         "artifact_unchanged": stable,
-        "stdout_sha256": hashlib.sha256(completed.stdout).hexdigest(),
-        "stderr_sha256": hashlib.sha256(completed.stderr).hexdigest(),
+        **output_hashes,
     }
     if artifact_error:
         evidence["artifact_error"] = artifact_error
