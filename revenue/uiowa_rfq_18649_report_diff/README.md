@@ -52,6 +52,31 @@ University finding.
 
 ## Compare supplied reports
 
+Create both comparison views in one invocation:
+
+```sh
+python review_diff.py bundle before.json after.json /tmp/inspection-revision-new
+```
+
+The new directory contains `delta.json`, `review.md` and a final `manifest.json`.
+The bundle command performs the existing parent-semantic comparison once, then
+renders both views from that same computed result. It preserves both original
+report receipts and the canonical diff receipt. The manifest binds each output's
+exact byte count and SHA-256; all external-authority fields remain false.
+
+Keep both original reports alongside your working material. They are not copied
+into the bundle, and the manifest does not replace them for later verification.
+Validation and rendering complete before the new directory is created. If an
+output write is interrupted, retained files without the final manifest are an
+incomplete bundle. Existing destinations are never overwritten or deleted.
+Success exits 0; invalid reports or I/O failures exit 2.
+
+The supplied fictional before/after reports produced the same canonical delta
+receipt shown above, paired with the readable review and manifest. This is
+output packaging, not another assessment engine or a new review/approval stage.
+
+Existing single-output commands remain available:
+
 ```sh
 python review_diff.py compare before.json after.json delta.json
 python review_diff.py compare before.json after.json review.md --format markdown
@@ -117,11 +142,13 @@ engagement, and the first stored evaluation time cannot be later than the second
 The canonical parent dimension is **`software`**, not `software_development`.
 
 ```python
-from review_diff import compare_reports, verify_diff, render_markdown
+from pathlib import Path
+from review_diff import compare_reports, verify_diff, render_markdown, write_bundle
 
 delta = compare_reports(before_report, after_report)
 verification = verify_diff(before_report, after_report, delta)
 markdown = render_markdown(before_report, after_report)
+manifest = write_bundle(before_report, after_report, Path("new-review-bundle"))
 ```
 
 Callers must not mutate their input objects concurrently. Returned objects do not
