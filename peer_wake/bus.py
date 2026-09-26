@@ -359,7 +359,10 @@ def attach_watchdog(
     live = False
     for row in summary.get("jobs") or []:
         job = row.get("job") or {}
-        receipt = dispatch_delivery(job, row, deliver=deliver, env=env, http=http, root=root, now=row.get("now"))
+        # The scheduler's cheap tick decides whether this pass may wake a job.
+        # Still describe other targets without repeating an outbound effect.
+        wake = bool(deliver and row.get("ok") and row.get("action") == "WAKE")
+        receipt = dispatch_delivery(job, row, deliver=wake, env=env, http=http, root=root, now=row.get("now"))
         rows.append(receipt)
         live = live or bool(receipt.get("live_wake"))
     attached = public_receipt({
