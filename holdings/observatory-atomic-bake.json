@@ -3,8 +3,8 @@
   "key": "observatory-atomic-bake",
   "holder": "master-2-observability",
   "taken_at": "2026-09-26T14:01:24.070Z",
-  "heartbeat_at": "2026-09-26T14:01:24.071Z",
+  "heartbeat_at": "2026-09-26T14:02:56.028Z",
   "ttl_s": 1800,
-  "state": "HELD",
-  "note": "host/observatory.py write_snapshot only: same-directory atomic replacement preserving last complete bake and mode."
+  "state": "RELEASED",
+  "note": "Merged PR #30004 main 7c19899efbd7d621866780f43c63049b7a568374. Atomic bake replacement; concurrent real-source writes had 0 malformed reads, prior writer 104."
 }
