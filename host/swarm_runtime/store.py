@@ -355,6 +355,14 @@ class GitStore:
                     record["taken_at"] = started
                 elif current.get("holder") != worker or "taken_at" not in current:
                     record["taken_at"] = heartbeat
+                if current.get("holder") == worker:
+                    # Same-worker TAKE events do not reset an ACTIVE task's
+                    # original start. Keep a later direct claim generation and
+                    # renewal intact when projecting that historical task.
+                    for field in ("taken_at", "heartbeat_at"):
+                        prior, proposed = _parse_ts(current.get(field)), _parse_ts(record.get(field))
+                        if prior is not None and (proposed is None or prior > proposed):
+                            record[field] = current[field]
             else:
                 # Never release another worker's unrelated/newer legacy holding.
                 owned_by = worker if worker not in (None, "", "UNKNOWN") else old.get("worker")
