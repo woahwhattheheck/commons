@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "command-freshness-20260926",
+  "holder": "command-observability",
+  "heartbeat_at": "2026-09-26T12:00:49.863Z",
+  "taken_at": "2026-09-26T12:00:49.863Z",
+  "ttl_s": 1800,
+  "state": "HELD",
+  "note": "Own command.html: timestamp-derived beacon freshness and clear stale named/idle seat rows on unread refresh."
+}
