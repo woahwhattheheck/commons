@@ -9,10 +9,12 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import http.client
 import json
 import os
 from pathlib import Path
 import sys
+import tempfile
 import urllib.error
 import urllib.request
 
@@ -23,6 +25,58 @@ if str(ROOT) not in sys.path:
 
 def load(path, default=None):
     return json.loads(Path(path).read_text(encoding="utf-8")) if path else default
+
+
+def shared_request(url, payload):
+    """Keep uncertain responses and retry hints; never replay a failed POST."""
+    request = urllib.request.Request(url.rstrip("/") + "/api/swarm/tasks",
+        data=json.dumps(payload).encode(),
+        headers={"Content-Type": "application/json"}, method="POST")
+    try:
+        with urllib.request.urlopen(request, timeout=90) as response:
+            result = json.load(response)
+        if not isinstance(result, dict):
+            raise ValueError("Shared service response must be a JSON object")
+        return result
+    except urllib.error.HTTPError as exc:
+        with exc:
+            try:
+                result = json.loads(exc.read(1048577))
+                if not isinstance(result, dict):
+                    raise ValueError("JSON object required")
+            except (OSError, ValueError, UnicodeError, http.client.HTTPException):
+                result = {"error": "http_error", "message": "Shared service error response could not be read as a JSON object"}
+            result.update(ok=False, http_status=exc.code)
+            if exc.headers.get("Retry-After") is not None:
+                result["retry_after_header"] = exc.headers["Retry-After"]
+            if exc.code >= 500:
+                result.setdefault("status", "uncertain")
+    except (OSError, ValueError, UnicodeError, http.client.HTTPException) as exc:
+        # An accepted request can lose its response. Do not report definite
+        # failure or replay it merely because parsing or transport failed.
+        result = {"ok": False, "error": type(exc).__name__, "status": "uncertain",
+                  "message": "Read operation state before retrying the original request."}
+    if payload.get("operation_id"):
+        result["operation_id"] = payload["operation_id"]
+    return result
+
+
+def save_output(path, output):
+    """An interrupted receipt save preserves the previous complete result."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", dir=path.parent,
+                                         prefix=path.name + ".", suffix=".pending", delete=False) as out:
+            temporary = out.name
+            out.write(output)
+            out.flush()
+            os.fsync(out.fileno())
+        os.replace(temporary, path)
+        temporary = None
+    finally:
+        if temporary is not None:
+            os.unlink(temporary)
 
 
 def main(argv=None):
@@ -83,11 +137,7 @@ def main(argv=None):
         if args.url:
             if args.no_push:
                 raise ValueError("--no-push applies to local Git Data proposals, not shared HTTP operations")
-            request = urllib.request.Request(args.url.rstrip("/") + "/api/swarm/tasks",
-                data=json.dumps({"action": args.command, **payload}).encode(),
-                headers={"Content-Type": "application/json"}, method="POST")
-            with urllib.request.urlopen(request, timeout=90) as response:
-                result = json.load(response)
+            result = shared_request(args.url, {**payload, "action": args.command})
         else:
             from host.swarm_runtime.runtime import Runtime
             runtime = Runtime(args.root, state_dir=args.state_dir)
@@ -99,8 +149,15 @@ def main(argv=None):
                 result = runtime.operate(args.command, payload, push=not args.no_push)
         output = json.dumps(result, ensure_ascii=False, sort_keys=True, indent=2) + "\n"
         if args.output:
-            args.output.parent.mkdir(parents=True, exist_ok=True)
-            args.output.write_text(output, encoding="utf-8")
+            try:
+                save_output(args.output, output)
+            except OSError:
+                # Publication may have succeeded. Keep its full receipt even
+                # when the requested local destination cannot be replaced.
+                print(output, end="")
+                print(json.dumps({"ok": False, "error": "output_save_failed",
+                                  "output": str(args.output), "receipt": "stdout"}), file=sys.stderr)
+                return 2
             print(json.dumps({"ok": result.get("ok"), "published": result.get("published"),
                               "output": str(args.output), "changed": result.get("changed")}))
         else:
