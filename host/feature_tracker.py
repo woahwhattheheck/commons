@@ -477,7 +477,8 @@ def derive_feature(feature, evidence, root, snapshot=None):
         path = str(row.get("path") or entry or "")
         if cited and path:
             current = tree_blob(root, path)
-            if current and current != cited:
+            # Missing/unreadable pinned bytes cannot corroborate a live receipt.
+            if current != cited:
                 live_stale.append(row)
                 continue
         live_ok.append(row)
