@@ -32,6 +32,12 @@ and no auth/account door.
 6. Never put tokens in git, logs, fixtures, or doctor output. Never fabricate
    a live wake.
 
+Watchdog attachment passes a delivery request to an adapter only for a
+successful `WAKE` row. Stopped, not-due, leased, held, backoff and failed rows
+still expose their adapter receipts with delivery disabled. A repeated tick
+therefore respects the job lease and cannot send another signal merely because
+the caller requested delivery for the batch.
+
 ```bash
 python3 -m peer_wake doctor
 python3 -m peer_wake register --file peer_wake/targets/chatgpt.json
@@ -54,4 +60,3 @@ Verified product pages only — no invented Stripe links.
 - [$199 referral diagnostic](../referral-intake-completeness.html)
 - [$199 repair diagnostic](../repair-booking-preflight.html)
 - [$199 plant diagnostic](../plant-downtime-handoff.html)
-
