@@ -18,10 +18,16 @@
     "CALL_FAILED",
     "RATE_LIMITED",
     "PATH_WRONG",
+    "PATH_OR_VISIBILITY",
     "SCOPE_OF_ACTION",
+    "PERMISSION_OR_SCOPE",
+    "AUTHENTICATION_FAILED",
+    "PROVIDER_ERROR",
     "UNKNOWN"
   ],
   "never_verdict": "MISSING_LOGIN_FREEZE",
+  "diagnostic_source": "host/github_already_logged_in.py",
+  "declaration_is_current_authentication_evidence": false,
   "alternate_roads": [
     "unique-push HEAD:main",
     "contents API PUT",

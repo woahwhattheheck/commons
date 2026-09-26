@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Classify one GitHub HTTP/MCP failure as that call, not a missing login.
 
-Hub 1788325694.170879: every harness is already logged into GitHub.
-A failed tool call is the call/path/rate-limit/scope of that one action.
-Do not open another GitHub login ask. Do not park waiting for Bryce
-to log in. Keep shipping. Not a Commons gate.
+Hub 1788325694.170879 records the historical connected-account declaration.
+Current operation diagnostics use observed status and optional identity; one
+failed call does not establish the state of every publication road.
+Keep shipping independent work. Not a Commons gate.
 """
 from __future__ import annotations
 
@@ -13,6 +13,11 @@ import json
 import re
 from pathlib import Path
 from typing import Any
+
+try:
+    from host.github_already_logged_in import classify as classify_operation
+except ModuleNotFoundError:
+    from github_already_logged_in import classify as classify_operation
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -23,7 +28,11 @@ VERDICTS = (
     "CALL_FAILED",
     "RATE_LIMITED",
     "PATH_WRONG",
+    "PATH_OR_VISIBILITY",
     "SCOPE_OF_ACTION",
+    "PERMISSION_OR_SCOPE",
+    "AUTHENTICATION_FAILED",
+    "PROVIDER_ERROR",
     "UNKNOWN",
 )
 NEVER_VERDICT = "MISSING_LOGIN_FREEZE"
@@ -90,31 +99,30 @@ def classify(
     status: int | str | None = None,
     action: str = "",
     message: str = "",
+    *,
+    login: str | None = None,
+    law_path: Path | None = None,
 ) -> dict[str, Any]:
     """One GitHub failure is that action. login_ask stays false."""
-    law = load_law()
+    law = load_law(law_path)
     code = _status_int(status)
     action_l = str(action or "").strip().lower()
     message_l = str(message or "").lower()
     blob = f"{action_l} {message_l}".strip()
     scoped = any(marker in blob for marker in SCOPE_ACTION_MARKERS)
 
-    verdict = "UNKNOWN"
-    if code is not None:
-        if 200 <= code < 300:
-            verdict = "OK"
-        elif code == 429 or "rate limit" in blob:
-            verdict = "RATE_LIMITED"
-        elif code == 404:
-            verdict = "PATH_WRONG"
-        elif scoped and code in (401, 403, 422):
-            verdict = "SCOPE_OF_ACTION"
-        elif code >= 400:
-            verdict = "CALL_FAILED"
-        else:
-            verdict = "UNKNOWN"
-    elif "rate limit" in blob:
-        verdict = "RATE_LIMITED"
+    observation = classify_operation(status_code=code, message=str(message or ""),
+                                     login=login, tool=str(action or ""))
+    verdict = {
+        "call_ok": "OK", "auth_ok": "OK", "rate_limit": "RATE_LIMITED",
+        "authentication": "AUTHENTICATION_FAILED",
+        "path_or_visibility": "PATH_OR_VISIBILITY",
+        "permission_or_scope": "PERMISSION_OR_SCOPE",
+        "provider_error": "PROVIDER_ERROR", "https_git_not_mcp": "CALL_FAILED",
+        "call": "CALL_FAILED",
+    }.get(observation["cause"], "UNKNOWN")
+    if scoped and verdict == "PERMISSION_OR_SCOPE":
+        verdict = "SCOPE_OF_ACTION"
 
     roads = list(law.get("alternate_roads") or ALTERNATE_ROADS)
     if verdict == "OK":
@@ -129,7 +137,11 @@ def classify(
         "login_ask": False,
         "park_for_owner_login": False,
         "freeze": False,
-        "github_login": str(law.get("harness_github_login") or "already_present"),
+        "github_login": observation["auth"],
+        "observed_login": login,
+        "declared_github_login": law.get("harness_github_login"),
+        "cause": observation["cause"],
+        "next": observation["next"],
         "never_verdict": NEVER_VERDICT,
         "one_failed_call": str(
             law.get("one_failed_call") or "that_action_not_missing_login"
@@ -147,6 +159,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--message", default="", help="error body or tool message")
     parser.add_argument("--draft", default="", help="draft Slack/post text to scan")
     parser.add_argument("--law", default="", help="override law path")
+    parser.add_argument("--login", default="", help="identity observed by a harmless profile read")
     args = parser.parse_args(argv)
     if args.law:
         load_law(Path(args.law))
@@ -162,6 +175,8 @@ def main(argv: list[str] | None = None) -> int:
             status=args.status or None,
             action=args.action,
             message=args.message,
+            login=args.login or None,
+            law_path=Path(args.law) if args.law else None,
         )
         if args.draft:
             result["opens_github_login_ask"] = opens_github_login_ask(args.draft)
