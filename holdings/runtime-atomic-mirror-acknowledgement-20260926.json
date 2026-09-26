@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "runtime-atomic-mirror-acknowledgement-20260926",
   "holder": "high-burn-lane-a",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-09-26T15:23:37.562Z",
-  "heartbeat_at": "2026-09-26T15:23:37.562Z",
+  "heartbeat_at": "2026-09-26T15:28:29.792Z",
   "ttl_s": 1800,
-  "note": "Own host/swarm_runtime/{store.py,sources.py,runtime.py,README.md}: acknowledge exact atomically written legacy mirror revisions; suppress self-echo commits while retaining changed direct claim ingestion."
+  "note": "Merged #30087 at 7c672cd0e86a2a0a3fdabdb1edbad6c4255d84f3; exact main readback verified. Separate-client replay adds no commit/events; real direct renewal/release remain visible."
 }
