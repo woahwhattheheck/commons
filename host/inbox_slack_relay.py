@@ -794,15 +794,21 @@ def run(config: dict, state: State, providers: Providers) -> dict:
         sources.reverse()
     next_source = None
     for name, source, channel in sources:
+        retry_key = "retry_after." + name
+        if float(state.get(retry_key, "0")) > time.time():
+            report["errors"][name] = "provider_retry_after_active"
+            continue
         if delivery.posts >= delivery.max_posts:
             # No source bodies are needed when this pass cannot deliver them.
             # Give the unserved source the first turn on the next finite pass.
             next_source = next_source or name
             report["errors"][name] = "delivery_budget_pending"
             continue
+        collecting = True
         try:
             getter = providers.github if name == "github" else providers.gmail
             events, info = source(getter, config, since, state.get)
+            collecting = False
             groups = info.pop("_delivery_groups", [])
             report["sources"][name] = info
             offset = 0
@@ -824,8 +830,11 @@ def run(config: dict, state: State, providers: Providers) -> dict:
             if exc.code == "delivery_budget_pending":
                 next_source = next_source or ("gmail" if name == "github" else "github")
             if exc.retry_after:
-                state.set("retry_after", time.time() + exc.retry_after)
-                break
+                # A source's API budget is independent of the other source.
+                # Slack delivery (and legacy global deadlines) still pause all.
+                state.set(retry_key if collecting else "retry_after", time.time() + exc.retry_after)
+                if not collecting:
+                    break
         except Exception:
             report["errors"][name] = "unexpected_source_error"
     if next_source:

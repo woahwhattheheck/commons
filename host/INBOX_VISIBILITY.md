@@ -159,6 +159,10 @@ one backlog spends the allowance, the other source gets the next turn; SQLite
 retains that choice alongside partial-delivery markers. A source deferred for
 lack of allowance is named in `errors` without downloading its message bodies.
 Provider retry deadlines still take precedence over the next delivery turn.
+GitHub and Gmail collection deadlines are stored separately, so the independent
+source can still progress while one source is cooling down. Slack delivery
+limits pause both sources; global deadlines retained by older ledgers are also
+honored until they expire.
 If source delivery observes a Slack Retry-After, the local report records
 `health_delivery: deferred_slack_retry_after` and the same pass makes no health
 request. The next existing poll retries after the persisted cooldown; a GitHub
