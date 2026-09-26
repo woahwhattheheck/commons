@@ -3,8 +3,8 @@
   "key": "deadline-bundle-path-preflight-20260926",
   "holder": "high-burn-value-pipeline",
   "taken_at": "2026-09-26T14:26:19Z",
-  "heartbeat_at": "2026-09-26T14:26:19Z",
+  "heartbeat_at": "2026-09-26T14:31:24Z",
   "ttl_s": 1800,
-  "state": "ACTIVE",
-  "note": "Own revenue/opportunity_deadline_command/engine.py and README.md: preflight bundle destination existence/alias collisions before publication, retaining exclusive writes."
+  "state": "RELEASED",
+  "note": "Merged PR #30043; deadline bundle destination preflight. Merge d9f763b1895ac1f2c05fb6ccca6cd8f9937bf892."
 }
