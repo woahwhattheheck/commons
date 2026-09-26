@@ -350,8 +350,25 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 0,
- "open_prs": [],
+ "n_open_prs": 1,
+ "open_prs": [
+  {
+   "number": 30090,
+   "author": "woahwhattheheck",
+   "title": "Checkpoint unfinished command-center publication capacity display",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/30090",
+   "base_freshness": {
+    "base_sha": "06bf65b3afffe81e3d991e9d68c96a94fc385c6c",
+    "main_sha": "eea0a909c4cf374f31c1edf2dca15c7936eecee0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  }
+ ],
  "live_cash": {
   "cite": [
    "newbot-json-doors-live-cash-20260916-06",

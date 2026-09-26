@@ -331,7 +331,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "fb24807c9a646b25e3eea761082f725768b608b9f45ffea784e378e1af8d5728",
+  "digest": "da5708eebf17adb9ce47d822aec9debe3c99d9b6fcf97686b086b0a2d1c5d23d",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -385,8 +385,8 @@
       }
     ],
     "post_count": 21585,
-    "pulse_seq": 2325,
-    "sha": "06bf65b3afffe81e3d991e9d68c96a94fc385c6c"
+    "pulse_seq": 2329,
+    "sha": "f754f382979ceeac6aefef2786f26a76f8679a4b"
   },
   "live_cash": {
     "cite": [
@@ -433,7 +433,7 @@
       }
     ]
   },
-  "now": "2026-09-26T15:40:23Z",
+  "now": "2026-09-26T16:48:13Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3192,7 +3192,7 @@
       "id": "grok-seat-carry-20260926-1515",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-26T15:15:31Z"
