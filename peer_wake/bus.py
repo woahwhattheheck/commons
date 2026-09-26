@@ -78,7 +78,7 @@ def schema_path(root: Path | None = None) -> Path:
 def _read_json(path: Path) -> Any:
     try:
         return json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError):
+    except (OSError, UnicodeError, json.JSONDecodeError):
         return None
 
 
@@ -359,12 +359,33 @@ def attach_watchdog(
     live = False
     for row in summary.get("jobs") or []:
         job = row.get("job") or {}
-        receipt = dispatch_delivery(job, row, deliver=deliver, env=env, http=http, root=root, now=row.get("now"))
+        # The scheduler's cheap tick decides whether this pass may wake a job.
+        # Still describe other targets without repeating an outbound effect.
+        wake = bool(deliver and row.get("ok") and row.get("action") == "WAKE")
+        try:
+            receipt = dispatch_delivery(job, row, deliver=wake, env=env, http=http, root=root, now=row.get("now"))
+        except Exception:
+            # The adapter may have failed after sending. Keep the scheduler's
+            # lease and expose uncertainty; never replay an effect here.
+            receipt = {
+                "ok": False,
+                "state": "ADAPTER_ERROR",
+                "code": "adapter_signal_failed",
+                "job_id": row.get("job_id") or job.get("job_id"),
+                "attempt_id": row.get("attempt_id"),
+                "delivery_requested": wake,
+                "delivery_uncertain": wake,
+                "live_wake": False,
+                "invoke_model": False,
+                "process_model_invocations": 0,
+            }
         rows.append(receipt)
         live = live or bool(receipt.get("live_wake"))
+    errors = sum(1 for row in rows if row.get("ok") is False)
     attached = public_receipt({
-        "ok": True,
-        "state": "ATTACHED",
+        "ok": not errors,
+        "state": "DEGRADED" if errors else "ATTACHED",
+        "error_count": errors,
         "live_wake": live,
         "invoke_model": False,
         "process_model_invocations": 0,
@@ -372,6 +393,10 @@ def attach_watchdog(
         "note": "Peer wake bus is additive. GET poll, grok_slack, gemini_slack, and MCP jobs stay.",
     })
     summary["peer_wake"] = attached
+    summary["peer_wake_error_count"] = errors
+    if errors:
+        summary["ok"] = False
+        summary["state"] = "DEGRADED"
     summary["process_model_invocations"] = 0
     summary["invoke_model"] = False
     return summary

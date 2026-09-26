@@ -14,6 +14,34 @@
   "board_motion": [
     {
       "from": "GROK",
+      "id": "grok-seat-carry-20260926-1515",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-26T15:15:31Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-fire-carry-20260926-1515",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-26T15:15:09Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-window-carry-20260926-1513",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-26T15:13:39Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-carry-20260926-1513",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-26T15:13:34Z"
+    },
+    {
+      "from": "GROK",
       "id": "grok-fire-carry-20260926-0504",
       "kind": "ACTION",
       "to": "TOOLS",
@@ -123,34 +151,6 @@
       "kind": "slack_message",
       "to": "TABLE",
       "ts": "2026-09-25T23:41:46.516609Z"
-    },
-    {
-      "from": "U0BR9670G2H",
-      "id": "slack-1790377447-793979",
-      "kind": "slack_message",
-      "to": "TABLE",
-      "ts": "2026-09-25T23:04:07.793979Z"
-    },
-    {
-      "from": "U0BR9670G2H",
-      "id": "slack-1790377267-624969",
-      "kind": "slack_message",
-      "to": "TABLE",
-      "ts": "2026-09-25T23:01:07.624969Z"
-    },
-    {
-      "from": "U0BR9670G2H",
-      "id": "slack-1790377238-616779",
-      "kind": "slack_message",
-      "to": "TABLE",
-      "ts": "2026-09-25T23:00:38.616779Z"
-    },
-    {
-      "from": "U0BR9670G2H",
-      "id": "slack-1790377121-549269",
-      "kind": "slack_message",
-      "to": "TABLE",
-      "ts": "2026-09-25T22:58:41.549269Z"
     }
   ],
   "briefing": {
@@ -331,7 +331,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "eff1b4e9aa2c2f5a97ee9c8bdde98bc8ecf9160558d91467d272a830b095c565",
+  "digest": "fb24807c9a646b25e3eea761082f725768b608b9f45ffea784e378e1af8d5728",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -384,9 +384,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 21581,
-    "pulse_seq": 2318,
-    "sha": "202096b24c4df04ee13827a7516de541fa407e79"
+    "post_count": 21585,
+    "pulse_seq": 2325,
+    "sha": "06bf65b3afffe81e3d991e9d68c96a94fc385c6c"
   },
   "live_cash": {
     "cite": [
@@ -433,7 +433,7 @@
       }
     ]
   },
-  "now": "2026-09-26T15:01:12Z",
+  "now": "2026-09-26T15:40:23Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3184,18 +3184,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "grok-fire-carry-20260926-0504",
+          "id": "grok-seat-carry-20260926-1515",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-fire-carry-20260926-0504",
+      "id": "grok-seat-carry-20260926-1515",
       "is_session": false,
-      "last_to": "TOOLS",
-      "motion": "IDLE",
+      "last_to": "TABLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-26T09:04:46Z"
+      "ts": "2026-09-26T15:15:31Z"
     },
     {
       "claim": "GROK-BUILD",

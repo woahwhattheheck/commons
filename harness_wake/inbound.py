@@ -145,7 +145,7 @@ def iter_record_paths(records_dir: str | Path, *, peek_all: bool) -> list[Path]:
 def parse_record(path: Path) -> dict[str, Any] | None:
     try:
         text = path.read_text(encoding="utf-8")
-    except OSError:
+    except (OSError, UnicodeError):
         return None
     if path.suffix == ".json":
         try:

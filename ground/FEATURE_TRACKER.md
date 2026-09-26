@@ -18,8 +18,8 @@ Status is derived. Author prose, chat, Slack, ntfy 200, an open PR, a Pages card
 - **PLANNED** — registry row, no claimed source paths.
 - **SOURCE_BUILT** — every `claimed_paths` entry exists on the measured tree or cited 40-character SHA.
 - **TESTS_PRESENT** — in the tests column, every declared `test_paths` entry exists and at least one was declared. The overall status uses TESTS_PRESENT only when SOURCE_BUILT also holds. This proves file presence only, even if those files would fail when executed. The projection does not run tests or import run results; test execution is unmeasured here. A feature with test files but no claimed source remains PLANNED. Actual run receipts remain separate evidence.
-- **LIVE** — SOURCE_BUILT plus a `LIVE_MEASUREMENT` evidence row with a public URL and a 40-character SHA. HTTP is a bake. Listing `public_entrypoint` only proves a source door. A cited `blob` that no longer matches the measured tree is stale; append a new row, never overwrite.
-- **DEGRADED** — claimed paths, tests, or a live measurement that no longer hold. Stale-only LIVE (cited blob moved, no current pin) is DEGRADED.
+- **LIVE** — SOURCE_BUILT plus a `LIVE_MEASUREMENT` evidence row with a public URL and a 40-character SHA. HTTP is a bake. Listing `public_entrypoint` only proves a source door. When the evidence pins a `blob` to a `path` (or the feature's `public_entrypoint`), the current blob must be readable and equal the pin. Missing, unreadable, or changed pinned bytes make that measurement stale; append a new row, never overwrite.
+- **DEGRADED** — claimed paths, tests, or a live measurement that no longer hold. Stale-only LIVE (cited blob missing, unreadable, or moved, no current pin) is DEGRADED. A separate current live measurement may still establish LIVE.
 - **SUPERSEDED** — a `SUPERSEDE` evidence row (or `superseded_by`) names the replacement. History stays.
 
 Source-built and live stay separate columns. Never collapse them.

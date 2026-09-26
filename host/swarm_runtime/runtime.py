@@ -13,7 +13,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from .identity import task_key
-from .projector import _landed_artifact, _merged, _time, normalize_equivalent, project
+from .projector import _time, merge_facts, project
 from .routing import context_bundle, route, select_tasks, status
 from .store import GitStore
 
@@ -87,36 +87,13 @@ def _project(state, moment):
 
 
 def _merge_facts(state, incoming):
-    facts = state.setdefault("provider_facts", {})
-    for key, fact in incoming.items():
-        old = copy.deepcopy(facts.get(key, {}))
-        fact = copy.deepcopy(fact)
-        for row in (old, fact):
-            for field in ("equivalent", "superseded_by"):
-                if field in row:
-                    row[field] = normalize_equivalent(row[field])
-        if old:
-            facts[key] = old
-        # A failed or older refresh cannot erase a landed immutable fact.
-        if _merged(old) or _landed_artifact(old):
-            continue
-        observed, previous = _time(fact.get("observed_at")), _time(old.get("observed_at"))
-        # Baked listings deliberately carry UNKNOWN observations. Text ordering
-        # would pin those facts forever and misorder equivalent timezone offsets.
-        if previous is None or (observed is not None and observed >= previous):
-            for field in ("equivalent", "superseded_by"):
-                previous = old.get(field)
-                current = fact.get(field)
-                if isinstance(previous, dict) and (_merged(previous) or _landed_artifact(previous)):
-                    if not isinstance(current, dict) or not (_merged(current) or _landed_artifact(current)):
-                        fact[field] = previous
-            facts[key] = fact
+    merge_facts(state.setdefault("provider_facts", {}), incoming)
 
 
 class Runtime:
     def __init__(self, root, *, store=None, state_dir=None):
         self.root = Path(root).resolve()
-        self.store = store or GitStore(self.root)
+        self.store = store or GitStore(self.root, state_dir=state_dir)
         if state_dir:
             self.state_dir = Path(state_dir)
         else:
@@ -133,7 +110,7 @@ class Runtime:
         from .sources import legacy_events
         from .providers import enrich
         _, state = self.store.read(refresh=False)
-        _append(state, legacy_events(state.get("legacy_holdings", {})))
+        _append(state, legacy_events(state.get("legacy_holdings", {}), state.get("legacy_mirror_revisions", {})))
         worker = str(payload.get("worker") or "")
         if worker and worker_activity:
             state.setdefault("workers", {}).setdefault(worker, {}).update(
@@ -180,7 +157,7 @@ class Runtime:
                 continue
             enriched = enrich({target: row}, self.state_dir, max_calls=remaining, now=moment)
             remaining -= enriched.get("calls", 0)
-            facts.update(enriched.get("provider_facts", {}))
+            merge_facts(facts, enriched.get("provider_facts", {}))
             deferred.extend(enriched.get("deferred", []))
             _merge_facts(state, enriched.get("provider_facts", {}))
             if remaining <= 0:
@@ -215,7 +192,7 @@ class Runtime:
         except ImportError:
             legacy_events = None
         if legacy_events:
-            incoming += legacy_events(prior.get("legacy_holdings", {}))
+            incoming += legacy_events(prior.get("legacy_holdings", {}), prior.get("legacy_mirror_revisions", {}))
         candidate = copy.deepcopy(prior)
         _append(candidate, incoming)
         candidate["seats"] = imported.get("seats", candidate.get("seats", {}))
@@ -227,8 +204,10 @@ class Runtime:
         if refresh_providers and max_calls:
             from .providers import enrich
             fresh = enrich(projection["tasks"], self.state_dir, max_calls=max_calls, now=moment)
-        facts = {**imported.get("provider_facts", {}), **(provider_facts or {}),
-                 **fresh.get("provider_facts", {})}
+        facts = {}
+        for batch in (imported.get("provider_facts", {}), provider_facts or {},
+                      fresh.get("provider_facts", {})):
+            merge_facts(facts, batch)
 
         def mutation(state):
             before = _project(state, moment)["tasks"]
@@ -237,7 +216,7 @@ class Runtime:
                 # Collection/provider I/O preceded this CAS read. A direct
                 # release or take may have changed a sibling holding meanwhile;
                 # replay that exact current custody after the collected inputs.
-                added += _append(state, legacy_events(state.get("legacy_holdings", {})))
+                added += _append(state, legacy_events(state.get("legacy_holdings", {}), state.get("legacy_mirror_revisions", {})))
             _merge_facts(state, facts)
             state["seats"] = imported.get("seats", state.get("seats", {}))
             # Do not overwrite a concurrent sync's newer boundary with this read.
@@ -314,7 +293,7 @@ class Runtime:
 
         def mutation(state):
             from .sources import legacy_events
-            _append(state, legacy_events(state.get("legacy_holdings", {})))
+            _append(state, legacy_events(state.get("legacy_holdings", {}), state.get("legacy_mirror_revisions", {})))
             _merge_facts(state, fresh_facts)
             operations = state.setdefault("operations", {})
             old = operations.get(operation_id)

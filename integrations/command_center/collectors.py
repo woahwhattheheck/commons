@@ -185,6 +185,21 @@ class LiveCollectors:
             suffix = "&" if "?" in endpoint else "?"
             try:
                 response = self._github(endpoint + suffix + urlencode({"per_page": self.page_size, "page": page}))
+                rows = response.get(key) if key and isinstance(response, dict) else response
+                if not isinstance(rows, list) or any(not isinstance(row, dict) for row in rows):
+                    raise SourceFailure("github_response_shape")
+                # Validate the whole envelope before appending any of this
+                # page. A malformed later response must retain earlier pages
+                # with incomplete coverage, just like a transport failure.
+                if isinstance(response, dict):
+                    if "total_count" in response:
+                        total = response["total_count"]
+                        if type(total) is not int or total < 0:
+                            raise SourceFailure("github_pagination_shape")
+                    if ("incomplete_results" in response
+                            and type(response["incomplete_results"]) is not bool):
+                        raise SourceFailure("github_pagination_shape")
+                    incomplete = incomplete or bool(response.get("incomplete_results"))
             except Exception as exc:
                 if progress is None or not progress["pages_read"]:
                     raise
@@ -196,9 +211,6 @@ class LiveCollectors:
                     failure["request_budget"] = exc.metadata
                 progress["failures"].append(failure)
                 return result, False
-            rows = response.get(key) if key and isinstance(response, dict) else response
-            if not isinstance(rows, list):
-                raise SourceFailure("github_response_shape")
             # GitHub page boundaries can overlap while results change between requests.
             # Stable provider ids must count once or overlap can manufacture completeness.
             for row in rows:
@@ -209,15 +221,6 @@ class LiveCollectors:
                     result.append(row)
                     if marker is not None:
                         seen_ids.add(marker)
-            if isinstance(response, dict):
-                if "total_count" in response:
-                    total = response["total_count"]
-                    if type(total) is not int or total < 0:
-                        raise SourceFailure("github_pagination_shape")
-                if ("incomplete_results" in response
-                        and type(response["incomplete_results"]) is not bool):
-                    raise SourceFailure("github_pagination_shape")
-                incomplete = incomplete or bool(response.get("incomplete_results"))
             if progress is not None:
                 progress["pages_read"] += 1
             if not incomplete and total is not None and len(result) >= total:

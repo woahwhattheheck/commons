@@ -252,6 +252,16 @@ def measure_tree(root, main_sha=""):
     if main_sha and not SHA_RE.fullmatch(str(main_sha)):
         return {"error": "main SHA must be 40 lowercase hex characters", "open_now": [], "items": []}
     git_env = dict(os.environ, GIT_NO_LAZY_FETCH="1", GIT_NO_REPLACE_OBJECTS="1")
+    # git -C does not override inherited repository selectors. A hook or agent
+    # subprocess must measure --root, not its parent's repository/object store.
+    for key in (
+        "GIT_DIR", "GIT_COMMON_DIR", "GIT_WORK_TREE", "GIT_OBJECT_DIRECTORY",
+        "GIT_ALTERNATE_OBJECT_DIRECTORIES", "GIT_NAMESPACE", "GIT_INDEX_FILE",
+        "GIT_SHALLOW_FILE", "GIT_QUARANTINE_PATH", "GIT_GRAFT_FILE",
+        "GIT_LITERAL_PATHSPECS", "GIT_GLOB_PATHSPECS", "GIT_NOGLOB_PATHSPECS",
+        "GIT_ICASE_PATHSPECS",
+    ):
+        git_env.pop(key, None)
     try:
         if main_sha:
             # Definitions and path evidence must describe the same snapshot.

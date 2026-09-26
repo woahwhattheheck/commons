@@ -18,7 +18,9 @@ from __future__ import annotations
 
 import argparse
 import json
+import logging
 import os
+import sqlite3
 import threading
 import urllib.parse
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -212,6 +214,69 @@ class Controller:
         finally:
             with self._lock:
                 self._cancel.pop(run_id, None)
+                try:
+                    ended = self.store.get_run(run_id)
+                    busy = any(self.store.get_run(other).get("seat") == ended.get("seat")
+                               for other in self._cancel)
+                    with self.store._lock:
+                        outstanding = self.store._db.execute(
+                            "SELECT 1 FROM runs WHERE seat=? AND run_id<>? "
+                            "AND status IN ('queued','running','interrupted') LIMIT 1",
+                            (ended.get("seat"), run_id)).fetchone()
+                    configured = (isinstance(self.runner, InProcessSeatRunner)
+                                  and callable(self.runner._handler))
+                    available = configured and not busy and outstanding is None
+                except Exception:
+                    ended, available = None, False
+            # A cancellation request is not exit. This point is reached only
+            # after execute returned/unwound, and never calls back under locks.
+            if ended is not None and ended.get("status") in TERMINAL:
+                try:
+                    self._notify_swarm_exit(ended, worker_available=available,
+                                           execution_road="configured_handler" if configured else "unconfigured")
+                except Exception as exc:
+                    logging.getLogger(__name__).warning(
+                        "Canonical exit notification deferred: %s", type(exc).__name__)
+
+    @staticmethod
+    def _notify_swarm_exit(run, *, worker_available, execution_road):
+        """Reuse an existing local center; retain exact handles, never run text."""
+        state = Path(os.environ.get("COMMONS_COMMAND_CENTER_STATE",
+                                    str(Path.home() / ".commons" / "command-center")))
+        database = state / "command-center.sqlite3"
+        if not database.is_file():
+            return {"status": "unavailable", "reason": "existing_command_center_missing"}
+        runtime_ids = set()
+        db = sqlite3.connect(database.resolve().as_uri() + "?mode=ro", uri=True)
+        try:
+            rows = db.execute("SELECT runtime,summary FROM operations "
+                              "WHERE kind='tool' AND name='grokbot_submit' AND summary LIKE ?",
+                              ("%" + run["run_id"] + "%",))
+            for runtime_id, raw in rows:
+                summary = json.loads(raw)
+                bound = summary.get("swarm") or {}
+                if (runtime_id and bound.get("task_key") and bound.get("worker") == run.get("seat")
+                        and any(ref.get("key") == "run_id" and ref.get("value") == run["run_id"]
+                                for ref in summary.get("provider_refs", []))):
+                    runtime_ids.add(runtime_id)
+            if not runtime_ids and db.execute(
+                    "SELECT 1 FROM records WHERE kind='runtimes' AND id='shared-equipment'").fetchone():
+                # The callback can precede the submit receipt's run_id. Retain
+                # scoped metadata now; consuming still requires its exact ID.
+                runtime_ids.add("shared-equipment")
+        finally:
+            db.close()
+        if not runtime_ids:
+            return {"status": "unavailable", "reason": "existing_runtime_missing"}
+        from integrations.command_center.core import CommandCenter
+        from integrations.command_center.swarm_lifecycle import observe_terminal
+        center = CommandCenter(state, initialize=False)
+        event = {key: run[key] for key in ("run_id", "session_id", "pool_id", "seat", "status", "updated_at")
+                 if key in run}
+        event.update(upstream_terminal=True, worker_available=bool(worker_available),
+                     execution_road=execution_road)
+        return [observe_terminal(center, "grokbot", event, runtime_id=runtime_id)
+                for runtime_id in sorted(runtime_ids)]
 
 
 class Gateway(ThreadingHTTPServer):

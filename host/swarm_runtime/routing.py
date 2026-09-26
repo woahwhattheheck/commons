@@ -373,6 +373,8 @@ def context_bundle(task, events=None, max_events=8):
     """Bounded identifiers plus recent exact matches; never a provider search."""
     keys = ("task_key", "title", "repo", "issue", "pr", "state", "worker", "model", "harness",
             "base_sha", "head_sha", "branch", "merge_sha", "feed_cursor", "artifact",
+            "artifact_sha", "landed_sha", "shipment_kind", "shipment_source", "closed_at",
+            "provider_freshness", "provider_observed_at", "reconciliation_needed",
             "started_at", "latest_activity", "blocker", "next_action", "superseded_by",
             "required_capabilities")
     bundle = {key: _bounded(task.get(key, UNKNOWN)) for key in keys}

@@ -8,6 +8,8 @@ import hmac
 import json
 import re
 from collections.abc import Iterable, Mapping, Sequence
+from datetime import datetime, timezone
+from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Any
 
@@ -79,10 +81,37 @@ def _score(row: Any, operation: str, terms: Sequence[str]) -> int:
     return score
 
 
+def _timestamp(value: Any) -> Decimal | None:
+    """Comparable exact seconds for aware ISO dates and Slack epoch timestamps."""
+    if isinstance(value, bool) or not isinstance(value, (str, int, float)):
+        return None
+    try:
+        seconds = Decimal(str(value))
+        if seconds.is_finite() and Decimal(-62135596800) <= seconds < Decimal(253402300800):
+            return seconds
+        return None
+    except InvalidOperation:
+        pass
+    try:
+        stamp = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+        if stamp.tzinfo is None:
+            return None
+        elapsed = stamp - datetime(1970, 1, 1, tzinfo=timezone.utc)
+        return Decimal(elapsed.days * 86400 + elapsed.seconds) + Decimal(elapsed.microseconds) / 1_000_000
+    except (ValueError, OverflowError):
+        return None
+
+
 def _sort(rows: Iterable[dict[str, Any] | None]) -> list[dict[str, Any]]:
     rows = [row for row in rows if row]
     identity = lambda row: str(row.get("id") or row.get("key") or row.get("name") or row.get("number") or canonical(row))
-    stamp = lambda row: str(row.get("durable_ts") or row.get("updated_at") or row.get("heartbeat_at") or row.get("ts") or "")
+    def stamp(row: Mapping[str, Any]) -> tuple[bool, Decimal]:
+        for key in ("durable_ts", "updated_at", "heartbeat_at", "ts"):
+            parsed = _timestamp(row.get(key))
+            if parsed is not None:
+                return True, parsed
+        return False, Decimal(0)
+
     rows.sort(key=identity)
     rows.sort(key=stamp, reverse=True)
     rows.sort(key=lambda row: int(row.get("_score", 0)), reverse=True)

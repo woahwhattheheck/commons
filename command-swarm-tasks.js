@@ -1,4 +1,4 @@
-/* Read the Python projection at one claims commit. No event reducer or polling. */
+/* Read one atomic Python projection through the raw CDN. No event reducer or polling. */
 (() => {
   "use strict";
   const helpers = window.CommonsCommand;
@@ -6,7 +6,7 @@
   if (!helpers || !panel) return;
   const REPO = "woahwhattheheck/commons", BRANCH = "state/claims";
   const PATH = "holdings/swarm-status.json", MAX_BYTES = 4 * 1024 * 1024;
-  const CACHE_KEY = "commons-swarm-status-pin-v1", CACHE_MS = 60000, PAGE = 50;
+  const CACHE_KEY = "commons-swarm-status-snapshot-v2", CACHE_MS = 60000, PAGE = 50;
   const root = document.getElementById("canonical-swarm-body");
   const stamp = document.getElementById("canonical-swarm-stamp");
   const node = (tag, text, cls) => {
@@ -20,7 +20,6 @@
   const readable = value => !known(value) ? "UNKNOWN" : typeof value === "object" ? JSON.stringify(value) : String(value);
   const compact = (value, limit = 600) => readable(value).slice(0, limit);
   const date = value => Number.isFinite(Date.parse(value)) ? new Date(value).toLocaleString() : "UNKNOWN";
-  const sha = value => /^[0-9a-f]{40}$/i.test(value || "");
   const badge = (text, cls = "UNKNOWN") => node("span", text, "pill " + cls);
   const liveClass = state => state === "SHIPPED" ? "LIVE" : state === "ACTIVE" ? "QUIET" : state === "BLOCKED" ? "STALE" : "UNKNOWN";
   const actions = node("div", undefined, "actions");
@@ -41,7 +40,7 @@
   const details = node("details"), detailBody = node("div"); detailBody.style.overflowWrap = "anywhere";
   details.append(node("summary", "Source, collisions and capability pools"), detailBody);
   root.append(actions, note, counts, rows, pages, details);
-  let snapshot = null, pin = null, failure = "", inFlight = null, retryAt = 0, offset = 0, repaint;
+  let snapshot = null, observation = null, failure = "", inFlight = null, retryAt = 0, offset = 0, repaint;
   const queryTask = new URLSearchParams(location.search).get("swarm_task");
   let exactTask = queryTask || "";
   if (queryTask) { search.value = queryTask; filter.value = "all"; }
@@ -50,7 +49,13 @@
     try { return JSON.parse(localStorage.getItem(CACHE_KEY) || "null"); } catch (_) { return null; }
   }
   function save(value) {
-    try { localStorage.setItem(CACHE_KEY, JSON.stringify(value)); } catch (_) {}
+    try { localStorage.setItem(CACHE_KEY, JSON.stringify(value)); } catch (_) {
+      // A large snapshot may exceed storage quota; keep cooldowns cheap.
+      try { localStorage.setItem(CACHE_KEY, JSON.stringify({checked_at: value.checked_at, retry_at: value.retry_at})); } catch (_) {}
+    }
+  }
+  function validSnapshot(body) {
+    return body?.schema === "commons-swarm-status/v1" && body.authority === BRANCH && Array.isArray(body.tasks) && body.tasks.length <= 5000;
   }
   function ageLabel(when) {
     const seconds = (Date.now() - Date.parse(when)) / 1000;
@@ -93,7 +98,7 @@
     const stale = Date.now() - Date.parse(snapshot.projected_at) >= 3600000;
     stamp.textContent = "Projected " + ageLabel(snapshot.projected_at);
     stamp.className = "pill " + (failure || stale ? "STALE" : "QUIET");
-    note.textContent = (failure ? "Refresh failed: " + failure + ". Previous pinned snapshot retained." + retry + " " : "") +
+    note.textContent = (failure ? "Refresh failed: " + failure + ". Previous observed snapshot retained." + retry + " " : "") +
       "Projected " + date(snapshot.projected_at) + " · " + tasks.length + " loaded / " + readable(snapshot.total) + " canonical tasks. " +
       "Counts and lifecycle are as projected; current lease ages appear on each active task." +
       (snapshot.truncated ? " Task list is truncated; filters cover loaded rows only. Use swarmctl status --task for an exact lookup." : "") +
@@ -127,9 +132,10 @@
     }
     previous.disabled = offset === 0; next.disabled = offset + PAGE >= matches.length;
     pageNote.textContent = (matches.length ? offset + 1 : 0) + "–" + (offset + visible.length) + " of " + matches.length + " matching";
-    detailBody.append(node("p", "Authority " + readable(snapshot.authority) + " · pinned commit " + pin.sha + " · ref observed " + date(pin.checked_at), "small mono"));
-    const source = node("a", "Open this exact derived snapshot"); source.href = "https://github.com/" + REPO + "/blob/" + pin.sha + "/" + PATH;
+    detailBody.append(node("p", "Authority " + readable(snapshot.authority) + " · branch snapshot observed " + date(observation?.checked_at) + " · commit pin UNKNOWN", "small mono"));
+    const source = node("a", "Open current branch snapshot"); source.href = "https://raw.githubusercontent.com/" + REPO + "/" + BRANCH + "/" + PATH;
     detailBody.append(source, node("p", "Source ledger SHA-256 " + readable(snapshot.source_ledger_sha256), "small mono"),
+      node("p", "The CDN may retain an older branch snapshot. This digest identifies its source ledger; the link follows the branch and can change.", "small muted"),
       node("p", "Consumed feed cursor " + readable(snapshot.feed_cursor), "small mono"));
     if (snapshot.metadata_truncated) detailBody.append(node("p", "Omitted detail: " + compact(snapshot.omitted_metadata), "small muted"));
     const pools = summary.idle_capabilities || {};
@@ -150,24 +156,23 @@
   async function read() {
     if (inFlight || document.hidden) return inFlight;
     const shared = cache();
+    if (validSnapshot(shared?.snapshot) && (!snapshot || Date.parse(shared.checked_at) > Date.parse(observation?.checked_at))) {
+      snapshot = shared.snapshot; observation = {checked_at: shared.checked_at}; offset = 0;
+    }
     retryAt = Math.max(retryAt, Number(shared?.retry_at) || 0);
     if (Date.now() < retryAt) { render(); return; }
     inFlight = Promise.resolve().then(async () => {
       try {
-        let nextPin = shared;
-        const age = Date.now() - Date.parse(nextPin?.checked_at);
-        if (!sha(nextPin?.sha) || !Number.isFinite(age) || age < 0 || age >= CACHE_MS) {
-          const ref = await helpers.fetchJson("https://api.github.com/repos/" + REPO + "/git/ref/heads/" + BRANCH, {maxBytes: 65536});
-          if (!sha(ref.object?.sha)) throw new Error("Claims ref did not return a commit SHA");
-          nextPin = {sha: ref.object.sha, checked_at: new Date().toISOString()}; save(nextPin);
+        const age = Date.now() - Date.parse(observation?.checked_at);
+        if (!snapshot || !Number.isFinite(age) || age < 0 || age >= CACHE_MS) {
+          const body = await helpers.fetchJson("https://raw.githubusercontent.com/" + REPO + "/" + BRANCH + "/" + PATH,
+            {maxBytes: MAX_BYTES});
+          if (!validSnapshot(body)) throw new Error("Unrecognized canonical status snapshot");
+          if (snapshot?.source_ledger_sha256 !== body.source_ledger_sha256 || snapshot?.projected_at !== body.projected_at) offset = 0;
+          snapshot = body; observation = {checked_at: new Date().toISOString()};
+          save({...observation, snapshot, retry_at: 0});
         }
-        if (!snapshot || pin?.sha !== nextPin.sha) {
-          const body = await helpers.fetchJson("https://raw.githubusercontent.com/" + REPO + "/" + nextPin.sha + "/" + PATH,
-            {cache: "force-cache", maxBytes: MAX_BYTES});
-          if (body?.schema !== "commons-swarm-status/v1" || body.authority !== BRANCH || !Array.isArray(body.tasks) || body.tasks.length > 5000) throw new Error("Unrecognized canonical status snapshot");
-          snapshot = body; offset = 0;
-        }
-        pin = nextPin; failure = ""; retryAt = 0;
+        failure = ""; retryAt = 0;
       } catch (error) {
         failure = String(error.message || error);
         retryAt = Math.max(Number(error.retryAt) || 0, Date.now() + ([403, 429].includes(error.status) ? 300000 : CACHE_MS));

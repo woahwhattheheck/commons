@@ -692,7 +692,30 @@ class ToolGateway(ThreadingHTTPServer):
 
     def _terminal_event(self, **fields) -> dict:
         with self._peer_state_lock:
-            return self.events.append(**fields)
+            # A completed turn does not prove that this peer's queue is empty.
+            # Unknown remote exits remain outstanding even after local cancel.
+            with self.events._condition:
+                other_work = any(
+                    item.get("peer") == fields.get("peer")
+                    and item.get("request_id") != fields.get("request_id")
+                    and item.get("status") != "completed"
+                    and item.get("upstream_terminal") is not True
+                    for item in self.events._latest.values())
+                fields["worker_available"] = not other_work
+                event = self.events.append(**fields)
+        # Reconciliation may call the existing gateway again. Never hold peer
+        # or event locks across its Git/provider IO or the following dispatch.
+        try:
+            from integrations.command_center.equipment import CommandCenterEquipment
+            from integrations.command_center.swarm_lifecycle import observe_terminal
+            equipment = next((item for item in getattr(self.catalog, "extensions", [])
+                              if isinstance(item, CommandCenterEquipment)), None)
+            if equipment is not None:
+                self._last_swarm_lifecycle = observe_terminal(equipment.center, "gemini", event)
+        except Exception as exc:
+            # The provider's real terminal receipt survives observer failures.
+            self._last_swarm_lifecycle = {"status": "deferred", "reason": type(exc).__name__}
+        return event
 
     def cancel(self, request_id: str) -> dict:
         with self._peer_state_lock:
