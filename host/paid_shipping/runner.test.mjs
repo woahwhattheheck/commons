@@ -58,7 +58,7 @@ test('public state repository stops before Slack or private content reads', asyn
   } finally { globalThis.fetch = originalFetch; }
 });
 
-test('runner bootstraps private state, imports durable notice, uses GET reads and CAS writes once', async () => {
+test('runner persists private state and reports held notices without Slack writes', async () => {
   const originalFetch = globalThis.fetch;
   const env = { COMMONS_GITHUB_TOKEN: 'fixture-github', SLACK_BOT_TOKEN: 'fixture-slack', TYPESAFE_API_KEY: 'fixture-jev' };
   const statePath = '/repos/woahwhattheheck/commons-ship-enforcer/contents/paid-work/shipping-state.json';
@@ -114,13 +114,24 @@ test('runner bootstraps private state, imports durable notice, uses GET reads an
   try {
     const first = await runMonitor(env);
     assert.equal(first.imported, 1);
-    assert.equal(first.delivered, 1);
-    assert.equal(posts.length, 1);
+    assert.equal(first.mode, 'read_only');
+    assert.equal(first.slack_writes, false);
+    assert.equal(first.delivered, 0);
+    assert.equal(first.delivery_error, null);
+    assert.equal(first.delivery_code, 'outbound_sender_identity_unverified');
+    assert.equal(first.delivery_held, 0);
+    assert.equal(first.operator_held, 1);
+    assert.equal(first.incident_held, 0);
+    assert.equal(posts.length, 0);
     assert.equal(writes.length, 2); // initial private snapshot, then CAS update
     assert.ok(requests.filter(r => r.path.endsWith('/conversations.history')).every(r => r.method === 'GET'));
     const second = await runMonitor(env);
     assert.equal(second.imported, 0);
-    assert.equal(posts.length, 1);
+    assert.equal(second.delivered, 0);
+    assert.equal(second.operator_held, 1);
+    assert.equal(second.delivery_code, 'outbound_sender_identity_unverified');
+    assert.equal(posts.length, 0);
+    assert.equal(requests.filter(r => r.path.endsWith('/chat.postMessage')).length, 0);
   } finally { globalThis.fetch = originalFetch; }
 });
 

@@ -387,7 +387,11 @@ test('free runner clears a large baseline slice and discovers new work during pa
     .get(channels[0], newRoot);
   assert.equal(hot.baseline, 0);
   assert.notEqual(hot.signature, '');
-  assert.equal(f.posts.length, 1);
+  assert.equal(second.delivered.code, 'outbound_sender_identity_unverified');
+  assert.equal(second.delivered.delivered, false);
+  assert.equal(f.posts.length, 0);
+  assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM slack_shipping_outbox').get().n, 0);
+  assert.equal(f.requests.filter(url => new URL(url).pathname.endsWith('/chat.postMessage')).length, 0);
 });
 
 test('free runner persists Slack Retry-After and defers without consuming the thread cursor', async () => {
