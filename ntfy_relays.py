@@ -13,6 +13,7 @@ exists or the id is already present on the canonical ntfy host.
 """
 from __future__ import annotations
 
+import http.client
 import json
 import os
 import tempfile
@@ -44,23 +45,28 @@ def poll(host: str, *, failures: list[str] | None = None) -> list[dict]:
     )
     try:
         with urllib.request.urlopen(req, timeout=30) as response:
-            raw = response.read().decode("utf-8", "replace")
-    except (urllib.error.URLError, TimeoutError, OSError) as exc:
+            raw = response.read()
+    except (urllib.error.URLError, TimeoutError, OSError, http.client.HTTPException) as exc:
         print(f"poll fail {source_host} {exc}")
         if failures is not None:
             failures.append(source_host)
         return []
 
     out = []
+    malformed = 0
     for line in raw.splitlines():
         line = line.strip()
         if not line:
             continue
         try:
-            event = json.loads(line)
-        except json.JSONDecodeError:
+            event = json.loads(line.decode("utf-8"))
+        except (json.JSONDecodeError, UnicodeError):
+            malformed += 1
             continue
-        if not isinstance(event, dict) or event.get("event") != "message":
+        if not isinstance(event, dict):
+            malformed += 1
+            continue
+        if event.get("event") != "message":
             continue
 
         message = event.get("message") or ""
@@ -91,7 +97,14 @@ def poll(host: str, *, failures: list[str] | None = None) -> list[dict]:
                 "event_id": event.get("id"),
             }
         )
-    print(f"poll ok {source_host} n={len(out)}")
+    if malformed:
+        # Usable rows are still evidence of presence. A damaged outer stream
+        # cannot establish absence, especially for canonical reconciliation.
+        if failures is not None:
+            failures.append(source_host)
+        print(f"poll incomplete {source_host} n={len(out)} malformed={malformed}")
+    else:
+        print(f"poll ok {source_host} n={len(out)}")
     return out
 
 
