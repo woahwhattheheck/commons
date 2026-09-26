@@ -57,6 +57,7 @@ import argparse
 import json
 import os
 import sys
+import tempfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -186,6 +187,30 @@ def _dump(payload):
     return json.dumps(payload, separators=(",", ":"), sort_keys=True) + "\n"
 
 
+def _replace_atomically(path, blob):
+    """Publish a complete shard without truncating the previous readable copy."""
+    try:
+        mode = os.stat(path).st_mode & 0o777
+    except FileNotFoundError:
+        mode = 0o644
+    fd, temporary = tempfile.mkstemp(
+        prefix=".%s." % os.path.basename(path), suffix=".tmp",
+        dir=os.path.dirname(path),
+    )
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8", newline="\n") as fh:
+            os.chmod(temporary, mode)
+            fh.write(blob)
+            fh.flush()
+            os.fsync(fh.fileno())
+        os.replace(temporary, path)
+    finally:
+        try:
+            os.unlink(temporary)
+        except FileNotFoundError:
+            pass
+
+
 def write_shards(root=ROOT, head_n=HEAD_N, window_n=WINDOW_N, excerpt=EXCERPT):
     """Build and write both shards. Returns (written_paths, report).
 
@@ -228,8 +253,7 @@ def write_shards(root=ROOT, head_n=HEAD_N, window_n=WINDOW_N, excerpt=EXCERPT):
                 prior = None
         changed = prior != blob
         if changed:
-            with open(path, "w", encoding="utf-8", newline="\n") as fh:
-                fh.write(blob)
+            _replace_atomically(path, blob)
             written.append(rel)
         report.append(
             {
@@ -281,9 +305,17 @@ def since(cursor, root=ROOT, shard="head"):
     """
     path = os.path.join(root, FEED_DIR, "%s.json" % shard)
     payload = _read_json(path)
-    if not isinstance(payload, dict) or "events" not in payload:
+    if (not isinstance(payload, dict)
+            or not isinstance(payload.get("events"), list)
+            or any(not isinstance(e, dict) or not isinstance(e.get("c"), str)
+                   or not e["c"] for e in payload["events"])
+            or not isinstance(payload.get("complete_since", ""), str)
+            or not isinstance(payload.get("undated", []), list)
+            or any(not isinstance(i, str) for i in payload.get("undated", []))
+            or not isinstance(payload.get("source", {}), dict)):
         return {"state": "FINDER-FAILED", "reason": "unreadable %s" % path,
-                "events": [], "undated": [], "requires_full_read": False}
+                "events": [], "undated": [], "requires_full_read": True,
+                "next_read": "feed/window.json" if shard == "head" else "recent.json"}
     return _since_payload(payload, cursor, shard)
 
 
@@ -374,8 +406,9 @@ def main(argv=None):
         return self_test()
 
     if args.since is not None:
-        print(json.dumps(since(args.since, args.root, args.shard), indent=2))
-        return 0
+        result = since(args.since, args.root, args.shard)
+        print(json.dumps(result, indent=2))
+        return 2 if result["state"] == "FINDER-FAILED" else 0
 
     if args.check:
         recent = _read_json(os.path.join(args.root, "recent.json"))
