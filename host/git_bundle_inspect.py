@@ -331,17 +331,117 @@ def _read(path: Path, maximum: int) -> bytes:
     return data
 
 
+def tree_inventory(manifest: dict, objects: dict[str, tuple[str, bytes]], reference: str,
+                   *, max_entries: int = 100_000) -> dict:
+    """Map recovered objects to paths without checkout or pathname writes.
+
+    Missing objects are expected in incremental/thin bundles. Directory coverage
+    and content availability are separate, and gitlinks remain external entries.
+    """
+    if type(max_entries) is not int or max_entries <= 0:
+        raise BundleError('Tree inventory limit must be a positive integer')
+    width = hashlib.new(manifest['object_format']).digest_size
+    candidates = {row['oid'] for row in manifest['references'] if row['name'] == reference}
+    if not candidates and re.fullmatch('[0-9a-f]{' + str(width * 2) + '}', reference):
+        candidates.add(reference)
+    if len(candidates) != 1:
+        raise BundleError('Tree reference is missing or ambiguous: ' + reference)
+    root_oid = oid = candidates.pop()
+    seen = set()
+    missing: dict[str, str] = {}
+    tree_oid = None
+    while oid in objects:
+        if oid in seen:
+            raise BundleError('Cycle while resolving selected commit/tag')
+        seen.add(oid)
+        kind, data = objects[oid]
+        if kind == 'tree':
+            tree_oid = oid
+            break
+        if kind not in ('commit', 'tag'):
+            raise BundleError('Selected object is not a commit, tag or tree')
+        prefix = b'tree ' if kind == 'commit' else b'object '
+        header = data.split(b'\n\n', 1)[0].splitlines()
+        targets = [line[len(prefix):] for line in header if line.startswith(prefix)]
+        if len(targets) != 1 or not re.fullmatch(rb'[0-9a-f]{' + str(width * 2).encode() + rb'}', targets[0]):
+            raise BundleError('Selected commit/tag has an invalid target header')
+        oid = targets[0].decode('ascii')
+    if tree_oid is None:
+        missing[oid] = 'root'
+
+    entries = []
+    pending = [(b'', tree_oid)] if tree_oid is not None else []
+    path_bytes = 0
+    truncated = False
+    missing_trees = 0
+    missing_blobs = 0
+    while pending and not truncated:
+        parent_path, current = pending.pop()
+        kind, data = objects[current]
+        if kind != 'tree':
+            raise BundleError('Directory entry resolves to a non-tree object')
+        position = 0
+        names = set()
+        while position < len(data):
+            space = data.find(b' ', position)
+            nul = data.find(b'\0', space + 1) if space >= 0 else -1
+            if space < 0 or nul < 0 or nul + 1 + width > len(data):
+                raise BundleError('Malformed recovered tree object: ' + current)
+            raw_mode, name = data[position:space], data[space + 1:nul]
+            if not re.fullmatch(rb'[0-7]{5,6}', raw_mode) or not name or b'/' in name or name in names:
+                raise BundleError('Invalid or duplicate recovered tree entry')
+            names.add(name)
+            child = data[nul + 1:nul + 1 + width].hex()
+            position = nul + 1 + width
+            path = parent_path + name
+            if len(entries) >= max_entries or path_bytes + len(path) > 8 * 1024 * 1024:
+                truncated = True
+                break
+            path_bytes += len(path)
+            mode = raw_mode.decode('ascii')
+            entry_type = {0o040000: 'tree', 0o100000: 'blob', 0o120000: 'blob', 0o160000: 'gitlink'}.get(int(mode, 8) & 0o170000)
+            if entry_type is None:
+                raise BundleError('Unsupported recovered tree mode: ' + mode)
+            available = child in objects
+            if available and entry_type != 'gitlink' and objects[child][0] != entry_type:
+                raise BundleError('Recovered object type differs from its tree entry')
+            entries.append({'path': path.decode('utf-8', 'surrogateescape'), 'mode': mode,
+                            'type': entry_type, 'oid': child, 'available': available,
+                            'size': len(objects[child][1]) if available and entry_type == 'blob' else None})
+            if entry_type == 'tree':
+                if available:
+                    pending.append((path + b'/', child))
+                else:
+                    missing[child] = 'tree'
+                    missing_trees += 1
+            elif entry_type == 'blob' and not available:
+                missing[child] = 'blob'
+                missing_blobs += 1
+    complete = tree_oid is not None and not missing_trees and not truncated
+    entries.sort(key=lambda row: row['path'])
+    return {'requested_reference': reference, 'root_oid': root_oid, 'tree_oid': tree_oid,
+            'tree_complete': complete, 'content_complete': complete and not missing_blobs,
+            'truncated': truncated, 'max_entries': max_entries,
+            'max_path_bytes': 8 * 1024 * 1024, 'path_bytes': path_bytes,
+            'observed_entries': len(entries), 'missing_tree_entries': missing_trees,
+            'missing_blob_entries': missing_blobs,
+            'missing_objects': [{'oid': key, 'type': value} for key, value in sorted(missing.items())],
+            'entries': entries}
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('bundle', type=Path)
     parser.add_argument('--base64', action='store_true', help='Input is whitespace-wrapped base64, not a binary bundle')
     parser.add_argument('--sha256', help='Expected SHA256 of the decoded binary bundle')
-    parser.add_argument('--base-object', action='append', default=[], metavar='TYPE:PATH', help='Supply raw commit/tree/blob/tag bytes for delta resolution; repeatable')
+    parser.add_argument('--base-object', action='append', default=[], metavar='TYPE:PATH', help='Supply raw commit/tree/blob/tag bytes for delta resolution and tree lookup; repeatable')
     parser.add_argument('--output', type=Path, help='Create a NEW directory containing manifest.json and hash-named raw payloads')
     parser.add_argument('--fail-on-unresolved', action='store_true', help='Return 3 for partial recovery, while still exporting available objects')
     parser.add_argument('--max-input-mib', type=int, default=64)
     parser.add_argument('--max-object-mib', type=int, default=64)
     parser.add_argument('--max-total-mib', type=int, default=256)
+    parser.add_argument('--tree', metavar='REF_OR_OID', help='Inventory paths from a recovered commit/tag/tree without checkout')
+    parser.add_argument('--max-tree-entries', type=int, default=100_000, help='Bound optional tree inventory entries (default: 100000)')
     args = parser.parse_args(argv)
     try:
         if min(args.max_input_mib, args.max_object_mib, args.max_total_mib) <= 0:
@@ -369,6 +469,11 @@ def main(argv: list[str] | None = None) -> int:
             base_bytes += len(value)
             bases.append((kind, value))
         manifest, objects = inspect_bundle(data, limits=limits, bases=tuple(bases))
+        if args.tree:
+            inventory_objects = dict(objects)
+            for kind, payload in bases:
+                inventory_objects[object_id(kind, payload, manifest['object_format'])] = (kind, payload)
+            manifest['tree_inventory'] = tree_inventory(manifest, inventory_objects, args.tree, max_entries=args.max_tree_entries)
         if args.output:
             args.output.mkdir(parents=True, exist_ok=False)
             folder = args.output/'objects'
