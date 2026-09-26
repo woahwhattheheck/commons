@@ -61,3 +61,7 @@ python -m revenue.outbound_delivery_reconciliation.cli verify \
 ```
 
 The CLI performs no network/provider I/O.
+
+Each input read is bounded to 2 MiB before parsing. Duplicate object keys and
+non-finite numeric constants are rejected with exit code 2, so ambiguous input
+cannot silently replace a failure event or a report field during JSON decoding.
