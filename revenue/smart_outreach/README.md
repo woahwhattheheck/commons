@@ -41,6 +41,12 @@ python3 host/smart_outreach.py validate
 python3 host/smart_outreach.py plan
 ```
 
+For an `EMAIL` route, a recorded route address and `recipient_email` must identify
+the same mailbox after trimming whitespace and normalizing case. Contradictory
+addresses or malformed email, timestamp, and route fields produce a descriptive
+input error with exit code 2. Non-email route kinds retain their existing behavior;
+a missing recipient remains a research gap.
+
 `--receipts` must identify an existing, readable directory. A missing path,
 failed directory read, or unreadable/invalid JSON receipt exits with code 2 and
 an error on stderr; it never becomes an empty collision history. An existing

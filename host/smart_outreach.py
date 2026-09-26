@@ -63,6 +63,8 @@ def read_object(path: Path) -> dict[str, Any]:
 
 
 def _exact_keys(value: dict[str, Any], expected: set[str], where: str) -> None:
+    if not isinstance(value, dict):
+        raise OutreachError(f"{where} must be an object")
     actual = set(value)
     if actual != expected:
         raise OutreachError(
@@ -70,7 +72,9 @@ def _exact_keys(value: dict[str, Any], expected: set[str], where: str) -> None:
         )
 
 
-def _parse_time(value: str) -> dt.datetime:
+def _parse_time(value: Any) -> dt.datetime:
+    if not isinstance(value, str):
+        raise OutreachError("date-time must be text")
     text = value[:-1] + "+00:00" if value.endswith("Z") else value
     try:
         parsed = dt.datetime.fromisoformat(text)
@@ -81,7 +85,9 @@ def _parse_time(value: str) -> dt.datetime:
     return parsed.astimezone(dt.timezone.utc)
 
 
-def normalize_email(value: str) -> str:
+def normalize_email(value: Any) -> str:
+    if not isinstance(value, str):
+        raise OutreachError("email address must be text")
     normalized = value.strip().lower()
     if not EMAIL_RE.fullmatch(normalized) or len(normalized) > 254:
         raise OutreachError(f"invalid email address: {value}")
@@ -191,10 +197,16 @@ def validate_input(value: dict[str, Any]) -> dict[str, Any]:
         if not isinstance(route, dict):
             raise OutreachError(f"{where}.route must be an object")
         _exact_keys(route, {"kind", "value", "state"}, f"{where}.route")
-        if route["state"] not in {"VERIFIED", "UNVERIFIED"}:
+        if not isinstance(route["kind"], str) or not route["kind"].strip():
+            raise OutreachError(f"{where}.route.kind must be non-empty text")
+        if not isinstance(route["state"], str) or route["state"] not in {"VERIFIED", "UNVERIFIED"}:
             raise OutreachError(f"{where}.route.state is invalid")
         if route["value"] is not None and not isinstance(route["value"], str):
             raise OutreachError(f"{where}.route.value must be text or null")
+        if route["kind"] == "EMAIL" and route["value"] is not None:
+            route_email = normalize_email(route["value"])
+            if prospect["recipient_email"] is not None and route_email != normalize_email(prospect["recipient_email"]):
+                raise OutreachError(f"{where}.route.value differs from recipient_email")
         if type(prospect["do_not_contact"]) is not bool:
             raise OutreachError(f"{where}.do_not_contact must be boolean")
         if not isinstance(prospect["disqualifiers"], list) or not all(
