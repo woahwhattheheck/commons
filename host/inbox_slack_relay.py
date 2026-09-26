@@ -357,14 +357,18 @@ class State:
         path = Path(path)
         path.parent.mkdir(parents=True, exist_ok=True)
         self.db = sqlite3.connect(path, timeout=1)
-        self.db.executescript("""
-          CREATE TABLE IF NOT EXISTS meta (key TEXT PRIMARY KEY, value TEXT NOT NULL);
-          CREATE TABLE IF NOT EXISTS items (key TEXT PRIMARY KEY, channel TEXT NOT NULL, ts TEXT NOT NULL DEFAULT '', attempted REAL NOT NULL);
-          CREATE TABLE IF NOT EXISTS parts (key TEXT PRIMARY KEY, ts TEXT NOT NULL DEFAULT '', attempted REAL NOT NULL, uncertain INTEGER NOT NULL DEFAULT 0);
-        """)
-        self.db.commit()
-        if os.name != "nt":
-            path.chmod(0o600)
+        try:
+            self.db.executescript("""
+              CREATE TABLE IF NOT EXISTS meta (key TEXT PRIMARY KEY, value TEXT NOT NULL);
+              CREATE TABLE IF NOT EXISTS items (key TEXT PRIMARY KEY, channel TEXT NOT NULL, ts TEXT NOT NULL DEFAULT '', attempted REAL NOT NULL);
+              CREATE TABLE IF NOT EXISTS parts (key TEXT PRIMARY KEY, ts TEXT NOT NULL DEFAULT '', attempted REAL NOT NULL, uncertain INTEGER NOT NULL DEFAULT 0);
+            """)
+            self.db.commit()
+            if os.name != "nt":
+                path.chmod(0o600)
+        except BaseException:
+            self.db.close()
+            raise
     def get(self, key: str, default: str = "") -> str:
         row = self.db.execute("SELECT value FROM meta WHERE key=?", (key,)).fetchone()
         return row[0] if row else default
@@ -777,25 +781,30 @@ def main() -> int:
     parser.add_argument("--state", default=str(Path.home() / ".commons" / "inbox-visibility" / "state.sqlite3"))
     args = parser.parse_args()
     # One finite run. The OS scheduler/workflow owns cadence and single-flight.
-    state = State(args.state)
     try:
         with RunLock(args.state):
             config = json.loads(Path(args.config).read_text(encoding="utf-8"))
+            # A competing poll must not open, initialize, or chmod the ledger.
+            # Keep SQLite's entire lifetime inside the process lock.
+            state = State(args.state)
             try:
-                report = run(config, state, Providers())
-            except RelayError as exc:
-                # Initial Slack reads and final health writes are outside the
-                # source loop. Persist their cooldown before releasing the lock.
-                if exc.retry_after > 0:
-                    state.set("retry_after", max(float(state.get("retry_after", "0")),
-                                                 time.time() + exc.retry_after))
-                raise
+                try:
+                    report = run(config, state, Providers())
+                except RelayError as exc:
+                    # Initial Slack reads and final health writes are outside the
+                    # source loop. Persist their cooldown before releasing the lock.
+                    if exc.retry_after > 0:
+                        state.set("retry_after", max(float(state.get("retry_after", "0")),
+                                                     time.time() + exc.retry_after))
+                    raise
+            finally:
+                state.close()
     except RelayError as exc:
         report = {"observed_at": iso(), "status": "BLOCKED", "error": exc.code}
+    except sqlite3.Error:
+        report = {"observed_at": iso(), "status": "BLOCKED", "error": "state_database_error"}
     except Exception:
         report = {"observed_at": iso(), "status": "BLOCKED", "error": "configuration_or_runtime_error"}
-    finally:
-        state.close()
     rendered = json.dumps(report, indent=2)
     print(rendered)  # Counters and fixed codes only; never source contents or tokens.
     if os.environ.get("GITHUB_STEP_SUMMARY"):

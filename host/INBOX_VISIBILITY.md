@@ -137,7 +137,10 @@ without the marker need their retained ledger to be identified reliably.
 
 The workflow caches only this sanitized ledger, not provider contents. Treat
 cache eviction as possible; Slack markers remain the recovery source. A process
-lock and scheduler concurrency prevent overlapping finite runs. Slack post
+lock covers ledger initialization through connection close, so a competing poll
+reports `another_poll_is_running` without opening or changing SQLite. An invalid
+or unavailable database reports `state_database_error` with exit code 2 and is
+left in place for recovery. Scheduler concurrency also prevents overlapping runs. Slack post
 throttling and Retry-After are honored. Uncertain API errors, incomplete history
 and page caps stop unsafe replay instead of claiming success. Stop automation by
 disabling the workflow or the named OS task; do not delete user source messages.
