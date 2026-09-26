@@ -959,14 +959,41 @@ def _system_now() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
+def _preflight_output_paths(paths: Sequence[str | os.PathLike[str]]) -> None:
+    destinations: set[str] = set()
+    for value in paths:
+        path = Path(value)
+        try:
+            parent = path.parent.stat()
+            if not stat.S_ISDIR(parent.st_mode):
+                raise EvidenceError(f"output parent is not a directory: {path.parent}")
+            try:
+                path.lstat()
+            except FileNotFoundError:
+                pass
+            else:
+                raise EvidenceError(f"output path already exists: {path}")
+            destination = os.path.normcase(str(path.resolve()))
+        except OSError as exc:
+            raise EvidenceError(f"cannot prepare output path: {path}: {exc}") from exc
+        if destination in destinations:
+            raise EvidenceError(f"output paths identify the same destination: {path}")
+        destinations.add(destination)
+
+
 def _command_compile(args: argparse.Namespace) -> int:
     raw_input = read_bounded_json(args.input)
     raw_policy = read_bounded_json(args.policy)
     as_of = _system_now()
     result = compile_portfolio(raw_input, raw_policy, as_of=as_of)
-    write_new_file(args.json_out, canonical_bytes(result) + b"\n")
-    write_new_file(args.markdown_out, markdown_projection(result).encode("utf-8"))
-    write_new_file(args.ics_out, ics_projection(result).encode("utf-8"))
+    outputs = [
+        (args.json_out, canonical_bytes(result) + b"\n"),
+        (args.markdown_out, markdown_projection(result).encode("utf-8")),
+        (args.ics_out, ics_projection(result).encode("utf-8")),
+    ]
+    _preflight_output_paths([path for path, _ in outputs])
+    for path, data in outputs:
+        write_new_file(path, data)
     print(result["manifest"]["receipt_sha256"])
     return 0
 
@@ -1004,7 +1031,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     args = parser.parse_args(argv)
     try:
         return int(args.func(args))
-    except EvidenceError as exc:
+    except (EvidenceError, OSError, UnicodeError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 2
 

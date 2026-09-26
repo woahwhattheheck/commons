@@ -147,6 +147,13 @@ python -m revenue.opportunity_deadline_command.engine verify \
 
 Inputs are bounded ordinary UTF-8 files. Output publication is create-exclusive and refuses overwrite/final-component symlink following. The module makes no network calls.
 
+Compilation renders all three outputs and checks every destination before
+creating files. An existing destination, missing parent directory, or two paths
+that resolve to the same destination produces an error without publishing a
+partial bundle. Final creation remains exclusive. Unexpected I/O failures or
+concurrent filesystem changes during publication can still leave already-written
+artifacts; the CLI reports those failures with exit code 2.
+
 ## Authority ceiling
 
 Every state, queue row, Markdown line, and calendar event is **owner-review decision support only**. Nothing here authorizes buyer/partner/sponsor contact, portal login/registration, question submission, conference registration, proposal/RFI/bid submission, signature/certification, pricing/staffing commitment, contract acceptance, spend, payment/provider mutation, award assertion, cash assertion, or revenue recognition.
