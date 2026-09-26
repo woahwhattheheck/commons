@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "board-sweep-recovery-windows",
+  "holder": "master2-control-plane",
+  "state": "HELD",
+  "taken_at": "2026-09-26T13:56:43.925Z",
+  "heartbeat_at": "2026-09-26T13:56:43.925Z",
+  "ttl_s": 1800,
+  "note": "board_ingest.py recovery candidate windows only; retain provider call ceiling and source-durability closure semantics"
+}
