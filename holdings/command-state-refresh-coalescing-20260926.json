@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "command-state-refresh-coalescing-20260926",
   "holder": "command-observability",
-  "heartbeat_at": "2026-09-26T12:10:11.113Z",
+  "heartbeat_at": "2026-09-26T12:12:16.877Z",
   "taken_at": "2026-09-26T12:10:11.113Z",
   "ttl_s": 1800,
-  "state": "HELD",
-  "note": "Own integrations/command_center/web/app.js: coalesce state refresh requests and ensure a post-save read cannot reuse a pre-save snapshot."
+  "state": "RELEASED",
+  "note": "Landed PR #29913 on main 0e3c0b1c1246880aec51f545271f579527156bcf"
 }
