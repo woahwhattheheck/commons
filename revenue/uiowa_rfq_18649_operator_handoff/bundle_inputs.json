@@ -91,7 +91,9 @@
         [
           "handoff.py",
           "render",
-          "examples/planned_release.json"
+          "examples/planned_release.json",
+          "--output",
+          "${OUT}/handoff-readiness.md"
         ]
       ],
       "files": [
@@ -137,7 +139,9 @@
           "--register",
           "measure_register.csv",
           "--measurements",
-          "examples/measurements.csv"
+          "examples/measurements.csv",
+          "--output",
+          "${OUT}/outcome-measurement.md"
         ]
       ],
       "files": [
