@@ -109,6 +109,28 @@ def _persisted(state):
     # lease.age_s and provider_age_s vary with the reader's clock without any
     # new event. Persisting that view doubles the ledger and causes idle churn.
     result.pop("tasks", None)
+    journal_ids = {event["id"] for event in result["events"]
+                   if isinstance(event, dict) and isinstance(event.get("id"), str)}
+    operations = result.get("operations", {})
+    for operation in operations.values() if isinstance(operations, dict) else []:
+        receipt = operation.get("result") if isinstance(operation, dict) else None
+        if not isinstance(receipt, dict):
+            continue
+        for field in ("task", "next"):
+            context = receipt.get(field)
+            if not isinstance(context, dict) or context.get("task_key") in (None, "", "UNKNOWN"):
+                continue
+            # Retain every known assignment/outcome/error field. Events already
+            # live in the immutable journal; keep exact receipt membership by
+            # ID instead of copying their bodies into every heartbeat receipt.
+            compact = {key: value for key, value in context.items() if value != "UNKNOWN"}
+            events = compact.get("events")
+            if isinstance(events, list) and all(
+                    isinstance(event, dict) and isinstance(event.get("id"), str)
+                    and event["id"] in journal_ids for event in events):
+                compact["context_event_ids"] = [event["id"] for event in events]
+                compact.pop("events")
+            receipt[field] = compact
     return result
 
 

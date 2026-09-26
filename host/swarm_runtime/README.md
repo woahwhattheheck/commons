@@ -58,6 +58,11 @@ Reuse the exact `operation_id` and payload after interruption. Reusing an ID wit
 different content is an error. CLI-generated IDs are printed on stderr; heartbeat
 and next defaults include the current minute, so retain an explicit ID for retries
 across minute boundaries. Read `published` before treating custody as acquired.
+Persisted operation receipts keep known assignment, outcome, error, and request
+evidence. Their context references exact event IDs in the retained journal instead
+of repeating event bodies; `UNKNOWN` placeholders are omitted. Immediate
+and retried operations still return full current context. Context without backing
+journal events remains inline, and structured no-assignment results stay intact.
 
 ## Rate limits and deployment
 
