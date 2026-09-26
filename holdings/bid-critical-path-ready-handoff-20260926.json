@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "bid-critical-path-ready-handoff-20260926",
+  "holder": "high-burn-value-pipeline",
+  "taken_at": "2026-09-26T14:42:55Z",
+  "heartbeat_at": "2026-09-26T14:42:55Z",
+  "ttl_s": 1800,
+  "state": "ACTIVE",
+  "note": "Own revenue/bid_deadline_critical_path/engine.py + README.md: expose unresolved prerequisites and avoid presenting waiting owner actions as the next ready handoff."
+}
