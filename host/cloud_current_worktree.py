@@ -718,7 +718,13 @@ def snapshot(worktree, peer=None, command="snapshot"):
 
 
 def fetch_origin_main(worktree):
-    rc, _, err = git(["fetch", "origin", "main"], cwd=worktree, check=False, timeout=180)
+    # A single-branch clone may map only its feature branch in origin.fetch.
+    # Fetching the name "main" then updates FETCH_HEAD but leaves origin/main
+    # absent or stale. Name the destination explicitly before reporting CURRENT.
+    rc, _, err = git(
+        ["fetch", "origin", "refs/heads/main:refs/remotes/origin/main"],
+        cwd=worktree, check=False, timeout=180,
+    )
     sha = rev_sha(worktree, "origin/main")
     if rc != 0:
         state = "STALE" if sha else "UNKNOWN"
@@ -958,8 +964,8 @@ def open_worktree(peer="unseated", dest=None, repo=None, mode="clone", source=No
         refuse_owner_disk(source)
         if not git_ok(source):
             raise CloudCurrentError("source is not a git clone: %s" % source)
-        git(["fetch", "origin", "main"], cwd=source, check=False, timeout=180)
-        start = rev_sha(source, "origin/main") or head_sha(source)
+        _origin_state, origin_sha, _fetch_err = fetch_origin_main(source)
+        start = origin_sha or head_sha(source)
         branch = "wt/%s/%s" % (re.sub(r"[^a-z0-9]+", "-", peer.lower()).strip("-") or "unseated", sid)
         git(["branch", branch, start], cwd=source)
         git(["worktree", "add", dest, branch], cwd=source)

@@ -41,7 +41,9 @@ Mode `clone` (default) is an isolated clone — no shared index lock. Mode
 
 1. Snapshot dirt first (file copies + optional `git stash create` recovery
    ref). Never `stash drop` / `stash pop`.
-2. `git fetch origin main`. Fetch failure is `origin_state=STALE`, not a stop.
+2. Fetch `refs/heads/main` explicitly into `refs/remotes/origin/main`. This also
+   works in single-branch feature clones whose configured fetch mapping omits
+   main. Fetch failure is `origin_state=STALE`, not a stop.
 3. Clean paths that moved on main take origin.
 4. Dirty paths unchanged on main stay ours.
 5. Dirty paths that also moved on main: 3-way compose. Same bytes `DEDUPED`.
