@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 8903,
+    "open_issues": 8842,
     "open_pull_requests": 7,
-    "runs_in_progress": 18,
-    "runs_queued": 178
+    "runs_in_progress": 3,
+    "runs_queued": 70
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -29,7 +29,7 @@
       "head_sha": "65df89b7f4c7ded1329b36d0930ff88660b3a2fa",
       "number": 30091,
       "title": "fix: preserve 404 on body-only GitHub Not Found for create-branch",
-      "updated_at": "2026-09-26T16:57:45Z"
+      "updated_at": "2026-09-26T18:32:23Z"
     },
     {
       "author": "woahwhattheheck",
@@ -40,7 +40,7 @@
       "head_sha": "f2098c7199f4766654b17b5418ff81034868bdc2",
       "number": 30095,
       "title": "fix: command-center contracts after resource-scoped GitHub limits",
-      "updated_at": "2026-09-26T17:06:58Z"
+      "updated_at": "2026-09-26T18:32:28Z"
     },
     {
       "author": "woahwhattheheck",
@@ -51,7 +51,7 @@
       "head_sha": "43ac53157dc45ce540515c7a72ca99adfbe6097e",
       "number": 30096,
       "title": "Align command-center contracts with 19 tools and core GitHub scopes",
-      "updated_at": "2026-09-26T17:18:14Z"
+      "updated_at": "2026-09-26T18:32:30Z"
     },
     {
       "author": "woahwhattheheck",
@@ -75,7 +75,7 @@
       "head_sha": "97b035373725831db3391030930dbe8d2ce5ead2",
       "number": 30101,
       "title": "Align credential-transfer tests with gh api --include writes",
-      "updated_at": "2026-09-26T18:16:48Z"
+      "updated_at": "2026-09-26T18:32:31Z"
     },
     {
       "author": "woahwhattheheck",
@@ -108,7 +108,7 @@
       "head_sha": "43ac53157dc45ce540515c7a72ca99adfbe6097e",
       "number": 30096,
       "title": "Align command-center contracts with 19 tools and core GitHub scopes",
-      "updated_at": "2026-09-26T17:18:14Z"
+      "updated_at": "2026-09-26T18:32:30Z"
     },
     {
       "author": "woahwhattheheck",
@@ -119,7 +119,7 @@
       "head_sha": "f2098c7199f4766654b17b5418ff81034868bdc2",
       "number": 30095,
       "title": "fix: command-center contracts after resource-scoped GitHub limits",
-      "updated_at": "2026-09-26T17:06:58Z"
+      "updated_at": "2026-09-26T18:32:28Z"
     },
     {
       "author": "woahwhattheheck",
@@ -130,7 +130,7 @@
       "head_sha": "65df89b7f4c7ded1329b36d0930ff88660b3a2fa",
       "number": 30091,
       "title": "fix: preserve 404 on body-only GitHub Not Found for create-branch",
-      "updated_at": "2026-09-26T16:57:45Z"
+      "updated_at": "2026-09-26T18:32:23Z"
     },
     {
       "author": "woahwhattheheck",
@@ -155,8 +155,34 @@
   },
   "pulls_listed": 7,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 9.9,
+  "queue_depth_per_runner": 23.3,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "codex/resource-master-uiowa-operator-transfer-readback-20260926-01",
+      "closed_at": "2026-09-26T19:13:09Z",
+      "head_sha": "14bd51f0e9a2320148d2853d9fe2b32b80d49bc0",
+      "merge_commit_sha": "67695b6e8e42c037ec0004ec22202364b826e0d4",
+      "merged_at": "2026-09-26T19:13:09Z",
+      "number": 30103,
+      "state": "MERGED",
+      "title": "Record UIOWA transfer activation readback",
+      "updated_at": "2026-09-26T19:14:51Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "codex/resource-master-uiowa-operator-transfer-activation-20260926-01",
+      "closed_at": "2026-09-26T19:11:12Z",
+      "head_sha": "0623fe552b48f2125e394dabb44dd1832b56ef6c",
+      "merge_commit_sha": "53f4e8e254411c0124a69c06ddd97632ca694c19",
+      "merged_at": "2026-09-26T19:11:12Z",
+      "number": 30102,
+      "state": "MERGED",
+      "title": "Activate UIOWA operator transfer bundle",
+      "updated_at": "2026-09-26T19:11:22Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -168,193 +194,167 @@
       "number": 30098,
       "state": "MERGED",
       "title": "ci: raise workflow-surface active budget to 70",
-      "updated_at": "2026-09-26T17:55:14Z"
+      "updated_at": "2026-09-26T18:32:26Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "perf/shared-provider-admission-20260926",
-      "closed_at": "2026-09-26T15:07:41Z",
-      "head_sha": "53667f1a8dada6d56f9aa5240292c4a4c0f72c80",
-      "merge_commit_sha": "695c423d98ff955a08f3a27206d722ad6173604f",
-      "merged_at": "2026-09-26T15:07:41Z",
-      "number": 30071,
+      "branch": "fix/command-center-admission-contract-counts-20260926",
+      "closed_at": "2026-09-26T17:25:38Z",
+      "head_sha": "0295538e448d823ab52ef5eded0135477b76dfdd",
+      "merge_commit_sha": "321fb6a84fb62b6d0365787e2d916256293e57e8",
+      "merged_at": "2026-09-26T17:25:38Z",
+      "number": 30097,
       "state": "MERGED",
-      "title": "Share publication admission through command-center HTTP and equipment",
-      "updated_at": "2026-09-26T18:17:03Z"
+      "title": "align command-center contracts with admission and core quota scopes",
+      "updated_at": "2026-09-26T18:32:31Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "swarm/inbox-source-cooldowns-20260926",
-      "closed_at": "2026-09-26T14:51:49Z",
-      "head_sha": "e73ebbae459d1d27cbae8275ceaa6b71422cd18d",
-      "merge_commit_sha": "33b437b6060302b7a7512f505d2dfa2697d2746c",
-      "merged_at": "2026-09-26T14:51:49Z",
-      "number": 30060,
+      "branch": "swarm/wake-input-decoding-20260926",
+      "closed_at": "2026-09-26T15:34:41Z",
+      "head_sha": "ec1d47449c075f5d653c1301379411dd66aa2c6a",
+      "merge_commit_sha": "06bf65b3afffe81e3d991e9d68c96a94fc385c6c",
+      "merged_at": "2026-09-26T15:34:41Z",
+      "number": 30089,
       "state": "MERGED",
-      "title": "Let independent inbox sources progress during provider cooldown",
-      "updated_at": "2026-09-26T18:21:07Z"
+      "title": "Recover valid wake inputs after text decoding errors",
+      "updated_at": "2026-09-26T18:32:20Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "swarm/path-manifest-exact-source-20260926",
-      "closed_at": "2026-09-26T14:39:20Z",
-      "head_sha": "cf43e7f4d0ab95e2c7801caabfdbf50452b1ca08",
-      "merge_commit_sha": "542cc79f8c6be3b00592f80250891bf09acab9bc",
-      "merged_at": "2026-09-26T14:39:20Z",
-      "number": 30050,
+      "branch": "swarm/wake-adapter-failures-20260926",
+      "closed_at": "2026-09-26T15:30:26Z",
+      "head_sha": "9b2542bfd404827626cac022cd3100d07b7cbbf7",
+      "merge_commit_sha": "268ae1aef19e1185613469349718486acd5ea479",
+      "merged_at": "2026-09-26T15:30:26Z",
+      "number": 30088,
       "state": "MERGED",
-      "title": "Classify exact Git filenames from the selected repository",
-      "updated_at": "2026-09-26T18:25:10Z"
+      "title": "Preserve independent peer signals after adapter failure",
+      "updated_at": "2026-09-26T18:32:21Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "swarm/inbox-source-fairness-20260926",
-      "closed_at": "2026-09-26T14:38:34Z",
-      "head_sha": "393fc4fa6369864a9628ee8ec73ca4e394a53456",
-      "merge_commit_sha": "f298855d2588bd8b33d342ffb180e94b8946d94a",
-      "merged_at": "2026-09-26T14:38:34Z",
-      "number": 30049,
+      "branch": "fix/runtime-atomic-mirror-acknowledgement-20260926",
+      "closed_at": "2026-09-26T15:28:27Z",
+      "head_sha": "53e8e3d72ac02bf43d137f0085d9b987b880392e",
+      "merge_commit_sha": "7c672cd0e86a2a0a3fdabdb1edbad6c4255d84f3",
+      "merged_at": "2026-09-26T15:28:27Z",
+      "number": 30087,
       "state": "MERGED",
-      "title": "Rotate capped inbox sources to prevent mail starvation",
-      "updated_at": "2026-09-26T18:24:34Z"
+      "title": "Acknowledge atomic claim mirrors without replay churn",
+      "updated_at": "2026-09-26T18:32:19Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "usage-material-rebound-20260926",
-      "closed_at": "2026-09-26T14:37:49Z",
-      "head_sha": "bba2b6e847f1923ad4cacb2692f6d1a80ef8a121",
-      "merge_commit_sha": "e260bd52e6be28cffbff757ed453cdc8b22b2fe6",
-      "merged_at": "2026-09-26T14:37:49Z",
-      "number": 30048,
+      "branch": "swarm/wake-tick-delivery-20260926",
+      "closed_at": "2026-09-26T15:27:09Z",
+      "head_sha": "9ee1781e58e13ebd0f477f2e608e35538ec82c89",
+      "merge_commit_sha": "00e07b993a6357c6ca8382a3f10b528164009032",
+      "merged_at": "2026-09-26T15:27:09Z",
+      "number": 30086,
       "state": "MERGED",
-      "title": "Detect material usage replenishment after immediate consumption",
-      "updated_at": "2026-09-26T18:24:11Z"
+      "title": "Deliver peer signals only for successful wake ticks",
+      "updated_at": "2026-09-26T18:32:18Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "feat/shared-provider-publication-admission-20260926",
-      "closed_at": "2026-09-26T14:37:04Z",
-      "head_sha": "cc8c5446a0d19d002836d89658d151f443a85117",
-      "merge_commit_sha": "502fd70ff3b978773753a40df67d305d58150b7c",
-      "merged_at": "2026-09-26T14:37:04Z",
-      "number": 30047,
+      "branch": "perf/trust-cache-output-memory-20260926",
+      "closed_at": "2026-09-26T15:25:26Z",
+      "head_sha": "4276f398e85b2b1da3320809223c13e998d1f318",
+      "merge_commit_sha": "b993e54bfda731723d0b6206e97d6f2f0230a115",
+      "merged_at": "2026-09-26T15:25:26Z",
+      "number": 30085,
       "state": "MERGED",
-      "title": "feat: coordinate provider publications through shared budget leases",
-      "updated_at": "2026-09-26T18:23:45Z"
+      "title": "Bound trust-cache command output memory",
+      "updated_at": "2026-09-26T18:31:42Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "high-burn/cash-zero-20260926",
-      "closed_at": "2026-09-26T14:36:54Z",
-      "head_sha": "1dc7fb5d693141722374db8a3cbbd83c984a0e33",
-      "merge_commit_sha": "629a298771b9dfca2972d86cd722646e049488ae",
-      "merged_at": "2026-09-26T14:36:54Z",
-      "number": 30046,
+      "branch": "swarm/inbox-incremental-groups-20260926",
+      "closed_at": "2026-09-26T15:23:00Z",
+      "head_sha": "e5b89dd45af8f9f66bcc7feb6877b7da6d6444b6",
+      "merge_commit_sha": "d643462daef600471071d4dfde6997e6f7ab098e",
+      "merged_at": "2026-09-26T15:23:00Z",
+      "number": 30084,
       "state": "MERGED",
-      "title": "Allow exact zero-net reconciliation after a full reversal",
-      "updated_at": "2026-09-26T18:22:55Z"
+      "title": "Preserve inbox progress before later source limits",
+      "updated_at": "2026-09-26T18:32:12Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "fix/runtime-dispatch-chronology-20260926",
-      "closed_at": "2026-09-26T14:31:57Z",
-      "head_sha": "6ed2d13a5429f991b9f2f3063cfc9b609bff8743",
-      "merge_commit_sha": "43c2a6784504fb678817e8c22c47d41392a5b718",
-      "merged_at": "2026-09-26T14:31:57Z",
-      "number": 30045,
+      "branch": "perf/idempotent-limit-observations-20260926",
+      "closed_at": "2026-09-26T15:21:43Z",
+      "head_sha": "dbab1797d156c203a57369e42e4577ce6095621d",
+      "merge_commit_sha": "5bc48eb2f65a9df08b6c82b004163a0b75475d88",
+      "merged_at": "2026-09-26T15:21:43Z",
+      "number": 30082,
       "state": "MERGED",
-      "title": "Use actual chronology for ownership and dispatch context",
-      "updated_at": "2026-09-26T18:21:47Z"
+      "title": "Deduplicate retried provider limit observations in the shared budget",
+      "updated_at": "2026-09-26T18:32:12Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "swarm/receipt-coordination-repository-20260926",
-      "closed_at": "2026-09-26T14:31:22Z",
-      "head_sha": "bc0b740af60fdc6698e01f8950b8e52d0f25b5ba",
-      "merge_commit_sha": "1f3e12bd551aa70b96d5c50a14515654cf4de05e",
-      "merged_at": "2026-09-26T14:31:22Z",
-      "number": 30044,
+      "branch": "swarm/open-work-explicit-source-20260926",
+      "closed_at": "2026-09-26T15:20:57Z",
+      "head_sha": "0298d8862a125672b14f4f70ceff99bcd7c79af6",
+      "merge_commit_sha": "9168ba12bcef30c9d8eb5c244a8433a14521788e",
+      "merged_at": "2026-09-26T15:20:57Z",
+      "number": 30083,
       "state": "MERGED",
-      "title": "Bind coordination receipt lookups to the declared repository",
-      "updated_at": "2026-09-26T17:54:32Z"
+      "title": "Keep open-work Git reads in the requested repository",
+      "updated_at": "2026-09-26T18:32:12Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "high-burn/deadline-bundle-20260926",
-      "closed_at": "2026-09-26T14:31:16Z",
-      "head_sha": "ce81242babea95b2b36d85342e3523d7815d3b6e",
-      "merge_commit_sha": "d9f763b1895ac1f2c05fb6ccca6cd8f9937bf892",
-      "merged_at": "2026-09-26T14:31:16Z",
-      "number": 30043,
+      "branch": "fix/runtime-provider-unknown-evidence-20260926",
+      "closed_at": "2026-09-26T15:20:32Z",
+      "head_sha": "a57ed745784b5c77322d6cc9ddddbb28c056d0bc",
+      "merge_commit_sha": "e307b13f7d3c83a6033a751ace19d4b12c76230f",
+      "merged_at": "2026-09-26T15:20:32Z",
+      "number": 30081,
       "state": "MERGED",
-      "title": "Preflight deadline bundle output paths before publication",
-      "updated_at": "2026-09-26T18:18:19Z"
+      "title": "Normalize unknown provider merge evidence",
+      "updated_at": "2026-09-26T18:32:09Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "swarm/inbox-native-provider-backoff-20260926",
-      "closed_at": "2026-09-26T14:29:15Z",
-      "head_sha": "ce60a5607f681c062c72305ccf1701385f6702b2",
-      "merge_commit_sha": "e41c4090deaf58a93d4bfa215d2753e494df84c7",
-      "merged_at": "2026-09-26T14:29:15Z",
-      "number": 30042,
+      "branch": "fix/runtime-artifact-context-evidence-20260926",
+      "closed_at": "2026-09-26T15:17:47Z",
+      "head_sha": "2d0c1b1c6c1b336164bc67180f0ed7c07385472a",
+      "merge_commit_sha": "cabd9822301a4daa4967894e7d73e8e9b3e25ef2",
+      "merged_at": "2026-09-26T15:17:47Z",
+      "number": 30080,
       "state": "MERGED",
-      "title": "Retain native provider rate evidence in inbox polling",
-      "updated_at": "2026-09-26T18:18:55Z"
+      "title": "Retain artifact landing evidence in worker context",
+      "updated_at": "2026-09-26T18:32:10Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "research/face-diagonal-lift-20260926",
-      "closed_at": "2026-09-26T14:26:27Z",
-      "head_sha": "fc09b1f7e678553c3ece995016a64b812ef9a56e",
-      "merge_commit_sha": "f290db49ffab4a97e31d5efcfef42e71ee0e04f7",
-      "merged_at": "2026-09-26T14:26:27Z",
-      "number": 30041,
+      "branch": "swarm/context-packet-chronology-20260926",
+      "closed_at": "2026-09-26T15:16:36Z",
+      "head_sha": "a22e7620de7828416edeeb9b304a53c73417c86c",
+      "merge_commit_sha": "017ce492c6e3aacd3ecb9cbb47f8ed59039471f7",
+      "merged_at": "2026-09-26T15:16:36Z",
+      "number": 30079,
       "state": "MERGED",
-      "title": "Construct protected face-diagonal lifts with exact source compatibility",
-      "updated_at": "2026-09-26T18:15:37Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/artifact-registry-alias-target-20260926",
-      "closed_at": "2026-09-26T14:26:18Z",
-      "head_sha": "4a585e5a340e3de08c4f326265e64c36cf31b047",
-      "merge_commit_sha": "860d9cc1cf0f19f74816e627154179f2355ed9a4",
-      "merged_at": "2026-09-26T14:26:18Z",
-      "number": 30040,
-      "state": "MERGED",
-      "title": "Keep registry aliases on one shared target and writer lock",
-      "updated_at": "2026-09-26T18:14:20Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "fix/runtime-sync-current-custody-20260926",
-      "closed_at": "2026-09-26T14:25:30Z",
-      "head_sha": "593528fd1353a9ce70661d4d9498362ece5dde3a",
-      "merge_commit_sha": "5001df2fecc8941ac382ba3f4cd75823f34c4a67",
-      "merged_at": "2026-09-26T14:25:30Z",
-      "number": 30039,
-      "state": "MERGED",
-      "title": "Keep concurrent direct claim changes during runtime sync",
-      "updated_at": "2026-09-26T18:13:21Z"
+      "title": "Order bounded context selections by observation instant",
+      "updated_at": "2026-09-26T18:32:09Z"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-26T18:28:15Z",
+  "unchanged_since": "2026-09-26T19:20:43Z",
   "undatable_pulls": []
 }
