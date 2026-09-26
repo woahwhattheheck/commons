@@ -19,7 +19,7 @@ from .identity import _repo as _repo_name, key_parts, task_key
 UNKNOWN = "UNKNOWN"
 SCHEMA = "commons-swarm-runtime/v1"
 TERMINAL = {"SHIPPED", "BLOCKED", "SUPERSEDED", "ABANDONED"}
-ACTIONS = {"OPEN", "TAKE", "HEARTBEAT", "SHIP", "BLOCK", "SUPERSEDE", "ABANDON", "RECOVER"}
+ACTIONS = {"OPEN", "TAKE", "HEARTBEAT", "SHIP", "BLOCK", "SUPERSEDE", "ABANDON", "RECOVER", "RELEASE"}
 PROVENANCE_LIMIT = 32
 PROVIDER_MAX_AGE_S = 300
 _INGEST_FIELDS = {"seq", "sequence", "ingest_seq", "ingestion_seq", "_seq", "ingested_at"}
@@ -355,6 +355,22 @@ def project(events, now=None, seats=None, provider_facts=None):
             if action == "TAKE":
                 collisions.append({"task_key": key, "event_id": event["id"], "worker": worker,
                                    "reason": "already_terminal", "state": record["state"]})
+            continue
+        if action == "RELEASE":
+            if record["state"] != "ACTIVE":
+                continue
+            started = _time(record["started_at"])
+            expected = _time(event.get("expected_started_at"))
+            if worker == UNKNOWN or worker != record["worker"] or started is None or expected is None or expected < started:
+                rejected.append({"id": event["id"], "task_key": key, "reason": "custody_changed"})
+                continue
+            at, heartbeat = _time(event.get("at")), _time(record["heartbeat"])
+            if at is None or seat_census.heartbeat_ahead_s(at, moment) or at < started or (heartbeat is not None and at < heartbeat):
+                rejected.append({"id": event["id"], "task_key": key, "reason": "release_not_current"})
+                continue
+            record.update(previous_worker=record["worker"], worker=UNKNOWN,
+                          model=UNKNOWN, harness=UNKNOWN, state="OPEN",
+                          released_at=_iso(at), recoverable=False)
             continue
         if action == "RECOVER":
             expected = event.get("expected_worker")

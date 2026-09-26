@@ -164,7 +164,12 @@ def legacy_events(holdings):
             if record.get("heartbeat_at") and record["heartbeat_at"] != common["at"]:
                 events.append({**common, "id": source + ":" + revision + ":heartbeat",
                                "action": "HEARTBEAT", "at": record["heartbeat_at"]})
-        # RELEASED proves relinquishment, not shipment, abandonment or completion.
+        elif record.get("state") == "RELEASED":
+            # Relinquishment is distinct from shipment, abandonment or completion.
+            # Bind it to the exact take so an old release cannot clear a new one.
+            events.append({**common, "id": source + ":" + revision + ":release",
+                           "action": "RELEASE", "at": record.get("heartbeat_at") or UNKNOWN,
+                           "expected_started_at": record.get("taken_at") or UNKNOWN})
     return events
 
 
