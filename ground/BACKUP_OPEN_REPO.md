@@ -40,6 +40,14 @@ repositories. A mirror or a recovery created with `restore --bare` can be backed
 up directly, without allocating a work tree. The same bundle ref inventory,
 symbolic or detached HEAD, and restore readback checks apply to either source.
 
+The source must have complete history. Shallow clones are rejected before any
+bundle or manifest is written: Git can create a bundle whose refs and checksum
+look valid while leaving out parents required to restore it. Run
+`git fetch --unshallow` in the source (or use a full clone) and retry. For a
+GitHub Actions checkout, set `fetch-depth: 0`, as the scheduled drill already
+does. Sparse work trees and partial clones are permitted when their history is
+complete; Git may download missing objects while building their bundle.
+
 ```bash
 python3 host/repo_backup.py snapshot --source /cloud/recovered.git --output-dir /cloud/next-backup
 python3 host/repo_backup.py restore /cloud/next-backup/commons-<stamp>-<sha>.manifest.json /cloud/next-recovery.git --bare

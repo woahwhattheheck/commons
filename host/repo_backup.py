@@ -156,6 +156,13 @@ def snapshot(source: Path, output_dir: Path) -> Path:
     # Bare mirrors and --bare restores hold the same Git objects and refs as
     # work trees. They must remain usable as sources for the next backup.
     _run(["rev-parse", "--git-dir"], cwd=source)
+    # Bundle creation can succeed in a shallow clone while omitting parents
+    # needed by a fresh restore. A full backup requires complete history.
+    if _run(["rev-parse", "--is-shallow-repository"], cwd=source).stdout.strip() == "true":
+        raise BackupError(
+            "source repository is shallow; fetch complete history with "
+            "git fetch --unshallow (or use a full clone) before creating a full backup"
+        )
     head_sha = _run(["rev-parse", "HEAD"], cwd=source).stdout.strip()
     if not SHA_RE.fullmatch(head_sha):
         raise BackupError("HEAD is not a full object id")
