@@ -162,10 +162,6 @@ def main() -> int:
         native.verify_inspection(report)
         native.validate_document(document, report)
         prior = native.load(args.prior) if args.prior else None
-        if prior is not None and "staged" in prior:
-            prior = prior["staged"]
-        if prior is not None and "state" in prior:
-            prior = prior["state"]
         prepared = prepare_cycle(args.csv.read_bytes(), args.source_id, args.csv.name, document, report,
                                  args.cycle_id, args.new_version, namespace=args.namespace,
                                  document_name=args.document.name, prior=prior, validate_text=native.text)
