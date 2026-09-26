@@ -6,7 +6,9 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import sys
+import tempfile
 from collections.abc import Mapping, Sequence
 from pathlib import Path
 from typing import Any
@@ -119,10 +121,27 @@ def _write(text: str, out: Path | None) -> None:
     if out is None:
         sys.stdout.write(text)
         return
-    if out.exists():
-        raise PacketError(f"refusing to overwrite {out}")
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(text, encoding="utf-8")
+    # Build beside the destination, then install the complete file without
+    # replacement. An exists()+write_text() pair lets concurrent handoffs
+    # truncate each other; exclusive creation alone can expose partial bytes.
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            mode="w", encoding="utf-8", dir=out.parent,
+            prefix="." + out.name + ".", suffix=".tmp", delete=False,
+        ) as stream:
+            temporary = Path(stream.name)
+            stream.write(text)
+            stream.flush()
+            os.fsync(stream.fileno())
+        try:
+            os.link(temporary, out)
+        except FileExistsError:
+            raise PacketError(f"refusing to overwrite {out}") from None
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
 
 
 def _validate_packet(value: Mapping[str, Any], git_repo: Path) -> tuple[bool, str]:
