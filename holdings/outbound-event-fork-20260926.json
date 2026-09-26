@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "outbound-event-fork-20260926",
+  "holder": "high-burn-value-pipeline",
+  "heartbeat_at": "2026-09-26T12:05:14Z",
+  "taken_at": "2026-09-26T12:05:14Z",
+  "ttl_s": 1800,
+  "state": "HELD",
+  "note": "Own revenue/outbound_delivery_reconciliation/reconcile.py and README.md; preserve all conflicting event variants and stabilize reconciliation under input reordering."
+}
