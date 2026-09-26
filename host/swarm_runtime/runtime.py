@@ -216,6 +216,11 @@ class Runtime:
         def mutation(state):
             before = _project(state, moment)["tasks"]
             added = _append(state, incoming)
+            if legacy_events:
+                # Collection/provider I/O preceded this CAS read. A direct
+                # release or take may have changed a sibling holding meanwhile;
+                # replay that exact current custody after the collected inputs.
+                added += _append(state, legacy_events(state.get("legacy_holdings", {})))
             _merge_facts(state, facts)
             state["seats"] = imported.get("seats", state.get("seats", {}))
             # Do not overwrite a concurrent sync's newer boundary with this read.
