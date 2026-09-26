@@ -1,0 +1,128 @@
+{
+  "schema": "commons-resource-event/v1",
+  "event_id": "codex-uiowa-dependency-roadmap-planner-resource-activation-20260926-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "observed_at": "2026-09-26T13:18:06Z",
+  "actor": "Commons Resource Master / Codex",
+  "selected_resource": "uiowa-dependency-aware-phased-roadmap-planner",
+  "concrete_consumer": "The existing UIOWA-038 recommendation register and UIOWA-115 dependency-review lanes",
+  "measurable_outcome": "The recovered current-main planner is a canonical producing resource with nine exact blobs pinned, a 12-item synthetic plan executed, CSV semantic round-trip verified, strict unplannable exit verified, and its advisory and authority boundaries recorded.",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "MERGED_UNCATALOGED",
+    "condition": "CONSTRAINED",
+    "holder": "Merged PR #29973 source custody",
+    "consumer": "EXISTING_RECOMMENDATION_AND_DEPENDENCY_LANES_WITHOUT_CANONICAL_RESOURCE_ROUTING"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "holder": "Commons / UIowa recommendation and roadmap preparation operators",
+    "consumer": "UIOWA-038 recommendation register and UIOWA-115 dependency-review lanes"
+  },
+  "production_truth": {
+    "source_repository": "woahwhattheheck/commons",
+    "source_pr": 29973,
+    "source_head": "b0eea2d74f924549114d815aa6397b4a861f2974",
+    "source_merge_commit": "9b59bee1b2e6a6ff3f9bdef52c144b10a1a485c2",
+    "source_descendant_main_sha": "bd038c2001d93cd074dd961e9d1d2b33a740e337",
+    "source_paths": {
+      "revenue/uiowa_rfq_18649_roadmap/README.md": "6eec237332911355e02f4f35ea8706136bf76810",
+      "revenue/uiowa_rfq_18649_roadmap/example/manifest.json": "98ef1da47db8a9b77290ae29956496110c1e0472",
+      "revenue/uiowa_rfq_18649_roadmap/example/planning_table.csv": "2f6811e8cd9c5a1f471ebd91fad3c15cbae3aa48",
+      "revenue/uiowa_rfq_18649_roadmap/example/roadmap.html": "a75029b04a87ba3bf3f73ac4bc649ab766a2cf5b",
+      "revenue/uiowa_rfq_18649_roadmap/example/roadmap.json": "beeb8e92545eaf98a33052bd39840be56f83ae75",
+      "revenue/uiowa_rfq_18649_roadmap/example/roadmap.md": "f64d04db025b1c7c2ce21cd0be9d19f1f668cd58",
+      "revenue/uiowa_rfq_18649_roadmap/roadmap.py": "cb4e74f04a6840c8bf285abd6b31ddbe59f58183",
+      "revenue/uiowa_rfq_18649_roadmap/synthetic_evidence.md": "4c3887ca49b3f6cf1a369a77bdc8ddfd0479b422",
+      "revenue/uiowa_rfq_18649_roadmap/synthetic_recommendations.json": "d32a687229785c4289f9fc1a469f8bfebf1d7c73"
+    },
+    "focused_verification": {
+      "synthetic_run": "PASS_12_TOTAL_10_PLANNED_2_UNSCHEDULED_1_AT_RISK_1_CONFLICT",
+      "csv_semantic_round_trip": "PASS",
+      "strict_unplannable_exit": "PASS_EXIT_3_AFTER_REPORT_WRITE",
+      "python_compile": "PASS",
+      "resource_projection": "PASS_NORMAL_AND_OPTIMIZED",
+      "open_door": "PASS_LOCAL_MATRIX"
+    },
+    "hosted_workflow_runs_at_merge_commit": 0,
+    "maximum_state": "MERGED_OFFLINE_SYNTHETICALLY_EXERCISED_ADVISORY_PLANNER",
+    "real_university_data_used": false,
+    "university_finding": false,
+    "recommendation_approved": false,
+    "staff_capacity_established": false,
+    "calendar_scheduled": false,
+    "customer_contact": false,
+    "provider_write": false,
+    "submission": false,
+    "buyer_acceptance": false,
+    "payment_observed": false,
+    "settlement_observed": false,
+    "revenue_recognition": false,
+    "current_cash_claim": false,
+    "deployment_by_activation": false,
+    "spend_by_activation": false,
+    "banked_reset_activated": false
+  },
+  "delta": {
+    "prior_terminal_main_sha": "dc9af793c55234ca381b6d3f2cc6ed49625b0d6f",
+    "activation_base_main_sha": "bd038c2001d93cd074dd961e9d1d2b33a740e337",
+    "commits_in_delta": 1674,
+    "non_merge_commits_in_delta": 1336,
+    "changed_paths_in_delta": 23600,
+    "remote_branches_observed": 4622,
+    "remote_branch_pages": 48,
+    "prior_terminal_slack_ts": "1789942777.413039",
+    "latest_delta_slack_ts": "1790427763.163799",
+    "slack_top_level_messages": {
+      "commons": 816,
+      "delegations": 12478,
+      "todo": 1,
+      "shipped_builds": 83,
+      "products": 0,
+      "leads": 0,
+      "sales": 0,
+      "coordination": 195
+    },
+    "automations": "Twenty-five visible; the Commons Resource Master remains enabled and no automation lifecycle mutation was made.",
+    "github_state": "The full 1,666-commit current-main ancestry delta and 23,436 changed paths were reconciled locally; 4,622 current remote branches were paginated across 48 connector pages; the 100 most recently updated PRs and issues were searched for claims and outcomes. PR #29973 is merged and exact source readback is present. Generated projections, repeated Slack messages and cached declarations were not counted as new resources.",
+    "connector_state": "Installed GitHub, Slack and automation read/write operations were discovered before the sweep. No connector presence, checkout, branch, session, account connection or cached receipt was treated as capacity or authority."
+  },
+  "verification": {
+    "privacy": "Only public repository identities, aggregate message counts and public source blobs are persisted. No credential, private account identifier, customer data, private message body or private file name is stored.",
+    "open_door": "Public source, local standard-library execution, CSV reimport and exact blob verification require no Commons login or provider session.",
+    "zero_fabrication": "Synthetic relative-day output remains advisory and is not a University finding, approved recommendation, accepted staffing plan, booked calendar, deployment, buyer acceptance, payment, revenue or cash.",
+    "collision": "Only canonical ledger, projection and append-only activation records are owned. The nine PR #29973 source paths, UIOWA-038 register, UIOWA-115 oracle, active report work, deleted tests and peer branches remain untouched."
+  },
+  "build_order_decision": "No build order posted. The selected capability is already complete and landed, its existing recommendation, dependency and report consumers are present, and the large #delegations delta contains active roots for adjacent work; no distinct evidence-backed unclaimed capability gap survived collision and dedupe checks.",
+  "build_orders": [],
+  "quota_lifecycle": {
+    "official_observation": "The single official-source check found current banked-reset documentation but no new hard or global reset announcement after the prior watermark. No account usage-meter change was directly observed.",
+    "classification": "PRIOR_QUOTA_STATE_RETAINED_CURRENT_ALLOWANCE_UNMEASURED",
+    "current_meter": "NOT_DIRECTLY_OBSERVED",
+    "banked_reset_inventory": "NOT_DIRECTLY_OBSERVED",
+    "banked_reset_activated": false
+  },
+  "projection": {
+    "resources": 109,
+    "producing": 81,
+    "inventory_records": 71
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790428290281839",
+    "source_pr": "https://github.com/woahwhattheheck/commons/pull/29973",
+    "source_issue": "https://github.com/woahwhattheheck/commons/issues/16127",
+    "official_release_notes": "https://help.openai.com/en/articles/6825453/chatgpt-release-notes"
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-26T13:18:06Z",
+    "activation_base_main_sha": "bd038c2001d93cd074dd961e9d1d2b33a740e337",
+    "latest_delta_slack_ts": "1790427763.163799",
+    "source_merge_commit": "9b59bee1b2e6a6ff3f9bdef52c144b10a1a485c2",
+    "remote_branches_observed": 4622
+  },
+  "non_claims": [
+    "No University finding, approved recommendation, staffing commitment, calendar event, contact, provider write, submission, deployment, spend, payment, settlement, revenue or cash is claimed."
+  ]
+}
