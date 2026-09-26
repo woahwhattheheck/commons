@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 9929,
+    "open_issues": 9828,
     "open_pull_requests": 1,
-    "runs_in_progress": 10,
-    "runs_queued": 526
+    "runs_in_progress": 12,
+    "runs_queued": 512
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -39,8 +39,20 @@
   },
   "pulls_listed": 1,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 52.6,
+  "queue_depth_per_runner": 42.7,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "finish/change-trace-workbook-20260926",
+      "closed_at": "2026-09-26T13:38:44Z",
+      "head_sha": "bfb66505aa7e9798513c61b87a356789855c4e79",
+      "merge_commit_sha": "UNKNOWN",
+      "merged_at": "2026-09-26T13:38:44Z",
+      "number": 29995,
+      "state": "MERGED",
+      "title": "Repair change-trace evidence alignment and complete timing workbook"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -208,22 +220,10 @@
       "number": 29981,
       "state": "MERGED",
       "title": "Include dependency analysis directly from editable roadmap inputs"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "build/recover-alert-quality-20260926",
-      "closed_at": "2026-09-26T13:15:21Z",
-      "head_sha": "ebb8231e1bf6b1fe5a9a0c842a66918b0fa7d1c9",
-      "merge_commit_sha": "UNKNOWN",
-      "merged_at": "2026-09-26T13:15:21Z",
-      "number": 29980,
-      "state": "MERGED",
-      "title": "Finish the stranded alert-quality analysis and editable workbook"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-26T13:37:03Z",
+  "unchanged_since": "2026-09-26T13:45:30Z",
   "undatable_pulls": []
 }
