@@ -2,9 +2,11 @@
 from __future__ import annotations
 
 import argparse
+import copy
 import csv
 from decimal import Decimal, InvalidOperation, localcontext
 import html
+import hashlib
 import io
 import json
 from pathlib import Path
@@ -302,30 +304,100 @@ def activity_csv(report):
     return output.getvalue()
 
 
+def apply_activity_csv(plan, text):
+    """Overlay only quantity/unit-effort cells; keep all source-plan metadata.
+
+    The exported CSV is still not a complete plan representation. Noneditable
+    display cells must match its supplied base; derived effort is recomputed.
+    """
+    base = list(csv.reader(io.StringIO(activity_csv(estimate(plan)), newline=""), strict=True))
+    incoming = list(csv.reader(io.StringIO(text, newline=""), strict=True))
+    header = base[0]
+    if not incoming or incoming[0] != header:
+        raise PlanError("activities CSV: expected the exact exported header and column order")
+    # Spreadsheet formula protection can make two distinct native IDs display
+    # identically. Do not guess which activity a row was intended to update.
+    original = {}
+    for activity, row in zip(plan["activities"], base[1:]):
+        if row[0] in original:
+            raise PlanError("activities CSV: ambiguous spreadsheet activity ID; edit the JSON plan instead")
+        original[row[0]] = (activity, row)
+    edited = copy.deepcopy(plan)
+    activities = {r["id"]: r for r in edited["activities"]}
+    editable = {header.index(f"{field}_{point}") for field in ("units", "hours_per_unit") for point in POINTS}
+    seen, changes = set(), []
+    for line, row in enumerate(incoming[1:], 2):
+        if len(row) != len(header):
+            raise PlanError(f"activities CSV row {line}: wrong column count")
+        key = row[0]
+        if key not in original or key in seen:
+            raise PlanError(f"activities CSV row {line}: unknown or duplicate activity ID {key!r}")
+        seen.add(key)
+        activity, old = original[key]
+        for index, name in enumerate(header):
+            if index not in editable and row[index] != old[index]:
+                raise PlanError(f"{activity['id']}.{name}: read-only CSV column changed; edit the source JSON for metadata")
+        for field in ("units", "hours_per_unit"):
+            cells = [row[header.index(f"{field}_{point}")].strip() for point in POINTS]
+            if any(not value for value in cells) and not all(not value for value in cells):
+                raise PlanError(f"{activity['id']}.{field}: all three points must be supplied or all blank for UNKNOWN")
+            value = None if not any(cells) else dict(zip(POINTS, cells))
+            normalized = _encode(_range(value, f"{activity['id']}.{field}"))
+            previous = _encode(_range(activity[field], f"{activity['id']}.{field}"))
+            if normalized != previous:
+                activities[activity["id"]][field] = normalized
+                changes.append({"activity_id": activity["id"], "field": field,
+                                "before": previous, "after": normalized})
+    if seen != set(original):
+        raise PlanError("activities CSV: missing activity rows: " + ", ".join(sorted(set(original) - seen)))
+    estimate(edited)  # Reuse the complete original contract before publication.
+    return edited, sorted(changes, key=lambda x: (x["activity_id"], x["field"]))
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     source = parser.add_mutually_exclusive_group(required=True)
     source.add_argument("--input", type=Path, help="Human-edited plan JSON")
     source.add_argument("--demo", choices=("release", "security", "reliability"))
+    parser.add_argument("--activities-csv", type=Path,
+                        help="Edited exported activity CSV; overlays only units/hour-per-unit ranges on --input")
     parser.add_argument("--output-dir", type=Path, required=True, help="New directory; existing paths are never overwritten")
     args = parser.parse_args(argv)
     try:
+        if args.activities_csv and not args.input:
+            raise PlanError("--activities-csv requires the original --input JSON plan")
         if args.demo:
             from example_plans import make_plan
             plan = make_plan(args.demo)
         else:
-            plan = load_json(args.input.read_text(encoding="utf-8"))
+            source_bytes = args.input.read_bytes()
+            plan = load_json(source_bytes.decode("utf-8"))
+        if args.activities_csv:
+            with args.activities_csv.open("rb") as handle:
+                csv_bytes = handle.read(2 * 1024 * 1024 + 1)
+            if len(csv_bytes) > 2 * 1024 * 1024:
+                raise PlanError("activities CSV exceeds 2 MiB")
+            plan, changes = apply_activity_csv(plan, csv_bytes.decode("utf-8-sig"))
         report = estimate(plan)
         # Render everything before creating output; invalid plans leave no directory.
         files = {"input.json": json.dumps(plan, ensure_ascii=False, indent=2, default=str) + "\n",
                  "estimate.json": json.dumps(report, ensure_ascii=False, indent=2) + "\n",
                  "activities.csv": activity_csv(report), "estimate.md": markdown(report)}
+        if args.activities_csv:
+            receipt = {"schema": "uiowa.resource-activity-edit/v1", "plan_id": plan["plan_id"],
+                       "source_input_sha256": hashlib.sha256(source_bytes).hexdigest(),
+                       "edited_csv_sha256": hashlib.sha256(csv_bytes).hexdigest(),
+                       "updated_input_sha256": hashlib.sha256(files["input.json"].encode("utf-8")).hexdigest(),
+                       "changes": changes, "note": "Numeric overlay on supplied source plan; not evidence or approval."}
+            files["activity-edits.json"] = json.dumps(receipt, ensure_ascii=False, indent=2) + "\n"
         args.output_dir.mkdir(parents=True, exist_ok=False)
         for name, content in files.items():
             (args.output_dir / name).write_text(content, encoding="utf-8", newline="")
+        if args.activities_csv:
+            (args.output_dir / "source-input.json").write_bytes(source_bytes)
         print(f"{report['plan_id']}: {report['estimate_status']}; output={args.output_dir}")
         return 0
-    except (PlanError, OSError, UnicodeError) as exc:
+    except (PlanError, OSError, UnicodeError, csv.Error) as exc:
         print(f"Resource estimate failed: {exc}", file=sys.stderr)
         return 2
 
