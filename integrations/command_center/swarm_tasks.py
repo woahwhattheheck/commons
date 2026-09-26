@@ -146,7 +146,17 @@ def call(center, payload):
         else:
             result = engine.operate(action, payload)
         if result.get("ok") and result.get("published", True):
-            _feed(center, engine)
+            try:
+                _feed(center, engine)
+            except Exception as exc:
+                # The derived feed cannot undo a confirmed canonical result.
+                # Preserve its operation ID, publication and assignment receipt;
+                # a later ordinary call can retry this idempotent projection.
+                result = dict(result)
+                result["feed_sync"] = {"ok": False, "deferred": True,
+                                       "error": getattr(exc, "kind", type(exc).__name__)}
+                if getattr(exc, "retry_after", None) is not None:
+                    result["feed_sync"]["retry_after"] = exc.retry_after
         return result
     except ValueError as exc:
         raise CoreError(400, str(exc)) from None
@@ -178,6 +188,8 @@ def after_ingest(center):
             import json
             # Operational error classification only, never provider payloads.
             outcome = {key: result.get(key) for key in ("ok", "tip", "error", "published")}
+            if "feed_sync" in result:
+                outcome["feed_sync"] = result["feed_sync"]
             (center.state_dir / "swarm-last-sync.json").write_text(json.dumps(outcome), encoding="utf-8")
         except Exception as exc:
             import json
