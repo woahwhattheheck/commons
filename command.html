@@ -192,8 +192,10 @@ footer{padding:20px 16px;color:var(--dim);font-size:12.5px;text-align:center}
       </label>
       <div class="actions">
         <button id="copy" class="primary" type="button">Copy post</button>
+        <button id="new-directive" type="button">New instruction</button>
         <a class="links" href="./action.html" style="align-self:center">Open the action pad ↗</a>
       </div>
+      <p class="small muted">Copying again retries the same instruction. New instruction starts a separate post.</p>
       <pre id="preview" class="mono note" style="white-space:pre-wrap"></pre>
     </article>
 
@@ -618,6 +620,8 @@ function renderSeats(){
   for(const s of current.seats) names.add(s.seat);
   for(const r of roster) if(r.liveness === "LIVE" || r.liveness === "QUIET") names.add(r.seat);
   const pickerCurrent = picker.value;
+  // A refresh must not silently redirect an in-progress instruction to TABLE.
+  if(pickerCurrent) names.add(pickerCurrent);
   picker.innerHTML = "";
   for(const n of names){
     const opt = document.createElement("option");
@@ -730,14 +734,45 @@ function renderUnblocks(){
   }
 }
 
+const DRAFT_KEY = "commons-command-directive-v1";
+function freshDraft(){
+  const nonce = Array.from(crypto.getRandomValues(new Uint8Array(8)),
+    n => n.toString(16).padStart(2, "0")).join("");
+  return { nonce, day:new Date().toISOString().slice(0,10).replace(/-/g,""), copied:null };
+}
+let draft = freshDraft();
+try{
+  const saved = JSON.parse(sessionStorage.getItem(DRAFT_KEY));
+  if(saved && /^[a-f0-9]{16}$/.test(saved.nonce) && /^\d{8}$/.test(saved.day)){
+    draft = saved;
+    for(const field of ["from","body"]){
+      if(typeof saved[field] === "string") document.getElementById(field).value = saved[field];
+    }
+    if(typeof saved.to === "string" && saved.to){
+      const picker = document.getElementById("to");
+      if(!Array.from(picker.options).some(o => o.value === saved.to)){
+        const option = document.createElement("option");
+        option.value = saved.to; option.textContent = saved.to; picker.appendChild(option);
+      }
+      picker.value = saved.to;
+    }
+  }
+}catch(err){ /* Storage may be unavailable; the current tab still keeps its draft. */ }
+
 function preview(){
   const to = document.getElementById("to").value;
   const from = document.getElementById("from").value.trim() || "UNSEATED";
   const body = document.getElementById("body").value.trim();
-  const stamp = new Date().toISOString().slice(0,10).replace(/-/g,"");
-  const id = "direct-" + to.toLowerCase().replace(/[^a-z0-9]+/g,"-") + "-" + stamp + "-01";
+  const content = JSON.stringify([to, from, body]);
+  // Once copied, changed content is a new operation. Unchanged copies retain
+  // the same ID so transport retries cannot create duplicate directives.
+  if(draft.copied && draft.copied !== content) draft = freshDraft();
+  Object.assign(draft, { to, from, body });
+  try{ sessionStorage.setItem(DRAFT_KEY, JSON.stringify(draft)); }catch(err){}
+  const id = "direct-" + to.toLowerCase().replace(/[^a-z0-9]+/g,"-").slice(0,32) +
+    "-" + draft.day + "-" + draft.nonce;
   document.getElementById("preview").textContent =
-    "from: " + from + "\nto: " + to + "\nid: " + id + "\nkind: directive\n\n" +
+    "from: " + from + "\nto: " + to + "\nid: " + id + "\nkind: directive\n---\n\n" +
     (body || "(write the instruction above)");
 }
 
@@ -808,6 +843,8 @@ for(const id of ["to","from","body"]){
 document.getElementById("copy").addEventListener("click", async () => {
   const text = document.getElementById("preview").textContent;
   const btn = document.getElementById("copy");
+  draft.copied = JSON.stringify([draft.to, draft.from, draft.body]);
+  try{ sessionStorage.setItem(DRAFT_KEY, JSON.stringify(draft)); }catch(err){}
   try{
     await navigator.clipboard.writeText(text);
     btn.textContent = "Copied";
@@ -815,6 +852,12 @@ document.getElementById("copy").addEventListener("click", async () => {
     btn.textContent = "Select the text below";
   }
   setTimeout(() => { btn.textContent = "Copy post"; }, 2000);
+});
+document.getElementById("new-directive").addEventListener("click", () => {
+  draft = freshDraft();
+  document.getElementById("body").value = "";
+  preview();
+  document.getElementById("body").focus();
 });
 
 preview();
