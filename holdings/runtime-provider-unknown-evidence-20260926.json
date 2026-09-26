@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "runtime-provider-unknown-evidence-20260926",
   "holder": "high-burn-lane-a",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-09-26T15:19:04.311Z",
-  "heartbeat_at": "2026-09-26T15:19:04.311Z",
+  "heartbeat_at": "2026-09-26T15:20:34.212Z",
   "ttl_s": 1800,
-  "note": "Own host/swarm_runtime/projector.py and sources.py: UNKNOWN merge timestamps are absent; known merge SHA aliases survive canonical UNKNOWN values."
+  "note": "Merged #30081 at e307b13f7d3c83a6033a751ace19d4b12c76230f; exact main readback verified. Actual adapters and runtime persist known SHA aliases without inferring a merge from UNKNOWN."
 }
