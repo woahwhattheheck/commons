@@ -16,6 +16,8 @@ The offline standard-library bundle creates a deterministic selected-asset ZIP, 
 
 From prior terminal main `942de9401f1a92610a9f9926707f8731100c1b75` through activation base `ef0345cd00c801656526ef4a4453dc52dabfdabf`: 236 commits, 170 non-merge commits, 519 changed paths and 4,565 reachable branch heads across 47 connector pages were observed. Required Slack surfaces were paginated from `1790429462.972139`; the pre-claim lower bound is `1790446724.849269`. Twenty-five automations were visible and the Resource Master remained enabled.
 
+Post-activation exact current-main readback is `53f4e8e254411c0124a69c06ddd97632ca694c19`: 237 commits, 171 non-merge commits and 523 changed paths since the prior terminal main. It contains activation [PR #30102](https://github.com/woahwhattheheck/commons/pull/30102); all four activation blobs and all seven source blobs match exactly.
+
 Claim: [#commons activation claim](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790449275735329).
 
 One evidence-backed repair order was posted: [UIOWA-100-RUN-EVIDENCE-CONTRACT-REPAIR-20260926-01](https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1790449584110389). The existing hosted `uiowa-100-run-evidence` workflow is red on two stale test expectations after the selected-assets contract landed; the actual current-main eight-asset pack, verify and run operation passed locally. The order is test-contract repair only and excludes the working implementation and activation paths.
