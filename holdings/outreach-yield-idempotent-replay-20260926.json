@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "outreach-yield-idempotent-replay-20260926",
+  "holder": "high-burn-value-pipeline",
+  "taken_at": "2026-09-26T14:16:27Z",
+  "heartbeat_at": "2026-09-26T14:16:27Z",
+  "ttl_s": 1800,
+  "state": "ACTIVE",
+  "note": "Own revenue/outreach_yield_observatory/evaluator.py and README.md: exact normalized lifecycle replay idempotent, differing repeat evidence remains an error."
+}
