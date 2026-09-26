@@ -113,6 +113,9 @@ Terminal task history releases a matching legacy holding only when its dated
 closure covers the holding's activity. A newer take or heartbeat is preserved,
 even when the worker name matches; missing closure or holding dates leave custody
 unchanged. Historical task completion cannot revoke a later direct claim.
+An explicit legacy release reopens its matching active task without declaring
+completion. Its worker must match, and its dates must cover the current take;
+stale releases cannot clear newer work. The next take creates fresh custody.
 
 ## Facts and implementation
 
