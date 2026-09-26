@@ -15,6 +15,7 @@ import hashlib
 import json
 import os
 import re
+import tempfile
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Callable
@@ -229,7 +230,23 @@ def write_marker(
     text = json.dumps(marker, indent=2, sort_keys=True) + "\n"
     if path.is_file() and path.read_bytes() == text.encode("utf-8"):
         return "unchanged"
-    path.write_text(text, encoding="utf-8")
+    # Keep the previous completion visible until all replacement bytes are
+    # written. A truncated JSON marker would otherwise resurface finished work.
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            mode="w", encoding="utf-8", newline="\n", dir=path.parent,
+            prefix="." + path.name + ".", suffix=".tmp", delete=False,
+        ) as handle:
+            temporary = Path(handle.name)
+            handle.write(text)
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.chmod(temporary, path.stat().st_mode & 0o777 if path.exists() else 0o644)
+        os.replace(temporary, path)
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
     return "wrote"
 
 

@@ -21,6 +21,12 @@ UTF-8 and invalid timestamps are not completion evidence. Timestamps require a
 timezone and are compared as instants. Records are local projection inputs, not
 independent authentication of provider state.
 
+Marker saves flush a temporary sibling file before replacing the canonical
+path atomically. A failed save preserves the previous marker; readers see a
+complete old or new record instead of a truncated intermediate file. Temporary
+siblings are excluded from the `*.json` projection and cleaned after ordinary
+write failures. Identical marker bytes remain an unchanged no-op.
+
 ## Operation
 
 The existing `commons-board` workflow handles issue close/reopen events through
