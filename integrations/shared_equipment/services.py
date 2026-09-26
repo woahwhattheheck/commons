@@ -652,19 +652,44 @@ def main() -> int:
         help="Runs root for headless Claude (default ~/.claude/commons_headless or CLAUDE_HEADLESS_ROOT)",
     )
     args = parser.parse_args()
-    equipment = build_cli_catalog(
-        grokbot_base_url=args.grokbot_control,
-        claude_headless_root=args.claude_headless_root,
-    )
-    if args.operation == "manifest":
-        result = build_capability_manifest(catalog=equipment)
-    elif args.operation == "catalog":
-        result = {"tools": equipment.tools()}
-    else:
-        request = json.load(sys.stdin)
-        result = equipment.call(request["name"], request.get("arguments", {}))
+    request = None
+    if args.operation == "call":
+        try:
+            request = json.load(sys.stdin)
+            if not isinstance(request, dict):
+                raise ValueError("request must be a JSON object")
+            _string(request, "name")
+            if not isinstance(request.get("arguments", {}), dict):
+                raise ValueError("arguments must be a JSON object")
+        except (ValueError, EquipmentError) as exc:
+            print(json.dumps({"isError": True, "code": "invalid_cli_request",
+                              "message": redacted(str(exc)), "uncertain": False}))
+            return 2
+
+    dispatched = False
+    try:
+        equipment = build_cli_catalog(
+            grokbot_base_url=args.grokbot_control,
+            claude_headless_root=args.claude_headless_root,
+        )
+        if args.operation == "manifest":
+            result = build_capability_manifest(catalog=equipment)
+        elif args.operation == "catalog":
+            result = {"tools": equipment.tools()}
+        else:
+            dispatched = True
+            result = equipment.call(request["name"], request.get("arguments", {}))
+    except Exception as exc:
+        # An extension can raise after dispatch. Without explicit outcome
+        # metadata, do not tell a shell caller that replay is safe.
+        result = {"isError": True, "error": type(exc).__name__,
+                  "code": getattr(exc, "code", type(exc).__name__),
+                  "message": redacted(str(exc)),
+                  "uncertain": bool(getattr(exc, "uncertain", dispatched))}
     print(json.dumps(redacted(result), ensure_ascii=False))
-    return 0
+    if effect_uncertain(result):
+        return 3
+    return 1 if tool_failed(result) else 0
 
 
 if __name__ == "__main__":
