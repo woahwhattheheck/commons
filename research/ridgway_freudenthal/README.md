@@ -19,6 +19,17 @@ Python 3.10+, standard library only. The reusable sparse rational operator is `p
 
 [The grid solver and derivation](P4_GRID_MEAN_REPAIR.md) extend the local operator to any rectangular Kuhn grid with at least two cubes, including exact translation and isotropic scale. Use `p4_grid_mean_repair.py input.json --output velocity.json`. It matches all zero-sum cell means, preserves zero edge divergence and boundary trace, and returns shared sparse Bernstein coefficients. The guide also gives an explicit fixed-patch bound and explains how to preserve a raw lift's edge traces while removing its cell means. The whole-domain bound depends on the cube count; it is not the mesh-uniform theorem.
 
+## Protected body-diagonal lift
+
+[The degree-four body-diagonal operator](P4_BODY_DIAGONAL_LIFT.md) now accepts any
+twelve interior cubic edge coefficients and returns a continuous quartic field
+with those traces, zero divergence on every other edge, zero patch boundary trace,
+and zero cell means. It composes the existing local mean repair on a fixed two-cube
+patch. Run `p4_body_diagonal_lift.py --trace 1 -1 2 -2 3 -3 4 -4 5 -5 6 -6`.
+The exact 189×12 map has 270 nonzeros and a reference seminorm-squared bound of
+1728 times the trace-coefficient norm squared. Other edge classes, degree five,
+neighbor selection/transport and the global theorem remain separate work.
+
 ## Original problem
 
 On a Freudenthal tetrahedral mesh of a cubical domain, let `V_h^k` be the continuous vector degree-k polynomial space with zero boundary trace, and let `Q_h^k = div V_h^k`.
