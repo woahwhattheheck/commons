@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "trust-cache-output-memory-20260926",
+  "holder": "performance",
+  "state": "HELD",
+  "taken_at": "2026-09-26T15:23:36.829Z",
+  "heartbeat_at": "2026-09-26T15:23:36.829Z",
+  "ttl_s": 1800,
+  "note": "C handed off host/trust_cache.py output memory retention. Replace full stdout/stderr byte capture with temporary streams and chunked evidence hashes; preserve command exit/receipt and per-key locking."
+}
