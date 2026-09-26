@@ -15,7 +15,6 @@ def _row(bounty: dict[str, Any], policy: dict[str, int], as_of_epoch: int) -> di
     for receipt in receipts:
         if parse_utc(receipt["observed_at_utc"], "receipt observed_at") > as_of_epoch:
             raise CloseBoardError("future receipt relative to trusted evaluation time")
-    kinds = [r["kind"] for r in receipts]
     terminal = _latest(receipts, "TERMINAL_NONPAY")
     settlement = _latest(receipts, "SETTLEMENT_OBSERVED")
     payout = _latest(receipts, "PAYOUT_ACKNOWLEDGED")
@@ -27,6 +26,16 @@ def _row(bounty: dict[str, Any], policy: dict[str, int], as_of_epoch: int) -> di
     gate_cleared = _latest(receipts, "GATE_CLEARED")
     gate_follow = _latest(receipts, "GATE_FOLLOWUP_SENT")
     failed_attempt = _latest(receipts, "SUBMISSION_ATTEMPT_FAILED")
+    unresolved_gate = gate_blocked is not None and (
+        gate_cleared is None
+        or parse_utc(gate_cleared["observed_at_utc"], "gate clear time")
+        < parse_utc(gate_blocked["observed_at_utc"], "gate blocked time")
+    )
+    unresolved_attempt = failed_attempt is not None and (
+        gate_cleared is None
+        or parse_utc(gate_cleared["observed_at_utc"], "gate clear time")
+        < parse_utc(failed_attempt["observed_at_utc"], "failed attempt time")
+    )
 
     reasons: list[str] = []
     state: str
@@ -65,29 +74,27 @@ def _row(bounty: dict[str, Any], policy: dict[str, int], as_of_epoch: int) -> di
                 action = "WAIT_DNR"
                 next_eligible_at = format_utc(due)
                 reasons.append("COMPENSATION_WAIT_WINDOW_ACTIVE")
-    elif delivered is not None:
-        unresolved_gate = gate_blocked is not None and (
-            gate_cleared is None or parse_utc(gate_cleared["observed_at_utc"], "gate clear time") < parse_utc(gate_blocked["observed_at_utc"], "gate blocked time")
-        )
-        if unresolved_gate:
-            state = "SUBMITTED_GATE_BLOCKED"
-            blocked_time = parse_utc(gate_blocked["observed_at_utc"], "gate blocked time")
-            due = blocked_time + policy["gate_followup_after_seconds"]
-            if gate_follow is not None:
-                action = "WAIT_DNR"
-                reasons.append("GATE_FOLLOWUP_ALREADY_USED")
-            elif as_of_epoch >= due:
-                action = "UNBLOCK_EXTERNAL_GATE"
-                reasons.append("ONE_GATE_FOLLOWUP_WINDOW_OPEN")
-            else:
-                action = "WAIT_DNR"
-                next_eligible_at = format_utc(due)
-                reasons.append("GATE_WAIT_WINDOW_ACTIVE")
-        else:
-            state = "SUBMITTED_PENDING_ACCEPTANCE"
+    elif unresolved_gate:
+        # The same follow-up budget applies before delivery: a failed send
+        # must not turn one outstanding support case into repeated outreach.
+        state = "SUBMITTED_GATE_BLOCKED" if delivered is not None else "SUBMISSION_BLOCKED"
+        blocked_time = parse_utc(gate_blocked["observed_at_utc"], "gate blocked time")
+        due = blocked_time + policy["gate_followup_after_seconds"]
+        if gate_follow is not None:
             action = "WAIT_DNR"
-            reasons.append("DELIVERED_SUBMISSION_NOT_YET_TECHNICALLY_ACCEPTED")
-    elif gate_blocked is not None or failed_attempt is not None:
+            reasons.append("GATE_FOLLOWUP_ALREADY_USED")
+        elif as_of_epoch >= due:
+            action = "UNBLOCK_EXTERNAL_GATE"
+            reasons.append("ONE_GATE_FOLLOWUP_WINDOW_OPEN")
+        else:
+            action = "WAIT_DNR"
+            next_eligible_at = format_utc(due)
+            reasons.append("GATE_WAIT_WINDOW_ACTIVE")
+    elif delivered is not None:
+        state = "SUBMITTED_PENDING_ACCEPTANCE"
+        action = "WAIT_DNR"
+        reasons.append("DELIVERED_SUBMISSION_NOT_YET_TECHNICALLY_ACCEPTED")
+    elif unresolved_attempt:
         state = "SUBMISSION_BLOCKED"
         action = "UNBLOCK_EXTERNAL_GATE"
         reasons.append("FAILED_OR_HELD_TRANSPORT_IS_NOT_DELIVERY")
