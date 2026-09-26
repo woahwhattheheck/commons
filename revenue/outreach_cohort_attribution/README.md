@@ -14,7 +14,17 @@ Transport failures (`BOUNCE`) are not buyer rejection. Recent sends remain censo
 
 ## Cohort decisions
 
-Cohorts are keyed by `offer_id × segment` and report sent, mature, delivered-mature, pending, bounce, human-reply, qualified, proposed, accepted, invoiced, and paid counts plus native-currency amount totals. The deterministic owner-review disposition is one of:
+Cohorts are keyed by `offer_id × segment` and report sent, mature, delivered-mature, pending, bounce, human-reply, qualified, proposed, accepted, invoiced, and paid counts plus native-currency amount totals.
+
+The reply rate is `human_reply_targets / delivered_mature_targets`, in basis
+points. A mature campaign belongs to the delivered denominator if it has no
+bounce history or it has a retained human reply demonstrating delivery. Thus a
+reply after a bounce appears in both numerator and denominator, and the rate
+cannot exceed 100%. A bounce without a reply stays outside that denominator;
+historical bounce counts and route-quality rates remain visible even when a
+reply exists. This attribution does not clear a contact hold or authorize a send.
+
+The deterministic owner-review disposition is one of:
 
 - `UNDER_OBSERVED` — insufficient mature evidence;
 - `EXPAND_CAUTIOUSLY` — enough mature evidence and reply-rate threshold met without route-quality failure;
