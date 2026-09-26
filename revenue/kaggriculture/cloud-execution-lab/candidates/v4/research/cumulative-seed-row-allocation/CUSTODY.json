@@ -19,12 +19,6 @@
       "blob": "38b8716273c37f5a07910dd93bc75751476c194d"
     }
   },
-  "semantic_delta": {
-    "summary": "Deterministic whole-row BUY_SEED allocation against represented post-unit future crop demand; oversized rows cannot claim partial operating priority.",
-    "current_main_source_blob": "dcbae01a3db703d1bb273a6d31d23ec250a9e773",
-    "current_main_contains_operating_seed_rows": false,
-    "status": "distinct_historical_semantic_not_admitted"
-  },
   "exact_head_ci": [
     {
       "run_id": 34540461519,
@@ -52,9 +46,34 @@
       "conclusion": "failure"
     }
   ],
+  "v4_reconciliation": {
+    "consumed": true,
+    "source_admission_pr": 13108,
+    "source_admission_merge": "eac6222b26e84ce0cd86d942fb998eca1a0010a9",
+    "status": "semantic_consumed_as_source_only_v4_repair_not_runtime_promoted",
+    "current_main_runtime_source": {
+      "path": "revenue/kaggriculture/cloud-execution-lab/early_capital.py",
+      "blob": "dcbae01a3db703d1bb273a6d31d23ec250a9e773",
+      "contains_operating_seed_rows": false
+    },
+    "landed_v4_package": [
+      {
+        "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/performance/projection-state-clone/whole-seed-rows/ADMISSION.json",
+        "blob": "e7e27109406553b23a4a1ff3f74960959a782c53"
+      },
+      {
+        "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/performance/projection-state-clone/whole-seed-rows/apply_whole_seed_rows.py",
+        "blob": "c33b94f296405c1f3f6f7ca5d8fd438bd12acceb"
+      },
+      {
+        "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/performance/projection-state-clone/whole-seed-rows/test_whole_seed_rows.py",
+        "blob": "eed68b51a54e86162b374259261b17afc602cd4d"
+      }
+    ]
+  },
   "disposition": {
-    "class": "quarantine",
-    "reason": "Exact donor has a distinct current-missing semantic, but its canonical selected-projection, dedicated chronology, executable-prefix, and broad test gates are red. Current-ABI rederivation plus fresh one-tree gates are required before any semantic admission.",
+    "class": "superseded_consumed_historical_donor",
+    "reason": "The V3 exact head is red on canonical selected-projection, dedicated chronology, executable-prefix, and broad tests. Its useful whole-row theorem was later consumed by merged V4 PR #13108 as source-only/default-inert repair custody. Do not revive the V3 carrier or create another queue edge.",
     "queue_edge": false,
     "replay": false,
     "cherry_pick": false,
