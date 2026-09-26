@@ -8,6 +8,8 @@ Expiring capacity leases share this ledger with the command-center read budget.
 """
 from __future__ import annotations
 
+import hashlib
+import json
 import math
 import sqlite3
 import threading
@@ -79,6 +81,8 @@ class RequestBudget:
             db.execute("""CREATE TABLE IF NOT EXISTS provider_leases(
                 scope TEXT NOT NULL, holder TEXT NOT NULL, lease_id TEXT NOT NULL,
                 expires_at REAL NOT NULL, PRIMARY KEY(scope, holder), UNIQUE(lease_id))""")
+            db.execute("""CREATE TABLE IF NOT EXISTS provider_limit_observations(
+                observation_id TEXT PRIMARY KEY, fingerprint TEXT NOT NULL)""")
 
     @contextmanager
     def _transaction(self):
@@ -129,10 +133,33 @@ class RequestBudget:
         if deferred is not None:
             raise deferred
 
-    def rate_limited(self, scope, retry_after=None, reset_at=None):
+    def rate_limited(self, scope, retry_after=None, reset_at=None, *, observation_id=None):
+        """Record one provider observation; exact named retries never count twice.
+
+        The caller keeps one ID per actual provider response. The fingerprint
+        binds it to the original scope/evidence without retaining header text.
+        Replays return the currently governing deadline, including newer limits.
+        """
+        fingerprint = None
+        if observation_id is not None:
+            if (not isinstance(observation_id, str) or not 1 <= len(observation_id) <= 200
+                    or any(ord(char) < 32 for char in observation_id)):
+                raise ValueError("observation_id must be nonempty text up to 200 characters.")
+            fingerprint = hashlib.sha256(json.dumps([scope, retry_after, reset_at],
+                sort_keys=True, separators=(",", ":"), allow_nan=False).encode()).hexdigest()
         with self._transaction() as db:
             now = self.clock()
             row = self._row(db, scope)
+            if observation_id is not None:
+                previous = db.execute("SELECT fingerprint FROM provider_limit_observations "
+                                      "WHERE observation_id=?", (observation_id,)).fetchone()
+                if previous is not None:
+                    if previous["fingerprint"] != fingerprint:
+                        raise ValueError("observation_id was already used with different rate-limit evidence.")
+                    return {"scope": scope, "retry_not_before": _iso(row["retry_until"]),
+                            "retry_after_seconds": max(0, row["retry_until"] - now),
+                            "retry_basis": row["retry_basis"], "observation_id": observation_id,
+                            "replayed": True}
             seconds, basis = retry_seconds(retry_after, now, self.fallback_seconds)
             if (not isinstance(reset_at, bool) and isinstance(reset_at, (int, float))
                     and math.isfinite(reset_at) and now <= reset_at <= now + 3153600000):
@@ -155,9 +182,13 @@ class RequestBudget:
             db.execute("""UPDATE read_budget SET retry_until=?,last_limited=?,
                 limited=limited+1,retry_basis=?,fallback_streak=? WHERE scope=?""",
                 (until, now, basis, streak, scope))
+            if observation_id is not None:
+                db.execute("INSERT INTO provider_limit_observations(observation_id,fingerprint) VALUES(?,?)",
+                           (observation_id, fingerprint))
             self._limited += 1
         return {"scope": scope, "retry_not_before": _iso(until),
-                "retry_after_seconds": max(0, until - now), "retry_basis": basis}
+                "retry_after_seconds": max(0, until - now), "retry_basis": basis,
+                **({"observation_id": observation_id, "replayed": False} if observation_id is not None else {})}
 
     def succeeded(self, scope, *, shared_scopes=()):
         """Reset fallback backoff after recovery without clearing a live limit.

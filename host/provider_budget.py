@@ -105,6 +105,7 @@ def main(argv=None):
     limited.add_argument("--retry-after", help="provider seconds or HTTP date; omit if unavailable")
     limited.add_argument("--reset-at", type=float, help="provider reset epoch when primary quota is exhausted")
     limited.add_argument("--primary-core", action="store_true", help="only for confirmed primary core quota exhaustion")
+    limited.add_argument("--observation-id", help="stable unique ID for this provider response; reuse exact evidence on retry")
     args = parser.parse_args(argv)
     try:
         payload = {key: value for key, value in vars(args).items()
@@ -120,4 +121,3 @@ def main(argv=None):
 
 if __name__ == "__main__":
     sys.exit(main())
-

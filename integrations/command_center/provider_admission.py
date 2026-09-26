@@ -14,7 +14,7 @@ FIELDS = {
     "acquire": {"holder", "ttl_seconds"},
     "renew": {"holder", "lease_id", "ttl_seconds"},
     "release": {"holder", "lease_id", "successful"},
-    "limited": {"retry_after", "reset_at", "primary_core"},
+    "limited": {"retry_after", "reset_at", "primary_core", "observation_id"},
 }
 
 
@@ -58,7 +58,8 @@ def execute(state_dir, payload):
         else:
             primary = payload.get("primary_core", False)
             result = budget.rate_limited("github:GET:core" if primary else "github:GET",
-                payload.get("retry_after"), reset_at=payload.get("reset_at") if primary else None)
+                payload.get("retry_after"), reset_at=payload.get("reset_at") if primary else None,
+                observation_id=payload.get("observation_id"))
         return {"ok": True, **result}
     except RequestDeferred as exc:
         return {"ok": False, "error": "provider_admission_deferred", "scope": exc.scope,
@@ -74,7 +75,7 @@ def call(center, payload):
 def tool():
     return {
         "name": "command_center_provider_admission",
-        "description": "Coordinate GitHub publication capacity and cooldowns in the shared command-center ledger. Configure capacity once; acquire per unique holder, renew exact lease_id before each write, release finally. No provider writes or publication authority. Never proceed on ok:false; deferred responses give retry_not_before. Expiry cannot cancel in-flight writes. Do not automatically replay limited after an uncertain response; read status first.",
+        "description": "Coordinate GitHub publication capacity and cooldowns in the shared command-center ledger. Configure capacity once; acquire per unique holder, renew exact lease_id before each write, release finally. No provider writes or publication authority. Never proceed on ok:false; deferred responses give retry_not_before. Expiry cannot cancel in-flight writes. For limited, keep one observation_id per actual provider response and reuse the exact evidence on retry; without it, read status before replaying an uncertain report.",
         "inputSchema": {
             "type": "object", "required": ["action"], "additionalProperties": False,
             "properties": {
@@ -87,6 +88,8 @@ def tool():
                 "retry_after": {"type": ["string", "number"], "description": "Observed provider seconds or HTTP date; omit if unavailable."},
                 "reset_at": {"type": "number", "description": "Observed reset epoch for confirmed primary-core exhaustion."},
                 "primary_core": {"type": "boolean", "description": "True only for confirmed primary-core quota exhaustion."},
+                "observation_id": {"type": "string", "minLength": 1, "maxLength": 200,
+                                   "description": "Stable unique ID for one observed provider limit; exact retries count once."},
             },
         },
     }
