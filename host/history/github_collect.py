@@ -16,6 +16,7 @@ import re
 import subprocess
 import shutil
 import sys
+import tempfile
 import time
 import urllib.error
 import urllib.parse
@@ -37,11 +38,25 @@ def clean(value):
 
 def atomic_json(path, data):
     path.parent.mkdir(parents=True, exist_ok=True)
-    temp = path.with_suffix(path.suffix + '.pending')
-    with temp.open('x', encoding='utf-8') as out:
-        json.dump(clean(data), out, ensure_ascii=False, separators=(',', ':'))
-        out.flush(); os.fsync(out.fileno())
-    os.replace(temp, path)
+    # A fixed .pending name left by an interrupted write must not prevent
+    # every later checkpoint. Keep each attempt in a unique sibling file.
+    fd, name = tempfile.mkstemp(prefix=path.name + '.', suffix='.pending', dir=path.parent)
+    temp = Path(name)
+    try:
+        with os.fdopen(fd, 'w', encoding='utf-8') as out:
+            json.dump(clean(data), out, ensure_ascii=False, separators=(',', ':'))
+            out.flush(); os.fsync(out.fileno())
+        os.replace(temp, path)
+    except BaseException:
+        temp.unlink(missing_ok=True)
+        raise
+
+
+class GitHubReadError(RuntimeError):
+    """A provider status, without provider prose or credential-bearing data."""
+    def __init__(self, status):
+        self.status = status
+        super().__init__(f'GitHub read returned HTTP {status}')
 
 def token_for(account):
     value=os.environ.get('GH_TOKEN_PRIMARY' if account==ACCOUNTS[0] else 'GH_TOKEN_SECONDARY')
@@ -99,16 +114,18 @@ class Reader:
                 headers = dict(response.headers)
         except urllib.error.HTTPError as exc:
             # Store only code and rate metadata, never provider prose or token.
-            limited = exc.code in (403, 429) and (
-                exc.headers.get('X-RateLimit-Remaining') == '0' or
-                bool(exc.headers.get('Retry-After')))
-            self.state['gaps'].append({'road': self.state.get('active_road'), 'status': exc.code,
-                 'at': url.split('?')[0], 'rate_reset': exc.headers.get('X-RateLimit-Reset'),
+            status, headers = exc.code, exc.headers or {}
+            limited = status == 429 or status == 403 and (
+                headers.get('X-RateLimit-Remaining') == '0' or
+                bool(headers.get('Retry-After')))
+            exc.close()
+            self.state['gaps'].append({'road': self.state.get('active_road'), 'status': status,
+                 'at': url.split('?')[0], 'rate_reset': headers.get('X-RateLimit-Reset'),
                  'reason': 'rate_limit' if limited else 'provider_error'})
             self.save()
             if limited:
                 raise StopIteration('GitHub rate limit reached') from None
-            raise RuntimeError(f'GitHub read returned HTTP {exc.code}') from None
+            raise GitHubReadError(status) from None
         links = {}
         for piece in headers.get('Link', '').split(','):
             match = re.search(r'<([^>]+)>;\s*rel="([^"]+)"', piece)
@@ -253,8 +270,11 @@ class Reader:
         self.state['active_road'] = 'commits'
         try:
             data, links, url = self.get(job['next'])
-        except RuntimeError:
-            # Some listed repositories refuse commit listing; record the gap and continue.
+        except GitHubReadError as exc:
+            if exc.status not in (404, 410):
+                raise
+            # Only a definitively unavailable resource leaves the queue.
+            # Transient/read-bound failures preserve its exact resume cursor.
             self.state['repositories'].pop(0); self.save(); return None
         if not isinstance(data, list): raise ValueError('Expected commit list')
         page = job.get('page', 1)
@@ -272,7 +292,9 @@ class Reader:
         self.state['active_road'] = 'details'
         try:
             obj, links, url = self.get(job['next'], accept='application/vnd.github+json')
-        except RuntimeError:
+        except GitHubReadError as exc:
+            if exc.status not in (404, 410):
+                raise
             self.state['details'].pop(0); self.save(); return None
         objs = obj if isinstance(obj, list) else [obj]
         records = [self.record(x, job['kind'], self.account, job['url']) for x in objs if isinstance(x, dict)]
