@@ -35,6 +35,16 @@ receipt without a real provider receipt.
 No overwrite is part of restore. Restore into a new absent path, verify, then
 choose the recovery action from evidence.
 
+`snapshot --source` and `drill --source` accept both Git work trees and bare
+repositories. A mirror or a recovery created with `restore --bare` can be backed
+up directly, without allocating a work tree. The same bundle ref inventory,
+symbolic or detached HEAD, and restore readback checks apply to either source.
+
+```bash
+python3 host/repo_backup.py snapshot --source /cloud/recovered.git --output-dir /cloud/next-backup
+python3 host/repo_backup.py restore /cloud/next-backup/commons-<stamp>-<sha>.manifest.json /cloud/next-recovery.git --bare
+```
+
 The same-account GitHub copy [`woahwhattheheck/commons-backup`](https://github.com/woahwhattheheck/commons-backup)
 is a 5-minute live-mirror of canonical `main` onto backup `main` (workflow on
 backup `ops`: `.github/workflows/mirror.yml`). Actions `GITHUB_TOKEN` cannot

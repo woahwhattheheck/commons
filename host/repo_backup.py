@@ -153,8 +153,9 @@ def _head_ref(source: Path) -> str | None:
 def snapshot(source: Path, output_dir: Path) -> Path:
     source = source.resolve()
     output_dir = output_dir.resolve()
-    if _run(["rev-parse", "--is-inside-work-tree"], cwd=source).stdout.strip() != "true":
-        raise BackupError(f"not a Git work tree: {source}")
+    # Bare mirrors and --bare restores hold the same Git objects and refs as
+    # work trees. They must remain usable as sources for the next backup.
+    _run(["rev-parse", "--git-dir"], cwd=source)
     head_sha = _run(["rev-parse", "HEAD"], cwd=source).stdout.strip()
     if not SHA_RE.fullmatch(head_sha):
         raise BackupError("HEAD is not a full object id")
@@ -432,7 +433,8 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
     make = commands.add_parser("snapshot")
-    make.add_argument("--source", type=Path, default=Path.cwd())
+    make.add_argument("--source", type=Path, default=Path.cwd(),
+                      help="Git work tree or bare repository to back up")
     make.add_argument("--output-dir", type=Path, required=True)
     check = commands.add_parser("verify")
     check.add_argument("manifest", type=Path)
@@ -441,7 +443,8 @@ def main() -> int:
     recover.add_argument("target", type=Path)
     recover.add_argument("--bare", action="store_true")
     exercise = commands.add_parser("drill")
-    exercise.add_argument("--source", type=Path, default=Path.cwd())
+    exercise.add_argument("--source", type=Path, default=Path.cwd(),
+                          help="Git work tree or bare repository to back up")
     exercise.add_argument("--output-dir", type=Path, required=True)
     exercise.add_argument("--restore-dir", type=Path, required=True)
     exercise.add_argument("--bare", action="store_true")
