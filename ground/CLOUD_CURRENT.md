@@ -65,6 +65,8 @@ Every command writes `.commons-worktree/receipts/<id>/receipt.json`.
 fabricated. `destructive`, `deleted_user_work`, and `force` stay false.
 Secret-like filenames are redacted from published receipts (no copy, no hash).
 Do not commit `.commons-worktree/` to Commons.
+Session setup writes the ignore entry to Git's resolved `info/exclude`, including
+the common Git directory used by linked worktrees.
 
 Crash recovery: `snapshot` then later `recover RECEIPT_ID`. Newer dirt in the
 live tree is kept (`kept_newer_dirt`). Missing files restore from the

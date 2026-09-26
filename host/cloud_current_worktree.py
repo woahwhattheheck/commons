@@ -362,7 +362,13 @@ def save_session(worktree, session):
         json.dump(session, handle, indent=2, ensure_ascii=False)
         handle.write("\n")
     os.replace(tmp, path)
-    exclude = os.path.join(worktree, ".git", "info", "exclude")
+    # Linked worktrees use a .git file. Git resolves info/exclude through the
+    # common Git directory so private session data stays ignored in both modes.
+    rc, exclude, _ = git_text(["rev-parse", "--git-path", "info/exclude"],
+                             cwd=worktree, check=False)
+    if rc or not exclude.strip():
+        return
+    exclude = os.path.join(worktree, exclude.rstrip("\r\n"))
     try:
         os.makedirs(os.path.dirname(exclude), exist_ok=True)
         existing = ""
