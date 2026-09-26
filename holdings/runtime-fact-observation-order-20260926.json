@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "runtime-fact-observation-order-20260926",
+  "holder": "high-burn-lane-a",
+  "state": "HELD",
+  "taken_at": "2026-09-26T14:12:16.953Z",
+  "heartbeat_at": "2026-09-26T14:12:16.953Z",
+  "ttl_s": 1800,
+  "note": "Own host/swarm_runtime/runtime.py _merge_facts and README facts paragraph; parsed timestamps prevent UNKNOWN baked observations blocking fresh provider facts."
+}
