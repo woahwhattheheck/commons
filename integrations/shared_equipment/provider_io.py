@@ -145,14 +145,11 @@ class GitHubSlackEquipment:
 
     @staticmethod
     def _load_slack_token() -> str:
-        # Consume the current encrypted store in memory. Never inject into model
-        # prompts, environment, another vault, or a Gemini provider profile.
         try:
             from integrations.grok_slack.handoff import default_vault_path, read_vault
             return read_vault(default_vault_path())["bot_token"]
         except Exception as exc:
             raise EquipmentError("existing Slack vault unavailable; inspect the existing Grok Slack custody route") from exc
-
 
     def slack(self, method: str, payload: dict) -> dict:
         read_method = method in {
@@ -205,7 +202,6 @@ class GitHubSlackEquipment:
                 )
             require_publication(_slack_publication_text(payload))
         token = self.slack_token_loader()
-        # Slack read methods accept query/form arguments, not consistently JSON.
         url = "https://slack.com/api/" + method
         if read_method:
             url += "?" + urllib.parse.urlencode(payload)
@@ -229,14 +225,11 @@ class GitHubSlackEquipment:
         if not isinstance(result, dict):
             raise EquipmentError("Slack returned no result object",
                                  code="slack_response_invalid", uncertain=not read_method)
-        # Slack documents these errors as possibly occurring after an effect.
         if not read_method and result.get("error") in ("internal_error", "fatal_error"):
             result["uncertain"] = True
         return redacted(result)
 
     def github(self, endpoint: str, *, method: str = "GET", payload: dict | None = None) -> Any:
-        # Writes need the same HTTP/cooldown evidence as reads. Keep --include
-        # after `api` so existing --method/endpoint argument parsing stays valid.
         command = [self.gh, "api", "--include", "--hostname", "github.com", "--method", method, endpoint]
         if payload is not None:
             command += ["--input", "-"]
@@ -250,16 +243,17 @@ class GitHubSlackEquipment:
         try:
             body, status, headers = _github_headers(result.stdout)
         except EquipmentError as exc:
-            # An incomplete write response cannot establish whether it landed.
             exc.uncertain = method != "GET"
             raise
         if result.returncode or status is not None and status >= 400:
-            # Preserve response rate evidence, never stderr, command or raw headers.
+            error = None
             try:
                 error = json.loads(body)
                 message = redacted(error.get("message", "GitHub request failed")) if isinstance(error, dict) else "GitHub request failed"
             except (ValueError, TypeError):
                 message = "GitHub request failed through existing gh account"
+            if status is None and isinstance(error, dict) and error.get("message") == "Not Found":
+                status = 404
             remaining = _header_integer(headers, "x-ratelimit-remaining")
             reset = _header_integer(headers, "x-ratelimit-reset")
             resource = headers.get("x-ratelimit-resource")
@@ -267,8 +261,6 @@ class GitHubSlackEquipment:
                 resource = None
             secondary = status in (403, 429) and any(term in str(message).lower()
                 for term in ("secondary rate limit", "abuse detection mechanism"))
-            # A 403 may carry Retry-After without quota exhaustion or the
-            # standard secondary-limit prose. Preserve that provider deadline.
             limited = status == 429 or status == 403 and (
                 remaining == 0 or secondary or bool(headers.get("retry-after")))
             kind = ("secondary" if secondary else "primary" if remaining == 0 else "unknown") if limited else None

@@ -41,15 +41,15 @@ class NewcomerRoadProofTests(unittest.TestCase):
             return io.BytesIO(body)
 
         def gh_runner(command, **kwargs):
-            # ServiceEquipment.github is:
-            #   gh api --hostname github.com --method METHOD ENDPOINT [--input -]
-            # so command[-1] is "-" on writes and command[4] is the flag.
             method_index = command.index("--method") + 1
             method = command[method_index]
             endpoint = command[method_index + 1]
             if method == "GET" and endpoint.endswith("/git/ref/heads/newcomer-proof"):
                 return subprocess.CompletedProcess(
-                    command, 1, '{"message":"Not Found"}', ""
+                    command,
+                    1,
+                    "HTTP/2 404\r\n\r\n" + '{"message":"Not Found"}',
+                    "",
                 )
             if method == "POST" and endpoint.endswith("/git/refs"):
                 payload = json.loads(kwargs["input"])
@@ -57,7 +57,8 @@ class NewcomerRoadProofTests(unittest.TestCase):
                 return subprocess.CompletedProcess(
                     command,
                     0,
-                    json.dumps(
+                    "HTTP/2 201\r\n\r\n"
+                    + json.dumps(
                         {
                             "ref": payload["ref"],
                             "object": {"sha": payload["sha"], "type": "commit"},
@@ -78,13 +79,11 @@ class NewcomerRoadProofTests(unittest.TestCase):
         catalog, requests = self._equipment()
         peer_label = "brand-new-peer-no-history"
 
-        # Discovery is identical regardless of peer label (parity).
         manifest_a = build_capability_manifest(catalog=catalog, peer=peer_label)
         manifest_b = build_capability_manifest(catalog=catalog, peer="legacy-peer")
         self.assertEqual(manifest_a["operations"], manifest_b["operations"])
         self.assertTrue(manifest_a["same_operations_for_every_peer"])
 
-        # Read through shared road (Slack).
         read_out = catalog.call(
             "slack_read_channel",
             {"channel_id": "C0BU51F1PL3", "limit": 5, "peer": peer_label},
@@ -93,12 +92,10 @@ class NewcomerRoadProofTests(unittest.TestCase):
         self.assertTrue(read_out["result"]["ok"])
         self.assertEqual(requests[0].get_method(), "GET")
         self.assertIn("Authorization", requests[0].headers)
-        # Token stays in the transport header only — never in the tool result.
         read_blob = json.dumps(read_out)
         self.assertIsNone(SECRETISH.search(read_blob), read_blob[:300])
         self.assertNotIn("SYNTHETIC_TOKEN", read_blob)
 
-        # Reversible mutation through shared road (create branch; deleteable).
         mutate_out = catalog.call(
             "github_create_branch",
             {
@@ -115,7 +112,6 @@ class NewcomerRoadProofTests(unittest.TestCase):
         mutate_blob = json.dumps(mutate_out)
         self.assertIsNone(SECRETISH.search(mutate_blob), mutate_blob[:300])
 
-        # Redaction still strips provider secret fields if they leak upstream.
         dirty = redacted(
             {"bot_token": "xoxb-SYNTHETIC_TOKEN-only", "ok": True, "text": "fine"}
         )
