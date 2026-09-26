@@ -62,6 +62,9 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 -m harness_wake.cancel_stale
       - name: cheap tick, never a model
+        id: tick
+        # Preserve useful state before surfacing a partial tick failure below.
+        continue-on-error: true
         run: |
           set -e
           if [ "${{ github.ref }}" = "refs/heads/main" ] && [ "${{ github.event_name }}" != "pull_request" ]; then
@@ -81,3 +84,6 @@ jobs:
           git config user.name "commons-job-watchdog"
           git config user.email "commons-board@users.noreply.github.com"
           python3 -m harness_wake.land
+      - name: report tick failure after state preservation
+        if: always() && steps.tick.outcome == 'failure'
+        run: exit 1

@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 from typing import Any, Callable
 
-from independent_commons_mcp.jobs import JobStore, public_job, utc_now
+from independent_commons_mcp.jobs import JobStore, public_job, tick_failure, utc_now
 from independent_commons_mcp.truth import GitTruth
 
 from .cursor_adapter import deliver_ntfy, is_cursor_harness
@@ -73,27 +73,32 @@ def run(
     oracle = page_exists if page_exists is not None else pinned_head_oracle(truth=truth)
     rows = []
     for ident in store.list_ids():
-        job = store.get(ident)
-        harness = str(job.get("harness") or "")
-        if is_cursor_harness(harness) and not is_grokbot_seth_live(harness):
-            rows.append({
-                "ok": True,
-                "state": "TICKED",
-                "job_id": ident,
-                "action": "HOLD",
-                "invoke_model": False,
-                "reason": "CURSOR_QUOTA_HOLD",
-                "now": now or utc_now(),
-                "note": "Owner quota hold: this row cannot authorize model invocation.",
-                "job": public_job(job),
-            })
-            continue
-        rows.append(
-            store.tick(ident, now=now, worker_id=worker_id, page_exists=oracle)
-        )
+        try:
+            job = store.get(ident)
+            harness = str(job.get("harness") or "")
+            if is_cursor_harness(harness) and not is_grokbot_seth_live(harness):
+                rows.append({
+                    "ok": True,
+                    "state": "TICKED",
+                    "job_id": ident,
+                    "action": "HOLD",
+                    "invoke_model": False,
+                    "reason": "CURSOR_QUOTA_HOLD",
+                    "now": now or utc_now(),
+                    "note": "Owner quota hold: this row cannot authorize model invocation.",
+                    "job": public_job(job),
+                })
+                continue
+            rows.append(
+                store.tick(ident, now=now, worker_id=worker_id, page_exists=oracle)
+            )
+        except Exception as exc:
+            rows.append(tick_failure(ident, exc))
+    errors = sum(1 for row in rows if not row.get("ok"))
     summary = {
-        "ok": True,
-        "state": "TICKED",
+        "ok": not errors,
+        "state": "DEGRADED" if errors else "TICKED",
+        "error_count": errors,
         "inbound": inbound,
         "jobs": rows,
         "wake_count": sum(1 for row in rows if row.get("action") == "WAKE"),
@@ -191,4 +196,4 @@ def main(argv: list[str] | None = None) -> int:
     )
     json.dump(summary, sys.stdout, ensure_ascii=True, indent=2, sort_keys=True)
     sys.stdout.write("\n")
-    return 0
+    return 0 if summary.get("ok") else 2
