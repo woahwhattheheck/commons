@@ -1112,7 +1112,13 @@ def cmd_sync(
             if planned is None:
                 applied = max(applied, clock)
                 continue
-            if not github.issue_exists(planned):
+            exists = github.issue_exists(planned)
+            # The census shares this deadline and may consume the remaining
+            # budget. Keep this event pending rather than starting a late POST.
+            if deadline is not None and time.monotonic() >= deadline:
+                truncated = True
+                break
+            if not exists:
                 created.append(
                     {"id": planned.title, "issue": github.create_issue(planned)}
                 )
