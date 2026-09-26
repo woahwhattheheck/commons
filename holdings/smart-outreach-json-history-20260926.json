@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "smart-outreach-json-history-20260926",
+  "holder": "high-burn-value-pipeline",
+  "taken_at": "2026-09-26T14:01:10Z",
+  "heartbeat_at": "2026-09-26T14:01:10Z",
+  "ttl_s": 1800,
+  "state": "ACTIVE",
+  "note": "Own host/smart_outreach.py and revenue/smart_outreach/README.md: report duplicate JSON keys and nonfinite constants so parsed history cannot silently replace suppression records."
+}
