@@ -1,0 +1,37 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "source": {
+    "branch": "sol/titan-v3-frozen-seller-prefix-ledger-20260909-01",
+    "head": "c1508d36e269d6f0b8615f1ef328aab55201a5d2",
+    "tree": "f3cfc8f3d7a790aaf5ff9eb5be6d8d05cf02ac7d",
+    "pr": 11772,
+    "merged": false
+  },
+  "exact_blobs": {
+    "workflow": "2860eb4dd412acc8689ee8c79faf86fb9efcdc7c",
+    "README": "d5fd602ce9ef0fb7185ba2aa5fcae19c6210fabf",
+    "main.py": "bb094f4934ee629971d2bee6fe87c009640cc822",
+    "prefix_ledger.py": "7a5905b59085d98d8e553ba795333d1528eea06c",
+    "run_development_screen.py": "15641aec1fabc32ee87a71f197626bda28e05d2e",
+    "test_current_source_contract.py": "fe95ad8740884858f1ee5796f8fe765213ee36e3",
+    "test_prefix_ledger.py": "30dddfb4efe43183b6a887f6291e11704fed2700"
+  },
+  "hosted": {
+    "run_id": 34406619818,
+    "job_id": 102651009869,
+    "conclusion": "failure",
+    "failed_step": "Compile and execute focused contracts",
+    "artifact_id": 10161037406,
+    "artifact_name": "titan-v3-frozen-seller-prefix-ledger-34406619818",
+    "downloaded_zip_bytes": 171,
+    "downloaded_zip_sha256": "32e921d7cb8ddb3bef581378dc73ff9cc200bc7aaa7a2d8e13710c8417202574",
+    "artifact_member": "HEAD.sha",
+    "artifact_member_blob": "aec9bf1844b04ef6ab094bcd3d64ffd58d55a308"
+  },
+  "successor": {
+    "pr": 13342,
+    "merged": true,
+    "merge_commit": "aa27576eff77a6c19b1b7286bdbfd8bae2b6a07a"
+  },
+  "disposition": "divergent historical state-ledger candidate; exact-head hosted red; retained artifact payload preserved; semantic family later converged on the single main line; no replay, cherry-pick, remint, or V4 queue edge"
+}
