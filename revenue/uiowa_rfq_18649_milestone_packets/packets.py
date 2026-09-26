@@ -69,6 +69,11 @@ def canonical(value: Any) -> bytes:
     return (json.dumps(value, ensure_ascii=False, allow_nan=False, sort_keys=True, indent=2) + "\n").encode()
 
 
+def integrity_index(files: dict[str, bytes]) -> bytes:
+    return canonical({"schema_version": VERSION, "algorithm": "sha256", "files": {
+        name: hashlib.sha256(data).hexdigest() for name, data in sorted(files.items())}})
+
+
 def git_blob(data: bytes) -> str:
     return hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
 
@@ -243,6 +248,9 @@ def packet_markdown(packet: dict) -> str:
         rows.append(f"| {artifact['id']} | {link} | {artifact.get('bytes', 'UNKNOWN')} | {artifact.get('sha256', 'UNKNOWN')} |")
     rows += ["", "Version and original ID/locator metadata for every entry are retained in `packet.json`. "
              "Copied upstream evidence is byte-identical; hashing proves bytes, not truth or independent authorization.", "",
+             "Keep `packet-integrity.json` with this folder. With the assembler available, run "
+             "`python packets.py verify /path/to/this-packet` to check this packet without sibling milestones. "
+             "A matching digest index establishes file consistency only.", "",
              "## Applicable criteria and remaining work", "",
              "These are paraphrases of the **proposed** exhibit, not findings of conformance. "
              "A linked example is not proof that the full engagement criterion is satisfied.", "",
@@ -317,6 +325,9 @@ def construct(plan: dict, source_root: Path) -> tuple[dict[str, bytes], dict]:
         }
         output[f"{kind}/packet.json"] = canonical(packet)
         output[f"{kind}/README.md"] = packet_markdown(packet).encode()
+        prefix = f"{kind}/"
+        output[f"{kind}/packet-integrity.json"] = integrity_index({
+            name[len(prefix):]: data for name, data in output.items() if name.startswith(prefix)})
         packets.append({k: packet[k] for k in ("id", "amount_cents", "trigger", "packaging_status", "artifact_conformance", "real_commercial_event")})
     report = {"schema_version": VERSION, "notice": NOTICE, "generation": plan["generation"],
               "base_cents": plan["base_cents"], "milestone_sum_cents": sum(m["amount_cents"] for m in packets),
@@ -331,18 +342,17 @@ def construct(plan: dict, source_root: Path) -> tuple[dict[str, bytes], dict]:
         "\n".join(f"| [{m['id']}]({m['id']}/README.md) | {money(m['amount_cents'])} | {m['trigger']} | {m['packaging_status']} |" for m in packets) +
         "\n\n**Base total: $24,000.00 USD. Optional readout: $4,000.00 separately proposed, not included.**\n\n" +
         "Each folder is portable on its own: open README.md, packet.json and artifacts/. No source checkout is needed to read it. "
-        "Retain the complete bundle to run verification against bundle-integrity.json. "
+        "Retain bundle-integrity.json to verify the whole bundle, or packet-integrity.json to verify a copied milestone. "
         "Every criterion remains NOT_ASSESSED; every real commercial event remains NOT_ESTABLISHED. "
         "Read each criterion's unresolved statement before adapting this demonstration to a live engagement.\n").encode()
-    integrity = {"schema_version": VERSION, "algorithm": "sha256", "files": {
-        name: hashlib.sha256(data).hexdigest() for name, data in sorted(output.items())}}
-    output["bundle-integrity.json"] = canonical(integrity)
+    output["bundle-integrity.json"] = integrity_index(output)
     return output, report
 
 
 def verify(directory: Path) -> dict:
     root = directory.resolve(strict=True)
-    index = load(root / "bundle-integrity.json")
+    index_name = "bundle-integrity.json" if os.path.lexists(root / "bundle-integrity.json") else "packet-integrity.json"
+    index = load(root / index_name)
     _keys(index, {"schema_version", "algorithm", "files"})
     require(index["schema_version"] == VERSION and index["algorithm"] == "sha256", "unsupported integrity index")
     require(isinstance(index["files"], dict) and bool(index["files"]), "empty integrity index")
@@ -363,9 +373,11 @@ def verify(directory: Path) -> dict:
         for name in dirs + files:
             require(not (Path(current) / name).is_symlink(), "symlink in bundle")
         actual.update((Path(current) / name).relative_to(root).as_posix() for name in files)
-    extra = actual - set(index["files"]) - {"bundle-integrity.json"}
+    extra = actual - set(index["files"]) - {index_name}
     errors += [{"path": name, "status": "UNINDEXED"} for name in sorted(extra)]
     return {"status": "PASS" if not errors else "FAIL", "files_checked": len(index["files"]), "errors": errors,
+            "integrity_scope": "bundle" if index_name == "bundle-integrity.json" else "packet",
+            "integrity_index": index_name,
             "authority_limit": "Self-contained integrity only; replacing files and the index together is not independently detectable."}
 
 
@@ -399,8 +411,8 @@ def main(argv: list[str] | None = None) -> int:
     a.add_argument("plan", type=Path)
     a.add_argument("--root", type=Path, required=True)
     a.add_argument("--output", type=Path, required=True)
-    v = commands.add_parser("verify")
-    v.add_argument("directory", type=Path)
+    v = commands.add_parser("verify", help="Verify a complete bundle or one copied milestone packet.")
+    v.add_argument("directory", type=Path, help="Directory containing bundle-integrity.json or packet-integrity.json.")
     args = parser.parse_args(argv)
     try:
         report = assemble(args.plan, args.root, args.output) if args.command == "assemble" else verify(args.directory)
