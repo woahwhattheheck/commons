@@ -9,11 +9,20 @@ From this directory, using Python 3.10 or newer:
 ```sh
 python packets.py assemble example.json --root . --output generated-packets
 python packets.py verify generated-packets
+python packets.py verify generated-packets/draft
 python -m unittest -v test_packets
 python -O -m unittest -v test_packets
 ```
 
 The output destination must not exist. The example uses only bundled files and the Python standard library; it makes no network calls and runs no component code. Assembly opens every source file, checks its exact Git blob, copies matching bytes, generates the packet documents, and rereads all generated files before publishing the new directory. The `verify` command also finds missing, changed and unexpected files.
+
+To transfer a single milestone, copy its entire directory, including
+`packet-integrity.json`, `packet.json`, `README.md` and `artifacts/`. Then run
+`python packets.py verify /path/to/copied-draft` using this assembler; no sibling
+milestone folders or source artifacts are needed. The result names its
+`integrity_scope` as `packet`. Verification at the bundle root uses
+`bundle-integrity.json` and reports `bundle`; it also covers all packet indexes.
+Existing bundles without packet indexes remain verifiable at their bundle root.
 
 | Packet | Proposed base share | Proposed event | Scenario |
 |---|---:|---|---|
@@ -53,7 +62,7 @@ Twelve-cell scope requests and fictional milestone scenarios were authored for t
 
 This public sample assembler deliberately accepts `SYNTHETIC_DRAFT`, not real customer evidence. Its narrative templates may be adapted in an authorized private engagement environment after reviewing the actual agreed scope. Real customer or University material must not be placed in this public directory.
 
-Each output packet contains `README.md`, `packet.json` and `artifacts/`. The packet is independently readable after being copied out of the repository. The root `completeness.json` reconciles amounts and lists source problems. `bundle-integrity.json` covers all 23 generated content files in this example. Keep it with the whole bundle for verification. Replacing a file **and** its digest index together cannot be detected without an independently held root; this is not a signature, provenance trust root or compiler-currentness receipt.
+Each output packet contains `README.md`, `packet.json`, `packet-integrity.json` and `artifacts/`. The packet is independently readable and verifiable after being copied out of the repository. The root `completeness.json` reconciles amounts and lists source problems. `bundle-integrity.json` covers all 26 generated content files in this example, including the three packet indexes. Keep each index with the files it describes. Replacing a file **and** its digest index together cannot be detected without an independently held root; this is not a signature, provenance trust root or compiler-currentness receipt.
 
 Exit codes: `0` complete assembly or matching integrity, `1` an incomplete assembly or integrity difference, `2` invalid input or filesystem error. A faithfully recorded incomplete assembly may pass the integrity check: one describes missing input, the other describes consistency of the produced report. Neither grants commercial authority.
 
