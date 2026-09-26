@@ -4519,6 +4519,38 @@ def _gh_api_paged(url, per_page=100, max_pages=SWEEP_MAX_PAGES):
     return items
 
 
+def _sweep_issue_candidates():
+    """Share the bounded recovery window between old and recent envelopes."""
+    recent_pages = (SWEEP_MAX_PAGES + 1) // 2
+    older_pages = SWEEP_MAX_PAGES - recent_pages
+    recent = _gh_api_paged(COMMONS_ISSUES, max_pages=recent_pages)
+    if len(recent) < recent_pages * 100 or not older_pages:
+        # The whole queue fits in this window: reuse it without a second read.
+        older = list(reversed(recent))
+    else:
+        older = _gh_api_paged(
+            COMMONS_ISSUES.replace("direction=desc", "direction=asc"),
+            max_pages=older_pages,
+        )
+    # 9,567 open transport envelopes exceeded the old newest-1,000 horizon;
+    # #16562 already had a durable p/ source but could never reach finalization.
+    # Interleave both ends before its wall-clock deadline, preserving the same
+    # ten-page read ceiling. Overlapping windows visit each issue only once.
+    candidates = []
+    seen = set()
+    for offset in range(max(len(older), len(recent))):
+        for window in (older, recent):
+            if offset >= len(window):
+                continue
+            issue = window[offset]
+            number = issue.get("number") if isinstance(issue, dict) else None
+            if type(number) is not int or number < 1 or number in seen:
+                continue
+            seen.add(number)
+            candidates.append(issue)
+    return candidates
+
+
 def _envelope_class(issue):
     # An explicit envelope or the board label is ingest-eligible. Missing
     # sender/destination metadata uses UNSEATED/TABLE defaults; only unrelated
@@ -4592,7 +4624,7 @@ def sweep_collect():
     ):
         return []
     try:
-        issues = _gh_api_paged(COMMONS_ISSUES)
+        issues = _sweep_issue_candidates()
     except (urllib.error.URLError, TimeoutError, OSError, json.JSONDecodeError):
         return []
     if not isinstance(issues, list):
