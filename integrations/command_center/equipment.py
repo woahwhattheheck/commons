@@ -91,8 +91,13 @@ class CommandCenterEquipment:
                     {"required": ["hidden"]}, {"required": ["action"]}]
         from .swarm_tasks import tool as swarm_task_tool
         result.append(swarm_task_tool())
+        from .provider_admission import tool as provider_admission_tool
+        result.append(provider_admission_tool())
         return result
     def call(self, name, arguments):
+        if name == "command_center_provider_admission":
+            from .provider_admission import call
+            return call(self.center, arguments)
         if name == "command_center_swarm_tasks":
             from .swarm_tasks import call
             return call(self.center, arguments)
@@ -130,3 +135,4 @@ class CommandCenterEquipment:
         if suffix not in names:
             raise ValueError("unknown command center tool")
         return self.center.mutate(names[suffix], arguments)
+

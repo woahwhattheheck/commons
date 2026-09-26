@@ -1,32 +1,92 @@
 #!/usr/bin/env python3
 """Cooperating GitHub publication admission using the existing request budget.
 
-Every caller must use the same state directory. Renew before each connector
-write, keep its operation ID on uncertainty, and release the lease in finally.
-This command performs no provider calls and never sleeps or schedules retries.
+Use the same state directory or --url for one shared command-center authority.
+Renew before each connector write and release the lease in finally. This command
+performs no provider calls and never sleeps, retries or schedules work.
 """
 from __future__ import annotations
 
 import argparse
+import http.client
 import json
+import math
 from pathlib import Path
-import sqlite3
+import re
 import sys
+import urllib.error
+import urllib.parse
+import urllib.request
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from integrations.command_center.request_budget import RequestBudget, RequestDeferred
+from integrations.command_center.provider_admission import execute, SCOPE, SHARED_SCOPES
 
-SCOPE = "github:publication"
-# Preserve the existing provider-wide and primary-core cooldown identities.
-SHARED_SCOPES = ("github:GET", "github:GET:core")
+
+class NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, *_args, **_kwargs):
+        return None
+
+
+def shared_request(url, payload, timeout=30):
+    """Never replay a POST, follow redirects or fall back to a local ledger."""
+    parsed = urllib.parse.urlsplit(url)
+    if (parsed.scheme not in {"http", "https"} or not parsed.hostname
+            or parsed.username or parsed.password or parsed.query or parsed.fragment):
+        raise ValueError("--url requires an HTTP(S) command-center base URL without credentials, query or fragment.")
+    if not math.isfinite(timeout) or not 0 < timeout <= 120:
+        raise ValueError("--timeout must be greater than zero and at most 120 seconds.")
+    request = urllib.request.Request(url.rstrip("/") + "/api/provider/admission",
+        data=json.dumps(payload).encode("utf-8"), method="POST",
+        headers={"Content-Type": "application/json"})
+
+    def read_response(response):
+        raw = response.read(1048577)
+        if len(raw) > 1048576:
+            raise ValueError("Shared admission response exceeded the size limit.")
+        result = json.loads(raw)
+        if not isinstance(result, dict) or type(result.get("ok")) is not bool:
+            raise ValueError("Shared admission response requires a boolean ok field.")
+        if result["ok"]:
+            if result.get("scope") not in {SCOPE, *SHARED_SCOPES}:
+                raise ValueError("Shared admission response has no recognized scope.")
+            if payload["action"] in {"acquire", "renew"}:
+                if (result.get("scope") != SCOPE or result.get("holder") != payload["holder"]
+                        or not re.fullmatch(r"[0-9a-f]{32}", str(result.get("lease_id", "")))
+                        or not isinstance(result.get("expires_at"), str)):
+                    raise ValueError("Shared admission response has no matching lease receipt.")
+                if payload["action"] == "renew" and result["lease_id"] != payload["lease_id"]:
+                    raise ValueError("Shared admission renewed a different lease.")
+        return result
+
+    try:
+        with urllib.request.build_opener(NoRedirect()).open(request, timeout=timeout) as response:
+            return read_response(response)
+    except urllib.error.HTTPError as exc:
+        with exc:
+            try:
+                result = read_response(exc)
+            except (OSError, ValueError, UnicodeError, http.client.HTTPException):
+                result = {"error": "provider_admission_http_error"}
+            result.update(ok=False, http_status=exc.code)
+            if exc.headers.get("Retry-After") is not None:
+                result["retry_after_header"] = exc.headers["Retry-After"]
+            if exc.code >= 500:
+                result["status"] = "uncertain"
+            return result
+    except (OSError, ValueError, UnicodeError, http.client.HTTPException):
+        return {"ok": False, "error": "provider_admission_transport_uncertain", "status": "uncertain",
+                "message": "Do not publish. Read shared status and reconcile the original action before retrying."}
 
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--state-dir", type=Path, required=True)
+    authority = parser.add_mutually_exclusive_group(required=True)
+    authority.add_argument("--state-dir", type=Path)
+    authority.add_argument("--url", help="shared command-center base URL through an existing trusted transport")
+    parser.add_argument("--timeout", type=float, default=30, help="shared authority request timeout, at most 120 seconds")
     commands = parser.add_subparsers(dest="command", required=True)
     configure = commands.add_parser("configure", help="coordinator sets the shared concurrency cap")
     configure.add_argument("--capacity", type=int, required=True)
@@ -47,36 +107,17 @@ def main(argv=None):
     limited.add_argument("--primary-core", action="store_true", help="only for confirmed primary core quota exhaustion")
     args = parser.parse_args(argv)
     try:
-        args.state_dir.mkdir(parents=True, exist_ok=True)
-        budget = RequestBudget(args.state_dir)
-        if args.command == "configure":
-            result = budget.set_capacity(SCOPE, args.capacity)
-        elif args.command == "status":
-            result = budget.lease_status(SCOPE, shared_scopes=SHARED_SCOPES)
-        elif args.command == "acquire":
-            result = budget.acquire_lease(SCOPE, args.holder, ttl_seconds=args.ttl_seconds,
-                                          shared_scopes=SHARED_SCOPES)
-        elif args.command == "renew":
-            result = budget.renew_lease(SCOPE, args.holder, args.lease_id, ttl_seconds=args.ttl_seconds,
-                                        shared_scopes=SHARED_SCOPES)
-        elif args.command == "release":
-            result = budget.release_lease(SCOPE, args.holder, args.lease_id)
-            if result["released"] and args.successful:
-                budget.succeeded(SCOPE, shared_scopes=SHARED_SCOPES)
-        else:
-            scope = "github:GET:core" if args.primary_core else "github:GET"
-            result = budget.rate_limited(scope, args.retry_after,
-                                         reset_at=args.reset_at if args.primary_core else None)
-        print(json.dumps({"ok": True, **result}), flush=True)
-        return 0
-    except RequestDeferred as exc:
-        print(json.dumps({"ok": False, "error": "provider_admission_deferred", "scope": exc.scope,
-                          "reason": exc.reason, "retry_not_before": exc.retry_not_before}), flush=True)
-        return 75
-    except (OSError, ValueError, sqlite3.Error) as exc:
+        payload = {key: value for key, value in vars(args).items()
+                   if key not in {"url", "state_dir", "timeout", "command"} and value is not None}
+        payload["action"] = args.command
+        result = shared_request(args.url, payload, args.timeout) if args.url else execute(args.state_dir, payload)
+        print(json.dumps(result), flush=True)
+        return 0 if result.get("ok") is True else (75 if result.get("error") == "provider_admission_deferred" else 1)
+    except (OSError, ValueError) as exc:
         print(json.dumps({"ok": False, "error": "provider_admission_failed", "message": str(exc)}), flush=True)
         return 1
 
 
 if __name__ == "__main__":
     sys.exit(main())
+
