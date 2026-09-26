@@ -4,6 +4,7 @@
   const views = ['focus','work','builds','inbox','marketing','fleet','resources','tools','access','budget','feed'];
   let state = null, currentView = 'focus', lastSync = null, syncError = '', refreshing = null, queuedRefresh = null;
   let tools = [], selectedKey = '', busy = false, dialogSpec = null, toastTimer;
+  let publicationAdmission = null, admissionSeen = null, admissionUnavailable = false;
   const attemptKey = 'commons.command-center.operations.v1';
   let attempts = {};
   try { attempts = JSON.parse(sessionStorage.getItem(attemptKey) || '{}'); } catch (_) {}
@@ -86,6 +87,7 @@
     $('breadcrumb-view').textContent=view[0].toUpperCase()+view.slice(1);
     if(location.hash!=='#'+view) history.replaceState(null,'','#'+view);
     if(changed)window.scrollTo({top:0,left:0,behavior:'instant'});
+    if(view==='resources')renderPublicationAdmission();
   }
   async function request(path, method='GET', data) {
     const controller=new AbortController(), timeout=setTimeout(()=>controller.abort(),45000);
@@ -108,6 +110,7 @@
     return [...map.values()].sort((a,b)=>(a.name+a.runtime_id).localeCompare(b.name+b.runtime_id));
   }
   function connectionState() {
+    renderPublicationAdmission();
     const stale=lastSync && Date.now()-lastSync>65000;
     const n=$('connection-state'); n.className='connection-state'+(syncError?' offline':stale?' stale':'');
     n.replaceChildren(make('span','status-dot'),make('span','',syncError?'Refresh failed':!lastSync?'Connecting':stale?'Stale observation':'Synced'));
@@ -130,12 +133,15 @@
     }
     refreshing=(async()=>{
       $('refresh-button').disabled=true;
+      // The same refresh reads both surfaces. A missing admission endpoint
+      // retains its own last observation without hiding the main state.
+      const admissionRead=readPublicationAdmission();
       try { const response=await request(force===true?'/api/state?refresh=1':'/api/state'); const next=response.body;
         if(!next || typeof next!=='object' || !Array.isArray(next.sources)) throw new Error('State response is missing its source catalog.');
         state=next; tools=flatten(state.runtimes); lastSync=Date.now();syncError='';
         arr(state.operations).forEach(op=>Object.values(attempts).forEach(a=>{if(a.id===op.operation_id&&terminal(op.status))a.status=op.status;})); saveAttempts();render();
       } catch(e) {syncError=e.message;connectionState();}
-      finally {refreshing=null;$('refresh-button').disabled=false;connectionState();}
+      finally {await admissionRead;refreshing=null;$('refresh-button').disabled=false;connectionState();}
     })();
     return refreshing;
   }
@@ -205,7 +211,56 @@
     replace('runtime-list',runtimes.length?runtimes.map(r=>{const c=recordCard(r,'runtime');c.append(meta([['Gateway',r.gateway_url],['Schemas',arr(r.tools).length]]));if(r.error)c.append(make('p','source-error',r.error));c.append(button('Inspect tools →',()=>{ $('tool-search').value=str(r.id);renderTools();navigate('tools');}));return c;}):[empty('No runtime catalog returned. Account metadata alone does not make service operations callable here.')]);
   }
   function allRecords(){return [...arr(state&&state.resources).map(r=>({r,kind:'resource'})),...arr(state&&state.connections).map(r=>({r,kind:'connection'}))];}
+  async function readPublicationAdmission() {
+    if(!$('publication-admission'))return;
+    try {
+      const {body:r}=await request('/api/provider/admission');
+      const capacity=r&&r.capacity, active=r&&r.active;
+      if(!r || r.ok!==true || r.scope!=='github:publication' ||
+        !(capacity===null || Number.isInteger(capacity)&&capacity>=1&&capacity<=64) ||
+        !Number.isInteger(active) || active<0 || typeof r.admission_available!=='boolean' ||
+        !(r.reason===null || typeof r.reason==='string'&&r.reason.length>0) ||
+        !(r.retry_not_before===null || typeof r.retry_not_before==='string'&&Number.isFinite(Date.parse(r.retry_not_before))) ||
+        !Array.isArray(r.leases) || r.leases.some(x=>!x || typeof x.expires_at!=='string'||!Number.isFinite(Date.parse(x.expires_at))) ||
+        (r.admission_available && (capacity===null || active>=capacity || r.reason!==null)) ||
+        (!r.admission_available && r.reason===null))throw new Error('Invalid admission status');
+      // Select only display fields. Never retain raw lease receipts or tokens.
+      publicationAdmission={capacity,active,available:r.admission_available,reason:r.reason,
+        deadline:r.retry_not_before,expiries:r.leases.map(x=>x.expires_at)};
+      admissionSeen=Date.now();admissionUnavailable=false;
+    } catch(_) {admissionUnavailable=true;}
+    renderPublicationAdmission();
+  }
+  function renderPublicationAdmission() {
+    const panel=$('publication-admission');if(!panel)return;
+    const r=publicationAdmission, now=Date.now();
+    const expired=r&&((r.deadline&&Date.parse(r.deadline)<=now)||r.expiries.some(x=>Date.parse(x)<=now));
+    const stale=admissionSeen&&now-admissionSeen>65000;
+    const fresh=!!r&&!admissionUnavailable&&!stale&&!expired;
+    let summary='Waiting for status',tone='neutral',note='Publication capacity has not been read yet.';
+    if(admissionUnavailable){summary='Unavailable';tone='bad';note=r?'Status could not be read. The last observation is retained; current availability is unknown.':'Status could not be read from this command center. Capacity and availability are unknown.';}
+    else if(expired){summary='Expiry reached · refresh needed';tone='warn';note='A recorded deadline or lease expiry has passed. Refresh to read current admission; expiry does not confirm an in-flight write has finished.';}
+    else if(stale){summary='Stale status';tone='warn';note='The last admission read is over 65 seconds old. Refresh to read current availability.';}
+    else if(r){
+      summary=r.available?'Ready':r.reason==='rate_limited'?'Provider cooldown':r.reason==='capacity_exhausted'?'All slots occupied':r.reason==='capacity_unconfigured'?'Capacity not configured':'Admission deferred';
+      tone=r.available?'good':'warn';
+      note=r.available?'Slots were available at the last read. Acquire and renew a lease before publication.':r.reason==='capacity_unconfigured'?'A coordinator must configure capacity for this authority.':'Publication admission is deferred by the shared authority.';
+    }
+    const top=make('div','panel-heading'),heading=make('div'),title=make('h2','','GitHub publication capacity');title.id='publication-admission-title';
+    heading.append(title,make('p','','Cooperating publishers using this command-center authority.'));top.append(heading,make('span','badge '+tone,summary));
+    const values=make('div','budget-values');
+    const available=fresh&&r.capacity!==null?(r.available?Math.max(0,r.capacity-r.active):0):null;
+    [['Capacity',r?r.capacity:null],['Active leases',r?r.active:null],['Available now',available]].forEach(([name,value])=>{
+      const cell=make('div','budget-value');cell.append(make('strong','',value===null?'—':value.toLocaleString()),make('span','',name+(!fresh&&r&&name!=='Available now'?' · last observed':'')));values.append(cell);
+    });
+    const detailedTime=value=>value?new Date(value).toLocaleString([], {dateStyle:'medium',timeStyle:'medium'}):null;
+    const earliest=r&&r.expiries.length?[...r.expiries].sort((a,b)=>Date.parse(a)-Date.parse(b))[0]:null;
+    const rows=[['Status fetched',admissionSeen?detailedTime(admissionSeen):'Not observed']];
+    if(r){rows.push(['Admission reason',r.reason||'ready']);if(r.deadline)rows.push([r.reason==='rate_limited'?'Provider retry deadline':'Admission retry deadline',detailedTime(r.deadline)]);if(earliest)rows.push(['Earliest recorded lease expiry',detailedTime(earliest)]);}
+    panel.replaceChildren(top,values,make('p','card-description',note),meta(rows));
+  }
   function renderResources() {
+    renderPublicationAdmission();
     const q=$('resource-search').value.toLowerCase(),kind=$('resource-kind').value;
     const found=allRecords().filter(x=>(kind==='all'||x.kind===kind)&&JSON.stringify(clean(x.r)).toLowerCase().includes(q));
     $('resource-results').textContent=state?found.length+' matching records':'Waiting for data';
@@ -348,5 +403,5 @@
   };
   navigate(location.hash.slice(1));renderFocus();renderResources();renderTools();renderAccess();renderBudgets();renderFeed();refresh();
   setInterval(()=>{connectionState();if(!document.hidden)refresh();},30000);
-  document.addEventListener('visibilitychange',()=>{if(!document.hidden&&(!lastSync||Date.now()-lastSync>30000))refresh();});
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden){renderPublicationAdmission();if(!lastSync||Date.now()-lastSync>30000)refresh();}});
 })();
