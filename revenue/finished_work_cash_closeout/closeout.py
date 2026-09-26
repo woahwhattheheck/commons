@@ -17,7 +17,8 @@ from pathlib import Path
 from typing import Any, Mapping, Sequence
 
 SCHEMA = "finished-work-cash-closeout/v1"
-RECEIPT_SCHEMA = "finished-work-cash-closeout-receipt/v1"
+OUTPUT_SCHEMA = "finished-work-cash-closeout/v2"
+RECEIPT_SCHEMA = "finished-work-cash-closeout-receipt/v2"
 MAX_ITEMS = 500
 MAX_TEXT = 2048
 MAX_EVIDENCE = 32
@@ -172,10 +173,10 @@ def normalize_ledger(raw: Any) -> dict[str, Any]:
     return {"schema": SCHEMA, "items": items}
 
 
-def _slot(item: Mapping[str, Any]) -> tuple[str, str, str, str]:
+def _slot(item: Mapping[str, Any]) -> tuple[str, str, str]:
     return (
         str(item["payer_key"]), str(item["opportunity_key"]),
-        str(item["payment_unit_key"]), str(item["route_key"]),
+        str(item["payment_unit_key"]),
     )
 
 
@@ -232,7 +233,7 @@ def classify_single(item: Mapping[str, Any]) -> tuple[str, list[str], str]:
 
 def build_closeout(ledger: Mapping[str, Any]) -> dict[str, Any]:
     normalized = normalize_ledger(dict(ledger))
-    grouped: dict[tuple[str, str, str, str], list[dict[str, Any]]] = {}
+    grouped: dict[tuple[str, str, str], list[dict[str, Any]]] = {}
     for item in normalized["items"]:
         grouped.setdefault(_slot(item), []).append(item)
     groups: list[dict[str, Any]] = []
@@ -262,12 +263,16 @@ def build_closeout(ledger: Mapping[str, Any]) -> dict[str, Any]:
             status, reasons, action = classify_single(base)
         currencies = sorted({item["currency"] for item in members})
         amounts = sorted({item["advertised_amount_minor"] for item in members})
+        routes = sorted({item["route_key"] for item in members})
+        if len(routes) > 1:
+            reasons = [*reasons, "MULTIPLE_CONTACT_ROUTES"]
         groups.append({
             "slot_key": _slot_key(slot),
             "payer_key": slot[0],
             "opportunity_key": slot[1],
             "payment_unit_key": slot[2],
-            "route_key": slot[3],
+            "route_key": routes[0] if len(routes) == 1 else None,
+            "route_keys": routes,
             "work_ids": [item["work_id"] for item in members],
             "currency": currencies[0] if len(currencies) == 1 else None,
             "advertised_amount_minor": amounts[0] if len(amounts) == 1 else None,
@@ -289,7 +294,7 @@ def build_closeout(ledger: Mapping[str, Any]) -> dict[str, Any]:
     for group in groups:
         counts[group["status"]] = counts.get(group["status"], 0) + 1
     return {
-        "schema": SCHEMA,
+        "schema": OUTPUT_SCHEMA,
         "summary": {
             "input_items": len(normalized["items"]),
             "payment_slots": len(groups),

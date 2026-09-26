@@ -52,7 +52,22 @@ Every generated group and bundle carries these values as hard `false`:
 }
 ```
 
-The four caller-supplied canonical keys `payer_key + opportunity_key + payment_unit_key + route_key` define a payout slot. Multiple work rows mapping to the same slot are emitted once and fail closed to reconciliation instead of generating duplicate request-ready actions.
+The three caller-supplied canonical keys `payer_key + opportunity_key + payment_unit_key`
+define a payout slot. A contact route does not create another payment unit.
+Multiple work rows for the same payout are emitted once, including rows that
+name different email, platform, or support routes. DNR applies across those
+rows; mixed paid/unpaid evidence and duplicate unpaid rows require reconciliation
+instead of generating another request-ready action. All retained evidence is
+combined into the one group.
+
+Input remains `finished-work-cash-closeout/v1`. Output uses
+`finished-work-cash-closeout/v2`, and its receipt uses
+`finished-work-cash-closeout-receipt/v2`. Each output group includes sorted
+`route_keys`; the compatibility `route_key` is populated only when exactly one
+route exists, otherwise it is `null`. `MULTIPLE_CONTACT_ROUTES` identifies a
+group with several routes. Slot hashes bind the three economic keys, so changing
+contact routes does not change payout identity. Consumers should read the new
+output version and recompile their source ledger for a current bundle.
 
 Evidence tokens are retained references, not assertions independently verified by this tool. Human/upstream review remains responsible for external truth and freshness.
 
