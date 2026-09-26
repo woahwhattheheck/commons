@@ -47,23 +47,28 @@ def continue_from_observation(
     now: str = "2026-08-28T09:30:00Z",
 ) -> dict[str, Any]:
     snap = snapshot or project(events or [], now=now, legacy=legacy or {})
+    # Completed sessions stay in the observation, but cannot supply a new
+    # continuation's identity. Restarting their task under START is a replay.
+    finished = {"TERMINAL", "RELEASED", "SUPERSEDED"}
+    available = {
+        row.get("session_id"): row
+        for row in snap.get("sessions") or []
+        if isinstance(row, dict) and row.get("state") not in finished
+        and row.get("session_id") not in {None, "", UNKNOWN}
+    }
+    routes = [row for row in snap.get("routes") or []
+              if isinstance(row, dict) and row.get("session_id") in available]
+    briefing = dict(snap.get("briefing") or {})
+    briefing["highest_leverage_next"] = routes[:3]
     target = None
     if session_id:
-        for row in snap.get("sessions") or []:
-            if row.get("session_id") == session_id:
-                target = row
-                break
+        target = available.get(session_id)
     if target is None:
-        routes = snap.get("routes") or []
         if routes:
-            sid = routes[0].get("session_id")
-            for row in snap.get("sessions") or []:
-                if row.get("session_id") == sid:
-                    target = row
-                    break
+            target = available[routes[0]["session_id"]]
     handoff = (snap.get("briefing") or {}).get("handoff") or {}
     event = emit(
-        "HANDOFF" if target and target.get("state") not in {"TERMINAL", "RELEASED", "SUPERSEDED"} else "START",
+        "HANDOFF" if target else "START",
         session_id=(target or {}).get("session_id") or UNKNOWN,
         task_id=(target or {}).get("task_id") or UNKNOWN,
         run_id=(target or {}).get("run_id") or UNKNOWN,
@@ -93,8 +98,8 @@ def continue_from_observation(
         "collisions": snap.get("collisions") or [],
         "attention": snap.get("attention") or [],
         "economy": snap.get("economy") or {},
-        "routes": (snap.get("routes") or [])[:5],
-        "briefing": snap.get("briefing") or {},
+        "routes": routes[:5],
+        "briefing": briefing,
     }
 
 
