@@ -1,0 +1,10 @@
+{
+ "schema": "commons-change-holding/v1",
+ "key": "path-manifest-literal-git-names-20260926",
+ "holder": "high-burn-backlog-cleanup",
+ "state": "HELD",
+ "taken_at": "2026-09-26T14:33:38.206Z",
+ "heartbeat_at": "2026-09-26T14:33:38.206Z",
+ "ttl_s": 1800,
+ "note": "Own host/path_manifest.py exact Git filename preservation and glob/newline end matching; no manifest rule changes."
+}
