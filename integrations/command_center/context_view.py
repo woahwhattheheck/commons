@@ -143,6 +143,7 @@ def _item(raw, source, tick):
     source_id = _identity(raw.get("source_id"), "source_id")
     item_id = _identity(raw.get("id"), "item_id")
     owner_work = _map(raw.get("owner_work"))
+    owner_revision = owner_work.get("revision", 0)
     job = _map(owner_work.get("job"))
     assigned = owner_work.get("owner") if "owner" in owner_work else job.get("owner")
     assignment_basis = "owner_work.owner" if "owner" in owner_work else "owner_work.job.owner" if "owner" in job else None
@@ -169,6 +170,7 @@ def _item(raw, source, tick):
         "owner_basis": "provider_record",
         "assigned_owner": _text(assigned, 512, omitted, "assigned_owner"),
         "assigned_owner_basis": assignment_basis if isinstance(assigned, str) and assigned else None,
+        "owner_work_revision": owner_revision if type(owner_revision) is int and owner_revision >= 0 else None,
         "priority": _scalar(priority_value, omitted, "priority"),
         "priority_rank": _priority(raw, owner_work),
         "priority_basis": "owner_work.priority" if "priority" in owner_work else "provider_record.priority" if "priority" in raw else None,
