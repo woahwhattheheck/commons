@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "repository-portfolio-observation-order-20260926",
+  "holder": "high-burn-backlog-cleanup",
+  "state": "HELD",
+  "taken_at": "2026-09-26T15:06:44.047Z",
+  "heartbeat_at": "2026-09-26T15:06:44.047Z",
+  "ttl_s": 1800,
+  "note": "Own host/repository_portfolio.py + inventory/resources/repository_portfolio.md monotonic source/head observation checks. Actual captured source replay replaced 15:06 observed canonical head with 13:54 head before patch; keep previous destination untouched."
+}
