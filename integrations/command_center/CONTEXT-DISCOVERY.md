@@ -53,6 +53,21 @@ new claim or approval mechanism.
 The source/API capability requires the running process to load the updated
 code. A repository merge alone is not deployment evidence.
 
+## Preserve concurrent work directions
+
+Each compact item includes `owner_work_revision`, the revision of its shared
+priority, next action, and prepared job. Pass that value as `expected_revision`
+to `command_center_work_item` or `POST /api/work/item`. Zero means no revision
+has been written yet, including legacy directions; null means the retained
+revision is malformed and must be reconciled through the exact item read.
+
+The context content/page revisions include this value, so even an edit whose
+visible text stays the same invalidates an older page. A concurrent edit returns
+409 without overwriting the newer direction. Read the item again and reconcile
+your draft; do not silently retry with the newer revision. An uncertain request
+still uses its original operation ID and exact payload for replay. This revision
+tracks directions only and does not establish provider freshness or work ownership.
+
 ## All-source health on every page
 
 Every context response includes `source_health` from the shared
@@ -82,4 +97,3 @@ with zero items). It does not change the default page or the existing
 `page_condition` is one of `no_cached_records`, `no_matches`, `past_end`,
 `unchanged_page`, or `page`. An empty item page is not provider coverage.
 Omit the flag to keep the previous response shape.
-
