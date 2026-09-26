@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 9028,
+    "open_issues": 9002,
     "open_pull_requests": 1,
-    "runs_in_progress": 8,
-    "runs_queued": 738
+    "runs_in_progress": 7,
+    "runs_queued": 719
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -39,7 +39,7 @@
   },
   "pulls_listed": 1,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 92.2,
+  "queue_depth_per_runner": 102.7,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -109,27 +109,40 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "swarm/inbox-incremental-groups-20260926",
-      "closed_at": "2026-09-26T15:23:00Z",
-      "head_sha": "e5b89dd45af8f9f66bcc7feb6877b7da6d6444b6",
-      "merge_commit_sha": "d643462daef600471071d4dfde6997e6f7ab098e",
-      "merged_at": "2026-09-26T15:23:00Z",
-      "number": 30084,
+      "branch": "feat/inspection-diff-bundle-20260926",
+      "closed_at": "2026-09-26T13:26:51Z",
+      "head_sha": "4b3f165704a21beabb158627d7a6f20d4c621eab",
+      "merge_commit_sha": "4ab5e301febbde763617cdc3b601a3e9bd403c71",
+      "merged_at": "2026-09-26T13:26:51Z",
+      "number": 29991,
       "state": "MERGED",
-      "title": "Preserve inbox progress before later source limits",
+      "title": "Bundle inspection revision views from one comparison",
       "updated_at": "UNKNOWN"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "perf/idempotent-limit-observations-20260926",
-      "closed_at": "2026-09-26T15:21:43Z",
-      "head_sha": "dbab1797d156c203a57369e42e4577ce6095621d",
-      "merge_commit_sha": "5bc48eb2f65a9df08b6c82b004163a0b75475d88",
-      "merged_at": "2026-09-26T15:21:43Z",
-      "number": 30082,
+      "branch": "finish/testing-portfolio-workbook-20260926",
+      "closed_at": "2026-09-26T13:26:20Z",
+      "head_sha": "cade2ee9e33a1c51bd361f37a4cc5f62b26f3e58",
+      "merge_commit_sha": "684473ac44d638ea7b7a3f79e0d9025b5600f8b2",
+      "merged_at": "2026-09-26T13:26:20Z",
+      "number": 29990,
       "state": "MERGED",
-      "title": "Deduplicate retried provider limit observations in the shared budget",
+      "title": "Complete testing-portfolio evidence analyzer and editable workbook",
+      "updated_at": "UNKNOWN"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/experiment-ledger-resume-20260926",
+      "closed_at": "2026-09-26T13:25:49Z",
+      "head_sha": "5afceb21fcb86b74921b48b59fc1562f78f2c864",
+      "merge_commit_sha": "2141a032ba049a2052fb1561e3fc3f40291ff714",
+      "merged_at": "2026-09-26T13:25:49Z",
+      "number": 29988,
+      "state": "MERGED",
+      "title": "Resume unchanged experiment declarations without rejecting recorded evidence",
       "updated_at": "UNKNOWN"
     },
     {
@@ -222,23 +235,10 @@
       "state": "MERGED",
       "title": "Include dependency analysis directly from editable roadmap inputs",
       "updated_at": "UNKNOWN"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "build/recover-alert-quality-20260926",
-      "closed_at": "2026-09-26T13:15:21Z",
-      "head_sha": "ebb8231e1bf6b1fe5a9a0c842a66918b0fa7d1c9",
-      "merge_commit_sha": "a281050be588c39ea4c952526edb6539a4e512ed",
-      "merged_at": "2026-09-26T13:15:21Z",
-      "number": 29980,
-      "state": "MERGED",
-      "title": "Finish the stranded alert-quality analysis and editable workbook",
-      "updated_at": "UNKNOWN"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-26T15:57:32Z",
+  "unchanged_since": "2026-09-26T16:05:35Z",
   "undatable_pulls": []
 }
