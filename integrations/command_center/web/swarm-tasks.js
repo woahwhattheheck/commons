@@ -73,7 +73,7 @@
     clearTimeout(freshnessTimer);
     const age = snapshot ? Date.now() - Date.parse(snapshot.observed_at) : NaN;
     const deadlines = [];
-    if (!error && Number.isFinite(age) && age >= 0 && age < 90000) deadlines.push(90000 - age);
+    if (!error && Number.isFinite(age) && age >= -300000 && age < 90000) deadlines.push(90000 - age);
     if (retryAt > Date.now()) deadlines.push(retryAt - Date.now());
     if (deadlines.length) freshnessTimer = setTimeout(render, Math.max(1, Math.min(...deadlines)));
     rows.replaceChildren(); counts.replaceChildren(); details.replaceChildren();
