@@ -105,7 +105,14 @@ class Reader:
         self.state = json.loads(self.state_path.read_text(encoding='utf-8')) if self.state_path.exists() else {
             'schema': 'github-history-checkpoint-v1', 'account': account, 'roads': {},
             'details': [], 'detail_keys': [], 'repositories': [], 'repository_keys': [], 'gaps': []}
+        self._index_keys()
         self.opener = urllib.request.build_opener(NoRedirect())
+
+    def _index_keys(self):
+        # Keep ordered JSON checkpoints compatible while avoiding a full scan
+        # for every detail discovered in a large recovered account history.
+        self._detail_keys = set(self.state['detail_keys'])
+        self._repository_keys = set(self.state['repository_keys'])
 
     def save(self):
         atomic_json(self.state_path, self.state)
@@ -134,7 +141,7 @@ class Reader:
                 if len(raw) > 8 * 1024 * 1024:
                     raise RuntimeError('GitHub page exceeds intake byte bound')
                 body = json.loads(raw)
-                headers = dict(response.headers)
+                headers = {name.lower(): value for name, value in response.headers.items()}
         except urllib.error.HTTPError as exc:
             # Store only code and rate metadata, never provider prose or token.
             status, headers = exc.code, exc.headers or {}
@@ -150,7 +157,7 @@ class Reader:
                 raise StopIteration('GitHub rate limit reached') from None
             raise GitHubReadError(status) from None
         links = {}
-        for piece in headers.get('Link', '').split(','):
+        for piece in headers.get('link', '').split(','):
             match = re.search(r'<([^>]+)>;\s*rel="([^"]+)"', piece)
             if match:
                 links[match[2]] = match[1]
@@ -166,7 +173,8 @@ class Reader:
 
     def enqueue_detail(self, url, kind='subject'):
         if not url or not url.startswith(API + '/'): return
-        if url in self.state['detail_keys']: return
+        if url in self._detail_keys: return
+        self._detail_keys.add(url)
         self.state['detail_keys'].append(url)
         self.state['details'].append({'url': url, 'kind': kind, 'next': url})
 
@@ -296,7 +304,8 @@ class Reader:
         def build(items):
             for obj in items:
                 name = obj.get('full_name')
-                if name and name not in self.state['repository_keys']:
+                if name and name not in self._repository_keys:
+                    self._repository_keys.add(name)
                     self.state['repository_keys'].append(name)
                     self.state['repositories'].append({'name': name, 'next': f'/repos/{name}/commits?author={self.account}&per_page=100'})
             return [self.record({**x, 'body': x.get('description')}, 'repository', self.account) for x in items]
