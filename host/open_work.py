@@ -6,6 +6,8 @@ on the existing board. Not a second queue. Not a Slack dump-scan.
 
 LANDED only when p/{id}.md exists at the official current main SHA.
 Slack CLAIMED, pulse, Pages, and ntfy 200 are not a land.
+The default snapshot is origin/main, never an arbitrary feature-branch HEAD.
+An unmeasured snapshot exits 1 and --write preserves existing projection files.
 
 Inputs are structured and incremental:
   - id: header lines on work records
@@ -88,11 +90,12 @@ def _read(root, rel, max_bytes=None):
 
 def resolve_main_sha(root, explicit=""):
     text = str(explicit or "").strip().lower()
-    if SHA_RE.match(text):
-        return text
+    if text:
+        return text if SHA_RE.fullmatch(text) else ""
+    # An arbitrary feature-branch HEAD is not official-main evidence. Offline
+    # copies without origin/main can supply an observed official SHA explicitly.
     for args in (
-        ["git", "rev-parse", "origin/main"],
-        ["git", "rev-parse", "HEAD"],
+        ["git", "rev-parse", "--verify", "refs/remotes/origin/main^{commit}"],
     ):
         try:
             out = subprocess.check_output(
@@ -342,7 +345,7 @@ def classify_id(ident, root, extra=None, record=None, main_sha=""):
     measured = bool(SHA_RE.match(sha)) and _git_object_exists(
         root, "%s^{commit}" % sha
     ) is True
-    resolved = resolve_receipt(root, ident, sha)
+    resolved = resolve_receipt(root, ident, sha) if measured else None
     exists = resolved is not None
     row_record = dict(record or {})
     row_record.setdefault("work", True)
@@ -525,7 +528,7 @@ def project(root, main_sha="", extra=None, include_salon=False):
     items = []
     for ident in sorted(by_id):
         record = by_id[ident]
-        resolved = resolve_receipt(root, ident, sha)
+        resolved = resolve_receipt(root, ident, sha) if measured else None
         exists = resolved is not None
         slack_claimed = bool(record.get("slack_claimed")) or ident in set(
             extra.get("slack_claimed") or []
@@ -710,6 +713,11 @@ def write_listing(root, snapshot):
 
 
 def write_snapshot(root, snapshot):
+    # Preserve the last measured projection when a checkout or Git observation
+    # is unavailable. Diagnostics belong in the CLI result, not a replacement
+    # document that silently discards them and looks like an empty work queue.
+    if snapshot.get("errors"):
+        raise ValueError("cannot write an unmeasured main snapshot")
     human = render_human(snapshot)
     machine = {
         "schema": snapshot.get("schema"),
@@ -834,12 +842,16 @@ def main(argv=None):
         extra=extra,
         include_salon=args.include_salon,
     )
-    if args.write:
+    if args.write and not snapshot.get("errors"):
         write_snapshot(args.root, snapshot)
     json.dump(snapshot, sys.stdout, indent=2)
     sys.stdout.write("\n")
+    if snapshot.get("errors"):
+        sys.stderr.write("Official main was not measured; existing projection files were preserved.\n")
+        return 1
     return 0
 
 
 if __name__ == "__main__":
     sys.exit(main())
+
