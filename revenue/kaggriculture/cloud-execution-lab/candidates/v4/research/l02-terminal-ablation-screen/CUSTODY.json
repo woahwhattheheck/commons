@@ -1,0 +1,10 @@
+{
+"schema":"titan-v4-salvage-custody-v1",
+"recorded_on":"2026-09-26",
+"source_ref":"codex/titan-l02-ranking-closure-fresh-20260909-01",
+"source_head":"81b5e4fdd2d0f4ac63b01e195b411077419f817d",
+"lineage":{"screen_pr":11731,"receipt_binding_pr":11774,"receipt_binding_head":"ed1ddcd8096d322606d587d889d5eaad6e98e371","ranker_blob":"5cf33bb21239bee09f5fa49e9db8287cc5d1544d","test_blob":"3aa5b507a872b6064aa00dfbff457bb6c8d8c138"},
+"hosted_receipt":{"run_id":34407606587,"job_id":102654238575,"artifact_id":10126638198,"artifact_size_bytes":111588,"artifact_sha256":"464bfc6ba5f09fdbcac37d26d1198167c371a5dc73f3469b553f9707d08076da","conclusion":"success"},
+"screen":{"decision":"NO_ARM_SURVIVES_SCREEN","recommended_arm":null,"once_all_mean_own_delta":-10.8,"once_all_mean_margin_delta":7.7,"once_wheat_mean_own_delta":-10.8,"once_wheat_mean_margin_delta":7.7,"day28_all_mean_own_delta":-189.75,"once_carrot_mean_own_delta":0.0,"once_noncarrot_mean_own_delta":0.0},
+"disposition":"HISTORICAL_NEGATIVE_SCREEN__RECEIPT_BINDING_EVIDENCE_ONLY__NO_REPLAY_OR_REMINT__NO_V4_QUEUE_EDGE"
+}
