@@ -35,13 +35,13 @@
   const activity=i=>first(i.activity_observed_at);
   const AUTO_REFRESH_MS=300000;
   let lastCollectorRefresh=0;
-  let snapshot=null,loading=null,queuedRefresh=null,error='',selected=null,displayedKey=null,peerBusy=false,activePeerOperation=null;
+  let snapshot=null,sourceIndex=new Map(),loading=null,queuedRefresh=null,error='',selected=null,displayedKey=null,peerBusy=false,activePeerOperation=null;
   const kinds={work:null,builds:['build','pull_request','feature'],inbox:['email','slack_thread'],marketing:['campaign','deal']};
   const labels={work:'Work',builds:'Builds',inbox:'Inbox',marketing:'Marketing'};
   const filters=Object.fromEntries(Object.keys(labels).map(k=>[k,{q:'',project:'all',provider:'all',status:'all',freshness:'all',channel:'all',tab:'all'}]));
   filters.marketing.tab='deal';
   const sources=()=>list(snapshot&&snapshot.sources), items=()=>list(snapshot&&snapshot.items);
-  const source=i=>sources().find(s=>s.id===i.source_id)||{};
+  const source=i=>sourceIndex.get(i.source_id)||{};
   const sourceRead=s=>s.last_good_observed_at;
   const stale=s=>s.stale===true||s.data_stale===true||!!s.error||s.retained_last_good===true||!sourceRead(s)||!Number.isFinite(Date.parse(sourceRead(s)))||Date.parse(sourceRead(s))-Date.now()>300000||s.stale_after_seconds===null||(typeof s.stale_after_seconds==='number'&&Date.now()-Date.parse(sourceRead(s))>s.stale_after_seconds*1000);
   const latestIngest=i=>typeof i.last_seen_at==='string'&&i.last_seen_at!==''&&i.last_seen_at===source(i).last_success_at;
@@ -274,7 +274,11 @@
       return queuedRefresh.promise;
     }
     loading=(async()=>{
-      try{const {body}=await api.request('/api/work'+(force?'?refresh=1':''));if(!body||!Array.isArray(body.items)||!Array.isArray(body.sources))throw new Error('Work response is missing items or source coverage.');snapshot=body;error='';}
+      try{const {body}=await api.request('/api/work'+(force?'?refresh=1':''));if(!body||!Array.isArray(body.items)||!Array.isArray(body.sources))throw new Error('Work response is missing items or source coverage.');
+        const indexed=new Map();body.sources.forEach(s=>{if(!indexed.has(s.id))indexed.set(s.id,s);});
+        // Preserve the first matching source, as Array.find did. Index only
+        // metadata: heartbeat/freshness calculations still use the current clock.
+        snapshot=body;sourceIndex=indexed;error='';}
       catch(e){error=e.message;}
       finally{loading=null;renderAll();}
     })();
@@ -300,4 +304,3 @@
   document.addEventListener('visibilitychange',()=>{if(!document.hidden)autoRefresh();});
   api.navigate(location.hash.slice(1));renderAll();if(document.hidden)refresh();else autoRefresh();
 })();
-
