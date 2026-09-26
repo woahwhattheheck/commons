@@ -1,0 +1,31 @@
+{
+  "schema": "titan-v4-salvage-custody-v1",
+  "recorded_on": "2026-09-26",
+  "source_ref": "asterion/titan-l01-honest-carrier-20260909-01",
+  "source_head": "61fc6c499c33807a0003ec4aa7e518657be2e126",
+  "merge_base_with_audited_main": "78b1c3647d58407da1a315fb5e13b93bff635650",
+  "topology_at_audit": {
+    "ahead": 7,
+    "behind": 11495,
+    "status": "diverged"
+  },
+  "exact_head_runs": {
+    "titan_land_admission": {
+      "run_id": 34406205956,
+      "job_id": 102649671425,
+      "status": "completed",
+      "conclusion": "success",
+      "artifact_listing_now": []
+    },
+    "broad_tests": {
+      "run_id": 34406205950,
+      "status": "completed",
+      "conclusion": "failure"
+    }
+  },
+  "consumed_truthfulness_lineage": {
+    "pr": 11776,
+    "merge_commit": "1ef8f60d5cc8677281ea5599d2e2b61434b08af8"
+  },
+  "disposition": "HISTORICAL_COMPOSITE__SEMANTICS_CONSUMED_OR_SUPERSEDED__EXACT_RUN_RECEIPT_ONLY__NO_V4_QUEUE_EDGE"
+}

@@ -1,0 +1,23 @@
+{
+  "schema": "titan-v4-salvage-custody-v1",
+  "recorded_on": "2026-09-26",
+  "source_ref": "gpt56-prover/titan-l01-runtime-count-contract-20260909-01",
+  "source_head": "403e72247b7375034a7a23744dc1327ab8548bd5",
+  "merge_base_with_audited_main": "78b1c3647d58407da1a315fb5e13b93bff635650",
+  "topology_at_audit": {
+    "ahead": 7,
+    "behind": 11495,
+    "status": "diverged"
+  },
+  "provider_receipt": {
+    "owning_pr_count": 0,
+    "exact_head_actions_run_count": 0
+  },
+  "distinct_corrective_commit": "3a0672caf511fa10887d130853a0adaff4f1f433",
+  "current_main_contract": {
+    "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-land-admission-current/build_candidate.py",
+    "blob": "8d7a2522b4e70f4934b26fc67b0a2acdab630102",
+    "invariant": "SOURCE.json is verified separately; runtime_files excludes the root SOURCE member"
+  },
+  "disposition": "HISTORICAL_CORRECTIVE_SOURCE_RESIDUE__CURRENT_CONTRACT_ALREADY_LANDED__NO_HOSTED_EXACT_HEAD_RECEIPT__NO_V4_QUEUE_EDGE"
+}
