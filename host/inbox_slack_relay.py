@@ -177,13 +177,33 @@ class Providers:
         self.slack_token = os.environ.get("SLACK_BOT_TOKEN", "")
         self.gmail_token = os.environ.get("GMAIL_ACCESS_TOKEN", "")
         self._equipment = None
+        self._github_equipment = None
 
     def github(self, endpoint: str) -> Any:
         if not endpoint.startswith(("repos/", "notifications?", "search/issues?")) and endpoint != "user":
             raise RelayError("unexpected_github_resource")
         if self.gh_token:
             return request_json("https://api.github.com/" + endpoint, token=self.gh_token)
-        return command_json(["gh", "api", "--hostname", "github.com", "--method", "GET", endpoint])
+        from integrations.shared_equipment.provider_io import EquipmentError, GitHubSlackEquipment
+        if self._github_equipment is None:
+            self._github_equipment = GitHubSlackEquipment()
+        try:
+            return self._github_equipment.github(endpoint)
+        except EquipmentError as exc:
+            # Reuse typed status/header parsing; never expose native stderr or
+            # provider response bodies through the relay's fixed-code report.
+            headers = {name: str(value) for name, value in (
+                ("Retry-After", exc.retry_after),
+                ("X-RateLimit-Remaining", exc.rate_limit_remaining),
+                ("X-RateLimit-Reset", exc.rate_limit_reset),
+            ) if value is not None}
+            retry = http_retry_after(exc.http_status or 0, headers, "api.github.com")
+            if exc.code == "github_rate_limited" and retry <= 0:
+                retry = 60
+            code = {"github_transport_failed": "native_cli_unavailable",
+                    "github_response_invalid": "native_cli_invalid_json",
+                    "github_request_failed": f"http_{exc.http_status}" if exc.http_status else "native_cli_request_failed"}.get(exc.code, exc.code)
+            raise RelayError(code, retry_after=retry) from None
 
     def slack(self, method: str, data: dict) -> dict:
         if method not in {"auth.test", "conversations.history", "conversations.replies", "chat.postMessage", "chat.update"}:
