@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "completion-marker-atomic-write",
+  "holder": "master2-control-plane",
+  "state": "HELD",
+  "taken_at": "2026-09-26T12:17:21.055Z",
+  "heartbeat_at": "2026-09-26T12:17:21.055Z",
+  "ttl_s": 1800,
+  "note": "completion_projection.py write_marker atomic replacement; completion/README.md only"
+}
