@@ -10,6 +10,13 @@ A Gmail SENT row is transport evidence only when the normalized snapshot carries
 
 Both snapshots must declare `complete=true`, be current under the supplied policy, and contain no future/chronologically impossible rows. Exact stable-ID replay collapses. Stable-ID reuse with changed canonical bytes holds the entire reconciliation.
 
+Every distinct conflicting variant remains in the normalized snapshot digest and
+chronology checks. Reordering a snapshot cannot choose which evidence survives,
+and changing any variant changes the bound digest. Counts
+remain counts of unique provider message IDs and Slack event IDs; conflicting
+variants do not inflate send or receipt totals. Conflict-free snapshots and exact
+replays retain their previous normalization.
+
 Report schema `outbound-transport-reconcile-report/v2` binds `common_coverage_through`, the earlier of the two complete snapshot capture times. Negative evidence is allowed only when the counterpart snapshot actually covers the event: a Gmail SENT row newer than the Slack capture cannot become `PROVIDER_SENT_NOT_RECORDED`, and a Slack-only claim newer than the Gmail capture cannot become `SLACK_SENT_WITHOUT_PROVIDER_SENT`; those cases HOLD instead. A bound Slack send receipt also cannot predate the Gmail provider `sent_at`. Positive matching evidence may be recorded after the common horizon when its provider event is already present and its chronology is valid.
 
 The v1 normalized record model intentionally carries one `recipient_sha256` per provider message. A caller must therefore normalize only single-recipient commercial sends into this schema. A multi-recipient provider message is outside the v1 acquisition contract and must not be projected to one recipient as if that represented the complete transport fact; retain it outside this artifact or move to a future recipient-set schema.

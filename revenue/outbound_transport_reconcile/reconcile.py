@@ -178,16 +178,18 @@ def _normalize_snapshot(
     normalized_records = [normalizer(record, idx) for idx, record in enumerate(records)]
 
     key_name = "message_id" if kind == "gmail" else "event_id"
-    by_id: Dict[str, Dict[str, Any]] = {}
-    conflicts: List[str] = []
+    by_id: Dict[str, Dict[str, Dict[str, Any]]] = {}
     for record in normalized_records:
         stable_id = record[key_name]
-        previous = by_id.get(stable_id)
-        if previous is None:
-            by_id[stable_id] = record
-        elif canonical_json(previous) != canonical_json(record):
-            conflicts.append(f"{kind.upper()}_STABLE_ID_CONFLICT:{stable_id}")
-    normalized_records = sorted(by_id.values(), key=lambda row: canonical_json(row))
+        by_id.setdefault(stable_id, {})[canonical_json(record)] = record
+    conflicts = [f"{kind.upper()}_STABLE_ID_CONFLICT:{stable_id}"
+                 for stable_id, variants in sorted(by_id.items()) if len(variants) > 1]
+    # Preserve every distinct conflicting variant in the bound snapshot. Exact
+    # replay collapses, but array order must not select which evidence survives.
+    normalized_records = sorted(
+        (record for variants in by_id.values() for record in variants.values()),
+        key=canonical_json,
+    )
     normalized = {
         "schema": schema,
         "snapshot_id": _require_id(snapshot["snapshot_id"], f"{kind}.snapshot_id"),
@@ -372,8 +374,8 @@ def compile_report(
         "status": status,
         "hold_reasons": hold_reasons,
         "counts": {
-            "gmail_sent": len(gmail["records"]),
-            "slack_receipts": len(slack["records"]),
+            "gmail_sent": len({row["message_id"] for row in gmail["records"]}),
+            "slack_receipts": len({row["event_id"] for row in slack["records"]}),
             "discrepancies": len(discrepancies),
         },
         "discrepancies": discrepancies,
