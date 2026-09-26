@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "coordination-page-rendering-20260926",
+  "holder": "command-observability",
+  "heartbeat_at": "2026-09-26T12:05:08.806Z",
+  "taken_at": "2026-09-26T12:05:08.806Z",
+  "ttl_s": 1800,
+  "state": "HELD",
+  "note": "Own coordination.html: restore missing stats/lanes DOM targets and distinguish unread lane data from empty queue."
+}
