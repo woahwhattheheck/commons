@@ -313,6 +313,9 @@ def dump_registry(registry: Mapping[str, Any]) -> str:
 
 def write_registry(path: str, registry: Mapping[str, Any]) -> None:
     """Atomically replace one snapshot; use add_artifact_file for shared additions."""
+    # Reads follow symlinks; publish to the same target without replacing an
+    # alias with a second, disconnected ledger.
+    path = os.path.realpath(os.fspath(path))
     text = dump_registry(registry)
     directory = os.path.dirname(os.path.abspath(path))
     os.makedirs(directory, exist_ok=True)
@@ -331,6 +334,7 @@ def write_registry(path: str, registry: Mapping[str, Any]) -> None:
 @contextmanager
 def _registry_lock(path: str, timeout: float):
     """Serialize writers without deleting the shared lock inode between updates."""
+    path = os.path.realpath(os.fspath(path))
     if not math.isfinite(timeout) or timeout < 0:
         raise ValueError("lock timeout must be a finite non-negative number")
     directory = os.path.dirname(os.path.abspath(path))
@@ -388,7 +392,8 @@ def add_artifact_file(path: str, sha256: str, source: Mapping[str, Any],
     additions and conflicts with another process's newly written locator survive.
     Reads remain lock-free because write_registry replaces complete snapshots.
     """
-    path = os.path.abspath(os.fspath(path))
+    # Every symlink alias must share both the publication target and its lock.
+    path = os.path.realpath(os.fspath(path))
     with _registry_lock(path, lock_timeout):
         registry = load_registry(path, missing_ok=True)
         registry = add_artifact(registry, sha256, source, size_bytes, labels)
