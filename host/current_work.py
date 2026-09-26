@@ -249,15 +249,37 @@ def project(catalog, snapshot):
 
 
 def measure_tree(root, main_sha=""):
+    if main_sha and not SHA_RE.fullmatch(str(main_sha)):
+        return {"error": "main SHA must be 40 lowercase hex characters", "open_now": [], "items": []}
+    git_env = dict(os.environ, GIT_NO_LAZY_FETCH="1", GIT_NO_REPLACE_OBJECTS="1")
     try:
-        catalog = load_catalog(_read(root, DEFAULT_CATALOG))
+        if main_sha:
+            # Definitions and path evidence must describe the same snapshot.
+            # A dirty, absent, or newer worktree catalog is not evidence at SHA.
+            resolved = subprocess.run(
+                ["git", "-C", os.fspath(root), "rev-parse", "--verify", str(main_sha) + "^{commit}"],
+                capture_output=True, text=True, check=True, timeout=30, env=git_env,
+            ).stdout.strip()
+            if resolved != main_sha:
+                raise ValueError("main SHA does not name a commit")
+            catalog_text = subprocess.run(
+                ["git", "-C", os.fspath(root), "show", str(main_sha) + ":" + DEFAULT_CATALOG.replace(os.sep, "/")],
+                capture_output=True, check=True, timeout=30, env=git_env,
+            ).stdout.decode("utf-8")
+        else:
+            catalog_text = _read(root, DEFAULT_CATALOG)
+        catalog = load_catalog(catalog_text)
     except UnicodeDecodeError:
         return {"error": "catalog is not UTF-8", "open_now": [], "items": []}
+    except (OSError, subprocess.SubprocessError, ValueError) as exc:
+        detail = getattr(exc, "stderr", "") or str(exc)
+        if isinstance(detail, bytes):
+            detail = detail.decode("utf-8", "replace")
+        return {"error": "cannot read the requested main catalog from Git: " + detail.strip(),
+                "open_now": [], "items": []}
     if catalog.get("error"):
         return {"error": catalog["error"], "open_now": [], "items": []}
     snapshot = {"main_paths": {}, "main_sha": str(main_sha or "")}
-    if main_sha and not SHA_RE.fullmatch(str(main_sha)):
-        return {"error": "main SHA must be 40 lowercase hex characters", "open_now": [], "items": []}
     items = catalog.get("items")
     if not isinstance(items, list):
         items = []
@@ -278,13 +300,6 @@ def measure_tree(root, main_sha=""):
         # ls-tree reads the exact commit, including tree and symlink entries,
         # without following a symlink or requiring a complete working checkout.
         try:
-            git_env = dict(os.environ, GIT_NO_LAZY_FETCH="1", GIT_NO_REPLACE_OBJECTS="1")
-            resolved = subprocess.run(
-                ["git", "-C", os.fspath(root), "rev-parse", "--verify", str(main_sha) + "^{commit}"],
-                capture_output=True, text=True, check=True, timeout=30, env=git_env,
-            ).stdout.strip()
-            if resolved != main_sha:
-                raise ValueError("main SHA does not name a commit")
             paths = list(snapshot["main_paths"])
             if paths:
                 tree = subprocess.run(
@@ -365,4 +380,3 @@ def main(argv=None):
 
 if __name__ == "__main__":
     sys.exit(main())
-
