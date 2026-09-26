@@ -118,7 +118,7 @@ META_KEYS = (
     "from", "to", "id", "ts",
     "court", "act", "ask", "role", "resource", "petition", "supersedes",
     "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling",
-    "id_was", "carrier_ts", "durable_ts", "state", "presence",
+    "id_was", "carrier_ts", "event_ts", "revision", "durable_ts", "state", "presence",
     "tool", "op", "organ", "lanes", "parallel", "board", "share", "lane",
     "subject", "target", "reason",
     "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill", "expiry",
@@ -1290,7 +1290,7 @@ MODEL_LAYER_FIELDS = {
     "reasoning_mode", "speech", "model_protocol", "model_codec", "model_packet",
     "payload_kind", "payload_sha256", "language_state",
 }
-ISSUE_ENVELOPE_FIELDS = {key: key for key in MODEL_LAYER_FIELDS}
+ISSUE_ENVELOPE_FIELDS = {key: key for key in (*MODEL_LAYER_FIELDS, "event_ts", "revision")}
 
 
 def model_language_html(meta, body):
