@@ -1,27 +1,24 @@
 {
-  "schema": "commons-repository-portfolio/v2",
+  "schema": "commons-repository-source/v1",
   "observed_at": "2026-09-26T13:55:14.127Z",
-  "source_main_sha": "0415824850368791e1fa840ec9c2dcf424e67059",
-  "authority": "AUTHENTICATED_GITHUB_READ; PUBLIC_DETAILS_ONLY; PRIVATE_CAPACITY_AGGREGATE_ONLY",
-  "scope": {
+  "listing": {
     "provider": "github",
+    "method": "list_repositories_by_affiliation",
     "affiliation": "owner",
-    "listing_complete": true
+    "page_size": 100,
+    "page_offsets": [
+      0,
+      100
+    ],
+    "page_counts": [
+      62,
+      0
+    ],
+    "complete": true,
+    "started_at": "2026-09-26T13:55:09.124Z",
+    "completed_at": "2026-09-26T13:55:14.127Z"
   },
   "public_repositories": [
-    {
-      "full_name": "woahwhattheheck/commons",
-      "visibility": "public",
-      "default_branch": "main",
-      "archived": false,
-      "head_state": "PRESENT",
-      "head_sha": "0415824850368791e1fa840ec9c2dcf424e67059",
-      "head_observed_at": "2026-09-26T13:54:10.143Z",
-      "head_source": "https://api.github.com/repos/woahwhattheheck/commons/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "CANONICAL",
-      "condition": "CANONICAL"
-    },
     {
       "full_name": "woahwhattheheck/agentlily-runtime",
       "visibility": "public",
@@ -31,9 +28,7 @@
       "head_sha": "18b7610c61df8c6d4bb50c70cf8c96e82fde99f2",
       "head_observed_at": "2026-09-26T13:54:09.280Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/agentlily-runtime/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/alexa-homeops-mcp",
@@ -45,8 +40,7 @@
       "head_observed_at": "2026-09-26T13:54:09.314Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/alexa-homeops-mcp/git/ref/heads/main",
       "head_http_status": 409,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "EMPTY_REPOSITORY"
+      "head_message": "Git Repository is empty."
     },
     {
       "full_name": "woahwhattheheck/AncientBeast",
@@ -57,9 +51,7 @@
       "head_sha": "a28448291ccc86cb8dd74ea16cadc4290e06d3a1",
       "head_observed_at": "2026-09-26T13:54:09.333Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/AncientBeast/git/ref/heads/master",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/App",
@@ -70,10 +62,7 @@
       "head_sha": "d118d18ec75f6a0d6f2205f45c2465c890ec7d39",
       "head_observed_at": "2026-09-26T13:54:09.336Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/App/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "purpose": "OWNER_FORK_BOUNTY_PR_ROAD",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/autorouting",
@@ -84,9 +73,7 @@
       "head_sha": "02dcdb6ea0c1f5ee14fbce8bac873a72a1a583e4",
       "head_observed_at": "2026-09-26T13:54:09.659Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/autorouting/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/bottube",
@@ -97,9 +84,7 @@
       "head_sha": "9291dd7407d2cb61b520ec649a59ed584c3fc1d2",
       "head_observed_at": "2026-09-26T13:54:09.693Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/bottube/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/bounty-concierge",
@@ -110,9 +95,7 @@
       "head_sha": "6949fd58c167177f7bdbc4a1a9b74b1ef7ffccaa",
       "head_observed_at": "2026-09-26T13:54:09.790Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/bounty-concierge/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/chronicle",
@@ -123,9 +106,7 @@
       "head_sha": "74f8afa4f8fc3b9dec137cafc6b82a0efd51d80f",
       "head_observed_at": "2026-09-26T13:54:09.613Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/chronicle/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/claude-builders-bounty",
@@ -136,9 +117,18 @@
       "head_sha": "1aeae2adc82d33f971fd7731644348dcdd24b5a6",
       "head_observed_at": "2026-09-26T13:54:10.092Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/claude-builders-bounty/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
+    },
+    {
+      "full_name": "woahwhattheheck/commons",
+      "visibility": "public",
+      "default_branch": "main",
+      "archived": false,
+      "head_state": "PRESENT",
+      "head_sha": "0415824850368791e1fa840ec9c2dcf424e67059",
+      "head_observed_at": "2026-09-26T13:54:10.143Z",
+      "head_source": "https://api.github.com/repos/woahwhattheheck/commons/git/ref/heads/main",
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/commons-backup",
@@ -149,11 +139,7 @@
       "head_sha": "5e51ec23e8e11bc126152d9e4aae2dd2fcd2abc2",
       "head_observed_at": "2026-09-26T13:54:10.140Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/commons-backup/git/ref/heads/ops",
-      "head_http_status": 200,
-      "role": "MIRROR",
-      "recorded_source_sha": null,
-      "commits_behind": null,
-      "condition": "MIRROR_UNVERIFIED"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/drizzle-orm",
@@ -164,9 +150,7 @@
       "head_sha": "c88d8ad643699353dd1ef53ac3c508f3e025d21f",
       "head_observed_at": "2026-09-26T13:54:10.223Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/drizzle-orm/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/fluxer",
@@ -177,9 +161,7 @@
       "head_sha": "f052ce05aa768d5a1dfecdc526dc6d4d79caa1c4",
       "head_observed_at": "2026-09-26T13:54:10.674Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/fluxer/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/frontend",
@@ -190,9 +172,7 @@
       "head_sha": "482ee456369418ef82c4056718cb82d3468f762b",
       "head_observed_at": "2026-09-26T13:54:10.597Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/frontend/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/hive",
@@ -203,9 +183,7 @@
       "head_sha": "c522b6094cee9373feedfd1d03e44c0b062e4935",
       "head_observed_at": "2026-09-26T13:54:10.578Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/hive/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/homeops-mcp",
@@ -216,9 +194,7 @@
       "head_sha": "59cc1b1080899823951ed88c0a14d5db231b992f",
       "head_observed_at": "2026-09-26T13:54:10.595Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/homeops-mcp/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/jhipster-control-center",
@@ -229,9 +205,7 @@
       "head_sha": "16b6519357e695bc04ec7f95a3d9cc47c517a251",
       "head_observed_at": "2026-09-26T13:54:10.995Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/jhipster-control-center/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/kite-mouth-help",
@@ -242,9 +216,7 @@
       "head_sha": "af41649ff82c016fe195b68c00c2601b9420e5fa",
       "head_observed_at": "2026-09-26T13:54:11.080Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/kite-mouth-help/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "HELP_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/kivaloo",
@@ -255,9 +227,7 @@
       "head_sha": "fc9cdeeaca0c17572de15ce1f247a216bca9a7b8",
       "head_observed_at": "2026-09-26T13:54:11.073Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/kivaloo/git/ref/heads/master",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/lda-inbox",
@@ -268,9 +238,7 @@
       "head_sha": "d82a03a8f9a07977cbe1ce19914f39736de6f1ee",
       "head_observed_at": "2026-09-26T13:54:11.117Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/lda-inbox/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/memanto",
@@ -281,9 +249,7 @@
       "head_sha": "30dcd866fcf47cf691e44d0b9872df89b970c735",
       "head_observed_at": "2026-09-26T13:54:11.462Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/memanto/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/mova-store",
@@ -294,9 +260,7 @@
       "head_sha": "baf411aadbf5ce40d5fb81ead566a6427f3bccb9",
       "head_observed_at": "2026-09-26T13:54:11.538Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/mova-store/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/Neko-Playground",
@@ -307,9 +271,7 @@
       "head_sha": "d2cd669e0d22df05bafd9568ad859ed74eb211b1",
       "head_observed_at": "2026-09-26T13:54:11.448Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/Neko-Playground/git/ref/heads/dev",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/omi",
@@ -320,9 +282,7 @@
       "head_sha": "aac8b32707a50627407af354f45fbf25b66fe06e",
       "head_observed_at": "2026-09-26T13:54:11.674Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/omi/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/Open-Audit",
@@ -333,9 +293,7 @@
       "head_sha": "f22a1f222862eb56823fdb62a7d18bd5a7e3d632",
       "head_observed_at": "2026-09-26T13:54:12.026Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/Open-Audit/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/PayD",
@@ -346,9 +304,7 @@
       "head_sha": "49b3162ef50e1f77b220322f166f6b9ee5083e9d",
       "head_observed_at": "2026-09-26T13:54:11.990Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/PayD/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/prompt-hash",
@@ -359,9 +315,7 @@
       "head_sha": "30f2581523d63153d0b092a72b8fbdfa71050a1b",
       "head_observed_at": "2026-09-26T13:54:11.957Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/prompt-hash/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/public-commons-sprint-2026",
@@ -372,9 +326,7 @@
       "head_sha": "84883566fc162c340b7ab1e2ea6eeb8be225d813",
       "head_observed_at": "2026-09-26T13:54:12.055Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/public-commons-sprint-2026/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "SPRINT_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/pyqpanda-algorithm",
@@ -385,9 +337,7 @@
       "head_sha": "8cae3c45b0b0ce65a1b9da2095e648eba6f7c591",
       "head_observed_at": "2026-09-26T13:54:12.510Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/pyqpanda-algorithm/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/Quittance0",
@@ -398,9 +348,7 @@
       "head_sha": "c63e51942b727a9cb7082d89dab7d16f49c19372",
       "head_observed_at": "2026-09-26T13:54:12.381Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/Quittance0/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/RemitFlow-Backend",
@@ -411,9 +359,7 @@
       "head_sha": "b0a004ab8aa00b1e6f262aa84ea2b0ec0a622e1b",
       "head_observed_at": "2026-09-26T13:54:12.416Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/RemitFlow-Backend/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/RemitFlow-Frontend",
@@ -424,9 +370,7 @@
       "head_sha": "8933212fcf5378e94da39fc1fbe94ff85f476063",
       "head_observed_at": "2026-09-26T13:54:12.340Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/RemitFlow-Frontend/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/rustchain-bounties",
@@ -437,9 +381,7 @@
       "head_sha": "ea1e71a2f04506fedfec0b0f274762f83f82aabc",
       "head_observed_at": "2026-09-26T13:54:12.798Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/rustchain-bounties/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/rustchain-monitor",
@@ -450,9 +392,7 @@
       "head_sha": "64e81c1c5abc3af49f5cba2506d814ccd6be6bf6",
       "head_observed_at": "2026-09-26T13:54:12.854Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/rustchain-monitor/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/scrypt",
@@ -463,9 +403,7 @@
       "head_sha": "b529c8f326e5fbf3210972a0cba8f7d0a2dd213d",
       "head_observed_at": "2026-09-26T13:54:12.837Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/scrypt/git/ref/heads/master",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/spiped",
@@ -476,9 +414,7 @@
       "head_sha": "a32f37fd8c5c04003359c82ebe57feac6f0a9dd5",
       "head_observed_at": "2026-09-26T13:54:12.835Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/spiped/git/ref/heads/master",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/split-sdk",
@@ -489,9 +425,7 @@
       "head_sha": "e59d2ae74681057a9dbb05b6791c34b6cc6229b5",
       "head_observed_at": "2026-09-26T13:54:13.149Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/split-sdk/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/startup-credits",
@@ -502,9 +436,7 @@
       "head_sha": "330558ff3cd9753cdb39c1e0bf80f2f8875fdaa2",
       "head_observed_at": "2026-09-26T13:54:13.149Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/startup-credits/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/tarsnap",
@@ -515,9 +447,7 @@
       "head_sha": "5e104871980f1f82bae90001d793caf8d5e6ef2e",
       "head_observed_at": "2026-09-26T13:54:13.242Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/tarsnap/git/ref/heads/master",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/ultimate-ai-platform",
@@ -528,9 +458,7 @@
       "head_sha": "bc54980d5b269f8988a3b2d15e4a597a5cd7950e",
       "head_observed_at": "2026-09-26T13:54:13.174Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/ultimate-ai-platform/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/vaultquest",
@@ -541,9 +469,7 @@
       "head_sha": "b1e81097fa2f724780a960829b89bacab51c93ba",
       "head_observed_at": "2026-09-26T13:54:13.520Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/vaultquest/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/villa",
@@ -554,9 +480,7 @@
       "head_sha": "cf02a85c7d6e473e8ed59141096e685dd3cf70e7",
       "head_observed_at": "2026-09-26T13:54:13.594Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/villa/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/YieldVault-Backend",
@@ -568,8 +492,7 @@
       "head_observed_at": "2026-09-26T13:54:13.527Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/YieldVault-Backend/git/ref/heads/main",
       "head_http_status": 409,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "EMPTY_REPOSITORY"
+      "head_message": "Git Repository is empty."
     },
     {
       "full_name": "woahwhattheheck/YieldVault-Backend-1",
@@ -580,9 +503,7 @@
       "head_sha": "d0314b94ff2793968ce4ce2d9947fcd2dd371030",
       "head_observed_at": "2026-09-26T13:54:13.663Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/YieldVault-Backend-1/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/YieldVault-Contracts",
@@ -593,9 +514,7 @@
       "head_sha": "685bf63bca3e09dd49bb58c983d815038e75c84b",
       "head_observed_at": "2026-09-26T13:54:14.117Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/YieldVault-Contracts/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     },
     {
       "full_name": "woahwhattheheck/YieldVault-Frontend",
@@ -606,37 +525,8 @@
       "head_sha": "f0ce8b799ded8f8e4cc158069d1940b1f822eb17",
       "head_observed_at": "2026-09-26T13:54:13.932Z",
       "head_source": "https://api.github.com/repos/woahwhattheheck/YieldVault-Frontend/git/ref/heads/main",
-      "head_http_status": 200,
-      "role": "PUBLIC_REFERENCE",
-      "condition": "REFERENCE"
+      "head_http_status": 200
     }
   ],
-  "private_aggregate": {
-    "accessible_repository_count": 16,
-    "details_persisted": false,
-    "head_state": "REDACTED_NOT_PERSISTED"
-  },
-  "summary": {
-    "accessible_repositories": 62,
-    "public_repositories": 46,
-    "private_repositories": 16,
-    "canonical_repositories": 1,
-    "current_mirrors": 0,
-    "stale_mirrors": 0,
-    "unverified_mirrors": 1,
-    "reference_repositories": 42,
-    "empty_repositories": 2,
-    "unavailable_heads": 0
-  },
-  "evidence": {
-    "source_sha256": "cd5de4a0b0851e699c5a604d1fb8805f7bb57e211d11ea65e2bfe0349f5674e0",
-    "source_schema": "commons-repository-source/v1",
-    "commons_head": "https://github.com/woahwhattheheck/commons/commit/0415824850368791e1fa840ec9c2dcf424e67059"
-  },
-  "truth": {
-    "canonical_head_observed_at": "2026-09-26T13:54:10.143Z",
-    "backup_is_current": "NOT_VERIFIED",
-    "private_repository_details_persisted": false
-  },
-  "rate_plan_boundary": "Repository access and exact public Git heads do not prove deployment, backup completeness, disaster recovery, private contents, device execution, buyer acceptance, payment, revenue, or cash."
+  "private_repository_count": 16
 }
