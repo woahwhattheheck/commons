@@ -37,6 +37,11 @@ import re
 import subprocess
 import sys
 
+try:
+    from host.git_source_capsules import _git_env
+except ModuleNotFoundError:
+    from git_source_capsules import _git_env
+
 
 SCHEMA = "commons-open-work-v1"
 CLASSES = ("OPEN", "LANDED", "DEAD_CLAIM", "SALON", "NOISE")
@@ -104,6 +109,7 @@ def resolve_main_sha(root, explicit=""):
                 cwd=root,
                 text=True,
                 stderr=subprocess.DEVNULL,
+                env=_git_env(),
             ).strip().lower()
         except (OSError, subprocess.CalledProcessError):
             continue
@@ -123,6 +129,7 @@ def _git_object_exists(root, spec):
             cwd=root,
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
+            env=_git_env(),
         )
     except OSError:
         return None
@@ -157,6 +164,7 @@ def _git_prefix_receipt(root, sha, ident):
             cwd=root,
             stderr=subprocess.DEVNULL,
             text=True,
+            env=_git_env(),
         )
     except (OSError, subprocess.CalledProcessError):
         return None
@@ -174,6 +182,7 @@ def _git_receipt_index(root, sha):
         output = subprocess.check_output(
             ["git", "ls-tree", "-z", "--name-only", sha, "p/"],
             cwd=root, stderr=subprocess.DEVNULL,
+            env=_git_env(),
         )
     except (OSError, subprocess.CalledProcessError):
         return None
