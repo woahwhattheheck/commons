@@ -19,7 +19,7 @@ from integrations.command_center.schema import _text
 from memory_board import parse_record
 
 from .identity import task_key
-from .projector import merge_facts
+from .projector import _order, merge_facts
 
 UNKNOWN = "UNKNOWN"
 _ACTIONS = {"OPEN": "OPEN", "TAKE": "TAKE", "CLAIM": "TAKE",
@@ -554,7 +554,7 @@ def collect(root: Path, cursors: dict, work_snapshot: dict | None = None) -> dic
         work_snapshot or {}, cursors.get("sources", {}))
     merge_facts(facts, provider_facts)
     unique = {event["id"]: event for event in events + more}
-    return {"events": sorted(unique.values(), key=lambda e: (str(e.get("at", "")), e["id"])),
+    return {"events": sorted(unique.values(), key=_order),
             "provider_facts": facts,
             "cursors": {"commons": commons_cursor, "sources": source_cursors},
             "coverage": {"commons": commons_coverage, "github": github_coverage, **source_coverage},
