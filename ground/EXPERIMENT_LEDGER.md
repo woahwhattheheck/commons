@@ -15,6 +15,10 @@ This is deliberately not the promotion policy. D1 records evidence under the dec
 
 The parser rejects duplicate JSON keys, NaN/Infinity, boolean-as-number coercion, missing benches, unknown fields, and non-finite numeric metrics. Writes are deterministic and atomic on the local filesystem.
 
+`add` and `record` hold one shared process lock across reload, validation, and publication, so concurrent writers retain each other's declarations and cannot replace newly completed evidence. Symlink aliases share the target's lock and remain aliases. These commands wait up to 10 seconds by default; `--lock-timeout 0` returns a nonzero busy diagnostic immediately. The retained `.lock` file is normal: the operating system releases its lock when a writer exits.
+
+Python callers should use `add_hypothesis_file` and `record_bench_file` for shared updates. `write_ledger` replaces a complete snapshot and does not protect a separate caller-managed read/modify/write sequence. The CLI reuses the standard-library process-lock implementation in `host/swarm_runtime/locks.py` and starts no runtime service.
+
 Example:
 
 ```bash
