@@ -55,25 +55,13 @@ The browser calls the same local HTTP API exercised by the test suite.
 
 Mutation requests require `operation_id`. Meal/recipe updates also require the current version.
 
-The browser currently exposes create/save/suggest/export/delete-all flows. Update/delete-meal operations are in the API/model for integrations and are covered by tests; no claim is made that every API operation has a dedicated GUI control in v1.
+The browser currently exposes create/save/suggest/export/delete-all flows. Update/delete-meal operations are in the API/model for integrations; no claim is made that every API operation has a dedicated GUI control in v1.
 
 ## Privacy and export semantics
 
 Photo bytes never appear in `/api/state` or the week export. A journal item exposes a local `/photo/{id}` route and content hash. Printable HTML says when a source entry had a photo but does not embed the bytes. Deleting the meal removes its BLOB through SQLite row deletion; delete-all removes every meal/photo and recipe. Minimal idempotency receipts remain so retry semantics do not resurrect deleted content; receipts contain payload hashes/result counts, not photo bytes or meal text.
 
 If you need to move the journal, stop the server and copy its SQLite file. Weekly JSON is a content export, not a complete database backup because it intentionally omits photo bytes.
-
-## Validation
-
-Focused release commands:
-
-```bash
-python3 -m py_compile journal.py server.py ../../tests/test_mealframe.py
-python3 -W error::ResourceWarning -m unittest -v ../../tests/test_mealframe.py
-python3 -O -W error::ResourceWarning -m unittest -v ../../tests/test_mealframe.py
-```
-
-The release suite uses real temporary SQLite files, real concurrent threads, exact photo-byte round trips, reopen, retry/collision semantics, week JSON/HTML, destructive privacy deletion, and a real loopback `ThreadingHTTPServer` client. It does not claim visual browser testing or a production deployment.
 
 ## Scope boundary
 
