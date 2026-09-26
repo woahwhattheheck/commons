@@ -110,7 +110,7 @@ def run_sample(
     if isinstance(timeout, bool) or not isinstance(timeout, (int, float)) or not math.isfinite(timeout) or timeout <= 0:
         raise ValueError("--timeout must be a finite number > 0")
     root = root.resolve()
-    preflight = validate(manifest, root)
+    preflight = validate(manifest, root, selected_assets)
     if not preflight["ok"]:
         raise RuntimeError("preflight failed: " + "; ".join(preflight["errors"]))
 
@@ -209,6 +209,8 @@ def run_sample(
             "python_version": sys.version,
             "dry_run": dry_run, "status": status,
             "selected_assets": sorted(selected) if selected else "all_executable_assets",
+            "preflight_scope": preflight["filesystem_scope"],
+            "preflight_skipped_assets": preflight["skipped_assets"],
             "planned_steps": planned_steps, "attempted_steps": executed,
             "steps": steps, "outputs": outputs, "errors": errors,
             "preflight_warnings": preflight["warnings"],
@@ -252,6 +254,7 @@ def main(argv: list[str] | None = None) -> int:
         print(f"UIOWA-100 sample: ERROR: {exc}", file=sys.stderr)
         return 2
     print(f"UIOWA-100 sample: {receipt['status']} steps={len(receipt['steps'])} "
+          f"scope={receipt['preflight_scope']} "
           f"outputs={len(receipt['outputs'])} dry_run={receipt['dry_run']} "
           f"execution_verified={receipt['execution_verified']}")
     print(receipt["receipt_path"])
