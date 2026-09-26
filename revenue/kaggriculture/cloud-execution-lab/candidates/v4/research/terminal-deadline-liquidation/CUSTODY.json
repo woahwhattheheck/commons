@@ -1,0 +1,15 @@
+{
+  "schema": "titan-v4-salvage-custody-v1",
+  "recorded_on": "2026-09-26",
+  "source_parent_head": "321cc0d3016c0fe7c77503b1e2d665c56b2b72e5",
+  "source_child_head": "529a609dc2d146c7fc4dbbc7ac4fb7c4491dcb99",
+  "parent_pr": 11913,
+  "child_pr": 11927,
+  "parent_run": 34413344732,
+  "child_run": 34414223885,
+  "parent_tests": "failure",
+  "child_tests": "failure",
+  "current_main_py_blob": "727c36ee3727db159f5879d4ac9a842a28ca570c",
+  "current_titan_runtime_blob": "72c057552308dbac02dd6165c3049032ddbfa657",
+  "disposition": "historical component proof; current seam still present; broad gates red; current-ABI rederivation and fresh gates required; no direct port or V4 queue edge"
+}
