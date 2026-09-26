@@ -1,0 +1,17 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "subject": "final-pressure idle-fertilizer returned-action slot rebind",
+  "canonical_main": "57ef6927d89875fd07e6e60e4997e182cb244c77",
+  "donor_pr": 12019,
+  "donor_head": "5ff349cd86acfcc45c6b81fb28e8de465c80ba3e",
+  "focused_run": 34522698322,
+  "focused_result": "green on Python 3.11 and 3.12, normal and optimized",
+  "broad_run": 34522698274,
+  "broad_result": "repository-wide failure outside TITAN/Kaggriculture",
+  "current_main_blob": "727c36ee3727db159f5879d4ac9a842a28ca570c",
+  "current_runtime_blob": "72c057552308dbac02dd6165c3049032ddbfa657",
+  "current_spatial_blob": "a2f13cd9871e6da24b2ccf3297c4c96ac324100e",
+  "current_pressure_blob": "cde454922e5cf0bb46c9bd68c4fad2e98782c4b5",
+  "finding": "proposal slot is bound before late market pressure but consumed after pressure",
+  "disposition": "exact donor and receipt custody only; stale implementation quarantined; current-ABI final-boundary rederivation and fresh gates required"
+}
