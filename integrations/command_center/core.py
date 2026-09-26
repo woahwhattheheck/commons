@@ -427,15 +427,22 @@ class CommandCenter:
             raise CoreError(400, "Tool arguments must be an object.")
         # The hash is the only persisted representation of arguments.
         semantic = {"runtime_id": runtime_id, "name": name, "arguments": arguments}
+        swarm = None
+        if "swarm" in payload:
+            from .swarm_dispatch import normalize
+            swarm = normalize(name, arguments, payload["swarm"])
+            semantic["swarm"] = swarm
         payload_hash = hashlib.sha256(_json(semantic).encode("utf-8")).hexdigest()
         with self._db() as db:
             row = db.execute("SELECT * FROM operations WHERE id=?", (operation_id,)).fetchone()
         if row:
             if row["payload_hash"] != payload_hash:
                 raise CoreError(409, "Operation ID already exists with different content.")
+            operation = self._operation(row)
             return {"operation_id": operation_id, "status": row["status"], "replayed": True,
                     "result_available": False, "result": None, "retry_blocked": True,
-                    "operation": self._operation(row)}
+                    "operation": operation,
+                    **({"swarm": (operation.get("summary") or {}).get("swarm")} if swarm is not None else {})}
         runtime = next(iter(self._runtimes(force=True, runtime_id=runtime_id)), None)
         if runtime is None:
             raise CoreError(404, "Runtime is not registered.")
@@ -447,7 +454,8 @@ class CommandCenter:
         if existing:
             return {"operation_id": operation_id, "status": existing["status"], "replayed": True,
                     "result_available": False, "result": None, "retry_blocked": True,
-                    "operation": existing}
+                    "operation": existing,
+                    **({"swarm": (existing.get("summary") or {}).get("swarm")} if swarm is not None else {})}
         # Calling this center through its advertised equipment tools shares this
         # same journal. Namespace only a colliding inner metadata-operation ID;
         # preserve the original semantic hash, parent call_id and all service IDs.
@@ -463,6 +471,33 @@ class CommandCenter:
                 _json({"parent": operation_id, "name": name}).encode("utf-8")).hexdigest()[:40]
             dispatch_arguments = dict(arguments, operation_id=child_operation_id)
         child_summary = {"child_operation_id": child_operation_id} if child_operation_id else {}
+        binding = {}
+        if swarm is not None:
+            from .swarm_dispatch import prepare, reserve_binding
+            try:
+                prepared = prepare(self, name, arguments, swarm, operation_id)
+            except Exception as exc:
+                prepared = {"ready": False, "swarm": {
+                    "status": "error", "requested_task_key": swarm.get("task_key"),
+                    "worker": swarm["worker"], "rerouted": False,
+                    "reason": getattr(exc, "kind", type(exc).__name__)}}
+                if getattr(exc, "retry_after", None) is not None:
+                    prepared["swarm"]["retry_after"] = exc.retry_after
+            if prepared["ready"]:
+                prior_dispatch = reserve_binding(self, operation_id,
+                                                 {**child_summary, "swarm": prepared["swarm"]})
+                if prior_dispatch is not None:
+                    prepared = {"ready": False, "swarm": prior_dispatch}
+            binding = {"swarm": prepared["swarm"]}
+            child_summary.update(binding)
+            if not prepared["ready"]:
+                operation = self._finish(operation_id, "failed",
+                    {"provider_dispatched": False, "automatic_retry": False, **child_summary},
+                    prepared["swarm"].get("reason"))
+                return {"operation_id": operation_id, "status": "failed", "replayed": False,
+                        "provider_dispatched": False, "result_available": False,
+                        "result": None, "retry_blocked": True, "operation": operation, **binding}
+            dispatch_arguments = prepared["arguments"]
         envelope = {"request_id": "command-center", "call_id": operation_id,
                     "name": name, "arguments": dispatch_arguments}
         try:
@@ -473,7 +508,7 @@ class CommandCenter:
                 self._failure(exc))
             return {"operation_id": operation_id, "status": "uncertain", "replayed": False,
                     "result_available": False, "result": None, "retry_blocked": True,
-                    "operation": operation}
+                    "operation": operation, **binding}
         status = self._receipt_status(result, operation_id)
         failed = status == "failed"
         provider_refs = self._provider_refs(result)
@@ -484,7 +519,7 @@ class CommandCenter:
                                   "provider_refs": provider_refs, **child_summary})
         return {"operation_id": operation_id, "status": status, "replayed": False,
                 "result_available": True, "result": result, "retry_blocked": True,
-                "operation": operation}
+                "operation": operation, **binding}
 
     @staticmethod
     def _provider_refs(result):

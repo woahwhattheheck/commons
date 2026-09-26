@@ -126,7 +126,7 @@ class Runtime:
             self.state_dir = (common if common.is_absolute() else self.root / common) / "swarm-cache"
         self.state_dir.mkdir(parents=True, exist_ok=True)
 
-    def _dispatch_facts(self, action, payload, moment):
+    def _dispatch_facts(self, action, payload, moment, *, worker_activity=True):
         """Refresh only exact candidate identifiers, once outside CAS retries."""
         if action not in {"take", "next", "ship", "block", "abandon"}:
             return {}, []
@@ -135,9 +135,14 @@ class Runtime:
         _, state = self.store.read(refresh=False)
         _append(state, legacy_events(state.get("legacy_holdings", {})))
         worker = str(payload.get("worker") or "")
-        if worker:
+        if worker and worker_activity:
             state.setdefault("workers", {}).setdefault(worker, {}).update(
                 {**(payload.get("seat") or {}), "seat": worker, "heartbeat": moment})
+        if not worker_activity:
+            current = _project(state, moment)
+            worker_route = route(current["tasks"], worker, _seats(state), moment)
+            if worker_route.get("reason") in {"worker_unknown", "worker_not_live"}:
+                return {}, []
         selected = task_key(payload["task_key"]) if payload.get("task_key") else None
         facts, deferred, remaining, attempted = {}, [], 4, set()
         # The selected owner command may need no provider call; still leave
@@ -272,7 +277,9 @@ class Runtime:
                     "assignments": assignments}
         return self.store.update(mutation, push=push)
 
-    def operate(self, action, payload, *, push=True):
+    def operate(self, action, payload, *, push=True, worker_activity=True):
+        if type(worker_activity) is not bool:
+            raise ValueError("worker_activity must be a boolean")
         action = str(action).lower()
         if action not in {"open", "take", "heartbeat", "ship", "block", "abandon", "next"}:
             raise ValueError("Unknown swarm action: " + action)
@@ -292,12 +299,18 @@ class Runtime:
             raise ValueError("task_key is required")
         if action == "block" and (not payload.get("blocker") or not payload.get("next_action")):
             raise ValueError("BLOCKED requires blocker and exact next_action")
-        request_hash = digest({"action": action, "payload": payload})
+        request_identity = {"action": action, "payload": payload}
+        if not worker_activity:
+            # A coordinator choosing a seat is not evidence that seat is live.
+            # Preserve the historical hash for direct worker operations.
+            request_identity["worker_activity"] = False
+        request_hash = digest(request_identity)
         moment = now_iso()
         # Replaying a completed operation performs no provider reads.
         _, cached = self.store.read(refresh=False)
         prior_operation = cached.get("operations", {}).get(operation_id)
-        fresh_facts, deferred = ({}, []) if prior_operation else self._dispatch_facts(action, payload, moment)
+        fresh_facts, deferred = ({}, []) if prior_operation else self._dispatch_facts(
+            action, payload, moment, worker_activity=worker_activity)
 
         def mutation(state):
             from .sources import legacy_events
@@ -319,7 +332,7 @@ class Runtime:
                     if prior_key in current_view["tasks"]:
                         result[field] = context_bundle(current_view["tasks"][prior_key], state["events"])
                 return {**result, "replayed": True, "canonical_at": moment}
-            if worker:
+            if worker and worker_activity:
                 descriptor = dict(payload.get("seat") or {})
                 descriptor.update(seat=worker, heartbeat=moment)
                 descriptor["feed_cursor"] = payload.get("feed_cursor") or (
@@ -367,7 +380,7 @@ class Runtime:
                 else:
                     owns = row.get("state") == "ACTIVE" and row.get("worker") == worker
                     suitability = route({selected_key: row}, worker, _seats(state), moment)
-                    if not owns and suitability.get("task_key") != selected_key:
+                    if (not owns or not worker_activity) and suitability.get("task_key") != selected_key:
                         collision = {"task_key": selected_key, "reason": suitability.get("reason"),
                                      "routing": suitability}
                     else:

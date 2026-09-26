@@ -119,7 +119,52 @@
     const grid=node('div','work-source-grid');rows.forEach(s=>{const card=node('article','source-card'),head=node('div','card-top');append(head,node('h3','',s.label||s.id),phase(stale(s)?'stale / unknown read':s.status));card.append(head);const c=s.coverage||{};append(card,metadata([['Provider',s.provider],['Read',date(sourceRead(s),'No successful read time')],['Activity as of',date(s.activity_as_of)],['Sync',s.sync_mode],['Coverage',c.complete===true?'Complete for stated scope':c.complete===false?'Partial':'Unknown'],['More pages',c.pagination_remaining===true?'Yes':c.pagination_remaining===false?'No':c.pagination_remaining]]));if(s.error)card.append(node('p','source-error',text(s.error)));if(s.retained_last_good)card.append(node('p','field-help','Last good observations retained.'));if(c.notes)card.append(node('p','field-help',text(c.notes)));grid.append(card);});root.append(grid);
   }
   function packet(i){
-    return JSON.stringify({work_id:i.id,source_id:i.source_id,title:i.title,project:i.project,owner:owner(i),objective:first(owned(i).job,i.objective,i.summary,i.title),next_action:next(i),priority:first(owned(i).priority,i.priority),prepared_job:owned(i).job??null,status:i.status,source_url:i.url,refs:i.refs,activity_observed_at:activity(i),request:"Continue this exact work from its source and latest receipt. Return an operation ID, artifacts, and actual outcome; reconcile existing work before repeating an effect."},null,2);
+    return JSON.stringify({work_id:i.id,source_id:i.source_id,task_key:workTaskKey(i)||undefined,title:i.title,project:i.project,owner:owner(i),objective:first(owned(i).job,i.objective,i.summary,i.title),next_action:next(i),priority:first(owned(i).priority,i.priority),prepared_job:owned(i).job??null,status:i.status,source_url:i.url,refs:i.refs,activity_observed_at:activity(i),request:"Continue this exact work from its source and latest receipt. Return an operation ID, artifacts, and actual outcome; reconcile existing work before repeating an effect."},null,2);
+  }
+  function canonicalTask(value){
+    if(typeof value!=='string'||!value.trim())return null;
+    const raw=value.trim();
+    if(/^commons:owner-command:[A-Za-z0-9][A-Za-z0-9._:/-]*$/.test(raw))return raw;
+    let match=/^github:([A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+):(issue|pr):([0-9]+)$/i.exec(raw);
+    if(!match){
+      try{const source=new URL(raw);if(!['https:','http:'].includes(source.protocol)||source.username||source.password||!['github.com','www.github.com','api.github.com'].includes(source.hostname.toLowerCase()))return null;
+        const path=source.hostname.toLowerCase()==='api.github.com'?source.pathname.replace(/^\/repos\//,'/'):source.pathname;
+        const ref=/^\/([A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+)\/(issues|pull|pulls)\/([0-9]+)(?:\/|$)/.exec(path);
+        if(!ref)return null;match=[raw,ref[1],ref[2]==='issues'?'issue':'pr',ref[3]];
+      }catch(_){return null;}
+    }
+    const number=Number(match[3]);
+    if(!Number.isSafeInteger(number)||number<1||match[1].split('/').some(part=>part==='.'||part==='..'))return null;
+    return 'github:'+match[1].toLowerCase()+':'+match[2].toLowerCase()+':'+number;
+  }
+  function workTaskKey(i){
+    // Explicit machine identity and the record's own provider URL outrank
+    // supporting links. Multiple different supporting tasks stay ambiguous.
+    for(const value of [field(i,'task_key'),owned(i).job?.task_key,i.url,i.source_url]){const key=canonicalTask(value);if(key)return key;}
+    const keys=[...new Set(refRows(i.refs).map(row=>canonicalTask(row.url)).filter(Boolean))];
+    return keys.length===1?keys[0]:null;
+  }
+  function dispatchBinding(i,worker){
+    const key=i&&workTaskKey(i);
+    if(!key||typeof worker!=='string'||!worker.trim())return null;
+    const binding={task_key:key,worker};
+    const base=first(field(i,'base_sha'),owned(i).job?.base_sha);
+    if(typeof base==='string'&&/^[0-9a-f]{40,64}$/i.test(base))binding.base_sha=base;
+    return binding;
+  }
+  function canonicalReceipt(target,receipt,requestedKey){
+    const assignment=receipt?.swarm||receipt?.operation?.summary?.swarm;
+    if(!assignment||typeof assignment!=='object')return;
+    const box=node('div','inline-note');
+    const key=canonicalTask(assignment.task_key),worker=text(assignment.worker||'Unknown worker');
+    if(assignment.status==='assigned'&&key){
+      box.append(node('p','',assignment.rerouted?'Assigned another eligible task to '+worker+'.':'Assigned this work to '+worker+'.'));
+      const link=node('a','source-link',key),destination=new URL(location.href);destination.searchParams.set('swarm_task',key);destination.hash='work';link.href=destination.href;box.append(link);
+      if(assignment.rerouted)box.append(node('p','field-help','Requested '+text(assignment.requested_task_key||requestedKey)+'. The response above describes the assigned task.'));
+    }else box.append(node('p','',assignment.status==='unpublished'?'Task assignment was not published.':'No task was assigned.'));
+    if(assignment.reason)box.append(node('p','field-help',text(assignment.reason).slice(0,600)));
+    if(receipt.provider_dispatched===false)box.append(node('p','field-help','No provider job was launched.'));
+    target.append(box);
   }
   async function copy(value){try{await navigator.clipboard.writeText(value);api.showToast('Job packet copied.');}catch(_){api.showToast('Clipboard unavailable. Select and copy the displayed packet.');}}
   function detailValue(value){
@@ -143,6 +188,7 @@
     refRows(i.refs).forEach(r=>append(links,anchor(r.label+' ↗',r.url)));detail.append(links);
     if(i.kind==='build'||i.kind==='pull_request'||i.kind==='feature')detail.append(metadata([['Source state',first(field(i,'source_status'),field(i,'merged_at')?'merged':null)],['Commit',first(field(i,'head_sha'),field(i,'commit_sha'),field(i,'main_sha'),field(i,'merge_commit_sha'))],['CI',first(field(i,'ci_status'),field(i,'conclusion'),field(i,'test_status'))],['Deployment',first(field(i,'deployment_status'),field(i,'live_status'),'Unknown')]]));
     const actions=node('div','button-row work-detail-actions');actions.append(btn('Set priority / next action',()=>workForm(i)),btn('Copy bounded job packet',()=>copy(packet(i))));
+    if(workTaskKey(i)&&api.getTools().some(t=>t.name==='gemini_submit'&&t.runtime_id==='shared-equipment'))actions.append(btn('Delegate this work',()=>{detail.close();peerControl('submit','','MERIDIAN',packet(i),i);}));
     actionRows(i.actions).forEach(a=>{
       const name=first(a.tool,a.name),args=a.arguments||{},route=a.route||a.transport||a.availability||'';
       if(name&&api.getTools().some(t=>t.name===name&&t.runtime_id===(a.runtime_id||'shared-equipment'))&&!/native_harness|mcp__codex_app__/.test(name+' '+route)){
@@ -206,9 +252,10 @@
       finally{saving=false;submit.disabled=false;Object.values(fields).forEach(f=>f.disabled=false);submit.textContent='Save / reconcile unchanged edit';}
     });dialog.append(form);document.body.append(dialog);dialog.addEventListener('close',()=>dialog.remove());dialog.showModal();
   }
-  function peerControl(mode,requestId='',peer='MERIDIAN',message=''){
+  function peerControl(mode,requestId='',peer='MERIDIAN',message='',workItem=null){
     peerDialog.replaceChildren();const form=node('form'),head=node('div','dialog-heading');append(head,node('h2','',({submit:'Delegate to Gemini',inspect:'Inspect Gemini request',followup:'Follow up existing request',cancel:'Cancel existing request'})[mode]),btn('×',()=>peerDialog.close(),'icon-button'));form.append(head);
     const exact={submit:'gemini_submit',inspect:'gemini_get_request',followup:'gemini_follow_up',cancel:'gemini_cancel'}[mode],route=api.getTools().find(t=>t.name===exact&&t.runtime_id==='shared-equipment');
+    if(workItem)form.append(node('p','field-help','Selected work: '+(workItem.title||workItem.id)));
     const fields={};
     function input(key,label,value,multi=false){const w=node('div','form-field'),l=node('label','',label),n=node(multi?'textarea':'input');n.value=value;n.required=true;n.id='peer-'+key;l.htmlFor=n.id;if(multi)n.rows=7;append(w,l,n);form.append(w);fields[key]=n;}
     if(mode==='submit'){const w=node('div','form-field'),l=node('label','','Existing Gemini peer'),s=node('select');s.id='peer-choice';l.htmlFor=s.id;['MERIDIAN','TESSERA'].forEach(v=>{const o=node('option','',v);o.value=v;s.append(o);});s.value=peer;append(w,l,s);form.append(w);fields.peer=s;}
@@ -219,7 +266,9 @@
     if(!route)form.append(node('p','source-error','This exact route is not currently exposed by shared-equipment. Refresh the runtime catalog.'));
     form.addEventListener('submit',async e=>{e.preventDefault();if(peerBusy||!route)return;const args=Object.fromEntries(Object.entries(fields).map(([k,v])=>[k,v.value.trim()]));if(mode==='inspect')args.wait_ms=0;
       peerBusy=true;submit.disabled=true;Object.values(fields).forEach(f=>f.disabled=true);activePeerOperation={mode,requestId:args.request_id||'',peer:args.peer||peer};
-      try{await api.callTool('peer:'+mode+':'+(args.request_id||args.peer),exact,args,out,'shared-equipment');}
+      const swarm=mode==='submit'?dispatchBinding(workItem,args.peer):null;
+      const options=swarm?{swarm,onReceipt:receipt=>canonicalReceipt(out,receipt,swarm.task_key)}:undefined;
+      try{await api.callTool('peer:'+mode+':'+(args.request_id||args.peer)+(swarm?':'+swarm.task_key:''),exact,args,out,'shared-equipment',options);}
       finally{peerBusy=false;submit.disabled=false;Object.values(fields).forEach(f=>f.disabled=false);submit.textContent='Submit / reconcile unchanged request';renderFleetJobs();}
     });peerDialog.append(form);peerDialog.showModal();
   }
