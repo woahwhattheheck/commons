@@ -14,7 +14,7 @@ import subprocess
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timedelta, timezone
 from time import monotonic
-from urllib.parse import quote, urlencode
+from urllib.parse import quote, urlencode, urlsplit
 
 from .request_budget import RequestBudget, RequestDeferred
 from .slack_threads import read_channel, resolve_thread_root
@@ -139,17 +139,26 @@ class LiveCollectors:
 
     def _github(self, endpoint):
         self._check_deadline()
-        scope = "github:GET"
-        self.request_budget.acquire(scope)
+        path = urlsplit(endpoint).path.lstrip("/")
+        resource = "code_search" if path == "search/code" else "search" if path.startswith("search/") else "core"
+        scope = "github:GET:" + resource
+        # Primary quotas are independent. Secondary/unknown limits (including
+        # persisted deadlines from older collectors) still pause every read.
+        self.request_budget.acquire(scope, shared_scopes=("github:GET",))
         try:
             return self.equipment.github(endpoint, method="GET")
         except Exception as exc:
             if getattr(exc, "http_status", None) == 429 or getattr(exc, "code", None) == "github_rate_limited":
                 reset = getattr(exc, "rate_limit_reset", None) if getattr(exc, "rate_limit_remaining", None) == 0 else None
-                retry = self.request_budget.rate_limited(scope, getattr(exc, "retry_after", None), reset_at=reset)
+                reported_resource = getattr(exc, "rate_limit_resource", None)
+                primary = (getattr(exc, "rate_limit_kind", None) == "primary"
+                           and reported_resource in (None, resource))
+                limited_scope = scope if primary else "github:GET"
+                retry = self.request_budget.rate_limited(limited_scope, getattr(exc, "retry_after", None), reset_at=reset)
                 raise SourceFailure("github_rate_limited", {"http_status": getattr(exc, "http_status", None),
                     "rate_limit_remaining": getattr(exc, "rate_limit_remaining", None),
-                    "rate_limit_reset": reset, **retry}) from None
+                    "rate_limit_reset": reset, "rate_limit_resource": reported_resource,
+                    "rate_limit_kind": getattr(exc, "rate_limit_kind", None), **retry}) from None
             raise
 
     def _slack_read(self, method, payload):
