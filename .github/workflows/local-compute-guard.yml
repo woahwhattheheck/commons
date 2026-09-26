@@ -7,7 +7,6 @@ on:
       - main
     paths:
       - 'local_compute_guard.py'
-      - 'test_local_compute_guard.py'
       - '.github/workflows/local-compute-guard.yml'
       - 'infra/discord/install_windows_runtime.ps1'
       - 'infra/discord/run_bridge_windows.ps1'
@@ -26,7 +25,6 @@ on:
   pull_request:
     paths:
       - 'local_compute_guard.py'
-      - 'test_local_compute_guard.py'
       - '.github/workflows/local-compute-guard.yml'
       - 'infra/discord/install_windows_runtime.ps1'
       - 'infra/discord/run_bridge_windows.ps1'

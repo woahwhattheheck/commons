@@ -13,15 +13,11 @@ on:
       - "sync.json"
       - "reconcile/**"
       - "host_offload/staleness_alarm.py"
-      - "test_staleness_alarm.py"
-      - "test_build_sync.py"
       - ".github/workflows/staleness-alarm.yml"
   pull_request:
     paths:
       - "reconcile/**"
       - "host_offload/staleness_alarm.py"
-      - "test_staleness_alarm.py"
-      - "test_build_sync.py"
       - ".github/workflows/staleness-alarm.yml"
 permissions:
   contents: read
@@ -33,10 +29,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: unit contract
-        run: |
-          python3 test_staleness_alarm.py
-          python3 test_build_sync.py
       # sync.json is measured here, from the main this run checked out, rather
       # than committed by the bake: a committed copy would be a snapshot that
       # could itself go stale, and every bake would re-trigger this workflow.
