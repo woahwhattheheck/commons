@@ -31,7 +31,7 @@ from email.policy import default as mail_policy
 from email.utils import parseaddr, parsedate_to_datetime
 from html.parser import HTMLParser
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any, Callable, Iterator
 
 # Allow existing Commons custody imports when launched as a file or module.
 ROOT = Path(__file__).resolve().parents[1]
@@ -588,7 +588,23 @@ def github_pages(get: Callable, endpoint: str, max_pages: int = 20) -> list:
     raise RelayError("github_page_limit_pending")
 
 
+def collect_delivery_groups(source: Callable, get: Callable, config: dict, since: str, seen: Callable) -> tuple[list[Event], dict]:
+    """Keep the materialized collector interface for callers outside the relay."""
+    info, groups = source(get, config, since, seen)
+    events: list[Event] = []
+    counts = []
+    for version, batch in groups:
+        events.extend(batch)
+        counts.append((version, len(batch)))
+    info["_delivery_groups"] = counts
+    return events, info
+
+
 def github_events(get: Callable, config: dict, since: str, seen: Callable = lambda key: "") -> tuple[list[Event], dict]:
+    return collect_delivery_groups(github_delivery_groups, get, config, since, seen)
+
+
+def github_delivery_groups(get: Callable, config: dict, since: str, seen: Callable = lambda key: "") -> tuple[dict, Iterator[tuple[str, list[Event]]]]:
     account = get("user")
     if str(account.get("login", "")).lower() != config["github_login"].lower():
         raise RelayError("github_account_mismatch")
@@ -599,28 +615,25 @@ def github_events(get: Callable, config: dict, since: str, seen: Callable = lamb
     unread = github_pages(get, "notifications?all=false")
     notifications = {str(n["id"]): n for n in changed + unread}
     info["notifications"] = len(notifications)
-    events: list[Event] = []
-    groups = []
-    for notice in notifications.values():
-        version = "gh.notice." + digest(str(notice["id"]) + ":" + str(notice.get("updated_at", "")))
-        # Do not repeatedly download every comment on unchanged unread threads.
-        if seen(version):
-            info["unchanged"] += 1
-            continue
-        try:
-            batch, included = github_notice_events(get, config, notice, info)
+    def groups() -> Iterator[tuple[str, list[Event]]]:
+        for notice in notifications.values():
+            version = "gh.notice." + digest(str(notice["id"]) + ":" + str(notice.get("updated_at", "")))
+            # Do not repeatedly download every comment on unchanged unread threads.
+            if seen(version):
+                info["unchanged"] += 1
+                continue
+            try:
+                batch, included = github_notice_events(get, config, notice, info)
+            except RelayError as exc:
+                info["source_items_pending"] += 1
+                if exc.code not in info["error_codes"]:
+                    info["error_codes"].append(exc.code)
+                if exc.retry_after:
+                    raise
+                continue
             if included:
-                events.extend(batch)
-                groups.append((version, len(batch)))
-        except RelayError as exc:
-            info["source_items_pending"] += 1
-            if exc.code not in info["error_codes"]:
-                info["error_codes"].append(exc.code)
-            if exc.retry_after:
-                raise
-    # Internal delivery grouping contains hashes/counts only and is removed from the receipt.
-    info["_delivery_groups"] = groups
-    return events, info
+                yield version, batch
+    return info, groups()
 
 
 def github_notice_events(get: Callable, config: dict, notice: dict, info: dict) -> tuple[list[Event], bool]:
@@ -696,6 +709,10 @@ def mail_header(value: str) -> str:
 
 
 def gmail_events(get: Callable, config: dict, since: str, seen: Callable = lambda key: "") -> tuple[list[Event], dict]:
+    return collect_delivery_groups(gmail_delivery_groups, get, config, since, seen)
+
+
+def gmail_delivery_groups(get: Callable, config: dict, since: str, seen: Callable = lambda key: "") -> tuple[dict, Iterator[tuple[str, list[Event]]]]:
     profile = get("profile")
     if str(profile.get("emailAddress", "")).lower() != config["gmail_address"].lower():
         raise RelayError("gmail_account_mismatch")
@@ -716,65 +733,63 @@ def gmail_events(get: Callable, config: dict, since: str, seen: Callable = lambd
         raise RelayError("gmail_page_limit_pending")
     info = {"mode": "work-mail-poll", "messages": len(ids), "unchanged": 0, "private_or_auth_omitted": 0,
             "promotional_omitted": 0, "github_mail_deduped": 0, "unclassified_pending": 0, "source_items_pending": 0, "body_pending": 0}
-    events: list[Event] = []
-    groups = []
-    for mid in dict.fromkeys(ids):
-        # Received message IDs are immutable. Skip only a completed content
-        # delivery; omitted/partial mail remains eligible on every poll.
-        version = "gmail.delivered." + digest(json.dumps([
-            config["gmail_address"].lower(), config.get("gmail_channel", ""), mid]))
-        if seen(version):
-            info["unchanged"] += 1
-            continue
-        try:
-            message = get("messages/" + mid, {"format": "full"})
-        except RelayError as exc:
-            if exc.retry_after:
-                raise
-            info["source_items_pending"] += 1
-            continue
-        labels = set(message.get("labelIds", []))
-        if labels.intersection({"SENT", "DRAFT", "SPAM", "TRASH"}):
-            continue
-        headers = {h["name"].lower(): h["value"] for h in message.get("payload", {}).get("headers", [])}
-        title = mail_header(headers.get("subject", "(no subject)"))
-        raw_sender = headers.get("from", "")
-        # Encoded display-name punctuation must not change address selection.
-        address = parseaddr(raw_sender)[1].lower()
-        sender = mail_header(raw_sender)
-        domain = address.rpartition("@")[2]
-        if AUTH_MAIL.search(title) or PRIVATE_MAIL.search(title):
-            info["private_or_auth_omitted"] += 1
-            continue
-        if domain == "github.com" or domain.endswith(".github.com"):
-            info["github_mail_deduped"] += 1
-            continue
-        if "CATEGORY_PROMOTIONS" in labels:
-            info["promotional_omitted"] += 1
-            continue
-        payload = message.get("payload", {})
-        body = mail_body(payload)
-        complete_body = bool(body) and "[Body stored as an attachment;" not in body and "[Body decoding failed;" not in body
-        if not complete_body:
-            info["body_pending"] += 1
-        if not (WORK_MAIL.search(title) or domain in config.get("work_sender_domains", []) or address in config.get("work_senders", [])):
-            info["unclassified_pending"] += 1
-            continue
-        # For selected work messages, suppress embedded login/secret material too.
-        if AUTH_MAIL.search(body[:700]) and not WORK_MAIL.search(title):
-            info["private_or_auth_omitted"] += 1
-            continue
-        names = attachment_names(payload)
-        if names:
-            body += "\n\nAttachments (not downloaded or published by relay):\n" + "\n".join(names)
-        action = "Existing relationship owner: inspect and claim the next action. Check sent-thread history/holds before replying; no automatic outbound email."
-        if re.search(r"(?i)(automatic reply|auto.?reply|received|registration request)", title):
-            action = "Acknowledgement only: existing owner track the promised next step; do not treat this as acceptance or payment."
-        events.append(Event("gmail", str(message.get("threadId") or mid), mid, title, body,
-                            "https://mail.google.com/mail/#all/" + mid, sender, headers.get("date", ""), action))
-        groups.append((version if complete_body else "", 1))
-    info["_delivery_groups"] = groups
-    return events, info
+    def groups() -> Iterator[tuple[str, list[Event]]]:
+        for mid in dict.fromkeys(ids):
+            # Received message IDs are immutable. Skip only a completed content
+            # delivery; omitted/partial mail remains eligible on every poll.
+            version = "gmail.delivered." + digest(json.dumps([
+                config["gmail_address"].lower(), config.get("gmail_channel", ""), mid]))
+            if seen(version):
+                info["unchanged"] += 1
+                continue
+            try:
+                message = get("messages/" + mid, {"format": "full"})
+            except RelayError as exc:
+                if exc.retry_after:
+                    raise
+                info["source_items_pending"] += 1
+                continue
+            labels = set(message.get("labelIds", []))
+            if labels.intersection({"SENT", "DRAFT", "SPAM", "TRASH"}):
+                continue
+            headers = {h["name"].lower(): h["value"] for h in message.get("payload", {}).get("headers", [])}
+            title = mail_header(headers.get("subject", "(no subject)"))
+            raw_sender = headers.get("from", "")
+            # Encoded display-name punctuation must not change address selection.
+            address = parseaddr(raw_sender)[1].lower()
+            sender = mail_header(raw_sender)
+            domain = address.rpartition("@")[2]
+            if AUTH_MAIL.search(title) or PRIVATE_MAIL.search(title):
+                info["private_or_auth_omitted"] += 1
+                continue
+            if domain == "github.com" or domain.endswith(".github.com"):
+                info["github_mail_deduped"] += 1
+                continue
+            if "CATEGORY_PROMOTIONS" in labels:
+                info["promotional_omitted"] += 1
+                continue
+            payload = message.get("payload", {})
+            body = mail_body(payload)
+            complete_body = bool(body) and "[Body stored as an attachment;" not in body and "[Body decoding failed;" not in body
+            if not complete_body:
+                info["body_pending"] += 1
+            if not (WORK_MAIL.search(title) or domain in config.get("work_sender_domains", []) or address in config.get("work_senders", [])):
+                info["unclassified_pending"] += 1
+                continue
+            # For selected work messages, suppress embedded login/secret material too.
+            if AUTH_MAIL.search(body[:700]) and not WORK_MAIL.search(title):
+                info["private_or_auth_omitted"] += 1
+                continue
+            names = attachment_names(payload)
+            if names:
+                body += "\n\nAttachments (not downloaded or published by relay):\n" + "\n".join(names)
+            action = "Existing relationship owner: inspect and claim the next action. Check sent-thread history/holds before replying; no automatic outbound email."
+            if re.search(r"(?i)(automatic reply|auto.?reply|received|registration request)", title):
+                action = "Acknowledgement only: existing owner track the promised next step; do not treat this as acceptance or payment."
+            event = Event("gmail", str(message.get("threadId") or mid), mid, title, body,
+                                "https://mail.google.com/mail/#all/" + mid, sender, headers.get("date", ""), action)
+            yield version if complete_body else "", [event]
+    return info, groups()
 
 
 def run(config: dict, state: State, providers: Providers) -> dict:
@@ -789,7 +804,7 @@ def run(config: dict, state: State, providers: Providers) -> dict:
         raise RelayError("slack_workspace_mismatch")
     delivery = Delivery(state, providers.slack, max_posts=int(config.get("max_posts_per_run", 100)), min_interval=float(config.get("min_post_interval", 1.05)))
     since = state.get("github_since", iso(now - timedelta(days=int(config.get("backfill_days", 14)))))
-    sources = [("github", github_events, config["github_channel"]), ("gmail", gmail_events, config["gmail_channel"])]
+    sources = [("github", github_delivery_groups, config["github_channel"]), ("gmail", gmail_delivery_groups, config["gmail_channel"])]
     if state.get("next_source") == "gmail":
         sources.reverse()
     next_source = None
@@ -807,17 +822,23 @@ def run(config: dict, state: State, providers: Providers) -> dict:
         collecting = True
         try:
             getter = providers.github if name == "github" else providers.gmail
-            events, info = source(getter, config, since, state.get)
-            collecting = False
-            groups = info.pop("_delivery_groups", [])
+            info, groups = source(getter, config, since, state.get)
             report["sources"][name] = info
-            offset = 0
-            for version, count in groups:
-                for event in events[offset:offset + count]:
+            while True:
+                collecting = False
+                # Do not advance a lazy source when no delivery allowance remains.
+                if delivery.posts >= delivery.max_posts:
+                    raise RelayError("delivery_budget_pending")
+                collecting = True
+                try:
+                    version, batch = next(groups)
+                except StopIteration:
+                    break
+                collecting = False
+                for event in batch:
                     report["posted_parts"] += delivery.deliver(event, channel)
                 if version:
                     state.set(version, "1")
-                offset += count
             state.set(name + "_last_poll", iso())
             if info.get("source_items_pending", 0):
                 report["errors"][name] = "source_items_pending"
