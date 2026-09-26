@@ -159,6 +159,13 @@ one backlog spends the allowance, the other source gets the next turn; SQLite
 retains that choice alongside partial-delivery markers. A source deferred for
 lack of allowance is named in `errors` without downloading its message bodies.
 Provider retry deadlines still take precedence over the next delivery turn.
+Within a source, each notification or selected message is delivered and
+checkpointed before later bodies are fetched. A later source error preserves
+that earlier progress; the cursor advances only after the source finishes.
+No next source group is collected after the post cap is spent. Reaching the
+cap exactly at the final group conservatively reports pending until the next
+poll confirms completion. A single notification still collects its comment
+feeds together before delivery.
 GitHub and Gmail collection deadlines are stored separately, so the independent
 source can still progress while one source is cooling down. Slack delivery
 limits pause both sources; global deadlines retained by older ledgers are also
