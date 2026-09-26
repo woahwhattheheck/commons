@@ -30,6 +30,7 @@ OWNER LAND ORDER, WORK ORDER.
 from __future__ import annotations
 
 import argparse
+from bisect import bisect_left
 import json
 import os
 import re
@@ -163,6 +164,36 @@ def _git_prefix_receipt(root, sha, ident):
         rel = line.strip()
         if rel.startswith(prefix) and rel.endswith(".md"):
             return rel
+    return None
+
+
+
+def _git_receipt_index(root, sha):
+    """Read one immutable p/ tree for a projection, not one Git process per ID."""
+    try:
+        output = subprocess.check_output(
+            ["git", "ls-tree", "-z", "--name-only", sha, "p/"],
+            cwd=root, stderr=subprocess.DEVNULL,
+        )
+    except (OSError, subprocess.CalledProcessError):
+        return None
+    return sorted(
+        name.decode("utf-8", "surrogateescape")
+        for name in output.split(b"\0")
+        if name.startswith(b"p/") and name.endswith(b".md")
+    )
+
+
+def _indexed_receipt(names, ident):
+    """Exact receipt wins; otherwise use the first sorted long-slug companion."""
+    rel = receipt_path(ident).replace(os.sep, "/")
+    index = bisect_left(names, rel)
+    if index < len(names) and names[index] == rel:
+        return rel
+    prefix = "p/" + _prefix_receipt_names(ident)
+    index = bisect_left(names, prefix)
+    if index < len(names) and names[index].startswith(prefix):
+        return names[index]
     return None
 
 
@@ -521,6 +552,9 @@ def project(root, main_sha="", extra=None, include_salon=False):
     errors = []
     if not measured:
         errors.append({"code": "MAIN_SHA_UNMEASURED", "main_sha": sha})
+    receipts = _git_receipt_index(root, sha) if measured else None
+    if measured and receipts is None:
+        errors.append({"code": "MAIN_TREE_UNMEASURED", "main_sha": sha})
     extra = extra if isinstance(extra, dict) else {}
     rows = collect_posts(root, include_salon=include_salon)
     rows.extend(collect_wake_jobs(root))
@@ -528,7 +562,7 @@ def project(root, main_sha="", extra=None, include_salon=False):
     items = []
     for ident in sorted(by_id):
         record = by_id[ident]
-        resolved = resolve_receipt(root, ident, sha) if measured else None
+        resolved = _indexed_receipt(receipts, ident) if receipts is not None else None
         exists = resolved is not None
         slack_claimed = bool(record.get("slack_claimed")) or ident in set(
             extra.get("slack_claimed") or []
