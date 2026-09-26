@@ -170,6 +170,8 @@ def build(source: dict[str, Any], previous: dict[str, Any], source_sha256: str) 
     validate(previous)
     if not isinstance(source, dict) or source.get("schema") != SOURCE_SCHEMA:
         raise PortfolioError(f"source is not {SOURCE_SCHEMA}")
+    if observed_time(source.get("observed_at")) < observed_time(previous["observed_at"]):
+        raise PortfolioError("source observation predates the previous snapshot; keep the previous snapshot")
     listing = source.get("listing", {})
     if not isinstance(listing, dict) or listing.get("complete") is not True:
         raise PortfolioError("source listing is incomplete; keep the previous snapshot")
@@ -201,6 +203,11 @@ def build(source: dict[str, Any], previous: dict[str, Any], source_sha256: str) 
         if row["head_state"] == "EMPTY" and item.get("head_message") != "Git Repository is empty.":
             raise PortfolioError(f"source lacks the explicit empty-repository response: {row['full_name']}")
         prior = old.get(row["full_name"], {})
+        # Listing and head reads are separate observations. A new listing
+        # timestamp cannot make an older captured ref read current again.
+        if (prior.get("head_observed_at") is not None
+                and observed_time(row["head_observed_at"]) < observed_time(prior["head_observed_at"])):
+            raise PortfolioError(f"head observation predates the previous snapshot: {row['full_name']}")
         row["role"] = prior.get("role", "PUBLIC_REFERENCE")
         if "purpose" in prior:
             row["purpose"] = prior["purpose"]
