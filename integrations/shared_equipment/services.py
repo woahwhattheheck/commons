@@ -147,6 +147,12 @@ class ServiceEquipment(GitHubSlackEquipment):
                 "matched_fields",
                 "matched_terms",
                 "private_instruction",
+                "http_status",
+                "retry_after",
+                "rate_limit_remaining",
+                "rate_limit_reset",
+                "rate_limit_resource",
+                "rate_limit_kind",
             ):
                 value = getattr(exc, attribute, None)
                 if value is not None:
@@ -418,9 +424,14 @@ class ServiceEquipment(GitHubSlackEquipment):
                     raise EquipmentError("GitHub did not resolve the source ref to a commit")
             try:
                 found = self.github(root + "/git/ref/heads/" + _quote(branch))
-            except EquipmentError:
-                found = None
-            if found:
+            except EquipmentError as exc:
+                if exc.http_status != 404:
+                    raise
+            else:
+                if (not isinstance(found, dict) or not isinstance(found.get("object"), dict)
+                        or not isinstance(found["object"].get("sha"), str)):
+                    raise EquipmentError("GitHub returned an invalid branch reference",
+                                         code="github_response_invalid")
                 if found["object"]["sha"] != sha:
                     raise EquipmentError("existing branch has a different head")
                 return {"created": False, **found}
@@ -707,4 +718,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

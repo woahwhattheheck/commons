@@ -45,6 +45,11 @@ string for a zero-byte file. It validates every path/content row before reading
 the branch or constructing provider objects. Nonempty branch, commit message
 and file paths remain required; content is preserved exactly.
 
+Branch creation proceeds after an existing-ref lookup only when GitHub returns
+an explicit `404`. Other lookup errors remain read failures; they do not trigger
+a create attempt. Tool errors retain any observed HTTP status, Retry-After and
+rate-limit metadata so callers can honor the provider's cooldown.
+
 ### 1. HTTP Gateway API (`POST /v1/message`)
 Send turns to the Gemini peer gateway. The verified owner-PC deployment listens on **8878** (configured in `~/.gemini/commons_peer_gateway.json`), while the source CLI default is `8778` (`--port`). Supports synchronous and asynchronous dispatch. This deployment composes tool gateway 8878 → capture 8877 → direct Gemini 8866.
 
