@@ -73,8 +73,13 @@ Reliable account-specific evidence switches to conservation on either:
 
 - An explicit notice that the special reset was applied to this account.
 - A previous weekly reading of 95% or less, followed by an increase of at least
-  five percentage points to 95% or more, while both the previously known and
+  five percentage points, while both the previously known and
   currently reported ordinary reset deadlines remain in the future.
+
+The later reading need not still be near 100%: active work may consume part of
+the replenished allocation before the next poll. For example, a trusted change
+from 63% to 88% before the ordinary deadline qualifies. A small fluctuation of
+less than five points does not. These are decision examples, not account readings.
 
 Unknown ordinary-reset timing cannot establish the percentage-jump transition.
 Crossing the old ordinary reset deadline does not count as a special reset, even
