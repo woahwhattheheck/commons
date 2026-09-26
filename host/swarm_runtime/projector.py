@@ -189,6 +189,37 @@ def _landed_artifact(fact):
     )
 
 
+def normalize_equivalent(value):
+    """Describe exact-head ancestry as integration, never as a PR merge.
+
+    Older provider snapshots labelled the current main commit ``merge_sha``.
+    Reconstruct those records from their retained comparison proof on read so
+    a cached observation cannot keep asserting a merge that did not happen.
+    Genuine merged-PR equivalents without this ancestry proof are unchanged.
+    """
+    if not isinstance(value, Mapping):
+        return value
+    equivalent = dict(value)
+    proof = equivalent.get("evidence")
+    if not isinstance(proof, Mapping) or proof.get("kind") != "exact_head_ancestry":
+        return equivalent
+    for field in ("merged", "merge_sha", "merge_commit_sha", "merged_at"):
+        equivalent.pop(field, None)
+    if str(equivalent.get("state", "")).upper() == "MERGED":
+        equivalent.pop("state", None)
+    equivalent.update(artifact_landed=True, artifact_sha=proof.get("head_sha", UNKNOWN),
+                      landed_sha=proof.get("target_sha", UNKNOWN))
+    contained = (proof.get("status") in {"ahead", "identical"}
+                 and proof.get("behind_by") == 0
+                 and not isinstance(proof.get("behind_by"), bool)
+                 and proof.get("merge_base_sha") == proof.get("head_sha")
+                 and _landed_artifact(equivalent))
+    equivalent["artifact_landed"] = equivalent["integrated"] = contained
+    if not contained:
+        equivalent["landed_sha"] = UNKNOWN
+    return equivalent
+
+
 def _fact_key(fact):
     try:
         return task_key(fact)
@@ -208,6 +239,9 @@ def _provider_facts(facts, rejected):
             rejected.append({"source": "provider", "reason": str(exc)})
             continue
         normalized[key] = dict(fact)
+        for field in ("equivalent", "superseded_by"):
+            if field in normalized[key]:
+                normalized[key][field] = normalize_equivalent(normalized[key][field])
     return normalized
 
 
@@ -253,10 +287,16 @@ def _reconcile(record, fact, now, exact_task_fact=True):
         record["blocker"] = record["next_action"] = record["superseded_by"] = UNKNOWN
         record["recoverable"] = record["dispatchable"] = False
         record["reconciliation_needed"] = UNKNOWN
-    elif isinstance(equivalent, Mapping) and _merged(equivalent):
+    elif isinstance(equivalent, Mapping) and (
+        _merged(equivalent) or (exact_task_fact and _landed_artifact(equivalent))
+    ):
         record["state"] = "SUPERSEDED"
         record["superseded_by"] = dict(equivalent)
-        record["closed_at"] = equivalent.get("merged_at") or UNKNOWN
+        record["closed_at"] = (equivalent.get("merged_at") or equivalent.get("landed_at")
+                               or equivalent.get("observed_at") or UNKNOWN)
+        record["provider_freshness"] = "IMMUTABLE"
+        if _landed_artifact(equivalent):
+            record["landed_sha"] = equivalent["landed_sha"]
         record["recoverable"] = False
         record["dispatchable"] = False
         record["reconciliation_needed"] = UNKNOWN
@@ -283,7 +323,8 @@ def _dispatch_freshness(record, now):
     if record["state"] in TERMINAL:
         record["dispatchable"] = False
         if record.get("shipment_source") == "provider" or (
-            isinstance(record.get("superseded_by"), Mapping) and _merged(record["superseded_by"])
+            isinstance(record.get("superseded_by"), Mapping) and (
+                _merged(record["superseded_by"]) or _landed_artifact(record["superseded_by"]))
         ):
             record["provider_freshness"] = "IMMUTABLE"
         return

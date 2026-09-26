@@ -13,7 +13,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from .identity import task_key
-from .projector import _time, project
+from .projector import _landed_artifact, _merged, _time, normalize_equivalent, project
 from .routing import context_bundle, route, select_tasks, status
 from .store import GitStore
 
@@ -88,17 +88,28 @@ def _project(state, moment):
 def _merge_facts(state, incoming):
     facts = state.setdefault("provider_facts", {})
     for key, fact in incoming.items():
-        old = facts.get(key, {})
+        old = copy.deepcopy(facts.get(key, {}))
+        fact = copy.deepcopy(fact)
+        for row in (old, fact):
+            for field in ("equivalent", "superseded_by"):
+                if field in row:
+                    row[field] = normalize_equivalent(row[field])
+        if old:
+            facts[key] = old
         # A failed or older refresh cannot erase a landed immutable fact.
-        if old.get("merged") and old.get("merge_sha") not in (None, "", "UNKNOWN"):
-            continue
-        if old.get("artifact_landed") and old.get("landed_sha") not in (None, "", "UNKNOWN"):
+        if _merged(old) or _landed_artifact(old):
             continue
         observed, previous = _time(fact.get("observed_at")), _time(old.get("observed_at"))
         # Baked listings deliberately carry UNKNOWN observations. Text ordering
         # would pin those facts forever and misorder equivalent timezone offsets.
         if previous is None or (observed is not None and observed >= previous):
-            facts[key] = copy.deepcopy(fact)
+            for field in ("equivalent", "superseded_by"):
+                previous = old.get(field)
+                current = fact.get(field)
+                if isinstance(previous, dict) and (_merged(previous) or _landed_artifact(previous)):
+                    if not isinstance(current, dict) or not (_merged(current) or _landed_artifact(current)):
+                        fact[field] = previous
+            facts[key] = fact
 
 
 class Runtime:

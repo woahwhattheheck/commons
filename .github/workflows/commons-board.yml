@@ -225,6 +225,29 @@ jobs:
           done
           echo "owner-pin push lost the race; both files are derived, next run rebuilds them"
           exit 0
+      - name: reconcile canonical tasks from existing bakes
+        if: success()
+        continue-on-error: true
+        timeout-minutes: 3
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          COMMONS_SWARM_URL: ""
+        run: |
+          # Reuse this ingest's feed, seats and GitHub snapshot. The existing
+          # claims writer bounds ref-contention retries; do not add a poll loop.
+          status=0
+          python3 host/swarmctl.py --output "$RUNNER_TEMP/swarm-sync.json" sync --cached --max-calls 0 || status=$?
+          python3 - "$RUNNER_TEMP/swarm-sync.json" "$status" <<'PY'
+          import json, pathlib, sys
+          try:
+              result = json.loads(pathlib.Path(sys.argv[1]).read_text(encoding="utf-8"))
+          except (OSError, ValueError):
+              result = {}
+          if int(sys.argv[2]) or result.get("ok") is not True or result.get("published") is not True:
+              print(json.dumps({key: result[key] for key in ("error", "retry_after", "tip") if key in result}))
+              print("::warning::Canonical task sync deferred. Board intake remains durable; the next existing ingest run retries.")
+              raise SystemExit(1)
+          PY
       - name: request one repair run when the source landed but the bake deferred
         id: projection_retry
         if: success() && github.event_name == 'issues' && steps.publish.outputs.projection_pending == '1'

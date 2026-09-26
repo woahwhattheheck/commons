@@ -78,6 +78,12 @@ refresh exact candidate identifiers within a four-call budget; canonical claims
 still use git. `status --fresh` refreshes the claims branch, not providers.
 `sync --work-snapshot`, `--facts` and `--events` accept saved JSON inputs.
 
+The existing `commons-board` ingest job runs `sync --cached --max-calls 0` after
+its feed, seat and GitHub bakes. It uses the job's existing Git write credentials
+to reconcile `state/claims`, independently of the command-center host, without
+another provider poll. A failed or unpublished sync emits a workflow warning;
+the next existing ingest retries without invalidating already-durable intake.
+
 Without `--url`, the CLI uses git and defaults its provider cache to
 `swarm-cache` in Git's common directory, shared by linked worktrees;
 `--state-dir` overrides that path. Separate VMs with separate
