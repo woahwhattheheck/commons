@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "closeout-economic-payout-identity-20260926",
+  "holder": "high-burn-value-pipeline",
+  "taken_at": "2026-09-26T14:11:06Z",
+  "heartbeat_at": "2026-09-26T14:11:06Z",
+  "ttl_s": 1800,
+  "state": "ACTIVE",
+  "note": "Own revenue/finished_work_cash_closeout/closeout.py and README.md: one recommendation per payer/opportunity/payment unit regardless of contact route, retaining all route context."
+}
