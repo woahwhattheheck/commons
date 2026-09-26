@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 8936,
+    "open_issues": 8903,
     "open_pull_requests": 7,
-    "runs_in_progress": 17,
-    "runs_queued": 255
+    "runs_in_progress": 18,
+    "runs_queued": 178
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -155,7 +155,7 @@
   },
   "pulls_listed": 7,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 15.0,
+  "queue_depth_per_runner": 9.9,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -173,19 +173,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "fix/command-center-admission-contract-counts-20260926",
-      "closed_at": "2026-09-26T17:25:38Z",
-      "head_sha": "0295538e448d823ab52ef5eded0135477b76dfdd",
-      "merge_commit_sha": "321fb6a84fb62b6d0365787e2d916256293e57e8",
-      "merged_at": "2026-09-26T17:25:38Z",
-      "number": 30097,
-      "state": "MERGED",
-      "title": "align command-center contracts with admission and core quota scopes",
-      "updated_at": "2026-09-26T17:25:39Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "perf/shared-provider-admission-20260926",
       "closed_at": "2026-09-26T15:07:41Z",
       "head_sha": "53667f1a8dada6d56f9aa5240292c4a4c0f72c80",
@@ -195,6 +182,97 @@
       "state": "MERGED",
       "title": "Share publication admission through command-center HTTP and equipment",
       "updated_at": "2026-09-26T18:17:03Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/inbox-source-cooldowns-20260926",
+      "closed_at": "2026-09-26T14:51:49Z",
+      "head_sha": "e73ebbae459d1d27cbae8275ceaa6b71422cd18d",
+      "merge_commit_sha": "33b437b6060302b7a7512f505d2dfa2697d2746c",
+      "merged_at": "2026-09-26T14:51:49Z",
+      "number": 30060,
+      "state": "MERGED",
+      "title": "Let independent inbox sources progress during provider cooldown",
+      "updated_at": "2026-09-26T18:21:07Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/path-manifest-exact-source-20260926",
+      "closed_at": "2026-09-26T14:39:20Z",
+      "head_sha": "cf43e7f4d0ab95e2c7801caabfdbf50452b1ca08",
+      "merge_commit_sha": "542cc79f8c6be3b00592f80250891bf09acab9bc",
+      "merged_at": "2026-09-26T14:39:20Z",
+      "number": 30050,
+      "state": "MERGED",
+      "title": "Classify exact Git filenames from the selected repository",
+      "updated_at": "2026-09-26T18:25:10Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/inbox-source-fairness-20260926",
+      "closed_at": "2026-09-26T14:38:34Z",
+      "head_sha": "393fc4fa6369864a9628ee8ec73ca4e394a53456",
+      "merge_commit_sha": "f298855d2588bd8b33d342ffb180e94b8946d94a",
+      "merged_at": "2026-09-26T14:38:34Z",
+      "number": 30049,
+      "state": "MERGED",
+      "title": "Rotate capped inbox sources to prevent mail starvation",
+      "updated_at": "2026-09-26T18:24:34Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "usage-material-rebound-20260926",
+      "closed_at": "2026-09-26T14:37:49Z",
+      "head_sha": "bba2b6e847f1923ad4cacb2692f6d1a80ef8a121",
+      "merge_commit_sha": "e260bd52e6be28cffbff757ed453cdc8b22b2fe6",
+      "merged_at": "2026-09-26T14:37:49Z",
+      "number": 30048,
+      "state": "MERGED",
+      "title": "Detect material usage replenishment after immediate consumption",
+      "updated_at": "2026-09-26T18:24:11Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "feat/shared-provider-publication-admission-20260926",
+      "closed_at": "2026-09-26T14:37:04Z",
+      "head_sha": "cc8c5446a0d19d002836d89658d151f443a85117",
+      "merge_commit_sha": "502fd70ff3b978773753a40df67d305d58150b7c",
+      "merged_at": "2026-09-26T14:37:04Z",
+      "number": 30047,
+      "state": "MERGED",
+      "title": "feat: coordinate provider publications through shared budget leases",
+      "updated_at": "2026-09-26T18:23:45Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "high-burn/cash-zero-20260926",
+      "closed_at": "2026-09-26T14:36:54Z",
+      "head_sha": "1dc7fb5d693141722374db8a3cbbd83c984a0e33",
+      "merge_commit_sha": "629a298771b9dfca2972d86cd722646e049488ae",
+      "merged_at": "2026-09-26T14:36:54Z",
+      "number": 30046,
+      "state": "MERGED",
+      "title": "Allow exact zero-net reconciliation after a full reversal",
+      "updated_at": "2026-09-26T18:22:55Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "fix/runtime-dispatch-chronology-20260926",
+      "closed_at": "2026-09-26T14:31:57Z",
+      "head_sha": "6ed2d13a5429f991b9f2f3063cfc9b609bff8743",
+      "merge_commit_sha": "43c2a6784504fb678817e8c22c47d41392a5b718",
+      "merged_at": "2026-09-26T14:31:57Z",
+      "number": 30045,
+      "state": "MERGED",
+      "title": "Use actual chronology for ownership and dispatch context",
+      "updated_at": "2026-09-26T18:21:47Z"
     },
     {
       "author": "woahwhattheheck",
@@ -273,88 +351,10 @@
       "state": "MERGED",
       "title": "Keep concurrent direct claim changes during runtime sync",
       "updated_at": "2026-09-26T18:13:21Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "high-burn/deadline-calendar-20260926",
-      "closed_at": "2026-09-26T14:25:01Z",
-      "head_sha": "4b3c2bcc1f4561353ba33c81b67dc2ed18e76ce5",
-      "merge_commit_sha": "69781fe567a31161685171b3b80557f8fccbdccc",
-      "merged_at": "2026-09-26T14:25:01Z",
-      "number": 30038,
-      "state": "MERGED",
-      "title": "Preserve deadline calendar identity across amendments",
-      "updated_at": "2026-09-26T18:10:11Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "command-task-freshness-clock-20260926",
-      "closed_at": "2026-09-26T14:23:41Z",
-      "head_sha": "aafb687d19b572c9400757fe87f8e7411e37d809",
-      "merge_commit_sha": "c5e65bb3ec40963d43dcce5ef975857682b0ac40",
-      "merged_at": "2026-09-26T14:23:41Z",
-      "number": 30037,
-      "state": "MERGED",
-      "title": "Expire task freshness across permitted clock skew",
-      "updated_at": "2026-09-26T18:08:18Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "fix/persistent-provider-fallback-backoff-20260926",
-      "closed_at": "2026-09-26T14:23:40Z",
-      "head_sha": "05f27e6f6fd1f72d52fc6255f7dfae9cb3a9bb78",
-      "merge_commit_sha": "5c0e1b546f3e18e26468037938fcd96cd5f4ce1b",
-      "merged_at": "2026-09-26T14:23:40Z",
-      "number": 30036,
-      "state": "MERGED",
-      "title": "fix: persist bounded backoff for repeated provider limits",
-      "updated_at": "2026-09-26T18:01:35Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/inbox-completed-mail-reuse-20260926",
-      "closed_at": "2026-09-26T14:23:23Z",
-      "head_sha": "8721f2df2b93335e017ebef8dd4fb6d9e23ae5f7",
-      "merge_commit_sha": "5d11969bd2970ac4a765b5fbaf797edd90dd79f6",
-      "merged_at": "2026-09-26T14:23:22Z",
-      "number": 30035,
-      "state": "MERGED",
-      "title": "Reuse completed mail deliveries across inbox overlap polls",
-      "updated_at": "2026-09-26T17:58:53Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/artifact-exact-git-paths-20260926",
-      "closed_at": "2026-09-26T14:21:53Z",
-      "head_sha": "c3fd209d139e650108457967f6cfa8f23aace9dd",
-      "merge_commit_sha": "b7ce2c86a904d1ede8fccaa11bc0b6205c9a9595",
-      "merged_at": "2026-09-26T14:21:53Z",
-      "number": 30034,
-      "state": "MERGED",
-      "title": "Preserve literal Git filenames in artifact coordinates",
-      "updated_at": "2026-09-26T17:54:55Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "fix/runtime-monotonic-custody-20260926",
-      "closed_at": "2026-09-26T14:19:27Z",
-      "head_sha": "8a32a4b5693ffb39e41567853647d731409b1b60",
-      "merge_commit_sha": "eea0a909c4cf374f31c1edf2dca15c7936eecee0",
-      "merged_at": "2026-09-26T14:19:27Z",
-      "number": 30033,
-      "state": "MERGED",
-      "title": "Preserve newer same-holder generations in active custody mirrors",
-      "updated_at": "2026-09-26T17:54:07Z"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-26T18:19:21Z",
+  "unchanged_since": "2026-09-26T18:28:15Z",
   "undatable_pulls": []
 }
