@@ -30,6 +30,7 @@ The executable contract is `host/trust_cache.py`.
 - Exact receipt fields: `artifact_sha256`, `check_id`, `result`, `recorded_at`, `evidence`.
 - States: `UNVERIFIED` (no passing receipt for this pair), `TRUSTED` (the current hash passed this check), `STALE` (the check passed older bytes).
 - `WASTE` is an event, not a fourth state. A requested rerun of a `TRUSTED` pair is skipped and recorded as `WASTE`.
+- Concurrent runs of the same artifact hash and check ID share a nonblocking process lock beside the resolved ledger. A busy request returns `CHECK_BUSY`, `executed: false`, and exit 75 without running the command or adding a proof receipt. Different pairs remain parallel. Proof is reread after acquiring the lock; changed artifact bytes at that boundary return `ARTIFACT_CHANGED_BEFORE_CHECK` and exit 75. Retry after the active check finishes or the input settles. Keep the `.locks` directory in place while processes may be active; process exit releases custody automatically.
 - Canary: the artifact must exist, its hash must be readable, and every ledger row must carry the v1 evidence schema. Full checks run only for `UNVERIFIED` or `STALE`.
 
 ```sh
