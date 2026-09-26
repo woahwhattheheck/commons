@@ -62,7 +62,11 @@ def _order(event):
     cursor = event.get("c") or event.get("ingest_cursor")
     if isinstance(cursor, str) and "|" in cursor:
         return 1, 0, cursor, str(event.get("id", ""))
-    return 2, 0, _iso(_time(event.get("at", event.get("ts")))), str(event.get("id", ""))
+    stamp = _time(event.get("at", event.get("ts")))
+    # ISO text puts fractional seconds before the corresponding whole second.
+    # Sequence/cursor order above remains authoritative; only this fallback
+    # compares chronology, with undated events still sorted last.
+    return 2, 0, stamp or dt.datetime.max.replace(tzinfo=dt.timezone.utc), str(event.get("id", ""))
 
 
 def _newer_legacy_custody(record, event, now):
