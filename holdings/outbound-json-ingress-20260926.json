@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "outbound-json-ingress-20260926",
+  "holder": "high-burn-value-pipeline",
+  "heartbeat_at": "2026-09-26T12:09:50Z",
+  "taken_at": "2026-09-26T12:09:50Z",
+  "ttl_s": 1800,
+  "state": "HELD",
+  "note": "Own revenue/outbound_delivery_reconciliation/cli.py and README.md; preserve unambiguous event observations via strict JSON and bounded ingress reads."
+}
