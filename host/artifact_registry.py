@@ -149,7 +149,12 @@ def normalize_source(source: Mapping[str, Any]) -> Dict[str, Any]:
     for field in ("run_id", "job_id", "artifact_id"):
         if field in out:
             out[field] = _positive_int(out[field], field)
-    for field in ("path", "channel_id", "file_id", "name"):
+    if "path" in out:
+        # Git filenames are literal coordinates: trimming whitespace would
+        # relabel a distinct committed file (including whitespace-only names).
+        if not isinstance(out["path"], str) or not out["path"]:
+            raise ValueError("path must be a non-empty string")
+    for field in ("channel_id", "file_id", "name"):
         if field in out:
             out[field] = _nonempty_string(out[field], field)
     for field in ("workspace", "permalink", "url"):
@@ -300,7 +305,10 @@ def load_registry(path: str, *, missing_ok: bool = False) -> Dict[str, Any]:
 
 def dump_registry(registry: Mapping[str, Any]) -> str:
     normalized = validate_registry(registry)
-    return json.dumps(normalized, sort_keys=True, indent=2, ensure_ascii=False) + "\n"
+    text = json.dumps(normalized, sort_keys=True, indent=2, ensure_ascii=False) + "\n"
+    # os.fsdecode represents non-UTF-8 filename bytes as surrogate escapes.
+    # Escape those in JSON while retaining readable ordinary Unicode names.
+    return text.encode("utf-8", "backslashreplace").decode("utf-8")
 
 
 def write_registry(path: str, registry: Mapping[str, Any]) -> None:
