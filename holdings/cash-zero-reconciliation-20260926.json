@@ -3,8 +3,8 @@
   "key": "cash-zero-reconciliation-20260926",
   "holder": "high-burn-value-pipeline",
   "taken_at": "2026-09-26T14:33:16Z",
-  "heartbeat_at": "2026-09-26T14:33:16Z",
+  "heartbeat_at": "2026-09-26T14:37:07Z",
   "ttl_s": 1800,
-  "state": "ACTIVE",
-  "note": "Own revenue/cash_realization_ledger/cash_realization_ledger.py + README.md: reconcile full payment reversal at exact zero net; keep all other monetary events positive."
+  "state": "RELEASED",
+  "note": "Merged PR #30046 zero-net reconciliation after full reversal; merge 629a298771b9dfca2972d86cd722646e049488ae."
 }
