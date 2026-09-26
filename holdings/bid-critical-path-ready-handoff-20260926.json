@@ -3,8 +3,8 @@
   "key": "bid-critical-path-ready-handoff-20260926",
   "holder": "high-burn-value-pipeline",
   "taken_at": "2026-09-26T14:42:55Z",
-  "heartbeat_at": "2026-09-26T14:42:55Z",
+  "heartbeat_at": "2026-09-26T14:46:18Z",
   "ttl_s": 1800,
-  "state": "ACTIVE",
-  "note": "Own revenue/bid_deadline_critical_path/engine.py + README.md: expose unresolved prerequisites and avoid presenting waiting owner actions as the next ready handoff."
+  "state": "RELEASED",
+  "note": "Merged PR #30055 prerequisite-aware bid handoff instructions and JSON/Markdown dependencies. Merge 88c39caf01c54be0620230799a482ad777360138."
 }
