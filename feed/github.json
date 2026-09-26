@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 9057,
+    "open_issues": 9028,
     "open_pull_requests": 1,
-    "runs_in_progress": 12,
-    "runs_queued": 753
+    "runs_in_progress": 8,
+    "runs_queued": 738
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -39,7 +39,7 @@
   },
   "pulls_listed": 1,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 62.8,
+  "queue_depth_per_runner": 92.2,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -135,40 +135,40 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "swarm/open-work-explicit-source-20260926",
-      "closed_at": "2026-09-26T15:20:57Z",
-      "head_sha": "0298d8862a125672b14f4f70ceff99bcd7c79af6",
-      "merge_commit_sha": "9168ba12bcef30c9d8eb5c244a8433a14521788e",
-      "merged_at": "2026-09-26T15:20:57Z",
-      "number": 30083,
+      "branch": "swarm-zz/experiment-ledger-missing-read-20260926",
+      "closed_at": "2026-09-26T13:23:55Z",
+      "head_sha": "8446b255e8caa2eeb40ba2ee6608598cfd092786",
+      "merge_commit_sha": "07c3577d103be5ee56c68e8d600eebb66718258a",
+      "merged_at": "2026-09-26T13:23:55Z",
+      "number": 29987,
       "state": "MERGED",
-      "title": "Keep open-work Git reads in the requested repository",
+      "title": "Report missing experiment ledgers instead of successful empty evidence",
       "updated_at": "UNKNOWN"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "fix/runtime-provider-unknown-evidence-20260926",
-      "closed_at": "2026-09-26T15:20:32Z",
-      "head_sha": "a57ed745784b5c77322d6cc9ddddbb28c056d0bc",
-      "merge_commit_sha": "e307b13f7d3c83a6033a751ace19d4b12c76230f",
-      "merged_at": "2026-09-26T15:20:32Z",
-      "number": 30081,
+      "branch": "feat/document-folder-extraction-20260926",
+      "closed_at": "2026-09-26T13:22:09Z",
+      "head_sha": "18786181cbab31b349756f6b99a77e403de1ac44",
+      "merge_commit_sha": "67e977109e15b5d089bf979e9926fa79ebc2098b",
+      "merged_at": "2026-09-26T13:22:09Z",
+      "number": 29986,
       "state": "MERGED",
-      "title": "Normalize unknown provider merge evidence",
+      "title": "Extract document folders with relative paths and a final status index",
       "updated_at": "UNKNOWN"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "fix/runtime-artifact-context-evidence-20260926",
-      "closed_at": "2026-09-26T15:17:47Z",
-      "head_sha": "2d0c1b1c6c1b336164bc67180f0ed7c07385472a",
-      "merge_commit_sha": "cabd9822301a4daa4967894e7d73e8e9b3e25ef2",
-      "merged_at": "2026-09-26T15:17:47Z",
-      "number": 30080,
+      "branch": "work/component-command-browser-20260926",
+      "closed_at": "2026-09-26T13:21:08Z",
+      "head_sha": "dd4b5a510e3ee5573152f9086afe3b3d15bae76a",
+      "merge_commit_sha": "9b80c0c175900e3ed8c0c76a3b0a9aaa455ffac9",
+      "merged_at": "2026-09-26T13:21:08Z",
+      "number": 29985,
       "state": "MERGED",
-      "title": "Retain artifact landing evidence in worker context",
+      "title": "Make recovered assessment commands searchable",
       "updated_at": "UNKNOWN"
     },
     {
@@ -239,6 +239,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-26T15:51:35Z",
+  "unchanged_since": "2026-09-26T15:57:32Z",
   "undatable_pulls": []
 }
