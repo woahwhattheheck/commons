@@ -31,6 +31,8 @@ class EquipmentError(RuntimeError):
         retry_after=None,
         rate_limit_remaining=None,
         rate_limit_reset=None,
+        rate_limit_resource=None,
+        rate_limit_kind=None,
         incident=None,
         delivered=None,
         matched_fields=None,
@@ -44,6 +46,8 @@ class EquipmentError(RuntimeError):
         self.retry_after = retry_after
         self.rate_limit_remaining = rate_limit_remaining
         self.rate_limit_reset = rate_limit_reset
+        self.rate_limit_resource = rate_limit_resource
+        self.rate_limit_kind = rate_limit_kind
         self.incident = incident
         self.delivered = delivered
         self.matched_fields = tuple(matched_fields or ())
@@ -119,7 +123,7 @@ def _github_headers(stdout):
     headers = {}
     for line in stdout[match.end():separator.start()].splitlines():
         key, colon, value = line.partition(":")
-        if colon and key.lower() in {"retry-after", "x-ratelimit-remaining", "x-ratelimit-reset"}:
+        if colon and key.lower() in {"retry-after", "x-ratelimit-remaining", "x-ratelimit-reset", "x-ratelimit-resource"}:
             headers[key.lower()] = value.strip()
     return stdout[separator.end():], int(match.group(1)), headers
 
@@ -255,14 +259,19 @@ class GitHubSlackEquipment:
                 message = "GitHub request failed through existing gh account"
             remaining = _header_integer(headers, "x-ratelimit-remaining")
             reset = _header_integer(headers, "x-ratelimit-reset")
-            secondary = status == 403 and any(term in str(message).lower()
+            resource = headers.get("x-ratelimit-resource")
+            if not isinstance(resource, str) or not re.fullmatch(r"[a-z][a-z0-9_]{0,63}", resource):
+                resource = None
+            secondary = status in (403, 429) and any(term in str(message).lower()
                 for term in ("secondary rate limit", "abuse detection mechanism"))
             limited = status == 429 or status == 403 and (remaining == 0 or secondary)
+            kind = ("secondary" if secondary else "primary" if remaining == 0 else "unknown") if limited else None
             raise EquipmentError(str(message),
                 code="github_rate_limited" if limited else "github_request_failed",
                 uncertain=method != "GET", http_status=status,
                 retry_after=headers.get("retry-after") if limited else None,
-                rate_limit_remaining=remaining, rate_limit_reset=reset)
+                rate_limit_remaining=remaining, rate_limit_reset=reset,
+                rate_limit_resource=resource, rate_limit_kind=kind)
         if not body.strip():
             return {}
         try:

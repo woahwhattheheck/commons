@@ -91,16 +91,26 @@ class RequestBudget:
         db.execute("INSERT OR IGNORE INTO read_budget(scope) VALUES(?)", (scope,))
         return db.execute("SELECT * FROM read_budget WHERE scope=?", (scope,)).fetchone()
 
-    def acquire(self, scope):
+    def acquire(self, scope, *, shared_scopes=()):
+        """Count one request after checking its resource and shared cooldowns.
+
+        Shared scopes carry provider-wide limits without charging the same
+        request twice. Existing provider-wide deadlines remain effective when
+        callers start using finer-grained resource scopes.
+        """
         deferred = None
         with self._transaction() as db:
             now = self.clock()
             row = self._row(db, scope)
+            for shared in set(shared_scopes) - {scope}:
+                candidate = db.execute("SELECT * FROM read_budget WHERE scope=?", (shared,)).fetchone()
+                if candidate is not None and candidate["retry_until"] > row["retry_until"]:
+                    row = candidate
             until = row["retry_until"]
             if now < until:
-                db.execute("UPDATE read_budget SET deferred=deferred+1 WHERE scope=?", (scope,))
+                db.execute("UPDATE read_budget SET deferred=deferred+1 WHERE scope=?", (row["scope"],))
                 self._deferred += 1
-                deferred = RequestDeferred(scope, until, "rate_limited")
+                deferred = RequestDeferred(row["scope"], until, "rate_limited")
             else:
                 db.execute("""UPDATE read_budget SET attempts=attempts+1,
                     last_attempt=? WHERE scope=?""", (now, scope))
