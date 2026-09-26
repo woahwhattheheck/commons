@@ -3,7 +3,8 @@
 
 DIRECTIVES.md OPEN/HALF text is historical. This instrument reads
 ground/CURRENT_WORK.json and reconciles live status from a main
-snapshot. Chat, Slack, ntfy, and open PRs never close an item.
+snapshot. Supplied main SHAs are measured from Git objects, never mutable
+working files. Chat, Slack, ntfy, and open PRs never close an item.
 
   python3 host/current_work.py
   python3 host/current_work.py --root .
@@ -16,6 +17,7 @@ import argparse
 import json
 import os
 import re
+import subprocess
 import sys
 
 
@@ -254,6 +256,8 @@ def measure_tree(root, main_sha=""):
     if catalog.get("error"):
         return {"error": catalog["error"], "open_now": [], "items": []}
     snapshot = {"main_paths": {}, "main_sha": str(main_sha or "")}
+    if main_sha and not SHA_RE.fullmatch(str(main_sha)):
+        return {"error": "main SHA must be 40 lowercase hex characters", "open_now": [], "items": []}
     items = catalog.get("items")
     if not isinstance(items, list):
         items = []
@@ -266,7 +270,42 @@ def measure_tree(root, main_sha=""):
         for path in paths:
             if not isinstance(path, str) or not path:
                 continue
-            snapshot["main_paths"][path] = os.path.exists(os.path.join(root, path))
+            snapshot["main_paths"][path] = False
+    if main_sha:
+        # A caller-supplied SHA labels one observed official-main snapshot. It
+        # must never label os.path.exists() results from an unrelated worktree:
+        # untracked additions and local deletions are not evidence at that SHA.
+        # ls-tree reads the exact commit, including tree and symlink entries,
+        # without following a symlink or requiring a complete working checkout.
+        try:
+            git_env = dict(os.environ, GIT_NO_LAZY_FETCH="1", GIT_NO_REPLACE_OBJECTS="1")
+            resolved = subprocess.run(
+                ["git", "-C", os.fspath(root), "rev-parse", "--verify", str(main_sha) + "^{commit}"],
+                capture_output=True, text=True, check=True, timeout=30, env=git_env,
+            ).stdout.strip()
+            if resolved != main_sha:
+                raise ValueError("main SHA does not name a commit")
+            paths = list(snapshot["main_paths"])
+            if paths:
+                tree = subprocess.run(
+                    ["git", "--literal-pathspecs", "-C", os.fspath(root), "ls-tree",
+                     "-r", "-t", "-z", "--full-tree", str(main_sha), "--", *paths],
+                    capture_output=True, check=True, timeout=30, env=git_env,
+                ).stdout
+                present = {
+                    entry.split(b"\t", 1)[1].decode("utf-8", "surrogateescape")
+                    for entry in tree.split(b"\0") if b"\t" in entry
+                }
+                for path in paths:
+                    snapshot["main_paths"][path] = path.rstrip("/") in present
+        except (OSError, subprocess.SubprocessError, ValueError) as exc:
+            detail = getattr(exc, "stderr", "") or str(exc)
+            if isinstance(detail, bytes):
+                detail = detail.decode("utf-8", "replace")
+            return {
+                "error": "cannot read the requested main commit from Git: " + detail.strip(),
+                "open_now": [], "items": [],
+            }
     return project(catalog, snapshot)
 
 
@@ -313,7 +352,7 @@ def self_test():
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Unfinished-now ledger")
     parser.add_argument("--root", default=DEFAULT_ROOT)
-    parser.add_argument("--main-sha", default="", help="official 40-character main SHA")
+    parser.add_argument("--main-sha", default="", help="observed official-main commit SHA; its Git objects must exist under --root")
     parser.add_argument("--self-test", action="store_true")
     args = parser.parse_args(argv)
     if args.self_test:
@@ -326,3 +365,4 @@ def main(argv=None):
 
 if __name__ == "__main__":
     sys.exit(main())
+

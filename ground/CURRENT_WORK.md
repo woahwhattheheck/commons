@@ -20,6 +20,13 @@ A current item closes only from main evidence:
 
 Chat text, Slack, ntfy 200, an open PR, a claimed merge, or a Pages card is not close evidence.
 
+The command-line instrument reads claimed paths from the exact Git commit supplied
+with `--main-sha`, including in a sparse or dirty checkout. Untracked files cannot
+close work, and local deletions cannot reopen paths present in that commit. Fetch
+official main first and pass its observed SHA; the instrument does not contact the
+remote or infer freshness. An unavailable commit produces an error and exit 1.
+Without `--main-sha`, no item closes from local file presence.
+
 Structured work-order ids (`WORK ORDER`, `OWNER LAND ORDER`, `kind: ACTION`) are classified by the sibling projector into OPEN / LANDED / DEAD_CLAIM / SALON / NOISE. LANDED only when `p/{id}.md` exists at official current main SHA. Slack CLAIMED is not a land.
 
 ## Kinds
@@ -70,3 +77,4 @@ Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commer
 ## Contest product (titanmcp)
 
 Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.
+
