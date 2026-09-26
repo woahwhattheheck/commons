@@ -39,12 +39,37 @@ python3 evidence_search.py query review-index.json "vulnerability ownership"
 python3 evidence_search.py query review-index.json "end to end propagation"
 python3 evidence_search.py lookup review-index.json F-002
 python3 evidence_search.py lookup review-index.json E-005
+python3 evidence_search.py trace review-index.json F-002
 python3 evidence_search.py query review-index.json "independent review before merge"
 python3 -m unittest discover -v
 python3 -O -m unittest discover -v
 ```
 
 Choose a disposable output path; `build` writes that named file. See [PROVENANCE.md](PROVENANCE.md) for the exact-source reviewer flow, fields, migration rules and execution boundaries. `examples/question-walkthrough.md` remains the original worked flow; rebuild its legacy index to add the new provenance fields.
+
+## Follow a finding's evidence in one operation
+
+`trace` expands exact outgoing `linked_ids`, starting with the requested record.
+For the published corpus, `trace review-index.json F-002` returns the finding and
+E-004, E-005 and E-006 together. Each returned record has the same source locator,
+original content, snippet, digest status and missing-underlying-document warnings
+as an individual exact lookup. IDs are never tokenized for identity matching,
+case-folded, aliased or replaced by a lexical search hit.
+
+Expansion is breadth-first with sorted linked IDs. Shared references appear once;
+cycles terminate without dropping their recorded edges. The default limit is 25
+records including the root; use `--max-records` from 1 through 100. A bounded result
+retains `unexpanded_record_ids` and `not_expanded` edges rather than claiming a
+complete chain. Missing targets remain in `missing_linked_ids` and `missing` edges.
+Only outgoing declared links are followed; an index cannot reveal absent or
+undeclared relationships or fetch an underlying source document.
+
+Exit 0 means the reachable declared record chain was returned completely within
+the index. Exit 1 means a missing root, missing linked record or truncation; all
+available data and diagnostics still go to stdout. Invalid input exits 2.
+The reusable API is `trace(index, record_id, max_records=25)`; consumers should
+inspect `complete_in_index`, both unresolved-ID lists and each record's provenance.
+Completeness here describes navigation, not evidence sufficiency or authenticity.
 
 ## Scope boundary
 
