@@ -41,6 +41,12 @@ python3 host/smart_outreach.py validate
 python3 host/smart_outreach.py plan
 ```
 
+`--receipts` must identify an existing, readable directory. A missing path,
+failed directory read, or unreadable/invalid JSON receipt exits with code 2 and
+an error on stderr; it never becomes an empty collision history. An existing
+empty directory remains a valid empty history. Restore the receipt directory
+or correct the path before rerunning the planner.
+
 Private drafts can later enter Swarm Mail's existing exact-once and suppression
 path. Replies remain owned by the production-survival reply intake. This planner
 does not open a second CRM, transport, inbox, SKU, or cash ledger.
