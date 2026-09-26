@@ -124,6 +124,8 @@ against the reader's clock: LIVE/QUIET retain custody; stale activity becomes
 recoverable. Implausible future heartbeats do not renew leases. Provider
 observations and actual provider activity have separate timestamps. A known
 merged PR lacking a merge SHA remains undispatched pending reconciliation.
+Provider observations are ordered by parsed time. A dated refresh can replace
+undated baked facts; older or undated refreshes cannot erase a dated observation.
 Incomplete source coverage stays visible; a newest Slack page is not a complete
 work inventory. Publishing capability requires a discovered write road or write
 primitive, with discovery, authentication, permission, policy and provider failures

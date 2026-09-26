@@ -13,7 +13,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from .identity import task_key
-from .projector import project
+from .projector import _time, project
 from .routing import context_bundle, route, select_tasks, status
 from .store import GitStore
 
@@ -94,7 +94,10 @@ def _merge_facts(state, incoming):
             continue
         if old.get("artifact_landed") and old.get("landed_sha") not in (None, "", "UNKNOWN"):
             continue
-        if str(fact.get("observed_at", "")) >= str(old.get("observed_at", "")):
+        observed, previous = _time(fact.get("observed_at")), _time(old.get("observed_at"))
+        # Baked listings deliberately carry UNKNOWN observations. Text ordering
+        # would pin those facts forever and misorder equivalent timezone offsets.
+        if previous is None or (observed is not None and observed >= previous):
             facts[key] = copy.deepcopy(fact)
 
 
