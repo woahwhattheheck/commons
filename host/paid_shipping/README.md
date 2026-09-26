@@ -1,10 +1,19 @@
-# Free Commons shipping monitor candidate
+# Commons shipping monitor
 
 Publish `host/paid_shipping/{worker.mjs,rules.mjs,schema.sql,runner.mjs}` to the
 **public** `woahwhattheheck/commons` repository and invoke it from the retained
 scheduled workflow. The runner uses Node 22 with no package install, artifact,
 or cache upload. Confirm an actual hosted run on this account after updating
 the source; a pricing rule alone does not establish execution.
+
+The current worker runs in `read_only` mode with `slack_writes: false`.
+It reads and classifies work, persists private state, and returns
+`outbound_sender_identity_unverified` for outward delivery. It does not post
+to Slack or create a fallback notification. Existing pending, sending, and
+uncertain outbox rows are marked held; accepted rows are retained. A held
+notice is not a delivered notice, and changing notice content does not clear
+the route hold. Sender identity and provider-added footer verification remain
+the prerequisite recorded by the worker for re-enabling that route.
 
 Set repository Actions secrets `COMMONS_GITHUB_TOKEN` (the existing shared
 GitHub credential with private `commons-ship-enforcer` read/write and publisher
@@ -30,9 +39,9 @@ The publisher request sets `User-Agent: Commons-Shipping-Enforcer/1.0`.
 For each new or changed nonbaseline candidate thread, the runner sends the
 peer thread text to TypeSafe System One (`jev-latest`) as one typed choice:
 `submit_own_patch`, `follow_existing_pr`, `complete_claim_step`,
-`repair_route`, or `no_followup`. Only fixed local notice text can be posted;
-JEV cannot write prose or authorize publication. Existing GitHub provider
-checks still verify our upstream PR before a notice. A temporary JEV API error
+`repair_route`, or `no_followup`. These choices remain local analysis while
+outward delivery is held; JEV cannot authorize publication or clear the hold.
+A temporary JEV API error
 uses the original static rules for that thread and reports
 `jev_status: degraded_static_fallback` plus call, error, and input-token counts
 in the aggregate run log. The required key is checked at runner start.
@@ -49,7 +58,12 @@ cursor. These are per-run timing limits for the hosted job, not agent or
 publication admission limits. JEV runs only when the peer thread content has
 changed; baseline and unchanged scans remain quiet. Aggregate run logs include
 thread pages, recent-history message count, deadline, and rate-limit status
-without Slack content.
+without Slack content. `mode`, `slack_writes`, and `delivery_code` identify
+the current route state even when `delivered` is zero and `delivery_error`
+is null. `delivery_held` counts legacy outbox rows newly held in this tick;
+`operator_held` counts the current bounded slice of unqueued operator notices;
+`incident_held` counts newly scanned incidents held in this tick. These are
+different populations, not a total backlog or cumulative delivery count.
 
 Native nonincident diagnostic ingress changes from the disabled Cloudflare
 `/v1/operator-notice` URL to a private per-notice Git file. For a validated
@@ -63,14 +77,15 @@ underscores up to 80, `tool_name` safe identifier up to 100, repository
 paths, draft content, or secrets. Use a stable operation ID derived from the
 notice ID. A repeated same-ID file is an acknowledged receipt after provider
 readback; a different payload at that path is a conflict. The runner imports
-up to four unseen notices per tick from the private Git tree and uses the
-existing Slack outbox/readback marker to deduplicate delivery.
+up to four unseen notices per tick from the private Git tree. Imported
+notices remain unqueued while the route is held; repeated ticks do not import
+the same notice again or send it to Slack. Import success proves only local
+state persistence, not delivery.
 
-The runner does not read Cloudflare D1 incidents. A blocked incident needs an
-equivalent content-free private notice from the publisher/native caller if
-Slack operator routing is wanted. The authenticated publisher incident record
-and Bryce's private incident email path remain authoritative. Never send an
-incident description into this diagnostic ledger.
+The runner does not read Cloudflare D1 incidents. A private operator notice
+does not bypass the outward route hold. The authenticated publisher incident
+record and Bryce's private incident email path remain authoritative. Never
+send an incident description into this diagnostic ledger.
 
 Run tests from the candidate root:
 
@@ -83,8 +98,8 @@ The test concurrency flag avoids independent suites replacing the global
 `conversations.replies` accepts GET with query parameters and rejects POST
 JSON for the same thread; the worker uses GET for both history and replies.
 
-If this account blocks GitHub Actions, the same `runner.mjs` can run with a
-hidden Windows Task Scheduler job every five minutes using the shared vault
-credentials. That remains independent of a Codex account/session but depends
-on the PC staying online. Verify an actual scheduled run and private Git state
-readback before declaring either schedule live.
+This document describes the retained hosted workflow; it does not authorize
+creating a new schedule or moving the job onto the owner's PC. Verify an
+actual hosted run and private Git state readback before declaring operation
+live. A successful local check does not establish either hosted execution or
+outward delivery.

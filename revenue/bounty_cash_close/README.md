@@ -74,6 +74,12 @@ The board emits exactly one of:
 
 Policy supplies gate/review and compensation follow-up windows. Each lane permits at most one recorded follow-up. Once that follow-up exists, the board returns `WAIT_DNR` rather than generating an outreach loop.
 
+Gate waiting windows and the one-follow-up limit apply both before and after
+submission delivery. A `GATE_CLEARED` observation after a failed submission
+clears that transport blocker; without a delivered receipt the next action is
+`SUBMIT`, never a claim that delivery happened. A later blocked gate or failed
+attempt reopens the blocker, while an already-used gate follow-up stays spent.
+
 ## CLI
 
 Production `compile` owns current process UTC; callers do not supply an `--as-of` value.

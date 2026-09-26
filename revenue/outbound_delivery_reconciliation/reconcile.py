@@ -153,17 +153,19 @@ def _normalize_event(value: Mapping[str, Any], index: int) -> Dict[str, Any]:
 def _normalize_events(events: Sequence[Mapping[str, Any]]) -> Tuple[List[Dict[str, Any]], List[str]]:
     if type(events) is not list or len(events) > MAX_EVENTS:
         raise ReconciliationError(f"events must be a list with at most {MAX_EVENTS} rows")
-    by_id: Dict[str, Dict[str, Any]] = {}
-    holds: List[str] = []
+    by_id: Dict[str, Dict[str, Dict[str, Any]]] = {}
     for i, raw in enumerate(events):
         row = _normalize_event(raw, i)
-        prior = by_id.get(row["event_id"])
-        if prior is None:
-            by_id[row["event_id"]] = row
-        elif canonical_json(prior) != canonical_json(row):
-            holds.append(f"EVENT_ID_FORK:{row['event_id']}")
-    rows = sorted(by_id.values(), key=lambda row: (row["observed_at"], row["event_id"]))
-    return rows, sorted(set(holds))
+        variants = by_id.setdefault(row["event_id"], {})
+        variants[canonical_json(row)] = row
+    holds = sorted(f"EVENT_ID_FORK:{event_id}" for event_id, variants in by_id.items() if len(variants) > 1)
+    # Retain every distinct fork branch. Keeping the first one loses evidence
+    # and can make a known bounce disappear when the input order changes.
+    rows = sorted(
+        (row for variants in by_id.values() for row in variants.values()),
+        key=lambda row: (row["observed_at"], row["event_id"], canonical_json(row)),
+    )
+    return rows, holds
 
 
 def _compile_at(original: Mapping[str, Any], events: Sequence[Mapping[str, Any]], *, at: datetime) -> Dict[str, Any]:
@@ -175,7 +177,9 @@ def _compile_at(original: Mapping[str, Any], events: Sequence[Mapping[str, Any]]
     if sent > now:
         holds.append("ORIGINAL_SENT_FROM_FUTURE")
 
-    exact_kinds, failure_reasons = set(), set()
+    failure_reasons = set()
+    accepted_times: list[datetime] = []
+    failure_times: list[datetime] = []
     evidence = {original_n["evidence_sha256"]}
     exact_failure = False
     for row in events_n:
@@ -201,12 +205,17 @@ def _compile_at(original: Mapping[str, Any], events: Sequence[Mapping[str, Any]]
             if row[field] != original_n[field]:
                 holds.append(f"{code}:{row['event_id']}")
         if identity_ok and chronology_ok:
-            exact_kinds.add(row["event_kind"])
             if row["event_kind"] == "PERMANENT_FAILURE":
                 exact_failure = True
+                failure_times.append(observed)
                 failure_reasons.add(row["reason_code"])
+            else:
+                accepted_times.append(observed)
 
-    if exact_kinds == EVENT_KINDS:
+    # Provider acceptance is transport progress, not terminal delivery.
+    # A later DSN/bounce normally supersedes it. Acceptance at or after a
+    # permanent failure cannot reopen the same sent generation.
+    if accepted_times and failure_times and max(accepted_times) >= min(failure_times):
         holds.append("INCOMPATIBLE_TERMINAL_PROVIDER_EVIDENCE")
     holds = sorted(set(holds))
     classification = (
@@ -223,7 +232,7 @@ def _compile_at(original: Mapping[str, Any], events: Sequence[Mapping[str, Any]]
         "buyer_scope": original_n["buyer_scope"],
         "opportunity_id": original_n["opportunity_id"],
         "source_generation_sha256": sha256_json({"original": original_n, "events": events_n}),
-        "provider_event_ids": [row["event_id"] for row in events_n],
+        "provider_event_ids": list(dict.fromkeys(row["event_id"] for row in events_n)),
         "provider_evidence_sha256": sorted(evidence),
         "failure_reason_codes": sorted(failure_reasons),
         "hold_reasons": holds,

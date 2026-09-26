@@ -263,7 +263,8 @@ class WorkstreamStore:
             return self._finish(db, operation_id, "ingest", digest, result, now)
 
     def update_work(self, payload):
-        allowed = {"operation_id", "source_id", "item_id", "priority", "next_action", "job"}
+        allowed = {"operation_id", "source_id", "item_id", "priority", "next_action", "job",
+                   "expected_revision"}
         if not isinstance(payload, dict) or set(payload) - allowed:
             raise CoreError(400, "Unsupported work update fields.")
         if not set(payload) & {"priority", "next_action", "job"}:
@@ -271,6 +272,9 @@ class WorkstreamStore:
         clean = _safe(payload)
         source_id = _id(clean.get("source_id"), "source_id")
         item_id = _id(clean.get("item_id"), "item_id")
+        if "expected_revision" in clean and (type(clean["expected_revision"]) is not int
+                or clean["expected_revision"] < 0):
+            raise CoreError(400, "expected_revision must be a nonnegative integer.")
         if "priority" in clean and clean["priority"] is not None and not isinstance(clean["priority"], (str, int, float)):
             raise CoreError(400, "priority must be text, a number, or null.")
         if "next_action" in clean and clean["next_action"] is not None and not isinstance(clean["next_action"], str):
@@ -293,6 +297,14 @@ class WorkstreamStore:
             previous = db.execute("SELECT payload FROM owner_work WHERE source_id=? AND item_id=?",
                                   (source_id, item_id)).fetchone()
             work = json.loads(previous["payload"]) if previous else {}
+            # Existing records start at revision zero; no database migration or
+            # timestamp precision assumption is needed. Check within the same
+            # transaction that writes the new direction. Exact operation replays
+            # above remain valid even after another writer advances this record.
+            revision = work.get("revision", 0)
+            if "expected_revision" in clean and clean["expected_revision"] != revision:
+                raise CoreError(409, "Work direction changed since it was read. "
+                                "Refresh this item and reconcile your edit before saving again.")
             for key in ("priority", "next_action"):
                 if key in clean:
                     work[key] = clean[key]
@@ -301,6 +313,7 @@ class WorkstreamStore:
                     **job, "id": operation_id + "/job", "status": "prepared",
                     "dispatch_status": "not_dispatched", "created_at": now,
                     "source_id": source_id, "item_id": item_id}
+            work["revision"] = revision + 1
             db.execute("""
                 INSERT INTO owner_work VALUES(?,?,?,?)
                 ON CONFLICT(source_id,item_id) DO UPDATE SET
@@ -341,7 +354,8 @@ class WorkstreamStore:
                 ORDER BY item.source_id,item.item_id
             """):
                 work = None if row["owner_payload"] is None else {
-                    **json.loads(row["owner_payload"]), "updated_at": row["owner_updated_at"]}
+                    "revision": 0, **json.loads(row["owner_payload"]),
+                    "updated_at": row["owner_updated_at"]}
                 item = json.loads(row["payload"])
                 item.update({"source_id": row["source_id"], "provider": providers[row["source_id"]],
                              "first_seen_at": row["first_seen_at"], "last_seen_at": row["last_seen_at"],

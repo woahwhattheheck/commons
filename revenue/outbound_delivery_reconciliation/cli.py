@@ -10,12 +10,30 @@ from .reconcile import ReconciliationError, canonical_json, reconcile, verify
 MAX_INPUT_BYTES = 2 * 1024 * 1024
 
 
+def _unique_object(pairs):
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise ReconciliationError(f"duplicate JSON key: {key}")
+        result[key] = value
+    return result
+
+
+def _reject_constant(value):
+    raise ReconciliationError(f"non-finite JSON constant: {value}")
+
+
 def _read_json(path: str):
-    data = Path(path).read_bytes()
+    with Path(path).open("rb") as stream:
+        data = stream.read(MAX_INPUT_BYTES + 1)
     if len(data) > MAX_INPUT_BYTES:
         raise ReconciliationError(f"{path}: input exceeds {MAX_INPUT_BYTES} bytes")
     try:
-        return json.loads(data.decode("utf-8"))
+        return json.loads(
+            data.decode("utf-8"),
+            object_pairs_hook=_unique_object,
+            parse_constant=_reject_constant,
+        )
     except (UnicodeDecodeError, json.JSONDecodeError) as exc:
         raise ReconciliationError(f"{path}: invalid JSON: {exc}") from exc
 

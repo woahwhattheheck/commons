@@ -357,19 +357,26 @@ class State:
         path = Path(path)
         path.parent.mkdir(parents=True, exist_ok=True)
         self.db = sqlite3.connect(path, timeout=1)
-        self.db.executescript("""
-          CREATE TABLE IF NOT EXISTS meta (key TEXT PRIMARY KEY, value TEXT NOT NULL);
-          CREATE TABLE IF NOT EXISTS items (key TEXT PRIMARY KEY, channel TEXT NOT NULL, ts TEXT NOT NULL DEFAULT '', attempted REAL NOT NULL);
-          CREATE TABLE IF NOT EXISTS parts (key TEXT PRIMARY KEY, ts TEXT NOT NULL DEFAULT '', attempted REAL NOT NULL, uncertain INTEGER NOT NULL DEFAULT 0);
-        """)
-        self.db.commit()
-        if os.name != "nt":
-            path.chmod(0o600)
+        try:
+            self.db.executescript("""
+              CREATE TABLE IF NOT EXISTS meta (key TEXT PRIMARY KEY, value TEXT NOT NULL);
+              CREATE TABLE IF NOT EXISTS items (key TEXT PRIMARY KEY, channel TEXT NOT NULL, ts TEXT NOT NULL DEFAULT '', attempted REAL NOT NULL);
+              CREATE TABLE IF NOT EXISTS parts (key TEXT PRIMARY KEY, ts TEXT NOT NULL DEFAULT '', attempted REAL NOT NULL, uncertain INTEGER NOT NULL DEFAULT 0);
+            """)
+            self.db.commit()
+            if os.name != "nt":
+                path.chmod(0o600)
+        except BaseException:
+            self.db.close()
+            raise
     def get(self, key: str, default: str = "") -> str:
         row = self.db.execute("SELECT value FROM meta WHERE key=?", (key,)).fetchone()
         return row[0] if row else default
     def set(self, key: str, value: Any):
         self.db.execute("INSERT OR REPLACE INTO meta VALUES (?,?)", (key, str(value)))
+        self.db.commit()
+    def discard(self, key: str):
+        self.db.execute("DELETE FROM meta WHERE key=?", (key,))
         self.db.commit()
     def close(self):
         self.db.close()
@@ -382,28 +389,60 @@ class Delivery:
         self.min_interval, self.next_post = min_interval, 0.0
 
     def find(self, channel: str, marker: str, attempted: float, thread: str = "") -> str:
-        cursor = ""
+        # Resume a bounded scan instead of rereading its first pages forever.
+        # Freeze the time window so a growing channel cannot move those pages.
+        scan_key = "slack.scan." + digest(json.dumps([channel, thread, marker, attempted]))
+        retained = self.state.get(scan_key)
+        resumed = bool(retained)
+        scan = json.loads(retained) if retained else {
+            "cursor": "", "oldest": str(max(0, attempted - 120)), "latest": str(time.time()),
+        }
+        if retained and not scan["cursor"]:
+            # No page in this window has been consumed yet. Refresh its upper
+            # bound now, including when a catch-up window exhausted the budget.
+            scan["latest"] = str(time.time())
+            resumed = False
+        self.state.set(scan_key, json.dumps(scan))
         for _ in range(self.max_pages):
-            data = {"channel": channel, "limit": 100, "oldest": str(max(0, attempted - 120))}
-            if cursor:
-                data["cursor"] = cursor
+            data = {"channel": channel, "limit": 100, "oldest": scan["oldest"],
+                    "latest": scan["latest"], "inclusive": "true"}
+            if scan["cursor"]:
+                data["cursor"] = scan["cursor"]
             if thread:
                 data["ts"] = thread
-            result = self.slack("conversations.replies" if thread else "conversations.history", data)
+            try:
+                result = self.slack("conversations.replies" if thread else "conversations.history", data)
+            except RelayError as exc:
+                if exc.code == "slack_invalid_cursor":
+                    # Expired provider cursors require a fresh scan, never a send.
+                    self.state.discard(scan_key)
+                raise
             for message in result.get("messages", []):
                 if marker in message.get("text", ""):
+                    self.state.discard(scan_key)
                     return str(message["ts"])
             cursor = result.get("response_metadata", {}).get("next_cursor", "")
             if not cursor and not result.get("has_more"):
+                if resumed:
+                    # Check messages arriving between polls before concluding
+                    # absence. Inclusive endpoints preserve the window boundary.
+                    scan = {"cursor": "", "oldest": scan["latest"], "latest": str(time.time())}
+                    self.state.set(scan_key, json.dumps(scan))
+                    resumed = False
+                    continue
+                self.state.discard(scan_key)
                 return ""
             if not cursor:
                 raise RelayError("slack_reconcile_incomplete")
+            scan["cursor"] = cursor
+            self.state.set(scan_key, json.dumps(scan))
         raise RelayError("slack_reconcile_page_limit")
 
-    def post(self, channel: str, text: str, thread: str = "") -> str:
-        if self.posts >= self.max_posts:
+    def post(self, channel: str, text: str, thread: str = "", *, budgeted: bool = True) -> str:
+        if budgeted and self.posts >= self.max_posts:
             raise RelayError("delivery_budget_pending")
-        self.posts += 1
+        if budgeted:
+            self.posts += 1
         time.sleep(max(0.0, self.next_post - time.monotonic()))
         self.next_post = time.monotonic() + self.min_interval
         data = {"channel": channel, "text": text, "mrkdwn": False, "parse": "none",
@@ -415,6 +454,38 @@ class Delivery:
         if not result.get("ts"):
             raise RelayError("slack_missing_receipt", uncertain=True)
         return str(result["ts"])
+
+    def deliver_health(self, channel: str, text: str, thread: str = "") -> str:
+        """Recover an interrupted initial health post before updating it.
+
+        The marker identifies the destination, not this poll's changing report.
+        Older ledgers retain their health_ts; their next update adds the marker.
+        """
+        marker = "relay.health=" + digest(channel + "\0" + thread)
+        text += "\n\n" + marker
+        ts = self.state.get("health_ts")
+        if not ts:
+            attempted = float(self.state.get("health_attempted", "0"))
+            ts = self.find(channel, marker, attempted, thread)
+            if ts:
+                # Keep the recovered receipt even if the following update fails.
+                self.state.set("health_ts", ts)
+        if ts:
+            time.sleep(max(0.0, self.next_post - time.monotonic()))
+            self.next_post = time.monotonic() + self.min_interval
+            self.slack("chat.update", {
+                "channel": channel, "ts": ts, "text": text, "mrkdwn": False,
+                "parse": "none", "link_names": False,
+                "unfurl_links": False, "unfurl_media": False,
+            })
+        else:
+            # Persist before the remote effect: a timeout or process exit must
+            # reconcile the same destination on the next run, not create a root.
+            self.state.set("health_attempted", time.time())
+            # Health must still report a source backlog after its post cap.
+            ts = self.post(channel, text, thread, budgeted=False)
+            self.state.set("health_ts", ts)
+        return ts
 
     def deliver(self, event: Event, channel: str) -> int:
         item = self.state.db.execute("SELECT channel,ts,attempted FROM items WHERE key=?", (event.key,)).fetchone()
@@ -708,18 +779,7 @@ def run(config: dict, state: State, providers: Providers) -> dict:
               "\nDelivered is not resolved. CLAIM / DONE + evidence / BLOCKED live in each source thread. "
               "Private GitHub notifications and unclassified mail require a separate permitted review; zero public deliveries is not an empty inbox. "
               "A receipt older than 30 minutes is STALE even if its stored status says LIVE. Attachments are listed, not read.")
-    data = {"channel": config["health_channel"], "text": health, "mrkdwn": False,
-            "parse": "none", "unfurl_links": False, "unfurl_media": False}
-    time.sleep(max(0.0, delivery.next_post - time.monotonic()))
-    health_ts = state.get("health_ts")
-    if health_ts:
-        data["ts"] = health_ts
-        providers.slack("chat.update", data)
-    else:
-        if config.get("health_thread"):
-            data["thread_ts"] = config["health_thread"]
-        result = providers.slack("chat.postMessage", data)
-        state.set("health_ts", result["ts"])
+    delivery.deliver_health(config["health_channel"], health, config.get("health_thread") or "")
     return report
 
 
@@ -755,25 +815,30 @@ def main() -> int:
     parser.add_argument("--state", default=str(Path.home() / ".commons" / "inbox-visibility" / "state.sqlite3"))
     args = parser.parse_args()
     # One finite run. The OS scheduler/workflow owns cadence and single-flight.
-    state = State(args.state)
     try:
         with RunLock(args.state):
             config = json.loads(Path(args.config).read_text(encoding="utf-8"))
+            # A competing poll must not open, initialize, or chmod the ledger.
+            # Keep SQLite's entire lifetime inside the process lock.
+            state = State(args.state)
             try:
-                report = run(config, state, Providers())
-            except RelayError as exc:
-                # Initial Slack reads and final health writes are outside the
-                # source loop. Persist their cooldown before releasing the lock.
-                if exc.retry_after > 0:
-                    state.set("retry_after", max(float(state.get("retry_after", "0")),
-                                                 time.time() + exc.retry_after))
-                raise
+                try:
+                    report = run(config, state, Providers())
+                except RelayError as exc:
+                    # Initial Slack reads and final health writes are outside the
+                    # source loop. Persist their cooldown before releasing the lock.
+                    if exc.retry_after > 0:
+                        state.set("retry_after", max(float(state.get("retry_after", "0")),
+                                                     time.time() + exc.retry_after))
+                    raise
+            finally:
+                state.close()
     except RelayError as exc:
         report = {"observed_at": iso(), "status": "BLOCKED", "error": exc.code}
+    except sqlite3.Error:
+        report = {"observed_at": iso(), "status": "BLOCKED", "error": "state_database_error"}
     except Exception:
         report = {"observed_at": iso(), "status": "BLOCKED", "error": "configuration_or_runtime_error"}
-    finally:
-        state.close()
     rendered = json.dumps(report, indent=2)
     print(rendered)  # Counters and fixed codes only; never source contents or tokens.
     if os.environ.get("GITHUB_STEP_SUMMARY"):

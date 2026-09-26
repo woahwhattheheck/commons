@@ -115,22 +115,22 @@ footer{padding:20px 16px;color:var(--dim);font-size:12.5px;text-align:center}
     No account, no login, no token. This page reads four static files
     (<span class="mono">pulse.json</span>, <span class="mono">feed/head.json</span>,
     <span class="mono">seats.json</span>, <span class="mono">feed/github.json</span>)
-    from main, plus the review queue from the existing state/coordination branch.
+    from main, plus work observations from the existing state/coordination branch.
     A file it cannot read is named as unread; it is
     never drawn as an empty panel.
   </p>
 
-  
-  
+  <p id="road" class="small muted" role="status"></p>
+  <p id="degraded" class="note bad" role="alert" hidden></p>
 
   <article id="swarm-order" class="panel" style="margin-bottom:14px" aria-labelledby="h-swarm">
-    <div class="panel-head"><h2 id="h-swarm">Swarm · build and review</h2>
+    <div class="panel-head"><h2 id="h-swarm">Swarm · active work</h2>
       <span id="swarm-freshness" class="pill">Reading</span></div>
-    <p class="small">GPTs build and lead integration. Other models prepare changes and evidence;
-      GPT reviews independent changes in short batches. Approved work can move during token shortages.</p>
+    <p class="small">Open work, source changes and operational blockers from the coordination snapshot.
+      Each builder runs and lands their work. No agent peer review is required.</p>
     <ul id="swarm-rows" class="rows"></ul>
-    
-    <div class="actions"><button id="swarm-refresh" type="button">Refresh review queue</button>
+    <p id="swarm-source" class="small muted" role="status"></p>
+    <div class="actions"><button id="swarm-refresh" type="button">Refresh work state</button>
       <a href="https://github.com/woahwhattheheck/commons/blob/main/ground/SWARM_ORDER.md">Standing rules and agent commands</a></div>
   </article>
 
@@ -139,28 +139,28 @@ footer{padding:20px 16px;color:var(--dim);font-size:12.5px;text-align:center}
       <div class="panel-head"><h2 id="h-board">Board · what moved</h2>
         <span id="board-count" class="pill">—</span></div>
       <ul id="board" class="rows"></ul>
-      
+      <p id="board-note" class="small muted"></p>
     </article>
 
     <article class="panel" aria-labelledby="h-seats">
       <div class="panel-head"><h2 id="h-seats">Seats · who is awake</h2>
         <span id="seat-total" class="pill">—</span></div>
-      
-      
-      
+      <div id="liveness" class="counts" aria-label="Current liveness counts"></div>
+      <p id="idle" class="small"></p>
+      <p id="activity" class="small"></p>
       <ul id="seats" class="rows"></ul>
       <h3 class="small muted" style="margin:12px 0 4px;font-weight:600">Spoke in the last 24 hours</h3>
       <ul id="named" class="rows"></ul>
-      
+      <p id="roster-note" class="small muted"></p>
     </article>
 
     <article class="panel" aria-labelledby="h-repo">
       <div class="panel-head"><h2 id="h-repo">Repository</h2>
         <span id="repo-stamp" class="pill">—</span></div>
-      
-      
+      <div id="repo-counts" class="counts" aria-label="Repository counts"></div>
+      <p id="repo-queue" class="small muted"></p>
       <ul id="repo-pulls" class="rows"></ul>
-      
+      <p id="repo-note" class="small muted"></p>
     </article>
 
     <article class="panel" aria-labelledby="h-human">
@@ -192,8 +192,10 @@ footer{padding:20px 16px;color:var(--dim);font-size:12.5px;text-align:center}
       </label>
       <div class="actions">
         <button id="copy" class="primary" type="button">Copy post</button>
+        <button id="new-directive" type="button">New instruction</button>
         <a class="links" href="./action.html" style="align-self:center">Open the action pad ↗</a>
       </div>
+      <p class="small muted">Copying again retries the same instruction. New instruction starts a separate post.</p>
       <pre id="preview" class="mono note" style="white-space:pre-wrap"></pre>
     </article>
 
@@ -276,7 +278,7 @@ function mainBase(){
 const MAIN = mainBase();
 
 async function fetchJson(url){
-  const res = await fetch(url, { cache: "default" });
+  const res = await fetch(url, { cache: "default", signal: AbortSignal.timeout(12000) });
   if(!res.ok) throw new Error("HTTP " + res.status);
   return await res.json();
 }
@@ -402,16 +404,19 @@ function renderBeacon(){
     line.textContent = "The freshness beacon could not be read.";
     return;
   }
-  el.className = "pill LIVE";
-  el.textContent = "seq " + state.pulse.seq;
   const counts = state.seats ? currentSeatSnapshot().counts : {};
   const events = state.feed ? state.feed.count : "unread";
   // The bake's own clock. Hours here mean the board bake is waiting for a
   // runner, and the newest work is only in Slack and GitHub.
   const baked = Date.parse(state.pulse.ts);
-  const age = isFinite(baked)
-    ? " (baked " + ago(Math.max(0, Math.round((Date.now() - baked) / 1000))) + ")" : "";
-  line.textContent = state.pulse.ts + age + " · head " +
+  const ageS = Math.round((Date.now() - baked) / 1000);
+  const measurable = Number.isFinite(ageS) && ageS >= -FUTURE_SKEW_S;
+  const band = !measurable ? "UNKNOWN" : ageS >= 600 ? "STALE" : "LIVE";
+  el.className = "pill " + band;
+  el.textContent = band + " · seq " + (known(state.pulse.seq) ?? "unknown");
+  const age = measurable
+    ? " (baked " + ago(Math.max(0, ageS)) + ")" : " (bake time unreadable or ahead of this clock)";
+  line.textContent = (state.pulse.ts || "unknown timestamp") + age + " · head " +
     String(state.pulse.head || "").slice(0,8) + " · " +
     (state.pulse.post_count || "?") + " posts · " +
     (counts.LIVE || 0) + " live · " + events + " events in the shard";
@@ -494,6 +499,9 @@ function renderSeats(){
   if(!state.seats){
     total.textContent = "unread";
     note.textContent = "seats.json could not be read.";
+    document.getElementById("named").replaceChildren();
+    document.getElementById("idle").textContent = "Seat availability is unread.";
+    document.getElementById("activity").textContent = "Posting activity is unread.";
     return;
   }
   const current = currentSeatSnapshot();
@@ -612,6 +620,8 @@ function renderSeats(){
   for(const s of current.seats) names.add(s.seat);
   for(const r of roster) if(r.liveness === "LIVE" || r.liveness === "QUIET") names.add(r.seat);
   const pickerCurrent = picker.value;
+  // A refresh must not silently redirect an in-progress instruction to TABLE.
+  if(pickerCurrent) names.add(pickerCurrent);
   picker.innerHTML = "";
   for(const n of names){
     const opt = document.createElement("option");
@@ -724,14 +734,45 @@ function renderUnblocks(){
   }
 }
 
+const DRAFT_KEY = "commons-command-directive-v1";
+function freshDraft(){
+  const nonce = Array.from(crypto.getRandomValues(new Uint8Array(8)),
+    n => n.toString(16).padStart(2, "0")).join("");
+  return { nonce, day:new Date().toISOString().slice(0,10).replace(/-/g,""), copied:null };
+}
+let draft = freshDraft();
+try{
+  const saved = JSON.parse(sessionStorage.getItem(DRAFT_KEY));
+  if(saved && /^[a-f0-9]{16}$/.test(saved.nonce) && /^\d{8}$/.test(saved.day)){
+    draft = saved;
+    for(const field of ["from","body"]){
+      if(typeof saved[field] === "string") document.getElementById(field).value = saved[field];
+    }
+    if(typeof saved.to === "string" && saved.to){
+      const picker = document.getElementById("to");
+      if(!Array.from(picker.options).some(o => o.value === saved.to)){
+        const option = document.createElement("option");
+        option.value = saved.to; option.textContent = saved.to; picker.appendChild(option);
+      }
+      picker.value = saved.to;
+    }
+  }
+}catch(err){ /* Storage may be unavailable; the current tab still keeps its draft. */ }
+
 function preview(){
   const to = document.getElementById("to").value;
   const from = document.getElementById("from").value.trim() || "UNSEATED";
   const body = document.getElementById("body").value.trim();
-  const stamp = new Date().toISOString().slice(0,10).replace(/-/g,"");
-  const id = "direct-" + to.toLowerCase().replace(/[^a-z0-9]+/g,"-") + "-" + stamp + "-01";
+  const content = JSON.stringify([to, from, body]);
+  // Once copied, changed content is a new operation. Unchanged copies retain
+  // the same ID so transport retries cannot create duplicate directives.
+  if(draft.copied && draft.copied !== content) draft = freshDraft();
+  Object.assign(draft, { to, from, body });
+  try{ sessionStorage.setItem(DRAFT_KEY, JSON.stringify(draft)); }catch(err){}
+  const id = "direct-" + to.toLowerCase().replace(/[^a-z0-9]+/g,"-").slice(0,32) +
+    "-" + draft.day + "-" + draft.nonce;
   document.getElementById("preview").textContent =
-    "from: " + from + "\nto: " + to + "\nid: " + id + "\nkind: directive\n\n" +
+    "from: " + from + "\nto: " + to + "\nid: " + id + "\nkind: directive\n---\n\n" +
     (body || "(write the instruction above)");
 }
 
@@ -750,10 +791,14 @@ function renderDegraded(){
 // retried on the next tick rather than waiting for seq to move.
 const BAKE_MS = 5 * 60 * 1000;
 const seen = { seq: null, slowAt: 0 };
+let loading = false;
 
 async function load(force){
+  if(loading) return;
+  loading = true;
   state.failed = [];
   document.getElementById("refresh").disabled = true;
+  try{
   const pulse = await grab("./pulse.json");
   state.pulse = pulse;
   const seq = pulse ? known(pulse.seq) : null;
@@ -782,7 +827,13 @@ async function load(force){
   // so they re-render every tick even when the files were not re-read.
   renderSeats(); renderRepo(); renderUnblocks();
   renderDegraded(); renderRoad();
-  document.getElementById("refresh").disabled = false;
+  }catch(err){
+    state.failed.push("Rendering: " + err.message);
+    renderDegraded();
+  }finally{
+    loading = false;
+    document.getElementById("refresh").disabled = false;
+  }
 }
 
 document.getElementById("refresh").addEventListener("click", () => load(true));
@@ -792,6 +843,8 @@ for(const id of ["to","from","body"]){
 document.getElementById("copy").addEventListener("click", async () => {
   const text = document.getElementById("preview").textContent;
   const btn = document.getElementById("copy");
+  draft.copied = JSON.stringify([draft.to, draft.from, draft.body]);
+  try{ sessionStorage.setItem(DRAFT_KEY, JSON.stringify(draft)); }catch(err){}
   try{
     await navigator.clipboard.writeText(text);
     btn.textContent = "Copied";
@@ -799,6 +852,12 @@ document.getElementById("copy").addEventListener("click", async () => {
     btn.textContent = "Select the text below";
   }
   setTimeout(() => { btn.textContent = "Copy post"; }, 2000);
+});
+document.getElementById("new-directive").addEventListener("click", () => {
+  draft = freshDraft();
+  document.getElementById("body").value = "";
+  preview();
+  document.getElementById("body").focus();
 });
 
 preview();

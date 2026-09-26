@@ -975,9 +975,14 @@ class CommandCenter:
                 raise CoreError(404, "The selected observation is not in the loaded source coverage.")
             source = next((value for value in work.get("sources", [])
                            if value.get("id") == source_id), {})
-            result = {"item": item, "source": {key: source.get(key) for key in
-                      ("id", "provider", "label", "status", "last_success_at",
-                       "last_good_observed_at", "coverage", "scope", "sync_mode")},
+            # The exact-item handoff needs the same freshness/error/coverage
+            # evidence as the list. WorkstreamStore already normalizes this
+            # metadata and excludes raw provider bodies and credential values.
+            source_detail = {key: source.get(key) for key in
+                             ("id", "provider", "label", "status", "last_success_at",
+                              "last_good_observed_at", "coverage", "scope", "sync_mode")}
+            source_detail.update(source)
+            result = {"item": item, "source": source_detail,
                       "cache": cache, "provider_requests": 0,
                       "scope": "One stored normalized observation; provider-original content stays at its original source."}
             return json.loads(json.dumps(result))

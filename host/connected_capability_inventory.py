@@ -4,6 +4,11 @@
 This compiler does not authenticate, authorize, admit, or reject callers.  It
 separates measured state so every Commons carrier can choose a working road.
 The sole owner-handled row is Claude, by direct owner instruction.
+
+Tool and skill counts belong to the observed snapshot, not this compiler's
+source code. Census values must be non-negative integers; provided tool and
+app-family breakdowns must reconcile. Preserve each component's observation
+timestamp when combining fresh census data with retained resource observations.
 """
 from __future__ import annotations
 
@@ -11,6 +16,7 @@ import argparse
 import copy
 import json
 import re
+import sys
 from collections import Counter
 from pathlib import Path
 from typing import Any
@@ -49,6 +55,41 @@ def _scan_secrets(value: Any) -> None:
         if pattern.search(blob):
             raise CapabilityInventoryError("secret-shaped value found in public capability inventory")
 
+def _count(value: Any, field: str) -> int:
+    if not isinstance(value, int) or isinstance(value, bool) or value < 0:
+        raise CapabilityInventoryError(f"{field} must be a non-negative integer")
+    return value
+
+def _validate_tool_fleet(fleet: Any) -> None:
+    """Validate the observed census without pinning it to one historical harness."""
+    if not isinstance(fleet, dict):
+        raise CapabilityInventoryError("tool_fleet must be an object")
+    total = _count(fleet.get("callable_tools"), "tool_fleet.callable_tools")
+    connected = _count(fleet.get("connected_app_tools"), "tool_fleet.connected_app_tools")
+    if connected > total:
+        raise CapabilityInventoryError("connected app tools exceed callable tools")
+    if "core_tools" in fleet:
+        core = _count(fleet["core_tools"], "tool_fleet.core_tools")
+        if total != connected + core:
+            raise CapabilityInventoryError("tool census does not reconcile")
+    _count(fleet.get("fully_paginated_skills"), "tool_fleet.fully_paginated_skills")
+    if "app_family_counts" in fleet:
+        families = fleet["app_family_counts"]
+        if not isinstance(families, dict) or any(not isinstance(k, str) or not k for k in families):
+            raise CapabilityInventoryError("app_family_counts must map nonempty names to counts")
+        family_total = sum(_count(v, f"app_family_counts.{k}") for k, v in families.items())
+        if family_total != connected:
+            raise CapabilityInventoryError("app family counts do not reconcile with connected app tools")
+        if "app_families" in fleet and _count(fleet["app_families"], "tool_fleet.app_families") != len(families):
+            raise CapabilityInventoryError("app family total does not reconcile")
+    automations = fleet.get("automations")
+    if not isinstance(automations, dict):
+        raise CapabilityInventoryError("tool_fleet.automations must be an object")
+    counts = {name: _count(automations.get(name), f"automations.{name}")
+              for name in ("total", "enabled", "disabled")}
+    if counts["total"] != counts["enabled"] + counts["disabled"]:
+        raise CapabilityInventoryError("automation totals do not reconcile")
+
 def validate_observations(data: dict[str, Any]) -> None:
     if not isinstance(data, dict) or data.get("schema") != OBSERVATION_SCHEMA:
         raise CapabilityInventoryError("wrong observation schema")
@@ -85,14 +126,7 @@ def validate_observations(data: dict[str, Any]) -> None:
     business = (account_roles.get("business_gmail") or {}).get("address")
     if business != "tokenjunkielabs@gmail.com":
         raise CapabilityInventoryError("shared business Gmail identity is missing")
-    tool_fleet = data.get("tool_fleet") or {}
-    if tool_fleet.get("callable_tools") != 442 or tool_fleet.get("connected_app_tools") != 427:
-        raise CapabilityInventoryError("tool census does not match the measured harness")
-    if tool_fleet.get("fully_paginated_skills") != 118:
-        raise CapabilityInventoryError("skill census does not match the fully paginated list")
-    automations = tool_fleet.get("automations") or {}
-    if automations.get("total") != automations.get("enabled", 0) + automations.get("disabled", 0):
-        raise CapabilityInventoryError("automation totals do not reconcile")
+    _validate_tool_fleet(data.get("tool_fleet"))
     portfolio = data.get("github_portfolio") or {}
     total = portfolio.get("accessible_repositories")
     public = portfolio.get("public_repositories")
@@ -222,18 +256,31 @@ def main(argv: list[str] | None = None) -> int:
         report = self_test()
         print(canonical_json(report), end="")
         return 0 if report["ok"] else 1
-    source = json.loads(Path(args.input).read_text(encoding="utf-8"))
-    compiled = compile_catalog(source)
+    try:
+        source = json.loads(Path(args.input).read_text(encoding="utf-8"))
+        compiled = compile_catalog(source)
+    except (OSError, UnicodeError, ValueError, TypeError) as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 2
     rendered = canonical_json(compiled)
     output = Path(args.output)
     if args.verify:
-        if not output.is_file() or output.read_text(encoding="utf-8") != rendered:
+        try:
+            matches = output.is_file() and output.read_text(encoding="utf-8") == rendered
+        except (OSError, UnicodeError) as exc:
+            print(f"ERROR: {exc}", file=sys.stderr)
+            return 2
+        if not matches:
             print("MISMATCH")
             return 1
         print("MATCH")
         return 0
-    output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_text(rendered, encoding="utf-8")
+    try:
+        output.parent.mkdir(parents=True, exist_ok=True)
+        output.write_text(rendered, encoding="utf-8")
+    except OSError as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 2
     print(f"WROTE {output} resources={compiled['summary']['resources']} callable={compiled['summary']['callable_now']}")
     return 0
 

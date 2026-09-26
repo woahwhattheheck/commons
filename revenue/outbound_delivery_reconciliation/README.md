@@ -12,6 +12,11 @@ This package exists because provider transport truth can change after Gmail reco
 
 A provider-accepted event by itself does **not** become a buyer-delivery/read/response claim. This product only reconciles delivery failures.
 
+Provider acceptance followed by a later permanent failure is a normal bounce
+sequence and yields `DELIVERY_FAILED`. Acceptance at the same timestamp as, or
+after, a permanent failure remains conflicting evidence for that exact sent
+generation. Neither sequence grants retry or alternate-route authority.
+
 ## Authority ceiling
 
 `DELIVERY_FAILED` sets `failed_route_dnr=true`. Every report hard-codes:
@@ -40,6 +45,11 @@ Provider event (`outbound-delivery-provider-event/v1`) additionally binds stable
 
 Exact replay of an event ID with identical canonical bytes is idempotent. Same ID with changed bytes HOLDs.
 
+All distinct variants of a forked event ID remain bound into the source-generation
+digest and evidence list, in deterministic order. Reordering or repeating input
+events cannot hide a permanent failure or change the result. Event IDs remain
+unique in the report even when several conflicting variants share one ID.
+
 ## CLI
 
 ```bash
@@ -51,3 +61,7 @@ python -m revenue.outbound_delivery_reconciliation.cli verify \
 ```
 
 The CLI performs no network/provider I/O.
+
+Each input read is bounded to 2 MiB before parsing. Duplicate object keys and
+non-finite numeric constants are rejected with exit code 2, so ambiguous input
+cannot silently replace a failure event or a report field during JSON decoding.

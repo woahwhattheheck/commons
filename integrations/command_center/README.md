@@ -103,6 +103,16 @@ GET /api/observability composes the board bakes — pulse.json, feed/head.json, 
 
 POST /api/work/item or command_center_work_item sets priority, next_action or a prepared job for an exact source_id/item_id. Provider evidence is preserved and prepared packets record not_dispatched. Fleet also exposes actual Gemini submit/inspect/follow-up/cancel routes from the live shared catalog, retaining provider receipts. Native task actions use their actual harness routes.
 
+Work-item edits may include `expected_revision` from `item.owner_work.revision`
+(use `0` when no owner direction exists). Each accepted update increments that
+revision. A stale revision returns HTTP 409 without changing the direction or
+recording a successful operation; read the exact item again and reconcile the
+edit. Exact retries with the same operation ID and payload return their original
+result even if a later edit has advanced the revision. Callers omitting the field
+retain their existing behavior. The Work editor sends the revision it displayed,
+keeps a rejected draft in place, and closes after a confirmed save. This protects
+owner directions, not freshness of the separate provider observation.
+
 ## Live cash
 
 Verified product pages only — no invented Stripe links.

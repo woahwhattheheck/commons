@@ -71,11 +71,13 @@ button{cursor:pointer}
   <a href="./index.html">home</a>
   <button id="reload">Reload</button>
   <span id="age" class="muted"></span>
-  <span id="err"></span>
+  <span id="err" role="alert"></span>
 </div>
+<div id="stats" class="grid" aria-label="Coordination summary"></div>
 
 <h2>Lanes with more than one open carrier</h2>
-<p class="muted">One reviewed change, several open pull requests. Lanes are joined by identical changed-path/blob sets (content key) and by supersession text.</p>
+<p class="muted">One change, several open pull requests. Lanes are joined by identical changed-path/blob sets (content key) and by supersession text.</p>
+<div id="several" class="card" role="status">Reading lane state.</div>
 
 <h2>Open pull requests</h2>
 <div class="bar">
@@ -93,11 +95,11 @@ button{cursor:pointer}
 <h2>Reading the drift column</h2>
 <div class="card">
 <p><span class="badge b-ok">current</span> The merge-base is the base branch tip.</p>
-<p><span class="badge b-ok">disjoint</span> The tip moved, but never touched this change's paths. The reviewed bytes compose onto the tip exactly, so no new carrier is needed for custody.</p>
+<p><span class="badge b-ok">disjoint</span> The tip moved, but never touched this change's paths. The changed bytes compose onto the tip exactly, so no new carrier is needed.</p>
 <p><span class="badge b-warn">overlap</span> The tip changed paths this change carries. Those paths are listed.</p>
 <p><span class="badge b-idle">contained</span> The head adds nothing beyond its merge-base with the tip.</p>
 <p><span class="badge b-idle">unknown</span> The producer held no merge-base.</p>
-<p class="muted">Verdict fields are parsed from review text (first draft parser). They report what reviewers wrote; this page adds no verdict of its own.</p>
+<p class="muted">Historical verdict fields report what was written on the current head. They are observations; agent peer review is not required to land work.</p>
 </div>
 </main>
 <script>
@@ -107,6 +109,7 @@ button{cursor:pointer}
     "https://raw.githubusercontent.com/woahwhattheheck/commons/state/coordination/coordination.json";
   var LANES = params.get("lanes") || SRC.replace(/coordination\.json(\?.*)?$/, "coordination-lanes.json");
   var data = null;
+  var laneError = null, loading = false;
 
   function el(tag, cls, text) {
     var node = document.createElement(tag);
@@ -172,6 +175,10 @@ button{cursor:pointer}
   function renderSeveral() {
     var box = document.getElementById("several");
     box.textContent = "";
+    if (laneError) {
+      box.appendChild(el("span", "", "Lane state unread: " + laneError + ". Duplicate carriers are not measured."));
+      return;
+    }
     var lanes = (data.lanes || []).filter(function (l) { return l.state === "OPEN" && l.open.length > 1; });
     if (!lanes.length) { box.appendChild(el("span", "muted", "None right now.")); return; }
     lanes.forEach(function (l) {
@@ -241,6 +248,7 @@ button{cursor:pointer}
       tr.appendChild(ht);
       var lane = laneOf(p.number);
       var lt = el("td", "muted");
+      if (laneError) lt.textContent = "unread";
       if (lane && lane.chain.length > 1) lt.textContent = lane.chain.map(function (n) { return "#" + n; }).join(" → ");
       tr.appendChild(lt);
       tr.appendChild(el("td", "muted", ago(p.updated_at)));
@@ -250,8 +258,10 @@ button{cursor:pointer}
   }
 
   function render() {
+    var age = (Date.now() - Date.parse(data.observed_at)) / 1000;
+    var freshness = !Number.isFinite(age) || age < -300 ? "UNKNOWN" : age >= 600 ? "STALE" : "CURRENT";
     document.getElementById("age").textContent =
-      "observed " + ago(data.observed_at) + " by " + ((data.producer || {}).seat || "unknown") +
+      freshness + " · observed " + ago(data.observed_at) + " by " + ((data.producer || {}).seat || "unknown") +
       ((data.degraded || []).length ? " · degraded: " + data.degraded.join(", ") : "");
     renderStats();
     renderSeveral();
@@ -264,21 +274,34 @@ button{cursor:pointer}
 
   function getJSON(src) {
     var url = src + (src.indexOf("?") >= 0 ? "&" : "?") + "t=" + Date.now();
-    return fetch(url, { cache: "no-store" }).then(function (r) {
+    return fetch(url, { cache: "no-store", signal: AbortSignal.timeout(12000) }).then(function (r) {
       if (!r.ok) throw new Error("HTTP " + r.status + " for " + src);
       return r.json();
     });
   }
 
-  function load() {
+  async function load() {
+    if (loading) return;
+    loading = true;
+    document.getElementById("reload").disabled = true;
     document.getElementById("err").textContent = "";
-    Promise.all([getJSON(SRC), getJSON(LANES).catch(function () { return { lanes: [] }; })])
-      .then(function (both) {
-        data = both[0];
-        data.lanes = both[1].lanes || [];
-        render();
-      })
-      .catch(function (e) { document.getElementById("err").textContent = "could not read state: " + e.message; });
+    try {
+      var both = await Promise.all([getJSON(SRC), getJSON(LANES)
+        .then(function (value) { return { value: value }; })
+        .catch(function (error) { return { error: error.message }; })]);
+      data = both[0];
+      var lanes = both[1].value;
+      laneError = both[1].error || (!Array.isArray(lanes && lanes.lanes) ? "lane rows missing" : null);
+      if (!laneError && lanes.observed_at !== data.observed_at) laneError = "snapshot timestamps differ; refresh to reconcile";
+      data.lanes = laneError ? [] : lanes.lanes;
+      render();
+    } catch (e) {
+      document.getElementById("err").textContent = "Could not refresh state: " + e.message +
+        (data ? ". Previous observation remains displayed." : ". No state is available.");
+    } finally {
+      loading = false;
+      document.getElementById("reload").disabled = false;
+    }
   }
 
   ["q", "drift", "base", "hosted"].forEach(function (id) {
