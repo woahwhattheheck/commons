@@ -113,6 +113,34 @@ retain their existing behavior. The Work editor sends the revision it displayed,
 keeps a rejected draft in place, and closes after a confirmed save. This protects
 owner directions, not freshness of the separate provider observation.
 
+## Canonical task visibility
+
+The Work view also reads `GET /api/swarm/tasks?limit=1000`. This is the task
+projection from `state/claims`, separate from the provider records returned by
+`/api/work`. It shows lifecycle, worker liveness and heartbeat, recovery and
+reconciliation needs, next action, blockers, provider errors, and landed evidence.
+Mutations continue through the [shared task runtime](../../host/swarm_runtime/README.md);
+the browser panel only reads status.
+
+Lifecycle totals cover the full projection. Search and lifecycle filters cover
+at most 1,000 returned tasks, with at most 200 matching rows displayed. The panel
+names both limits and incomplete source coverage, so an empty filtered result
+does not establish an empty or fully observed queue. Projection read time does
+not make the underlying provider observations current.
+
+Each task key has an exact-task link: `?swarm_task=<URL-encoded-task-key>#work`.
+Canonical Feed events link to that current task state while retaining the original
+event link. An exact-task link searches all lifecycle states, including shipped
+work; a task outside the returned observation remains explicitly unobserved.
+Editing the search clears the exact-task URL selection.
+
+Visible Work reads reuse existing refresh/navigation events and coalesce overlaps.
+Failed reads retain the last successful snapshot, and server `retry_after` values
+pause further reads until their deadline. A projection observation ages to stale
+after 90 seconds even if surrounding refresh signals stop; source coverage has its
+own clocks and may already be partial. Landing these UI files does not establish
+that an owner-host process loaded them.
+
 ## Live cash
 
 Verified product pages only — no invented Stripe links.
