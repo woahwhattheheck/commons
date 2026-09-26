@@ -1,8 +1,6 @@
 {
  "note": "paths each open pull request changes since its merge-base (first 40; drift --pr N prints all)",
- "observed_at": "2026-09-26T10:09:41Z",
- "prs": [
-  {"number":29880,"path_count":1,"paths":["src/services/bounty_resolution.ts"]}
- ],
+ "observed_at": "2026-09-26T14:41:57Z",
+ "prs": [],
  "schema": "commons-coordination-paths/v1"
 }
