@@ -102,7 +102,13 @@ class Runtime:
     def __init__(self, root, *, store=None, state_dir=None):
         self.root = Path(root).resolve()
         self.store = store or GitStore(self.root)
-        self.state_dir = Path(state_dir) if state_dir else self.root / ".git" / "swarm-cache"
+        if state_dir:
+            self.state_dir = Path(state_dir)
+        else:
+            # A linked worktree's .git is a file. Share the cache across local
+            # worktrees through Git's actual common directory.
+            common = Path(self.store.git.out("rev-parse", "--git-common-dir").strip())
+            self.state_dir = (common if common.is_absolute() else self.root / common) / "swarm-cache"
         self.state_dir.mkdir(parents=True, exist_ok=True)
 
     def _dispatch_facts(self, action, payload, moment):
@@ -268,7 +274,17 @@ class Runtime:
             if old:
                 if old["request_hash"] != request_hash:
                     raise ValueError("operation_id reused with different payload")
-                return {**old["result"], "replayed": True}
+                # Preserve the operation's assignments without presenting an
+                # obsolete ACTIVE receipt as current custody after shipment or
+                # recovery. A retry never takes an additional task.
+                current_view = _project(state, moment)
+                result = copy.deepcopy(old["result"])
+                for field in ("task", "next"):
+                    prior_task = result.get(field)
+                    prior_key = prior_task.get("task_key") if isinstance(prior_task, dict) else None
+                    if prior_key in current_view["tasks"]:
+                        result[field] = context_bundle(current_view["tasks"][prior_key], state["events"])
+                return {**result, "replayed": True, "canonical_at": moment}
             if worker:
                 descriptor = dict(payload.get("seat") or {})
                 descriptor.update(seat=worker, heartbeat=moment)

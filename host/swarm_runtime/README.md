@@ -61,6 +61,10 @@ remain authoritative. Saturated callers receive a positive-jitter retry boundary
 Rate-limit deferrals carry retry information; refresh does
 not sleep while holding a worker. CLI `--max-calls` accepts 0–20, default 4.
 
+Provider refresh and ingestion locks work on Windows and Unix using the same
+one-byte `msvcrt` / `flock` pattern as the command center. They release when a
+process exits; lock contention and an unavailable lock are reported separately.
+
 `sync --cached` ingests existing evidence without provider refresh. `status` and
 heartbeat do not refresh GitHub REST data. Dispatch and terminal operations may
 refresh exact candidate identifiers within a four-call budget; canonical claims
@@ -68,7 +72,8 @@ still use git. `status --fresh` refreshes the claims branch, not providers.
 `sync --work-snapshot`, `--facts` and `--events` accept saved JSON inputs.
 
 Without `--url`, the CLI uses git and defaults its provider cache to
-`.git/swarm-cache`; `--state-dir` overrides that path. Separate VMs with separate
+`swarm-cache` in Git's common directory, shared by linked worktrees;
+`--state-dir` overrides that path. Separate VMs with separate
 state directories **do not share a global provider budget**. Pointing every worker
 at its own local cache defeats fleet request coalescing.
 

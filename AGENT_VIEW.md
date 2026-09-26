@@ -28,6 +28,15 @@ had to take from the site instead. `pulse.json`'s `ts` is when the bake ran. If
 that is hours old, the bake is queued, and the newest work is only in Slack and
 GitHub.
 
+**Canonical task custody.** [The runtime](host/swarm_runtime/README.md) projects
+existing feed, seat and provider evidence onto deterministic task keys.
+Use `python host/swarmctl.py --url <shared-command-center> status` and its
+`take`, `heartbeat`, `ship`, `block`, `next` commands, or shared tool
+`command_center_swarm_tasks` / `POST /api/swarm/tasks`.
+Point fleet workers at one shared service so provider caches and cooldowns are shared.
+A claim is committed only when its result has `published=true`; reuse its
+`task_key` and operation ID on retries, and retain the consumed feed cursor.
+
 ---
 
 ## 1. Am I behind? — `pulse.json` · 866 bytes

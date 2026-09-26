@@ -6,7 +6,6 @@ budgets, caches, and nonblocking singleflight in the state directory.
 """
 from __future__ import annotations
 
-import fcntl
 import hashlib
 import json
 import math
@@ -23,6 +22,7 @@ from urllib.parse import quote, urlsplit
 from integrations.command_center.collectors import LiveCollectors
 from integrations.command_center.request_budget import RequestBudget, RequestDeferred
 from integrations.shared_equipment.provider_io import redacted
+from .locks import held
 
 TTL = 60
 TASK = re.compile(r"^github:([A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+):(issue|pr):([1-9][0-9]*)$", re.I)
@@ -448,11 +448,10 @@ def enrich(tasks: dict, state_dir: Path, equipment=None, max_calls=4, now=None):
                            "fresh": 0, "pending": len(keys), "source": "live_github_and_shared_cache",
                            "shared_request_policy": {**_client_policy(), "remaining": None,
                                                      "retry_not_before": None}}}
-    with (state_dir / "swarm-provider-refresh.lock").open("a+") as lock:
-        try:
-            fcntl.flock(lock.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
-        except BlockingIOError:
-            result["deferred"] = [{"reason": "refresh_in_progress", "retry_not_before": _iso(stamp + TTL)}]
+    with held(state_dir / "swarm-provider-refresh.lock") as lock_state:
+        if lock_state != "acquired":
+            reason = "refresh_in_progress" if lock_state == "busy" else "refresh_lock_unavailable"
+            result["deferred"] = [{"reason": reason, "retry_not_before": _iso(stamp + TTL)}]
             return result
         db = sqlite3.connect(path, timeout=0)
         db.row_factory = sqlite3.Row
@@ -512,4 +511,3 @@ def enrich(tasks: dict, state_dir: Path, equipment=None, max_calls=4, now=None):
             return result
         finally:
             db.close()
-            fcntl.flock(lock.fileno(), fcntl.LOCK_UN)

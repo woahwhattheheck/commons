@@ -84,15 +84,12 @@ def after_ingest(center):
     explicit sync retries after contention; a failed task sync never falsifies
     the already-stored provider observation.
     """
-    import fcntl
+    from host.swarm_runtime.locks import LockUnavailable, release, take
     try:
-        handle = (center.state_dir / "swarm-ingest.lock").open("a+b")
-    except OSError:
-        return {"started": False, "reason": "state_directory_unavailable"}
-    try:
-        fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
-    except BlockingIOError:
-        handle.close()
+        handle = take(center.state_dir / "swarm-ingest.lock")
+    except LockUnavailable:
+        return {"started": False, "reason": "ingest_lock_unavailable"}
+    if handle is None:
         return {"started": False, "reason": "already_running"}
 
     def run():
@@ -107,12 +104,11 @@ def after_ingest(center):
             (center.state_dir / "swarm-last-sync.json").write_text(
                 json.dumps({"ok": False, "error": type(exc).__name__}), encoding="utf-8")
         finally:
-            fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
-            handle.close()
+            release(handle)
     try:
         threading.Thread(target=run, daemon=True, name="commons-swarm-ingest").start()
     except Exception:
-        handle.close()
+        release(handle)
         return {"started": False, "reason": "sync_start_failed"}
     return {"started": True}
 
