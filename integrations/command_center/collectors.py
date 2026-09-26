@@ -11,9 +11,10 @@ import hashlib
 import json
 import re
 import subprocess
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import Future, ThreadPoolExecutor, as_completed
 from datetime import datetime, timedelta, timezone
 from time import monotonic
+from threading import Lock
 from urllib.parse import quote, urlencode, urlsplit
 
 from .request_budget import RequestBudget, RequestDeferred
@@ -83,6 +84,7 @@ class LiveCollectors:
         self.max_workers = self._bound(self.config.get("max_workers", 4), 1, 4)
         self.refresh_deadline_seconds = self._bound(self.config.get("refresh_deadline_seconds", 180), 1, 600)
         self.cancel_event, self.deadline = cancel_event, None
+        self._document_heads, self._document_heads_lock = {}, Lock()
         self.request_budget = RequestBudget(getattr(store, "state_dir", None),
             fallback_seconds=self.config.get("rate_limit_fallback_seconds", 60))
         self.lookback_days = self._bound(self.github_config.get("lookback_days", 14), 1, 90)
@@ -339,6 +341,29 @@ class LiveCollectors:
             json.dumps(payload, sort_keys=True, default=str).encode()).hexdigest()
         return batch
 
+    def _document_head(self, repo, ref):
+        """Resolve a repository/ref once per refresh, including parallel readers."""
+        self._check_deadline()
+        key = (repo, ref)
+        with self._document_heads_lock:
+            pending = self._document_heads.get(key)
+            leader = pending is None
+            if leader:
+                pending = self._document_heads[key] = Future()
+        if leader:
+            try:
+                head = self._github("repos/" + repo + "/commits/" + quote(ref, safe=""))
+                sha = head.get("sha") if isinstance(head, dict) else None
+                if not isinstance(sha, str) or not re.fullmatch(r"[0-9a-f]{40}", sha):
+                    raise SourceFailure("github_commit_shape")
+                pending.set_result(sha)
+            except BaseException as exc:
+                # Wake every waiter on failure as well; do not multiply a
+                # failed provider read by the number of configured documents.
+                pending.set_exception(exc)
+                raise
+        return pending.result()
+
     def _document(self, spec):
         repo, path = self._repository(spec["repository"]), spec["path"]
         if not isinstance(path, str) or path.startswith("/") or ".." in path.split("/"):
@@ -346,10 +371,7 @@ class LiveCollectors:
         source = self._source("github:document:" + repo + ":" + path, "GitHub",
                               spec.get("label", path), {"repository": repo, "path": path})
         ref = spec.get("ref", "main")
-        head = self._github("repos/" + repo + "/commits/" + quote(ref, safe=""))
-        sha = head.get("sha")
-        if not isinstance(sha, str) or not re.fullmatch(r"[0-9a-f]{40}", sha):
-            raise SourceFailure("github_commit_shape")
+        sha = self._document_head(repo, ref)
         document = self._github("repos/" + repo + "/contents/" + quote(path, safe="/") + "?ref=" + sha)
         if document.get("encoding") != "base64" or not isinstance(document.get("content"), str):
             raise SourceFailure("github_document_encoding")
@@ -401,6 +423,10 @@ class LiveCollectors:
         # Cooperative deadline: in-flight provider reads finish under their own
         # timeout, and the executor is joined before the caller releases its lock.
         self.deadline = monotonic() + self.refresh_deadline_seconds
+        # A collector may be reused. Never carry a branch pin into a later
+        # refresh after the upstream ref may have advanced.
+        with self._document_heads_lock:
+            self._document_heads.clear()
         results, tasks, deferred = [], [], []
         if self.github_config.get("enabled", True):
             identity_source = self._source("github:identity", "GitHub", "Existing GitHub account", {})
