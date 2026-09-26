@@ -78,6 +78,10 @@
     "commits_in_delta": 236,
     "non_merge_commits_in_delta": 170,
     "changed_paths_in_delta": 519,
+    "terminal_current_main_sha": "53f4e8e254411c0124a69c06ddd97632ca694c19",
+    "commits_in_delta_to_terminal": 237,
+    "non_merge_commits_in_delta_to_terminal": 171,
+    "changed_paths_in_delta_to_terminal": 523,
     "remote_branches_observed": 4565,
     "remote_branch_pages": 47,
     "prior_terminal_slack_ts": "1790429462.972139",
@@ -129,7 +133,7 @@
   "next_watermark": {
     "observed_at": "2026-09-26T19:07:17Z",
     "activation_base_main_sha": "ef0345cd00c801656526ef4a4453dc52dabfdabf",
-    "current_main_sha": "ef0345cd00c801656526ef4a4453dc52dabfdabf",
+    "current_main_sha": "53f4e8e254411c0124a69c06ddd97632ca694c19",
     "latest_delta_slack_ts": "1790446724.849269",
     "source_merge_commit": "21cb81c5f51d8dc958277eed5ba9bc684c8217e0",
     "remote_branches_observed": 4565
