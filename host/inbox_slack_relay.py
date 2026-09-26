@@ -375,6 +375,9 @@ class State:
     def set(self, key: str, value: Any):
         self.db.execute("INSERT OR REPLACE INTO meta VALUES (?,?)", (key, str(value)))
         self.db.commit()
+    def discard(self, key: str):
+        self.db.execute("DELETE FROM meta WHERE key=?", (key,))
+        self.db.commit()
     def close(self):
         self.db.close()
 
@@ -386,22 +389,53 @@ class Delivery:
         self.min_interval, self.next_post = min_interval, 0.0
 
     def find(self, channel: str, marker: str, attempted: float, thread: str = "") -> str:
-        cursor = ""
+        # Resume a bounded scan instead of rereading its first pages forever.
+        # Freeze the time window so a growing channel cannot move those pages.
+        scan_key = "slack.scan." + digest(json.dumps([channel, thread, marker, attempted]))
+        retained = self.state.get(scan_key)
+        resumed = bool(retained)
+        scan = json.loads(retained) if retained else {
+            "cursor": "", "oldest": str(max(0, attempted - 120)), "latest": str(time.time()),
+        }
+        if retained and not scan["cursor"]:
+            # No page in this window has been consumed yet. Refresh its upper
+            # bound now, including when a catch-up window exhausted the budget.
+            scan["latest"] = str(time.time())
+            resumed = False
+        self.state.set(scan_key, json.dumps(scan))
         for _ in range(self.max_pages):
-            data = {"channel": channel, "limit": 100, "oldest": str(max(0, attempted - 120))}
-            if cursor:
-                data["cursor"] = cursor
+            data = {"channel": channel, "limit": 100, "oldest": scan["oldest"],
+                    "latest": scan["latest"], "inclusive": "true"}
+            if scan["cursor"]:
+                data["cursor"] = scan["cursor"]
             if thread:
                 data["ts"] = thread
-            result = self.slack("conversations.replies" if thread else "conversations.history", data)
+            try:
+                result = self.slack("conversations.replies" if thread else "conversations.history", data)
+            except RelayError as exc:
+                if exc.code == "slack_invalid_cursor":
+                    # Expired provider cursors require a fresh scan, never a send.
+                    self.state.discard(scan_key)
+                raise
             for message in result.get("messages", []):
                 if marker in message.get("text", ""):
+                    self.state.discard(scan_key)
                     return str(message["ts"])
             cursor = result.get("response_metadata", {}).get("next_cursor", "")
             if not cursor and not result.get("has_more"):
+                if resumed:
+                    # Check messages arriving between polls before concluding
+                    # absence. Inclusive endpoints preserve the window boundary.
+                    scan = {"cursor": "", "oldest": scan["latest"], "latest": str(time.time())}
+                    self.state.set(scan_key, json.dumps(scan))
+                    resumed = False
+                    continue
+                self.state.discard(scan_key)
                 return ""
             if not cursor:
                 raise RelayError("slack_reconcile_incomplete")
+            scan["cursor"] = cursor
+            self.state.set(scan_key, json.dumps(scan))
         raise RelayError("slack_reconcile_page_limit")
 
     def post(self, channel: str, text: str, thread: str = "", *, budgeted: bool = True) -> str:

@@ -118,13 +118,22 @@ untouched. There is no automatic outbound email, PR mutation, or payment action.
 
 ## State and retry behavior
 
-SQLite contains hashes, timestamps and counters, not message bodies or tokens.
+SQLite contains hashes, timestamps, counters and Slack pagination cursors, not
+message bodies or credentials.
 Each part is journaled before posting. After an uncertain write the next run
 reconciles its marker in Slack before repeating the effect. Root and part markers
 also recover delivery after a lost ledger, subject to Slack retention/history
 access and bounded pagination. This is best-effort duplicate prevention, not a
 cross-provider transactional exactly-once guarantee. Do not delete/move Slack
 messages or change channel IDs without a deliberate state migration.
+
+Reconciliation checkpoints the next cursor inside a fixed timestamp window.
+Reaching the page budget reports `slack_reconcile_page_limit`; the next poll
+continues the scan instead of restarting its first pages. Before a resumed scan
+can conclude that a marker is absent, it also checks messages that arrived
+between polls. Completed searches discard their checkpoint. An expired cursor
+clears only that search checkpoint and reports the provider error; a later poll
+restarts the search without treating the error as permission to repeat a send.
 
 Health uses a stable `relay.health` destination marker too. The first health
 send records its attempt before posting; after an interrupted send, the next
