@@ -400,10 +400,11 @@ class Delivery:
                 raise RelayError("slack_reconcile_incomplete")
         raise RelayError("slack_reconcile_page_limit")
 
-    def post(self, channel: str, text: str, thread: str = "") -> str:
-        if self.posts >= self.max_posts:
+    def post(self, channel: str, text: str, thread: str = "", *, budgeted: bool = True) -> str:
+        if budgeted and self.posts >= self.max_posts:
             raise RelayError("delivery_budget_pending")
-        self.posts += 1
+        if budgeted:
+            self.posts += 1
         time.sleep(max(0.0, self.next_post - time.monotonic()))
         self.next_post = time.monotonic() + self.min_interval
         data = {"channel": channel, "text": text, "mrkdwn": False, "parse": "none",
@@ -415,6 +416,38 @@ class Delivery:
         if not result.get("ts"):
             raise RelayError("slack_missing_receipt", uncertain=True)
         return str(result["ts"])
+
+    def deliver_health(self, channel: str, text: str, thread: str = "") -> str:
+        """Recover an interrupted initial health post before updating it.
+
+        The marker identifies the destination, not this poll's changing report.
+        Older ledgers retain their health_ts; their next update adds the marker.
+        """
+        marker = "relay.health=" + digest(channel + "\0" + thread)
+        text += "\n\n" + marker
+        ts = self.state.get("health_ts")
+        if not ts:
+            attempted = float(self.state.get("health_attempted", "0"))
+            ts = self.find(channel, marker, attempted, thread)
+            if ts:
+                # Keep the recovered receipt even if the following update fails.
+                self.state.set("health_ts", ts)
+        if ts:
+            time.sleep(max(0.0, self.next_post - time.monotonic()))
+            self.next_post = time.monotonic() + self.min_interval
+            self.slack("chat.update", {
+                "channel": channel, "ts": ts, "text": text, "mrkdwn": False,
+                "parse": "none", "link_names": False,
+                "unfurl_links": False, "unfurl_media": False,
+            })
+        else:
+            # Persist before the remote effect: a timeout or process exit must
+            # reconcile the same destination on the next run, not create a root.
+            self.state.set("health_attempted", time.time())
+            # Health must still report a source backlog after its post cap.
+            ts = self.post(channel, text, thread, budgeted=False)
+            self.state.set("health_ts", ts)
+        return ts
 
     def deliver(self, event: Event, channel: str) -> int:
         item = self.state.db.execute("SELECT channel,ts,attempted FROM items WHERE key=?", (event.key,)).fetchone()
@@ -708,18 +741,7 @@ def run(config: dict, state: State, providers: Providers) -> dict:
               "\nDelivered is not resolved. CLAIM / DONE + evidence / BLOCKED live in each source thread. "
               "Private GitHub notifications and unclassified mail require a separate permitted review; zero public deliveries is not an empty inbox. "
               "A receipt older than 30 minutes is STALE even if its stored status says LIVE. Attachments are listed, not read.")
-    data = {"channel": config["health_channel"], "text": health, "mrkdwn": False,
-            "parse": "none", "unfurl_links": False, "unfurl_media": False}
-    time.sleep(max(0.0, delivery.next_post - time.monotonic()))
-    health_ts = state.get("health_ts")
-    if health_ts:
-        data["ts"] = health_ts
-        providers.slack("chat.update", data)
-    else:
-        if config.get("health_thread"):
-            data["thread_ts"] = config["health_thread"]
-        result = providers.slack("chat.postMessage", data)
-        state.set("health_ts", result["ts"])
+    delivery.deliver_health(config["health_channel"], health, config.get("health_thread") or "")
     return report
 
 
