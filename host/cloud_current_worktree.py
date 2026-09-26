@@ -264,7 +264,7 @@ def unique_ahead(cwd, tip="HEAD", base="origin/main"):
 
 
 def show_at(cwd, rev, rel):
-    spec = "%s:%s" % (rev, rel.replace("\\", "/"))
+    spec = "%s:%s" % (rev, rel.replace(os.sep, "/"))
     rc, _, _ = git(["cat-file", "-e", spec], cwd=cwd, check=False)
     if rc != 0:
         return None
@@ -275,38 +275,42 @@ def show_at(cwd, rev, rel):
 
 
 def name_status(cwd, a, b):
-    rc, out, _ = git_text(["diff", "--name-status", "--no-renames", a, b], cwd=cwd, check=False)
-    rows = []
+    rc, out, _ = git(["diff", "--name-status", "--no-renames", "-z", a, b], cwd=cwd, check=False)
     if rc != 0:
-        return rows
-    for line in out.splitlines():
-        line = line.strip("\n")
-        if not line:
-            continue
-        parts = line.split("\t", 1)
-        if len(parts) != 2:
-            continue
-        rows.append((parts[0].strip(), parts[1]))
-    return rows
+        return []
+    fields = out.split(b"\0")
+    if fields and fields[-1] == b"":
+        fields.pop()
+    if len(fields) % 2:
+        raise CloudCurrentError("incomplete NUL-delimited git name-status output")
+    return [(os.fsdecode(fields[index]), os.fsdecode(fields[index + 1]))
+            for index in range(0, len(fields), 2)]
 
 
 def porcelain(cwd):
-    rc, out, _ = git_text(["status", "--porcelain=v1", "-uall"], cwd=cwd, check=False)
+    # -z gives literal filenames and uses a separate original-path record for
+    # renames/copies. Line parsing confuses newlines, Git's quoting, and an
+    # ordinary filename that happens to contain the text " -> ".
+    rc, out, _ = git(["status", "--porcelain=v1", "-z", "-uall"], cwd=cwd, check=False)
     if rc != 0:
         return []
+    fields = iter(out.split(b"\0"))
     rows = []
-    for line in out.splitlines():
-        if len(line) < 4:
+    for field in fields:
+        if not field:
             continue
-        rel = line[3:]
-        if rel.startswith('"') and rel.endswith('"'):
-            rel = rel[1:-1].encode("utf-8").decode("unicode_escape")
-        if " -> " in rel:
-            rel = rel.split(" -> ", 1)[1]
-        rel = rel.replace("\\", "/")
+        if len(field) < 4 or field[2:3] != b" ":
+            raise CloudCurrentError("incomplete NUL-delimited git status output")
+        xy = os.fsdecode(field[:2])
+        rel = os.fsdecode(field[3:])
+        if "R" in xy or "C" in xy:
+            # The first filename is the destination in porcelain's -z form.
+            # Consume its source even when the destination is session metadata.
+            if not next(fields, b""):
+                raise CloudCurrentError("git status rename is missing its source path")
         if rel.startswith(SESSION_DIR + "/") or rel == SESSION_DIR:
             continue
-        rows.append((line[:2], rel))
+        rows.append((xy, rel))
     return rows
 
 
@@ -751,7 +755,6 @@ def refresh(worktree, peer=None):
         return write_receipt(worktree, receipt)
     head = receipt["head"] or "HEAD"
     for status, rel in name_status(worktree, head, "origin/main"):
-        rel = rel.replace("\\", "/")
         theirs = show_at(worktree, "origin/main", rel)
         base = show_at(worktree, head, rel)
         if rel not in dirty:
@@ -855,7 +858,7 @@ def recover(worktree, receipt_id, peer=None):
     for dirpath, _dirs, filenames in os.walk(files_dir):
         for name in filenames:
             full = os.path.join(dirpath, name)
-            rel = os.path.relpath(full, files_dir).replace("\\", "/")
+            rel = os.path.relpath(full, files_dir).replace(os.sep, "/")
             if is_secret_name(rel):
                 out["actions"].append({"path": rel, "op": "redacted"})
                 continue
@@ -1148,3 +1151,4 @@ def main(argv=None):
 
 if __name__ == "__main__":
     sys.exit(main())
+
