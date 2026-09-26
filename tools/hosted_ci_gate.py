@@ -50,6 +50,64 @@ def unwrap(expr):
     return m.group(1) if m else expr
 
 
+def _boolean_parts(expr, operator):
+    """Split a top-level boolean operator without reading quoted text as code."""
+    parts, start, depth, quoted, i = [], 0, 0, False, 0
+    while i < len(expr):
+        char = expr[i]
+        if char == "'":
+            if quoted and i + 1 < len(expr) and expr[i + 1] == "'":
+                i += 2
+                continue
+            quoted = not quoted
+        elif not quoted:
+            if char == "(":
+                depth += 1
+            elif char == ")":
+                depth -= 1
+                if depth < 0:
+                    return None
+            elif depth == 0 and expr.startswith(operator, i):
+                parts.append(expr[start:i].strip())
+                i += len(operator)
+                start = i
+                continue
+        i += 1
+    if depth or quoted:
+        return None
+    parts.append(expr[start:].strip())
+    return parts if all(parts) else None
+
+
+def has_ci_gate(value):
+    """Prove every passing branch requires explicit opt-in or a manual run.
+
+    A substring is insufficient: `HOSTED_CI != 'on'`, a quoted mention or an
+    unrelated OR branch must not certify automatically billed jobs as gated.
+    Unknown expressions are conservatively wrapped with the standard gate.
+    """
+    expr = unwrap(str(value)).strip()
+    while expr.startswith("(") and expr.endswith(")"):
+        inner = expr[1:-1].strip()
+        if _boolean_parts(inner, "||") is None:
+            break
+        expr = inner
+    alternatives = _boolean_parts(expr, "||")
+    if alternatives is None:
+        return False
+    if len(alternatives) > 1:
+        return all(has_ci_gate(part) for part in alternatives)
+    requirements = _boolean_parts(expr, "&&")
+    if requirements is None:
+        return False
+    if len(requirements) > 1:
+        return any(has_ci_gate(part) for part in requirements)
+    return bool(re.fullmatch(
+        r"(?:vars\.HOSTED_CI\s*==\s*'on'|github\.event_name\s*==\s*'workflow_dispatch')",
+        expr,
+    ))
+
+
 RERUN_LINE = re.compile(r"^(?:\w+=\S*\s+)*python[\w.]*\s.*?(?<!\S)-O+(?!\S)")
 STEP = re.compile(r"^(\s*)- ")
 RUN = re.compile(r"^(\s*)(?:- )?run:\s*(.*?)\s*$")
@@ -171,13 +229,13 @@ def gate_job(body):
             while end < len(body) and (body[end].startswith("      ") or not body[end].strip()):
                 end += 1
             value = " ".join(l.strip() for l in body[n + 1:end] if l.strip())
-        existing = unwrap(value)
-        if "vars.HOSTED_CI" in existing:
+        # Read the scalar as YAML so inline comments and YAML quoting never
+        # become part of the expression inserted inside the new condition.
+        existing = unwrap(str(yaml.safe_load(value)))
+        if has_ci_gate(existing):
             return body
         merged = f"    if: ${{{{ ({GATE}) && ({existing}) }}}}"
         return body[:n] + [merged] + body[end:]
-    if any("vars.HOSTED_CI" in l for l in body):
-        return body
     return [f"    if: ${{{{ {GATE} }}}}"] + body
 
 
@@ -195,7 +253,7 @@ def strip_ifs(doc):
 
 def ungated_jobs(doc):
     return [name for name, job in (doc.get("jobs") or {}).items()
-            if "vars.HOSTED_CI" not in str((job or {}).get("if", ""))]
+            if not has_ci_gate((job or {}).get("if", ""))]
 
 
 def edit(text, drop):
