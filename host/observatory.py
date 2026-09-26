@@ -8,7 +8,9 @@ from __future__ import annotations
 import json
 import math
 import os
+import stat
 import sys
+import tempfile
 from datetime import datetime, timezone
 from typing import Any
 
@@ -223,8 +225,25 @@ def write_snapshot(root: str | None = None, *, now: str | None = None) -> dict[s
     prev = _read_json(path, {})
     snap = hub_pages._preserve_live_cash(prev if isinstance(prev, dict) else {}, snap, root)
     payload = json.dumps(snap, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
-    with open(path, "w", encoding="utf-8") as handle:
-        handle.write(payload)
+    try:
+        mode = stat.S_IMODE(os.stat(path).st_mode)
+    except FileNotFoundError:
+        mode = 0o644
+    # Stage in the destination directory so readers see either complete bake.
+    # A failed write leaves the last published snapshot intact.
+    fd, staged = tempfile.mkstemp(prefix=".observatory-", suffix=".json.tmp", dir=root)
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as handle:
+            os.chmod(staged, mode)
+            handle.write(payload)
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(staged, path)
+    finally:
+        try:
+            os.unlink(staged)
+        except FileNotFoundError:
+            pass
     return snap
 
 
