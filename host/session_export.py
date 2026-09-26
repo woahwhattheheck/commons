@@ -17,6 +17,11 @@ import os
 import subprocess
 import sys
 
+try:
+    from host.git_source_capsules import _git_env
+except ModuleNotFoundError:
+    from git_source_capsules import _git_env
+
 
 def classify(row):
     """Keep known local work visible even when a comparison is unavailable."""
@@ -67,16 +72,20 @@ def measure_from_git_text(status_text, rev_list_text, ahead_text="0"):
 
 
 def _run(root, args):
-    env = dict(os.environ, GIT_OPTIONAL_LOCKS="0", GIT_TERMINAL_PROMPT="0", GIT_NO_LAZY_FETCH="1")
+    env = _git_env()
+    env["GIT_TERMINAL_PROMPT"] = "0"
     try:
         proc = subprocess.run(
             args, cwd=root, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-            text=True, encoding="utf-8", errors="surrogateescape", check=False,
+            check=False,
             timeout=30, env=env,
         )
     except (OSError, subprocess.TimeoutExpired) as error:
         return 2, "", str(error)
-    return proc.returncode, proc.stdout, proc.stderr
+    # Universal-newline decoding would change CR bytes inside NUL-delimited
+    # filenames. Decode bytes directly so the inventory remains literal.
+    return (proc.returncode, proc.stdout.decode("utf-8", "surrogateescape"),
+            proc.stderr.decode("utf-8", "surrogateescape"))
 
 
 def _dirty_paths(status_text):
@@ -109,14 +118,14 @@ def measure_clone(root, main_ref="origin/main", max_items=200):
     def git(*args):
         return _run(root, ["git", *args])
 
-    def required(label, *args):
+    def required(label, *args, strip=True):
         code, out, err = git(*args)
         if code:
             row["errors"].append(label + ": " + (err.strip() or "Git exited %s" % code))
             return None
-        return out.strip()
+        return out.strip() if strip else out.removesuffix("\n")
 
-    top = required("repository", "rev-parse", "--show-toplevel")
+    top = required("repository", "rev-parse", "--show-toplevel", strip=False)
     if top is None:
         row["error"] = "; ".join(row["errors"])
         return row
