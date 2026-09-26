@@ -23,7 +23,7 @@ SCHEMA = "commons-usage-window/v1"
 METER_SCOPE = "codex-work-weekly-plan"
 HIGH_BURN = "HIGH-BURN"
 CONSERVATION = "CONSERVATION"
-KINDS = ("meter", "unavailable", "explicit_reset_applied")
+KINDS = ("meter", "unavailable", "explicit_reset_applied", "public_signal")
 MIN_CONSUMED_POINTS = 5.0
 MIN_REPLENISHMENT_POINTS = 5.0
 REPLENISHED_REMAINING = 95.0
@@ -143,6 +143,8 @@ def record(state, *, account, meter_scope, observed_at, kind, source, evidence,
         raise UsageError("observation predates this window")
     if type(trusted) is not bool or type(account_specific) is not bool:
         raise UsageError("trust and account-specific flags must be booleans")
+    if kind == "public_signal" and (account_specific or ordinary_reset_at is not None):
+        raise UsageError("public signals cannot establish this account's reset or ordinary deadline")
     if kind == "meter":
         if (type(remaining_percent) not in (int, float)
                 or not math.isfinite(remaining_percent)
@@ -219,6 +221,10 @@ def status(state, now=None):
     current = datetime.now(timezone.utc) if now is None else timestamp(now)
     observations = state["observations"]
     last = observations[-1] if observations else None
+    attempt = next((row for row in reversed(observations)
+                    if row["kind"] != "public_signal"), None)
+    signal = next((row for row in reversed(observations)
+                   if row["kind"] == "public_signal"), None)
     meter = next((row for row in reversed(observations)
                   if row["kind"] == "meter" and row["trusted"] and row["account_specific"]), None)
     age = (current - timestamp(meter["observed_at"])).total_seconds() if meter else None
@@ -229,13 +235,15 @@ def status(state, now=None):
         warnings.append("The status clock is earlier than the recorded meter observation.")
     elif age > 180:
         warnings.append("The last weekly meter observation is stale; retry the legitimate reading method.")
-    if last and last["kind"] == "unavailable":
-        warnings.append("The latest meter-reading attempt was unavailable: " + last["evidence"])
+    if attempt and attempt["kind"] == "unavailable":
+        warnings.append("The latest meter-reading attempt was unavailable: " + attempt["evidence"])
+    if signal:
+        warnings.append("Public reports are advisory; they do not confirm this account's reset or postpone meter polling.")
     if state["ordinary_reset_at"] is None:
         warnings.append("Ordinary reset time is unknown; percentage jumps alone cannot prove the special reset.")
     elif current >= timestamp(state["ordinary_reset_at"]):
         warnings.append("An ordinary reset boundary is due or crossed; refresh its timestamp before interpreting replenishment.")
-    next_poll = (timestamp(last["observed_at"] if last else state["created_at"])
+    next_poll = (timestamp(attempt["observed_at"] if attempt else state["created_at"])
                  + timedelta(seconds=state["poll_seconds"]))
     return {
         "MODE": state["mode"],
@@ -244,6 +252,8 @@ def status(state, now=None):
         "USAGE_LAST_SEEN": meter["remaining_percent"] if meter else None,
         "USAGE_TIMESTAMP": meter["observed_at"] if meter else None,
         "LAST_OBSERVATION_TIMESTAMP": last["observed_at"] if last else None,
+        "LAST_METER_ATTEMPT_TIMESTAMP": attempt["observed_at"] if attempt else None,
+        "PUBLIC_SIGNAL": signal,
         "RESET_EVIDENCE": state["reset_evidence"],
         "ALLOW_NEW_WORK": state["mode"] == HIGH_BURN,
         "OBSERVATION_COUNT": len(observations),

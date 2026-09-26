@@ -53,6 +53,16 @@ this exact account, use `--kind explicit_reset_applied --trusted
 --account-specific` and retain its actual source and evidence. A public promise,
 scheduled reset notice, or generic service-restored notice does not qualify.
 
+Record public rollout reports as `--kind public_signal`, with the report URL and
+its actual meaning in the evidence. These are alerts to watch the account; they
+never establish that this account reset. `--account` still identifies the window
+being watched. Do not pass `--account-specific`, a percentage, or an ordinary
+reset deadline for this kind. The command rejects those contradictory inputs.
+
+The latest advisory remains visible as `PUBLIC_SIGNAL`. It cannot change mode,
+hide a failed meter attempt, or advance `NEXT_POLL_AT`. Public reports arriving
+frequently therefore cannot indefinitely postpone checking the actual meter.
+
 ## Transition contract
 
 The initial mode is `HIGH-BURN`. An initial 100% or repeated 100% reading is never
@@ -91,6 +101,8 @@ the preservation needed to checkpoint completed output. Exit 1 means a ledger or
 input error; inspect the diagnostic and preserve existing state. The tool reports
 the mode, last real percentage and timestamp, reset evidence, observation count,
 warnings, and next action.
+`LAST_METER_ATTEMPT_TIMESTAMP` separates account-reading attempts from public
+signals; `LAST_OBSERVATION_TIMESTAMP` includes both kinds of activity.
 
 `NEXT_POLL_AT` and `POLL_DUE` are instructions for the already-running coordinator,
 not a scheduled task. The default interval is 120 seconds and can be set at init
