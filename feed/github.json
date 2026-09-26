@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 9775,
+    "open_issues": 9622,
     "open_pull_requests": 1,
-    "runs_in_progress": 15,
-    "runs_queued": 502
+    "runs_in_progress": 11,
+    "runs_queued": 489
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -39,8 +39,20 @@
   },
   "pulls_listed": 1,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 33.5,
+  "queue_depth_per_runner": 44.5,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ops/observatory-terminal-continuation-20260926",
+      "closed_at": "2026-09-26T13:55:15Z",
+      "head_sha": "6a57b71385856ec5c3d74c7dc4c9dcfb80e99ca3",
+      "merge_commit_sha": "UNKNOWN",
+      "merged_at": "2026-09-26T13:55:15Z",
+      "number": 29996,
+      "state": "MERGED",
+      "title": "Avoid restarting completed work through continuation suggestions"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -200,30 +212,18 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "feat/uiowa-exact-evidence-trace-20260926",
-      "closed_at": "2026-09-26T13:18:48Z",
-      "head_sha": "434c9a590505101e247c4bba1cfc3b338059c11e",
+      "branch": "swarm/monotonic-coordination-state-20260926",
+      "closed_at": "2026-09-26T12:22:46Z",
+      "head_sha": "d78483f2108d9fc63067eaa0bb9076da85568bf8",
       "merge_commit_sha": "UNKNOWN",
-      "merged_at": "2026-09-26T13:18:47Z",
-      "number": 29982,
+      "merged_at": "2026-09-26T12:22:46Z",
+      "number": 29938,
       "state": "MERGED",
-      "title": "Follow exact linked Iowa evidence records in one bounded operation"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "feat/roadmap-combined-dependencies-20260926",
-      "closed_at": "2026-09-26T13:15:32Z",
-      "head_sha": "3e9a45b9d4d870f11fe412072e5c784ac5ef54a2",
-      "merge_commit_sha": "UNKNOWN",
-      "merged_at": "2026-09-26T13:15:32Z",
-      "number": 29981,
-      "state": "MERGED",
-      "title": "Include dependency analysis directly from editable roadmap inputs"
+      "title": "Retain newer coordination snapshots during publication races"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-26T13:49:54Z",
+  "unchanged_since": "2026-09-26T13:57:21Z",
   "undatable_pulls": []
 }
