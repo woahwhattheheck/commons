@@ -35,7 +35,7 @@
       "normal_mode": "PASS_17_OF_17_ASSERTIONS",
       "optimized_mode": "PASS_16_OF_16_ASSERTIONS",
       "python_compile": "PASS",
-      "resource_projection": "PENDING_ACTIVATION_COMMIT",
+      "resource_projection": "PASS_18_OF_18_NORMAL_AND_OPTIMIZED",
       "open_door": "PASS_LOCAL_NO_AUTH"
     },
     "hosted_workflow_state": "NO_RUNS_PRESENT_AT_SOURCE_MERGE_COMMIT",
@@ -63,7 +63,10 @@
     "commits_in_delta": 24,
     "non_merge_commits_in_delta": 23,
     "changed_paths_in_delta": 356,
-    "terminal_current_main_sha": "PENDING_ACTIVATION_MERGE",
+    "terminal_current_main_sha": "527a6f9da75efe312bc30fa6cea705f2e597aac2",
+    "commits_in_delta_to_terminal": 26,
+    "non_merge_commits_in_delta_to_terminal": 25,
+    "changed_paths_in_delta_to_terminal": 360,
     "remote_branches_observed": 4565,
     "remote_branch_pages": 47,
     "prior_terminal_slack_ts": "1790450035.482459",
@@ -110,7 +113,7 @@
   "next_watermark": {
     "observed_at": "2026-09-26T22:04:45Z",
     "activation_base_main_sha": "d62a93ff19b2d6d9124d73de3fc690fe0706f246",
-    "current_main_sha": "PENDING_ACTIVATION_MERGE",
+    "current_main_sha": "527a6f9da75efe312bc30fa6cea705f2e597aac2",
     "latest_delta_slack_ts": "1790457064.418649",
     "source_merge_commit": "975c646886048f3a39c6295a2f4c007c4508aa75",
     "remote_branches_observed": 4565

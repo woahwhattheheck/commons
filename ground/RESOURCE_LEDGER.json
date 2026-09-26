@@ -112,8 +112,8 @@
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
   "slack_ts": "1790457064.418649",
   "snapshot": {
-    "base_main_sha": "d62a93ff19b2d6d9124d73de3fc690fe0706f246",
-    "observed_at": "2026-09-26T22:04:45Z",
+    "base_main_sha": "527a6f9da75efe312bc30fa6cea705f2e597aac2",
+    "observed_at": "2026-09-26T22:09:26Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
