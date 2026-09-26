@@ -1,0 +1,9 @@
+{
+  "key": "command-center-work-revision",
+  "holder": "master2-control-plane",
+  "state": "HELD",
+  "taken_at": "2026-09-26T12:07:07.619Z",
+  "heartbeat_at": "2026-09-26T12:07:07.619Z",
+  "ttl_s": 1800,
+  "note": "WorkstreamStore owner-work compare-and-set; integrations/command_center/workstreams.py, work_item schema in equipment.py, web/work.js save handling, README usage"
+}
