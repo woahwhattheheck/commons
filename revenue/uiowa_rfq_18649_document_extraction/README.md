@@ -42,6 +42,54 @@ python extract.py fixtures/sample.txt > /tmp/sample-text.json
 
 The generated corpus is deliberately synthetic and safe for the public repository.
 
+### Extract a whole evidence folder
+
+```bash
+python batch.py /path/to/evidence /tmp/evidence-extraction-new
+```
+
+The batch command recursively discovers PDF, DOCX, TXT and Markdown files and
+calls the existing extractor for each source. It makes no network calls and
+installs no dependencies. PDF support uses the same optional installed `pypdf`
+package as the single-document command; a failed document does not stop the
+remaining sources from being processed.
+
+Reports retain source-relative paths: `notes/team.md` becomes
+`reports/notes/team.md/extraction.json`. Keeping the original filename, including
+its extension, prevents same-stem documents from replacing each other. Every
+report retains the native segment locators and source byte digest. A parser
+failure produces that source's structured error report, with its source digest
+left unknown rather than fabricated.
+
+`index.json` is written last. It records per-source status, source byte count
+and SHA-256 when available, output paths and SHA-256, segment/warning counts,
+the extractor identity, and discovery coverage. Treat a missing index as an
+interrupted or failed output operation; already written reports are retained.
+A completed index may still describe an incomplete extraction.
+
+| Batch status | Meaning | Exit |
+| --- | --- | ---: |
+| `ok` | All discovered supported documents extracted without warnings | 0 |
+| `partial` | Reports contain native extraction warnings; all documents remain readable | 0 |
+| `incomplete` | At least one unreadable/error document, scan error, untraversed directory link, or no supported documents | 2 |
+
+Unsupported extensions are counted and omitted; no source contents are guessed
+from an extension. Directory symlinks are listed but never traversed. File
+symlinks use the existing extractor's resolution behavior and are marked in the
+index; hashes bind the actual source bytes read. Directory scan errors remain
+visible while other readable branches continue.
+
+The output directory must be new. Existing outputs and all source files remain
+unchanged. Discovery finishes before output creation, so an output folder inside
+the source cannot join the same run. Directory enumeration is not an atomic
+snapshot: files added after discovery are for a later run, and the native reader
+reports ordinary edits observed while reading each document.
+
+The real restored roadmap documentation folder was run through this command:
+three Markdown documents, including its nested generated roadmap, produced
+three readable extraction reports and the final index. No assessment ratings
+or evidence-authority claims are derived by the batch command.
+
 ## Output contract
 
 ```json
