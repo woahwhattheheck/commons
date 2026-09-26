@@ -7,7 +7,7 @@ from __future__ import annotations
 
 import argparse
 import base64
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta, timezone
 import hashlib
 import json
 import os
@@ -57,6 +57,29 @@ class GitHubReadError(RuntimeError):
     def __init__(self, status):
         self.status = status
         super().__init__(f'GitHub read returned HTTP {status}')
+
+
+def split_search_job(job):
+    """Partition an inclusive search range without overlaps or missing seconds."""
+    start, end = job['start'], job['end']
+    if len(start) == len(end) == 10:
+        first, last = date.fromisoformat(start), date.fromisoformat(end)
+        if first < last:
+            middle = first + (last - first) // 2
+            return [{'start': first.isoformat(), 'end': middle.isoformat(), 'page': 1},
+                    {'start': (middle + timedelta(days=1)).isoformat(), 'end': last.isoformat(), 'page': 1}]
+        first = datetime.fromisoformat(start).replace(tzinfo=timezone.utc)
+        last = datetime.fromisoformat(end).replace(tzinfo=timezone.utc) + timedelta(days=1, seconds=-1)
+    else:
+        first = datetime.fromisoformat(start.replace('Z', '+00:00')).astimezone(timezone.utc)
+        last = datetime.fromisoformat(end.replace('Z', '+00:00')).astimezone(timezone.utc)
+    seconds = int((last - first).total_seconds())
+    if seconds <= 0:
+        return None
+    middle = first + timedelta(seconds=seconds // 2)
+    stamp = lambda value: value.isoformat(timespec='seconds').replace('+00:00', 'Z')
+    return [{'start': stamp(first), 'end': stamp(middle), 'page': 1},
+            {'start': stamp(middle + timedelta(seconds=1)), 'end': stamp(last), 'page': 1}]
 
 def token_for(account):
     value=os.environ.get('GH_TOKEN_PRIMARY' if account==ACCOUNTS[0] else 'GH_TOKEN_SECONDARY')
@@ -207,7 +230,24 @@ class Reader:
 
     def init_search(self, kind):
         road = 'search_' + kind
-        if road in self.state['roads']: return
+        if road in self.state['roads']:
+            # Older checkpoints abandoned whole capped days. Recover each one
+            # once, preserving the original gap as historical evidence.
+            slot = self.state['roads'][road]
+            recovered = False
+            for gap in self.state['gaps']:
+                day = gap.get('date')
+                if (gap.get('road') != road or gap.get('reason') != 'search_1000_cap'
+                        or gap.get('resolution') == 'second' or gap.get('requeued_for_subday')
+                        or not isinstance(day, str) or not re.fullmatch(r'\d{4}-\d{2}-\d{2}', day)):
+                    continue
+                if not any(job['start'] == job['end'] == day for job in slot['jobs']):
+                    slot['jobs'].append({'start': day, 'end': day, 'page': 1})
+                gap['requeued_for_subday'] = True
+                slot['complete'], recovered = False, True
+            if recovered:
+                self.save()
+            return
         self.state['active_road'] = road
         profile, _, _ = self.get('/users/' + self.account)
         first = profile['created_at'][:10]
@@ -228,13 +268,12 @@ class Reader:
         data, links, url = self.get('/search/issues', {'q': q, 'per_page': 100, 'page': job['page']})
         total = data.get('total_count', 0)
         if total > 1000:
-            start, end = date.fromisoformat(job['start']), date.fromisoformat(job['end'])
-            if start == end:
-                self.state['gaps'].append({'road': road, 'date': job['start'], 'reason': 'search_1000_cap'})
+            smaller = split_search_job(job)
+            if smaller is None:
+                self.state['gaps'].append({'road': road, 'date': job['start'][:10],
+                    'start': job['start'], 'end': job['end'], 'resolution': 'second', 'reason': 'search_1000_cap'})
                 slot['jobs'].pop(0); self.save(); return None
-            middle = start + (end - start) // 2
-            slot['jobs'][:1] = [{'start': start.isoformat(), 'end': middle.isoformat(), 'page': 1},
-                                {'start': (middle + timedelta(days=1)).isoformat(), 'end': end.isoformat(), 'page': 1}]
+            slot['jobs'][:1] = smaller
             self.save(); return None
         items = data.get('items') or []
         for obj in items:
