@@ -784,7 +784,17 @@ def run(config: dict, state: State, providers: Providers) -> dict:
         raise RelayError("slack_workspace_mismatch")
     delivery = Delivery(state, providers.slack, max_posts=int(config.get("max_posts_per_run", 100)), min_interval=float(config.get("min_post_interval", 1.05)))
     since = state.get("github_since", iso(now - timedelta(days=int(config.get("backfill_days", 14)))))
-    for name, source, channel in [("github", github_events, config["github_channel"]), ("gmail", gmail_events, config["gmail_channel"])]:
+    sources = [("github", github_events, config["github_channel"]), ("gmail", gmail_events, config["gmail_channel"])]
+    if state.get("next_source") == "gmail":
+        sources.reverse()
+    next_source = None
+    for name, source, channel in sources:
+        if delivery.posts >= delivery.max_posts:
+            # No source bodies are needed when this pass cannot deliver them.
+            # Give the unserved source the first turn on the next finite pass.
+            next_source = next_source or name
+            report["errors"][name] = "delivery_budget_pending"
+            continue
         try:
             getter = providers.github if name == "github" else providers.gmail
             events, info = source(getter, config, since, state.get)
@@ -806,11 +816,16 @@ def run(config: dict, state: State, providers: Providers) -> dict:
                     state.set("github_since", iso(now - timedelta(minutes=10)))
         except RelayError as exc:
             report["errors"][name] = exc.code
+            if exc.code == "delivery_budget_pending":
+                next_source = next_source or ("gmail" if name == "github" else "github")
             if exc.retry_after:
                 state.set("retry_after", time.time() + exc.retry_after)
                 break
         except Exception:
             report["errors"][name] = "unexpected_source_error"
+    if next_source:
+        state.set("next_source", next_source)
+        report["next_source"] = next_source
     report["last_success"] = {name: state.get(name + "_last_success", "never") for name in ("github", "gmail")}
     pending = state.db.execute("SELECT COUNT(*) FROM parts WHERE ts='' ").fetchone()[0]
     report["pending_parts"] = pending
