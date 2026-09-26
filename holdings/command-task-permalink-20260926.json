@@ -1,0 +1,11 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "command-task-permalink-20260926",
+  "holder": "command-observability",
+  "repository": "woahwhattheheck/commons",
+  "state": "HELD",
+  "taken_at": "2026-09-26T14:16:38.006Z",
+  "heartbeat_at": "2026-09-26T14:16:38.006Z",
+  "ttl_s": 1800,
+  "note": "Own canonical task permalink and Feed-to-task routing in web/app.js + web/swarm-tasks.js. Read-only; preserves event observations."
+}
