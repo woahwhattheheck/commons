@@ -1,0 +1,31 @@
+{
+  "schema": "titan-v4-historical-custody/v1",
+  "source_branch": "sol-pro/titan-v3-multi-lot-portfolio-20260910-01",
+  "source_head": "74a77b154af1783a1c3767e484ff3d801966b73e",
+  "source_pr": null,
+  "hosted": {
+    "run_id": 34518158194,
+    "job_id": 103008719454,
+    "job_name": "contracts-build-and-panel",
+    "conclusion": "success",
+    "artifact_id": 10168680342,
+    "artifact_name": "titan-v3-multi-lot-portfolio-34518158194",
+    "artifact_bytes": 526975,
+    "artifact_digest": "sha256:0ad9a34f777789e0ce4fb96aba27a580bcfb6f93c7a863f4b187df34b8a35fc3",
+    "artifact_expires_at": "2026-10-10T19:08:23Z",
+    "playable_tar_sha256": "659a69206930d5c90f8918afe025ec30670db25c9b30d586d5f429945b616ae7"
+  },
+  "evidence": {
+    "exact_source_loader_allocator_archive_contracts_passed": 18,
+    "paired_official_engine_cells_per_arm_complete": "24/24",
+    "behavior_changed_cells_per_arm": "24/24",
+    "terminal_result": "REJECT"
+  },
+  "disposition": "quarantined_completed_negative_historical_donor",
+  "rules": [
+    "preserve exact source, artifact identity, and receipt",
+    "do not replay, cherry-pick, or remint this V3 carrier",
+    "no V4 composition or queue edge",
+    "no runtime, default, config, archive, release, or Kaggle activation"
+  ]
+}
