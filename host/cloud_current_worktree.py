@@ -737,10 +737,20 @@ def snapshot(worktree, peer=None, command="snapshot"):
         if data is None:
             receipt["actions"].append({"path": rel, "op": "snapshot_missing"})
             continue
+        try:
+            source_mode = os.lstat(os.path.join(worktree, rel)).st_mode
+        except OSError:
+            pass
+        else:
+            if stat.S_ISREG(source_mode):
+                item["execute_bits"] = stat.S_IMODE(source_mode) & 0o111
         dest = os.path.join(files_dir, rel)
         os.makedirs(os.path.dirname(dest) or files_dir, exist_ok=True)
         with open(dest, "wb") as handle:
             handle.write(data)
+        # Hash the bytes actually copied, not the earlier dirty-list read.
+        item["sha256"] = sha256_bytes(data)
+        item["bytes"] = len(data)
         receipt["actions"].append({"path": rel, "op": "snapshot"})
     stash = ""
     if git_ok(worktree) and receipt["dirty_files"]:
@@ -914,28 +924,73 @@ def recover(worktree, receipt_id, peer=None):
     out = empty_receipt("recover", peer, worktree)
     out["recovered_from"] = receipt_id
     out["mode"] = session.get("mode") or old.get("mode") or ""
-    if not os.path.isdir(files_dir):
+    saved_items = {
+        item.get("path"): item
+        for item in old.get("dirty_files", []) if isinstance(item, dict)
+    }
+    expected_paths = {
+        item.get("path") for item in old.get("actions", [])
+        if isinstance(item, dict) and item.get("op") == "snapshot"
+    }
+    if not os.path.isdir(files_dir) and not expected_paths:
         out["readiness"] = "UNMEASURED"
         out["actions"].append({"path": "", "op": "no_file_copies"})
         return write_receipt(worktree, out)
+    seen = set()
+    errors = []
+    unverified = []
     for dirpath, _dirs, filenames in os.walk(files_dir):
         for name in filenames:
             full = os.path.join(dirpath, name)
             rel = os.path.relpath(full, files_dir).replace(os.sep, "/")
+            seen.add(rel)
             if is_secret_name(rel):
                 out["actions"].append({"path": rel, "op": "redacted"})
                 continue
-            with open(full, "rb") as handle:
-                snap = handle.read()
+            try:
+                with open(full, "rb") as handle:
+                    snap = handle.read()
+            except OSError:
+                errors.append({"path": rel, "reason": "snapshot_copy_unreadable"})
+                continue
+            saved = saved_items.get(rel, {})
+            digest, size = saved.get("sha256"), saved.get("bytes")
+            if ((digest and digest != sha256_bytes(snap))
+                    or (size is not None and size != len(snap))):
+                errors.append({"path": rel, "reason": "snapshot_integrity_mismatch"})
+                continue
+            if not digest:
+                # Old receipts may lack hashes. Keep them usable, but do not
+                # claim their recovered bytes have passed integrity checking.
+                unverified.append(rel)
+            was_absent = not os.path.lexists(os.path.join(worktree, rel))
             current = read_file_bytes(worktree, rel)
-            if current is not None and current != snap:
-                out["actions"].append({"path": rel, "op": "kept_newer_dirt"})
+            if current is not None:
+                op = "already_present" if current == snap else "kept_newer_dirt"
+                out["actions"].append({"path": rel, "op": op})
+                continue
+            if not was_absent:
+                errors.append({"path": rel, "reason": "kept_unreadable_working_path"})
                 continue
             write_file_bytes(worktree, rel, snap)
+            execute_bits = saved.get("execute_bits")
+            # Restore execute bits only on a newly recreated file. An existing
+            # file may have a newer chmod even when its bytes are unchanged.
+            # Legacy receipts without this metadata keep their old behavior.
+            if (was_absent and type(execute_bits) is int
+                    and execute_bits >= 0 and not execute_bits & ~0o111):
+                path = os.path.join(worktree, rel)
+                mode = stat.S_IMODE(os.stat(path).st_mode)
+                os.chmod(path, (mode & ~0o111) | execute_bits)
             out["actions"].append({"path": rel, "op": "restore"})
+    errors.extend({"path": rel, "reason": "snapshot_copy_missing"}
+                  for rel in sorted(expected_paths - seen))
     out["dirty_files"] = dirty_listing(worktree)
     out["head"] = head_sha(worktree) if git_ok(worktree) else ""
-    out["readiness"] = "RECOVERED"
+    out["recovery_errors"] = errors
+    out["integrity_unmeasured"] = unverified
+    out["ok"] = not errors
+    out["readiness"] = "RECOVERED_WITH_ERRORS" if errors else "RECOVERED"
     out["deleted_user_work"] = False
     return write_receipt(worktree, out)
 
@@ -1214,4 +1269,5 @@ def main(argv=None):
 
 if __name__ == "__main__":
     sys.exit(main())
+
 
