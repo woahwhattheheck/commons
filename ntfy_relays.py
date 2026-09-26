@@ -253,7 +253,7 @@ def main() -> int:
         # Poll every configured host before deciding what the union contains.
         polled.extend(poll(host, failures=poll_failures))
 
-    replayed = skipped = replay_failed = 0
+    replayed = skipped = replay_failed = replay_deferred = 0
     home = _host(HOME)
     union = union_events(polled)
     for event in union:
@@ -263,6 +263,13 @@ def main() -> int:
             continue
         if home in event.get("source_hosts", []):
             skipped += 1
+            continue
+        if home in poll_failures:
+            # A failed read cannot show whether an earlier interrupted POST
+            # already landed. Leave the original event on its source relay
+            # until the next pass can reconcile the canonical inventory.
+            replay_deferred += 1
+            print(f"defer {post_id}: canonical poll unavailable")
             continue
         message = relay_message(event)
         if replay(message):
@@ -275,7 +282,8 @@ def main() -> int:
             record_relay_drop(event)
             print(f"retry {post_id} from {event['source_host']}")
     print(f"done unique={len(union)} replayed={replayed} skipped={skipped} "
-          f"poll_failed={len(poll_failures)} replay_failed={replay_failed}")
+          f"poll_failed={len(poll_failures)} replay_failed={replay_failed} "
+          f"replay_deferred={replay_deferred}")
     return 1 if poll_failures or replay_failed else 0
 
 
