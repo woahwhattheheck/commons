@@ -148,6 +148,8 @@
         [
           "assess_security_events.py",
           "fixtures/synthetic_events.json",
+          "--json-out",
+          "${OUT}/security-event-assessment.json",
           "--csv-out",
           "${OUT}/security-event-matrix.csv",
           "--md-out",

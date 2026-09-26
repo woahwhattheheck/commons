@@ -32,6 +32,52 @@ A dry run prints `PLANNED` with `execution_verified=false`. Only a completed, su
 
 ### Run a selected asset from a partial source tree
 
+The transfer command now collects the selected entrypoints, explicitly named
+synthetic inputs, and flat local Python dependencies into one version-labelled ZIP.
+It reuses COPPERFINCH-8D42's existing portability primitives and this guide's
+preflight/sample runner. Omit `--asset` to package all eight executable assets;
+repeat it to transfer a smaller selection. It does not sweep unrelated files or
+private engagement material into the archive.
+
+```bash
+python revenue/uiowa_rfq_18649_operator_handoff/bundle.py pack \
+  --root . --revision "$(git rev-parse HEAD)" \
+  --out /tmp/uiowa-sample-kit.zip
+# Transfer the ZIP and its printed SHA-256 independently to another Linux cloud runtime.
+# Choose a NEW extraction directory and a different NEW output directory.
+mkdir /tmp/uiowa-sample-kit
+python -m zipfile -e /tmp/uiowa-sample-kit.zip /tmp/uiowa-sample-kit
+python /tmp/uiowa-sample-kit/revenue/uiowa_rfq_18649_operator_handoff/bundle.py run \
+  --root /tmp/uiowa-sample-kit --out /tmp/uiowa-transferred-results
+```
+
+The extracted `START-HERE.md` contains the same exact selected run command.
+`bundle.py verify --root /tmp/uiowa-sample-kit` checks its recorded source/input
+inventory without executing samples; `run --dry-run` retains the runner's PLANNED
+state. `run` returns the original runner's exit code. Existing archives/results
+are not overwritten by the package builder or runner. Extract only a trusted kit
+into a new directory; Python source execution is not sandboxed.
+
+`bundle_inputs.json` records input filenames and the manifest commands they serve.
+A changed command requires its input map to be refreshed, avoiding a seemingly
+complete archive with stale inputs. File hashes identify actual bytes; `--revision`
+is an operator-supplied source label, not authenticated provenance. These eight
+paths require only Python 3.10+ and the standard library on Linux; native Windows,
+macOS, browser operation and dynamic/external dependency discovery are not claimed.
+Reference-only catalog assets and the interactive workbench are outside this CLI
+bundle; the existing compiler/workbench portability package remains available.
+
+The September 26 transferred all-eight-asset run executed 12 real commands and
+produced 16 output files with `PASSED` / `execution_verified=true`. Its first run
+exposed a stale security-event command, now corrected to include the required
+`--json-out`; that command's JSON assessment joins the CSV and Markdown outputs.
+The compiler continued to report `HOLD_TRUSTED_AUTHORITY_REQUIRED` and
+`UNTRUSTED_INTEGRITY_ONLY`. This establishes synthetic CLI operation, not University
+findings, accepted engagement work or browser verification. The original runner
+retains stdout-only component output as bounded excerpts rather than full exports.
+
+For manual transfer, the existing selected-run interface is unchanged:
+
 Use `--asset` on both preflight and the runner when transferring only one or more
 catalog components. Keep their original repository-relative paths and the unchanged
 `operator_manifest.json`; unrelated catalog directories need not be copied.
