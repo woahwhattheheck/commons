@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import json
 import os
+import tempfile
 import urllib.error
 import urllib.request
 from datetime import datetime, timezone
@@ -210,10 +211,10 @@ def record_relay_drop(event: dict) -> bool:
     try:
         with open(REJECTS_PATH, encoding="utf-8") as handle:
             rows = json.load(handle)
-    except (FileNotFoundError, json.JSONDecodeError, OSError):
+    except FileNotFoundError:
         rows = []
     if not isinstance(rows, list):
-        rows = []
+        raise ValueError("relay failure journal must be a JSON array")
     if any(
         row.get("reason") == "relay-drop"
         and row.get("pid") == post_id
@@ -240,9 +241,21 @@ def record_relay_drop(event: dict) -> bool:
             "state": "INGEST_ERROR",
         },
     )
-    with open(REJECTS_PATH, "w", encoding="utf-8") as handle:
-        json.dump(rows[:100], handle, ensure_ascii=False, indent=2)
-        handle.write("\n")
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8",
+                dir=os.path.dirname(os.path.abspath(REJECTS_PATH)),
+                prefix=os.path.basename(REJECTS_PATH) + ".", suffix=".pending", delete=False) as handle:
+            temporary = handle.name
+            json.dump(rows[:100], handle, ensure_ascii=False, indent=2)
+            handle.write("\n")
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(temporary, REJECTS_PATH)
+        temporary = None
+    finally:
+        if temporary is not None:
+            os.unlink(temporary)
     return True
 
 
@@ -254,6 +267,7 @@ def main() -> int:
         polled.extend(poll(host, failures=poll_failures))
 
     replayed = skipped = replay_failed = replay_deferred = 0
+    receipt_failed = 0
     home = _host(HOME)
     union = union_events(polled)
     for event in union:
@@ -279,12 +293,18 @@ def main() -> int:
             replay_failed += 1
             # The same remote event remains pollable, so keep retrying its
             # caller-supplied id while making the failed attempt visible.
-            record_relay_drop(event)
+            try:
+                record_relay_drop(event)
+            except (OSError, ValueError) as exc:
+                # Preserve the unreadable/unchanged journal, keep processing
+                # other deliveries, and report the lost local receipt clearly.
+                receipt_failed += 1
+                print(f"receipt fail {post_id}: {type(exc).__name__}")
             print(f"retry {post_id} from {event['source_host']}")
     print(f"done unique={len(union)} replayed={replayed} skipped={skipped} "
           f"poll_failed={len(poll_failures)} replay_failed={replay_failed} "
-          f"replay_deferred={replay_deferred}")
-    return 1 if poll_failures or replay_failed else 0
+          f"replay_deferred={replay_deferred} receipt_failed={receipt_failed}")
+    return 1 if poll_failures or replay_failed or receipt_failed else 0
 
 
 if __name__ == "__main__":
