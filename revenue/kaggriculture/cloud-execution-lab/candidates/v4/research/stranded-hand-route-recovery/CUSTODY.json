@@ -1,0 +1,39 @@
+{
+  "schema": "titan.v4.salvage-custody.v1",
+  "family": "stranded-hand-route-recovery",
+  "authority": {
+    "canonical_branch": "main",
+    "canonical_blob": "00142be0ff2314dcb23068c8133b34d290661923",
+    "integration_blob": "4e3207af1332266852530ec8494db8969edc1115",
+    "composition_blob": "32dc1e6963702f7e013cd609053d52c434e42158"
+  },
+  "v3": {
+    "pull_request": 12042,
+    "branch": "codex/titan-v3-route-worker-recovery-20260910",
+    "head": "cf2047e80772319e920fe013ae8a427ef2d077ea",
+    "tree": "eca918ce5a4111a7cf73b4f3012490033210c97d",
+    "blobs": ["53b683b525b8f965f2217d57d6dd34482525a2f6","9453a7c77a8708f384f2c6d8d63f16ab6b8b4f94","a86d1860ced5e48c7e7643b48b054aa9f90bfe21"],
+    "reviews": [5171782759,5172234038],
+    "red_runs": [34524353421,34524353329],
+    "green_runs": [34524353385,34524353333,34524353306,34524354023,34524353517],
+    "paired_regression": "36/36 own-cash negative; panel means -5.5833 and -5.6667; 1W/35L; later evidence packet held on source/reproducibility custody"
+  },
+  "v31": {
+    "branch": "titan/v31-h8-stranded-hand-recovery-20260911",
+    "head": "722274310d360f8c8b59d510b04382f36db7ad00",
+    "tree": "7fd23edbf14dfaf0b14dc75dcfb59ad469ce3bae",
+    "source_blob": "7208a591a7ed3171013597ac10690fe8905ea96a",
+    "pull_request": null,
+    "workflow_runs": 0,
+    "topology": "diverged_1_ahead_13605_behind"
+  },
+  "retained_theorem": "Restoring worker count with a late HIRE does not restore the authored worker position, inventory, or route trajectory.",
+  "disposition": {
+    "class": "historical_negative_rejected_family",
+    "replay": false,
+    "cherry_pick": false,
+    "remint": false,
+    "runtime_promotion": false,
+    "v4_queue_edge": false
+  }
+}
