@@ -1,0 +1,13 @@
+{
+  "schema": "titan-v4-research-custody/v1",
+  "source_pr": 11632,
+  "source_head": "b6b080a6842107f7e9086f64cb0b2b9c38377696",
+  "source_tree": "bd88e71491b6a15a7f23bbdd37de3de2c0d0195e",
+  "source_blob": "5c4368d0a70184158d863d80ece8f0ae99e53cd0",
+  "workflow_run": 34400722360,
+  "job": 102631692660,
+  "hosted": "compile PASS; focused 8/8 PASS; official-engine contract FAIL; gameplay/evidence upload SKIPPED",
+  "artifacts": [],
+  "disposition": "historical negative evidence only; invalid legacy carrier; no V4 queue/runtime edge",
+  "central_ledger_comment": 5648302115
+}
