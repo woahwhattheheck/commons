@@ -1,0 +1,33 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "family": "committed-hire-solvency",
+  "disposition": "closed_unmerged_evidence_only",
+  "pr": 11962,
+  "branch": "sol/titan-v3-committed-hire-solvency-20260910-01",
+  "base": "98a98108998efac9e53a8b045f0fb2c85a4b19e2",
+  "head": "9e1611848f8e01a9079e87994499afe6302a81ac",
+  "blobs": {
+    "workflow": "c2e07bd6a95d961825c82866f9e2062c1e903a13",
+    "readme": "baab101d3e09e3409dd1cd07874198d074013393",
+    "source": "1c12a3fa6a3b9ab711cc66b5c2d85ad522771827",
+    "entrypoint": "ccc04a09f9217f0e147697536246103bd90cf923",
+    "test": "ac9210b639cb532f7993400c0563b391b9088c51"
+  },
+  "run": {
+    "id": 34517125017,
+    "job": 103005212356,
+    "conclusion": "failure",
+    "tests": 60,
+    "failures": 2,
+    "errors": 1,
+    "smoke": "skipped",
+    "artifacts": []
+  },
+  "replay": {
+    "episode": 107130860,
+    "observation": 24,
+    "discretionary_sale": false
+  },
+  "v4_queue_edge": false,
+  "runtime_promotion": false
+}
