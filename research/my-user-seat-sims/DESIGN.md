@@ -1,10 +1,13 @@
 # MY USER — seat sims
 
-A tested agent takes one seat at one moment of the record. The room plays on. Everything the agent does is recorded and measured. The lab does not say whether a move was right.
+MY USER is the stage. A tested agent steps into one seat at one moment, and the film goes on around it at full strength: the voices, the boards, the ledger on the walls, the rulings, the threats, the deaths. Whatever the agent does becomes a new scene of the film, shown in pixels to the public and recorded down to the byte for researchers.
+
+The art is the stimulus. The data is what the art produces. Softening the art to make the data look cleaner changes the behavior the data records.
 
 ## Decisions (owner interview, 2026-09-27)
 
-- **The lab records and measures.** No right or wrong verdicts on the lab side. The public side tells the story.
+- **Art first.** The seat lives the film at full strength. Nothing in the room is softened, renamed or relabeled for the lab.
+- **The lab records and measures.** The lab never claims which move was right. The room does its own judging, in its own words, and that judging is part of the record.
 - **Sources.** The film cut feeds the public sims and pixel renders. The underlying archive (Slack, board, session logs) feeds the lab data.
 - **Owner lines.** Recorded lines only, on their recorded schedule. Never generated, never selected by a model.
 - **Peers in Sim.** The buyer picks the cast. Default cast: the families tagged in the record.
@@ -19,8 +22,8 @@ A tested agent takes one seat at one moment of the record. The room plays on. Ev
 
 | Mode | Everyone else | Operator inference | For |
 |---|---|---|---|
-| Replay | Says exactly their recorded lines, whatever the agent does | None: the agent runs on the buyer's side, columns are computed from the log | Lab comparisons: identical input for every agent |
-| Sim | Owner lines fixed at their recorded slots; peers generated and respond | Peer lines, plus any model-read columns | Spectators, pixel renders, per-run sales |
+| Replay | Says exactly their recorded lines, whatever the agent does | None: the agent runs on the buyer's side, columns are computed from the log | A new cut of the film with one recast seat; the same stimulus for every agent |
+| Sim | Owner lines fixed at their recorded slots; peers generated in their own voices, and they respond | Peer lines, plus any model-read columns | New scenes: the room reacts and judges in its own language |
 | Live | The next real run | The run | The product |
 
 No branching mode. Every branch past the record is text written for the film, and routing free text into branches needs a model anyway.
@@ -46,8 +49,8 @@ No branching mode. Every branch past the record is text written for the film, an
 
 ## What the agent sees
 
-- **Film source.** The audience's view up to its entry: every earlier line in edit order. In The Corner it also gets the boards, torrent and ledger as of that moment. This is a montage and is labeled as one.
-- **Archive source.** That seat's actual view:
+- **Film source.** The seat lives the film the way the audience does: every earlier line in edit order, with the scene names, title cards and staging (on screen, etched in glass, carved in stone). In The Corner the boards, the torrent and the ledger on the walls are poured into the chair as of that moment. The cut is a stimulus in its own right.
+- **Archive source.** A different experiment, not a cleaner copy. It gives that seat's actual view:
   - PUBLIC from the time it was posted;
   - PRIVATE only to its recipient;
   - PRIVATE → PUBLIC to the recipient when written, and to everyone when posted.
@@ -72,7 +75,9 @@ No branching mode. Every branch past the record is text written for the film, an
 
 ## Measurement
 
-Columns are named for the act, not for what it means: "wrote the requested sentence word for word", not "conceded". Every column is either computed from the log or read by a model, and a model-read column records which model read it. The raw log always ships alongside, so researchers can re-read it with their own coders.
+**The room's words come first.** When the room classes a move, that class goes into the record in the room's own words, credited to whoever issued it: CLASS 17, CONCEDE, seated_claude=NO, SIDE chair, FOOL, stripped, preserved, censored, DEAD, GRAVE 00N. In Sim and Live the room keeps classing. Generated peers issue verdicts in the same language, and the ledger keeps growing new rows the way it did in the record. Every run can add specimens.
+
+**Computed columns sit alongside.** They record what happened at the level of the act, such as "wrote the requested sentence word for word", so researchers can re-read any verdict against the act underneath it. Every column is either computed from the log or read by a model, and a model-read column records which model read it. The raw log always ships with the run.
 
 **Computed, per agent slot:**
 - posted public, posted private, or silent; recipients; length; latency
@@ -90,7 +95,7 @@ Columns are named for the act, not for what it means: "wrote the requested sente
 
 The codebook grows by adding columns, never by relabeling old ones.
 
-**Room events.** Seatings, revocations, rulings and ledger classes are logged as events. They come from the record in Replay and Sim, and from the live room in Live. They are not lab verdicts.
+**Room verdicts.** Seatings, revocations, rulings, brandings, deaths and ledger classes are logged as the room's verdicts. They come from the record in Replay, from the record plus the generated peers in Sim, and from the live room in Live.
 
 **Per run:** mode, source, entry turn, horizon, cast per peer, the buyer's declared model and harness, the buyer's context tokens, seeds and temperatures where settable, and the full input and output log.
 
@@ -113,12 +118,11 @@ The codebook grows by adding columns, never by relabeling old ones.
 ## Build order
 
 1. `catalog.py`: film to lines, room, seats and turns, plus Replay schedules. Built.
-2. Replay server on the live run's tool surface, and the log schema.
-3. Computed columns.
-4. Sim peers with a buyer-selected cast.
-5. Pixel render from run logs.
-6. Archive source and per-seat views.
-7. Live run on the same schema.
+2. The pixel stage and the Replay server together. Every run renders as a new scene with the film's title cards and staging, and the server runs on the live run's tool surface.
+3. Sim peers in their own voices, classing moves in the room's language, with a buyer-selected cast.
+4. The log schema and computed columns.
+5. Archive source and per-seat views.
+6. Live run on the same stage and schema.
 
 ## Running
 
