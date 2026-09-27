@@ -1,0 +1,42 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "pr": 11137,
+  "head": "8ee31bd12b873e526af25bf57e1b5f8a1e3b0edf",
+  "status": "closed_unmerged_evidence_only",
+  "disposition": "historical_mixed_precompose_quarantine",
+  "queue_edge": false,
+  "promote": false,
+  "exact_head_runs": {
+    "dedicated_precompose": {
+      "run_id": 34375678369,
+      "job_id": 102547743209,
+      "conclusion": "success",
+      "artifacts": 0
+    },
+    "titan_selected_projection": {
+      "run_id": 34375678248,
+      "conclusion": "failure"
+    },
+    "tests": {
+      "run_id": 34375678340,
+      "conclusion": "failure"
+    },
+    "e07_same_turn_funding": {
+      "run_id": 34375678425,
+      "conclusion": "success"
+    }
+  },
+  "blobs": {
+    ".github/workflows/titan-e04-e07-e14-precompose.yml": "956748370c47f5f0511fd856a2503076690c1f42",
+    "revenue/kaggriculture/cloud-execution-lab/frozen_selected.py": "02a893004b2b7aca4e440e46c392f98bce46d36c",
+    "revenue/kaggriculture/cloud-execution-lab/scheduler.py": "a483b24dd72b580d7d8811636b54d2d44f391575",
+    "revenue/kaggriculture/cloud-execution-lab/test_e07_same_turn_funding.py": "2eb4a93e7f9e2320ab84faa93dbc20c080599503",
+    "revenue/kaggriculture/cloud-execution-lab/test_scheduler_overflow_timing.py": "eb8e346a88d143d4c1acfcea56a38d12c2a6ee8b"
+  },
+  "controlling_disposition": {
+    "e04": "rejected_by_later_128_game_screen_and_revert_PR11151",
+    "e07": "landed_via_successor_PR11162",
+    "e14": "historical_component_only_in_this_carrier"
+  },
+  "note": "Exact completed precompose head and source blobs are pinned. Dedicated exact-head precompose workflow passed, but broad checks failed and E04 was later rejected. Preserve as historical mixed evidence only; no V4 semantic promotion, runtime transplant, or queue edge."
+}
