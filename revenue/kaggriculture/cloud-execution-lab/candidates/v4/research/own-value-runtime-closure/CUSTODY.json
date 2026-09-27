@@ -1,0 +1,39 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "family": "own-value-runtime-closure",
+  "recorded_on": "2026-09-27",
+  "source_pr": 11912,
+  "source_state": "closed_unmerged",
+  "source_head": "d60217ff58bfabbdf27ee2eb685c671cc9736882",
+  "exact_blobs": {
+    "workflow": "b7b23c3d3f88c2627e4f2ef939da169646a333d2",
+    "runtime_closure_py": "09f5398a955d894e2e0be1b390efa1cf53dd5c05",
+    "test_runtime_closure_py": "a54890dfd0aaf3d5eb81cafd4d210a32ef7d6bce"
+  },
+  "focused_run": 34412980456,
+  "focused_job": 102671414099,
+  "run_conclusion": "success",
+  "review_id": 5160625261,
+  "hosted_artifact": {
+    "id": 10127987534,
+    "github_reported_zip_bytes": 23177,
+    "expires_at": "2026-10-09T22:36:54Z",
+    "downloaded_zip_sha256": "df905a5c6f4f155b5c2e0ffadf66e2d630deb58e6dc75820b1ab2959d7b1a8d8",
+    "members": {
+      "exact-head.sha": {"bytes": 41, "sha256": "5da642051c28f142e632b6af8c6966dd4c679560ec7418217522e9cf05e6ce12"},
+      "RUNTIME-CLOSURE.json": {"bytes": 43011, "sha256": "cc74c6ebbb6a0427abf8c5f61e031ee24ffc42e7ff1cdaeb69c9f6fa25683d3b"},
+      "runtime/SOURCE.json": {"bytes": 43299, "sha256": "1feec5a68ffde28ab7b5c7d2c92a34aa66ff5705b7d88182ef6af98df8bb5083"}
+    }
+  },
+  "supersession": {
+    "evidence_bound_successor_pr": 11932,
+    "surviving_tooling_pr": 11965,
+    "surviving_tooling_merge": "cbfee7c673704635eebf8c419769d5a1167ebd03"
+  },
+  "disposition": "completed_unmerged_runtime_closure_evidence_preserved; no independent gameplay semantic donor; current-ABI rederivation required",
+  "v4_semantic_edge": false,
+  "runtime_promotion": false,
+  "replay": false,
+  "cherry_pick": false,
+  "remint": false
+}
