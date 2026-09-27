@@ -18,7 +18,7 @@ The source PR records one bounded real-temporary-file exercise with 401 syntheti
 
 From prior terminal main `d1b408f2f5acac71adf7d2a20dc54a191362fa7f` through activation base `2800d66a244336909e4b2bfa31afe4a09709a5c7`: 30 commits, 29 non-merge commits and 330 changed paths were reconciled. The sweep observed 4,566 remote branch heads, 25 automations with the Resource Master enabled, and required Slack surfaces from `1790498103.758459` through `1790536142.133769`. Generated projection churn, repeated receipts and cached issue mirrors were not reminted.
 
-Post-activation exact current-main readback is pending the activation merge. Claim: [#commons activation claim](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790536091138069).
+Activation [PR #30122](https://github.com/woahwhattheheck/commons/pull/30122) merged at current main `2321dc9c8a4b391d9a54e535e3292d60fe3feca2`. Exact readback matched all four activation blobs: ledger `4d9743b4c50629a8e4ec3cdebc70905a239c5e40`, JSON record `fefdc8ab157893dc6fb0d211ece5cab466ccf913`, this receipt `b81756fcaee2cab55f130ac6c8ab85d617e1728c`, and projection `727db460f01fb3872b29ab8bfd91ed823d7673ab`. Claim: [#commons activation claim](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790536091138069).
 
 ## Build-order decision
 
