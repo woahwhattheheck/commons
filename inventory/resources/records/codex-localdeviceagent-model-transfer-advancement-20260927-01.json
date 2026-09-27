@@ -69,7 +69,7 @@
     "commits_in_delta": 6,
     "non_generated_commits_in_delta": 0,
     "changed_paths_in_delta": 229,
-    "terminal_current_main_sha": "PENDING_CURRENT_MAIN_READBACK",
+    "terminal_current_main_sha": "67d5ae4b4632bfe8b14bdc3ce7e79c360f52bb08",
     "remote_branches_observed": 4565,
     "prior_terminal_slack_ts": "1790536764.428389",
     "latest_observed_external_delta_slack_ts": "1790536939.025649",
@@ -114,6 +114,14 @@
   "evidence": {
     "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790546758696359",
     "source_pr": "https://github.com/woahwhattheheck/LocalDeviceAgent/pull/70",
+    "activation_pr": "https://github.com/woahwhattheheck/commons/pull/30128",
+    "activation_merge_commit": "67d5ae4b4632bfe8b14bdc3ce7e79c360f52bb08",
+    "activation_blobs": {
+      "ground/RESOURCE_LEDGER.json": "2db1dab9f00ffa0e27b228ec1d8e3bfd14b4d238",
+      "inventory/resources/records/codex-localdeviceagent-model-transfer-advancement-20260927-01.json": "65f8a56b6724da572c8258983b3913e06080af98",
+      "p/codex-localdeviceagent-model-transfer-advancement-20260927-01.md": "e89d17293c1af680b029e792feabc639dadecd1b",
+      "resources.html": "6a44049716d5159b344568f44d3147c7c1c50672"
+    },
     "shipped_receipt": "https://tokenjunkielabs.slack.com/archives/C0BTVA3C0G3/p1790536838410569",
     "existing_build_order_root": "https://tokenjunkielabs.slack.com/archives/C0BTRNE6Y58/p1790536939025649",
     "official_usage_guidance": "https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan",
@@ -122,7 +130,7 @@
   "next_watermark": {
     "observed_at": "2026-09-27T22:08:15Z",
     "activation_base_main_sha": "7aacf766a4416596899ec6ac3b3c9d708868d777",
-    "current_main_sha": "PENDING_CURRENT_MAIN_READBACK",
+    "current_main_sha": "67d5ae4b4632bfe8b14bdc3ce7e79c360f52bb08",
     "latest_external_delta_slack_ts": "1790536939.025649",
     "source_merge_commit": "d3aafedfaf0f1de84c9c57a4191f54ed11b22cbd",
     "remote_branches_observed": 4565
