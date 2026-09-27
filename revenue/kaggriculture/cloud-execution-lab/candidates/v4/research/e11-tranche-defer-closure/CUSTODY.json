@@ -1,0 +1,39 @@
+{
+  "schema": "titan-v4-historical-custody/v1",
+  "source_pr": 12003,
+  "operation": "TITAN-V3-E11-TRANCHE-DEFER-CLOSURE-20260910-01",
+  "final_head": "7fbe6c01e767b76054aa1570e8e751f1eee86c7b",
+  "merge_commit": "d313cd5e22e1ec8d2cd9535db4dc6ab849bb6dbd",
+  "earlier_held_head": "a47d5b1b8f4a2dd64e944e8c2296ade86bbc1694",
+  "exact_blobs": {
+    "closure": "daef71bf1c9bf8d3e4ce08e4165d652a2abbfe16",
+    "tests": "0dfd0bd22f231a85cd20a9c14bd0769d58e302a0",
+    "receipt": "a08d54ab63f7a561c2eed98e0333d7ea241b355a",
+    "workflow": "e938189d792a0b919ece8b7370164eae1e55b000"
+  },
+  "receipt_sha256": "35b941e92abbed9b7d0d9a9bbf9ec863d15f3b7e4318a7612ee24120fd68d02b",
+  "exact_final_head_workflow": {
+    "run_id": 34550378200,
+    "job_id": 103111845191,
+    "conclusion": "success",
+    "steps": [
+      "stdlib contracts",
+      "reconstruct exact authenticated historical packet",
+      "reproduce predecessor and deterministic receipt"
+    ]
+  },
+  "theorem": "An item affirmatively deferred by E11 must remain absent from executable SELL rows after later finalizers; invalid/stale authority has no mutation authority.",
+  "current_main_active_surface": {
+    "main_py": "727c36ee3727db159f5879d4ac9a842a28ca570c",
+    "titan_runtime_py": "72c057552308dbac02dd6165c3049032ddbfa657",
+    "titan_config_json": "51d5296bb32cec9c662b566b9f6088f9ec40b257",
+    "frozen_selected_py": "6a95505388ea1b5eba38bd1f927a2a2bf084490c",
+    "e11_rival_sell_present": false,
+    "l01_tranche_present": false,
+    "v3_post_final_present": false
+  },
+  "disposition": "historical merged V3 cross-key theorem and receipt only",
+  "current_v4_queue_edge": false,
+  "current_v4_runtime_promotion": false,
+  "note": "Final historical workflow is green, but the implicated E11/L01 seams are absent from the active current-main runtime/config surface. Preserve the exact theorem and receipt; do not revive the retired feature stack or create a sibling V4 root."
+}
