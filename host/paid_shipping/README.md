@@ -1,6 +1,6 @@
 # Commons shipping monitor
 
-Publish `host/paid_shipping/{worker.mjs,rules.mjs,schema.sql,runner.mjs}` to the
+Publish `host/paid_shipping/{worker.mjs,rules.mjs,schema.sql,runner.mjs,checkpoint.mjs}` to the
 **public** `woahwhattheheck/commons` repository and invoke it from the retained
 scheduled workflow. The runner uses Node 22 with no package install, artifact,
 or cache upload. Confirm an actual hosted run on this account after updating
@@ -22,18 +22,34 @@ values into either repository or print them in Actions logs. The runner reads
 only the three configured Slack channels. Before touching Slack or state, each
 run verifies repository metadata says `private: true` and
 `visibility: private`. All persisted state, including
-intermediate thread content, lives only at private
-`woahwhattheheck/commons-ship-enforcer:paid-work/shipping-state.json`.
-It writes that file through the required account publisher `file.put` route
+intermediate thread content, lives only in private
+`woahwhattheheck/commons-ship-enforcer`, indexed by `paid-work/shipping-state.json`.
+It writes that index through the required account publisher `file.put` route
 using the previous GitHub Contents SHA and a deterministic operation ID.
 No Cloudflare monitor/D1 call is made by this runner. Its SQLite database is
 in memory for each tick. Up to 200 thread rows stay in one version 2
 gzip+base64 JSON envelope with a raw SHA-256 checksum. Above that, thread
 rows are stored 200 at a time as gzip+hex shard files under
-`paid-work/shipping-state/`, and `shipping-state.json` is a version 3 index.
-Legacy version 1 plaintext JSON and version 2 gzip+hex envelopes load without dropping rows.
-Decompression is bounded at 32 MiB; an oversized or invalid snapshot fails
-rather than silently discarding state.
+`paid-work/shipping-state/`, and `shipping-state.json` is a version 4 index.
+Thread and rest-file names include the SHA-256 of their exact encoded bytes.
+The loader checks those hashes, envelope checksums, and total thread count.
+Legacy version 1 plaintext JSON, version 2 gzip envelopes, and version 3
+shard indexes remain readable. Decompression and the aggregate sharded state
+are bounded at 32 MiB; an oversized or invalid snapshot fails rather than
+silently discarding state. Every planned file is checked against the publisher
+byte ceiling before any shard is staged.
+
+New checkpoints never overwrite existing shards. Identical content is reused;
+a conflicting file at an immutable path stops the update. After every new
+shard is accepted, the index advances using its original Contents SHA. A held
+or interrupted shard write leaves the previous index and its referenced files
+untouched. A stale writer does not refresh the index SHA to replace a newer
+winner. Single-file and sharded transitions use the same final index update.
+Old and partially staged shards are retained, not deleted during a tick, so
+storage can grow until a separate reader-safe retention policy is implemented.
+This prevents new torn checkpoints; it cannot reconstruct an already mixed
+legacy version 3 snapshot. Publisher refusals still propagate unchanged: this
+format change neither repairs nor bypasses the deployed publication classifier.
 The publisher request sets `User-Agent: Commons-Shipping-Enforcer/1.0`.
 
 For each new or changed nonbaseline candidate thread, the runner sends the
