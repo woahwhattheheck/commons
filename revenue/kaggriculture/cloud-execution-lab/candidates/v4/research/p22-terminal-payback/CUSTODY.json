@@ -1,0 +1,18 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "subject": "P22 per-candidate terminal payback horizon",
+  "donor_pr": 11157,
+  "donor_head": "5e381192ccee1a00d1d95ed949ae571065c79fb8",
+  "donor_tree": "d6f5976b18495c2ee68e5337662effa69e033631",
+  "source_blob": "495c5c6d186d03f813cb11cef22dc7a34e544433",
+  "test_blob": "35ea0d778d56e3f4872de97875ef5a5dac92c7d5",
+  "workflow_blob": "12db303685bd6407b9d4056c69297197e3f0454f",
+  "exact_head_run": 34381019074,
+  "exact_head_run_result": "SUCCESS",
+  "generic_tests_run": 34381019162,
+  "generic_tests_result": "FAILURE",
+  "disposition": "PRESERVE / CURRENT-ABI PORT CANDIDATE / NOT PROMOTION-READY",
+  "theorem": "terminal admission is per-candidate and executable-completion-aware; economics finite/nonnegative; new investment requires strictly positive conservative net; sunk service uses remaining-cost economics; no post-terminal value",
+  "quarantine": "old V3 integration seam and any direct gameplay/promotion inference; fresh current-ABI caller/wiring plus field/economics proof required",
+  "receipt": "https://github.com/woahwhattheheck/commons/pull/11157#issuecomment-5646700271"
+}

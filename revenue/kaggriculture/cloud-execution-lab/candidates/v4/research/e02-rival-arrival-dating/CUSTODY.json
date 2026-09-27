@@ -1,0 +1,22 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "subject": "E02 public rival-harvest arrival dating",
+  "donor_pr": 11119,
+  "donor_head": "93e4b0f1f2af4d489b464632db300b38f7bc0120",
+  "donor_tree": "0e0d93a9fdc81bc069863d592d4f80b23201a0e0",
+  "source_blob": "9e1db18c03357224f707d0ede0bebe8d0174e766",
+  "test_blob": "e1c547421483f710b07db5ffd3b163fd074f1d24",
+  "branch_main_blob": "ed5804bdc0ec7e13c2087c7f717f1b4cbae4d075",
+  "source_audit_sha256": "296a2a431f67600cf21304b48306b0c3b1c2661ae32e0cce1dfeec0027380bf9",
+  "focused_source_contracts": "9/9 PASS in rebuilt 105-file runtime",
+  "official_engine_screen": {
+    "starter": "32W/0L; zero mean margin delta",
+    "arlene": "32W/0L -> 28W/4L",
+    "mean_relative_margin_delta": -152.6875,
+    "median_relative_margin_delta": -41,
+    "worst_seat_delta": -2353
+  },
+  "disposition": "REJECTED ECONOMICS / NEGATIVE EVIDENCE ONLY / DO NOT PORT AS-IS",
+  "quarantine": "preserve public-arrival hypothesis and rejection receipt only; do not revive install hook, generated archive bytes, or publisher",
+  "receipt": "https://github.com/woahwhattheheck/commons/pull/11119#issuecomment-5646969015"
+}

@@ -1,0 +1,16 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "subject": "P15 animal-admission horizon certificate",
+  "donor_pr": 11120,
+  "donor_head": "3822c77b414e9c214f432af66cbebba59c9669e6",
+  "donor_tree": "9598df1e216c4e3d481aba9450584c8107dc24ef",
+  "source_blob": "5c177393d359031f144a7d9b74178e058e9802b8",
+  "test_blob": "654d4874a30cbafe69493063150b3a9b4a1448d7",
+  "independent_review_head": "a51b4f6b415acc343e73615ca9954824ac6f23fb",
+  "independent_review_run": 34374320212,
+  "independent_review_result": "SUCCESS",
+  "counterexample": "post-product-horizon animal can still expose collectible pre-yield fertilizer",
+  "disposition": "REJECTED ENGINE-SEMANTICS / NEGATIVE EVIDENCE ONLY / DO NOT PORT AS-IS",
+  "quarantine": "preserve negative theorem/counterexample only; future gate must prove no reachable product, fertilizer, or service value",
+  "receipt": "https://github.com/woahwhattheheck/commons/pull/11120#issuecomment-5646968172"
+}

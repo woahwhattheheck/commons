@@ -1,0 +1,31 @@
+name: titan-p22-terminal-payback
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-p22-terminal-payback.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/p22_terminal_payback.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_p22_terminal_payback.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/reference/evaluator/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/reference/engine/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  exact-terminal-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Run P22 terminal-payback and exact terminal regressions
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: python3 -B test_p22_terminal_payback.py -v
