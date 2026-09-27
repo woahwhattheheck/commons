@@ -1,0 +1,18 @@
+{
+  "schema":"titan-v4-salvage-custody/v1",
+  "family":"own-value-execution-closure",
+  "recorded_on":"2026-09-27",
+  "source_pr":11900,
+  "source_state":"closed_unmerged",
+  "source_head":"2bf0383ac7654a98b50893f838b2368a8b88f3c4",
+  "exact_blobs":{"candidate_py":"c3ec8e3f1169581343f7742fd7d4de00a7073351","own_value_objective_py":"cb87d4f9982534cee3598adeff3bbff1797d0e47","test_own_value_objective_py":"50827eae5599a7d0cd1f4f9b7c5fc8830ce5bc8b"},
+  "focused_run":34411775774,
+  "focused_job":102667605714,
+  "run_conclusion":"failure",
+  "hosted_artifact":{"id":10127590821,"zip_bytes":27005,"zip_sha256":"d3826fbc7ef7f6aecbd013e1f2059d4cc6cd28ca84ba9c6d431323990d554ada"},
+  "observed_boundary":"control panel failed before candidate evaluation; all scheduled controls crashed at step 0 on missing observed_clone",
+  "superseded_by":[11899,11912,11932,11965],
+  "disposition":"historical failure/evidence custody only; no gameplay semantic admission",
+  "v4_semantic_edge":false,
+  "runtime_promotion":false
+}
