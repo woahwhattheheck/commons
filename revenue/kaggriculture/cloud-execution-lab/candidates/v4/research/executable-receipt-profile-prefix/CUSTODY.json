@@ -1,0 +1,29 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "pr": 11840,
+  "head": "b0b8c030043140d6dac06c08d40b8a56d5f6cf1d",
+  "files": {
+    "workflow": "b5675bd95d6dfa3084c1f0ee7a107b9d9ae37f17",
+    "readme": "fa153428075db384c63244c333b1b25d1e455120",
+    "audit": "885d9833b89f9c84a1d00e459c1835cc0783c21a",
+    "candidate": "6cf5fa502e5f79dabbb1a95cf645558cb5c52bce",
+    "smoke": "55e8636961af3aaa89051636101f20f67d6d117b",
+    "patch": "8e984812e15a84db14ee7311b047e0c8483132da",
+    "test": "ea07094a44132117d8f048d1ad83d4bbb4ec8f09"
+  },
+  "receipt": {
+    "run": 34411665811,
+    "job": 102667248822,
+    "artifact": 10127632818,
+    "bytes": 2460,
+    "sha256": "e743320a16ee057c30fbdfe08468b791eb76719603f10598c0e9266fac6c5330"
+  },
+  "review": 5609624203,
+  "successor": {
+    "pr12915": "382235827e6525245c3b20a389526a184e48dcfe",
+    "pr12941": "custody",
+    "pr12961": "5bde14d69681d7b682931440d5f68b4f94451dc0"
+  },
+  "ledger_comment": 5652058887,
+  "disposition": "preserve exact receipt; quarantine incomplete historical carrier; semantic class already consumed by current V4 PREFIX lineage; no queue edge"
+}
