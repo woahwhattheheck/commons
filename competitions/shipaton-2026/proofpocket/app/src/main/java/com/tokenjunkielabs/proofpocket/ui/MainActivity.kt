@@ -1,16 +1,23 @@
 package com.tokenjunkielabs.proofpocket.ui
 
 import android.app.Activity
+import android.content.ContentResolver
 import android.content.Intent
-import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.provider.OpenableColumns
+import android.text.InputFilter
 import android.view.View
 import android.widget.*
 import com.tokenjunkielabs.proofpocket.billing.BillingState
 import com.tokenjunkielabs.proofpocket.billing.RevenueCatGate
+import com.tokenjunkielabs.proofpocket.core.DocumentResult
+import com.tokenjunkielabs.proofpocket.core.DocumentWork
 import com.tokenjunkielabs.proofpocket.core.Evidence
+import com.tokenjunkielabs.proofpocket.core.EvidenceStreams
+import com.tokenjunkielabs.proofpocket.core.UnicodeIntegrity
 import com.tokenjunkielabs.proofpocket.core.Receipt
 import com.tokenjunkielabs.proofpocket.core.ReceiptCodec
 import com.tokenjunkielabs.proofpocket.core.ReceiptEngine
@@ -18,9 +25,8 @@ import com.tokenjunkielabs.proofpocket.core.ReceiptImportLimits
 import com.tokenjunkielabs.proofpocket.export.PdfExporter
 import com.tokenjunkielabs.proofpocket.store.ProjectDraft
 import com.tokenjunkielabs.proofpocket.store.ProofRepository
-import java.security.MessageDigest
+import java.io.IOException
 import java.time.Instant
-import java.util.concurrent.Executors
 
 class MainActivity : Activity() {
     companion object {
@@ -29,20 +35,17 @@ class MainActivity : Activity() {
         private const val EXPORT_PDF = 43
         private const val IMPORT_RECEIPT = 44
         private const val FREE_PROJECT_LIMIT = 3
-        private const val STATE_SELECTED = "proofpocket.selected"
-        private const val STATE_PENDING_RECEIPT = "proofpocket.pendingReceipt"
-        private const val STATE_PENDING_URI = "proofpocket.pendingUri"
-        private const val STATE_PENDING_CODE = "proofpocket.pendingCode"
     }
 
     private lateinit var repo: ProofRepository
     private lateinit var billing: RevenueCatGate
+    private lateinit var documents: DocumentWork
     private val projects = mutableListOf<ProjectDraft>()
+    private val controls = mutableListOf<View>()
     private var selected = 0
+    private var pendingRequest = 0
     private var pendingReceipt: Receipt? = null
-    private var pendingPickerUri: Uri? = null
-    private var pendingPickerCode: Int = 0
-    private val io = Executors.newSingleThreadExecutor()
+    private var pendingEvidenceProjectId: String? = null
 
     private lateinit var projectSpinner: Spinner
     private lateinit var titleInput: EditText
@@ -56,32 +59,27 @@ class MainActivity : Activity() {
         repo = ProofRepository(this)
         projects += repo.load()
         billing = RevenueCatGate(this)
+        // Retain work, not an Activity or a View, while a document provider runs.
+        val handler = Handler(Looper.getMainLooper())
+        documents = (lastNonConfigurationInstance as? DocumentWork)
+            ?: DocumentWork { action -> handler.post { action() } }
+        pendingRequest = savedInstanceState?.getInt("pendingRequest") ?: 0
+        pendingEvidenceProjectId = savedInstanceState?.getString("pendingEvidenceProjectId")
+        pendingReceipt = savedInstanceState?.getString("pendingReceipt")?.let { raw ->
+            val (receipt, verification) = ReceiptCodec.decodeAndVerify(raw)
+            receipt.takeIf { verification.valid }
+        }
         setContentView(buildUi())
-        val restoreIndex = savedInstanceState?.getInt(STATE_SELECTED, 0) ?: 0
-        savedInstanceState?.getString(STATE_PENDING_RECEIPT)?.let { raw ->
-            try {
-                pendingReceipt = ReceiptCodec.decodeAndVerify(raw).first
-            } catch (_: Exception) {
-                pendingReceipt = null
-            }
+        val restoredProjectId = savedInstanceState?.getString("selectedProjectId")
+        val restoredIndex = projects.indexOfFirst { it.id == restoredProjectId }.coerceAtLeast(0)
+        if (projects.isEmpty()) addProject("First proof project") else refreshSpinner(restoredIndex)
+        status(savedInstanceState?.getString("status") ?: "")
+        if (savedInstanceState?.getBoolean("documentBusy") == true && lastNonConfigurationInstance == null) {
+            status("Document operation was interrupted. Attach or import again; an export may be incomplete.")
         }
-        savedInstanceState?.getString(STATE_PENDING_URI)?.let { pendingPickerUri = Uri.parse(it) }
-        pendingPickerCode = savedInstanceState?.getInt(STATE_PENDING_CODE, 0) ?: 0
-        if (projects.isEmpty()) {
-            addProject("First proof project")
-        } else {
-            refreshSpinner(restoreIndex.coerceIn(0, projects.lastIndex))
-        }
+        documents.attach(::documentCompleted)
+        updateControls()
         billing.configure(::renderBilling)
-        replayPendingPicker()
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putInt(STATE_SELECTED, selected)
-        pendingReceipt?.let { outState.putString(STATE_PENDING_RECEIPT, ReceiptEngine.exportJson(it)) }
-        pendingPickerUri?.let { outState.putString(STATE_PENDING_URI, it.toString()) }
-        outState.putInt(STATE_PENDING_CODE, pendingPickerCode)
     }
 
     private fun buildUi(): View {
@@ -94,28 +92,45 @@ class MainActivity : Activity() {
         root.addView(TextView(this).apply { text = "ProofPocket"; textSize = 28f })
         root.addView(TextView(this).apply { text = "Local, content-addressed work receipts. Evidence files never leave the device through ProofPocket." })
 
+        fun button(label: String, action: () -> Unit) {
+            val button = Button(this).apply { text = label; setOnClickListener { action() } }
+            controls += button
+            root.addView(button)
+        }
+
         projectSpinner = Spinner(this).also { spinner ->
-            spinner.onItemSelectedListener = object : android.widget.AdapterView.OnItemSelectedListener {
-                override fun onNothingSelected(parent: android.widget.AdapterView<*>?) = Unit
-                override fun onItemSelected(parent: android.widget.AdapterView<*>?, view: View?, position: Int, id: Long) {
-                    if (position in projects.indices) { saveCurrent(); renderProject(position) }
+            spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onNothingSelected(parent: AdapterView<*>?) = Unit
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    if (position in projects.indices && position != selected && !documents.busy && pendingRequest == 0) {
+                        saveCurrent()
+                        refreshSpinner(position)
+                    }
                 }
             }
+            controls += spinner
             root.addView(spinner)
         }
-        root.addView(Button(this).apply { text = "New project"; setOnClickListener { createProjectTapped() } })
-        titleInput = EditText(this).apply { hint = "Project title" }.also(root::addView)
-        claimInput = EditText(this).apply { hint = "Bounded completion claim"; minLines = 3 }.also(root::addView)
-        root.addView(Button(this).apply { text = "Attach local evidence"; setOnClickListener { pickEvidence() } })
+        button("New project", ::createProjectTapped)
+        titleInput = EditText(this).apply {
+            hint = "Project title"
+            filters = arrayOf(InputFilter.LengthFilter(160))
+        }.also { controls += it; root.addView(it) }
+        claimInput = EditText(this).apply {
+            hint = "Bounded completion claim"
+            minLines = 3
+            filters = arrayOf(InputFilter.LengthFilter(2000))
+        }.also { controls += it; root.addView(it) }
+        button("Attach local evidence", ::pickEvidence)
         evidenceView = TextView(this).also(root::addView)
-        root.addView(Button(this).apply { text = "Create / verify receipt"; setOnClickListener { createReceipt() } })
-        root.addView(Button(this).apply { text = "Export JSON receipt"; setOnClickListener { exportJson() } })
-        root.addView(Button(this).apply { text = "Import + verify receipt"; setOnClickListener { importReceipt() } })
-        root.addView(Button(this).apply { text = "Export Pro PDF proof pack"; setOnClickListener { exportPdf() } })
+        button("Create / verify receipt") { createReceipt() }
+        button("Export JSON receipt", ::exportJson)
+        button("Import + verify receipt", ::importReceipt)
+        button("Export Pro PDF proof pack", ::exportPdf)
 
         billingView = TextView(this).also(root::addView)
-        root.addView(Button(this).apply { text = "Unlock Pro"; setOnClickListener { billing.purchaseCurrent(this@MainActivity, ::renderBilling) } })
-        root.addView(Button(this).apply { text = "Restore purchases"; setOnClickListener { billing.restore(::renderBilling) } })
+        button("Unlock Pro") { billing.purchaseCurrent(this, ::renderBilling) }
+        button("Restore purchases") { billing.restore(::renderBilling) }
         statusView = TextView(this).apply { setPadding(0, 24, 0, 0) }.also(root::addView)
         return scroll
     }
@@ -136,10 +151,12 @@ class MainActivity : Activity() {
     }
 
     private fun refreshSpinner(select: Int = selected) {
-        projectSpinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, projects.map { it.title })
         selected = select.coerceIn(0, projects.lastIndex.coerceAtLeast(0))
-        if (projects.isNotEmpty()) projectSpinner.setSelection(selected)
-        if (projects.isNotEmpty()) renderProject(selected)
+        projectSpinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, projects.map { it.title })
+        if (projects.isNotEmpty()) {
+            projectSpinner.setSelection(selected)
+            renderProject(selected)
+        }
     }
 
     private fun renderProject(index: Int) {
@@ -161,20 +178,20 @@ class MainActivity : Activity() {
 
     private fun pickEvidence() {
         saveCurrent()
-        startActivityForResult(Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
+        val project = projects.getOrNull(selected) ?: return
+        if (project.evidence.size >= 128) { status("A receipt supports at most 128 evidence items."); return }
+        pendingEvidenceProjectId = project.id
+        launchPicker(Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
             type = "*/*"
             addCategory(Intent.CATEGORY_OPENABLE)
-            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION)
         }, PICK_EVIDENCE)
     }
 
     private fun createReceipt(): Receipt? {
         saveCurrent()
-        if (selected !in projects.indices) return null
-        val p = projects[selected]
+        val p = projects.getOrNull(selected) ?: return null
         return try {
             ReceiptEngine.issue(p.id, p.title, p.claim, Instant.now().toString(), p.evidence).also {
-                pendingReceipt = it
                 status("Receipt valid: ${it.receiptId}")
             }
         } catch (e: IllegalArgumentException) {
@@ -186,9 +203,10 @@ class MainActivity : Activity() {
     private fun exportJson() {
         val receipt = createReceipt() ?: return
         pendingReceipt = receipt
-        startActivityForResult(Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
-            type = "application/json"; putExtra(Intent.EXTRA_TITLE, "proofpocket-${receipt.receiptId.take(12)}.json")
-            addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION or Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION)
+        launchPicker(Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
+            type = "application/json"
+            addCategory(Intent.CATEGORY_OPENABLE)
+            putExtra(Intent.EXTRA_TITLE, "proofpocket-${receipt.receiptId.take(12)}.json")
         }, EXPORT_JSON)
     }
 
@@ -196,173 +214,130 @@ class MainActivity : Activity() {
         if (!billing.isPro()) { status("PDF proof packs require an observed active RevenueCat Pro entitlement."); return }
         val receipt = createReceipt() ?: return
         pendingReceipt = receipt
-        startActivityForResult(Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
-            type = "application/pdf"; putExtra(Intent.EXTRA_TITLE, "proofpocket-${receipt.receiptId.take(12)}.pdf")
-            addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION or Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION)
+        launchPicker(Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
+            type = "application/pdf"
+            addCategory(Intent.CATEGORY_OPENABLE)
+            putExtra(Intent.EXTRA_TITLE, "proofpocket-${receipt.receiptId.take(12)}.pdf")
         }, EXPORT_PDF)
     }
 
     private fun importReceipt() {
-        startActivityForResult(Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
+        saveCurrent()
+        launchPicker(Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
             type = "application/json"
             addCategory(Intent.CATEGORY_OPENABLE)
-            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION)
         }, IMPORT_RECEIPT)
+    }
+
+    private fun launchPicker(intent: Intent, requestCode: Int) {
+        pendingRequest = requestCode
+        updateControls()
+        try {
+            startActivityForResult(intent, requestCode)
+        } catch (e: Exception) {
+            clearPendingPicker()
+            status("Cannot open document picker: ${e.message ?: "no document provider available"}")
+        }
+    }
+
+    private fun clearPendingPicker() {
+        pendingRequest = 0
+        pendingReceipt = null
+        pendingEvidenceProjectId = null
+        updateControls()
     }
 
     @Deprecated("Legacy callback keeps this carrier dependency-light and API-26 compatible")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode != RESULT_OK || data?.data == null) return
-        val uri = data.data!!
-        retainPickerTarget(requestCode, uri)
-        dispatchPicker(requestCode, uri)
-    }
-
-    private fun retainPickerTarget(requestCode: Int, uri: Uri) {
-        pendingPickerCode = requestCode
-        pendingPickerUri = uri
-        val takeFlags = when (requestCode) {
-            EXPORT_JSON, EXPORT_PDF -> Intent.FLAG_GRANT_WRITE_URI_PERMISSION
-            else -> Intent.FLAG_GRANT_READ_URI_PERMISSION
-        }
-        try {
-            contentResolver.takePersistableUriPermission(uri, takeFlags)
-        } catch (_: SecurityException) {
-            // Some providers grant only a one-shot access window; URI is still held in instance state.
-        }
-    }
-
-    private fun replayPendingPicker() {
-        val uri = pendingPickerUri ?: return
-        val code = pendingPickerCode
-        if (code == 0) return
-        dispatchPicker(code, uri)
-    }
-
-    private fun dispatchPicker(requestCode: Int, uri: Uri) {
+        if (requestCode != pendingRequest || pendingRequest == 0) return
+        val receipt = pendingReceipt
+        val projectId = pendingEvidenceProjectId
+        clearPendingPicker()
+        if (resultCode != RESULT_OK) { status("Document selection cancelled"); return }
+        val uri = data?.data
+        if (uri == null) { status("No document was returned by the picker"); return }
+        // Application resolver and immutable snapshots only: never capture this
+        // Activity in an operation that can outlive it during rotation.
+        val resolver = applicationContext.contentResolver
         when (requestCode) {
-            PICK_EVIDENCE -> attachEvidence(uri)
-            EXPORT_JSON -> writeJsonExport(uri)
-            EXPORT_PDF -> writePdfExport(uri)
-            IMPORT_RECEIPT -> try {
-                val input = contentResolver.openInputStream(uri)
-                    ?: throw IllegalArgumentException("unable to read selected receipt")
+            PICK_EVIDENCE -> {
+                if (projectId == null) { status("Evidence target was lost. Select the project and attach again."); return }
+                runDocument("Hashing evidence locally…") {
+                    val name = evidenceName(resolver, uri)
+                    val mimeType = resolver.getType(uri) ?: "application/octet-stream"
+                    require(name.trim().length in 1..255) { "evidence name must be 1..255 chars" }
+                    require(mimeType.trim().length in 1..127) { "mime type must be present" }
+                    UnicodeIntegrity.requireWellFormedUtf16(name, "evidence name")
+                    UnicodeIntegrity.requireWellFormedUtf16(mimeType, "mime type")
+                    val input = resolver.openInputStream(uri) ?: throw IOException("unable to read selected evidence")
+                    val measured = input.use(EvidenceStreams::hash)
+                    val evidence = Evidence(ReceiptEngine.evidenceId(measured.sha256), name, mimeType, measured.sha256, measured.sizeBytes)
+                    DocumentResult.Attached(projectId, evidence)
+                }
+            }
+            EXPORT_JSON, EXPORT_PDF -> {
+                if (receipt == null) { status("Receipt export was interrupted. Create the receipt and export again."); return }
+                val format = if (requestCode == EXPORT_JSON) "JSON receipt" else "PDF proof pack"
+                runDocument("Exporting $format…") {
+                    try {
+                        val output = resolver.openOutputStream(uri, "wt")
+                            ?: throw IOException("unable to open selected output document")
+                        output.use {
+                            if (requestCode == EXPORT_JSON) it.write(ReceiptEngine.exportJson(receipt).toByteArray(Charsets.UTF_8))
+                            else PdfExporter.write(receipt, it)
+                        }
+                        DocumentResult.Message("$format exported")
+                    } catch (e: Exception) {
+                        throw IOException("$format export failed; the selected document may be incomplete. ${e.message ?: "Try exporting again."}", e)
+                    }
+                }
+            }
+            IMPORT_RECEIPT -> runDocument("Reading receipt…") {
+                val input = resolver.openInputStream(uri) ?: throw IOException("unable to read selected receipt")
                 val raw = input.use(ReceiptImportLimits::readUtf8Bounded)
                 val (_, verification) = ReceiptCodec.decodeAndVerify(raw)
-                clearPendingPicker()
-                status(if (verification.valid) "Imported receipt verified" else "Imported receipt rejected: ${verification.reason}")
-            } catch (e: Exception) {
-                status("Imported receipt rejected: ${e.message ?: "invalid or unreadable receipt"}")
+                DocumentResult.Message(if (verification.valid) "Imported receipt verified" else "Imported receipt rejected: ${verification.reason}")
             }
         }
     }
 
-    private fun writeJsonExport(uri: Uri) {
-        val receipt = pendingReceipt
-        if (receipt == null) {
-            status("JSON export failed: no receipt ready")
-            return
-        }
-        val stream = contentResolver.openOutputStream(uri)
-        if (stream == null) {
-            status("JSON export failed: destination stream was unavailable")
-            return
-        }
+    private fun runDocument(message: String, work: () -> DocumentResult) {
         try {
-            stream.use { it.write(ReceiptEngine.exportJson(receipt).toByteArray()) }
-            clearPendingPicker()
-            status("JSON receipt exported")
+            documents.start(work)
+            status(message)
         } catch (e: Exception) {
-            status("JSON export failed: ${e.message ?: "write error"}")
+            status("Document operation could not start: ${e.message}")
         }
+        updateControls()
     }
 
-    private fun writePdfExport(uri: Uri) {
-        val receipt = pendingReceipt
-        if (receipt == null) {
-            status("PDF export failed: no receipt ready")
-            return
-        }
-        val stream = contentResolver.openOutputStream(uri)
-        if (stream == null) {
-            status("PDF export failed: destination stream was unavailable")
-            return
-        }
-        try {
-            stream.use { PdfExporter.write(receipt, it) }
-            clearPendingPicker()
-            status("PDF proof pack exported")
-        } catch (e: Exception) {
-            status("PDF export failed: ${e.message ?: "write error"}")
-        }
-    }
-
-    private fun clearPendingPicker() {
-        pendingPickerUri = null
-        pendingPickerCode = 0
-    }
-
-    private fun attachEvidence(uri: Uri) {
-        if (selected !in projects.indices) return
-        val projectIndex = selected
-        status("Hashing evidence off the UI thread…")
-        io.execute {
-            try {
-                val digest = MessageDigest.getInstance("SHA-256")
-                var measured = 0L
-                val input = contentResolver.openInputStream(uri)
-                    ?: throw IllegalArgumentException("unable to read selected content")
-                input.use { stream ->
-                    val buf = ByteArray(64 * 1024)
-                    while (true) {
-                        val n = stream.read(buf)
-                        if (n <= 0) break
-                        digest.update(buf, 0, n)
-                        measured += n.toLong()
+    private fun documentCompleted(result: Result<DocumentResult>) {
+        result.fold(onSuccess = { completed ->
+            when (completed) {
+                is DocumentResult.Message -> status(completed.text)
+                is DocumentResult.Attached -> {
+                    val project = projects.find { it.id == completed.projectId }
+                    when {
+                        project == null -> status("Evidence target no longer exists. Nothing was attached.")
+                        project.evidence.any { it.id == completed.evidence.id } -> status("That exact evidence content is already attached")
+                        project.evidence.size >= 128 -> status("A receipt supports at most 128 evidence items. Nothing was attached.")
+                        else -> {
+                            project.evidence += completed.evidence
+                            repo.save(projects)
+                            if (projects.getOrNull(selected)?.id == project.id) renderProject(selected)
+                            status("Evidence hashed locally and attached: ${completed.evidence.sizeBytes} bytes")
+                        }
                     }
                 }
-                val sha = digest.digest().joinToString("") { "%02x".format(it) }
-                val (name, listedSize) = queryNameSize(uri)
-                val size = if (measured > 0L) measured else listedSize
-                val evidence = Evidence(
-                    ReceiptEngine.evidenceId(sha),
-                    name,
-                    contentResolver.getType(uri) ?: "application/octet-stream",
-                    sha,
-                    size,
-                )
-                runOnUiThread {
-                    if (projectIndex !in projects.indices) return@runOnUiThread
-                    if (projects[projectIndex].evidence.any { it.id == evidence.id }) {
-                        status("That exact evidence content is already attached")
-                        return@runOnUiThread
-                    }
-                    projects[projectIndex].evidence += evidence
-                    repo.save(projects)
-                    renderProject(projectIndex)
-                    clearPendingPicker()
-                    status("Evidence hashed locally and attached (${size} B)")
-                }
-            } catch (e: Exception) {
-                runOnUiThread { status("Evidence attach failed: ${e.message}") }
             }
-        }
+        }, onFailure = { status("Document operation failed: ${it.message ?: "unreadable document"}") })
+        updateControls()
     }
 
-    private fun queryNameSize(uri: Uri): Pair<String, Long> {
-        var name = "evidence"
-        var size = 0L
-        val cursor: Cursor? = contentResolver.query(uri, arrayOf(OpenableColumns.DISPLAY_NAME, OpenableColumns.SIZE), null, null, null)
-        cursor?.use {
-            if (it.moveToFirst()) {
-                val nameIndex = it.getColumnIndex(OpenableColumns.DISPLAY_NAME)
-                val sizeIndex = it.getColumnIndex(OpenableColumns.SIZE)
-                if (nameIndex >= 0) name = it.getString(nameIndex) ?: name
-                if (sizeIndex >= 0 && !it.isNull(sizeIndex)) size = it.getLong(sizeIndex)
-            }
-        }
-        return name to size
+    private fun updateControls() {
+        val enabled = !documents.busy && pendingRequest == 0
+        controls.forEach { it.isEnabled = enabled }
     }
 
     private fun renderBilling(state: BillingState) {
@@ -378,10 +353,35 @@ class MainActivity : Activity() {
 
     private fun status(message: String) { statusView.text = message }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        saveCurrent()
+        outState.putString("selectedProjectId", projects.getOrNull(selected)?.id)
+        outState.putInt("pendingRequest", pendingRequest)
+        outState.putString("pendingEvidenceProjectId", pendingEvidenceProjectId)
+        outState.putString("pendingReceipt", pendingReceipt?.let(ReceiptEngine::exportJson))
+        outState.putBoolean("documentBusy", documents.busy)
+        outState.putString("status", statusView.text.toString())
+        super.onSaveInstanceState(outState)
+    }
+
+    @Deprecated("Retain only the document worker; it never owns the Activity")
+    override fun onRetainNonConfigurationInstance(): Any = documents
+
     override fun onStop() { saveCurrent(); super.onStop() }
 
     override fun onDestroy() {
-        io.shutdown()
+        documents.detach()
+        if (!isChangingConfigurations) documents.close()
         super.onDestroy()
     }
+}
+
+private fun evidenceName(resolver: ContentResolver, uri: Uri): String {
+    resolver.query(uri, arrayOf(OpenableColumns.DISPLAY_NAME), null, null, null)?.use { cursor ->
+        val nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+        if (cursor.moveToFirst() && nameIndex >= 0) {
+            return cursor.getString(nameIndex)?.takeIf { it.isNotBlank() } ?: "evidence"
+        }
+    }
+    return "evidence"
 }
