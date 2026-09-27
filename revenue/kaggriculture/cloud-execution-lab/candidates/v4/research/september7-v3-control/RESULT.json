@@ -1,0 +1,9 @@
+{
+  "development": "12W/0T/0L",
+  "held_out": "8W/0T/0L",
+  "held_out_own_cash_total": 1317,
+  "held_out_own_cash_mean": 164.625,
+  "held_out_min_own_cash_delta": -1031,
+  "held_out_negative_cells": "1/8",
+  "authority": "historical-control-evidence-only"
+}
