@@ -78,7 +78,7 @@
     "commits_in_delta": 30,
     "non_merge_commits_in_delta": 29,
     "changed_paths_in_delta": 330,
-    "terminal_current_main_sha": "PENDING_CURRENT_MAIN_READBACK",
+    "terminal_current_main_sha": "2321dc9c8a4b391d9a54e535e3292d60fe3feca2",
     "remote_branches_observed": 4566,
     "prior_terminal_slack_ts": "1790498103.758459",
     "latest_observed_delta_slack_ts": "1790536142.133769",
@@ -120,13 +120,21 @@
   "evidence": {
     "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790536091138069",
     "source_pr": "https://github.com/woahwhattheheck/commons/pull/30121",
+    "activation_pr": "https://github.com/woahwhattheheck/commons/pull/30122",
+    "activation_merge_commit": "2321dc9c8a4b391d9a54e535e3292d60fe3feca2",
+    "activation_blobs": {
+      "ground/RESOURCE_LEDGER.json": "4d9743b4c50629a8e4ec3cdebc70905a239c5e40",
+      "inventory/resources/records/codex-jev-paid-shipping-monitor-checkpoint-advancement-20260927-01.json": "fefdc8ab157893dc6fb0d211ece5cab466ccf913",
+      "p/codex-jev-paid-shipping-monitor-checkpoint-advancement-20260927-01.md": "b81756fcaee2cab55f130ac6c8ab85d617e1728c",
+      "resources.html": "727db460f01fb3872b29ab8bfd91ed823d7673ab"
+    },
     "hyperagent_depth_build_order": "https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1790536064776369",
     "official_release_notes": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes"
   },
   "next_watermark": {
     "observed_at": "2026-09-27T19:09:39Z",
     "activation_base_main_sha": "2800d66a244336909e4b2bfa31afe4a09709a5c7",
-    "current_main_sha": "PENDING_CURRENT_MAIN_READBACK",
+    "current_main_sha": "2321dc9c8a4b391d9a54e535e3292d60fe3feca2",
     "latest_delta_slack_ts": "1790536142.133769",
     "source_merge_commit": "272b6b7d3d61e8292cbf59d96eaf21f696ba8d4a",
     "remote_branches_observed": 4566
