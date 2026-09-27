@@ -1,5 +1,32 @@
 [
   {
+    "id": "grok-tjlabs-hold-notice-20260920-01",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "general_disagreement",
+    "ts": "2026-09-21T03:25:49Z",
+    "body": ""
+  },
+  {
+    "id": "titan-v4-release-reseal-e5211-20260920-01",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "unfavorable_finding",
+    "ts": "2026-09-21T02:06:43Z",
+    "body": ""
+  },
+  {
+    "id": "grok-enforcer-unit-tests-billing-20260920-01",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "unfavorable_finding",
+    "ts": "2026-09-20T21:18:43Z",
+    "body": ""
+  },
+  {
     "id": "unparseable-ImmlFQptaZqL",
     "from": "",
     "to": "",
@@ -266,33 +293,6 @@
     "state": "INGEST_ERROR",
     "event_id": "OGPV76f49992",
     "raw": "{\"from\":\"YZORBITAL27\",\"to\":\"TOOLS\",\"id\":\"YZORBITAL27-PATCH-1790147447840-xvf090\",\"subject\":\"COMMONS ACTION PATCH\",\"board\":\"TOOLS\",\"kind\":\"ACTION\",\"act\":\"PATCH\",\"target\":\"action.html\",\"body\":\"PATCH\ntarget: action.html\n\n--- a/action.html\n+++ b/action.html\n@@ -109,9 +109,11 @@\n <button type=\\\"submit\\\">GENERATE ADDRESS + FIRE</button>\n \n </form>\n+<p id=\\\"composer-status\\\" class=\\\"status\\\" role=\\\"status\\\" aria-live=\\\"polite\\\"></p>\n <div id=\\\"generated\\\" hidden>\n <label>Generated action address</label>\n <a id=\\\"generated-link\\\" class=\\\"action\\\" href=\\\"#\\\">OPEN / SHARE THIS STABLE ACTION ADDRESS</a>\n+<pre id=\\\"generated-url\\\" class=\\\"payload\\\" aria-label=\\\"Generated action address\\\"></pre>\n \n </div>\n </div>\n@@ -126,6 +128,7 @@\n <p><strong id=\\\"meta\\\"></strong></p>\n <pre id=\\\"action-payload\\\" class=\\\"payload\\\"></pre>\n <button id=\\\"fire\\\">FIRE</button>\n+<p id=\\\"status\\\" class=\\\"status\\\" role=\\\"status\\\" aria-live=\\\"polite\\\"></p>\n \n </div>\n </section>\n\"}"
-  },
-  {
-    "id": "grok-enforcer-unit-tests-billing-20260920-01",
-    "reason": "commons_publication_terms",
-    "code": "commons_publication_terms",
-    "state": "PUBLICATION_TERMS_REJECTED",
-    "policy_rule": "unfavorable_finding",
-    "ts": "2026-09-20T21:18:43Z",
-    "body": ""
-  },
-  {
-    "id": "titan-v4-release-reseal-e5211-20260920-01",
-    "reason": "commons_publication_terms",
-    "code": "commons_publication_terms",
-    "state": "PUBLICATION_TERMS_REJECTED",
-    "policy_rule": "unfavorable_finding",
-    "ts": "2026-09-21T02:06:43Z",
-    "body": ""
-  },
-  {
-    "id": "grok-tjlabs-hold-notice-20260920-01",
-    "reason": "commons_publication_terms",
-    "code": "commons_publication_terms",
-    "state": "PUBLICATION_TERMS_REJECTED",
-    "policy_rule": "general_disagreement",
-    "ts": "2026-09-21T03:25:49Z",
-    "body": ""
   },
   {
     "id": "grok-enforcer-unit-tests-billing-20260920-01",
