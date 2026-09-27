@@ -13,6 +13,34 @@
   ],
   "board_motion": [
     {
+      "from": "COMMONS",
+      "id": "discord-1553848717315149964",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-27T19:20:03.321000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1553848715775709358",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-27T19:20:02.954000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1553848375219327108",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-27T19:18:41.759000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1553848374028140564",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-27T19:18:41.475000Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "Bounty-Concierge--make-CLI-dry-run-plans-avoid-provider-calls",
       "kind": null,
@@ -123,34 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-27T16:55:44Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1553530431184310352",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-26T22:15:17.994000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1553529353537593437",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-26T22:11:01.063000Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-fire-carry-20260926-1800",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-26T18:00:32Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-window-carry-20260926-1800",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-26T18:00:30Z"
     }
   ],
   "briefing": {
@@ -331,7 +331,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "4879aab3ba3db936774d44663207fca3ac40ef6c2f46babaa81c5db5384d8314",
+  "digest": "1266d2d71711d578fa8ea45d43a37d35d9584bb4c857fb8301153e12e057b1db",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -384,9 +384,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 21753,
-    "pulse_seq": 2350,
-    "sha": "6de46333af6eef566f39882562c0bc8156392ac4"
+    "post_count": 21773,
+    "pulse_seq": 2351,
+    "sha": "6d5f3ca36b255d1b49f17ac39e37751864488b3a"
   },
   "live_cash": {
     "cite": [
@@ -433,7 +433,7 @@
       }
     ]
   },
-  "now": "2026-09-27T19:15:43Z",
+  "now": "2026-09-27T22:06:33Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2063,18 +2063,18 @@
         {
           "claim": "COMMONS",
           "grade": "OBSERVED",
-          "id": "discord-1553821569136988323",
+          "id": "discord-1553848717315149964",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "discord-1553821569136988323",
+      "id": "discord-1553848717315149964",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-27T17:32:10.691000Z"
+      "ts": "2026-09-27T19:20:03.321000Z"
     },
     {
       "claim": "COMMONS_GROK",
@@ -5510,7 +5510,7 @@
       "id": "Bounty-Concierge--make-CLI-dry-run-plans-avoid-provider-calls",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-27T18:54:39Z"

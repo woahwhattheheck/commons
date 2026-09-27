@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 6,
+ "n_open_prs": 4,
  "open_prs": [
   {
    "number": 30099,
@@ -359,7 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/30099",
    "base_freshness": {
     "base_sha": "2a6e821a3ff1c3aa19a6636a5341ec18e1ccf134",
-    "main_sha": "1869587f910a14fc610eaa1140561a33c7a126ed",
+    "main_sha": "0a8172fb88c9c14e5bdafb62097b3036d70f03bf",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -375,7 +375,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/30100",
    "base_freshness": {
     "base_sha": "2a6e821a3ff1c3aa19a6636a5341ec18e1ccf134",
-    "main_sha": "1869587f910a14fc610eaa1140561a33c7a126ed",
+    "main_sha": "0a8172fb88c9c14e5bdafb62097b3036d70f03bf",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -391,23 +391,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/30091",
    "base_freshness": {
     "base_sha": "027d3ae12599d84e92978549a61a15e65950276d",
-    "main_sha": "1869587f910a14fc610eaa1140561a33c7a126ed",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 30096,
-   "author": "woahwhattheheck",
-   "title": "Align command-center contracts with 19 tools and core GitHub scopes",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/30096",
-   "base_freshness": {
-    "base_sha": "027d3ae12599d84e92978549a61a15e65950276d",
-    "main_sha": "1869587f910a14fc610eaa1140561a33c7a126ed",
+    "main_sha": "0a8172fb88c9c14e5bdafb62097b3036d70f03bf",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -423,23 +407,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/30101",
    "base_freshness": {
     "base_sha": "2a6e821a3ff1c3aa19a6636a5341ec18e1ccf134",
-    "main_sha": "1869587f910a14fc610eaa1140561a33c7a126ed",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 30095,
-   "author": "woahwhattheheck",
-   "title": "fix: command-center contracts after resource-scoped GitHub limits",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/30095",
-   "base_freshness": {
-    "base_sha": "027d3ae12599d84e92978549a61a15e65950276d",
-    "main_sha": "1869587f910a14fc610eaa1140561a33c7a126ed",
+    "main_sha": "0a8172fb88c9c14e5bdafb62097b3036d70f03bf",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
