@@ -1,0 +1,28 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "family": "rating-aligned-promotion-gate",
+  "branch": "sol-pro/titan-v3-rating-aligned-promotion-gate-20260910-01",
+  "head": "723ddde1279672d728a4b0120fda5a7063968431",
+  "published_validation_head": "ff202440ae1669b06bcec7ad064703fdee4a67e7",
+  "disposition": "historical_evidence_tooling_only",
+  "blobs": {
+    "workflow": "dc9acec6b14d9f2787a777a993b663e03078802a",
+    "readme": "683efebd4f0c7e40e3d10682b54b6384d36876c8",
+    "validation": "634a4f085515f463e68dd5a04aeaa0e6b9a70ebf",
+    "source": "ccdcb67af54ad1a350b474421461053dc4bf5333",
+    "tests": "eb31c67233e932ad8153b8176d44ec2fcf994f27"
+  },
+  "validation": {
+    "local_compile": "PASS",
+    "local_tests": 15,
+    "local_failures": 0,
+    "local_errors": 0,
+    "synthetic_cli": "PASS",
+    "exact_head_actions_runs": 0
+  },
+  "current_main_paths_present": false,
+  "gameplay_strength_claim": false,
+  "rating_estimate_claim": false,
+  "v4_queue_edge": false,
+  "runtime_promotion": false
+}
