@@ -1,0 +1,43 @@
+{
+  "schema": "titan-v4-historical-custody/v1",
+  "source_branch": "sol-guardrail/titan-v3-multi-lot-realized-anchor-custody-20260910-01",
+  "source_head": "ffa962eebf2648bc34e76ef8feeff101064342a7",
+  "source_tree": "ad152565f9d63f70c8e9b07192150efd2f668153",
+  "source_pr": 12002,
+  "source_state": "closed_unmerged",
+  "rejected_parent_head": "74a77b154af1783a1c3767e484ff3d801966b73e",
+  "exact_source_blobs": {
+    "workflow": "d332efa54e3c13579cd06b7b23e3f6e5c7c67796",
+    "readme": "fc89100cf94c0261457a4a6d22af18b144024993",
+    "audit": "e5893dee85858ebd9a906cd23df852dab8f1cc84",
+    "repair": "04267539cf71379b1076f1b3f999aaeeb2434230",
+    "tests": "a26809c5ba9426fa24ffc9fec5dfb62eb3a355f9"
+  },
+  "controlling_review": {
+    "id": 5171535654,
+    "verdict": "HOLD_exact_returned_action_and_receipt_claims_PASS_narrow_static_predecessor_diagnosis"
+  },
+  "hosted": {
+    "run_id": 34520948615,
+    "job_id": 103018034374,
+    "job_name": "exact-source-structural-gate",
+    "conclusion": "success",
+    "artifact_id": 10180368832,
+    "artifact_name": "titan-v3-multi-lot-realized-anchor-custody-34520948615",
+    "artifact_bytes": 2185,
+    "artifact_digest": "sha256:cbd1f2cf0f19206126837ee9f484b77df28775641e10323bb7db260561e1fe54",
+    "artifact_expires_at": "2026-10-11T01:14:29Z",
+    "red_exact_head_runs": [34521179456, 34521179465, 34521179524]
+  },
+  "retained_theorem": "the rejected predecessor allocator can ignore positive baseline suffix claimants and overstate scalar-anchor custody at its modeled suffix boundary",
+  "disposition": "historical_quarantine_review_hold_parent_policy_rejected",
+  "v4_queue_edge": false,
+  "direct_merge": false,
+  "remint": false,
+  "requirements_for_reuse": [
+    "current-ABI exact scheduler returned-action closure",
+    "immutable decision normalization",
+    "exact-head provenance closure",
+    "fresh full gates"
+  ]
+}
