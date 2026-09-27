@@ -1,0 +1,30 @@
+{
+  "schema": "titan-v4-historical-custody/v1",
+  "source_pr": 12011,
+  "operation": "TITAN-V3-APPLY-TRANSACTIONAL-CLOSURE-20260910-01",
+  "final_head": "2855c1a5464b2c64ecce4cee6c49fca6cae9b236",
+  "merge_commit": "55f844e01d3b38ace37344a36110970fea467ec9",
+  "source_manifest_blob": "83151c1b5511061012842f550a7a61feeb6d5100",
+  "repaired_apply_blob": "369cb5a6eb2101d55ddc0c864d952f3928ec1fe4",
+  "repaired_apply_sha256": "fe0e92bbe3061cebba709b5e902274117250f7db1114dab28b5eee35341c4cf8",
+  "test_blob": "5fab0e181c19c67519b992a9b810e4123656b59f",
+  "test_sha256": "9249fe2898a6b11646e5abc93118a47a7380c62dbd3841437e241a3d5dd976d3",
+  "result": "bounded source repair PASS: 13/13 focused contracts and compile; no gameplay claim",
+  "generic_exact_head_gates": {
+    "success": [
+      34522970804,
+      34522970748,
+      34522970800,
+      34522970811,
+      34522970766,
+      34522970812
+    ],
+    "failure": [
+      34522970817
+    ]
+  },
+  "disposition": "historical merged V3 control-plane evidence only",
+  "current_v4_queue_edge": false,
+  "current_v4_runtime_promotion": false,
+  "note": "Exact repair bytes are already reachable on main through merged history. Current V4 authority forbids applying the retired materializer to the production ABI; no current-ABI replay or promotion is authorized."
+}
