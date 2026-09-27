@@ -1,0 +1,12 @@
+{
+  "schema": "titan-v4-research-custody/v1",
+  "source_pr": 11789,
+  "parent_pr": 11629,
+  "parent_head": "d7ce3103eed4947166d519f397bec79514208b08",
+  "evidence_head": "2e4d1423c38a149a7d8c4bc903bce1e7e814e45d",
+  "evidence_tree": "19341f0910815b0e3334746497c077babf961a18",
+  "workflow_run": 34407627431,
+  "result": "SUCCESS across Python 3.10-3.13",
+  "disposition": "validated historical control; evidence-only; no V4 gameplay or queue edge",
+  "ledger_comment": 5740057237
+}
