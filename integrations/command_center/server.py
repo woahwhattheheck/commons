@@ -167,7 +167,7 @@ class Handler(BaseHTTPRequestHandler):
             elif parsed.path == "/health":
                 self.send_json(200, {"ok": True, "service": "commons-command-center"})
             else:
-                names = {"/": ("index.html", "text/html; charset=utf-8"), "/app.js": ("app.js", "text/javascript; charset=utf-8"), "/style.css": ("style.css", "text/css; charset=utf-8"), "/work.js": ("work.js", "text/javascript; charset=utf-8"), "/work.css": ("work.css", "text/css; charset=utf-8"), "/deathstar.js": ("deathstar.js", "text/javascript; charset=utf-8"), "/mail.js": ("mail.js", "text/javascript; charset=utf-8")}
+                names = {"/": ("index.html", "text/html; charset=utf-8"), "/app.js": ("app.js", "text/javascript; charset=utf-8"), "/style.css": ("style.css", "text/css; charset=utf-8"), "/work.js": ("work.js", "text/javascript; charset=utf-8"), "/work.css": ("work.css", "text/css; charset=utf-8"), "/swarm-tasks.js": ("swarm-tasks.js", "text/javascript; charset=utf-8"), "/deathstar.js": ("deathstar.js", "text/javascript; charset=utf-8"), "/mail.js": ("mail.js", "text/javascript; charset=utf-8")}
                 entry = names.get(parsed.path)
                 if entry is None:
                     self.send_json(404, {"error": "not_found"})

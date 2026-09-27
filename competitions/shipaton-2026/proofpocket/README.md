@@ -17,13 +17,19 @@ Current pinned build inputs were checked against vendor docs on 2026-09-13:
 - AGP `9.4.0`, `compileSdk/targetSdk 37`, minSdk 26.
 - RevenueCat Android SDK `10.15.1`.
 
-Supply the **public** RevenueCat SDK key only at build time (never a secret API key):
+The project does not currently include a Gradle wrapper. Install a Gradle distribution compatible with the pinned Android Gradle Plugin and Android SDK platform 37 plus its required build tools. Run from this directory with the SDK location configured. Supply the **public** RevenueCat SDK key only at build time (never a secret API key):
 
 ```bash
-./gradlew :app:assembleDebug -PPROOFPOCKET_REVENUECAT_PUBLIC_SDK_KEY=goog_xxx
+gradle :app:assembleDebug -PPROOFPOCKET_REVENUECAT_PUBLIC_SDK_KEY=goog_xxx
 ```
 
 This repository intentionally does not contain the key, RevenueCat products/offerings, store credentials, signing keys, or a claim that purchases have been tested.
+
+## Document workflow
+
+Saved projects populate the selector on launch. Evidence hashing, receipt import, and JSON/PDF export run on one document worker, not the UI thread. The evidence digest and byte count come from the same stream, including empty files; provider size metadata is not substituted for bytes read.
+
+The project ID and receipt snapshot are retained while the document picker is open. During a configuration change, the replacement Activity attaches to the existing worker rather than starting a second write or saving an old Activity's project list. Process death is different: an interrupted operation is reported and must be retried; exports are not automatically replayed. A failed export can leave an incomplete selected document. Success is shown only after the stream opens, writes, and closes successfully.
 
 ## Local proof-engine tests
 

@@ -1,25 +1,14 @@
 {
   "counts": {
-    "open_issues": 8378,
-    "open_pull_requests": 7,
-    "runs_in_progress": 2,
-    "runs_queued": 70
+    "open_issues": 8279,
+    "open_pull_requests": 6,
+    "runs_in_progress": 5,
+    "runs_queued": 71
   },
   "counts_source": "graphql",
   "degraded": [],
-  "drafts": 1,
+  "drafts": 0,
   "longest_open": [
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "checkpoint/publication-capacity-ui-20260926",
-      "created_at": "2026-09-26T15:40:18Z",
-      "draft": true,
-      "head_sha": "45fb71788fcbf55304b09726070d75a8158aa9d2",
-      "number": 30090,
-      "title": "Checkpoint unfinished command-center publication capacity display",
-      "updated_at": "2026-09-26T15:40:18Z"
-    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -63,6 +52,17 @@
       "number": 30099,
       "title": "Keep provider admission verbs free-form",
       "updated_at": "2026-09-26T18:06:30Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "fix/malformed-page-retention-fixtures-20260926",
+      "created_at": "2026-09-26T18:13:04Z",
+      "draft": false,
+      "head_sha": "f5b4af8dbfe00c694560fd67286a4f4c9e65fa25",
+      "number": 30100,
+      "title": "Align pagination fixtures with dict GitHub page rows",
+      "updated_at": "2026-09-26T18:13:04Z"
     }
   ],
   "newest_pulls": [
@@ -131,21 +131,9 @@
       "number": 30091,
       "title": "fix: preserve 404 on body-only GitHub Not Found for create-branch",
       "updated_at": "2026-09-26T18:32:23Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "checkpoint/publication-capacity-ui-20260926",
-      "created_at": "2026-09-26T15:40:18Z",
-      "draft": true,
-      "head_sha": "45fb71788fcbf55304b09726070d75a8158aa9d2",
-      "number": 30090,
-      "title": "Checkpoint unfinished command-center publication capacity display",
-      "updated_at": "2026-09-26T15:40:18Z"
     }
   ],
   "open_heads": {
-    "30090": "45fb71788fcbf55304b09726070d75a8158aa9d2",
     "30091": "65df89b7f4c7ded1329b36d0930ff88660b3a2fa",
     "30095": "f2098c7199f4766654b17b5418ff81034868bdc2",
     "30096": "43ac53157dc45ce540515c7a72ca99adfbe6097e",
@@ -153,10 +141,114 @@
     "30100": "f5b4af8dbfe00c694560fd67286a4f4c9e65fa25",
     "30101": "97b035373725831db3391030930dbe8d2ce5ead2"
   },
-  "pulls_listed": 7,
+  "pulls_listed": 6,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 35.0,
+  "queue_depth_per_runner": 14.2,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "titan/v31-rating-forensic-20260927",
+      "closed_at": "2026-09-27T19:07:08Z",
+      "head_sha": "e562360fef9058aed4108147ee50adfdc12cda4a",
+      "merge_commit_sha": "dff92371bdb9b9771d6826c51753cc87fb42665c",
+      "merged_at": "2026-09-27T19:07:08Z",
+      "number": 30120,
+      "state": "MERGED",
+      "title": "Document V3.1 reupload rating reset and episode audit",
+      "updated_at": "2026-09-27T19:07:18Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "yz-cairn-927/immutable-shipping-checkpoints",
+      "closed_at": "2026-09-27T19:03:32Z",
+      "head_sha": "ea94d901a802c5b309e5a16d0aadbfbf71356039",
+      "merge_commit_sha": "272b6b7d3d61e8292cbf59d96eaf21f696ba8d4a",
+      "merged_at": "2026-09-27T19:03:32Z",
+      "number": 30121,
+      "state": "MERGED",
+      "title": "Shipping: keep the last complete checkpoint across interrupted publication",
+      "updated_at": "2026-09-27T19:03:43Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "yz-quartz/serve-swarm-task-ui-20260927",
+      "closed_at": "2026-09-27T18:55:54Z",
+      "head_sha": "32a6e2f15cdaee4abe3ce82c5a5b5ab4c24dfac3",
+      "merge_commit_sha": "5c08cb05ec4ba967f1128fc25b00af163fa1787e",
+      "merged_at": "2026-09-27T18:55:54Z",
+      "number": 30118,
+      "state": "MERGED",
+      "title": "Restore the command-center canonical task UI script route",
+      "updated_at": "2026-09-27T18:56:05Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "checkpoint/publication-capacity-ui-20260926",
+      "closed_at": "2026-09-27T18:49:29Z",
+      "head_sha": "9386a54aa361bcc1d0d159764291f5a34b275ef8",
+      "merge_commit_sha": "8cc4a79381da2fe05ccd9c8ac3f17cd910afe1d6",
+      "merged_at": "2026-09-27T18:49:29Z",
+      "number": 30090,
+      "state": "MERGED",
+      "title": "Show publication capacity without blocking command-center refresh",
+      "updated_at": "2026-09-27T18:49:40Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "yz-cairn-927/proofpocket-document-lifecycle",
+      "closed_at": "2026-09-27T18:44:57Z",
+      "head_sha": "92b68c4251401c6486ba29d75c50fd6258ffe6ee",
+      "merge_commit_sha": "feb1a6262cca046f7efe480daaa85ac5db182141",
+      "merged_at": "2026-09-27T18:44:57Z",
+      "number": 30117,
+      "state": "MERGED",
+      "title": "ProofPocket: retain document work and report export failures",
+      "updated_at": "2026-09-27T18:45:10Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "yz-kestrel/proofpocket-stream-digest-20260927",
+      "closed_at": "2026-09-27T18:40:51Z",
+      "head_sha": "fbc3fdc5de028558c55372b75e67986b1da51a10",
+      "merge_commit_sha": "44454481adf138d7a674f8b405f065e0edd57d69",
+      "merged_at": "2026-09-27T18:40:51Z",
+      "number": 30116,
+      "state": "MERGED",
+      "title": "ProofPocket: use one streamed digest and byte count for evidence",
+      "updated_at": "2026-09-27T18:41:02Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "grok/issue-15860",
+      "closed_at": "2026-09-27T18:36:51Z",
+      "head_sha": "cd874dcb01ac514cc4f324374e914499bc73764b",
+      "merge_commit_sha": "a669a6c5fac196bb571fcb53a43410ef554dafa7",
+      "merged_at": "2026-09-27T18:36:51Z",
+      "number": 30115,
+      "state": "MERGED",
+      "title": "proofpocket: restore saved-project selector and honest document export",
+      "updated_at": "2026-09-27T18:37:00Z"
+    },
+    {
+      "author": "tokenjunkielabs",
+      "base": "main",
+      "branch": "ha-transcript-demo-90s",
+      "closed_at": "2026-09-27T17:08:52Z",
+      "head_sha": "54667eb1ff3f9aa56d8fc7a1a588a2a719782870",
+      "merge_commit_sha": "bce8daed2750d6849c2b9c7ac06cc201f6028e28",
+      "merged_at": "2026-09-27T17:08:52Z",
+      "number": 30112,
+      "state": "MERGED",
+      "title": "hyperagent transcript: 90-second prospect demo",
+      "updated_at": "2026-09-27T17:09:02Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -247,114 +339,10 @@
       "state": "MERGED",
       "title": "Activate UIOWA operator transfer bundle",
       "updated_at": "2026-09-26T19:11:22Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ci/workflow-surface-budget-70-20260926",
-      "closed_at": "2026-09-26T17:55:14Z",
-      "head_sha": "c5320bbf69b5463d1e9cedf05ab4bfa2f5647ff4",
-      "merge_commit_sha": "2a6e821a3ff1c3aa19a6636a5341ec18e1ccf134",
-      "merged_at": "2026-09-26T17:55:14Z",
-      "number": 30098,
-      "state": "MERGED",
-      "title": "ci: raise workflow-surface active budget to 70",
-      "updated_at": "2026-09-26T18:32:26Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "fix/command-center-admission-contract-counts-20260926",
-      "closed_at": "2026-09-26T17:25:38Z",
-      "head_sha": "0295538e448d823ab52ef5eded0135477b76dfdd",
-      "merge_commit_sha": "321fb6a84fb62b6d0365787e2d916256293e57e8",
-      "merged_at": "2026-09-26T17:25:38Z",
-      "number": 30097,
-      "state": "MERGED",
-      "title": "align command-center contracts with admission and core quota scopes",
-      "updated_at": "2026-09-26T18:32:31Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/wake-input-decoding-20260926",
-      "closed_at": "2026-09-26T15:34:41Z",
-      "head_sha": "ec1d47449c075f5d653c1301379411dd66aa2c6a",
-      "merge_commit_sha": "06bf65b3afffe81e3d991e9d68c96a94fc385c6c",
-      "merged_at": "2026-09-26T15:34:41Z",
-      "number": 30089,
-      "state": "MERGED",
-      "title": "Recover valid wake inputs after text decoding errors",
-      "updated_at": "2026-09-26T18:32:20Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/wake-adapter-failures-20260926",
-      "closed_at": "2026-09-26T15:30:26Z",
-      "head_sha": "9b2542bfd404827626cac022cd3100d07b7cbbf7",
-      "merge_commit_sha": "268ae1aef19e1185613469349718486acd5ea479",
-      "merged_at": "2026-09-26T15:30:26Z",
-      "number": 30088,
-      "state": "MERGED",
-      "title": "Preserve independent peer signals after adapter failure",
-      "updated_at": "2026-09-26T18:32:21Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "fix/runtime-atomic-mirror-acknowledgement-20260926",
-      "closed_at": "2026-09-26T15:28:27Z",
-      "head_sha": "53e8e3d72ac02bf43d137f0085d9b987b880392e",
-      "merge_commit_sha": "7c672cd0e86a2a0a3fdabdb1edbad6c4255d84f3",
-      "merged_at": "2026-09-26T15:28:27Z",
-      "number": 30087,
-      "state": "MERGED",
-      "title": "Acknowledge atomic claim mirrors without replay churn",
-      "updated_at": "2026-09-26T18:32:19Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/wake-tick-delivery-20260926",
-      "closed_at": "2026-09-26T15:27:09Z",
-      "head_sha": "9ee1781e58e13ebd0f477f2e608e35538ec82c89",
-      "merge_commit_sha": "00e07b993a6357c6ca8382a3f10b528164009032",
-      "merged_at": "2026-09-26T15:27:09Z",
-      "number": 30086,
-      "state": "MERGED",
-      "title": "Deliver peer signals only for successful wake ticks",
-      "updated_at": "2026-09-26T18:32:18Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/inbox-incremental-groups-20260926",
-      "closed_at": "2026-09-26T15:23:00Z",
-      "head_sha": "e5b89dd45af8f9f66bcc7feb6877b7da6d6444b6",
-      "merge_commit_sha": "d643462daef600471071d4dfde6997e6f7ab098e",
-      "merged_at": "2026-09-26T15:23:00Z",
-      "number": 30084,
-      "state": "MERGED",
-      "title": "Preserve inbox progress before later source limits",
-      "updated_at": "2026-09-26T18:32:12Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "perf/idempotent-limit-observations-20260926",
-      "closed_at": "2026-09-26T15:21:43Z",
-      "head_sha": "dbab1797d156c203a57369e42e4577ce6095621d",
-      "merge_commit_sha": "5bc48eb2f65a9df08b6c82b004163a0b75475d88",
-      "merged_at": "2026-09-26T15:21:43Z",
-      "number": 30082,
-      "state": "MERGED",
-      "title": "Deduplicate retried provider limit observations in the shared budget",
-      "updated_at": "2026-09-26T18:32:12Z"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-27T15:24:42Z",
+  "unchanged_since": "2026-09-27T19:09:39Z",
   "undatable_pulls": []
 }
