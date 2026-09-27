@@ -1,0 +1,22 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "pr": 10079,
+  "head": "0c07cf9352dc0a26b1113a55b7d17b404f00bbb2",
+  "tree": "6113fe4e0dbe4afc58f7931e931730192efa7dbf",
+  "status": "closed_unmerged_superseded",
+  "disposition": "historical_evidence_only",
+  "successor_pr": 10068,
+  "controlling_comment": 5577692944,
+  "exact_head_actions_runs": 0,
+  "blobs": {
+    "README.md": "b94388c84dd02459ff9ed63a8085b32722303db1",
+    "RECOVERY.json": "941d51d85f3e9f737f3283734893fa6ac49da6ea",
+    "baseline-expected-failure.log": "86c9d7b6657a201e93ae94292603d680cc292e3d",
+    "evidence.json": "9bcd23530dc0f548045b0375de2594889f5fceb5",
+    "reproduce.py": "5239c0cd31ad7c1202016ee644f845b379fd4222",
+    "tests.log": "c8a73fc2a9b9325e49dfed2fa55defc4c31081a8",
+    "tests/test_ordered_ablation.py": "ee92c2991351dc2a77f407503e54b74272255f49",
+    "apex_sheep_overlay.py": "1df5ceb5884ba356599880c6b07d90d893793edc"
+  },
+  "note": "Runtime semantic already landed exactly through PR10068. Preserve recovery/test/log packet; no V4 queue edge."
+}

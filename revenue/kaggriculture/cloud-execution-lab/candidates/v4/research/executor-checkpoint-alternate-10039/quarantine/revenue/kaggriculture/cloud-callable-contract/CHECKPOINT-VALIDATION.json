@@ -1,0 +1,58 @@
+{
+  "scope": "Executor persistence with synthetic game rows; no engine games, policy runs, seed reservations or hosted execution.",
+  "python": "3.13.5",
+  "platform": "Linux",
+  "original_source_ref": "ac3aca20247b016d26219708b51ef420fed9b987",
+  "publication_base": "1f15b08e9e58d33a39770a831c6dfc84f49968a0",
+  "original": {
+    "bytes": 9072,
+    "sha256": "19e4ae9d2b47f069bb3bc9bc0e162ec93ce81d159130e7a5102e5868ee664979",
+    "git_blob": "224d3995f56dadc6762ebc2f35de6ea06ddee782"
+  },
+  "candidate": {
+    "bytes": 10687,
+    "sha256": "efee29d84af8ffbe05d441b8bb7329797c9a12436f1e491c4d95eb97cc02cbf8",
+    "git_blob": "58db5e38d2263044485080b6f1b1571581562955"
+  },
+  "test": {
+    "bytes": 12002,
+    "sha256": "79b9fd7c112884d0f26380939ba1fbd5e85eab748f48fd6b71f21b1afb85c175",
+    "git_blob": "249cb792fa0cd94831032f3e8653e81298dea9a9"
+  },
+  "unchanged_function_ast": [
+    "load_callable",
+    "normalise",
+    "game",
+    "wtl"
+  ],
+  "candidate_result": {
+    "tests_run": 15,
+    "failures": 0,
+    "errors": 0,
+    "exit_code": 0,
+    "log_encoding": "gzip+base64",
+    "log_sha256": "b8584c2d5ef123231806ced389d597a2c75f0d86cebd9cb3673199992a3b32df",
+    "log": "H4sIAAAAAAAC/62Uz5LTMAzG73mKHOFAhmVmeYE9cmCGF9CojroVdSyPrLRbnh6lpYV0YdfpkpMntn7fZ+uPUTEIMuRIRpAxUYSsVEh3VEBlX0C0J4WBDHs0BEw9GA+cHtt3AANyAugeNhS2WTjZgyRTDNbZG8jv267rWtk2vyCOlAhcoOCOeljRWpQgeAB7JEExVCtVfupQcwNr5Ohn3fOzwERPBo84UIV4DeZKuBxSAFIV/ePtfLVjGQt8L5JqdF+nzGWd4KfHbG5wrzyl72bxatbcwpYOK0Htf8f7L8rlnMEK5dcQc8HoyddnRzFGINTIvjeVbIVsHWgunr3mGKM7G5N5Mez8VIjIwykQzWjI5l1DNmqivsLGUuS1Idt4PyYxNJY01Wu4CFXqv0j4i1xWCVSKt/+xU0Zvi9PbrcR3p+aoTcES3NyIEsZzJNATT3/MxcplkvULKnAB7dqGVxHvCGS0PNpxMg58ukzPSsFEmUqVhSrStXyOGGggr5wXx8YRFyKhX2mqpypDN7L/bfE4TD2d5/scjqESe1j7wJ0m+qHAfiO+9l7geA5e6PZWmblxv6q3Jf84dcVbR/sC2sVG8+G/fM03TO3dfTv5KC2n9mP3+f5TaZqvX5qfALmO3lYIAAA="
+  },
+  "original_result": {
+    "tests_run": 6,
+    "failures": 6,
+    "errors": 0,
+    "exit_code": 1,
+    "log_encoding": "gzip+base64",
+    "log_sha256": "bcecdb7c1f76a66aba7ddf98b44ecb471ed91a7a1950613d26f1293ac3206d02",
+    "log": "H4sIAAAAAAAC/+1YTW8aMRC9768Y5QJIZDek+QIphyhNpEo9VblVrWV2B7Dw2ivbS8Olv71jE1hEVLHbQohEfEF48Zs3z2/GXhxax1KtnNGSCcssn2HGhjjSBlnKVSYy7pBZx42z0GYs50IxFt9PMJ0WWih37xfz1MWuCVQH4jiGx7svX6OwborzoeYmY4SIxpSFn8LCLgFrhN4GsRlSEhvz6sdcSobcSEHPjP5VJ+d6QJvhR1xI0ocevRJL4bNjY55jjeB1YDZDF9xNWGF0itYKNQ4YJS1YEB9qeuqX1c2/CdwmFYNcLtcyfBZ+xlE4v2t5IdFROvUt0ABtjUh0u5MRebABuENVVHS6kxE9UWwc8nQK7VxbBwZTVA5SMjRIbl1nEAE8kuvgJMmVS4gDT2jecKoE4kQOSFe5JM4gJgZnqEpMpnw8NiItpSN/JKnUZXbqcflQ4mn6knYS0sZnTEtKjpt8DS4u5iddkEIh3Fx2QahmchNxAItyFAs101Nsh+oIs7+r8TOMd5HkVT8kuWBbsVf2e8vbpvWj/Yr9IoMm7LURY6GoctborHHoXS+U9gFDsBRuwQvXtohZlxhx1wVdFF1IR104WYlOAEo74LHSoUd03oWk1zchG59AJSi3Fo17MqVPir7r0hWli6mFWGfbnS60Vg0Elu0oL6k4uKSek81hiBCc1/rLfvzniO4CQaHVgzHaDOCRS4sgbFDYEW8YQE2K++h3b3F8H1l/619U/W2bNk2MvIJYuGNxQPqP0qjKOvvxcS0b1yO4Dxe/9Y3wyBzdO1s7sutJ1MTYbkLEK5+ErQoOsqWZiRnu2tK1zLyN1D5s/JZvFsdm4d5NZeE6An3cOD9unL3exT9dORf+Au4c5svTcHmJA6f1QRraNlL7aGiH/L/i2Brceb9qcE2EamJsv5IEsMTYQuGVyBB8MODUFOZW2N1fP2uZezuxfdj7cP+BHZm5zz+tnd4NdGri7Qm9psELLHjYA7xmNfJ8M8LRrizzjSu4Cjth/ZacxZdnfaouXxYPn6H90mrs7VUn+gPsGiA4pBgAAA=="
+  },
+  "compileall": "passed",
+  "hard_exit_witness": {
+    "process_exit": 23,
+    "original_output_exists": false,
+    "candidate_control_rows_retained": 1
+  },
+  "limitations": [
+    "Tests use synthetic returned game rows; the real executor main/writer and filesystem are exercised.",
+    "Checkpoint durability covers process interruption with the filesystem retained, not VM deletion or power-loss recovery.",
+    "No automatic resume or game replay is introduced. No live executor process was changed.",
+    "No overall panel-throughput benchmark or hosted test result is claimed."
+  ]
+}

@@ -1,0 +1,28 @@
+test_slot_count_and_indices (test_ordered_ablation.OrderedAblationTests.test_slot_count_and_indices) ... FAIL
+
+======================================================================
+FAIL: test_slot_count_and_indices (test_ordered_ablation.OrderedAblationTests.test_slot_count_and_indices)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/astra-date/slot-delivery/revenue/kaggriculture/cloud-hosted-loss-response/ordered_ablation/tests/test_ordered_ablation.py", line 43, in test_slot_count_and_indices
+    self.assertEqual(result["market"], [[], orders[1], orders[2]])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [['SELL', 'WOOL', 8], ['HIRE']] != [[], ['SELL', 'WOOL', 8], ['HIRE']]
+
+First differing element 0:
+['SELL', 'WOOL', 8]
+[]
+
+Second list contains 1 additional elements.
+First extra element 2:
+['HIRE']
+
+- [['SELL', 'WOOL', 8], ['HIRE']]
++ [[], ['SELL', 'WOOL', 8], ['HIRE']]
+?  ++++
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.019s
+
+FAILED (failures=1)

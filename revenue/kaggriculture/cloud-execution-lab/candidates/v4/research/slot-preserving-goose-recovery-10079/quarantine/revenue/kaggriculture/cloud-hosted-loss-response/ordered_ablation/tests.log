@@ -1,0 +1,25 @@
+test_all_other_actions_unchanged (test_ordered_ablation.OrderedAblationTests.test_all_other_actions_unchanged) ... ok
+test_all_other_experiment_entrypoints_unchanged (test_ordered_ablation.OrderedAblationTests.test_all_other_experiment_entrypoints_unchanged) ... ok
+test_cap_does_not_admit_previously_out_of_range_order (test_ordered_ablation.OrderedAblationTests.test_cap_does_not_admit_previously_out_of_range_order) ... ok
+test_deterministic_serializable_evidence (test_ordered_ablation.OrderedAblationTests.test_deterministic_serializable_evidence) ... ok
+test_empty_market (test_ordered_ablation.OrderedAblationTests.test_empty_market) ... ok
+test_exact_wool_receipt_counterexample_both_seats (test_ordered_ablation.OrderedAblationTests.test_exact_wool_receipt_counterexample_both_seats) ... ok
+test_existing_empty_slots_preserved (test_ordered_ablation.OrderedAblationTests.test_existing_empty_slots_preserved) ... ok
+test_legacy_exact_historical_behavior (test_ordered_ablation.OrderedAblationTests.test_legacy_exact_historical_behavior) ... ok
+test_malformed_orders_unchanged (test_ordered_ablation.OrderedAblationTests.test_malformed_orders_unchanged) ... ok
+test_multiple_suppression (test_ordered_ablation.OrderedAblationTests.test_multiple_suppression) ... ok
+test_no_op_quantities_preserved (test_ordered_ablation.OrderedAblationTests.test_no_op_quantities_preserved) ... ok
+test_no_op_sibling_with_idle_opponent (test_ordered_ablation.OrderedAblationTests.test_no_op_sibling_with_idle_opponent) ... ok
+test_official_engine_accepts_empty_order_slot (test_ordered_ablation.OrderedAblationTests.test_official_engine_accepts_empty_order_slot) ... ok
+test_other_animals_and_products_preserved (test_ordered_ablation.OrderedAblationTests.test_other_animals_and_products_preserved) ... ok
+test_parent_and_nested_values_not_mutated (test_ordered_ablation.OrderedAblationTests.test_parent_and_nested_values_not_mutated) ... ok
+test_parent_called_once_with_same_arguments (test_ordered_ablation.OrderedAblationTests.test_parent_called_once_with_same_arguments) ... ok
+test_purchase_saving_is_exact_without_compaction (test_ordered_ablation.OrderedAblationTests.test_purchase_saving_is_exact_without_compaction) ... ok
+test_slot_count_and_indices (test_ordered_ablation.OrderedAblationTests.test_slot_count_and_indices) ... ok
+test_suppress_at_end (test_ordered_ablation.OrderedAblationTests.test_suppress_at_end) ... ok
+test_sweep_purchase_only_delta_with_slots_preserved (test_ordered_ablation.OrderedAblationTests.test_sweep_purchase_only_delta_with_slots_preserved) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.135s
+
+OK

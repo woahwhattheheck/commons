@@ -1,0 +1,21 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "pr": 10039,
+  "head": "f47864606f9e66c904e518954ef669f78fa56371",
+  "tree": "a09cbfc1d8dd38e1cc6fc2843699e9603c85e06f",
+  "status": "closed_unmerged_superseded",
+  "disposition": "historical_evidence_only",
+  "successor_prs": [
+    10028,
+    10034
+  ],
+  "controlling_comment": 5577555151,
+  "exact_head_actions_runs": 0,
+  "blobs": {
+    "CHECKPOINT-VALIDATION.json": "7c06dd4ae2711f223a6656f75c72a64307e481a1",
+    "CHECKPOINTS.md": "2afb07b3436b01e1331900a565e3d700a69251dd",
+    "test_execute_arm_checkpoint.py": "249cb792fa0cd94831032f3e8653e81298dea9a9",
+    "execute_arm.py": "58db5e38d2263044485080b6f1b1571581562955"
+  },
+  "note": "Canonical checkpoint semantics already landed through PR10028 and PR10034. Preserve exact packet; no V4 queue edge."
+}
