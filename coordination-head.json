@@ -3,19 +3,19 @@
   "drift": {
    "contained": 0,
    "current": 0,
-   "disjoint": 5,
-   "overlap": 2,
+   "disjoint": 4,
+   "overlap": 0,
    "unknown": 0
   },
   "hosted": {
    "CANCELLED_NOT_RUN": 1,
-   "FAILED": 6
+   "FAILED": 3
   },
-  "lanes_open": 7,
+  "lanes_open": 4,
   "lanes_with_several_open": 0,
-  "listed_open": 7,
-  "listed_recent_closed": 219,
-  "open_prs": 7
+  "listed_open": 4,
+  "listed_recent_closed": 227,
+  "open_prs": 4
  },
  "degraded": [],
  "files": {
@@ -23,13 +23,13 @@
   "full": "coordination.json"
  },
  "main": {
-  "committed_at": "2026-09-27T15:24:43Z",
-  "sha": "d1b408f2f5acac71adf7d2a20dc54a191362fa7f"
+  "committed_at": "2026-09-27T19:14:55Z",
+  "sha": "6de46333af6eef566f39882562c0bc8156392ac4"
  },
- "observed_at": "2026-09-27T15:36:47Z",
+ "observed_at": "2026-09-27T19:14:56Z",
  "queue": {
-  "in_progress": 1,
-  "oldest_queued_age_s": 3405643,
+  "in_progress": 2,
+  "oldest_queued_age_s": 3418732,
   "queued": 70
  },
  "schema": "commons-coordination-head/v1",
@@ -38,7 +38,7 @@
   "batches": 0,
   "capacity": null,
   "counts": {
-   "NEEDS_PACKET": 7
+   "NEEDS_PACKET": 4
   }
  }
 }
