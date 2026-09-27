@@ -10,6 +10,8 @@ Reads the film transcript (the Pixel cut markdown) and writes:
 
   python3 catalog.py TRANSCRIPT.md --out catalog.json
   python3 catalog.py TRANSCRIPT.md --entry 41          # Replay run plan for turn 41
+  python3 catalog.py TRANSCRIPT.md --archive ../../posts.json --out catalog.json
+                                                       # link film lines to real board/Slack posts
 
 The transcript itself is not stored in the repo; pass its path.
 """
@@ -160,6 +162,48 @@ def build_seats(lines, turns):
     return sorted(seats.values(), key=lambda s: -s["lines"])
 
 
+def norm(s):
+    s = s.lower().replace("’", "'").replace("‘", "'").replace("“", '"').replace("”", '"')
+    s = s.replace("—", "-").replace("–", "-").replace("…", "...")
+    return re.sub(r"\s+", " ", s).strip()
+
+
+def link_archive(lines, path):
+    """Attach the board posts (posts.json) whose body contains each film line's opening words.
+    Only lines of 25+ characters are linked; the first 40 normalized characters are the needle."""
+    try:
+        posts = json.load(open(path, encoding="utf-8"))
+    except (OSError, ValueError) as e:
+        die(f"cannot load archive {path}: {e}")
+    if not isinstance(posts, list) or not posts:
+        die(f"archive {path} is not a non-empty list of posts")
+    starts, chunks, pos = [], [], 0
+    for p in posts:
+        starts.append(pos)
+        b = norm(str(p.get("body", ""))) + "\x00"
+        chunks.append(b)
+        pos += len(b)
+    hay = "".join(chunks)
+    import bisect
+    linked = 0
+    for ln in lines:
+        ln["archive"] = []
+        if ln["display_only"] or len(ln["text"]) < 25:
+            continue
+        needle = norm(ln["text"])[:40]
+        hits, i = set(), hay.find(needle)
+        while i != -1 and len(hits) < 50:
+            hits.add(bisect.bisect_right(starts, i) - 1)
+            i = hay.find(needle, i + 1)
+        refs = sorted(({"id": posts[h].get("id"), "from": posts[h].get("from"), "ts": posts[h].get("ts"),
+                        "carrier": posts[h].get("carrier"), "kind": posts[h].get("kind")} for h in hits),
+                      key=lambda r: str(r["ts"]))
+        ln["archive"] = refs[:5]
+        ln["archive_hits"] = len(hits)
+        linked += bool(refs)
+    return linked, len(posts)
+
+
 def run_plan(lines, room, turns, k):
     """Replay mode, film source: the seat sees the audience's view up to its entry;
     every other line plays verbatim; the agent writes each of its seat's turns to the end of the scene block."""
@@ -196,10 +240,14 @@ def main():
     ap.add_argument("transcript")
     ap.add_argument("--out", help="write the full catalog JSON here")
     ap.add_argument("--entry", type=int, help="print the Replay run plan for this turn id")
+    ap.add_argument("--archive", help="posts.json (board projection) to link film lines to real posts")
     a = ap.parse_args()
 
     lines, room = parse(a.transcript)
     mark_display(lines)
+    linked = None
+    if a.archive:
+        linked = link_archive(lines, a.archive)
     turns = build_turns(lines)
     seats = build_seats(lines, turns)
 
@@ -219,6 +267,15 @@ def main():
         "scene_blocks": len({ln["block"] for ln in lines}),
         "room_items": len(room),
     }
+    if linked is not None:
+        eligible = [ln for ln in lines if not ln["display_only"] and len(ln["text"]) >= 25]
+        counts["archive"] = {
+            "posts_searched": linked[1],
+            "lines_eligible": len(eligible),
+            "lines_linked": linked[0],
+            "linked_by_visibility": {v: sum(1 for ln in eligible if ln["visibility"] == v and ln["archive"]) for v in VIS},
+            "eligible_by_visibility": {v: sum(1 for ln in eligible if ln["visibility"] == v) for v in VIS},
+        }
     if a.out:
         with open(a.out, "w", encoding="utf-8") as f:
             json.dump({"counts": counts, "seats": seats, "turns": turns, "lines": lines, "room": room},
