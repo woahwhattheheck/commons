@@ -1,8 +1,8 @@
 {
   "counts": {
-    "open_issues": 8446,
+    "open_issues": 8416,
     "open_pull_requests": 7,
-    "runs_in_progress": 1,
+    "runs_in_progress": 3,
     "runs_queued": 70
   },
   "counts_source": "graphql",
@@ -155,8 +155,21 @@
   },
   "pulls_listed": 7,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 70.0,
+  "queue_depth_per_runner": 23.3,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "titan/final-challenger-20260927",
+      "closed_at": "2026-09-27T13:52:15Z",
+      "head_sha": "8abc6256a814bdcf4466381ca67b6350e5b05749",
+      "merge_commit_sha": "741280824fef8a3d70b1af9e48d3c3655edd2894",
+      "merged_at": "2026-09-27T13:52:15Z",
+      "number": 30111,
+      "state": "MERGED",
+      "title": "Package Kaggriculture V5 runtime and weed-queue challenger",
+      "updated_at": "2026-09-27T13:52:26Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -338,23 +351,10 @@
       "state": "MERGED",
       "title": "Deduplicate retried provider limit observations in the shared budget",
       "updated_at": "2026-09-26T18:32:12Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/open-work-explicit-source-20260926",
-      "closed_at": "2026-09-26T15:20:57Z",
-      "head_sha": "0298d8862a125672b14f4f70ceff99bcd7c79af6",
-      "merge_commit_sha": "9168ba12bcef30c9d8eb5c244a8433a14521788e",
-      "merged_at": "2026-09-26T15:20:57Z",
-      "number": 30083,
-      "state": "MERGED",
-      "title": "Keep open-work Git reads in the requested repository",
-      "updated_at": "2026-09-26T18:32:12Z"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-27T10:46:11Z",
+  "unchanged_since": "2026-09-27T13:55:01Z",
   "undatable_pulls": []
 }
