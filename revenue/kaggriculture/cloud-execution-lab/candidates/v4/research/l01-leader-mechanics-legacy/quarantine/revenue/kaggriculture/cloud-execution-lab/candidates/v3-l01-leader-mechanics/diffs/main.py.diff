@@ -1,0 +1,9 @@
+--- /tmp/v25/l01/canonical_main.py	2026-09-09 18:58:17.807310089 +0000
++++ /tmp/v25/l01/main.py	2026-09-09 18:58:17.807310089 +0000
+@@ -41,4 +41,6 @@
+         step = int(observation['day'])*int(cfg.get('turnsPerDay', 24))+int(observation['hour'])
+     if _INSTANCE is None or int(step) == 0:
+         _INSTANCE = _new_instance(root, json.loads((root/'TITAN-CONFIG.json').read_text()))
++        import l01_mechanics
++        l01_mechanics.wrap(_INSTANCE)
+     return _INSTANCE.act(observation, cfg, entry_started=entry_started)

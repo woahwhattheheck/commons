@@ -1,0 +1,63 @@
+{
+  "wall_seconds": 607.7,
+  "workers": 8,
+  "scheduled": 192,
+  "completed": 192,
+  "failed": 0,
+  "throughput_games_per_min": 18.96,
+  "shard_seconds": [
+    565.2,
+    588.8,
+    607.7,
+    585.2,
+    567.8,
+    587.2,
+    596.4,
+    580.5
+  ],
+  "per_opponent": {
+    "arlene": {
+      "games": 32,
+      "W": 24,
+      "T": 0,
+      "L": 8,
+      "mean_margin": -2418.219
+    },
+    "apex": {
+      "games": 32,
+      "W": 32,
+      "T": 0,
+      "L": 0,
+      "mean_margin": 8943.281
+    },
+    "kaito_v43": {
+      "games": 32,
+      "W": 30,
+      "T": 0,
+      "L": 2,
+      "mean_margin": 14596.781
+    },
+    "cok_v10": {
+      "games": 32,
+      "W": 32,
+      "T": 0,
+      "L": 0,
+      "mean_margin": 26303.062
+    },
+    "public_bt12": {
+      "games": 32,
+      "W": 32,
+      "T": 0,
+      "L": 0,
+      "mean_margin": 22454.656
+    },
+    "v1_submitted": {
+      "games": 32,
+      "W": 32,
+      "T": 0,
+      "L": 0,
+      "mean_margin": 874.562
+    }
+  },
+  "failures": []
+}

@@ -1,0 +1,98 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "family": "l01-leader-mechanics-legacy",
+  "pr": 11459,
+  "source_branch": "titan-v3-l01-leader-mechanics",
+  "exact_head": "c817c06af6c8d184c04c1d17fe9c1b42fcf1a65a",
+  "exact_tree": "6c0c95d5606d7d66006bb0f7f7d62548ae2f2a89",
+  "canonical_archive_sha256": "3b4b083ec2647bb0e715978c2565e916da0ee94c08b234902e3a7e4d3418c320",
+  "canonical_commit_pin": "ba1efc8732073d7ad566ea5090fb9aa3e8b2bc33",
+  "canonical_main_sha256": "0dae922de836cdb590891d9bbca9a58e18114ebcc64e16fb5b264311f07133e5",
+  "engine": "kaggle-environments==1.32.7",
+  "workflow_runs": [
+    {
+      "id": 34396646384,
+      "name": "titan-selected-projection",
+      "conclusion": "success"
+    },
+    {
+      "id": 34396646318,
+      "name": "source-parses",
+      "conclusion": "success"
+    },
+    {
+      "id": 34396646307,
+      "name": "open-door-guard",
+      "conclusion": "failure"
+    },
+    {
+      "id": 34396646428,
+      "name": "muhlnickel-spec-guard",
+      "conclusion": "success"
+    },
+    {
+      "id": 34396646274,
+      "name": "path-manifest",
+      "conclusion": "success"
+    }
+  ],
+  "completed_panels": {
+    "canonical": {
+      "games": 192,
+      "completed": 192,
+      "failed": 0,
+      "games_blob": "54cffb15c70762fb20b791487ea9682fd9a7ee1e",
+      "summary_blob": "ffa5ae1f958d01bba3c438a48d7b06acfd3a361c",
+      "tokens_blob": "88496f63f491a09f12d61ce6924ca0bcbddee023"
+    },
+    "land": {
+      "games": 192,
+      "completed": 192,
+      "failed": 0,
+      "games_blob": "694ef44cd53047b15a61d9b351e66b8147d7f11f",
+      "summary_blob": "5df9318d35b6740a813ebd9e521790207915ef7a",
+      "tokens_blob": "32bb1cf329d3019593a78ac7f02c9aa623ac3b50"
+    },
+    "sheep": {
+      "games": 192,
+      "completed": 192,
+      "failed": 0,
+      "games_blob": "47de16a2031e2f659532fe4ca71dfe0490becd80",
+      "summary_blob": "8f60f0acddbc217c8010d6279635dc97a362d3a0",
+      "tokens_blob": "003248582b6a000091e1e47e38d84cac95ffc7e9"
+    },
+    "day0buy": {
+      "games": 192,
+      "completed": 192,
+      "failed": 0,
+      "games_blob": "f4f2d0ff9da64ba7219aacf1787cc09ddc048b2c",
+      "summary_blob": "79dc76e0a9395b47feb4bb68a605470b043d1a56",
+      "tokens_blob": "a0415af628f61f745d9d6605c4e44ef9280fa874"
+    },
+    "tranche": {
+      "games": 192,
+      "completed": 192,
+      "failed": 0,
+      "games_blob": "e126b6ff0183c5783f4d7f910b6b0a553154e1ce",
+      "summary_blob": "be2795ce7e9525600419c4a356f69d064dc6635a",
+      "tokens_blob": "68cf7dea7a39dcdadc94ae83feef5e25d59749a6"
+    },
+    "leanplant": "no committed panel at exact head"
+  },
+  "dispositions": {
+    "land": "historical positive-margin signal superseded by PR 11842 exact-current rejection; do not revive",
+    "sheep": "negative: 185 losses in 192 games; reject",
+    "day0buy": "engine-malformed effective action and broadly regressive; reject",
+    "tranche": "completed historical panel but controller-ledger/state-coherence confound remained unresolved; evidence only",
+    "leanplant": "no completed panel at exact head; orphan-route concern unresolved"
+  },
+  "successor_controls": [
+    11530,
+    11842
+  ],
+  "preservation": "All 40 PR-changed files are linked byte-for-byte under quarantine/ from their exact Git blob identities. No file was reconstructed from prose.",
+  "disposition": "completed_but_unmerged_preserved_quarantined_superseded_rejected_evidence_only",
+  "v4_queue_edge": false,
+  "runtime_promotion": false,
+  "replay_or_remint": false
+}

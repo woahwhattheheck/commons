@@ -1,0 +1,11 @@
+--- /tmp/v25/l01/canonical_wrapped/l01_flags.py	2026-09-09 18:59:07.675312246 +0000
++++ /tmp/v25/l01/sheep/l01_flags.py	2026-09-09 18:59:07.767312250 +0000
+@@ -1,7 +1,7 @@
+ # SPDX-License-Identifier: Apache-2.0
+ """Baked L01 switches. evaluate.py strips worker env; do not read os.environ."""
+ LAND = False
+-SHEEP = False
++SHEEP = True
+ DAY0BUY = False
+ TRANCHE = False
+ LEANPLANT = False

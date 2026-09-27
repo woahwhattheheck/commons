@@ -1,0 +1,9 @@
+--- /tmp/v25/l01/canonical_wrapped/l01_flags.py	2026-09-09 18:59:07.675312246 +0000
++++ /tmp/v25/l01/tranche/l01_flags.py	2026-09-09 18:59:07.835312253 +0000
+@@ -3,5 +3,5 @@
+ LAND = False
+ SHEEP = False
+ DAY0BUY = False
+-TRANCHE = False
++TRANCHE = True
+ LEANPLANT = False
