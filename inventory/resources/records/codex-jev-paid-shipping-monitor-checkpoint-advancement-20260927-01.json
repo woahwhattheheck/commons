@@ -1,0 +1,137 @@
+{
+  "schema": "commons-resource-event/v1",
+  "event_id": "codex-jev-paid-shipping-monitor-checkpoint-advancement-20260927-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ADVANCEMENT",
+  "observed_at": "2026-09-27T19:09:39Z",
+  "actor": "Commons Resource Master / Codex",
+  "selected_resource": "jev-paid-shipping-monitor",
+  "concrete_consumer": "Authorized Commons bounty-delivery operators whose private monitor state must retain the last complete readable checkpoint across an interrupted or held publication",
+  "measurable_outcome": "The producing monitor now plans immutable content-addressed version 4 shards, verifies stored-byte hashes and row counts, stages all shards before replacing the index with its original Contents SHA, rejects stale or conflicting writes, and preserves legacy version 1 through 3 reads.",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "holder": "Commons / authorized bounty-delivery operators with the existing private state repository and runtime secrets",
+    "consumer": "PAID_WORK_SHIPPING_WITH_MUTABLE_VERSION_3_SHARD_PATHS"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "holder": "Commons / authorized bounty-delivery operators with the existing private state repository and runtime secrets",
+    "consumer": "PAID_WORK_SHIPPING_WITH_LAST_COMPLETE_IMMUTABLE_CHECKPOINT_RETENTION"
+  },
+  "production_truth": {
+    "source_repository": "woahwhattheheck/commons",
+    "source_pr": 30121,
+    "source_head": "ea94d901a802c5b309e5a16d0aadbfbf71356039",
+    "source_merge_commit": "272b6b7d3d61e8292cbf59d96eaf21f696ba8d4a",
+    "source_descendant_main_sha": "2800d66a244336909e4b2bfa31afe4a09709a5c7",
+    "source_paths": {
+      ".github/workflows/commons-board.yml": "d9dc39adcecc463bb0201aabba2c2cdd58a31b95",
+      "host/paid_shipping/README.md": "4c02c0d2aa2421c0319cedd41f15b576d4b789ce",
+      "host/paid_shipping/rules.mjs": "8e388b91df12fc9a426ce2af72b6b1b510c27c4f",
+      "host/paid_shipping/checkpoint.mjs": "766103cbe2700e7e7bd877f021da53e2946628f6",
+      "host/paid_shipping/runner.mjs": "ddcf60a01940515c8005cc6e0f2ab37c0a98c5ab",
+      "host/paid_shipping/runner.test.mjs": "7532ac4d1c8d3ff09a40405e63a5fa13d1a7acd6",
+      "host/paid_shipping/schema.sql": "cba6abe3e6b31f934fedcb7143968044c1e68710",
+      "host/paid_shipping/worker.mjs": "8ad17f00c2b7774f0302e085133468fc1e3f6feb",
+      "host/paid_shipping/worker.test.mjs": "cc4c1d9cd4b38ed50b3da4cfbc535fc5e0dfd041"
+    },
+    "focused_verification": {
+      "current_suite": "PASS_24_OF_24",
+      "credential_free_suite": "PASS_24_OF_24",
+      "node_syntax": "PASS_CHECKPOINT_RUNNER_WORKER",
+      "resource_projection": "PASS_18_OF_18",
+      "open_door": "PASS_LOCAL_NO_AUTH"
+    },
+    "checkpoint_version": 4,
+    "immutable_content_addressed_shards": true,
+    "stored_byte_hash_verified_on_load": true,
+    "thread_row_count_verified_on_load": true,
+    "all_shards_staged_before_index": true,
+    "original_index_contents_sha_required": true,
+    "stale_index_rejected": true,
+    "conflicting_immutable_shard_rejected": true,
+    "legacy_versions_1_2_3_readable": true,
+    "decode_bound_bytes": 33554432,
+    "old_or_partial_shards_retained": true,
+    "reader_safe_cleanup_included": false,
+    "already_mixed_legacy_snapshot_reconstructed": false,
+    "hosted_workflow_state": "NO_RUNS_PRESENT_AT_SOURCE_MERGE_COMMIT",
+    "live_private_state_write_by_advancement": false,
+    "slack_write_by_advancement": false,
+    "customer_contact": false,
+    "provider_submission": false,
+    "buyer_acceptance": false,
+    "payment_observed": false,
+    "settlement_observed": false,
+    "revenue_recognition": false,
+    "current_cash_claim": false,
+    "deployment_by_advancement": false,
+    "spend_by_advancement": false,
+    "banked_reset_activated": false
+  },
+  "delta": {
+    "prior_terminal_main_sha": "d1b408f2f5acac71adf7d2a20dc54a191362fa7f",
+    "activation_base_main_sha": "2800d66a244336909e4b2bfa31afe4a09709a5c7",
+    "commits_in_delta": 30,
+    "non_merge_commits_in_delta": 29,
+    "changed_paths_in_delta": 330,
+    "terminal_current_main_sha": "PENDING_CURRENT_MAIN_READBACK",
+    "remote_branches_observed": 4566,
+    "prior_terminal_slack_ts": "1790498103.758459",
+    "latest_observed_delta_slack_ts": "1790536142.133769",
+    "slack_top_level_messages": {
+      "commons": 11,
+      "delegations": 1,
+      "todo": 0,
+      "shipped_builds": 7,
+      "products": 0,
+      "leads": 0,
+      "sales": 1
+    },
+    "automations": "Twenty-five visible; the Commons Resource Master remains enabled. Both TITAN automations remain enabled and active, so their mutation hold and custody were preserved.",
+    "github_state": "The exact 30-commit current-main ancestry delta, 29 non-merge commits and 330 changed paths were reconciled; 4,566 current remote branch heads were observed. PR #30121 is merged and its nine exact current-main source blobs are present. Generated projection churn, repeated messages and cached issue mirrors were not counted as new resources.",
+    "connector_state": "The required exact api_tool.list_resources discovery call failed because api_tool was undefined. The runtime registry exposed 89 GitHub and 38 Slack operations, including repository and message writes; connector presence was not treated as live authority or capacity."
+  },
+  "verification": {
+    "privacy": "Only public source identities, aggregate message counts and synthetic test facts are persisted. No credential, private account identifier, private state payload, customer data, private message body or private file name is stored.",
+    "open_door": "The complete source suite and syntax checks run locally with Node and pass in a credential-free environment without Commons login, private repository access, provider calls or repeated owner approval.",
+    "zero_fabrication": "A version 4 checkpoint plan and passing synthetic recovery tests establish local fail-closed persistence behavior only. They do not establish a live private-state write, hosted run, provider acceptance, payout, settlement, revenue or cash.",
+    "collision": "Only the canonical ledger, generated projection and append-only advancement records are owned. PR #30121 source paths, private state, publisher/provider surfaces, peer branches, Hyperagent, ProofPocket, TITAN and unrelated artifacts remain untouched."
+  },
+  "build_order_decision": "One separate build order was posted for the independently discovered Hyperagent strict-JSON depth regression. No shipping-monitor cleanup order was created because PR #30121 explicitly retains old and partial shards and no current storage-pressure evidence makes reader-safe cleanup a present non-speculative need.",
+  "build_orders": [
+    "https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1790536064776369"
+  ],
+  "quota_lifecycle": {
+    "official_observation": "The single official OpenAI release-note check remained at September 25, 2026 and contained no new hard, global, banked or purchased reset announcement. No account usage-meter change was directly observed.",
+    "classification": "PRIOR_QUOTA_STATE_RETAINED_CURRENT_ALLOWANCE_UNMEASURED",
+    "current_meter": "NOT_DIRECTLY_OBSERVED",
+    "banked_reset_inventory": "NOT_DIRECTLY_OBSERVED",
+    "banked_reset_activated": false
+  },
+  "projection": {
+    "resources": 111,
+    "producing": 83,
+    "inventory_records": 74
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790536091138069",
+    "source_pr": "https://github.com/woahwhattheheck/commons/pull/30121",
+    "hyperagent_depth_build_order": "https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1790536064776369",
+    "official_release_notes": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes"
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-27T19:09:39Z",
+    "activation_base_main_sha": "2800d66a244336909e4b2bfa31afe4a09709a5c7",
+    "current_main_sha": "PENDING_CURRENT_MAIN_READBACK",
+    "latest_delta_slack_ts": "1790536142.133769",
+    "source_merge_commit": "272b6b7d3d61e8292cbf59d96eaf21f696ba8d4a",
+    "remote_branches_observed": 4566
+  },
+  "non_claims": [
+    "No live private-state write, Slack write, broader task completion, outreach, provider submission, deployment, spend, payment, settlement, revenue or cash is claimed."
+  ]
+}
