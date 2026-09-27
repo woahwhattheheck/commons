@@ -1,0 +1,29 @@
+{
+  "schema": "titan.v4.salvage-custody.v1",
+  "source_branch": "sol-pro/titan-v3-joint-sell-prefix-20260910-01",
+  "source_head": "d70c38face2331905a790dcf47f50ff87275e627",
+  "source_tree": "dc34ecb1a444f39462f6dd6746cbb5ca5fc2c2c6",
+  "source_pr": 12043,
+  "source_state": "closed_unmerged",
+  "review": {
+    "id": 5171802902,
+    "verdict": "partial_seam_donor_do_not_integrate_alone"
+  },
+  "hosted_evidence": {
+    "workflow_run": 34524647311,
+    "job": 103030444545,
+    "conclusion": "failure",
+    "failure_step": "Run exact source and returned-action contracts",
+    "artifact_count": 0
+  },
+  "retained_theorem": "joint_resource_bound and joint_queue_ledger orders must model only the official executable raw market prefix; the historical two-reader patch does not close all FrozenSelected full-queue consumers",
+  "disposition": "historical_partial_seam_review_hold_hosted_red",
+  "v4_queue_edge": false,
+  "direct_merge": false,
+  "remint": false,
+  "requirements_for_reuse": [
+    "current-ABI rederivation",
+    "complete shared executable-prefix/transition closure",
+    "fresh exact-head focused and full gates"
+  ]
+}
