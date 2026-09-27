@@ -1,0 +1,62 @@
+{
+  "schema": "titan-v4-historical-salvage-custody/v1",
+  "family": "official-shadow-differential-oracle",
+  "disposition": "validated_historical_evidence_tooling_only_no_gameplay_semantic_no_v4_queue_edge",
+  "canonical_at_reconcile": {
+    "branch": "main",
+    "commit": "046fe022296f970d73bdb7bda0c586e4ddc094ac",
+    "canonical_blob": "00142be0ff2314dcb23068c8133b34d290661923",
+    "integration_blob": "4e3207af1332266852530ec8494db8969edc1115",
+    "composition_blob": "32dc1e6963702f7e013cd609053d52c434e42158"
+  },
+  "donor": {
+    "pr": 11700,
+    "head": "253cf3ce62faed47461e517ca56c721a2da60e87",
+    "base": "edc370400c82109c511ab4b1144e1c5e9f2c2351",
+    "source_blobs": {
+      ".github/workflows/titan-v3-official-shadow-oracle.yml": "b0ca62403473915426d173b03f703476a66ce9af",
+      "README.md": "7fef2fcd7c51662309aaba9b52e9e7c607abf0be",
+      "fixtures/expected-evidence.json": "383671df3ba57070bf1f248c25da64091e04b37e",
+      "official_shadow_oracle.py": "29b841e4f86350600465fdb45cf58140ec172863",
+      "run_oracle.py": "b269b494a3f4c3f498f9ac8bc4d54362e5d65abb",
+      "test_official_shadow_oracle.py": "1c56e6555150e9c83e17c3d0ff3ba1d3cbe18712"
+    }
+  },
+  "hosted_receipt": {
+    "workflow_run": 34403550090,
+    "outcome": "SUCCESS",
+    "artifact_id": 10124440153,
+    "artifact_name": "titan-v3-official-shadow-oracle-34403550090-1",
+    "zip_bytes": 2241,
+    "zip_sha256": "a2eb67dc295ffcd95b21e5d037edf02710e532a5800267cb7f5b14721ae7825c",
+    "members": {
+      "EVIDENCE.json_bytes": 4240,
+      "run.log_bytes": 2359
+    },
+    "evidence_sha256": "87b51c0aafa70cdac352d52eae5daba40c9a9eb2ed9cabfea0eb553cab1177ea",
+    "atomic_plant_fingerprint": "bcc7f03db8a1403545fd5132b80b8c50f2aaf53e32ed0ebeb5f1d8d88c9b358f",
+    "lockstep_market_fingerprint": "7d9988d86c23ee211b464b2ed956c6fb3d45ecdd45bfa7d614930e0c11b4ea2e",
+    "prior_independent_readback_comment": 5608597307,
+    "current_provider_artifact_listing": "empty_on_2026-09-27; exact artifact bytes no longer provider-listed, so preserve the prior independently verified digest/receipt rather than reconstructing bytes"
+  },
+  "terminal_receipts": {
+    "pr_disposition_comment": 5647963818,
+    "central_ledger_comment": 5740079375,
+    "earlier_central_ledger_comment": 5647964285,
+    "slack_ship_ts": "1788987237.909649",
+    "slack_terminal_ts": "1789239030.345549",
+    "slack_reconcile_ts": "1789801178.357359"
+  },
+  "validated_scope": [
+    "source-pinned compact official-vs-shadow semantic sentries",
+    "minimized atomic-PLANT negative control",
+    "same-precommit market-quote lockstep negative control"
+  ],
+  "rules": [
+    "preserve exact donor source identities and verified hosted receipt",
+    "do not reconstruct the expired artifact bytes from prose",
+    "do not merge, cherry-pick, remint, or runtime-promote this stale V3 branch",
+    "reuse only as current-ABI validation material against current source closure",
+    "no controller, runtime policy, score, leaderboard, or gameplay-promotion claim"
+  ]
+}
