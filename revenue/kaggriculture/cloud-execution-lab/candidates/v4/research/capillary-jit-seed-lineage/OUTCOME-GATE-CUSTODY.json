@@ -1,0 +1,15 @@
+{
+  "schema":"titan-v4-salvage-custody/v1",
+  "subject":"retired Capillary W/T/L outcome-gate child",
+  "pr":11996,
+  "validated_head":"af9d6575307f6ebe0c163afba1025cfd8ea78bf9",
+  "run":34520805813,
+  "job":103017558775,
+  "artifact":{"id":10170060438,"bytes":61078,"sha256":"acc6e62bfcb6087c2066fbc793f7bf1eaab9990836825fc4e3237826932fc213"},
+  "result":{"verdict":"REJECT","paired_cells":16,"official_games":32,"action_trace_changed":"16/16","own_cash_delta_zero":"16/16","margin_delta_zero":"16/16","control_wtl":"15W/0T/1L","candidate_wtl":"15W/0T/1L","new_losses":0,"lost_wins":0,"outcome_regressions":0},
+  "artifact_member_sha256":{"panel_report":"af6c5317877532ad81c14e994c094915755faa3d4123f6421d196937684881df","source_audit":"36a84156f72f96c954a6446d22863e807001f62486c4bc69b3690d9531d9f13b","evaluator_materialization":"b6fa79931bb9a4f6c30ce432137be2a8a6ea061892e0a7a6355192b4dcd3a644","control_report":"d41d4cc6e875e46bce0ffeea0d6c591931fa54f91f4307f45936f8db9469239e","candidate_report":"ea656d3d23bdab2b4b820330b0767da76ece545220852a7c8f9cdcc0da4eeda4"},
+  "post_close_branch_head":"a8490d2416d96b0fa2b5d5027099f53e6c120815",
+  "post_close_head_actions_runs":0,
+  "post_close_delta":"workflow-only retirement of the redundant child panel",
+  "disposition":"retired derivation and exact negative evidence only; no revival, replay, cherry-pick, runtime promotion, or V4 queue edge"
+}
