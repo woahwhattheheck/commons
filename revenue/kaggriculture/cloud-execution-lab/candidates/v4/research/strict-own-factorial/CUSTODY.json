@@ -1,0 +1,41 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "family": "strict-own-factorial",
+  "pr": 12049,
+  "branch": "sol-pro/titan-v3-strict-own-factorial-20260910-01",
+  "head": "5901d0259a52d1b8ab340d8234845d1afed5d7b9",
+  "disposition": "superseded_rejected_evidence_only",
+  "run": {
+    "id": 34525034257,
+    "job": 103031823221,
+    "conclusion": "failure"
+  },
+  "artifact": {
+    "id": 10171230927,
+    "name": "titan-v3-strict-own-factorial-34525034257",
+    "bytes": 1772106,
+    "sha256": "2ccebd169a6c3e18bf5ed646a8c19230a4354095fff41eee8c8173028df03c8e",
+    "expired": false
+  },
+  "failure": "own-only changed two runtime members; exact orthogonality expectation allowed only selected_sell_core.py",
+  "archives": {
+    "incumbent": {
+      "bytes": 428158,
+      "sha256": "5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1"
+    },
+    "own_only": {
+      "bytes": 428149,
+      "sha256": "ae68b7769bdaf88ae27ad551fadc669cf99d0f44943a7e24cb5e638b88a98795"
+    },
+    "strict_only": {
+      "bytes": 428395,
+      "sha256": "9e553c961d7c505e69c515f8f20279d2f167ab2e2812fca2212a9459607781e4"
+    },
+    "combined": {
+      "bytes": 428388,
+      "sha256": "98e1e04f2e00a82f3ee5871fece5052813d3c53b022367f73f9fbbd3399cc2eb"
+    }
+  },
+  "v4_queue_edge": false,
+  "runtime_promotion": false
+}
