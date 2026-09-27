@@ -1,0 +1,11 @@
+{
+  "schema":"titan-v4-salvage-custody/v1",
+  "family":"capillary-jit-seed-lineage",
+  "terminal_source_carrier":{"pr":11934,"head":"57ff26af5884980d25374c576d2dc1da449f1cc5","run":34419668144,"job":102692138744,"result":"PASS","contracts":"70/70","artifact_id":10130465526,"artifact_bytes":3529,"artifact_sha256":"fec410909718702dcdfb44e08d615e9b12befbb32ff59ad9922bedd09d0d8804","disposition":"completed_unmerged_source_carrier_evidence_only_no_strength_claim"},
+  "unsafe_origin":{"pr":11706,"head":"e8adcbee8a67b5a84c663dcb8628ed0d12c94e63","disposition":"superseded_unsafe_do_not_revive"},
+  "economic_screen":{"pr":11969,"run":34519678038,"artifact_id":10169493664,"artifact_sha256":"9c426ff71b91983f24885629ba764d93db7b3a526439b6f2527436f1eb49f829","games":32,"paired_cells":16,"action_trace_changed":"16/16","own_cash_delta_zero":"16/16","margin_delta_zero":"16/16","score_changed_cells":0,"disposition":"no_economic_signal"},
+  "replacement_attempt":{"pr":12060,"run":34526781616,"job":103037729152,"artifact_id":10171954714,"artifact_sha256":"ccff4d0fbc7d8e27151c3e789089dd1349c651f3718403aef1e4f0fafdc3eea7","result":"failed_before_games_during_opponent_binding","disposition":"failure_receipt_only_no_replacement_verdict"},
+  "preserved_artifact_files":{"head.sha":{"bytes":41,"sha256":"9d9d634105dfaacfb62152217bff84773d588caeeeca1056f448e75ef844fd4d"},"SOURCE-AUDIT.json":{"bytes":5090,"sha256":"a6ace5d359aa12231b5c42dc3007d6a6d3e205d061d8b98f9c5c7c2337eec3a2"},"CARRIER-SMOKE.json":{"bytes":2557,"sha256":"ed046b8101af15ac6edd95f205afd9a3ed9fc228356cd584ad070e1a025e5719"}},
+  "v4_semantic_edge":false,
+  "source_receipt":"slack:#titan-kaggriculture:1789296086.683939"
+}
