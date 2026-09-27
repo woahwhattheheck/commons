@@ -1,0 +1,56 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "pr": 11228,
+  "head": "4d70022a3b3f973bdcb010b6f540802846328378",
+  "status": "closed_unmerged",
+  "disposition": "historical_source_certificate_hold",
+  "queue_edge": false,
+  "promote": false,
+  "exact_head_runs": {
+    "titan_p21_terminal_route": {
+      "run_id": 34396708552,
+      "conclusion": "success",
+      "artifacts": 0
+    },
+    "titan_selected_projection": {
+      "run_id": 34396708513,
+      "conclusion": "success"
+    },
+    "tests": {
+      "run_id": 34396708457,
+      "conclusion": "failure"
+    },
+    "open_door_guard": {
+      "run_id": 34396708504,
+      "conclusion": "failure"
+    },
+    "source_parses": {
+      "run_id": 34396708517,
+      "conclusion": "success"
+    },
+    "path_manifest": {
+      "run_id": 34396708530,
+      "conclusion": "success"
+    },
+    "muhlnickel_spec_guard": {
+      "run_id": 34396708467,
+      "conclusion": "success"
+    }
+  },
+  "blobs": {
+    ".github/workflows/titan-p21-terminal-route.yml": "9f23ff931762b5ad60f7cdb2bc327317dd7b8eda",
+    "revenue/kaggriculture/cloud-execution-lab/terminal_route_value.py": "2b94245854c3090a2a166e3b387032411c3be1ca",
+    "revenue/kaggriculture/cloud-execution-lab/terminal_route_value_market.py": "a79b0d0195d48afeea3cb008834aa181fe72b6b1",
+    "revenue/kaggriculture/cloud-execution-lab/terminal_route_value_primitives.py": "4b249126a1f3bf9f1ecfa80e985a517f447e1d5e",
+    "revenue/kaggriculture/cloud-execution-lab/terminal_route_value_test_support.py": "9ce312b53e81516decad05f4cf5ce840a029229f",
+    "revenue/kaggriculture/cloud-execution-lab/test_terminal_route_value_engine.py": "9b740ff34b18dbc1e328ec6b97900435140465d2",
+    "revenue/kaggriculture/cloud-execution-lab/test_terminal_route_value_market.py": "d85acabb6896edd894d30c158a1db42e7072e390",
+    "revenue/kaggriculture/cloud-execution-lab/test_terminal_route_value_routes.py": "b46d464bb5e707ea39da3d32f820b2c4c7520ee4"
+  },
+  "blockers_consumed": [
+    "source persistence / prior-actor harvest and decay witness",
+    "terminal-shed later-actor PICKUP siphon witness"
+  ],
+  "remaining_boundary": "No matched official-engine P21 development/holdout gameplay panel established promotion safety; generic tests and open-door guard were red on the exact terminal head.",
+  "note": "Preserve exact repaired P21 source-certificate head as historical evidence only. Dedicated and canonical focused workflows are green, but exact-head broad failures and missing gameplay economics prevent V4 promotion."
+}
