@@ -18,7 +18,7 @@ The source deliberately retains prior completed files because a running native e
 
 From prior terminal main `3cae2f0787ec582f56a0c8c76967721c77d907a0` through activation base `7aacf766a4416596899ec6ac3b3c9d708868d777`, Commons advanced through six generated projection, board-ingest and generated-manual commits touching 229 paths; none introduced a distinct resource. The sweep observed 4,565 remote branch heads, 25 automations with the Resource Master enabled, and the required Slack surfaces from `1790536764.428389` through external delta `1790536939.025649`. Generated projection churn and repeated receipts were not reminted.
 
-Post-activation exact current-main readback is pending the activation merge. Claim: [#commons activation claim](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790546758696359).
+Activation [PR #30128](https://github.com/woahwhattheheck/commons/pull/30128) merged at current main `67d5ae4b4632bfe8b14bdc3ce7e79c360f52bb08`. Exact readback matched all four activation blobs: ledger `2db1dab9f00ffa0e27b228ec1d8e3bfd14b4d238`, JSON record `65f8a56b6724da572c8258983b3913e06080af98`, this receipt `e89d17293c1af680b029e792feabc639dadecd1b`, and projection `6a44049716d5159b344568f44d3147c7c1c50672`. Claim: [#commons activation claim](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790546758696359).
 
 ## Build-order decision
 
