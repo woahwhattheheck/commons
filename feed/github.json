@@ -1,8 +1,8 @@
 {
   "counts": {
-    "open_issues": 8551,
+    "open_issues": 8512,
     "open_pull_requests": 7,
-    "runs_in_progress": 2,
+    "runs_in_progress": 1,
     "runs_queued": 70
   },
   "counts_source": "graphql",
@@ -155,8 +155,34 @@
   },
   "pulls_listed": 7,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 35.0,
+  "queue_depth_per_runner": 70.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "codex/resource-master-slack-revision-readback-20260926-01",
+      "closed_at": "2026-09-26T22:11:57Z",
+      "head_sha": "b0574f66b8ca164b327f28ea59ea52d019a1d66f",
+      "merge_commit_sha": "adf2bfeb0d1d6270f7e88d8881a4d9c9bc054241",
+      "merged_at": "2026-09-26T22:11:57Z",
+      "number": 30107,
+      "state": "MERGED",
+      "title": "Record Slack revision activation readback",
+      "updated_at": "2026-09-26T22:14:49Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "codex/resource-master-slack-revision-activation-20260926-01",
+      "closed_at": "2026-09-26T22:09:03Z",
+      "head_sha": "61092bb7d099eaf4e49f7c4930b057f0f8d7654b",
+      "merge_commit_sha": "527a6f9da75efe312bc30fa6cea705f2e597aac2",
+      "merged_at": "2026-09-26T22:09:03Z",
+      "number": 30106,
+      "state": "MERGED",
+      "title": "Activate Slack native revision current-truth projector",
+      "updated_at": "2026-09-26T22:10:28Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -290,19 +316,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "perf/trust-cache-output-memory-20260926",
-      "closed_at": "2026-09-26T15:25:26Z",
-      "head_sha": "4276f398e85b2b1da3320809223c13e998d1f318",
-      "merge_commit_sha": "b993e54bfda731723d0b6206e97d6f2f0230a115",
-      "merged_at": "2026-09-26T15:25:26Z",
-      "number": 30085,
-      "state": "MERGED",
-      "title": "Bound trust-cache command output memory",
-      "updated_at": "2026-09-26T18:31:42Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "swarm/inbox-incremental-groups-20260926",
       "closed_at": "2026-09-26T15:23:00Z",
       "head_sha": "e5b89dd45af8f9f66bcc7feb6877b7da6d6444b6",
@@ -338,23 +351,10 @@
       "state": "MERGED",
       "title": "Keep open-work Git reads in the requested repository",
       "updated_at": "2026-09-26T18:32:12Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "fix/runtime-provider-unknown-evidence-20260926",
-      "closed_at": "2026-09-26T15:20:32Z",
-      "head_sha": "a57ed745784b5c77322d6cc9ddddbb28c056d0bc",
-      "merge_commit_sha": "e307b13f7d3c83a6033a751ace19d4b12c76230f",
-      "merged_at": "2026-09-26T15:20:32Z",
-      "number": 30081,
-      "state": "MERGED",
-      "title": "Normalize unknown provider merge evidence",
-      "updated_at": "2026-09-26T18:32:09Z"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-26T22:04:39Z",
+  "unchanged_since": "2026-09-27T00:25:21Z",
   "undatable_pulls": []
 }
