@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "identity": {
+    "engine_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "runner_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+    "baseline_archive_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+    "candidate_archive_sha256": "3333333333333333333333333333333333333333333333333333333333333333"
+  },
+  "grid": {
+    "opponents": [
+      {
+        "name": "declared-opponent-a",
+        "sha256": "4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    ],
+    "seeds": [20260909],
+    "seats": [0, 1]
+  },
+  "policy": {
+    "expected_rows": 719,
+    "require_same_initial_observation": true,
+    "require_any_action_change": true,
+    "min_mean_terminal_own_cash_delta": 0.0,
+    "min_median_terminal_own_cash_delta": 0.0,
+    "min_mean_terminal_margin_delta": 0.0,
+    "min_worst_terminal_own_cash_delta": -25.0,
+    "min_positive_cell_fraction": 0.5,
+    "max_negative_cell_fraction": 0.25,
+    "min_opponent_mean_terminal_own_cash_delta": 0.0,
+    "min_seat_mean_terminal_own_cash_delta": 0.0,
+    "max_opponent_contingent_signatures": 0
+  },
+  "cells": [
+    {
+      "opponent": "declared-opponent-a",
+      "seed": 20260909,
+      "seat": 0,
+      "baseline": {
+        "path": "traces/opponent-a-seed-20260909-seat-0-baseline.jsonl.gz",
+        "sha256": "5555555555555555555555555555555555555555555555555555555555555555"
+      },
+      "candidate": {
+        "path": "traces/opponent-a-seed-20260909-seat-0-candidate.jsonl.gz",
+        "sha256": "6666666666666666666666666666666666666666666666666666666666666666"
+      }
+    },
+    {
+      "opponent": "declared-opponent-a",
+      "seed": 20260909,
+      "seat": 1,
+      "baseline": {
+        "path": "traces/opponent-a-seed-20260909-seat-1-baseline.jsonl.gz",
+        "sha256": "7777777777777777777777777777777777777777777777777777777777777777"
+      },
+      "candidate": {
+        "path": "traces/opponent-a-seed-20260909-seat-1-candidate.jsonl.gz",
+        "sha256": "8888888888888888888888888888888888888888888888888888888888888888"
+      }
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "strength": 2,
+  "budget": 24,
+  "max_state_space": 200000,
+  "factors": {
+    "seed": [true, false],
+    "funding": [true, false],
+    "terminal_route": [false, true],
+    "committed": [true, false],
+    "redundant_hire": [true, false],
+    "fourth_quadrant": [false, true],
+    "market_pressure": [true, false],
+    "committed_seed_retry": [false, true],
+    "operating_stock": [true, false],
+    "idle_fertilizer": [true, false],
+    "crop_release": [true, false],
+    "early_capital": [true, false]
+  },
+  "constraints": [
+    {
+      "name": "terminal-route-requires-frozen",
+      "if": {"terminal_route": true},
+      "then": {"consumer": "frozen"}
+    },
+    {
+      "name": "terminal-route-excludes-redundant-hire",
+      "if": {"terminal_route": true},
+      "then": {"redundant_hire": false}
+    },
+    {
+      "name": "terminal-route-excludes-fourth-quadrant",
+      "if": {"terminal_route": true},
+      "then": {"fourth_quadrant": false}
+    },
+    {
+      "name": "terminal-route-excludes-idle-fertilizer",
+      "if": {"terminal_route": true},
+      "then": {"idle_fertilizer": false}
+    },
+    {
+      "name": "terminal-route-excludes-crop-release",
+      "if": {"terminal_route": true},
+      "then": {"crop_release": false}
+    },
+    {
+      "name": "redundant-hire-requires-frozen",
+      "if": {"redundant_hire": true},
+      "then": {"consumer": "frozen"}
+    },
+    {
+      "name": "fourth-quadrant-requires-frozen",
+      "if": {"fourth_quadrant": true},
+      "then": {"consumer": "frozen"}
+    },
+    {
+      "name": "idle-fertilizer-requires-frozen",
+      "if": {"idle_fertilizer": true},
+      "then": {"consumer": "frozen"}
+    },
+    {
+      "name": "crop-release-requires-frozen",
+      "if": {"crop_release": true},
+      "then": {"consumer": "frozen"}
+    }
+  ],
+  "mandatory": [
+    {
+      "name": "all-declared-hooks-off",
+      "assignment": {
+        "seed": false,
+        "funding": false,
+        "terminal_route": false,
+        "committed": false,
+        "redundant_hire": false,
+        "fourth_quadrant": false,
+        "market_pressure": false,
+        "committed_seed_retry": false,
+        "operating_stock": false,
+        "idle_fertilizer": false,
+        "crop_release": false,
+        "early_capital": false
+      }
+    },
+    {
+      "name": "terminal-route-control",
+      "assignment": {"terminal_route": true}
+    },
+    {
+      "name": "seed-without-funding",
+      "assignment": {"seed": true, "funding": false}
+    },
+    {
+      "name": "funding-without-seed",
+      "assignment": {"seed": false, "funding": true}
+    }
+  ]
+}
