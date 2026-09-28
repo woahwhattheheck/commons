@@ -1,0 +1,74 @@
+{
+  "checks": [
+    {
+      "command": "python -m py_compile planner_mpc.py main.py canonical_main.py validate_panel.py test_planner_mpc.py test_validate_panel.py benchmark_guard.py",
+      "status": "pass"
+    },
+    {
+      "command": "pytest -q",
+      "status": "pass",
+      "tests": 47
+    },
+    {
+      "admitted": false,
+      "baseline_wtl": [
+        4,
+        0,
+        0
+      ],
+      "candidate_wtl": [
+        0,
+        0,
+        4
+      ],
+      "command": "python validate_panel.py s02_observed_smoke.jsonl --schedule S02-OBSERVED-SCHEDULE.json --min-pairs 4 --output S02-OBSERVED-VERDICT.json",
+      "exit": 2,
+      "mean_margin_delta": -90047.5,
+      "schedule_bound": true,
+      "status": "expected_reject",
+      "worst_margin_delta": -110292.0
+    },
+    {
+      "claim_boundary": "Measures Python planner/firewall overhead only. Does not measure exact-engine transition cost or game strength.",
+      "command": "python benchmark_guard.py --iterations 5000 --output BENCHMARK.json",
+      "cpu_max_ms": 88.258253,
+      "cpu_mean_ms": 0.6388958262,
+      "cpu_p50_ms": 0.45402,
+      "cpu_p95_ms": 1.171259,
+      "iterations": 5000,
+      "mode": "shadow",
+      "schema": "titan.s02.guard.synthetic-overhead.v1",
+      "scope": "synthetic injected evaluator; no official engine",
+      "status": "pass",
+      "wall_max_ms": 88.405009,
+      "wall_mean_ms": 0.641193267,
+      "wall_p50_ms": 0.455222,
+      "wall_p95_ms": 1.175096
+    }
+  ],
+  "inspection": {
+    "archive_bytes": 423575,
+    "archive_runtime_files": 107,
+    "archive_sha256": "a055fd56ca5821208096f37787f77dbdddc2f65c14c24132d6e219a05e6f02ba",
+    "current_archive_blob": "047911a9cd63cfb3bac5933f8ce2dcd6858846b7",
+    "main": "3379fd799766609691b4bb777e13f7b3cae0da00",
+    "reviewed_planner_unchanged": true,
+    "source_manifest_sha256": "b96676977687ee8a92d7213380f96bf5774a5ec26925cb4f0d66bdd244eb44ba"
+  },
+  "not_run": [
+    "official-engine execution of replacement",
+    "H12/H24 rerun",
+    "both-seat development panel of replacement",
+    "held-out panel",
+    "canonical archive build",
+    "Kaggle submission"
+  ],
+  "operation": "titan-v3-s02-admission-firewall-20260909-solpro",
+  "schema": "titan.s02.guard.test-receipt.v2",
+  "source_target": {
+    "canonical_main_blob": "9cf49697432f9519cf1a4acc6281db5f01e3b512",
+    "merge": "db7f1a1e6581388de1170942858c50b1b525fc19",
+    "planner_blob": "aea58ca09d705db39202e1bfa1dd789cde01f929",
+    "pull_request": 11223
+  }
+}

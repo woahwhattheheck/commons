@@ -1,0 +1,15 @@
+{
+  "schema": "titan.panel.schedule.v1",
+  "description": "Exact four-pair schedule published in PR #11223 H=6 Arlene smoke.",
+  "source": {
+    "baseline_archive_sha256": "f8f1750266b3cfaea0ebfe663f287aa9c5a2682f6fc47bc932957e1d48e63f1c",
+    "candidate_merge": "db7f1a1e6581388de1170942858c50b1b525fc19",
+    "engine_ref": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c"
+  },
+  "pairs": [
+    {"opponent": "arlene", "seed": 2611021001, "candidate_seat": 0},
+    {"opponent": "arlene", "seed": 2611021001, "candidate_seat": 1},
+    {"opponent": "arlene", "seed": 2611021002, "candidate_seat": 0},
+    {"opponent": "arlene", "seed": 2611021002, "candidate_seat": 1}
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "admitted": false,
+  "baseline_wtl": [
+    4,
+    0,
+    0
+  ],
+  "candidate_wtl": [
+    0,
+    0,
+    4
+  ],
+  "complete_pairs": 4,
+  "mean_margin_delta": -90047.5,
+  "observed_pairs": 4,
+  "opponents": [
+    "arlene"
+  ],
+  "reasons": [
+    "mean_margin_delta:-90047.5<0.0",
+    "worst_margin_delta:-110292.0<-0.0",
+    "losses_increased:4>0",
+    "wins_decreased:0<4"
+  ],
+  "schedule_bound": true,
+  "scheduled_pairs": 4,
+  "seats": [
+    0,
+    1
+  ],
+  "worst_margin_delta": -110292.0
+}

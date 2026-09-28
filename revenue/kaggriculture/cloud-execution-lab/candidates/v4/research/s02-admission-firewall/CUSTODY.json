@@ -1,0 +1,16 @@
+{
+  "schema": "titan-v4-salvage-custody/v2",
+  "subject": "S02 admission-firewall packet for merged negative MPC lineage",
+  "canonical_main": "e7f2f9429ee5e7706c9bb37d15a6ddd5da281390",
+  "source_pr": 11223,
+  "source_merge": "db7f1a1e6581388de1170942858c50b1b525fc19",
+  "packet_branch": "solpro/titan-s02-admission-firewall-20260909-01",
+  "packet_head": "a2ee7043232c7cc57950913434856aa25f7f46f9",
+  "packet_tree": "850d3c1700e70d14eb1e09a4a4350938434613fc",
+  "manifest_blob": "dd17b2cc7ba2b76652116e49fc5846c68dbbafd5",
+  "verdict_blob": "a54cf83860337a6e67f0f61f1a8d6b0e524d8e49",
+  "test_receipt_blob": "d12927a6809c6f53f02edbfc7283377e22f54f0a",
+  "hosted_runs": [],
+  "result": "packet records candidate 0-0-4 versus baseline 4-0-0, admitted=false; test receipt records py_compile PASS and pytest 47/47 PASS with validator rejection as expected",
+  "disposition": "exact packet custody; negative admission evidence only; source PR already merged as experiment; do not revive, promote, or mint a V4 root"
+}
