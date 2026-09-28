@@ -1,0 +1,42 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "recorded_on": "2026-09-28",
+  "source_pr": 11597,
+  "source_ref": "sol-kiln/titan-v3-gate-snapshot-binding-20260909-01",
+  "source_head": "029c3a94a20539be85e92e93d16b597200d4db37",
+  "source_tree": "d69c5e9c84ec1946d5d4f00614aa9d6e4a9ad336",
+  "exact_blobs": {
+    "p/titan-v3-paired-game-gate-snapshot-binding-20260909-sol-kiln.md": "7159e2f7770d91bf459b687609608c572485670f",
+    "revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/NUMERIC-CLOSURE.md": "65a230eef2f963ffd7347c86986cb1569838c1fc",
+    "revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/README.md": "bf8bb525d71ad01fbfb858185d425d88e28518d5",
+    "revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/RESULTS.md": "fde56401e8a3e8cb73937e0e320117e15b3471f2",
+    "revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/SOURCE-MANIFEST.json": "36b620f281a898190f9d46261bab25658a5f05e0",
+    "revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/THREAT-MODEL.md": "ff60bfe0c39e2baa77c169e05ff16ca9bc771306",
+    "revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/contract.py": "b0891bdb07d7e49749226bb86d4779d09e6b7155",
+    "revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/gate.py": "bbf68f6024937e24499b7e8ed45aa7cb1a6f05af",
+    "revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/gate_common.py": "7ed96f3147b437ef1e2c7868e752f625035f2c2f",
+    "revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/metrics.py": "a9d522071ed5c0506d74af44c377d4a5df1e93a1",
+    "revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/test_numeric_closure.py": "c600e47933710267654b139d6ad5f6af076a4517",
+    "revenue/kaggriculture/cloud-execution-lab/titan-v3-paired-game-gate/test_validation.py": "53165b8ac276ed84b5ecbe169ca5db326a77d0e9"
+  },
+  "exact_head_actions_runs": 0,
+  "source_reported_validation": "30 focused tests OK + compileall PASS on composed source",
+  "semantics": [
+    "single-read snapshot binding: hashes name exactly the bytes parsed by the evidence gate",
+    "fail closed on boolean schema_version and malformed/oversized numeric values",
+    "finite-check gate arithmetic and normalize invalid evidence to machine-readable INVALID receipts"
+  ],
+  "successor": {
+    "merged_pr": 11627,
+    "merge": "5363b18101d9eaece372557ab9d587aed6da3507",
+    "result": "working #11530 packet + #11603 numeric closure + #11597 snapshot binding landed on main; 30 tests OK; open-door PASS"
+  },
+  "later_derived_numeric": {
+    "source_pr": 11621,
+    "landed_via_pr": 11649,
+    "merge": "d1bbeb8cb08d9d0adaa5d67871782a8bbc7e55cf"
+  },
+  "disposition": "exact closed-unmerged tooling/source custody; semantics consumed by merged main successors; no independent gameplay donor, no V4 queue edge, no runtime promotion",
+  "queue_edge": false,
+  "promote": false
+}
