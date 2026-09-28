@@ -1,0 +1,22 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "recorded_on": "2026-09-28",
+  "source_pr": 11685,
+  "source_head": "8412eaee3a28e0416e6722b16cad0243a21a4f9f",
+  "source_state": "closed_unmerged_consumed_into_11683",
+  "exact_blobs": {
+    "pin": "2f019b30bc08bceb257bbc51129f43e892874b55",
+    "test_ci_driver": "a62ff92d4bb2efe649fb162a65bb637775b9e917"
+  },
+  "dedicated_run": 34402977342,
+  "dedicated_job": 102639082947,
+  "dedicated_result": "failure_after_checkout_evidence_execution_summary_and_upload_passed",
+  "retained_artifact_id": 10124427498,
+  "retained_artifact_name": "titan-v3-land-admission-current-34402977342-1",
+  "retained_artifact_bytes": 503723,
+  "retained_artifact_sha256": "b6bdeee5d4d3430e08c61df4434a10d0a323afb9799a7cacbe472e417c54dc79",
+  "consumed_main_commit": "c0bfb22e62ff2407e6353ee8de848126753c73d0",
+  "disposition": "historical_exact_evidence_only_semantics_consumed",
+  "queue_edge": false,
+  "promote": false
+}
