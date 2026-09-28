@@ -1,0 +1,24 @@
+{
+  "schema": "titan-v4-historical-salvage-custody/v1",
+  "recorded_on": "2026-09-28",
+  "pr": 11619,
+  "head": "87a86eac21096605ce74796eacfa789c8cd459b8",
+  "disposition": "quarantine_only_superseded_semantics_consumed_by_11636",
+  "exact_blobs": {
+    "land_overlay.py": "236a8600c9e34d98cb9549b9322a56fe2ff513cd",
+    "test_land_overlay.py": "183c21e9325d47b2ce7ea441608c88d4a197d05b"
+  },
+  "hosted": {
+    "titan_selected_projection": "34400018869:SUCCESS",
+    "source_parses": "34400018948:SUCCESS",
+    "path_manifest": "34400019043:SUCCESS",
+    "spec_guard": "34400019007:SUCCESS",
+    "candidate_lane": "34400018968:FAILURE",
+    "open_door": "34400018930:FAILURE"
+  },
+  "successor_pr": 11636,
+  "successor_merge": "c5234f951a98cede1e508480848e41c6a47a5483",
+  "receipt_comment": 5608223566,
+  "queue_edge": false,
+  "promote": false
+}
