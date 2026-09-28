@@ -1,0 +1,15 @@
+{
+  "schema": "titan-v4-salvage-custody/v2",
+  "subject": "closed-unmerged #11702 operating-stock final-prefix carrier",
+  "canonical_main": "e7f2f9429ee5e7706c9bb37d15a6ddd5da281390",
+  "donor_pr": 11702,
+  "donor_branch": "sol-coupler/titan-v3-operating-stock-active-prefix-20260909-01",
+  "donor_head": "15a56abe0fe434f12be81e9c33ce776ed1409cc9",
+  "donor_tree": "4c780b70ac05b2199d271a158d5e7bb54dce0f9b",
+  "superseded_first_head": "d817c21d08ee58ec526dd4e8745cef12f3eb7d1a",
+  "focused_run": 34405251048,
+  "focused_job": 102646563527,
+  "focused_result": "checkout/source closure and 18-test inventory passed; focused plus incumbent contracts failed; later steps skipped; no retained artifact",
+  "semantic_successor": "V4 #12944 merge d9657342fd4fca3b43ba93d2a6b5a8fe5062f04e",
+  "disposition": "legacy final-boundary carrier invalid and superseded; narrow executable-prefix theorem consumed by V4 successor; exact bytes quarantined; no queue edge or promotion"
+}
