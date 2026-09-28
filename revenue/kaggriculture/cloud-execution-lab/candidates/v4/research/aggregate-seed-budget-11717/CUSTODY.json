@@ -1,0 +1,20 @@
+{
+  "schema": "titan-v4-salvage-custody-v1",
+  "recorded_on": "2026-09-28",
+  "source_pr": 11717,
+  "source_head": "10271d226eefa93f72ebdc02d62286e793656115",
+  "evidence": {
+    "run": 34405616499,
+    "job": 102647753488,
+    "focused_contracts": "23/23 PASS",
+    "route_count": 4,
+    "duplicate_count": 0,
+    "tail_safe_count": 0,
+    "outcome": "NO_SIGNAL",
+    "artifact_id": 10158216020,
+    "artifact_sha256": "4a7abfc8c351ba375b009685fc9c1c6b3810d71b431485f879a6c8c7cab3104d",
+    "note": "PR-triggered run is final-head-inclusive negative applicability evidence, not an exact-head source seal"
+  },
+  "disposition": "NEGATIVE APPLICABILITY EVIDENCE / REJECT BEFORE GAMES / DO NOT PORT AS-IS / NO V4 QUEUE EDGE",
+  "queue_edge": false
+}
