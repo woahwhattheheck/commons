@@ -1,0 +1,39 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "family": "kestrel-no-global-carrier",
+  "source_pr": 11779,
+  "source_branch": "sol/lockstep-kestrel-no-global-carrier-20260909-04",
+  "source_head": "c7b7f6e7e7915fb31c50364f1e7b5997c80b7891",
+  "exact_blobs": {
+    ".github/workflows/titan-kestrel-lockstep.yml": "2b7ebbe459b5348d6b730c7fe47d18c3fdc32657",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-kestrel-capital-execution/candidate_main.py": "281cfb3c9dba91fedd6909f3b6270b5530b15097",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-kestrel-capital-execution/test_candidate_entrypoint.py": "8e785ac4fa5950fd3f8d2cb52d8f6cd376e3b212"
+  },
+  "exact_head_runs": {
+    "dedicated": {
+      "id": 34406931107,
+      "name": "titan-kestrel-lockstep",
+      "result": "success"
+    },
+    "titan_selected_projection": {
+      "id": 34406931046,
+      "result": "success"
+    },
+    "source_parses": {
+      "id": 34406931085,
+      "result": "success"
+    },
+    "open_door_guard": {
+      "id": 34406931116,
+      "result": "success"
+    }
+  },
+  "successor": {
+    "pr": 11792,
+    "head": "793ed4277377c44afe7c2181bfa72e0f1366ff46",
+    "relationship": "stacked exact-head repair; parent head is merge-base and already preserved on this salvage carrier"
+  },
+  "disposition": "completed unmerged predecessor hardening; superseded by #11792 per-load isolation; preserve exact bytes only; no V4 queue edge or runtime promotion",
+  "v4_queue_edge": false,
+  "runtime_promotion": false
+}

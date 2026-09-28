@@ -1,0 +1,38 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "family": "final-pressure-decision-gate",
+  "source_pr": 11778,
+  "source_branch": "sol-anchor/titan-v3-final-pressure-decision-gate-20260909-01",
+  "source_head": "5c6a207c793d5ab56abd7fd56c28e4acd1f37980",
+  "exact_blobs": {
+    ".github/workflows/titan-v3-final-pressure-three-arm-solstice.yml": "170fd06fb3c8d2302835926493b1d41dab925c36",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/v3-final-pressure-three-arm-20260909-solstice/decision_gate.py": "27ed862c0f6f1502e29f2b354cab54c6983711bd",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/v3-final-pressure-three-arm-20260909-solstice/test_decision_gate.py": "108ebb0c9e425217b12fa4b4a0f81b4be2f1b88b"
+  },
+  "exact_head_runs": {
+    "dedicated": {
+      "id": 34406784438,
+      "name": "TITAN V3 final-pressure three-arm attribution",
+      "result": "success"
+    },
+    "titan_selected_projection": {
+      "id": 34406784379,
+      "result": "success"
+    },
+    "source_parses": {
+      "id": 34406784417,
+      "result": "success"
+    },
+    "open_door_guard": {
+      "id": 34406784434,
+      "result": "success"
+    },
+    "generic_tests": {
+      "id": 34406784389,
+      "result": "failure"
+    }
+  },
+  "disposition": "completed dedicated attribution/decision-gate evidence but generic suite red and PR closed unmerged; quarantine as historical evidence only; no runtime/default/config or V4 promotion edge",
+  "v4_queue_edge": false,
+  "runtime_promotion": false
+}
