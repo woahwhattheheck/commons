@@ -1,0 +1,30 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "recorded_on": "2026-09-28",
+  "source_pr": 11667,
+  "source_head": "67519b5a37e609ea7511f0cb9d6b9032b34fda02",
+  "source_state": "closed_unmerged_rejected_gameplay",
+  "exact_blobs": {
+    "ledger_tranche": "d8a65d33d10e93b9869890ee667f02dee845ec7d",
+    "test_ledger_tranche": "81bb1074ffd77dc0ccf67ecd042f3ce7354681f3"
+  },
+  "dedicated_run": 34401890250,
+  "dedicated_job": 102635705281,
+  "dedicated_result": "rejected_after_complete_192_game_96_pair_panel",
+  "retained_artifact_id": 10124431346,
+  "retained_artifact_sha256": "6847958f889ad0fc583cdc0e20a6f4be57ce3e3cf09d7848ee24949a61e8de80",
+  "panel": {
+    "games": 192,
+    "pairs": 96,
+    "mean_own_cash_delta": -315.6146,
+    "median_own_cash_delta": -301,
+    "negative_pairs": 80,
+    "positive_pairs": 16,
+    "mean_margin_delta": 31.4271,
+    "first_divergence_checkpoint": 695
+  },
+  "review_boundary": "exact-head nonnegative-quantity prevalidation still had a negative-quantity bypass; do not treat this source as a reusable correctness donor",
+  "disposition": "rejected_gameplay_policy_negative_evidence_only",
+  "queue_edge": false,
+  "promote": false
+}
