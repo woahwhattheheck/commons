@@ -1,0 +1,23 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "family": "self-cross-theorem-review",
+  "source_pr": 11766,
+  "source_head": "d690856ee900ec0be2d9c5b323aa22d29fc35492",
+  "source_merged": false,
+  "exact_blobs": {
+    "workflow": "cc061c104a2eb22f2b4bb9990236691ba9bfe79a",
+    "README": "244cbd79bfe00320aa02023a8335b3f520e2d09b",
+    "official_witness.py": "e45b76fc2aa8c46243eda834679b2c04c33ac000",
+    "test_official_witness.py": "1544646cc3aedacb48f666116dca08ad60e599cc"
+  },
+  "exact_head_run": {
+    "id": 34406549863,
+    "job": 102650791408,
+    "conclusion": "failure",
+    "contracts": "4_pass_2_fail",
+    "theorem_receipt": "not_emitted"
+  },
+  "disposition": "historical_review_evidence_only_no_queue_edge",
+  "v4_queue_edge": false,
+  "runtime_promotion": false
+}
