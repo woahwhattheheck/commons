@@ -25,6 +25,7 @@
   "priority_queue": [],
   "production_write": false,
   "record_sources": [
+    "inventory/resources/records/codex-uiowa-rfq18649-paid-technical-workshare-resource-activation-20260928-01.json",
     "inventory/resources/records/codex-commons-operation-command-center-provider-fidelity-advancement-20260928-01.json",
     "inventory/resources/records/codex-slack-native-revision-projection-resource-activation-20260926-01.json",
     "inventory/resources/records/codex-uiowa-operator-transfer-resource-activation-20260926-01.json",
@@ -111,15 +112,15 @@
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1790622685.096319",
+  "slack_ts": "1790633343.534199",
   "snapshot": {
-    "base_main_sha": "4305f51b731d1a659bf210cd14889297201889b7",
-    "observed_at": "2026-09-28T19:11:49Z",
+    "base_main_sha": "b093bc36261b0a7ada8b157a36944d12027bdc78",
+    "observed_at": "2026-09-28T22:09:10Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-commons-operation-command-center-provider-fidelity-advancement-20260928-01",
+  "source_id": "codex-uiowa-rfq18649-paid-technical-workshare-resource-activation-20260928-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -130,6 +131,7 @@
   ],
   "subject": "MASTER RESOURCE LEDGER — command-center provider fidelity advancement",
   "supersedes_source_ids": [
+    "codex-uiowa-rfq18649-paid-technical-workshare-resource-activation-20260928-01",
     "codex-commons-operation-command-center-provider-fidelity-advancement-20260928-01",
     "codex-slack-native-revision-projection-resource-activation-20260926-01",
     "codex-jev-connector-projection-resource-activation-20260920-01",
@@ -2619,6 +2621,28 @@
       "last_used_at": "2026-09-26T13:24:25Z",
       "stale_after": "next planner, dependency-oracle composition, schema, phase-boundary, dependency-duration, CSV round-trip, source-reference, source-blob, authority or consumer change",
       "priority": 99
+    },
+    {
+      "name": "uiowa-rfq18649-paid-technical-workshare-carrier",
+      "kind": "EVIDENCE_BOUND_TECHNICAL_WORKSHARE_AND_PRIME_HANDOFF_CARRIER",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / authorized Iowa teaming and technical-production operators; external partner decisions remain owner-authorized",
+      "authority": "SHARED_ALL_CARRIERS_PUBLIC_CURRENT_MAIN_READ_RUN_VERIFY_RENDER_AND_ADAPT; EXACT_SOURCE_TREE_139899F07148B9D369DA79E2D9FB62A0DD8D71D4_AND_SEVEN_PINNED_BLOBS_REQUIRED; PUBLIC_CLI_UNTRUSTED_INSPECTION_ONLY; CURRENT_READY_REQUIRES_INDEPENDENT_HOST_RETAINED_AUTHORITY_ROOT; PROPOSED_NOT_ACCEPTED; CLOSED_RFQ_WINDOW_NOT_ACTIVE_BID; BUYER_CONTACT_FALSE; SCHEDULING_FALSE; UNIVERSITY_SUBMISSION_FALSE; SIGNATURE_FALSE; CONTRACT_FALSE; TRAVEL_FALSE; INVOICE_FALSE; PAYMENT_FALSE; REVENUE_FALSE; CASH_FALSE",
+      "consumer": "The newly evidenced Clark's Consulting partner-call lane and an authorized future teaming operator who needs a deterministic, evidence-bound technical workshare package without mistaking the closed RFQ window for an active bid.",
+      "value": "The current-main carrier supplies a bounded proposed technical workshare, artifact-level acceptance exhibit, deterministic 12-cell assessment compiler, independently rooted evidence-authority boundary, hostile verification, filesystem custody, and reproducibility/currentness receipts for a concrete partner discussion.",
+      "next_action": "An authorized call owner may use the existing package to discuss a future or otherwise valid teaming path, verify the current solicitation and commercial context independently, and return only attributable partner decisions. The public CLI remains inspection-only and the closed Sep 22 response window is not reopened by this activation.",
+      "source": "revenue/uiowa_rfq_18649_workshare; initial source merge afa4bdd50b19143b6073dcbbee2719565c29ec7c; latest source commit 83dff0b03d7161b63b1225ae8ba8dac7c85486e8; source tree 139899f07148b9d369da79e2d9fb62a0dd8d71d4; fresh partner-call receipt p/rfq18649-clark-call-20260928.md",
+      "evidence_ts": "2026-09-28T22:01:41Z",
+      "auth_surface": "Public current-main source and deidentified fixtures run locally without Commons login, customer data, provider credential, browser session or repeated approval. A trusted current assessment additionally requires a host-retained authority root independent of the candidate and authority payloads; partner contact, scheduling and submission remain separate owner-authorized actions.",
+      "exact_safe_probe": "Base main 0dda9187c21af1e2f6784718fe457547b5a62195 retained source tree 139899f07148b9d369da79e2d9fb62a0dd8d71d4 and seven pinned source blobs: README 2539f3b7d6cf47d06f496e45823a6dbec7cdda90, commercial handoff b6e9ca58984c15d96b497f3bb51000992fdb9b5f, compiler 304c0deac31d7eb10dcbb58394bf0b10a30b4960, tests 986e9c41396d46e3c0d30c07d7e84fad6c6e9d23, workshare contract 0c4e2db3f93079ec884c4b43801efae4475cd22d, synthetic packet 92e38c01c5d45fc7e0172387fce037f611042f26 and synthetic authority 1d58638c067b35dbdc210365ac3f30d6e72c9548. The root carrier suite passes 29/29 and the methodology suite passes 77/77 normally and under Python -OO.",
+      "rate_plan_boundary": "The carrier is offline standard-library work and consumes no paid provider allowance. A source tree, passing test, proposed price, partner call request or sent scheduling reply does not establish a live University bid, buyer commitment, contract, award, acceptance, invoice, payment, revenue or cash.",
+      "assigned_backlog": "Available only to the existing partner-call and future teaming lane. Prior call-readiness material already covers the immediate discussion; no duplicate call-prep or implementation order is created. The smallest remaining dependency is the partner's slot selection or decline plus owner-authorized live-solicitation verification, not a software gap.",
+      "last_receipt": "codex-uiowa-rfq18649-paid-technical-workshare-resource-activation-20260928-01",
+      "last_used_at": "2026-09-28T22:01:41Z",
+      "stale_after": "next solicitation status, partner decision, commercial scope, price, acceptance exhibit, compiler, authority schema, source tree, pinned source blob, evidence freshness rule or authority change",
+      "priority": 100
     },
     {
       "name": "freelancer-40727247-react-erp-bid-road",

@@ -1,0 +1,119 @@
+{
+  "schema": "commons-resource-event/v1",
+  "event_id": "codex-uiowa-rfq18649-paid-technical-workshare-resource-activation-20260928-01",
+  "event_type": "RESOURCE_ACTIVATION",
+  "observed_at": "2026-09-28T22:01:41Z",
+  "actor": "Commons Resource Master / Codex",
+  "selected_resource": "uiowa-rfq18649-paid-technical-workshare-carrier",
+  "concrete_consumer": "The newly evidenced Clark's Consulting partner-call lane and an authorized future teaming operator evaluating a bounded technical-production workshare",
+  "measurable_outcome": "The existing current-main workshare package is now canonical, independently identifiable and routed to a concrete partner discussion. Its source tree, seven representative blobs, 106 focused tests and closed-RFQ boundary are pinned without modifying source or performing an external action.",
+  "before": {
+    "capacity": "LANDED_BUT_UNROUTED",
+    "stage": "BUILT",
+    "condition": "CONSTRAINED",
+    "holder": "Commons / source custody",
+    "evidence_freshness": "SOURCE_CURRENT_TO_2026_09_23_WITHOUT_CANONICAL_RESOURCE_ENTRY"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "holder": "Commons / authorized Iowa teaming and technical-production operators",
+    "authority": "PUBLIC_CURRENT_MAIN_READ_RUN_VERIFY_RENDER_AND_ADAPT; EXTERNAL_CONTACT_SCHEDULING_SUBMISSION_SIGNATURE_CONTRACT_PAYMENT_REVENUE_AND_CASH_FALSE",
+    "activation_base_main_sha": "0dda9187c21af1e2f6784718fe457547b5a62195"
+  },
+  "production_truth": {
+    "repository": "woahwhattheheck/commons",
+    "initial_source_merge": "afa4bdd50b19143b6073dcbbee2719565c29ec7c",
+    "latest_source_commit": "83dff0b03d7161b63b1225ae8ba8dac7c85486e8",
+    "source_tree": "139899f07148b9d369da79e2d9fb62a0dd8d71d4",
+    "source_blobs": {
+      "revenue/uiowa_rfq_18649_workshare/README.md": "2539f3b7d6cf47d06f496e45823a6dbec7cdda90",
+      "revenue/uiowa_rfq_18649_workshare/COMMERCIAL.md": "b6e9ca58984c15d96b497f3bb51000992fdb9b5f",
+      "revenue/uiowa_rfq_18649_workshare/compiler.py": "304c0deac31d7eb10dcbb58394bf0b10a30b4960",
+      "revenue/uiowa_rfq_18649_workshare/test_compiler.py": "986e9c41396d46e3c0d30c07d7e84fad6c6e9d23",
+      "revenue/uiowa_rfq_18649_workshare/workshare_contract.py": "0c4e2db3f93079ec884c4b43801efae4475cd22d",
+      "revenue/uiowa_rfq_18649_workshare/fixtures/synthetic_packet.json": "92e38c01c5d45fc7e0172387fce037f611042f26",
+      "revenue/uiowa_rfq_18649_workshare/fixtures/synthetic_authority.json": "1d58638c067b35dbdc210365ac3f30d6e72c9548"
+    },
+    "public_cli_authorizes_current_ready": false,
+    "trusted_root_required": true,
+    "rfq_window_currently_open": false,
+    "partner_call_request_observed": true,
+    "partner_commitment_proven": false
+  },
+  "delta": {
+    "prior_observed_main_sha": "7cbac3e26c964c1c30fe0796fe7e113c3bd0d12a",
+    "activation_base_main_sha": "0dda9187c21af1e2f6784718fe457547b5a62195",
+    "commits_in_delta": 6,
+    "non_generated_commits_in_delta": 3,
+    "changed_paths_in_delta": 242,
+    "remote_branches_observed": 4562,
+    "prior_terminal_slack_ts": "1790622685.096319",
+    "latest_observed_slack_ts": "1790632821.732219",
+    "commons_claim_slack_ts": "1790632821.732219",
+    "automations": "Twenty-five visible; Commons Resource Master and the previously enabled operational automations remain enabled. No automation lifecycle mutation was made.",
+    "github_state": "The post-watermark delta was reconciled. Board-ingest and projection updates were not treated as new resources; closure receipts for already-landed issues were not reminted.",
+    "slack_state": "All required resource channels were swept from the prior terminal timestamp. No later competing claim exists for these exact activation paths. The claim root is the latest relevant Slack timestamp.",
+    "new_resource_evidence": "A durable deidentified receipt records an attributable Clark's Consulting request for a teaming call. The cited Sep 22 RFQ response window is closed; the call is a concrete consumer for the already-built workshare package, not evidence of an active University bid."
+  },
+  "verification": {
+    "focused_source": "PASS_29_OF_29_ROOT_PLUS_77_OF_77_METHODOLOGY_TESTS_NORMAL_AND_OPTIMIZED",
+    "resource_ledger": "PASS_NORMAL_AND_OPTIMIZED_SELF_TESTS",
+    "resource_projection": "PASS_NORMAL_AND_OPTIMIZED_SELF_TESTS_AND_FRESH_113_85_78_STAMP",
+    "open_door": "PASS_EXACT_STAGED_DIFF_GUARD_NORMAL_AND_OPTIMIZED",
+    "privacy": "Only public repository identities, exact SHAs, aggregate counts, a company-level partner lane and Slack timestamps are persisted. No raw email, phone, health, family, private account identifier, credential or customer data is stored.",
+    "zero_fabrication": "The source package, tests, call request and sent scheduling reply do not establish a current University solicitation, live bid, partner commitment, award, accepted scope, contract, invoice, payment, revenue or cash.",
+    "collision": "Only the canonical ledger, append-only record, append-only receipt and generated current projection are owned. Source package, prior call-prep artifacts, external communications, peer branches and unrelated artifacts remain untouched."
+  },
+  "build_order_decision": "No build order was posted. The bounded workshare and prior call-readiness package are already implemented. The remaining partner slot selection and live-solicitation verification are external owner-authorized dependencies, not independent software gaps.",
+  "build_orders": [],
+  "quota_lifecycle": {
+    "classification": "PRIOR_QUOTA_STATE_RETAINED_CURRENT_ALLOWANCE_UNMEASURED",
+    "official_or_directly_observed_reset": false,
+    "banked_reset_activated": false
+  },
+  "projection": {
+    "resources": 113,
+    "producing": 85,
+    "inventory_records": 78
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790632821732219",
+    "source_merge": "https://github.com/woahwhattheheck/commons/commit/afa4bdd50b19143b6073dcbbee2719565c29ec7c",
+    "latest_source_commit": "https://github.com/woahwhattheheck/commons/commit/83dff0b03d7161b63b1225ae8ba8dac7c85486e8",
+    "activation_pull_request": "https://github.com/woahwhattheheck/commons/pull/30137",
+    "activation_merge": "https://github.com/woahwhattheheck/commons/commit/d3eb3332779cccc787c8cb3e714197734ac73a33",
+    "readback_pull_request": "https://github.com/woahwhattheheck/commons/pull/30138",
+    "terminal_slack": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790633343534199"
+  },
+  "activation_readback": {
+    "current_main_sha": "d3eb3332779cccc787c8cb3e714197734ac73a33",
+    "matched_blobs": 11,
+    "expected_blobs": 11,
+    "activation_blobs": {
+      "ground/RESOURCE_LEDGER.json": "f8080b2f539de2e32a34e689a31e4aab9311a3a6",
+      "inventory/resources/records/codex-uiowa-rfq18649-paid-technical-workshare-resource-activation-20260928-01.json": "ef819274af4e2d79b587dd1816293f0860c985dd",
+      "p/codex-uiowa-rfq18649-paid-technical-workshare-resource-activation-20260928-01.md": "ae05eb741d932e9bce8c211134124c13b529faff",
+      "resources.html": "565e45983d29b3a89e1736657f5a09007cbdb1a9"
+    },
+    "source_tree_matched": true,
+    "source_blobs_matched": true
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-28T22:01:41Z",
+    "activation_base_main_sha": "0dda9187c21af1e2f6784718fe457547b5a62195",
+    "current_main_sha": "b093bc36261b0a7ada8b157a36944d12027bdc78",
+    "latest_observed_slack_ts": "1790633343.534199",
+    "terminal_slack_ts": "1790633343.534199",
+    "terminal_observed_at": "2026-09-28T22:09:10Z",
+    "inventory_record_id": "codex-uiowa-rfq18649-paid-technical-workshare-resource-activation-20260928-01",
+    "remote_branches_observed": 4562
+  },
+  "non_claims": [
+    "No University or partner system was accessed and no contact, scheduling, submission, signature, contract, travel, invoice, payment, settlement, payout, revenue or cash operation was performed by this activation.",
+    "No live session, active solicitation, deployable project, buyer commitment, quota or permission was inferred from source presence, cache, checkout, account connection, call request or sent scheduling reply.",
+    "No source-package file or previous call-preparation artifact was modified."
+  ],
+  "titan": "NOT_WRITTEN"
+}
