@@ -1,0 +1,26 @@
+{
+  "schema": "titan-v4-historical-salvage-custody/v1",
+  "recorded_on": "2026-09-28",
+  "pr": 11621,
+  "head": "be9b9844b5268ba000a0c87a1c9a7420a40f69d5",
+  "base": "3816ed79509f3fe529834008acfb765fc1ec8f43",
+  "disposition": "quarantine_only_semantics_consumed_by_11649",
+  "exact_blobs": {
+    "workflow": "ae56e52c6b284d40105c2ecbb6aae83d65775512",
+    "closure_doc": "7871a7a57982d5179cfcef16a53f9722aa42edf1",
+    "source_manifest": "d3d9baa17dbc20b49e50683876e15f12ad645048",
+    "metrics": "8b3e27e96d314c74ea6ba6f22cf3b41effab1e48",
+    "regression_test": "e4796f467efdbb0bf3137eb74126a44ad4e86b06"
+  },
+  "hosted": {
+    "dedicated_run": 34400031799,
+    "dedicated_job": 102629338359,
+    "dedicated_result": "SUCCESS",
+    "generic_tests_run": 34400031794,
+    "generic_tests_result": "FAILURE"
+  },
+  "successor_pr": 11649,
+  "successor_merge": "d1bbeb8cb08d9d0adaa5d67871782a8bbc7e55cf",
+  "queue_edge": false,
+  "promote": false
+}

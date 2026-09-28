@@ -1,0 +1,122 @@
+{
+  "compile": {
+    "command": "python3 -m compileall -q .",
+    "result": "PASS"
+  },
+  "files": [
+    {
+      "bytes": 3730,
+      "path": "CONTRACT.md",
+      "sha256": "4990b2c1f26fc3d2fa4923afdea1079c70c0a24f32bcdd37253d0910e01181cb"
+    },
+    {
+      "bytes": 2075,
+      "path": "DERIVED-NUMERIC-CLOSURE.md",
+      "sha256": "75f3cca009588eb8b3dc93bac7840dc66a6136f40d4dda8576bbd0f052f2f569"
+    },
+    {
+      "bytes": 261,
+      "path": "LICENSE-NOTE.md",
+      "sha256": "bbc62f8ffdfa9a73fd882f95f9b80b217d25f974793da12d866e4cd221bec830"
+    },
+    {
+      "bytes": 6203,
+      "path": "README.md",
+      "sha256": "6300862dc21a69789337d91b4219b15b9e629f5e13cea54fd17b5ef26865659b"
+    },
+    {
+      "bytes": 2086,
+      "path": "RESULTS.md",
+      "sha256": "26597d94df7900e7fdd7c6a732b7772e457eca90aa8f0b8985a04d7a113a52e6"
+    },
+    {
+      "bytes": 2948,
+      "path": "THREAT-MODEL.md",
+      "sha256": "96bf50ce23b6ee5114adac7d09c6e0a12547a926b88d92080596f90afa80b470"
+    },
+    {
+      "bytes": 9190,
+      "path": "contract.py",
+      "sha256": "c029242084215733d39b8d717fb00b6724ebe8385e1f39850287c88975785f42"
+    },
+    {
+      "bytes": 1252,
+      "path": "example/CONTRACT.json",
+      "sha256": "85df87510d763cd67494010bd04a2879a8fb679135e588f6c406d053a474c0e7"
+    },
+    {
+      "bytes": 705,
+      "path": "example/PROVENANCE.json",
+      "sha256": "b61e6e0f24ef48c3f3001b361462999ea700d44c3e1e9051609d90610c4bfb5e"
+    },
+    {
+      "bytes": 712,
+      "path": "example/canonical.GAMES.jsonl",
+      "sha256": "913121fcb732cedf850fac578d51543c2b0e04d006e5632cbf29811540432865"
+    },
+    {
+      "bytes": 712,
+      "path": "example/challenger.GAMES.jsonl",
+      "sha256": "4e318050434ac47e8967d6185be7308831cf7f5ee1307766fd6e400bc2db15d1"
+    },
+    {
+      "bytes": 4906,
+      "path": "gate.py",
+      "sha256": "e79b8b98e456a42ba7d27479295a086b8f41959e3ee039d0c40384bf28c73aa6"
+    },
+    {
+      "bytes": 7451,
+      "path": "gate_common.py",
+      "sha256": "55ea743ba1236c2572b518a1aff6237dce5ff24f8278b6a996a0a6ad432a8923"
+    },
+    {
+      "bytes": 8003,
+      "path": "metrics.py",
+      "sha256": "9e68f4bd1aba92917af53a59a0471370e1131f18694c0d3aefea83d18750dcbe"
+    },
+    {
+      "bytes": 3175,
+      "path": "panel_load.py",
+      "sha256": "340054b8403827bad0ff086b1c84b0e3abdd052dedeb5622b5ad56bb168aa287"
+    },
+    {
+      "bytes": 3271,
+      "path": "test_derived_numeric_closure.py",
+      "sha256": "30340398935e1d63102406cd2ce245ee054135ebc1b6ac66f9193a479e0a80e3"
+    },
+    {
+      "bytes": 5604,
+      "path": "test_policy_cli.py",
+      "sha256": "98284ea7c7eb5c99f7c5cc03ea00207bfb7c0e57a7d709b07e03db30ce6c9998"
+    },
+    {
+      "bytes": 3441,
+      "path": "test_support.py",
+      "sha256": "f488bcedd3b5c03314105e2a15fb7a6eb6b45ced3c03d97f0c72ef8918c8b7c6"
+    },
+    {
+      "bytes": 8062,
+      "path": "test_validation.py",
+      "sha256": "64a3a298dbde08d49181e54bd5f8a9b4c303912815f51dee1a03a25fc8c1f71e"
+    }
+  ],
+  "hardening": {
+    "actor": "SOL-KILN",
+    "operation": "titan-v3-paired-game-gate-snapshot-binding-20260909-sol-kiln-01",
+    "parent_head": "22e764944d246fce5555f8ae09c7f14345179219",
+    "scope": "single-open immutable input snapshots, strict schema typing, numeric overflow closure"
+  },
+  "derived_numeric_closure": {
+    "actor": "SOL-CIPHER",
+    "operation": "titan-v3-paired-game-derived-numeric-closure-20260909-sol-cipher-02",
+    "parent_head": "3816ed79509f3fe529834008acfb765fc1ec8f43",
+    "scope": "finite checked margins, paired deltas, means, medians, and exact-stratum errors"
+  },
+  "operation": "titan-v3-paired-game-gate-20260909-sol-argus-02",
+  "tests": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 python3 -m unittest -v test_validation.py test_policy_cli.py test_derived_numeric_closure.py",
+    "errors": 0,
+    "failed": 0,
+    "passed": 31
+  }
+}
