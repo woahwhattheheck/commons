@@ -1,10 +1,7 @@
 {
  "note": "paths each open pull request changes since its merge-base (first 40; drift --pr N prints all)",
- "observed_at": "2026-09-28T15:18:14Z",
+ "observed_at": "2026-09-28T21:21:09Z",
  "prs": [
-  {"number":30101,"path_count":2,"paths":["integrations/shared_equipment/test_equipment.py","test_shared_equipment_newcomer_road.py"]},
-  {"number":30100,"path_count":1,"paths":["integrations/command_center/test_collector_pagination_evidence.py"]},
-  {"number":30099,"path_count":1,"paths":["integrations/command_center/provider_admission.py"]},
   {"number":30091,"path_count":2,"paths":["integrations/shared_equipment/provider_io.py","test_shared_equipment_newcomer_road.py"]}
  ],
  "schema": "commons-coordination-paths/v1"
