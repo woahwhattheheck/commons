@@ -1,0 +1,48 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "source": {
+    "pr": 11907,
+    "branch": "sol-lattice/titan-pr11832-opponent-seat-admission-20260909-01",
+    "exact_head": "0afe2fe1b1c62b52d9fa74a83e4c5278a2355b0d",
+    "predecessor_pr": 11832,
+    "predecessor_head": "fb6f32c944ea55179ab509f6addd8db79aa26e90"
+  },
+  "exact_blobs": {
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-full-queue-sell-growth-sol-amplifier/README.md": "4ea22d57506dcd0da7e4d2d4f6b5d59d8613e4b6",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-full-queue-sell-growth-sol-amplifier/audit_change.py": "35afe57a9f65caf2607c21fa1176308ad952f3a6",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-full-queue-sell-growth-sol-amplifier/candidate.py": "d997c59bcb5617bb512bc956c5fdc427d76992ac",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-full-queue-sell-growth-sol-amplifier/growth_patch.py": "f1803dafb558745376f28d3c9e005c4688ff4452",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-full-queue-sell-growth-sol-amplifier/run_panel.py": "33ca609b8d724c447f205c946fd5c0d50dc06084",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-full-queue-sell-growth-sol-amplifier/test_action_bound_panel.py": "df8a0c8c2ad0fc5d871aaf9220f7ad6b30cd5411",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-full-queue-sell-growth-sol-amplifier/test_full_queue_sell_growth.py": "e8bda970ece6dcc1739af32dbefaad8ead2c38a3",
+    ".github/workflows/titan-v3-full-queue-sell-growth-sol-amplifier.yml": "91e2be2936e77585358d668edeb4ca8f0f089519"
+  },
+  "hosted_receipt": {
+    "workflow_run": 34414436826,
+    "job": 102676025157,
+    "conclusion": "success",
+    "focused_contracts": "21/21 PASS",
+    "official_engine_cells": "32/32 complete",
+    "candidate_action_changed_cells": 0,
+    "trace_changed_cells": 0,
+    "own_cash_delta": "0 in all 32 cells",
+    "margin_delta": "0 in all 32 cells",
+    "verdict": "REJECT",
+    "artifact": {
+      "id": 10128651166,
+      "name": "titan-v3-full-queue-sell-growth-34414436826",
+      "size_in_bytes": 123473,
+      "sha256": "da8c50e48edd1a7ce7ef69fb1320e28be341789caea75f2c3adecce0595723a5",
+      "expired": false,
+      "expires_at": "2026-10-09T22:59:34Z"
+    }
+  },
+  "predecessor_receipt": {
+    "run": 34411435362,
+    "conclusion": "failure",
+    "focused_contracts": "17/19",
+    "note": "exact integration tests errored; canonical verification and official panel skipped"
+  },
+  "disposition": "NEGATIVE_GAMEPLAY_HYPOTHESIS__VALIDATED_HARNESS__NO_ACTIVATION__NO_V4_QUEUE_EDGE__DO_NOT_PROMOTE_REPLAY_OR_REMINT",
+  "note": "Final repair head preserved byte-identically as historical evidence. The reusable admission/source-closure harness is evidence tooling only; the gameplay mechanism produced no action or score change on the declared official panel."
+}
