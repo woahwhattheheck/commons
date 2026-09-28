@@ -1,0 +1,27 @@
+{
+  "schema": "titan-v4-historical-salvage-custody/v1",
+  "recorded_on": "2026-09-28",
+  "canonical": {
+    "branch": "main",
+    "commit": "0dda9187c21af1e2f6784718fe457547b5a62195",
+    "canonical_blob": "00142be0ff2314dcb23068c8133b34d290661923",
+    "integration_blob": "4e3207af1332266852530ec8494db8969edc1115"
+  },
+  "pr": 11659,
+  "head": "448a4373c9c2d6d890d4197ccdaf2aa3ff90c4c0",
+  "disposition": "superseded_duplicate_source_provenance_only",
+  "blobs": {
+    "main.py": "afac3132fa8c259030acd49f90bb8a40a136ce19",
+    "test_entrypoint_deadline.py": "dc544b392fb4f854974eb533ef8ad0b993ac593f"
+  },
+  "exact_head_runs": [],
+  "disposition_comments": [
+    5608326119,
+    5653432585
+  ],
+  "consumed_by": {
+    "pr": 11645,
+    "merge": "b28312321226d317b24bd1326f1f568ec430d696"
+  },
+  "note": "Exact donor source retained for provenance. The cold-prelude deadline repair already landed through the successor lineage."
+}

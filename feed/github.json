@@ -1,8 +1,8 @@
 {
   "counts": {
-    "open_issues": 8120,
-    "open_pull_requests": 4,
-    "runs_in_progress": 2,
+    "open_issues": 8089,
+    "open_pull_requests": 1,
+    "runs_in_progress": 4,
     "runs_queued": 70
   },
   "counts_source": "graphql",
@@ -19,75 +19,9 @@
       "number": 30091,
       "title": "fix: preserve 404 on body-only GitHub Not Found for create-branch",
       "updated_at": "2026-09-26T18:32:23Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "fix/provider-admission-open-door-20260926",
-      "created_at": "2026-09-26T18:06:30Z",
-      "draft": false,
-      "head_sha": "ae367883657adc59d08024caf0f79e6598d0c2d1",
-      "number": 30099,
-      "title": "Keep provider admission verbs free-form",
-      "updated_at": "2026-09-26T18:06:30Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "fix/malformed-page-retention-fixtures-20260926",
-      "created_at": "2026-09-26T18:13:04Z",
-      "draft": false,
-      "head_sha": "f5b4af8dbfe00c694560fd67286a4f4c9e65fa25",
-      "number": 30100,
-      "title": "Align pagination fixtures with dict GitHub page rows",
-      "updated_at": "2026-09-26T18:13:04Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "fix/credential-transfer-include-headers-20260926",
-      "created_at": "2026-09-26T18:16:48Z",
-      "draft": false,
-      "head_sha": "97b035373725831db3391030930dbe8d2ce5ead2",
-      "number": 30101,
-      "title": "Align credential-transfer tests with gh api --include writes",
-      "updated_at": "2026-09-26T18:32:31Z"
     }
   ],
   "newest_pulls": [
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "fix/credential-transfer-include-headers-20260926",
-      "created_at": "2026-09-26T18:16:48Z",
-      "draft": false,
-      "head_sha": "97b035373725831db3391030930dbe8d2ce5ead2",
-      "number": 30101,
-      "title": "Align credential-transfer tests with gh api --include writes",
-      "updated_at": "2026-09-26T18:32:31Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "fix/malformed-page-retention-fixtures-20260926",
-      "created_at": "2026-09-26T18:13:04Z",
-      "draft": false,
-      "head_sha": "f5b4af8dbfe00c694560fd67286a4f4c9e65fa25",
-      "number": 30100,
-      "title": "Align pagination fixtures with dict GitHub page rows",
-      "updated_at": "2026-09-26T18:13:04Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "fix/provider-admission-open-door-20260926",
-      "created_at": "2026-09-26T18:06:30Z",
-      "draft": false,
-      "head_sha": "ae367883657adc59d08024caf0f79e6598d0c2d1",
-      "number": 30099,
-      "title": "Keep provider admission verbs free-form",
-      "updated_at": "2026-09-26T18:06:30Z"
-    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -101,15 +35,103 @@
     }
   ],
   "open_heads": {
-    "30091": "65df89b7f4c7ded1329b36d0930ff88660b3a2fa",
-    "30099": "ae367883657adc59d08024caf0f79e6598d0c2d1",
-    "30100": "f5b4af8dbfe00c694560fd67286a4f4c9e65fa25",
-    "30101": "97b035373725831db3391030930dbe8d2ce5ead2"
+    "30091": "65df89b7f4c7ded1329b36d0930ff88660b3a2fa"
   },
-  "pulls_listed": 4,
+  "pulls_listed": 1,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 35.0,
+  "queue_depth_per_runner": 17.5,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "resource-master/command-center-provider-fidelity-terminal-20260928-01",
+      "closed_at": "2026-09-28T19:13:06Z",
+      "head_sha": "2982ae8248de82a9291436bd97c3a9c74633c18a",
+      "merge_commit_sha": "7cbac3e26c964c1c30fe0796fe7e113c3bd0d12a",
+      "merged_at": "2026-09-28T19:13:06Z",
+      "number": 30136,
+      "state": "MERGED",
+      "title": "Pin command-center terminal watermark",
+      "updated_at": "2026-09-28T19:13:46Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "resource-master/command-center-provider-fidelity-readback-20260928-01",
+      "closed_at": "2026-09-28T19:10:53Z",
+      "head_sha": "1e2615510a4129f6b20e7b78da565962221a196b",
+      "merge_commit_sha": "5e81ef636244bb8b7853acbd346685089982b301",
+      "merged_at": "2026-09-28T19:10:53Z",
+      "number": 30135,
+      "state": "MERGED",
+      "title": "Pin command-center provider-fidelity readback",
+      "updated_at": "2026-09-28T19:11:52Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "resource-master/command-center-provider-fidelity-20260928-01",
+      "closed_at": "2026-09-28T19:08:51Z",
+      "head_sha": "27c9fbc52d397dbe1f96758c5bfd50cd6fd2822d",
+      "merge_commit_sha": "d0c008d6f066881f79d0db7058e51bbbc015d5e9",
+      "merged_at": "2026-09-28T19:08:50Z",
+      "number": 30134,
+      "state": "MERGED",
+      "title": "Advance command-center provider fidelity resource",
+      "updated_at": "2026-09-28T19:10:30Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "grok/github-body-only-404-20260928",
+      "closed_at": "2026-09-28T18:06:36Z",
+      "head_sha": "5ae5e5488a8d214c63b785258302b3fe434fb030",
+      "merge_commit_sha": "e7f2f9429ee5e7706c9bb37d15a6ddd5da281390",
+      "merged_at": "2026-09-28T18:06:36Z",
+      "number": 30133,
+      "state": "MERGED",
+      "title": "Map body-only GitHub Not Found to HTTP 404",
+      "updated_at": "2026-09-28T18:06:48Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "fix/provider-admission-open-door-20260926",
+      "closed_at": "2026-09-28T17:08:10Z",
+      "head_sha": "ed3adf2da8673a8ab87c8c6a7d1fca127858f56c",
+      "merge_commit_sha": "553e57950f47a1aac4ebdfc2d47beb9b5a668417",
+      "merged_at": "2026-09-28T17:08:10Z",
+      "number": 30099,
+      "state": "MERGED",
+      "title": "Keep provider admission verbs free-form",
+      "updated_at": "2026-09-28T17:08:36Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "fix/malformed-page-retention-fixtures-20260926",
+      "closed_at": "2026-09-28T17:07:40Z",
+      "head_sha": "19634c2cfa45c7e5524eb309875cb22d8dd7d2f0",
+      "merge_commit_sha": "072628fd20a0ee559f6589d8767ae8e2617cebb1",
+      "merged_at": "2026-09-28T17:07:40Z",
+      "number": 30100,
+      "state": "MERGED",
+      "title": "Align pagination fixtures with dict GitHub page rows",
+      "updated_at": "2026-09-28T17:07:53Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "fix/credential-transfer-include-headers-20260926",
+      "closed_at": "2026-09-28T17:07:20Z",
+      "head_sha": "37a743fd879042df86f6bac102e8172f82815bee",
+      "merge_commit_sha": "c04563bb8e3f23ac0e090a9395b9c5b4a967d572",
+      "merged_at": "2026-09-28T17:07:20Z",
+      "number": 30101,
+      "state": "MERGED",
+      "title": "Align credential-transfer tests with gh api --include writes",
+      "updated_at": "2026-09-28T17:07:32Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -213,101 +235,10 @@
       "state": "CLOSED",
       "title": "Align command-center contracts with 19 tools and core GitHub scopes",
       "updated_at": "2026-09-27T19:14:16Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "fix/gh-core-scope-and-tool-count-20260926",
-      "closed_at": "2026-09-27T19:14:08Z",
-      "head_sha": "f2098c7199f4766654b17b5418ff81034868bdc2",
-      "merge_commit_sha": null,
-      "merged_at": null,
-      "number": 30095,
-      "state": "CLOSED",
-      "title": "fix: command-center contracts after resource-scoped GitHub limits",
-      "updated_at": "2026-09-27T19:14:08Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "titan/v31-rating-forensic-20260927",
-      "closed_at": "2026-09-27T19:07:08Z",
-      "head_sha": "e562360fef9058aed4108147ee50adfdc12cda4a",
-      "merge_commit_sha": "dff92371bdb9b9771d6826c51753cc87fb42665c",
-      "merged_at": "2026-09-27T19:07:08Z",
-      "number": 30120,
-      "state": "MERGED",
-      "title": "Document V3.1 reupload rating reset and episode audit",
-      "updated_at": "2026-09-27T19:07:18Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "yz-cairn-927/immutable-shipping-checkpoints",
-      "closed_at": "2026-09-27T19:03:32Z",
-      "head_sha": "ea94d901a802c5b309e5a16d0aadbfbf71356039",
-      "merge_commit_sha": "272b6b7d3d61e8292cbf59d96eaf21f696ba8d4a",
-      "merged_at": "2026-09-27T19:03:32Z",
-      "number": 30121,
-      "state": "MERGED",
-      "title": "Shipping: keep the last complete checkpoint across interrupted publication",
-      "updated_at": "2026-09-27T19:03:43Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "yz-quartz/serve-swarm-task-ui-20260927",
-      "closed_at": "2026-09-27T18:55:54Z",
-      "head_sha": "32a6e2f15cdaee4abe3ce82c5a5b5ab4c24dfac3",
-      "merge_commit_sha": "5c08cb05ec4ba967f1128fc25b00af163fa1787e",
-      "merged_at": "2026-09-27T18:55:54Z",
-      "number": 30118,
-      "state": "MERGED",
-      "title": "Restore the command-center canonical task UI script route",
-      "updated_at": "2026-09-27T18:56:05Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "checkpoint/publication-capacity-ui-20260926",
-      "closed_at": "2026-09-27T18:49:29Z",
-      "head_sha": "9386a54aa361bcc1d0d159764291f5a34b275ef8",
-      "merge_commit_sha": "8cc4a79381da2fe05ccd9c8ac3f17cd910afe1d6",
-      "merged_at": "2026-09-27T18:49:29Z",
-      "number": 30090,
-      "state": "MERGED",
-      "title": "Show publication capacity without blocking command-center refresh",
-      "updated_at": "2026-09-27T18:49:40Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "yz-cairn-927/proofpocket-document-lifecycle",
-      "closed_at": "2026-09-27T18:44:57Z",
-      "head_sha": "92b68c4251401c6486ba29d75c50fd6258ffe6ee",
-      "merge_commit_sha": "feb1a6262cca046f7efe480daaa85ac5db182141",
-      "merged_at": "2026-09-27T18:44:57Z",
-      "number": 30117,
-      "state": "MERGED",
-      "title": "ProofPocket: retain document work and report export failures",
-      "updated_at": "2026-09-27T18:45:10Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "yz-kestrel/proofpocket-stream-digest-20260927",
-      "closed_at": "2026-09-27T18:40:51Z",
-      "head_sha": "fbc3fdc5de028558c55372b75e67986b1da51a10",
-      "merge_commit_sha": "44454481adf138d7a674f8b405f065e0edd57d69",
-      "merged_at": "2026-09-27T18:40:51Z",
-      "number": 30116,
-      "state": "MERGED",
-      "title": "ProofPocket: use one streamed digest and byte count for evidence",
-      "updated_at": "2026-09-27T18:41:02Z"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-28T12:06:15Z",
+  "unchanged_since": "2026-09-28T19:42:31Z",
   "undatable_pulls": []
 }

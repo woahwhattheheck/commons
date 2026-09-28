@@ -1,0 +1,26 @@
+{
+  "schema": "titan-v4-historical-salvage-custody/v1",
+  "recorded_on": "2026-09-28",
+  "canonical": {
+    "branch": "main",
+    "commit": "0dda9187c21af1e2f6784718fe457547b5a62195",
+    "canonical_blob": "00142be0ff2314dcb23068c8133b34d290661923",
+    "integration_blob": "4e3207af1332266852530ec8494db8969edc1115"
+  },
+  "pr": 11668,
+  "head": "d152a35102919472fb7c50396063c05f22c1cfea",
+  "disposition": "superseded_historical_evidence_only",
+  "blobs": {
+    "README.md": "cb399ad07b9afe24d74b0eb30a4c4f177ada8821",
+    "market_prefix_rescue.py": "09bde8a9e04e68898f8f52960b36f56bb02a10ca",
+    "test_market_prefix_rescue.py": "4d5b4ca1d9f3164ec730cf7600f790b1ee58a36d",
+    "test_official_engine_contract.py": "753499b316caa035e7d713bfb5a52806e640fc33"
+  },
+  "exact_head_runs": [],
+  "disposition_comment": 5652846589,
+  "consumed_by": {
+    "pr": 11628,
+    "merge": "a199bf862b0b938f53c9d35b5062ef1cb18e928a"
+  },
+  "note": "Exact donor bytes retained for provenance. Core suffix-only semantic already landed; interior-blank timing refinement remains historical evidence."
+}

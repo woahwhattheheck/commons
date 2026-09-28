@@ -350,40 +350,8 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 4,
+ "n_open_prs": 1,
  "open_prs": [
-  {
-   "number": 30099,
-   "author": "woahwhattheheck",
-   "title": "Keep provider admission verbs free-form",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/30099",
-   "base_freshness": {
-    "base_sha": "2a6e821a3ff1c3aa19a6636a5341ec18e1ccf134",
-    "main_sha": "cfecf77d4c8f67a2e8b2fa98a44d2bcc4b34ce21",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 30100,
-   "author": "woahwhattheheck",
-   "title": "Align pagination fixtures with dict GitHub page rows",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/30100",
-   "base_freshness": {
-    "base_sha": "2a6e821a3ff1c3aa19a6636a5341ec18e1ccf134",
-    "main_sha": "cfecf77d4c8f67a2e8b2fa98a44d2bcc4b34ce21",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
   {
    "number": 30091,
    "author": "woahwhattheheck",
@@ -391,23 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/30091",
    "base_freshness": {
     "base_sha": "027d3ae12599d84e92978549a61a15e65950276d",
-    "main_sha": "cfecf77d4c8f67a2e8b2fa98a44d2bcc4b34ce21",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 30101,
-   "author": "woahwhattheheck",
-   "title": "Align credential-transfer tests with gh api --include writes",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/30101",
-   "base_freshness": {
-    "base_sha": "2a6e821a3ff1c3aa19a6636a5341ec18e1ccf134",
-    "main_sha": "cfecf77d4c8f67a2e8b2fa98a44d2bcc4b34ce21",
+    "main_sha": "1940276579254aacf12ba3fadfc75973c91b70f3",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"

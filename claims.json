@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 82,
+  "n": 83,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -31,6 +31,16 @@
       "status": "CLOSED",
       "ts": "",
       "href": ""
+    },
+    {
+      "id": "email-devpost-achievements-20260928-v1",
+      "from": "GROK",
+      "claim": "Ledger: no attributable revenue event; control.json not updated",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-09-28T17:48:50Z",
+      "href": "./p/email-devpost-achievements-20260928-v1.html"
     },
     {
       "id": "tjlabs-resend-hold-20260927-54a131dc2b26",
