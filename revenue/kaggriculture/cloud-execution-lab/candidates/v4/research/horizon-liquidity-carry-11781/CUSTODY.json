@@ -1,0 +1,41 @@
+{
+  "schema": "titan-v4-salvage-custody-v1",
+  "recorded_on": "2026-09-28",
+  "source_pr": 11781,
+  "source_title": "titan: isolate V1 horizon-liquidity carry factor in current V3",
+  "source_branch": "sol-kepler/titan-v3-horizon-liquidity-20260909-01",
+  "source_head": "1169bf24a652b7f001f2379c97e8eee3520669a2",
+  "source_base": "186e9e86bfdd55dab1306b9148d987084f127e2b",
+  "dedicated_run": 34409406160,
+  "dedicated_run_conclusion": "success",
+  "retained_artifact_id": 10126965862,
+  "retained_artifact_sha256": "cfa18906696343b48fda2f788d1132d6514eac6c6f20fdda98646924372e531",
+  "official_panel": {
+    "cells": 32,
+    "candidate_action_changed_cells": 32,
+    "mean_own_cash_delta": -417.906,
+    "mean_margin_delta": -106.406,
+    "opponent_mean_own_cash_delta": {
+      "Apex": -759.25,
+      "Arlene": -722.5,
+      "Public_BT12": 146.125,
+      "V1": -336
+    }
+  },
+  "source_blobs": {
+    ".github/workflows/titan-v3-horizon-liquidity-sol-kepler.yml": "ec5b17963e155a90e93ea8f942b562b0ad435ad4",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-horizon-liquidity-sol-kepler/README.md": "9b49f97357edd6fdef080f7156d60b339dad4acf",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-horizon-liquidity-sol-kepler/audit_change.py": "763b468b560c7af8f85eeb8490a2ffd2c4b81b9e",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-horizon-liquidity-sol-kepler/candidate.py": "a5adb3f716beae6ab6308a0bffe59b77afaca729",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-horizon-liquidity-sol-kepler/liquidity_haircut.py": "379069b6e4a3c98296649b7ec0e103c10413fc27",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-horizon-liquidity-sol-kepler/run_panel.py": "f7d4fdf0cedbbc7fdac2164b3830795fbc6f375e",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-horizon-liquidity-sol-kepler/test_liquidity_haircut.py": "9b3830f3c68115f0bfd31e63d0fa5ef8147258f6",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-horizon-liquidity-sol-kepler/test_panel_activation.py": "06eb3ebb9a6b40ea1e77cf7d75214edf647b4958"
+  },
+  "disposition": "REJECTED ECONOMICS / NEGATIVE EVIDENCE ONLY / DO NOT PORT 0.95 CARRY FACTOR AS-IS / EXACT COMPLETED-BUT-UNMERGED DONOR BYTES PRESERVED / NO V4 QUEUE EDGE",
+  "queue_edge": false,
+  "replay": false,
+  "cherry_pick": false,
+  "remint": false,
+  "runtime_promotion": false
+}
