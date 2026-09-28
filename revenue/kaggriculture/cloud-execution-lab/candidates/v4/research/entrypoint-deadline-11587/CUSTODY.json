@@ -1,0 +1,70 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "recorded_on": "2026-09-28",
+  "source_pr": 11587,
+  "source_ref": "sol/forge-titan-entrypoint-deadline-20260909-01",
+  "source_head": "48c883e573d0e8f6f4695e12eab48a0ba28c1862",
+  "source_tree": "82de5cffb503c78f7f23e354a6615103c135cf3a",
+  "exact_blobs": {
+    ".github/workflows/titan-selected-projection.yml": "28a4ec93aa53b67f391048e93198600b5b180656",
+    "revenue/kaggriculture/cloud-execution-lab/build_integrated.py": "29c89753febe003143454e1674347ca12d36536e",
+    "revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-1ec4829cc1c2c0594017a03682fe1744a443c0b0fc059ec14c01e05204dca7ba.tar.gz": "c7bb87327f495f0d022644db53f17233caae6caa",
+    "revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-5e15de604decf6f45911eaff457327591015de5cbc08ab98f8ef385c2e058cb9.tar.gz": "494ed1f3be68ca6666a95174ecede9bb9650a3ae",
+    "revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-a055fd56ca5821208096f37787f77dbdddc2f65c14c24132d6e219a05e6f02ba.tar.gz": "402069063799122429d28ec595bda2515dfd1332",
+    "revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz": "9ca9abc28d1dcb30a3a1bfb133630f46b59a2f71",
+    "revenue/kaggriculture/cloud-execution-lab/main.py": "93d8838259fc0a39185fbc50a6fe0d8ca3665b81",
+    "revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-ARCHIVE.json": "a1769892908484134f5e72b0c99209a2fa988ddf",
+    "revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-SOURCE.json": "0b14a4cf2b50f853d59e92d9a04d14038c0c141a",
+    "revenue/kaggriculture/cloud-execution-lab/test_entrypoint_deadline.py": "4f54d39f3e91ad648ab92d276926caed49fcd770",
+    "revenue/kaggriculture/cloud-execution-lab/test_release_consistency.py": "0c8ae6a958c539fb9623ccab61e6588b22b62794",
+    "revenue/kaggriculture/cloud-execution-lab/titan_runtime.py": "b952c9c228ecbde592bf3d2df01638677abb0d24"
+  },
+  "hosted": {
+    "titan_selected_projection": {
+      "run": 34399911307,
+      "focused_job": 102628942884,
+      "canonical_job": 102628942516,
+      "result": "SUCCESS"
+    },
+    "source_parses": {
+      "run": 34399911300,
+      "result": "SUCCESS"
+    },
+    "path_manifest": {
+      "run": 34399911353,
+      "result": "SUCCESS"
+    },
+    "generic_tests": {
+      "run": 34399911285,
+      "job": 102628946233,
+      "result": "FAILURE"
+    },
+    "open_door_guard": {
+      "run": 34399911336,
+      "job": 102628941744,
+      "result": "FAILURE"
+    }
+  },
+  "semantic": "whole-entrypoint deadline containment and truthful fallback/timing; exact historical package snapshot",
+  "successors": {
+    "merged_current_main_composition": {
+      "pr": 11643,
+      "merge": "6dda2468ecae5618113166238d7cd8fa4c11b8d8"
+    },
+    "merged_cold_prelude_followup": {
+      "pr": 11645,
+      "merge": "b28312321226d317b24bd1326f1f568ec430d696"
+    },
+    "child_review": {
+      "pr": 11639,
+      "head": "3b62872605094a2b3ec14a3922891d81a00536a6"
+    },
+    "board_receipt": {
+      "pr": 11670,
+      "merge": "ea000039d3a0bf4640ef16b9999bddff82116179"
+    }
+  },
+  "disposition": "exact completed historical source/package custody; semantics consumed by merged successors; generic battery/open-door were red; quarantine only; no V4 queue edge or runtime promotion",
+  "queue_edge": false,
+  "promote": false
+}
