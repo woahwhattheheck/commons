@@ -1,0 +1,40 @@
+{
+  "schema": "muhlnickel.workbench.project.v1",
+  "project": "Muhlnickel weightless one-file speaking Titan",
+  "exclude_projects": ["Kaggriculture Titan", "Kaggle/ARC agent"],
+  "purpose": "Build and use the one-file computer containing speaking inference, deterministic training, correctness grading, recursive input and a general-purpose training sandbox.",
+  "runtime_host_role": "Supply variable data, use the file-published input/fire/address interface, surface output.",
+  "fabrication": "One-time host prefabrication and static inspection are permitted; host inference, training, gate evaluation and token feedback are not the runtime.",
+  "sources": ["Owner one-file Titan requirements", "Owner project clarification 2026-09-28"],
+  "artifacts": {
+    "titan-v4": {
+      "path": "{research}/titan_foundation_v4.mno",
+      "profile": "titan-study-v4",
+      "role": "Candidate, reader and score wiring study",
+      "recorded_status": "Speaking inference and training remain unfinished",
+      "source": "{research}/CANDIDATE_STATUS.json",
+      "recorded_sha256": "e44443e9985e7dd2e76f6e1410e2f1c7b334823bdf18dba93dd57783f086d3ce"
+    },
+    "autofab0": {
+      "path": "{desktop}/MUHL_VISIBLE/AUTOFAB0.mno",
+      "profile": "autofab0",
+      "role": "Existing gate-first self-fabrication part",
+      "recorded_status": "Native record-write route under development",
+      "source": "{desktop}/MUHL_GO/AUTOFAB0_BITS.md"
+    },
+    "reader1": {
+      "path": "{desktop}/MUHL_VISIBLE/READER1.mno",
+      "profile": "reader1",
+      "role": "Existing eight-byte cursor and target comparison part",
+      "recorded_status": "Stored part; standalone address space differs from rebased Titan",
+      "source": "{desktop}/MUHL_VISIBLE/READER1.layout.json"
+    },
+    "visible6": {
+      "path": "{desktop}/MUHL_VISIBLE/VISIBLE6.mno",
+      "profile": "visible6",
+      "role": "Headerless ring layout with external sidecar",
+      "recorded_status": "Stored layout",
+      "source": "{desktop}/MUHL_VISIBLE/VISIBLE6.layout.json"
+    }
+  }
+}

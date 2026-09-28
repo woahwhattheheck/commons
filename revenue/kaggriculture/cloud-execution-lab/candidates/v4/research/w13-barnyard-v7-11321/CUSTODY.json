@@ -1,0 +1,92 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "source_pr": 11321,
+  "source_title": "[Superseded] TITAN W13: add Barnyard V7 reacting opponent bank",
+  "source_head": "804ec983029c3d4931264f8bbd43c3677ebfdb78",
+  "disposition": "superseded_exact_bytes_already_landed_via_pr_11324",
+  "canonical_branch": "main",
+  "queue_edge": false,
+  "promotion": false,
+  "exact_head_workflow_runs": [
+    {
+      "id": 34388495850,
+      "name": "open-door-guard",
+      "conclusion": "success"
+    },
+    {
+      "id": 34388495761,
+      "name": "source-parses",
+      "conclusion": "success"
+    },
+    {
+      "id": 34388495747,
+      "name": "job-watchdog",
+      "conclusion": "success"
+    },
+    {
+      "id": 34388495778,
+      "name": "path-manifest",
+      "conclusion": "success"
+    },
+    {
+      "id": 34388495896,
+      "name": "muhlnickel-spec-guard",
+      "conclusion": "success"
+    },
+    {
+      "id": 34388495769,
+      "name": "titan-selected-projection",
+      "conclusion": "success"
+    }
+  ],
+  "exact_files": [
+    [
+      "p/titan-w13-barnyard-v7-bank-20260909-01.md",
+      "0c0b2a298ac693f203e58fdc6f0ac3e63dce93de"
+    ],
+    [
+      "revenue/kaggriculture/cloud-execution-lab/bank/w13-barnyard-v7/MANIFEST.json",
+      "2ae3258a8d7b5d68066d6002064428c292762d2c"
+    ],
+    [
+      "revenue/kaggriculture/cloud-execution-lab/bank/w13-barnyard-v7/README.md",
+      "8ce64b65418c71d299ae3b83ca7359f6f79e4d44"
+    ],
+    [
+      "revenue/kaggriculture/cloud-execution-lab/bank/w13-barnyard-v7/adapter.py",
+      "3d315dc515826e58bef1abcf1b87906046f3e142"
+    ],
+    [
+      "revenue/kaggriculture/cloud-execution-lab/bank/w13-barnyard-v7/fixtures/initial-observation.json",
+      "22d434eaa56f822cf3e338e46f66f672492ab4a4"
+    ],
+    [
+      "revenue/kaggriculture/cloud-execution-lab/bank/w13-barnyard-v7/test_adapter.py",
+      "a15cc07aaa2f530edbb31d383ba6999782ce5119"
+    ],
+    [
+      "revenue/kaggriculture/cloud-execution-lab/bank/w13-barnyard-v7/upstream/LICENSE",
+      "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64"
+    ],
+    [
+      "revenue/kaggriculture/cloud-execution-lab/bank/w13-barnyard-v7/upstream/NOTICE.md",
+      "63c67cb0bacdcd49febb94e1d6410fed2b34a38f"
+    ],
+    [
+      "revenue/kaggriculture/cloud-execution-lab/bank/w13-barnyard-v7/upstream/SOURCE.json",
+      "a8e194343b76cdc4d47c3bd812d3709cbddd8179"
+    ],
+    [
+      "revenue/kaggriculture/cloud-execution-lab/bank/w13-barnyard-v7/upstream/main.py",
+      "6465e4794de70090b83a83ab0cd54efb3d13ac98"
+    ]
+  ],
+  "successor": {
+    "pr": 11324,
+    "head": "c15241c5a8194496200a684d9b8f38d550d09643",
+    "merge_commit": "e6f68275cff0e843328cfe6609d7069c8e938ff9",
+    "exact_files_byte_identical": true,
+    "note": "All ten changed paths and Git blob SHAs match source PR 11321 exactly; successor landed the same W13 packet on fresh main."
+  },
+  "authority_note": "Historical opponent-bank/evidence custody only. No gameplay/runtime/default/config/archive/release/Kaggle promotion and no V4 queue edge."
+}

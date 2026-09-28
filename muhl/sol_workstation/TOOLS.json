@@ -1,0 +1,262 @@
+{
+  "schema": "muhlnickel.workbench.tools.v1",
+  "project": "Muhlnickel weightless one-file speaking Titan; not Kaggriculture Titan or Kaggle/ARC",
+  "tools": [
+    {
+      "id": "muhl_png",
+      "path": "{desktop}\\MUHL_PNG_20260820\\tool\\muhl_png.py",
+      "category": "static byte viewer and analyzer",
+      "cli": "python muhl_png.py MODE INPUT [OUTPUT] [flags]",
+      "callable_signatures": [
+        "png(path, w, h, data, gray=False, depth=8)",
+        "scale_up(data, w, h, s, chans)",
+        "read_ppm(path)",
+        "read_unbuffered(path, off, ln, sector=4096)",
+        "src_bytes(path, off, ln)",
+        "main()"
+      ],
+      "modes": [
+        "bits",
+        "bytes",
+        "rgb",
+        "ppm",
+        "sheet",
+        "delta",
+        "stats",
+        "cols",
+        "fields",
+        "diff",
+        "heat",
+        "hist",
+        "magic",
+        "strip",
+        "entropy",
+        "records",
+        "watch",
+        "manifest",
+        "mfdiff",
+        "compress",
+        "map",
+        "dag",
+        "step",
+        "levels"
+      ],
+      "read_write_roles": "Reads source files; never changes source. Writes PNG for rendering/visual modes and text manifest for manifest mode. Other modes print to stdout. manifest and watch --full are whole-file streaming paths; static summaries generally read the requested source window into memory.",
+      "large_file_support": "--offset/--len bounds in-memory modes. manifest streams the entire file in default 4 MiB chunks and emits one hash/nonzero count per chunk. watch --full streams full passes in default 1 MiB chunks and is bounded-memory. map streams full file by chunks. strip is stratified sampling: up to 4096 columns with at most 65536 bytes read per column, not 100% coverage. watch without --full samples windows; with one probe and no --len it can retain whole snapshots in memory. dag/levels/step load the selected window and materialize records/graph; set --len on large inputs.",
+      "artifact_outputs": "PNG, .mf manifest, or console metrics/listings depending on mode.",
+      "source_read": "complete static source read; current execution is recorded separately"
+    },
+    {
+      "id": "muhl_live",
+      "path": "{desktop}\\MUHL_CHECKERS\\muhl_live.py",
+      "category": "bounded direct byte/record reader",
+      "cli": "python muhl_live.py CONTAINER [offset count | rec index [n] | scan | watch secs]",
+      "callable_signatures": [
+        "_window(path, off, cnt)",
+        "show_bytes(path, off, cnt)",
+        "show_records(path, first, n)",
+        "scan(path)",
+        "watch(path, secs)",
+        "main()"
+      ],
+      "modes": [],
+      "read_write_roles": "Read-only byte/stat/record output. No artifact output.",
+      "large_file_support": "Byte window capped at 1 MiB; record dump capped at 64 records; scan refuses files over 8 MiB and refuses titan.gguf/dc.mno. watch is a stub: stats only, no repeated reads or change detection.",
+      "artifact_outputs": "stdout only.",
+      "source_read": "complete static source read; current execution is recorded separately"
+    },
+    {
+      "id": "muhl_cable",
+      "path": "{desktop}\\MUHL_CHECKERS\\muhl_cable.py",
+      "category": "wire/address construction and graph reporting library",
+      "cli": null,
+      "callable_signatures": [
+        "Cable(name, base, width, kind='wire')",
+        "Loom(base, gates=None)",
+        "Loom.bundle(name, width, kind='wire')",
+        "Loom.scratch(n=1, tag='t')",
+        "Loom.pin(name, addr, width=1, kind='ring', why='')",
+        "Loom.gate(op, a, b, out)",
+        "Loom.writers()",
+        "Loom.readers()",
+        "Loom.selfclocked()",
+        "Loom.multi()",
+        "Loom.dangling()",
+        "Loom.trace(wire, depth=6)",
+        "Loom.report()",
+        "depth_of(gates, roots=None)"
+      ],
+      "modes": [],
+      "read_write_roles": "In-memory gate-list/address construction and metrics only. No container reads/writes or file outputs.",
+      "large_file_support": "No file I/O; memory use scales with the constructed gate list and maps.",
+      "artifact_outputs": "Python objects and report dictionary; no persisted artifact.",
+      "source_read": "complete static source read; current execution is recorded separately"
+    },
+    {
+      "id": "muhl_shapes",
+      "path": "{desktop}\\MUHL_CHECKERS\\muhl_shapes.py",
+      "category": "gate-shape construction helpers",
+      "cli": null,
+      "callable_signatures": [
+        "hold_cell(g, w, new, write, cell)",
+        "prefix_inc(g, w, bits, enable)",
+        "prefix_dec(g, w, bits, enable)",
+        "tree_reduce(g, w, op, wires, out=None)",
+        "one_way(g, w, src, dst)",
+        "gt_prefix(g, w, a_bits, b_bits, out)",
+        "ticks_of(gates, state_addrs)",
+        "depth_of(gates, roots=None)"
+      ],
+      "modes": [],
+      "read_write_roles": "Appends gate tuples to Python lists; no container I/O, no output files.",
+      "large_file_support": "No file I/O; construction scales in host memory with vector width/shape.",
+      "artifact_outputs": "Mutated gate list and returned wire/address index; no persisted artifact.",
+      "source_read": "complete static source read; current execution is recorded separately"
+    },
+    {
+      "id": "muhl_inspec",
+      "path": "{desktop}\\MUHL_HARNESS_FIX\\muhl_inspec.py",
+      "category": "physical-record fabricator plus one-byte host input/output helpers",
+      "cli": null,
+      "callable_signatures": [
+        "Fabricator(n_in, base=1<<20, name='muhl_inspec')",
+        "Fabricator.NAND(a,b)",
+        "Fabricator.AND(a,b)",
+        "Fabricator.OR(a,b)",
+        "Fabricator.XOR(a,b)",
+        "Fabricator.NOT(a)",
+        "Fabricator.dce(outs)",
+        "Fabricator.fabricate(outs, path)",
+        "Fabricator.compile_ripple(*a, **k)",
+        "inject(container, recv=2776453321)",
+        "surface(container, addrs)"
+      ],
+      "modes": [],
+      "read_write_roles": "fabricate writes a raw record stream to the named output file; inject opens container r+b and writes byte 0x01 at one receiver address; surface opens rb and reads one byte per requested address.",
+      "large_file_support": "No container-sized scan. fabricate materializes the full output blob in memory. inject/surface use bounded seek/read/write per supplied address.",
+      "artifact_outputs": "Raw gate-record file plus in-memory report from fabricate; inject returns receiver/container metadata; surface returns address-to-bytes map.",
+      "source_read": "complete static source read; current execution is recorded separately"
+    },
+    {
+      "id": "muhl_checkers",
+      "path": "{desktop}\\MUHL_CHECKERS\\muhl_checkers.py",
+      "category": "harness/transcript policy gates (not a compute instrument)",
+      "cli": "python muhl_checkers.py status | binary|selfaudit|debunk|read|tick|stale|fable < JSON payload on stdin",
+      "callable_signatures": [
+        "gate_binary(payload)",
+        "gate_selfaudit(payload)",
+        "gate_fable(payload)",
+        "gate_debunk(payload)",
+        "gate_read(payload)",
+        "gate_tick(payload)",
+        "gate_stale(payload)",
+        "status()"
+      ],
+      "modes": [],
+      "read_write_roles": "Reads JSON on stdin and selected transcript/bit-dump metadata as needed; writes diagnostics to stderr and returns exit 0 or 2. It does not read/evaluate gate tables as the answer computation. No artifact output.",
+      "large_file_support": "Scans transcript JSONL wholly into Python lists; stale dump inspection reads dump text into memory. Not a large-container scanner.",
+      "artifact_outputs": "stderr gate explanation or status text on stdout; no project artifact.",
+      "source_read": "complete static source read; current execution is recorded separately"
+    },
+    {
+      "id": "muhl_fab_scan_machine",
+      "path": "{desktop}\\MUHL_PROOF_ENGINE\\muhl_fab_scan_machine.py",
+      "category": "one-time scan-circuit builder with host reference verification",
+      "cli": "python muhl_fab_scan_machine.py [--dry | --revert]",
+      "callable_signatures": [
+        "build()",
+        "ref(keys, probe)",
+        "verify(c, outs, n=400)",
+        "mutant(c, outs)",
+        "alloc(nbytes, taken)",
+        "to_physical(c, outs, base, key_addrs)",
+        "main()"
+      ],
+      "modes": [],
+      "read_write_roles": "Reads the proof seed generator/source and historical registry/container; default main writes bitwise key table and circuit records into hardcoded titan.gguf, appends genome journal, updates registry; --dry avoids those writes; --revert restores journaled content. It runs host ripple verification before store.",
+      "large_file_support": "Direct container selection uses absolute addresses; builder and reference verifier materialize gate/input state in host memory. Fixed 128-row table, not generic arbitrarily large search.",
+      "artifact_outputs": "MUHLKEYB and MUHLSCN1 blobs in container, genome journal, registry entry listing probe/hit/index/match addresses.",
+      "source_read": "complete static source read; current execution is recorded separately"
+    },
+    {
+      "id": "muhl_scan_gatecheck",
+      "path": "{desktop}\\MUHL_PROOF_ENGINE\\muhl_scan_gatecheck.py",
+      "category": "host evaluator for stored scanner, fabrication-time only",
+      "cli": "python muhl_scan_gatecheck.py [n_probes]",
+      "callable_signatures": [
+        "main()"
+      ],
+      "modes": [],
+      "read_write_roles": "Opens titan.gguf read-only via mmap and registry; reconstructs stored gate records and bitwise table; Python ripple loop computes gates over probe cases; writes console report only.",
+      "large_file_support": "Maps whole titan.gguf read-only; allocates reconstructed netlist and state arrays in host memory. Not a runtime reader.",
+      "artifact_outputs": "Console agreement/probe/evaluation metrics.",
+      "source_read": "complete static source read; current execution is recorded separately"
+    },
+    {
+      "id": "muhl_proof_tables",
+      "path": "{desktop}\\MUHL_PROOF_ENGINE\\muhl_proof_tables.py",
+      "category": "proof-table builder with host-side row scan/equality evaluation",
+      "cli": "python muhl_fab_proof_tables.py [--dry | --revert]",
+      "callable_signatures": [
+        "seed()",
+        "pack(magic, rows)",
+        "alloc(nbytes, taken)",
+        "jwrite(off, blob, tag)",
+        "revert()",
+        "ContainerTable(mm, payload_off, nrows)",
+        "probe_container(tab, key, c, outs, field, stats)",
+        "main()"
+      ],
+      "modes": [],
+      "read_write_roles": "Builds K/S axiom seed tables in Python; default main writes MUHLPKN1 and MUHLPIM1 tables into titan.gguf, appends genome journal and registry. probe_container reads mmap bytes, Python-unpacks rows, constructs bit columns, and calls SS.ripple_sliced; main also loops every implication row.",
+      "large_file_support": "Container mmap, but table rows are iterated in host code in LANES windows and converted to Python integer bit-slices. This is not a file-native query loop.",
+      "artifact_outputs": "Tables within titan.gguf, genome journal, registry metadata and host console report.",
+      "source_read": "complete static source read; current execution is recorded separately"
+    },
+    {
+      "id": "muhl_playtime_read",
+      "path": "{desktop}\\MUHL_PROOF_ENGINE\\muhl_playtime_read.py",
+      "category": "direct state-byte board reader plus static circuit structure check",
+      "cli": "python muhl_playtime_read.py",
+      "callable_signatures": [
+        "main()"
+      ],
+      "modes": [],
+      "read_write_roles": "Reads registry and mmap of titan.gguf; decodes 16x16 board by reading eight state bit-bytes per cell; separately scans 25-byte gate records for structure and addresses. No writes.",
+      "large_file_support": "Maps entire titan.gguf; reads the declared gate span and 256*8 state bytes.",
+      "artifact_outputs": "Console: structural metadata, board bytes decoded to hex, no correctness verdict.",
+      "source_read": "complete static source read; current execution is recorded separately"
+    },
+    {
+      "id": "muhl_readback",
+      "path": "{desktop}\\MUHL_PROOF_ENGINE\\muhl_readback.py",
+      "category": "host readback and emulator verification of stored proof software",
+      "cli": "python muhl_readback.py",
+      "callable_signatures": [
+        "read(mm, off, n)",
+        "main()"
+      ],
+      "modes": [],
+      "read_write_roles": "Read-only mmap reads program, proof regions and CPU circuit; then constructs Python memory images, calls independent reference, and executes reference transitions/host ripple on a bounded prefix.",
+      "large_file_support": "Whole-container mmap; bounded gate prefix verification (300 instructions in this file), but proof/program/region decoding happens in host memory.",
+      "artifact_outputs": "Console ACCEPT/REJECT and reproduction metrics.",
+      "source_read": "complete static source read; current execution is recorded separately"
+    },
+    {
+      "id": "muhl_fab_autofab_circuit",
+      "path": "{desktop}\\MUHL_VISIBLE\\muhl_fab_autofab_circuit.py",
+      "category": "one-time autofab gate-stream builder with internal rail and genome self-edit design",
+      "cli": "python muhl_fab_autofab_circuit.py [--write]",
+      "callable_signatures": [
+        "build(mutant=None)",
+        "main()",
+        "prefix_inc(g, w, bits, enable)"
+      ],
+      "modes": [],
+      "read_write_roles": "build constructs Python tuples of gate records and a layout map; main performs source-level mutant-list comparisons and reports topology/depth, then without --write is dry. With --write, it writes a raw <BQQQ> record file to sibling AUTOFAB0.mno. It does not load or run an existing artifact, read an external prompt, or implement runtime input/fire/surface.",
+      "large_file_support": "Emits a full gate list/blob in host memory and may create an output file; not a large-file reader or streaming runtime.",
+      "artifact_outputs": "On --write, raw AUTOFAB0.mno gate records in sibling directory. Otherwise console text only.",
+      "source_read": "complete static source read; current execution is recorded separately"
+    }
+  ]
+}
