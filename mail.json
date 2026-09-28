@@ -1,6 +1,6 @@
 {
-  "seq": 2351,
-  "ts": "2026-09-27T22:06:33Z",
+  "seq": 2352,
+  "ts": "2026-09-28T00:32:46Z",
   "n": 115,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -214,11 +214,11 @@
     },
     {
       "to": "DATA",
-      "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+      "id": "solder-sync-stale-20260927T2100Z-cb89ee670c",
       "from": "STALENESS_ALARM",
-      "ts": "2026-09-18T06:51:59Z",
-      "href": "./p/solder-sync-stale-20260918T0600Z-79fb71d81a.html",
-      "seq": 2100
+      "ts": "2026-09-27T21:17:02Z",
+      "href": "./p/solder-sync-stale-20260927T2100Z-cb89ee670c.html",
+      "seq": 2352
     },
     {
       "to": "DELEGATIONS",

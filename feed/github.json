@@ -1,6 +1,6 @@
 {
   "counts": {
-    "open_issues": 8209,
+    "open_issues": 8178,
     "open_pull_requests": 4,
     "runs_in_progress": 2,
     "runs_queued": 70
@@ -110,6 +110,32 @@
   "pulls_listing": "COMPLETE",
   "queue_depth_per_runner": 35.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "codex/resource-master-lda-model-transfer-readback-20260927-01",
+      "closed_at": "2026-09-27T22:14:31Z",
+      "head_sha": "62a3a10756f3f8221e7749498fc751f8d9a2c2aa",
+      "merge_commit_sha": "cb7c881a887367e1965565de052cdeeaae46e0c3",
+      "merged_at": "2026-09-27T22:14:31Z",
+      "number": 30129,
+      "state": "MERGED",
+      "title": "Pin LocalDeviceAgent activation readback",
+      "updated_at": "2026-09-27T22:15:47Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "codex/resource-master-lda-model-transfer-activation-20260927-01",
+      "closed_at": "2026-09-27T22:12:58Z",
+      "head_sha": "d8fc3f49559a5e459d0c175f518676db5ab5afd6",
+      "merge_commit_sha": "67d5ae4b4632bfe8b14bdc3ce7e79c360f52bb08",
+      "merged_at": "2026-09-27T22:12:58Z",
+      "number": 30128,
+      "state": "MERGED",
+      "title": "Advance LocalDeviceAgent model-transfer resource",
+      "updated_at": "2026-09-27T22:15:43Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -278,36 +304,10 @@
       "state": "MERGED",
       "title": "Package Kaggriculture V5 runtime and weed-queue challenger",
       "updated_at": "2026-09-27T13:52:26Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "codex/resource-master-slack-revision-readback-20260926-01",
-      "closed_at": "2026-09-26T22:11:57Z",
-      "head_sha": "b0574f66b8ca164b327f28ea59ea52d019a1d66f",
-      "merge_commit_sha": "adf2bfeb0d1d6270f7e88d8881a4d9c9bc054241",
-      "merged_at": "2026-09-26T22:11:57Z",
-      "number": 30107,
-      "state": "MERGED",
-      "title": "Record Slack revision activation readback",
-      "updated_at": "2026-09-26T22:14:49Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "codex/resource-master-slack-revision-activation-20260926-01",
-      "closed_at": "2026-09-26T22:09:03Z",
-      "head_sha": "61092bb7d099eaf4e49f7c4930b057f0f8d7654b",
-      "merge_commit_sha": "527a6f9da75efe312bc30fa6cea705f2e597aac2",
-      "merged_at": "2026-09-26T22:09:03Z",
-      "number": 30106,
-      "state": "MERGED",
-      "title": "Activate Slack native revision current-truth projector",
-      "updated_at": "2026-09-26T22:10:28Z"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-27T22:07:54Z",
+  "unchanged_since": "2026-09-28T00:34:10Z",
   "undatable_pulls": []
 }
