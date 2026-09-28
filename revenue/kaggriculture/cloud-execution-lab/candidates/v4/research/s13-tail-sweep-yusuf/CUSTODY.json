@@ -1,0 +1,28 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "family": "s13-tail-sweep-yusuf",
+  "source_branch": "yusuf/titan-v3-s13-tail-sweep-20260910-01",
+  "exact_head": "e3220ed695d041b020bf8ae89ec562e12c12fd34",
+  "exact_tree": "851ada20db5356dc123521a23cb3490f0e923027",
+  "merge_base": "14dbbc4940262790f7e21c0bdc7a941842f238ba",
+  "owning_pr": null,
+  "hosted_exact_head_runs": [],
+  "semantic_source": {
+    "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/tail_settlement.py",
+    "blob": "6a08f2febbe1c5012482ccc5ee1ed2b787ae75f4",
+    "disposition": "consumed verbatim by merged V4 PR #12689"
+  },
+  "integration_artifacts": {
+    "apply_s13_py": "29bb3db926942fef5b942e531f388af20c060ba2",
+    "build_v3_py": "9ebf2b6592cd0d96623cf96819e70fe254fc7d8a",
+    "test_v3_s13_py": "589ed6cd400ad5ca0932bfce1a40c5286d937b0d"
+  },
+  "successor": {
+    "pr": 12689,
+    "merge_commit": "f1988cb64d6bc628fb59ea3a590896e8f9e86d7a",
+    "note": "V4 recovered the final donor and added boundary repairs; main remained sole authority"
+  },
+  "disposition": "semantic source consumed; branch-only integration harness quarantined as superseded historical evidence; no V4 queue edge",
+  "v4_queue_edge": false,
+  "runtime_promotion": false
+}
