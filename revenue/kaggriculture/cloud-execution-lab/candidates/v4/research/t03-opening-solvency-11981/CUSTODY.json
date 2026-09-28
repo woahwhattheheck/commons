@@ -1,0 +1,31 @@
+{
+  "schema": "titan-v4-historical-custody/v1",
+  "source_pr": 11981,
+  "source_ref": "sol-aperture/titan-v3-t03-opening-solvency-20260910-01",
+  "source_head": "fff790e13e0b337940daf9090f49a7496429c79b",
+  "source_tree": "356058008d664192f003479e84f0ba21e9df3f69",
+  "source_merge_base": "98a98108998efac9e53a8b045f0fb2c85a4b19e2",
+  "pr_title": "DO NOT MERGE: opening-market solvency gate and arithmetic fixtures (evidence handoff)",
+  "exact_head_checks": {
+    "source-parses": "success",
+    "muhlnickel-spec-guard": "success",
+    "path-manifest": "success",
+    "titan-w10-producer-surface-scan": "success",
+    "open-door-guard": "success",
+    "titan-selected-projection": "failure"
+  },
+  "disposition": "COLLISION_RELEASED_UTILITY_EVIDENCE_ONLY_DO_NOT_PROMOTE",
+  "reason": "Two earlier durable T03 owners predated this claim. The PR is closed, unmerged, draft, explicitly DO NOT MERGE; preserve its exact fail-closed opening quote/admission utilities and fixtures only. No gameplay, integration, release, provider, Kaggle, or V4 queue edge.",
+  "files": {
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/T03-INTEGRATION.md": "79fcc48f66be3af9d50548a8736071a295e56059",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/T03-RECEIPT.json": "219d90d3b79efb35987653caa0bacb9b1a0de3e0",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/opening_script_test_support.py": "3d8477c5968acf2a73471287be9b523b82f14939",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_opening_apply.py": "53af6dd16d942b8ad6588033436223cf5b0af21e",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_opening_quote.py": "25eb3b9d1111061a2b9820f62cb0bfabb70d1586",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_opening_wiring.py": "6b63cb328ddbacbec8be0e7863febbe73a150272",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/opening_script.py": "d40f2e9f71debe4cfc5c1e8cb5b945e42144187c",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/opening_script_data.py": "394a5c00d0ce4161f86749c5f64d10763451a3b3",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/opening_script_quote.py": "341188998359f545d12177d7567fcbcd14d8e038",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/opening_script_state.py": "a8dd71497d073deee120f227c29521defe5f9ef4"
+  }
+}
