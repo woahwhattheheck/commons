@@ -1,0 +1,27 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "recorded_on": "2026-09-28",
+  "source_pr": 11677,
+  "source_head": "388d9989eb95490f28c34c361d59e8f648692ab5",
+  "source_state": "closed_unmerged_superseded",
+  "exact_blobs": {
+    "readme": "0d4350b427886500cbd0fee7e1293d000bb24594",
+    "candidate_runtime": "55e773b48cae72d65f8b8046ace24e171e46010a",
+    "lockstep_early_capital": "4a7f8a6adf97d46f10039831612343ef92fb1968",
+    "tests": "f48f8e672fa6c56acf6a66cd862ad76de6b2e44a"
+  },
+  "hosted_runs": {
+    "selected_projection": {"run": 34402586992, "result": "success"},
+    "source_parses": {"run": 34402586856, "result": "success"},
+    "path_manifest": {"run": 34402586897, "result": "success"},
+    "spec_guard": {"run": 34402586877, "result": "success"},
+    "open_door_guard": {"run": 34402586977, "result": "failure"}
+  },
+  "dedicated_candidate_run": null,
+  "superseded_by_pr": 11705,
+  "superseding_merge_commit": "bdb428d05487b16dbad83bbbb6286a5d1a77836d",
+  "review_boundary": "sale-row counts did not preserve sale-unit timing and earlier sale revenue did not certify predicted capital gain against arbitrary rival supply",
+  "disposition": "superseded_kestrel_theorem_source_custody_only",
+  "queue_edge": false,
+  "promote": false
+}
