@@ -1,0 +1,11 @@
+{
+  "schema": "titan-v4-salvage-custody-v1",
+  "recorded_on": "2026-09-28",
+  "source_pr": 11930,
+  "source_head": "10d8b599f95e4d6aefeb04b4663e86341a78286b",
+  "review_id": 5160761455,
+  "hosted_run": 34415385876,
+  "hosted_conclusion": "cancelled",
+  "disposition": "AUTHENTICATED CAUSAL EVIDENCE ONLY / NOT A SEMANTIC DONOR / NO V4 QUEUE EDGE",
+  "queue_edge": false
+}
