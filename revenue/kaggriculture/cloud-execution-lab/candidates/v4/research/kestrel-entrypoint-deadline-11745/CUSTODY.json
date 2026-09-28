@@ -1,0 +1,42 @@
+{
+  "schema": "titan-v4-salvage-custody-v1",
+  "recorded_on": "2026-09-27",
+  "source_pr": 11745,
+  "source_title": "fix(titan): preserve canonical KESTREL entrypoint and deadline boundary",
+  "source_head": "ab2bcdb6eedf0b096bae66660d3e6a3d319462ff",
+  "exact_files": [
+    {
+      "path": ".github/workflows/titan-kestrel-lockstep.yml",
+      "blob": "23c1a2580fd5aebfdbd0b60953dc7b228d6f8746"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-kestrel-capital-execution/candidate_main.py",
+      "blob": "a2acddf84b2cfd7b07457e873dc728bb873b3b1e"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-kestrel-capital-execution/test_candidate_entrypoint.py",
+      "blob": "2c4688d00af5993f64e35ee194051ee93bd2ee5f"
+    }
+  ],
+  "exact_head_workflow": {
+    "run_id": 34405524620,
+    "name": "titan-kestrel-lockstep",
+    "status": "completed",
+    "conclusion": "success",
+    "job_id": 102647449612,
+    "reported_tests": "30/30 PASS"
+  },
+  "successor": {
+    "pr": 11763,
+    "head": "96cb784a2f089db3d625abd4080c58677fdf8f84",
+    "merge_commit": "d556b665dc2bffa71cb1f6e8a43337bbf12cb94c",
+    "note": "compatible main-targeted successor restored the same canonical-entrypoint/deadline semantics"
+  },
+  "v4_consumption": {
+    "pr": 12967,
+    "head": "3c3a68d8a95c354d14e555c4480999de3d3d70d6",
+    "merge_commit": "46776049fbf8e017a26e658a6e6e6b65c41deef5",
+    "note": "KESTREL theorem/hardening consumed inside the existing V4 early-capital authority"
+  },
+  "disposition": "SUPERSEDED_COMPLETED_UNMERGED_CARRIER__EXACT_BYTES_AND_GREEN_RECEIPT_PRESERVED__SEMANTICS_CONSUMED_BY_SUCCESSOR_AND_V4_12967__NO_REPLAY_REMINT_RUNTIME_PROMOTION_OR_QUEUE_EDGE"
+}
