@@ -1,0 +1,32 @@
+{
+  "schema": "titan-v4-historical-salvage-custody/v1",
+  "recorded_on": "2026-09-28",
+  "pr": 11616,
+  "head": "f03bbb78c380781b83351e918f3bf75242a1a35f",
+  "disposition": "quarantine_only_contaminated_superseded_by_11628",
+  "exact_pr_shape": {
+    "commits": 2,
+    "changed_files": 21,
+    "additions": 1135,
+    "deletions": 0
+  },
+  "review_findings": [
+    "scope_gate_used_post_contamination_base_and_did_not_cover_actual_pr_diff",
+    "action_trace_activation_did_not_prove_realized_post_interpreter_state_effect"
+  ],
+  "hosted": {
+    "source_parses": "34399922400:SUCCESS",
+    "path_manifest": "34399922505:SUCCESS",
+    "spec_guard": "34399922480:SUCCESS",
+    "open_door": "34399922490:FAILURE",
+    "candidate_panel": "34399922484:FAILURE",
+    "tests": "34399923032:FAILURE",
+    "titan_selected_projection": "34399922430:SUCCESS"
+  },
+  "successor_pr": 11628,
+  "successor_head": "50b4d91291e82d828a564c0220934083775df517",
+  "successor_merge": "a199bf862b0b938f53c9d35b5062ef1cb18e928a",
+  "copy_contaminated_tree": false,
+  "queue_edge": false,
+  "promote": false
+}
