@@ -1,0 +1,52 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "family": "l02-terminal-ablation-closure-identity-gate",
+  "source_pr": 11774,
+  "source_branch": "codex/pr11731-closure-identity-gate-20260909-01",
+  "source_head": "ed1ddcd8096d322606d587d889d5eaad6e98e371",
+  "exact_blobs": {
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l02-terminal-ablation-sol-trident/rank_arms.py": "5cf33bb21239bee09f5fa49e9db8287cc5d1544d",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l02-terminal-ablation-sol-trident/test_rank_arms.py": "3aa5b507a872b6064aa00dfbff457bb6c8d8c138"
+  },
+  "exact_head_runs": {
+    "dedicated": {
+      "id": 34407026635,
+      "name": "titan-v3-l02-terminal-ablation-sol-trident",
+      "result": "success"
+    },
+    "titan_selected_projection": {
+      "id": 34407026664,
+      "result": "success"
+    },
+    "source_parses": {
+      "id": 34407026646,
+      "result": "success"
+    },
+    "open_door_guard": {
+      "id": 34407026684,
+      "result": "success"
+    },
+    "path_manifest": {
+      "id": 34407026630,
+      "result": "success"
+    },
+    "muhlnickel_spec_guard": {
+      "id": 34407026893,
+      "result": "success"
+    }
+  },
+  "parent_experiment": {
+    "pr": 11731,
+    "head": "6152837c8453bde2576b6873e204ac605387aa23",
+    "relationship": "merged terminal-window ablation experiment; this PR only hardens durable ranking identity"
+  },
+  "residual_blockers": [
+    "canonical-entrypoint lifecycle mismatch",
+    "fixed-step vs first-realized treatment defect",
+    "NO_SIGNAL classification gap",
+    "raw-shard custody overwrite defect"
+  ],
+  "disposition": "completed unmerged evidence-gate hardening only; preserve exact bytes; does not clear parent gameplay blockers or create V4 promotion edge",
+  "v4_queue_edge": false,
+  "runtime_promotion": false
+}
