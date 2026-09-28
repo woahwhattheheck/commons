@@ -1,0 +1,74 @@
+{
+  "schema": "titan-v4-research-custody/v1",
+  "source": {
+    "pull_request": 11530,
+    "title": "Titan V3: gate paired game panels on complete native evidence",
+    "working_commit": "22e764944d246fce5555f8ae09c7f14345179219",
+    "terminal_pr_head": "1e9e4324fd3710ae9e3df146a1045b496deba453",
+    "terminal_head_note": "terminal PR head replaced contract.py and gate.py with literal PLACEHOLDER; custody intentionally binds the last complete working packet instead",
+    "original_base": "3af7dcbdc1f2e7866a9648a2aace1a47ab1824e4"
+  },
+  "hosted_receipts": [
+    {
+      "run_id": 34395922179,
+      "workflow": "titan-selected-projection",
+      "conclusion": "success",
+      "artifacts": 0
+    },
+    {
+      "run_id": 34395922138,
+      "workflow": "path-manifest",
+      "conclusion": "success"
+    },
+    {
+      "run_id": 34395922213,
+      "workflow": "job-watchdog",
+      "conclusion": "success"
+    },
+    {
+      "run_id": 34395922240,
+      "workflow": "open-door-guard",
+      "conclusion": "failure"
+    },
+    {
+      "run_id": 34395922228,
+      "workflow": "source-parses",
+      "conclusion": "cancelled"
+    },
+    {
+      "run_id": 34395922099,
+      "workflow": "muhlnickel-spec-guard",
+      "conclusion": "cancelled"
+    }
+  ],
+  "preserved": {
+    "post_blob": "84059a3dee8c6ccdfc2950395383595e372ad12f",
+    "root_blobs": {
+      "CONTRACT.md": "ccaf0779c97ba7a4a05cda4be343ddf3d954e4b4",
+      "LICENSE-NOTE.md": "86ea8c4a1ef4b56df7ffd604eefacbf03ba8246c",
+      "README.md": "428cec5591f7bc5c3209f614b3b9ba27327121b1",
+      "RESULTS.md": "9d2c5e1fcded2cbb0c535eebf49f431d3c7dec8e",
+      "SOURCE-MANIFEST.json": "0b7ef4cb46ed0b19feb7b9fc39ea25aa5730aa9f",
+      "THREAT-MODEL.md": "81e39c9b5f9a495b338f9449be257117d89697c5",
+      "contract.py": "57d87b5a63a55966516559dc6013479703c05a41",
+      "gate.py": "d604187a15900054121cd1b7d73dffc26f64427a",
+      "gate_common.py": "ca2d11ad8c6379d936fdbd25565ea24622ab83a5",
+      "metrics.py": "30bf083a948260523df8c2f03abf480d78b927e2",
+      "panel_load.py": "b01607d68d5337603b9c415aa0ba9a1fd17e6fa3",
+      "test_policy_cli.py": "22996316eff7fd6a4125ad99d793a17cac2f9408",
+      "test_support.py": "84e98c8b0126e7aa51f36d41ba001df40794c9ec",
+      "test_validation.py": "4aefaf026b9074d49a095a75ebfe0407759c3d3e"
+    },
+    "example_tree": "ca1f1f833039d6ef84ce936a32b93d7947484e37"
+  },
+  "successor": {
+    "pull_request": 11627,
+    "merge_commit": "5363b18101d9eaece372557ab9d587aed6da3507",
+    "current_gate_blob": "7ed96f3147b437ef1e2c7868e752f625035f2c2f",
+    "note": "merged successor explicitly composed the working #11530 gate with #11597 snapshot binding and #11603 numeric fail-closed closure"
+  },
+  "disposition": "QUARANTINED_WORKING_PACKET_CUSTODY_ONLY",
+  "queue_edge": false,
+  "promotion": false,
+  "reason": "working semantics already consumed by merged #11627; preserve exact pre-placeholder packet and receipts without reviving stale entrypoints"
+}
