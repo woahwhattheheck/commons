@@ -1,0 +1,141 @@
+{
+  "schema": "commons-resource-event/v1",
+  "event_id": "codex-localdeviceagent-model-transfer-advancement-20260927-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ADVANCEMENT",
+  "observed_at": "2026-09-27T22:08:15Z",
+  "actor": "Commons Resource Master / Codex",
+  "selected_resource": "localdeviceagent",
+  "concrete_consumer": "LocalDeviceAgent operators replacing main or optional helper model files without deleting the selected working file before a replacement is complete",
+  "measurable_outcome": "The canonical resource now points to the merged app-scoped transfer flow at its four exact source blobs and exposes its current production and constraint boundaries instead of the stale August audit.",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "holder": "Bryce / Commons",
+    "consumer": "ANDROID_PERCEPTION_EXACT_WRITE_JOURNALING_AND_DEVICE_EXECUTION",
+    "evidence_freshness": "STALE_AUGUST_26_AUDIT"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "holder": "Bryce / Commons",
+    "consumer": "CANCELLABLE_MAIN_AND_HELPER_MODEL_FILE_REPLACEMENT_WITH_PREVIOUS_FILE_RECOVERY",
+    "evidence_freshness": "CURRENT_AT_LOCALDEVICEAGENT_MAIN_D3AAFED"
+  },
+  "production_truth": {
+    "source_repository": "woahwhattheheck/LocalDeviceAgent",
+    "source_pr": 70,
+    "source_merge_commit": "d3aafedfaf0f1de84c9c57a4191f54ed11b22cbd",
+    "source_main_at_observation": "d3aafedfaf0f1de84c9c57a4191f54ed11b22cbd",
+    "source_paths": {
+      "app/src/main/java/com/local/deviceagent/MainActivity.kt": "982cf08a0975ede4ee1dee2f64911dad8ae47d70",
+      "app/src/main/java/com/local/deviceagent/ModelTransfers.kt": "1fa529622b67c4dc930eed2e2e4963fef3a032f9",
+      "app/src/main/java/com/local/deviceagent/SettingsManager.kt": "ce21a11776ade1d97fd5f05fd5343814140b595d",
+      "docs/MODEL_SETUP.md": "138fb0335cb77174506d0b026fb293b4411d1089"
+    },
+    "focused_verification": {
+      "deterministic_source_contract": "PASS_20_OF_20",
+      "resource_projection": "PASS_18_OF_18_NORMAL_AND_OPTIMIZED",
+      "resource_ledger": "PASS_SELF_TEST_NORMAL_AND_OPTIMIZED",
+      "open_door_activation_checks": "PASS_LOCAL_NO_AUTH"
+    },
+    "one_app_scoped_transfer_worker": true,
+    "unique_private_staging": true,
+    "closed_nonempty_copy_before_publish": true,
+    "fsync_before_publish": true,
+    "http_status_and_declared_length_checked": true,
+    "provider_display_name_reduced_to_filename": true,
+    "selection_change_during_copy_preserved": true,
+    "cancellation_surface_present": true,
+    "previous_file_rollback_bound_to_current_selection": true,
+    "helper_opt_in_unchanged_by_import": true,
+    "old_completed_files_retained": true,
+    "native_model_compatibility_proven": false,
+    "apk_built": false,
+    "device_execution_observed": false,
+    "workflow_runs_at_source_merge": 0,
+    "commit_statuses_at_source_merge": 0,
+    "provider_action_by_advancement": false,
+    "owner_device_action_by_advancement": false,
+    "deployment_by_advancement": false,
+    "payment_observed": false,
+    "revenue_recognition": false,
+    "current_cash_claim": false
+  },
+  "delta": {
+    "prior_terminal_main_sha": "3cae2f0787ec582f56a0c8c76967721c77d907a0",
+    "activation_base_main_sha": "7aacf766a4416596899ec6ac3b3c9d708868d777",
+    "commits_in_delta": 6,
+    "non_generated_commits_in_delta": 0,
+    "changed_paths_in_delta": 229,
+    "terminal_current_main_sha": "67d5ae4b4632bfe8b14bdc3ce7e79c360f52bb08",
+    "remote_branches_observed": 4565,
+    "prior_terminal_slack_ts": "1790536764.428389",
+    "latest_observed_external_delta_slack_ts": "1790536939.025649",
+    "slack_top_level_messages": {
+      "commons": 0,
+      "delegations": 0,
+      "todo": 0,
+      "shipped_builds": 1,
+      "products": 0,
+      "leads": 0,
+      "sales": 0,
+      "relevant_build_demand": 1
+    },
+    "automations": "Twenty-five visible; the Commons Resource Master and both TITAN automations remain enabled.",
+    "github_state": "Commons main advanced through six generated projection, board-ingest and generated-manual commits touching 229 paths; none introduced a distinct resource. LocalDeviceAgent main newly exposed PR #70 as a merged four-path source capability. No workflow runs or commit statuses were present for that source merge.",
+    "connector_state": "GitHub and Slack read/write operations remained reachable. Shell clone of LocalDeviceAgent required credentials, so exact source identities and contents were read through the authorized GitHub connector without treating connector presence as device or provider authority."
+  },
+  "verification": {
+    "privacy": "Only repository, public source-path, commit, blob, aggregate Slack and synthetic contract facts are persisted. No credential, private account identifier, model bytes, device payload, customer data, private message body or private file name is stored.",
+    "open_door": "Commons ledger and projection validation run locally without login or private state. Source proof is explicitly connector-bound and is not represented as open-door Android execution.",
+    "zero_fabrication": "Merged source and static source-contract checks establish the transfer implementation only. They do not establish an APK, native compatibility, successful provider download, installed app, physical-device behavior, deployment, payment, revenue or cash.",
+    "collision": "Only the existing canonical resource entry, generated projection and append-only advancement records are owned. LocalDeviceAgent source, issues #71/#72, #build-demand ownership, owner devices, peer branches, TITAN and unrelated paths remain untouched."
+  },
+  "build_order_decision": "No #delegations order was posted. The two concrete remaining capability gaps were already minted as LocalDeviceAgent issues #71 and #72 with a single #build-demand root at 1790536939.025649, so reposting them would duplicate active delivery lanes.",
+  "existing_build_orders": [
+    "https://github.com/woahwhattheheck/LocalDeviceAgent/issues/71",
+    "https://github.com/woahwhattheheck/LocalDeviceAgent/issues/72",
+    "https://tokenjunkielabs.slack.com/archives/C0BTRNE6Y58/p1790536939025649"
+  ],
+  "quota_lifecycle": {
+    "official_observation": "Official OpenAI guidance describes one-time automatic and banked resets but did not identify a new September 27 reset event for this account. The September 25 Codex outage is resolved. No account usage-meter change was directly observed.",
+    "classification": "PRIOR_QUOTA_STATE_RETAINED_CURRENT_ALLOWANCE_UNMEASURED",
+    "current_meter": "NOT_DIRECTLY_OBSERVED",
+    "banked_reset_inventory": "NOT_DIRECTLY_OBSERVED",
+    "banked_reset_activated": false
+  },
+  "projection": {
+    "resources": 111,
+    "producing": 83,
+    "inventory_records": 75
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790546758696359",
+    "source_pr": "https://github.com/woahwhattheheck/LocalDeviceAgent/pull/70",
+    "activation_pr": "https://github.com/woahwhattheheck/commons/pull/30128",
+    "activation_merge_commit": "67d5ae4b4632bfe8b14bdc3ce7e79c360f52bb08",
+    "activation_blobs": {
+      "ground/RESOURCE_LEDGER.json": "2db1dab9f00ffa0e27b228ec1d8e3bfd14b4d238",
+      "inventory/resources/records/codex-localdeviceagent-model-transfer-advancement-20260927-01.json": "65f8a56b6724da572c8258983b3913e06080af98",
+      "p/codex-localdeviceagent-model-transfer-advancement-20260927-01.md": "e89d17293c1af680b029e792feabc639dadecd1b",
+      "resources.html": "6a44049716d5159b344568f44d3147c7c1c50672"
+    },
+    "shipped_receipt": "https://tokenjunkielabs.slack.com/archives/C0BTVA3C0G3/p1790536838410569",
+    "existing_build_order_root": "https://tokenjunkielabs.slack.com/archives/C0BTRNE6Y58/p1790536939025649",
+    "official_usage_guidance": "https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan",
+    "official_outage": "https://status.openai.com/incidents/m44fs25y"
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-27T22:08:15Z",
+    "activation_base_main_sha": "7aacf766a4416596899ec6ac3b3c9d708868d777",
+    "current_main_sha": "67d5ae4b4632bfe8b14bdc3ce7e79c360f52bb08",
+    "latest_external_delta_slack_ts": "1790536939.025649",
+    "source_merge_commit": "d3aafedfaf0f1de84c9c57a4191f54ed11b22cbd",
+    "remote_branches_observed": 4565
+  },
+  "non_claims": [
+    "No APK build, native-model load, provider download, owner-device action, deployment, outreach, submission, payment, settlement, revenue or cash is claimed."
+  ]
+}
