@@ -1,0 +1,24 @@
+{
+  "schema": "titan-p03-quadrant-payback-pin-v1",
+  "base_commit": "28e8d1ba8d9bd5b5a80a8c9327d8278fa0752820",
+  "archive_path": "revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz",
+  "archive_sha256": "e2261b4bebcbaf0e4eb209732508984c36d4cf4cd88987712d14fd6b41437dc6",
+  "archive_bytes": 431490,
+  "runtime_files": 109,
+  "source_manifest_sha256": "58691c156bc3e6697c21360467c45fbe3a42a9b7b6e42cc7c5404566f7d26a2",
+  "base_fourth_quadrant_enabled": false,
+  "grid": {
+    "cash_reserve": [6000, 7500, 9000],
+    "max_start_day": [8, 12],
+    "product": ["WHEAT"],
+    "amount": [13]
+  },
+  "evidence_contract": {
+    "minimum_matched_games": 64,
+    "opponents": ["current", "arlene", "retained"],
+    "seats": [0, 1],
+    "splits": ["development", "holdout"],
+    "future_sell_funds_entry": false,
+    "integration_requires_unique_go": true
+  }
+}

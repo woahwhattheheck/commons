@@ -1,0 +1,106 @@
+name: titan-p03-quadrant-payback
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-p03-quadrant-payback/**"
+      - ".github/workflows/titan-p03-quadrant-payback.yml"
+      - "p/titan-v25-P03-quadrant-payback-20260909-sol-arclight-56-01.md"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-p03-quadrant-payback-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  certificate-and-candidates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run fail-closed certificate and panel contracts
+        working-directory: revenue/kaggriculture/cloud-p03-quadrant-payback
+        run: python -m unittest -v test_quadrant_payback.py
+
+      - name: Verify the canonical integrated build remains reproducible
+        run: python revenue/kaggriculture/cloud-execution-lab/build_integrated.py --check
+
+      - name: Resolve exact pinned archive by content, never by mutable filename
+        id: archive
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib
+          import json
+          import os
+
+          packet = Path("revenue/kaggriculture/cloud-p03-quadrant-payback")
+          pin = json.loads((packet / "PIN.json").read_text(encoding="utf-8"))
+          target = pin["archive_sha256"]
+          root = Path("revenue/kaggriculture/cloud-execution-lab")
+          matches = []
+          for path in root.rglob("*.tar.gz"):
+              digest = hashlib.sha256(path.read_bytes()).hexdigest()
+              if digest == target:
+                  matches.append(path)
+          if len(matches) != 1:
+              raise SystemExit(f"expected one archive matching {target}, found {matches}")
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as stream:
+              stream.write(f"path={matches[0].as_posix()}\n")
+          print(matches[0])
+          PY
+
+      - name: Materialize exact six-cell candidate grid
+        run: |
+          python revenue/kaggriculture/cloud-p03-quadrant-payback/compose_variants.py \
+            --archive "${{ steps.archive.outputs.path }}" \
+            --pin revenue/kaggriculture/cloud-p03-quadrant-payback/PIN.json \
+            --output /tmp/titan-p03-variants
+
+      - name: Prove candidate-only boundary and HOLD disposition
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+
+          root = Path("/tmp/titan-p03-variants")
+          index = json.loads((root / "INDEX.json").read_text(encoding="utf-8"))
+          assert index["candidate_count"] == 6, index
+          assert index["global_disposition"] == "HOLD_PENDING_OFFICIAL_MATCHED_PANEL"
+          allowed = {
+              "/feature_ledger/runtime_features/fourth_quadrant",
+              "/fourth_quadrant/amount",
+              "/fourth_quadrant/cash_reserve",
+              "/fourth_quadrant/max_start_day",
+              "/fourth_quadrant/product",
+          }
+          for candidate in index["candidates"]:
+              assert candidate["disposition"] == "HOLD_PENDING_OFFICIAL_MATCHED_PANEL"
+              assert set(candidate["config_deltas"]) <= allowed, candidate
+              archive = root / candidate["variant"] / "titan-current.tar.gz"
+              receipt = root / candidate["variant"] / "P03-CANDIDATE.json"
+              assert archive.is_file() and receipt.is_file()
+          assert len((root / "SHA256SUMS").read_text().splitlines()) == 6
+          print(json.dumps(index, sort_keys=True))
+          PY
+
+      - name: Upload reproducible candidate packet
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-p03-quadrant-payback-${{ github.sha }}
+          path: |
+            /tmp/titan-p03-variants/INDEX.json
+            /tmp/titan-p03-variants/SHA256SUMS
+            /tmp/titan-p03-variants/*/P03-CANDIDATE.json
+            /tmp/titan-p03-variants/*/titan-current.tar.gz
+          if-no-files-found: error
+          retention-days: 14

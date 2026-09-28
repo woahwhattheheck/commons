@@ -1,0 +1,25 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "recorded_on": "2026-09-28",
+  "source_pr": 11737,
+  "source_head": "37335f910a2cd394c09e14944207f2e1bed97dd1",
+  "source_state": "closed_unmerged",
+  "exact_blobs": {
+    "workflow": "4c70dffae7d37145e1a368fc93e99f328e82b3b4",
+    "claim": "107f9657d4ac055a2326fb71ee8bee9db6338e3c",
+    "pin": "d1c01ed34a2a8d8b11fc8e8d6eecb87a1b4b66a9",
+    "readme": "88f8fd65c35c86312bda143834d6f58f9ed79f1e",
+    "analyzer": "9475b6a61912a2e80bd572b4ae9063bfa809dfe3",
+    "composer": "d3f7f325a6b16161174825329918be22c9474db8",
+    "source": "6f902f6f0e066c62847b473611eb55b3dca1f6b7",
+    "tests": "18d060bcb6663f23db499088512bca91571d885b"
+  },
+  "focused_run": 34405166245,
+  "focused_job": 102646282593,
+  "focused_result": "failure_after_contracts_and_reproducibility_passed",
+  "generic_tests_run": 34405166025,
+  "generic_tests_result": "failure",
+  "disposition": "historical_evidence_only",
+  "queue_edge": false,
+  "promote": false
+}
