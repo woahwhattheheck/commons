@@ -1,0 +1,13 @@
+{
+  "schema": "titan-v4-salvage-custody/v2",
+  "subject": "SOL-COMPASS market-carry WHEAT audit",
+  "canonical_main": "e7f2f9429ee5e7706c9bb37d15a6ddd5da281390",
+  "donor_branch": "sol-compass/titan-market-carry-wheat-audit-20260909-01",
+  "donor_head": "5023ee1589ee950b840bbf9bcd30101f20e9b7ac",
+  "donor_tree": "cb14f6dea725a8bf2fca87057da6fe38e54aebb6",
+  "hosted_run": 34403999277,
+  "hosted_job": 102642451942,
+  "hosted_result": "exact checkout and source binding passed; exact audit execution failed; disposition step skipped",
+  "historical_artifact": "10154362582 sha256:d1a1b3093d7fc4e34bc501ac48846b70b53b4b5930fe7351331d35ca19fb424c; no longer listed",
+  "disposition": "historical evidence only; preserve exact source bytes; no V4 queue or runtime edge"
+}

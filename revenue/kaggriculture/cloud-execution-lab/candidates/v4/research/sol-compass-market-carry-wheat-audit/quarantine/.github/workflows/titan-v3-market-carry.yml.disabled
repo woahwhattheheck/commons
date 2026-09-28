@@ -1,0 +1,126 @@
+name: TITAN V3 market-carry development screen
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-market-carry.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3-market-carry/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v3-market-carry-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  market-carry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Verify immutable triggering head
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          [[ "$EXPECTED_HEAD" =~ ^[0-9a-f]{40}$ ]] || {
+            echo "invalid triggering head" >&2
+            exit 1
+          }
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install exact official dependency
+        run: python -m pip install --disable-pip-version-check 'kaggle-environments==1.32.7'
+
+      - name: Compile and focused contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd revenue/kaggriculture/cloud-execution-lab/candidates/v3-market-carry
+          python -m py_compile market_carry.py main.py run_development_screen.py test_market_carry.py test_official_engine.py
+          python -m unittest -v test_market_carry.py
+
+      - name: Verify unchanged canonical package
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd revenue/kaggriculture/cloud-execution-lab
+          python build_integrated.py --check
+
+      - name: Preserved official-engine contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd revenue/kaggriculture/cloud-execution-lab/candidates/v3-market-carry
+          python -m unittest -v test_official_engine.py
+
+      - name: Matched public-Arlene development screen
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/titan-market-carry
+          python revenue/kaggriculture/cloud-execution-lab/candidates/v3-market-carry/run_development_screen.py \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --runner-head "$(git rev-parse HEAD)" \
+            --seeds 2609099701,2609099702 \
+            --action-timeout 1.0 \
+            --startup-timeout 10.0 \
+            --game-timeout 180.0 \
+            --output /tmp/titan-market-carry/SCREEN.json \
+            --markdown /tmp/titan-market-carry/SCREEN.md
+
+      - name: Validate evidence receipt
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          REPORT=/tmp/titan-market-carry/SCREEN.json
+          test -s "$REPORT"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          report = json.loads(Path("/tmp/titan-market-carry/SCREEN.json").read_text())
+          if report.get("schema_version") != 1:
+              raise SystemExit("schema_version must be 1")
+          if report.get("operation") != "op:titan-v3-market-carry-20260909-01":
+              raise SystemExit("operation mismatch")
+          if report.get("status") not in {"initializing", "running", "failed", "complete"}:
+              raise SystemExit("invalid status")
+          head = report.get("runner_head", "")
+          if len(head) != 40 or any(c not in "0123456789abcdef" for c in head):
+              raise SystemExit("invalid runner head")
+          source = report.get("source_evidence")
+          if report.get("status") != "initializing" and not isinstance(source, dict):
+              raise SystemExit("source evidence missing")
+          if report.get("status") == "complete":
+              if not report.get("all_complete"):
+                  raise SystemExit("complete receipt lacks all_complete")
+              if len(report.get("completed_keys", [])) != report.get("expected_games"):
+                  raise SystemExit("completed key count mismatch")
+              if not isinstance(report.get("summary"), dict):
+                  raise SystemExit("summary missing")
+          print("receipt_ok", report["status"], head[:12])
+          PY
+
+      - name: Upload source-bound development evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-market-carry-${{ github.run_id }}
+          path: |
+            /tmp/titan-market-carry/SCREEN.json
+            /tmp/titan-market-carry/SCREEN.md
+          if-no-files-found: error
+          retention-days: 30
