@@ -1,0 +1,25 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "recorded_on": "2026-09-28",
+  "source_ref": "bernays/titan-v3-trace-matrix-20260909-01",
+  "source_head": "46d2d99621fdd1eafbd64afdb4379f58adbd92d8",
+  "source_tree": "33f04fa3515946bbb8f516c9f47f26ddda914f1b",
+  "exact_head_actions_runs": 0,
+  "preserved_exact_blobs": {
+    "workflow": "8dddff357cd3176daa609f8ba6af45ecfbaba75a",
+    "matrix_contract": "3827c70223269501ac697c6b24f1ba19fcb74dc8",
+    "matrix": "3e37df8c74fd511dde7ccef0b006d3f798ea8c14",
+    "readme": "f6e19fae895dd517afae31d589ad821dfbdb37eb",
+    "trace_contract_example": "819d5edef3966f8fdb0d634f76cb9cbe4776c9c3",
+    "matrix_py": "5ba9605818c1a9ef2af737bc57d3eae80a63f8d4",
+    "matrix_support_py": "9972cf2633cc351e43337866434e553606286709",
+    "trace_support_py": "2cfa24a5ed803fbb8d57848ca67baaa5ba1119f5"
+  },
+  "static_matrix": "12 rows; 284/284 declared reachable one/two-factor interactions; evidence only",
+  "carrier_gap": "trace_gate.py, trace_compare.py, trace_policy.py, test_trace_gate.py, and test_matrix.py are referenced historically but absent from the exact source tree",
+  "successor": "merged PR 12014 / ae4af91a695f47edaad05b18c9fecb8085a3f8d3",
+  "prior_ledger_comment": 5728755282,
+  "disposition": "exact static matrix + partial trace-ingestion custody only; incomplete historical carrier; no gameplay donor",
+  "queue_edge": false,
+  "promote": false
+}
