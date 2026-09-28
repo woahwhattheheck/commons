@@ -1,0 +1,27 @@
+{
+  "schema": "titan-v4-historical-custody/v1",
+  "source_ref": "sol-aperture/titan-v3-l01-livestock-dose-20260910-01",
+  "source_head": "239ee7122ba843fd0a9e8cc4bc1c1d116a4b3a8a",
+  "source_merge_base": "98a98108998efac9e53a8b045f0fb2c85a4b19e2",
+  "workflow_run": {
+    "id": 34518693264,
+    "job_id": 103010496310,
+    "conclusion": "failure",
+    "passing_steps": [
+      "exact checkout",
+      "transform contracts",
+      "artifact retention",
+      "clean checkout"
+    ],
+    "failing_step": "repository/archive route-address audit"
+  },
+  "disposition": "QUARANTINED_HISTORICAL_EVIDENCE_ONLY_NO_V4_QUEUE_EDGE",
+  "reason": "Transform contracts passed, but the exact hosted route-address audit failed before any economic panel or promotion result. Preserve exact bytes only; do not replay or promote.",
+  "files": {
+    ".github/workflows/titan-v3-l01-livestock-dose-sol-aperture.yml": "e5bbd7866edc3254b4a7f35aae4d5f05a051cd72",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/v3-l01-livestock-dose-sol-aperture/README.md": "cf7e4294050a927ef6d94c9485dd43652324b328",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/v3-l01-livestock-dose-sol-aperture/livestock_dose.py": "044aa474a1992d44224684f56705a80f90c4e2a3",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/v3-l01-livestock-dose-sol-aperture/route_audit.py": "dab7932551f888beac3fe8dae637c0b796a0de78",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/v3-l01-livestock-dose-sol-aperture/test_livestock_dose.py": "2885d3edebe61b3543aea6232400c17184a541a1"
+  }
+}
