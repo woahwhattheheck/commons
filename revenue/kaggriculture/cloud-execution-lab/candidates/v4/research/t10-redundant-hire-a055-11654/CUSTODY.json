@@ -1,0 +1,26 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "recorded_on": "2026-09-28",
+  "source_pr": 11654,
+  "source_head": "334a95fcf98deedfd4e527fcf8574327af743c64",
+  "source_state": "closed_unmerged_contaminated_carrier",
+  "preserved_scope": "intended_t10_packet_only",
+  "exact_blobs": {
+    "workflow": "963881f589bf5b148c91e219b6c9c2b04bac7eec",
+    "manifest": "63dd5d82ee58a6b58062e83222fdb8dacda80823",
+    "readme": "38ad6cd345f694ec9ee98449a2ddf759d724bd15",
+    "summary": "d19d6f705e544e47b43cf5fdcd34fb5bd91d1977",
+    "tests": "e88f44188831374e47c1120868c09f7b677e3dfa",
+    "verifier": "97f82702d3c5d43b64f9cf6912b39b7bdb2cd239"
+  },
+  "exact_head_run": 34401832515,
+  "exact_head_job": 102635328873,
+  "exact_head_result": "success",
+  "historical_panel_run": 34390450538,
+  "historical_artifact": 10119413771,
+  "reported_panel": "80/80 complete, 40 matched cells, 40/40 trace changes, mean own cash +5.4, mean margin +5.3, min paired margin +5, 40 W-to-W",
+  "review_boundary": "arithmetic evidence retained; per-cell execution provenance and exact off/on config-tree identity not fully bound",
+  "disposition": "historical_positive_arithmetic_evidence_only_semantic_already_consumed",
+  "queue_edge": false,
+  "promote": false
+}

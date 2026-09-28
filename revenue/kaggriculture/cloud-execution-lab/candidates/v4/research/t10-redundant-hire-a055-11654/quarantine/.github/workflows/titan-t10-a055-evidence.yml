@@ -1,0 +1,51 @@
+name: TITAN T10 exact a055 evidence
+
+on:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/t10-redundant-hire-current-20260909-sol-forge/**"
+      - ".github/workflows/titan-t10-a055-evidence.yml"
+  push:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/t10-redundant-hire-current-20260909-sol-forge/**"
+      - ".github/workflows/titan-t10-a055-evidence.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-t10-a055-evidence-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        shell: bash
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/t10-redundant-hire-current-20260909-sol-forge
+    steps:
+      - name: Check out exact revision
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Verify packet and adversarial tests
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+          PYTHONHASHSEED: "0"
+        run: |
+          set -euo pipefail
+          python -B verify_evidence.py --json
+          python -B -m unittest -v test_verify_evidence.py
+
+      - name: Assert packet tests leave no tracked diff
+        working-directory: .
+        run: git diff --exit-code --check

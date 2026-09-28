@@ -1,0 +1,115 @@
+{
+  "dispatch_canonical": {
+    "archive_bytes": 423575,
+    "archive_sha256": "a055fd56ca5821208096f37787f77dbdddc2f65c14c24132d6e219a05e6f02ba",
+    "artifact_id": 10119413771,
+    "artifact_workflow_run": 34390450538,
+    "entrypoint": "main.py::agent",
+    "runtime_files_excluding_source": 107,
+    "source_manifest_sha256": "b96676977687ee8a92d7213380f96bf5774a5ec26925cb4f0d66bdd244eb44ba"
+  },
+  "engine": {
+    "evaluator": {
+      "path": "harness/evaluate.py",
+      "sha256": "e30b3108e0027477ab7ddbc057892a241c41a1f2b38f72caf267477877c4333c"
+    },
+    "files": {
+      "kaggriculture.json": {
+        "bytes": 6002,
+        "sha256": "a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867"
+      },
+      "kaggriculture.py": {
+        "bytes": 40356,
+        "sha256": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e"
+      },
+      "utils.py": {
+        "bytes": 8634,
+        "sha256": "537b627b11784d424147ef57ebb0369b039bf83c9f891e81f10486b1f552334b"
+      }
+    },
+    "loader": {
+      "path": "harness/loader.py",
+      "sha256": "cd113a94ae99b03492502e425bdcf09c3db17a2aa2a8fd866f0d78caec9e311e"
+    },
+    "ref": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c"
+  },
+  "evidence": {
+    "summary_bytes": 11266,
+    "summary_path": "SUMMARY.json",
+    "summary_sha256": "2454ea456ff007e13424b476f1c8a907d4501fc718dfee06daebefad822baa68"
+  },
+  "experiment": {
+    "agent_rng_seed": 20260909,
+    "control": false,
+    "expected_games": 80,
+    "expected_paired_cells": 40,
+    "factor": "redundant_hire",
+    "limits": {
+      "action_timeout_seconds": 1.2,
+      "game_timeout_seconds": 180.0,
+      "startup_timeout_seconds": 15.0
+    },
+    "opponents": [
+      "v1",
+      "arlene",
+      "apex",
+      "kaito",
+      "reyhan"
+    ],
+    "seats": [
+      0,
+      1
+    ],
+    "seeds": [
+      2609097001,
+      2609097002,
+      2609097003,
+      2609097004
+    ],
+    "treatment": true
+  },
+  "operation": "titan-v3-t10-redundant-hire-current-panel-20260909-sol-forge-01",
+  "opponents": {
+    "apex": {
+      "entry_sha256": "1f7cd5fb8a16585936d2562a3667f85bb6661688718ef58f73006de66148354a",
+      "entrypoint": "opponents/apex/main.py::agent",
+      "tree_sha256": "664da292bd1bbfc8e9d7bf05738953d0339e5659b2a8034be1aded6cbeb79925"
+    },
+    "arlene": {
+      "entry_sha256": "1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4",
+      "entrypoint": "opponents/arlene/main.py::agent",
+      "tree_sha256": "537a088befcf203cdf5b2a8857f902a05405d796e353569003bf9ea3e16d2c44"
+    },
+    "kaito": {
+      "entry_sha256": "d9dc24ce5429ec628ead0621a160bee90725350683d7dfcc4686fcaf511f3aab",
+      "entrypoint": "opponents/kaito/main.py::agent",
+      "tree_sha256": "4ab98eefdf581362afa6cf7583474e481621a77a5ce85083e6278a0230a9ddea"
+    },
+    "reyhan": {
+      "entry_sha256": "d39dba50793d9777c990347443bf0c481c78adaea86055f6f6b0600dcfcd9f2e",
+      "entrypoint": "opponents/reyhan/main.py::agent",
+      "tree_sha256": "7ed34c8ac82af781acde9e048c4ced63517b7da0329fc5be6aa8be3c9a8daef6"
+    },
+    "v1": {
+      "entry_sha256": "a4ecdb513b48fa51877fe509597a84dd753dfe71d2d76a406ee3dc51475a9008",
+      "entrypoint": ".runtime/v1/main.py::agent",
+      "tree_sha256": "2eff19f61e8f5fc5991f49ed9c74c2d0e2af69edec94889e6cfb620631e1d723"
+    }
+  },
+  "result": {
+    "disposition": "KEEP",
+    "failures": 0,
+    "max_margin_delta": 11.0,
+    "mean_margin_delta": 5.3,
+    "mean_own_delta": 5.4,
+    "mean_rival_delta": 0.1,
+    "min_margin_delta": 5.0,
+    "status": "complete",
+    "trace_changed_cells": 40,
+    "verdict_flips": {
+      "W->W": 40
+    }
+  },
+  "schema_version": 1,
+  "scope": "offline official-interpreter development evidence; not hosted Kaggle scoring or promotion authority"
+}
