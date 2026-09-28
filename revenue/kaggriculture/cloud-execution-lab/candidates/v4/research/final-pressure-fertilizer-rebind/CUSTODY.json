@@ -1,17 +1,38 @@
 {
-  "schema": "titan-v4-salvage-custody/v1",
+  "schema": "titan-v4-salvage-custody/v2",
   "subject": "final-pressure idle-fertilizer returned-action slot rebind",
-  "canonical_main": "57ef6927d89875fd07e6e60e4997e182cb244c77",
+  "canonical_main": "e7f2f9429ee5e7706c9bb37d15a6ddd5da281390",
   "donor_pr": 12019,
+  "donor_state": "closed_unmerged_draft",
   "donor_head": "5ff349cd86acfcc45c6b81fb28e8de465c80ba3e",
+  "exact_donor_blobs": {
+    ".github/workflows/titan-v3-final-pressure-fertilizer-rebind.yml": "be04e1117f9c609f8a6db0a6c1ba50923c43d5f6",
+    "revenue/kaggriculture/cloud-execution-lab/cases/final-pressure-fertilizer-rebind-sol-compose/README.md": "425faa1a471b837f306450ebe88d6028f18ebd8b",
+    "revenue/kaggriculture/cloud-execution-lab/cases/final-pressure-fertilizer-rebind-sol-compose/apply_rebind.py": "d8408dd35c899fe3305386b3f410cd4fdffd61fe",
+    "revenue/kaggriculture/cloud-execution-lab/cases/final-pressure-fertilizer-rebind-sol-compose/test_rebind.py": "aaa9a355f13a2f88587afdfdb8f694156ff07cc2"
+  },
+  "quarantine_root": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/final-pressure-fertilizer-rebind/quarantine",
   "focused_run": 34522698322,
-  "focused_result": "green on Python 3.11 and 3.12, normal and optimized",
+  "focused_jobs": [
+    103023835757,
+    103023836086
+  ],
+  "focused_result": "success on Python 3.11 and 3.12; predecessor/repair contracts, optimized closure, candidate materialization",
+  "focused_artifacts": [],
   "broad_run": 34522698274,
-  "broad_result": "repository-wide failure outside TITAN/Kaggriculture",
-  "current_main_blob": "727c36ee3727db159f5879d4ac9a842a28ca570c",
-  "current_runtime_blob": "72c057552308dbac02dd6165c3049032ddbfa657",
-  "current_spatial_blob": "a2f13cd9871e6da24b2ccf3297c4c96ac324100e",
-  "current_pressure_blob": "cde454922e5cf0bb46c9bd68c4fad2e98782c4b5",
-  "finding": "proposal slot is bound before late market pressure but consumed after pressure",
-  "disposition": "exact donor and receipt custody only; stale implementation quarantined; current-ABI final-boundary rederivation and fresh gates required"
+  "broad_result": "repository battery failed; checkout-linked result recording/upload steps succeeded; no retained run artifacts",
+  "independent_review": {
+    "comment": 5171642829,
+    "blockers": [
+      "hardlink/same-inode output and receipt alias can violate nonmutation boundary",
+      "advertised pressure-source pin is not authenticated by materializer",
+      "final boundary does not recheck paired DROP ownership and ambiguity cancellation can erase unrelated FERT rows"
+    ]
+  },
+  "current_line_followup": {
+    "comment": 5737174724,
+    "status": "source-real seam remains live on later canonical line; historical carrier remains P0-blocked",
+    "required": "current-ABI final-action, ownership-bound, paired-DROP rederivation with fresh focused and full gates"
+  },
+  "disposition": "exact donor bytes and receipts quarantined; historical carrier must not be merged/cherry-picked/reminted; no V4 queue edge or production promotion"
 }

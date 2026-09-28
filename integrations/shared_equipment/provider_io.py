@@ -255,11 +255,14 @@ class GitHubSlackEquipment:
             raise
         if result.returncode or status is not None and status >= 400:
             # Preserve response rate evidence, never stderr, command or raw headers.
+            error = None
             try:
                 error = json.loads(body)
                 message = redacted(error.get("message", "GitHub request failed")) if isinstance(error, dict) else "GitHub request failed"
             except (ValueError, TypeError):
                 message = "GitHub request failed through existing gh account"
+            if status is None and isinstance(error, dict) and error.get("message") == "Not Found":
+                status = 404
             remaining = _header_integer(headers, "x-ratelimit-remaining")
             reset = _header_integer(headers, "x-ratelimit-reset")
             resource = headers.get("x-ratelimit-resource")

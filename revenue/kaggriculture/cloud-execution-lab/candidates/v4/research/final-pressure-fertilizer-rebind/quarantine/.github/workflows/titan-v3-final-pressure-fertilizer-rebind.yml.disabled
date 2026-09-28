@@ -1,0 +1,42 @@
+name: TITAN V3 final-pressure fertilizer rebind
+
+on:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/main.py"
+      - "revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_priority.py"
+      - "revenue/kaggriculture/cloud-opponent-league/lark-responsive/sell_priority.py"
+      - "revenue/kaggriculture/cloud-execution-lab/cases/final-pressure-fertilizer-rebind-sol-compose/**"
+      - ".github/workflows/titan-v3-final-pressure-fertilizer-rebind.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-source-contracts:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run predecessor and repair contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/cases/final-pressure-fertilizer-rebind-sol-compose
+        run: python -m unittest -v test_rebind.py
+      - name: Prove optimized-Python closure
+        working-directory: revenue/kaggriculture/cloud-execution-lab/cases/final-pressure-fertilizer-rebind-sol-compose
+        run: python -O -m unittest -v test_rebind.py
+      - name: Materialize candidate without canonical mutation
+        run: |
+          python revenue/kaggriculture/cloud-execution-lab/cases/final-pressure-fertilizer-rebind-sol-compose/apply_rebind.py \
+            --tree . \
+            --output "$RUNNER_TEMP/main.rebound.py" \
+            --receipt "$RUNNER_TEMP/rebind-receipt.json"
+          python -m py_compile "$RUNNER_TEMP/main.rebound.py"
+          git diff --exit-code -- revenue/kaggriculture/cloud-execution-lab/main.py
+          cat "$RUNNER_TEMP/rebind-receipt.json"
