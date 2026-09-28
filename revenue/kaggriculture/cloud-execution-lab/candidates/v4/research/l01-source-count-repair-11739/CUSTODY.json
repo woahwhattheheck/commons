@@ -1,0 +1,19 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "family": "l01-source-count-repair-11739",
+  "source_pr": 11739,
+  "source_head": "f5ea0f21c85ce4c795b69d908c6df96b529bee67",
+  "source_merged": false,
+  "exact_blobs": {
+    "build_candidate.py": "8efaf4b63ad818bd3e18e9571a5106330b1c59eb",
+    "test_build_candidate.py": "5df0991f74611eeea272fa5e789f86fef1d04796"
+  },
+  "exact_head_run": {
+    "id": 34405191776,
+    "conclusion": "success",
+    "promotion_result": "no_gameplay_change_observed"
+  },
+  "disposition": "superseded_conflicting_count_semantics_historical_evidence_only",
+  "v4_queue_edge": false,
+  "runtime_promotion": false
+}
