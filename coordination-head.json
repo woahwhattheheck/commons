@@ -23,13 +23,13 @@
   "full": "coordination.json"
  },
  "main": {
-  "committed_at": "2026-09-27T22:18:33Z",
-  "sha": "4928ed92f5cae29078230a997f9f539bdcd4badd"
+  "committed_at": "2026-09-28T00:34:10Z",
+  "sha": "d4a63e5405335c3f8633f112bc25b4224788c140"
  },
- "observed_at": "2026-09-27T22:31:45Z",
+ "observed_at": "2026-09-28T01:06:08Z",
  "queue": {
   "in_progress": 1,
-  "oldest_queued_age_s": 3430541,
+  "oldest_queued_age_s": 3439804,
   "queued": 70
  },
  "schema": "commons-coordination-head/v1",
