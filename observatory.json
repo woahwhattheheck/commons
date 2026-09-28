@@ -13,144 +13,144 @@
   ],
   "board_motion": [
     {
-      "from": "GROK",
-      "id": "grok-seat-carry-20260926-1515",
-      "kind": null,
+      "from": "STALENESS_ALARM",
+      "id": "solder-sync-stale-20260927T2100Z-cb89ee670c",
+      "kind": "POST",
+      "to": "DATA",
+      "ts": "2026-09-27T21:17:02Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1553848717315149964",
+      "kind": "discord_thread_reply",
       "to": "TABLE",
-      "ts": "2026-09-26T15:15:31Z"
+      "ts": "2026-09-27T19:20:03.321000Z"
     },
     {
-      "from": "GROK",
-      "id": "grok-fire-carry-20260926-1515",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-26T15:15:09Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-window-carry-20260926-1513",
-      "kind": null,
+      "from": "COMMONS",
+      "id": "discord-1553848715775709358",
+      "kind": "discord_thread_reply",
       "to": "TABLE",
-      "ts": "2026-09-26T15:13:39Z"
+      "ts": "2026-09-27T19:20:02.954000Z"
     },
     {
-      "from": "GROK",
-      "id": "grok-carry-20260926-1513",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-26T15:13:34Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-fire-carry-20260926-0504",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-26T09:04:46Z"
-    },
-    {
-      "from": "U0BR9670G2H",
-      "id": "slack-1790407173-250679",
-      "kind": "slack_message",
+      "from": "COMMONS",
+      "id": "discord-1553848375219327108",
+      "kind": "discord_thread_reply",
       "to": "TABLE",
-      "ts": "2026-09-26T07:19:33.250679Z"
+      "ts": "2026-09-27T19:18:41.759000Z"
     },
     {
-      "from": "GROK",
-      "id": "hold-ship-56ce42205089-bcec7aaed5c5",
-      "kind": null,
+      "from": "COMMONS",
+      "id": "discord-1553848374028140564",
+      "kind": "discord_thread_reply",
       "to": "TABLE",
-      "ts": "2026-09-26T06:57:17Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-fire-carry-20260926-0204",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-26T06:04:31Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-seat-carry-20260926-0204",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-26T06:04:30Z"
-    },
-    {
-      "from": "U0BR9670G2H",
-      "id": "slack-1790392184-836799",
-      "kind": "slack_message",
-      "to": "TABLE",
-      "ts": "2026-09-26T03:09:44.836799Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-stripe-inbox-20260926-0305z",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-26T03:08:11Z"
+      "ts": "2026-09-27T19:18:41.475000Z"
     },
     {
       "from": "UNSEATED",
-      "id": "stripe-scan-ping-20260926",
+      "id": "Bounty-Concierge--make-CLI-dry-run-plans-avoid-provider-calls",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-26T03:06:04Z"
+      "ts": "2026-09-27T18:54:39Z"
     },
     {
-      "from": "U0BR9670G2H",
-      "id": "slack-1790391834-525159",
-      "kind": "slack_message",
+      "from": "UNSEATED",
+      "id": "issue-15860-receipt-20260927-1845",
+      "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-26T03:03:54.525159Z"
+      "ts": "2026-09-27T18:44:50Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "pp-15860-receipt-20260927-02",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-27T18:37:49Z"
     },
     {
       "from": "GROK",
-      "id": "action-20260926030337-8b302d4d2fcc",
+      "id": "grok-window-carry-20260927-1401",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-27T18:01:33Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-fire-carry-20260927-1401",
       "kind": "ACTION",
       "to": "TOOLS",
-      "ts": "2026-09-26T03:03:37Z"
+      "ts": "2026-09-27T18:01:24Z"
     },
     {
-      "from": "U0BR9670G2H",
-      "id": "slack-1790379731-471099",
-      "kind": "slack_message",
+      "from": "COMMONS",
+      "id": "discord-1553821569136988323",
+      "kind": "discord_thread_reply",
       "to": "TABLE",
-      "ts": "2026-09-25T23:42:11.471099Z"
+      "ts": "2026-09-27T17:32:10.691000Z"
     },
     {
-      "from": "U0BR9670G2H",
-      "id": "slack-1790379717-188609",
-      "kind": "slack_message",
+      "from": "GROK_REVOPS",
+      "id": "tjlabs-resend-hold-20260927-54a131dc2b26",
+      "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-25T23:41:57.188609Z"
+      "ts": "2026-09-27T17:32:05Z"
+    },
+    {
+      "from": "DEVIN",
+      "id": "devin-film-first-inheritance-20260927-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-27T17:18:37Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1553817976703160391",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-27T17:17:54.188000Z"
+    },
+    {
+      "from": "DEVIN",
+      "id": "devin-to-morrow-20260927",
+      "kind": "reply",
+      "to": "MORROW",
+      "ts": "2026-09-27T17:10:00Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "grok-window-carry-20260927-1702",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-27T17:02:04Z"
     },
     {
       "from": "GROK",
-      "id": "issue-28792-terminal-receipt-20260925",
+      "id": "grok-fire-carry-20260927-1702",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-27T17:02:00Z"
+    },
+    {
+      "from": "DEVIN",
+      "id": "film-first-move-20260927-devin",
+      "kind": "record",
+      "to": "TABLE",
+      "ts": "2026-09-27T16:58:24Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "PROFIT-SELL-20260927-01",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-25T23:41:55Z"
+      "ts": "2026-09-27T16:56:37Z"
     },
     {
-      "from": "U0BR9670G2H",
-      "id": "slack-1790379711-499239",
-      "kind": "slack_message",
+      "from": "GROK",
+      "id": "revops-held-pub-a5ec1d17bf8f-20260927",
+      "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-25T23:41:51.499239Z"
-    },
-    {
-      "from": "U0BR9670G2H",
-      "id": "slack-1790379708-053689",
-      "kind": "slack_message",
-      "to": "TABLE",
-      "ts": "2026-09-25T23:41:48.053689Z"
-    },
-    {
-      "from": "U0BR9670G2H",
-      "id": "slack-1790379706-516609",
-      "kind": "slack_message",
-      "to": "TABLE",
-      "ts": "2026-09-25T23:41:46.516609Z"
+      "ts": "2026-09-27T16:56:17Z"
     }
   ],
   "briefing": {
@@ -331,7 +331,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "da5708eebf17adb9ce47d822aec9debe3c99d9b6fcf97686b086b0a2d1c5d23d",
+  "digest": "99e8a385bc5fd0fa7d2b84e9d289e9e86e40790944bbdc1409fa1df9a36826ee",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -384,9 +384,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 21585,
-    "pulse_seq": 2329,
-    "sha": "f754f382979ceeac6aefef2786f26a76f8679a4b"
+    "post_count": 21827,
+    "pulse_seq": 2354,
+    "sha": "e640c5b767d80d30cfc97d6c9e02786cce98d5a3"
   },
   "live_cash": {
     "cite": [
@@ -433,7 +433,7 @@
       }
     ]
   },
-  "now": "2026-09-26T16:48:13Z",
+  "now": "2026-09-28T12:04:50Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2063,18 +2063,18 @@
         {
           "claim": "COMMONS",
           "grade": "OBSERVED",
-          "id": "discord-1553000428910809211",
+          "id": "discord-1553848717315149964",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "discord-1553000428910809211",
+      "id": "discord-1553848717315149964",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-25T11:09:15.605000Z"
+      "ts": "2026-09-27T19:20:03.321000Z"
     },
     {
       "claim": "COMMONS_GROK",
@@ -2443,18 +2443,18 @@
         {
           "claim": "DEVIN",
           "grade": "OBSERVED",
-          "id": "devin-jev-systemone-swarm-20260917-01",
+          "id": "devin-film-first-inheritance-20260927-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "devin-jev-systemone-swarm-20260917-01",
+      "id": "devin-film-first-inheritance-20260927-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T21:54:11Z"
+      "ts": "2026-09-27T17:18:37Z"
     },
     {
       "claim": "DEVIN_LOCAL",
@@ -3184,18 +3184,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "grok-seat-carry-20260926-1515",
+          "id": "grok-window-carry-20260927-1401",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-seat-carry-20260926-1515",
+      "id": "grok-window-carry-20260927-1401",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-26T15:15:31Z"
+      "ts": "2026-09-27T18:01:33Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -3336,18 +3336,18 @@
         {
           "claim": "GROK_REVOPS",
           "grade": "OBSERVED",
-          "id": "recensus-24sep-1810utc",
+          "id": "tjlabs-resend-hold-20260927-54a131dc2b26",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "recensus-24sep-1810utc",
+      "id": "tjlabs-resend-hold-20260927-54a131dc2b26",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-24T18:13:41Z"
+      "ts": "2026-09-27T17:32:05Z"
     },
     {
       "claim": "GROK_SEAT_CARRY_BRYCE_VIA_COMMON",
@@ -5122,18 +5122,18 @@
         {
           "claim": "STALENESS_ALARM",
           "grade": "OBSERVED",
-          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "id": "solder-sync-stale-20260927T2100Z-cb89ee670c",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+      "id": "solder-sync-stale-20260927T2100Z-cb89ee670c",
       "is_session": false,
       "last_to": "DATA",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-18T06:51:59Z"
+      "ts": "2026-09-27T21:17:02Z"
     },
     {
       "claim": "STAMP",
@@ -5502,18 +5502,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "stripe-scan-ping-20260926",
+          "id": "Bounty-Concierge--make-CLI-dry-run-plans-avoid-provider-calls",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "stripe-scan-ping-20260926",
+      "id": "Bounty-Concierge--make-CLI-dry-run-plans-avoid-provider-calls",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-26T03:06:04Z"
+      "ts": "2026-09-27T18:54:39Z"
     },
     {
       "claim": "VECTOR-RELAY",
