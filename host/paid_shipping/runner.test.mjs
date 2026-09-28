@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { gzipSync, gunzipSync } from 'node:zlib';
 import { openState, putPrivateFile, runMonitor, serializeState, planStateFiles } from './runner.mjs';
 
@@ -232,18 +233,18 @@ test('more than 200 thread rows become gzip+hex shards of at most 200', () => {
   }
   assert.equal(rows.length, 201);
   assert.equal(rows[200].refs, 'woahwhattheheck/commons#201');
-  const restEnvelope = JSON.parse(plan.files.find(file => file.path.endsWith('/rest.json')).text);
+  const index = JSON.parse(plan.files.at(-1).text);
+  const restEnvelope = JSON.parse(plan.files.find(file => file.path.endsWith(`/${index.rest}`)).text);
   assert.equal(restEnvelope.codec, 'gzip+hex');
   const rest = JSON.parse(gunzipSync(Buffer.from(restEnvelope.data, 'hex')).toString('utf8'));
   rest.tables.slack_shipping_threads = rows;
-  const index = JSON.parse(plan.files.at(-1).text);
-  assert.equal(index.version, 3);
+  assert.equal(index.version, 4);
   assert.equal(index.thread_count, 201);
-  assert.deepEqual(index.shards, ['threads-0000.json', 'threads-0001.json']);
+  assert.deepEqual(index.shards, threads.map((file, i) =>
+    `threads-${String(i).padStart(4, '0')}-${createHash('sha256').update(file.text).digest('hex')}.json`));
   const restored = openState(JSON.stringify(rest));
   assert.equal(restored.sqlite.prepare('SELECT COUNT(*) AS n FROM slack_shipping_threads').get().n, 201);
   assert.equal(restored.sqlite.prepare('SELECT refs FROM slack_shipping_threads WHERE root_ts=?').get('201.000001').refs,
     'woahwhattheheck/commons#201');
   restored.sqlite.close();
 });
-

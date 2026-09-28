@@ -2,16 +2,13 @@ import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { DatabaseSync } from 'node:sqlite';
 import { pathToFileURL } from 'node:url';
-import { gzipSync, gunzipSync } from 'node:zlib';
 import { tick, validNotice } from './worker.mjs';
+import { STATE_PATH, decodeVersion2, serializeTables, planTables,
+  materializeCheckpoint, persistCheckpoint } from './checkpoint.mjs';
 
 const PRIVATE_REPO = 'woahwhattheheck/commons-ship-enforcer';
-const STATE_PATH = 'paid-work/shipping-state.json';
-const STATE_DIR = 'paid-work/shipping-state';
-const SHARD_THREADS = 200;
 const NOTICE_PREFIX = 'paid-work/shipping-operator-notices/';
 const PUBLISHER = 'https://account-publisher.tjlabs-publisher.workers.dev';
-const MAX_RAW_STATE_BYTES = 32 * 1024 * 1024;
 const TABLES = ['slack_shipping_cursors', 'slack_shipping_threads', 'slack_shipping_outbox',
   'slack_shipping_state', 'slack_shipping_operator_notices'];
 const sha256 = value => createHash('sha256').update(value).digest('hex');
@@ -73,27 +70,6 @@ export async function putPrivateFile(env, path, text, previousSha) {
   return result.receipt.commit.oid;
 }
 
-function decodeVersion2(state) {
-  const hex = state.codec === 'gzip+hex';
-  const b64c = state.codec === 'gzip+base64';
-  if ((!hex && !b64c) || typeof state.data !== 'string' ||
-    !/^[a-f0-9]{64}$/u.test(state.raw_sha256 || '') ||
-    (b64c && !/^[A-Za-z0-9+/]*={0,2}$/u.test(state.data)) ||
-    (hex && !/^[0-9a-f]*$/u.test(state.data))) throw new Error('state_schema_invalid');
-  let raw;
-  try {
-    raw = gunzipSync(Buffer.from(state.data, hex ? 'hex' : 'base64'),
-      { maxOutputLength: MAX_RAW_STATE_BYTES });
-  } catch { throw new Error('state_decompression_invalid'); }
-  if (sha256(raw) !== state.raw_sha256) throw new Error('state_checksum_invalid');
-  return raw;
-}
-
-function opaqueEnvelope(raw) {
-  return JSON.stringify({ version: 2, codec: 'gzip+hex', raw_sha256: sha256(raw),
-    data: gzipSync(raw, { level: 9 }).toString('hex') }) + '\n';
-}
-
 export function openState(snapshot) {
   const sqlite = new DatabaseSync(':memory:');
   sqlite.exec(readFileSync(new URL('./schema.sql', import.meta.url), 'utf8'));
@@ -131,74 +107,17 @@ export function openState(snapshot) {
   return { sqlite, DB };
 }
 
-export function serializeState(sqlite) {
-  const tables = Object.fromEntries(TABLES.map(table => [table,
+function snapshotTables(sqlite) {
+  return Object.fromEntries(TABLES.map(table => [table,
     sqlite.prepare(`SELECT * FROM ${table} ORDER BY rowid`).all()]));
-  const raw = Buffer.from(JSON.stringify({ version: 1, tables }) + '\n', 'utf8');
-  if (raw.length > MAX_RAW_STATE_BYTES) throw new Error('state_raw_too_large');
-  return JSON.stringify({ version: 2, codec: 'gzip+base64', raw_sha256: sha256(raw),
-    data: gzipSync(raw, { level: 9 }).toString('base64') }) + '\n';
+}
+
+export function serializeState(sqlite) {
+  return serializeTables(snapshotTables(sqlite));
 }
 
 export function planStateFiles(sqlite) {
-  const tables = Object.fromEntries(TABLES.map(table => [table,
-    sqlite.prepare(`SELECT * FROM ${table} ORDER BY rowid`).all()]));
-  const threads = tables.slack_shipping_threads;
-  if (threads.length <= SHARD_THREADS) {
-    return { mode: 'single', files: [{ path: STATE_PATH, text: serializeState(sqlite) }] };
-  }
-  const files = [];
-  const names = [];
-  for (let index = 0; index < threads.length; index += SHARD_THREADS) {
-    const rows = threads.slice(index, index + SHARD_THREADS);
-    const name = `threads-${String(names.length).padStart(4, '0')}.json`;
-    const raw = Buffer.from(JSON.stringify({ version: 1, table: 'slack_shipping_threads', rows }) + '\n', 'utf8');
-    files.push({ path: `${STATE_DIR}/${name}`, text: opaqueEnvelope(raw) });
-    names.push(name);
-  }
-  const rest = { version: 1, tables: { ...tables, slack_shipping_threads: [] } };
-  const restRaw = Buffer.from(JSON.stringify(rest) + '\n', 'utf8');
-  files.push({ path: `${STATE_DIR}/rest.json`, text: opaqueEnvelope(restRaw) });
-  files.push({ path: STATE_PATH, text: JSON.stringify({
-    version: 3, codec: 'shard-gzip+hex', shards: names, rest: 'rest.json',
-    thread_count: threads.length }) + '\n' });
-  return { mode: 'sharded', files };
-}
-
-async function materializeState(env, stored) {
-  const state = JSON.parse(stored.text);
-  if (state.version !== 3) return stored.text;
-  if (state.codec !== 'shard-gzip+hex' || !Array.isArray(state.shards) || typeof state.rest !== 'string')
-    throw new Error('state_schema_invalid');
-  const threads = [];
-  for (const name of state.shards) {
-    if (!/^threads-\d{4}\.json$/u.test(name)) throw new Error('state_schema_invalid');
-    const file = await readFile(env, `${STATE_DIR}/${name}`);
-    if (!file) throw new Error('state_shard_missing');
-    const part = JSON.parse(decodeVersion2(JSON.parse(file.text)).toString('utf8'));
-    if (part.version !== 1 || part.table !== 'slack_shipping_threads' || !Array.isArray(part.rows))
-      throw new Error('state_schema_invalid');
-    threads.push(...part.rows);
-  }
-  if (!/^rest\.json$/u.test(state.rest)) throw new Error('state_schema_invalid');
-  const restFile = await readFile(env, `${STATE_DIR}/${state.rest}`);
-  if (!restFile) throw new Error('state_shard_missing');
-  const rest = JSON.parse(decodeVersion2(JSON.parse(restFile.text)).toString('utf8'));
-  if (rest.version !== 1 || !rest.tables) throw new Error('state_schema_invalid');
-  rest.tables.slack_shipping_threads = threads;
-  return JSON.stringify(rest);
-}
-
-async function persistShardedState(env, plan, stored) {
-  for (const file of plan.files) {
-    if (file.path === STATE_PATH) continue;
-    const prev = await readFile(env, file.path);
-    if (prev && prev.text === file.text) continue;
-    await putPrivateFile(env, file.path, file.text, prev ? prev.sha : undefined);
-  }
-  const index = plan.files.find(file => file.path === STATE_PATH);
-  if (index.text !== stored.text)
-    await putPrivateFile(env, STATE_PATH, index.text, stored.sha);
+  return planTables(snapshotTables(sqlite));
 }
 
 async function importNotices(env, sqlite) {
@@ -237,19 +156,15 @@ export async function runMonitor(env = process.env) {
     stored = await readFile(env, STATE_PATH);
     if (!stored) throw new Error('state_bootstrap_unconfirmed');
   }
-  const loaded = await materializeState(env, stored);
+  const loaded = await materializeCheckpoint(stored.text, path => readFile(env, path));
   const { sqlite, DB } = openState(loaded);
   try {
     const imported = await importNotices(env, sqlite);
     const result = await tick({ DB, FREE_ACTIONS: true, SLACK_BOT_TOKEN: env.SLACK_BOT_TOKEN,
       GITHUB_TOKEN: env.COMMONS_GITHUB_TOKEN, TYPESAFE_API_KEY: env.TYPESAFE_API_KEY });
     const plan = planStateFiles(sqlite);
-    if (plan.mode === 'single') {
-      const next = plan.files[0].text;
-      if (next !== stored.text) await putPrivateFile(env, STATE_PATH, next, stored.sha);
-    } else {
-      await persistShardedState(env, plan, stored);
-    }
+    await persistCheckpoint(plan, stored, path => readFile(env, path),
+      (path, text, sha) => putPrivateFile(env, path, text, sha));
     return { imported, mode: result.mode, slack_writes: result.slack_writes,
       channels: result.channels.map(c => ({ channel: c.channel,
       messages: c.messages || 0, queued: c.queued || 0,

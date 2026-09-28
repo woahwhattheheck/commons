@@ -10,6 +10,7 @@ No auth. No gates. No seats.
 
 from __future__ import annotations
 
+from decimal import Decimal, InvalidOperation
 from typing import Any, Iterable, Mapping, MutableMapping, Sequence
 
 
@@ -32,15 +33,51 @@ def _ts(item: Mapping[str, Any]) -> str:
     return str(item.get("ts") or item.get("durable_ts") or item.get("carrier_ts") or "")
 
 
+def _slack_revision(item: Mapping[str, Any]) -> tuple[str, Decimal] | None:
+    """Read exact carrier provenance, including workspace/channel identity."""
+    if item.get("carrier") != "slack-connector":
+        return None
+    parts = _sid(item.get("observed_event")).split(":")
+    if len(parts) not in (4, 5) or parts[0] != "slack" or not all(parts[1:]):
+        return None
+    try:
+        native_ts, revision = Decimal(parts[-2]), Decimal(parts[-1])
+    except InvalidOperation:
+        return None
+    if not native_ts.is_finite() or not revision.is_finite() or min(native_ts, revision) <= 0:
+        return None
+    return ":".join(parts[:-1]), revision
+
+
 def _children(items: Iterable[Mapping[str, Any]]) -> dict[str, list[tuple[str, str]]]:
     """parent id -> [(ts, child id), ...] for every machine-link."""
+    items = list(items)
     kids: dict[str, list[tuple[str, str]]] = {}
+    revisions: dict[str, list[tuple[Decimal, str, Mapping[str, Any]]]] = {}
     for item in items:
         mid = _item_id(item)
         sid = _supersedes(item)
-        if not mid or not sid or sid == mid:
+        if mid and sid and sid != mid:
+            kids.setdefault(sid, []).append((_ts(item), mid))
+        observed = _slack_revision(item)
+        if mid and observed is not None:
+            source, revision = observed
+            revisions.setdefault(source, []).append((revision, mid, item))
+    for family in revisions.values():
+        family.sort(key=lambda row: (row[0], row[1]))
+        _revision, newest_id, newest = family[-1]
+        if newest.get("kind") not in ("slack_message_edit", "slack_message_delete"):
             continue
-        kids.setdefault(sid, []).append((_ts(item), mid))
+        target = _sid(newest.get("target"))
+        if not target or target == newest_id:
+            continue
+        # Every imported edit targets its original, not the previous edit.
+        # Link all observed earlier versions to the newest native revision.
+        # A timestamp reused in another workspace/channel is a different family.
+        for _old_revision, old_id, old in family[:-1]:
+            if old_id == target or (_sid(old.get("target")) == target and
+                                   old.get("kind") in ("slack_message_edit", "slack_message_delete")):
+                kids.setdefault(old_id, []).append((_ts(newest), newest_id))
     return kids
 
 
@@ -77,6 +114,10 @@ def invalidation_map(items: Iterable[Mapping[str, Any]]) -> dict[str, str]:
 
 def annotate_item(item: MutableMapping[str, Any], imap: Mapping[str, str]) -> MutableMapping[str, Any]:
     """Stamp derived invalidation onto a listing/card row. Does not touch p/."""
+    if _slack_revision(item) is not None:
+        parts = _sid(item.get("observed_event")).split(":")
+        item.setdefault("revision", parts[-1])
+        item.setdefault("event_ts", parts[-2] if parts[-1] == "1" else parts[-1])
     mid = _item_id(item)
     if mid and mid in imap:
         item["invalidated_by"] = imap[mid]
