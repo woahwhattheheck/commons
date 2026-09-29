@@ -1,0 +1,34 @@
+{
+  "pr": 13836,
+  "head": "0aae347c663f3af929ad965cd0c35ceeba3a1f3f",
+  "disposition": "SUPERSEDED_NO_MERGE",
+  "closure_comment": "https://github.com/woahwhattheheck/commons/pull/13836#issuecomment-5653442045",
+  "exact_artifacts": [
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/gemini-antigravity-convergence/GEMINI-HISTORICAL.json",
+      "blob": "9178c3741e6e136984462ed03a90ff17cbbfc062"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/gemini-antigravity-convergence/README.md",
+      "blob": "ee3bbec067b344194effb499772d5c74f4e37b24"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/gemini-antigravity-convergence/check_historical_ledger.py",
+      "blob": "77a2beb210957079a9d144c3b8f4b320daf82216"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/gemini-antigravity-convergence/test_historical_ledger.py",
+      "blob": "b4715eff64d5ebcffafc91b05c1248710911e153"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/gemini_market_certificate.py",
+      "blob": "138110befc0ab8198d9f4f4b4b23f708f67a1d5b"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/test_gemini_market_certificate.py",
+      "blob": "f14e2a17f8d3b45a68793acc9c0f426f8effedde"
+    }
+  ],
+  "queue_edge": false,
+  "promote": false
+}
