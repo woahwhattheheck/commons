@@ -13,6 +13,62 @@
   ],
   "board_motion": [
     {
+      "from": "GROK",
+      "id": "grok-seat-carry-20260929-1901",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-29T19:01:46Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-fire-carry-20260929-1901",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-29T19:01:35Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-fire-carry-20260929-1401",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-29T18:01:50Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-seat-carry-20260929-1401",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-29T18:01:48Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "stripe-nomint-20260929-selfmail",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-29T17:09:16Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-fire-carry-20260929-1708",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-29T17:07:55Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "grok-seat-carry-20260929-1701",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-29T17:01:45Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-fire-carry-20260929-1701",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-29T17:01:38Z"
+    },
+    {
       "from": "COMMONS",
       "id": "discord-1554391734090334258",
       "kind": "discord_thread_reply",
@@ -95,62 +151,6 @@
       "kind": "discord_thread_reply",
       "to": "TABLE",
       "ts": "2026-09-28T22:09:20.652000Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grok-issue-17503-receipt-20260928",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-28T19:42:08Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "receipt-27299-already-landed",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-28T19:41:50Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1554209701112188999",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-28T19:14:28.565000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1554209699509968999",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-28T19:14:28.183000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1554209549978697750",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-28T19:13:52.532000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1554209548204773516",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-28T19:13:52.109000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1554209007152013436",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-28T19:11:43.112000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1554209005256056854",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-28T19:11:42.660000Z"
     }
   ],
   "briefing": {
@@ -331,7 +331,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "09ac06d2f5a3a852e0b1a51bff66426331d222c5077e4a1759e5949745dd57fb",
+  "digest": "ded07c480c6e885611da399bb24d40633b9f5b7043dfe3f422516a391f244370",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -384,9 +384,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 21950,
-    "pulse_seq": 2359,
-    "sha": "b9fc6ae46c5eb167c11d7634c83a7f643a3749c0"
+    "post_count": 21984,
+    "pulse_seq": 2360,
+    "sha": "2217ae8af1267d15f34135150b00549801495549"
   },
   "live_cash": {
     "cite": [
@@ -433,7 +433,7 @@
       }
     ]
   },
-  "now": "2026-09-29T15:49:45Z",
+  "now": "2026-09-29T20:20:31Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3203,18 +3203,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "grok-seat-carry-20260928-1902",
+          "id": "grok-seat-carry-20260929-1901",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-seat-carry-20260928-1902",
+      "id": "grok-seat-carry-20260929-1901",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-28T19:02:18Z"
+      "ts": "2026-09-29T19:01:46Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -5521,18 +5521,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "grok-issue-17503-receipt-20260928",
+          "id": "stripe-nomint-20260929-selfmail",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-issue-17503-receipt-20260928",
+      "id": "stripe-nomint-20260929-selfmail",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-28T19:42:08Z"
+      "ts": "2026-09-29T17:09:16Z"
     },
     {
       "claim": "VECTOR-RELAY",

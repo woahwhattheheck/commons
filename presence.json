@@ -892,8 +892,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-seat-carry-20260928-1902",
-    "ts": "2026-09-28T19:02:18Z"
+    "id": "grok-seat-carry-20260929-1901",
+    "ts": "2026-09-29T19:01:46Z"
   },
   {
     "from": "GROK-BUILD",
@@ -1669,8 +1669,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "grok-issue-17503-receipt-20260928",
-    "ts": "2026-09-28T19:42:08Z"
+    "id": "stripe-nomint-20260929-selfmail",
+    "ts": "2026-09-29T17:09:16Z"
   },
   {
     "from": "VECTOR-RELAY",
