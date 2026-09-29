@@ -1,0 +1,68 @@
+{
+  "schema": "titan-v4-reconciliation-receipt/v1",
+  "recorded_at": "2026-09-29T23:50:04Z",
+  "canonical_main": "3d2a8417adc7944c57c3da36ce07462af60538cf",
+  "canonical_main_tree": "f1d77c633cf8d784b90a32e461b6a101c7045d6f",
+  "prior_carrier": "2a3a2876179c83bc1766ef0045cea241091c1c76",
+  "merge_forward_commit": "ed493d2e4ea266a85cba5d46c6c324d350fed295",
+  "merge_forward_tree": "31569713bbdb6d04b099d710e48fa6fc971ba01e",
+  "authority_blobs": {
+    "canonical": "00142be0ff2314dcb23068c8133b34d290661923",
+    "integration": "4e3207af1332266852530ec8494db8969edc1115",
+    "composition": "32dc1e6963702f7e013cd609053d52c434e42158"
+  },
+  "main_drift_from_prior_fence": {
+    "prior": "dd8769d869f6e529d433a48c293db947daebe6b4",
+    "ahead": 5,
+    "behind": 0,
+    "kaggriculture_paths": 0
+  },
+  "fresh_open_census": {
+    "v4": 0,
+    "v31": 0,
+    "v3": 0
+  },
+  "exact_main_pr_workflow_runs": 0,
+  "exact_main_commit_statuses": 0,
+  "newly_custodied": {
+    "pr_13161": {
+      "disposition": "superseded_source_evidence_quarantine_only",
+      "queue_edge": false,
+      "promotion": false
+    },
+    "pr_14704": {
+      "disposition": "mixed_v5_release_authority_quarantine_only",
+      "queue_edge": false,
+      "promotion": false
+    }
+  },
+  "unconsumed_semantic": {
+    "id": "returned-sell-carry",
+    "donor_branch": "titan-v3-returned-sell-carry-20260910",
+    "donor_head": "3f0a71ed8cba4595a91899591489f44dd30dcafa",
+    "donor_main_blob": "351cd09b267ee8869d1d14b0064d204014f95f2e",
+    "donor_test_blob": "6f3aebd5e1d3952de7cd1ac97d8e51947f0e44f8",
+    "donor_vs_current": {
+      "ahead": 2,
+      "behind": 11352,
+      "merge_base": "21011846096daad1dd487df0efedf209303c1cb5"
+    },
+    "current_main_blob": "727c36ee3727db159f5879d4ac9a842a28ca570c",
+    "current_runtime_blob": "72c057552308dbac02dd6165c3049032ddbfa657",
+    "current_causal_seam": "FrozenSelected seller checkpoint is committed before _finish_production applies late returned-action guards; a late guard can remove executable SELL quantity after seller ledger commitment.",
+    "stale_semantic": "historical helper bounds the market prefix with max(0, limit), while current runtime uses the engine-compatible minimum-one prefix max(1, maxMarketOrdersPerTurn).",
+    "related_current_v4_pr": 12818,
+    "related_current_v4_distinction": "RETURNBRIDGE consumes opponent-flow evidence to move an owned future seller tranche; it does not generically reconcile authored SELL quantity removed by late finalizers.",
+    "disposition": "current_abi_rederivation_required",
+    "queue_edge": false,
+    "promotion": false,
+    "next_gate": "derive the narrow current-ABI reconciliation with minimum-one prefix semantics; add focused seller-state/returned-action causality tests and exact-engine/current-prefix validation; only then seek normal composition/admission."
+  },
+  "actions": {
+    "canonical_or_runtime_mutation": false,
+    "stale_head_merge": false,
+    "force_ref": false,
+    "sibling_v4_root": false,
+    "hold_or_negative_revival": false
+  }
+}
