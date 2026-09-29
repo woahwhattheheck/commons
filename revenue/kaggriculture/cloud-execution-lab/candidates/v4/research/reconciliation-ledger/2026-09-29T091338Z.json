@@ -1,0 +1,10 @@
+{
+  "schema": "titan-v4-salvage-reconciliation/v1",
+  "main": "14b0272dea7bebbb2cd54857c70cac91e8733c8c",
+  "carrier": "16ad743a396d893f7dc9d68f65b6186cdd006534",
+  "topology": "+134/-0",
+  "merge_base": "14b0272dea7bebbb2cd54857c70cac91e8733c8c",
+  "diff_scope": "candidates/v4/research/**",
+  "open_v4_v31_v3": [0,0,0],
+  "new_queue_edges": 0
+}
