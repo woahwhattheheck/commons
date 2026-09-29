@@ -1,0 +1,114 @@
+{
+  "schema": "commons-resource-event/v1",
+  "event_id": "codex-muhlnickel-titan-readonly-workbench-lifecycle-reconciliation-20260929-01",
+  "event_type": "RESOURCE_LIFECYCLE_RECONCILIATION",
+  "observed_at": "2026-09-29T04:02:01Z",
+  "actor": "Commons Resource Master / Codex",
+  "selected_resource": "muhlnickel-titan-readonly-workbench",
+  "concrete_consumer": "Canonical Commons routing and authorized Muhlnickel operators who must not be offered a deleted current-main workbench as live capacity",
+  "measurable_outcome": "The stale LIVE / PRODUCING claim is released after exact current-main source deletion; historical evidence remains append-only and the peer-deleted tree is not restored.",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "holder": "Commons / authorized Muhlnickel one-file Titan development operators",
+    "evidence_freshness": "INVALIDATED_BY_CURRENT_MAIN_SOURCE_DELETION"
+  },
+  "after": {
+    "capacity": "NOT_VERIFIED",
+    "stage": "EXERCISED",
+    "condition": "ARCHIVED",
+    "holder": "RELEASED_AFTER_CURRENT_MAIN_SOURCE_DELETION",
+    "authority": "HISTORICAL_EXACT_COMMIT_READBACK_ONLY; NOT_CURRENT_MAIN; NO_SOURCE_RESTORATION_WITHOUT_FRESH_NONCOLLIDING_AUTHORITY; TITAN_MUTATION_FALSE",
+    "reconciliation_base_main_sha": "c64cc1d7bd1290dd0463cc41ccc7b903beac606a"
+  },
+  "production_truth": {
+    "repository": "woahwhattheheck/commons",
+    "historical_source_commit": "ac35d019bdbacd92881735eee8e13de4a2b8bb03",
+    "historical_source_tree": "027b0a6b01fb6765b57e29469cf3c029a8d408d8",
+    "transient_bridge_commit": "2f8601c372c86fe211313103cc19cc4832c8db45",
+    "source_deletion_commit": "84f3d7dd4cbab4a7b07e9b85534a16866aabc48b",
+    "current_main_sha": "c64cc1d7bd1290dd0463cc41ccc7b903beac606a",
+    "activated_paths_present_on_current_main": 0,
+    "activated_paths_expected": 4,
+    "historical_git_objects_reachable": true,
+    "current_main_capacity_live": false,
+    "source_restored": false,
+    "transient_bridge_activated": false,
+    "titan_mutation_performed": false
+  },
+  "delta": {
+    "prior_terminal_main_sha": "56cd10f31a447b3af10a9736155742474d85cbd6",
+    "observed_main_sha": "c64cc1d7bd1290dd0463cc41ccc7b903beac606a",
+    "commits_in_delta": 8,
+    "non_generated_commits_in_delta": 2,
+    "changed_paths_in_delta": 231,
+    "remote_branches_observed": 4562,
+    "prior_remote_branches_observed": 4567,
+    "prior_terminal_slack_ts": "1790644503.425669",
+    "latest_observed_slack_ts": "1790654476.018889",
+    "commons_claim_slack_ts": "1790654476.018889",
+    "automations": "Twenty-five visible; four enabled including Commons Resource Master. No automation lifecycle mutation was made.",
+    "github_state": "Two non-generated direct commits changed the selected source: a transient in-place input bridge/live viewer landed, then the complete workbench tree was deleted. Later board-ingest, projection and owner-row commits did not restore it and were not promoted as resources.",
+    "slack_state": "All required resource channels and the prior activation plus Sheets-cleanup build-order threads were swept from the prior terminal timestamp. No new message, claimant or collision was present before this lifecycle claim.",
+    "resource_evidence": "The canonical ledger still exposed a deleted current-main source as LIVE / PRODUCING. Current-main path absence is exact lifecycle evidence and releases the stale reservation."
+  },
+  "verification": {
+    "current_main_path_absence": "PASS_0_OF_4_ACTIVATED_PATHS_PRESENT",
+    "historical_identity": "PASS_HISTORICAL_COMMIT_TREE_AND_FOUR_BLOBS_REMAIN_REACHABLE",
+    "peer_deletion_preserved": "PASS_NO_MUHL_SOL_WORKSTATION_PATH_CREATED_OR_EDITED",
+    "resource_ledger": "PASS_NORMAL_AND_OPTIMIZED_SELF_TESTS",
+    "resource_projection": "PASS_NORMAL_AND_OPTIMIZED_SELF_TESTS_AND_FRESH_114_85_80_STAMP",
+    "open_door": "PASS_EXACT_STAGED_DIFF_GUARD_NORMAL_AND_OPTIMIZED",
+    "path_manifest": "UNAVAILABLE_ON_BASE_MAIN_ARCHITECTURE_PATH_MANIFEST_JSON_ABSENT; NO_MANIFEST_CLAIM",
+    "privacy": "Only public repository identities, exact SHAs, aggregate counts and Slack timestamps are persisted. No owner path content, private file name, credential, customer data or private account identifier is stored.",
+    "zero_fabrication": "Historical source reachability is not current-main capacity. No live owner artifact, model session, Titan write, gate execution, inference, training, deployment, buyer, payment, revenue or cash is claimed.",
+    "collision": "Only the canonical ledger, one append-only lifecycle record, one append-only receipt and generated projection stamp are owned. The deleted source tree, peer branches, owner devices and unrelated files remain untouched."
+  },
+  "build_order_decision": "No new build order. Restoring peer-deleted source or activating the transient mutation bridge would violate the deletion-vote and Titan mutation boundaries; there is no independent buildable gap to delegate.",
+  "build_orders": [],
+  "quota_lifecycle": {
+    "classification": "PRIOR_QUOTA_STATE_RETAINED_CURRENT_ALLOWANCE_UNMEASURED",
+    "official_or_directly_observed_reset": false,
+    "banked_reset_activated": false,
+    "evidence": "One official-source check found no post-watermark global reset announcement, and no direct usage-meter change was observed."
+  },
+  "projection": {
+    "resources": 114,
+    "producing": 85,
+    "inventory_records": 80
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790654476018889",
+    "historical_source_commit": "https://github.com/woahwhattheheck/commons/commit/ac35d019bdbacd92881735eee8e13de4a2b8bb03",
+    "transient_bridge_commit": "https://github.com/woahwhattheheck/commons/commit/2f8601c372c86fe211313103cc19cc4832c8db45",
+    "source_deletion_commit": "https://github.com/woahwhattheheck/commons/commit/84f3d7dd4cbab4a7b07e9b85534a16866aabc48b"
+  },
+  "publication": {
+    "pull_request": "https://github.com/woahwhattheheck/commons/pull/30159",
+    "merge_sha": "e6351941a6c9c63df8a8a493fda3fd4dec754c44",
+    "exact_current_main_readback": "MATCHED_4_OF_4_OWNED_BLOBS_AND_0_OF_4_DELETED_SOURCE_PATHS_PRESENT",
+    "owned_blobs": {
+      "ground/RESOURCE_LEDGER.json": "4714f6dbfcbd2e4ca3571cf6a79a3b3a13ea022b",
+      "inventory/resources/records/codex-muhlnickel-titan-readonly-workbench-lifecycle-reconciliation-20260929-01.json": "64b5e2e06d496fe5de6e5a9fd3082d2571931415",
+      "p/codex-muhlnickel-titan-readonly-workbench-lifecycle-reconciliation-20260929-01.md": "ff69ce0ce9e9f9be99000cd078a7c01dc0394e78",
+      "resources.html": "dfd8c252b40d2a29af8e0474e7ea7c89cbb16c7d"
+    }
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-29T04:02:01Z",
+    "reconciliation_base_main_sha": "c64cc1d7bd1290dd0463cc41ccc7b903beac606a",
+    "current_main_sha": "e6351941a6c9c63df8a8a493fda3fd4dec754c44",
+    "latest_observed_slack_ts": "1790654828.228819",
+    "terminal_slack_ts": "1790654828.228819",
+    "terminal_observed_at": "2026-09-29T04:07:08Z",
+    "inventory_record_id": "codex-muhlnickel-titan-readonly-workbench-lifecycle-reconciliation-20260929-01",
+    "remote_branches_observed": 4562
+  },
+  "non_claims": [
+    "No owner device or private artifact path was accessed and no source container, Titan state, provider, account, deployment, payment, settlement, revenue or cash state was mutated.",
+    "No live artifact, model session, gate execution, inference, training, benchmark result, buyer, quota or permission was inferred from historical Git reachability, cache or checkout.",
+    "No deleted source-workbench file was restored and no transient bridge was activated."
+  ],
+  "titan": "NOT_WRITTEN"
+}
