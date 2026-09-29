@@ -1,0 +1,64 @@
+{
+  "schema": "titan-v4-salvage-custody-v1",
+  "source_pr": 11691,
+  "audit_pr": 11730,
+  "final_documentation_head": "9087b3779bea8da5e7d7502d776a0d9781fec24b",
+  "measured_implementation_head": "01108a7cfa366e71214640885d3b076f9a2b997c",
+  "audit_head": "845efe47b3730212352a21d99801437b3a757490",
+  "disposition": "NO_SIGNAL_UNREACHABLE_CERTIFICATE_NEGATIVE_APPLICABILITY_EVIDENCE_ONLY",
+  "queue_edge": false,
+  "promotion": false,
+  "revive_or_remint": false,
+  "evidence": {
+    "measured_run": {
+      "id": 34403285293,
+      "artifact_id": 10124482458,
+      "digest": "sha256:5be2a442eb8efb64229c06582eb08a8375898f0b4b7d863f976810d5ef03bffd",
+      "cells": "8/8 complete",
+      "candidate_decisions": 5752,
+      "changed_traces": 0,
+      "score_deltas": "all zero"
+    },
+    "activation_audit": {
+      "id": 34404848633,
+      "artifact_id": 10125379354,
+      "digest": "sha256:62d6dcf6db90594ed49a832d910374d163ae54c0113e4b60b51430f7e2687f2b",
+      "paired_cells": 64,
+      "games": 128,
+      "candidate_decisions": 46016,
+      "certificate_evaluations": 28129,
+      "eligible_certificates": 0,
+      "changed_traces": 0,
+      "score_deltas": "all zero"
+    }
+  },
+  "final_head_blobs": {
+    ".github/workflows/titan-v3-receding-reserve-release.yml": "7b6b75665d3059b590a45a14f5741fe9fe6cdfee",
+    "p/sol-level-titan-v3-receding-reserve-release-20260909-01.md": "292a2e864940d7f949d7d61d0a23983b5332f427",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-receding-reserve-release/README.md": "deb239c1b62f122dbd99c6d45e5f88713ebeabf4",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-receding-reserve-release/bootstrap.py": "6d7e5e88cdbdb4a41d766f4b8d0d12fa328e7303",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-receding-reserve-release/candidate.py": "a78c27de048351f4e95737fc84437adcc6a13083",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-receding-reserve-release/compare_panel.py": "3bbbe08d54c8764b0862a66c76315f6bbff1c467",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-receding-reserve-release/control.py": "fe4b9d47bf914ee985a9dcba45891185ab1c63f7",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-receding-reserve-release/reserve_release.py": "244d576035976c82090ec50d16faba074a9d4b55",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-receding-reserve-release/strict_gate.py": "cb96358056162ade27f4e244858af04dfea9a647",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-receding-reserve-release/test_compare_panel.py": "50db4a1da537850ebf4ead236bccb2130d28ab53",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-receding-reserve-release/test_reserve_release.py": "79d530585f79d805c6e45b7348ed8720b87561e4",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-receding-reserve-release/test_strict_gate.py": "b087826977abb9819df00a9c0d826e92828e22a9"
+  },
+  "measured_head_overrides": {
+    ".github/workflows/titan-v3-receding-reserve-release.yml": "c9ff912d3128e7f8c5560545a4cd09a718a94103",
+    "p/sol-level-titan-v3-receding-reserve-release-20260909-01.md": "0a95c9421f7b7d696b5d1f008ada4de1a3208288",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-receding-reserve-release/README.md": "28561b04c065a2746e1dacc184b0d2ffca591037",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-receding-reserve-release/reserve_release.py": "77d57ed508410a9d8fba4ba76eacf666e5b0286a",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-receding-reserve-release/test_reserve_release.py": "1451e3c4b6c941a41c07f95213cfa3324ff07030"
+  },
+  "audit_head_blobs": {
+    ".github/workflows/titan-v3-reserve-activation-audit.yml": "c56498075a903b712f4c0a5da7cdf8b7d5313f8d",
+    "p/sol-bulwark-titan-v3-reserve-activation-audit-20260909-01.md": "d4d3ad7ba2ec0b19473ef166aa3cae50c30b143c",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-receding-reserve-release/instrumented_candidate.py": "0203a7edd905824be703dd85f30e0d892f8a6e4e",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-receding-reserve-release/summarize_activation.py": "677a1bf5c27ba83c0f7aa564592bc81e5e9a04c9",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-receding-reserve-release/test_activation_audit.py": "0b468605f0fd712f4af209335976bec08d1d83d6"
+  },
+  "note": "Exact donor Git blobs are reattached below research quarantine; workflows are renamed .disabled. Historical V3 implementation is not an active V4 component."
+}
