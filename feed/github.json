@@ -1,8 +1,8 @@
 {
   "counts": {
-    "open_issues": 8089,
+    "open_issues": 8070,
     "open_pull_requests": 1,
-    "runs_in_progress": 4,
+    "runs_in_progress": 2,
     "runs_queued": 70
   },
   "counts_source": "graphql",
@@ -39,8 +39,47 @@
   },
   "pulls_listed": 1,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 17.5,
+  "queue_depth_per_runner": 35.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "resource-master/uiowa-rfq18649-workshare-watermark-20260928-01",
+      "closed_at": "2026-09-28T22:10:19Z",
+      "head_sha": "66f19a16fd0034d370bfd8e84c56c5ac5ddb84fb",
+      "merge_commit_sha": "12d5b0655a2617ea0824016c49b6e5e66e1c7ee4",
+      "merged_at": "2026-09-28T22:10:19Z",
+      "number": 30139,
+      "state": "MERGED",
+      "title": "Pin Iowa workshare terminal watermark",
+      "updated_at": "2026-09-28T22:11:36Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "resource-master/uiowa-rfq18649-workshare-readback-20260928-01",
+      "closed_at": "2026-09-28T22:08:32Z",
+      "head_sha": "f04351e72257a510c16a0ab5a31641863ae7f399",
+      "merge_commit_sha": "b093bc36261b0a7ada8b157a36944d12027bdc78",
+      "merged_at": "2026-09-28T22:08:32Z",
+      "number": 30138,
+      "state": "MERGED",
+      "title": "Pin Iowa workshare activation readback",
+      "updated_at": "2026-09-28T22:09:18Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "resource-master/uiowa-rfq18649-workshare-activation-20260928-01",
+      "closed_at": "2026-09-28T22:06:35Z",
+      "head_sha": "059bae0c5dd5a2bde58e36ab071bfff679d9e279",
+      "merge_commit_sha": "d3eb3332779cccc787c8cb3e714197734ac73a33",
+      "merged_at": "2026-09-28T22:06:35Z",
+      "number": 30137,
+      "state": "MERGED",
+      "title": "Activate Iowa RFQ 18649 technical workshare carrier",
+      "updated_at": "2026-09-28T22:06:45Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -196,49 +235,10 @@
       "state": "MERGED",
       "title": "Advance LocalDeviceAgent model-transfer resource",
       "updated_at": "2026-09-27T22:15:43Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "codex/resource-master-jev-checkpoint-readback-20260927-01",
-      "closed_at": "2026-09-27T19:18:35Z",
-      "head_sha": "52f80bff5d3ff0ee27a7c4a26db58e0ca78a2a0c",
-      "merge_commit_sha": "c68c93bcaffa6079bd8b61fe523ae816db90842d",
-      "merged_at": "2026-09-27T19:18:35Z",
-      "number": 30123,
-      "state": "MERGED",
-      "title": "Pin paid-shipping activation readback",
-      "updated_at": "2026-09-27T19:18:55Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "codex/resource-master-jev-checkpoint-advancement-20260927-01",
-      "closed_at": "2026-09-27T19:16:20Z",
-      "head_sha": "deeeba37fa2b2b9fc86b88840a7864779a47790c",
-      "merge_commit_sha": "2321dc9c8a4b391d9a54e535e3292d60fe3feca2",
-      "merged_at": "2026-09-27T19:16:20Z",
-      "number": 30122,
-      "state": "MERGED",
-      "title": "Advance paid-shipping immutable checkpoint resource",
-      "updated_at": "2026-09-27T19:17:28Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "fix-command-center-contract-counts-20260926",
-      "closed_at": "2026-09-27T19:14:16Z",
-      "head_sha": "43ac53157dc45ce540515c7a72ca99adfbe6097e",
-      "merge_commit_sha": null,
-      "merged_at": null,
-      "number": 30096,
-      "state": "CLOSED",
-      "title": "Align command-center contracts with 19 tools and core GitHub scopes",
-      "updated_at": "2026-09-27T19:14:16Z"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-28T19:42:31Z",
+  "unchanged_since": "2026-09-28T23:58:59Z",
   "undatable_pulls": []
 }

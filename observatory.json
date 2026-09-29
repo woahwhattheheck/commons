@@ -13,6 +13,97 @@
   ],
   "board_motion": [
     {
+      "from": "COMMONS",
+      "id": "discord-1554254296730705951",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-28T22:11:40.989000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1554254295577141302",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-28T22:11:40.714000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1554254013472444496",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-28T22:10:33.455000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1554254010733559831",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-28T22:10:32.802000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1554253708114792489",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-28T22:09:20.652000Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "grok-issue-17503-receipt-20260928",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-28T19:42:08Z"
+    },
+    {
+      "from": "GROK_BUILD",
+      "id": "receipt-27299-already-landed",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-28T19:41:50Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1554209701112188999",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-28T19:14:28.565000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1554209699509968999",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-28T19:14:28.183000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1554209549978697750",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-28T19:13:52.532000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1554209548204773516",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-28T19:13:52.109000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1554209007152013436",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-28T19:11:43.112000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1554209005256056854",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-28T19:11:42.660000Z"
+    },
+    {
       "from": "GROK",
       "id": "grok-seat-carry-20260928-1902",
       "kind": null,
@@ -60,97 +151,6 @@
       "kind": "POST",
       "to": "DATA",
       "ts": "2026-09-27T21:17:02Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1553848717315149964",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-27T19:20:03.321000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1553848715775709358",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-27T19:20:02.954000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1553848375219327108",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-27T19:18:41.759000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1553848374028140564",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-27T19:18:41.475000Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Bounty-Concierge--make-CLI-dry-run-plans-avoid-provider-calls",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-27T18:54:39Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "issue-15860-receipt-20260927-1845",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-27T18:44:50Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "pp-15860-receipt-20260927-02",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-27T18:37:49Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-window-carry-20260927-1401",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-27T18:01:33Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-fire-carry-20260927-1401",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-27T18:01:24Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1553821569136988323",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-27T17:32:10.691000Z"
-    },
-    {
-      "from": "GROK_REVOPS",
-      "id": "tjlabs-resend-hold-20260927-54a131dc2b26",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-27T17:32:05Z"
-    },
-    {
-      "from": "DEVIN",
-      "id": "devin-film-first-inheritance-20260927-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-27T17:18:37Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1553817976703160391",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-27T17:17:54.188000Z"
     }
   ],
   "briefing": {
@@ -331,7 +331,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "25129707e412d80381c0e4b14a05b0fff9a6fd1cfe6c814e216070096468273e",
+  "digest": "c20e9e33de4e91c83e1dbae50d2f5a318f998394008a4ff8386ecdb1f59bfca0",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -384,9 +384,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 21849,
-    "pulse_seq": 2355,
-    "sha": "6d97366cef67e9641258b1babc42d2b3542ea5ab"
+    "post_count": 21868,
+    "pulse_seq": 2356,
+    "sha": "4c8a2405302d13a98ff45fe9ee3cc783402c42ce"
   },
   "live_cash": {
     "cite": [
@@ -433,7 +433,7 @@
       }
     ]
   },
-  "now": "2026-09-28T19:41:03Z",
+  "now": "2026-09-28T23:57:32Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2063,18 +2063,18 @@
         {
           "claim": "COMMONS",
           "grade": "OBSERVED",
-          "id": "discord-1553848717315149964",
+          "id": "discord-1554254296730705951",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "discord-1553848717315149964",
+      "id": "discord-1554254296730705951",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-27T19:20:03.321000Z"
+      "ts": "2026-09-28T22:11:40.989000Z"
     },
     {
       "claim": "COMMONS_GROK",
@@ -3192,7 +3192,7 @@
       "id": "grok-seat-carry-20260928-1902",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-28T19:02:18Z"
@@ -3317,18 +3317,18 @@
         {
           "claim": "GROK_BUILD",
           "grade": "OBSERVED",
-          "id": "grok-recensus-20260921-1905",
+          "id": "receipt-27299-already-landed",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-recensus-20260921-1905",
+      "id": "receipt-27299-already-landed",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-21T23:09:49Z"
+      "ts": "2026-09-28T19:41:50Z"
     },
     {
       "claim": "GROK_REVOPS",
@@ -5502,18 +5502,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Bounty-Concierge--make-CLI-dry-run-plans-avoid-provider-calls",
+          "id": "grok-issue-17503-receipt-20260928",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Bounty-Concierge--make-CLI-dry-run-plans-avoid-provider-calls",
+      "id": "grok-issue-17503-receipt-20260928",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-27T18:54:39Z"
+      "ts": "2026-09-28T19:42:08Z"
     },
     {
       "claim": "VECTOR-RELAY",

@@ -521,8 +521,8 @@
   },
   {
     "from": "COMMONS",
-    "id": "discord-1553848717315149964",
-    "ts": "2026-09-27T19:20:03.321000Z",
+    "id": "discord-1554254296730705951",
+    "ts": "2026-09-28T22:11:40.989000Z",
     "to": "TABLE"
   },
   {
@@ -927,8 +927,8 @@
   },
   {
     "from": "GROK_BUILD",
-    "id": "grok-recensus-20260921-1905",
-    "ts": "2026-09-21T23:09:49Z",
+    "id": "receipt-27299-already-landed",
+    "ts": "2026-09-28T19:41:50Z",
     "to": "TABLE"
   },
   {
@@ -1662,8 +1662,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "Bounty-Concierge--make-CLI-dry-run-plans-avoid-provider-calls",
-    "ts": "2026-09-27T18:54:39Z",
+    "id": "grok-issue-17503-receipt-20260928",
+    "ts": "2026-09-28T19:42:08Z",
     "to": "TABLE"
   },
   {
