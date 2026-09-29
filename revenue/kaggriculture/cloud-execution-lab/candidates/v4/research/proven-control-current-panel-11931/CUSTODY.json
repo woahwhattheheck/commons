@@ -1,0 +1,19 @@
+{
+  "schema":"titan-v4-salvage-custody/v1",
+  "source_pr":11931,
+  "source_state":"closed_unmerged",
+  "source_head":"9cf7399e4dd5049be3157332a3b6d0bc87d025f3",
+  "exact_blobs":{
+    "workflow":"ff6d8be2862d6858195310c77d3cbebf7123f81d",
+    "readme":"3fd8f2158009746a637e4848abe243b6d66646e1",
+    "panel":"5896bbc4c25212b0ca3e9994d164d4b867735661",
+    "chunk0":"cecc1c461048bd922cec31fd046a031b031877c8",
+    "chunk1":"3107dc18805939a9c7f49ee8b20a839a78b53e3a",
+    "test":"9d6855e65589215b6bcc2cc091632890972c7c82"
+  },
+  "run":{"id":34415168191,"conclusion":"failure"},
+  "artifact":{"id":10128934710,"bytes":349,"sha256":"62c75cc7ea8cf089d9315aec5c3a431e73f95206d65010a2e45655a5a62f4237"},
+  "disposition":"quarantine evidence only; panel did not execute",
+  "queue_edge":false,
+  "promotion":false
+}

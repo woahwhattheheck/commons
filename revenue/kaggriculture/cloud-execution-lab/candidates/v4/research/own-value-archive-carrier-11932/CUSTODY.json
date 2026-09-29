@@ -1,0 +1,23 @@
+{
+  "schema":"titan-v4-salvage-custody/v1",
+  "source_pr":11932,
+  "source_state":"closed_unmerged",
+  "source_head":"f5020986a864463485ef1c8a032226ecfe82e983",
+  "source_tree":"2f71bcf043ef2ae65474e40a652fb5bceea791de",
+  "exact_blobs":{
+    "workflow":"a09015243a0b57286aa7249c4269aaa29616ef67",
+    "post":"77aee39eec78d49caf130227c8e1f41e2c8a8802",
+    "readme":"4872d9a05ce9c7ee8750aee602a1cd6edec589db",
+    "receipt":"4aa417257a962e4d23dd98111bd21b24556bff0f",
+    "carrier":"2f5be09c36368732ddf80a84f3a86b36b2ae405e",
+    "guard":"2fbc4b45d2f0f06f8ccef2665d8d740d73c9e3db",
+    "test":"d56ba9d313225da3cdfbaaf214537aeafd57f9fb",
+    "binder":"82f0026fd1924ab3987aaf804eba7cc3f56cd87c"
+  },
+  "run":{"id":34415321715,"conclusion":"success"},
+  "artifact":{"id":10128921431,"bytes":1034897,"sha256":"63c3cdab11452c42fb45b8cebb09cab56c27649239464f0d69beabff746f4b19"},
+  "consumed_by":{"pr":11965,"commit":"cbfee7c673704635eebf8c419769d5a1167ebd03"},
+  "disposition":"green archive-closure tooling custody; consumed by merged successor; no direct V4 semantic edge",
+  "queue_edge":false,
+  "promotion":false
+}
