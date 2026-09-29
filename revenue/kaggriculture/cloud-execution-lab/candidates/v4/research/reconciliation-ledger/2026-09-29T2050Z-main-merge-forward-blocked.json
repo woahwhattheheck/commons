@@ -1,0 +1,44 @@
+{
+  "schema": "titan-v4-reconciliation-receipt/v1",
+  "recorded_at": "2026-09-29T20:50:27Z",
+  "canonical": {
+    "branch": "main",
+    "head": "0f1b89e87c186eb91524f46fbdcc374338debb08",
+    "canonical_blob": "00142be0ff2314dcb23068c8133b34d290661923",
+    "integration_blob": "4e3207af1332266852530ec8494db8969edc1115",
+    "composition_blob": "32dc1e6963702f7e013cd609053d52c434e42158",
+    "recovered_not_yet_composed": []
+  },
+  "carrier": {
+    "branch": "salvage/final-pressure-fertilizer-rebind-20260924-01",
+    "scanned_head": "369208c14da309d3d5b38c4162b7e08176de30cb",
+    "prepared_merge_tree": "e14c35a3ac2917668256996b82e9b89e4af6efc9",
+    "prepared_merge_commit": "bb7b7b582b85b4afa9706d874eae155beb975937"
+  },
+  "main_only_commits": [
+    "d33e7c5b19a94306085a07a0454d8fa79eff9e80",
+    "23763dd8a318f8a66ca7c4bfea2c4e16c02d3729",
+    "2217ae8af1267d15f34135150b00549801495549",
+    "5c614b243cff9869254e56162d81d5c9928faa9a",
+    "7f695c9ce3ab559cad9a51c1be26dbb7e3df2a2a",
+    "0f1b89e87c186eb91524f46fbdcc374338debb08"
+  ],
+  "verified_main_only_kaggriculture_paths": [],
+  "open_pr_census": {
+    "v4": 0,
+    "v31": 0,
+    "v3": 0
+  },
+  "slack": {
+    "newer_titan_work_after_prior_receipt": false,
+    "latest_seen_receipt_time": "2026-09-29 14:59:02 EDT"
+  },
+  "disposition": {
+    "semantic_delta_promoted": false,
+    "new_queue_edge": false,
+    "sibling_v4_root_created": false,
+    "merge_forward_safe_by_path_audit": true,
+    "ref_update": "blocked_before_provider_execution_after_two_attempts",
+    "pr_fallback": "blocked_before_provider_execution_after_two_attempts"
+  }
+}
