@@ -1,0 +1,31 @@
+{
+  "schema": "titan-v4-superseded-donor-custody/v1",
+  "canonical_head": "0f1b89e87c186eb91524f46fbdcc374338debb08",
+  "donors": [
+    {
+      "pr": 14512,
+      "head": "2df6232629cae79b8821bab47638c5245c8a11dc",
+      "disposition": "superseded_duplicate_no_merge",
+      "blobs": [
+        "fe8b141fac0f44be51724a4208c2aebf340f6728",
+        "9652d7c73f4b20e73aa93f42a73b28318a697fbd"
+      ]
+    },
+    {
+      "pr": 13836,
+      "head": "0aae347c663f3af929ad965cd0c35ceeba3a1f3f",
+      "disposition": "superseded_no_merge",
+      "blobs": [
+        "9178c3741e6e136984462ed03a90ff17cbbfc062",
+        "ee3bbec067b344194effb499772d5c74f4e37b24",
+        "77a2beb210957079a9d144c3b8f4b320daf82216",
+        "b4715eff64d5ebcffafc91b05c1248710911e153",
+        "138110befc0ab8198d9f4f4b4b23f708f67a1d5b",
+        "f14e2a17f8d3b45a68793acc9c0f426f8effedde"
+      ]
+    }
+  ],
+  "queue_edge": false,
+  "semantic_promotion": false,
+  "runtime_promotion": false
+}
