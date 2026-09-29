@@ -1,0 +1,32 @@
+{
+  "schema": "titan-v4-salvage-reconciliation/v1",
+  "main": "921b40514f13b3064b21fca04a20a707c5ea8e0a",
+  "carrier_parent": "4e7e8191c960a0e51883ddfa3f8b9d734a2f4625",
+  "topology_before_ledger": "+139/-5",
+  "merge_base": "14b0272dea7bebbb2cd54857c70cac91e8733c8c",
+  "main_drift": {
+    "commits": 5,
+    "kaggriculture_paths": 0,
+    "content_safe_to_merge_forward": true
+  },
+  "authority_blobs": {
+    "CANONICAL": "00142be0ff2314dcb23068c8133b34d290661923",
+    "INTEGRATION": "4e3207af1332266852530ec8494db8969edc1115",
+    "COMPOSITION": "32dc1e6963702f7e013cd609053d52c434e42158"
+  },
+  "open_v4_v31_v3": [
+    0,
+    0,
+    0
+  ],
+  "new_custody": {
+    "source_pr": 11691,
+    "audit_pr": 11730,
+    "path": "research/receding-reserve-release-11691",
+    "custody_blob": "4d85380b58bc49f89cc58d8c0fd3ee4723a446b6",
+    "disposition": "NO_SIGNAL_UNREACHABLE_CERTIFICATE_NEGATIVE_APPLICABILITY_EVIDENCE_ONLY",
+    "queue_edge": false,
+    "promotion": false
+  },
+  "new_queue_edges": 0
+}
