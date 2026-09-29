@@ -1,0 +1,64 @@
+{
+  "schema": "titan-v4-reconciliation/v1",
+  "observed_at_utc": "2026-09-29T18:49:09Z",
+  "canonical_branch": "main",
+  "canonical_main": "921b40514f13b3064b21fca04a20a707c5ea8e0a",
+  "salvage_branch": "salvage/final-pressure-fertilizer-rebind-20260924-01",
+  "salvage_parent": "abeeb3c329735848038dc8c08424b85ff372e8a0",
+  "authority_blobs": {
+    "CANONICAL.json": "00142be0ff2314dcb23068c8133b34d290661923",
+    "INTEGRATION.json": "4e3207af1332266852530ec8494db8969edc1115",
+    "COMPOSITION.json": "32dc1e6963702f7e013cd609053d52c434e42158"
+  },
+  "open_pr_census": {
+    "V4": 0,
+    "V3.1": 0,
+    "V3": 0
+  },
+  "v31_branch_reconciliation": {
+    "riot/v3.1-lanes": {
+      "ahead_of_main": 0,
+      "disposition": "no_unique_commits_no_queue_edge"
+    },
+    "riot/v3.1-lane-a6": {
+      "head": "06cbe819efd49d6d871aec020abcef565c1129d3",
+      "custody": "research/feed-wheat-a6/MANIFEST.json",
+      "disposition": "already_exact_custody_deferred_unique_current_abi_obligation_and_economics_gate"
+    },
+    "riot/v3.1-lane-b5": {
+      "head": "8638d0db7068f38966424c59181875d8b128a72a",
+      "custody": "research/fert-daily-sweep/MANIFEST.json",
+      "disposition": "already_exact_custody_deferred_current_abi_engagement_and_economics_gate"
+    }
+  },
+  "backward_boundary": {
+    "verified_merged_prs": [
+      10009, 10015, 10016, 10018, 10019, 10022, 10023, 10026, 10028,
+      10030, 10031, 10032, 10033, 10036, 10038, 10040, 10043, 10048,
+      10052, 10054, 10055, 10057, 10060, 10061, 10062, 10065, 10066,
+      10070, 10072, 10083, 10085, 10086, 10088, 10090, 10091
+    ],
+    "closed_unmerged_exceptions": {
+      "10039": {
+        "head": "f47864606f9e66c904e518954ef669f78fa56371",
+        "custody": "research/executor-checkpoint-alternate-10039/CUSTODY.json",
+        "successor_prs": [10028, 10034],
+        "disposition": "historical_evidence_only_no_queue_edge"
+      },
+      "10079": {
+        "head": "0c07cf9352dc0a26b1113a55b7d17b404f00bbb2",
+        "custody": "research/slot-preserving-goose-recovery-10079/CUSTODY.json",
+        "successor_prs": [10068],
+        "disposition": "historical_evidence_only_no_queue_edge"
+      }
+    }
+  },
+  "result": {
+    "new_promotion_safe_semantic_delta": false,
+    "new_custody_required": false,
+    "sibling_v4_root_created": false,
+    "runtime_or_default_changed": false,
+    "canonical_or_integration_changed": false,
+    "kaggle_state_changed": false
+  }
+}
