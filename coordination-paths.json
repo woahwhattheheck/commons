@@ -1,8 +1,7 @@
 {
  "note": "paths each open pull request changes since its merge-base (first 40; drift --pr N prints all)",
- "observed_at": "2026-09-29T01:12:43Z",
+ "observed_at": "2026-09-29T07:27:19Z",
  "prs": [
-  {"number":30151,"path_count":4,"paths":["ground/RESOURCE_LEDGER.json","inventory/resources/records/codex-muhlnickel-titan-readonly-workbench-resource-activation-20260928-01.json","p/codex-muhlnickel-titan-readonly-workbench-resource-activation-20260928-01.md","resources.html"]},
   {"number":30091,"path_count":2,"paths":["integrations/shared_equipment/provider_io.py","test_shared_equipment_newcomer_road.py"]}
  ],
  "schema": "commons-coordination-paths/v1"
