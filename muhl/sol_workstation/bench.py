@@ -68,6 +68,7 @@ def load_project(args):
     config = Path(args.project).resolve()
     project = json.loads(config.read_text(encoding='utf-8'))
     roots = dict(desktop=str(Path.home() / 'Desktop'),
+                 workstation=str(config.parent),
                  llm='C:/llm',
                  models='C:/llm/models',
                  research=str(config.parent.parent / 'research' / '2026-09-27-muhlnickel-study'))
@@ -185,6 +186,19 @@ def annotate(row, spec, bits=False):
     row['address_names'] = {k: spec['symbols'].get(row[k]) for k in ('a', 'b', 'out')}
     row['self_feedback'] = row['out'] in (row['a'], row['b'])
     row['addresses_within_file'] = all(0 <= row[k] < spec['size'] for k in ('a', 'b', 'out'))
+    row['output_record_target'] = None
+    for t in spec['tables']:
+        relative = row['out'] - t['offset']
+        if 0 <= relative < t['length']:
+            index, byte = divmod(relative, 25)
+            field = 'opcode' if byte == 0 else 'a' if byte < 9 else 'b' if byte < 17 else 'out'
+            field_byte = byte if byte == 0 else byte-1 if byte < 9 else byte-9 if byte < 17 else byte-17
+            row['output_record_target'] = dict(table=t['name'], index=index,
+                                               record_offset=t['offset'] + index*25,
+                                               field=field, byte_in_field=field_byte)
+            if row['address_names']['out'] is None:
+                row['address_names']['out'] = f'{t["name"]} record {index}.{field}[byte {field_byte}]'
+            break
     if bits:
         raw = GATE.pack(row['opcode'], row['a'], row['b'], row['out'])
         row['raw_bits'] = ' '.join(f'{b:08b}' for b in raw)
@@ -423,7 +437,7 @@ document.getElementById('source').textContent=`Read ${d.observed_at} from ${d.pa
 document.getElementById('details').textContent=JSON.stringify({status:d.status,interpretation:d.details,tables:d.tables},null,2);
 for(const t of d.tables){const o=document.createElement('option');o.value=t.name;o.textContent=t.name;region.append(o)}
 for(const s of d.signals){const el=document.createElement('button');el.className='signal';const label=document.createElement('strong');label.textContent=s.name;const sub=document.createElement('small');sub.textContent=`byte ${s.offset} · ${s.length} bytes · ${s.role}`;const v=document.createElement('code');v.textContent=s.hex;el.append(label,sub,v);el.onclick=()=>{q.value=s.name;region.value='';render()};document.getElementById('signals').append(el)}
-function matches(r,text){if(!text)return true;const m=/^(in|out):\s*(0x[0-9a-f]+|\d+)$/i.exec(text);if(m){const n=Number(m[2]);return m[1].toLowerCase()==='out'?r.out===n:r.a===n||r.b===n}if(/^(0x[0-9a-f]+|\d+)$/i.test(text)){const n=Number(text);return [r.a,r.b,r.out,r.record_offset].includes(n)}return [r.table,r.operation,...Object.values(r.address_names)].join(' ').toLowerCase().includes(text.toLowerCase())}
+function matches(r,text){if(!text)return true;const m=/^(in|out):\s*(0x[0-9a-f]+|\d+)$/i.exec(text);if(m){const n=Number(m[2]);return m[1].toLowerCase()==='out'?r.out===n:r.a===n||r.b===n}if(/^(0x[0-9a-f]+|\d+)$/i.test(text)){const n=Number(text);return [r.a,r.b,r.out].includes(n)||(r.record_offset<=n&&n<r.record_offset+25)}return [r.table,r.operation,...Object.values(r.address_names)].join(' ').toLowerCase().includes(text.toLowerCase())}
 function render(){const text=q.value.trim();const found=d.records.filter(r=>(!region.value||r.table===region.value)&&matches(r,text));document.getElementById('count').textContent=`${found.length.toLocaleString()} matching records`;const body=document.getElementById('rows');body.replaceChildren();for(const r of found.slice(0,300)){const tr=document.createElement('tr');for(const value of [`${r.table} / ${r.index}`,r.record_offset,r.operation+(r.self_feedback?' ↺':'')]){const td=document.createElement('td');td.textContent=value;tr.append(td)}for(const key of ['a','b','out']){const td=document.createElement('td');td.className='address';td.textContent=String(r[key]);if(r.address_names[key]){const label=document.createElement('small');label.textContent=' '+r.address_names[key];td.append(label)}td.onclick=()=>{q.value=String(r[key]);region.value='';render()};tr.append(td)}body.append(tr)}}
 q.oninput=render;region.onchange=render;document.getElementById('clear').onclick=()=>{q.value='';region.value='';render()};render();
 </script></html>'''

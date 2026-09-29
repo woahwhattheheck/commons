@@ -257,6 +257,121 @@
       "large_file_support": "Emits a full gate list/blob in host memory and may create an output file; not a large-file reader or streaming runtime.",
       "artifact_outputs": "On --write, raw AUTOFAB0.mno gate records in sibling directory. Otherwise console text only.",
       "source_read": "complete static source read; current execution is recorded separately"
+    },
+    {
+      "id": "muhl_live_backend",
+      "path": "{desktop}\\MUHLNICKEL_APP\\live_viewer\\muhl_live_backend.py",
+      "category": "read-only live byte surface, tile atlas and host-write journal observer",
+      "cli": "python muhl_live_backend.py [--port 7881] [--fanout 4096] [--chunk-mb 8] [--path PATH] [--registry PATH] [--journal-glob GLOB] [--no-baseline] [--no-sweep] [--sweep --sweep-hz HZ]",
+      "callable_signatures": [
+        "Geometry(filesize, fanout)",
+        "Regions(path)",
+        "DirectoryNotifier(directory)",
+        "JournalWatcher(pattern)",
+        "Surface(path, registry_path, fanout, chunk_bytes, journal_glob=..., sweep_hz=..., sweep_enabled=False, baseline_enabled=True)",
+        "Surface.read_window(offset,length)",
+        "Surface.level0_tiles()",
+        "Surface.drill(level,parent)",
+        "Surface.byte_window(offset,length)",
+        "Surface.status()",
+        "Surface.set_rate(requested)",
+        "main()"
+      ],
+      "modes": [],
+      "read_write_roles": "Opens titan.gguf `rb` and mmap.ACCESS_READ, registry `r`, journals `rb`; backend source never writes binary/registry/journal. `--no-baseline` prevents the startup full-file reduction pass. It still mmap maps the binary, starts a Windows ReadDirectoryChangesW watcher and JournalWatcher, and the journal glob is periodically re-enumerated on notification/watchdog; first sight gets file sizes and sets cursors to EOF, existing history is skipped. On new appended journal rows, it reads only appended journal bytes (8 MiB/file/wakeup cap) and targeted binary ranges (4 MiB/apply/wakeup cap).",
+      "large_file_support": "Read-only mmap over current file plus fixed-size chunk buffer. At default fanout4096, tile_count about4096 for this file; two XOR signature planes are 2*4096*4096 bytes ≈32 MiB, plus 8 MiB chunk buffer and bounded arrays/caches. `--no-baseline` avoids full-file startup read but still maps file and allocates those arrays. Default mode does one whole-file baseline pass at startup (historically estimated ~868 s for 93.7GB); repeating sweep is opt-in `--sweep`.",
+      "artifact_outputs": "HTTP JSON/SSE only. No output files are written by backend source.",
+      "source_read": "complete static source read; current execution is recorded separately"
+    },
+    {
+      "id": "muhl_interpret",
+      "path": "{desktop}\\MUHLNICKEL_APP\\live_viewer\\muhl_interpret.py",
+      "category": "bounded registry/spec-grounded static interpretation engine",
+      "cli": "python muhl_interpret.py OFFSET LENGTH [metrics-json] | --layout | --selfcheck",
+      "callable_signatures": [
+        "gguf_layout(path=None)",
+        "registry(path=None)",
+        "registry_hits(off,end)",
+        "registry_points(off,end)",
+        "sample(off,length,path=None)",
+        "intake_header(path=None)",
+        "interpret(off,length,metrics=None)",
+        "overhead()",
+        "interpret_range_cli(off,length,metrics=None)",
+        "selfcheck()"
+      ],
+      "modes": [],
+      "read_write_roles": "Opens binary `rb` and registry `r` only; outputs JSON interpretation records. No API exists from the live_viewer HTML to call this Python engine; the page's panel is separate local JavaScript aggregation.",
+      "large_file_support": "Does not stream the whole file. Range sample max is 65,536 bytes; stride check capped at 64 records; marker sample max 65,536 bytes. It also parses GGUF header/tensor table and reads a fixed 24-byte global intake header. Registry is loaded wholly and cached. Header read counter ceiling is 32 MiB, though parser reads through declared metadata/tensors table rather than enforcing a hard stop.",
+      "artifact_outputs": "Structured interpretation record list/JSON to stdout; `overhead()` reports host-side IO/RSS counters.",
+      "source_read": "complete static source read; current execution is recorded separately"
+    },
+    {
+      "id": "live_viewer",
+      "path": "{desktop}\\MUHLNICKEL_APP\\live_viewer\\live_viewer.html",
+      "category": "browser UI entrypoint for the 7881 live byte/tile backend",
+      "cli": "Serve/open live_viewer.html with optional query parameters; `?api=http://127.0.0.1:PORT` overrides backend, `?stream=off` disables SSE in favor of polling.",
+      "callable_signatures": [
+        "api(path,opts)",
+        "probe()",
+        "loadTiles(reset)",
+        "cycle(pushedStatus)",
+        "inspectTile(index,evidenceRow)",
+        "zoomIn()",
+        "zoomOut()",
+        "jumpTo(offset)",
+        "interpretation()",
+        "renderInterp()"
+      ],
+      "modes": [],
+      "read_write_roles": "Browser GETs status/tiles/bytes/regions and subscribes to SSE; POSTs `/api/observe_rate` only when Apply is clicked. It can download exported evidence JSON client-side and stores theme in browser localStorage. No binary/registry writes. On page load, `probe()` immediately requests status/tiles and opens SSE.",
+      "large_file_support": "Uses backend pyramid drill and bounded 256-byte-ish selected tile byte request. Keeps up to 600 history observations and 320 rain rows in page memory.",
+      "artifact_outputs": "Rendered UI; Export evidence JSON triggers browser download. No server-side output unless the user explicitly applies observation rate, which changes server rate only.",
+      "source_read": "complete static source read; current execution is recorded separately"
+    },
+    {
+      "id": "bitserve",
+      "path": "{desktop}\\MUHLNICKEL_APP\\live_viewer\\bitserve.py",
+      "category": "bulk read-only byte range server for all_bits.html, with measurement-report sidecar endpoint",
+      "cli": "python bitserve.py [--port 7883] [--file PATH]",
+      "callable_signatures": [
+        "ReadOnlyFile(path)",
+        "ReadOnlyFile.read(off,length)",
+        "main()"
+      ],
+      "modes": [],
+      "read_write_roles": "Source file opened `rb` and mmap.ACCESS_READ, fallback thread-local seek/read. GET data endpoints are read-only. POST `/report` writes `all_bits_measured.json` beside script and stores report in memory; the all_bits page posts that endpoint every second. Thus running bitserve plus that page enables sidecar persistence.",
+      "large_file_support": "mmap read-only with range reads capped at64 MiB. /overview reads one 128KiB row per output row; output pixels are literal sampled bits selected across file. It can serve bounded range windows from large files.",
+      "artifact_outputs": "HTTP range bytes and static web files; POST /report writes/overwrites all_bits_measured.json.",
+      "source_read": "complete static source read; current execution is recorded separately"
+    },
+    {
+      "id": "all_bits",
+      "path": "{desktop}\\MUHLNICKEL_APP\\live_viewer\\all_bits.html",
+      "category": "literal-bit WebGL2 visualizer using bitserve plus 7881 journal stream",
+      "cli": "Served at bitserve `/all_bits.html`; no CLI.",
+      "callable_signatures": [
+        "fetchBytes(off,len)",
+        "uploadChunk(slot,byteOffsetInLayer,bytes)",
+        "loadLayer(fileLayer)",
+        "loadOverview(w,h)",
+        "verifyPixels(n)",
+        "boot()"
+      ],
+      "modes": [],
+      "read_write_roles": "GETs `/info`, `/bytes`, `/overview` from 7883, and `/api/stream` plus `/api/bytes` verification samples from 7881. POSTs `snap` every second to bitserve `/report` (sidecar write). Does not write binary or registry.",
+      "large_file_support": "GPU texture ring of up to 256 layers, each 8192×8192 R8UI =64MiB; default asks 16 layers (1GiB). Each layer loads in 8MiB HTTP chunks with two layer jobs in flight. Whole-file overview requests selected sampled bits across the full file; the manual sweep rotates resident chunks through GPU. It is a visual sample at current zoom except overview mode.",
+      "artifact_outputs": "WebGL display and measurement report POST sidecar. No exported downloadable artifact other than bitserve report.",
+      "source_read": "complete static source read; current execution is recorded separately"
+    },
+    {
+      "id": "native_input_bridge",
+      "path": "{workstation}/input_bridge.py",
+      "category": "In-place variable input and readback",
+      "cli": "python -B input_bridge.py --file FILE --profile PROFILE --journal JOURNAL --port 7882",
+      "read_write_roles": "Reads named published inputs and writes only requested input bytes in place. Journals before-images and completed readback; no gate evaluation, inference, training, or token loop.",
+      "artifact_outputs": "Append-only input journal and HTTP operation receipts",
+      "source_read": "Source implemented and exercised against an actual isolated v4 specimen"
     }
   ]
 }

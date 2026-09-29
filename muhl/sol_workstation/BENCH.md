@@ -4,6 +4,10 @@ This workbench is for **Muhlnickel's weightless, one-file speaking Titan**, sepa
 
 `bench.py` needs only Python's standard library. Run it from this directory or use its absolute path. `PROJECT.json` identifies the project and names existing artifacts. It resolves the current owner's Desktop automatically; the research path is relative to this workstation. `--root desktop=...`, `--root research=...`, and an artifact command's `--file ...` select another existing installation or specimen without copying it.
 
+The [existing live viewer](LIVE_VIEWER.md) complements the saved snapshots with current bounded byte/registry reads. Its documented no-baseline launch avoids a whole-file startup read.
+
+The [in-place input bridge](INPUT_BRIDGE.md) supplies variable data and charge masks to published inputs, with before-images and replay receipts. It is a separate write instrument; `bench.py` itself remains read-only.
+
 ## First operations
 
 ```powershell
@@ -22,6 +26,8 @@ python -B bench.py html titan-v4 --out C:/path/to/new-run/bench.html
 The visual bench is one standalone HTML file. Open it locally, filter by a signal, address, operation, or record table, and click an input/output address to follow its readers and writers. `in:8548720` and `out:8548720` select consumers and producers explicitly. It contains the inspected records and byte windows as a dated snapshot; reload the underlying file by running the command again. The HTML table shows the first 300 matches and reports the full match count, so narrow a query to inspect every matching record.
 
 The `bytes` command shows literal bits and hex values. `records` reads fixed physical rows without evaluation. `trace` follows addresses up or downstream and retains cycles with a finite hop boundary. `joins` reports cross-table connections and every destination with multiple writers; self-editing can deliberately target stored records, so the output is a wiring inventory rather than an automatic defect verdict.
+
+For a destination inside a record table, the row names the affected record, opcode/address field, and byte within that field. The visual address search also includes the record containing that byte. This makes a self-fabrication write inspectable alongside ordinary state-wire connections.
 
 ## Observe a native operation
 

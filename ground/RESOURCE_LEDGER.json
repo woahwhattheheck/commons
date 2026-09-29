@@ -25,6 +25,7 @@
   "priority_queue": [],
   "production_write": false,
   "record_sources": [
+    "inventory/resources/records/codex-muhlnickel-titan-readonly-workbench-resource-activation-20260928-01.json",
     "inventory/resources/records/codex-uiowa-rfq18649-paid-technical-workshare-resource-activation-20260928-01.json",
     "inventory/resources/records/codex-commons-operation-command-center-provider-fidelity-advancement-20260928-01.json",
     "inventory/resources/records/codex-slack-native-revision-projection-resource-activation-20260926-01.json",
@@ -2664,6 +2665,28 @@
       "last_receipt": "resource-master-freelancer-40727247-react-erp-road-activation-20260928-01",
       "last_used_at": "2026-09-28T01:11:10Z",
       "stale_after": "next project-status, buyer-scope, proposal-count, platform-fee, account-readiness, bid, provider-receipt, endpoint-shape, customer-surface, source-blob, authority or owner-policy change",
+      "priority": 100
+    },
+    {
+      "name": "muhlnickel-titan-readonly-workbench",
+      "kind": "READ_ONLY_STATIC_TITAN_ARTIFACT_INSPECTION_WORKBENCH",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / authorized Muhlnickel one-file Titan development operators",
+      "authority": "SHARED_ALL_CARRIERS_PUBLIC_CURRENT_MAIN_READ_RUN_AND_ADAPT; EXACT_SOURCE_COMMIT_AC35D019BDBACD92881735EEE8E13DE4A2B8BB03_TREE_027B0A6B01FB6765B57E29469CF3C029A8D408D8_AND_FOUR_PINNED_BLOBS_REQUIRED; CALLER_SUPPLIED_ARTIFACT_COPIES_ONLY; SOURCE_CONTAINERS_READ_ONLY; OUTPUTS_CREATE_EXCLUSIVE; STATIC_BYTE_RECORD_WIRING_AND_CAPTURE_INSPECTION_ONLY; LIVE_OWNER_FILES_FALSE; TITAN_MUTATION_FALSE; HOST_GATE_EXECUTION_FALSE; INFERENCE_FALSE; TRAINING_FALSE; RUNTIME_TOKEN_LOOP_FALSE; DEVICE_ACTION_FALSE; DEPLOYMENT_FALSE; PAYMENT_FALSE; REVENUE_FALSE; CASH_FALSE",
+      "consumer": "Authorized Muhlnickel one-file Titan development operators who need byte-exact static inspection, comparison and capture of supplied v4, AUTOFAB0, READER1 and VISIBLE6 artifact copies without evaluating gates or mutating source containers.",
+      "value": "A standard-library CLI inventories artifact and tool paths and performs bounded status, byte, physical-record, join, HTML, trace, capture and comparison work while opening source containers read-only and refusing to overwrite prior output receipts.",
+      "next_action": "An authorized operator may supply explicit local roots or artifact copies, run the documented static inspection commands, retain create-exclusive JSON receipts and return exact hashes. Actual owner-path presence and every Titan runtime, gate, training, inference, deployment or device action remain separate evidence-bound work.",
+      "source": "muhl/sol_workstation; direct signed current-main source commit ac35d019bdbacd92881735eee8e13de4a2b8bb03; source tree 027b0a6b01fb6765b57e29469cf3c029a8d408d8; Resource Master Slack claim 1790643830.199359",
+      "evidence_ts": "2026-09-29T01:03:50Z",
+      "auth_surface": "Public current-main Python standard-library CLI plus caller-supplied artifact paths. Help, missing-path status and tool inventory require no login, credential, owner filesystem, network, provider session or repeated approval. Named catalog paths are declarations until a caller supplies and observes them.",
+      "exact_safe_probe": "Current main edc78932ed2d6ef375d6839ac0badf3d2b3a5367 retained source tree 027b0a6b01fb6765b57e29469cf3c029a8d408d8 and blobs BENCH 276b4f06382b5fee544609a71194a7e262288487, PROJECT f7620c89b8a532ef74fdbdb0102a2b1a4ad3938a, TOOLS e8efce9c6fed18e3a5ec2d6ed8b5dec74f037d7b and bench.py d14849fad283b80b121c156544f6229f3259f71d. Ten focused contract probes passed normally and optimized: compilation, help, four-artifact missing-path status, 12-tool inventory, create-exclusive output, repeat-write exit 2 and unchanged output digest e340ca4ca5875ce103ccf7a24087147d844d164ca02452bd82967e664bf8b4bd.",
+      "rate_plan_boundary": "The workbench is offline standard-library compute and consumes no paid model or provider quota. Source presence, catalog entries, a clean missing-path result or static receipt does not establish live owner files, a model session, gate execution, inference, training, benchmark performance, deployment, buyer acceptance, payment, revenue or cash.",
+      "assigned_backlog": "Available to the existing Muhlnickel one-file speaking-Titan development lane for static inspection only. Mutating tool catalog entries are inventory references and are not executed by this activation. No Kaggriculture crossover, Titan mutation, test-only, verifier-only or owner-device lane is created.",
+      "last_receipt": "codex-muhlnickel-titan-readonly-workbench-resource-activation-20260928-01",
+      "last_used_at": "2026-09-29T01:03:50Z",
+      "stale_after": "next workbench, project profile, tool catalog, source-tree, source-blob, artifact-format, output-custody, authority or Titan-mutation-policy change",
       "priority": 100
     }
   ],
