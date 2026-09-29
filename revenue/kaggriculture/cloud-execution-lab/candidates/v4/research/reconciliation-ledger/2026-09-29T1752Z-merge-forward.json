@@ -1,0 +1,26 @@
+{
+  "schema": "titan-v4-reconciliation-receipt/v1",
+  "authority_main": "921b40514f13b3064b21fca04a20a707c5ea8e0a",
+  "carrier_branch": "salvage/final-pressure-fertilizer-rebind-20260924-01",
+  "carrier_before": "5c7552df924036512b9a30ee71bf251ee75a6a54",
+  "merge_forward_commit": "6a940f394d28f984becfc5377a403cd5ffdba4c8",
+  "merge_forward_tree": "30ad0135189a54ed674746bb8e5d8b426f89a908",
+  "preserved_research_tree": "fc17aa216759525c8a3fe916edf51886d99c5f4a",
+  "authority_blobs": {
+    "canonical": "00142be0ff2314dcb23068c8133b34d290661923",
+    "integration": "4e3207af1332266852530ec8494db8969edc1115",
+    "composition": "32dc1e6963702f7e013cd609053d52c434e42158"
+  },
+  "topology_after_merge": {
+    "ahead": 142,
+    "behind": 0,
+    "merge_base": "921b40514f13b3064b21fca04a20a707c5ea8e0a",
+    "carrier_only_scope": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/**"
+  },
+  "open_pr_census": {
+    "v4": 0,
+    "v31": 0,
+    "v3": 0
+  },
+  "disposition": "No new promotion-safe semantic delta found in this sweep. Older surfaced V3 residues reconcile to existing custody, consumed successors, or terminal superseded/negative dispositions; no sibling V4 root created."
+}
