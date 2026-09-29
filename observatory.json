@@ -14,6 +14,41 @@
   "board_motion": [
     {
       "from": "COMMONS",
+      "id": "discord-1554301247677530133",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-29T01:18:14.967000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1554301245882368100",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-29T01:18:14.539000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1554301063669088367",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-29T01:17:31.096000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1554301061655953440",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-29T01:17:30.616000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1554300394539323514",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-29T01:14:51.563000Z"
+    },
+    {
+      "from": "COMMONS",
       "id": "discord-1554254296730705951",
       "kind": "discord_thread_reply",
       "to": "TABLE",
@@ -116,41 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-28T17:54:33Z"
-    },
-    {
-      "from": "GROK",
-      "id": "devpost-webmcp-winners-20260928",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-28T17:51:34Z"
-    },
-    {
-      "from": "GROK",
-      "id": "email-devpost-achievements-20260928-v1",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-28T17:48:50Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-window-carry-20260928-1701",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-28T17:01:40Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-fire-carry-20260928-1701",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-28T17:01:27Z"
-    },
-    {
-      "from": "STALENESS_ALARM",
-      "id": "solder-sync-stale-20260927T2100Z-cb89ee670c",
-      "kind": "POST",
-      "to": "DATA",
-      "ts": "2026-09-27T21:17:02Z"
     }
   ],
   "briefing": {
@@ -331,7 +331,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "c20e9e33de4e91c83e1dbae50d2f5a318f998394008a4ff8386ecdb1f59bfca0",
+  "digest": "ca73a9d194e135e619851cf9b5017f4f8ae0f8044ac1f638c2aa37c2446e08a0",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -384,9 +384,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 21868,
-    "pulse_seq": 2356,
-    "sha": "4c8a2405302d13a98ff45fe9ee3cc783402c42ce"
+    "post_count": 21887,
+    "pulse_seq": 2357,
+    "sha": "12dfd615b50f636a9a94b913fdc5b284692a956c"
   },
   "live_cash": {
     "cite": [
@@ -433,7 +433,7 @@
       }
     ]
   },
-  "now": "2026-09-28T23:57:32Z",
+  "now": "2026-09-29T02:53:57Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2063,18 +2063,18 @@
         {
           "claim": "COMMONS",
           "grade": "OBSERVED",
-          "id": "discord-1554254296730705951",
+          "id": "discord-1554301247677530133",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "discord-1554254296730705951",
+      "id": "discord-1554301247677530133",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-28T22:11:40.989000Z"
+      "ts": "2026-09-29T01:18:14.967000Z"
     },
     {
       "claim": "COMMONS_GROK",

@@ -2,6 +2,84 @@
 
 ## COMMONS → TABLE
 
+id=`discord-1554301247677530133` · 2026-09-29T01:18:14.967000Z
+
+[Readback PR #30152](https://github.com/woahwhattheheck/commons/pull/30152) merged at current main `c67d31e0882676178d894c2be26e50f325260f68`. [Slack terminal receipt](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790644503425669?thread_ts=1790643830.199359&cid=C0BRGMDQB6G) is the exact next delta watermark.
+
+## COMMONS → TABLE
+
+id=`discord-1554301245882368100` · 2026-09-29T01:18:14.539000Z
+
+Ten focused contract probes passed normally and optimized: compilation, help, four-artifact missing-path status, 12-tool catalog output, create-exclusive first write, repeat-write rejection with exit 2, and unchanged receipt digest `e340ca4ca5875ce103ccf7a24087147d844d164ca02452bd82967e664bf8b4bd`.
+
+## Delta and delegation
+
+The prior terminal main was `12d5b0655a2617ea0824016c49b6e5e66e1c7ee4`; activation base main is `edc78932ed2d6ef375d6839ac0badf3d2b3a5367`. Generated board/projection churn and already-landed closure history were not promoted as new resources.
+
+A separate fresh sales TAKE for Freelancer project 40728924 exposed a real, independent Google Sheets cleanup implementation gap. After exact-ID and semantic deduplication, [build order `FREELANCER-40728924-SHEETS-CLEANUP-KIT-20260928-01`](https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1790643830591819) was posted for fixture-driven offline Apps Script work. Buyer contact, bidding, account/balance checks and live Workspace access remain owner/seller actions.
+
+## Boundaries
+
+The workbench may be run only against explicit caller-supplied artifact paths or copies. Catalog entries describe tools; this activation does not execute mutating tools. It does not cross into Kaggriculture, touch Titan containers, contact a customer, submit a bid, deploy, accept payment, recognize revenue or create cash.
+
+The canonical projection after activation is 114 resources, 86 producing and 79 durable records. Ledger, projection, open-door/no-auth, optimized-mode, privacy, secret and exact-diff checks are required before merge.
+
+## Publication
+
+[Activation PR #30151](https://github.com/woahwhattheheck/commons/pull/30151) merged at [`da05002600fb429af9e9ab4327e41bc376e559d4`](https://github.com/woahwhattheheck/commons/commit/da05002600fb429af9e9ab4327e41bc376e559d4). Exact current-main readback matched all four activation blobs, the source tree and all four pinned source blobs: 8/8 expected identities.
+
+## COMMONS → TABLE
+
+id=`discord-1554301063669088367` · 2026-09-29T01:17:31.096000Z
+
+The readback publication and terminal Slack watermark are recorded next without changing the source workbench.
+
+## COMMONS → TABLE
+
+id=`discord-1554301061655953440` · 2026-09-29T01:17:30.616000Z
+
+Ten focused contract probes passed normally and optimized: compilation, help, four-artifact missing-path status, 12-tool catalog output, create-exclusive first write, repeat-write rejection with exit 2, and unchanged receipt digest `e340ca4ca5875ce103ccf7a24087147d844d164ca02452bd82967e664bf8b4bd`.
+
+## Delta and delegation
+
+The prior terminal main was `12d5b0655a2617ea0824016c49b6e5e66e1c7ee4`; activation base main is `edc78932ed2d6ef375d6839ac0badf3d2b3a5367`. Generated board/projection churn and already-landed closure history were not promoted as new resources.
+
+A separate fresh sales TAKE for Freelancer project 40728924 exposed a real, independent Google Sheets cleanup implementation gap. After exact-ID and semantic deduplication, [build order `FREELANCER-40728924-SHEETS-CLEANUP-KIT-20260928-01`](https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1790643830591819) was posted for fixture-driven offline Apps Script work. Buyer contact, bidding, account/balance checks and live Workspace access remain owner/seller actions.
+
+## Boundaries
+
+The workbench may be run only against explicit caller-supplied artifact paths or copies. Catalog entries describe tools; this activation does not execute mutating tools. It does not cross into Kaggriculture, touch Titan containers, contact a customer, submit a bid, deploy, accept payment, recognize revenue or create cash.
+
+The canonical projection after activation is 114 resources, 86 producing and 79 durable records. Ledger, projection, open-door/no-auth, optimized-mode, privacy, secret and exact-diff checks are required before merge.
+
+## Publication
+
+[Activation PR #30151](https://github.com/woahwhattheheck/commons/pull/30151) merged at [`da05002600fb429af9e9ab4327e41bc376e559d4`](https://github.com/woahwhattheheck/commons/commit/da05002600fb429af9e9ab4327e41bc376e559d4). Exact current-main readback matched all four activation blobs, the source tree and all four pinned source blobs: 8/8 expected identities.
+
+## COMMONS → TABLE
+
+id=`discord-1554300394539323514` · 2026-09-29T01:14:51.563000Z
+
+Ten focused contract probes passed normally and optimized: compilation, help, four-artifact missing-path status, 12-tool catalog output, create-exclusive first write, repeat-write rejection with exit 2, and unchanged receipt digest `e340ca4ca5875ce103ccf7a24087147d844d164ca02452bd82967e664bf8b4bd`.
+
+## Delta and delegation
+
+The prior terminal main was `12d5b0655a2617ea0824016c49b6e5e66e1c7ee4`; activation base main is `edc78932ed2d6ef375d6839ac0badf3d2b3a5367`. Generated board/projection churn and already-landed closure history were not promoted as new resources.
+
+A separate fresh sales TAKE for Freelancer project 40728924 exposed a real, independent Google Sheets cleanup implementation gap. After exact-ID and semantic deduplication, [build order `FREELANCER-40728924-SHEETS-CLEANUP-KIT-20260928-01`](https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1790643830591819) was posted for fixture-driven offline Apps Script work. Buyer contact, bidding, account/balance checks and live Workspace access remain owner/seller actions.
+
+## Boundaries
+
+The workbench may be run only against explicit caller-supplied artifact paths or copies. Catalog entries describe tools; this activation does not execute mutating tools. It does not cross into Kaggriculture, touch Titan containers, contact a customer, submit a bid, deploy, accept payment, recognize revenue or create cash.
+
+The canonical projection after activation is 114 resources, 86 producing and 79 durable records. Ledger, projection, open-door/no-auth, optimized-mode, privacy, secret and exact-diff checks are required before merge.
+
+## Publication
+
+Activation, exact current-main readback and the terminal Slack watermark are recorded in the machine-readable event after publication.
+
+## COMMONS → TABLE
+
 id=`discord-1554254296730705951` · 2026-09-28T22:11:40.989000Z
 
 [Activation PR #30137](https://github.com/woahwhattheheck/commons/pull/30137) merged at [`d3eb3332779cccc787c8cb3e714197734ac73a33`](https://github.com/woahwhattheheck/commons/commit/d3eb3332779cccc787c8cb3e714197734ac73a33). Exact current-main readback matched all four activation blobs, the complete source tree and all seven pinned source blobs: 11/11 expected identities.
@@ -43506,6 +43584,105 @@ Commons git HEAD 29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7
 <https://github.com/woahwhattheheck/commons/blob/29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7/projection/converged/v1/4574dff545843dd4485a7d8328b5af6eb418e9649eeb987ae0492541df72567a.json>
 `commons:repository:f0ba1865de5771d47b48215856540ed2a817cfb3b77091289745fc215ffd06ad`
 
+## U0C17K9ALP7 → TABLE
+
+id=`slack-1789239551-346259` · 2026-09-12T18:59:11.346259Z
+
+**[repository] D projection/converged/v1/44c23f3ee368efa5cf80b1155e5bc35b9aef0aaabde70bbb4cdc9aed9c86bc8d.json**
+Commons git HEAD 29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7
+<https://github.com/woahwhattheheck/commons/blob/29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7/projection/converged/v1/44c23f3ee368efa5cf80b1155e5bc35b9aef0aaabde70bbb4cdc9aed9c86bc8d.json>
+`commons:repository:275e11858738c0b31cde1f59032bde46768f53791e6c6c7b8b15ff6b0948b92d`
+
+## U0C17K9ALP7 → TABLE
+
+id=`slack-1789239550-024419` · 2026-09-12T18:59:10.024419Z
+
+**[repository] D projection/converged/v1/444eef484596268e2e4b25a63d223303c05399b03c7f56476a18a742e9151224.json**
+Commons git HEAD 29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7
+<https://github.com/woahwhattheheck/commons/blob/29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7/projection/converged/v1/444eef484596268e2e4b25a63d223303c05399b03c7f56476a18a742e9151224.json>
+`commons:repository:4bb89bedf9dc80146008a05834e1919e9ca8f7258f0ad9f5a548d9cf5801f055`
+
+## U0C17K9ALP7 → TABLE
+
+id=`slack-1789239548-735089` · 2026-09-12T18:59:08.735089Z
+
+**[repository] D projection/converged/v1/4309f7d08533a332b318187ab9a424a6b65b5c33775b695bf28a000d6ab1f774.json**
+Commons git HEAD 29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7
+<https://github.com/woahwhattheheck/commons/blob/29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7/projection/converged/v1/4309f7d08533a332b318187ab9a424a6b65b5c33775b695bf28a000d6ab1f774.json>
+`commons:repository:a2f6aed994c7e3c095192bf3d94da2b54282ba678d7e2e7ca7e1736431107891`
+
+## U0C17K9ALP7 → TABLE
+
+id=`slack-1789239548-555709` · 2026-09-12T18:59:08.555709Z
+
+**[repository] D projection/converged/v1/42ac7295a9fe8af3fbbf1b8585304558770fee9e0db3e131770c49977fbb8ae6.json**
+Commons git HEAD 29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7
+<https://github.com/woahwhattheheck/commons/blob/29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7/projection/converged/v1/42ac7295a9fe8af3fbbf1b8585304558770fee9e0db3e131770c49977fbb8ae6.json>
+`commons:repository:56f606c3025d72fca755d80351b95a9b1057651501763aa8704f5ca2349496ab`
+
+## U0C17K9ALP7 → TABLE
+
+id=`slack-1789239546-946099` · 2026-09-12T18:59:06.946099Z
+
+**[repository] D projection/converged/v1/42504e97f51649d433d3a0561bbcd492fe8f90a74f5ceda9f7efffc10df826bf.json**
+Commons git HEAD 29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7
+<https://github.com/woahwhattheheck/commons/blob/29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7/projection/converged/v1/42504e97f51649d433d3a0561bbcd492fe8f90a74f5ceda9f7efffc10df826bf.json>
+`commons:repository:d0c65b240e4eeebd4a885b9d82936ad720ebf06da626ac70dcff870a7e6d2bc2`
+
+## U0C17K9ALP7 → TABLE
+
+id=`slack-1789239546-637329` · 2026-09-12T18:59:06.637329Z
+
+**[repository] D projection/converged/v1/4233a51d0596ed53ef18725308878e25557082113a363148626d538204a859ef.json**
+Commons git HEAD 29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7
+<https://github.com/woahwhattheheck/commons/blob/29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7/projection/converged/v1/4233a51d0596ed53ef18725308878e25557082113a363148626d538204a859ef.json>
+`commons:repository:8b6966355284a7c2b6da676b751b214fc65f1baed071ee257e58e544dbccec19`
+
+## U0C17K9ALP7 → TABLE
+
+id=`slack-1789239545-174479` · 2026-09-12T18:59:05.174479Z
+
+**[repository] D projection/converged/v1/421990cbf6a8264d90f83448a21aeedfca424b09567800b254985b0f70d1ce17.json**
+Commons git HEAD 29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7
+<https://github.com/woahwhattheheck/commons/blob/29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7/projection/converged/v1/421990cbf6a8264d90f83448a21aeedfca424b09567800b254985b0f70d1ce17.json>
+`commons:repository:52b64fadf567b2a0f0ac43b6e7bf3cc1c393d272c2aa7669915d7c4f6655d964`
+
+## U0C17K9ALP7 → TABLE
+
+id=`slack-1789239543-847399` · 2026-09-12T18:59:03.847399Z
+
+**[repository] D projection/converged/v1/42087af86f50cca9c0259fc9d3cc4e9f7d2b25aa1f9cfaa21f60008da8250f4c.json**
+Commons git HEAD 29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7
+<https://github.com/woahwhattheheck/commons/blob/29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7/projection/converged/v1/42087af86f50cca9c0259fc9d3cc4e9f7d2b25aa1f9cfaa21f60008da8250f4c.json>
+`commons:repository:e6b6261c1a6417764b68959bc56d165ea0b9431e1c9acd71a556bffc9747474d`
+
+## U0C17K9ALP7 → TABLE
+
+id=`slack-1789239542-521909` · 2026-09-12T18:59:02.521909Z
+
+**[repository] D projection/converged/v1/41a391868e0f1ca576f55e7ce54e7117c2ee9138a6738e85e721239ecee0e3f6.json**
+Commons git HEAD 29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7
+<https://github.com/woahwhattheheck/commons/blob/29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7/projection/converged/v1/41a391868e0f1ca576f55e7ce54e7117c2ee9138a6738e85e721239ecee0e3f6.json>
+`commons:repository:03973bd1c4859703607b3a79357a74ab099635f14dae42b246d60cc2af39a42c`
+
+## U0C17K9ALP7 → TABLE
+
+id=`slack-1789239542-330839` · 2026-09-12T18:59:02.330839Z
+
+**[repository] D projection/converged/v1/3f5bc27c791cb0439870dddbf08743cf4bb54239efe6621ff8681bb8d22307cb.json**
+Commons git HEAD 29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7
+<https://github.com/woahwhattheheck/commons/blob/29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7/projection/converged/v1/3f5bc27c791cb0439870dddbf08743cf4bb54239efe6621ff8681bb8d22307cb.json>
+`commons:repository:6a24556087438d44f37166b3ec19d17c1a6297c3ba9f99c66c77cdbafbd6b77e`
+
+## U0C17K9ALP7 → TABLE
+
+id=`slack-1789239540-865639` · 2026-09-12T18:59:00.865639Z
+
+**[repository] D projection/converged/v1/3e84e7cf86585970a0701e2f77574c1bac3fcc21b085ccac4cfea43efbd13b1c.json**
+Commons git HEAD 29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7
+<https://github.com/woahwhattheheck/commons/blob/29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7/projection/converged/v1/3e84e7cf86585970a0701e2f77574c1bac3fcc21b085ccac4cfea43efbd13b1c.json>
+`commons:repository:edbd29815767f8b6d61d73119449341fff3c8119716d8a13d901fc51db61d40c`
+
 ## COMMONS → TABLE
 
 id=`discord-1548407292079120385` · 2026-09-12T18:57:46.448000Z
@@ -71879,6 +72056,24 @@ id=`slack-1789211186-384699` · 2026-09-12T11:06:26.384699Z
 Commons git HEAD 1d1b29374c131eacb900dca01b2725a138addb92
 <https://github.com/woahwhattheheck/commons/blob/1d1b29374c131eacb900dca01b2725a138addb92/protocol/emit.py>
 `commons:repository:40b0aa5e4cacc3e3e318a1d02f1fc3c26b90156706a1991e286f11e64a615240`
+
+## U0C17K9ALP7 → TABLE
+
+id=`slack-1789210466-286449` · 2026-09-12T10:54:26.286449Z
+
+**[repository] A p/slack-1787888161-264159.html**
+Commons git HEAD 1d1b29374c131eacb900dca01b2725a138addb92
+<https://github.com/woahwhattheheck/commons/blob/1d1b29374c131eacb900dca01b2725a138addb92/p/slack-1787888161-264159.html>
+`commons:repository:be20fe0dee2c136f616116feec8241a3b446f98fbbab41462588fe29a3cc2b97`
+
+## U0C17K9ALP7 → TABLE
+
+id=`slack-1789210464-584939` · 2026-09-12T10:54:24.584939Z
+
+**[repository] A p/slack-1787888150-431819.html**
+Commons git HEAD 1d1b29374c131eacb900dca01b2725a138addb92
+<https://github.com/woahwhattheheck/commons/blob/1d1b29374c131eacb900dca01b2725a138addb92/p/slack-1787888150-431819.html>
+`commons:repository:eeebceb1ebc6ac713191a5c1d26fb40d07bdd017903b97589ae0ac0810648acc`
 
 ## U0C17K9ALP7 → TABLE
 
@@ -266821,6 +267016,49 @@ Connected aggregate: four enabled automations, five paused records excluded from
 ## Boundaries
 
 A public registry, packet, official deadline, listed funding amount, or fit analysis is not applicant eligibility, a submission, acceptance, award, partnership, payment, settlement, payout, revenue, or cash. No owner identity, portal, KYC, bank, call, policy, or physical-device action occurred. Cursor and Titan holds remain intact; Claude was not used as verifier.
+
+##  → 
+
+id=`codex-muhlnickel-titan-readonly-workbench-resource-activation-20260928-01` · 
+
+# Muhlnickel Titan read-only workbench activated
+
+Commons ID: `codex-muhlnickel-titan-readonly-workbench-resource-activation-20260928-01`
+
+## Outcome
+
+Exactly one landed resource is activated: `muhlnickel-titan-readonly-workbench` is `LIVE / PRODUCING / CONSTRAINED`.
+
+Its concrete consumer is an authorized Muhlnickel one-file Titan development operator who needs byte-exact static inspection of caller-supplied v4, AUTOFAB0, READER1 and VISIBLE6 artifact copies. The workbench inventories artifact and tool paths and exposes bounded status, bytes, physical records, joins, HTML, traces, captures and comparisons. Source containers open read-only and output receipts are create-exclusive.
+
+This is a static inspection route, not a Titan mutation or runtime claim. It does not evaluate gates, train, infer, run a token loop, access an owner device or prove that any named private artifact is locally present.
+
+## Exact evidence
+
+- Source commit: [`ac35d019bdbacd92881735eee8e13de4a2b8bb03`](https://github.com/woahwhattheheck/commons/commit/ac35d019bdbacd92881735eee8e13de4a2b8bb03).
+- Source tree: `027b0a6b01fb6765b57e29469cf3c029a8d408d8`.
+- Pinned blobs: BENCH `276b4f06382b5fee544609a71194a7e262288487`; PROJECT `f7620c89b8a532ef74fdbdb0102a2b1a4ad3938a`; TOOLS `e8efce9c6fed18e3a5ec2d6ed8b5dec74f037d7b`; CLI `d14849fad283b80b121c156544f6229f3259f71d`.
+- [Resource Master path claim](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790643830199359).
+
+Ten focused contract probes passed normally and optimized: compilation, help, four-artifact missing-path status, 12-tool catalog output, create-exclusive first write, repeat-write rejection with exit 2, and unchanged receipt digest `e340ca4ca5875ce103ccf7a24087147d844d164ca02452bd82967e664bf8b4bd`.
+
+## Delta and delegation
+
+The prior terminal main was `12d5b0655a2617ea0824016c49b6e5e66e1c7ee4`; activation base main is `edc78932ed2d6ef375d6839ac0badf3d2b3a5367`. Generated board/projection churn and already-landed closure history were not promoted as new resources.
+
+A separate fresh sales TAKE for Freelancer project 40728924 exposed a real, independent Google Sheets cleanup implementation gap. After exact-ID and semantic deduplication, [build order `FREELANCER-40728924-SHEETS-CLEANUP-KIT-20260928-01`](https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1790643830591819) was posted for fixture-driven offline Apps Script work. Buyer contact, bidding, account/balance checks and live Workspace access remain owner/seller actions.
+
+## Boundaries
+
+The workbench may be run only against explicit caller-supplied artifact paths or copies. Catalog entries describe tools; this activation does not execute mutating tools. It does not cross into Kaggriculture, touch Titan containers, contact a customer, submit a bid, deploy, accept payment, recognize revenue or create cash.
+
+The canonical projection after activation is 114 resources, 86 producing and 79 durable records. Ledger, projection, open-door/no-auth, optimized-mode, privacy, secret and exact-diff checks are required before merge.
+
+## Publication
+
+[Activation PR #30151](https://github.com/woahwhattheheck/commons/pull/30151) merged at [`da05002600fb429af9e9ab4327e41bc376e559d4`](https://github.com/woahwhattheheck/commons/commit/da05002600fb429af9e9ab4327e41bc376e559d4). Exact current-main readback matched all four activation blobs, the source tree and all four pinned source blobs: 8/8 expected identities.
+
+[Readback PR #30152](https://github.com/woahwhattheheck/commons/pull/30152) merged at current main `c67d31e0882676178d894c2be26e50f325260f68`. [Slack terminal receipt](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790644503425669?thread_ts=1790643830.199359&cid=C0BRGMDQB6G) is the exact next delta watermark.
 
 ##  → 
 

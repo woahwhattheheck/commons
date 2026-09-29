@@ -1,8 +1,8 @@
 {
   "counts": {
-    "open_issues": 8070,
+    "open_issues": 8044,
     "open_pull_requests": 1,
-    "runs_in_progress": 2,
+    "runs_in_progress": 1,
     "runs_queued": 70
   },
   "counts_source": "graphql",
@@ -39,8 +39,47 @@
   },
   "pulls_listed": 1,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 35.0,
+  "queue_depth_per_runner": 70.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "resource-master/muhlnickel-titan-readonly-workbench-watermark-20260928-01",
+      "closed_at": "2026-09-29T01:16:16Z",
+      "head_sha": "61f5df109bc41e74d75c68193182e3499de34105",
+      "merge_commit_sha": "56cd10f31a447b3af10a9736155742474d85cbd6",
+      "merged_at": "2026-09-29T01:16:16Z",
+      "number": 30153,
+      "state": "MERGED",
+      "title": "Persist Muhlnickel workbench terminal watermark",
+      "updated_at": "2026-09-29T01:18:23Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "resource-master/muhlnickel-titan-readonly-workbench-readback-20260928-01",
+      "closed_at": "2026-09-29T01:14:52Z",
+      "head_sha": "bfe526cafa25ce31f568a1bf2050c91293b0004b",
+      "merge_commit_sha": "c67d31e0882676178d894c2be26e50f325260f68",
+      "merged_at": "2026-09-29T01:14:51Z",
+      "number": 30152,
+      "state": "MERGED",
+      "title": "Record Muhlnickel workbench activation readback",
+      "updated_at": "2026-09-29T01:17:03Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "resource-master/muhlnickel-titan-readonly-workbench-activation-20260928-01",
+      "closed_at": "2026-09-29T01:13:09Z",
+      "head_sha": "f712685d6568ae44357f0e6ed0d5e5cc9a5d9063",
+      "merge_commit_sha": "da05002600fb429af9e9ab4327e41bc376e559d4",
+      "merged_at": "2026-09-29T01:13:09Z",
+      "number": 30151,
+      "state": "MERGED",
+      "title": "Activate Muhlnickel Titan read-only workbench",
+      "updated_at": "2026-09-29T01:13:40Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -196,49 +235,10 @@
       "state": "MERGED",
       "title": "Pin Freelancer 40727247 activation readback",
       "updated_at": "2026-09-28T01:20:02Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "resource-master/freelancer-40727247-react-erp-20260928-01",
-      "closed_at": "2026-09-28T01:16:09Z",
-      "head_sha": "15446f0bdf4a8a33d767fccb33f7d201f9aaf704",
-      "merge_commit_sha": "c19778a48755e716a06b3efbe960581c5aad651f",
-      "merged_at": "2026-09-28T01:16:09Z",
-      "number": 30130,
-      "state": "MERGED",
-      "title": "Activate Freelancer 40727247 React ERP buyer road",
-      "updated_at": "2026-09-28T01:18:00Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "codex/resource-master-lda-model-transfer-readback-20260927-01",
-      "closed_at": "2026-09-27T22:14:31Z",
-      "head_sha": "62a3a10756f3f8221e7749498fc751f8d9a2c2aa",
-      "merge_commit_sha": "cb7c881a887367e1965565de052cdeeaae46e0c3",
-      "merged_at": "2026-09-27T22:14:31Z",
-      "number": 30129,
-      "state": "MERGED",
-      "title": "Pin LocalDeviceAgent activation readback",
-      "updated_at": "2026-09-27T22:15:47Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "codex/resource-master-lda-model-transfer-activation-20260927-01",
-      "closed_at": "2026-09-27T22:12:58Z",
-      "head_sha": "d8fc3f49559a5e459d0c175f518676db5ab5afd6",
-      "merge_commit_sha": "67d5ae4b4632bfe8b14bdc3ce7e79c360f52bb08",
-      "merged_at": "2026-09-27T22:12:58Z",
-      "number": 30128,
-      "state": "MERGED",
-      "title": "Advance LocalDeviceAgent model-transfer resource",
-      "updated_at": "2026-09-27T22:15:43Z"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-28T23:58:59Z",
+  "unchanged_since": "2026-09-29T02:55:21Z",
   "undatable_pulls": []
 }
