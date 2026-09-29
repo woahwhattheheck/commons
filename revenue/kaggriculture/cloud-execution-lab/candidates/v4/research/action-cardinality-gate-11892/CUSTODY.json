@@ -1,0 +1,37 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "recorded_on": "2026-09-29",
+  "recorded_against_main": "13cf4ff28b0f5f1121e7e85a7119e44e84af4860",
+  "source_pr": 11892,
+  "source_head": "548aa2c2eb8fdd32285b108b6c15cdbba5bcfa48",
+  "source_tree": "252feef3e015e7740ca27ef97162b5dc8c5fdf5b",
+  "source_state": "closed_unmerged",
+  "exact_blobs": {
+    "BUILD-EVIDENCE.json": "178762b8301a1ad21818c7765a8077d55c936e64",
+    "OBSERVED-107140666.json": "a179bac3f9f622c54b46762a5ca859add3966728",
+    "README.md": "3cd80f43cb3217ce6abfc1e443b193928f1f1dce",
+    "action_cardinality_gate.py": "faa14617397483ccd36045b2ffbb989b6e37e427",
+    "gate_common.py": "4ef02dfd669411be85507bce7c8268a038a9a4f3",
+    "gate_core.py": "a437c7f9be4cb62e5b271680170e368c135d1314",
+    "gate_receipt.py": "163e5b1dafd6a6693e09f712cd43a52e3a1a664f",
+    "run_tests.sh": "d28bf636f89c38af68cacfe1b9c7c846cd70bac8",
+    "test_analyze_replay.py": "a360e4dc225d1f33f1cfdae11344a22de1864633",
+    "test_build_evidence.py": "604ea04d6038023f63585a6a2ce47b7003242a04",
+    "test_observed_receipt.py": "65a7ef228623ee3d9909776458ad5428007f6517",
+    "test_run_gate.py": "670debd90eb44617154d901f922e501061bdd825",
+    "test_support.py": "26fcf16c9c8004964543ce17fe5824b76100972a"
+  },
+  "workflow_runs": {
+    "34411418510": "success",
+    "34411418501": "success",
+    "34411418391": "success",
+    "34411418326": "success",
+    "34411418414": "failure",
+    "34411418439": "failure"
+  },
+  "related_prs": [11806, 11846],
+  "queue_edge": false,
+  "promotion": false,
+  "runtime_activation": false,
+  "disposition": "quarantine_exact_completed_artifacts_mixed_hosted_gate"
+}
