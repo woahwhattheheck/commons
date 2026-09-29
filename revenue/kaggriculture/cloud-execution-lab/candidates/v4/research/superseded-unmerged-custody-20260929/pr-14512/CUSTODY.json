@@ -1,0 +1,22 @@
+{
+  "pr": 14512,
+  "head": "2df6232629cae79b8821bab47638c5245c8a11dc",
+  "disposition": "SUPERSEDED_DUPLICATE_NO_MERGE",
+  "successor": {
+    "pr": 12791,
+    "merge": "c243bc11e961b3e7fb9efa887f439414ffbf9a5e"
+  },
+  "closure_comment": "https://github.com/woahwhattheheck/commons/pull/14512#issuecomment-5673011312",
+  "exact_artifacts": [
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/performance/optimizer-cache-lifetime/CONSTRUCTOR-ROLLBACK-RECOVERY.md",
+      "blob": "fe8b141fac0f44be51724a4208c2aebf340f6728"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/performance/optimizer-cache-lifetime/repair_constructor_rollback.py",
+      "blob": "9652d7c73f4b20e73aa93f42a73b28318a697fbd"
+    }
+  ],
+  "queue_edge": false,
+  "promote": false
+}
