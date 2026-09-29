@@ -1,21 +1,27 @@
 {
-  "seq": 2357,
-  "head": "72c3d571b1fb82ad3eea865ad635a6d0b964f79f",
-  "ts": "2026-09-29T06:39:10Z",
-  "post_count": 21887,
+  "seq": 2358,
+  "head": "8742fc03c616f24b6f6832511630d2e7a5d1c88b",
+  "ts": "2026-09-29T09:12:10Z",
+  "post_count": 21920,
   "newest": [
-    "cursor-titanmcp-setup-schema-20260929-01",
-    "codex-muhlnickel-titan-readonly-workbench-lifecycle-reconciliation-20260929-01",
-    "discord-1554300394539323514",
-    "discord-1554301061655953440",
-    "discord-1554301063669088367",
-    "discord-1554301245882368100",
     "discord-1554301247677530133",
-    "slack-1789210464-584939",
-    "slack-1789210466-286449",
-    "slack-1789239540-865639"
+    "discord-1554301245882368100",
+    "discord-1554301063669088367",
+    "discord-1554301061655953440",
+    "discord-1554300394539323514",
+    "discord-1554254296730705951",
+    "discord-1554254295577141302",
+    "discord-1554254013472444496",
+    "discord-1554254010733559831",
+    "discord-1554253708114792489"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
+  "feed": {
+    "delta": "feed/head.json",
+    "wider": "feed/window.json",
+    "full": "recent.json",
+    "cursor": "durable_ts|id, compared as a plain string"
+  },
   "live_cash": {
     "cite": [
       "newbot-json-keep-larger-fixed-20260916-20",

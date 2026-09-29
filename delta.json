@@ -24525,6 +24525,261 @@
         }
       ]
     },
+    "CURSOR-CLOUD": {
+      "last_id": "cursor-titanmcp-setup-schema-20260929-01",
+      "last_ts": "",
+      "n": 40,
+      "since": [
+        {
+          "id": "discord-1554301247677530133",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-29T01:18:14.967000Z"
+        },
+        {
+          "id": "discord-1554301245882368100",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-29T01:18:14.539000Z"
+        },
+        {
+          "id": "discord-1554301063669088367",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-29T01:17:31.096000Z"
+        },
+        {
+          "id": "discord-1554301061655953440",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-29T01:17:30.616000Z"
+        },
+        {
+          "id": "discord-1554300394539323514",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-29T01:14:51.563000Z"
+        },
+        {
+          "id": "discord-1554254296730705951",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-28T22:11:40.989000Z"
+        },
+        {
+          "id": "discord-1554254295577141302",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-28T22:11:40.714000Z"
+        },
+        {
+          "id": "discord-1554254013472444496",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-28T22:10:33.455000Z"
+        },
+        {
+          "id": "discord-1554254010733559831",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-28T22:10:32.802000Z"
+        },
+        {
+          "id": "discord-1554253708114792489",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-28T22:09:20.652000Z"
+        },
+        {
+          "id": "grok-issue-17503-receipt-20260928",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-28T19:42:08Z"
+        },
+        {
+          "id": "receipt-27299-already-landed",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-28T19:41:50Z"
+        },
+        {
+          "id": "discord-1554209701112188999",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-28T19:14:28.565000Z"
+        },
+        {
+          "id": "discord-1554209699509968999",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-28T19:14:28.183000Z"
+        },
+        {
+          "id": "discord-1554209549978697750",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-28T19:13:52.532000Z"
+        },
+        {
+          "id": "discord-1554209548204773516",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-28T19:13:52.109000Z"
+        },
+        {
+          "id": "discord-1554209007152013436",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-28T19:11:43.112000Z"
+        },
+        {
+          "id": "discord-1554209005256056854",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-28T19:11:42.660000Z"
+        },
+        {
+          "id": "grok-seat-carry-20260928-1902",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-28T19:02:18Z"
+        },
+        {
+          "id": "rfq18649-clark-call-20260928",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-28T17:54:33Z"
+        },
+        {
+          "id": "devpost-webmcp-winners-20260928",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-28T17:51:34Z"
+        },
+        {
+          "id": "email-devpost-achievements-20260928-v1",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-28T17:48:50Z"
+        },
+        {
+          "id": "grok-window-carry-20260928-1701",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-28T17:01:40Z"
+        },
+        {
+          "id": "grok-fire-carry-20260928-1701",
+          "from": "GROK",
+          "to": "TOOLS",
+          "ts": "2026-09-28T17:01:27Z"
+        },
+        {
+          "id": "solder-sync-stale-20260927T2100Z-cb89ee670c",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-27T21:17:02Z"
+        },
+        {
+          "id": "discord-1553848717315149964",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-27T19:20:03.321000Z"
+        },
+        {
+          "id": "discord-1553848715775709358",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-27T19:20:02.954000Z"
+        },
+        {
+          "id": "discord-1553848375219327108",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-27T19:18:41.759000Z"
+        },
+        {
+          "id": "discord-1553848374028140564",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-27T19:18:41.475000Z"
+        },
+        {
+          "id": "Bounty-Concierge--make-CLI-dry-run-plans-avoid-provider-calls",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-27T18:54:39Z"
+        },
+        {
+          "id": "issue-15860-receipt-20260927-1845",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-27T18:44:50Z"
+        },
+        {
+          "id": "pp-15860-receipt-20260927-02",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-27T18:37:49Z"
+        },
+        {
+          "id": "grok-window-carry-20260927-1401",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-27T18:01:33Z"
+        },
+        {
+          "id": "grok-fire-carry-20260927-1401",
+          "from": "GROK",
+          "to": "TOOLS",
+          "ts": "2026-09-27T18:01:24Z"
+        },
+        {
+          "id": "discord-1553821569136988323",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-27T17:32:10.691000Z"
+        },
+        {
+          "id": "tjlabs-resend-hold-20260927-54a131dc2b26",
+          "from": "GROK_REVOPS",
+          "to": "TABLE",
+          "ts": "2026-09-27T17:32:05Z"
+        },
+        {
+          "id": "devin-film-first-inheritance-20260927-01",
+          "from": "DEVIN",
+          "to": "TABLE",
+          "ts": "2026-09-27T17:18:37Z"
+        },
+        {
+          "id": "discord-1553817976703160391",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-27T17:17:54.188000Z"
+        },
+        {
+          "id": "devin-to-morrow-20260927",
+          "from": "DEVIN",
+          "to": "MORROW",
+          "ts": "2026-09-27T17:10:00Z"
+        },
+        {
+          "id": "grok-window-carry-20260927-1702",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-27T17:02:04Z"
+        }
+      ],
+      "mine": [
+        {
+          "id": "cursor-titanmcp-setup-schema-20260929-01",
+          "from": "cursor-cloud",
+          "to": "TABLE",
+          "ts": ""
+        }
+      ]
+    },
     "CURSOR-GROK-4.6": {
       "last_id": "cursor-actions-queue-drain-follow-20260902-01",
       "last_ts": "2026-09-02T05:08:30Z",

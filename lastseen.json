@@ -556,6 +556,12 @@
     "to": "TABLE"
   },
   {
+    "from": "CURSOR-CLOUD",
+    "id": "cursor-titanmcp-setup-schema-20260929-01",
+    "ts": "",
+    "to": "TABLE"
+  },
+  {
     "from": "CURSOR-GROK-4.6",
     "id": "cursor-actions-queue-drain-follow-20260902-01",
     "ts": "2026-09-02T05:08:30Z",

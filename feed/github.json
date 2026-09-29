@@ -1,6 +1,6 @@
 {
   "counts": {
-    "open_issues": 8044,
+    "open_issues": 8014,
     "open_pull_requests": 1,
     "runs_in_progress": 1,
     "runs_queued": 70
@@ -41,6 +41,58 @@
   "pulls_listing": "COMPLETE",
   "queue_depth_per_runner": 70.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "codex/resource-master/titanmcp-setup-schema-readback-20260929-01",
+      "closed_at": "2026-09-29T07:15:49Z",
+      "head_sha": "effe3b301d1fa2026b6bae446bdda8416f7049bf",
+      "merge_commit_sha": "e40738e1dd7df174b9cf0281b9eeea62cb00510d",
+      "merged_at": "2026-09-29T07:15:49Z",
+      "number": 30162,
+      "state": "MERGED",
+      "title": "Pin TitanMCP setup-schema activation readback",
+      "updated_at": "2026-09-29T07:16:44Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "codex/resource-master/titanmcp-setup-schema-20260929-01",
+      "closed_at": "2026-09-29T07:12:41Z",
+      "head_sha": "24058a44a933748197eddf0ed80e86aea5e7ea54",
+      "merge_commit_sha": "666d311ff7ba224d1c571d9a5c3e464949615382",
+      "merged_at": "2026-09-29T07:12:40Z",
+      "number": 30161,
+      "state": "MERGED",
+      "title": "Activate TitanMCP setup-schema resource",
+      "updated_at": "2026-09-29T07:13:13Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "resource-master/muhlnickel-workbench-lifecycle-readback-20260929-01",
+      "closed_at": "2026-09-29T04:08:46Z",
+      "head_sha": "7159c20cbf28dd3fd07346ed4f4dd76b4bc92682",
+      "merge_commit_sha": "6c8e2a58e846f60f63aaafe5a39cce107e990e1f",
+      "merged_at": "2026-09-29T04:08:46Z",
+      "number": 30160,
+      "state": "MERGED",
+      "title": "Pin Muhlnickel workbench lifecycle readback",
+      "updated_at": "2026-09-29T04:09:31Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "resource-master/muhlnickel-workbench-lifecycle-20260929-01",
+      "closed_at": "2026-09-29T04:06:35Z",
+      "head_sha": "72c246f44b0d1417289bfaf7b28d50df37051f59",
+      "merge_commit_sha": "e6351941a6c9c63df8a8a493fda3fd4dec754c44",
+      "merged_at": "2026-09-29T04:06:35Z",
+      "number": 30159,
+      "state": "MERGED",
+      "title": "Reconcile deleted Muhlnickel workbench lifecycle",
+      "updated_at": "2026-09-29T04:06:44Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -183,62 +235,10 @@
       "state": "MERGED",
       "title": "Keep provider admission verbs free-form",
       "updated_at": "2026-09-28T17:08:36Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "fix/malformed-page-retention-fixtures-20260926",
-      "closed_at": "2026-09-28T17:07:40Z",
-      "head_sha": "19634c2cfa45c7e5524eb309875cb22d8dd7d2f0",
-      "merge_commit_sha": "072628fd20a0ee559f6589d8767ae8e2617cebb1",
-      "merged_at": "2026-09-28T17:07:40Z",
-      "number": 30100,
-      "state": "MERGED",
-      "title": "Align pagination fixtures with dict GitHub page rows",
-      "updated_at": "2026-09-28T17:07:53Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "fix/credential-transfer-include-headers-20260926",
-      "closed_at": "2026-09-28T17:07:20Z",
-      "head_sha": "37a743fd879042df86f6bac102e8172f82815bee",
-      "merge_commit_sha": "c04563bb8e3f23ac0e090a9395b9c5b4a967d572",
-      "merged_at": "2026-09-28T17:07:20Z",
-      "number": 30101,
-      "state": "MERGED",
-      "title": "Align credential-transfer tests with gh api --include writes",
-      "updated_at": "2026-09-28T17:07:32Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "resource-master/freelancer-40727247-terminal-pin-20260928-01",
-      "closed_at": "2026-09-28T01:21:22Z",
-      "head_sha": "092ad445f98548fdbdd9db092f0aaf8ecdbc012e",
-      "merge_commit_sha": "24659dd00b4d3e8f25d44a4967c38c802f31607b",
-      "merged_at": "2026-09-28T01:21:22Z",
-      "number": 30132,
-      "state": "MERGED",
-      "title": "Pin Freelancer 40727247 terminal watermark",
-      "updated_at": "2026-09-28T01:23:26Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "resource-master/freelancer-40727247-react-erp-readback-20260928-01",
-      "closed_at": "2026-09-28T01:18:48Z",
-      "head_sha": "6dbd997aef8a791438080eac720bc4fcafe1e636",
-      "merge_commit_sha": "8f77df9d503fed14d626a3ea0c42f3315a2b95b7",
-      "merged_at": "2026-09-28T01:18:48Z",
-      "number": 30131,
-      "state": "MERGED",
-      "title": "Pin Freelancer 40727247 activation readback",
-      "updated_at": "2026-09-28T01:20:02Z"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-29T02:55:21Z",
+  "unchanged_since": "2026-09-29T09:13:37Z",
   "undatable_pulls": []
 }

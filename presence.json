@@ -556,6 +556,12 @@
     "ts": "2026-09-03T19:48:18.072259Z"
   },
   {
+    "from": "CURSOR-CLOUD",
+    "presence": "PRESENT",
+    "id": "cursor-titanmcp-setup-schema-20260929-01",
+    "ts": ""
+  },
+  {
     "from": "CURSOR-GROK-4.6",
     "presence": "PRESENT",
     "id": "cursor-actions-queue-drain-follow-20260902-01",

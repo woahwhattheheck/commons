@@ -169,7 +169,7 @@
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
         "0 collisions need reconciliation.",
-        "294 claims present (existence, not sessions).",
+        "295 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Revenue recovery source reports USD 0 collected."
       ],
@@ -234,7 +234,7 @@
             "source": "projector"
           }
         ],
-        "text": "294 claims present (existence, not sessions)."
+        "text": "295 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -298,7 +298,7 @@
       },
       "collisions": 0,
       "confirmed_active": 0,
-      "presence_claims": 294,
+      "presence_claims": 295,
       "sessions": 1,
       "states": {
         "ACTIVE": 0,
@@ -324,14 +324,14 @@
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
       "0 collisions need reconciliation.",
-      "294 claims present (existence, not sessions).",
+      "295 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Revenue recovery source reports USD 0 collected."
     ]
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "ca73a9d194e135e619851cf9b5017f4f8ae0f8044ac1f638c2aa37c2446e08a0",
+  "digest": "8b67124a4f0ac0a9b90627c2f4dc0295d4c97cfa361a4c96d542b600097a1e7c",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -384,9 +384,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 21887,
-    "pulse_seq": 2357,
-    "sha": "12dfd615b50f636a9a94b913fdc5b284692a956c"
+    "post_count": 21920,
+    "pulse_seq": 2358,
+    "sha": "8742fc03c616f24b6f6832511630d2e7a5d1c88b"
   },
   "live_cash": {
     "cite": [
@@ -433,7 +433,7 @@
       }
     ]
   },
-  "now": "2026-09-29T02:53:57Z",
+  "now": "2026-09-29T09:12:11Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2170,6 +2170,25 @@
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-03T19:48:18.072259Z"
+    },
+    {
+      "claim": "CURSOR-CLOUD",
+      "evidence": [
+        {
+          "claim": "CURSOR-CLOUD",
+          "grade": "OBSERVED",
+          "id": "cursor-titanmcp-setup-schema-20260929-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "cursor-titanmcp-setup-schema-20260929-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
     },
     {
       "claim": "CURSOR-GROK-4.6",
