@@ -32,4 +32,4 @@ No pad runtime, Commons MCP, HTML, workflow, private account, provider, deployme
 
 ## Publication
 
-Publication, hosted workflow observation, exact current-main blob readback and the terminal Slack watermark are appended after merge. The projected ledger is 115 resources, 86 producing and 81 durable records.
+[Activation PR #30161](https://github.com/woahwhattheheck/commons/pull/30161) merged at current main [`666d311ff7ba224d1c571d9a5c3e464949615382`](https://github.com/woahwhattheheck/commons/commit/666d311ff7ba224d1c571d9a5c3e464949615382). Exact current-main readback matched all four activation blobs and all three source blobs. Six hosted pull-request workflows were still in progress and are not claimed green. [Slack terminal receipt](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790665995014499?thread_ts=1790665657.388119&cid=C0BRGMDQB6G) is the exact next delta watermark. The projected ledger is 115 resources, 86 producing and 81 durable records.

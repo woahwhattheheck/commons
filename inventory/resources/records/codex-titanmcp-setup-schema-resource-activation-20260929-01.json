@@ -57,9 +57,9 @@
   "verification": {
     "focused_source": "PASS_13_OF_13_NORMAL_AND_OPTIMIZED",
     "refusal_probe": "PASS_BAKE_RC_2_VERDICT_REFUSED_SENT_0",
-    "resource_ledger": "PENDING_PUBLICATION_VERIFICATION",
-    "resource_projection": "PENDING_PUBLICATION_VERIFICATION",
-    "open_door": "PENDING_PUBLICATION_VERIFICATION",
+    "resource_ledger": "PASS_NORMAL_AND_OPTIMIZED_SELF_TESTS",
+    "resource_projection": "PASS_31_OF_31_NORMAL_AND_OPTIMIZED_AND_FRESH_115_86_81_STAMP",
+    "open_door": "PASS_9_OF_9_PATH_MANIFEST_AND_OPEN_DOOR_NORMAL_AND_OPTIMIZED_PLUS_EXACT_STAGED_DIFF_GUARD",
     "privacy": "Only public repository identities, exact SHAs, aggregate counts and Slack timestamps are persisted. No private pad, credential, customer data, private account identifier or owner file name is stored.",
     "zero_fabrication": "Recorded packets and a source-side live-measure implementation do not establish a reusable live session, current permission, deployment, submission, buyer acceptance, payment, revenue or cash.",
     "collision": "Only the canonical ledger, one append-only record, one append-only receipt and generated projection stamp are owned. Pad runtime, Commons MCP, HTML, workflows, peer branches and unrelated files remain untouched."
@@ -82,18 +82,25 @@
     "source_commit": "https://github.com/woahwhattheheck/commons/commit/72c3d571b1fb82ad3eea865ad635a6d0b964f79f"
   },
   "publication": {
-    "state": "PENDING",
-    "pull_request": null,
-    "merge_sha": null,
-    "exact_current_main_readback": "PENDING"
+    "state": "MERGED_AND_READ_BACK",
+    "pull_request": "https://github.com/woahwhattheheck/commons/pull/30161",
+    "merge_sha": "666d311ff7ba224d1c571d9a5c3e464949615382",
+    "exact_current_main_readback": "MATCHED_4_OF_4_ACTIVATION_BLOBS_AND_3_OF_3_SOURCE_BLOBS",
+    "activation_blobs": {
+      "ground/RESOURCE_LEDGER.json": "a2c5e1499f47bc666db47c769d712f33edfd2909",
+      "inventory/resources/records/codex-titanmcp-setup-schema-resource-activation-20260929-01.json": "b0756abc6f4af053577179e301cda295f2e4c499",
+      "p/codex-titanmcp-setup-schema-resource-activation-20260929-01.md": "5693eb7632bd6d5f7d94181ff638da0336ead259",
+      "resources.html": "df2066148f6d072d98c71dd1e3334b9891ed6450"
+    },
+    "hosted_workflows": "Six pull-request workflows were in progress at observation time; no asynchronous workflow is claimed green."
   },
   "next_watermark": {
     "observed_at": "2026-09-29T07:07:49Z",
     "activation_base_main_sha": "13cf4ff28b0f5f1121e7e85a7119e44e84af4860",
-    "current_main_sha": null,
-    "latest_observed_slack_ts": "1790665657.388119",
-    "terminal_slack_ts": null,
-    "terminal_observed_at": null,
+    "current_main_sha": "666d311ff7ba224d1c571d9a5c3e464949615382",
+    "latest_observed_slack_ts": "1790665995.014499",
+    "terminal_slack_ts": "1790665995.014499",
+    "terminal_observed_at": "2026-09-29T07:13:28Z",
     "inventory_record_id": "codex-titanmcp-setup-schema-resource-activation-20260929-01",
     "remote_branches_observed": 4563
   },
