@@ -1,0 +1,50 @@
+{
+  "schema": "titan-v4-research-custody/v1",
+  "source_pr": 11459,
+  "source_head": "c817c06af6c8d184c04c1d17fe9c1b42fcf1a65a",
+  "source_state": "closed_unmerged",
+  "disposition": "quarantine_evidence_only",
+  "queue_edge": false,
+  "promotion": false,
+  "summary": "All five historical L01 mechanisms are terminalized. LAND was rejected on exact-current own-score economics by #11842. TRANCHE was re-derived at the ledger-owned boundary by #11631/#11666 and rejected in official paired execution via #11694; #11731 found no surviving terminal-window arm. SHEEP and DAY0BUY were negative/invalid. LEANPLANT was not dependency-closed here and its later narrow semantics were handled independently on the V4 line.",
+  "exact_head_runs": [
+    [
+      34396646384,
+      "titan-selected-projection",
+      "success"
+    ],
+    [
+      34396646318,
+      "source-parses",
+      "success"
+    ],
+    [
+      34396646307,
+      "open-door-guard",
+      "failure"
+    ],
+    [
+      34396646428,
+      "muhlnickel-spec-guard",
+      "success"
+    ],
+    [
+      34396646274,
+      "path-manifest",
+      "success"
+    ]
+  ],
+  "receipts": [
+    5158729254,
+    5159029280,
+    5649795024
+  ],
+  "successors": [
+    11631,
+    11666,
+    11694,
+    11731,
+    11842
+  ],
+  "source_blob_manifest": "SOURCE-BLOBS.json"
+}

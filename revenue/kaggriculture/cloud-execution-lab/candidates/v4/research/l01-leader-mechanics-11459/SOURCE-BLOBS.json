@@ -1,0 +1,166 @@
+{
+  "source_pr": 11459,
+  "source_head": "c817c06af6c8d184c04c1d17fe9c1b42fcf1a65a",
+  "artifacts": [
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/POOL.diff",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/RESULTS.md",
+      "sha": "f10635823f0f5b42a92cc79287fdc97a1d511a55"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/SEAMS.md",
+      "sha": "bf9480f7f40c152dfed992fbb58f3978a1a6962c"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/apply_overlay.sh",
+      "sha": "ce40f3291b8e51c3bfc2f11998e2c5d40917950e"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/deltas.py",
+      "sha": "915e9f5edaeefb2dbfe4ae0ebea0fd5699adc67c"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/diffs/l01_flags_day0buy.diff",
+      "sha": "55c94a0bf920c8d52bef9adaed020b9a06c44976"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/diffs/l01_flags_land.diff",
+      "sha": "341a95c657c2887f51b69ddab9679dacef8ffaf9"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/diffs/l01_flags_leanplant.diff",
+      "sha": "61c870c33a3d89146edc1d2b9d1f7447c9f6bd07"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/diffs/l01_flags_sheep.diff",
+      "sha": "6f83f81b8b375ea3551f1e838fb60ecdd5464a03"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/diffs/l01_flags_tranche.diff",
+      "sha": "5303fa05974ce48ca6c6dc4a05e74324aeb55552"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/diffs/l01_mechanics.py.diff",
+      "sha": "e7a2d4486a4875d2834683e1e570f295cf3ac663"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/diffs/main.py.diff",
+      "sha": "23717eb622ca2dbddbf30a1e21175697ba6e531f"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/flags/canonical_wrapped/l01_flags.py",
+      "sha": "580dca6c2e638a401147fbddb18279e3a18c4e17"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/flags/day0buy/l01_flags.py",
+      "sha": "16397fe2b34d4eaf6175cca725e63f5dbeda5a71"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/flags/land/l01_flags.py",
+      "sha": "792ae1d0e6495cc80f4ba5b3bf70f79f2b040087"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/flags/leanplant/l01_flags.py",
+      "sha": "7591bec528fbaac9d52245b137d96054819358a1"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/flags/sheep/l01_flags.py",
+      "sha": "8b89a4904a6fbeaf826025c4b591ff86d61adf0b"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/flags/tranche/l01_flags.py",
+      "sha": "3549bd0c1b450c30b76e8b3b03b4cc7ea5b5f297"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/gauntlet_l01.py",
+      "sha": "ef4089ddd2cf18052bc0c00fad46a41967498314"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/overlay/canonical_main.py",
+      "sha": "b9db6c3ec9c64cb52ade0c26b23edf22710d77c9"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/overlay/l01_mechanics.py",
+      "sha": "dd93cd170cef69fcc3c0767d3eedafdeca7f2616"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/overlay/main.py",
+      "sha": "fdf2e0643ede596a8ebcb428d3acd09bf7cf7adf"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/panels/canonical.GAMES.jsonl",
+      "sha": "54cffb15c70762fb20b791487ea9682fd9a7ee1e"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/panels/canonical.SUMMARY.json",
+      "sha": "ffa5ae1f958d01bba3c438a48d7b06acfd3a361c"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/panels/canonical.TOKENS.txt",
+      "sha": "88496f63f491a09f12d61ce6924ca0bcbddee023"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/panels/day0buy.GAMES.jsonl",
+      "sha": "f4f2d0ff9da64ba7219aacf1787cc09ddc048b2c"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/panels/day0buy.SUMMARY.json",
+      "sha": "79dc76e0a9395b47feb4bb68a605470b043d1a56"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/panels/day0buy.TOKENS.txt",
+      "sha": "a0415af628f61f745d9d6605c4e44ef9280fa874"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/panels/land.GAMES.jsonl",
+      "sha": "694ef44cd53047b15a61d9b351e66b8147d7f11f"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/panels/land.SUMMARY.json",
+      "sha": "5df9318d35b6740a813ebd9e521790207915ef7a"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/panels/land.TOKENS.txt",
+      "sha": "32bb1cf329d3019593a78ac7f02c9aa623ac3b50"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/panels/sheep.GAMES.jsonl",
+      "sha": "47de16a2031e2f659532fe4ca71dfe0490becd80"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/panels/sheep.SUMMARY.json",
+      "sha": "8f60f0acddbc217c8010d6279635dc97a362d3a0"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/panels/sheep.TOKENS.txt",
+      "sha": "003248582b6a000091e1e47e38d84cac95ffc7e9"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/panels/tranche.GAMES.jsonl",
+      "sha": "e126b6ff0183c5783f4d7f910b6b0a553154e1ce"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/panels/tranche.SUMMARY.json",
+      "sha": "be2795ce7e9525600419c4a356f69d064dc6635a"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/panels/tranche.TOKENS.txt",
+      "sha": "68cf7dea7a39dcdadc94ae83feef5e25d59749a6"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/report_tokens.py",
+      "sha": "2c234642f623344edf02a2d6a1d80f09a7d8edfa"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-leader-mechanics/tests/test_l01_mechanisms.py",
+      "sha": "4c8b2ab358d42bb2b3cfa93dbb36a08403cb742d"
+    },
+    {
+      "path": "tools/v25_sims/gauntlet_l01.py",
+      "sha": "ef4089ddd2cf18052bc0c00fad46a41967498314"
+    }
+  ]
+}
