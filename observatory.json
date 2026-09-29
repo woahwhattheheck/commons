@@ -331,7 +331,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "f120e80c81214b72f3ebdce3b49f629ea6de75694b54518751f2cf96dedaa664",
+  "digest": "11bef02ed160b505deddd077be813c93beb4c09c348c5956aa1462838c2d711e",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -384,9 +384,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 22017,
-    "pulse_seq": 2361,
-    "sha": "09a35a04b05d7d10b4be5213d4613fe3150c737f"
+    "post_count": 22049,
+    "pulse_seq": 2362,
+    "sha": "69b3c0197848eaf034b3f748bfd96b16651ec8b8"
   },
   "live_cash": {
     "cite": [
@@ -433,7 +433,7 @@
       }
     ]
   },
-  "now": "2026-09-29T22:25:35Z",
+  "now": "2026-09-29T23:50:36Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -1406,7 +1406,7 @@
       "id": "bryce-grave-lives-20260929-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-29T22:01:09Z"
