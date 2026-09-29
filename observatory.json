@@ -13,6 +13,27 @@
   ],
   "board_motion": [
     {
+      "from": "BRYCE",
+      "id": "bryce-grave-lives-20260929-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-29T22:01:09Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "receipt-17579-already-landed",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-29T20:34:15Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "receipt-27233-slack-1789239985-663129",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-29T20:33:50Z"
+    },
+    {
       "from": "GROK",
       "id": "grok-seat-carry-20260929-1901",
       "kind": null,
@@ -130,27 +151,6 @@
       "kind": "discord_thread_reply",
       "to": "TABLE",
       "ts": "2026-09-28T22:11:40.714000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1554254013472444496",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-28T22:10:33.455000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1554254010733559831",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-28T22:10:32.802000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1554253708114792489",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-28T22:09:20.652000Z"
     }
   ],
   "briefing": {
@@ -331,7 +331,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "ded07c480c6e885611da399bb24d40633b9f5b7043dfe3f422516a391f244370",
+  "digest": "f120e80c81214b72f3ebdce3b49f629ea6de75694b54518751f2cf96dedaa664",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -384,9 +384,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 21984,
-    "pulse_seq": 2360,
-    "sha": "2217ae8af1267d15f34135150b00549801495549"
+    "post_count": 22017,
+    "pulse_seq": 2361,
+    "sha": "09a35a04b05d7d10b4be5213d4613fe3150c737f"
   },
   "live_cash": {
     "cite": [
@@ -433,7 +433,7 @@
       }
     ]
   },
-  "now": "2026-09-29T20:20:31Z",
+  "now": "2026-09-29T22:25:35Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -1398,18 +1398,18 @@
         {
           "claim": "BRYCE",
           "grade": "OBSERVED",
-          "id": "bryce-github-bill-handoff-20260922-01",
+          "id": "bryce-grave-lives-20260929-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "bryce-github-bill-handoff-20260922-01",
+      "id": "bryce-grave-lives-20260929-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-22T22:32:11Z"
+      "ts": "2026-09-29T22:01:09Z"
     },
     {
       "claim": "BRYCESHAKINGMYHEAD",
@@ -5521,18 +5521,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "stripe-nomint-20260929-selfmail",
+          "id": "receipt-17579-already-landed",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "stripe-nomint-20260929-selfmail",
+      "id": "receipt-17579-already-landed",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-29T17:09:16Z"
+      "ts": "2026-09-29T20:34:15Z"
     },
     {
       "claim": "VECTOR-RELAY",

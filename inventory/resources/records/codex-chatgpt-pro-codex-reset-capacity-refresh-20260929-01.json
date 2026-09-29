@@ -1,0 +1,124 @@
+{
+  "schema": "commons-resource-event/v1",
+  "event_id": "codex-chatgpt-pro-codex-reset-capacity-refresh-20260929-01",
+  "event_type": "RESOURCE_ACTIVATION",
+  "observed_at": "2026-09-29T22:02:00Z",
+  "actor": "Commons Resource Master / Codex",
+  "selected_resource": "chatgpt-pro-codex",
+  "concrete_consumer": "Resource Master and connected-app operators handling named cross-system coordination, judgment and merge outcomes",
+  "measurable_outcome": "A newly reset perishable Codex capacity slice is reconciled against an exhaustive current tool and skill census, exercised through Slack, GitHub and Automations reads, bounded by an emergency reserve, and routed only to named GPT-unique producing work.",
+  "before": {
+    "capacity": "LIVE_BUT_CURRENT_ALLOWANCE_UNMEASURED",
+    "stage": "PRODUCING",
+    "condition": "LIVE_WITH_STALE_2026_09_07_EVIDENCE",
+    "holder": "Commons owner / shared GPT carriers",
+    "evidence_freshness": "STALE_AFTER_TOOL_SKILL_AUTOMATION_AND_SUBSCRIPTION_STATE_CHANGE"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "holder": "Commons owner / shared GPT carriers",
+    "authority": "TASK_SCOPED_CONNECTED_APP_COORDINATION_JUDGMENT_AND_MERGE_WORK; EXPLICIT_WRITE_SCOPE_REQUIRED; OWNER_ONLY_ACTIONS_PRESERVED",
+    "activation_base_main_sha": "0f1b89e87c186eb91524f46fbdcc374338debb08"
+  },
+  "production_truth": {
+    "direct_owner_reset_report": true,
+    "reset_reported_at": "2026-09-29",
+    "reset_classification": "NEWLY_LIVE_PERISHABLE_CAPACITY",
+    "exact_allowance_observed": false,
+    "exact_percentage_observed": false,
+    "exact_expiry_observed": false,
+    "banked_reset_observed": false,
+    "purchased_reset_observed": false,
+    "emergency_reserve_required": true,
+    "all_tools_exposed": 487,
+    "connected_app_tools_exposed": 474,
+    "normalized_connected_app_families": 23,
+    "executor_skills_fully_paginated": 136,
+    "visible_automations": 25,
+    "enabled_automations": 4,
+    "exercised_read_surfaces": [
+      "Slack",
+      "GitHub",
+      "Automations"
+    ],
+    "commons_evidence_writes_performed": true,
+    "external_customer_or_provider_write_performed": false,
+    "automation_lifecycle_mutated": false
+  },
+  "delta": {
+    "prior_terminal_main_sha": "e40738e1dd7df174b9cf0281b9eeea62cb00510d",
+    "activation_base_main_sha": "0f1b89e87c186eb91524f46fbdcc374338debb08",
+    "commits_in_delta": 17,
+    "changed_paths_in_delta": 417,
+    "substantive_non_generated_resource_commits": 0,
+    "remote_branches_observed": 4564,
+    "prior_remote_branches_observed": 4563,
+    "remote_branch_set_sha256": "66d6938fd34180975dbf9ae219e7c141960ac5424ef9877f93ed84e54f2679dd",
+    "prior_terminal_slack_ts": "1790665995.014499",
+    "latest_observed_slack_ts": "1790719264.752859",
+    "commons_claim_slack_ts": "1790719264.752859",
+    "github_state": "Current main added generated board/projection updates and four failed Grok action receipts with zero changed outputs. The TitanMCP setup branch is fully absorbed into main. No new deployable resource, buyer, payment or cash receipt was found.",
+    "slack_state": "All required resource channels were swept from the prior terminal timestamp. New messages were duplicate or status-only receipts; no competing claim, new resource, buyer, cash or nonduplicate implementation gap survived reconciliation.",
+    "automation_state": "Twenty-five visible automations and four enabled automations were observed. No lifecycle toggle or new enabled lane was found.",
+    "resource_evidence": "A direct owner report established a fresh Codex reset. The exact current tool and skill census materially supersedes the 2026-09-07 aggregate while connector use proves only the three exercised read surfaces.",
+    "fresh_main_reconciliation": "After the activation base, owner commit 6c810cae55aed4033e752d7e4050177ba79adc5a directly reported that GRAVE's Work-mode cloud session responded. The activation branch merged that fresh main non-force. This is retained as session-liveness evidence only; no second resource activation, capability, identity, permission or authority is inferred."
+  },
+  "verification": {
+    "resource_ledger": "PASS_SELF_TEST_NORMAL_AND_OPTIMIZED_PLUS_INTEGRATED_115_RESOURCES_86_PRODUCING",
+    "resource_projection": "PASS_18_OF_18_NORMAL_AND_OPTIMIZED_PLUS_FRESH_115_86_82_STAMP",
+    "open_door": "PASS_9_OF_9_PATH_MANIFEST_NORMAL_AND_OPTIMIZED_PLUS_STAGED_OPEN_DOOR_GUARD",
+    "privacy": "Only aggregate tool, family, skill and automation counts, public repository identities, exact SHAs and Slack timestamps are persisted. No credential, private account identifier, customer data or private file name is stored.",
+    "zero_fabrication": "A reset report and exposed tool contracts do not establish an exact allowance, remaining percentage, expiry, banked or purchased credit, authorization for every connector, reusable session, deployment, buyer acceptance, payment, revenue or cash.",
+    "collision": "Only the canonical ledger row, one append-only record, one append-only receipt and the generated resource freshness stamp are owned. Grok, Cursor, Claude, Titan, automation, workflow, package and peer paths remain untouched."
+  },
+  "build_order_decision": "No new build order. The new evidence is a capacity lifecycle refresh, not an implementation gap. Grok action shell failures are repeated known behavior with zero outputs and remain inside the preserved dry/no-submit boundary.",
+  "build_orders": [],
+  "quota_lifecycle": {
+    "classification": "DIRECT_OWNER_REPORTED_HARD_RESET_NEWLY_LIVE_PERISHABLE_CAPACITY_EXACT_ALLOWANCE_UNMEASURED",
+    "official_reset_announcement_found_this_wake": false,
+    "direct_reset_report_observed": true,
+    "banked_reset_activated": false,
+    "purchased_reset_bought_or_recommended": false,
+    "routing": "Preserve a small emergency reserve; prioritize named GPT-unique connected-app, coordination, judgment and merge work; delegate commodity execution."
+  },
+  "projection": {
+    "resources": 115,
+    "producing": 86,
+    "inventory_records": 82
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790719264752859",
+    "base_main": "https://github.com/woahwhattheheck/commons/commit/0f1b89e87c186eb91524f46fbdcc374338debb08"
+  },
+  "publication": {
+    "state": "MERGED_AND_READ_BACK",
+    "pull_request": "https://github.com/woahwhattheheck/commons/pull/30165",
+    "merge_sha": "439984ff0e544b4ea820950f898470741bab578a",
+    "exact_current_main_readback": "MATCHED_4_OF_4_ACTIVATION_BLOBS_AT_439984FF0E544B4EA820950F898470741BAB578A",
+    "activation_blobs": {
+      "ground/RESOURCE_LEDGER.json": "a2ec0a3b008bf48476dd253ed7c8fd0165a91d9a",
+      "inventory/resources/records/codex-chatgpt-pro-codex-reset-capacity-refresh-20260929-01.json": "2149fd731f69f57e9b893869f4f70da7387397db",
+      "p/codex-chatgpt-pro-codex-reset-capacity-refresh-20260929-01.md": "63b69e5fea850e072c303d03e5dc01fbb866e86f",
+      "resources.html": "407787316c18bf68cfb65f8229632c308f821371"
+    },
+    "hosted_workflows": "Six pull-request workflows were pending or queued at observation time; no asynchronous workflow is claimed green."
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-29T22:02:00Z",
+    "activation_base_main_sha": "0f1b89e87c186eb91524f46fbdcc374338debb08",
+    "current_main_sha": "439984ff0e544b4ea820950f898470741bab578a",
+    "latest_observed_slack_ts": "1790719759.404269",
+    "terminal_slack_ts": "1790719759.404269",
+    "terminal_observed_at": "2026-09-29T22:09:24Z",
+    "inventory_record_id": "codex-chatgpt-pro-codex-reset-capacity-refresh-20260929-01",
+    "remote_branches_observed": 4564
+  },
+  "non_claims": [
+    "No exact reset quantity, percentage, expiry, banked reset, purchased reset, unlimited use or API credit is claimed.",
+    "No permission, reusable session, deployment, device act, buyer acceptance, settlement, payout, revenue or cash is inferred.",
+    "No source package, workflow, automation, Grok, Cursor, Claude, Titan or peer-owned path was modified."
+  ],
+  "titan": "NOT_WRITTEN"
+}

@@ -25,6 +25,7 @@
   "priority_queue": [],
   "production_write": false,
   "record_sources": [
+    "inventory/resources/records/codex-chatgpt-pro-codex-reset-capacity-refresh-20260929-01.json",
     "inventory/resources/records/codex-titanmcp-setup-schema-resource-activation-20260929-01.json",
     "inventory/resources/records/codex-muhlnickel-titan-readonly-workbench-lifecycle-reconciliation-20260929-01.json",
     "inventory/resources/records/codex-muhlnickel-titan-readonly-workbench-resource-activation-20260928-01.json",
@@ -115,15 +116,15 @@
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1790665657.388119",
+  "slack_ts": "1790719264.752859",
   "snapshot": {
-    "base_main_sha": "13cf4ff28b0f5f1121e7e85a7119e44e84af4860",
-    "observed_at": "2026-09-29T07:07:49Z",
+    "base_main_sha": "0f1b89e87c186eb91524f46fbdcc374338debb08",
+    "observed_at": "2026-09-29T22:02:00Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-titanmcp-setup-schema-resource-activation-20260929-01",
+  "source_id": "codex-chatgpt-pro-codex-reset-capacity-refresh-20260929-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -132,8 +133,9 @@
     "EXERCISED",
     "PRODUCING"
   ],
-  "subject": "MASTER RESOURCE LEDGER — TitanMCP setup-schema activation",
+  "subject": "MASTER RESOURCE LEDGER — ChatGPT/Codex reset capacity refresh",
   "supersedes_source_ids": [
+    "codex-chatgpt-pro-codex-reset-capacity-refresh-20260929-01",
     "codex-titanmcp-setup-schema-resource-activation-20260929-01",
     "codex-uiowa-rfq18649-paid-technical-workshare-resource-activation-20260928-01",
     "codex-commons-operation-command-center-provider-fidelity-advancement-20260928-01",
@@ -1141,25 +1143,26 @@
       "value": "Deterministic 504-group projection over 32,127 tracked blobs: 1,232 extra alias paths and 322,685,228 alias bytes represented as Git content-address pointers without copying or deleting data"
     },
     {
-      "assigned_backlog": "connected capability catalog, AgentMail first inbox, and new delta-driven build orders",
-      "auth_surface": "active ChatGPT Work session and connected apps shared across carriers",
-      "authority": "SHARED_ALL_CARRIERS; CONNECTED_TOOL_AND_PLUGIN_FLEET",
+      "assigned_backlog": "Preserve a small emergency reserve, then route only named GPT-unique connected-app, coordination, judgment and merge outcomes; delegate commodity execution and do not spend quota on usage reporting.",
+      "auth_surface": "The current ChatGPT Work session exposes 474 connected-app tool contracts in 23 normalized families and successfully exercised Slack, GitHub and Automations reads this wake. Exposure of every other contract is presence only, not proof of account authorization, live session, remaining quota or write permission.",
+      "authority": "SHARED_ALL_CARRIERS; TASK_SCOPED_CONNECTED_APP_COORDINATION_JUDGMENT_AND_MERGE_WORK; EXPLICIT_WRITE_SCOPE_REQUIRED; OWNER_ONLY_IDENTITY_PAYMENT_POLICY_CALL_SIGNING_SUBMISSION_AND_PHYSICAL_DEVICE_ACTIONS; NO_PERMISSION_INFERENCE_FROM_TOOL_EXPOSURE",
       "capacity": "LIVE",
-      "condition": "LIVE",
+      "condition": "CONSTRAINED",
       "consumer": "Resource Master, Queue Manager, builders, researchers, reviewers, and connected-app operators",
-      "evidence_ts": "2026-09-07T04:08:47Z",
-      "exact_safe_probe": "442 tools; 427 connected-app tools across 20 families; 118 fully paginated skills; Netlify and Railway app surfaces are now callable; 14 automations / 7 enabled.",
+      "evidence_ts": "2026-09-29T22:02:00Z",
+      "exact_safe_probe": "A direct owner report on 2026-09-29 stated that Codex usage had reset. The current runtime exposed 487 total tools, including 474 connected-app tools across 23 normalized families, and 136 executor-backed skills after exhaustive pagination. Twenty-five automations were visible and four were enabled. Slack, GitHub and Automations reads succeeded. Exact allowance, percentage, expiry and post-reset remaining capacity were not observed.",
       "holder": "Commons owner / shared GPT carriers",
       "kind": "SUBSCRIPTION",
-      "last_receipt": "codex-github-repository-portfolio-privacy-refresh-20260907-01",
-      "last_used_at": "2026-09-07T04:08:47Z",
+      "last_receipt": "codex-chatgpt-pro-codex-reset-capacity-refresh-20260929-01",
+      "last_used_at": "2026-09-29T22:02:00Z",
       "name": "chatgpt-pro-codex",
-      "next_action": "Route concrete work to the connected app or skill that can finish it; consume dormant services only against a named outcome.",
-      "rate_plan_boundary": "Exposure is not consumption and subscription price is not cash produced; use quota for a concrete consumer.",
-      "source": "current ChatGPT Work tool/skill/plugin/automation census; owner declaration",
+      "next_action": "Keep the emergency reserve intact and consume reset capacity only for a named producing outcome that needs connected-app access, cross-system coordination, judgment or merge authority; remeasure before claiming any exact remaining allowance.",
+      "rate_plan_boundary": "The direct reset report is lifecycle evidence for newly available perishable capacity, not a usage-meter reading. It does not establish an exact allowance, percentage, expiry, banked reset, purchased reset, unlimited use, API credit, permission, reusable session, deployment, buyer acceptance, payment, revenue or cash.",
+      "source": "direct owner Codex-reset report on 2026-09-29; current ChatGPT Work runtime tool registry; fully paginated executor skill registry; successful Slack, GitHub and Automations delta reads",
       "stage": "PRODUCING",
       "stale_after": "next tool, skill, plugin, automation, or subscription-state change",
-      "value": "Owner-declared USD 200 ChatGPT subscription with 442 callable tools, 427 app tools in 20 families, 118 installed skills, and 14 automations."
+      "value": "A freshly reset, perishable Codex capacity window plus an expanded exposed surface of 474 connected-app tools in 23 families and 136 skills can support named cross-system coordination and merge outcomes while commodity work is delegated.",
+      "priority": 100
     },
     {
       "name": "gpt-6-astra-codex-carrier",
