@@ -1,9 +1,11 @@
 {
-  "seq": 2358,
-  "head": "8742fc03c616f24b6f6832511630d2e7a5d1c88b",
-  "ts": "2026-09-29T09:12:10Z",
-  "post_count": 21920,
+  "seq": 2359,
+  "head": "b9fc6ae46c5eb167c11d7634c83a7f643a3749c0",
+  "ts": "2026-09-29T15:49:45Z",
+  "post_count": 21950,
   "newest": [
+    "discord-1554391734090334258",
+    "discord-1554390980550205441",
     "discord-1554301247677530133",
     "discord-1554301245882368100",
     "discord-1554301063669088367",
@@ -11,9 +13,7 @@
     "discord-1554300394539323514",
     "discord-1554254296730705951",
     "discord-1554254295577141302",
-    "discord-1554254013472444496",
-    "discord-1554254010733559831",
-    "discord-1554253708114792489"
+    "discord-1554254013472444496"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

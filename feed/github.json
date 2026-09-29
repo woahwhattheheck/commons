@@ -1,6 +1,6 @@
 {
   "counts": {
-    "open_issues": 8014,
+    "open_issues": 7990,
     "open_pull_requests": 1,
     "runs_in_progress": 1,
     "runs_queued": 70
@@ -239,6 +239,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-29T09:13:37Z",
+  "unchanged_since": "2026-09-29T15:51:11Z",
   "undatable_pulls": []
 }

@@ -14,6 +14,20 @@
   "board_motion": [
     {
       "from": "COMMONS",
+      "id": "discord-1554391734090334258",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-29T07:17:48.609000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1554390980550205441",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-29T07:14:48.951000Z"
+    },
+    {
+      "from": "COMMONS",
       "id": "discord-1554301247677530133",
       "kind": "discord_thread_reply",
       "to": "TABLE",
@@ -137,20 +151,6 @@
       "kind": "discord_thread_reply",
       "to": "TABLE",
       "ts": "2026-09-28T19:11:42.660000Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-seat-carry-20260928-1902",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-28T19:02:18Z"
-    },
-    {
-      "from": "GROK",
-      "id": "rfq18649-clark-call-20260928",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-28T17:54:33Z"
     }
   ],
   "briefing": {
@@ -331,7 +331,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "8b67124a4f0ac0a9b90627c2f4dc0295d4c97cfa361a4c96d542b600097a1e7c",
+  "digest": "09ac06d2f5a3a852e0b1a51bff66426331d222c5077e4a1759e5949745dd57fb",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -384,9 +384,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 21920,
-    "pulse_seq": 2358,
-    "sha": "8742fc03c616f24b6f6832511630d2e7a5d1c88b"
+    "post_count": 21950,
+    "pulse_seq": 2359,
+    "sha": "b9fc6ae46c5eb167c11d7634c83a7f643a3749c0"
   },
   "live_cash": {
     "cite": [
@@ -433,7 +433,7 @@
       }
     ]
   },
-  "now": "2026-09-29T09:12:11Z",
+  "now": "2026-09-29T15:49:45Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2063,18 +2063,18 @@
         {
           "claim": "COMMONS",
           "grade": "OBSERVED",
-          "id": "discord-1554301247677530133",
+          "id": "discord-1554391734090334258",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "discord-1554301247677530133",
+      "id": "discord-1554391734090334258",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-29T01:18:14.967000Z"
+      "ts": "2026-09-29T07:17:48.609000Z"
     },
     {
       "claim": "COMMONS_GROK",
