@@ -1,0 +1,64 @@
+{
+  "schema": "titan-v4-salvage-reconciliation/v1",
+  "recorded_at": "2026-09-29T10:46:36Z",
+  "main": "14b0272dea7bebbb2cd54857c70cac91e8733c8c",
+  "carrier_before": "f3aad71172b87bace8010a94ef7e1661309ae542",
+  "sweep": "pre-2026-09-09 closed-unmerged/backward boundary",
+  "dispositions": [
+    {
+      "pr": 10729,
+      "result": "duplicate topology-only repack; semantic/evidence payload had already landed through merged #10726",
+      "merged_authority": {
+        "pr": 10726,
+        "merge": "cf8e49df8d3fe325bb4da0493c4a0da2c9991fe9"
+      },
+      "exact_main_blobs": {
+        "RESULTS.json": "42e13b0126c486ce7f53cc3dfc442f69b2e0ba82",
+        "summarize.py": "3156d4811185ee151909c05a58c8ec37d56f7e2a"
+      },
+      "queue_edge": false
+    },
+    {
+      "pr": 10755,
+      "result": "canonical LARK source-closure repair is consumed; current main contains the required LARK root in workflow and binding guard; focused successor #11099 merged",
+      "successor": {
+        "pr": 11099,
+        "merge": "c8beda314e5f26a55d1a9bc4b4de36028756ac05"
+      },
+      "queue_edge": false
+    },
+    {
+      "pr": 10710,
+      "result": "funded_payback/quickstep/runtime_pulse source-closure semantics are present on current main",
+      "queue_edge": false
+    },
+    {
+      "prs": [
+        10387,
+        10423
+      ],
+      "result": "final-pivot arithmetic-budget repair is superseded by merged #10278; no donor replay",
+      "landed_authority": {
+        "pr": 10278,
+        "merge": "352685b286bdc161f37338f9dc8b1ee5f10efc24"
+      },
+      "queue_edge": false
+    },
+    {
+      "pr": 10367,
+      "result": "completed source-neutral fresh-main canonical probe preserved byte-exact in custody this sweep",
+      "source_head": "3818af45a90ed1f96fbc071039a1827adc0cdad0",
+      "queue_edge": false
+    },
+    {
+      "prs": [
+        10039,
+        10079
+      ],
+      "result": "already preserved on the existing salvage carrier as executor-checkpoint and slot-preserving-goose historical custody",
+      "queue_edge": false
+    }
+  ],
+  "new_queue_edges": 0,
+  "semantic_promotions": 0
+}

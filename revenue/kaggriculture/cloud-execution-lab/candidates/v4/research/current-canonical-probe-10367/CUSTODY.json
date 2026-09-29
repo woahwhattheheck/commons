@@ -1,0 +1,36 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "recorded_on": "2026-09-29",
+  "family": "current-canonical-probe-10367",
+  "source_pr": 10367,
+  "source_state": "closed_unmerged_intentional_probe",
+  "source_head": "3818af45a90ed1f96fbc071039a1827adc0cdad0",
+  "source_tree": "da8876d5685ddb36e22237e25995488769556c0d",
+  "source_base": "5df1c518460ede7fcc76923319342d19c3e030e2",
+  "exact_blobs": {
+    "revenue/kaggriculture/cloud-selected-projection/.triad-current-canonical-probe": "e99477893484501d93f5953576b564b14c82214e"
+  },
+  "hosted_receipts": [
+    {
+      "run": 34194618195,
+      "workflow": "titan-selected-projection",
+      "conclusion": "success"
+    },
+    {
+      "run": 34194618229,
+      "workflow": "path-manifest",
+      "conclusion": "success"
+    },
+    {
+      "run": 34194618198,
+      "workflow": "muhlnickel-spec-guard",
+      "conclusion": "success"
+    }
+  ],
+  "theorem": "On fresh main at the recorded base, focused and canonical selected-projection checks passed; the earlier failure was a stale PR merge snapshot and no package rebuild was required.",
+  "disposition": "COMPLETED SOURCE-NEUTRAL PROBE / HISTORICAL EVIDENCE ONLY / DO NOT REPLAY OR PROMOTE / NO V4 QUEUE EDGE",
+  "queue_edge": false,
+  "runtime_promotion": false,
+  "replay": false,
+  "cherry_pick": false
+}
