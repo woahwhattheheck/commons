@@ -1,8 +1,6 @@
 {
  "note": "paths each open pull request changes since its merge-base (first 40; drift --pr N prints all)",
- "observed_at": "2026-09-29T14:17:40Z",
- "prs": [
-  {"number":30091,"path_count":2,"paths":["integrations/shared_equipment/provider_io.py","test_shared_equipment_newcomer_road.py"]}
- ],
+ "observed_at": "2026-09-29T19:36:01Z",
+ "prs": [],
  "schema": "commons-coordination-paths/v1"
 }
