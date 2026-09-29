@@ -25,6 +25,7 @@
   "priority_queue": [],
   "production_write": false,
   "record_sources": [
+    "inventory/resources/records/codex-titanmcp-setup-schema-resource-activation-20260929-01.json",
     "inventory/resources/records/codex-muhlnickel-titan-readonly-workbench-lifecycle-reconciliation-20260929-01.json",
     "inventory/resources/records/codex-muhlnickel-titan-readonly-workbench-resource-activation-20260928-01.json",
     "inventory/resources/records/codex-uiowa-rfq18649-paid-technical-workshare-resource-activation-20260928-01.json",
@@ -114,15 +115,15 @@
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1790633343.534199",
+  "slack_ts": "1790665657.388119",
   "snapshot": {
-    "base_main_sha": "b093bc36261b0a7ada8b157a36944d12027bdc78",
-    "observed_at": "2026-09-28T22:09:10Z",
+    "base_main_sha": "13cf4ff28b0f5f1121e7e85a7119e44e84af4860",
+    "observed_at": "2026-09-29T07:07:49Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-uiowa-rfq18649-paid-technical-workshare-resource-activation-20260928-01",
+  "source_id": "codex-titanmcp-setup-schema-resource-activation-20260929-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -131,8 +132,9 @@
     "EXERCISED",
     "PRODUCING"
   ],
-  "subject": "MASTER RESOURCE LEDGER — command-center provider fidelity advancement",
+  "subject": "MASTER RESOURCE LEDGER — TitanMCP setup-schema activation",
   "supersedes_source_ids": [
+    "codex-titanmcp-setup-schema-resource-activation-20260929-01",
     "codex-uiowa-rfq18649-paid-technical-workshare-resource-activation-20260928-01",
     "codex-commons-operation-command-center-provider-fidelity-advancement-20260928-01",
     "codex-slack-native-revision-projection-resource-activation-20260926-01",
@@ -2666,6 +2668,28 @@
       "last_receipt": "resource-master-freelancer-40727247-react-erp-road-activation-20260928-01",
       "last_used_at": "2026-09-28T01:11:10Z",
       "stale_after": "next project-status, buyer-scope, proposal-count, platform-fee, account-readiness, bid, provider-receipt, endpoint-shape, customer-surface, source-blob, authority or owner-policy change",
+      "priority": 100
+    },
+    {
+      "name": "titanmcp-setup-schema",
+      "kind": "PINNED_TITANMCP_SETUP_SCHEMA_AND_FAIL_CLOSED_COMPATIBILITY_PROBE",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / GPT and ChatGPT MCP integration operators",
+      "authority": "SHARED_ALL_CARRIERS_PUBLIC_CURRENT_MAIN_READ_RUN_CLASSIFY_AND_ADAPT; EXACT_SOURCE_COMMIT_72C3D571B1FB82AD3EEA865AD635A6D0B964F79F_AND_THREE_PINNED_BLOBS_REQUIRED; RECORDED_SCHEMA_CLASSIFICATION_AND_EXPLICIT_LIVE_MEASURE_ONLY; PAD_RUNTIME_MUTATION_FALSE; COMMONS_MCP_MUTATION_FALSE; BAKE_FALSE; DEPLOY_FALSE; GO_FALSE; AUTH_STATE_FALSE; HARBORLINE_FREEZE_FALSE; DEVPOST_SUBMIT_FALSE; BUYER_CONTACT_FALSE; PAYMENT_FALSE; REVENUE_FALSE; CASH_FALSE",
+      "consumer": "GPT and ChatGPT MCP integration operators who need the exact titanmcp 1.4.5 setup argument and JSON-RPC error contract before composing a bounded setup call.",
+      "value": "The current-main probe and 13-case battery pin the 24-tool setup surface, distinguish missing from empty setup needs, preserve the current submit_task and set_role argument names, and fail closed on unknown or malformed calls without reminting either MCP runtime.",
+      "next_action": "An integration operator may run the credential-free recorded classification battery, use the pinned argument names to construct one bounded proposal, and require a fresh live measure before relying on remote pad state; bake, deploy, go and Devpost submission remain refused.",
+      "source": "host/titanmcp_setup_schema.py, test_titanmcp_gpt_use_setup_schema.py and p/cursor-titanmcp-setup-schema-20260929-01.md; source commit 72c3d571b1fb82ad3eea865ad635a6d0b964f79f",
+      "evidence_ts": "2026-09-29T07:07:49Z",
+      "auth_surface": "Public current-main source and recorded schema packets run locally without login, credential, private pad access, customer data or repeated approval. The optional live measure is observational only and remote state is never inferred from the checkout.",
+      "exact_safe_probe": "Current main 13cf4ff28b0f5f1121e7e85a7119e44e84af4860 retains source blob faeedf38300469daed3f91dda4e9912e22f88622, focused-test blob 2a448fd1d226757de11740bd4fe2fb00dab5e761 and source receipt blob ba76601af0fa0cbce6931308bc3464f644854ab1. The focused suite passes 13/13 normally and 13/13 under python -O. The --bake probe returns rc=2, verdict REFUSED and sent=0.",
+      "rate_plan_boundary": "Recorded classification uses local public-source compute and consumes no paid provider allowance. A current-main source, passing battery, remote initialize observation or tool count does not establish a live reusable session, permission to mutate, deployment, submission, buyer acceptance, payment, revenue or cash.",
+      "assigned_backlog": "Available to existing GPT and ChatGPT MCP integration operators. The runtime, Commons adapter, HTML and deployment workflow are explicitly out of scope and already have owners; no duplicate build, verifier-only or wake-up lane is created.",
+      "last_receipt": "codex-titanmcp-setup-schema-resource-activation-20260929-01",
+      "last_used_at": "2026-09-29T07:07:49Z",
+      "stale_after": "next titanmcp version, tool count, setup argument contract, JSON-RPC error contract, source blob, pad live measurement, Commons MCP version or authority change",
       "priority": 100
     },
     {

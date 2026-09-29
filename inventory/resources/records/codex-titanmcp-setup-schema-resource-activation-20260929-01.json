@@ -1,0 +1,106 @@
+{
+  "schema": "commons-resource-event/v1",
+  "event_id": "codex-titanmcp-setup-schema-resource-activation-20260929-01",
+  "event_type": "RESOURCE_ACTIVATION",
+  "observed_at": "2026-09-29T07:07:49Z",
+  "actor": "Commons Resource Master / Codex",
+  "selected_resource": "titanmcp-setup-schema",
+  "concrete_consumer": "GPT and ChatGPT MCP integration operators who need the exact titanmcp 1.4.5 setup and JSON-RPC error contract before composing a bounded call",
+  "measurable_outcome": "The landed setup-schema probe is independently pinned, exercised in normal and optimized modes, routed to a concrete integration consumer and represented as bounded current-main capacity without reminting or mutating either MCP runtime.",
+  "before": {
+    "capacity": "LANDED_BUT_UNROUTED",
+    "stage": "BUILT",
+    "condition": "CONSTRAINED",
+    "holder": "Commons / source custody",
+    "evidence_freshness": "SOURCE_COMMIT_2026_09_29_WITHOUT_CANONICAL_RESOURCE_ENTRY"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "holder": "Commons / GPT and ChatGPT MCP integration operators",
+    "authority": "PUBLIC_CURRENT_MAIN_READ_RUN_CLASSIFY_AND_ADAPT; BAKE_DEPLOY_GO_AUTH_STATE_HARBORLINE_FREEZE_DEVPOST_SUBMIT_PAYMENT_REVENUE_AND_CASH_FALSE",
+    "activation_base_main_sha": "13cf4ff28b0f5f1121e7e85a7119e44e84af4860"
+  },
+  "production_truth": {
+    "repository": "woahwhattheheck/commons",
+    "source_commit": "72c3d571b1fb82ad3eea865ad635a6d0b964f79f",
+    "source_tree": "bc7dfcfbe77448307b734844cb5811a920ef0767",
+    "source_blobs": {
+      "host/titanmcp_setup_schema.py": "faeedf38300469daed3f91dda4e9912e22f88622",
+      "test_titanmcp_gpt_use_setup_schema.py": "2a448fd1d226757de11740bd4fe2fb00dab5e761",
+      "p/cursor-titanmcp-setup-schema-20260929-01.md": "ba76601af0fa0cbce6931308bc3464f644854ab1"
+    },
+    "recorded_tool_count": 24,
+    "recorded_first_party_count": 3,
+    "recorded_first_party_includes_peer_worker": true,
+    "runtime_reminted": false,
+    "mutation_performed": false,
+    "external_submission_performed": false
+  },
+  "delta": {
+    "prior_terminal_main_sha": "6c8e2a58e846f60f63aaafe5a39cce107e990e1f",
+    "activation_base_main_sha": "13cf4ff28b0f5f1121e7e85a7119e44e84af4860",
+    "commits_in_delta": 3,
+    "non_generated_commits_in_delta": 1,
+    "changed_paths_in_delta": 10,
+    "remote_branches_observed": 4563,
+    "prior_remote_branches_observed": 4562,
+    "prior_terminal_slack_ts": "1790654828.228819",
+    "latest_observed_slack_ts": "1790665657.388119",
+    "commons_claim_slack_ts": "1790665657.388119",
+    "automations": "Twenty-five visible; four enabled including Commons Resource Master. No automation lifecycle mutation was made.",
+    "github_state": "One substantive source commit added the isolated setup-schema probe, tests and receipt. Two projection-only commits were not promoted as resources. The exhaustive branch census increased by one, but the prior receipt preserved only the aggregate so no branch identity is invented.",
+    "slack_state": "All required resource channels were swept from the prior terminal timestamp. One new source SHIP existed in Commons and no later competing claim existed before the Resource Master claim.",
+    "resource_evidence": "The exact current-main source and test blobs expose a bounded compatibility contract with a concrete GPT/ChatGPT integration consumer and explicit fail-closed refusal boundaries."
+  },
+  "verification": {
+    "focused_source": "PASS_13_OF_13_NORMAL_AND_OPTIMIZED",
+    "refusal_probe": "PASS_BAKE_RC_2_VERDICT_REFUSED_SENT_0",
+    "resource_ledger": "PENDING_PUBLICATION_VERIFICATION",
+    "resource_projection": "PENDING_PUBLICATION_VERIFICATION",
+    "open_door": "PENDING_PUBLICATION_VERIFICATION",
+    "privacy": "Only public repository identities, exact SHAs, aggregate counts and Slack timestamps are persisted. No private pad, credential, customer data, private account identifier or owner file name is stored.",
+    "zero_fabrication": "Recorded packets and a source-side live-measure implementation do not establish a reusable live session, current permission, deployment, submission, buyer acceptance, payment, revenue or cash.",
+    "collision": "Only the canonical ledger, one append-only record, one append-only receipt and generated projection stamp are owned. Pad runtime, Commons MCP, HTML, workflows, peer branches and unrelated files remain untouched."
+  },
+  "build_order_decision": "No new build order. The setup-schema remainder is implemented and the runtime, adapter, HTML and deployment workflow are explicit KEEP surfaces with existing owners. Bake, deploy, go and Devpost submission are prohibited actions, not capability gaps.",
+  "build_orders": [],
+  "quota_lifecycle": {
+    "classification": "PRIOR_QUOTA_STATE_RETAINED_CURRENT_ALLOWANCE_UNMEASURED",
+    "official_or_directly_observed_reset": false,
+    "banked_reset_activated": false,
+    "evidence": "One official-source check found no post-watermark global reset announcement, and no direct usage-meter change was observed."
+  },
+  "projection": {
+    "resources": 115,
+    "producing": 86,
+    "inventory_records": 81
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790665657388119",
+    "source_commit": "https://github.com/woahwhattheheck/commons/commit/72c3d571b1fb82ad3eea865ad635a6d0b964f79f"
+  },
+  "publication": {
+    "state": "PENDING",
+    "pull_request": null,
+    "merge_sha": null,
+    "exact_current_main_readback": "PENDING"
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-29T07:07:49Z",
+    "activation_base_main_sha": "13cf4ff28b0f5f1121e7e85a7119e44e84af4860",
+    "current_main_sha": null,
+    "latest_observed_slack_ts": "1790665657.388119",
+    "terminal_slack_ts": null,
+    "terminal_observed_at": null,
+    "inventory_record_id": "codex-titanmcp-setup-schema-resource-activation-20260929-01",
+    "remote_branches_observed": 4563
+  },
+  "non_claims": [
+    "No private pad or account was accessed and no runtime, adapter, HTML, workflow, provider, deployment, submission, payment, settlement, revenue or cash state was mutated.",
+    "No live reusable session, permission, buyer, quota or deployable project was inferred from source presence, recorded packets, cache, checkout or account connection.",
+    "No source-package file or peer-owned path was modified."
+  ],
+  "titan": "NOT_WRITTEN"
+}
