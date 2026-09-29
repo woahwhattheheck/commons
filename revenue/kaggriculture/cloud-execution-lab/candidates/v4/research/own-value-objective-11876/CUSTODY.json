@@ -1,0 +1,25 @@
+{
+  "schema":"titan-v4-salvage-custody/v1",
+  "source_pr":11876,
+  "source_state":"closed_unmerged",
+  "source_head":"17144b080205f25af1f0766d0ed61ea2253e71ad",
+  "exact_blobs":{
+    "workflow":"2d7f4e53cd6acf3eaeda55cf4c409b22f07ed95b",
+    "post":"20c852cc946ba5f1f992ba7d1fd6a108eb7751c0",
+    "mechanism_json":"ba54ba07005ee33d54fefc166cf27a553863a6b0",
+    "readme":"286b214db7efc98ae8a26dfdeeb4f4e3f2b600ca",
+    "candidate":"a642b3dd6fc272d74ca58cd528dfbd86aa1504fd",
+    "compare":"9a4642211f2fe16da4452aad0a084a1efa85bb31",
+    "mechanism_py":"c0cc72c5d8dbaf9111f9391048c10930eb1d1deb",
+    "objective":"17c49e220de6b8c1c1ba15a95e4707a3d9cd1ea0",
+    "test_compare":"f295725b1afcf69a22e6a121f41b174f016ee99f",
+    "test_objective":"7bb159220594fc45632fc1cfd0548ea50b946cfe"
+  },
+  "run":{"id":34412778581,"conclusion":"failure"},
+  "artifact":{"id":10127935726,"bytes":26877,"sha256":"e6673ce39103a5c9b76bda7ee9e564472255634a4e4c22c532d34859f1912a00"},
+  "blocker":"control crashed before candidate evaluation because observed_clone was missing from the raw execution closure",
+  "superseded_by":[11912,11932,11965],
+  "disposition":"source-bound failure and mechanism evidence only; no gameplay semantic admission",
+  "queue_edge":false,
+  "promotion":false
+}
