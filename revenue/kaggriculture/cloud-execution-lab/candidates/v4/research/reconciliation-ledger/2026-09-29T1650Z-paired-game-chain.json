@@ -1,0 +1,25 @@
+{
+  "schema": "titan-v4-salvage-reconciliation/v1",
+  "main": "921b40514f13b3064b21fca04a20a707c5ea8e0a",
+  "carrier_parent": "d52bdcc83c46054eb807e585faf66715ea5f2f24",
+  "topology_before_ledger": "+140/-5",
+  "merge_base": "14b0272dea7bebbb2cd54857c70cac91e8733c8c",
+  "main_drift": {"commits": 5, "kaggriculture_paths": 0, "content_safe_to_merge_forward": true},
+  "authority_blobs": {
+    "CANONICAL": "00142be0ff2314dcb23068c8133b34d290661923",
+    "INTEGRATION": "4e3207af1332266852530ec8494db8969edc1115",
+    "COMPOSITION": "32dc1e6963702f7e013cd609053d52c434e42158"
+  },
+  "open_v4_v31_v3": [0, 0, 0],
+  "backward_reconciliation": {
+    "donors": [11530, 11597, 11603, 11621],
+    "landed_via": [
+      {"pr": 11627, "merge_commit": "5363b18101d9eaece372557ab9d587aed6da3507"},
+      {"pr": 11649, "merge_commit": "d1bbeb8cb08d9d0adaa5d67871782a8bbc7e55cf"}
+    ],
+    "disposition": "CONSUMED_DO_NOT_REMINT",
+    "queue_edge": false,
+    "promotion": false
+  },
+  "new_queue_edges": 0
+}
