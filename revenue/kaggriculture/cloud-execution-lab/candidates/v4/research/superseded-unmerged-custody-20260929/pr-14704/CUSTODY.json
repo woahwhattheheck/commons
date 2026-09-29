@@ -1,0 +1,23 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "recorded_at": "2026-09-29T22:46:00Z",
+  "source_pr": 14704,
+  "source_head": "681a46decf6d580e5fccb29938cf058d4cb7fba4",
+  "source_tree": "7176c78bde76b70b721e4efb38a408c166010af5",
+  "generated_commit": "ab4d1ec2bd3b932febf3807f0d066cd4dc40f8ed",
+  "generator_run_id": 34941905964,
+  "generator_run_conclusion": "success",
+  "blobs": {
+    "champion_gate": "4aa0e47531817415c55631df31bb1f35c707c39c",
+    "historical_archive": "8093fe3d9ea81d66918f69a130f483072f681a22",
+    "generated_archive": "bd7c6c35961ca5ca331aef703225138842f87768",
+    "archive_receipt": "c57c32f3087349264d3ffc890b865a0d362d19b7",
+    "source_receipt": "be272124e7d8209f5e8a9cf36a9ce7d08bf4dc01",
+    "reset_test": "ce245da62c2f9dcaa4612310f7375d066a1a43a0",
+    "generator_workflow": "fa938840448d47c066cdd23b23da33ab16ddb357"
+  },
+  "final_head_failed_checks": 6,
+  "disposition": "mixed_v5_release_authority_quarantine_only",
+  "queue_edge": false,
+  "promotion": false
+}
