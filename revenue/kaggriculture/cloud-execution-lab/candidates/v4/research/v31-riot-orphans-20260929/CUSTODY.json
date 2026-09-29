@@ -1,0 +1,31 @@
+{
+  "schema": "titan-v4-historical-custody/v1",
+  "recorded_at": "2026-09-29T12:45:05Z",
+  "canonical": "main@14b0272dea7bebbb2cd54857c70cac91e8733c8c",
+  "donors": [
+    {
+      "lane": "A4 crew resync",
+      "branch": "riot/v3.1-lane-a4",
+      "head": "7f244af80fb2b770f270a333759f8d1d188753ef",
+      "source_blob": "0db2ab44d468f42a6a25e12853dd3e8f8d577b12",
+      "test_blob": "076ce69a9355616b404d1395a6cf840cfadbb667",
+      "disposition": "preserve exact source/test; current-ABI and economics unproven; no queue edge"
+    },
+    {
+      "lane": "E3 strict price forecaster",
+      "branch": "riot/v3.1-lane-e3",
+      "head": "a406fa911c1c1fe0a4b9df7e7be200834c5de3d0",
+      "source_blob": "1c4bc38a4eccfd1565ea37e430cac6c7c1bba69e",
+      "test_blob": "62b35f54bba302f5eb13f581be67523d73b6c530",
+      "disposition": "source-pass historical donor; economics/promotion hold; no queue edge"
+    },
+    {
+      "lane": "L3 no-late-sale advance",
+      "branch": "riot/v3.1-l3-merge-ready",
+      "head": "2054220e5a10f6c93065aad86db9fba771d28f06",
+      "source_blob": "fb26e2ca9985cc65b1127f4eec654fb5cb2a3df0",
+      "test_blob": "a369773d2eede36840d57052a50774d1e751834b",
+      "disposition": "historical source preserved; original default-on promotion rejected/superseded by later tuned V4 sale-timing lineage; no replay"
+    }
+  ]
+}
