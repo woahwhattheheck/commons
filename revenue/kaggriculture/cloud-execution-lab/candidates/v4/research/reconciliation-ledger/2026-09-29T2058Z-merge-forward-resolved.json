@@ -1,0 +1,44 @@
+{
+  "schema": "titan-v4-reconciliation-receipt/v1",
+  "recorded_at": "2026-09-29T20:58:00Z",
+  "canonical": {
+    "branch": "main",
+    "head": "0f1b89e87c186eb91524f46fbdcc374338debb08",
+    "canonical_blob": "00142be0ff2314dcb23068c8133b34d290661923",
+    "integration_blob": "4e3207af1332266852530ec8494db8969edc1115",
+    "composition_blob": "32dc1e6963702f7e013cd609053d52c434e42158",
+    "recovered_not_yet_composed": []
+  },
+  "carrier": {
+    "branch": "salvage/final-pressure-fertilizer-rebind-20260924-01",
+    "pre_merge_head": "fc950abae6e35b6639309f31ee55be9f06448894",
+    "merge_forward_commit": "67b2ce519f7ca8900a181ef9d60aa3234674399d",
+    "post_merge_topology": {
+      "ahead": 146,
+      "behind": 0,
+      "merge_base": "0f1b89e87c186eb91524f46fbdcc374338debb08"
+    },
+    "diff_scope": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/**"
+  },
+  "scan": {
+    "open_pr_census": {
+      "v4": 0,
+      "v31": 0,
+      "v3": 0
+    },
+    "newer_titan_commit_after_prior_receipt": false,
+    "newer_slack_titan_work_after_prior_receipt": false,
+    "residuals": [
+      "V3.1 A6 WHEAT top-up: current-ABI uniqueness/engagement + economics required",
+      "V3.1 B5 fertilizer daily sweep: current-ABI uniqueness/engagement + economics required"
+    ]
+  },
+  "disposition": {
+    "merge_forward_succeeded": true,
+    "force_used": false,
+    "semantic_delta_promoted": false,
+    "new_queue_edge": false,
+    "canonical_moved": false,
+    "runtime_promoted": false
+  }
+}
