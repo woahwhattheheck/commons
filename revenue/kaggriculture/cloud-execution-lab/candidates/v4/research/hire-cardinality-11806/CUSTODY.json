@@ -1,0 +1,26 @@
+{
+  "schema":"titan-v4-salvage-custody/v1",
+  "recorded_on":"2026-09-29",
+  "source_pr":11806,
+  "source_head":"5386190f0a95c04e4e81dd199e249874fb55c6d7",
+  "source_base":"61c459798a52a847a1b7d47476dc46bb0f866030",
+  "source_state":"closed_unmerged",
+  "exact_blobs":{
+    "hire_cardinality.py":"c0e69e424dbf056ebca1718619eb65cffa5d8258",
+    "main.py":"0643c1385038a6c98d97c96af093fbd0f35718bb",
+    "test_hire_cardinality.py":"b5d2d8fa46bb35482b7ccb30b57d37ef7fd9cf2f",
+    "test_hire_cardinality_entrypoint.py":"edaa884a1a816b62104b46f74ef3fb1415a4d6ef"
+  },
+  "receipts":{
+    "focused_composition":"14/14 PASS",
+    "cross_version_review":"4 submitted V1 replays; 5752 decisions; 111 unreachable hand rows",
+    "hosted_selected_projection_run":34408079662,
+    "hosted_canonical_result":"failure_packaging_builder_omitted_helper",
+    "evidence_companion_pr":11846
+  },
+  "semantic_status":"validated_historical_theorem_current_abi_rederivation_required",
+  "queue_edge":false,
+  "promotion":false,
+  "runtime_activation":false,
+  "legacy_main_postimage":"quarantine_only"
+}
