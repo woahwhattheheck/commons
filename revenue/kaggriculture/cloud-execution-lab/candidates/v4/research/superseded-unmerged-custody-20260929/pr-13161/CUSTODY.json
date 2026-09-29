@@ -1,0 +1,17 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "recorded_at": "2026-09-29T22:46:00Z",
+  "source_pr": 13161,
+  "source_head": "00300375166ea2db4956fb90115ec29c337ac55a",
+  "source_tree": "850c9cb7dfd4b2945f86836530d55b58aee5b5fd",
+  "blobs": {
+    "composition": "27e316263ffa69b84a536ae28d15cb2fa1540d97",
+    "readme": "6f002891756507068e913027a5d99adb50808de7",
+    "test": "fdeb68fc8b92731d1f905d501a2a38dec3108e7c",
+    "source": "d896e88de030956f6f82815cd757de15edb5738e"
+  },
+  "current_canonical_source_blob": "8c70d134cfeed687766cb3d84c06caadec61c2fc",
+  "disposition": "superseded_source_evidence_quarantine_only",
+  "queue_edge": false,
+  "promotion": false
+}

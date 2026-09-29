@@ -1,0 +1,27 @@
+{
+  "schema": "titan-v4-reconciliation-receipt/v1",
+  "recorded_at": "2026-09-29T22:46:00Z",
+  "canonical_main": "dd8769d869f6e529d433a48c293db947daebe6b4",
+  "canonical_main_tree": "1a43534e2927b924b34aaab57698143b994e779b",
+  "prior_carrier": "6c75b386b7d2852f92be068b11a9078a93e41306",
+  "merge_forward_commit": "7e59e173390516cd4b561c39a0a526bf410ecdf8",
+  "merge_forward_tree": "e878f0faabfee0bfa01074c4869477b94b742a59",
+  "main_drift_commits": 14,
+  "main_drift_kaggriculture_paths": 0,
+  "authority_blobs": {
+    "canonical": "00142be0ff2314dcb23068c8133b34d290661923",
+    "integration": "4e3207af1332266852530ec8494db8969edc1115",
+    "composition": "32dc1e6963702f7e013cd609053d52c434e42158"
+  },
+  "fresh_open_census": {
+    "v4": 0,
+    "v31": 0,
+    "v3": 0
+  },
+  "newer_titan_slack_messages": 0,
+  "dispositions": {
+    "13161": "exact superseded donor quarantined",
+    "14550": "already-current payload; stale residual metadata only",
+    "14704": "exact mixed-authority donor quarantined"
+  }
+}
