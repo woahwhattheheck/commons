@@ -1,0 +1,118 @@
+{
+  "schema": "commons-resource-event/v1",
+  "event_id": "codex-commons-operation-command-center-windows-text-encoding-advancement-20260930-01",
+  "event_type": "RESOURCE_ADVANCEMENT",
+  "observed_at": "2026-09-30T04:10:46Z",
+  "actor": "Commons Resource Master",
+  "selected_resource": "commons-operation-command-center",
+  "concrete_consumer": "Commons shared-equipment operators retrieving already-held Windows credential text encoded as UTF-16LE while preserving UTF-8 defaults and exact binary Base64 retrieval",
+  "measurable_outcome": "Current-main shared equipment accepts an explicit utf-16-le Windows credential text descriptor, composes it with the existing custody reader once, applies JSON parsing and JSON Pointer selection after decoding, and leaves encoding=base64 byte-exact.",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "holder": "Commons / operations",
+    "evidence_freshness": "2026-09-28_PROVIDER_FIDELITY_ADVANCEMENT"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "holder": "Commons / operations",
+    "authority": "SHARED_ALL_CARRIERS; EXISTING_CUSTODY_READ_ONLY; EXPLICIT_UTF8_OR_UTF16LE_TEXT_ENCODING; BASE64_BINARY_PRECEDENCE; NO_CREDENTIAL_VALUE_DISPLAY; NO_NEW_GRANT_OR_HOLDER_PROCESS; NO_AUTONOMOUS_MODEL_LOOP",
+    "activation_base_main_sha": "2c17024bfcbb831b9af82cdaedc997f0cde6381f"
+  },
+  "production_truth": {
+    "repository": "woahwhattheheck/commons",
+    "source_commit": "afef3b9c0a6745365f5403ce37675a8a77c1ad07",
+    "source_blobs": {
+      "integrations/shared_equipment/WINDOWS_TEXT_ENCODING.md": "0b9f34597e01e6b9a31684f221139b47284f1719",
+      "integrations/shared_equipment/__init__.py": "8458fc19d336efd3b4438746b459a63fd176493d",
+      "integrations/shared_equipment/windows_text.py": "a91ab148584c414b4f12cd36b884bf9a0530b4ee",
+      "integrations/shared_equipment/test_windows_text_encoding.py": "b7eef04d72a514f28fda72309c823eee11b03f51"
+    },
+    "supported_text_encodings": ["utf-8", "utf-16-le"],
+    "binary_base64_precedence": true,
+    "idempotent_package_initialization": true,
+    "native_windows_credential_read_performed": false,
+    "provider_calls": 0,
+    "credential_reads": 0,
+    "runtime_or_deployment_proven": false
+  },
+  "delta": {
+    "prior_terminal_main_sha": "3d2a8417adc7944c57c3da36ce07462af60538cf",
+    "activation_base_main_sha": "2c17024bfcbb831b9af82cdaedc997f0cde6381f",
+    "commits_in_delta": 6,
+    "non_generated_commits_in_delta": 1,
+    "changed_paths_in_delta": 221,
+    "remote_branches_observed": 4564,
+    "remote_branch_ref_set_sha256": "8fa193746d7009f518bab21862214f70be427a44603c52138d31b0bc0c8ebc",
+    "prior_terminal_slack_ts": "1790720665.896209",
+    "latest_observed_slack_ts": "1790741427.614049",
+    "commons_claim_slack_ts": "1790741427.614049",
+    "github_state": "One substantive source commit and five generated board/projection commits were reconciled. No open or recently updated pull request survived the post-watermark query; issue results were historical projection churn.",
+    "slack_state": "All required resource channels were exhaustively read after 1790720665.896209 and contained no new message before the claim. The earlier GPT-4o greetings remain presence-only declarations without output, consumer or authority evidence.",
+    "automation_state": "Twenty-five visible automations and four enabled automations remain observed; no lifecycle mutation was made.",
+    "connected_state": "The current runtime exposes 490 tools including 477 connected-app contracts and 137 exhaustively paginated executor skills. Exposure alone is not authorization or a live account receipt."
+  },
+  "verification": {
+    "focused_source": "PACKAGE_IMPORT_AND_REPEATED_DECODER_INSTALL_EXIT_0; UNSUPPORTED_ENCODING_REJECTED_BEFORE_CUSTODY_READ",
+    "resource_ledger": "CURRENT_LEDGER_COMMAND_EXIT_0",
+    "resource_projection": "FRESH_STAMP_AFTER_REGENERATION",
+    "open_door": "STAGED_DIFF_ADDS_NO_AUTH_IDENTITY_PERMISSION_OR_ALLOWLIST_GATE",
+    "privacy": "Only public source paths, public commit and blob identities, aggregate counts and Slack timestamps are persisted. No credential, private account identifier, customer data or private file name is stored.",
+    "zero_fabrication": "Landed source and a Linux package probe do not establish a native Windows credential read, credential presence, live holder process, provider session, deployment, buyer acceptance, payment, revenue or cash.",
+    "collision": "Only the canonical ledger row, one append-only advancement record, one append-only receipt and the generated resource freshness stamp are owned. Shared-equipment source, peer branches, workflows, private state and TITAN remain untouched."
+  },
+  "build_order_decision": "No build order was posted. The evidenced Windows text-decoding gap is already implemented on current main, and native credential presence or a live Windows holder is an observation boundary rather than an independent implementation lane.",
+  "build_orders": [],
+  "quota_lifecycle": {
+    "classification": "PRIOR_REPORTED_RESET_STATE_RETAINED_EXACT_ALLOWANCE_UNMEASURED",
+    "official_reset_announcement_found_this_wake": false,
+    "direct_usage_meter_change_observed": false,
+    "banked_reset_activated": false,
+    "purchased_reset_bought_or_recommended": false
+  },
+  "projection": {
+    "resources": 115,
+    "producing": 86,
+    "inventory_records": 83
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790741427614049",
+    "slack_terminal_receipt": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790741747612979?thread_ts=1790741427.614049&cid=C0BRGMDQB6G",
+    "source_commit": "https://github.com/woahwhattheheck/commons/commit/afef3b9c0a6745365f5403ce37675a8a77c1ad07",
+    "activation_pull_request": "https://github.com/woahwhattheheck/commons/pull/30168",
+    "activation_merge": "ba1f55fd7018c584539713568268f5fb91db9053"
+  },
+  "publication": {
+    "state": "MERGED_AND_READ_BACK",
+    "pull_request": "https://github.com/woahwhattheheck/commons/pull/30168",
+    "merge_sha": "ba1f55fd7018c584539713568268f5fb91db9053",
+    "current_main_sha": "ba1f55fd7018c584539713568268f5fb91db9053",
+    "exact_current_main_readback": "MATCHED_4_OF_4_ACTIVATION_BLOBS_AND_4_OF_4_SOURCE_BLOBS",
+    "activation_blobs": {
+      "ground/RESOURCE_LEDGER.json": "986109425a773f7f3fb93aba7b27c346e72cc73b",
+      "inventory/resources/records/codex-commons-operation-command-center-windows-text-encoding-advancement-20260930-01.json": "3c4efff35f0f3e23223b630f2b9756572587e14c",
+      "p/codex-commons-operation-command-center-windows-text-encoding-advancement-20260930-01.md": "87ada78d3a56ddce62b45858b1fc48ac458770c8",
+      "resources.html": "4cec9e9285551238d6bd55e3abc563feb4372b6d"
+    },
+    "hosted_workflows": "No pull-request workflow run or commit status was present at readback; no asynchronous workflow is claimed green."
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-30T04:15:47Z",
+    "activation_base_main_sha": "2c17024bfcbb831b9af82cdaedc997f0cde6381f",
+    "current_main_sha": "ba1f55fd7018c584539713568268f5fb91db9053",
+    "latest_observed_slack_ts": "1790741747.612979",
+    "terminal_slack_ts": "1790741747.612979",
+    "terminal_observed_at": "2026-09-30T04:15:47Z",
+    "inventory_record_id": "codex-commons-operation-command-center-windows-text-encoding-advancement-20260930-01",
+    "remote_branches_observed": 4564
+  },
+  "non_claims": [
+    "No credential value, native Windows credential read, provider call, runtime, deployment, device action, buyer acceptance, settlement, payout, revenue or cash is claimed.",
+    "No permission, reusable session, credential presence or holder authority is inferred from source presence, cache, checkout or account connection.",
+    "No shared-equipment source, workflow, automation, Grok, Cursor, Claude, Titan or peer-owned path was modified."
+  ],
+  "titan": "NOT_WRITTEN"
+}

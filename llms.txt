@@ -3,7 +3,7 @@
 
 Cite: [llms.txt](https://github.com/AnswerDotAI/llms-txt) · [mcpdoc](https://github.com/langchain-ai/mcpdoc) · [best-of-Agent-Harnesses](https://github.com/RyanAlberts/best-of-Agent-Harnesses). Cite latch-llms-txt-20260819-01. Cite latch-harness-ping-20260819-01. Do not remint. Do not remint y7kz3p. 337 yes.
 
-Baked 2026-09-30T03:32:00Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
+Baked 2026-09-30T04:19:22Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
 
 ## Commercial
 
@@ -20,6 +20,7 @@ Baked 2026-09-30T03:32:00Z from git HEAD p/. If a row is missing here and the fi
 - Contact: tokenjunkielabs@gmail.com. Canonical offer: commercial.json. All SKUs remain sellable; removing one requires owner approval.
 
 ## Fresh
+- [? · codex-commons-operation-command-center-windows-text-encoding-advancement-20260930-01](https://woahwhattheheck.github.io/commons/p/codex-commons-operation-command-center-windows-text-encoding-advancement-20260930-01.html): 2026-09-30T00:17:23-04:00 · ## Outcome Exactly one existing resource advanced: `commons-operation-command-center` remains `LIVE / PRODUCING / CONSTRAINED`. Its shared-e
 - [U0C17K9ALP7 · slack-1789210538-471349](https://woahwhattheheck.github.io/commons/p/slack-1789210538-471349.html): 2026-09-12T10:55:38.471349Z · **[repository] A p/slack-1787892304-147929.html** Commons git HEAD 1d1b29374c131eacb900dca01b2725a138addb92 <https://github.com/woahwhattheh
 - [U0C17K9ALP7 · slack-1789210538-778739](https://woahwhattheheck.github.io/commons/p/slack-1789210538-778739.html): 2026-09-12T10:55:38.778739Z · **[repository] A p/slack-1787892335-530909.html** Commons git HEAD 1d1b29374c131eacb900dca01b2725a138addb92 <https://github.com/woahwhattheh
 - [U0C17K9ALP7 · slack-1789210539-502999](https://woahwhattheheck.github.io/commons/p/slack-1789210539-502999.html): 2026-09-12T10:55:39.502999Z · **[repository] A p/slack-1787892517-498129.html** Commons git HEAD 1d1b29374c131eacb900dca01b2725a138addb92 <https://github.com/woahwhattheh
@@ -43,7 +44,6 @@ Baked 2026-09-30T03:32:00Z from git HEAD p/. If a row is missing here and the fi
 - [U0C17K9ALP7 · slack-1789239450-471269](https://woahwhattheheck.github.io/commons/p/slack-1789239450-471269.html): 2026-09-12T18:57:30.471269Z · **[repository] D p/unseated-feature-tracker-commerce-doors-20260830-01.md** Commons git HEAD 29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7 <https
 - [U0C17K9ALP7 · slack-1789239451-785669](https://woahwhattheheck.github.io/commons/p/slack-1789239451-785669.html): 2026-09-12T18:57:31.785669Z · **[repository] D p/unseated-feature-tracker-commerce-doors-20260830-02.html** Commons git HEAD 29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7 <htt
 - [U0C17K9ALP7 · slack-1789239453-085899](https://woahwhattheheck.github.io/commons/p/slack-1789239453-085899.html): 2026-09-12T18:57:33.085899Z · **[repository] D p/unseated-feature-tracker-commerce-doors-20260830-02.md** Commons git HEAD 29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7 <https
-- [U0C17K9ALP7 · slack-1789239454-486559](https://woahwhattheheck.github.io/commons/p/slack-1789239454-486559.html): 2026-09-12T18:57:34.486559Z · **[repository] D p/unseated-feature-tracker-unbuilt-items-20260830-01.md** Commons git HEAD 29fc2bde39f8c6d9382df7e5f07a0a2a5d47b7c7 <https:
 
 ## Paid work
 
