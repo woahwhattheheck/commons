@@ -1,0 +1,18 @@
+{
+  "schema": "titan-v4-superseded-donor-custody/v1",
+  "recorded_at": "2026-09-30T00:46:24Z",
+  "canonical_main": "3d2a8417adc7944c57c3da36ce07462af60538cf",
+  "donor_pr": 13127,
+  "donor_head": "7049aba3d2a4d681913969d2aaf7ddf281879f16",
+  "successor_pr": 13126,
+  "successor_merge": "bc13d64e32f02daab946a7bd217e7ce7ab9ad82a",
+  "disposition": "superseded_donor_quarantine_only",
+  "queue_edge": false,
+  "promotion": false,
+  "exact_files": {
+    "README.md": "a3bdbd1b5258b0486e859d86a29019eca23a5988",
+    "sticky_obligation.py": "43fc1fc341d09d0062555d91b0deb3b50c8d243d",
+    "test_sticky_carry_callback.py": "10967ebd4fde342d6f6af1f526e10747289909b7",
+    "test_sticky_obligation.py": "68b6f134145eabca0c2795f53719a60a484a2e24"
+  }
+}
