@@ -1,0 +1,29 @@
+{
+  "schema": "titan-v4-reconciliation/v1",
+  "observed_at_utc": "2026-09-30T17:50:05Z",
+  "authority_main": "5597f207e7e78cee05b0e06fdfafd4b734cd244e",
+  "carrier_before": "0b7fbd3a76a50396309049017e9e36cfdc260cb4",
+  "branch": "chatgpt/titan-v3-route-checkpoint-regret-20260910",
+  "head": "5f2fadad0a0643f363cebbac065c1e0995e5cb0e",
+  "merge_base": "c51049d671b55d282e0fed5df37a0be7c513a838",
+  "compare": {
+    "ahead": 1,
+    "behind": 11383
+  },
+  "unique_file": {
+    "path": ".github/titan-route-bootstrap/bundle.part1",
+    "blob": "1781687b2342db75cdc7b02b5b02d9972f84724b"
+  },
+  "head_message": "stage TITAN route-checkpoint evidence bundle (1/4)",
+  "exact_head_workflow_runs": 0,
+  "slack_claim_ts": "1789069169.142469",
+  "slack_later_blocker_ts": "1789083015.701329",
+  "disposition": "incomplete staged transport",
+  "queue_edge": false,
+  "promotion": false,
+  "completed_artifact": false,
+  "payload_copy": false,
+  "runtime_change": false,
+  "canonical_change": false,
+  "sibling_v4_root": false
+}
