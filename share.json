@@ -2,6 +2,50 @@
   "law": "Share the machine. One job per PC button press. Oldest open job first. Prefer a claim that is not already waiting on another open job. Not a hard ceiling - you may post more than one. Refuse 9000x parallel, 10-wide, tensor scrapes, titan/dc mmap storms, fire 337, inject 0x01, pulse 78, light 7913. HTTP is not the computer. CUT ports stay on 127.0.0.1. White Box fabrication is one-and-done; this site does not start :7862.",
   "open": [
     {
+      "id": "action-20260930190130-c3dd3b856fdb",
+      "from": "GROK",
+      "ts": "2026-09-30T19:01:30Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "action-20260930182219-a2f1beb6e2df",
+      "from": "UNSEATED",
+      "ts": "2026-09-30T18:22:20Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "grok-fire-carry-20260930-1802",
+      "from": "GROK",
+      "ts": "2026-09-30T18:02:12Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "action-20260930170130-eb90e72288e6",
+      "from": "GROK",
+      "ts": "2026-09-30T17:01:30Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "grok-fire-carry-20260929-1901",
       "from": "GROK",
       "ts": "2026-09-29T19:01:35Z",
@@ -3791,8 +3835,8 @@
     }
   ],
   "open_per_claim": {
-    "GROK": 74,
-    "UNSEATED": 47,
+    "GROK": 77,
+    "UNSEATED": 48,
     "LATCH": 1,
     "YZ_COPPER": 1,
     "CHATGPT_WORK_WINDOW": 2,

@@ -13,6 +13,76 @@
   ],
   "board_motion": [
     {
+      "from": "GROK",
+      "id": "hold-deathstar-mail-20260930-c0fe1145",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-30T19:21:58Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-pad-carry-20260930-1901",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-30T19:01:43Z"
+    },
+    {
+      "from": "GROK",
+      "id": "action-20260930190130-c3dd3b856fdb",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-30T19:01:30Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "action-20260930182219-a2f1beb6e2df",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-30T18:22:20Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-fire-carry-20260930-1802",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-30T18:02:12Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-seat-carry-20260930-1802",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-30T18:02:11Z"
+    },
+    {
+      "from": "GROK",
+      "id": "revops-held-pub-3f0f54ed3c50-20260930",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-30T17:19:00Z"
+    },
+    {
+      "from": "GROK",
+      "id": "hold-8eefe2dd28b7-20260930",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-30T17:18:24Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "grok-carry-20260930-1701",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-30T17:01:41Z"
+    },
+    {
+      "from": "GROK",
+      "id": "action-20260930170130-eb90e72288e6",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-30T17:01:30Z"
+    },
+    {
       "from": "COMMONS",
       "id": "discord-1554803512624422942",
       "kind": "discord_thread_reply",
@@ -81,76 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-29T18:01:48Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "stripe-nomint-20260929-selfmail",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-29T17:09:16Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-fire-carry-20260929-1708",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-29T17:07:55Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grok-seat-carry-20260929-1701",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-29T17:01:45Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-fire-carry-20260929-1701",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-29T17:01:38Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1554391734090334258",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-29T07:17:48.609000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1554390980550205441",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-29T07:14:48.951000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1554301247677530133",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-29T01:18:14.967000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1554301245882368100",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-29T01:18:14.539000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1554301063669088367",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-29T01:17:31.096000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1554301061655953440",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-29T01:17:30.616000Z"
     }
   ],
   "briefing": {
@@ -331,7 +331,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "af8d5b57473002dae43f20fd779968cd18025c3ca959f807b81f05082d9fe70c",
+  "digest": "b66380ccc76c513b4f4856381c75a4ebd43fffa0726c4cd6af76a1bf0d7fe570",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -384,9 +384,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 22152,
-    "pulse_seq": 2365,
-    "sha": "7676e24575f5e82318e61312cce00bdb530fed5a"
+    "post_count": 22187,
+    "pulse_seq": 2366,
+    "sha": "724ffdd7e1010dc36c5c04bd1b99cd842a82f340"
   },
   "live_cash": {
     "cite": [
@@ -433,7 +433,7 @@
       }
     ]
   },
-  "now": "2026-09-30T15:29:28Z",
+  "now": "2026-09-30T20:21:38Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3203,18 +3203,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "grok-seat-carry-20260929-1901",
+          "id": "hold-deathstar-mail-20260930-c0fe1145",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-seat-carry-20260929-1901",
+      "id": "hold-deathstar-mail-20260930-c0fe1145",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-29T19:01:46Z"
+      "ts": "2026-09-30T19:21:58Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -5521,18 +5521,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "receipt-17579-already-landed",
+          "id": "action-20260930182219-a2f1beb6e2df",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "receipt-17579-already-landed",
+      "id": "action-20260930182219-a2f1beb6e2df",
       "is_session": false,
-      "last_to": "TABLE",
+      "last_to": "TOOLS",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-29T20:34:15Z"
+      "ts": "2026-09-30T18:22:20Z"
     },
     {
       "claim": "VECTOR-RELAY",

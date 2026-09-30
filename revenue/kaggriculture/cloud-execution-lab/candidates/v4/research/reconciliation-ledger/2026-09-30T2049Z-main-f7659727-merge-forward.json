@@ -1,0 +1,33 @@
+{
+  "schema": "titan-v4-reconciliation-receipt/v1",
+  "authority_main": "f7659727c088738f2a08aebc05625f87bc170114",
+  "prior_authority": "ed0995211b9a888fce5f5dc56cdc9a2105f91215",
+  "salvage_parent": "fcca97433f59f872a430e8180ccd8e187a2c8575",
+  "action": "merge_forward_existing_single_research_carrier_to_exact_current_main",
+  "main_delta": {
+    "ahead_by": 4,
+    "behind_by": 0,
+    "kaggriculture_paths_changed": 0
+  },
+  "new_custody_since_prior_scan": {
+    "source_pr": 12019,
+    "semantic_status": "current_relevant_not_yet_current_abi_validated",
+    "queue_edge": false,
+    "promotion": false
+  },
+  "validation": [
+    "main and salvage refs re-read immediately before object construction",
+    "main and salvage exact-head workflow run sets empty",
+    "main and salvage combined status sets empty",
+    "main delta from prior authority contains zero revenue/kaggriculture paths",
+    "salvage-only delta versus current main confined to candidates/v4/research",
+    "control-plane blob identities unchanged: CANONICAL 00142be0ff2314dcb23068c8133b34d290661923; INTEGRATION 4e3207af1332266852530ec8494db8969edc1115; COMPOSITION 32dc1e6963702f7e013cd609053d52c434e42158"
+  ],
+  "prohibitions_observed": [
+    "no force update",
+    "no stale-head merge or cherry-pick",
+    "no sibling V4 root",
+    "no canonical/runtime/default/config/archive/release/Kaggle mutation",
+    "no HOLD or negative-lane resurrection"
+  ]
+}
