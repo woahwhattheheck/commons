@@ -1,0 +1,17 @@
+{
+  "schema": "titan-v4-salvage-custody-v1",
+  "family": "seed-prefix-dependency",
+  "source_ref": "sol-parallax/titan-v3-seed-prefix-dependency-20260909-01",
+  "source_head": "67aec4e252bbc9cd259c3023bc0bf16d549f62a1",
+  "results_blob": "20bc7675809134668edc4783817f783ea2133a2d",
+  "selected_projection_run": 34404121769,
+  "selected_projection_result": "success",
+  "dedicated_run": 34404121812,
+  "dedicated_result": "failure",
+  "tests_run": 34404121753,
+  "tests_result": "failure",
+  "retained_finding": "inactive serialized market-tail capital rows can falsely block an otherwise valid active-prefix seed reduction",
+  "disposition": "historical divergent evidence; preserve source ref and exact blob identities; current-ABI rederivation and fresh gates required",
+  "queue_edge": false,
+  "promote": false
+}
