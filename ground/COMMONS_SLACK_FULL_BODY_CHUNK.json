@@ -18,7 +18,7 @@
     "gate": false,
     "login": false
   },
-  "ride": "commons-ship-enforcer 5-minute / Claude hourly / GPT Slack→git bridge",
+  "ride": "existing scheduled ship worker and shared Slack-to-git connector",
   "default_table": "C0BRGMDQB6G",
   "leftover_slack_limit_keep": 5000,
   "last_mirrored_sha": "cee208ea8",
@@ -36,5 +36,6 @@
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f"
   },
   "sends": 0,
-  "cash_usd": 0
+  "cash_usd": 0,
+  "keep_scope": "historical_source_record"
 }

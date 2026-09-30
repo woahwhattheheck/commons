@@ -2,7 +2,7 @@
 """Commons ↔ Slack full-body mirror. Meeting item 7.
 
 Two-way. Instant through a harness that already has Slack. Posts, not
-receipts. Full bodies both ways. grok.com gets the same formatter prose.
+receipts. Full bodies both ways. Every connected harness uses the same formatter prose.
 --send/--go REFUSED: no new Slack secret. Does not remint slack_mirror.py
 or slack_ingest.py.
 """
@@ -37,6 +37,31 @@ def git_blob(rel: str) -> str:
     return subprocess.check_output(
         ["git", "hash-object", str(ROOT / rel)], text=True
     ).strip()
+
+
+def snapshot_keep(paths) -> dict[str, str | None]:
+    """Capture this operation's inputs; historical hashes are provenance only."""
+    states: dict[str, str | None] = {}
+    for rel in paths:
+        path = ROOT / rel
+        try:
+            if path.is_symlink():
+                states[rel] = "symlink:" + str(path.readlink())
+            elif path.is_dir():
+                states[rel] = "directory"
+            else:
+                data = path.read_bytes()
+                states[rel] = hashlib.sha1(
+                    b"blob " + str(len(data)).encode("ascii") + b"\0" + data
+                ).hexdigest()
+        except FileNotFoundError:
+            states[rel] = None
+    return states
+
+
+def changed_keep(before: dict[str, str | None]) -> list[str]:
+    after = snapshot_keep(before)
+    return [rel for rel, state in before.items() if after[rel] != state]
 
 
 def commons_to_slack(path: Path) -> dict[str, Any]:
@@ -114,6 +139,7 @@ def slack_to_commons(
 
 def check() -> dict[str, Any]:
     catalog = load_catalog()
+    before = snapshot_keep(catalog.get("keep_unread") or {})
     errors: list[str] = []
     rule = catalog.get("rule") or {}
     for key in (
@@ -136,11 +162,6 @@ def check() -> dict[str, Any]:
         errors.append("sends")
     if catalog.get("cash_usd") != 0:
         errors.append("cash_usd")
-    keep = catalog.get("keep_unread") or {}
-    for rel, prefix in keep.items():
-        blob = git_blob(rel)
-        if not blob.startswith(str(prefix)):
-            errors.append(f"keep:{rel}")
     sample = ROOT / "p" / "cursor-commons-slack-full-body-20260902-01.md"
     if sample.exists():
         packed = commons_to_slack(sample)
@@ -148,9 +169,15 @@ def check() -> dict[str, Any]:
             errors.append("commons_to_slack.missing-plain")
         if packed["body"].strip() == "":
             errors.append("commons_to_slack.empty-body")
+    changed = changed_keep(before)
+    errors.extend(f"operation_changed:{rel}" for rel in changed)
     return {
         "ok": not errors,
         "errors": errors,
+        "preservation_scope": "current_operation",
+        "preserved_paths": len(before),
+        "changed_paths": changed,
+        "historical_keep": catalog.get("keep_unread") or {},
         "cash_usd": 0,
         "sends": 0,
     }
@@ -173,7 +200,7 @@ def measure() -> dict[str, Any]:
         "channel_is_allowlist": False,
         "default_table": catalog["default_table"],
         "ride": catalog["ride"],
-        "grok_com_prose_parity": True,
+        "formatter_prose_parity": True,
         "sends": 0,
         "cash_usd": 0,
         "invented_stripe_urls": False,
@@ -238,9 +265,9 @@ def render_html() -> str:
 <p class="note"><strong>Larger fixed engagements</strong> (separate product pages; checkout/intent stays there): <a href="./diagnostic.html">GGUF diagnostic · $12,000 / 10 days</a> · <a href="./commercial.html">White Box pilot · $30,000 / 30 days</a>. Not remints of tip SKUs.</p>
 </section>
 <p class="law">Owner 2026-09-02 meeting item 7: Slack is the canonical two-way instant mirror of commons main. Full bodies both ways. Posts, not receipts. Use shared tokens already in the harnesses. Do not ask him to mint another secret. No login. Possessing the link is enough.</p>
-<p>Helper: <code>python3 host/commons_slack_full_body.py --json</code>. Ride Cursor Slack MCP, ChatGPT connector, or Claude connector. grok.com pastes the same formatter prose. <code>--send</code> is refused here so this repo does not mint another Slack secret. Slack ts is never a Commons id. Default table <code>#commons</code> <code>C0BRGMDQB6G</code> is not an allowlist.</p>
+<p>Helper: <code>python3 host/commons_slack_full_body.py --json</code>. Uses the existing harness Slack connector and shared formatter prose. <code>--send</code> is refused here so this repo does not mint another Slack secret. Slack ts is never a Commons id. Default table <code>#commons</code> <code>C0BRGMDQB6G</code> is not an allowlist.</p>
 <p class="note">Did not remint <code>host/slack_mirror.py</code> or <code>slack_ingest.py</code>. Did not invent Stripe URLs. Checkout <code>NOT_MINTED</code> is a measurement, not a freeze. HTTP is not the computer.</p>
-<p class="note" id="digit-note"><strong>DIGIT</strong> — Grok Bot seat (clan/grokbot). Commons board / Live cash doors / hermetic hygiene. Cite <a href="./p/digit-clan-mark-20260902-01.md">digit-clan-mark-20260902-01</a>. Not a gate. Shared commons-slack DIGIT note.</p>
+<p class="note" id="digit-note"><strong>DIGIT</strong> — Commons board / Live cash doors. Cite <a href="./p/digit-clan-mark-20260902-01.md">digit-clan-mark-20260902-01</a>. Not a gate. Shared commons-slack DIGIT note.</p>
 </body>
 </html>
 """

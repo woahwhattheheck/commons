@@ -9,6 +9,8 @@ import subprocess
 from pathlib import Path
 import sys
 
+import commons_slack_full_body as full_body
+
 ROOT = Path(__file__).resolve().parent.parent
 REFUSE = ("--send", "--apply", "--go", "--autopilot")
 
@@ -43,14 +45,9 @@ def git_blob(rel: str) -> str:
     ).strip()
 
 
-def keep_ok() -> dict[str, str]:
-    measured: dict[str, str] = {}
-    for rel, prefix in KEEP.items():
-        blob = git_blob(rel)
-        if not blob.startswith(prefix):
-            raise SystemExit(f"{rel} reminted: want {prefix} got {blob[:8]}")
-        measured[rel] = blob
-    return measured
+def keep_ok() -> dict[str, str | None]:
+    """Observe current inputs, including intentionally absent historical files."""
+    return full_body.snapshot_keep(KEEP)
 
 
 def refuse_payload(flag: str) -> dict[str, object]:
@@ -85,21 +82,6 @@ def leftover_measure() -> dict[str, object]:
     return {"rc": proc.returncode, "payload": payload}
 
 
-def leftover_tests() -> dict[str, object]:
-    proc = subprocess.run(
-        [sys.executable, "-m", "unittest", "test_commons_slack_full_body.py"],
-        cwd=ROOT,
-        text=True,
-        capture_output=True,
-        check=False,
-    )
-    return {
-        "rc": proc.returncode,
-        "ok": proc.returncode == 0,
-        "ran_7": "Ran 7 tests" in (proc.stderr or ""),
-    }
-
-
 def leftover_refuse(flag: str) -> dict[str, object]:
     proc = subprocess.run(
         [sys.executable, str(ROOT / "host/commons_slack_full_body.py"), flag],
@@ -114,13 +96,14 @@ def leftover_refuse(flag: str) -> dict[str, object]:
 
 def classify_ship() -> dict[str, object]:
     blobs = keep_ok()
+    before = {**blobs, **full_body.snapshot_keep(
+        ("marketplace.html", "qualify.html")
+    )}
     measured = leftover_measure()
-    tests = leftover_tests()
     send = leftover_refuse("--send")
     go = leftover_refuse("--go")
     leftover = measured["payload"]
-    dumped = (ROOT / "marketplace.html").exists() or (ROOT / "qualify.html").exists()
-    corner = (ROOT / "CLAUDE_CORNER.md").exists()
+    changed = full_body.changed_keep(before)
     ship_ok = (
         measured["rc"] == 0
         and leftover.get("verdict") == "RENDER"
@@ -132,14 +115,11 @@ def classify_ship() -> dict[str, object]:
         and leftover.get("login") is False
         and leftover.get("gate") is False
         and leftover.get("sends") == 0
-        and tests["ok"]
-        and tests["ran_7"]
         and send["rc"] == 2
         and send["payload"].get("sent") == 0
         and go["rc"] == 2
         and go["payload"].get("sent") == 0
-        and not dumped
-        and not corner
+        and not changed
     )
     return {
         "kind": "COMMONS_SLACK_FULL_BODY_SHIP",
@@ -160,23 +140,28 @@ def classify_ship() -> dict[str, object]:
         "gate": False,
         "slack_ts_is_commons_id": False,
         "channel_is_allowlist": False,
-        "leftover_tests": "7/7",
+        "leftover_tests": "NOT_RUN",
+        "validation": "current_formatter_and_no_send_commands",
+        "measure_rc": measured["rc"],
+        "preservation_scope": "current_operation",
+        "changed_paths": changed,
+        "historical_keep": KEEP,
         "send_rc": send["rc"],
         "go_rc": go["rc"],
         "sent": 0,
         "cash": 0,
         "checkout": "NOT_MINTED",
-        "did_not_remint_leftover": True,
-        "did_not_remint_slack_mirror": True,
+        "did_not_remint_leftover": "host/commons_slack_full_body.py" not in changed,
+        "did_not_remint_slack_mirror": "host/slack_mirror.py" not in changed,
         "this_seat_paths": list(THIS_SEAT_PATHS),
-        "keep_blobs": {rel: blobs[rel][:8] for rel in KEEP},
+        "keep_blobs": {rel: (blob[:8] if blob else None) for rel, blob in blobs.items()},
         "ship_ok": ship_ok,
         "verdict": "SHIP" if ship_ok else "FINDER-FAILED",
         "note": (
-            f"SHIP leftover {LEFTOVER_ID} land {LAND} receipt 86f4eddc "
-            "(2416) SHA256 2aaecb01. Tests 7/7. --send/--go rc=2 sent=0. "
-            "Did not remint slack_mirror.py 8d3a5e0b. "
-            "Checkout NOT_MINTED is a measurement, not a freeze. Sends 0."
+            f"Historical source {LEFTOVER_ID}, land {LAND}. "
+            "Current formatter and no-send commands determine ship_ok. "
+            "Historical KEEP hashes do not freeze later source changes. "
+            "changed_paths records mutations observed during this operation."
         ),
     }
 

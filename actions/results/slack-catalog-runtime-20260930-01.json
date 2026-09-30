@@ -1,0 +1,13 @@
+{
+  "id": "slack-catalog-runtime-20260930-01",
+  "verb": "RUN",
+  "target": "GITHUB",
+  "scope": "github",
+  "ok": true,
+  "output": "SOURCE a64cbaf85a01c7cfc5b32a00fc89c51363cc6f51\n{\"command\": \"commons_slack_full_body\", \"exit_code\": 0, \"verdict\": \"RENDER\", \"preservation_scope\": \"current_operation\", \"changed_paths\": [], \"sends\": 0, \"channel_limit\": null, \"leftover_tests\": null}\n{\"command\": \"commons_slack_full_body_chunk\", \"exit_code\": 0, \"verdict\": \"RENDER\", \"preservation_scope\": \"current_operation\", \"changed_paths\": [], \"sends\": 0, \"channel_limit\": 4000, \"leftover_tests\": null}\n{\"command\": \"commons_slack_full_body_ship\", \"exit_code\": 0, \"verdict\": \"SHIP\", \"preservation_scope\": \"current_operation\", \"changed_paths\": [], \"sends\": 0, \"channel_limit\": null, \"leftover_tests\": \"NOT_RUN\"}\n",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": [],
+  "executed_at": "2026-09-30T07:20:23.126164Z"
+}

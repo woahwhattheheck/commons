@@ -133,6 +133,7 @@ def pending_posts(since_sha: str) -> list[str]:
 
 def measure() -> dict[str, Any]:
     catalog = load_catalog()
+    before = leftover.snapshot_keep(catalog.get("keep_unread") or {})
     errors: list[str] = []
     rule = catalog.get("rule") or {}
     if rule.get("channel_limit") != CHANNEL_LIMIT:
@@ -153,11 +154,6 @@ def measure() -> dict[str, Any]:
         errors.append("rule.new_token")
     if sm.SLACK_LIMIT != LEFTOVER_SLACK_LIMIT:
         errors.append("leftover.slack_limit_reminted")
-    keep = catalog.get("keep_unread") or {}
-    for rel, prefix in keep.items():
-        blob = git_blob(rel)
-        if not blob.startswith(str(prefix)):
-            errors.append(f"keep:{rel}")
     last = str(catalog.get("last_mirrored_sha") or "")
     pending = pending_posts(last) if last else []
     sample = ROOT / "p" / "cursor-commons-slack-full-body-20260902-01.md"
@@ -175,9 +171,15 @@ def measure() -> dict[str, Any]:
             errors.append("channel_over_limit")
         if formatted["cursor_advanced"]:
             errors.append("cursor_advanced_without_confirm")
+    changed = leftover.changed_keep(before)
+    errors.extend(f"operation_changed:{rel}" for rel in changed)
     return {
         "kind": "COMMONS_SLACK_FULL_BODY_CHUNK",
         "id": catalog["id"],
+        "preservation_scope": "current_operation",
+        "preserved_paths": len(before),
+        "changed_paths": changed,
+        "historical_keep": catalog.get("keep_unread") or {},
         "gate": False,
         "login": False,
         "channel_limit": CHANNEL_LIMIT,

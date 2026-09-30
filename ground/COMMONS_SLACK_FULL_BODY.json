@@ -19,8 +19,7 @@
     "gate": false,
     "login": false
   },
-  "ride": "harness Slack (Cursor MCP / ChatGPT / Claude connector)",
-  "grok_com_prose_parity": true,
+  "ride": "existing harness Slack connector",
   "default_table": "C0BRGMDQB6G",
   "keep_unread": {
     "host/slack_mirror.py": "72c0844e",
@@ -34,5 +33,7 @@
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495"
   },
   "sends": 0,
-  "cash_usd": 0
+  "cash_usd": 0,
+  "keep_scope": "historical_source_record",
+  "formatter_prose_parity": true
 }
