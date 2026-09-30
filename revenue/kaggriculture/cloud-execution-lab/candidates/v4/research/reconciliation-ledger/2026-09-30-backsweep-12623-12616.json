@@ -1,0 +1,55 @@
+{
+  "schema": "titan.v4.salvage.reconciliation.v1",
+  "authority_main": "3d2a8417adc7944c57c3da36ce07462af60538cf",
+  "carrier_parent": "c655e44eb17937f281ba5ae65fde1cdce6bb6504",
+  "backward_sweep": {
+    "quarantined": [
+      {
+        "pr": 12623,
+        "disposition": "parked_no_op_do_not_promote",
+        "detached_donor": "3154b5dc1ae312c095442e86c8c9eaa1c4338126"
+      },
+      {
+        "pr": 12616,
+        "disposition": "NO_BUILD_negative_receipt_do_not_activate",
+        "exact_head": "7337639a43378a823b47ec6eea96808d2c851ff3"
+      }
+    ],
+    "already_accounted": [
+      {
+        "pr": 12615,
+        "status": "current INTEGRATION source/test custody, default-off"
+      },
+      {
+        "pr": 12612,
+        "status": "successor-consumed by current-ABI EOD rescue port #12716"
+      },
+      {
+        "pr": 12610,
+        "status": "D4 tested carrier already terminal KILL via #12852/#12917"
+      },
+      {
+        "pr": 12609,
+        "status": "current INTEGRATION F2 source/test custody, default-off"
+      },
+      {
+        "pr": 12598,
+        "status": "current INTEGRATION S6 source/test custody, default-off"
+      },
+      {
+        "pr": 12596,
+        "status": "retired duplicate allocator surface; constraints transferred to S6"
+      },
+      {
+        "pr": 12592,
+        "status": "NO_BUILD measured negative; do not port"
+      }
+    ]
+  },
+  "queue_edge": false,
+  "promotion": false,
+  "runtime_change": false,
+  "default_change": false,
+  "canonical_change": false,
+  "kaggle_change": false
+}

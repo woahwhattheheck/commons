@@ -1,0 +1,23 @@
+{
+  "schema": "titan.v4.salvage.quarantine.v1",
+  "pr": 12616,
+  "exact_head": "7337639a43378a823b47ec6eea96808d2c851ff3",
+  "disposition": "NO_BUILD_negative_receipt_do_not_activate",
+  "reason": "Live reachability census inspected 7192 emitted FEED commands and found zero already-fed targets, yielding zero reachable W2 activations on retained evidence.",
+  "queue_edge": false,
+  "promotion": false,
+  "artifacts": [
+    {
+      "path": "apply_v4.py",
+      "blob_sha": "a17387d07f94c25b1b0dfe406a940aa2cf0f268a"
+    },
+    {
+      "path": "test_v4_dead_feed_care.py",
+      "blob_sha": "de49ebbd6b8994d1b1ba1f5c5da23d9f2cf7edb7"
+    },
+    {
+      "path": "r04_dead_feed_care.py",
+      "blob_sha": "2f68d63656d372c6840f82dde9b218a6f85523b8"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "schema": "titan.v4.salvage.quarantine.v1",
+  "pr": 12623,
+  "pr_head": "ef776d022606945835dca0e561bb8a383d9d1e0d",
+  "detached_donor": "3154b5dc1ae312c095442e86c8c9eaa1c4338126",
+  "donor_base": "ef776d022606945835dca0e561bb8a383d9d1e0d",
+  "disposition": "parked_no_op_do_not_promote",
+  "reason": "PR was intentionally returned to canonical/no-op under the serial V4 queue; exact detached A1/V233 donor preserved only as historical source custody.",
+  "queue_edge": false,
+  "promotion": false,
+  "artifacts": [
+    {
+      "path": "apply_v4.py",
+      "blob_sha": "a915d99f59da0cce4870ac8ab42f6a87441b74cb"
+    },
+    {
+      "path": "test_v4_v233_eod_service.py",
+      "blob_sha": "0e4503aadf93d3eb7dcedf72a25bcb48725a5851"
+    },
+    {
+      "path": "r04_v233_eod_service.py",
+      "blob_sha": "72e281d9fbd9298f29e3bd87b3fc4759508e1684"
+    }
+  ]
+}
