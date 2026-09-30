@@ -1,0 +1,31 @@
+{
+  "schema": "titan-v4-salvage-reconciliation/v1",
+  "recorded_at": "2026-09-30T13:54:05Z",
+  "main_fence": "a99fe44dcf3e49de7143af8aa2c4bdf03d2dad0a",
+  "carrier_parent": "4bc99b5862fefefa90dbdc7bbaded63bcf7bc9fd",
+  "authority": {
+    "canonical_blob": "00142be0ff2314dcb23068c8133b34d290661923",
+    "integration_blob": "4e3207af1332266852530ec8494db8969edc1115",
+    "composition_blob": "32dc1e6963702f7e013cd609053d52c434e42158",
+    "single_line": "main"
+  },
+  "changes": [
+    {
+      "family": "controller-fingerprint-11935-11943",
+      "custody_blob": "2893473181afa0ec3d3999a8becd50d031447ca7",
+      "blocker_cleared": "prior single-writer contention is resolved; exact semantics-only custody is branch-reachable at b70afaebbfc473a6d4d8465a8940e78117aba736",
+      "disposition": "historical evidence only; queue_edge=false; promotion=false; current-ABI rederive required"
+    },
+    {
+      "family": "profit-first-forced-fallback-11933-11938",
+      "terminal_head": "b8206932e20955c0f0aa52c3b9ded03a6f2c5a65",
+      "artifact_id": 10131358593,
+      "artifact_sha256": "5f11b3262fd139addcec2fe687507d971257363c9af3c0e14773715f77472ab3",
+      "result": "NO_ACTION_SIGNAL: 0/16 returned-action changes, 0/16 score changes, all own deltas 0",
+      "disposition": "quarantine exact negative evidence; no queue edge; no promotion; no rerun"
+    }
+  ],
+  "queue_edge": false,
+  "semantic_promotion": false,
+  "sibling_v4_root": false
+}

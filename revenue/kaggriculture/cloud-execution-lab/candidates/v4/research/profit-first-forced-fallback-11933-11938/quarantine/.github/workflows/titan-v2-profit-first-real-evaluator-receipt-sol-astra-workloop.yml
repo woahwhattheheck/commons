@@ -1,0 +1,67 @@
+name: titan-v2-profit-first-real-evaluator-receipt-sol-astra-workloop
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/titan-v2-profit-first-real-evaluator-receipt-sol-astra-workloop.yml"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v2-profit-first-forced-fallback-sol-forge/materialize_evaluator.py"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v2-profit-first-forced-fallback-sol-forge/compare_bound.py"
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/v2-profit-first-forced-fallback-sol-forge/test_real_evaluator_receipt.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-receipt-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    env:
+      CASE: revenue/kaggriculture/cloud-execution-lab/analysis/v2-profit-first-forced-fallback-sol-forge
+      PARENT: revenue/kaggriculture/cloud-execution-lab/analysis/v2-forced-feasibility-ablation-sol-keel
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - name: Check out exact tested head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Bind exact repair and inherited helper bytes
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$(git hash-object "$CASE/materialize_evaluator.py")" = "be3e15f9b1698caa96aee7cea6dc833d466dd0ea"
+          test "$(git hash-object "$CASE/compare_bound.py")" = "15f296f7163677d8fad0d8ec1104829cfc91ca2e"
+          test "$(git hash-object "$CASE/test_real_evaluator_receipt.py")" = "374bc7539553817f0c4224999c886b7e8e84c3b8"
+          test "$(git hash-object "$PARENT/materialize_evaluator.py")" = "fe535fda2573ce198e34da4c4639ab14587ba8b8"
+          test "$(git hash-object "$PARENT/compare_bound.py")" = "ab516c55b909ed922b2a821ccebc52c1dfd831df"
+          git diff --exit-code -- .
+          test -z "$(git status --porcelain --untracked-files=all)"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Compile exact repair surface
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/v2-profit-first-forced-fallback-sol-forge
+        run: python -B -m py_compile materialize_evaluator.py compare_bound.py test_real_evaluator_receipt.py
+
+      - name: Prove real evaluator receipt round trip and predecessor rejection
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/v2-profit-first-forced-fallback-sol-forge
+        run: python -B -m unittest -v test_real_evaluator_receipt.py
+
+      - name: Assert exact head stayed clean
+        if: always()
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          git diff --exit-code -- .
+          test -z "$(git status --porcelain --untracked-files=all)"

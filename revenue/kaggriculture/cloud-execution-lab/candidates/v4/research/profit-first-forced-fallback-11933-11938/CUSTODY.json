@@ -1,0 +1,68 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "family": "profit-first-forced-fallback-11933-11938",
+  "main_fence": "a99fe44dcf3e49de7143af8aa2c4bdf03d2dad0a",
+  "parent_pr": 11933,
+  "parent_head": "5023e6967be66c587c102a2d3303ec2172e06990",
+  "receipt_repair_pr": 11938,
+  "terminal_head": "b8206932e20955c0f0aa52c3b9ded03a6f2c5a65",
+  "terminal_source_blobs": {
+    ".github/workflows/titan-v2-profit-first-forced-fallback-sol-forge.yml": "047001d26c95b66a47feaef95e57a9dd7439734e",
+    "p/sol-forge-titan-v2-profit-first-forced-fallback-20260909-01.md": "408cfd5637485aeeed4bc0d034be3cfa26c90eb0",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/v2-profit-first-forced-fallback-sol-forge/README.md": "d1cf2f96ae14aad844821bf5a2fe21e83e21b982",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/v2-profit-first-forced-fallback-sol-forge/bind_execution.py": "e366bd3febde0ad6871049aa66ab4e5aa8d6ce04",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/v2-profit-first-forced-fallback-sol-forge/compare.py": "1e78ef5267bb98480a290c6f1930388b8cf4aba5",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/v2-profit-first-forced-fallback-sol-forge/compare_bound.py": "15f296f7163677d8fad0d8ec1104829cfc91ca2e",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/v2-profit-first-forced-fallback-sol-forge/delegate.py": "dc2a57b47ac9a401d437782a99e66c1269f3956b",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/v2-profit-first-forced-fallback-sol-forge/materialize.py": "06b1e9d79db741db5abe0f8d0b9191ae4783dee0",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/v2-profit-first-forced-fallback-sol-forge/materialize_evaluator.py": "be3e15f9b1698caa96aee7cea6dc833d466dd0ea",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/v2-profit-first-forced-fallback-sol-forge/test_delegate.py": "86452b81902d06e28ca142337f7f7dced3ab1760",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/v2-profit-first-forced-fallback-sol-forge/test_materialize.py": "b27ec2dd6a318f5ecdf273b09cc9e3d0a9f64994",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/v2-profit-first-forced-fallback-sol-forge/test_workflow.py": "efecab1df4f2855af9e48493c58c5df2efa79160",
+    ".github/workflows/titan-v2-profit-first-real-evaluator-receipt-sol-astra-workloop.yml": "897bcbc3b3e491627a01a937873d57ea68263525",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/v2-profit-first-forced-fallback-sol-forge/test_real_evaluator_receipt.py": "374bc7539553817f0c4224999c886b7e8e84c3b8"
+  },
+  "parent_overridden_blobs": {
+    "revenue/kaggriculture/cloud-execution-lab/analysis/v2-profit-first-forced-fallback-sol-forge/compare_bound.py": "fb572031225ada8c0085d1e42686131bdcf5e7ca",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/v2-profit-first-forced-fallback-sol-forge/materialize_evaluator.py": "5c49164a3d6f25555bc1b1f0282e20569a58a661"
+  },
+  "evidence": {
+    "focused_receipt_repair": {
+      "run": 34421898204,
+      "job": 102698934975,
+      "result": "SUCCESS",
+      "contracts": "3/3"
+    },
+    "inherited_full_panel": {
+      "run": 34421898248,
+      "job": 102698935413,
+      "evidence_steps": "PASS",
+      "terminal_policy_gate": "EXPECTED_REJECT"
+    },
+    "artifact": {
+      "id": 10131358593,
+      "zip_bytes": 239126,
+      "zip_sha256": "5f11b3262fd139addcec2fe687507d971257363c9af3c0e14773715f77472ab3"
+    },
+    "panel": {
+      "paired_cells": 16,
+      "candidate_action_changed_cells": 0,
+      "whole_trace_changed_cells": 0,
+      "score_changed_cells": 0,
+      "positive_cells": 0,
+      "negative_cells": 0,
+      "zero_cells": 16,
+      "mean_own_delta": 0,
+      "verdict": "NO_ACTION_SIGNAL",
+      "exit_code": 4
+    }
+  },
+  "disposition": {
+    "class": "terminal_negative_evidence",
+    "queue_edge": false,
+    "promotion": false,
+    "direct_port": false,
+    "rerun_same_panel": false,
+    "note": "Receipt-plumbing blocker cleared by #11938; gameplay hypothesis remained exact no-signal. Preserve bytes and receipt only."
+  }
+}
