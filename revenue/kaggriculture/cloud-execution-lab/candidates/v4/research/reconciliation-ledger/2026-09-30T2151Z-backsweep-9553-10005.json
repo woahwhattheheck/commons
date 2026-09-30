@@ -1,0 +1,38 @@
+{
+  "schema": "titan-v4-reconciliation/v1",
+  "observed_at": "2026-09-30T21:51:12Z",
+  "main": "c4cf1baa65e8d4f20570748a4e69cdd29f1e3243",
+  "carrier_before": "31efc8cd3dc8bddd9b5a0c8b002d31239d74ea8c",
+  "CANONICAL": "00142be0ff2314dcb23068c8133b34d290661923",
+  "INTEGRATION": "4e3207af1332266852530ec8494db8969edc1115",
+  "COMPOSITION": "32dc1e6963702f7e013cd609053d52c434e42158",
+  "open_v4_v31_v3": [
+    0,
+    0,
+    0
+  ],
+  "authority_delta_from": "f7659727c088738f2a08aebc05625f87bc170114",
+  "authority_delta": {
+    "ahead": 1,
+    "behind": 0,
+    "kaggriculture_paths": 0
+  },
+  "backward_band": "9553..10005",
+  "historical_kaggriculture_pr_disposition": "all returned PRs in scanned band are merged; no closed-unmerged donor surfaced",
+  "closed_unmerged_kaggriculture_prs": [],
+  "new_semantic_donor": null,
+  "slack": {
+    "channel": "C0C0Z8AHGP2",
+    "newest_relevant_v4_edge": null,
+    "separate_final_two_operation": "kaggriculture-final-two-20260930-01"
+  },
+  "queue_edge": false,
+  "promotion": false,
+  "single_v4_root": true,
+  "notes": [
+    "main remains the sole V4 authority",
+    "salvage is evidence/research custody only",
+    "no legacy whole-file plumbing was replayed",
+    "blocked current-ABI lanes remain blocked pending their named postimage, activation, and economics gates"
+  ]
+}
