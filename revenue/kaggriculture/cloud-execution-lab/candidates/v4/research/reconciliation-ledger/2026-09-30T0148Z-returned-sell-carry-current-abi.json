@@ -1,0 +1,21 @@
+{
+  "schema": "titan-v4-reconciliation-receipt/v1",
+  "recorded_at": "2026-09-30T01:48:50Z",
+  "canonical_main": "3d2a8417adc7944c57c3da36ce07462af60538cf",
+  "carrier_before": "049963a1ed8cc561307c31acf16934a418689570",
+  "topology": {
+    "ahead": 157,
+    "behind": 0,
+    "merge_base": "3d2a8417adc7944c57c3da36ce07462af60538cf",
+    "scope": "research-only"
+  },
+  "open_census": {"v4": 0, "v31": 0, "v3": 0},
+  "unconsumed_semantic": {
+    "name": "returned-sell-carry",
+    "implementation": "47308a85fd1bda408ec34924addf4716a90f5e69",
+    "tests": "3f0a71ed8cba4595a91899591489f44dd30dcafa",
+    "current_abi_validation_required": true,
+    "queue_edge": false
+  },
+  "integration": false
+}
