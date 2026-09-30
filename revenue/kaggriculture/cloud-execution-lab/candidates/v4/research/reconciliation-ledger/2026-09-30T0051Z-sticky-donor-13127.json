@@ -1,0 +1,32 @@
+{
+  "schema": "titan-v4-reconciliation-receipt/v1",
+  "recorded_at": "2026-09-30T00:51:00Z",
+  "canonical_main": "3d2a8417adc7944c57c3da36ce07462af60538cf",
+  "authority_blobs": {
+    "canonical": "00142be0ff2314dcb23068c8133b34d290661923",
+    "integration": "4e3207af1332266852530ec8494db8969edc1115",
+    "composition": "32dc1e6963702f7e013cd609053d52c434e42158"
+  },
+  "prior_carrier": "c5fb1604b26cd77fa964deffdec4e15d2ec8bab2",
+  "custody_commit": "7ec60eda2cd83d3b7d7ea2410e439736bc718abb",
+  "donor_pr": 13127,
+  "donor_head": "7049aba3d2a4d681913969d2aaf7ddf281879f16",
+  "donor_manifest_blob": "9d28da58f547487480f50d9deafbe3a254625a51",
+  "successor_pr": 13126,
+  "successor_merge": "bc13d64e32f02daab946a7bd217e7ce7ab9ad82a",
+  "disposition": "superseded_donor_quarantine_only",
+  "fresh_open_census": {
+    "v4": 0,
+    "v31": 0,
+    "v3": 0
+  },
+  "carrier_after_custody": {
+    "ahead": 156,
+    "behind": 0,
+    "merge_base": "3d2a8417adc7944c57c3da36ce07462af60538cf"
+  },
+  "queue_edge": false,
+  "promotion": false,
+  "sibling_v4_root": false,
+  "runtime_or_canonical_change": false
+}
