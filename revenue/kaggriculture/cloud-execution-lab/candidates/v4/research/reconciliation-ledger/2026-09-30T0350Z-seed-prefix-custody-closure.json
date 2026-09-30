@@ -1,0 +1,53 @@
+{
+  "schema": "titan-v4-reconciliation-receipt-v1",
+  "operation": "seed-prefix-dependency-custody-closure",
+  "authority": {
+    "main": "2c17024bfcbb831b9af82cdaedc997f0cde6381f",
+    "main_tree": "653ca6ea71274fb496ce08cb98b24dac1395bb7a",
+    "canonical_blob": "00142be0ff2314dcb23068c8133b34d290661923",
+    "integration_blob": "4e3207af1332266852530ec8494db8969edc1115",
+    "composition_blob": "32dc1e6963702f7e013cd609053d52c434e42158",
+    "recovered_not_yet_composed": []
+  },
+  "prior_salvage": {
+    "head": "fe712d391ef171b3cf554c7e19977aeac626763c",
+    "tree": "5e4581c5d6cab40de96c23565cb4f3a50aa65d4f",
+    "topology_vs_main": {
+      "ahead_by": 175,
+      "behind_by": 2,
+      "merge_base": "456d9f88c00690e31018dda795986e44ec04ac46"
+    },
+    "differing_paths_scope": "candidates/v4/research/** only"
+  },
+  "detached_custody": {
+    "prepared_commit": "ff04e8149291a75c40fe9b1f0966674514a67f55",
+    "prepared_tree": "e5f00fd9fb2d499788033566c2fe88a235b8cb90",
+    "quarantine_tree": "c13f579330b6a4cd3ced1099f7de3d8df6c1343f",
+    "action": "attach exact historical evidence bytes only; do not replay historical implementation or workflow"
+  },
+  "semantic_reconciliation": {
+    "historical_finding": "seed dependency scan can be falsely widened by engine-inactive serialized market tail",
+    "current_runtime_blob": "72c057552308dbac02dd6165c3049032ddbfa657",
+    "consumed_by_pr": 12944,
+    "consumer_merge": "d9657342fd4fca3b43ba93d2a6b5a8fe5062f04e",
+    "consumer_merge_is_ancestor_of_main": true,
+    "current_source_proof": "_seed_selected uses min-one maximum, market[:maximum], proposed market[:maximum], and prefix[i+1:] dependency scan",
+    "disposition": "CONSUMED_DO_NOT_REMINT"
+  },
+  "open_carriers": {
+    "v4": 0,
+    "v31": 0,
+    "v3": 0
+  },
+  "exact_head_checks": {
+    "main_workflow_runs": 0,
+    "main_statuses": 0,
+    "salvage_workflow_runs": 0,
+    "salvage_statuses": 0
+  },
+  "queue_edge_added": false,
+  "promotion": false,
+  "canonical_moved": false,
+  "sibling_v4_root_created": false,
+  "force_ref": false
+}

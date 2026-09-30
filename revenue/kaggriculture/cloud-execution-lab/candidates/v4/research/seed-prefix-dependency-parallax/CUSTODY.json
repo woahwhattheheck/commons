@@ -3,15 +3,44 @@
   "family": "seed-prefix-dependency",
   "source_ref": "sol-parallax/titan-v3-seed-prefix-dependency-20260909-01",
   "source_head": "67aec4e252bbc9cd259c3023bc0bf16d549f62a1",
+  "source_base": "e2b99bb417675ad574aa4d12cf1c32e5795124c5",
   "results_blob": "20bc7675809134668edc4783817f783ea2133a2d",
-  "selected_projection_run": 34404121769,
-  "selected_projection_result": "success",
-  "dedicated_run": 34404121812,
-  "dedicated_result": "failure",
-  "tests_run": 34404121753,
-  "tests_result": "failure",
+  "historical_exact_head_runs": {
+    "selected_projection": {
+      "id": 34404121769,
+      "result": "success"
+    },
+    "dedicated": {
+      "id": 34404121812,
+      "result": "failure"
+    },
+    "tests": {
+      "id": 34404121753,
+      "result": "failure"
+    },
+    "source_parses": {
+      "id": 34404121717,
+      "result": "success"
+    },
+    "open_door": {
+      "id": 34404121701,
+      "result": "success"
+    }
+  },
   "retained_finding": "inactive serialized market-tail capital rows can falsely block an otherwise valid active-prefix seed reduction",
-  "disposition": "historical divergent evidence; preserve source ref and exact blob identities; current-ABI rederivation and fresh gates required",
+  "historical_predecessor_disposition": "SOURCE_CANDIDATE_LOCAL_TESTED_EXACT_CURRENT_CI_PENDING_GAME_UNMEASURED",
+  "current_authority": {
+    "main": "2c17024bfcbb831b9af82cdaedc997f0cde6381f",
+    "titan_runtime_blob": "72c057552308dbac02dd6165c3049032ddbfa657",
+    "consumer_pr": 12944,
+    "consumer_merge": "d9657342fd4fca3b43ba93d2a6b5a8fe5062f04e",
+    "consumer_is_ancestor_of_main": true,
+    "proof": "current _seed_selected normalizes maxMarketOrdersPerTurn with max(1,int(...)), slices market to prefix=market[:maximum], computes edits only against proposed['market'][:maximum], and scans downstream capital dependencies only in prefix[i+1:]"
+  },
+  "exact_historical_quarantine_tree": "c13f579330b6a4cd3ced1099f7de3d8df6c1343f",
+  "disposition": "CURRENT_AUTHORITY_ALREADY_CONSUMES_THEOREM__HISTORICAL_BYTES_QUARANTINED__DO_NOT_REMINT",
   "queue_edge": false,
-  "promote": false
+  "promote": false,
+  "current_abi_rederive": false,
+  "stale_whole_file_replay": false
 }
