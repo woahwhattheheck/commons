@@ -1,0 +1,90 @@
+{
+  "schema": "titan-v4-salvage-reconciliation/v1",
+  "recorded_at": "2026-09-30T14:02:00Z",
+  "main_fence": "a99fe44dcf3e49de7143af8aa2c4bdf03d2dad0a",
+  "carrier_parent": "dfd454f9325568307dccde169f3a1e53cb226741",
+  "range": "closed-unmerged TITAN historical tranche #11934 through #11892",
+  "reconciled": [
+    {
+      "prs": [
+        11926,
+        11929,
+        11934
+      ],
+      "status": "successor-consumed exact custody",
+      "custody_blob": "ab02ab98e19d10d73496ea37ca312d960ef98a2d",
+      "note": "#11926 -> #11929 -> terminal #11934 stacked carrier; downstream panel no economic signal; no V4 edge"
+    },
+    {
+      "prs": [
+        11908,
+        11915
+      ],
+      "status": "terminal regression custody",
+      "custody_blob": "a5d518e2490ce47b9c2c8914ac20d58ce94e5afc",
+      "note": "#11915 is stacked directly on #11908; 64/64 complete, verdict REGRESSION, no promotion"
+    },
+    {
+      "prs": [
+        11913,
+        11927
+      ],
+      "status": "historical deadline custody",
+      "custody_blob": "056d8c42b5885c12d0ca376de1445756c9dc4af2",
+      "note": "terminal fallback semantics already rederived on current V4 lineage; historical packet remains evidence-only"
+    },
+    {
+      "prs": [
+        11912
+      ],
+      "status": "runtime-closure precursor custody",
+      "custody_blob": "23a6f125c19024bf8601f7fa4308a58a3f265a51",
+      "note": "superseded by #11932 evidence-bound carrier and merged #11965 tooling; no independent gameplay donor"
+    },
+    {
+      "prs": [
+        11932
+      ],
+      "status": "exact archive-carrier custody",
+      "custody_blob": "011778a580a2c9b4383bf3461f76a3f0ce43490b",
+      "note": "green tooling/evidence carrier consumed downstream; no direct V4 port"
+    },
+    {
+      "prs": [
+        11907
+      ],
+      "status": "terminal no-signal custody",
+      "custody_blob": "349d7e9bf4f4a54cc02a5a81bf2ce99bd4fc4d03",
+      "note": "0/32 treatment activation; exact receipt only"
+    },
+    {
+      "prs": [
+        11892
+      ],
+      "status": "forensic reject custody",
+      "custody_blob": "86c1de1df8ecd158e0dacdd75fc5dc6719bbfd11",
+      "note": "release-gate implementation rejected; evidence only"
+    },
+    {
+      "prs": [
+        11900
+      ],
+      "status": "superseded blocked-before-gameplay",
+      "head": "2bf0383ac7654a98b50893f838b2368a8b88f3c4",
+      "note": "control failed before candidate evaluation; later #11912/#11932/#11965 close the runtime/tooling path"
+    },
+    {
+      "prs": [
+        11899
+      ],
+      "status": "merged predecessor",
+      "head": "aa33226abb0d5158510d85f2576f8207d53c2a85",
+      "note": "already landed; not a salvage obligation"
+    }
+  ],
+  "result": {
+    "new_promotion_safe_delta": false,
+    "new_queue_edge": false,
+    "sibling_v4_root": false
+  }
+}
