@@ -25,6 +25,7 @@
   "priority_queue": [],
   "production_write": false,
   "record_sources": [
+    "inventory/resources/records/codex-slack-full-body-catalog-runtime-resource-activation-20260930-01.json",
     "inventory/resources/records/codex-commons-operation-command-center-windows-text-encoding-advancement-20260930-01.json",
     "inventory/resources/records/codex-chatgpt-pro-codex-reset-capacity-refresh-20260929-01.json",
     "inventory/resources/records/codex-titanmcp-setup-schema-resource-activation-20260929-01.json",
@@ -117,15 +118,15 @@
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1790741747.612979",
+  "slack_ts": "1790763938.566989",
   "snapshot": {
-    "base_main_sha": "ba1f55fd7018c584539713568268f5fb91db9053",
-    "observed_at": "2026-09-30T04:15:47Z",
+    "base_main_sha": "5d970f59f876dbab71e359253477e53db50e448b",
+    "observed_at": "2026-09-30T10:26:49Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-commons-operation-command-center-windows-text-encoding-advancement-20260930-01",
+  "source_id": "codex-slack-full-body-catalog-runtime-resource-activation-20260930-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -134,8 +135,9 @@
     "EXERCISED",
     "PRODUCING"
   ],
-  "subject": "MASTER RESOURCE LEDGER — command-center Windows credential text encoding advancement",
+  "subject": "MASTER RESOURCE LEDGER — Slack full-body catalog runtime activation",
   "supersedes_source_ids": [
+    "codex-slack-full-body-catalog-runtime-resource-activation-20260930-01",
     "codex-commons-operation-command-center-windows-text-encoding-advancement-20260930-01",
     "codex-chatgpt-pro-codex-reset-capacity-refresh-20260929-01",
     "codex-titanmcp-setup-schema-resource-activation-20260929-01",
@@ -212,6 +214,31 @@
     "demon-live-compute-board-20260825-01"
   ],
   "surfaces": [
+    {
+      "name": "slack-full-body-catalog-runtime",
+      "kind": "CURRENT_OPERATION_SLACK_FULL_BODY_CATALOG_RENDER_AND_SHIP_RUNTIME",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons catalog and scheduled-shipping operators; expired implementation claim released after source and action-result landing",
+      "authority": "SHARED_ALL_CARRIERS; PUBLIC_CURRENT_MAIN_READ_RUN_AND_ADAPT; EXACT_SOURCE_COMMIT_7D69419631FBAAFE8263448D68E6815E3E8F506D_ACTION_RESULT_73566C64E4F454091445F5D1C4B99CB5C4F145BF_AND_SEVEN_CURRENT_MAIN_BLOBS_REQUIRED; CURRENT_FORMATTER_OPERATION_ONLY; RENDER_AND_DRY_SHIP_ONLY; PROVIDER_SEND_FALSE; HISTORY_REWRITE_FALSE; AUTH_OR_ADMISSION_GATE_FALSE; CUSTOMER_ACTION_FALSE; DEPLOYMENT_FALSE; PAYMENT_FALSE; REVENUE_FALSE; CASH_FALSE",
+      "consumer": "Commons catalog and scheduled-shipping operators that need current full-body render, 4,000-character chunk and dry ship-readiness decisions without historical KEEP pins freezing later source.",
+      "value": "The landed formatter renders exact full-body catalog artifacts, the chunker enforces the Slack channel-length boundary with thread remainder, and the ship command determines readiness from current formatter and no-send execution while preserving history.",
+      "next_action": "Existing operators may use the current formatter, chunker and dry ship path and must separately return an authorized provider-send and delivery receipt before claiming Slack delivery.",
+      "source": "host/commons_slack_full_body.py, host/commons_slack_full_body_chunk.py, host/commons_slack_full_body_ship.py, ground/COMMONS_SLACK_FULL_BODY.json, ground/COMMONS_SLACK_FULL_BODY_CHUNK.json, p/slack-catalog-runtime-20260930-01.md and actions/results/slack-catalog-runtime-20260930-01.json; source commit 7d69419631fbaafe8263448d68e6815e3e8f506d; action-result commit 73566c64e4f454091445f5d1c4b99cb5c4f145bf",
+      "evidence_ts": "2026-09-30T10:15:51Z",
+      "auth_surface": "Public current-main source and local rendering run without Commons login, sender credential, customer data or repeated approval. Provider send and delivery confirmation remain separate authorized external actions.",
+      "exact_safe_probe": "Activation PR #30170 merged at current main 5d970f59f876dbab71e359253477e53db50e448b. Exact readback matched all seven pinned source blobs and four activation blobs. Full-body, chunk and dry ship commands each exit 0 with current_operation scope, no changed paths and zero sends; the chunk boundary is 4,000 characters; dry ship reports ship_ok=true and leftover_tests=NOT_RUN.",
+      "rate_plan_boundary": "Local rendering and dry readiness use no paid provider call. A SHIP verdict, no-send command or connected Slack surface does not establish sender authority, provider delivery, deployment, customer action, payment, revenue or cash.",
+      "assigned_backlog": "Available to existing catalog and scheduled-shipping operators. No duplicate build order is justified; an authorized provider send and delivery confirmation are external execution receipts rather than an implementation lane.",
+      "last_receipt": "codex-slack-full-body-catalog-runtime-resource-activation-20260930-01",
+      "last_used_at": "2026-09-30T10:15:51Z",
+      "stale_after": "next formatter operation, chunk limit, ship-readiness contract, provider-send receipt, source blob, action result, authority or consumer change",
+      "verification": "All three real product commands exited 0; no test suite was run; current-main source blobs and landed action result matched; activation projection and safety checks are recorded in the durable receipt.",
+      "last_result": "PR #30170 merged the canonical activation and exact readback matched 4/4 activation plus 7/7 source blobs; current-operation preservation and the no-send action result are current.",
+      "build_order": "NONE_COMPLETE_SOURCE_AND_EXTERNAL_SEND_RECEIPT_BOUNDARY",
+      "confidence": "HIGH_FOR_MERGED_CODE_RENDER_CHUNK_AND_DRY_SHIP; NONE_FOR_PROVIDER_SEND_OR_DELIVERY"
+    },
     {
       "name": "slack-native-revision-current-truth-projector",
       "kind": "APPEND_ONLY_SLACK_REVISION_CURRENT_TRUTH_PROJECTION",
