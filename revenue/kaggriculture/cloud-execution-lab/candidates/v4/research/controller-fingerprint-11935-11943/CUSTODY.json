@@ -1,0 +1,34 @@
+{
+  "schema": "titan-v4-historical-custody/v1",
+  "main_fence": "a99fe44dcf3e49de7143af8aa2c4bdf03d2dad0a",
+  "source_prs": [
+    11935,
+    11943
+  ],
+  "source_heads": [
+    "d459925ab5c9bde2e62821206822a353479f5141",
+    "da7cbd3828d14b43f27a86570d252eace23ebd93"
+  ],
+  "evidence": {
+    "pair_a": {
+      "controller_non_sell_diffs": 0,
+      "sell_diffs": 43,
+      "full_market_diffs": 51
+    },
+    "pair_b": {
+      "controller_non_sell_diffs": 0,
+      "sell_diffs": 42,
+      "full_market_diffs": 49
+    },
+    "dedicated_run_34423079129": "success",
+    "generic_tests_34423079064": "failure"
+  },
+  "theorem": "Controller-facing non-SELL streams were identical in the two cited replay comparisons while SELL/full-market differed; discriminator only, not causal proof.",
+  "disposition": {
+    "class": "historical_evidence_only",
+    "queue_edge": false,
+    "promotion": false,
+    "direct_port": false,
+    "current_abi_rederive_required": true
+  }
+}
