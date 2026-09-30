@@ -1,8 +1,8 @@
 {
   "counts": {
-    "open_issues": 7827,
+    "open_issues": 7805,
     "open_pull_requests": 0,
-    "runs_in_progress": 2,
+    "runs_in_progress": 1,
     "runs_queued": 70
   },
   "counts_source": "graphql",
@@ -11,8 +11,34 @@
   ],
   "pulls_listed": "UNKNOWN",
   "pulls_listing": "UNKNOWN",
-  "queue_depth_per_runner": 35.0,
+  "queue_depth_per_runner": 70.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "codex/resource-master/slack-full-body-catalog-runtime-readback-20260930-01",
+      "closed_at": "2026-09-30T10:32:44Z",
+      "head_sha": "14c6c265d23a1e67c947692b3843ad4edc619149",
+      "merge_commit_sha": "f45abbfdda06be348394ca8b2a4bb35cd78fece5",
+      "merged_at": "2026-09-30T10:32:44Z",
+      "number": 30171,
+      "state": "MERGED",
+      "title": "Pin Slack catalog activation readback",
+      "updated_at": "2026-09-30T10:34:08Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "codex/resource-master/slack-full-body-catalog-runtime-activation-20260930-01",
+      "closed_at": "2026-09-30T10:24:00Z",
+      "head_sha": "1200cbda058a1dcf67f8b54f26ff4c710be43396",
+      "merge_commit_sha": "5d970f59f876dbab71e359253477e53db50e448b",
+      "merged_at": "2026-09-30T10:24:00Z",
+      "number": 30170,
+      "state": "MERGED",
+      "title": "Activate Slack full-body catalog runtime resource",
+      "updated_at": "2026-09-30T10:24:10Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -181,35 +207,9 @@
       "state": "MERGED",
       "title": "Pin Iowa workshare terminal watermark",
       "updated_at": "2026-09-28T22:11:36Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "resource-master/uiowa-rfq18649-workshare-readback-20260928-01",
-      "closed_at": "2026-09-28T22:08:32Z",
-      "head_sha": "f04351e72257a510c16a0ab5a31641863ae7f399",
-      "merge_commit_sha": "b093bc36261b0a7ada8b157a36944d12027bdc78",
-      "merged_at": "2026-09-28T22:08:32Z",
-      "number": 30138,
-      "state": "MERGED",
-      "title": "Pin Iowa workshare activation readback",
-      "updated_at": "2026-09-28T22:09:18Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "resource-master/uiowa-rfq18649-workshare-activation-20260928-01",
-      "closed_at": "2026-09-28T22:06:35Z",
-      "head_sha": "059bae0c5dd5a2bde58e36ab071bfff679d9e279",
-      "merge_commit_sha": "d3eb3332779cccc787c8cb3e714197734ac73a33",
-      "merged_at": "2026-09-28T22:06:35Z",
-      "number": 30137,
-      "state": "MERGED",
-      "title": "Activate Iowa RFQ 18649 technical workshare carrier",
-      "updated_at": "2026-09-28T22:06:45Z"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-30T08:55:55Z"
+  "unchanged_since": "2026-09-30T15:30:54Z"
 }

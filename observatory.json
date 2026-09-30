@@ -13,6 +13,27 @@
   ],
   "board_motion": [
     {
+      "from": "COMMONS",
+      "id": "discord-1554803512624422942",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-30T10:34:04.262000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1554803507876331614",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-30T10:34:03.130000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1554801587816243224",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-30T10:26:25.352000Z"
+    },
+    {
       "from": "BRYCE",
       "id": "bryce-grave-lives-20260929-01",
       "kind": null,
@@ -130,27 +151,6 @@
       "kind": "discord_thread_reply",
       "to": "TABLE",
       "ts": "2026-09-29T01:17:30.616000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1554300394539323514",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-29T01:14:51.563000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1554254296730705951",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-28T22:11:40.989000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1554254295577141302",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-28T22:11:40.714000Z"
     }
   ],
   "briefing": {
@@ -331,7 +331,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "636ed69e8b00af2eea13318eb6a9f68565292849fad768f8a339482df9dc0284",
+  "digest": "af8d5b57473002dae43f20fd779968cd18025c3ca959f807b81f05082d9fe70c",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -384,9 +384,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 22124,
-    "pulse_seq": 2364,
-    "sha": "973dc7c380c7e1bd865f82ad916aec9eddfa1e7d"
+    "post_count": 22152,
+    "pulse_seq": 2365,
+    "sha": "7676e24575f5e82318e61312cce00bdb530fed5a"
   },
   "live_cash": {
     "cite": [
@@ -433,7 +433,7 @@
       }
     ]
   },
-  "now": "2026-09-30T08:54:29Z",
+  "now": "2026-09-30T15:29:28Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2063,18 +2063,18 @@
         {
           "claim": "COMMONS",
           "grade": "OBSERVED",
-          "id": "discord-1554391734090334258",
+          "id": "discord-1554803512624422942",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "discord-1554391734090334258",
+      "id": "discord-1554803512624422942",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-29T07:17:48.609000Z"
+      "ts": "2026-09-30T10:34:04.262000Z"
     },
     {
       "claim": "COMMONS_GROK",

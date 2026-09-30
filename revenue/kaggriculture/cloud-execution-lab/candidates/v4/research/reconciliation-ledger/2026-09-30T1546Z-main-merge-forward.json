@@ -1,0 +1,36 @@
+{
+  "kind": "titan_v4_reconciliation",
+  "observed_at_utc": "2026-09-30T15:46:00Z",
+  "authority": "3c44b1a8b3a32ff3d6539f658559e7cfd438eb9f",
+  "prior_authority": "a99fe44dcf3e49de7143af8aa2c4bdf03d2dad0a",
+  "authority_delta": {
+    "ahead": 4,
+    "behind": 0,
+    "merge_base": "a99fe44dcf3e49de7143af8aa2c4bdf03d2dad0a",
+    "kaggriculture_paths": 0
+  },
+  "control": {
+    "canonical_blob": "00142be0ff2314dcb23068c8133b34d290661923",
+    "integration_blob": "4e3207af1332266852530ec8494db8969edc1115",
+    "composition_blob": "32dc1e6963702f7e013cd609053d52c434e42158",
+    "canonical_branch": "main",
+    "recovered_not_yet_composed": [],
+    "composition_mode": "fail_closed"
+  },
+  "prior_salvage": "7a42dbd5cf701d1163bcde1d7fbccff89a5c50ea",
+  "fresh_custody": {
+    "pr": 11749,
+    "donor_head": "abd6b5ffa9ab072ae2e1b8020991a47604791881",
+    "disposition": "historical evidence-tooling quarantine; no gameplay or V4 queue edge",
+    "exact_head_ci": "HOLD: titan-w10-producer-surface-scan failed in scanner contract"
+  },
+  "action": "merge-forward existing research carrier to exact current main only; no gameplay integration",
+  "queue_edge": false,
+  "promotion": false,
+  "constraints": [
+    "no force",
+    "no stale merge/cherry-pick",
+    "no sibling V4 root",
+    "no canonical/runtime/default/config/archive/release/Kaggle move"
+  ]
+}
