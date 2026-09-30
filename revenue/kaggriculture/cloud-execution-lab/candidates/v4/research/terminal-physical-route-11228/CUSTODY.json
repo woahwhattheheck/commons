@@ -1,0 +1,60 @@
+{
+  "schema": "titan-v4-historical-custody/v1",
+  "source_pr": 11228,
+  "source_title": "TITAN P21: stage terminal physical route certificate",
+  "source_branch": "sol/titan-v25-p21-terminal-route-20260909-01",
+  "source_head": "4d70022a3b3f973bdcb010b6f540802846328378",
+  "source_files": {
+    ".github/workflows/titan-p21-terminal-route.yml": "9f23ff931762b5ad60f7cdb2bc327317dd7b8eda",
+    "revenue/kaggriculture/cloud-execution-lab/terminal_route_value.py": "2b94245854c3090a2a166e3b387032411c3be1ca",
+    "revenue/kaggriculture/cloud-execution-lab/terminal_route_value_market.py": "a79b0d0195d48afeea3cb008834aa181fe72b6b1",
+    "revenue/kaggriculture/cloud-execution-lab/terminal_route_value_primitives.py": "4b249126a1f3bf9f1ecfa80e985a517f447e1d5e",
+    "revenue/kaggriculture/cloud-execution-lab/terminal_route_value_test_support.py": "9ce312b53e81516decad05f4cf5ce840a029229f",
+    "revenue/kaggriculture/cloud-execution-lab/test_terminal_route_value_engine.py": "9b740ff34b18dbc1e328ec6b97900435140465d2",
+    "revenue/kaggriculture/cloud-execution-lab/test_terminal_route_value_market.py": "d85acabb6896edd894d30c158a1db42e7072e390",
+    "revenue/kaggriculture/cloud-execution-lab/test_terminal_route_value_routes.py": "b46d464bb5e707ea39da3d32f820b2c4c7520ee4"
+  },
+  "hosted_evidence": {
+    "dedicated_run": {
+      "id": 34396708552,
+      "name": "titan-p21-terminal-route",
+      "conclusion": "success",
+      "job_id": 102618113920,
+      "focused_tests": "29/29"
+    },
+    "selected_projection": {
+      "id": 34396708513,
+      "conclusion": "success"
+    },
+    "source_parses": {
+      "id": 34396708517,
+      "conclusion": "success"
+    },
+    "path_manifest": {
+      "id": 34396708530,
+      "conclusion": "success"
+    },
+    "generic_tests": {
+      "id": 34396708457,
+      "conclusion": "failure"
+    },
+    "open_door_guard": {
+      "id": 34396708504,
+      "conclusion": "failure"
+    }
+  },
+  "theorem": [
+    "terminal physical work must complete through executable harvest/carry/drop/sell chronology by episodeSteps-2",
+    "same-turn sale cannot rescue a shed-overflowing DROP",
+    "engine-inactive market suffix rows neither block nor shift the executable prefix",
+    "existing actor and market commitments are fail-closed barriers"
+  ],
+  "disposition": {
+    "class": "historical_evidence_current_abi_rederive_only",
+    "exact_bytes_preserved": true,
+    "direct_transplant": false,
+    "queue_edge": false,
+    "promotion": false,
+    "reason": "Dedicated exact-head P21 contracts passed, but generic tests and open-door guard were red and the PR staged a certificate rather than gameplay/default promotion."
+  }
+}

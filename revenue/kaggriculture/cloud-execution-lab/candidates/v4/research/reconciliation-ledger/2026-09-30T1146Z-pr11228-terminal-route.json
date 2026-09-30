@@ -1,0 +1,18 @@
+{
+  "schema": "titan-v4-reconciliation-receipt/v1",
+  "timestamp_utc": "2026-09-30T11:46:00Z",
+  "action": "backward_custody_close",
+  "main_fence": "a99fe44dcf3e49de7143af8aa2c4bdf03d2dad0a",
+  "carrier_before": "fe495e6b51133308d13d3571e4e0b87ac5037178",
+  "source_pr": 11228,
+  "source_head": "4d70022a3b3f973bdcb010b6f540802846328378",
+  "preserved_exact_blob_count": 8,
+  "dedicated_run": 34396708552,
+  "dedicated_focused_tests": "29/29",
+  "current_abi_rederive_required": true,
+  "queue_edge": false,
+  "promotion": false,
+  "runtime_change": false,
+  "canonical_change": false,
+  "sibling_v4_root": false
+}
