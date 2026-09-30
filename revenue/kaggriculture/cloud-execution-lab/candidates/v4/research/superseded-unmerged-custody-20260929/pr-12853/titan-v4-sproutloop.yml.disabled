@@ -1,0 +1,42 @@
+name: titan-v4-sproutloop
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/sproutloop/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py'
+      - '.github/workflows/titan-v4-sproutloop.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run source-bound tests
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/sproutloop
+        run: |
+          python -B -m unittest -v test_sproutloop.py
+          python -O -B -m unittest -v test_sproutloop.py
+      - name: Generate exact mechanism report
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/sproutloop
+        run: |
+          python -B sproutloop.py --engine ../../../../reference/engine/kaggriculture.py --pretty > /tmp/sproutloop.json
+          python - <<'PY'
+          import json
+          r=json.load(open('/tmp/sproutloop.json'))
+          rows={x['crop']:x for x in r['crops']}
+          assert r['engine_git_blob']=='3c202c7ee921da239356789e266b694635103fc4'
+          assert r['mechanism']['non_ongoing_new_plant_initial_yield']==1
+          assert r['mechanism']['harvest_age_gate'] is False
+          assert rows['MELON']['market_only_gross_profit_at_cycle_cap']==14868
+          assert rows['MELON']['profitable_consecutive_quotes_capped_719']==131
+          assert rows['CARROT']['profitable_consecutive_quotes_capped_719']==158
+          assert rows['WHEAT']['single_worker_profitable_units']==179
+          PY
