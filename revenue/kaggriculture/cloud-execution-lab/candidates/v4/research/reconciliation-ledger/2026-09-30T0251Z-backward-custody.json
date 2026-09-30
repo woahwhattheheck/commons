@@ -6,7 +6,11 @@
   "integration_blob": "4e3207af1332266852530ec8494db8969edc1115",
   "composition_blob": "32dc1e6963702f7e013cd609053d52c434e42158",
   "recovered_not_yet_composed": [],
-  "open_carriers": {"v4": 0, "v31": 0, "v3": 0},
+  "open_carriers": {
+    "v4": 0,
+    "v31": 0,
+    "v3": 0
+  },
   "actions": [
     "verified the existing salvage carrier is a descendant of current main with zero behind",
     "preserved the exact unique terminal-deadline parent/child artifacts under research quarantine and corrected the outer-test blob pin",
@@ -18,5 +22,6 @@
   "missing_hire_prepared_commit_not_attached": "5e44dbdacfd6be5f87c4a3a79cbdba9bcd2b950c",
   "queue_edge_added": false,
   "promotion": false,
-  "sibling_v4_root_created": false
+  "sibling_v4_root_created": false,
+  "seed_prefix_prepared_commit_not_attached": "ff04e8149291a75c40fe9b1f0966674514a67f55"
 }
