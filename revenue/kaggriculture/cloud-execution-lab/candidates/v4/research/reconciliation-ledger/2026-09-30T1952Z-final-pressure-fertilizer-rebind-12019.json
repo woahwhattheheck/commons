@@ -1,0 +1,19 @@
+{
+  "schema": "titan-v4-reconciliation-receipt/v1",
+  "authority_main": "ed0995211b9a888fce5f5dc56cdc9a2105f91215",
+  "salvage_parent": "b99dafe6fcbb7d336174f2ed051352ac4377be27",
+  "source_pr": 12019,
+  "action": "preserve_exact_closed_unmerged_donor_and_close_custody_gap",
+  "exact_source_head": "5ff349cd86acfcc45c6b81fb28e8de465c80ba3e",
+  "exact_source_blob_count": 4,
+  "semantic_status": "current_relevant_not_yet_current_abi_validated",
+  "reason": "Current spatial_tempo has the rebind primitive, but current titan_runtime executes that guard before the late final-pressure transform in main.py, so slot custody can still become stale after pressure. Historical focused gate is green while historical broad tests are red.",
+  "actions_taken": [
+    "copied four original Git blobs by identity under research quarantine",
+    "recorded focused-success and broad-test-failure receipts",
+    "pinned current main/runtime/spatial source identities and exact ordering blocker",
+    "left runtime/default/config/CURRENT/CANONICAL/COMPOSITION/INTEGRATION/archive/release/Kaggle untouched",
+    "created no sibling V4 root and no queue edge"
+  ],
+  "next_safe_edge": "current-ABI rederivation plus fresh focused and full gates on the sole main lineage before semantic promotion"
+}

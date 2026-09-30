@@ -1,0 +1,53 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "kind": "historical-v3-donor-quarantine",
+  "source_pr": 12019,
+  "source_branch": "sol-compose/titan-v3-final-pressure-fertilizer-rebind-20260910-01",
+  "source_head": "5ff349cd86acfcc45c6b81fb28e8de465c80ba3e",
+  "source_tree": "2bb5ae9f3bacb0b63d0a3878576bf86da21469ab",
+  "merge_base": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
+  "exact_blobs": [
+    {
+      "path": ".github/workflows/titan-v3-final-pressure-fertilizer-rebind.yml",
+      "sha": "be04e1117f9c609f8a6db0a6c1ba50923c43d5f6"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/cases/final-pressure-fertilizer-rebind-sol-compose/README.md",
+      "sha": "425faa1a471b837f306450ebe88d6028f18ebd8b"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/cases/final-pressure-fertilizer-rebind-sol-compose/apply_rebind.py",
+      "sha": "d8408dd35c899fe3305386b3f410cd4fdffd61fe"
+    },
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/cases/final-pressure-fertilizer-rebind-sol-compose/test_rebind.py",
+      "sha": "aaa9a355f13a2f88587afdfdb8f694156ff07cc2"
+    }
+  ],
+  "hosted_receipts": {
+    "focused": {
+      "run_id": 34522698322,
+      "head": "5ff349cd86acfcc45c6b81fb28e8de465c80ba3e",
+      "conclusion": "success"
+    },
+    "broad_tests": {
+      "run_id": 34522698274,
+      "head": "5ff349cd86acfcc45c6b81fb28e8de465c80ba3e",
+      "conclusion": "failure"
+    }
+  },
+  "current_authority": {
+    "main": "ed0995211b9a888fce5f5dc56cdc9a2105f91215",
+    "canonical_blob": "00142be0ff2314dcb23068c8133b34d290661923",
+    "integration_blob": "4e3207af1332266852530ec8494db8969edc1115",
+    "composition_blob": "32dc1e6963702f7e013cd609053d52c434e42158"
+  },
+  "current_abi": {
+    "main_py_blob": "727c36ee3727db159f5879d4ac9a842a28ca570c",
+    "titan_runtime_blob": "72c057552308dbac02dd6165c3049032ddbfa657",
+    "spatial_tempo_blob": "a2f13cd9871e6da24b2ccf3297c4c96ac324100e",
+    "finding": "SpatialTempo.guard_returned contains final-slot FERT rebind logic, but TitanAgent._finish_production calls guard_returned before _feed_stock_selected and _early_capital_selected; canonical main._early_capital_selected runs final market pressure afterward. The old theorem therefore remains current-relevant and is not consumed merely by the presence of guard_returned.",
+    "safe_rederivation": "Revalidate the existing proposal against the truly final returned market after late market transforms; do not transplant the stale whole-file carrier."
+  },
+  "disposition": "EXACT_DONOR_PRESERVED_QUARANTINE_ONLY_CURRENT_ABI_REDERIVATION_REQUIRED_NO_QUEUE_EDGE_NO_STALE_MERGE_OR_CHERRYPICK"
+}
