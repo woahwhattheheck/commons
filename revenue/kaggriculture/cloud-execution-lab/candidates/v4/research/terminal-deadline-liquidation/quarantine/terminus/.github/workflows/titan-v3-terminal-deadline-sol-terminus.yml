@@ -1,0 +1,94 @@
+name: titan-v3-terminal-deadline-sol-terminus
+
+"on":
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-terminal-deadline-sol-terminus/**"
+      - ".github/workflows/titan-v3-terminal-deadline-sol-terminus.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-candidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      LAB: revenue/kaggriculture/cloud-execution-lab
+      PACKET: revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-terminal-deadline-sol-terminus
+    steps:
+      - name: Checkout exact PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Verify reviewed source preimages
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object "$LAB/main.py")" = "4a8cf7bcda1f0fea231a144692cb84a779a9e73e"
+          test "$(git hash-object "$LAB/titan_runtime.py")" = "b952c9c228ecbde592bf3d2df01638677abb0d24"
+
+      - name: Derive detached candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          CANDIDATE="$RUNNER_TEMP/terminus-candidate"
+          MANIFEST="$RUNNER_TEMP/terminus-manifest.json"
+          git worktree add --detach "$CANDIDATE" HEAD
+          python -B "$PACKET/terminal_deadline_patch.py" \
+            --lab "$CANDIDATE/$LAB" \
+            --manifest "$MANIFEST"
+          printf 'TITAN_TERMINUS_CONTROL=%s\n' "$GITHUB_WORKSPACE/$LAB" >> "$GITHUB_ENV"
+          printf 'TITAN_TERMINUS_CANDIDATE=%s\n' "$CANDIDATE/$LAB" >> "$GITHUB_ENV"
+          printf 'TITAN_TERMINUS_MANIFEST=%s\n' "$MANIFEST" >> "$GITHUB_ENV"
+          printf 'TERMINUS_CANDIDATE_ROOT=%s\n' "$CANDIDATE" >> "$GITHUB_ENV"
+
+      - name: Compile and execute exact contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m py_compile \
+            "$PACKET/terminal_deadline_patch.py" \
+            "$PACKET/test_terminal_deadline_patch.py" \
+            "$TITAN_TERMINUS_CANDIDATE/main.py" \
+            "$TITAN_TERMINUS_CANDIDATE/titan_runtime.py"
+          python -B "$PACKET/test_terminal_deadline_patch.py"
+
+      - name: Seal exact two-file delta
+        shell: bash
+        run: |
+          set -euo pipefail
+          git -C "$TERMINUS_CANDIDATE_ROOT" diff --check
+          mapfile -t changed < <(git -C "$TERMINUS_CANDIDATE_ROOT" diff --name-only)
+          expected=(
+            "revenue/kaggriculture/cloud-execution-lab/main.py"
+            "revenue/kaggriculture/cloud-execution-lab/titan_runtime.py"
+          )
+          test "${#changed[@]}" -eq 2
+          test "${changed[0]}" = "${expected[0]}"
+          test "${changed[1]}" = "${expected[1]}"
+          git -C "$TERMINUS_CANDIDATE_ROOT" diff --binary -- \
+            "${expected[0]}" "${expected[1]}" \
+            > "$RUNNER_TEMP/terminus-candidate.patch"
+          sha256sum \
+            "$RUNNER_TEMP/terminus-manifest.json" \
+            "$RUNNER_TEMP/terminus-candidate.patch" \
+            | tee "$RUNNER_TEMP/SHA256SUMS"
+
+      - name: Upload content-addressed evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-terminal-deadline-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            ${{ runner.temp }}/terminus-manifest.json
+            ${{ runner.temp }}/terminus-candidate.patch
+            ${{ runner.temp }}/SHA256SUMS
+          retention-days: 14

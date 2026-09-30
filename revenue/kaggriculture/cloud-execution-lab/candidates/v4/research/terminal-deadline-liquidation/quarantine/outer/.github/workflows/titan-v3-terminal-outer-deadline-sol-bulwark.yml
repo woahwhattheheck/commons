@@ -1,0 +1,108 @@
+name: titan-v3-terminal-outer-deadline-sol-bulwark
+
+"on":
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-terminal-outer-deadline-sol-bulwark/**"
+      - ".github/workflows/titan-v3-terminal-outer-deadline-sol-bulwark.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  whole-entrypoint-deadline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      LAB: revenue/kaggriculture/cloud-execution-lab
+      PARENT: revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-terminal-deadline-sol-terminus
+      PACKET: revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-terminal-outer-deadline-sol-bulwark
+    steps:
+      - name: Checkout exact stacked head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Bind inherited repair and source preimages
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object "$LAB/main.py")" = "4a8cf7bcda1f0fea231a144692cb84a779a9e73e"
+          test "$(git hash-object "$LAB/titan_runtime.py")" = "b952c9c228ecbde592bf3d2df01638677abb0d24"
+          test "$(git hash-object "$PARENT/terminal_deadline_patch.py")" = "3cbbef93fbb84e6f08aac2713a02dab1dd3a685d"
+
+      - name: Derive detached predecessor and candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          CANDIDATE="$RUNNER_TEMP/bulwark-candidate"
+          MANIFEST="$RUNNER_TEMP/bulwark-manifest.json"
+          git worktree add --detach "$CANDIDATE" HEAD
+          python -B "$PARENT/terminal_deadline_patch.py" \
+            --lab "$CANDIDATE/$LAB" \
+            --manifest "$MANIFEST"
+          printf 'TITAN_TERMINUS_CONTROL=%s\n' "$GITHUB_WORKSPACE/$LAB" >> "$GITHUB_ENV"
+          printf 'TITAN_TERMINUS_CANDIDATE=%s\n' "$CANDIDATE/$LAB" >> "$GITHUB_ENV"
+          printf 'TITAN_TERMINUS_MANIFEST=%s\n' "$MANIFEST" >> "$GITHUB_ENV"
+          printf 'BULWARK_CANDIDATE_ROOT=%s\n' "$CANDIDATE" >> "$GITHUB_ENV"
+
+      - name: Compile and execute inherited plus whole-entrypoint contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m py_compile \
+            "$PARENT/terminal_deadline_patch.py" \
+            "$PARENT/test_terminal_deadline_patch.py" \
+            "$PACKET/test_outer_entrypoint_deadline.py" \
+            "$TITAN_TERMINUS_CONTROL/main.py" \
+            "$TITAN_TERMINUS_CANDIDATE/main.py" \
+            "$TITAN_TERMINUS_CANDIDATE/titan_runtime.py"
+          python -B "$PARENT/test_terminal_deadline_patch.py" \
+            2>&1 | tee "$RUNNER_TEMP/terminus-parent-tests.log"
+          python -B "$PACKET/test_outer_entrypoint_deadline.py" \
+            2>&1 | tee "$RUNNER_TEMP/bulwark-outer-entrypoint-tests.log"
+
+      - name: Seal stacked scope and exact evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --check
+          git -C "$BULWARK_CANDIDATE_ROOT" diff --check
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            BASE_SHA="${{ github.event.pull_request.base.sha }}"
+            mapfile -t changed < <(git diff --name-only "$BASE_SHA...HEAD")
+            expected=(
+              ".github/workflows/titan-v3-terminal-outer-deadline-sol-bulwark.yml"
+              "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-terminal-outer-deadline-sol-bulwark/test_outer_entrypoint_deadline.py"
+            )
+            test "${#changed[@]}" -eq "${#expected[@]}"
+            for index in "${!expected[@]}"; do
+              test "${changed[$index]}" = "${expected[$index]}"
+            done
+          fi
+          sha256sum \
+            "$PARENT/terminal_deadline_patch.py" \
+            "$PACKET/test_outer_entrypoint_deadline.py" \
+            "$RUNNER_TEMP/bulwark-manifest.json" \
+            "$RUNNER_TEMP/terminus-parent-tests.log" \
+            "$RUNNER_TEMP/bulwark-outer-entrypoint-tests.log" \
+            > "$RUNNER_TEMP/BULWARK-SHA256SUMS"
+          cat "$RUNNER_TEMP/BULWARK-SHA256SUMS"
+
+      - name: Upload content-addressed proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-terminal-outer-deadline-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            ${{ runner.temp }}/bulwark-manifest.json
+            ${{ runner.temp }}/terminus-parent-tests.log
+            ${{ runner.temp }}/bulwark-outer-entrypoint-tests.log
+            ${{ runner.temp }}/BULWARK-SHA256SUMS
+          retention-days: 14
