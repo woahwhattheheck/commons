@@ -1,0 +1,95 @@
+{
+  "schema_version": 3,
+  "captured_repository_main": "2fd8a1b11e09750381ec6604c21c46f54ebf7460",
+  "captured_at_utc": "2026-09-09T21:24:17Z",
+  "verdict": "BLOCKED_STALE_TESTS_UNREGISTERED_AND_UNMEASURED",
+  "canonical_archive": {
+    "path": "exports/titan-current.tar.gz",
+    "sha256": "17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86",
+    "bytes": 427870,
+    "runtime_files": 109,
+    "source_manifest_sha256": "1feec5a68ffde28ab7b5c7d2c92a34aa66ff5705b7d88182ef6af98df8bb5083"
+  },
+  "archive_inventory_contract": {
+    "contract_source": "merged PR #11430 and exact main build_integrated.render()",
+    "regular_files": 110,
+    "embedded_root_source_files": 1,
+    "runtime_files_excluding_root_source": 109,
+    "pointer_runtime_files": 109,
+    "expected_relation": "regular_files == runtime_files + 1",
+    "initial_lancet_110_vs_109_defect_claim": "RETRACTED",
+    "transient_110_pointer_snapshot": "977767e3c7a7a1a2f4414a5cf2b46a13267b8006",
+    "current_main_status": "CONSISTENT_AT_CAPTURED_SNAPSHOT",
+    "lancet_role": "independent one-read verification only"
+  },
+  "checked_in_test_receipt": {
+    "path": "exports/titan-current.tar.gz",
+    "sha256": "6ac897241cb54baa205e4132fab1f83e7a21e4ae957e19e16c6c48a7ecbd8bc1",
+    "bytes": 408621,
+    "runtime_files": 104,
+    "source_manifest_sha256": "8f65a8b4c9c6c73a8080995731a954bdc963b72e29614961572f525eb10b8c17"
+  },
+  "blockers": [
+    {
+      "code": "STALE_TEST_RECEIPT",
+      "meaning": "CURRENT-TESTS does not apply to the canonical archive"
+    },
+    {
+      "code": "CURRENT_ARCHIVE_UNREGISTERED",
+      "meaning": "exports/ARTIFACTS.json does not bind titan-current.tar.gz to the canonical SHA"
+    },
+    {
+      "code": "NO_COMPLETE_CURRENT_GAME_LEDGER",
+      "meaning": "changed current bytes have no complete exact-closure full-game panel"
+    }
+  ],
+  "landed_gate_containment": {
+    "merged_pr": 11727,
+    "merge_commit": "13bbd7b85b2d504d8801b9cb3fab832840f38233",
+    "status": "HOLD_FOR_PROMOTION_AND_PARTIAL_COMPARISON",
+    "containment_owner": "SOL-SENTINEL",
+    "known_gaps": [
+      "positive scalar game count can substitute for a complete game ledger",
+      "JSON duplicate keys and non-finite numbers are not rejected everywhere",
+      "missing row status defaults to completed",
+      "seed, seat, and digest domains are underconstrained",
+      "partial-panel comparison can return COMPARABLE with success exit"
+    ],
+    "allowed_use": "diagnostic evidence only until the strict successor lands"
+  },
+  "historical_boundaries": {
+    "submitted_v1_archive_sha256": "7b58fa06da778b1519b81d509d28dff3481b3bbcc7a2d656e8bdfe4a22540524",
+    "frozen_v2_archive_sha256": "e363125093463d1f7a63a01aecb70646344dae5b318952e13a1b1641e2043e58",
+    "frozen_v2_first_observed_score": 904.4,
+    "rule": "Do not relabel predecessor or historical panels as evidence for either exact archive or current bytes"
+  },
+  "next_measurement": {
+    "required_pair_key": [
+      "candidate_closure_sha256",
+      "baseline_closure_sha256",
+      "engine_sha256",
+      "runner_sha256",
+      "opponent_sha256",
+      "environment_seed",
+      "seat"
+    ],
+    "requirements": [
+      "fresh unused seed families",
+      "both seats",
+      "exact submitted V1 closure",
+      "exact frozen V2 closure",
+      "exact current candidate closure",
+      "fixed opponent artifact identities",
+      "complete expected-cell set",
+      "zero error or timeout cells",
+      "strict dual-predecessor and provenance gates"
+    ]
+  },
+  "side_effects": {
+    "runtime_changed": false,
+    "archive_built": false,
+    "archive_extracted": false,
+    "games_launched": 0,
+    "kaggle_submission": false
+  }
+}
