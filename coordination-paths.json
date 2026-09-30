@@ -1,6 +1,6 @@
 {
  "note": "paths each open pull request changes since its merge-base (first 40; drift --pr N prints all)",
- "observed_at": "2026-09-30T02:19:26Z",
+ "observed_at": "2026-09-30T08:56:57Z",
  "prs": [],
  "schema": "commons-coordination-paths/v1"
 }
