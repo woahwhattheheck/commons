@@ -1,0 +1,18 @@
+{
+  "schema":"titan-v4-reconciliation-receipt/v1",
+  "timestamp_utc":"2026-09-30T10:50:00Z",
+  "action":"merge_forward_existing_salvage_carrier",
+  "main_fence":"a99fe44dcf3e49de7143af8aa2c4bdf03d2dad0a",
+  "carrier_before":"77624893de8d8da621510781cc0d9661ddc58c95",
+  "merge_commit":"b44bd5b9e2475dc45d2923ad605d65bc1c3790a3",
+  "merge_tree":"ec62911da9bb051af6bf895f9f19168b57280fe4",
+  "kaggriculture_drift_paths":0,
+  "open_v4":0,
+  "open_v31":0,
+  "open_v3":0,
+  "new_semantic_donor":false,
+  "queue_edge":false,
+  "runtime_change":false,
+  "canonical_change":false,
+  "sibling_v4_root":false
+}
