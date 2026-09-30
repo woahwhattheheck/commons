@@ -1,0 +1,20 @@
+{
+  "schema":"titan-v4-reconciliation/v1",
+  "main":"f7659727c088738f2a08aebc05625f87bc170114",
+  "carrier_before":"1b558e7dde72316e8fc97974f0513082bced4f2b",
+  "CANONICAL":"00142be0ff2314dcb23068c8133b34d290661923",
+  "INTEGRATION":"4e3207af1332266852530ec8494db8969edc1115",
+  "COMPOSITION":"32dc1e6963702f7e013cd609053d52c434e42158",
+  "open_v4_v31_v3":[0,0,0],
+  "backward_band":"10009..10387",
+  "new_custody_pr":10367,
+  "source_head":"3818af45a90ed1f96fbc071039a1827adc0cdad0",
+  "source_blob":"e99477893484501d93f5953576b564b14c82214e",
+  "hosted_run":34194618195,
+  "hosted_result":"focused and canonical jobs completed success",
+  "already_custodied":[10039,10079],
+  "superseded":[10387],
+  "queue_edge":false,
+  "promotion":false,
+  "single_v4_root":true
+}

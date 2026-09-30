@@ -1,0 +1,12 @@
+{
+  "schema":"titan-v4-custody/v1",
+  "pr":10367,
+  "head":"3818af45a90ed1f96fbc071039a1827adc0cdad0",
+  "source_path":"revenue/kaggriculture/cloud-selected-projection/.triad-current-canonical-probe",
+  "source_blob":"e99477893484501d93f5953576b564b14c82214e",
+  "run":34194618195,
+  "focused_job":101959536251,
+  "canonical_job":101959536484,
+  "result":"success",
+  "disposition":"historical CI probe; exact source preserved; quarantine only; no V4 queue edge or semantic promotion"
+}
