@@ -1,0 +1,34 @@
+name: titan-p21-terminal-route
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/terminal_route_value.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/terminal_route_value_primitives.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/terminal_route_value_market.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/terminal_route_value_test_support.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_terminal_route_value_routes.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_terminal_route_value_market.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_terminal_route_value_engine.py'
+      - '.github/workflows/titan-p21-terminal-route.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Verify exact PR head checkout
+        run: test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile and run P21 terminal-route contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          python -m py_compile terminal_route_value.py terminal_route_value_primitives.py terminal_route_value_market.py terminal_route_value_test_support.py test_terminal_route_value_routes.py test_terminal_route_value_market.py test_terminal_route_value_engine.py
+          python -m unittest -v test_terminal_route_value_routes test_terminal_route_value_market test_terminal_route_value_engine
