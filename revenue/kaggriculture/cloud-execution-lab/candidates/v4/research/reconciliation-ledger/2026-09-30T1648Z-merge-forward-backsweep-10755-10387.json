@@ -1,0 +1,78 @@
+{
+  "schema": "titan-v4-reconciliation/v1",
+  "operation": "merge-forward-and-backward-reconcile-10755-10387",
+  "authority": {
+    "main": "5597f207e7e78cee05b0e06fdfafd4b734cd244e",
+    "prior_merge_base": "3c44b1a8b3a32ff3d6539f658559e7cfd438eb9f",
+    "carrier_before": "67d2d36f305c8e0303cd07aa13c1b94e38b4881b",
+    "merge_forward": "88919bfff876e0c598e9b1b9fc987639feb4fb2a"
+  },
+  "main_drift": {
+    "class": "generated projection/board digest only",
+    "paths": [
+      "challenge.json",
+      "change.md",
+      "fresh.md",
+      "head.json",
+      "llms.txt",
+      "peers.md",
+      "projection_state.json",
+      "pulse.json"
+    ],
+    "kaggriculture_paths": 0
+  },
+  "census": {
+    "open_v4": 0,
+    "open_v31": 0,
+    "open_v3": 0
+  },
+  "backward_review": [
+    {
+      "pr": 10387,
+      "head": "60675bcc7666ae247da0c134f4ba8153a5a9fac8",
+      "disposition": "superseded_by_merged_10278",
+      "successor_merge": "352685b286bdc161f37338f9dc8b1ee5f10efc24",
+      "queue_edge": false
+    },
+    {
+      "pr": 10423,
+      "head": "8561ecdb6effd22c27472300482c683d19b298d5",
+      "disposition": "explicitly_superseded_by_merged_10278",
+      "successor_merge": "352685b286bdc161f37338f9dc8b1ee5f10efc24",
+      "queue_edge": false
+    },
+    {
+      "pr": 10710,
+      "head": "2b23c8e4c567c4adc99a42bf984900cf6d180693",
+      "disposition": "ci_source_closure_only_no_gameplay_semantic_delta",
+      "queue_edge": false
+    },
+    {
+      "pr": 10729,
+      "head": "ebdd02a49f2fbdeffae31decb50184ab22788476",
+      "disposition": "already_exact_custodied_root_sim_d",
+      "queue_edge": false
+    },
+    {
+      "pr": 10755,
+      "head": "f652c7f9ba9c88e78a0c7e3ebcdfa08eb792e0e0",
+      "disposition": "ci_source_closure_only_no_gameplay_semantic_delta",
+      "queue_edge": false
+    },
+    {
+      "pr": 11092,
+      "head": "7d45be9d6481de57226e33c9e587bf60e5d65722",
+      "disposition": "consumed_by_merged_11099",
+      "successor_merge": "c8beda314e5f26a55d1a9bc4b4de36028756ac05",
+      "queue_edge": false
+    }
+  ],
+  "result": "no_new_semantic_promotion_or_custody_required_in_reviewed_band",
+  "invariants": {
+    "single_v4_root": true,
+    "force_update": false,
+    "runtime_mutation": false,
+    "canonical_mutation": false,
+    "kaggle_mutation": false
+  }
+}
