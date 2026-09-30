@@ -1,0 +1,18 @@
+{
+  "schema": "titan-v4-salvage-reconciliation/v1",
+  "main_fence": "a99fe44dcf3e49de7143af8aa2c4bdf03d2dad0a",
+  "pr": 11786,
+  "head": "1253fb55d04887f70fcfa8128f50253710741b89",
+  "run": 34407136670,
+  "job": 102652706850,
+  "artifact_id": 10126017129,
+  "artifact_sha256": "824620b5317151160043cbba6d7dca9ed4dcdf4a2f37b87861c2cdf0350654ca",
+  "games": "64/64 complete",
+  "own_cash_mean_delta": 4.5,
+  "rival_cash_mean_delta": 18.5625,
+  "margin_mean_delta": -14.0625,
+  "factorization": "target domain/quantity plus strict-tie target iteration order",
+  "disposition": "exact historical compound-arm execution evidence; superseded by order-preserving/current-line target-domain successors; no direct V4 port or promotion",
+  "new_queue_edge": false,
+  "sibling_v4_root": false
+}
