@@ -1,27 +1,52 @@
 {
-  "schema": "titan-v4-salvage-custody-v1",
-  "recorded_on": "2026-09-28",
-  "source_pr": 11691,
-  "source_head": "9087b3779bea8da5e7d7502d776a0d9781fec24b",
-  "measured_head": "01108a7cfa366e71214640885d3b076f9a2b997c",
-  "evidence": {
-    "parent_run": 34403285293,
-    "parent_contracts": "17/17 PASS",
-    "parent_cells": "8/8",
-    "parent_decisions": 5752,
-    "parent_changed_traces": 0,
-    "child_pr": 11730,
-    "child_head": "845efe47b3730212352a21d99801437b3a757490",
-    "child_run": 34404848633,
-    "child_cells": 64,
-    "child_games": 128,
-    "child_decisions": 46016,
-    "child_certificate_evaluations": 28129,
-    "child_eligible_certificates": 0,
-    "child_changed_traces": 0,
-    "artifact_id": 10125379354,
-    "artifact_sha256": "62d6dcf6db90594ed49a832d910374d163ae54c0113e4b60b51430f7e2687f2b"
+  "schema": "titan-v4-research-custody/v1",
+  "pr": 11691,
+  "state": "closed_unmerged",
+  "tested": {
+    "head": "01108a7cfa366e71214640885d3b076f9a2b997c",
+    "tree": "40fcdb04c16f5fac9ece48a2f0eeaf7f20b8a83f",
+    "run": 34403285293,
+    "job": 102640106066,
+    "artifact": 10124482458,
+    "digest": "sha256:5be2a442eb8efb64229c06582eb08a8375898f0b4b7d863f976810d5ef03bffd",
+    "verdict": "NO_SIGNAL",
+    "cells": 8,
+    "changed": 0
   },
-  "disposition": "NO_SIGNAL / UNREACHABLE CERTIFICATE / NEGATIVE APPLICABILITY EVIDENCE ONLY / DO NOT REVIVE OR REMINT / NO V4 QUEUE EDGE",
-  "queue_edge": false
+  "final": {
+    "head": "9087b3779bea8da5e7d7502d776a0d9781fec24b",
+    "tree": "cd1a1d72c904e47293b9f5a1b8e9f5eebf1b6fb3",
+    "hosted": "NO_WORKFLOW_RUNS"
+  },
+  "disposition": "quarantine_terminal_no_signal",
+  "queue_edge": false,
+  "promotion": false,
+  "blobs": {
+    "tested": [
+      "c9ff912d3128e7f8c5560545a4cd09a718a94103",
+      "0a95c9421f7b7d696b5d1f008ada4de1a3208288",
+      "28561b04c065a2746e1dacc184b0d2ffca591037",
+      "6d7e5e88cdbdb4a41d766f4b8d0d12fa328e7303",
+      "a78c27de048351f4e95737fc84437adcc6a13083",
+      "3bbbe08d54c8764b0862a66c76315f6bbff1c467",
+      "fe4b9d47bf914ee985a9dcba45891185ab1c63f7",
+      "77d57ed508410a9d8fba4ba76eacf666e5b0286a",
+      "50db4a1da537850ebf4ead236bccb2130d28ab53",
+      "1451e3c4b6c941a41c07f95213cfa3324ff07030"
+    ],
+    "final": [
+      "7b6b75665d3059b590a45a14f5741fe9fe6cdfee",
+      "292a2e864940d7f949d7d61d0a23983b5332f427",
+      "deb239c1b62f122dbd99c6d45e5f88713ebeabf4",
+      "6d7e5e88cdbdb4a41d766f4b8d0d12fa328e7303",
+      "a78c27de048351f4e95737fc84437adcc6a13083",
+      "3bbbe08d54c8764b0862a66c76315f6bbff1c467",
+      "fe4b9d47bf914ee985a9dcba45891185ab1c63f7",
+      "244d576035976c82090ec50d16faba074a9d4b55",
+      "cb96358056162ade27f4e244858af04dfea9a647",
+      "50db4a1da537850ebf4ead236bccb2130d28ab53",
+      "79d530585f79d805c6e45b7348ed8720b87561e4",
+      "b087826977abb9819df00a9c0d826e92828e22a9"
+    ]
+  }
 }

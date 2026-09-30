@@ -1,0 +1,12 @@
+{
+  "schema": "titan-v4-salvage-reconciliation/v1",
+  "main": "3c44b1a8b3a32ff3d6539f658559e7cfd438eb9f",
+  "carrier_parent": "40e4b732abd74a70d311d070339071c87e1d885d",
+  "pr": 11691,
+  "result": "NO_SIGNAL",
+  "cells": 8,
+  "changed_cells": 0,
+  "queue_edge": false,
+  "promotion": false,
+  "scope": "research_only"
+}
