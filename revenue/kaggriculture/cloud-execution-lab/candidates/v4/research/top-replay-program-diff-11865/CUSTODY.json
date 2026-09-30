@@ -1,0 +1,30 @@
+{
+  "schema": "titan-v4-research-custody/v1",
+  "source_pr": 11865,
+  "source_title": "TITAN: add strict top-replay economic program differential",
+  "source_head": "320ff9661c10b7fe8af1813ee47258ef4d009f7e",
+  "source_state": "closed_unmerged",
+  "disposition": "quarantine_observational_only",
+  "queue_edge": false,
+  "promotion": false,
+  "reason": "Exact additive evidence packet is absent from current main. The dedicated exact-head workflow completed failure; broad tests and titan-selected-projection also failed. Preserve bytes and provenance only; no policy/runtime semantic is authorized.",
+  "evidence": {
+    "local_claim": "14/14 original local pass plus a fifteenth source-ceiling contract described by PR",
+    "workflow_runs": {
+      "34411293798": "failure:titan-top-replay-program-diff-sol-orrery",
+      "34411293752": "failure:tests",
+      "34411293766": "failure:titan-selected-projection",
+      "34411293746": "success:source-parses",
+      "34411293742": "success:open-door-guard"
+    }
+  },
+  "exact_blobs": {
+    ".github/workflows/titan-top-replay-program-diff-sol-orrery.yml": "accc29497770b8404c004760e157906ecdcc27b7",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/top-replay-program-diff-sol-orrery/README.md": "d9a32a5a32129d72a03a1c43e73343e96e8d16df",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/top-replay-program-diff-sol-orrery/RECEIPT.md": "175c7c8bcfc68daad8a704b3dc150711e2251536",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/top-replay-program-diff-sol-orrery/replay_program_diff.py": "c7047780b4fb897566d654229bbcc2eea28c3d53",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/top-replay-program-diff-sol-orrery/replay_program_diff_core.py": "f89aff7ae993459fb0db5a49da87cdd69e9061f5",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/top-replay-program-diff-sol-orrery/test_replay_program_diff.py": "dd86f41342e2264d9857d9d9f61ef7d99fa3a378",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/top-replay-program-diff-sol-orrery/test_replay_program_diff_bounded_io.py": "7c4211ee183df32ec4c9e7f718d45bd8cf9d083a"
+  }
+}

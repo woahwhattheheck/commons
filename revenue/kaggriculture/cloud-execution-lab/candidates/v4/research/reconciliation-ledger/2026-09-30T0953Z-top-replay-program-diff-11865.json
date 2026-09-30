@@ -1,0 +1,20 @@
+{
+  "schema": "titan-v4-reconciliation-receipt/v1",
+  "timestamp_utc": "2026-09-30T09:53:36Z",
+  "carrier_before": "e7c6adec57b0e9e94b25f246735594e8a1289275",
+  "main_fence": "b64c830cf5c8b6d950016fc536bda5e3ed4d1b4c",
+  "action": "preserve_closed_unmerged_exact_bytes",
+  "source_pr": 11865,
+  "source_head": "320ff9661c10b7fe8af1813ee47258ef4d009f7e",
+  "main_presence": "all seven donor paths absent",
+  "disposition": "quarantine_only",
+  "queue_edge": false,
+  "runtime_change": false,
+  "canonical_change": false,
+  "composition_change": false,
+  "notes": [
+    "No sibling V4 root created.",
+    "No runtime/default/config/archive/release/Kaggle state changed.",
+    "Dedicated exact-head workflow is red; this packet is evidence custody, not a semantic promotion."
+  ]
+}
