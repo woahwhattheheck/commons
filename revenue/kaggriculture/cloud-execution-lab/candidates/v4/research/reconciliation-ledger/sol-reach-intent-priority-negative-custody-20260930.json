@@ -1,0 +1,11 @@
+{
+  "schema": "titan.v4.reconciliation.receipt.v1",
+  "action": "QUARANTINE_COMPLETED_UNMERGED_NEGATIVE_DONOR",
+  "source_head": "a7074432c1b364bda64d9501f89975d00cf0f94d",
+  "carrier_parent": "b70afaebbfc473a6d4d8465a8940e78117aba736",
+  "authority_main": "a99fe44dcf3e49de7143af8aa2c4bdf03d2dad0a",
+  "copied_exact_blob_count": 7,
+  "queue_edge": false,
+  "promotion": false,
+  "sibling_v4_root_created": false
+}
