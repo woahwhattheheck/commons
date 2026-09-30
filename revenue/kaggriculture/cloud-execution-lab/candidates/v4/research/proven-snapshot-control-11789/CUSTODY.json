@@ -1,0 +1,9 @@
+{
+  "schema":"titan-v4-research-custody/v1",
+  "source_pr":11789,
+  "source_head":"2e4d1423c38a149a7d8c4bc903bce1e7e814e45d",
+  "source_tree":"19341f0910815b0e3334746497c077babf961a18",
+  "parent_pr":11629,
+  "packet_blobs":["b990e5b940bbd8140995f3a0b2d0f11cbfff894e","3345183ae21fa54bdaba10f4fa11cf657b3ff5e0","67f829b62383d821ea7fc6a752580774d3daa2b8","09aed1bd5930d19d180c2eb35f7ca2a0c5746e3d","24ec6fd7fb2ddfe2e070f8bee3d368e3d339572c","82a2b23f3a7d35ec39b4545a1e5d1924439074cb","6f191cbd9f35e408ced527fa9570d357cf7bd315","7c2ac7cb69508722acd6cac987a7dcbd4a1ded04","2079a9f2de1544c07fc49cfa8b76b0ae2fbf31ea","fa3b6e17cc9b2a19554ea706321f9fa9ad68d471","bba81fb8cc8c305b220151976705cbfe77bd6619","8cb09e4d1f363d385e5d86f9b2b7a17d50c45d06","ccc59d75551e2d3a2452225fe121abbdb762db4c"],
+  "disposition":"historical control evidence only; no V4 queue edge"
+}
