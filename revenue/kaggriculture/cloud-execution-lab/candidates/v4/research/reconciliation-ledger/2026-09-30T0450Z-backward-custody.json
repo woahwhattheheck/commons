@@ -1,0 +1,33 @@
+{
+  "schema": "titan-v4-reconciliation-receipt/v1",
+  "observed_at": "2026-09-30T04:50Z",
+  "canonical_main": "9ddcafa792199340ba6bed73203a0f87bc3027eb",
+  "canonical_blobs": {
+    "CANONICAL": "00142be0ff2314dcb23068c8133b34d290661923",
+    "INTEGRATION": "4e3207af1332266852530ec8494db8969edc1115",
+    "COMPOSITION": "32dc1e6963702f7e013cd609053d52c434e42158"
+  },
+  "queue": {
+    "recovered_not_yet_composed": [],
+    "new_v4_v31_v3_edge": false
+  },
+  "merge_forward": {
+    "previous_head": "f43d192ebeba65a3044f37fc6085921cc8ff8673",
+    "commit": "710878ae2b06ebbb44e4be982d7c61e823dffe5f",
+    "main_parent": "9ddcafa792199340ba6bed73203a0f87bc3027eb",
+    "result": "+178/-0, merge-base exact main, carrier-only diff research-only"
+  },
+  "backsweep": {
+    "band": "older V3 closed-unmerged evidence around #11721-#11862",
+    "successor_consumed": [
+      "#11721 -> #11735/#11761"
+    ],
+    "newly_custodied": [
+      "#11803/#11862 terminal negative target-domain chain",
+      "#11824 route-reference-echo stale carrier",
+      "#11835 target-product attribution raw-arm evidence"
+    ],
+    "no_promotion": true
+  },
+  "mutations": "research custody + ledger only; no CANONICAL/INTEGRATION/COMPOSITION/runtime/default/archive/release/Kaggle/provider change"
+}

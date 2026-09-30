@@ -1,0 +1,27 @@
+{
+  "schema": "titan-v4-research-custody/v1",
+  "subject": "closed-unmerged target-domain evidence chain #11803 -> #11862",
+  "canonical_main": "9ddcafa792199340ba6bed73203a0f87bc3027eb",
+  "parent_pr": 11803,
+  "parent_head": "e345d2d261207edbecf672ff0e647411b9be60c5",
+  "terminal_pr": 11862,
+  "terminal_head": "5e996707221b9340db982246f164e0c53a7a471e",
+  "terminal_run": 34410258274,
+  "terminal_job": 102662801059,
+  "artifact": {
+    "id": 10127163047,
+    "sha256": "ff564c4d7fa1c02aca61eb12cd0467dbc8e4cdfb67422a4409a266da2ddbc6a2",
+    "files": 25
+  },
+  "evidence": "28/28 contracts PASS; 64/64 official-horizon games complete; returned actions changed 10/32 cells",
+  "economics": {
+    "own_cash_mean": -3.875,
+    "rival_cash_mean": 16.4375,
+    "margin_mean": -20.3125,
+    "own_negative_cells": 8,
+    "own_positive_cells": 2,
+    "zero_cells": 22
+  },
+  "classifier": "REGRESSION: the one-factor reversion lowered mean own cash",
+  "disposition": "terminal negative evidence; preserve exact parent+child changed blobs and receipt; policy rejected; no V4 queue edge; do not revive, port, direct-merge, or remint as gameplay"
+}

@@ -1,0 +1,16 @@
+{
+  "schema": "titan-v4-research-custody/v1",
+  "subject": "closed-unmerged V3 route-reference-echo #11824",
+  "canonical_main": "9ddcafa792199340ba6bed73203a0f87bc3027eb",
+  "source_pr": 11824,
+  "source_head": "009d3cec7dbf040eb5615236a6d0c9d8e3cadd52",
+  "exact_head_run": 34410598706,
+  "exact_head_job": 102989984177,
+  "hosted": "FAILURE after checkout/compile; focused tests errored because observed_clone missing; bounded audit receipt not produced",
+  "successor": {
+    "pr": 12057,
+    "result": "narrow theorem recovered as evidence/tooling; activation workflow stopped before natural gameplay activation"
+  },
+  "theorem": "inherited route-owned future SELL floor must not be double-counted through persisted planner state",
+  "disposition": "preserve source hypothesis and exact changed blobs; quarantine original carrier; current-ABI activation witness required; no queue edge; do not revive, direct-merge, or remint"
+}

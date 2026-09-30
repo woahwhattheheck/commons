@@ -1,0 +1,62 @@
+{
+  "schema": "titan-v4-research-custody/v1",
+  "subject": "closed-unmerged V2 target-product attribution #11835",
+  "canonical_main": "9ddcafa792199340ba6bed73203a0f87bc3027eb",
+  "source_pr": 11835,
+  "source_head": "4a7f7740032d0824e86396fcc24690162e162ad8",
+  "run": 34410488772,
+  "execution": "all nine independent 32-cell arms completed: 288 official games; aggregate wrapper false-failed on 18 JSON files because progress sidecars were counted",
+  "combined_artifact": {
+    "id": 10127626791,
+    "sha256": "73e3af42a5887d3ea300e19dd3c43efe91c4ae5e6fa307e5b3ccf28342dcc80e"
+  },
+  "arm_artifacts": {
+    "CONTROL": [
+      "10127247182",
+      "8fb5f7bf59135c157828dbe86c9b5aa83d5b435f28649b8cf3a3c5e195aadedb"
+    ],
+    "CORE": [
+      "10127253714",
+      "1e1e4e38ed9f96b0fc350b048ee60e01249e365ed460d6a05fd838a189bed96f"
+    ],
+    "CARROT": [
+      "10127245641",
+      "8c4ecd4c27c00a0062fd339576171c710b33802951b7cd2fb0a4ac4bd5434f17"
+    ],
+    "TOMATO": [
+      "10127241736",
+      "45e1c9309ec3a60d0396646f62d5a224d6935c21030e70e41572588c56d705ef"
+    ],
+    "STRAWBERRY": [
+      "10127404794",
+      "86e03d337fa6177c4cdb38f9a0dd250be22ebb8a3b511bf2499892254d96a6ca"
+    ],
+    "MELON": [
+      "10127415358",
+      "04515aac81db522e13b0f2c5f14201412705305a134777f751c9822f1cf11a9a"
+    ],
+    "EGG": [
+      "10127373931",
+      "8c8534107f02da0a26bb9e1e492c578817b9c3ee370d1b84d1ede254e275c07e"
+    ],
+    "MILK": [
+      "10127430984",
+      "37e82217c408639f1e2b4e31acbe11a03fceab7bc927036b5b634b3aac0eec97"
+    ],
+    "WOOL": [
+      "10127584568",
+      "8a185a594b8083a02d4fcb66cb4fec5e314c352b7d7026859e6c8858022e466b"
+    ]
+  },
+  "recovered_historical_classification": {
+    "MILK": "MARGINAL_UPSIDE +8.25 mean own, 8 positive/0 negative",
+    "WOOL": "MARGINAL_UPSIDE +0.0625 mean own, 2 positive/0 negative",
+    "STRAWBERRY": "MARGINAL_DOWNSIDE -4.4375 mean own",
+    "CARROT": "NO_EFFECT",
+    "TOMATO": "NO_EFFECT",
+    "MELON": "NO_EFFECT",
+    "EGG": "NO_EFFECT",
+    "interaction_warning": "MILK+WOOL combined policy was not executed; one-factor results are non-additive"
+  },
+  "disposition": "historical evidence/data only; preserve exact source blobs and artifact receipts; MILK/WOOL are revalidation coordinates only, STRAWBERRY quarantined; no V4 queue edge or promotion; require fresh current-ABI action-active economics"
+}
