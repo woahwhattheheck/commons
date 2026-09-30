@@ -1,0 +1,48 @@
+{
+  "schema": "titan-v4-research-custody/v1",
+  "lane": "returned-sell-carry",
+  "status": "CURRENT_ABI_REDERIVATION_REQUIRED",
+  "custody_only": true,
+  "observed_authority": {
+    "branch": "main",
+    "commit": "9ddcafa792199340ba6bed73203a0f87bc3027eb",
+    "main_py_blob": "727c36ee3727db159f5879d4ac9a842a28ca570c",
+    "titan_runtime_blob": "72c057552308dbac02dd6165c3049032ddbfa657",
+    "canonical_blob": "00142be0ff2314dcb23068c8133b34d290661923",
+    "integration_blob": "4e3207af1332266852530ec8494db8969edc1115",
+    "composition_blob": "32dc1e6963702f7e013cd609053d52c434e42158",
+    "recovered_not_yet_composed": [],
+    "composition_mode": "fail_closed"
+  },
+  "historical_donor": {
+    "branch": "titan-v3-returned-sell-carry-20260910",
+    "head": "3f0a71ed8cba4595a91899591489f44dd30dcafa",
+    "implementation_commit": "47308a85fd1bda408ec34924addf4716a90f5e69",
+    "merge_base_with_current_main": "21011846096daad1dd487df0efedf209303c1cb5",
+    "ahead_by": 2,
+    "behind_by": 11362,
+    "main_py_blob": "351cd09b267ee8869d1d14b0064d204014f95f2e",
+    "regression_test_blob": "6f3aebd5e1d3952de7cd1ac97d8e51947f0e44f8",
+    "exact_head_pr_workflow_runs": [],
+    "exact_head_commit_statuses": []
+  },
+  "semantic_theorem": [
+    "FrozenSelected seller state is committed before late _finish_production transforms.",
+    "Late returned-action finalizers can reduce the engine-visible SELL prefix after that seller ledger commit.",
+    "Only pre-existing due SELL units removed between the authored and final returned engine-visible prefix should carry to the next turn; baseline or opportunistic SELL quantities create no new obligation."
+  ],
+  "current_source_witness": [
+    "titan_runtime.py commits seller_checkpoint via _commit_seller_state before calling _finish_production on the completed path.",
+    "Current market-prefix consumers enforce max(1, int(maxMarketOrdersPerTurn)); the historical donor helper used max(0, int(limit))."
+  ],
+  "abi_mismatch": "Historical whole-file implementation is stale because its prefix bound admits zero while current authority uses the engine-compatible minimum-one prefix.",
+  "disposition": {
+    "queue_edge": false,
+    "promotion": false,
+    "direct_merge": false,
+    "cherry_pick": false,
+    "copy_stale_whole_file": false,
+    "resurrect_hold_or_negative": false,
+    "next_gate": "Narrow current-ABI rederivation with minimum-one prefix semantics and focused seller-state/returned-action causality tests, then normal serialized composition admission."
+  }
+}
