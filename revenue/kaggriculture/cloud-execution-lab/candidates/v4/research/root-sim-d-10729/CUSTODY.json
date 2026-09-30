@@ -1,0 +1,80 @@
+{
+  "schema": "titan-v4-research-custody/v1",
+  "lane": "root-sim-d-10729",
+  "status": "HISTORICAL_EVIDENCE_ONLY_NO_CURRENT_QUEUE_EDGE",
+  "custody_only": true,
+  "observed_authority": {
+    "branch": "main",
+    "commit": "73566c64e4f454091445f5d1c4b99cb5c4f145bf",
+    "canonical_blob": "00142be0ff2314dcb23068c8133b34d290661923",
+    "integration_blob": "4e3207af1332266852530ec8494db8969edc1115",
+    "composition_blob": "32dc1e6963702f7e013cd609053d52c434e42158",
+    "recovered_not_yet_composed": [],
+    "composition_mode": "fail_closed"
+  },
+  "source": {
+    "pull_request": 10729,
+    "original_pull_request": 10726,
+    "branch": "sol-atlas/pr10726-fresh-main-repack-20260908-01",
+    "head": "ebdd02a49f2fbdeffae31decb50184ab22788476",
+    "merge_base_with_current_main": "557e6a24ab67c93c8886596560bf97127d53a8c1",
+    "ahead_by": 1,
+    "behind_by": 14146,
+    "closed_unmerged": true,
+    "purpose": "topology-only repack of ROOT-SIM-D aggregate evidence; no runtime, policy, archive, evaluator, provider, or submission change"
+  },
+  "exact_blobs": {
+    "README.md": "5ecbce5af6994d4727c9431e8688aa9e6f2f8a2d",
+    "RESULTS.json": "42e13b0126c486ce7f53cc3dfc442f69b2e0ba82",
+    "summarize.py": "3156d4811185ee151909c05a58c8ec37d56f7e2a"
+  },
+  "historical_checks": {
+    "exact_head_pr_workflows": [
+      {
+        "name": "path-manifest",
+        "run": 34240140327,
+        "conclusion": "success"
+      },
+      {
+        "name": "source-parses",
+        "run": 34240140296,
+        "conclusion": "success"
+      },
+      {
+        "name": "open-door-guard",
+        "run": 34240140314,
+        "conclusion": "success"
+      },
+      {
+        "name": "muhlnickel-spec-guard",
+        "run": 34240140361,
+        "conclusion": "success"
+      }
+    ],
+    "exact_head_commit_statuses": []
+  },
+  "evidence_summary": {
+    "operation": "titan-root-sim-d-20260908-1345",
+    "repository_source_commit": "9ab11ca5a5d130e20ba1a87d339a1044c27fa507",
+    "current_archive_sha256": "499989ab907331d4c0c990af2ab3703e6731dc83078964aca8563ea5a069e48e",
+    "historical_v1_archive_sha256": "7b58fa06da778b1519b81d509d28dff3481b3bbcc7a2d656e8bdfe4a22540524",
+    "engine_ref": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
+    "grid": "32 seeds x 3 opponents x 2 seats x 2 controllers = 384 completed full-game identities",
+    "aggregate": "current and historical v1 each 186W/0T/6L across 192 games",
+    "paired_margin_note": "historical current had positive seed-level paired margin deltas versus Apex and Arlene; Euler bootstrap interval included zero",
+    "diagnostic_note": "receipt reports a repeated same-target worker inefficiency, but its exact private fixture/action was not published and was handed to existing integration owners"
+  },
+  "semantic_disposition": {
+    "current_mechanism_donor": false,
+    "reason": "public bytes are aggregate evidence/reproducibility tooling, not a current-ABI gameplay repair; the exact tactic witness is intentionally absent",
+    "queue_edge": false,
+    "promotion": false,
+    "direct_merge": false,
+    "cherry_pick": false,
+    "copy_stale_whole_file": false,
+    "runtime_activation": false,
+    "canonical_move": false,
+    "provider_or_kaggle_move": false,
+    "next_gate": "Only reuse this as historical benchmark/diagnostic evidence. Any gameplay theorem must be independently re-derived from current-authority source and fresh current evidence."
+  }
+}
