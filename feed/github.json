@@ -1,8 +1,8 @@
 {
   "counts": {
-    "open_issues": 7854,
+    "open_issues": 7827,
     "open_pull_requests": 0,
-    "runs_in_progress": 1,
+    "runs_in_progress": 2,
     "runs_queued": 70
   },
   "counts_source": "graphql",
@@ -11,8 +11,34 @@
   ],
   "pulls_listed": "UNKNOWN",
   "pulls_listing": "UNKNOWN",
-  "queue_depth_per_runner": 70.0,
+  "queue_depth_per_runner": 35.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "codex/resource-master/windows-credential-text-encoding-readback-20260930-01",
+      "closed_at": "2026-09-30T04:17:23Z",
+      "head_sha": "c611afb994de5e21245ca6cb078dec49ff047f50",
+      "merge_commit_sha": "ae5f5ccbb86827c4d632ca248cb6a014939078d5",
+      "merged_at": "2026-09-30T04:17:23Z",
+      "number": 30169,
+      "state": "MERGED",
+      "title": "Pin Windows credential text encoding activation readback",
+      "updated_at": "2026-09-30T04:18:04Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "codex/resource-master/windows-credential-text-encoding-advancement-20260930-01",
+      "closed_at": "2026-09-30T04:15:10Z",
+      "head_sha": "b9db660abaa1f8eb56f8363ac6bc848716728df8",
+      "merge_commit_sha": "ba1f55fd7018c584539713568268f5fb91db9053",
+      "merged_at": "2026-09-30T04:15:10Z",
+      "number": 30168,
+      "state": "MERGED",
+      "title": "Advance command-center Windows credential text encoding",
+      "updated_at": "2026-09-30T04:15:20Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -181,35 +207,9 @@
       "state": "MERGED",
       "title": "Activate Iowa RFQ 18649 technical workshare carrier",
       "updated_at": "2026-09-28T22:06:45Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "resource-master/command-center-provider-fidelity-terminal-20260928-01",
-      "closed_at": "2026-09-28T19:13:06Z",
-      "head_sha": "2982ae8248de82a9291436bd97c3a9c74633c18a",
-      "merge_commit_sha": "7cbac3e26c964c1c30fe0796fe7e113c3bd0d12a",
-      "merged_at": "2026-09-28T19:13:06Z",
-      "number": 30136,
-      "state": "MERGED",
-      "title": "Pin command-center terminal watermark",
-      "updated_at": "2026-09-28T19:13:46Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "resource-master/command-center-provider-fidelity-readback-20260928-01",
-      "closed_at": "2026-09-28T19:10:53Z",
-      "head_sha": "1e2615510a4129f6b20e7b78da565962221a196b",
-      "merge_commit_sha": "5e81ef636244bb8b7853acbd346685089982b301",
-      "merged_at": "2026-09-28T19:10:53Z",
-      "number": 30135,
-      "state": "MERGED",
-      "title": "Pin command-center provider-fidelity readback",
-      "updated_at": "2026-09-28T19:11:52Z"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-30T02:33:13Z"
+  "unchanged_since": "2026-09-30T08:55:55Z"
 }
