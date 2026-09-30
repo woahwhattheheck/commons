@@ -1,0 +1,12 @@
+{
+"schema":"titan.v4.salvage.quarantine.v1",
+"pr":13041,
+"exact_head":"864c7444cc3bd12ca959e5a3075133ce2cebdd13",
+"disposition":"closed-unmerged research evidence only",
+"queue_edge":false,
+"promotion":false,
+"artifacts":[
+{"name":"counter_ambush_burst.py","blob_sha":"89d69d32b24e1957922c7401a1546cd15580f73b"},
+{"name":"test_counter_ambush_burst.py","blob_sha":"450f41e2a1c48bf29e2c316dd530ff83a47b54ec"}
+]
+}

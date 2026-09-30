@@ -1,0 +1,16 @@
+{
+"schema":"titan.v4.salvage.reconciliation.v1",
+"authority_main":"3d2a8417adc7944c57c3da36ce07462af60538cf",
+"carrier_parent":"049963a1ed8cc561307c31acf16934a418689570",
+"canonical_blob":"00142be0ff2314dcb23068c8133b34d290661923",
+"integration_blob":"4e3207af1332266852530ec8494db8969edc1115",
+"composition_blob":"32dc1e6963702f7e013cd609053d52c434e42158",
+"open_v4_v31_v3":[0,0,0],
+"quarantined_prs":[13104,13056,13041],
+"queue_edge":false,
+"promotion":false,
+"runtime_change":false,
+"default_change":false,
+"canonical_change":false,
+"kaggle_change":false
+}

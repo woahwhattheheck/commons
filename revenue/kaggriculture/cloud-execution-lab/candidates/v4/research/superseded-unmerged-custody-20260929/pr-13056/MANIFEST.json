@@ -1,0 +1,15 @@
+{
+  "schema": "titan.v4.salvage.quarantine.v1",
+  "pr": 13056,
+  "pr_url": "https://github.com/woahwhattheheck/commons/pull/13056",
+  "exact_head": "d2b041f58093883d1f24b0343a79dc4a18d4603f",
+  "disposition": "SUPERSEDED current-ABI H3b source-closure donor; hosted exact-head gate was pending; no queue edge; no promotion",
+  "canonical_successor": "#13065 / 40961522e1c1c5286a52a582560d2a0b9ba94f4b",
+  "queue_edge": false,
+  "promotion": false,
+  "exact_artifacts": [
+    {"source_path":"revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/h3b-sheep-clip/README.md","blob_sha":"49e9afe6f3655e9be2c7baf9f7e3599218ece9b8"},
+    {"source_path":"revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/h3b-sheep-clip/r04_h3b_sheep_clip.py","blob_sha":"100ddda513f433f33cd98704a0abab4d49e6c4da"},
+    {"source_path":"revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/h3b-sheep-clip/test_h3b_custody_closure.py","blob_sha":"ce5464e631856a90665bc585c530cfd470fb2fd1"}
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "titan.v4.salvage.quarantine.v1",
+  "pr": 13104,
+  "pr_url": "https://github.com/woahwhattheheck/commons/pull/13104",
+  "exact_head": "d8fa49ccbedf2a51c65431bae51a7f99e648da20",
+  "disposition": "SUPERSEDED donor; exact historical source/check/doc custody only; no queue edge; no promotion",
+  "canonical_successor": "#13115 / 04b0d48e53b7dbbda637865c731718a69aea74cf",
+  "queue_edge": false,
+  "promotion": false,
+  "exact_artifacts": [
+    {
+      "source_path": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/fwd-buy-census/FERT-FLOOR-APPLY.md",
+      "blob_sha": "57b3100ea353a2bc29011dbfcc9990f33f466444"
+    },
+    {
+      "source_path": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/fwd-buy-census/check_fert_floor_apply.py",
+      "blob_sha": "81ba70b097851e0abb77da6e97f294c4d0d2d531"
+    },
+    {
+      "source_path": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/fwd-buy-census/fert_floor_apply.py",
+      "blob_sha": "fc2f90876681800f655f045921fe16f33d0d28ff"
+    }
+  ]
+}
