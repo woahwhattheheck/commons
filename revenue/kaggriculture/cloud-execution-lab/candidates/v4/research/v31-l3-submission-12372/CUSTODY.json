@@ -1,0 +1,28 @@
+{
+  "schema": "titan-v4-historical-custody/v1",
+  "recorded_at": "2026-09-30T22:54:46Z",
+  "canonical_main": "c4cf1baa65e8d4f20570748a4e69cdd29f1e3243",
+  "salvage_parent": "fa49a5be9f94a6de4627064a0c1565dfb0ff21b1",
+  "source_pr": 12372,
+  "source_head": "b766ba224d63b357d68cad9ad2c483344ad1f497",
+  "source_base": "508b342fc46fa91e3d7cdc3f0b7e44934a187c14",
+  "exact_blobs": {
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/L3-PROMOTION.md": "7246ec3c152615f8927c3ea327af6623783ba922",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/make_submission.py": "a6c374ee88f80adf479c1ede6d8d709690704ed8",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/test_make_submission_l3.py": "d61691ca4059d9664de5b24a1f5337d25181f2a5"
+  },
+  "evidence": {
+    "original_close_comment": 5631838123,
+    "terminal_v4_comment": 5745247219,
+    "original_claimed_checks": [
+      "5/5 fail-closed builder contracts",
+      "4/4 materialized L3 state contracts",
+      "22/22 adjacent feature checks",
+      "py_compile PASS"
+    ],
+    "later_disposition": "duplicate integration surface plus unresolved distribution: a genuinely engaged 16-cell panel was 16/16 score-identical; later L3 lineage moved through #12369/#12377 and terminal fail-closed gated spine #12565"
+  },
+  "disposition": "exact historical submission-builder packet quarantined; superseded/distribution-hold evidence only; no direct V4 queue edge; no cherry-pick, remint, default flip, legacy materializer, package mutation, provider action, or sibling root",
+  "queue_edge": false,
+  "promotion": false
+}

@@ -1,0 +1,30 @@
+{
+  "schema": "titan-v4-reconciliation/v1",
+  "observed_at": "2026-09-30T22:54:46Z",
+  "main": "c4cf1baa65e8d4f20570748a4e69cdd29f1e3243",
+  "carrier_before": "fa49a5be9f94a6de4627064a0c1565dfb0ff21b1",
+  "authority_blobs": {
+    "CANONICAL": "00142be0ff2314dcb23068c8133b34d290661923",
+    "INTEGRATION": "4e3207af1332266852530ec8494db8969edc1115",
+    "COMPOSITION": "32dc1e6963702f7e013cd609053d52c434e42158"
+  },
+  "open_v4_v31_v3": [
+    0,
+    0,
+    0
+  ],
+  "closure": {
+    "pr": 12372,
+    "head": "b766ba224d63b357d68cad9ad2c483344ad1f497",
+    "result": "exact three-file V3.1 L3 submission-builder packet preserved byte-for-byte in quarantine; duplicate/superseded distribution-hold lineage; no promotion"
+  },
+  "backward_history": {
+    "earliest_kaggriculture_pr": 9553,
+    "earliest_kaggriculture_merge": "eda0b5aada832a6b65e8d23305cff813b6f9a1ca",
+    "scanned_band": "9553..10005",
+    "disposition": "full GitHub Kaggriculture PR history floor reached; prior sweep found every PR in this genesis band merged and no closed-unmerged donor; there is no earlier Kaggriculture PR band to continue into"
+  },
+  "queue_edge": false,
+  "promotion": false,
+  "single_v4_root": true
+}
