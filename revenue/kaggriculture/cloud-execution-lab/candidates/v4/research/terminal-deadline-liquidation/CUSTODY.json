@@ -19,7 +19,7 @@
     "analysis/titan-v3-terminal-deadline-sol-terminus/terminal_deadline_patch.py": "3cbbef93fbb84e6f08aac2713a02dab1dd3a685d",
     "analysis/titan-v3-terminal-deadline-sol-terminus/test_terminal_deadline_patch.py": "1a80238554a792c5ed654107dec33e6d62964b4d",
     ".github/workflows/titan-v3-terminal-outer-deadline-sol-bulwark.yml": "911663316cf58761167cf5078c4957a80f702796",
-    "analysis/titan-v3-terminal-outer-deadline-sol-bulwark/test_outer_entrypoint_deadline.py": "0b77c3f8f1ed8d7bef9d1b7b8f17a80804aa9385"
+    "analysis/titan-v3-terminal-outer-deadline-sol-bulwark/test_outer_entrypoint_deadline.py": "efea449b491e32e3b7cc4daba5e38b7192270317"
   },
   "preservation": "Exact source heads remain live Git refs; all unique source/workflow/test blob identities are now pinned here. Dedicated component workflows were green; broad exact-head selected-projection/tests were red, so this is custody only and not promotion authority."
 }
