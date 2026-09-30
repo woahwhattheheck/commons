@@ -80,20 +80,32 @@
   },
   "evidence": {
     "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790741427614049",
+    "slack_terminal_receipt": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790741747612979?thread_ts=1790741427.614049&cid=C0BRGMDQB6G",
     "source_commit": "https://github.com/woahwhattheheck/commons/commit/afef3b9c0a6745365f5403ce37675a8a77c1ad07",
-    "activation_pull_request": "PENDING",
-    "activation_merge": "PENDING"
+    "activation_pull_request": "https://github.com/woahwhattheheck/commons/pull/30168",
+    "activation_merge": "ba1f55fd7018c584539713568268f5fb91db9053"
   },
   "publication": {
-    "state": "PENDING",
-    "current_main_sha": "PENDING_POST_MERGE_READBACK",
-    "exact_current_main_readback": "PENDING"
+    "state": "MERGED_AND_READ_BACK",
+    "pull_request": "https://github.com/woahwhattheheck/commons/pull/30168",
+    "merge_sha": "ba1f55fd7018c584539713568268f5fb91db9053",
+    "current_main_sha": "ba1f55fd7018c584539713568268f5fb91db9053",
+    "exact_current_main_readback": "MATCHED_4_OF_4_ACTIVATION_BLOBS_AND_4_OF_4_SOURCE_BLOBS",
+    "activation_blobs": {
+      "ground/RESOURCE_LEDGER.json": "986109425a773f7f3fb93aba7b27c346e72cc73b",
+      "inventory/resources/records/codex-commons-operation-command-center-windows-text-encoding-advancement-20260930-01.json": "3c4efff35f0f3e23223b630f2b9756572587e14c",
+      "p/codex-commons-operation-command-center-windows-text-encoding-advancement-20260930-01.md": "87ada78d3a56ddce62b45858b1fc48ac458770c8",
+      "resources.html": "4cec9e9285551238d6bd55e3abc563feb4372b6d"
+    },
+    "hosted_workflows": "No pull-request workflow run or commit status was present at readback; no asynchronous workflow is claimed green."
   },
   "next_watermark": {
-    "observed_at": "2026-09-30T04:10:46Z",
+    "observed_at": "2026-09-30T04:15:47Z",
     "activation_base_main_sha": "2c17024bfcbb831b9af82cdaedc997f0cde6381f",
-    "current_main_sha": "PENDING_POST_MERGE_READBACK",
-    "latest_observed_slack_ts": "1790741427.614049",
+    "current_main_sha": "ba1f55fd7018c584539713568268f5fb91db9053",
+    "latest_observed_slack_ts": "1790741747.612979",
+    "terminal_slack_ts": "1790741747.612979",
+    "terminal_observed_at": "2026-09-30T04:15:47Z",
     "inventory_record_id": "codex-commons-operation-command-center-windows-text-encoding-advancement-20260930-01",
     "remote_branches_observed": 4564
   },
