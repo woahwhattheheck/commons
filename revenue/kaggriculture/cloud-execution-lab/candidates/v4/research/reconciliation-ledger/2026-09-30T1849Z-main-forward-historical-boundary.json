@@ -1,0 +1,14 @@
+{
+  "schema": "titan-v4-reconciliation/v1",
+  "observed_at_utc": "2026-09-30T18:49:10Z",
+  "authority_main": "ed0995211b9a888fce5f5dc56cdc9a2105f91215",
+  "carrier_before": "a5e5480dfa02cbf1361a8f8b766156d5e1287ea4",
+  "main_drift_files": ["test_slack_ingest.py"],
+  "kaggriculture_drift": false,
+  "control_blobs": ["00142be0ff2314dcb23068c8133b34d290661923", "4e3207af1332266852530ec8494db8969edc1115", "32dc1e6963702f7e013cd609053d52c434e42158"],
+  "open_v4_v31_v3": [0, 0, 0],
+  "historical_boundary": "#10162 already merged and terminally disposed; no new direct donor",
+  "queue_edge": false,
+  "promotion": false,
+  "sibling_v4_root": false
+}
