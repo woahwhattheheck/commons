@@ -1,0 +1,15 @@
+{
+  "schema":"titan-v4-reconciliation-receipt/v1",
+  "canonical_main":"9ddcafa792199340ba6bed73203a0f87bc3027eb",
+  "canonical_blob":"00142be0ff2314dcb23068c8133b34d290661923",
+  "integration_blob":"4e3207af1332266852530ec8494db8969edc1115",
+  "composition_blob":"32dc1e6963702f7e013cd609053d52c434e42158",
+  "recovered_not_yet_composed":[],
+  "carrier_parent":"509e2676b73291b41eec15bcd5cfbcbfe99f6979",
+  "actions":[
+    "#11654 exact T10 README copied to research quarantine; all six intended packet blob identities pinned; contaminated source carrier remains non-mergeable; semantic already present in V4",
+    "#11789 composed frozen-control packet identities pinned with parent #11629; retained as evidence-only historical control; no gameplay promotion"
+  ],
+  "no_authority_mutation":true,
+  "no_sibling_v4_root":true
+}
