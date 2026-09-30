@@ -1,0 +1,7 @@
+{
+  "pr": 11749,
+  "head": "abd6b5ffa9ab072ae2e1b8020991a47604791881",
+  "source_review": "PASS",
+  "exact_head_ci": "HOLD: titan-w10-producer-surface-scan failed in scanner contract",
+  "status": "historical evidence-tooling quarantine; no gameplay or V4 queue edge"
+}
