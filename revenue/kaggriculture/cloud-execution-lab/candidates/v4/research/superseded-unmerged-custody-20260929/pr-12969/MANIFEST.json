@@ -1,0 +1,1 @@
+{"schema":"titan.v4.salvage.quarantine.v1","pr":12969,"exact_head":"4aef3cf89696b45cb4becda131beefc0e4d96397","disposition":"closed-unmerged control-plane trigger closure; preserve disabled workflow only","queue_edge":false,"promotion":false,"artifacts":[{"name":"titan-v4-control-plane-hardening.yml.disabled","blob_sha":"87b4529c51a2c5410ab7538789a1a324e8a8708d"}]}
