@@ -1,0 +1,30 @@
+{
+  "schema": "titan-v4-reconciliation-receipt-v1",
+  "operation": "stranded-hand-route-recovery-negative-custody-closure",
+  "authority_main": "2c17024bfcbb831b9af82cdaedc997f0cde6381f",
+  "prior_salvage": "e4b0ce44503f1005eda06b81d91cad292e558b92",
+  "family": "stranded-hand-route-recovery",
+  "source_v3": {
+    "pr": 12042,
+    "head": "cf2047e80772319e920fe013ae8a427ef2d077ea",
+    "paired_regression": "36/36 own-cash negative; 1W/35L; family rejected"
+  },
+  "prepared_object": {
+    "commit": "5e44dbdacfd6be5f87c4a3a79cbdba9bcd2b950c",
+    "tree": "3457245aff90ed6f7389215e54d5a9d0ff5fdf56",
+    "quarantine_tree": "ca8cc7519edf6ba4fa6f6c3bd65d33de0cf4c9a3",
+    "blobs": [
+      "53b683b525b8f965f2217d57d6dd34482525a2f6",
+      "9453a7c77a8708f384f2c6d8d63f16ab6b8b4f94",
+      "a86d1860ced5e48c7e7643b48b054aa9f90bfe21"
+    ]
+  },
+  "action": "attach exact rejected-family historical bytes under research quarantine only",
+  "disposition": "HISTORICAL_NEGATIVE_REJECTED_FAMILY__DO_NOT_REPLAY__DO_NOT_REMINT",
+  "queue_edge_added": false,
+  "promotion": false,
+  "canonical_moved": false,
+  "runtime_moved": false,
+  "sibling_v4_root_created": false,
+  "force_ref": false
+}
