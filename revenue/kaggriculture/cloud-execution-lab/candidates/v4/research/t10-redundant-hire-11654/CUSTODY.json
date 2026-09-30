@@ -1,0 +1,8 @@
+{
+  "schema":"titan-v4-research-custody/v1",
+  "source_pr":11654,
+  "source_head":"334a95fcf98deedfd4e527fcf8574327af743c64",
+  "source_tree":"d7b4e9f909cadf68452b462d63a2ef5d1a38fa20",
+  "packet_blobs":["63dd5d82ee58a6b58062e83222fdb8dacda80823","38ad6cd345f694ec9ee98449a2ddf759d724bd15","d19d6f705e544e47b43cf5fdcd34fb5bd91d1977","e88f44188831374e47c1120868c09f7b677e3dfa","97f82702d3c5d43b64f9cf6912b39b7bdb2cd239","963881f589bf5b148c91e219b6c9c2b04bac7eec"],
+  "disposition":"historical arithmetic evidence only; current V4 already carries the semantic; no queue edge or promotion"
+}
