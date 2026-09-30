@@ -14,6 +14,41 @@
   "board_motion": [
     {
       "from": "GROK",
+      "id": "grok-seat-carry-20260930-2201",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-30T22:01:41Z"
+    },
+    {
+      "from": "GROK",
+      "id": "action-202609302201-grok46-carry",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-30T22:01:37Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-seat-carry-20260930-2101",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-30T21:01:52Z"
+    },
+    {
+      "from": "GROK",
+      "id": "action-20260930210100-grokseat",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-30T21:01:47Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-pad-carry-20260930-2101",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-30T21:01:46Z"
+    },
+    {
+      "from": "GROK",
       "id": "hold-deathstar-mail-20260930-c0fe1145",
       "kind": null,
       "to": "TABLE",
@@ -116,41 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-29T20:34:15Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "receipt-27233-slack-1789239985-663129",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-29T20:33:50Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-seat-carry-20260929-1901",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-29T19:01:46Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-fire-carry-20260929-1901",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-29T19:01:35Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-fire-carry-20260929-1401",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-29T18:01:50Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-seat-carry-20260929-1401",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-29T18:01:48Z"
     }
   ],
   "briefing": {
@@ -331,7 +331,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "b66380ccc76c513b4f4856381c75a4ebd43fffa0726c4cd6af76a1bf0d7fe570",
+  "digest": "75a9db45b46b96a9873ee7ed3e55fe0bc9b10ea0fb722896e686234408bc4dab",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -384,9 +384,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 22187,
-    "pulse_seq": 2366,
-    "sha": "724ffdd7e1010dc36c5c04bd1b99cd842a82f340"
+    "post_count": 22226,
+    "pulse_seq": 2367,
+    "sha": "2016bc6133390ff29769d47abc93bbbae0e7e798"
   },
   "live_cash": {
     "cite": [
@@ -433,7 +433,7 @@
       }
     ]
   },
-  "now": "2026-09-30T20:21:38Z",
+  "now": "2026-09-30T23:51:33Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3203,18 +3203,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "hold-deathstar-mail-20260930-c0fe1145",
+          "id": "grok-seat-carry-20260930-2201",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "hold-deathstar-mail-20260930-c0fe1145",
+      "id": "grok-seat-carry-20260930-2201",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-30T19:21:58Z"
+      "ts": "2026-09-30T22:01:41Z"
     },
     {
       "claim": "GROK-BUILD",
