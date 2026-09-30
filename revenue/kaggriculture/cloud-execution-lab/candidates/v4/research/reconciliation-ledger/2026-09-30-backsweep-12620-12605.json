@@ -1,0 +1,43 @@
+{
+  "schema": "titan.v4.salvage.reconciliation.v1",
+  "authority_main": "3d2a8417adc7944c57c3da36ce07462af60538cf",
+  "carrier_parent": "9fbef12dd79f936b3fd4115ecfa01ff8ec450bef",
+  "backward_sweep": {
+    "quarantined": [
+      {
+        "pr": 12620,
+        "status": "legacy_queue_evidence_not_merge_authority",
+        "checker_blob": "12a3eb23dd1052a769baa16ce861890f21911e14"
+      }
+    ],
+    "successor_consumed": [
+      {
+        "pr": 12618,
+        "status": "exact helper/test already preserved on current main",
+        "helper_blob": "6ca7c2e150f40f4deb68d9244b53a30342f33493",
+        "test_blob": "6a7b130fce439269b9eb896de0c5fe47dbda93a9",
+        "stale_apply_v4_excluded": true
+      },
+      {
+        "pr": 12611,
+        "status": "current-ABI component already built/tested on main, default-OFF, not promoted",
+        "donor_blob": "d5ea1757975099409a00a32e9c7eb6d40bf51926",
+        "runtime_postimage_blob": "79027f03c6d46ad3cc7b30f21df7ba98d6cb9ff3",
+        "manifest_blob": "5dba934455dba443de398c8f21adcdad97823cc2"
+      },
+      {
+        "pr": 12605,
+        "status": "historical M1 source superseded by narrower complete-day repair already on main",
+        "historical_helper_blob": "c258552a87ab39f4d49648735cc0fddbd5019e04",
+        "current_repaired_helper_blob": "87eb8ccbee13b33ef656ba0a5ba0114ac30f4658",
+        "repair_manifest_blob": "a5d3656f0a372544d6cf5623c12602f6c9cf1cbe"
+      }
+    ]
+  },
+  "queue_edge": false,
+  "promotion": false,
+  "runtime_change": false,
+  "default_change": false,
+  "canonical_change": false,
+  "kaggle_change": false
+}

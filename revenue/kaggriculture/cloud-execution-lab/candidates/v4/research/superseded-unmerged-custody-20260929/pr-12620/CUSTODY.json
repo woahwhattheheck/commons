@@ -1,0 +1,21 @@
+{
+  "schema": "titan.v4.salvage.quarantine.v1",
+  "pr": 12620,
+  "exact_head": "8f8149a76a1324e9274cf25fdb7489ac0b2ce5ca",
+  "disposition": "legacy_queue_evidence_not_merge_authority",
+  "queue_edge": false,
+  "promotion": false,
+  "artifacts": [
+    {
+      "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3/check_v4_plumbing.py",
+      "blob_sha": "12a3eb23dd1052a769baa16ce861890f21911e14",
+      "custody": "quarantine"
+    },
+    {
+      "path": ".github/workflows/titan-v4-plumbing.yml",
+      "blob_sha": "2a1800c02d2a4c11293bdccc7914ab8f6fd93321",
+      "custody": "already_byte_exact_on_main"
+    }
+  ],
+  "note": "PR is explicitly legacy queue/evidence and stale/not merge authority. Preserve the unlanded checker as historical evidence only; do not reactivate the serial queue or mint a sibling V4 root."
+}
