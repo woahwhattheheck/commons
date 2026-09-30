@@ -1,0 +1,34 @@
+{
+  "schema": "titan-v4-reconciliation-receipt/v1",
+  "authority_commit": "73566c64e4f454091445f5d1c4b99cb5c4f145bf",
+  "carrier_before": "1c53d5560c407bb7bcd8469504716939e6deb874",
+  "control_blobs": {
+    "canonical": "00142be0ff2314dcb23068c8133b34d290661923",
+    "integration": "4e3207af1332266852530ec8494db8969edc1115",
+    "composition": "32dc1e6963702f7e013cd609053d52c434e42158"
+  },
+  "recovered_not_yet_composed": [],
+  "composition_mode": "fail_closed",
+  "root_sim_d_10729": {
+    "custody_commit": "1c53d5560c407bb7bcd8469504716939e6deb874",
+    "custody_blob": "a7f8b2d7ec6a4bd0ea91b1cfe74c3b10228764a4",
+    "queue_edge": false,
+    "promotion": false
+  },
+  "remaining": [
+    "returned-sell-carry current-ABI rederivation",
+    "hire-cardinality current-ABI proof",
+    "A6 overlap uniqueness",
+    "B5 engagement and economics"
+  ],
+  "changes_forbidden_and_not_performed": [
+    "force",
+    "stale merge",
+    "stale cherry-pick",
+    "sibling V4 root",
+    "canonical move",
+    "runtime/default move",
+    "Kaggle move",
+    "negative/HOLD revival"
+  ]
+}
