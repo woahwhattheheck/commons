@@ -1,0 +1,18 @@
+{
+  "schema": "titan-v4-reconciliation-receipt/v1",
+  "timestamp_utc": "2026-09-30T09:59:00Z",
+  "carrier_before": "b386e5f79e54f8ee5af8f37e9dbc5df5ae0789b5",
+  "main_fence": "b64c830cf5c8b6d950016fc536bda5e3ed4d1b4c",
+  "action": "preserve_closed_unmerged_exact_bytes",
+  "source_pr": 12010,
+  "source_head": "d9963b4b5172a75fb013ac67f96184a44a01dade",
+  "disposition": "quarantine_current_abi_rederive_only",
+  "queue_edge": false,
+  "runtime_change": false,
+  "canonical_change": false,
+  "composition_change": false,
+  "notes": [
+    "Dedicated historical gate green; broad tests red.",
+    "No V3 packet transplant; no sibling V4 root."
+  ]
+}

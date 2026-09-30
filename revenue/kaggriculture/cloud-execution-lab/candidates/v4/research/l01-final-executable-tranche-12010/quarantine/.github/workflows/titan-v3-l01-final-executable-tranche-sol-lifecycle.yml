@@ -1,0 +1,46 @@
+name: TITAN V3 L01 final executable tranche
+
+on:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-l01-final-executable-tranche/**"
+      - "p/titan-v3-l01-final-executable-tranche-sol-lifecycle-20260910-01.md"
+      - ".github/workflows/titan-v3-l01-final-executable-tranche-sol-lifecycle.yml"
+  push:
+    branches:
+      - "sol-lifecycle/titan-v3-l01-final-executable-tranche-20260910-01"
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-l01-final-executable-tranche/**"
+      - "p/titan-v3-l01-final-executable-tranche-sol-lifecycle-20260910-01.md"
+      - ".github/workflows/titan-v3-l01-final-executable-tranche-sol-lifecycle.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  focused-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-l01-final-executable-tranche
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Validate JSON receipts
+        run: |
+          python -m json.tool PIN.json >/dev/null
+          python -m json.tool RESULTS.json >/dev/null
+          python -m json.tool CARRIER-MANIFEST.json >/dev/null
+          python -m json.tool REPLAY-107213024-BOUNDARY.json >/dev/null
+      - name: Compile exact source pair and extractor
+        run: |
+          python -m py_compile \
+            predecessor_l01_mechanics.py \
+            candidate_l01_mechanics.py \
+            extract_replay_boundary.py \
+            test_carrier.py
+      - name: Run predecessor-killing lifecycle contracts
+        run: python -m unittest -v test_carrier.py

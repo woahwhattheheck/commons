@@ -1,0 +1,191 @@
+--- a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/l01_mechanics.py
++++ b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/l01_mechanics.py
+@@ -9,7 +9,8 @@
+   l01_sheep      rewrite every BUY_ANIMAL COW after step 1 to SHEEP (opening COW 2 kept)
+   l01_day0buy    replace the step-0 market with the SpaTaro product basket
+   l01_leanplant  convert the last 92 PLANT WHEAT units to PASS (164 -> 72 wheat, 240 -> 148)
+-  l01_tranche    live: from day 28 and before step 718 ensure SELL WHEAT min(shed,57) and
++  l01_tranche    live: from day 28 through the final executable input step ensure SELL
++                   WHEAT min(shed,57) and
+                  SELL CARROT min(shed,32) and pack every other shed product except FERTILIZER
+ 
+ The four tape keys mutate `controller.R` once, at TitanAgent._initialize (seam
+@@ -37,7 +38,7 @@
+ TRANCHE_CARROT = 32
+ TRANCHE_DAY_FROM = 28
+ MAX_ORDERS = 10
+-FINAL_EXECUTABLE_STEP = 718
++DEFAULT_EPISODE_STEPS = 720
+ MAIN = '7015cc00acfa4922'
+ NOOP = 'L01_noop:flag_off'
+ FLAG_KEYS = ('LAND', 'SHEEP', 'DAY0BUY', 'TRANCHE', 'LEANPLANT')
+@@ -126,8 +127,33 @@
+                 activations['LEANPLANT'] += 1
+ 
+ 
+-def apply_tranche(action, obs, flags, activations, shed=None):
+-    """Live multi-product sale enlargement. Identity when TRANCHE is off."""
++def final_executable_step(episode_steps=DEFAULT_EPISODE_STEPS):
++    """Return the last observation step that still produces an agent action.
++
++    Kaggriculture records ``episodeSteps`` states: state 0 is the initial
++    observation, then each of the remaining states is produced by one agent
++    action.  Therefore the last actionable input is ``episodeSteps - 2``.
++    Explicit malformed or impossible episode lengths fail closed.
++    """
++    if isinstance(episode_steps, bool):
++        return None
++    try:
++        episode_steps = int(episode_steps)
++    except (TypeError, ValueError):
++        return None
++    if episode_steps < 2:
++        return None
++    return episode_steps - 2
++
++
++def apply_tranche(action, obs, flags, activations, shed=None,
++                  episode_steps=DEFAULT_EPISODE_STEPS):
++    """Live multi-product sale enlargement. Identity when TRANCHE is off.
++
++    The final executable input remains eligible; only post-action/nonexistent
++    state indices are quarantined.  ``episode_steps`` is explicit so hosted
++    tests with non-default episode lengths retain the same lifecycle contract.
++    """
+     if not flags.get('TRANCHE'):
+         return action
+     step = obs.get('step')
+@@ -135,7 +161,8 @@
+         step = int(obs.get('day', 0)) * 24 + int(obs.get('hour', 0))
+     step = int(step)
+     day = int(obs.get('day', step // 24))
+-    if day < TRANCHE_DAY_FROM or step >= FINAL_EXECUTABLE_STEP:
++    final_step = final_executable_step(episode_steps)
++    if final_step is None or day < TRANCHE_DAY_FROM or step > final_step:
+         return action
+     if shed is None:
+         shed = dict((obs.get('private') or {}).get('shed') or {})
+--- a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py
++++ b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py
+@@ -117,8 +117,10 @@
+     "            from collections import Counter\n"
+     "            from l01_mechanics import apply_tranche, flags_from_features, shed_snapshot\n"
+     "            activations = Counter()\n"
++    "            episode_steps = (cfg.get('episodeSteps', 720) if hasattr(cfg, 'get')\n"
++    "                             else getattr(cfg, 'episodeSteps', 720))\n"
+     "            output = apply_tranche(output, obs, flags_from_features(self.features), activations,\n"
+-    "                                   shed=shed_snapshot(self, obs))\n"
++    "                                   shed=shed_snapshot(self, obs), episode_steps=episode_steps)\n"
+     "            self.diagnostics['v3_l01_tranche'] = {'activations': dict(activations)}\n"
+     "        except Exception as error:\n"
+     "            self.diagnostics['v3_l01_tranche'] = {'activations': {}, 'error': type(error).__name__}\n"
+--- a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_l01.py
++++ b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_l01.py
+@@ -129,12 +129,58 @@
+         self.assertIs(l01.apply_tranche(action, obs, flags(), act), action)
+         self.assertEqual(act, Counter())
+ 
+-    def test_skips_terminal_step_and_early_days(self):
++    def test_final_executable_step_is_live_but_post_action_state_is_identity(self):
++        action = {'farmer': ['PASS'], 'hands': [], 'market': []}
++        shed = {'WHEAT': 80, 'CARROT': 40}
++        act = Counter()
++        out = l01.apply_tranche(
++            action, {'step': 718, 'day': 29}, flags(TRANCHE=True), act,
++            shed=shed, episode_steps=720,
++        )
++        self.assertEqual(out['market'], [['SELL', 'WHEAT', 57], ['SELL', 'CARROT', 32]])
++        self.assertEqual(act, Counter({'TRANCHE': 2}))
++        self.assertEqual(action['market'], [])
++
++        act = Counter()
++        self.assertIs(
++            l01.apply_tranche(
++                action, {'step': 719, 'day': 29}, flags(TRANCHE=True), act,
++                shed=shed, episode_steps=720,
++            ),
++            action,
++        )
++        self.assertEqual(act, Counter())
++
++    def test_configurable_episode_boundary_and_malformed_length_fail_closed(self):
++        action = {'farmer': ['PASS'], 'hands': [], 'market': []}
++        shed = {'WHEAT': 80}
++        out = l01.apply_tranche(
++            action, {'step': 10, 'day': 29}, flags(TRANCHE=True), Counter(),
++            shed=shed, episode_steps=12,
++        )
++        self.assertEqual(out['market'], [['SELL', 'WHEAT', 57]])
++        for episode_steps in (True, None, 'bad', 1):
++            act = Counter()
++            self.assertIs(
++                l01.apply_tranche(
++                    action, {'step': 10, 'day': 29}, flags(TRANCHE=True), act,
++                    shed=shed, episode_steps=episode_steps,
++                ),
++                action,
++            )
++            self.assertEqual(act, Counter())
++
++    def test_skips_early_days(self):
+         act = Counter()
+         action = {'farmer': ['PASS'], 'hands': [], 'market': []}
+         shed = {'WHEAT': 80, 'CARROT': 40}
+-        self.assertIs(l01.apply_tranche(action, {'step': 718, 'day': 29}, flags(TRANCHE=True), act, shed=shed), action)
+-        self.assertIs(l01.apply_tranche(action, {'step': 600, 'day': 25}, flags(TRANCHE=True), act, shed=shed), action)
++        self.assertIs(
++            l01.apply_tranche(
++                action, {'step': 600, 'day': 25}, flags(TRANCHE=True), act,
++                shed=shed, episode_steps=720,
++            ),
++            action,
++        )
+         self.assertEqual(act, Counter())
+ 
+ 
+@@ -179,12 +225,22 @@
+         self.assertIs(agent._v3_post_final(obs, {}, action), action)
+         agent = TitanAgent(Features(l01_tranche=True))
+         agent.diagnostics = {}
+-        out = agent._v3_post_final(obs, {}, action)
++        out = agent._v3_post_final(obs, {'episodeSteps': 720}, action)
+         self.assertEqual([o for o in out['market'] if o[1] == 'WHEAT'][0][2], 57)
+         self.assertEqual([o for o in out['market'] if o[1] == 'CARROT'][0][2], 32)
+         self.assertEqual(agent.diagnostics['v3_l01_tranche']['activations'], {'TRANCHE': 2})
+         self.assertEqual(action['market'], [['SELL', 'WHEAT', 3]])
+ 
++    def test_post_final_passes_configured_episode_length(self):
++        action = {'farmer': ['PASS'], 'hands': [], 'market': []}
++        obs = {'step': 10, 'day': 29, 'private': {'shed': {'WHEAT': 80}}}
++        agent = TitanAgent(Features(l01_tranche=True))
++        agent.diagnostics = {}
++        out = agent._v3_post_final(obs, {'episodeSteps': 12}, action)
++        self.assertEqual(out['market'], [['SELL', 'WHEAT', 57]])
++        self.assertEqual(agent.diagnostics['v3_l01_tranche']['activations'], {'TRANCHE': 1})
++
++
+ 
+ if __name__ == '__main__':
+     unittest.main(verbosity=2)
+--- a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/README.md
++++ b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/README.md
+@@ -31,7 +31,7 @@
+ | (none) | O02 shop priority multiplier | same chain, ARGUS A7 | `shop_arb.py` is a tested scoring-only callable; no production seam, `absorption()` is never patched | n/a |
+ | `early_capital` | horizon-aware same-queue capital ordering | canonical | already in the canonical archive | on |
+ | `l01_land`, `l01_sheep`, `l01_day0buy`, `l01_leanplant` | L01 leader mechanisms on the Arlene MAIN tape: BUY_LAND at steps 74/98, COW→SHEEP after step 1, the SpaTaro day-0 basket, last 92 wheat plants to PASS | Grok Build #5, PR #11459 (`candidates/v3-l01-leader-mechanics`) | `TitanAgent._v3_l01_install` at the end of `_initialize` patches `controller.R` once | off; panel decides |
+-| `l01_tranche` | L01 live sale tranches from day 28 (WHEAT ≤57, CARROT ≤32, pack the other shed products) | same | `TitanAgent._v3_post_final`, after `_finish_production` | off |
++| `l01_tranche` | L01 live sale tranches from day 28 through the final executable input (WHEAT ≤57, CARROT ≤32, pack the other shed products) | same | `TitanAgent._v3_post_final`, after `_finish_production` | off |
+ | `joint_actor_assignment` (reserved) | P07 joint actor assignment | Grok Build #6 | lands here | pending |
+ | `terminal_liquidation`, `land_unlock_timing`, `opening_script`, `tight_guard` (reserved) | T01–T04 | TESSERA designs on Slack C0BUH19DW80; Grok Build #2 | lands here | pending |
+ | — | S02 receding-horizon MPC | Grok (`candidates/v3-s02-mpc`) | excluded: H=6 lost every smoke game by 88k–108k | no |
+--- a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json
++++ b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json
+@@ -69,7 +69,7 @@
+       "default": false,
+       "seam": "TitanAgent._v3_post_final after _finish_production",
+       "module": "l01_mechanics.py",
+-      "effect": "day>=28 SELL WHEAT<=57 CARROT<=32 and pack other shed products"
++      "effect": "day>=28 through episodeSteps-2 SELL WHEAT<=57 CARROT<=32 and pack other shed products"
+     }
+   },
+   "lanes": [

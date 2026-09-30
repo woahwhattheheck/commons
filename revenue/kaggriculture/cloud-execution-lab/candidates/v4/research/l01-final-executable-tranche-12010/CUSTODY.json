@@ -1,0 +1,35 @@
+{
+  "schema": "titan-v4-research-custody/v1",
+  "source_pr": 12010,
+  "source_title": "TITAN V3: repair L01 final executable tranche boundary",
+  "source_head": "d9963b4b5172a75fb013ac67f96184a44a01dade",
+  "source_state": "closed_unmerged",
+  "disposition": "quarantine_current_abi_rederive_only",
+  "queue_edge": false,
+  "promotion": false,
+  "reason": "Exact-source repair/evidence packet is not on main and is historical V3. Dedicated exact-head L01 gate and selected-projection passed, but broad tests failed; preserve exact bytes and theorem for possible current-ABI rederivation without transplanting the V3 packet.",
+  "evidence": {
+    "local": "22/22 focused contracts; git-apply check and five postimages reported pass",
+    "workflow_runs": {
+      "34522138318": "success:TITAN V3 L01 final executable tranche",
+      "34522138427": "success:titan-selected-projection",
+      "34522138422": "failure:tests",
+      "34522138391": "success:source-parses",
+      "34522138429": "success:open-door-guard"
+    }
+  },
+  "exact_blobs": {
+    ".github/workflows/titan-v3-l01-final-executable-tranche-sol-lifecycle.yml": "c61601017c4ed037d9dd29864eefbcf417638248",
+    "p/titan-v3-l01-final-executable-tranche-sol-lifecycle-20260910-01.md": "949edef65eb22ecdd643d4e0f96423038ef2ec15",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-l01-final-executable-tranche/CARRIER-MANIFEST.json": "d535880e0e233d052c867006c3e173e95877f380",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-l01-final-executable-tranche/PIN.json": "15a5988e5ce42d0ebc10f830f154a04940ecab44",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-l01-final-executable-tranche/README.md": "08e1f17f484204677278f5ddd8805d647e448c49",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-l01-final-executable-tranche/REPLAY-107213024-BOUNDARY.json": "d6d1484c1038796567c9fd2ebdca0505392f8492",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-l01-final-executable-tranche/RESULTS.json": "cc519be5e3dbc8b0d95f01e149dc4f92688c148f",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-l01-final-executable-tranche/candidate_l01_mechanics.py": "33fdbdf3929544020c7007053de1768f88bbf3bf",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-l01-final-executable-tranche/extract_replay_boundary.py": "6670931e405b9d996062584b9cc1f5b4e231341b",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-l01-final-executable-tranche/one-tree-l01-final-executable.patch": "72415289d8a31ea08d152c9d47fa0cb50dba420a",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-l01-final-executable-tranche/predecessor_l01_mechanics.py": "667efffdf5efe7b654db7a02622a46d29054df4f",
+    "revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-l01-final-executable-tranche/test_carrier.py": "a89941bb685e637b4519f35fe7ebe2c00a3716e3"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "files": {
+    "PIN.json": "ff59e1ab577e1d1bab4bb3ffc57056ad546ec3b14cdb3242e5f821f5b9f3dd08",
+    "README.md": "ec4598993dc1487e0eb669aacc2f45260f24147780022db197be7b380ddadd8d",
+    "REPLAY-107213024-BOUNDARY.json": "9453e0e4ec4a32fee343568a707edd8796257f97e505c48902ef685b1f86fc5f",
+    "RESULTS.json": "f491f9d1e1d4a21b6466b23f594aa78f4027ef025fa38df8dd2f39ffa85a7642",
+    "candidate_l01_mechanics.py": "17e41a6a19a743257d9c7ae993a07f36a93ea08bdd76b13ab17c818fef093f88",
+    "extract_replay_boundary.py": "3ce45eea592d70016ccfa6bedf6d79dd838356bc9dc938ea247209e6c87499c9",
+    "one-tree-l01-final-executable.patch": "25e89c0c056e417a69f675f0c0dd901c949ed7a043f5bbbdc5b493a0462e49c1",
+    "predecessor_l01_mechanics.py": "65fc1841f6d00b6db78e2eb88d98e9e7b05053502e0de527bce1f1a60fbe9691",
+    "test_carrier.py": "d5f651cc27bf02e7eaa36abf245ca8f4006320029f54bfd8c0743b9d58e71065"
+  },
+  "operation": "TITAN-V3-L01-FINAL-EXECUTABLE-TRANCHE-20260910-01",
+  "schema": "titan.v3.l01-final-executable-carrier-manifest.v1"
+}
