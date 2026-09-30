@@ -1,0 +1,21 @@
+{
+  "schema": "titan-v4-research-custody/v1",
+  "subject": "closed-unmerged V3 crop-binding residue #11768",
+  "canonical_main": "9ddcafa792199340ba6bed73203a0f87bc3027eb",
+  "source_pr": 11768,
+  "source_head": "d6459ba6b623c681ac73219f00bf2331a06c6621",
+  "exact_head_blobs": {
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-final-crop-binding/README.md": "d92814782e24392492564eb431724168dc6e7f42",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-final-crop-binding/candidate_runtime.py": "a7eaa6a18cbb8963ae3cec537f5cec1893e75399",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3-final-crop-binding/test_final_crop_binding.py": "02e12812c431903f5ac93eb8bdc364db2845004f"
+  },
+  "exact_head_run": 34406555587,
+  "exact_head_job": 102650810084,
+  "hosted": "syntax/compile PASS; canonical-scoring parity PASS; Preserve canonical crop/finalizer contracts FAIL; overall FAILURE",
+  "receipt_correction": {
+    "prior_salvage_comment_claimed_candidate_blob": "99a8fb295bd180086111716fef5a7fc3231582d2",
+    "prior_salvage_comment_claimed_test_blob": "16dce05dd2d28b73e01d7dabe868799304abee7e",
+    "correction": "direct reads of source_head and PR file inventory resolve candidate/test to a7eaa6a1... and 02e12812...; stale claimed blob IDs are retained only as receipt provenance, not exact-head bytes"
+  },
+  "disposition": "failed-contract historical evidence only; preserve actual exact-head bytes; no validated semantic donor, no V4 queue edge; re-derive theorem on current ABI if needed; do not wire, promote, cherry-pick, or remint"
+}

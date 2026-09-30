@@ -1,0 +1,10 @@
+{
+  "schema": "titan-v4-reconciliation-receipt/v1",
+  "canonical_main": "9ddcafa792199340ba6bed73203a0f87bc3027eb",
+  "carrier_parent": "fd4de5c030e3c93b12cc518a2b9a1f4991578641",
+  "backsweep_subject": "PR #11768 crop-binding residue",
+  "finding": "exact-head custody gap plus stale two-blob identity in prior salvage comment",
+  "action": "preserved actual exact-head README/candidate/test blobs under research quarantine and recorded receipt correction",
+  "disposition": "exact-head hosted contract failure; historical evidence only; no promotion or queue edge",
+  "no_authority_mutation": true
+}
