@@ -1,0 +1,126 @@
+{
+  "schema": "titan.v4.salvage.reconciliation.v1",
+  "authority_main": "456d9f88c00690e31018dda795986e44ec04ac46",
+  "authority_tree": "9cdc52fb7f3d995cce9e167fa0fef4e987123d59",
+  "prior_carrier": "843dc383ec20f1653b6a49924a98ee8fced3aa70",
+  "merge_forward": "b492e5bb2d8839bcf84a701a5a1f4fbe62999a77",
+  "merge_forward_tree": "5986862abf9f0572ae5368095d769e2b078edd6b",
+  "receipt_parent": "ca401e2bc4abc1a5b1f80a41dffd221d44e87d72",
+  "control_plane": {
+    "canonical_blob": "00142be0ff2314dcb23068c8133b34d290661923",
+    "integration_blob": "4e3207af1332266852530ec8494db8969edc1115",
+    "composition_blob": "32dc1e6963702f7e013cd609053d52c434e42158",
+    "canonical_branch": "main",
+    "recovered_not_yet_composed": [],
+    "composition_mode": "fail_closed"
+  },
+  "topology": {
+    "prior_main": "3d2a8417adc7944c57c3da36ce07462af60538cf",
+    "main_advance": {
+      "ahead": 4,
+      "behind": 0,
+      "kaggriculture_paths": 0
+    },
+    "merge_forward_vs_main": {
+      "ahead": 168,
+      "behind": 0,
+      "merge_base": "456d9f88c00690e31018dda795986e44ec04ac46",
+      "scope": "candidates/v4/research only"
+    },
+    "current_carrier_vs_main": {
+      "ahead": 169,
+      "behind": 0,
+      "merge_base": "456d9f88c00690e31018dda795986e44ec04ac46",
+      "scope": "candidates/v4/research only"
+    }
+  },
+  "backsweep": {
+    "new_quarantine_or_custody": [
+      13021,
+      12999,
+      12982,
+      12969,
+      12914,
+      12905,
+      12877,
+      12861,
+      12855,
+      12853,
+      12823,
+      12816,
+      12805,
+      12794,
+      12762,
+      12786,
+      12668,
+      12630,
+      12624,
+      12623,
+      12620,
+      12616
+    ],
+    "explicit_negative_or_parked": [
+      12623,
+      12616,
+      12592
+    ],
+    "successor_or_exact_consumed": [
+      12902,
+      12849,
+      12809,
+      12800,
+      12792,
+      12787,
+      12774,
+      12756,
+      12755,
+      12679,
+      12660,
+      12648,
+      12640,
+      12638,
+      12629,
+      12628,
+      12627,
+      12626,
+      12625,
+      12618,
+      12615,
+      12612,
+      12611,
+      12610,
+      12609,
+      12605,
+      12598,
+      12596
+    ],
+    "terminal_deadline_liquidation": {
+      "custody_blob": "27e8d2d2c153218c3466bc499642c4eb8be6c856",
+      "disposition": "historical component proof; current seam still present; broad gates red; current-ABI rederivation and fresh gates required; no direct port or V4 queue edge"
+    }
+  },
+  "residuals": {
+    "returned_sell_carry": {
+      "head": "3f0a71ed8cba4595a91899591489f44dd30dcafa",
+      "ahead": 2,
+      "behind": 11356,
+      "merge_base": "21011846096daad1dd487df0efedf209303c1cb5",
+      "disposition": "stale donor; current-ABI narrow rederivation and focused returned-action/seller-state gates required; no stale merge or cherry-pick"
+    },
+    "v31_a6_b5": "already custodied; remain deferred behind current-ABI uniqueness/engagement and economics gates"
+  },
+  "census": {
+    "open_v4": 0,
+    "open_v31": 0,
+    "open_v3": 0,
+    "exact_main_pr_workflows": 0,
+    "exact_main_statuses": 0
+  },
+  "queue_edge": false,
+  "promotion": false,
+  "runtime_change": false,
+  "default_change": false,
+  "canonical_change": false,
+  "kaggle_change": false,
+  "note": "Slack final-sprint Boey720/meta-selection/T690 proposals are unmeasured and do not authorize a V4 queue edge or provider mutation."
+}
