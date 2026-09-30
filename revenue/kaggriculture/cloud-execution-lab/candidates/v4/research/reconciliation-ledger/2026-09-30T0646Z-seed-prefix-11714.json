@@ -1,0 +1,30 @@
+{
+  "schema": "titan-v4-salvage-reconciliation/v1",
+  "authority": {
+    "main": "9ddcafa792199340ba6bed73203a0f87bc3027eb",
+    "canonical": "00142be0ff2314dcb23068c8133b34d290661923",
+    "integration": "4e3207af1332266852530ec8494db8969edc1115",
+    "composition": "32dc1e6963702f7e013cd609053d52c434e42158"
+  },
+  "carrier_parent": "06c9fe86c0efde2a9dc0d03d2037fb60f4a65396",
+  "action": "close exact-byte custody gap for closed-unmerged PR 11714 on existing salvage carrier",
+  "donor": {
+    "pr": 11714,
+    "head": "67aec4e252bbc9cd259c3023bc0bf16d549f62a1",
+    "file_count": 12
+  },
+  "successor": {
+    "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/runtime/seed-funding-prefix",
+    "manifest_blob": "d5b863ac0d83f302a2fb4c705348dda3e5c50b4f",
+    "status": "tested_current_method_repair_not_runtime_promoted"
+  },
+  "result": {
+    "exact_bytes_preserved": true,
+    "semantic_promotion": false,
+    "queue_edge": false,
+    "runtime_or_default_changed": false,
+    "canonical_files_changed": false,
+    "kaggle_changed": false,
+    "sibling_root_created": false
+  }
+}

@@ -1,0 +1,20 @@
+diff --git a/revenue/kaggriculture/cloud-execution-lab/titan_runtime.py b/revenue/kaggriculture/cloud-execution-lab/titan_runtime.py
+--- a/revenue/kaggriculture/cloud-execution-lab/titan_runtime.py
++++ b/revenue/kaggriculture/cloud-execution-lab/titan_runtime.py
+@@ -307,9 +307,10 @@ class TitanAgent:
+         from scheduler import post_units, m
+         snapshot = getattr(self.consumer, 'selected_post_units', None)
+         farm, private = snapshot if snapshot is not None else post_units(obs, selected, cfg)
++        limit = int(cfg.get('maxMarketOrdersPerTurn', 10))
+         proposed = self.seed_budget.apply(selected, private['seeds'], int(obs['step']),
+-                                         self.controller.cur, int(cfg.get('maxMarketOrdersPerTurn', 10)),
++                                         self.controller.cur, limit,
+                                          extra_requests={} if self.spatial is None else
+                                              self.spatial.future_seed_requests(int(obs['step'])))
+         edits = [i for i, (a, b) in enumerate(zip(selected['market'], proposed['market'])) if a != b]
+         dependent = any(o and o[0] in ('HIRE', 'BUY_LAND', 'BUY_PRODUCT', 'BUY_ANIMAL')
+-                        for i in edits for o in selected['market'][i+1:])
++                        for i in edits for o in selected['market'][i+1:limit])
+         if not dependent:
+             return proposed
+         if not self.features.funding:

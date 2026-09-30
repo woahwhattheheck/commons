@@ -1,0 +1,147 @@
+{
+  "schema": "titan-v4-research-custody/v1",
+  "lane": "seed-prefix-dependency-11714",
+  "custody_only": true,
+  "status": "EXACT_HISTORICAL_BYTES_QUARANTINED_CURRENT_V4_SUCCESSOR_AUTHORITY",
+  "observed_authority": {
+    "branch": "main",
+    "commit": "9ddcafa792199340ba6bed73203a0f87bc3027eb",
+    "canonical_blob": "00142be0ff2314dcb23068c8133b34d290661923",
+    "integration_blob": "4e3207af1332266852530ec8494db8969edc1115",
+    "composition_blob": "32dc1e6963702f7e013cd609053d52c434e42158"
+  },
+  "historical_donor": {
+    "pr": 11714,
+    "head": "67aec4e252bbc9cd259c3023bc0bf16d549f62a1",
+    "closed_unmerged": true,
+    "files": [
+      {
+        "path": ".github/workflows/titan-seed-prefix-dependency.yml",
+        "blob": "afed1f27e53bc512c46cf9c90580ab6d27ee92dc"
+      },
+      {
+        "path": "p/titan-v3-seed-prefix-dependency-20260909-sol-parallax.md",
+        "blob": "852cc49e54de6981d0962fc34e2faadad016725b"
+      },
+      {
+        "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-seed-prefix-dependency/README.md",
+        "blob": "7620a17b150d5b5faaf293cedabd7eb121b23ad5"
+      },
+      {
+        "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-seed-prefix-dependency/RESULTS.json",
+        "blob": "20bc7675809134668edc4783817f783ea2133a2d"
+      },
+      {
+        "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-seed-prefix-dependency/__init__.py",
+        "blob": "36c344d44726abb5e76407b2e72ac655f2783911"
+      },
+      {
+        "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-seed-prefix-dependency/candidate_main.py",
+        "blob": "0ba4aee38b4e6f4da40d7120f0562e53718b1a92"
+      },
+      {
+        "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-seed-prefix-dependency/install.patch",
+        "blob": "eb08900311359ccf37ae1157f50ab8c7177ce55d"
+      },
+      {
+        "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-seed-prefix-dependency/seed_prefix_dependency.py",
+        "blob": "2bbabd734a4723cb17d89390d5b7bb03d676e5bc"
+      },
+      {
+        "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-seed-prefix-dependency/seed_prefix_test_support.py",
+        "blob": "0841d74d62e1230eb3884df7d0476bfc17761890"
+      },
+      {
+        "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-seed-prefix-dependency/test_exact_current.py",
+        "blob": "4bd66af480fe101f5d19b1f0401b2cc005e5c613"
+      },
+      {
+        "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-seed-prefix-dependency/test_installer.py",
+        "blob": "446bcff66d419cefc00e1b0bbce968779ab5c0af"
+      },
+      {
+        "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3-seed-prefix-dependency/test_prefix_classification.py",
+        "blob": "a3669010fa0b1dff0483bf9017caedfae742b059"
+      }
+    ],
+    "workflow_runs": [
+      {
+        "id": 34404121753,
+        "name": "tests",
+        "status": "completed",
+        "conclusion": "failure"
+      },
+      {
+        "id": 34404121769,
+        "name": "titan-selected-projection",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 34404121812,
+        "name": "titan-seed-prefix-dependency",
+        "status": "completed",
+        "conclusion": "failure"
+      },
+      {
+        "id": 34404121717,
+        "name": "source-parses",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 34404121701,
+        "name": "open-door-guard",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 34404121738,
+        "name": "path-manifest",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 34404121690,
+        "name": "muhlnickel-spec-guard",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 34404121924,
+        "name": "job-watchdog",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ],
+    "correction_comment_id": 5642895852,
+    "dedicated_gate": "4 failed / 17 passed; exact-current donor validation did not complete"
+  },
+  "successor_authority": {
+    "canonical_path": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/runtime/seed-funding-prefix",
+    "manifest_blob": "d5b863ac0d83f302a2fb4c705348dda3e5c50b4f",
+    "archived_11714_disposition_blob": "2fe03701b1c563e58c4a73ab2d9af9ddda0b683b",
+    "source_integrity_receipt_blob": "ecb1392ac7699abc918136ae68aa33b04b7d6901",
+    "market_controls_receipt_blob": "05b875a50d6ff8366ac5ad25ddd84f542f84ee86",
+    "composition_receipt_blob": "cfd6be46db3efdffbf4f9f4ce2f5616ba880185e",
+    "repair_blob": "a5c2c131fd83d83d6be822556abce5723b464a50",
+    "runtime_input_blob": "b952c9c228ecbde592bf3d2df01638677abb0d24",
+    "scratch_output_blob": "cbeb7f09914c351a99cb5f0970c14a7bea7cb029",
+    "landed_ancestor_commits": [
+      "9231456e2b4407703c811a53701121b4799e43fe",
+      "d7f310836fe495331e7d5180ddbb8a4a71219757",
+      "92a813a30931218197a9ac1013fe22c69a5bf8c4",
+      "cc4fcac57356495e1be34c48f91f80384ac5fa6a"
+    ],
+    "status": "tested_current_method_repair_not_runtime_promoted"
+  },
+  "disposition": {
+    "queue_edge": false,
+    "promotion": false,
+    "merge": false,
+    "cherry_pick": false,
+    "legacy_runtime_execution": false,
+    "sibling_v4_root": false,
+    "note": "Preserve exact V3 donor bytes and failed/partial receipts only. The executable-prefix theorem is already owned by the canonical current-V4 seed-funding-prefix package."
+  }
+}
