@@ -11,5 +11,15 @@
   "child_tests": "failure",
   "current_main_py_blob": "727c36ee3727db159f5879d4ac9a842a28ca570c",
   "current_titan_runtime_blob": "72c057552308dbac02dd6165c3049032ddbfa657",
-  "disposition": "historical component proof; current seam still present; broad gates red; current-ABI rederivation and fresh gates required; no direct port or V4 queue edge"
+  "disposition": "historical component proof; current seam still present; broad gates red; current-ABI rederivation and fresh gates required; no direct port or V4 queue edge",
+  "exact_source_blobs": {
+    ".github/workflows/titan-v3-terminal-deadline-sol-terminus.yml": "a8a110ff21b7a875af107e5d022d8149431a7d40",
+    "analysis/titan-v3-terminal-deadline-sol-terminus/README.md": "b7e26998dffcda80ed77d5d2b3d26aaad41abb14",
+    "analysis/titan-v3-terminal-deadline-sol-terminus/RECEIPT.md": "a3f65b4b8cce105d2adff2c867fe113ba01803ac",
+    "analysis/titan-v3-terminal-deadline-sol-terminus/terminal_deadline_patch.py": "3cbbef93fbb84e6f08aac2713a02dab1dd3a685d",
+    "analysis/titan-v3-terminal-deadline-sol-terminus/test_terminal_deadline_patch.py": "1a80238554a792c5ed654107dec33e6d62964b4d",
+    ".github/workflows/titan-v3-terminal-outer-deadline-sol-bulwark.yml": "911663316cf58761167cf5078c4957a80f702796",
+    "analysis/titan-v3-terminal-outer-deadline-sol-bulwark/test_outer_entrypoint_deadline.py": "0b77c3f8f1ed8d7bef9d1b7b8f17a80804aa9385"
+  },
+  "preservation": "Exact source heads remain live Git refs; all unique source/workflow/test blob identities are now pinned here. Dedicated component workflows were green; broad exact-head selected-projection/tests were red, so this is custody only and not promotion authority."
 }
