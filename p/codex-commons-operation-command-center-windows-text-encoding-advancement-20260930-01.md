@@ -31,4 +31,4 @@ No credential was read, displayed, copied, granted or rotated. No provider, runt
 
 ## Publication
 
-Activation PR, merge SHA, exact current-main readback and terminal Slack watermark are appended after merge. The projected ledger remains 115 resources and 86 producing, with 83 durable inventory records.
+[Activation PR #30168](https://github.com/woahwhattheheck/commons/pull/30168) merged at current main [`ba1f55fd7018c584539713568268f5fb91db9053`](https://github.com/woahwhattheheck/commons/commit/ba1f55fd7018c584539713568268f5fb91db9053). Exact readback matched all four activation blobs and all four source blobs. No pull-request workflow run or commit status was present at readback, so no hosted check is claimed green. [Slack terminal receipt](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790741747612979?thread_ts=1790741427.614049&cid=C0BRGMDQB6G) at `1790741747.612979` is the next exact lower bound. The projected ledger remains 115 resources and 86 producing, with 83 durable inventory records.
