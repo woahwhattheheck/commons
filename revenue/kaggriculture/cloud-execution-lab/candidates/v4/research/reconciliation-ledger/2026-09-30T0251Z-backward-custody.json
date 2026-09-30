@@ -1,0 +1,22 @@
+{
+  "schema": "titan-v4-reconciliation-ledger/v1",
+  "authority_main": "456d9f88c00690e31018dda795986e44ec04ac46",
+  "carrier_before_receipt": "52cc2c06ae3a0e1ac30076229d8656cdd2947cf1",
+  "canonical_blob": "00142be0ff2314dcb23068c8133b34d290661923",
+  "integration_blob": "4e3207af1332266852530ec8494db8969edc1115",
+  "composition_blob": "32dc1e6963702f7e013cd609053d52c434e42158",
+  "recovered_not_yet_composed": [],
+  "open_carriers": {"v4": 0, "v31": 0, "v3": 0},
+  "actions": [
+    "verified the existing salvage carrier is a descendant of current main with zero behind",
+    "preserved the exact unique terminal-deadline parent/child artifacts under research quarantine and corrected the outer-test blob pin",
+    "recorded the unpreserved SOL-PARALLAX seed-prefix dependency branch as divergent historical evidence after its dedicated and broad tests failed",
+    "revalidated missing-HIRE cf2047e8 as an already-pinned rejected negative family; prepared exact-byte quarantine object but did not attach it after ref-write blocking"
+  ],
+  "terminal_deadline_custody_commit": "a1a39ecc8416966ad128e84c3de6ea1f87c12473",
+  "seed_prefix_custody_commit": "52cc2c06ae3a0e1ac30076229d8656cdd2947cf1",
+  "missing_hire_prepared_commit_not_attached": "5e44dbdacfd6be5f87c4a3a79cbdba9bcd2b950c",
+  "queue_edge_added": false,
+  "promotion": false,
+  "sibling_v4_root_created": false
+}
