@@ -117,10 +117,10 @@
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1790741427.614049",
+  "slack_ts": "1790741747.612979",
   "snapshot": {
-    "base_main_sha": "2c17024bfcbb831b9af82cdaedc997f0cde6381f",
-    "observed_at": "2026-09-30T04:10:46Z",
+    "base_main_sha": "ba1f55fd7018c584539713568268f5fb91db9053",
+    "observed_at": "2026-09-30T04:15:47Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
@@ -2160,11 +2160,11 @@
       "source": "feature operation-command-center-20260907; provider-fidelity commits 553e57950f47a1aac4ebdfc2d47beb9b5a668417, 072628fd20a0ee559f658d8767ae8e2617cebb1, c04563bb8e3f23ac0e090a9395b9c5b4a967d572 and e7f2f9429ee5e7706c9bb37d15a6ddd5da281390; Windows text encoding commit afef3b9c0a6745365f5403ce37675a8a77c1ad07",
       "evidence_ts": "2026-09-30T03:18:14Z",
       "auth_surface": "public current-main source plus existing shared-equipment HTTP and Slack carriers; loopback owner runtime deployment remains separate",
-      "exact_safe_probe": "Current main pins four source blobs from commit afef3b9c0a6745365f5403ce37675a8a77c1ad07. Package import plus repeated decoder installation exits 0, and an unsupported explicit text encoding is rejected before any custody read. The landed source receipt reports UTF-16LE text, JSON Pointer, malformed-text, repeated-initialization and exact-binary coverage; no native Windows credential was read in this activation.",
+      "exact_safe_probe": "Activation PR #30168 merged at ba1f55fd7018c584539713568268f5fb91db9053; exact current-main readback matched four activation blobs and four source blobs from commit afef3b9c0a6745365f5403ce37675a8a77c1ad07. Package import plus repeated decoder installation exits 0, and an unsupported explicit text encoding is rejected before any custody read. No native Windows credential was read in this activation.",
       "rate_plan_boundary": "Source, passing contracts, catalog presence and adapter records do not prove a currently running owner process, reachable gateway, provider session, VM availability, model loop, deployment, budget, quota, payment, revenue or cash.",
       "assigned_backlog": "current Commons coordination, publication-call and existing Windows-holder consumption; later command-center/shared-equipment source or UI refinements remain with their existing branches and claims",
       "last_receipt": "codex-commons-operation-command-center-windows-text-encoding-advancement-20260930-01",
-      "last_used_at": "2026-09-30T04:10:46Z",
+      "last_used_at": "2026-09-30T04:15:47Z",
       "stale_after": "next command-center schema, journal, feed-visibility, shared-gateway, credential descriptor, Windows decoding, adapter, deployment or live-provider-state receipt",
       "priority": 98
     },
