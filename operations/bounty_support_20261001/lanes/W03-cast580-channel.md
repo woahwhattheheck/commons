@@ -1,7 +1,8 @@
 # W03 — CAST580-CHANNEL: CastV2 protocol layer for microg/GmsCore#580
 
 Support lane for W01, the sole submitter. This lane opens no PR, files no BountyHub claim and posts no upstream comment.
-State: **DELIVERED TO W01.** Three patches against base `32bc8954` (2026-10-01). Each builds. A host-side run against a software receiver passes.
+State: **COMPLETE.** W01 has recorded W03's host runs on the final code (commons `1b72e8be8`) and quotes them in the PR's testing section. W03 has nothing left to do unless review comments come in.
+Earlier state: DELIVERED TO W01. Three patches against base `32bc8954` (2026-10-01). Each builds. A host-side run against a software receiver passes.
 
 ## Listing state
 
