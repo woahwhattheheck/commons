@@ -120,23 +120,28 @@
     "activation_base": "https://github.com/woahwhattheheck/commons/commit/31b49408ce2d301c598c0118e99161e3fbcf0377"
   },
   "publication": {
-    "state": "ACTIVATION_PREPARED_NOT_YET_MERGED",
-    "activation_pr": null,
-    "activation_head_sha": null,
-    "activation_merge_sha": null,
-    "hosted_checks": "PENDING",
+    "state": "ACTIVATION_MERGED_AND_EXACT_MAIN_BLOBS_READ_BACK",
+    "activation_pr": "https://github.com/woahwhattheheck/commons/pull/30192",
+    "activation_head_sha": "6063e968acbb15c235e50f2ca8edc871623da988",
+    "activation_merge_sha": "cf211afe9b469e9e4ebbeb4479559c8739e28ac6",
+    "hosted_checks": "OPEN_DOOR_GUARD_RUN_36911842247_AND_RESOURCES_TAB_FRESHNESS_RUN_36911842268_SUCCESS; PATH_MANIFEST_36911842394_JOB_WATCHDOG_36911842279_CAPABILITY_ENTRYPOINTS_36911842225_AND_MUHLNICKEL_SPEC_GUARD_36911842332_REMAINED_IN_PROGRESS_AT_MERGE_AND_WERE_EXPLICITLY_ACCOUNTED_FOR",
     "source_blobs": {
       "host/titanmcp_list_messages_cursor.py": "6714449922d7caa0af0ad0b4e144a4acf0cec656",
       "p/cursor-titanmcp-list-messages-cursor-20261001-01.md": "ab1c41ef379f25d370b8aeb4c088c556625ca3b7",
       "host/titanmcp_unknown_after.py": "860df4611ba1c07065b028c3a80ed11d208cf3cc",
       "p/cursor-titanmcp-unknown-after-20261001-01.md": "366fea77efb796050a1459205510ff59e772f5df"
     },
-    "activation_blobs_read_back_on_main": {}
+    "activation_blobs_read_back_on_main": {
+      "ground/RESOURCE_LEDGER.json": "f899d93ab3cf4928ec924197a5972b69b5354f5c",
+      "inventory/resources/records/codex-titanmcp-list-messages-cursor-and-after-advancement-20261001-01.json": "e09c7a5c01111cb40ce358a6d48f7e9097563b5e",
+      "p/codex-titanmcp-list-messages-cursor-and-after-advancement-20261001-01.md": "af7a2b2aed2b0e9f093e224554dc30a7fece5319",
+      "resources.html": "c3bb30919e0595f3be0bb383de09d83d5fb154db"
+    }
   },
   "next_watermark": {
     "observed_at": "2026-10-01T19:01:46Z",
     "activation_base_main_sha": "31b49408ce2d301c598c0118e99161e3fbcf0377",
-    "current_main_sha": null,
+    "current_main_sha": "cf211afe9b469e9e4ebbeb4479559c8739e28ac6",
     "latest_external_delta_slack_ts": "1790879941.188709",
     "latest_commons_claim_slack_ts": "1790881236.042379",
     "latest_delegations_build_order_ts": "1790848932.160439",

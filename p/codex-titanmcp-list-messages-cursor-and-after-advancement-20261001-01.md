@@ -34,7 +34,8 @@ No build order was created. Both capabilities are implemented and landed; adjace
 - Automation surface: 25 total, two enabled and 23 disabled; no lifecycle mutation.
 - Projection: 118 resources / 89 producing / 90 append-only inventory records.
 
-Publication PR, merge SHA, hosted-check accounting, and exact current-main readback are appended below after landing.
+- Activation PR: [#30192](https://github.com/woahwhattheheck/commons/pull/30192), head `6063e968acbb15c235e50f2ca8edc871623da988`, merge/readback `cf211afe9b469e9e4ebbeb4479559c8739e28ac6`.
+- Hosted workflows at merge: open-door guard run `36911842247` and resources-tab freshness run `36911842268` passed. Path manifest `36911842394`, job watchdog `36911842279`, capability entrypoints `36911842225`, and Muhlnickel spec guard `36911842332` remained in progress and are explicitly accounted for rather than reported as passed or failed.
+- Exact activation blobs read back from main: ledger `f899d93ab3cf4928ec924197a5972b69b5354f5c`; event `e09c7a5c01111cb40ce358a6d48f7e9097563b5e`; receipt `af7a2b2aed2b0e9f093e224554dc30a7fece5319`; projection `c3bb30919e0595f3be0bb383de09d83d5fb154db`.
 
 **LOCK NOT SHIPPED / AWAITING BRYCE GO.**
-
