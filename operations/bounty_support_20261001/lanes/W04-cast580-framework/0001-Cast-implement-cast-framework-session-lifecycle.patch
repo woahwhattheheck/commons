@@ -1,0 +1,1919 @@
+From e34dc7e426af0a96f7add59aa52a9108e52a803b Mon Sep 17 00:00:00 2001
+From: woahwhattheheck <293286387+woahwhattheheck@users.noreply.github.com>
+Date: Thu, 1 Oct 2026 12:00:31 +0000
+Subject: [PATCH 1/2] Cast: implement cast framework session lifecycle
+
+Apps bundling play-services-cast-framework load the cast framework
+dynamite module from microG and drive sessions through it. Several parts
+of that path were missing, so no session could ever be started:
+
+- The module never registered its media router callback with the
+  client's MediaRouter, so route selections never reached it.
+- Current client libraries register their CastSession provider under
+  categories like CATEGORY_CAST/<APPID>///ALLOW_IPV6. The module
+  recomputed CATEGORY_CAST/<APPID>, so the provider lookup failed.
+- ISession notify* calls, startSession, endCurrentSession and the cast
+  state were not implemented.
+
+Implement the session state machine (start, resume, suspend, end),
+launch or join the receiver application, report the cast state from
+route availability, track app visibility for discovery, recover the
+last session, and implement the reconnection service and bitmap
+fetching used for media notifications.
+
+Align the binder interfaces with the transaction codes current client
+libraries use (dynamite module and media router callback versions,
+session start type, route info updates, IMediaRouter additions,
+ConnectionResult in ICastSession.onConnectionFailed) and add a dynamite
+module descriptor for the cast framework module instead of the
+hardcoded version in DynamiteLoaderImpl.
+---
+ .../framework/internal/CastContextImpl.java   | 249 +++++++++++++--
+ .../internal/CastDynamiteModuleImpl.java      |  28 +-
+ .../framework/internal/CastSessionImpl.java   |  90 +++++-
+ .../internal/DiscoveryManagerImpl.java        |  18 +-
+ .../internal/MediaRouterCallbackImpl.java     |  76 +++--
+ .../internal/ReconnectionServiceImpl.java     |  64 ++++
+ .../cast/framework/internal/SessionImpl.java  | 192 ++++++++---
+ .../internal/SessionManagerImpl.java          | 298 ++++++++++++++----
+ .../media/internal/FetchBitmapTaskImpl.java   | 138 ++++++++
+ .../framework/dynamite/ModuleDescriptor.java  |  11 +
+ .../framework/ICastConnectionController.aidl  |   2 +-
+ .../gms/cast/framework/ICastSession.aidl      |   6 +-
+ .../gms/cast/framework/IDiscoveryManager.aidl |   4 +-
+ .../android/gms/cast/framework/ISession.aidl  |   2 +
+ .../gms/cast/framework/ISessionProxy.aidl     |   1 +
+ .../internal/ICastDynamiteModule.aidl         |   2 +
+ .../cast/framework/internal/IMediaRouter.aidl |   7 +-
+ .../internal/IMediaRouterCallback.aidl        |   4 +
+ .../media/internal/IFetchBitmapTask.aidl      |   7 +-
+ .../IFetchBitmapTaskProgressPublisher.aidl    |   5 +-
+ .../chimera/container/DynamiteLoaderImpl.java |   5 -
+ 21 files changed, 1004 insertions(+), 205 deletions(-)
+ create mode 100644 play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/ReconnectionServiceImpl.java
+ create mode 100644 play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/media/internal/FetchBitmapTaskImpl.java
+ create mode 100644 play-services-cast-framework/core/src/main/java/com/google/android/gms/dynamite/descriptors/com/google/android/gms/cast/framework/dynamite/ModuleDescriptor.java
+
+diff --git a/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/CastContextImpl.java b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/CastContextImpl.java
+index be1c593..e40e7b6 100644
+--- a/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/CastContextImpl.java
++++ b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/CastContextImpl.java
+@@ -16,27 +16,33 @@
+ 
+ package com.google.android.gms.cast.framework.internal;
+ 
++import android.app.Activity;
++import android.app.Application;
+ import android.content.Context;
+ import android.os.Bundle;
++import android.os.Handler;
+ import android.os.IBinder;
++import android.os.Looper;
+ import android.os.RemoteException;
++import android.text.TextUtils;
+ import android.util.Log;
+ 
+-import androidx.mediarouter.media.MediaControlIntent;
+ import androidx.mediarouter.media.MediaRouteSelector;
++import androidx.mediarouter.media.MediaRouter;
+ 
+ import com.google.android.gms.cast.CastMediaControlIntent;
+ import com.google.android.gms.cast.framework.CastOptions;
+ import com.google.android.gms.cast.framework.IAppVisibilityListener;
+ import com.google.android.gms.cast.framework.ICastContext;
+ import com.google.android.gms.cast.framework.IDiscoveryManager;
+-import com.google.android.gms.cast.framework.ISessionManager;
+ import com.google.android.gms.cast.framework.ISessionProvider;
+ import com.google.android.gms.dynamic.IObjectWrapper;
+ import com.google.android.gms.dynamic.ObjectWrapper;
+ 
+-import java.util.Map;
+ import java.util.HashMap;
++import java.util.HashSet;
++import java.util.Map;
++import java.util.Set;
+ 
+ public class CastContextImpl extends ICastContext.Stub {
+     private static final String TAG = CastContextImpl.class.getSimpleName();
+@@ -44,33 +50,204 @@ public class CastContextImpl extends ICastContext.Stub {
+     private SessionManagerImpl sessionManager;
+     private DiscoveryManagerImpl discoveryManager;
+ 
+-    private Context context;
+-    private CastOptions options;
+-    private IMediaRouter router;
+-    private Map<String, ISessionProvider> sessionProviders = new HashMap<String, ISessionProvider>();
++    private final Context context;
++    private final CastOptions options;
++    private final IMediaRouter router;
++    private final Handler mainHandler = new Handler(Looper.getMainLooper());
++    private final MediaRouterCallbackImpl routerCallback;
++    private final Map<String, ISessionProvider> sessionProviders = new HashMap<>();
+     public ISessionProvider defaultSessionProvider;
++    private String receiverApplicationId;
++    private String defaultCategory;
+ 
+     private MediaRouteSelector mergedSelector;
++    private boolean callbackRegistered;
++    private boolean activeDiscovery;
++
++    private final Set<IAppVisibilityListener> visibilityListeners = new HashSet<>();
++    private int startedActivities = 0;
++    private boolean applicationVisible = false;
++    private Application.ActivityLifecycleCallbacks lifecycleCallbacks;
+ 
+     public CastContextImpl(IObjectWrapper context, CastOptions options, IMediaRouter router, Map<String, IBinder> sessionProviders) throws RemoteException {
+         this.context = (Context) ObjectWrapper.unwrap(context);
+         this.options = options;
+         this.router = router;
+-        for (Map.Entry<String, IBinder> entry : sessionProviders.entrySet()) {
+-            this.sessionProviders.put(entry.getKey(), ISessionProvider.Stub.asInterface(entry.getValue()));
++        this.routerCallback = new MediaRouterCallbackImpl(this);
++        this.receiverApplicationId = options.getReceiverApplicationId();
++        setSessionProviders(sessionProviders);
++        this.mergedSelector = buildSelector();
++        runOnMainThread(() -> {
++            registerRouterCallback();
++            trackApplicationVisibility();
++            getSessionManagerImpl().tryResumeSavedSession();
++        });
++    }
++
++    private void setSessionProviders(Map<String, IBinder> providers) {
++        this.sessionProviders.clear();
++        if (providers != null) {
++            for (Map.Entry<String, IBinder> entry : providers.entrySet()) {
++                this.sessionProviders.put(entry.getKey(), ISessionProvider.Stub.asInterface(entry.getValue()));
++            }
++        }
++        this.defaultCategory = findDefaultCategory();
++        this.defaultSessionProvider = defaultCategory == null ? null : this.sessionProviders.get(defaultCategory);
++    }
++
++    /**
++     * Finds the control category of the client library's CastSession provider. Client libraries use different formats
++     * for the category (recent ones append namespaces and flags, e.g. {@code CATEGORY_CAST/233637DE///ALLOW_IPV6}), so
++     * the category is taken from the session providers the client passed instead of being recomputed.
++     */
++    private String findDefaultCategory() {
++        if (TextUtils.isEmpty(receiverApplicationId)) return null;
++        String fallback = CastMediaControlIntent.categoryForCast(receiverApplicationId);
++        if (sessionProviders.containsKey(fallback)) return fallback;
++        String prefix = CastMediaControlIntent.CATEGORY_CAST + "/";
++        for (String category : sessionProviders.keySet()) {
++            if (category == null || !category.startsWith(prefix)) continue;
++            String rest = category.substring(prefix.length());
++            int end = rest.indexOf('/');
++            String applicationId = end < 0 ? rest : rest.substring(0, end);
++            if (applicationId.equalsIgnoreCase(receiverApplicationId)) return category;
++        }
++        return fallback;
++    }
++
++    /**
++     * The control category of the default (Cast) session provider. Cast routes have to advertise this category to be
++     * selectable.
++     */
++    public String getDefaultCategory() {
++        return defaultCategory;
++    }
++
++    private MediaRouteSelector buildSelector() {
++        MediaRouteSelector.Builder builder = new MediaRouteSelector.Builder();
++        if (defaultCategory != null) builder.addControlCategory(defaultCategory);
++        for (String category : sessionProviders.keySet()) {
++            if (category != null) builder.addControlCategory(category);
+         }
++        return builder.build();
++    }
+ 
+-        String receiverApplicationId = options.getReceiverApplicationId();
+-        String defaultCategory = CastMediaControlIntent.categoryForCast(receiverApplicationId);
++    void runOnMainThread(Runnable runnable) {
++        if (Looper.myLooper() == Looper.getMainLooper()) {
++            runnable.run();
++        } else {
++            mainHandler.post(runnable);
++        }
++    }
+ 
+-        this.defaultSessionProvider = this.sessionProviders.get(defaultCategory);
++    private void registerRouterCallback() {
++        if (mergedSelector.isEmpty()) {
++            Log.d(TAG, "No receiver application id configured, not registering for media routes");
++            return;
++        }
++        try {
++            Bundle selector = mergedSelector.asBundle();
++            router.registerMediaRouterCallbackImpl(selector, routerCallback);
++            router.addCallback(selector, getCallbackFlags());
++            callbackRegistered = true;
++            routerCallback.updateCastState();
++        } catch (RemoteException e) {
++            Log.w(TAG, "Failed to register media router callback", e);
++        }
++    }
+ 
+-        // TODO: This should incorporate passed options
+-        this.mergedSelector = new MediaRouteSelector.Builder()
+-            .addControlCategory(MediaControlIntent.CATEGORY_LIVE_VIDEO)
+-            .addControlCategory(MediaControlIntent.CATEGORY_REMOTE_PLAYBACK)
+-            .addControlCategory(defaultCategory)
+-            .build();
++    private void unregisterRouterCallback() {
++        if (!callbackRegistered) return;
++        try {
++            router.removeCallback(mergedSelector.asBundle());
++            router.clearCallbacks();
++        } catch (RemoteException e) {
++            Log.w(TAG, "Failed to unregister media router callback", e);
++        }
++        callbackRegistered = false;
++    }
++
++    private int getCallbackFlags() {
++        // Keep receiving route events while in background, request discovery while the app is visible.
++        return activeDiscovery ? MediaRouter.CALLBACK_FLAG_REQUEST_DISCOVERY : 0;
++    }
++
++    void setActiveDiscovery(boolean activeDiscovery) {
++        runOnMainThread(() -> {
++            if (this.activeDiscovery == activeDiscovery) return;
++            this.activeDiscovery = activeDiscovery;
++            if (!callbackRegistered) return;
++            try {
++                Bundle selector = mergedSelector.asBundle();
++                // MediaRouter only adds flags to an existing callback, so it has to be removed to drop the discovery flag.
++                if (!activeDiscovery) router.removeCallback(selector);
++                router.addCallback(selector, getCallbackFlags());
++            } catch (RemoteException e) {
++                Log.w(TAG, "Failed to update media router discovery", e);
++            }
++        });
++    }
++
++    private void trackApplicationVisibility() {
++        Context applicationContext = context.getApplicationContext();
++        if (!(applicationContext instanceof Application)) {
++            // Activities can't be observed, assume the app is in use.
++            setApplicationVisible(true);
++            return;
++        }
++        lifecycleCallbacks = new Application.ActivityLifecycleCallbacks() {
++            @Override
++            public void onActivityStarted(Activity activity) {
++                if (startedActivities++ == 0) setApplicationVisible(true);
++            }
++
++            @Override
++            public void onActivityStopped(Activity activity) {
++                if (startedActivities > 0 && --startedActivities == 0) setApplicationVisible(false);
++            }
++
++            @Override
++            public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
++            }
++
++            @Override
++            public void onActivityResumed(Activity activity) {
++            }
++
++            @Override
++            public void onActivityPaused(Activity activity) {
++            }
++
++            @Override
++            public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
++            }
++
++            @Override
++            public void onActivityDestroyed(Activity activity) {
++            }
++        };
++        ((Application) applicationContext).registerActivityLifecycleCallbacks(lifecycleCallbacks);
++        // CastContext is created from a visible activity in practically all apps. That activity was already started
++        // before the callbacks were registered, so it is counted here.
++        startedActivities = 1;
++        setApplicationVisible(true);
++    }
++
++    private void setApplicationVisible(boolean visible) {
++        if (applicationVisible == visible) return;
++        applicationVisible = visible;
++        setActiveDiscovery(visible);
++        for (IAppVisibilityListener listener : new HashSet<>(visibilityListeners)) {
++            try {
++                if (visible) {
++                    listener.onAppEnteredForeground();
++                } else {
++                    listener.onAppEnteredBackground();
++                }
++            } catch (RemoteException e) {
++                Log.d(TAG, "Remote exception calling app visibility listener: " + e.getMessage());
++            }
++        }
+     }
+ 
+     @Override
+@@ -80,18 +257,17 @@ public class CastContextImpl extends ICastContext.Stub {
+ 
+     @Override
+     public void addVisibilityChangeListener(IAppVisibilityListener listener) {
+-        Log.d(TAG, "unimplemented Method: addVisibilityChangeListener");
++        if (listener != null) visibilityListeners.add(listener);
+     }
+ 
+     @Override
+     public void removeVisibilityChangeListener(IAppVisibilityListener listener) {
+-        Log.d(TAG, "unimplemented Method: removeVisibilityChangeListener");
++        visibilityListeners.remove(listener);
+     }
+ 
+     @Override
+     public boolean isApplicationVisible() throws RemoteException {
+-        Log.d(TAG, "unimplemented Method: isApplicationVisible");
+-        return true;
++        return applicationVisible;
+     }
+ 
+     @Override
+@@ -112,23 +288,38 @@ public class CastContextImpl extends ICastContext.Stub {
+ 
+     @Override
+     public void destroy() throws RemoteException {
+-        Log.d(TAG, "unimplemented Method: destroy");
++        runOnMainThread(() -> {
++            unregisterRouterCallback();
++            Context applicationContext = context.getApplicationContext();
++            if (lifecycleCallbacks != null && applicationContext instanceof Application) {
++                ((Application) applicationContext).unregisterActivityLifecycleCallbacks(lifecycleCallbacks);
++                lifecycleCallbacks = null;
++            }
++        });
+     }
+ 
+     @Override
+     public void onActivityResumed(IObjectWrapper activity) throws RemoteException {
+-        Log.d(TAG, "unimplemented Method: onActivityResumed");
+-
++        // Deprecated by the client library, visibility is tracked using activity lifecycle callbacks.
+     }
+ 
+     @Override
+     public void onActivityPaused(IObjectWrapper activity) throws RemoteException {
+-        Log.d(TAG, "unimplemented Method: onActivityPaused");
++        // Deprecated by the client library, visibility is tracked using activity lifecycle callbacks.
+     }
+ 
+     @Override
+     public void setReceiverApplicationId(String receiverApplicationId, Map sessionProvidersByCategory) throws RemoteException {
+-        Log.d(TAG, "unimplemented Method: setReceiverApplicationId");
++        Log.d(TAG, "setReceiverApplicationId: " + receiverApplicationId);
++        runOnMainThread(() -> {
++            if (TextUtils.equals(this.receiverApplicationId, receiverApplicationId)) return;
++            getSessionManagerImpl().endCurrentSessionInternal(true);
++            unregisterRouterCallback();
++            this.receiverApplicationId = receiverApplicationId;
++            setSessionProviders((Map<String, IBinder>) sessionProvidersByCategory);
++            this.mergedSelector = buildSelector();
++            registerRouterCallback();
++        });
+     }
+ 
+     public Context getContext() {
+@@ -147,6 +338,10 @@ public class CastContextImpl extends ICastContext.Stub {
+         return this.options;
+     }
+ 
++    public String getReceiverApplicationId() {
++        return receiverApplicationId;
++    }
++
+     @Override
+     public IObjectWrapper getWrappedThis() throws RemoteException {
+         return ObjectWrapper.wrap(this);
+diff --git a/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/CastDynamiteModuleImpl.java b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/CastDynamiteModuleImpl.java
+index e7dcf48..4e20187 100644
+--- a/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/CastDynamiteModuleImpl.java
++++ b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/CastDynamiteModuleImpl.java
+@@ -13,10 +13,8 @@
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
+-
+ package com.google.android.gms.cast.framework.internal;
+ 
+-import android.content.Context;
+ import android.os.RemoteException;
+ import android.util.Log;
+ 
+@@ -28,15 +26,14 @@ import com.google.android.gms.cast.framework.IReconnectionService;
+ import com.google.android.gms.cast.framework.ISession;
+ import com.google.android.gms.cast.framework.ISessionProxy;
+ import com.google.android.gms.cast.framework.media.CastMediaOptions;
+-import com.google.android.gms.cast.framework.internal.CastContextImpl;
+-import com.google.android.gms.cast.framework.internal.CastSessionImpl;
+-import com.google.android.gms.cast.framework.internal.MediaRouterCallbackImpl;
+-import com.google.android.gms.cast.framework.internal.SessionImpl;
+ import com.google.android.gms.cast.framework.media.IMediaNotificationService;
++import com.google.android.gms.cast.framework.media.internal.FetchBitmapTaskImpl;
+ import com.google.android.gms.cast.framework.media.internal.IFetchBitmapTask;
+ import com.google.android.gms.cast.framework.media.internal.IFetchBitmapTaskProgressPublisher;
+ import com.google.android.gms.dynamic.IObjectWrapper;
+ 
++import org.microg.gms.common.Constants;
++
+ import java.util.Map;
+ 
+ public class CastDynamiteModuleImpl extends ICastDynamiteModule.Stub {
+@@ -59,19 +56,28 @@ public class CastDynamiteModuleImpl extends ICastDynamiteModule.Stub {
+ 
+     @Override
+     public IMediaNotificationService newMediaNotificationServiceImpl(IObjectWrapper service, IObjectWrapper castContext, IObjectWrapper resources, CastMediaOptions options) throws RemoteException {
++        // Only used by old client libraries, current ones build the media notification themselves.
+         Log.d(TAG, "unimplemented Method: newMediaNotificationServiceImpl");
+         return null;
+     }
+ 
+     @Override
+     public IReconnectionService newReconnectionServiceImpl(IObjectWrapper service, IObjectWrapper sessionManager, IObjectWrapper discoveryManager) throws RemoteException {
+-        Log.d(TAG, "unimplemented Method: newReconnectionServiceImpl");
+-        return null;
++        return new ReconnectionServiceImpl(service, sessionManager, discoveryManager);
+     }
+ 
+     @Override
+-    public IFetchBitmapTask newFetchBitmapTaskImpl(IObjectWrapper asyncTask, IFetchBitmapTaskProgressPublisher progressPublisher, int i1, int i2, boolean b1, long l1, int i3, int i4, int i5) throws RemoteException {
+-        Log.d(TAG, "unimplemented Method: newFetchBitmapTaskImpl");
+-        return null;
++    public IFetchBitmapTask newFetchBitmapTaskImpl(IObjectWrapper asyncTask, IFetchBitmapTaskProgressPublisher progressPublisher, int targetWidth, int targetHeight, boolean b1, long maxBytes, int maxRedirects, int i4, int timeout) throws RemoteException {
++        return new FetchBitmapTaskImpl(progressPublisher, targetWidth, targetHeight, maxBytes, maxRedirects, timeout, timeout);
++    }
++
++    @Override
++    public IFetchBitmapTask newFetchBitmapTaskImplWithContext(IObjectWrapper context, IObjectWrapper asyncTask, IFetchBitmapTaskProgressPublisher progressPublisher, int targetWidth, int targetHeight, boolean b1, long maxBytes, int maxRedirects, int i4, int timeout) throws RemoteException {
++        return new FetchBitmapTaskImpl(progressPublisher, targetWidth, targetHeight, maxBytes, maxRedirects, timeout, timeout);
++    }
++
++    @Override
++    public int getSupportedVersion() {
++        return Constants.GMS_VERSION_CODE;
+     }
+ }
+diff --git a/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/CastSessionImpl.java b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/CastSessionImpl.java
+index cc63b94..02e7c20 100644
+--- a/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/CastSessionImpl.java
++++ b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/CastSessionImpl.java
+@@ -16,24 +16,31 @@
+ 
+ package com.google.android.gms.cast.framework.internal;
+ 
+-import com.google.android.gms.cast.framework.ICastSession;
+-
+ import android.os.Bundle;
+ import android.os.RemoteException;
+ import android.util.Log;
+ 
+ import com.google.android.gms.cast.ApplicationMetadata;
++import com.google.android.gms.cast.CastStatusCodes;
++import com.google.android.gms.cast.LaunchOptions;
+ import com.google.android.gms.cast.framework.CastOptions;
+ import com.google.android.gms.cast.framework.ICastConnectionController;
+-import com.google.android.gms.common.api.Status;
++import com.google.android.gms.cast.framework.ICastSession;
++import com.google.android.gms.common.ConnectionResult;
+ import com.google.android.gms.dynamic.IObjectWrapper;
+ import com.google.android.gms.dynamic.ObjectWrapper;
+ 
++/**
++ * Module side of the client library CastSession. The client library connects to the Cast device and reports the connection
++ * state here; this class decides whether to launch or join the receiver application and translates the results into
++ * session state changes.
++ */
+ public class CastSessionImpl extends ICastSession.Stub {
+     private static final String TAG = CastSessionImpl.class.getSimpleName();
+-    private CastOptions options;
+-    private SessionImpl session;
+-    private ICastConnectionController controller;
++    private final CastOptions options;
++    private final SessionImpl session;
++    private final ICastConnectionController controller;
++    private String applicationSessionId;
+ 
+     public CastSessionImpl(CastOptions options, IObjectWrapper session, ICastConnectionController controller) throws RemoteException {
+         this.options = options;
+@@ -43,37 +50,88 @@ public class CastSessionImpl extends ICastSession.Stub {
+         this.session.setCastSession(this);
+     }
+ 
+-    public void launchApplication() throws RemoteException {
+-        this.controller.launchApplication(this.options.getReceiverApplicationId(), this.options.getLaunchOptions());
++    private String getReceiverApplicationId() {
++        return options.getReceiverApplicationId();
+     }
+ 
+     @Override
+     public void onConnected(Bundle routeInfoExtra) throws RemoteException {
+-        this.controller.launchApplication(this.options.getReceiverApplicationId(), this.options.getLaunchOptions());
++        Log.d(TAG, "onConnected");
++        if (session.isResuming() || session.isSuspended()) {
++            String sessionId = applicationSessionId != null ? applicationSessionId : session.getSessionId();
++            Log.d(TAG, "Joining application " + getReceiverApplicationId() + " with session " + sessionId);
++            this.controller.joinApplication(getReceiverApplicationId(), sessionId);
++        } else {
++            LaunchOptions launchOptions = options.getLaunchOptions();
++            if (launchOptions == null) launchOptions = new LaunchOptions();
++            Log.d(TAG, "Launching application " + getReceiverApplicationId());
++            this.controller.launchApplication(getReceiverApplicationId(), launchOptions);
++        }
+     }
+ 
+     @Override
+     public void onConnectionSuspended(int reason) {
+-        Log.d(TAG, "unimplemented Method: onConnectionSuspended");
++        Log.d(TAG, "onConnectionSuspended: " + reason);
++        session.notifySessionSuspended(reason);
+     }
+ 
+     @Override
+-    public void onConnectionFailed(Status status) {
+-        Log.d(TAG, "unimplemented Method: onConnectionFailed");
++    public void onConnectionFailed(ConnectionResult connectionResult) {
++        int errorCode = connectionResult != null ? connectionResult.getErrorCode() : CastStatusCodes.NETWORK_ERROR;
++        Log.d(TAG, "onConnectionFailed: " + errorCode);
++        onFailure(errorCode);
+     }
+ 
+     @Override
+     public void onApplicationConnectionSuccess(ApplicationMetadata applicationMetadata, String applicationStatus, String sessionId, boolean wasLaunched) {
+-        this.session.onApplicationConnectionSuccess(applicationMetadata, applicationStatus, sessionId, wasLaunched);
++        Log.d(TAG, "onApplicationConnectionSuccess: " + sessionId + " launched=" + wasLaunched);
++        this.applicationSessionId = sessionId;
++        if (session.isResuming()) {
++            session.notifySessionResumed(false);
++        } else if (session.isSuspended()) {
++            session.notifySessionResumed(true);
++        } else {
++            session.notifySessionStarted(sessionId);
++        }
+     }
+ 
+     @Override
+     public void onApplicationConnectionFailure(int statusCode) {
+-        this.session.onApplicationConnectionFailure(statusCode);
++        Log.d(TAG, "onApplicationConnectionFailure: " + statusCode);
++        onFailure(statusCode);
++    }
++
++    private void onFailure(int statusCode) {
++        if (session.isResuming()) {
++            session.notifyFailedToResumeSession(statusCode);
++        } else if (session.isConnecting()) {
++            session.notifyFailedToStartSession(statusCode);
++        } else if (session.isConnected() || session.isSuspended()) {
++            session.notifySessionEnded(statusCode);
++        } else {
++            return;
++        }
++        closeConnection(statusCode);
++    }
++
++    private void closeConnection(int reason) {
++        try {
++            controller.closeConnection(reason);
++        } catch (RemoteException e) {
++            Log.w(TAG, "Error closing connection: " + e.getMessage());
++        }
+     }
+ 
+     @Override
+-    public void disconnectFromDevice(boolean boolean1, int int1) {
+-        Log.d(TAG, "unimplemented Method: disconnectFromDevice");
++    public void disconnectFromDevice(boolean stopCasting, int reason) {
++        Log.d(TAG, "disconnectFromDevice: stopCasting=" + stopCasting + " reason=" + reason);
++        if (stopCasting && applicationSessionId != null) {
++            try {
++                controller.stopApplication(applicationSessionId);
++            } catch (RemoteException e) {
++                Log.w(TAG, "Error stopping application: " + e.getMessage());
++            }
++        }
++        closeConnection(reason);
+     }
+ }
+diff --git a/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/DiscoveryManagerImpl.java b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/DiscoveryManagerImpl.java
+index b0e7b51..d104030 100644
+--- a/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/DiscoveryManagerImpl.java
++++ b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/DiscoveryManagerImpl.java
+@@ -13,7 +13,6 @@
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
+-
+ package com.google.android.gms.cast.framework.internal;
+ 
+ import android.os.RemoteException;
+@@ -21,19 +20,18 @@ import android.util.Log;
+ 
+ import com.google.android.gms.cast.framework.IDiscoveryManager;
+ import com.google.android.gms.cast.framework.IDiscoveryManagerListener;
+-import com.google.android.gms.cast.framework.internal.CastContextImpl;
+ import com.google.android.gms.dynamic.IObjectWrapper;
+ import com.google.android.gms.dynamic.ObjectWrapper;
+ 
+-import java.util.Set;
+ import java.util.HashSet;
++import java.util.Set;
+ 
+ public class DiscoveryManagerImpl extends IDiscoveryManager.Stub {
+     private static final String TAG = DiscoveryManagerImpl.class.getSimpleName();
+ 
+-    private CastContextImpl castContextImpl;
++    private final CastContextImpl castContextImpl;
+ 
+-    private Set discoveryManagerListeners = new HashSet();
++    private final Set<IDiscoveryManagerListener> discoveryManagerListeners = new HashSet<>();
+ 
+     public DiscoveryManagerImpl(CastContextImpl castContextImpl) {
+         this.castContextImpl = castContextImpl;
+@@ -41,23 +39,23 @@ public class DiscoveryManagerImpl extends IDiscoveryManager.Stub {
+ 
+     @Override
+     public void startDiscovery() {
+-        Log.d(TAG, "unimplemented Method: startDiscovery");
++        Log.d(TAG, "startDiscovery");
++        castContextImpl.setActiveDiscovery(true);
+     }
+ 
+     @Override
+     public void stopDiscovery() {
+-        Log.d(TAG, "unimplemented Method: stopDiscovery");
++        Log.d(TAG, "stopDiscovery");
++        castContextImpl.setActiveDiscovery(false);
+     }
+ 
+     @Override
+     public void addDiscoveryManagerListener(IDiscoveryManagerListener listener) {
+-        Log.d(TAG, "unimplemented Method: addDiscoveryManagerListener");
+-        this.discoveryManagerListeners.add(listener);
++        if (listener != null) this.discoveryManagerListeners.add(listener);
+     }
+ 
+     @Override
+     public void removeDiscoveryManagerListener(IDiscoveryManagerListener listener) {
+-        Log.d(TAG, "unimplemented Method: removeDiscoveryManagerListener");
+         this.discoveryManagerListeners.remove(listener);
+     }
+ 
+diff --git a/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/MediaRouterCallbackImpl.java b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/MediaRouterCallbackImpl.java
+index 9be564a..2eb368a 100644
+--- a/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/MediaRouterCallbackImpl.java
++++ b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/MediaRouterCallbackImpl.java
+@@ -13,56 +13,92 @@
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
+-
+ package com.google.android.gms.cast.framework.internal;
+ 
+-import android.content.Intent;
+ import android.os.Bundle;
+-import android.os.RemoteException;
+ import android.util.Log;
+ 
+-import com.google.android.gms.cast.CastDevice;
+-import com.google.android.gms.cast.framework.ISession;
+-import com.google.android.gms.dynamic.IObjectWrapper;
+-import com.google.android.gms.dynamic.ObjectWrapper;
++import org.microg.gms.common.Constants;
+ 
++/**
++ * Receives media route events from the client library's MediaRouter for routes matching the merged selector.
++ */
+ public class MediaRouterCallbackImpl extends IMediaRouterCallback.Stub {
+     private static final String TAG = MediaRouterCallbackImpl.class.getSimpleName();
+ 
+-    private CastContextImpl castContext;
++    private final CastContextImpl castContext;
+ 
+     public MediaRouterCallbackImpl(CastContextImpl castContext) {
+         this.castContext = castContext;
+     }
+ 
++    private SessionManagerImpl getSessionManager() {
++        return castContext.getSessionManagerImpl();
++    }
++
++    void updateCastState() {
++        getSessionManager().updateCastState();
++    }
++
+     @Override
+     public void onRouteAdded(String routeId, Bundle extras) {
+-        Log.d(TAG, "unimplemented Method: onRouteAdded");
++        Log.d(TAG, "onRouteAdded: " + routeId);
++        updateCastState();
++        getSessionManager().onRouteAdded(routeId);
+     }
++
+     @Override
+     public void onRouteChanged(String routeId, Bundle extras) {
+-        Log.d(TAG, "unimplemented Method: onRouteChanged");
++        Log.d(TAG, "onRouteChanged: " + routeId);
++        getSessionManager().onRouteChanged(routeId, extras);
++        updateCastState();
+     }
++
+     @Override
+     public void onRouteRemoved(String routeId, Bundle extras) {
+-        Log.d(TAG, "unimplemented Method: onRouteRemoved");
++        Log.d(TAG, "onRouteRemoved: " + routeId);
++        updateCastState();
+     }
++
+     @Override
+-    public void onRouteSelected(String routeId, Bundle extras) throws RemoteException {
+-        CastDevice castDevice = CastDevice.getFromBundle(extras);
+-
+-        SessionImpl session = (SessionImpl) ObjectWrapper.unwrap(this.castContext.defaultSessionProvider.getSession(null));
+-        Bundle routeInfoExtras = this.castContext.getRouter().getRouteInfoExtrasById(routeId);
+-        if (routeInfoExtras != null) {
+-            session.start(this.castContext, castDevice, routeId, routeInfoExtras);
+-        }
++    public void onRouteSelected(String routeId, Bundle extras) {
++        Log.d(TAG, "onRouteSelected: " + routeId);
++        getSessionManager().onRouteSelected(routeId, extras);
+     }
++
+     @Override
+     public void unknown(String routeId, Bundle extras) {
+         Log.d(TAG, "unimplemented Method: unknown");
+     }
++
+     @Override
+     public void onRouteUnselected(String routeId, Bundle extras, int reason) {
+-        Log.d(TAG, "unimplemented Method: onRouteUnselected");
++        Log.d(TAG, "onRouteUnselected: " + routeId + " reason=" + reason);
++        getSessionManager().onRouteUnselected(routeId, reason);
++        updateCastState();
++    }
++
++    @Override
++    public int getSupportedVersion() {
++        return Constants.GMS_VERSION_CODE;
++    }
++
++    @Override
++    public void onRouteSelectedWithRequestedRoute(String requestedRouteId, String selectedRouteId, Bundle extras) {
++        Log.d(TAG, "onRouteSelected: " + selectedRouteId + " (requested " + requestedRouteId + ")");
++        getSessionManager().onRouteSelected(selectedRouteId, extras);
++    }
++
++    @Override
++    public void onRouteConnected(String requestedRouteId, String connectedRouteId, Bundle extras) {
++        // Route connections are used for media transfer (output switcher), they don't start a session on their own.
++        Log.d(TAG, "onRouteConnected: " + connectedRouteId + " (requested " + requestedRouteId + ")");
++    }
++
++    @Override
++    public void onRouteDisconnected(String requestedRouteId, String disconnectedRouteId, Bundle extras, int reason) {
++        Log.d(TAG, "onRouteDisconnected: " + disconnectedRouteId + " reason=" + reason);
++        getSessionManager().onRouteUnselected(disconnectedRouteId, reason);
++        updateCastState();
+     }
+ }
+diff --git a/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/ReconnectionServiceImpl.java b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/ReconnectionServiceImpl.java
+new file mode 100644
+index 0000000..2838e4b
+--- /dev/null
++++ b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/ReconnectionServiceImpl.java
+@@ -0,0 +1,64 @@
++/*
++ * SPDX-FileCopyrightText: 2026 microG Project Team
++ * SPDX-License-Identifier: Apache-2.0
++ */
++
++package com.google.android.gms.cast.framework.internal;
++
++import android.app.Service;
++import android.content.Intent;
++import android.os.IBinder;
++import android.util.Log;
++
++import com.google.android.gms.cast.framework.IReconnectionService;
++import com.google.android.gms.dynamic.IObjectWrapper;
++import com.google.android.gms.dynamic.ObjectWrapper;
++
++/**
++ * Backs the client library's ReconnectionService, which the client starts while a remote media session is active to keep
++ * the app process alive. Reconnecting a suspended session is driven by the Cast connection itself (see
++ * {@link CastSessionImpl}), so this service only has to stay alive while there is a session to keep.
++ */
++public class ReconnectionServiceImpl extends IReconnectionService.Stub {
++    private static final String TAG = ReconnectionServiceImpl.class.getSimpleName();
++
++    private final Service service;
++    private final SessionManagerImpl sessionManager;
++
++    public ReconnectionServiceImpl(IObjectWrapper service, IObjectWrapper sessionManager, IObjectWrapper discoveryManager) {
++        this.service = (Service) ObjectWrapper.unwrap(service);
++        Object unwrappedSessionManager = ObjectWrapper.unwrap(sessionManager);
++        this.sessionManager = unwrappedSessionManager instanceof SessionManagerImpl ? (SessionManagerImpl) unwrappedSessionManager : null;
++    }
++
++    private boolean hasActiveSession() {
++        if (sessionManager == null) return false;
++        SessionImpl session = sessionManager.getCurrentSession();
++        return session != null && (session.isConnected() || session.isConnecting() || session.isResuming() || session.isSuspended());
++    }
++
++    @Override
++    public void onCreate() {
++        Log.d(TAG, "onCreate");
++    }
++
++    @Override
++    public int onStartCommand(Intent intent, int flags, int startId) {
++        if (!hasActiveSession()) {
++            Log.d(TAG, "No active session, stopping");
++            if (service != null) service.stopSelf(startId);
++            return Service.START_NOT_STICKY;
++        }
++        return Service.START_STICKY;
++    }
++
++    @Override
++    public IBinder onBind(Intent intent) {
++        return null;
++    }
++
++    @Override
++    public void onDestroy() {
++        Log.d(TAG, "onDestroy");
++    }
++}
+diff --git a/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/SessionImpl.java b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/SessionImpl.java
+index 954405d..b63c757 100644
+--- a/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/SessionImpl.java
++++ b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/SessionImpl.java
+@@ -18,32 +18,49 @@ package com.google.android.gms.cast.framework.internal;
+ 
+ import android.os.Bundle;
+ import android.os.RemoteException;
++import android.text.TextUtils;
+ import android.util.Log;
+ 
+-
+-import com.google.android.gms.cast.ApplicationMetadata;
+ import com.google.android.gms.cast.CastDevice;
+ import com.google.android.gms.cast.framework.ISession;
+ import com.google.android.gms.cast.framework.ISessionProxy;
+ import com.google.android.gms.dynamic.IObjectWrapper;
+ import com.google.android.gms.dynamic.ObjectWrapper;
+ 
++import org.microg.gms.common.Constants;
++
++/**
++ * Module side of a client library Session. The client library notifies about state changes using the notify* methods,
++ * this class keeps track of the session state and forwards changes to the {@link SessionManagerImpl}.
++ */
+ public class SessionImpl extends ISession.Stub {
+     private static final String TAG = SessionImpl.class.getSimpleName();
+ 
+-    private String category;
++    private static final int STATE_IDLE = 0;
++    private static final int STATE_STARTING = 1;
++    private static final int STATE_RESUMING = 2;
++    private static final int STATE_CONNECTED = 3;
++    private static final int STATE_SUSPENDED = 4;
++    private static final int STATE_ENDING = 5;
++    private static final int STATE_ENDED = 6;
++
++    // Values of getSessionStartType()
++    private static final int START_TYPE_NEW = 0;
++    private static final int START_TYPE_RESUMED = 1;
++
++    private final String category;
+     private String sessionId;
+-    private ISessionProxy proxy;
++    private final ISessionProxy proxy;
+ 
+     private CastSessionImpl castSession;
+ 
+     private CastContextImpl castContext;
+     private CastDevice castDevice;
+     private Bundle routeInfoExtra;
++    private String routeId;
+ 
+-    private boolean mIsConnecting = false;
+-    private boolean mIsConnected = false;
+-    private String routeId = null;
++    private int state = STATE_IDLE;
++    private int startType = START_TYPE_NEW;
+ 
+     public SessionImpl(String category, String sessionId, ISessionProxy proxy) {
+         this.category = category;
+@@ -52,44 +69,67 @@ public class SessionImpl extends ISession.Stub {
+     }
+ 
+     public void start(CastContextImpl castContext, CastDevice castDevice, String routeId, Bundle routeInfoExtra) throws RemoteException {
++        attach(castContext, castDevice, routeId, routeInfoExtra);
++        this.state = STATE_STARTING;
++        this.startType = START_TYPE_NEW;
++        this.proxy.onStarting(routeInfoExtra);
++        this.castContext.getSessionManagerImpl().onSessionStarting(this);
++        this.proxy.start(routeInfoExtra);
++    }
++
++    public void resume(CastContextImpl castContext, CastDevice castDevice, String routeId, Bundle routeInfoExtra) throws RemoteException {
++        attach(castContext, castDevice, routeId, routeInfoExtra);
++        this.state = STATE_RESUMING;
++        this.startType = START_TYPE_RESUMED;
++        this.proxy.onResuming(routeInfoExtra);
++        this.castContext.getSessionManagerImpl().onSessionResuming(this, sessionId);
++        this.proxy.resume(routeInfoExtra);
++    }
++
++    public void end(boolean stopCasting) throws RemoteException {
++        if (state == STATE_ENDING || state == STATE_ENDED) return;
++        this.state = STATE_ENDING;
++        if (castContext != null) castContext.getSessionManagerImpl().onSessionEnding(this);
++        this.proxy.end(stopCasting);
++    }
++
++    private void attach(CastContextImpl castContext, CastDevice castDevice, String routeId, Bundle routeInfoExtra) {
+         this.castContext = castContext;
+         this.castDevice = castDevice;
+-        this.routeInfoExtra = routeInfoExtra;
+         this.routeId = routeId;
+-
+-        this.mIsConnecting = true;
+-        this.mIsConnected = false;
+-        this.castContext.getSessionManagerImpl().onSessionStarting(this);
+-        this.proxy.start(routeInfoExtra);
++        this.routeInfoExtra = routeInfoExtra;
+     }
+ 
+-    public void onApplicationConnectionSuccess(ApplicationMetadata applicationMetadata, String applicationStatus, String sessionId, boolean wasLaunched) {
+-        this.mIsConnecting = false;
+-        this.mIsConnected = true;
+-        this.castContext.getSessionManagerImpl().onSessionStarted(this, sessionId);
++    public void onRouteInfoUpdated(Bundle routeInfoExtra) {
++        CastDevice castDevice = CastDevice.getFromBundle(routeInfoExtra);
++        if (castDevice == null) return;
++        this.castDevice = castDevice;
++        this.routeInfoExtra = routeInfoExtra;
+         try {
+-            this.castContext.getRouter().selectRouteById(this.getRouteId());
+-        } catch (RemoteException ex) {
+-            Log.e(TAG, "Error calling selectRouteById: " + ex.getMessage());
++            this.proxy.onRouteInfoUpdated(routeInfoExtra);
++        } catch (RemoteException e) {
++            Log.d(TAG, "Remote exception calling onRouteInfoUpdated: " + e.getMessage());
+         }
+     }
+ 
+-    public void onApplicationConnectionFailure(int statusCode) {
+-        this.mIsConnecting = false;
+-        this.mIsConnected = false;
+-        this.routeId = null;
+-        this.castContext = null;
+-        this.castDevice = null;
+-        this.routeInfoExtra = null;
+-        this.castContext.getSessionManagerImpl().onSessionStartFailed(this, statusCode);
+-        try {
+-            this.castContext.getRouter().selectDefaultRoute();
+-        } catch (RemoteException ex) {
+-            Log.e(TAG, "Error calling selectDefaultRoute: " + ex.getMessage());
+-        }
++    private void selectDefaultRouteIfSelected() {
++        CastContextImpl castContext = this.castContext;
++        String routeId = this.routeId;
++        if (castContext == null || routeId == null) return;
++        castContext.runOnMainThread(() -> {
++            try {
++                IMediaRouter router = castContext.getRouter();
++                if (TextUtils.equals(router.getSelectedRouteId(), routeId)) {
++                    router.selectDefaultRoute();
++                }
++            } catch (RemoteException e) {
++                Log.w(TAG, "Error unselecting route: " + e.getMessage());
++            }
++        });
+     }
+ 
+-    public void onRouteSelected(Bundle extras) {
++    private SessionManagerImpl getSessionManager() {
++        return castContext == null ? null : castContext.getSessionManagerImpl();
+     }
+ 
+     public CastSessionImpl getCastSession() {
+@@ -104,6 +144,14 @@ public class SessionImpl extends ISession.Stub {
+         return this.proxy;
+     }
+ 
++    public CastDevice getCastDevice() {
++        return castDevice;
++    }
++
++    public Bundle getRouteInfoExtra() {
++        return routeInfoExtra;
++    }
++
+     public IObjectWrapper getWrappedSession() throws RemoteException {
+         if (this.proxy == null) {
+             return ObjectWrapper.wrap(null);
+@@ -128,66 +176,110 @@ public class SessionImpl extends ISession.Stub {
+ 
+     @Override
+     public boolean isConnected() {
+-        return this.mIsConnected;
++        return state == STATE_CONNECTED;
+     }
+ 
+     @Override
+     public boolean isConnecting() {
+-        return this.mIsConnecting;
++        return state == STATE_STARTING;
+     }
+ 
+     @Override
+     public boolean isDisconnecting() {
+-        Log.d(TAG, "unimplemented Method: isDisconnecting");
+-        return false;
++        return state == STATE_ENDING;
+     }
+ 
+     @Override
+     public boolean isDisconnected() {
+-        Log.d(TAG, "unimplemented Method: isDisconnected");
+-        return false;
++        return state == STATE_IDLE || state == STATE_ENDED;
+     }
+ 
+     @Override
+     public boolean isResuming() {
+-        Log.d(TAG, "unimplemented Method: isResuming");
+-        return false;
++        return state == STATE_RESUMING;
+     }
+ 
+     @Override
+     public boolean isSuspended() {
+-        Log.d(TAG, "unimplemented Method: isSuspended");
+-        return false;
++        return state == STATE_SUSPENDED;
+     }
+ 
+     @Override
+     public void notifySessionStarted(String sessionId) {
+-        Log.d(TAG, "unimplemented Method: notifySessionStarted");
++        Log.d(TAG, "notifySessionStarted: " + sessionId);
++        if (state != STATE_STARTING) {
++            Log.w(TAG, "Ignoring session start in state " + state);
++            return;
++        }
++        this.state = STATE_CONNECTED;
++        this.sessionId = sessionId;
++        SessionManagerImpl sessionManager = getSessionManager();
++        if (sessionManager != null) sessionManager.onSessionStarted(this, sessionId);
+     }
+ 
+     @Override
+     public void notifyFailedToStartSession(int error) {
+-        Log.d(TAG, "unimplemented Method: notifyFailedToStartSession");
++        Log.d(TAG, "notifyFailedToStartSession: " + error);
++        if (state != STATE_STARTING) return;
++        this.state = STATE_ENDED;
++        SessionManagerImpl sessionManager = getSessionManager();
++        if (sessionManager != null) sessionManager.onSessionStartFailed(this, error);
++        selectDefaultRouteIfSelected();
+     }
+ 
+     @Override
+     public void notifySessionEnded(int error) {
+-        Log.d(TAG, "unimplemented Method: notifySessionEnded");
++        Log.d(TAG, "notifySessionEnded: " + error);
++        if (state == STATE_ENDED || state == STATE_IDLE) return;
++        SessionManagerImpl sessionManager = getSessionManager();
++        if (state != STATE_ENDING && sessionManager != null) {
++            this.state = STATE_ENDING;
++            sessionManager.onSessionEnding(this);
++        }
++        this.state = STATE_ENDED;
++        if (sessionManager != null) sessionManager.onSessionEnded(this, error);
++        selectDefaultRouteIfSelected();
+     }
+ 
+     @Override
+     public void notifySessionResumed(boolean wasSuspended) {
+-        Log.d(TAG, "unimplemented Method: notifySessionResumed");
++        Log.d(TAG, "notifySessionResumed: " + wasSuspended);
++        if (state != STATE_RESUMING && state != STATE_SUSPENDED) {
++            Log.w(TAG, "Ignoring session resume in state " + state);
++            return;
++        }
++        this.state = STATE_CONNECTED;
++        SessionManagerImpl sessionManager = getSessionManager();
++        if (sessionManager != null) sessionManager.onSessionResumed(this, wasSuspended);
+     }
+ 
+     @Override
+     public void notifyFailedToResumeSession(int error) {
+-        Log.d(TAG, "unimplemented Method: notifyFailedToResumeSession");
++        Log.d(TAG, "notifyFailedToResumeSession: " + error);
++        if (state != STATE_RESUMING) return;
++        this.state = STATE_ENDED;
++        SessionManagerImpl sessionManager = getSessionManager();
++        if (sessionManager != null) sessionManager.onSessionResumeFailed(this, error);
++        selectDefaultRouteIfSelected();
+     }
+ 
+     @Override
+     public void notifySessionSuspended(int reason) {
+-        Log.d(TAG, "unimplemented Method: notifySessionSuspended");
++        Log.d(TAG, "notifySessionSuspended: " + reason);
++        if (state != STATE_CONNECTED) return;
++        this.state = STATE_SUSPENDED;
++        SessionManagerImpl sessionManager = getSessionManager();
++        if (sessionManager != null) sessionManager.onSessionSuspended(this, reason);
++    }
++
++    @Override
++    public int getSupportedVersion() {
++        return Constants.GMS_VERSION_CODE;
++    }
++
++    @Override
++    public int getSessionStartType() {
++        return startType;
+     }
+ 
+     @Override
+diff --git a/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/SessionManagerImpl.java b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/SessionManagerImpl.java
+index d10f8b2..839b885 100644
+--- a/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/SessionManagerImpl.java
++++ b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/SessionManagerImpl.java
+@@ -16,40 +16,52 @@
+ 
+ package com.google.android.gms.cast.framework.internal;
+ 
++import android.content.Context;
++import android.content.SharedPreferences;
+ import android.os.Bundle;
++import android.os.Looper;
+ import android.os.RemoteException;
++import android.os.SystemClock;
++import android.text.TextUtils;
+ import android.util.Log;
+ 
++import androidx.mediarouter.media.MediaRouter;
++
++import com.google.android.gms.cast.CastDevice;
+ import com.google.android.gms.cast.framework.CastState;
+ import com.google.android.gms.cast.framework.ICastStateListener;
+-import com.google.android.gms.cast.framework.ISession;
+ import com.google.android.gms.cast.framework.ISessionManager;
+ import com.google.android.gms.cast.framework.ISessionManagerListener;
+-import com.google.android.gms.cast.framework.internal.CastContextImpl;
+-import com.google.android.gms.cast.framework.internal.SessionImpl;
++import com.google.android.gms.cast.framework.ISessionProvider;
+ import com.google.android.gms.dynamic.IObjectWrapper;
+ import com.google.android.gms.dynamic.ObjectWrapper;
+ 
+-import java.util.Set;
+ import java.util.HashSet;
+-
+-import java.util.Map;
+-import java.util.HashMap;
++import java.util.Set;
+ 
+ public class SessionManagerImpl extends ISessionManager.Stub {
+     private static final String TAG = SessionManagerImpl.class.getSimpleName();
+ 
+-    private CastContextImpl castContext;
++    private static final String KEY_ROUTE_ID = "CAST_INTENT_TO_CAST_ROUTE_ID_KEY";
++    private static final String PREFERENCES_NAME = "com.google.android.gms.cast.framework.internal.session";
++    private static final String PREF_ROUTE_ID = "route_id";
++    private static final String PREF_SESSION_ID = "session_id";
++    private static final String PREF_CATEGORY = "category";
++    private static final long RESUME_TIMEOUT_MS = 10000;
+ 
+-    private Set<ISessionManagerListener> sessionManagerListeners = new HashSet<ISessionManagerListener>();
+-    private Set<ICastStateListener> castStateListeners = new HashSet<ICastStateListener>();
++    private final CastContextImpl castContext;
+ 
+-    private Map<String, SessionImpl> routeSessions = new HashMap<String, SessionImpl>();
++    private final Set<ISessionManagerListener> sessionManagerListeners = new HashSet<>();
++    private final Set<ICastStateListener> castStateListeners = new HashSet<>();
+ 
+     private SessionImpl currentSession;
+ 
+     private int castState = CastState.NO_DEVICES_AVAILABLE;
+ 
++    private String resumeRouteId;
++    private String resumeSessionId;
++    private long resumeDeadline;
++
+     public SessionManagerImpl(CastContextImpl castContext) {
+         this.castContext = castContext;
+     }
+@@ -62,32 +74,41 @@ public class SessionManagerImpl extends ISessionManager.Stub {
+         return this.currentSession.getWrappedSession();
+     }
+ 
++    public SessionImpl getCurrentSession() {
++        return currentSession;
++    }
++
+     @Override
+     public void endCurrentSession(boolean b, boolean stopCasting) throws RemoteException {
+-        Log.d(TAG, "unimplemented Method: endCurrentSession");
++        castContext.runOnMainThread(() -> endCurrentSessionInternal(stopCasting));
++    }
++
++    void endCurrentSessionInternal(boolean stopCasting) {
++        if (currentSession == null) return;
++        try {
++            currentSession.end(stopCasting);
++        } catch (RemoteException e) {
++            Log.w(TAG, "Error ending session: " + e.getMessage());
++        }
+     }
+ 
+     @Override
+     public void addSessionManagerListener(ISessionManagerListener listener) {
+-        Log.d(TAG, "unimplemented Method: addSessionManagerListener");
+-        this.sessionManagerListeners.add(listener);
++        if (listener != null) this.sessionManagerListeners.add(listener);
+     }
+ 
+     @Override
+     public void removeSessionManagerListener(ISessionManagerListener listener) {
+-        Log.d(TAG, "unimplemented Method: removeSessionManagerListener");
+         this.sessionManagerListeners.remove(listener);
+     }
+ 
+     @Override
+     public void addCastStateListener(ICastStateListener listener) {
+-        Log.d(TAG, "unimplemented Method: addCastStateListener");
+-        this.castStateListeners.add(listener);
++        if (listener != null) this.castStateListeners.add(listener);
+     }
+ 
+     @Override
+     public void removeCastStateListener(ICastStateListener listener) {
+-        Log.d(TAG, "unimplemented Method: removeCastStateListener");
+         this.castStateListeners.remove(listener);
+     }
+ 
+@@ -103,22 +124,185 @@ public class SessionManagerImpl extends ISessionManager.Stub {
+ 
+     @Override
+     public void startSession(Bundle params) {
+-        Log.d(TAG, "unimplemented Method: startSession");
+-        String routeId = params.getString("CAST_INTENT_TO_CAST_ROUTE_ID_KEY");
+-        String sessionId = params.getString("CAST_INTENT_TO_CAST_SESSION_ID_KEY");
++        if (params == null) return;
++        String routeId = params.getString(KEY_ROUTE_ID);
++        Log.d(TAG, "startSession: " + routeId);
++        if (routeId == null) return;
++        castContext.runOnMainThread(() -> {
++            try {
++                castContext.getRouter().selectRouteById(routeId);
++            } catch (RemoteException e) {
++                Log.w(TAG, "Error selecting route " + routeId + ": " + e.getMessage());
++            }
++        });
+     }
+ 
++    /**
++     * Called when a media route was selected, either by the user in the route chooser or using {@link #startSession}.
++     */
+     public void onRouteSelected(String routeId, Bundle extras) {
+-        Log.d(TAG, "unimplemented Method: onRouteSelected: " + routeId);
++        CastDevice castDevice = CastDevice.getFromBundle(extras);
++        if (castDevice == null) {
++            Log.d(TAG, "Selected route " + routeId + " is not a Cast device");
++            return;
++        }
++        if (currentSession != null && !currentSession.isDisconnected()) {
++            if (TextUtils.equals(currentSession.getRouteId(), routeId)) {
++                Log.d(TAG, "Route " + routeId + " already has a session");
++                return;
++            }
++            endCurrentSessionInternal(castContext.getOptions().getStopReceiverApplicationWhenEndingSession());
++        }
++        ISessionProvider provider = castContext.defaultSessionProvider;
++        if (provider == null) {
++            Log.w(TAG, "No session provider for " + castContext.getDefaultCategory());
++            return;
++        }
++        boolean resume = TextUtils.equals(routeId, resumeRouteId) && SystemClock.elapsedRealtime() < resumeDeadline;
++        String sessionId = resume ? resumeSessionId : null;
++        clearPendingResume();
++        try {
++            SessionImpl session = (SessionImpl) ObjectWrapper.unwrap(provider.getSession(sessionId));
++            if (session == null) {
++                Log.w(TAG, "Session provider did not create a session");
++                return;
++            }
++            this.currentSession = session;
++            if (resume) {
++                Log.d(TAG, "Resuming session " + sessionId + " on " + routeId);
++                session.resume(castContext, castDevice, routeId, extras);
++            } else {
++                Log.d(TAG, "Starting session on " + routeId);
++                session.start(castContext, castDevice, routeId, extras);
++            }
++        } catch (RemoteException e) {
++            Log.w(TAG, "Error starting session: " + e.getMessage());
++        }
+     }
+ 
+-    private void setCastState(int castState) {
+-        this.castState = castState;
+-        this.onCastStateChanged();
++    /**
++     * Called when a media route got unselected, e.g. because the user tapped "Stop casting" or selected another route.
++     */
++    public void onRouteUnselected(String routeId, int reason) {
++        if (currentSession == null || !TextUtils.equals(currentSession.getRouteId(), routeId)) return;
++        if (currentSession.isDisconnecting() || currentSession.isDisconnected()) return;
++        boolean stopCasting = reason == MediaRouter.UNSELECT_REASON_STOPPED ||
++                (reason != MediaRouter.UNSELECT_REASON_DISCONNECTED && castContext.getOptions().getStopReceiverApplicationWhenEndingSession());
++        endCurrentSessionInternal(stopCasting);
++    }
++
++    public void onRouteChanged(String routeId, Bundle extras) {
++        if (currentSession != null && TextUtils.equals(currentSession.getRouteId(), routeId)) {
++            currentSession.onRouteInfoUpdated(extras);
++        }
++    }
++
++    public void onRouteAdded(String routeId) {
++        if (currentSession == null && resumeRouteId != null && TextUtils.equals(routeId, resumeRouteId)) {
++            if (SystemClock.elapsedRealtime() >= resumeDeadline) {
++                clearPendingResume();
++                return;
++            }
++            Log.d(TAG, "Previous session route " + routeId + " is available again, selecting it");
++            try {
++                castContext.getRouter().selectRouteById(routeId);
++            } catch (RemoteException e) {
++                Log.w(TAG, "Error selecting route " + routeId + ": " + e.getMessage());
++            }
++        }
++    }
++
++    private SharedPreferences getPreferences() {
++        return castContext.getContext().getApplicationContext().getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);
++    }
++
++    /**
++     * Remembers the last session of a recoverable session provider, so it can be resumed when the app is restarted.
++     */
++    void tryResumeSavedSession() {
++        SharedPreferences preferences = getPreferences();
++        String routeId = preferences.getString(PREF_ROUTE_ID, null);
++        String sessionId = preferences.getString(PREF_SESSION_ID, null);
++        String category = preferences.getString(PREF_CATEGORY, null);
++        if (routeId == null || sessionId == null) return;
++        ISessionProvider provider = castContext.defaultSessionProvider;
++        try {
++            if (provider == null || !TextUtils.equals(category, castContext.getDefaultCategory()) || !provider.isSessionRecoverable()) {
++                clearSavedSession();
++                return;
++            }
++        } catch (RemoteException e) {
++            return;
++        }
++        Log.d(TAG, "Trying to resume session " + sessionId + " on " + routeId);
++        resumeRouteId = routeId;
++        resumeSessionId = sessionId;
++        resumeDeadline = SystemClock.elapsedRealtime() + RESUME_TIMEOUT_MS;
++        try {
++            if (castContext.getRouter().getRouteInfoExtrasById(routeId) != null) {
++                onRouteAdded(routeId);
++            }
++        } catch (RemoteException e) {
++            Log.w(TAG, "Error checking route " + routeId + ": " + e.getMessage());
++        }
++    }
++
++    private void clearPendingResume() {
++        resumeRouteId = null;
++        resumeSessionId = null;
++        resumeDeadline = 0;
++    }
++
++    private void saveSession(SessionImpl session) {
++        if (session.getRouteId() == null || session.getSessionId() == null) return;
++        getPreferences().edit()
++                .putString(PREF_ROUTE_ID, session.getRouteId())
++                .putString(PREF_SESSION_ID, session.getSessionId())
++                .putString(PREF_CATEGORY, session.getCategory())
++                .apply();
++    }
++
++    private void clearSavedSession() {
++        getPreferences().edit().clear().apply();
++    }
++
++    /**
++     * Recalculates the cast state from the session state and the availability of matching routes.
++     */
++    public void updateCastState() {
++        if (Looper.myLooper() != Looper.getMainLooper()) {
++            // MediaRouter must only be used from the main thread
++            castContext.runOnMainThread(this::updateCastState);
++            return;
++        }
++        int newState;
++        if (currentSession != null && currentSession.isConnected()) {
++            newState = CastState.CONNECTED;
++        } else if (currentSession != null && (currentSession.isConnecting() || currentSession.isResuming() || currentSession.isSuspended())) {
++            newState = CastState.CONNECTING;
++        } else if (isRouteAvailable()) {
++            newState = CastState.NOT_CONNECTED;
++        } else {
++            newState = CastState.NO_DEVICES_AVAILABLE;
++        }
++        if (newState != castState) {
++            Log.d(TAG, "Cast state changed to " + CastState.toString(newState));
++            this.castState = newState;
++            this.onCastStateChanged();
++        }
++    }
++
++    private boolean isRouteAvailable() {
++        if (castContext.getMergedSelector().isEmpty()) return false;
++        try {
++            return castContext.getRouter().isRouteAvailable(castContext.getMergedSelector().asBundle(), MediaRouter.AVAILABILITY_FLAG_IGNORE_DEFAULT_ROUTE);
++        } catch (RemoteException e) {
++            return false;
++        }
+     }
+ 
+     public void onCastStateChanged() {
+-        for (ICastStateListener listener : this.castStateListeners) {
++        for (ICastStateListener listener : new HashSet<>(this.castStateListeners)) {
+             try {
+                 listener.onCastStateChanged(this.castState);
+             } catch (RemoteException e) {
+@@ -128,10 +312,10 @@ public class SessionManagerImpl extends ISessionManager.Stub {
+     }
+ 
+     public void onSessionStarting(SessionImpl session) {
+-        this.setCastState(CastState.CONNECTING);
+-        for (ISessionManagerListener listener : this.sessionManagerListeners) {
++        this.updateCastState();
++        for (ISessionManagerListener listener : new HashSet<>(this.sessionManagerListeners)) {
+             try {
+-                listener.onSessionStarting(session.getSessionProxy().getWrappedSession());
++                listener.onSessionStarting(session.getWrappedSession());
+             } catch (RemoteException e) {
+                 Log.d(TAG, "Remote exception calling onSessionStarting: " + e.getMessage());
+             }
+@@ -139,11 +323,11 @@ public class SessionManagerImpl extends ISessionManager.Stub {
+     }
+ 
+     public void onSessionStartFailed(SessionImpl session, int error) {
+-        this.currentSession = null;
+-        this.setCastState(CastState.NOT_CONNECTED);
+-        for (ISessionManagerListener listener : this.sessionManagerListeners) {
++        if (this.currentSession == session) this.currentSession = null;
++        this.updateCastState();
++        for (ISessionManagerListener listener : new HashSet<>(this.sessionManagerListeners)) {
+             try {
+-                listener.onSessionStartFailed(session.getSessionProxy().getWrappedSession(), error);
++                listener.onSessionStartFailed(session.getWrappedSession(), error);
+             } catch (RemoteException e) {
+                 Log.d(TAG, "Remote exception calling onSessionStartFailed: " + e.getMessage());
+             }
+@@ -152,10 +336,11 @@ public class SessionManagerImpl extends ISessionManager.Stub {
+ 
+     public void onSessionStarted(SessionImpl session, String sessionId) {
+         this.currentSession = session;
+-        this.setCastState(CastState.CONNECTED);
+-        for (ISessionManagerListener listener : this.sessionManagerListeners) {
++        saveSession(session);
++        this.updateCastState();
++        for (ISessionManagerListener listener : new HashSet<>(this.sessionManagerListeners)) {
+             try {
+-                listener.onSessionStarted(session.getSessionProxy().getWrappedSession(), sessionId);
++                listener.onSessionStarted(session.getWrappedSession(), sessionId);
+             } catch (RemoteException e) {
+                 Log.d(TAG, "Remote exception calling onSessionStarted: " + e.getMessage());
+             }
+@@ -163,10 +348,12 @@ public class SessionManagerImpl extends ISessionManager.Stub {
+     }
+ 
+     public void onSessionResumed(SessionImpl session, boolean wasSuspended) {
+-        this.setCastState(CastState.CONNECTED);
+-        for (ISessionManagerListener listener : this.sessionManagerListeners) {
++        this.currentSession = session;
++        saveSession(session);
++        this.updateCastState();
++        for (ISessionManagerListener listener : new HashSet<>(this.sessionManagerListeners)) {
+             try {
+-                listener.onSessionResumed(session.getSessionProxy().getWrappedSession(), wasSuspended);
++                listener.onSessionResumed(session.getWrappedSession(), wasSuspended);
+             } catch (RemoteException e) {
+                 Log.d(TAG, "Remote exception calling onSessionResumed: " + e.getMessage());
+             }
+@@ -174,9 +361,9 @@ public class SessionManagerImpl extends ISessionManager.Stub {
+     }
+ 
+     public void onSessionEnding(SessionImpl session) {
+-        for (ISessionManagerListener listener : this.sessionManagerListeners) {
++        for (ISessionManagerListener listener : new HashSet<>(this.sessionManagerListeners)) {
+             try {
+-                listener.onSessionEnding(session.getSessionProxy().getWrappedSession());
++                listener.onSessionEnding(session.getWrappedSession());
+             } catch (RemoteException e) {
+                 Log.d(TAG, "Remote exception calling onSessionEnding: " + e.getMessage());
+             }
+@@ -184,11 +371,12 @@ public class SessionManagerImpl extends ISessionManager.Stub {
+     }
+ 
+     public void onSessionEnded(SessionImpl session, int error) {
+-        this.currentSession = null;
+-        this.setCastState(CastState.NOT_CONNECTED);
+-        for (ISessionManagerListener listener : this.sessionManagerListeners) {
++        if (this.currentSession == session) this.currentSession = null;
++        clearSavedSession();
++        this.updateCastState();
++        for (ISessionManagerListener listener : new HashSet<>(this.sessionManagerListeners)) {
+             try {
+-                listener.onSessionEnded(session.getSessionProxy().getWrappedSession(), error);
++                listener.onSessionEnded(session.getWrappedSession(), error);
+             } catch (RemoteException e) {
+                 Log.d(TAG, "Remote exception calling onSessionEnded: " + e.getMessage());
+             }
+@@ -196,9 +384,10 @@ public class SessionManagerImpl extends ISessionManager.Stub {
+     }
+ 
+     public void onSessionResuming(SessionImpl session, String sessionId) {
+-        for (ISessionManagerListener listener : this.sessionManagerListeners) {
++        this.updateCastState();
++        for (ISessionManagerListener listener : new HashSet<>(this.sessionManagerListeners)) {
+             try {
+-                listener.onSessionResuming(session.getSessionProxy().getWrappedSession(), sessionId);
++                listener.onSessionResuming(session.getWrappedSession(), sessionId);
+             } catch (RemoteException e) {
+                 Log.d(TAG, "Remote exception calling onSessionResuming: " + e.getMessage());
+             }
+@@ -206,11 +395,12 @@ public class SessionManagerImpl extends ISessionManager.Stub {
+     }
+ 
+     public void onSessionResumeFailed(SessionImpl session, int error) {
+-        this.currentSession = null;
+-        this.setCastState(CastState.NOT_CONNECTED);
+-        for (ISessionManagerListener listener : this.sessionManagerListeners) {
++        if (this.currentSession == session) this.currentSession = null;
++        clearSavedSession();
++        this.updateCastState();
++        for (ISessionManagerListener listener : new HashSet<>(this.sessionManagerListeners)) {
+             try {
+-                listener.onSessionResumeFailed(session.getSessionProxy().getWrappedSession(), error);
++                listener.onSessionResumeFailed(session.getWrappedSession(), error);
+             } catch (RemoteException e) {
+                 Log.d(TAG, "Remote exception calling onSessionResumeFailed: " + e.getMessage());
+             }
+@@ -218,10 +408,10 @@ public class SessionManagerImpl extends ISessionManager.Stub {
+     }
+ 
+     public void onSessionSuspended(SessionImpl session, int reason) {
+-        this.setCastState(CastState.NOT_CONNECTED);
+-        for (ISessionManagerListener listener : this.sessionManagerListeners) {
++        this.updateCastState();
++        for (ISessionManagerListener listener : new HashSet<>(this.sessionManagerListeners)) {
+             try {
+-                listener.onSessionSuspended(session.getSessionProxy().getWrappedSession(), reason);
++                listener.onSessionSuspended(session.getWrappedSession(), reason);
+             } catch (RemoteException e) {
+                 Log.d(TAG, "Remote exception calling onSessionSuspended: " + e.getMessage());
+             }
+diff --git a/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/media/internal/FetchBitmapTaskImpl.java b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/media/internal/FetchBitmapTaskImpl.java
+new file mode 100644
+index 0000000..76c525a
+--- /dev/null
++++ b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/media/internal/FetchBitmapTaskImpl.java
+@@ -0,0 +1,138 @@
++/*
++ * SPDX-FileCopyrightText: 2026 microG Project Team
++ * SPDX-License-Identifier: Apache-2.0
++ */
++
++package com.google.android.gms.cast.framework.media.internal;
++
++import android.graphics.Bitmap;
++import android.graphics.BitmapFactory;
++import android.net.Uri;
++import android.os.RemoteException;
++import android.util.Log;
++
++import java.io.ByteArrayOutputStream;
++import java.io.IOException;
++import java.io.InputStream;
++import java.net.HttpURLConnection;
++import java.net.URL;
++
++/**
++ * Downloads images (e.g. album art for the media notification and the expanded controller) for the client library.
++ */
++public class FetchBitmapTaskImpl extends IFetchBitmapTask.Stub {
++    private static final String TAG = FetchBitmapTaskImpl.class.getSimpleName();
++
++    private final IFetchBitmapTaskProgressPublisher progressPublisher;
++    private final int targetWidth;
++    private final int targetHeight;
++    private final long maxBytes;
++    private final int maxRedirects;
++    private final int connectTimeout;
++    private final int readTimeout;
++
++    public FetchBitmapTaskImpl(IFetchBitmapTaskProgressPublisher progressPublisher, int targetWidth, int targetHeight, long maxBytes, int maxRedirects, int connectTimeout, int readTimeout) {
++        this.progressPublisher = progressPublisher;
++        this.targetWidth = targetWidth;
++        this.targetHeight = targetHeight;
++        this.maxBytes = maxBytes > 0 ? maxBytes : 2 * 1024 * 1024;
++        this.maxRedirects = Math.max(maxRedirects, 0);
++        this.connectTimeout = connectTimeout > 0 ? connectTimeout : 10000;
++        this.readTimeout = readTimeout > 0 ? readTimeout : 10000;
++    }
++
++    @Override
++    public Bitmap fetchBitmap(Uri uri) throws RemoteException {
++        if (uri == null) return null;
++        try {
++            byte[] data = download(uri);
++            if (data == null) return null;
++            return decode(data);
++        } catch (IOException | RuntimeException e) {
++            Log.w(TAG, "Failed to fetch " + uri + ": " + e.getMessage());
++            return null;
++        }
++    }
++
++    private byte[] download(Uri uri) throws IOException {
++        URL url = new URL(uri.toString());
++        for (int redirects = 0; ; redirects++) {
++            String protocol = url.getProtocol();
++            if (!"http".equals(protocol) && !"https".equals(protocol)) {
++                Log.w(TAG, "Unsupported protocol: " + protocol);
++                return null;
++            }
++            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
++            try {
++                connection.setConnectTimeout(connectTimeout);
++                connection.setReadTimeout(readTimeout);
++                // Follow redirects manually, HttpURLConnection does not follow redirects across protocols.
++                connection.setInstanceFollowRedirects(false);
++                int code = connection.getResponseCode();
++                if (code >= 300 && code < 400 && code != HttpURLConnection.HTTP_NOT_MODIFIED) {
++                    String location = connection.getHeaderField("Location");
++                    if (location == null || redirects >= maxRedirects) return null;
++                    url = new URL(url, location);
++                    continue;
++                }
++                if (code != HttpURLConnection.HTTP_OK) {
++                    Log.w(TAG, "Unexpected response " + code + " for " + url);
++                    return null;
++                }
++                long total = connection.getContentLength();
++                if (total > maxBytes) {
++                    Log.w(TAG, "Image too large: " + total);
++                    return null;
++                }
++                try (InputStream in = connection.getInputStream()) {
++                    ByteArrayOutputStream out = new ByteArrayOutputStream();
++                    byte[] buffer = new byte[8192];
++                    long read = 0;
++                    int count;
++                    while ((count = in.read(buffer)) != -1) {
++                        read += count;
++                        if (read > maxBytes) {
++                            Log.w(TAG, "Image too large, aborting after " + read + " bytes");
++                            return null;
++                        }
++                        out.write(buffer, 0, count);
++                        publishProgress(read, total);
++                    }
++                    return out.toByteArray();
++                }
++            } finally {
++                connection.disconnect();
++            }
++        }
++    }
++
++    private void publishProgress(long read, long total) {
++        if (progressPublisher == null) return;
++        try {
++            progressPublisher.publishProgress(read, total);
++        } catch (RemoteException e) {
++            // Ignore, progress is informational only
++        }
++    }
++
++    private Bitmap decode(byte[] data) {
++        BitmapFactory.Options options = new BitmapFactory.Options();
++        if (targetWidth > 0 && targetHeight > 0) {
++            options.inJustDecodeBounds = true;
++            BitmapFactory.decodeByteArray(data, 0, data.length, options);
++            int sampleSize = 1;
++            while (options.outWidth / (sampleSize * 2) >= targetWidth && options.outHeight / (sampleSize * 2) >= targetHeight) {
++                sampleSize *= 2;
++            }
++            options = new BitmapFactory.Options();
++            options.inSampleSize = sampleSize;
++        }
++        Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length, options);
++        if (bitmap == null || targetWidth <= 0 || targetHeight <= 0) return bitmap;
++        if (bitmap.getWidth() <= targetWidth && bitmap.getHeight() <= targetHeight) return bitmap;
++        float scale = Math.min((float) targetWidth / bitmap.getWidth(), (float) targetHeight / bitmap.getHeight());
++        Bitmap scaled = Bitmap.createScaledBitmap(bitmap, Math.max(1, Math.round(bitmap.getWidth() * scale)), Math.max(1, Math.round(bitmap.getHeight() * scale)), true);
++        if (scaled != bitmap) bitmap.recycle();
++        return scaled;
++    }
++}
+diff --git a/play-services-cast-framework/core/src/main/java/com/google/android/gms/dynamite/descriptors/com/google/android/gms/cast/framework/dynamite/ModuleDescriptor.java b/play-services-cast-framework/core/src/main/java/com/google/android/gms/dynamite/descriptors/com/google/android/gms/cast/framework/dynamite/ModuleDescriptor.java
+new file mode 100644
+index 0000000..784828e
+--- /dev/null
++++ b/play-services-cast-framework/core/src/main/java/com/google/android/gms/dynamite/descriptors/com/google/android/gms/cast/framework/dynamite/ModuleDescriptor.java
+@@ -0,0 +1,11 @@
++/*
++ * SPDX-FileCopyrightText: 2026 microG Project Team
++ * SPDX-License-Identifier: Apache-2.0
++ */
++
++package com.google.android.gms.dynamite.descriptors.com.google.android.gms.cast.framework.dynamite;
++
++public class ModuleDescriptor {
++    public static final String MODULE_ID = "com.google.android.gms.cast.framework.dynamite";
++    public static final int MODULE_VERSION = 1;
++}
+diff --git a/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/ICastConnectionController.aidl b/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/ICastConnectionController.aidl
+index 4ad8ee3..a8c87bc 100644
+--- a/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/ICastConnectionController.aidl
++++ b/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/ICastConnectionController.aidl
+@@ -6,6 +6,6 @@ interface ICastConnectionController {
+     void joinApplication(String applicationId, String sessionId) = 0;
+     void launchApplication(String applicationId, in LaunchOptions launchOptions) = 1;
+     void stopApplication(String sessionId) = 2;
+-    void closeConnection(int reason) = 3; // Maybe?
++    void closeConnection(int reason) = 3;
+     int getSupportedVersion() = 4;
+ }
+diff --git a/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/ICastSession.aidl b/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/ICastSession.aidl
+index e5c11cb..9d9637c 100644
+--- a/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/ICastSession.aidl
++++ b/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/ICastSession.aidl
+@@ -3,13 +3,13 @@ package com.google.android.gms.cast.framework;
+ import android.os.Bundle;
+ 
+ import com.google.android.gms.cast.ApplicationMetadata;
+-import com.google.android.gms.common.api.Status;
++import com.google.android.gms.common.ConnectionResult;
+ 
+ interface ICastSession {
+     void onConnected(in Bundle routeInfoExtra) = 0;
+     void onConnectionSuspended(int reason) = 1;
+-    void onConnectionFailed(in Status status) = 2;
++    void onConnectionFailed(in ConnectionResult connectionResult) = 2;
+     void onApplicationConnectionSuccess(in ApplicationMetadata applicationMetadata, String applicationStatus, String sessionId, boolean wasLaunched) = 3;
+     void onApplicationConnectionFailure(int statusCode) = 4;
+-    void disconnectFromDevice(boolean boolean1, int int1) = 5;
++    void disconnectFromDevice(boolean stopCasting, int reason) = 5;
+ }
+diff --git a/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/IDiscoveryManager.aidl b/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/IDiscoveryManager.aidl
+index 0c775ac..d1f9506 100644
+--- a/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/IDiscoveryManager.aidl
++++ b/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/IDiscoveryManager.aidl
+@@ -4,8 +4,8 @@ import com.google.android.gms.cast.framework.IDiscoveryManagerListener;
+ import com.google.android.gms.dynamic.IObjectWrapper;
+ 
+ interface IDiscoveryManager {
+-    void startDiscovery() = 0; // Maybe?
+-    void stopDiscovery() = 1; // Maybe?
++    void startDiscovery() = 0;
++    void stopDiscovery() = 1;
+     void addDiscoveryManagerListener(IDiscoveryManagerListener listener) = 2;
+     void removeDiscoveryManagerListener(IDiscoveryManagerListener listener) = 3;
+     IObjectWrapper getWrappedThis() = 4;
+diff --git a/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/ISession.aidl b/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/ISession.aidl
+index a5580bc..a5f1473 100644
+--- a/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/ISession.aidl
++++ b/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/ISession.aidl
+@@ -19,4 +19,6 @@ interface ISession {
+     void notifySessionResumed(boolean wasSuspended) = 13;
+     void notifyFailedToResumeSession(int error) = 14;
+     void notifySessionSuspended(int reason) = 15;
++    int getSupportedVersion() = 16;
++    int getSessionStartType() = 17;
+ }
+diff --git a/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/ISessionProxy.aidl b/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/ISessionProxy.aidl
+index 170680a..d8fb750 100644
+--- a/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/ISessionProxy.aidl
++++ b/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/ISessionProxy.aidl
+@@ -11,4 +11,5 @@ interface ISessionProxy {
+     int getSupportedVersion() = 5;
+     void onStarting(in Bundle routeInfoExtra) = 6;
+     void onResuming(in Bundle routeInfoExtra) = 7;
++    void onRouteInfoUpdated(in Bundle routeInfoExtra) = 8;
+ }
+diff --git a/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/internal/ICastDynamiteModule.aidl b/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/internal/ICastDynamiteModule.aidl
+index 2085775..4fa17f3 100644
+--- a/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/internal/ICastDynamiteModule.aidl
++++ b/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/internal/ICastDynamiteModule.aidl
+@@ -21,4 +21,6 @@ interface ICastDynamiteModule {
+     IMediaNotificationService newMediaNotificationServiceImpl(in IObjectWrapper service, in IObjectWrapper castContext, in IObjectWrapper resources, in CastMediaOptions options) = 3;
+     IReconnectionService newReconnectionServiceImpl(in IObjectWrapper service, in IObjectWrapper sessionManager, in IObjectWrapper discoveryManager) = 4;
+     IFetchBitmapTask newFetchBitmapTaskImpl(in IObjectWrapper asyncTask, IFetchBitmapTaskProgressPublisher progressPublisher, int i1, int i2, boolean b1, long l1, int i3, int i4, int i5) = 5;
++    IFetchBitmapTask newFetchBitmapTaskImplWithContext(in IObjectWrapper context, in IObjectWrapper asyncTask, IFetchBitmapTaskProgressPublisher progressPublisher, int i1, int i2, boolean b1, long l1, int i3, int i4, int i5) = 6;
++    int getSupportedVersion() = 7;
+ }
+diff --git a/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/internal/IMediaRouter.aidl b/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/internal/IMediaRouter.aidl
+index 3cfba99..cadad1e 100644
+--- a/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/internal/IMediaRouter.aidl
++++ b/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/internal/IMediaRouter.aidl
+@@ -11,9 +11,12 @@ interface IMediaRouter {
+     boolean isRouteAvailable(in Bundle selector, int flags) = 3;
+     void selectRouteById(String routeId) = 4;
+     void selectDefaultRoute() = 5;
+-    boolean isDefaultRouteSelected() = 6; // Maybe?
++    boolean isDefaultRouteSelected() = 6;
+     Bundle getRouteInfoExtrasById(String routeId) = 7;
+-    String getSelectedRouteId() = 8; // Maybe?
++    String getSelectedRouteId() = 8;
+     int getSupportedVersion() = 9;
+     void clearCallbacks() = 10;
++    boolean isBluetoothRouteSelected() = 11;
++    void unselect(int reason) = 12;
++    void disconnectRoute(String routeId) = 13;
+ }
+diff --git a/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/internal/IMediaRouterCallback.aidl b/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/internal/IMediaRouterCallback.aidl
+index d28c87c..17f1ba8 100644
+--- a/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/internal/IMediaRouterCallback.aidl
++++ b/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/internal/IMediaRouterCallback.aidl
+@@ -9,4 +9,8 @@ interface IMediaRouterCallback {
+     void onRouteSelected(String routeId, in Bundle extras) = 3;
+     void unknown(String routeId, in Bundle extras) = 4;
+     void onRouteUnselected(String routeId, in Bundle extras, int reason) = 5;
++    int getSupportedVersion() = 6;
++    void onRouteSelectedWithRequestedRoute(String requestedRouteId, String selectedRouteId, in Bundle extras) = 7;
++    void onRouteConnected(String requestedRouteId, String connectedRouteId, in Bundle extras) = 8;
++    void onRouteDisconnected(String requestedRouteId, String disconnectedRouteId, in Bundle extras, int reason) = 9;
+ }
+diff --git a/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/media/internal/IFetchBitmapTask.aidl b/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/media/internal/IFetchBitmapTask.aidl
+index c9f2286..aa0acfa 100644
+--- a/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/media/internal/IFetchBitmapTask.aidl
++++ b/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/media/internal/IFetchBitmapTask.aidl
+@@ -1,5 +1,8 @@
+ package com.google.android.gms.cast.framework.media.internal;
+ 
+-interface IFetchBitmapTask {
++import android.graphics.Bitmap;
++import android.net.Uri;
+ 
+-}
+\ No newline at end of file
++interface IFetchBitmapTask {
++    Bitmap fetchBitmap(in Uri uri) = 0;
++}
+diff --git a/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/media/internal/IFetchBitmapTaskProgressPublisher.aidl b/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/media/internal/IFetchBitmapTaskProgressPublisher.aidl
+index 58b80c0..14664ac 100644
+--- a/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/media/internal/IFetchBitmapTaskProgressPublisher.aidl
++++ b/play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/media/internal/IFetchBitmapTaskProgressPublisher.aidl
+@@ -1,5 +1,6 @@
+ package com.google.android.gms.cast.framework.media.internal;
+ 
+ interface IFetchBitmapTaskProgressPublisher {
+-
+-}
+\ No newline at end of file
++    void publishProgress(long bytesDownloaded, long bytesTotal) = 0;
++    int getSupportedVersion() = 1;
++}
+diff --git a/play-services-core/src/main/java/com/google/android/gms/chimera/container/DynamiteLoaderImpl.java b/play-services-core/src/main/java/com/google/android/gms/chimera/container/DynamiteLoaderImpl.java
+index 07be4d2..f1457a0 100644
+--- a/play-services-core/src/main/java/com/google/android/gms/chimera/container/DynamiteLoaderImpl.java
++++ b/play-services-core/src/main/java/com/google/android/gms/chimera/container/DynamiteLoaderImpl.java
+@@ -83,11 +83,6 @@ public class DynamiteLoaderImpl extends IDynamiteLoader.Stub {
+         if (moduleId.equals("com.google.android.gms.googlecertificates")) {
+             return com.google.android.gms.dynamite.descriptors.com.google.android.gms.googlecertificates.ModuleDescriptor.MODULE_VERSION;
+         }
+-        if (moduleId.equals("com.google.android.gms.cast.framework.dynamite")) {
+-            Log.d(TAG, "returning temp fix module version for " + moduleId + ". Cast API wil not be functional!");
+-            return 1;
+-        }
+-
+         if (moduleId.equals("com.google.android.gms.maps_dynamite")) {
+             Log.d(TAG, "returning v1 for maps");
+             return 1;
+-- 
+2.43.0
+
