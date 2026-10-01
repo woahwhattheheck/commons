@@ -24,6 +24,7 @@ function stubElement(){
   return {
     textContent:'',innerHTML:'',hidden:false,disabled:false,value:'',style:{},handlers:{},children:[],
     appendChild(child){this.children.push(child);return child;},
+    replaceChildren(...children){this.children=children;},
     addEventListener(type,fn){(this.handlers[type]=this.handlers[type]||[]).push(fn);},
     setAttribute(){},removeAttribute(){},querySelector(){return stubElement();},
     classList:{add(){},remove(){},toggle(){}}
@@ -66,8 +67,8 @@ function page(seats,repo,opts){
       (onMain?world.requests:world.site).push(file);
       if(onMain) world.urls.push(bare);
       const body=bodies()[file];
-      if(!body||world.failing.has(file)||(onMain&&world.mainDown)) return {ok:false,status:503,json:async()=>({})};
-      return {ok:true,status:200,json:async()=>JSON.parse(JSON.stringify(body))};
+      if(!body||world.failing.has(file)||(onMain&&world.mainDown)) return {ok:false,status:503,headers:{get:()=>null},json:async()=>({})};
+      return {ok:true,status:200,headers:{get:()=>null},json:async()=>JSON.parse(JSON.stringify(body))};
     }
   },opts.location?{location:opts.location}:{}));
   context.window=context;
