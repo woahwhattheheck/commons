@@ -23,7 +23,9 @@ Scope and limits:
 
 ## How did you test this change?
 
-Added two tests to `ReactDOMFizzServer-test.js` next to the existing `browser()` test:
+Added `ReactDOMFizzSuspenseFallbackHydration-test.js`, which mirrors the issue: `use(browser())`, then `use()` on a promise created only on the client. It captures the server `<p>` and uses a MutationObserver to assert that the node is never removed and is the same node after hydration. After the promise resolves, it asserts the content renders and no recoverable error is reported. It fails on `main` with `Expected: <p>Loading...</p> Received: serializes to the same string` and passes with this change on experimental, stable, `www-modern --variant=true` and `--prod`.
+
+Also added two tests to `ReactDOMFizzServer-test.js` next to the existing `browser()` test:
 - `keeps the server fallback if browser-only content suspends on the client`: server renders the fallback because of `browser()`. The client then suspends on a promise created on the client. The test asserts the server `<p>` is the same node after hydration, and that it is removed and replaced by the content once the promise resolves, with no recoverable errors.
 - `replaces the server fallback if its props change while browser-only content is suspended`.
 
@@ -34,5 +36,6 @@ Commands run:
 - `yarn test -r=www-modern --variant=true` and `--variant=false` on the Fizz, PartialHydration and SelectiveHydration suites: 276 passed each.
 - `yarn test --prod -r=experimental` on the same three suites: 276 passed.
 - `yarn test -r=experimental packages/react-reconciler/src/__tests__/ReactSuspense`: 10 suites, 220 passed.
-- `yarn lint`: passed. `yarn prettier`: no changes.
+- `yarn test -r=experimental` and `-r=stable` on `ReactDOMHydrationDiff-test.js`: 39 passed each. `-r=www-modern --variant=false` on `ReactDOMHydrationDiff` + `ReactDOMFizzServer-test`: 225 passed.
+- `yarn lint` and `yarn linc`: passed. `yarn prettier`: no changes.
 - `yarn flow dom-node` / `yarn flow-ci dom-node`: the only error reported is `Internal error: check job timed out after 100 seconds` in `packages/react-client/src/ReactFlightClient.js`. Unmodified `main` reports the same error on the same machine, and no type errors were reported.

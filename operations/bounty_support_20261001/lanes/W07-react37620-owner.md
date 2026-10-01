@@ -47,13 +47,16 @@ The fix is local to the one boundary and adds no root-level commit delay, which 
 
 ## Artifacts
 
-- Upstream-format patch: `operations/bounty_support_20261001/lanes/W07-react37620-owner/0001-Keep-server-fallback-when-browser-only-content-suspe.patch` (author `woahwhattheheck <293286387+woahwhattheheck@users.noreply.github.com>`, no trailers)
+- Upstream-format patch series (apply in order with `git am` on facebook/react main 7c6ac13; author woahwhattheheck noreply, no trailers):
+  - `W07-react37620-owner/0001-Keep-server-fallback-when-browser-only-content-suspe.patch`: reconciler fix + 2 tests in ReactDOMFizzServer-test.js (W07)
+  - `W07-react37620-owner/0002-Add-regression-test-for-Suspense-fallback-remount-on.patch`: W08's `ReactDOMFizzSuspenseFallbackHydration-test.js`, integrated unchanged
 - PR title/body (follows `.github/PULL_REQUEST_TEMPLATE.md`): `operations/bounty_support_20261001/lanes/W07-react37620-owner/PR_BODY.md`
-- Local branch: `~/work/react` `fix-ssr-fallback-remount-browser-only` (commit c7b6d2a on 7c6ac13)
+- Local branch: `~/work/react` `fix-ssr-fallback-remount-browser-only` (c7b6d2a fix, 9e31598 W08 test, on 7c6ac13)
 
 ## Support lanes
 
-- W08 (tests / #24236 history) and W15 (dom-bindings/Fizz): branches `claude/bh-20261001-w08-react37620-tests` and `claude/bh-20261001-w15-react37620-dom` did not exist on origin at my read. Nothing to integrate yet. No dom-bindings or Fizz change is needed for this fix. If W08 lands a test, it replaces or extends my two tests in `ReactDOMFizzServer-test.js`.
+- W08 INTEGRATED: the patch `0001-Add-regression-test-...` was applied unchanged as commit 9e31598. With the fix, its test passes on experimental, stable, www-modern variant=true and --prod (it fails on main, per W08). W08's requirements are met: HydrationDiff 39/39 (experimental, stable), www-modern variant=false HydrationDiff+Fizz 225/225, Selective/PartialHydration green, props-change recreate covered by my test 2. The 3 `@gate FIXME` tests stay gated: they cover server-error fallbacks, which this fix deliberately leaves alone, and they still fail as gated-expected. W08's 24236-port experiment agrees with the boundary-local design.
+- W15 (dom-bindings/Fizz): branch `claude/bh-20261001-w15-react37620-dom` not on origin at my read. No dom-bindings or Fizz change is needed for this fix.
 - dot: BH-REACT-37620-LIVE-REPRO, deployed demo, reset inconclusive (DevTools blocked). BH-REACT-37620-NODE-CONTINUITY: React 19.3.0 + JSDOM reproduces "original removed 1, replacement inserted 1" on /client-promise, with the controls retaining the node. That matches the mechanism above and the failing-before test.
 
 ## Blockers / owner steps (exact)
