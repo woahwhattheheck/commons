@@ -1,0 +1,42 @@
+diff --git a/packages/react-reconciler/src/ReactFiberBeginWork.js b/packages/react-reconciler/src/ReactFiberBeginWork.js
+index 2de9437b..7f9a43e8 100644
+--- a/packages/react-reconciler/src/ReactFiberBeginWork.js
++++ b/packages/react-reconciler/src/ReactFiberBeginWork.js
+@@ -2957,7 +2957,7 @@ function mountDehydratedSuspenseComponent(
+     // wrong priority associated with it and will prevent hydration of parent path.
+     // Instead, we'll leave work left on it to render it in a separate commit.
+     // Schedule a normal pri update to render this content.
+-    workInProgress.lanes = laneToLanes(DefaultLane);
++    workInProgress.lanes = laneToLanes(DefaultHydrationLane);
+   } else {
+     // We'll continue hydrating the rest at offscreen priority since we'll already
+     // be showing the right content coming from the server, it is no rush.
+@@ -3189,6 +3189,7 @@ function updateDehydratedSuspenseComponent(
+       // Suspended but we should no longer be in dehydrated mode.
+       // Therefore we now have to render the fallback.
+       pushFallbackTreeSuspenseHandler(workInProgress);
++      renderDidSuspendDelayIfPossible();
+ 
+       const nextPrimaryChildren = nextProps.children;
+       const nextFallbackChildren = nextProps.fallback;
+diff --git a/packages/react-reconciler/src/ReactFiberWorkLoop.js b/packages/react-reconciler/src/ReactFiberWorkLoop.js
+index 0f5acc6e..79ac9b4e 100644
+--- a/packages/react-reconciler/src/ReactFiberWorkLoop.js
++++ b/packages/react-reconciler/src/ReactFiberWorkLoop.js
+@@ -190,6 +190,7 @@ import {
+   includesNonIdleWork,
+   includesOnlyRetries,
+   includesOnlyTransitions,
++  includesOnlyNonUrgentLanes,
+   includesBlockingLane,
+   includesTransitionLane,
+   includesRetryLane,
+@@ -1433,7 +1434,7 @@ function finishConcurrentRender(
+       throw new Error('Root did not complete. This is a bug in React.');
+     }
+     case RootSuspendedWithDelay: {
+-      if (!includesOnlyTransitions(lanes) && !includesOnlyRetries(lanes)) {
++      if (!includesOnlyNonUrgentLanes(lanes) && !includesOnlyRetries(lanes)) {
+         // Commit the placeholder.
+         break;
+       }
