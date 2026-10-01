@@ -1,46 +1,31 @@
 {
   "counts": {
-    "open_issues": 7677,
-    "open_pull_requests": 1,
-    "runs_in_progress": 2,
+    "open_issues": 7650,
+    "open_pull_requests": 0,
+    "runs_in_progress": 1,
     "runs_queued": 70
   },
   "counts_source": "graphql",
-  "degraded": [],
-  "drafts": 0,
-  "longest_open": [
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "codex/private-chargeback-defense-wsgi-terminal-20261001-01",
-      "created_at": "2026-10-01T04:42:46Z",
-      "draft": false,
-      "head_sha": "5552fdf75d985cd9536f346ae2304bcc6761e2e0",
-      "number": 30184,
-      "title": "Persist chargeback receiver activation readback and terminal watermark",
-      "updated_at": "2026-10-01T04:42:46Z"
-    }
+  "degraded": [
+    "pulls"
   ],
-  "newest_pulls": [
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "codex/private-chargeback-defense-wsgi-terminal-20261001-01",
-      "created_at": "2026-10-01T04:42:46Z",
-      "draft": false,
-      "head_sha": "5552fdf75d985cd9536f346ae2304bcc6761e2e0",
-      "number": 30184,
-      "title": "Persist chargeback receiver activation readback and terminal watermark",
-      "updated_at": "2026-10-01T04:42:46Z"
-    }
-  ],
-  "open_heads": {
-    "30184": "5552fdf75d985cd9536f346ae2304bcc6761e2e0"
-  },
-  "pulls_listed": 1,
-  "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 35.0,
+  "pulls_listed": "UNKNOWN",
+  "pulls_listing": "UNKNOWN",
+  "queue_depth_per_runner": 70.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "codex/private-chargeback-defense-wsgi-terminal-20261001-01",
+      "closed_at": "2026-10-01T05:02:51Z",
+      "head_sha": "f8f3e4e5467afc18a5f0b8526dcedfe52b9a68c2",
+      "merge_commit_sha": "d8946b977bd8c57882cef3df9f7da318f2257d5c",
+      "merged_at": "2026-10-01T05:02:51Z",
+      "number": 30184,
+      "state": "MERGED",
+      "title": "Persist chargeback receiver activation readback and terminal watermark",
+      "updated_at": "2026-10-01T05:04:04Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -222,23 +207,9 @@
       "state": "MERGED",
       "title": "Pin ChatGPT/Codex reset activation readback",
       "updated_at": "2026-09-29T22:14:29Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "codex/resource-master/chatgpt-pro-codex-reset-refresh-20260929-01",
-      "closed_at": "2026-09-29T22:08:12Z",
-      "head_sha": "87c43faa2b1afeb070c451364edfdf5610d85397",
-      "merge_commit_sha": "439984ff0e544b4ea820950f898470741bab578a",
-      "merged_at": "2026-09-29T22:08:12Z",
-      "number": 30165,
-      "state": "MERGED",
-      "title": "Activate refreshed ChatGPT/Codex reset capacity",
-      "updated_at": "2026-09-29T22:09:35Z"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-10-01T04:50:00Z",
-  "undatable_pulls": []
+  "unchanged_since": "2026-10-01T07:18:02Z"
 }
