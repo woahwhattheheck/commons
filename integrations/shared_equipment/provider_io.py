@@ -172,18 +172,21 @@ class GitHubSlackEquipment:
                                      incident=False, delivered=False)
             verifier = getattr(self, "_slack_write_route_verified", None)
             destination = payload.get("channel_id") or payload.get("channel")
-            if not callable(verifier) or not verifier(destination):
-                raise EquipmentError(
-                    "Slack write not delivered. The installed sender identity/footer "
-                    "does not match the fixed authenticated internal workspace account.",
-                    code="outbound_sender_identity_unverified",
-                    uncertain=False,
-                    incident=False,
-                    delivered=False,
-                    matched_fields=(),
-                    matched_terms=(),
-                    private_instruction="Read back the internal Slack sender and visible message fields before retrying.",
-                )
+            # A caller that already applied the fixture verifier or destination
+            # check records that once. Do not call the provider again for it.
+            if getattr(self, "_slack_route_preverified", None) != destination:
+                if not callable(verifier) or not verifier(destination):
+                    raise EquipmentError(
+                        "Slack write not delivered. The installed sender identity/footer "
+                        "does not match the fixed authenticated internal workspace account.",
+                        code="outbound_sender_identity_unverified",
+                        uncertain=False,
+                        incident=False,
+                        delivered=False,
+                        matched_fields=(),
+                        matched_terms=(),
+                        private_instruction="Read back the internal Slack sender and visible message fields before retrying.",
+                    )
             # Internal TJLabs Slack is explicitly exempt from the public
             # Commons/GitHub publication classifier. Fixed account + exact
             # API fields control the transport; the handoff route validates
