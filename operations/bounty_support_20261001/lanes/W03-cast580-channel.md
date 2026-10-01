@@ -105,6 +105,12 @@ The receiver and driver are scratch tools and are not committed (RULES 17).
 - **#3781.** Uses the same connectionless codes as #3570; it also touches `gradle.properties`, the manifest and `CastDevice`. Not used.
 - **#3351, #3377, #3470.** Built on the library; superseded by this channel for the device-controller files.
 
+## Coordination (for the coordinator to relay; this lane cannot post to Slack)
+
+- The orders thread has a new internal claim, **`BH-CAST-IMPLEMENT-580`**: "Cast v2 implementation across the assigned cast and cast-framework modules … establish discovery/transport and framework routing". It was dispatched after the "BH-CAST-ANALYSIS-580" note. Its scope overlaps W01 (sole submitter), W02 (discovery), this lane (transport/channel, already delivered above) and W04 (framework).
+- Under the one-writer rule, the coordinator should point that worker at W01, so the transport is not implemented a second time and no second #580 PR goes out under woahwhattheheck.
+- In the same thread, the analysis note "no competing implementation PRs exist" is wrong. The open upstream PRs are listed above and in W01's file.
+
 ## State and next action
 
 - Fork `woahwhattheheck/GmsCore`: **does not exist** (`git ls-remote` at 2026-10-01 ~12:10Z asks for credentials, which is GitHub's response for a missing repo). This lane needs no fork.
