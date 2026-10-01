@@ -5,10 +5,21 @@ Base: `microg/GmsCore` master @ `32bc8954` (2026-10-01 clone).
 
 ## Listings — separate acceptance states
 
-| Listing | Amount | Sponsor criterion | State |
-|---|---|---|---|
-| `27c3cfe0-da9e-4192-848a-b676402de81c` | $250 advertised, PROMISED | "Implement casting so that e OS 3.x+ can cast to a Roku device" | OPEN — not achievable as stated through Cast (see Roku below). Intake not done. |
-| `ef91cb1e-dd69-4a33-bd90-21c9679c9247` | $150 total, $100 funded/PAID | "fully working ... YouTube (native or ReVanced), Crunchyroll, Netflix, etc. cast to my TV running Tizen and a Chromecast" | OPEN — Chromecast target is in scope of this work. Tizen TV is DIAL, not Cast (see below). Intake not done. |
+| Listing | Sponsor | Advertised | Escrowed | Promised | Sponsor criterion |
+|---|---|---|---|---|---|
+| A `27c3cfe0-da9e-4192-848a-b676402de81c` | emeitner | $250 | $0 | $250 | "Implement casting so that e OS 3.x+ can cast to a Roku device" |
+| B `ef91cb1e-dd69-4a33-bd90-21c9679c9247` | olofmogren | $150 | $50 | $100 | "fully working ... YouTube (native or ReVanced), Crunchyroll, Netflix, etc. cast to my TV running Tizen and a Chromecast" |
+
+Figures come from the swe-7 intake v2 (Slack C0BU51F1PL3, 1790851459.659859).
+
+| State | Listing A (Roku) | Listing B (Chromecast + Tizen) |
+|---|---|---|
+| GitHub issue microg/GmsCore#580 | OPEN | OPEN |
+| Achievability | NOT ACHIEVABLE via Cast: Roku is not a Cast receiver (see below) | Chromecast: in scope. Tizen: DIAL, handled inside the apps, not by GmsCore |
+| Our PR | none | none. Integration branch builds locally; fork missing |
+| BountyHub claim | none | none |
+| Merge | n/a | n/a |
+| Payment | none | none |
 
 Sponsor intake (RULES 29) is required on BountyHub for each listing before funded work is claimed.
 
@@ -48,7 +59,7 @@ Samsung Tizen TVs are not Cast receivers either. YouTube/Netflix reach them via 
 2. Keep every change small, compiling and verified on a real device.
 3. Open nothing upstream until it has been run against a real Chromecast.
 
-The PR text says plainly how the code was produced. Opening the PR is Bryce's call (fork + identity) and is listed as a blocker below.
+Any disclosure question gets a truthful answer. GmsCore has no CONTRIBUTING file, PR template or AI-use policy as of 32bc8954. CI runs `./gradlew assemble<target>` and `lint<target>`.
 
 ### Lane starting points from open PRs
 - W02: #3505 (CastMediaRouteController), #3354 (thread safety), #3470 (socket off main thread, provider side)
@@ -126,7 +137,7 @@ Fork of GmsCore does not exist yet. Until it does, each lane publishes `git form
 
 ## Owner blockers
 
-- Fork `woahwhattheheck/GmsCore` does not exist; creating it and opening an upstream PR under Bryce's identity is his decision.
+- Fork `woahwhattheheck/GmsCore` does not exist, and the session hook blocks `fork_repository`. The upstream PR waits on the fork; submission is GO once it exists.
 - BountyHub sponsor intake for both listings (RULES 29).
 - No real Chromecast, Tizen TV or Roku reachable from the cloud VM; device verification needs Bryce's LAN (e/OS phone + Chromecast).
 

@@ -1,0 +1,241 @@
+From b3fa1f463292c8c0f0ba6ff8660a9e31d80709fe Mon Sep 17 00:00:00 2001
+From: peterhel <2047120+peterhel@users.noreply.github.com>
+Date: Thu, 18 Jun 2026 13:32:25 +0200
+Subject: [PATCH 2/7] Cast: Implement connectionless (Cast.API_CXLESS) device
+ controller
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Modern Cast SDK clients — and apps such as Amazon Prime Video — drive the
+Cast device over the connectionless API instead of the classic
+connection-based path. They bind the existing device-controller service,
+but unlike the classic client they deliver their listener out-of-band via
+setListener() and then call connect(), and they wait for the service to
+reply ICastDeviceControllerListener.onConnectedWithResult before launching
+an application. microG only implemented the classic path, so these clients
+bound the service and then stalled forever; withholding the cxless features
+instead made the SDK report microG as too old (ConnectionResult=2).
+
+Add the missing connectionless surface:
+
+- ICastDeviceController: connect() (txn 17), setListener() (18) and
+  unregisterListener() (19). The other transaction numbers already match
+  the framework; these methods were simply absent.
+- ICastDeviceControllerListener: onConnectedWithResult() (txn 14), the
+  readiness signal the connectionless client blocks on.
+- CastDeviceControllerImpl: open the CastV2 channel on connect() and emit
+  onConnectedWithResult(SUCCESS); store the listener delivered via
+  setListener(); report onSendMessageSuccess from the outgoing send keyed
+  by its requestId (reporting it from inbound messages completed a
+  non-existent client task and threw a RemoteException); and disconnect
+  from the device if the client process dies (linkToDeath) so the
+  connection and its reader thread are not leaked.
+- CastDeviceControllerService: advertise the requested API features via
+  ConnectionInfo so the client's availability check passes.
+
+Tested on-device: the real Amazon Prime Video app launches its own
+receiver and plays a DRM title end to end through this path.
+
+Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>
+---
+ .../gms/cast/CastDeviceControllerImpl.java    | 79 +++++++++++++++++--
+ .../gms/cast/CastDeviceControllerService.java | 14 +++-
+ .../cast/internal/ICastDeviceController.aidl  |  7 ++
+ .../ICastDeviceControllerListener.aidl        |  3 +
+ 4 files changed, 96 insertions(+), 7 deletions(-)
+
+diff --git a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastDeviceControllerImpl.java b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastDeviceControllerImpl.java
+index e93e3c13..5f6b9d7d 100644
+--- a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastDeviceControllerImpl.java
++++ b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastDeviceControllerImpl.java
+@@ -23,6 +23,7 @@ import java.util.Collections;
+ import android.content.Context;
+ import android.net.Uri;
+ import android.os.Bundle;
++import android.os.IBinder;
+ import android.os.Parcel;
+ import android.os.RemoteException;
+ import android.util.Base64;
+@@ -72,6 +73,16 @@ public class CastDeviceControllerImpl extends ICastDeviceController.Stub impleme
+ 
+     String sessionId = null;
+ 
++    // Fires if the client process dies without a clean disconnect(), so we can tear down the
++    // CastV2 connection instead of leaking it (and its reader thread) and spamming a dead listener.
++    private final IBinder.DeathRecipient deathRecipient = new IBinder.DeathRecipient() {
++        @Override
++        public void binderDied() {
++            Log.d(TAG, "Cast client died; disconnecting from device");
++            disconnect();
++        }
++    };
++
+     public CastDeviceControllerImpl(Context context, String packageName, Bundle extras) {
+         this.context = context;
+         this.packageName = packageName;
+@@ -147,12 +158,12 @@ public class CastDeviceControllerImpl extends ICastDeviceController.Stub impleme
+         switch (message.getPayloadType()) {
+             case STRING:
+                 String response = message.getPayloadUtf8();
+-                if (requestId == null) {
+-                    this.onTextMessageReceived(message.getNamespace(), response);
+-                } else {
+-                    this.onSendMessageSuccess(response, requestId);
+-                    this.onTextMessageReceived(message.getNamespace(), response);
+-                }
++                // Every inbound text message is an application-level message (e.g. MEDIA_STATUS)
++                // and must be delivered via onTextMessageReceived. Do NOT report it as a send
++                // success here: onSendMessageSuccess is keyed by the *outgoing* send's requestId
++                // (signalled in sendMessage), not the response's requestId — conflating them
++                // completes a non-existent client task and throws a RemoteException.
++                this.onTextMessageReceived(message.getNamespace(), response);
+                 break;
+             case BINARY:
+                 byte[] payload = message.getPayloadBinary();
+@@ -161,8 +172,50 @@ public class CastDeviceControllerImpl extends ICastDeviceController.Stub impleme
+         }
+     }
+ 
++    @Override
++    public void connect() {
++        // Connectionless (cxless) entry point. The classic path connects lazily on first
++        // launch/sendMessage, but the cxless client blocks until it receives
++        // onConnectedWithResult, so open the CastV2 channel now and signal readiness.
++        Log.d(TAG, "connect()");
++        try {
++            if (!this.chromecast.isConnected()) {
++                this.chromecast.connect();
++            }
++            this.onConnectedWithResult(CommonStatusCodes.SUCCESS);
++        } catch (Exception e) {
++            Log.w(TAG, "Error connecting to chromecast: " + e.getMessage());
++            this.onConnectedWithResult(CommonStatusCodes.NETWORK_ERROR);
++        }
++    }
++
++    @Override
++    public void setListener(ICastDeviceControllerListener listener) {
++        // cxless delivers the listener here instead of via the GetServiceRequest "listener" extra.
++        Log.d(TAG, "setListener()");
++        this.listener = listener;
++        try {
++            listener.asBinder().linkToDeath(deathRecipient, 0);
++        } catch (RemoteException e) {
++            Log.w(TAG, "Failed to link Cast client death: " + e.getMessage());
++        }
++    }
++
++    @Override
++    public void unregisterListener() {
++        Log.d(TAG, "unregisterListener()");
++        this.listener = null;
++    }
++
+     @Override
+     public void disconnect() {
++        if (this.listener != null) {
++            try {
++                this.listener.asBinder().unlinkToDeath(deathRecipient, 0);
++            } catch (Exception ignored) {
++                // listener may already be dead or never linked
++            }
++        }
+         try {
+             this.chromecast.disconnect();
+         } catch (IOException e) {
+@@ -175,6 +228,10 @@ public class CastDeviceControllerImpl extends ICastDeviceController.Stub impleme
+     public void sendMessage(String namespace, String message, long requestId) {
+         try {
+             this.chromecast.sendRawRequest(namespace, message, requestId);
++            // Signal transport-level send success keyed by the outgoing send's requestId so the
++            // client's sendMessage Task completes; the receiver's reply arrives separately as an
++            // inbound message via onTextMessageReceived.
++            this.onSendMessageSuccess("", requestId);
+         } catch (IOException e) {
+             Log.w(TAG, "Error sending cast message: " + e.getMessage());
+             this.onSendMessageFailure("", requestId, CommonStatusCodes.NETWORK_ERROR);
+@@ -325,4 +382,14 @@ public class CastDeviceControllerImpl extends ICastDeviceController.Stub impleme
+             }
+         }
+     }
++
++    public void onConnectedWithResult(int statusCode) {
++        if (this.listener != null) {
++            try {
++                this.listener.onConnectedWithResult(statusCode);
++            } catch (RemoteException ex) {
++                Log.e(TAG, "Error calling onConnectedWithResult: " + ex.getMessage());
++            }
++        }
++    }
+ }
+diff --git a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastDeviceControllerService.java b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastDeviceControllerService.java
+index d494a012..1e3bea4b 100644
+--- a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastDeviceControllerService.java
++++ b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastDeviceControllerService.java
+@@ -24,6 +24,7 @@ import android.util.Log;
+ 
+ import com.google.android.gms.cast.CastDevice;
+ import com.google.android.gms.cast.internal.ICastDeviceControllerListener;
++import com.google.android.gms.common.internal.ConnectionInfo;
+ import com.google.android.gms.common.internal.GetServiceRequest;
+ import com.google.android.gms.common.internal.BinderWrapper;
+ import com.google.android.gms.common.internal.IGmsCallbacks;
+@@ -45,6 +46,17 @@ public class CastDeviceControllerService extends BaseService {
+ 
+     @Override
+     public void handleServiceRequest(IGmsCallbacks callback, GetServiceRequest request, GmsService service) throws RemoteException {
+-        callback.onPostInitComplete(0, new CastDeviceControllerImpl(this, request.packageName, request.extras), null);
++        // Advertise the API features the client requested so its availability check passes
++        // (otherwise the SDK deems microG too old -> ConnectionResult=2). Echo all of them,
++        // including the connectionless (cxless) features: CastDeviceControllerImpl now implements
++        // the connectionless connect/setListener handshake, so the cxless path works.
++        ConnectionInfo info = new ConnectionInfo();
++        if (request.apiFeatures != null && request.apiFeatures.length > 0) {
++            info.features = request.apiFeatures;
++        } else {
++            info.features = request.defaultFeatures;
++        }
++        callback.onPostInitCompleteWithConnectionInfo(
++                0, new CastDeviceControllerImpl(this, request.packageName, request.extras), info);
+     }
+ }
+diff --git a/play-services-cast/src/main/aidl/com/google/android/gms/cast/internal/ICastDeviceController.aidl b/play-services-cast/src/main/aidl/com/google/android/gms/cast/internal/ICastDeviceController.aidl
+index 4f91cdda..9c417529 100644
+--- a/play-services-cast/src/main/aidl/com/google/android/gms/cast/internal/ICastDeviceController.aidl
++++ b/play-services-cast/src/main/aidl/com/google/android/gms/cast/internal/ICastDeviceController.aidl
+@@ -2,6 +2,7 @@ package com.google.android.gms.cast.internal;
+ 
+ import com.google.android.gms.cast.LaunchOptions;
+ import com.google.android.gms.cast.JoinOptions;
++import com.google.android.gms.cast.internal.ICastDeviceControllerListener;
+ 
+ interface ICastDeviceController {
+   oneway void disconnect() = 0;
+@@ -11,4 +12,10 @@ interface ICastDeviceController {
+   oneway void unregisterNamespace(String namespace) = 11;
+   oneway void launchApplication(String applicationId, in LaunchOptions launchOptions) = 12;
+   oneway void joinApplication(String applicationId, String sessionId, in JoinOptions joinOptions) = 13;
++  // Connectionless (Cast.API_CXLESS) path used by the modern Cast SDK: the client delivers its
++  // listener out-of-band via setListener (txn 18) then calls connect (txn 17), and waits for the
++  // service to reply ICastDeviceControllerListener.onConnectedWithResult before launching.
++  oneway void connect() = 16;
++  oneway void setListener(ICastDeviceControllerListener listener) = 17;
++  oneway void unregisterListener() = 18;
+ }
+diff --git a/play-services-cast/src/main/aidl/com/google/android/gms/cast/internal/ICastDeviceControllerListener.aidl b/play-services-cast/src/main/aidl/com/google/android/gms/cast/internal/ICastDeviceControllerListener.aidl
+index 1d26c14b..855b17c2 100644
+--- a/play-services-cast/src/main/aidl/com/google/android/gms/cast/internal/ICastDeviceControllerListener.aidl
++++ b/play-services-cast/src/main/aidl/com/google/android/gms/cast/internal/ICastDeviceControllerListener.aidl
+@@ -18,4 +18,7 @@ interface ICastDeviceControllerListener {
+   void onSendMessageSuccess(String response, long requestId) = 10;
+   void onApplicationStatusChanged(in ApplicationStatus applicationStatus) = 11;
+   void onDeviceStatusChanged(in CastDeviceStatus deviceStatus) = 12;
++  // Connectionless readiness signal: the cxless client stays "not connected" until the service
++  // calls this with statusCode 0 (SUCCESS) after connect(). Without it the session never starts.
++  void onConnectedWithResult(int statusCode) = 13;
+ }
+-- 
+2.43.0
+

@@ -1,0 +1,30 @@
+From f64284bc1f9097dbec5cb72cb2ee4dbe723a4574 Mon Sep 17 00:00:00 2001
+From: Jorel97 <juanjo97r@gmail.com>
+Date: Thu, 11 Jun 2026 12:45:23 -0600
+Subject: [PATCH 7/7] Add Cast framework dynamite descriptor
+
+---
+ .../gms/cast/framework/dynamite/ModuleDescriptor.java | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+ create mode 100644 play-services-cast-framework/core/src/main/java/com/google/android/gms/dynamite/descriptors/com/google/android/gms/cast/framework/dynamite/ModuleDescriptor.java
+
+diff --git a/play-services-cast-framework/core/src/main/java/com/google/android/gms/dynamite/descriptors/com/google/android/gms/cast/framework/dynamite/ModuleDescriptor.java b/play-services-cast-framework/core/src/main/java/com/google/android/gms/dynamite/descriptors/com/google/android/gms/cast/framework/dynamite/ModuleDescriptor.java
+new file mode 100644
+index 00000000..784828ea
+--- /dev/null
++++ b/play-services-cast-framework/core/src/main/java/com/google/android/gms/dynamite/descriptors/com/google/android/gms/cast/framework/dynamite/ModuleDescriptor.java
+@@ -0,0 +1,11 @@
++/*
++ * SPDX-FileCopyrightText: 2026 microG Project Team
++ * SPDX-License-Identifier: Apache-2.0
++ */
++
++package com.google.android.gms.dynamite.descriptors.com.google.android.gms.cast.framework.dynamite;
++
++public class ModuleDescriptor {
++    public static final String MODULE_ID = "com.google.android.gms.cast.framework.dynamite";
++    public static final int MODULE_VERSION = 1;
++}
+-- 
+2.43.0
+

@@ -1,0 +1,45 @@
+From 00b62db9f7d796dbdb5ff9a881f1141a1953635f Mon Sep 17 00:00:00 2001
+From: peterhel <2047120+peterhel@users.noreply.github.com>
+Date: Mon, 6 Jul 2026 15:18:46 +0200
+Subject: [PATCH 3/7] Cast: Accept CAST_API (161) on the device-controller bind
+
+Connectionless senders (Netflix/Prime, Cast.API_CXLESS) bind
+BIND_CAST_DEVICE_CONTROLLER_SERVICE with serviceId CAST_API (161),
+not CAST (10). The broker resolves the id to a service via its
+supportedServices; with only CAST declared it matches none and
+rejects the bind with "Service not supported", which the sender
+surfaces as "No devices found".
+
+Add CAST_API to this service's supported ids. The same
+CastDeviceControllerImpl serves the request -- its connectionless
+connect/setListener path already handles it -- so no new service or
+implementation is needed.
+
+Verified on a Pixel 2 against a Chromecast: the real Netflix app now
+selects the device, launches its receiver, and plays a DRM title end
+to end.
+---
+ .../org/microg/gms/cast/CastDeviceControllerService.java   | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastDeviceControllerService.java b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastDeviceControllerService.java
+index 1e3bea4b..e312e22f 100644
+--- a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastDeviceControllerService.java
++++ b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastDeviceControllerService.java
+@@ -41,7 +41,12 @@ public class CastDeviceControllerService extends BaseService {
+     private static final String TAG = CastDeviceControllerService.class.getSimpleName();
+ 
+     public CastDeviceControllerService() {
+-        super("GmsCastDeviceControllerSvc", GmsService.CAST);
++        // Modern connectionless senders (Netflix/Prime, Cast.API_CXLESS) bind this same service
++        // but request serviceId CAST_API (161). Accept it too, or the broker rejects the bind with
++        // "Service not supported" — which the sender surfaces as "No devices found". The request is
++        // then served by the same CastDeviceControllerImpl, whose cxless connect/setListener path
++        // handles it.
++        super("GmsCastDeviceControllerSvc", GmsService.CAST, GmsService.CAST_API);
+     }
+ 
+     @Override
+-- 
+2.43.0
+

@@ -1,0 +1,111 @@
+From 3da2c730bbba316035b202ee92302e9c947d0036 Mon Sep 17 00:00:00 2001
+From: peterhel <2047120+peterhel@users.noreply.github.com>
+Date: Wed, 17 Jun 2026 00:59:37 +0200
+Subject: [PATCH 1/7] Cast: Start a session when a Cast route is selected
+
+CastContextImpl never registered a route-selection callback, so selecting a
+Chromecast via the Cast SDK (CastContext/SessionManager) did nothing: discovery
+worked but no session was ever started and the app's SessionManagerListener never
+fired. MediaRouterCallbackImpl already had the correct start-on-selection logic but
+was never instantiated or registered with the router.
+
+Register MediaRouterCallbackImpl via IMediaRouter (registerMediaRouterCallbackImpl +
+addCallback) so route selection starts a session. This goes through the IMediaRouter
+binder rather than touching androidx MediaRouter from the dynamite, which would throw
+Resources$NotFoundException (the dynamite uses the app's Resources but microG's
+resource IDs).
+
+Also resolve defaultSessionProvider by category prefix: the provider map is keyed by
+the full control category (with namespace/flag suffixes such as
+.../CC1AD845///ALLOW_IPV6), so the exact categoryForCast(appId) lookup missed and
+left defaultSessionProvider null. Harden MediaRouterCallbackImpl.onRouteSelected
+against a missing provider / non-SessionImpl and fall back to the route extras.
+
+Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>
+---
+ .../framework/internal/CastContextImpl.java   | 26 +++++++++++++++++++
+ .../internal/MediaRouterCallbackImpl.java     | 16 ++++++++----
+ 2 files changed, 37 insertions(+), 5 deletions(-)
+
+diff --git a/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/CastContextImpl.java b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/CastContextImpl.java
+index be1c5935..59a04812 100644
+--- a/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/CastContextImpl.java
++++ b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/CastContextImpl.java
+@@ -24,6 +24,7 @@ import android.util.Log;
+ 
+ import androidx.mediarouter.media.MediaControlIntent;
+ import androidx.mediarouter.media.MediaRouteSelector;
++import androidx.mediarouter.media.MediaRouter;
+ 
+ import com.google.android.gms.cast.CastMediaControlIntent;
+ import com.google.android.gms.cast.framework.CastOptions;
+@@ -64,6 +65,17 @@ public class CastContextImpl extends ICastContext.Stub {
+         String defaultCategory = CastMediaControlIntent.categoryForCast(receiverApplicationId);
+ 
+         this.defaultSessionProvider = this.sessionProviders.get(defaultCategory);
++        if (this.defaultSessionProvider == null) {
++            // The provider map can be keyed by the full control category, which carries extra
++            // namespace/flag suffixes (e.g. ".../CC1AD845///ALLOW_IPV6"), rather than the bare
++            // categoryForCast(appId). Fall back to matching by category prefix.
++            for (Map.Entry<String, ISessionProvider> entry : this.sessionProviders.entrySet()) {
++                if (entry.getKey() != null && entry.getKey().startsWith(defaultCategory)) {
++                    this.defaultSessionProvider = entry.getValue();
++                    break;
++                }
++            }
++        }
+ 
+         // TODO: This should incorporate passed options
+         this.mergedSelector = new MediaRouteSelector.Builder()
+@@ -71,6 +83,20 @@ public class CastContextImpl extends ICastContext.Stub {
+             .addControlCategory(MediaControlIntent.CATEGORY_REMOTE_PLAYBACK)
+             .addControlCategory(defaultCategory)
+             .build();
++
++        // Observe route selection so that choosing a Cast route actually starts a session.
++        // This goes through the app's MediaRouterProxy (IMediaRouter), which runs androidx
++        // MediaRouter in the app process; touching MediaRouter directly from the dynamite would
++        // fail with a Resources$NotFoundException. On selection the app invokes
++        // MediaRouterCallbackImpl.onRouteSelected(), which starts the session.
++        try {
++            this.router.registerMediaRouterCallbackImpl(this.mergedSelector.asBundle(),
++                    new MediaRouterCallbackImpl(this));
++            this.router.addCallback(this.mergedSelector.asBundle(),
++                    MediaRouter.CALLBACK_FLAG_REQUEST_DISCOVERY);
++        } catch (RemoteException e) {
++            Log.w(TAG, "Failed to register media router callback: " + e.getMessage());
++        }
+     }
+ 
+     @Override
+diff --git a/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/MediaRouterCallbackImpl.java b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/MediaRouterCallbackImpl.java
+index 9be564a5..4995a3f3 100644
+--- a/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/MediaRouterCallbackImpl.java
++++ b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/MediaRouterCallbackImpl.java
+@@ -50,12 +50,18 @@ public class MediaRouterCallbackImpl extends IMediaRouterCallback.Stub {
+     @Override
+     public void onRouteSelected(String routeId, Bundle extras) throws RemoteException {
+         CastDevice castDevice = CastDevice.getFromBundle(extras);
+-
+-        SessionImpl session = (SessionImpl) ObjectWrapper.unwrap(this.castContext.defaultSessionProvider.getSession(null));
+-        Bundle routeInfoExtras = this.castContext.getRouter().getRouteInfoExtrasById(routeId);
+-        if (routeInfoExtras != null) {
+-            session.start(this.castContext, castDevice, routeId, routeInfoExtras);
++        if (this.castContext.defaultSessionProvider == null) {
++            Log.w(TAG, "No session provider for selected route " + routeId + "; cannot start session");
++            return;
+         }
++        Object session = ObjectWrapper.unwrap(this.castContext.defaultSessionProvider.getSession(null));
++        if (!(session instanceof SessionImpl)) {
++            Log.w(TAG, "Session provider did not yield a SessionImpl for route " + routeId);
++            return;
++        }
++        Bundle routeInfoExtras = this.castContext.getRouter().getRouteInfoExtrasById(routeId);
++        ((SessionImpl) session).start(this.castContext, castDevice, routeId,
++                routeInfoExtras != null ? routeInfoExtras : extras);
+     }
+     @Override
+     public void unknown(String routeId, Bundle extras) {
+-- 
+2.43.0
+
