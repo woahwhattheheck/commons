@@ -874,6 +874,7 @@ async function load(force){
   }catch(err){
     state.failed.push("Rendering: " + err.message);
     renderDegraded();
+    renderRoad();
   }finally{
     loading = false;
     document.getElementById("refresh").disabled = false;
