@@ -257,4 +257,30 @@ Pending: W02 0003 (route controller on `CastDeviceSession`), then W03 0003 minus
 - W02 port → re-apply → build.
 - Then submission, once Bryce decides on blocker 1 and the fork exists.
 - Device run on a Chromecast (YouTube/ReVanced, Crunchyroll, Netflix) before or with submission.
+- 2026-10-01 (round 2): The owner authorized checked PR submission. The fork `woahwhattheheck/GmsCore` (repo id 1399995704) exists with master `32bc8954`, cloned at `/home/user/gmscore` in W01's VM.
+  - The submission branch is created from verified file content with API commits, under the authenticated account. Local VM commits are never pushed.
+  - Source patches stay where they are.
+- 2026-10-01: **W02 round 2** (commons `a9e9c0d34`, `lanes/W02-patches/`):
+  - 0003 runs the controller on `CastDeviceSession`.
+  - `W03-0003-...-minus-controller-hunk` drops `chromecast-java-api-v2`.
+  - 0004 adds remote playback.
+
+  All three apply cleanly. The first PR takes base → W02 0001-0002 → W03 0001-0002 → W04 0001-0002 → W02 0003 → W03 0003-minus. **0004 is held for a follow-up PR** (`RemotePlaybackClient` apps only; the target apps use the Cast SDK path).
+- 2026-10-01: **Release build** `:play-services-core:assembleVtmDefaultRelease` at the six-patch series: exit 0 (94.7 MB).
+- 2026-10-01: **Controller review** of W02 0003: four confirmed.
+  - F1: CONNECTED posted after DISCONNECTED.
+  - F2: no reconnect while selected, so volume changes are lost.
+  - F3: raising the level does not unmute.
+  - F4: status without a level is published as volume 0.
+
+  Fixed in W01 commit `Cast: Fix route controller state ordering, reconnect and mute handling`. `:play-services-cast-core:compileDebugJavaWithJavac` exit 0.
+- 2026-10-01: **Series review** (5 subsystem finders + 5 adversarial verifiers against the decompiled 22.3.1 client): 18 findings confirmed, in `operations/bounty_support_20261001/w01/series-review-2026-10-01.json`. Highest severity:
+  - `SessionManagerImpl.removeSessionManagerListener` / `removeCastStateListener` never remove anything (high).
+  - No client death link, so CastV2 sessions and threads outlive a killed app (medium).
+  - `launchApplication` decides join vs LAUNCH before RECEIVER_STATUS arrives (medium).
+  - The background visibility counter is off by one, so active discovery never stops (medium).
+  - `NsdServiceInfo.getAttributes()` (API 21) is called with minSdk 19 and the lint error suppressed (medium).
+  - A resolve that never completes stalls all later discovery (medium).
+
+  Twelve low-severity items cover executor/thread leaks, the ReconnectionService stop, a bitmap OOM, a lazy-init race, provider lookup by category, the end-during-start case, and NSD restart/route expiry. Fixes are in progress on `cast/submit`.
 
