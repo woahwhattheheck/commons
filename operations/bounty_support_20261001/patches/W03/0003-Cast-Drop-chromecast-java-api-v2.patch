@@ -1,0 +1,70 @@
+From 52d64bc702194be5132a96855ddbebcf7b95c00b Mon Sep 17 00:00:00 2001
+From: woahwhattheheck <woahwhattheheck@users.noreply.github.com>
+Date: Thu, 1 Oct 2026 12:09:26 +0000
+Subject: [PATCH 3/3] Cast: Drop chromecast-java-api-v2
+
+The device controller no longer uses it. The remaining references were an
+unused field and imports in CastMediaRouteController and the entry in
+the about screen's library list.
+---
+ play-services-cast/core/build.gradle                       | 4 ----
+ .../java/org/microg/gms/cast/CastMediaRouteController.java | 7 -------
+ .../src/main/java/org/microg/gms/ui/AboutFragment.java     | 1 -
+ 3 files changed, 12 deletions(-)
+
+diff --git a/play-services-cast/core/build.gradle b/play-services-cast/core/build.gradle
+index bfb76a6a..c67c58a2 100644
+--- a/play-services-cast/core/build.gradle
++++ b/play-services-cast/core/build.gradle
+@@ -17,10 +17,6 @@ dependencies {
+     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
+     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion"
+ 
+-    // TODO: Switch to upstream once raw requests are merged
+-    // https://github.com/vitalidze/chromecast-java-api-v2/pull/99
+-    // implementation "su.litvak.chromecast:api-v2:0.10.4"
+-    implementation "info.armills.chromecast-java-api-v2:api-v2-raw-request:0.10.4-raw-request-1"
+     implementation "com.squareup.wire:wire-runtime:$wireVersion"
+ }
+ 
+diff --git a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java
+index f8ca7a1a..8f039893 100644
+--- a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java
++++ b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java
+@@ -42,24 +42,17 @@ import java.util.ArrayList;
+ import java.util.Map;
+ import java.util.HashMap;
+ 
+-import su.litvak.chromecast.api.v2.ChromeCast;
+-import su.litvak.chromecast.api.v2.ChromeCasts;
+-import su.litvak.chromecast.api.v2.Status;
+-import su.litvak.chromecast.api.v2.ChromeCastsListener;
+-
+ public class CastMediaRouteController extends MediaRouteProvider.RouteController {
+     private static final String TAG = CastMediaRouteController.class.getSimpleName();
+ 
+     private CastMediaRouteProvider provider;
+     private String routeId;
+-    private ChromeCast chromecast;
+ 
+     public CastMediaRouteController(CastMediaRouteProvider provider, String routeId, String address) {
+         super();
+ 
+         this.provider = provider;
+         this.routeId = routeId;
+-        this.chromecast = new ChromeCast(address);
+     }
+ 
+     public boolean onControlRequest(Intent intent, MediaRouter.ControlRequestCallback callback) {
+diff --git a/play-services-core/src/main/java/org/microg/gms/ui/AboutFragment.java b/play-services-core/src/main/java/org/microg/gms/ui/AboutFragment.java
+index bd80bcfe..d33590c6 100644
+--- a/play-services-core/src/main/java/org/microg/gms/ui/AboutFragment.java
++++ b/play-services-core/src/main/java/org/microg/gms/ui/AboutFragment.java
+@@ -40,7 +40,6 @@ public class AboutFragment extends AbstractAboutFragment {
+         libraries.add(new AbstractAboutFragment.Library("androidx", "Android Jetpack", "Apache License 2.0, The Android Open Source Project"));
+         libraries.add(new AbstractAboutFragment.Library("com.upokecenter.cbor", "CBOR", "Creative Commons Zero, Peter O"));
+         libraries.add(new AbstractAboutFragment.Library("de.hdodenhof.circleimageview", "CircleImageView", "Apache License 2.0, Henning Dodenhof"));
+-        libraries.add(new AbstractAboutFragment.Library("su.litvak.chromecast.api.v2", "ChromeCast Java API v2", "Apache License 2.0, Vitaly Litvak"));
+         libraries.add(new AbstractAboutFragment.Library("org.conscrypt", "Conscrypt", "Apache License 2.0, The Android Open Source Project"));
+         libraries.add(new AbstractAboutFragment.Library("org.chromium.net", "Cronet", "BSD-style License, The Chromium Authors"));
+         libraries.add(new AbstractAboutFragment.Library("org.jetbrains.kotlin", "Kotlin", "Apache License 2.0, JetBrains s.r.o."));

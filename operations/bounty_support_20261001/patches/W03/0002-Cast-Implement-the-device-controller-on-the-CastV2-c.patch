@@ -1,0 +1,825 @@
+From b64f81edc0428d219e08521e5b6d662abca3dfbb Mon Sep 17 00:00:00 2001
+From: woahwhattheheck <woahwhattheheck@users.noreply.github.com>
+Date: Thu, 1 Oct 2026 12:09:21 +0000
+Subject: [PATCH 2/3] Cast: Implement the device controller on the CastV2
+ channel
+
+Rework the device controller service so current Cast SDK clients can
+connect and use a receiver:
+
+- Clients that bind without a listener in the request extras (the
+  connectionless client in current SDKs) add it through addListener and
+  call connect(); the device is now connected and the result reported
+  through onConnectedWithResult. The service advertises the
+  cxless_client_minimal feature these calls require.
+- Clients that pass their listener in the extras get the service
+  request answered only once the device is connected (or with
+  NETWORK_ERROR / AUTHENTICATION_FAILED if that fails).
+- Requests for CAST_API (161) on the same action are answered with an
+  ICastService implementation (feature flags, status code dictionary,
+  integer maps; all empty) instead of failing the bind.
+- Add the missing controller calls leaveApplication, requestStatus,
+  setVolume, setMute and sendBinaryMessage, and the listener callbacks
+  for leave/stop results, connection result and suspension. Transaction
+  codes follow the Cast SDK's proxies.
+- launchApplication honours LaunchOptions (relaunchIfRunning, language)
+  and joinApplication joins the running session by application and
+  session id instead of relaunching the application.
+- Messages from the application are delivered for registered namespaces
+  only, text and binary, including broadcasts; sendMessage reports
+  success or failure with the namespace and request id, and rejects
+  platform namespaces and payloads over 64 KiB.
+- Receiver status updates are forwarded as device and application status,
+  and application or connection loss is reported to the client.
+
+CastChannelRegistry exposes the session of a connected device by device
+id, e.g. for route volume changes.
+---
+ .../gms/cast/CastDeviceControllerImpl.java    | 328 ------------------
+ .../gms/cast/CastDeviceControllerService.java |  38 +-
+ .../microg/gms/cast/CastChannelRegistry.kt    |  33 ++
+ .../gms/cast/CastDeviceControllerImpl.kt      | 181 ++++++++++
+ .../org/microg/gms/cast/CastServiceImpl.kt    |  69 ++++
+ .../cast/internal/ICastDeviceController.aidl  |  13 +
+ .../ICastDeviceControllerListener.aidl        |  16 +-
+ .../gms/cast/internal/ICastService.aidl       |   1 +
+ 8 files changed, 332 insertions(+), 347 deletions(-)
+ delete mode 100644 play-services-cast/core/src/main/java/org/microg/gms/cast/CastDeviceControllerImpl.java
+ create mode 100644 play-services-cast/core/src/main/kotlin/org/microg/gms/cast/CastChannelRegistry.kt
+ create mode 100644 play-services-cast/core/src/main/kotlin/org/microg/gms/cast/CastDeviceControllerImpl.kt
+ create mode 100644 play-services-cast/core/src/main/kotlin/org/microg/gms/cast/CastServiceImpl.kt
+
+diff --git a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastDeviceControllerImpl.java b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastDeviceControllerImpl.java
+deleted file mode 100644
+index e93e3c13..00000000
+--- a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastDeviceControllerImpl.java
++++ /dev/null
+@@ -1,328 +0,0 @@
+-/*
+- * Copyright (C) 2013-2017 microG Project Team
+- *
+- * Licensed under the Apache License, Version 2.0 (the "License");
+- * you may not use this file except in compliance with the License.
+- * You may obtain a copy of the License at
+- *
+- *     http://www.apache.org/licenses/LICENSE-2.0
+- *
+- * Unless required by applicable law or agreed to in writing, software
+- * distributed under the License is distributed on an "AS IS" BASIS,
+- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+- * See the License for the specific language governing permissions and
+- * limitations under the License.
+- */
+-
+-package org.microg.gms.cast;
+-
+-import java.io.IOException;
+-import java.util.ArrayList;
+-import java.util.Collections;
+-
+-import android.content.Context;
+-import android.net.Uri;
+-import android.os.Bundle;
+-import android.os.Parcel;
+-import android.os.RemoteException;
+-import android.util.Base64;
+-import android.util.Log;
+-
+-import com.google.android.gms.cast.ApplicationMetadata;
+-import com.google.android.gms.cast.ApplicationStatus;
+-import com.google.android.gms.cast.CastDevice;
+-import com.google.android.gms.cast.CastDeviceStatus;
+-import com.google.android.gms.cast.JoinOptions;
+-import com.google.android.gms.cast.LaunchOptions;
+-import com.google.android.gms.cast.internal.ICastDeviceController;
+-import com.google.android.gms.cast.internal.ICastDeviceControllerListener;
+-import com.google.android.gms.common.api.CommonStatusCodes;
+-import com.google.android.gms.common.api.Status;
+-import com.google.android.gms.common.images.WebImage;
+-import com.google.android.gms.common.internal.BinderWrapper;
+-import com.google.android.gms.common.internal.GetServiceRequest;
+-
+-import su.litvak.chromecast.api.v2.Application;
+-import su.litvak.chromecast.api.v2.ChromeCast;
+-import su.litvak.chromecast.api.v2.Namespace;
+-import su.litvak.chromecast.api.v2.ChromeCastConnectionEventListener;
+-import su.litvak.chromecast.api.v2.ChromeCastSpontaneousEventListener;
+-import su.litvak.chromecast.api.v2.ChromeCastRawMessageListener;
+-import su.litvak.chromecast.api.v2.ChromeCastConnectionEvent;
+-import su.litvak.chromecast.api.v2.ChromeCastSpontaneousEvent;
+-import su.litvak.chromecast.api.v2.ChromeCastRawMessage;
+-import su.litvak.chromecast.api.v2.AppEvent;
+-
+-public class CastDeviceControllerImpl extends ICastDeviceController.Stub implements
+-    ChromeCastConnectionEventListener,
+-    ChromeCastSpontaneousEventListener,
+-    ChromeCastRawMessageListener,
+-    ICastDeviceControllerListener
+-{
+-    private static final String TAG = "GmsCastDeviceController";
+-
+-    private Context context;
+-    private String packageName;
+-    private CastDevice castDevice;
+-    boolean notificationEnabled;
+-    long castFlags;
+-    ICastDeviceControllerListener listener;
+-
+-    ChromeCast chromecast;
+-
+-    String sessionId = null;
+-
+-    public CastDeviceControllerImpl(Context context, String packageName, Bundle extras) {
+-        this.context = context;
+-        this.packageName = packageName;
+-
+-        extras.setClassLoader(BinderWrapper.class.getClassLoader());
+-        this.castDevice = CastDevice.getFromBundle(extras);
+-        this.notificationEnabled = extras.getBoolean("com.google.android.gms.cast.EXTRA_CAST_FRAMEWORK_NOTIFICATION_ENABLED");
+-        this.castFlags = extras.getLong("com.google.android.gms.cast.EXTRA_CAST_FLAGS");
+-        BinderWrapper listenerWrapper = (BinderWrapper)extras.get("listener");
+-        if (listenerWrapper != null) {
+-            this.listener = ICastDeviceControllerListener.Stub.asInterface(listenerWrapper.binder);
+-        }
+-
+-        this.chromecast = new ChromeCast(this.castDevice.getAddress());
+-        this.chromecast.registerListener(this);
+-        this.chromecast.registerRawMessageListener(this);
+-        this.chromecast.registerConnectionListener(this);
+-    }
+-
+-    @Override
+-    public void connectionEventReceived(ChromeCastConnectionEvent event) {
+-        if (!event.isConnected()) {
+-            this.onDisconnected(CommonStatusCodes.SUCCESS);
+-        }
+-    }
+-
+-    protected ApplicationMetadata createMetadataFromApplication(Application app) {
+-        if (app == null) {
+-            return null;
+-        }
+-        ApplicationMetadata metadata = new ApplicationMetadata();
+-        metadata.applicationId = app.id;
+-        metadata.name = app.name;
+-        Log.d(TAG, "unimplemented: ApplicationMetadata.images");
+-        Log.d(TAG, "unimplemented: ApplicationMetadata.senderAppLaunchUri");
+-        metadata.images = new ArrayList<WebImage>();
+-        metadata.namespaces = new ArrayList<String>();
+-        for(Namespace namespace : app.namespaces) {
+-            metadata.namespaces.add(namespace.name);
+-        }
+-        metadata.senderAppIdentifier = this.context.getPackageName();
+-        return metadata;
+-    }
+-
+-    @Override
+-    public void spontaneousEventReceived(ChromeCastSpontaneousEvent event) {
+-        switch (event.getType()) {
+-            case MEDIA_STATUS:
+-                break;
+-            case STATUS:
+-                su.litvak.chromecast.api.v2.Status status = (su.litvak.chromecast.api.v2.Status)event.getData();
+-                Application app = status.getRunningApp();
+-                ApplicationMetadata metadata = this.createMetadataFromApplication(app);
+-                if (app != null) {
+-                    this.onApplicationStatusChanged(new ApplicationStatus(app.statusText));
+-                }
+-                int activeInputState = status.activeInput ? 1 : 0;
+-                int standbyState = status.standBy ? 1 : 0;
+-                this.onDeviceStatusChanged(new CastDeviceStatus(status.volume.level, status.volume.muted, activeInputState, metadata, standbyState));
+-                break;
+-            case APPEVENT:
+-                break;
+-            case CLOSE:
+-                this.onApplicationDisconnected(CommonStatusCodes.SUCCESS);
+-                break;
+-            default:
+-                break;
+-        }
+-    }
+-
+-    @Override
+-    public void rawMessageReceived(ChromeCastRawMessage message, Long requestId) {
+-        switch (message.getPayloadType()) {
+-            case STRING:
+-                String response = message.getPayloadUtf8();
+-                if (requestId == null) {
+-                    this.onTextMessageReceived(message.getNamespace(), response);
+-                } else {
+-                    this.onSendMessageSuccess(response, requestId);
+-                    this.onTextMessageReceived(message.getNamespace(), response);
+-                }
+-                break;
+-            case BINARY:
+-                byte[] payload = message.getPayloadBinary();
+-                this.onBinaryMessageReceived(message.getNamespace(), payload);
+-                break;
+-        }
+-    }
+-
+-    @Override
+-    public void disconnect() {
+-        try {
+-            this.chromecast.disconnect();
+-        } catch (IOException e) {
+-            Log.e(TAG, "Error disconnecting chromecast: " + e.getMessage());
+-            return;
+-        }
+-    }
+-
+-    @Override
+-    public void sendMessage(String namespace, String message, long requestId) {
+-        try {
+-            this.chromecast.sendRawRequest(namespace, message, requestId);
+-        } catch (IOException e) {
+-            Log.w(TAG, "Error sending cast message: " + e.getMessage());
+-            this.onSendMessageFailure("", requestId, CommonStatusCodes.NETWORK_ERROR);
+-            return;
+-        }
+-    }
+-
+-    @Override
+-    public void stopApplication(String sessionId) {
+-        try {
+-            this.chromecast.stopSession(sessionId);
+-        } catch (IOException e) {
+-            Log.w(TAG, "Error sending cast message: " + e.getMessage());
+-            return;
+-        }
+-        this.sessionId = null;
+-    }
+-
+-    @Override
+-    public void registerNamespace(String namespace) {
+-        Log.d(TAG, "unimplemented Method: registerNamespace");
+-    }
+-
+-    @Override
+-    public void unregisterNamespace(String namespace) {
+-        Log.d(TAG, "unimplemented Method: unregisterNamespace");
+-    }
+-
+-    @Override
+-    public void launchApplication(String applicationId, LaunchOptions launchOptions) {
+-        Application app = null;
+-        try {
+-            app = this.chromecast.launchApp(applicationId);
+-        } catch (IOException e) {
+-            Log.w(TAG, "Error launching cast application: " + e.getMessage());
+-            this.onApplicationConnectionFailure(CommonStatusCodes.NETWORK_ERROR);
+-            return;
+-        }
+-        this.sessionId = app.sessionId;
+-
+-        ApplicationMetadata metadata = this.createMetadataFromApplication(app);
+-        this.onApplicationConnectionSuccess(metadata, app.statusText, app.sessionId, true);
+-    }
+-
+-    @Override
+-    public void joinApplication(String applicationId, String sessionId, JoinOptions joinOptions) {
+-        Log.d(TAG, "unimplemented Method: joinApplication");
+-        this.launchApplication(applicationId, new LaunchOptions());
+-    }
+-
+-    public void onDisconnected(int reason) {
+-        if (this.listener != null) {
+-            try {
+-                this.listener.onDisconnected(reason);
+-            } catch (RemoteException ex) {
+-                Log.e(TAG, "Error calling onDisconnected: " + ex.getMessage());
+-            }
+-        }
+-    }
+-
+-    public void onApplicationConnectionSuccess(ApplicationMetadata applicationMetadata, String applicationStatus, String sessionId, boolean wasLaunched) {
+-        if (this.listener != null) {
+-            try {
+-                this.listener.onApplicationConnectionSuccess(applicationMetadata, applicationStatus, sessionId, wasLaunched);
+-            } catch (RemoteException ex) {
+-                Log.e(TAG, "Error calling onApplicationConnectionSuccess: " + ex.getMessage());
+-            }
+-        }
+-    }
+-
+-    public void onApplicationConnectionFailure(int statusCode) {
+-        if (this.listener != null) {
+-            try {
+-                this.listener.onApplicationConnectionFailure(statusCode);
+-            } catch (RemoteException ex) {
+-                Log.e(TAG, "Error calling onApplicationConnectionFailure: " + ex.getMessage());
+-            }
+-        }
+-    }
+-
+-    public void onTextMessageReceived(String namespace, String message) {
+-        if (this.listener != null) {
+-            try {
+-                this.listener.onTextMessageReceived(namespace, message);
+-            } catch (RemoteException ex) {
+-                Log.e(TAG, "Error calling onTextMessageReceived: " + ex.getMessage());
+-            }
+-        }
+-    }
+-
+-    public void onBinaryMessageReceived(String namespace, byte[] data) {
+-        if (this.listener != null) {
+-            try {
+-                this.listener.onBinaryMessageReceived(namespace, data);
+-            } catch (RemoteException ex) {
+-                Log.e(TAG, "Error calling onBinaryMessageReceived: " + ex.getMessage());
+-            }
+-        }
+-    }
+-
+-    public void onApplicationDisconnected(int paramInt) {
+-        Log.d(TAG, "unimplemented Method: onApplicationDisconnected");
+-        if (this.listener != null) {
+-            try {
+-                this.listener.onApplicationDisconnected(paramInt);
+-            } catch (RemoteException ex) {
+-                Log.e(TAG, "Error calling onApplicationDisconnected: " + ex.getMessage());
+-            }
+-        }
+-    }
+-
+-    public void onSendMessageFailure(String response, long requestId, int statusCode) {
+-        if (this.listener != null) {
+-            try {
+-                this.listener.onSendMessageFailure(response, requestId, statusCode);
+-            } catch (RemoteException ex) {
+-                Log.e(TAG, "Error calling onSendMessageFailure: " + ex.getMessage());
+-            }
+-        }
+-    }
+-
+-    public void onSendMessageSuccess(String response, long requestId) {
+-        if (this.listener != null) {
+-            try {
+-                this.listener.onSendMessageSuccess(response, requestId);
+-            } catch (RemoteException ex) {
+-                Log.e(TAG, "Error calling onSendMessageSuccess: " + ex.getMessage());
+-            }
+-        }
+-    }
+-
+-    public void onApplicationStatusChanged(ApplicationStatus applicationStatus) {
+-        if (this.listener != null) {
+-            try {
+-                this.listener.onApplicationStatusChanged(applicationStatus);
+-            } catch (RemoteException ex) {
+-                Log.e(TAG, "Error calling onApplicationStatusChanged: " + ex.getMessage());
+-            }
+-        }
+-    }
+-
+-    public void onDeviceStatusChanged(CastDeviceStatus deviceStatus) {
+-        if (this.listener != null) {
+-            try {
+-                this.listener.onDeviceStatusChanged(deviceStatus);
+-            } catch (RemoteException ex) {
+-                Log.e(TAG, "Error calling onDeviceStatusChanged: " + ex.getMessage());
+-            }
+-        }
+-    }
+-}
+diff --git a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastDeviceControllerService.java b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastDeviceControllerService.java
+index d494a012..1b73a9d5 100644
+--- a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastDeviceControllerService.java
++++ b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastDeviceControllerService.java
+@@ -16,35 +16,47 @@
+ 
+ package org.microg.gms.cast;
+ 
+-import android.os.IBinder;
+ import android.os.RemoteException;
+-import android.os.Parcel;
+-import android.util.ArrayMap;
+ import android.util.Log;
+ 
+-import com.google.android.gms.cast.CastDevice;
+-import com.google.android.gms.cast.internal.ICastDeviceControllerListener;
++import com.google.android.gms.common.internal.ConnectionInfo;
+ import com.google.android.gms.common.internal.GetServiceRequest;
+-import com.google.android.gms.common.internal.BinderWrapper;
+ import com.google.android.gms.common.internal.IGmsCallbacks;
+ 
+ import org.microg.gms.BaseService;
+ import org.microg.gms.common.GmsService;
+ 
+-import su.litvak.chromecast.api.v2.ChromeCast;
+-import su.litvak.chromecast.api.v2.ChromeCasts;
+-import su.litvak.chromecast.api.v2.Status;
+-import su.litvak.chromecast.api.v2.ChromeCastsListener;
+-
+ public class CastDeviceControllerService extends BaseService {
+     private static final String TAG = CastDeviceControllerService.class.getSimpleName();
+ 
+     public CastDeviceControllerService() {
+-        super("GmsCastDeviceControllerSvc", GmsService.CAST);
++        super("GmsCastDeviceControllerSvc", GmsService.CAST, GmsService.CAST_API);
+     }
+ 
+     @Override
+     public void handleServiceRequest(IGmsCallbacks callback, GetServiceRequest request, GmsService service) throws RemoteException {
+-        callback.onPostInitComplete(0, new CastDeviceControllerImpl(this, request.packageName, request.extras), null);
++        if (service == GmsService.CAST_API) {
++            ConnectionInfo info = new ConnectionInfo();
++            info.features = CastServiceImplKt.CAST_SERVICE_FEATURES;
++            callback.onPostInitCompleteWithConnectionInfo(0, new CastServiceImpl(request.packageName), info);
++            return;
++        }
++        ConnectionInfo info = new ConnectionInfo();
++        info.features = CastServiceImplKt.CAST_DEVICE_CONTROLLER_FEATURES;
++        CastDeviceControllerImpl controller = new CastDeviceControllerImpl(request.packageName, request.extras);
++        if (!controller.getHasInitialListener()) {
++            // The client calls connect() once it added its listener
++            callback.onPostInitCompleteWithConnectionInfo(0, controller, info);
++            return;
++        }
++        controller.connectBeforeInit(statusCode -> {
++            try {
++                callback.onPostInitCompleteWithConnectionInfo(statusCode, statusCode == 0 ? controller : null, info);
++            } catch (RemoteException e) {
++                Log.w(TAG, "Client died while connecting", e);
++                controller.disconnect();
++            }
++            return kotlin.Unit.INSTANCE;
++        });
+     }
+ }
+diff --git a/play-services-cast/core/src/main/kotlin/org/microg/gms/cast/CastChannelRegistry.kt b/play-services-cast/core/src/main/kotlin/org/microg/gms/cast/CastChannelRegistry.kt
+new file mode 100644
+index 00000000..e30d8a61
+--- /dev/null
++++ b/play-services-cast/core/src/main/kotlin/org/microg/gms/cast/CastChannelRegistry.kt
+@@ -0,0 +1,33 @@
++/*
++ * SPDX-FileCopyrightText: 2026 microG Project Team
++ * SPDX-License-Identifier: Apache-2.0
++ */
++
++package org.microg.gms.cast
++
++import org.microg.gms.cast.channel.CastDeviceSession
++
++/**
++ * Open device sessions by Cast device id, so code outside a client binding (the media route controller) can act on a
++ * connected device, e.g. `CastChannelRegistry.get(deviceId)?.setVolume(level)`.
++ */
++object CastChannelRegistry {
++    private val sessions = HashMap<String, MutableList<CastDeviceSession>>()
++
++    @JvmStatic
++    fun get(deviceId: String?): CastDeviceSession? = synchronized(sessions) {
++        sessions[deviceId ?: return null]?.lastOrNull()
++    }
++
++    @JvmStatic
++    fun register(deviceId: String, session: CastDeviceSession) = synchronized(sessions) {
++        sessions.getOrPut(deviceId) { ArrayList() }.add(session)
++    }
++
++    @JvmStatic
++    fun unregister(deviceId: String, session: CastDeviceSession) = synchronized(sessions) {
++        val list = sessions[deviceId] ?: return
++        list.remove(session)
++        if (list.isEmpty()) sessions.remove(deviceId)
++    }
++}
+diff --git a/play-services-cast/core/src/main/kotlin/org/microg/gms/cast/CastDeviceControllerImpl.kt b/play-services-cast/core/src/main/kotlin/org/microg/gms/cast/CastDeviceControllerImpl.kt
+new file mode 100644
+index 00000000..d801f6e8
+--- /dev/null
++++ b/play-services-cast/core/src/main/kotlin/org/microg/gms/cast/CastDeviceControllerImpl.kt
+@@ -0,0 +1,181 @@
++/*
++ * SPDX-FileCopyrightText: 2026 microG Project Team
++ * SPDX-License-Identifier: Apache-2.0
++ */
++
++package org.microg.gms.cast
++
++import android.net.Uri
++import android.os.Bundle
++import android.os.RemoteException
++import android.util.Log
++import com.google.android.gms.cast.ApplicationMetadata
++import com.google.android.gms.cast.ApplicationStatus
++import com.google.android.gms.cast.CastDevice
++import com.google.android.gms.cast.CastDeviceStatus
++import com.google.android.gms.cast.JoinOptions
++import com.google.android.gms.cast.LaunchOptions
++import com.google.android.gms.cast.internal.ICastDeviceController
++import com.google.android.gms.cast.internal.ICastDeviceControllerListener
++import com.google.android.gms.common.images.WebImage
++import com.google.android.gms.common.internal.BinderWrapper
++import org.microg.gms.cast.channel.CastChannel
++import org.microg.gms.cast.channel.CastDeviceSession
++import org.microg.gms.cast.channel.ReceiverApplication
++import org.microg.gms.cast.channel.ReceiverStatus
++
++private const val TAG = "GmsCastDeviceController"
++
++/**
++ * Binder side of a Cast device connection for one client.
++ *
++ * Older clients pass their listener in the service request extras and expect the device to be connected when the
++ * service request completes (see [connectBeforeInit]). Newer clients bind without a listener, then call [addListener]
++ * and [connect] and wait for [ICastDeviceControllerListener.onConnectedWithResult].
++ */
++class CastDeviceControllerImpl(private val packageName: String?, extras: Bundle) : ICastDeviceController.Stub(), CastDeviceSession.Callbacks {
++    private val castDevice: CastDevice
++    private val session: CastDeviceSession
++
++    @Volatile
++    private var listener: ICastDeviceControllerListener? = null
++
++    @Volatile
++    private var initCallback: ((Int) -> Unit)? = null
++
++    @Volatile
++    private var connectRequested = false
++
++    init {
++        extras.classLoader = BinderWrapper::class.java.classLoader
++        castDevice = CastDevice.getFromBundle(extras) ?: throw IllegalArgumentException("No CastDevice in request extras")
++        val listenerWrapper = extras.getParcelable<BinderWrapper>("listener")
++        if (listenerWrapper != null) listener = ICastDeviceControllerListener.Stub.asInterface(listenerWrapper.binder)
++        val port = castDevice.servicePort.takeIf { it > 0 } ?: CastChannel.DEFAULT_PORT
++        session = CastDeviceSession(castDevice.address, port, this)
++    }
++
++    val hasInitialListener: Boolean
++        get() = listener != null
++
++    /** Connect to the device, then report the result through [callback] (0 on success). */
++    fun connectBeforeInit(callback: (Int) -> Unit) {
++        initCallback = callback
++        session.connect()
++    }
++
++    override fun connect() {
++        connectRequested = true
++        session.connect()
++    }
++
++    override fun addListener(listener: ICastDeviceControllerListener?) {
++        this.listener = listener
++    }
++
++    override fun removeListener() {
++        listener = null
++        disconnect()
++    }
++
++    override fun disconnect() {
++        Log.d(TAG, "disconnect from ${castDevice.friendlyName} ($packageName)")
++        CastChannelRegistry.unregister(castDevice.deviceId, session)
++        session.disconnect()
++    }
++
++    override fun leaveApplication() = session.leaveApplication()
++
++    override fun stopApplication(sessionId: String?) = session.stopApplication(sessionId)
++
++    override fun requestStatus() = session.requestStatus()
++
++    override fun setVolume(level: Double, expectedLevel: Double, expectedMute: Boolean) = session.setVolume(level)
++
++    override fun setMute(mute: Boolean, expectedLevel: Double, expectedMute: Boolean) = session.setMute(mute)
++
++    override fun sendMessage(namespace: String, message: String, requestId: Long) = session.sendMessage(namespace, message, requestId)
++
++    override fun sendBinaryMessage(namespace: String, message: ByteArray, requestId: Long) = session.sendBinaryMessage(namespace, message, requestId)
++
++    override fun registerNamespace(namespace: String) = session.registerNamespace(namespace)
++
++    override fun unregisterNamespace(namespace: String) = session.unregisterNamespace(namespace)
++
++    override fun launchApplication(applicationId: String, launchOptions: LaunchOptions?) =
++        session.launchApplication(applicationId, launchOptions?.relaunchIfRunning ?: false, launchOptions?.language)
++
++    override fun joinApplication(applicationId: String?, sessionId: String?, joinOptions: JoinOptions?) =
++        session.joinApplication(applicationId, sessionId)
++
++    // CastDeviceSession.Callbacks, called on the session thread
++
++    override fun onConnected() = onConnectResult(CastDeviceSession.STATUS_SUCCESS)
++
++    override fun onConnectionFailed(statusCode: Int) = onConnectResult(statusCode)
++
++    private fun onConnectResult(statusCode: Int) {
++        Log.d(TAG, "Connection to ${castDevice.friendlyName}: $statusCode")
++        if (statusCode == CastDeviceSession.STATUS_SUCCESS) CastChannelRegistry.register(castDevice.deviceId, session)
++        initCallback?.let {
++            initCallback = null
++            it(statusCode)
++        }
++        if (connectRequested) {
++            connectRequested = false
++            notify { onConnectedWithResult(statusCode) }
++        }
++    }
++
++    override fun onDisconnected(statusCode: Int) {
++        CastChannelRegistry.unregister(castDevice.deviceId, session)
++        notify { onDisconnected(statusCode) }
++    }
++
++    override fun onDeviceStatusChanged(status: ReceiverStatus) {
++        val app = status.applications.firstOrNull()
++        notify { onDeviceStatusChanged(CastDeviceStatus(status.volumeLevel, status.muted, status.activeInput, app?.toMetadata(), status.standby)) }
++    }
++
++    override fun onApplicationConnected(application: ReceiverApplication, wasLaunched: Boolean) =
++        notify { onApplicationConnectionSuccess(application.toMetadata(), application.statusText, application.sessionId, wasLaunched) }
++
++    override fun onApplicationConnectionFailed(statusCode: Int) = notify { onApplicationConnectionFailure(statusCode) }
++
++    override fun onApplicationStatusChanged(statusText: String?) = notify { onApplicationStatusChanged(ApplicationStatus(statusText)) }
++
++    override fun onApplicationDisconnected(statusCode: Int) = notify { onApplicationDisconnected(statusCode) }
++
++    override fun onStopApplicationResult(statusCode: Int) = notify { onStopApplicationResult(statusCode) }
++
++    override fun onLeaveApplicationResult(statusCode: Int) = notify { onLeaveApplicationResult(statusCode) }
++
++    override fun onTextMessage(namespace: String, message: String) = notify { onTextMessageReceived(namespace, message) }
++
++    override fun onBinaryMessage(namespace: String, data: ByteArray) = notify { onBinaryMessageReceived(namespace, data) }
++
++    override fun onSendMessageSuccess(namespace: String, requestId: Long) = notify { onSendMessageSuccess(namespace, requestId) }
++
++    override fun onSendMessageFailure(namespace: String, requestId: Long, statusCode: Int) =
++        notify { onSendMessageFailure(namespace, requestId, statusCode) }
++
++    private fun notify(call: ICastDeviceControllerListener.() -> Unit) {
++        val listener = listener ?: return
++        try {
++            listener.call()
++        } catch (e: RemoteException) {
++            Log.w(TAG, "Client listener died, disconnecting", e)
++            this.listener = null
++            disconnect()
++        } catch (e: RuntimeException) {
++            Log.w(TAG, "Client listener failed", e)
++        }
++    }
++
++    private fun ReceiverApplication.toMetadata() = ApplicationMetadata().also {
++        it.applicationId = appId
++        it.name = displayName
++        it.namespaces = ArrayList(namespaces)
++        it.images = if (iconUrl != null) arrayListOf(WebImage(Uri.parse(iconUrl))) else arrayListOf()
++    }
++}
+diff --git a/play-services-cast/core/src/main/kotlin/org/microg/gms/cast/CastServiceImpl.kt b/play-services-cast/core/src/main/kotlin/org/microg/gms/cast/CastServiceImpl.kt
+new file mode 100644
+index 00000000..4dd0ed33
+--- /dev/null
++++ b/play-services-cast/core/src/main/kotlin/org/microg/gms/cast/CastServiceImpl.kt
+@@ -0,0 +1,69 @@
++/*
++ * SPDX-FileCopyrightText: 2026 microG Project Team
++ * SPDX-License-Identifier: Apache-2.0
++ */
++
++package org.microg.gms.cast
++
++import android.os.Bundle
++import android.os.RemoteException
++import android.util.Log
++import com.google.android.gms.cast.RequestItem
++import com.google.android.gms.cast.internal.IBundleCallback
++import com.google.android.gms.cast.internal.ICastService
++import com.google.android.gms.common.Feature
++import com.google.android.gms.common.api.Status
++import com.google.android.gms.common.api.internal.IStatusCallback
++
++private const val TAG = "GmsCastService"
++
++/** Features answered by [CastServiceImpl] (service id CAST_API) */
++@JvmField
++val CAST_SERVICE_FEATURES = arrayOf(
++    Feature("module_flag_control", 1L),
++    Feature("analytics_proto_enum_translation", 1L),
++    Feature("integer_to_integer_map", 1L),
++)
++
++/** Features answered by [CastDeviceControllerImpl] (service id CAST) */
++@JvmField
++val CAST_DEVICE_CONTROLLER_FEATURES = arrayOf(
++    // connect() / addListener() / removeListener()
++    Feature("cxless_client_minimal", 1L),
++)
++
++/**
++ * Configuration side of the Cast API. Clients use it for feature flags and lookup tables; none are set, so every
++ * lookup returns an empty bundle and the client keeps its built-in defaults.
++ */
++class CastServiceImpl(private val packageName: String?) : ICastService.Stub() {
++    override fun broadcastPrecacheMessageLegacy(callback: IStatusCallback?, arg2: Array<out String>?, precacheData: String?) =
++        callback.reply(Status.SUCCESS)
++
++    override fun broadcastPrecacheMessage(callback: IStatusCallback?, arg2: Array<out String>?, precacheData: String?, requestItems: MutableList<RequestItem>?) =
++        callback.reply(Status.SUCCESS)
++
++    override fun getCxLessStatus(callback: IStatusCallback?) = callback.reply(Status.SUCCESS)
++
++    override fun getFeatureFlags(callback: IBundleCallback?, flags: Array<out String>?) = callback.reply(Bundle())
++
++    override fun getCastStatusCodeDictionary(callback: IBundleCallback?, dictionaries: Array<out String>?) = callback.reply(Bundle())
++
++    override fun getIntegerMaps(callback: IBundleCallback?, keys: Array<out String>?) = callback.reply(Bundle())
++
++    private fun IStatusCallback?.reply(status: Status) {
++        try {
++            this?.onResult(status)
++        } catch (e: RemoteException) {
++            Log.w(TAG, "Client $packageName died", e)
++        }
++    }
++
++    private fun IBundleCallback?.reply(bundle: Bundle) {
++        try {
++            this?.onBundle(bundle)
++        } catch (e: RemoteException) {
++            Log.w(TAG, "Client $packageName died", e)
++        }
++    }
++}
+diff --git a/play-services-cast/src/main/aidl/com/google/android/gms/cast/internal/ICastDeviceController.aidl b/play-services-cast/src/main/aidl/com/google/android/gms/cast/internal/ICastDeviceController.aidl
+index 4f91cdda..9c836c51 100644
+--- a/play-services-cast/src/main/aidl/com/google/android/gms/cast/internal/ICastDeviceController.aidl
++++ b/play-services-cast/src/main/aidl/com/google/android/gms/cast/internal/ICastDeviceController.aidl
+@@ -2,13 +2,26 @@ package com.google.android.gms.cast.internal;
+ 
+ import com.google.android.gms.cast.LaunchOptions;
+ import com.google.android.gms.cast.JoinOptions;
++import com.google.android.gms.cast.internal.ICastDeviceControllerListener;
+ 
++// Recent clients append an ApiMetadata parcelable to every call; it is ignored.
+ interface ICastDeviceController {
+   oneway void disconnect() = 0;
++  // Deprecated: void launchApplicationOld(String applicationId, boolean relaunchIfRunning) = 1;
++  // Deprecated: void joinApplicationOld(String applicationId, String sessionId) = 2;
++  oneway void leaveApplication() = 3;
+   oneway void stopApplication(String sessionId) = 4;
++  oneway void requestStatus() = 5;
++  oneway void setVolume(double level, double expectedLevel, boolean expectedMute) = 6;
++  oneway void setMute(boolean mute, double expectedLevel, boolean expectedMute) = 7;
+   oneway void sendMessage(String namespace, String message, long requestId) = 8;
++  oneway void sendBinaryMessage(String namespace, in byte[] message, long requestId) = 9;
+   oneway void registerNamespace(String namespace) = 10;
+   oneway void unregisterNamespace(String namespace) = 11;
+   oneway void launchApplication(String applicationId, in LaunchOptions launchOptions) = 12;
+   oneway void joinApplication(String applicationId, String sessionId, in JoinOptions joinOptions) = 13;
++  // Used by clients that bind without a listener in the service request extras
++  oneway void connect() = 16;
++  oneway void addListener(ICastDeviceControllerListener listener) = 17;
++  oneway void removeListener() = 18;
+ }
+diff --git a/play-services-cast/src/main/aidl/com/google/android/gms/cast/internal/ICastDeviceControllerListener.aidl b/play-services-cast/src/main/aidl/com/google/android/gms/cast/internal/ICastDeviceControllerListener.aidl
+index 1d26c14b..66569d6b 100644
+--- a/play-services-cast/src/main/aidl/com/google/android/gms/cast/internal/ICastDeviceControllerListener.aidl
++++ b/play-services-cast/src/main/aidl/com/google/android/gms/cast/internal/ICastDeviceControllerListener.aidl
+@@ -4,18 +4,22 @@ import com.google.android.gms.cast.ApplicationMetadata;
+ import com.google.android.gms.cast.ApplicationStatus;
+ import com.google.android.gms.cast.CastDeviceStatus;
+ 
+-interface ICastDeviceControllerListener {
++oneway interface ICastDeviceControllerListener {
+   void onDisconnected(int reason) = 0;
+   void onApplicationConnectionSuccess(in ApplicationMetadata applicationMetadata, String applicationStatus, String sessionId, boolean wasLaunched) = 1;
+   void onApplicationConnectionFailure(int statusCode) = 2;
+   // Deprecated: void onStatusReceived(String string1, double double1, boolean boolean1) = 3;
+   void onTextMessageReceived(String namespace, String message) = 4;
+   void onBinaryMessageReceived(String namespace, in byte[] data) = 5;
+-  // void onStatusChanged(int status) = 6; // TODO
+-  // void onStatusChanged2(int status) = 7; // TODO
+-  void onApplicationDisconnected(int paramInt) = 8;
+-  void onSendMessageFailure(String response, long requestId, int statusCode) = 9;
+-  void onSendMessageSuccess(String response, long requestId) = 10;
++  // Both complete the client's pending leaveApplication / stopApplication result
++  void onLeaveApplicationResult(int statusCode) = 6;
++  void onStopApplicationResult(int statusCode) = 7;
++  void onApplicationDisconnected(int statusCode) = 8;
++  void onSendMessageFailure(String namespace, long requestId, int statusCode) = 9;
++  void onSendMessageSuccess(String namespace, long requestId) = 10;
+   void onApplicationStatusChanged(in ApplicationStatus applicationStatus) = 11;
+   void onDeviceStatusChanged(in CastDeviceStatus deviceStatus) = 12;
++  // Answer to connect()
++  void onConnectedWithResult(int statusCode) = 13;
++  void onConnectionSuspended(int reason) = 14;
+ }
+diff --git a/play-services-cast/src/main/aidl/com/google/android/gms/cast/internal/ICastService.aidl b/play-services-cast/src/main/aidl/com/google/android/gms/cast/internal/ICastService.aidl
+index 7ee5c972..f301a91b 100644
+--- a/play-services-cast/src/main/aidl/com/google/android/gms/cast/internal/ICastService.aidl
++++ b/play-services-cast/src/main/aidl/com/google/android/gms/cast/internal/ICastService.aidl
+@@ -15,4 +15,5 @@ interface ICastService {
+     oneway void getCxLessStatus(IStatusCallback callback) = 3;
+     oneway void getFeatureFlags(IBundleCallback callback, in String[] flags) = 4;
+     oneway void getCastStatusCodeDictionary(IBundleCallback callback, in String[] dictionaries) = 5;
++    oneway void getIntegerMaps(IBundleCallback callback, in String[] keys) = 6;
+ }
