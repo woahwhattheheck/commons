@@ -1,0 +1,10 @@
+{
+  "schema": "titan-v4-research-custody/v1",
+  "source_pr": 15610,
+  "source_head": "b96a1c200e1c5cd4c8386929a86b86aacdc2602f",
+  "source_path": "revenue/kaggriculture/cloud-execution-lab/test_worker_reset.py",
+  "source_blob": "df0f44b2d24ad2ac923526367b47440aaa14609d",
+  "disposition": "superseded_negative_quarantine",
+  "queue_edge": false,
+  "promotion": false
+}
