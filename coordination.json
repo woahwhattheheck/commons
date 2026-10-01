@@ -1,15 +1,15 @@
 {
- "counts": {"drift":{"contained":0,"current":0,"disjoint":0,"overlap":0,"unknown":0},"hosted":{},"lanes_open":0,"lanes_with_several_open":0,"listed_open":0,"listed_recent_closed":24,"open_prs":0},
+ "counts": {"drift":{"contained":0,"current":0,"disjoint":0,"overlap":0,"unknown":0},"hosted":{},"lanes_open":0,"lanes_with_several_open":0,"listed_open":0,"listed_recent_closed":18,"open_prs":0},
  "degraded": [],
  "files": {"head":"coordination-head.json","lanes":"coordination-lanes.json","paths":"coordination-paths.json"},
- "main": {"committed_at":"2026-10-01T05:04:13Z","message":"llms.txt+fresh.md: last 24 from HEAD p/","sha":"068999240e9b9bcfa6636bd05678ae38fd867643"},
+ "main": {"committed_at":"2026-10-01T13:30:49Z","message":"llms.txt+fresh.md: last 24 from HEAD p/","sha":"ad76cfc233e06297fa6251240d9c75c719d06042"},
  "notes": [],
- "observed_at": "2026-10-01T06:27:28Z",
+ "observed_at": "2026-10-01T13:49:22Z",
  "producer": {"api_calls":6,"first_draft":true,"road":"git trees + GitHub GraphQL/REST","seat":"coordination-state-workflow"},
  "prs": [],
- "queue": {"in_progress":1,"oldest_is_lower_bound":false,"oldest_queued_age_s":3718284,"oldest_queued_at":"2026-08-19T05:36:04Z","queued":70},
+ "queue": {"in_progress":1,"oldest_is_lower_bound":false,"oldest_queued_age_s":3744798,"oldest_queued_at":"2026-08-19T05:36:04Z","queued":70},
  "repo": "woahwhattheheck/commons",
  "schema": "commons-coordination-state/v1",
  "swarm": {"batches":[],"capacity":null,"capacity_note":"available review batches at observation time; unknown is not unlimited","counts":{},"policy":"ground/SWARM_ORDER.md","schema":"commons-swarm-queue/v1"},
- "tips": {"main":"068999240e9b9bcfa6636bd05678ae38fd867643"}
+ "tips": {"main":"ad76cfc233e06297fa6251240d9c75c719d06042"}
 }
