@@ -1,0 +1,149 @@
+diff --git a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java
+index 573ecec4..ba0ffe9a 100644
+--- a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java
++++ b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java
+@@ -37,10 +37,13 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+     private final int port;
+ 
+     private volatile int volume;
++    private volatile boolean deviceMuted;
+     // The control connection of the selected route, used to follow and change the device volume.
+-    // Guarded by this; callbacks of a replaced session are ignored.
++    // Guarded by this; callbacks of a replaced session are ignored. Route state changes are posted
++    // to the provider while holding the lock, so they arrive in the order the session changed.
+     private CastDeviceSession session;
+     private boolean sessionConnected;
++    private boolean selected;
+     private boolean released;
+ 
+     public CastMediaRouteController(CastMediaRouteProvider provider, String routeId, String address, int port, int volume) {
+@@ -63,17 +66,24 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+     public void onSelect() {
+         CastDeviceSession newSession;
+         synchronized (this) {
+-            if (session != null || released) return;
+-            SessionCallbacks callbacks = new SessionCallbacks();
+-            newSession = new CastDeviceSession(host, port, callbacks);
+-            callbacks.session = newSession;
+-            session = newSession;
+-            sessionConnected = false;
++            if (released) return;
++            selected = true;
++            if (session != null) return;
++            newSession = startSessionLocked();
+         }
+-        provider.onRouteStateChanged(routeId, MediaRouter.RouteInfo.CONNECTION_STATE_CONNECTING, -1);
+         newSession.connect();
+     }
+ 
++    private CastDeviceSession startSessionLocked() {
++        SessionCallbacks callbacks = new SessionCallbacks();
++        CastDeviceSession newSession = new CastDeviceSession(host, port, callbacks);
++        callbacks.session = newSession;
++        session = newSession;
++        sessionConnected = false;
++        provider.onRouteStateChanged(routeId, MediaRouter.RouteInfo.CONNECTION_STATE_CONNECTING, -1);
++        return newSession;
++    }
++
+     @Override
+     public void onUnselect() {
+         onUnselect(MediaRouter.UNSELECT_REASON_UNKNOWN);
+@@ -95,14 +105,15 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+     private void closeSession() {
+         CastDeviceSession oldSession;
+         synchronized (this) {
++            selected = false;
+             oldSession = session;
+             session = null;
+             sessionConnected = false;
++            if (oldSession != null) {
++                provider.onRouteStateChanged(routeId, MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED, -1);
++            }
+         }
+-        if (oldSession != null) {
+-            oldSession.disconnect();
+-            provider.onRouteStateChanged(routeId, MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED, -1);
+-        }
++        if (oldSession != null) oldSession.disconnect();
+     }
+ 
+     @Override
+@@ -114,18 +125,24 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+         // Volume is a device setting, so any open connection to the receiver can change it. Prefer
+         // the route's own connection, then one an app opened through the device controller.
+         CastDeviceSession target;
++        CastDeviceSession started = null;
+         synchronized (this) {
+             target = sessionConnected ? session : null;
+         }
+         if (target == null) target = CastChannelRegistry.get(routeId);
+         if (target == null) {
+             synchronized (this) {
+-                // Still connecting: the request is sent once the connection is up.
++                // Still connecting: the request is sent once the connection is up. If the connection
++                // dropped while the route stays selected, open it again.
+                 target = session;
++                if (target == null && selected && !released) target = started = startSessionLocked();
+             }
+         }
++        if (started != null) started.connect();
+         if (target != null) {
+             target.setVolume((double) newVolume / CastMediaRouteProvider.VOLUME_MAX);
++            // A level change on a muted receiver would otherwise stay inaudible.
++            if (deviceMuted && newVolume > 0) target.setMute(false);
+         } else {
+             Log.d(TAG, "No connection to " + routeId + " to set volume");
+         }
+@@ -150,10 +167,10 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+                 if (CastMediaRouteController.this.session != session) return;
+                 CastMediaRouteController.this.session = null;
+                 sessionConnected = false;
++                provider.onRouteStateChanged(routeId, MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED, -1);
+             }
+             Log.d(TAG, "Connection to " + routeId + " ended: " + statusCode);
+             session.disconnect();
+-            provider.onRouteStateChanged(routeId, MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED, -1);
+         }
+ 
+         @Override
+@@ -161,8 +178,8 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+             synchronized (CastMediaRouteController.this) {
+                 if (CastMediaRouteController.this.session != session) return;
+                 sessionConnected = true;
++                provider.onRouteStateChanged(routeId, MediaRouter.RouteInfo.CONNECTION_STATE_CONNECTED, -1);
+             }
+-            provider.onRouteStateChanged(routeId, MediaRouter.RouteInfo.CONNECTION_STATE_CONNECTED, -1);
+         }
+ 
+         @Override
+@@ -178,6 +195,8 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+         @Override
+         public void onDeviceStatusChanged(@NonNull ReceiverStatus status) {
+             if (!isCurrent()) return;
++            deviceMuted = status.getMuted();
++            if (!status.getHasVolumeLevel()) return;
+             // Follow volume changes made on the device or by other senders.
+             int deviceVolume = (int) Math.round(status.getVolumeLevel() * CastMediaRouteProvider.VOLUME_MAX);
+             volume = deviceVolume;
+diff --git a/play-services-cast/core/src/main/kotlin/org/microg/gms/cast/channel/CastDeviceSession.kt b/play-services-cast/core/src/main/kotlin/org/microg/gms/cast/channel/CastDeviceSession.kt
+index 769c5c9d..ceeae3e1 100644
+--- a/play-services-cast/core/src/main/kotlin/org/microg/gms/cast/channel/CastDeviceSession.kt
++++ b/play-services-cast/core/src/main/kotlin/org/microg/gms/cast/channel/CastDeviceSession.kt
+@@ -36,6 +36,8 @@ data class ReceiverStatus(
+     /** 1 if the receiver is in standby, 0 if not, -1 if unknown. */
+     val standby: Int,
+     val applications: List<ReceiverApplication>,
++    /** False if the status carried no volume level, so [volumeLevel] is not the device volume. */
++    val hasVolumeLevel: Boolean = true,
+ )
+ 
+ /**
+@@ -398,6 +400,7 @@ class CastDeviceSession(
+                 activeInput = if (status.has("isActiveInput")) (if (status.optBoolean("isActiveInput")) 1 else 0) else -1,
+                 standby = if (status.has("isStandBy")) (if (status.optBoolean("isStandBy")) 1 else 0) else -1,
+                 applications = applications,
++                hasVolumeLevel = volume?.has("level") == true,
+             )
+         }
+     }

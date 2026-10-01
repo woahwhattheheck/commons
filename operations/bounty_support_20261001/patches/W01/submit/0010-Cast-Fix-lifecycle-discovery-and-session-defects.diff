@@ -1,0 +1,1453 @@
+diff --git a/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/CastContextImpl.java b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/CastContextImpl.java
+index e40e7b65..beecd828 100644
+--- a/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/CastContextImpl.java
++++ b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/CastContextImpl.java
+@@ -39,33 +39,36 @@ import com.google.android.gms.cast.framework.ISessionProvider;
+ import com.google.android.gms.dynamic.IObjectWrapper;
+ import com.google.android.gms.dynamic.ObjectWrapper;
+ 
++import java.util.ArrayList;
+ import java.util.HashMap;
+ import java.util.HashSet;
++import java.util.List;
+ import java.util.Map;
+ import java.util.Set;
++import java.util.concurrent.CopyOnWriteArraySet;
+ 
+ public class CastContextImpl extends ICastContext.Stub {
+     private static final String TAG = CastContextImpl.class.getSimpleName();
+ 
+-    private SessionManagerImpl sessionManager;
+-    private DiscoveryManagerImpl discoveryManager;
++    private final SessionManagerImpl sessionManager;
++    private final DiscoveryManagerImpl discoveryManager;
+ 
+     private final Context context;
+     private final CastOptions options;
+     private final IMediaRouter router;
+     private final Handler mainHandler = new Handler(Looper.getMainLooper());
+-    private final MediaRouterCallbackImpl routerCallback;
+     private final Map<String, ISessionProvider> sessionProviders = new HashMap<>();
+     public ISessionProvider defaultSessionProvider;
+     private String receiverApplicationId;
+     private String defaultCategory;
+ 
+     private MediaRouteSelector mergedSelector;
+-    private boolean callbackRegistered;
++    private final List<Bundle> callbackSelectors = new ArrayList<>();
+     private boolean activeDiscovery;
+ 
+-    private final Set<IAppVisibilityListener> visibilityListeners = new HashSet<>();
+-    private int startedActivities = 0;
++    // Listeners are added by the client library while it is constructing CastContext, possibly off the main thread.
++    private final Set<IAppVisibilityListener> visibilityListeners = new CopyOnWriteArraySet<>();
++    private final Set<Activity> startedActivities = new HashSet<>();
+     private boolean applicationVisible = false;
+     private Application.ActivityLifecycleCallbacks lifecycleCallbacks;
+ 
+@@ -73,10 +76,13 @@ public class CastContextImpl extends ICastContext.Stub {
+         this.context = (Context) ObjectWrapper.unwrap(context);
+         this.options = options;
+         this.router = router;
+-        this.routerCallback = new MediaRouterCallbackImpl(this);
+         this.receiverApplicationId = options.getReceiverApplicationId();
+         setSessionProviders(sessionProviders);
+         this.mergedSelector = buildSelector();
++        // The client library requests the managers right after construction, possibly from another thread than the
++        // main thread, so they have to exist before anything runs on the main thread.
++        this.sessionManager = new SessionManagerImpl(this);
++        this.discoveryManager = new DiscoveryManagerImpl(this);
+         runOnMainThread(() -> {
+             registerRouterCallback();
+             trackApplicationVisibility();
+@@ -123,6 +129,13 @@ public class CastContextImpl extends ICastContext.Stub {
+         return defaultCategory;
+     }
+ 
++    /**
++     * The session provider the client passed for the control category, or {@code null}.
++     */
++    public ISessionProvider getSessionProvider(String category) {
++        return sessionProviders.get(category);
++    }
++
+     private MediaRouteSelector buildSelector() {
+         MediaRouteSelector.Builder builder = new MediaRouteSelector.Builder();
+         if (defaultCategory != null) builder.addControlCategory(defaultCategory);
+@@ -146,25 +159,31 @@ public class CastContextImpl extends ICastContext.Stub {
+             return;
+         }
+         try {
+-            Bundle selector = mergedSelector.asBundle();
+-            router.registerMediaRouterCallbackImpl(selector, routerCallback);
+-            router.addCallback(selector, getCallbackFlags());
+-            callbackRegistered = true;
+-            routerCallback.updateCastState();
++            // One callback per control category: MediaRouter only reports the routes matching a callback's selector, so
++            // a selected route can be handed to the session provider of the category it was matched for.
++            for (String category : mergedSelector.getControlCategories()) {
++                Bundle selector = new MediaRouteSelector.Builder().addControlCategory(category).build().asBundle();
++                router.registerMediaRouterCallbackImpl(selector, new CategoryRouterCallback(category));
++                callbackSelectors.add(selector);
++                router.addCallback(selector, getCallbackFlags());
++            }
++            getSessionManagerImpl().updateCastState();
+         } catch (RemoteException e) {
+             Log.w(TAG, "Failed to register media router callback", e);
+         }
+     }
+ 
+     private void unregisterRouterCallback() {
+-        if (!callbackRegistered) return;
++        if (callbackSelectors.isEmpty()) return;
+         try {
+-            router.removeCallback(mergedSelector.asBundle());
++            for (Bundle selector : callbackSelectors) {
++                router.removeCallback(selector);
++            }
+             router.clearCallbacks();
+         } catch (RemoteException e) {
+             Log.w(TAG, "Failed to unregister media router callback", e);
+         }
+-        callbackRegistered = false;
++        callbackSelectors.clear();
+     }
+ 
+     private int getCallbackFlags() {
+@@ -176,12 +195,12 @@ public class CastContextImpl extends ICastContext.Stub {
+         runOnMainThread(() -> {
+             if (this.activeDiscovery == activeDiscovery) return;
+             this.activeDiscovery = activeDiscovery;
+-            if (!callbackRegistered) return;
+             try {
+-                Bundle selector = mergedSelector.asBundle();
+-                // MediaRouter only adds flags to an existing callback, so it has to be removed to drop the discovery flag.
+-                if (!activeDiscovery) router.removeCallback(selector);
+-                router.addCallback(selector, getCallbackFlags());
++                for (Bundle selector : callbackSelectors) {
++                    // MediaRouter only adds flags to an existing callback, so it has to be removed to drop the discovery flag.
++                    if (!activeDiscovery) router.removeCallback(selector);
++                    router.addCallback(selector, getCallbackFlags());
++                }
+             } catch (RemoteException e) {
+                 Log.w(TAG, "Failed to update media router discovery", e);
+             }
+@@ -198,12 +217,14 @@ public class CastContextImpl extends ICastContext.Stub {
+         lifecycleCallbacks = new Application.ActivityLifecycleCallbacks() {
+             @Override
+             public void onActivityStarted(Activity activity) {
+-                if (startedActivities++ == 0) setApplicationVisible(true);
++                startedActivities.add(activity);
++                setApplicationVisible(true);
+             }
+ 
+             @Override
+             public void onActivityStopped(Activity activity) {
+-                if (startedActivities > 0 && --startedActivities == 0) setApplicationVisible(false);
++                startedActivities.remove(activity);
++                if (startedActivities.isEmpty()) setApplicationVisible(false);
+             }
+ 
+             @Override
+@@ -224,12 +245,13 @@ public class CastContextImpl extends ICastContext.Stub {
+ 
+             @Override
+             public void onActivityDestroyed(Activity activity) {
++                startedActivities.remove(activity);
+             }
+         };
+         ((Application) applicationContext).registerActivityLifecycleCallbacks(lifecycleCallbacks);
+-        // CastContext is created from a visible activity in practically all apps. That activity was already started
+-        // before the callbacks were registered, so it is counted here.
+-        startedActivities = 1;
++        // CastContext is created from a visible activity in practically all apps. Depending on whether it was created
++        // before or after that activity's onStart, the activity may or may not be reported as started, so it isn't
++        // counted: the app is in background as soon as no started activity is left.
+         setApplicationVisible(true);
+     }
+ 
+@@ -237,7 +259,7 @@ public class CastContextImpl extends ICastContext.Stub {
+         if (applicationVisible == visible) return;
+         applicationVisible = visible;
+         setActiveDiscovery(visible);
+-        for (IAppVisibilityListener listener : new HashSet<>(visibilityListeners)) {
++        for (IAppVisibilityListener listener : visibilityListeners) {
+             try {
+                 if (visible) {
+                     listener.onAppEnteredForeground();
+@@ -272,17 +294,11 @@ public class CastContextImpl extends ICastContext.Stub {
+ 
+     @Override
+     public SessionManagerImpl getSessionManagerImpl() {
+-        if (this.sessionManager == null) {
+-            this.sessionManager = new SessionManagerImpl(this);
+-        }
+         return this.sessionManager;
+     }
+ 
+     @Override
+     public IDiscoveryManager getDiscoveryManagerImpl() throws RemoteException {
+-        if (this.discoveryManager == null) {
+-            this.discoveryManager = new DiscoveryManagerImpl(this);
+-        }
+         return this.discoveryManager;
+     }
+ 
+@@ -295,6 +311,7 @@ public class CastContextImpl extends ICastContext.Stub {
+                 ((Application) applicationContext).unregisterActivityLifecycleCallbacks(lifecycleCallbacks);
+                 lifecycleCallbacks = null;
+             }
++            startedActivities.clear();
+         });
+     }
+ 
+@@ -346,4 +363,28 @@ public class CastContextImpl extends ICastContext.Stub {
+     public IObjectWrapper getWrappedThis() throws RemoteException {
+         return ObjectWrapper.wrap(this);
+     }
++
++    /**
++     * Router callback for the routes of a single control category.
++     */
++    private class CategoryRouterCallback extends MediaRouterCallbackImpl {
++        private final String category;
++
++        CategoryRouterCallback(String category) {
++            super(CastContextImpl.this);
++            this.category = category;
++        }
++
++        @Override
++        public void onRouteSelected(String routeId, Bundle extras) {
++            Log.d(TAG, "onRouteSelected: " + routeId + " for " + category);
++            getSessionManagerImpl().onRouteSelected(category, routeId, extras);
++        }
++
++        @Override
++        public void onRouteSelectedWithRequestedRoute(String requestedRouteId, String selectedRouteId, Bundle extras) {
++            Log.d(TAG, "onRouteSelected: " + selectedRouteId + " (requested " + requestedRouteId + ") for " + category);
++            getSessionManagerImpl().onRouteSelected(category, selectedRouteId, extras);
++        }
++    }
+ }
+diff --git a/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/ReconnectionServiceImpl.java b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/ReconnectionServiceImpl.java
+index 2838e4be..a5c78d19 100644
+--- a/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/ReconnectionServiceImpl.java
++++ b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/ReconnectionServiceImpl.java
+@@ -8,12 +8,16 @@ package com.google.android.gms.cast.framework.internal;
+ import android.app.Service;
+ import android.content.Intent;
+ import android.os.IBinder;
++import android.os.RemoteException;
+ import android.util.Log;
+ 
+ import com.google.android.gms.cast.framework.IReconnectionService;
++import com.google.android.gms.cast.framework.ISessionManagerListener;
+ import com.google.android.gms.dynamic.IObjectWrapper;
+ import com.google.android.gms.dynamic.ObjectWrapper;
+ 
++import org.microg.gms.common.Constants;
++
+ /**
+  * Backs the client library's ReconnectionService, which the client starts while a remote media session is active to keep
+  * the app process alive. Reconnecting a suspended session is driven by the Cast connection itself (see
+@@ -25,6 +29,58 @@ public class ReconnectionServiceImpl extends IReconnectionService.Stub {
+     private final Service service;
+     private final SessionManagerImpl sessionManager;
+ 
++    // The client only stops the service itself when a session ends with reason 0, so stop it here once the session is gone.
++    private final ISessionManagerListener.Stub sessionListener = new ISessionManagerListener.Stub() {
++        @Override
++        public IObjectWrapper getWrappedThis() {
++            return ObjectWrapper.wrap(this);
++        }
++
++        @Override
++        public void onSessionStarting(IObjectWrapper session) {
++        }
++
++        @Override
++        public void onSessionStarted(IObjectWrapper session, String sessionId) {
++        }
++
++        @Override
++        public void onSessionStartFailed(IObjectWrapper session, int error) {
++            stopIfIdle();
++        }
++
++        @Override
++        public void onSessionEnding(IObjectWrapper session) {
++        }
++
++        @Override
++        public void onSessionEnded(IObjectWrapper session, int error) {
++            stopIfIdle();
++        }
++
++        @Override
++        public void onSessionResuming(IObjectWrapper session, String sessionId) {
++        }
++
++        @Override
++        public void onSessionResumed(IObjectWrapper session, boolean wasSuspended) {
++        }
++
++        @Override
++        public void onSessionResumeFailed(IObjectWrapper session, int error) {
++            stopIfIdle();
++        }
++
++        @Override
++        public void onSessionSuspended(IObjectWrapper session, int reason) {
++        }
++
++        @Override
++        public int getSupportedVersion() {
++            return Constants.GMS_VERSION_CODE;
++        }
++    };
++
+     public ReconnectionServiceImpl(IObjectWrapper service, IObjectWrapper sessionManager, IObjectWrapper discoveryManager) {
+         this.service = (Service) ObjectWrapper.unwrap(service);
+         Object unwrappedSessionManager = ObjectWrapper.unwrap(sessionManager);
+@@ -37,9 +93,23 @@ public class ReconnectionServiceImpl extends IReconnectionService.Stub {
+         return session != null && (session.isConnected() || session.isConnecting() || session.isResuming() || session.isSuspended());
+     }
+ 
++    private void stopIfIdle() {
++        if (service != null && !hasActiveSession()) {
++            Log.d(TAG, "Session gone, stopping");
++            service.stopSelf();
++        }
++    }
++
+     @Override
+     public void onCreate() {
+         Log.d(TAG, "onCreate");
++        if (sessionManager != null) {
++            try {
++                sessionManager.addSessionManagerListener(sessionListener);
++            } catch (RemoteException e) {
++                Log.w(TAG, "Failed to add session listener: " + e.getMessage());
++            }
++        }
+     }
+ 
+     @Override
+@@ -60,5 +130,12 @@ public class ReconnectionServiceImpl extends IReconnectionService.Stub {
+     @Override
+     public void onDestroy() {
+         Log.d(TAG, "onDestroy");
++        if (sessionManager != null) {
++            try {
++                sessionManager.removeSessionManagerListener(sessionListener);
++            } catch (RemoteException e) {
++                Log.w(TAG, "Failed to remove session listener: " + e.getMessage());
++            }
++        }
+     }
+ }
+diff --git a/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/SessionImpl.java b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/SessionImpl.java
+index b63c7573..5a79e716 100644
+--- a/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/SessionImpl.java
++++ b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/SessionImpl.java
+@@ -74,6 +74,11 @@ public class SessionImpl extends ISession.Stub {
+         this.startType = START_TYPE_NEW;
+         this.proxy.onStarting(routeInfoExtra);
+         this.castContext.getSessionManagerImpl().onSessionStarting(this);
++        if (this.state != STATE_STARTING) {
++            // A listener ended the session from onSessionStarting
++            Log.d(TAG, "Session ended while starting");
++            return;
++        }
+         this.proxy.start(routeInfoExtra);
+     }
+ 
+@@ -83,6 +88,11 @@ public class SessionImpl extends ISession.Stub {
+         this.startType = START_TYPE_RESUMED;
+         this.proxy.onResuming(routeInfoExtra);
+         this.castContext.getSessionManagerImpl().onSessionResuming(this, sessionId);
++        if (this.state != STATE_RESUMING) {
++            // A listener ended the session from onSessionResuming
++            Log.d(TAG, "Session ended while resuming");
++            return;
++        }
+         this.proxy.resume(routeInfoExtra);
+     }
+ 
+diff --git a/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/SessionManagerImpl.java b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/SessionManagerImpl.java
+index 839b885f..ad152dbf 100644
+--- a/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/SessionManagerImpl.java
++++ b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/internal/SessionManagerImpl.java
+@@ -19,6 +19,7 @@ package com.google.android.gms.cast.framework.internal;
+ import android.content.Context;
+ import android.content.SharedPreferences;
+ import android.os.Bundle;
++import android.os.IInterface;
+ import android.os.Looper;
+ import android.os.RemoteException;
+ import android.os.SystemClock;
+@@ -36,8 +37,9 @@ import com.google.android.gms.cast.framework.ISessionProvider;
+ import com.google.android.gms.dynamic.IObjectWrapper;
+ import com.google.android.gms.dynamic.ObjectWrapper;
+ 
+-import java.util.HashSet;
+-import java.util.Set;
++import java.util.ArrayList;
++import java.util.IdentityHashMap;
++import java.util.Map;
+ 
+ public class SessionManagerImpl extends ISessionManager.Stub {
+     private static final String TAG = SessionManagerImpl.class.getSimpleName();
+@@ -51,8 +53,10 @@ public class SessionManagerImpl extends ISessionManager.Stub {
+ 
+     private final CastContextImpl castContext;
+ 
+-    private final Set<ISessionManagerListener> sessionManagerListeners = new HashSet<>();
+-    private final Set<ICastStateListener> castStateListeners = new HashSet<>();
++    // The client library wraps its listener in a new binder for every add and remove call, so listeners are keyed by
++    // the client's listener object they wrap.
++    private final Map<Object, ISessionManagerListener> sessionManagerListeners = new IdentityHashMap<>();
++    private final Map<Object, ICastStateListener> castStateListeners = new IdentityHashMap<>();
+ 
+     private SessionImpl currentSession;
+ 
+@@ -92,24 +96,34 @@ public class SessionManagerImpl extends ISessionManager.Stub {
+         }
+     }
+ 
++    private static Object getListenerKey(IInterface listener, IObjectWrapper wrappedThis) {
++        try {
++            Object unwrapped = ObjectWrapper.unwrap(wrappedThis);
++            if (unwrapped != null) return unwrapped;
++        } catch (RuntimeException e) {
++            Log.w(TAG, "Failed to unwrap listener: " + e.getMessage());
++        }
++        return listener.asBinder();
++    }
++
+     @Override
+-    public void addSessionManagerListener(ISessionManagerListener listener) {
+-        if (listener != null) this.sessionManagerListeners.add(listener);
++    public void addSessionManagerListener(ISessionManagerListener listener) throws RemoteException {
++        if (listener != null) this.sessionManagerListeners.put(getListenerKey(listener, listener.getWrappedThis()), listener);
+     }
+ 
+     @Override
+-    public void removeSessionManagerListener(ISessionManagerListener listener) {
+-        this.sessionManagerListeners.remove(listener);
++    public void removeSessionManagerListener(ISessionManagerListener listener) throws RemoteException {
++        if (listener != null) this.sessionManagerListeners.remove(getListenerKey(listener, listener.getWrappedThis()));
+     }
+ 
+     @Override
+-    public void addCastStateListener(ICastStateListener listener) {
+-        if (listener != null) this.castStateListeners.add(listener);
++    public void addCastStateListener(ICastStateListener listener) throws RemoteException {
++        if (listener != null) this.castStateListeners.put(getListenerKey(listener, listener.getWrappedThis()), listener);
+     }
+ 
+     @Override
+-    public void removeCastStateListener(ICastStateListener listener) {
+-        this.castStateListeners.remove(listener);
++    public void removeCastStateListener(ICastStateListener listener) throws RemoteException {
++        if (listener != null) this.castStateListeners.remove(getListenerKey(listener, listener.getWrappedThis()));
+     }
+ 
+     @Override
+@@ -137,28 +151,36 @@ public class SessionManagerImpl extends ISessionManager.Stub {
+         });
+     }
+ 
++    public void onRouteSelected(String routeId, Bundle extras) {
++        onRouteSelected(castContext.getDefaultCategory(), routeId, extras);
++    }
++
+     /**
+      * Called when a media route was selected, either by the user in the route chooser or using {@link #startSession}.
++     *
++     * @param category the control category of the session provider the selected route was matched for
+      */
+-    public void onRouteSelected(String routeId, Bundle extras) {
++    public void onRouteSelected(String category, String routeId, Bundle extras) {
++        boolean isCast = TextUtils.equals(category, castContext.getDefaultCategory());
+         CastDevice castDevice = CastDevice.getFromBundle(extras);
+-        if (castDevice == null) {
++        if (isCast && castDevice == null) {
+             Log.d(TAG, "Selected route " + routeId + " is not a Cast device");
+             return;
+         }
+         if (currentSession != null && !currentSession.isDisconnected()) {
+             if (TextUtils.equals(currentSession.getRouteId(), routeId)) {
++                // Also reached when the route matches the categories of multiple session providers.
+                 Log.d(TAG, "Route " + routeId + " already has a session");
+                 return;
+             }
+             endCurrentSessionInternal(castContext.getOptions().getStopReceiverApplicationWhenEndingSession());
+         }
+-        ISessionProvider provider = castContext.defaultSessionProvider;
++        ISessionProvider provider = castContext.getSessionProvider(category);
+         if (provider == null) {
+-            Log.w(TAG, "No session provider for " + castContext.getDefaultCategory());
++            Log.w(TAG, "No session provider for " + category);
+             return;
+         }
+-        boolean resume = TextUtils.equals(routeId, resumeRouteId) && SystemClock.elapsedRealtime() < resumeDeadline;
++        boolean resume = isCast && TextUtils.equals(routeId, resumeRouteId) && SystemClock.elapsedRealtime() < resumeDeadline;
+         String sessionId = resume ? resumeSessionId : null;
+         clearPendingResume();
+         try {
+@@ -254,6 +276,8 @@ public class SessionManagerImpl extends ISessionManager.Stub {
+     }
+ 
+     private void saveSession(SessionImpl session) {
++        // Only sessions of the default (Cast) session provider are resumed.
++        if (!TextUtils.equals(session.getCategory(), castContext.getDefaultCategory())) return;
+         if (session.getRouteId() == null || session.getSessionId() == null) return;
+         getPreferences().edit()
+                 .putString(PREF_ROUTE_ID, session.getRouteId())
+@@ -302,7 +326,7 @@ public class SessionManagerImpl extends ISessionManager.Stub {
+     }
+ 
+     public void onCastStateChanged() {
+-        for (ICastStateListener listener : new HashSet<>(this.castStateListeners)) {
++        for (ICastStateListener listener : new ArrayList<>(this.castStateListeners.values())) {
+             try {
+                 listener.onCastStateChanged(this.castState);
+             } catch (RemoteException e) {
+@@ -313,7 +337,7 @@ public class SessionManagerImpl extends ISessionManager.Stub {
+ 
+     public void onSessionStarting(SessionImpl session) {
+         this.updateCastState();
+-        for (ISessionManagerListener listener : new HashSet<>(this.sessionManagerListeners)) {
++        for (ISessionManagerListener listener : new ArrayList<>(this.sessionManagerListeners.values())) {
+             try {
+                 listener.onSessionStarting(session.getWrappedSession());
+             } catch (RemoteException e) {
+@@ -325,7 +349,7 @@ public class SessionManagerImpl extends ISessionManager.Stub {
+     public void onSessionStartFailed(SessionImpl session, int error) {
+         if (this.currentSession == session) this.currentSession = null;
+         this.updateCastState();
+-        for (ISessionManagerListener listener : new HashSet<>(this.sessionManagerListeners)) {
++        for (ISessionManagerListener listener : new ArrayList<>(this.sessionManagerListeners.values())) {
+             try {
+                 listener.onSessionStartFailed(session.getWrappedSession(), error);
+             } catch (RemoteException e) {
+@@ -338,7 +362,7 @@ public class SessionManagerImpl extends ISessionManager.Stub {
+         this.currentSession = session;
+         saveSession(session);
+         this.updateCastState();
+-        for (ISessionManagerListener listener : new HashSet<>(this.sessionManagerListeners)) {
++        for (ISessionManagerListener listener : new ArrayList<>(this.sessionManagerListeners.values())) {
+             try {
+                 listener.onSessionStarted(session.getWrappedSession(), sessionId);
+             } catch (RemoteException e) {
+@@ -351,7 +375,7 @@ public class SessionManagerImpl extends ISessionManager.Stub {
+         this.currentSession = session;
+         saveSession(session);
+         this.updateCastState();
+-        for (ISessionManagerListener listener : new HashSet<>(this.sessionManagerListeners)) {
++        for (ISessionManagerListener listener : new ArrayList<>(this.sessionManagerListeners.values())) {
+             try {
+                 listener.onSessionResumed(session.getWrappedSession(), wasSuspended);
+             } catch (RemoteException e) {
+@@ -361,7 +385,7 @@ public class SessionManagerImpl extends ISessionManager.Stub {
+     }
+ 
+     public void onSessionEnding(SessionImpl session) {
+-        for (ISessionManagerListener listener : new HashSet<>(this.sessionManagerListeners)) {
++        for (ISessionManagerListener listener : new ArrayList<>(this.sessionManagerListeners.values())) {
+             try {
+                 listener.onSessionEnding(session.getWrappedSession());
+             } catch (RemoteException e) {
+@@ -374,7 +398,7 @@ public class SessionManagerImpl extends ISessionManager.Stub {
+         if (this.currentSession == session) this.currentSession = null;
+         clearSavedSession();
+         this.updateCastState();
+-        for (ISessionManagerListener listener : new HashSet<>(this.sessionManagerListeners)) {
++        for (ISessionManagerListener listener : new ArrayList<>(this.sessionManagerListeners.values())) {
+             try {
+                 listener.onSessionEnded(session.getWrappedSession(), error);
+             } catch (RemoteException e) {
+@@ -385,7 +409,7 @@ public class SessionManagerImpl extends ISessionManager.Stub {
+ 
+     public void onSessionResuming(SessionImpl session, String sessionId) {
+         this.updateCastState();
+-        for (ISessionManagerListener listener : new HashSet<>(this.sessionManagerListeners)) {
++        for (ISessionManagerListener listener : new ArrayList<>(this.sessionManagerListeners.values())) {
+             try {
+                 listener.onSessionResuming(session.getWrappedSession(), sessionId);
+             } catch (RemoteException e) {
+@@ -398,7 +422,7 @@ public class SessionManagerImpl extends ISessionManager.Stub {
+         if (this.currentSession == session) this.currentSession = null;
+         clearSavedSession();
+         this.updateCastState();
+-        for (ISessionManagerListener listener : new HashSet<>(this.sessionManagerListeners)) {
++        for (ISessionManagerListener listener : new ArrayList<>(this.sessionManagerListeners.values())) {
+             try {
+                 listener.onSessionResumeFailed(session.getWrappedSession(), error);
+             } catch (RemoteException e) {
+@@ -409,7 +433,7 @@ public class SessionManagerImpl extends ISessionManager.Stub {
+ 
+     public void onSessionSuspended(SessionImpl session, int reason) {
+         this.updateCastState();
+-        for (ISessionManagerListener listener : new HashSet<>(this.sessionManagerListeners)) {
++        for (ISessionManagerListener listener : new ArrayList<>(this.sessionManagerListeners.values())) {
+             try {
+                 listener.onSessionSuspended(session.getWrappedSession(), reason);
+             } catch (RemoteException e) {
+diff --git a/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/media/internal/FetchBitmapTaskImpl.java b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/media/internal/FetchBitmapTaskImpl.java
+index 76c525ae..2b773a19 100644
+--- a/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/media/internal/FetchBitmapTaskImpl.java
++++ b/play-services-cast-framework/core/src/main/java/com/google/android/gms/cast/framework/media/internal/FetchBitmapTaskImpl.java
+@@ -22,6 +22,8 @@ import java.net.URL;
+  */
+ public class FetchBitmapTaskImpl extends IFetchBitmapTask.Stub {
+     private static final String TAG = FetchBitmapTaskImpl.class.getSimpleName();
++    // Bound for images requested without size hints, so a large image can not exhaust the app's heap.
++    private static final int MAX_UNHINTED_DIMENSION = 2048;
+ 
+     private final IFetchBitmapTaskProgressPublisher progressPublisher;
+     private final int targetWidth;
+@@ -48,7 +50,7 @@ public class FetchBitmapTaskImpl extends IFetchBitmapTask.Stub {
+             byte[] data = download(uri);
+             if (data == null) return null;
+             return decode(data);
+-        } catch (IOException | RuntimeException e) {
++        } catch (IOException | RuntimeException | OutOfMemoryError e) {
+             Log.w(TAG, "Failed to fetch " + uri + ": " + e.getMessage());
+             return null;
+         }
+@@ -117,16 +119,20 @@ public class FetchBitmapTaskImpl extends IFetchBitmapTask.Stub {
+ 
+     private Bitmap decode(byte[] data) {
+         BitmapFactory.Options options = new BitmapFactory.Options();
++        options.inJustDecodeBounds = true;
++        BitmapFactory.decodeByteArray(data, 0, data.length, options);
++        int sampleSize = 1;
+         if (targetWidth > 0 && targetHeight > 0) {
+-            options.inJustDecodeBounds = true;
+-            BitmapFactory.decodeByteArray(data, 0, data.length, options);
+-            int sampleSize = 1;
+             while (options.outWidth / (sampleSize * 2) >= targetWidth && options.outHeight / (sampleSize * 2) >= targetHeight) {
+                 sampleSize *= 2;
+             }
+-            options = new BitmapFactory.Options();
+-            options.inSampleSize = sampleSize;
++        } else {
++            while (options.outWidth / sampleSize > MAX_UNHINTED_DIMENSION || options.outHeight / sampleSize > MAX_UNHINTED_DIMENSION) {
++                sampleSize *= 2;
++            }
+         }
++        options = new BitmapFactory.Options();
++        options.inSampleSize = sampleSize;
+         Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length, options);
+         if (bitmap == null || targetWidth <= 0 || targetHeight <= 0) return bitmap;
+         if (bitmap.getWidth() <= targetWidth && bitmap.getHeight() <= targetHeight) return bitmap;
+diff --git a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastDeviceControllerService.java b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastDeviceControllerService.java
+index 1b73a9d5..fa4237f8 100644
+--- a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastDeviceControllerService.java
++++ b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastDeviceControllerService.java
+@@ -26,13 +26,30 @@ import com.google.android.gms.common.internal.IGmsCallbacks;
+ import org.microg.gms.BaseService;
+ import org.microg.gms.common.GmsService;
+ 
++import java.util.Collections;
++import java.util.Set;
++import java.util.concurrent.ConcurrentHashMap;
++
+ public class CastDeviceControllerService extends BaseService {
+     private static final String TAG = CastDeviceControllerService.class.getSimpleName();
+ 
++    // Controllers that are not disconnected yet. Every connected client keeps this service bound, so the ones left
++    // when it is destroyed were abandoned by their client.
++    private final Set<CastDeviceControllerImpl> controllers = Collections.newSetFromMap(new ConcurrentHashMap<>());
++
+     public CastDeviceControllerService() {
+         super("GmsCastDeviceControllerSvc", GmsService.CAST, GmsService.CAST_API);
+     }
+ 
++    @Override
++    public void onDestroy() {
++        for (CastDeviceControllerImpl controller : controllers) {
++            controller.disconnect();
++        }
++        controllers.clear();
++        super.onDestroy();
++    }
++
+     @Override
+     public void handleServiceRequest(IGmsCallbacks callback, GetServiceRequest request, GmsService service) throws RemoteException {
+         if (service == GmsService.CAST_API) {
+@@ -43,19 +60,31 @@ public class CastDeviceControllerService extends BaseService {
+         }
+         ConnectionInfo info = new ConnectionInfo();
+         info.features = CastServiceImplKt.CAST_DEVICE_CONTROLLER_FEATURES;
+-        CastDeviceControllerImpl controller = new CastDeviceControllerImpl(request.packageName, request.extras);
++        CastDeviceControllerImpl controller = new CastDeviceControllerImpl(request.packageName, request.extras, released -> {
++            controllers.remove(released);
++            return kotlin.Unit.INSTANCE;
++        }, reopened -> {
++            controllers.add(reopened);
++            return kotlin.Unit.INSTANCE;
++        });
++        controllers.add(controller);
+         if (!controller.getHasInitialListener()) {
+             // The client calls connect() once it added its listener
+             callback.onPostInitCompleteWithConnectionInfo(0, controller, info);
+             return;
+         }
+         controller.connectBeforeInit(statusCode -> {
++            // The client treats APP_NO_LONGER_RUNNING as connected
++            boolean connected = statusCode == 0 || statusCode == CastDeviceControllerImpl.STATUS_APP_NO_LONGER_RUNNING;
+             try {
+-                callback.onPostInitCompleteWithConnectionInfo(statusCode, statusCode == 0 ? controller : null, info);
++                callback.onPostInitCompleteWithConnectionInfo(statusCode, connected ? controller : null, info);
+             } catch (RemoteException e) {
+                 Log.w(TAG, "Client died while connecting", e);
+                 controller.disconnect();
++                return kotlin.Unit.INSTANCE;
+             }
++            // Without the binder the client can never call disconnect()
++            if (!connected) controller.disconnect();
+             return kotlin.Unit.INSTANCE;
+         });
+     }
+diff --git a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java
+index ba0ffe9a..5b98927b 100644
+--- a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java
++++ b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java
+@@ -17,6 +17,7 @@
+ package org.microg.gms.cast;
+ 
+ import android.content.Intent;
++import android.os.SystemClock;
+ import android.util.Log;
+ 
+ import androidx.annotation.NonNull;
+@@ -36,7 +37,13 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+     private final String host;
+     private final int port;
+ 
++    // Status replies to an older SET_VOLUME arrive after newer local changes; ignore them for this long.
++    private static final long LOCAL_VOLUME_HOLD_MS = 1000;
++
+     private volatile int volume;
++    private volatile boolean volumeKnown;
++    private volatile int requestedVolume = -1;
++    private volatile long requestedVolumeAt;
+     private volatile boolean deviceMuted;
+     // The control connection of the selected route, used to follow and change the device volume.
+     // Guarded by this; callbacks of a replaced session are ignored. Route state changes are posted
+@@ -97,9 +104,11 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+     @Override
+     public void onRelease() {
+         synchronized (this) {
++            if (released) return;
+             released = true;
+         }
+         closeSession();
++        provider.onRouteControllerReleased(routeId);
+     }
+ 
+     private void closeSession() {
+@@ -120,6 +129,8 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+     public void onSetVolume(int volume) {
+         int newVolume = Math.max(0, Math.min(CastMediaRouteProvider.VOLUME_MAX, volume));
+         this.volume = newVolume;
++        requestedVolume = newVolume;
++        requestedVolumeAt = SystemClock.elapsedRealtime();
+         provider.onRouteStateChanged(routeId, -1, newVolume);
+ 
+         // Volume is a device setting, so any open connection to the receiver can change it. Prefer
+@@ -150,6 +161,11 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+ 
+     @Override
+     public void onUpdateVolume(int delta) {
++        if (!volumeKnown) {
++            // A step relative to the placeholder volume would jump the device to an arbitrary level.
++            Log.d(TAG, "Volume of " + routeId + " not known yet, ignoring step");
++            return;
++        }
+         onSetVolume(volume + delta);
+     }
+ 
+@@ -199,6 +215,8 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+             if (!status.getHasVolumeLevel()) return;
+             // Follow volume changes made on the device or by other senders.
+             int deviceVolume = (int) Math.round(status.getVolumeLevel() * CastMediaRouteProvider.VOLUME_MAX);
++            volumeKnown = true;
++            if (deviceVolume != requestedVolume && SystemClock.elapsedRealtime() - requestedVolumeAt < LOCAL_VOLUME_HOLD_MS) return;
+             volume = deviceVolume;
+             provider.onRouteStateChanged(routeId, -1, deviceVolume);
+         }
+diff --git a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteProvider.java b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteProvider.java
+index 5c6c09db..7239045b 100644
+--- a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteProvider.java
++++ b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteProvider.java
+@@ -24,8 +24,10 @@ import android.net.nsd.NsdServiceInfo;
+ import android.os.Bundle;
+ import android.os.Handler;
+ import android.os.Looper;
++import android.text.TextUtils;
+ import android.util.Log;
+ 
++import androidx.annotation.RequiresApi;
+ import androidx.mediarouter.media.MediaControlIntent;
+ import androidx.mediarouter.media.MediaRouteDescriptor;
+ import androidx.mediarouter.media.MediaRouteDiscoveryRequest;
+@@ -41,6 +43,7 @@ import java.net.InetAddress;
+ import java.util.ArrayDeque;
+ import java.util.ArrayList;
+ import java.util.HashMap;
++import java.util.Iterator;
+ import java.util.LinkedHashMap;
+ import java.util.LinkedHashSet;
+ import java.util.Map;
+@@ -62,12 +65,21 @@ public class CastMediaRouteProvider extends MediaRouteProvider {
+ 
+     static final int VOLUME_MAX = 20;
+     private static final int RESOLVE_RETRY_DELAY_MS = 500;
++    private static final int RESOLVE_TIMEOUT_MS = 15000;
+ 
+     private static class CastRoute {
+         CastDevice device;
+         boolean group;
+         int volume = VOLUME_MAX / 2;
+         int connectionState = MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED;
++        // Route controllers created and not yet released. A selected route keeps its controller
++        // while its own connection to the device is down, so this, not the connection state, tells
++        // whether the route is still in use.
++        int controllers;
++    }
++
++    private static boolean isInUse(CastRoute route) {
++        return route.controllers > 0 || route.connectionState != MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED;
+     }
+ 
+     // All mutable state below is only accessed on the main thread.
+@@ -77,6 +89,10 @@ public class CastMediaRouteProvider extends MediaRouteProvider {
+     private final Set<String> customCategories = new LinkedHashSet<String>();
+     private final Queue<NsdServiceInfo> resolveQueue = new ArrayDeque<NsdServiceInfo>();
+     private boolean resolving = false;
++    // Incremented when discovery ends, see onDiscoveryEnded()
++    private int discoveryRun;
++    private NsdManager.ResolveListener activeResolve;
++    private final Runnable resolveTimeout = this::onResolveTimeout;
+ 
+     private NsdManager mNsdManager;
+     private DiscoveryListener discoveryListener;
+@@ -161,8 +177,9 @@ public class CastMediaRouteProvider extends MediaRouteProvider {
+     public CastMediaRouteProvider(Context context) {
+         super(context);
+ 
+-        if (android.os.Build.VERSION.SDK_INT < 16) {
+-            Log.i(TAG, "Cast discovery disabled. Android SDK version 16 or higher required.");
++        // The TXT records, which carry the mandatory device id, are only readable from API 21.
++        if (android.os.Build.VERSION.SDK_INT < 21) {
++            Log.i(TAG, "Cast discovery disabled. Android SDK version 21 or higher required.");
+             return;
+         }
+ 
+@@ -240,6 +257,7 @@ public class CastMediaRouteProvider extends MediaRouteProvider {
+             } catch (RuntimeException e) {
+                 Log.w(TAG, "Failed to stop discovery", e);
+                 discoveryListener = null;
++                onDiscoveryEnded();
+             }
+         }
+     }
+@@ -274,6 +292,7 @@ public class CastMediaRouteProvider extends MediaRouteProvider {
+             handler.post(() -> {
+                 if (discoveryListener != this) return;
+                 discoveryListener = null;
++                onDiscoveryEnded();
+                 // Start again if a new request arrived while stopping.
+                 updateDiscovery();
+             });
+@@ -282,15 +301,14 @@ public class CastMediaRouteProvider extends MediaRouteProvider {
+         @Override
+         public void onStopDiscoveryFailed(String serviceType, int errorCode) {
+             Log.w(TAG, "Stopping discovery failed. Error code " + errorCode);
+-            handler.post(() -> {
+-                if (discoveryListener == this) state = STARTED;
+-            });
++            // NsdManager has already unregistered this listener, so nothing is running for it.
++            onDiscoveryStopped(serviceType);
+         }
+ 
+         @Override
+         public void onServiceFound(NsdServiceInfo serviceInfo) {
+             handler.post(() -> {
+-                resolveQueue.add(serviceInfo);
++                queueResolve(serviceInfo);
+                 resolveNext();
+             });
+         }
+@@ -298,7 +316,42 @@ public class CastMediaRouteProvider extends MediaRouteProvider {
+         @Override
+         public void onServiceLost(NsdServiceInfo serviceInfo) {
+             String name = serviceInfo.getServiceName();
+-            handler.post(() -> onChromeCastLost(name));
++            handler.post(() -> {
++                // A resolve of a service that is gone never completes.
++                dropQueuedResolve(name);
++                onChromeCastLost(name);
++            });
++        }
++    }
++
++    /**
++     * NSD reports no losses for a discovery run once it has ended, so whether the devices it found
++     * are still present is unknown. A new run finds those that are.
++     */
++    private void onDiscoveryEnded() {
++        // Results of resolves that were started in the ended discovery run are ignored.
++        discoveryRun++;
++        resolveQueue.clear();
++        serviceCastIds.clear();
++        boolean removed = false;
++        for (Iterator<CastRoute> it = routes.values().iterator(); it.hasNext(); ) {
++            // Keep a route that is in use; it is removed once its controller is released.
++            if (!isInUse(it.next())) {
++                it.remove();
++                removed = true;
++            }
++        }
++        if (removed) publishRoutes();
++    }
++
++    private void queueResolve(NsdServiceInfo serviceInfo) {
++        dropQueuedResolve(serviceInfo.getServiceName());
++        resolveQueue.add(serviceInfo);
++    }
++
++    private void dropQueuedResolve(String name) {
++        for (Iterator<NsdServiceInfo> it = resolveQueue.iterator(); it.hasNext(); ) {
++            if (TextUtils.equals(name, it.next().getServiceName())) it.remove();
+         }
+     }
+ 
+@@ -311,40 +364,73 @@ public class CastMediaRouteProvider extends MediaRouteProvider {
+         if (resolving || mNsdManager == null) return;
+         final NsdServiceInfo serviceInfo = resolveQueue.poll();
+         if (serviceInfo == null) return;
++        final int run = discoveryRun;
+         resolving = true;
+-        try {
+-            mNsdManager.resolveService(serviceInfo, new NsdManager.ResolveListener() {
+-                @Override
+-                public void onResolveFailed(NsdServiceInfo info, int errorCode) {
+-                    handler.post(() -> {
+-                        resolving = false;
+-                        if (errorCode == NsdManager.FAILURE_ALREADY_ACTIVE) {
+-                            // A resolve for another listener in this process is still running.
+-                            resolveQueue.add(serviceInfo);
+-                            handler.postDelayed(CastMediaRouteProvider.this::resolveNext, RESOLVE_RETRY_DELAY_MS);
+-                            return;
+-                        }
+-                        Log.w(TAG, "Resolving " + info.getServiceName() + " failed. Error code " + errorCode);
+-                        resolveNext();
+-                    });
+-                }
++        NsdManager.ResolveListener listener = new NsdManager.ResolveListener() {
++            @Override
++            public void onResolveFailed(NsdServiceInfo info, int errorCode) {
++                handler.post(() -> {
++                    if (activeResolve != this) return;
++                    finishResolve();
++                    if (errorCode == NsdManager.FAILURE_ALREADY_ACTIVE) {
++                        // A resolve for another listener in this process is still running.
++                        if (run == discoveryRun) queueResolve(serviceInfo);
++                        handler.postDelayed(CastMediaRouteProvider.this::resolveNext, RESOLVE_RETRY_DELAY_MS);
++                        return;
++                    }
++                    Log.w(TAG, "Resolving " + info.getServiceName() + " failed. Error code " + errorCode);
++                    resolveNext();
++                });
++            }
+ 
+-                @Override
+-                public void onServiceResolved(NsdServiceInfo info) {
+-                    handler.post(() -> {
+-                        resolving = false;
+-                        onServiceResolvedInternal(info);
+-                        resolveNext();
+-                    });
+-                }
+-            });
++            @Override
++            public void onServiceResolved(NsdServiceInfo info) {
++                handler.post(() -> {
++                    if (activeResolve != this) return;
++                    finishResolve();
++                    // A device resolved after discovery stopped would never be reported lost.
++                    if (discoveryListener != null && run == discoveryRun) onServiceResolvedInternal(info);
++                    resolveNext();
++                });
++            }
++        };
++        activeResolve = listener;
++        if (android.os.Build.VERSION.SDK_INT >= 34) {
++            // A resolve of a service that vanished never completes. Below API 34 it cannot be
++            // cancelled and keeps the per client resolve slot, so a timeout would not help there.
++            handler.postDelayed(resolveTimeout, RESOLVE_TIMEOUT_MS);
++        }
++        try {
++            mNsdManager.resolveService(serviceInfo, listener);
+         } catch (RuntimeException e) {
+             Log.w(TAG, "Failed to resolve " + serviceInfo.getServiceName(), e);
+-            resolving = false;
++            finishResolve();
+             handler.post(this::resolveNext);
+         }
+     }
+ 
++    private void finishResolve() {
++        handler.removeCallbacks(resolveTimeout);
++        activeResolve = null;
++        resolving = false;
++    }
++
++    private void onResolveTimeout() {
++        NsdManager.ResolveListener stale = activeResolve;
++        if (stale == null) return;
++        Log.w(TAG, "Resolving timed out");
++        // Late callbacks of the stale listener are ignored.
++        finishResolve();
++        if (android.os.Build.VERSION.SDK_INT >= 34) {
++            try {
++                mNsdManager.stopServiceResolution(stale);
++            } catch (RuntimeException e) {
++                Log.w(TAG, "Failed to stop resolving", e);
++            }
++        }
++        resolveNext();
++    }
++
+     private static String getTxtString(Map<String, byte[]> attributes, String key) {
+         byte[] value = attributes.get(key);
+         if (value == null) return null;
+@@ -365,7 +451,7 @@ public class CastMediaRouteProvider extends MediaRouteProvider {
+         }
+     }
+ 
+-    @SuppressLint("NewApi")
++    @RequiresApi(21)
+     private void onServiceResolvedInternal(NsdServiceInfo serviceInfo) {
+         String name = serviceInfo.getServiceName();
+         InetAddress host = serviceInfo.getHost();
+@@ -419,7 +505,7 @@ public class CastMediaRouteProvider extends MediaRouteProvider {
+         if (id == null) return;
+         CastRoute route = routes.get(id);
+         // Keep a route that is in use; it is removed once its controller disconnects.
+-        if (route != null && route.connectionState == MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED) {
++        if (route != null && !isInUse(route)) {
+             routes.remove(id);
+             Log.d(TAG, "Lost Cast device " + id);
+             publishRoutes();
+@@ -432,9 +518,26 @@ public class CastMediaRouteProvider extends MediaRouteProvider {
+         if (route == null) {
+             return null;
+         }
++        route.controllers++;
+         return new CastMediaRouteController(this, routeId, route.device.getAddress(), route.device.getServicePort(), route.volume);
+     }
+ 
++    /**
++     * Called by a route controller, from any thread, when MediaRouter released it.
++     */
++    void onRouteControllerReleased(final String routeId) {
++        handler.post(() -> {
++            CastRoute route = routes.get(routeId);
++            if (route == null) return;
++            if (route.controllers > 0) route.controllers--;
++            if (!isInUse(route) && !serviceCastIds.containsValue(routeId)) {
++                // The device was lost while it was in use.
++                routes.remove(routeId);
++                publishRoutes();
++            }
++        });
++    }
++
+     /**
+      * Called by route controllers, from any thread, to reflect connection and volume state of a
+      * route in the published descriptor. A negative connection state or volume keeps the current
+@@ -446,7 +549,7 @@ public class CastMediaRouteProvider extends MediaRouteProvider {
+             if (route == null) return;
+             if (connectionState >= 0) route.connectionState = connectionState;
+             if (volume >= 0) route.volume = Math.max(0, Math.min(VOLUME_MAX, volume));
+-            if (route.connectionState == MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED && !serviceCastIds.containsValue(routeId)) {
++            if (!isInUse(route) && !serviceCastIds.containsValue(routeId)) {
+                 // The device was lost while it was in use.
+                 routes.remove(routeId);
+             }
+diff --git a/play-services-cast/core/src/main/kotlin/org/microg/gms/cast/CastChannelRegistry.kt b/play-services-cast/core/src/main/kotlin/org/microg/gms/cast/CastChannelRegistry.kt
+index e30d8a61..e299b2d7 100644
+--- a/play-services-cast/core/src/main/kotlin/org/microg/gms/cast/CastChannelRegistry.kt
++++ b/play-services-cast/core/src/main/kotlin/org/microg/gms/cast/CastChannelRegistry.kt
+@@ -21,7 +21,8 @@ object CastChannelRegistry {
+ 
+     @JvmStatic
+     fun register(deviceId: String, session: CastDeviceSession) = synchronized(sessions) {
+-        sessions.getOrPut(deviceId) { ArrayList() }.add(session)
++        val list = sessions.getOrPut(deviceId) { ArrayList() }
++        if (session !in list) list.add(session)
+     }
+ 
+     @JvmStatic
+diff --git a/play-services-cast/core/src/main/kotlin/org/microg/gms/cast/CastDeviceControllerImpl.kt b/play-services-cast/core/src/main/kotlin/org/microg/gms/cast/CastDeviceControllerImpl.kt
+index d801f6e8..8d65a672 100644
+--- a/play-services-cast/core/src/main/kotlin/org/microg/gms/cast/CastDeviceControllerImpl.kt
++++ b/play-services-cast/core/src/main/kotlin/org/microg/gms/cast/CastDeviceControllerImpl.kt
+@@ -7,6 +7,7 @@ package org.microg.gms.cast
+ 
+ import android.net.Uri
+ import android.os.Bundle
++import android.os.IBinder
+ import android.os.RemoteException
+ import android.util.Log
+ import com.google.android.gms.cast.ApplicationMetadata
+@@ -32,56 +33,143 @@ private const val TAG = "GmsCastDeviceController"
+  * Older clients pass their listener in the service request extras and expect the device to be connected when the
+  * service request completes (see [connectBeforeInit]). Newer clients bind without a listener, then call [addListener]
+  * and [connect] and wait for [ICastDeviceControllerListener.onConnectedWithResult].
++ *
++ * [onRelease] is called whenever the controller is disconnected. Newer clients may keep the controller binder for the
++ * same device and call [connect] on it again; that opens a new session and calls [onReopen].
+  */
+-class CastDeviceControllerImpl(private val packageName: String?, extras: Bundle) : ICastDeviceController.Stub(), CastDeviceSession.Callbacks {
++class CastDeviceControllerImpl(
++    private val packageName: String?,
++    extras: Bundle,
++    private val onRelease: (CastDeviceControllerImpl) -> Unit,
++    private val onReopen: (CastDeviceControllerImpl) -> Unit,
++) : ICastDeviceController.Stub() {
+     private val castDevice: CastDevice
+-    private val session: CastDeviceSession
++    private val port: Int
++
++    // Callbacks of a replaced session are ignored
++    @Volatile
++    private var session: CastDeviceSession
++
++    // Older clients reconnect through a new controller and never call disconnect() on the old one
++    private val isLegacyClient: Boolean
++
++    // The application an older client was attached to before it reconnected
++    private val lastApplicationId: String?
++    private val lastSessionId: String?
+ 
+     @Volatile
+     private var listener: ICastDeviceControllerListener? = null
+ 
++    // Binder of the listener whose death disconnects this controller, guarded by this
++    private var linkedBinder: IBinder? = null
++
++    private val listenerDeath = IBinder.DeathRecipient {
++        Log.d(TAG, "Client $packageName died, disconnecting from ${castDevice.friendlyName}")
++        listener = null
++        disconnect()
++    }
++
+     @Volatile
+     private var initCallback: ((Int) -> Unit)? = null
+ 
+     @Volatile
+     private var connectRequested = false
+ 
++    @Volatile
++    private var rejoining = false
++
++    @Volatile
++    private var released = false
++
+     init {
+         extras.classLoader = BinderWrapper::class.java.classLoader
+         castDevice = CastDevice.getFromBundle(extras) ?: throw IllegalArgumentException("No CastDevice in request extras")
++        port = castDevice.servicePort.takeIf { it > 0 } ?: CastChannel.DEFAULT_PORT
++        session = newSession()
+         val listenerWrapper = extras.getParcelable<BinderWrapper>("listener")
+-        if (listenerWrapper != null) listener = ICastDeviceControllerListener.Stub.asInterface(listenerWrapper.binder)
+-        val port = castDevice.servicePort.takeIf { it > 0 } ?: CastChannel.DEFAULT_PORT
+-        session = CastDeviceSession(castDevice.address, port, this)
++        isLegacyClient = listenerWrapper != null
++        lastApplicationId = extras.getString("last_application_id")?.takeIf { it.isNotEmpty() }
++        lastSessionId = extras.getString("last_session_id")?.takeIf { it.isNotEmpty() }
++        // A listener that is already dead is dropped, so no connection is opened for it
++        if (listenerWrapper != null) setListener(ICastDeviceControllerListener.Stub.asInterface(listenerWrapper.binder))
+     }
+ 
+     val hasInitialListener: Boolean
+         get() = listener != null
+ 
+-    /** Connect to the device, then report the result through [callback] (0 on success). */
++    private fun newSession(): CastDeviceSession {
++        val callbacks = SessionCallbacks()
++        return CastDeviceSession(castDevice.address, port, callbacks).also { callbacks.owner = it }
++    }
++
++    /**
++     * Connect to the device, then report the result through [callback]: 0 on success, [STATUS_APP_NO_LONGER_RUNNING]
++     * if the connection is up but the application the client was attached to before is gone.
++     */
+     fun connectBeforeInit(callback: (Int) -> Unit) {
+         initCallback = callback
+         session.connect()
+     }
+ 
+     override fun connect() {
++        val reopened = synchronized(this) {
++            if (!released) return@synchronized false
++            // The client reuses this binder after it disconnected, e.g. when casting to the same device again
++            released = false
++            session = newSession()
++            true
++        }
++        if (reopened) onReopen(this)
+         connectRequested = true
+         session.connect()
+     }
+ 
+     override fun addListener(listener: ICastDeviceControllerListener?) {
+-        this.listener = listener
++        if (!setListener(listener)) disconnect()
+     }
+ 
+     override fun removeListener() {
+-        listener = null
++        setListener(null)
+         disconnect()
+     }
+ 
+     override fun disconnect() {
+         Log.d(TAG, "disconnect from ${castDevice.friendlyName} ($packageName)")
+-        CastChannelRegistry.unregister(castDevice.deviceId, session)
+-        session.disconnect()
++        val current = synchronized(this) {
++            released = true
++            session
++        }
++        unlinkListener()
++        CastChannelRegistry.unregister(castDevice.deviceId, current)
++        current.disconnect()
++        onRelease(this)
++    }
++
++    /** Set the client listener and disconnect once its process dies. Returns false if it is already dead. */
++    @Synchronized
++    private fun setListener(newListener: ICastDeviceControllerListener?): Boolean {
++        val binder = newListener?.asBinder()
++        if (binder !== linkedBinder) {
++            unlinkListener()
++            if (binder != null) {
++                try {
++                    binder.linkToDeath(listenerDeath, 0)
++                } catch (e: RemoteException) {
++                    listener = null
++                    return false
++                }
++                linkedBinder = binder
++            }
++        }
++        listener = newListener
++        return true
++    }
++
++    @Synchronized
++    private fun unlinkListener() {
++        val binder = linkedBinder ?: return
++        linkedBinder = null
++        runCatching { binder.unlinkToDeath(listenerDeath, 0) }
+     }
+ 
+     override fun leaveApplication() = session.leaveApplication()
+@@ -108,18 +196,49 @@ class CastDeviceControllerImpl(private val packageName: String?, extras: Bundle)
+     override fun joinApplication(applicationId: String?, sessionId: String?, joinOptions: JoinOptions?) =
+         session.joinApplication(applicationId, sessionId)
+ 
+-    // CastDeviceSession.Callbacks, called on the session thread
++    // Session events, called on the session thread of the current session
+ 
+-    override fun onConnected() = onConnectResult(CastDeviceSession.STATUS_SUCCESS)
++    private inner class SessionCallbacks : CastDeviceSession.Callbacks {
++        lateinit var owner: CastDeviceSession
+ 
+-    override fun onConnectionFailed(statusCode: Int) = onConnectResult(statusCode)
++        private inline fun ifCurrent(block: () -> Unit) {
++            if (owner === session) block()
++        }
+ 
+-    private fun onConnectResult(statusCode: Int) {
++        override fun onConnected() = onConnectResult(owner, CastDeviceSession.STATUS_SUCCESS)
++        override fun onConnectionFailed(statusCode: Int) = onConnectResult(owner, statusCode)
++        override fun onDisconnected(statusCode: Int) = onSessionDisconnected(owner, statusCode)
++        override fun onDeviceStatusChanged(status: ReceiverStatus) = ifCurrent { deviceStatusChanged(status) }
++        override fun onApplicationConnected(application: ReceiverApplication, wasLaunched: Boolean) =
++            ifCurrent { applicationConnected(application, wasLaunched) }
++        override fun onApplicationConnectionFailed(statusCode: Int) = ifCurrent { applicationConnectionFailed(statusCode) }
++        override fun onApplicationStatusChanged(statusText: String?) =
++            ifCurrent { notify { onApplicationStatusChanged(ApplicationStatus(statusText)) } }
++        override fun onApplicationDisconnected(statusCode: Int) = ifCurrent { notify { onApplicationDisconnected(statusCode) } }
++        override fun onStopApplicationResult(statusCode: Int) = ifCurrent { notify { onStopApplicationResult(statusCode) } }
++        override fun onLeaveApplicationResult(statusCode: Int) = ifCurrent { notify { onLeaveApplicationResult(statusCode) } }
++        override fun onTextMessage(namespace: String, message: String) = ifCurrent { notify { onTextMessageReceived(namespace, message) } }
++        override fun onBinaryMessage(namespace: String, data: ByteArray) = ifCurrent { notify { onBinaryMessageReceived(namespace, data) } }
++        override fun onSendMessageSuccess(namespace: String, requestId: Long) = ifCurrent { notify { onSendMessageSuccess(namespace, requestId) } }
++        override fun onSendMessageFailure(namespace: String, requestId: Long, statusCode: Int) =
++            ifCurrent { notify { onSendMessageFailure(namespace, requestId, statusCode) } }
++    }
++
++    private fun onConnectResult(owner: CastDeviceSession, statusCode: Int) {
+         Log.d(TAG, "Connection to ${castDevice.friendlyName}: $statusCode")
+-        if (statusCode == CastDeviceSession.STATUS_SUCCESS) CastChannelRegistry.register(castDevice.deviceId, session)
+-        initCallback?.let {
+-            initCallback = null
+-            it(statusCode)
++        if (statusCode == CastDeviceSession.STATUS_SUCCESS) {
++            CastChannelRegistry.register(castDevice.deviceId, owner)
++            // disconnect() may have run during the connect (client died, service destroyed) and unregistered first.
++            if (released || owner !== session) CastChannelRegistry.unregister(castDevice.deviceId, owner)
++        }
++        if (owner !== session) return
++        if (statusCode == CastDeviceSession.STATUS_SUCCESS && initCallback != null && lastApplicationId != null) {
++            // An older client reconnecting after a connection loss continues with the application it was attached to.
++            // The init completes once the join result arrives.
++            rejoining = true
++            owner.joinApplication(lastApplicationId, lastSessionId)
++        } else {
++            finishInit(statusCode)
+         }
+         if (connectRequested) {
+             connectRequested = false
+@@ -127,37 +246,47 @@ class CastDeviceControllerImpl(private val packageName: String?, extras: Bundle)
+         }
+     }
+ 
+-    override fun onDisconnected(statusCode: Int) {
+-        CastChannelRegistry.unregister(castDevice.deviceId, session)
++    private fun finishInit(statusCode: Int) {
++        initCallback?.let {
++            initCallback = null
++            it(statusCode)
++        }
++    }
++
++    private fun onSessionDisconnected(owner: CastDeviceSession, statusCode: Int) {
++        CastChannelRegistry.unregister(castDevice.deviceId, owner)
++        if (owner !== session) return
+         notify { onDisconnected(statusCode) }
++        // Older clients drop their listener on onDisconnected and reconnect through a new controller
++        if (isLegacyClient) disconnect()
+     }
+ 
+-    override fun onDeviceStatusChanged(status: ReceiverStatus) {
++    private fun deviceStatusChanged(status: ReceiverStatus) {
+         val app = status.applications.firstOrNull()
+         notify { onDeviceStatusChanged(CastDeviceStatus(status.volumeLevel, status.muted, status.activeInput, app?.toMetadata(), status.standby)) }
+     }
+ 
+-    override fun onApplicationConnected(application: ReceiverApplication, wasLaunched: Boolean) =
++    private fun applicationConnected(application: ReceiverApplication, wasLaunched: Boolean) {
+         notify { onApplicationConnectionSuccess(application.toMetadata(), application.statusText, application.sessionId, wasLaunched) }
++        if (rejoining) {
++            rejoining = false
++            finishInit(CastDeviceSession.STATUS_SUCCESS)
++        }
++    }
+ 
+-    override fun onApplicationConnectionFailed(statusCode: Int) = notify { onApplicationConnectionFailure(statusCode) }
+-
+-    override fun onApplicationStatusChanged(statusText: String?) = notify { onApplicationStatusChanged(ApplicationStatus(statusText)) }
+-
+-    override fun onApplicationDisconnected(statusCode: Int) = notify { onApplicationDisconnected(statusCode) }
+-
+-    override fun onStopApplicationResult(statusCode: Int) = notify { onStopApplicationResult(statusCode) }
+-
+-    override fun onLeaveApplicationResult(statusCode: Int) = notify { onLeaveApplicationResult(statusCode) }
+-
+-    override fun onTextMessage(namespace: String, message: String) = notify { onTextMessageReceived(namespace, message) }
+-
+-    override fun onBinaryMessage(namespace: String, data: ByteArray) = notify { onBinaryMessageReceived(namespace, data) }
+-
+-    override fun onSendMessageSuccess(namespace: String, requestId: Long) = notify { onSendMessageSuccess(namespace, requestId) }
+-
+-    override fun onSendMessageFailure(namespace: String, requestId: Long, statusCode: Int) =
+-        notify { onSendMessageFailure(namespace, requestId, statusCode) }
++    private fun applicationConnectionFailed(statusCode: Int) {
++        if (rejoining) {
++            rejoining = false
++            // Only a missing application is reported as a successful connection with Cast.EXTRA_APP_NO_LONGER_RUNNING;
++            // a timeout or a dropped channel means the reconnect itself failed.
++            finishInit(
++                if (statusCode == CastDeviceSession.STATUS_APPLICATION_NOT_RUNNING) STATUS_APP_NO_LONGER_RUNNING
++                else CastDeviceSession.STATUS_NETWORK_ERROR
++            )
++            return
++        }
++        notify { onApplicationConnectionFailure(statusCode) }
++    }
+ 
+     private fun notify(call: ICastDeviceControllerListener.() -> Unit) {
+         val listener = listener ?: return
+@@ -178,4 +307,9 @@ class CastDeviceControllerImpl(private val packageName: String?, extras: Bundle)
+         it.namespaces = ArrayList(namespaces)
+         it.images = if (iconUrl != null) arrayListOf(WebImage(Uri.parse(iconUrl))) else arrayListOf()
+     }
++
++    companion object {
++        /** Init status for an older client: connected, but its previous application is not running anymore. */
++        const val STATUS_APP_NO_LONGER_RUNNING = 2300
++    }
+ }
+diff --git a/play-services-cast/core/src/main/kotlin/org/microg/gms/cast/channel/CastDeviceSession.kt b/play-services-cast/core/src/main/kotlin/org/microg/gms/cast/channel/CastDeviceSession.kt
+index ceeae3e1..548c98ad 100644
+--- a/play-services-cast/core/src/main/kotlin/org/microg/gms/cast/channel/CastDeviceSession.kt
++++ b/play-services-cast/core/src/main/kotlin/org/microg/gms/cast/channel/CastDeviceSession.kt
+@@ -86,6 +86,11 @@ class CastDeviceSession(
+     private var stoppingSessionId: String? = null
+ 
+     fun connect() = post {
++        if (disconnectRequested) {
++            // Queued before disconnect() shut the session down; a channel opened now would never be closed
++            callbacks.onConnectionFailed(STATUS_NETWORK_ERROR)
++            return@post
++        }
+         if (channel != null) {
+             if (channel?.isConnected == true) callbacks.onConnected() else callbacks.onConnectionFailed(STATUS_NETWORK_ERROR)
+             return@post
+@@ -117,11 +122,23 @@ class CastDeviceSession(
+     }
+ 
+     fun launchApplication(appId: String, relaunchIfRunning: Boolean, language: String?) = post {
+-        val running = receiverStatus?.applications?.firstOrNull { it.appId == appId }
+-        if (running != null && !relaunchIfRunning) {
+-            attachApplication(running, false)
++        if (relaunchIfRunning) {
++            sendLaunch(appId, language)
+             return@post
+         }
++        // Decide on the current status: the one requested on connect may not have arrived yet
++        requestReceiver(JSONObject().put("type", "GET_STATUS")) { reply ->
++            if (reply == null) {
++                callbacks.onApplicationConnectionFailed(STATUS_TIMEOUT)
++                return@requestReceiver
++            }
++            val running = receiverStatus?.applications?.firstOrNull { it.appId == appId }
++            if (running != null) attachApplication(running, false)
++            else sendLaunch(appId, language)
++        }
++    }
++
++    private fun sendLaunch(appId: String, language: String?) {
+         val request = JSONObject().put("type", "LAUNCH").put("appId", appId)
+         if (!language.isNullOrEmpty()) request.put("language", language)
+         requestReceiver(request, LAUNCH_TIMEOUT_MILLIS) { reply ->
+@@ -316,6 +333,7 @@ class CastDeviceSession(
+         if (error != null) Log.log(Level.INFO, "Connection to $host closed", error)
+         channel = null
+         application = null
++        receiverStatus = null
+         for (pending in pendingRequests.values) {
+             pending.timeout?.cancel(false)
+             pending.onReply(null)

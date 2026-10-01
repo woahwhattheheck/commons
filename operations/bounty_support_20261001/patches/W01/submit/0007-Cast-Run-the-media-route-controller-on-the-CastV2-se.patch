@@ -1,0 +1,304 @@
+From 81b94dd0f3d6f7efbab1fc26243a17902eb911c4 Mon Sep 17 00:00:00 2001
+From: woahwhattheheck <293286387+woahwhattheheck@users.noreply.github.com>
+Date: Thu, 1 Oct 2026 13:34:49 +0000
+Subject: [PATCH 07/10] Cast: Run the media route controller on the CastV2
+ session
+
+Selecting a route now opens a CastDeviceSession to the receiver instead of
+a chromecast-java-api-v2 connection. The controller reports connecting,
+connected and disconnected state from the session callbacks, follows the
+device volume from RECEIVER_STATUS and sets it through SET_VOLUME.
+
+Volume changes use the route's own connection when it is up, otherwise a
+session an app opened through the device controller (CastChannelRegistry),
+so the slider also works while the route connection is still being set up
+or failed. Callbacks of a session that was already replaced are ignored.
+
+This removes the last user of chromecast-java-api-v2.
+---
+ .../gms/cast/CastMediaRouteController.java    | 210 ++++++++++++------
+ 1 file changed, 142 insertions(+), 68 deletions(-)
+
+diff --git a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java
+index d733a3cc..573ecec4 100644
+--- a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java
++++ b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java
+@@ -19,39 +19,41 @@ package org.microg.gms.cast;
+ import android.content.Intent;
+ import android.util.Log;
+ 
++import androidx.annotation.NonNull;
+ import androidx.mediarouter.media.MediaRouteProvider;
+ import androidx.mediarouter.media.MediaRouter;
+ 
+-import java.util.concurrent.ExecutorService;
+-import java.util.concurrent.Executors;
++import org.microg.gms.cast.channel.CastChannel;
++import org.microg.gms.cast.channel.CastDeviceSession;
++import org.microg.gms.cast.channel.ReceiverApplication;
++import org.microg.gms.cast.channel.ReceiverStatus;
+ 
+-import su.litvak.chromecast.api.v2.ChromeCast;
+-import su.litvak.chromecast.api.v2.ChromeCastSpontaneousEvent;
+-import su.litvak.chromecast.api.v2.ChromeCastSpontaneousEventListener;
+-import su.litvak.chromecast.api.v2.Status;
+-import su.litvak.chromecast.api.v2.Volume;
+-
+-public class CastMediaRouteController extends MediaRouteProvider.RouteController implements ChromeCastSpontaneousEventListener {
++public class CastMediaRouteController extends MediaRouteProvider.RouteController {
+     private static final String TAG = CastMediaRouteController.class.getSimpleName();
+ 
+     private final CastMediaRouteProvider provider;
+     private final String routeId;
+-    private final ChromeCast chromecast;
+-    // Socket I/O must not run on the main thread, and requests must keep their order.
+-    private final ExecutorService executor = Executors.newSingleThreadExecutor();
++    private final String host;
++    private final int port;
+ 
+     private volatile int volume;
+-    private volatile boolean selected = false;
++    // The control connection of the selected route, used to follow and change the device volume.
++    // Guarded by this; callbacks of a replaced session are ignored.
++    private CastDeviceSession session;
++    private boolean sessionConnected;
++    private boolean released;
+ 
+     public CastMediaRouteController(CastMediaRouteProvider provider, String routeId, String address, int port, int volume) {
+         super();
+ 
+         this.provider = provider;
+         this.routeId = routeId;
+-        this.chromecast = port > 0 ? new ChromeCast(address, port) : new ChromeCast(address);
++        this.host = address;
++        this.port = port > 0 ? port : CastChannel.DEFAULT_PORT;
+         this.volume = volume;
+     }
+ 
++    @Override
+     public boolean onControlRequest(Intent intent, MediaRouter.ControlRequestCallback callback) {
+         Log.d(TAG, "unimplemented Method: onControlRequest: " + this.routeId);
+         return false;
+@@ -59,25 +61,17 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+ 
+     @Override
+     public void onSelect() {
+-        if (selected || executor.isShutdown()) return;
+-        selected = true;
++        CastDeviceSession newSession;
++        synchronized (this) {
++            if (session != null || released) return;
++            SessionCallbacks callbacks = new SessionCallbacks();
++            newSession = new CastDeviceSession(host, port, callbacks);
++            callbacks.session = newSession;
++            session = newSession;
++            sessionConnected = false;
++        }
+         provider.onRouteStateChanged(routeId, MediaRouter.RouteInfo.CONNECTION_STATE_CONNECTING, -1);
+-        executor.execute(() -> {
+-            try {
+-                if (!chromecast.isConnected()) chromecast.connect();
+-                chromecast.registerListener(this);
+-                Status status = chromecast.getStatus();
+-                int deviceVolume = status != null ? toRouteVolume(status.volume) : -1;
+-                if (deviceVolume >= 0) volume = deviceVolume;
+-                if (selected) {
+-                    provider.onRouteStateChanged(routeId, MediaRouter.RouteInfo.CONNECTION_STATE_CONNECTED, deviceVolume);
+-                }
+-            } catch (Exception e) {
+-                Log.w(TAG, "Failed to connect to " + routeId, e);
+-                selected = false;
+-                provider.onRouteStateChanged(routeId, MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED, -1);
+-            }
+-        });
++        newSession.connect();
+     }
+ 
+     @Override
+@@ -87,46 +81,54 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+ 
+     @Override
+     public void onUnselect(int reason) {
+-        if (!selected || executor.isShutdown()) return;
+-        selected = false;
+-        executor.execute(this::disconnect);
++        closeSession();
+     }
+ 
+     @Override
+     public void onRelease() {
+-        if (executor.isShutdown()) return;
+-        selected = false;
+-        executor.execute(this::disconnect);
+-        executor.shutdown();
++        synchronized (this) {
++            released = true;
++        }
++        closeSession();
+     }
+ 
+-    private void disconnect() {
+-        chromecast.unregisterListener(this);
+-        try {
+-            if (chromecast.isConnected()) chromecast.disconnect();
+-        } catch (Exception e) {
+-            Log.w(TAG, "Failed to disconnect from " + routeId, e);
++    private void closeSession() {
++        CastDeviceSession oldSession;
++        synchronized (this) {
++            oldSession = session;
++            session = null;
++            sessionConnected = false;
+         }
+-        // The route may have been selected again while this was queued.
+-        if (!selected) {
++        if (oldSession != null) {
++            oldSession.disconnect();
+             provider.onRouteStateChanged(routeId, MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED, -1);
+         }
+     }
+ 
+     @Override
+     public void onSetVolume(int volume) {
+-        final int newVolume = Math.max(0, Math.min(CastMediaRouteProvider.VOLUME_MAX, volume));
++        int newVolume = Math.max(0, Math.min(CastMediaRouteProvider.VOLUME_MAX, volume));
+         this.volume = newVolume;
+         provider.onRouteStateChanged(routeId, -1, newVolume);
+-        if (executor.isShutdown()) return;
+-        executor.execute(() -> {
+-            try {
+-                if (!chromecast.isConnected()) chromecast.connect();
+-                chromecast.setVolume((float) newVolume / CastMediaRouteProvider.VOLUME_MAX);
+-            } catch (Exception e) {
+-                Log.w(TAG, "Failed to set volume of " + routeId, e);
++
++        // Volume is a device setting, so any open connection to the receiver can change it. Prefer
++        // the route's own connection, then one an app opened through the device controller.
++        CastDeviceSession target;
++        synchronized (this) {
++            target = sessionConnected ? session : null;
++        }
++        if (target == null) target = CastChannelRegistry.get(routeId);
++        if (target == null) {
++            synchronized (this) {
++                // Still connecting: the request is sent once the connection is up.
++                target = session;
+             }
+-        });
++        }
++        if (target != null) {
++            target.setVolume((double) newVolume / CastMediaRouteProvider.VOLUME_MAX);
++        } else {
++            Log.d(TAG, "No connection to " + routeId + " to set volume");
++        }
+     }
+ 
+     @Override
+@@ -134,20 +136,92 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+         onSetVolume(volume + delta);
+     }
+ 
+-    @Override
+-    public void spontaneousEventReceived(ChromeCastSpontaneousEvent event) {
+-        // Follow volume changes made on the device or by other senders.
+-        if (event.getType() == ChromeCastSpontaneousEvent.SpontaneousEventType.STATUS) {
+-            int deviceVolume = toRouteVolume(event.getData(Status.class).volume);
+-            if (deviceVolume >= 0 && deviceVolume != volume && selected) {
+-                volume = deviceVolume;
+-                provider.onRouteStateChanged(routeId, MediaRouter.RouteInfo.CONNECTION_STATE_CONNECTED, deviceVolume);
++    private class SessionCallbacks implements CastDeviceSession.Callbacks {
++        CastDeviceSession session;
++
++        private boolean isCurrent() {
++            synchronized (CastMediaRouteController.this) {
++                return CastMediaRouteController.this.session == session;
+             }
+         }
+-    }
+ 
+-    private static int toRouteVolume(Volume volume) {
+-        if (volume == null || volume.level == null) return -1;
+-        return Math.round(volume.level * CastMediaRouteProvider.VOLUME_MAX);
++        private void onSessionEnded(int statusCode) {
++            synchronized (CastMediaRouteController.this) {
++                if (CastMediaRouteController.this.session != session) return;
++                CastMediaRouteController.this.session = null;
++                sessionConnected = false;
++            }
++            Log.d(TAG, "Connection to " + routeId + " ended: " + statusCode);
++            session.disconnect();
++            provider.onRouteStateChanged(routeId, MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED, -1);
++        }
++
++        @Override
++        public void onConnected() {
++            synchronized (CastMediaRouteController.this) {
++                if (CastMediaRouteController.this.session != session) return;
++                sessionConnected = true;
++            }
++            provider.onRouteStateChanged(routeId, MediaRouter.RouteInfo.CONNECTION_STATE_CONNECTED, -1);
++        }
++
++        @Override
++        public void onConnectionFailed(int statusCode) {
++            onSessionEnded(statusCode);
++        }
++
++        @Override
++        public void onDisconnected(int statusCode) {
++            onSessionEnded(statusCode);
++        }
++
++        @Override
++        public void onDeviceStatusChanged(@NonNull ReceiverStatus status) {
++            if (!isCurrent()) return;
++            // Follow volume changes made on the device or by other senders.
++            int deviceVolume = (int) Math.round(status.getVolumeLevel() * CastMediaRouteProvider.VOLUME_MAX);
++            volume = deviceVolume;
++            provider.onRouteStateChanged(routeId, -1, deviceVolume);
++        }
++
++        @Override
++        public void onApplicationConnected(@NonNull ReceiverApplication application, boolean wasLaunched) {
++        }
++
++        @Override
++        public void onApplicationConnectionFailed(int statusCode) {
++        }
++
++        @Override
++        public void onApplicationStatusChanged(String statusText) {
++        }
++
++        @Override
++        public void onApplicationDisconnected(int statusCode) {
++        }
++
++        @Override
++        public void onStopApplicationResult(int statusCode) {
++        }
++
++        @Override
++        public void onLeaveApplicationResult(int statusCode) {
++        }
++
++        @Override
++        public void onTextMessage(@NonNull String namespace, @NonNull String message) {
++        }
++
++        @Override
++        public void onBinaryMessage(@NonNull String namespace, @NonNull byte[] data) {
++        }
++
++        @Override
++        public void onSendMessageSuccess(@NonNull String namespace, long requestId) {
++        }
++
++        @Override
++        public void onSendMessageFailure(@NonNull String namespace, long requestId, int statusCode) {
++        }
+     }
+ }
+-- 
+2.43.0
+
