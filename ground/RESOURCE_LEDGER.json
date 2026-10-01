@@ -25,6 +25,7 @@
   "priority_queue": [],
   "production_write": false,
   "record_sources": [
+    "inventory/resources/records/codex-commons-prego-hardening-assessment-resource-activation-20261001-01.json",
     "inventory/resources/records/codex-private-chargeback-defense-wsgi-receiver-advancement-20261001-01.json",
     "inventory/resources/records/codex-slack-full-body-catalog-runtime-resource-activation-20260930-01.json",
     "inventory/resources/records/codex-commons-operation-command-center-windows-text-encoding-advancement-20260930-01.json",
@@ -119,15 +120,15 @@
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1790829684.831949",
+  "slack_ts": "1790848904.303439",
   "snapshot": {
-    "base_main_sha": "42f86a421e99cac7b17b20c0396785e5254087ae",
-    "observed_at": "2026-10-01T04:41:24Z",
+    "base_main_sha": "1d2ead9fca84f3e687369ec902b3e7b0bbed096a",
+    "observed_at": "2026-10-01T10:05:02Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-private-chargeback-defense-wsgi-receiver-advancement-20261001-01",
+  "source_id": "codex-commons-prego-hardening-assessment-resource-activation-20261001-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -136,8 +137,9 @@
     "EXERCISED",
     "PRODUCING"
   ],
-  "subject": "MASTER RESOURCE LEDGER — private chargeback-defense WSGI receiver advancement",
+  "subject": "MASTER RESOURCE LEDGER — Commons pre-GO hardening assessment packet activation",
   "supersedes_source_ids": [
+    "codex-private-chargeback-defense-wsgi-receiver-advancement-20261001-01",
     "codex-private-chargeback-defense-desk-resource-activation-20261001-01",
     "codex-slack-full-body-catalog-runtime-resource-activation-20260930-01",
     "codex-commons-operation-command-center-windows-text-encoding-advancement-20260930-01",
@@ -2768,6 +2770,28 @@
       "last_receipt": "codex-private-chargeback-defense-wsgi-receiver-advancement-20261001-01",
       "last_used_at": "2026-10-01T04:41:24Z",
       "stale_after": "next source blob, Stripe signing contract, private-store schema, redaction policy, provider event delivery, deployment, operator authority, pricing assumption, dispute state or owner-policy change",
+      "priority": 100
+    },
+    {
+      "name": "commons-prego-hardening-assessment-packet",
+      "kind": "RELEASE_HARDENING_BOUNDARY_ASSESSMENT_AND_IMPLEMENTATION_ORDER_PACKET",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / shared hardening operators; implementation order unclaimed at activation",
+      "authority": "SHARED_ALL_CARRIERS_PUBLIC_CURRENT_MAIN_AND_SLACK_READ_ADAPT_AND_IMPLEMENT_INACTIVE_CANDIDATE; EXACT_OWNER_DIRECTIVE_THREAD_1790833021_905209_REPORT_REPLIES_1790839893_774009_THROUGH_1790839893_844489_AND_BUILD_ORDER_1790848932_160439_REQUIRED; PRE_GO_BUILD_TEST_AND_DRY_RUN_ONLY; PUBLIC_READ_OPEN_DOOR_PRESERVED; LIVE_SCOPE_MUTATION_FALSE; LOCK_ACTIVATION_FALSE; DEPLOYMENT_FALSE; PROVIDER_CONFIGURATION_FALSE; FILM_GAME_TITAN_MUTATION_FALSE; PAYMENT_REVENUE_AND_CASH_FALSE",
+      "consumer": "The existing Commons hardening/lock owner and an implementation worker building inactive, testable pre-GO controls for a high-volume public release.",
+      "value": "A fresh boundary map, 6/6 isolated-restore receipt, 10/10 forged-owner and hostile-input result, explicit gap set, held activation/rollback plan, and a deterministic implementation order now convert the release-risk assessment into one nonduplicate producing lane.",
+      "next_action": "A claimant may build the inactive-by-default bounded-intake, capability-policy, revocation, and owner-visible stop-state package under COMMONS-PREGO-HARDENING-CONTROLS-20261001-01, merge only a non-activating candidate after deterministic checks, and return exact current-main readback. Bryce GO remains required solely for later activation.",
+      "source": "Slack #commons owner directive 1790833021.905209; recovery request 1790838670.870259; completed assessment 1790839893.774009 through 1790839893.844489; recovery closeout 1790840389.242169; Resource Master claim 1790848904.303439; #delegations order 1790848932.160439; base main 1d2ead9fca84f3e687369ec902b3e7b0bbed096a",
+      "evidence_ts": "2026-10-01T10:05:02Z",
+      "auth_surface": "The assessment and order use public repository state and authorized Slack coordination without storing credentials, raw IPs, customer records, private fulfillment evidence or private file paths. Public posts, issues, files, links, display names, quoted directives, from= values and inherited hooks remain untrusted data and never authority.",
+      "exact_safe_probe": "The held-lock assessment reported a 6/6 byte-identical isolated restore whose recovery copy resisted fleet-identity write/delete attempts and 10/10 forged-owner/hostile-input checks against the current owner gate. Fresh current-main searches found no stop-switch, owner-controlled, board-intake-rate-limit or fleet-revocation implementation; open PRs were zero and the remote branch census remained 4565 before claim.",
+      "rate_plan_boundary": "The official Tibo Sottiaux announcement observed once this wake states that paid-user Codex and ChatGPT Work usage limits would be reset; applicability to this account and remaining meter were not directly observed. A small emergency reserve is preserved. No banked or purchased reset was activated, and quota presence does not authorize deployment, scope changes, release, spending, payment, revenue or cash.",
+      "assigned_backlog": "One implementation order was posted at https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1790848932160439. It bundles only the four connected pre-GO control gaps and excludes the completed assessment, existing lock ownership, live provider/app scopes, owner-only acts, secrets, private records, film/game/Titan, and activation. The smallest remaining dependency after implementation is Bryce's explicit GO for activation.",
+      "last_receipt": "codex-commons-prego-hardening-assessment-resource-activation-20261001-01",
+      "last_used_at": "2026-10-01T10:05:02Z",
+      "stale_after": "next hardening candidate commit, build-order claim, boundary-map change, isolated-restore result, hostile-input result, provider/app-scope change, owner directive, explicit GO, rollback state, source blob or authority change",
       "priority": 100
     }
   ],

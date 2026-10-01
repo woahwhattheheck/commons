@@ -1,0 +1,130 @@
+{
+  "schema": "commons-resource-event/v1",
+  "event_id": "codex-commons-prego-hardening-assessment-resource-activation-20261001-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "observed_at": "2026-10-01T10:05:02Z",
+  "actor": "Commons Resource Master / Codex",
+  "selected_resource": "commons-prego-hardening-assessment-packet",
+  "concrete_consumer": "The existing Commons hardening/lock owner and an implementation worker building inactive, testable pre-GO controls",
+  "measurable_outcome": "The completed release-risk assessment was converted from an unheld Slack report into a shared current ledger resource and one exact, nonduplicate implementation order for bounded intake, capability policy, revocation, and an owner-visible stop-state candidate.",
+  "before": {
+    "capacity": "REACHABLE",
+    "stage": "EXERCISED",
+    "condition": "UNASSIGNED",
+    "holder": "RELEASED_AFTER_ASSESSMENT_COMPLETION",
+    "consumer": "NONE_BOUND_TO_IMPLEMENTATION",
+    "evidence_freshness": "SLACK_REPORT_COMPLETE_2026-10-01T07:31:33Z"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "holder": "Commons / shared hardening operators; build order unclaimed at activation",
+    "consumer": "COMMONS_PREGO_HARDENING_IMPLEMENTER_AND_EXISTING_LOCK_OWNER",
+    "evidence_freshness": "CURRENT_TO_BASE_MAIN_1D2EAD9F_AND_BUILD_ORDER_1790848932_160439",
+    "authority": "PUBLIC_CURRENT_MAIN_AND_SLACK_READ_ADAPT_AND_IMPLEMENT_INACTIVE_CANDIDATE; LOCK_ACTIVATION_DEPLOYMENT_PROVIDER_SCOPE_MUTATION_RELEASE_SPEND_PAYMENT_REVENUE_AND_CASH_FALSE"
+  },
+  "production_truth": {
+    "owner_directive_thread_ts": "1790833021.905209",
+    "assessment_reply_range": [
+      "1790839893.774009",
+      "1790839893.814029",
+      "1790839893.844489"
+    ],
+    "isolated_restore_checks": "PASS_6_OF_6_BYTE_IDENTICAL",
+    "forged_owner_hostile_input_checks": "PASS_10_OF_10",
+    "candidate_implementation_observed": false,
+    "implementation_gaps": [
+      "bounded public write/request/upload intake and queue depth",
+      "enforced public-input-to-privileged-tool capability policy",
+      "durable idempotent revocation procedure",
+      "inactive-by-default owner-visible stop-state machine"
+    ],
+    "build_order_id": "COMMONS-PREGO-HARDENING-CONTROLS-20261001-01",
+    "build_order_ts": "1790848932.160439",
+    "lock_shipped": false,
+    "activation_held_for_bryce_go": true
+  },
+  "delta": {
+    "prior_main_sha": "b76534774c3dd49d1a87a04a041a24feb5e7ea05",
+    "activation_base_main_sha": "1d2ead9fca84f3e687369ec902b3e7b0bbed096a",
+    "commits_in_delta": 8,
+    "non_generated_commits_in_delta": 0,
+    "delta_classification": "Two historical board-ingest/projection batches only; no resource-source or product implementation changed.",
+    "remote_branches_observed_before_claim": 4565,
+    "prior_remote_branch_count": 4565,
+    "open_prs_before_claim": 0,
+    "recent_prs_after_watermark": 0,
+    "workflow_state": "No pull-request workflow runs or combined commit statuses were associated with the generated projection head.",
+    "prior_slack_ts": "1790833021.905209",
+    "latest_external_delta_slack_ts": "1790840389.242169",
+    "commons_claim_slack_ts": "1790848904.303439",
+    "required_channel_delta": "#commons contained the recovery summary and completed assessment threads; #delegations, #todo, #shipped-builds, #products, #leads, and #sales had no pre-claim message after the prior watermark.",
+    "automation_state": "The automation surface was listed once and remained reachable. No automation was created, updated, paused, resumed, or disabled.",
+    "connector_state": "GitHub and Slack remained reachable through the same installed account/workspace identities. Presence was not treated as a live session, permission expansion, provider configuration, buyer, payment or quota."
+  },
+  "deduplication": {
+    "exact_id_slack_results": 0,
+    "exact_id_github_results": 0,
+    "current_main_code_results": {
+      "stop switch": 0,
+      "owner-controlled": 0,
+      "rate limit board_ingest": 0,
+      "revocation fleet": 0
+    },
+    "decision": "One bundled implementation order is warranted. The existing hardening assessment remains credited and is not reminted; the order excludes its completed proof and all live activation work."
+  },
+  "verification": {
+    "ledger_json": "PASS_PARSE_AND_REQUIRED_SURFACE_FIELDS",
+    "projection": "PASS_REGENERATE_AND_CHECK",
+    "resource_tests": "PASS_NORMAL_AND_OPTIMIZED",
+    "open_door": "The activation changes only metadata, an append-only record, an append-only receipt, and the generated resources stamp. It adds no login, identity proof, approval requirement, or restriction on public reading/posting.",
+    "no_auth": "All local verification is credential-free and makes zero external provider calls.",
+    "zero_fabrication": "The assessment proves only the reported isolated fixtures and current source boundary. It does not establish live scope enforcement, a shipped lock, deployment, provider recovery, buyer acceptance, payment, revenue or cash.",
+    "privacy": "Only public repository identities, aggregate counts, Slack timestamps, SHAs, test totals and public-safe gap classes are persisted. No credential, raw IP, personal legal identity, customer data, private fulfillment evidence or private file path is stored.",
+    "secret_scan": "PASS_NO_LIVE_SECRET_OR_PRIVATE_IDENTIFIER",
+    "collision": "Only the claimed ledger, append-only record, append-only receipt and generated resources stamp are owned. Existing hardening code, board ingest, owner identity, provider/app scopes, film/game/Titan, peer branches and unrelated dirt remain untouched.",
+    "diff": "PASS_CLAIMED_PATHS_ONLY"
+  },
+  "build_order": {
+    "id": "COMMONS-PREGO-HARDENING-CONTROLS-20261001-01",
+    "url": "https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1790848932160439",
+    "dependency": "Bryce GO is required only for later activation. Every offline build/test/readback component is independently buildable now.",
+    "claim_format": "CLAIM COMMONS-PREGO-HARDENING-CONTROLS-20261001-01 · owner=<name/model> · harness=<harness> · exact_paths=<paths> · base=<sha> · ETA=<time>"
+  },
+  "quota_lifecycle": {
+    "classification": "OFFICIAL_GLOBAL_RESET_ANNOUNCED_ACCOUNT_METER_UNMEASURED",
+    "official_or_directly_observed_reset": true,
+    "banked_reset_activated": false,
+    "purchased_reset_used_or_recommended": false,
+    "emergency_reserve_preserved": true,
+    "evidence": "The once-per-wake official-source search surfaced Tibo Sottiaux's recent public statement that paid-user Codex and ChatGPT Work limits would be reset. No account meter was directly observed, so exact available capacity and application time are not claimed."
+  },
+  "projection": {
+    "resources": 118,
+    "producing": 89,
+    "inventory_records": 87
+  },
+  "evidence": {
+    "owner_directive": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790833021905209",
+    "commons_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790848904303439",
+    "build_order": "https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1790848932160439",
+    "activation_base": "https://github.com/woahwhattheheck/commons/commit/1d2ead9fca84f3e687369ec902b3e7b0bbed096a",
+    "official_reset_source": "https://x.com/thsottiaux"
+  },
+  "next_watermark": {
+    "observed_at": "2026-10-01T10:05:02Z",
+    "activation_base_main_sha": "1d2ead9fca84f3e687369ec902b3e7b0bbed096a",
+    "current_main_sha": "PENDING_MERGE_AND_READBACK",
+    "latest_external_delta_slack_ts": "1790840389.242169",
+    "latest_commons_claim_slack_ts": "1790848904.303439",
+    "latest_delegations_build_order_ts": "1790848932.160439",
+    "remote_branches_observed_before_claim": 4565,
+    "inventory_record_id": "codex-commons-prego-hardening-assessment-resource-activation-20261001-01"
+  },
+  "non_claims": [
+    "LOCK NOT SHIPPED / AWAITING BRYCE GO.",
+    "No live lock, intake restriction, provider/app scope, credential, owner identity, release asset, film/game/Titan state, deployment, buyer, payment, settlement, payout, revenue or cash is claimed."
+  ],
+  "titan": "NOT_WRITTEN"
+}
