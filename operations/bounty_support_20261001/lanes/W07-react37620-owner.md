@@ -108,7 +108,7 @@ facebook/react's CONTRIBUTING and PR template contain no AI-use policy or disclo
   - the server-error scope limit
   - test-run and Flow result lines (pattern words: error(s), fail(s), timeout)
   I did not reword the PR to defeat the classifier, and I did not route around the hook. Removing that evidence would misrepresent the change to the maintainers. Root/team publishes through the checked central road, which can map this concrete software fix report.
-- Final checks on 8fce8b7: 13 focused suites pass in experimental, stable, www-modern true/false, --prod and www-classic (591 passed, 1 skipped each); full react-reconciler+react-dom stable 225/225 suites (5387 passed); Flow full-check 0 errors in dom-node and fabric (and 9 renderer configs on 6a8c0d3); `yarn linc` passed. The full experimental rerun result is recorded in PR_BODY.md.
+- Final checks on 8fce8b7: 13 focused suites pass in experimental, stable, www-modern true/false, --prod and www-classic (591 passed, 1 skipped each); full react-reconciler+react-dom stable 225/225 suites (5387 passed); Flow full-check 0 errors in dom-node and fabric (and 9 renderer configs on 6a8c0d3); `yarn linc` passed. Full react-reconciler+react-dom experimental (clean rerun on 8fce8b7): 225/225 suites, 5388 passed, 21 skipped, exit 0.
 - Second adversarial check of 6a8c0d3: 17 prior findings confirmed fixed, 6 are the documented limits (unchanged). One new blocker (useDeferredValue initial value: loop, then stuck) was confirmed by 2 verifiers and fixed in 8fce8b7, with a regression test that fails on 6a8c0d3 (RangeError: potential infinite loop) and passes on main and on 8fce8b7.
 
 ## Next action
