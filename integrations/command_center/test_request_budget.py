@@ -264,7 +264,15 @@ class RequestBudgetTests(unittest.TestCase):
             calls[0][0])
         self.assertEqual({"sha": "abc"}, equipment.github("repos/owner/repo/git/trees",
                                                         method="POST", payload={"tree": []}))
-        self.assertNotIn("--include", calls[1][0])
+        # Writes keep --include after api so cooldown headers stay available.
+        # Endpoint remains the token after --method for existing parsers.
+        write = calls[1][0]
+        self.assertEqual(
+            ["gh", "api", "--include", "--hostname", "github.com", "--method", "POST",
+             "repos/owner/repo/git/trees", "--input", "-"],
+            write)
+        self.assertEqual("POST", write[write.index("--method") + 1])
+        self.assertEqual("repos/owner/repo/git/trees", write[write.index("--method") + 2])
         self.assertEqual({"tree": []}, json.loads(calls[1][1]["input"]))
         self.assertNotIn("shell", calls[1][1])
         incomplete = GitHubSlackEquipment(gh_runner=lambda command, **kwargs:
