@@ -1,7 +1,7 @@
 From a22a6af7edeab9e7f265d3b4a43a348361a266c3 Mon Sep 17 00:00:00 2001
 From: woahwhattheheck <293286387+woahwhattheheck@users.noreply.github.com>
 Date: Thu, 1 Oct 2026 11:47:23 +0000
-Subject: [PATCH 1/9] Cast: Keep status in CastDevice and skip icon without
+Subject: [PATCH 01/12] Cast: Keep status in CastDevice and skip icon without
  path
 
 The discovery constructor dropped the status flags read from the TXT

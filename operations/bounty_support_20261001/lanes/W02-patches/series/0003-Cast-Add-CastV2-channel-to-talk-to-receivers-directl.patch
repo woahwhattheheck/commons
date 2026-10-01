@@ -1,7 +1,7 @@
 From 3b04168097864faf797869728c422e8170105137 Mon Sep 17 00:00:00 2001
 From: woahwhattheheck <woahwhattheheck@users.noreply.github.com>
 Date: Thu, 1 Oct 2026 12:09:08 +0000
-Subject: [PATCH 3/9] Cast: Add CastV2 channel to talk to receivers directly
+Subject: [PATCH 03/12] Cast: Add CastV2 channel to talk to receivers directly
 
 CastChannel speaks the Cast v2 control protocol on the receiver's TLS
 port: length-prefixed CastMessage frames (proto schema added, generated

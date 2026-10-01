@@ -1,7 +1,7 @@
 From 4e44d92d6db1ffa31de1a1bd2317c90b9015f0fc Mon Sep 17 00:00:00 2001
 From: woahwhattheheck <woahwhattheheck@users.noreply.github.com>
 Date: Thu, 1 Oct 2026 12:09:21 +0000
-Subject: [PATCH 4/9] Cast: Implement the device controller on the CastV2
+Subject: [PATCH 04/12] Cast: Implement the device controller on the CastV2
  channel
 
 Rework the device controller service so current Cast SDK clients can

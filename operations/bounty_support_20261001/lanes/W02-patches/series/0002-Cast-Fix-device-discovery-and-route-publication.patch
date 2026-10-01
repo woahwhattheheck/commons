@@ -1,7 +1,7 @@
 From 94e9732eabe50e037e5ca9a0e662bbd31ae87016 Mon Sep 17 00:00:00 2001
 From: woahwhattheheck <293286387+woahwhattheheck@users.noreply.github.com>
 Date: Thu, 1 Oct 2026 11:47:23 +0000
-Subject: [PATCH 2/9] Cast: Fix device discovery and route publication
+Subject: [PATCH 02/12] Cast: Fix device discovery and route publication
 
 CastMediaRouteProvider:
 - Discover on every valid discovery request that asks for a Cast or

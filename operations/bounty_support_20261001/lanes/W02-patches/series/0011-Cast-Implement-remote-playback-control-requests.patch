@@ -1,7 +1,7 @@
-From 8f13328622ec2bdc19b96c9b7a3e7173a4b68096 Mon Sep 17 00:00:00 2001
+From 2ce228b501df732188ac66f6e110bb6355bedc72 Mon Sep 17 00:00:00 2001
 From: woahwhattheheck <293286387+woahwhattheheck@users.noreply.github.com>
 Date: Thu, 1 Oct 2026 13:41:00 +0000
-Subject: [PATCH 9/9] Cast: Implement remote playback control requests
+Subject: [PATCH 11/12] Cast: Implement remote playback control requests
 
 Cast routes advertise the MediaControlIntent remote playback actions
 (PLAY, SEEK, GET_STATUS, PAUSE, RESUME, STOP and the session actions),
@@ -24,7 +24,7 @@ the session stops the receiver application.
  create mode 100644 play-services-cast/core/src/main/java/org/microg/gms/cast/CastRemotePlayback.java
 
 diff --git a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java
-index 573ecec4..36e4a11d 100644
+index 411aa8bb..e4f9f90a 100644
 --- a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java
 +++ b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java
 @@ -16,49 +16,73 @@
@@ -491,7 +491,7 @@ index 573ecec4..36e4a11d 100644
 @@ -154,6 +503,12 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
              Log.d(TAG, "Connection to " + routeId + " ended: " + statusCode);
              session.disconnect();
-             provider.onRouteStateChanged(routeId, MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED, -1);
+             provider.onRouteStateChanged(CastMediaRouteController.this, routeId, MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED, -1);
 +            runPlayback(new PlaybackTask() {
 +                @Override
 +                public void run(CastRemotePlayback playback) {

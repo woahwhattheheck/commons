@@ -1,7 +1,7 @@
 From db9911260bb757475db0c400e53a5626c8dd9cd1 Mon Sep 17 00:00:00 2001
 From: woahwhattheheck <293286387+woahwhattheheck@users.noreply.github.com>
 Date: Thu, 1 Oct 2026 12:00:31 +0000
-Subject: [PATCH 5/9] Cast: implement cast framework session lifecycle
+Subject: [PATCH 05/12] Cast: implement cast framework session lifecycle
 
 Apps bundling play-services-cast-framework load the cast framework
 dynamite module from microG and drive sessions through it. Several parts

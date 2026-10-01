@@ -1,7 +1,7 @@
 From 429646407ee397c4ab9008475699a7f7e165e5f6 Mon Sep 17 00:00:00 2001
 From: woahwhattheheck <293286387+woahwhattheheck@users.noreply.github.com>
 Date: Thu, 1 Oct 2026 13:34:49 +0000
-Subject: [PATCH 7/9] Cast: Run the media route controller on the CastV2
+Subject: [PATCH 07/12] Cast: Run the media route controller on the CastV2
  session
 
 Selecting a route now opens a CastDeviceSession to the receiver instead of

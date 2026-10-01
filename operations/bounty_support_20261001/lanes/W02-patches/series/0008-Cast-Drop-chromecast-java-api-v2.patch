@@ -1,7 +1,7 @@
 From fda4a03b46f2e8fa8e1f5b01d04d080931e3b702 Mon Sep 17 00:00:00 2001
 From: woahwhattheheck <woahwhattheheck@users.noreply.github.com>
 Date: Thu, 1 Oct 2026 12:09:26 +0000
-Subject: [PATCH 8/9] Cast: Drop chromecast-java-api-v2
+Subject: [PATCH 08/12] Cast: Drop chromecast-java-api-v2
 
 Neither the device controller nor the media route controller use it any
 more. The remaining reference was the entry in the about screen's

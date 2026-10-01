@@ -1,0 +1,122 @@
+From a373b04c48ae962febc856e4171387afb3f6c5a9 Mon Sep 17 00:00:00 2001
+From: woahwhattheheck <293286387+woahwhattheheck@users.noreply.github.com>
+Date: Thu, 1 Oct 2026 16:07:07 +0000
+Subject: [PATCH 10/12] Cast: Track route connection state per route controller
+
+MediaRouteProviderService creates one route controller per client and
+route, so two apps that select the same Cast device each have their own
+controller. The route's connection state was the last state any of them
+reported: when one app unselected the route, it was published as
+disconnected (and dropped if the device was gone) while the other app
+was still connected.
+
+The provider now keeps the state of each controller and publishes the
+route as connected while any controller is connected, connecting while
+any is connecting, and disconnected otherwise.
+---
+ .../gms/cast/CastMediaRouteController.java    | 12 ++++++------
+ .../gms/cast/CastMediaRouteProvider.java      | 19 ++++++++++++++++---
+ 2 files changed, 22 insertions(+), 9 deletions(-)
+
+diff --git a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java
+index 573ecec4..411aa8bb 100644
+--- a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java
++++ b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java
+@@ -70,7 +70,7 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+             session = newSession;
+             sessionConnected = false;
+         }
+-        provider.onRouteStateChanged(routeId, MediaRouter.RouteInfo.CONNECTION_STATE_CONNECTING, -1);
++        provider.onRouteStateChanged(CastMediaRouteController.this, routeId, MediaRouter.RouteInfo.CONNECTION_STATE_CONNECTING, -1);
+         newSession.connect();
+     }
+ 
+@@ -101,7 +101,7 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+         }
+         if (oldSession != null) {
+             oldSession.disconnect();
+-            provider.onRouteStateChanged(routeId, MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED, -1);
++            provider.onRouteStateChanged(CastMediaRouteController.this, routeId, MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED, -1);
+         }
+     }
+ 
+@@ -109,7 +109,7 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+     public void onSetVolume(int volume) {
+         int newVolume = Math.max(0, Math.min(CastMediaRouteProvider.VOLUME_MAX, volume));
+         this.volume = newVolume;
+-        provider.onRouteStateChanged(routeId, -1, newVolume);
++        provider.onRouteStateChanged(CastMediaRouteController.this, routeId, -1, newVolume);
+ 
+         // Volume is a device setting, so any open connection to the receiver can change it. Prefer
+         // the route's own connection, then one an app opened through the device controller.
+@@ -153,7 +153,7 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+             }
+             Log.d(TAG, "Connection to " + routeId + " ended: " + statusCode);
+             session.disconnect();
+-            provider.onRouteStateChanged(routeId, MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED, -1);
++            provider.onRouteStateChanged(CastMediaRouteController.this, routeId, MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED, -1);
+         }
+ 
+         @Override
+@@ -162,7 +162,7 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+                 if (CastMediaRouteController.this.session != session) return;
+                 sessionConnected = true;
+             }
+-            provider.onRouteStateChanged(routeId, MediaRouter.RouteInfo.CONNECTION_STATE_CONNECTED, -1);
++            provider.onRouteStateChanged(CastMediaRouteController.this, routeId, MediaRouter.RouteInfo.CONNECTION_STATE_CONNECTED, -1);
+         }
+ 
+         @Override
+@@ -181,7 +181,7 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+             // Follow volume changes made on the device or by other senders.
+             int deviceVolume = (int) Math.round(status.getVolumeLevel() * CastMediaRouteProvider.VOLUME_MAX);
+             volume = deviceVolume;
+-            provider.onRouteStateChanged(routeId, -1, deviceVolume);
++            provider.onRouteStateChanged(CastMediaRouteController.this, routeId, -1, deviceVolume);
+         }
+ 
+         @Override
+diff --git a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteProvider.java b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteProvider.java
+index 2c5399f5..f96cb289 100644
+--- a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteProvider.java
++++ b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteProvider.java
+@@ -78,6 +78,8 @@ public class CastMediaRouteProvider extends MediaRouteProvider {
+         CastDevice device;
+         boolean group;
+         int lastSeenRun;
++        // Connection state reported by each route controller that is not disconnected
++        final Map<Object, Integer> controllerStates = new HashMap<Object, Integer>();
+         int volume = VOLUME_MAX / 2;
+         int connectionState = MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED;
+     }
+@@ -522,13 +524,24 @@ public class CastMediaRouteProvider extends MediaRouteProvider {
+     /**
+      * Called by route controllers, from any thread, to reflect connection and volume state of a
+      * route in the published descriptor. A negative connection state or volume keeps the current
+-     * value.
++     * value. Each client of the provider has its own controller for a route, so the route is
++     * connected as long as any of them is.
+      */
+-    void onRouteStateChanged(final String routeId, final int connectionState, final int volume) {
++    void onRouteStateChanged(final Object controller, final String routeId, final int connectionState, final int volume) {
+         handler.post(() -> {
+             CastRoute route = routes.get(routeId);
+             if (route == null) return;
+-            if (connectionState >= 0) route.connectionState = connectionState;
++            if (connectionState == MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED) {
++                route.controllerStates.remove(controller);
++            } else if (connectionState >= 0) {
++                route.controllerStates.put(controller, connectionState);
++            }
++            route.connectionState = MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED;
++            for (int state : route.controllerStates.values()) {
++                if (state == MediaRouter.RouteInfo.CONNECTION_STATE_CONNECTED || route.connectionState == MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED) {
++                    route.connectionState = state;
++                }
++            }
+             if (volume >= 0) route.volume = Math.max(0, Math.min(VOLUME_MAX, volume));
+             if (route.connectionState == MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED && !serviceCastIds.containsValue(routeId)) {
+                 // The device was lost while it was in use.
+-- 
+2.43.0
+

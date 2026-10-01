@@ -1,7 +1,7 @@
 From 36e6bfda5637be690064ce48c7746af12cba3d92 Mon Sep 17 00:00:00 2001
 From: woahwhattheheck <293286387+woahwhattheheck@users.noreply.github.com>
 Date: Thu, 1 Oct 2026 12:00:31 +0000
-Subject: [PATCH 6/9] Cast: fix categoryForCast with namespaces
+Subject: [PATCH 06/12] Cast: fix categoryForCast with namespaces
 
 The application ID was appended to CATEGORY_CAST without a separator.
 ---
