@@ -169,6 +169,7 @@ class WorkstreamIntegrationTests(unittest.TestCase):
             self.center.work_state()
             self.join_refresh()
         after = self.center.work_state()["freshness"]
+        self.wait_for_refresh(self.center)
         self.assertEqual("failed", after["last_refresh_status"])
         self.assertEqual("2026-09-01T00:00:00Z", after["last_completed_at"])
         self.assertTrue(after["stale"])
