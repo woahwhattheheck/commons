@@ -1,0 +1,15 @@
+{
+  "schema": "titan-v4-salvage-custody/v1",
+  "recorded_on": "2026-10-01",
+  "source_pr": 14550,
+  "source_branch": "recovery/titan-v4-town-rng-causality-20260914",
+  "source_head": "47c18c57029e2ed175a269cc7dec40497b4d25e0",
+  "disposition": "concurrently_consumed_do_not_remint_research_evidence_only",
+  "exact_blobs": {
+    "README.md": "cfacda10843836e2ba2f87ec5bad539286fe3fcd",
+    "RESULTS.json": "c1ec04795729a3dc28f6790b70194fd466b028cd"
+  },
+  "queue_edge": false,
+  "promotion": false,
+  "runtime_activation": false
+}

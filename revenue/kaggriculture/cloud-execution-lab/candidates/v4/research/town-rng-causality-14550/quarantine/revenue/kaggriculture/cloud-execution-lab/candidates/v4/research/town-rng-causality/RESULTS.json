@@ -1,0 +1,1155 @@
+{
+  "canonical_workspace": "revenue/kaggriculture/cloud-execution-lab/candidates/v4",
+  "natural_default_pass_season": {
+    "final_money": [
+      3000.0,
+      3000.0
+    ],
+    "first_quote_at_target": {
+      "inventory": 9271,
+      "price": 1491,
+      "step": 685
+    },
+    "official_callbacks": 719,
+    "peak_pre_market_quote": 1803,
+    "policy": "PASS vs PASS",
+    "scope": "Synthetic PASS season, not a TITAN benchmark or realized trading profit",
+    "seed": 7040,
+    "shops": [
+      "PIZZA_SHOP",
+      "PIZZA_SHOP",
+      "PIZZA_SHOP",
+      "PIZZA_SHOP",
+      "FARMERS_MARKET",
+      "PIZZA_SHOP",
+      "FARMERS_MARKET",
+      "PET_CAFE"
+    ],
+    "terminal_status": [
+      "DONE",
+      "DONE"
+    ],
+    "town_trace": [
+      {
+        "day": 0,
+        "farms": [
+          {
+            "empty_after_weed": 24,
+            "empty_before_weed": 25,
+            "new_weeds": 1,
+            "weed_rng_calls": 25
+          },
+          {
+            "empty_after_weed": 25,
+            "empty_before_weed": 25,
+            "new_weeds": 0,
+            "weed_rng_calls": 25
+          }
+        ],
+        "new_shops": [],
+        "seed": 7040,
+        "shops_after": [],
+        "shops_before": [],
+        "step": 23,
+        "weed_rng_calls": 50
+      },
+      {
+        "day": 1,
+        "farms": [
+          {
+            "empty_after_weed": 24,
+            "empty_before_weed": 24,
+            "new_weeds": 0,
+            "weed_rng_calls": 24
+          },
+          {
+            "empty_after_weed": 24,
+            "empty_before_weed": 25,
+            "new_weeds": 1,
+            "weed_rng_calls": 25
+          }
+        ],
+        "new_shops": [],
+        "seed": 7040,
+        "shops_after": [],
+        "shops_before": [],
+        "step": 47,
+        "weed_rng_calls": 49
+      },
+      {
+        "day": 2,
+        "farms": [
+          {
+            "empty_after_weed": 24,
+            "empty_before_weed": 24,
+            "new_weeds": 0,
+            "weed_rng_calls": 24
+          },
+          {
+            "empty_after_weed": 23,
+            "empty_before_weed": 24,
+            "new_weeds": 1,
+            "weed_rng_calls": 24
+          }
+        ],
+        "new_shops": [
+          "PIZZA_SHOP"
+        ],
+        "seed": 7040,
+        "shops_after": [
+          "PIZZA_SHOP"
+        ],
+        "shops_before": [],
+        "step": 71,
+        "weed_rng_calls": 48
+      },
+      {
+        "day": 3,
+        "farms": [
+          {
+            "empty_after_weed": 24,
+            "empty_before_weed": 24,
+            "new_weeds": 0,
+            "weed_rng_calls": 24
+          },
+          {
+            "empty_after_weed": 23,
+            "empty_before_weed": 23,
+            "new_weeds": 0,
+            "weed_rng_calls": 23
+          }
+        ],
+        "new_shops": [],
+        "seed": 7040,
+        "shops_after": [
+          "PIZZA_SHOP"
+        ],
+        "shops_before": [
+          "PIZZA_SHOP"
+        ],
+        "step": 95,
+        "weed_rng_calls": 47
+      },
+      {
+        "day": 4,
+        "farms": [
+          {
+            "empty_after_weed": 24,
+            "empty_before_weed": 24,
+            "new_weeds": 0,
+            "weed_rng_calls": 24
+          },
+          {
+            "empty_after_weed": 23,
+            "empty_before_weed": 23,
+            "new_weeds": 0,
+            "weed_rng_calls": 23
+          }
+        ],
+        "new_shops": [],
+        "seed": 7040,
+        "shops_after": [
+          "PIZZA_SHOP"
+        ],
+        "shops_before": [
+          "PIZZA_SHOP"
+        ],
+        "step": 119,
+        "weed_rng_calls": 47
+      },
+      {
+        "day": 5,
+        "farms": [
+          {
+            "empty_after_weed": 24,
+            "empty_before_weed": 24,
+            "new_weeds": 0,
+            "weed_rng_calls": 24
+          },
+          {
+            "empty_after_weed": 23,
+            "empty_before_weed": 23,
+            "new_weeds": 0,
+            "weed_rng_calls": 23
+          }
+        ],
+        "new_shops": [
+          "PIZZA_SHOP"
+        ],
+        "seed": 7040,
+        "shops_after": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP"
+        ],
+        "shops_before": [
+          "PIZZA_SHOP"
+        ],
+        "step": 143,
+        "weed_rng_calls": 47
+      },
+      {
+        "day": 6,
+        "farms": [
+          {
+            "empty_after_weed": 24,
+            "empty_before_weed": 24,
+            "new_weeds": 0,
+            "weed_rng_calls": 24
+          },
+          {
+            "empty_after_weed": 23,
+            "empty_before_weed": 23,
+            "new_weeds": 0,
+            "weed_rng_calls": 23
+          }
+        ],
+        "new_shops": [],
+        "seed": 7040,
+        "shops_after": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP"
+        ],
+        "shops_before": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP"
+        ],
+        "step": 167,
+        "weed_rng_calls": 47
+      },
+      {
+        "day": 7,
+        "farms": [
+          {
+            "empty_after_weed": 24,
+            "empty_before_weed": 24,
+            "new_weeds": 0,
+            "weed_rng_calls": 24
+          },
+          {
+            "empty_after_weed": 23,
+            "empty_before_weed": 23,
+            "new_weeds": 0,
+            "weed_rng_calls": 23
+          }
+        ],
+        "new_shops": [],
+        "seed": 7040,
+        "shops_after": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP"
+        ],
+        "shops_before": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP"
+        ],
+        "step": 191,
+        "weed_rng_calls": 47
+      },
+      {
+        "day": 8,
+        "farms": [
+          {
+            "empty_after_weed": 24,
+            "empty_before_weed": 24,
+            "new_weeds": 0,
+            "weed_rng_calls": 24
+          },
+          {
+            "empty_after_weed": 23,
+            "empty_before_weed": 23,
+            "new_weeds": 0,
+            "weed_rng_calls": 23
+          }
+        ],
+        "new_shops": [
+          "PIZZA_SHOP"
+        ],
+        "seed": 7040,
+        "shops_after": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP"
+        ],
+        "shops_before": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP"
+        ],
+        "step": 215,
+        "weed_rng_calls": 47
+      },
+      {
+        "day": 9,
+        "farms": [
+          {
+            "empty_after_weed": 23,
+            "empty_before_weed": 24,
+            "new_weeds": 1,
+            "weed_rng_calls": 24
+          },
+          {
+            "empty_after_weed": 23,
+            "empty_before_weed": 23,
+            "new_weeds": 0,
+            "weed_rng_calls": 23
+          }
+        ],
+        "new_shops": [],
+        "seed": 7040,
+        "shops_after": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP"
+        ],
+        "shops_before": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP"
+        ],
+        "step": 239,
+        "weed_rng_calls": 47
+      },
+      {
+        "day": 10,
+        "farms": [
+          {
+            "empty_after_weed": 23,
+            "empty_before_weed": 23,
+            "new_weeds": 0,
+            "weed_rng_calls": 23
+          },
+          {
+            "empty_after_weed": 23,
+            "empty_before_weed": 23,
+            "new_weeds": 0,
+            "weed_rng_calls": 23
+          }
+        ],
+        "new_shops": [],
+        "seed": 7040,
+        "shops_after": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP"
+        ],
+        "shops_before": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP"
+        ],
+        "step": 263,
+        "weed_rng_calls": 46
+      },
+      {
+        "day": 11,
+        "farms": [
+          {
+            "empty_after_weed": 23,
+            "empty_before_weed": 23,
+            "new_weeds": 0,
+            "weed_rng_calls": 23
+          },
+          {
+            "empty_after_weed": 23,
+            "empty_before_weed": 23,
+            "new_weeds": 0,
+            "weed_rng_calls": 23
+          }
+        ],
+        "new_shops": [
+          "PIZZA_SHOP"
+        ],
+        "seed": 7040,
+        "shops_after": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP"
+        ],
+        "shops_before": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP"
+        ],
+        "step": 287,
+        "weed_rng_calls": 46
+      },
+      {
+        "day": 12,
+        "farms": [
+          {
+            "empty_after_weed": 23,
+            "empty_before_weed": 23,
+            "new_weeds": 0,
+            "weed_rng_calls": 23
+          },
+          {
+            "empty_after_weed": 23,
+            "empty_before_weed": 23,
+            "new_weeds": 0,
+            "weed_rng_calls": 23
+          }
+        ],
+        "new_shops": [],
+        "seed": 7040,
+        "shops_after": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP"
+        ],
+        "shops_before": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP"
+        ],
+        "step": 311,
+        "weed_rng_calls": 46
+      },
+      {
+        "day": 13,
+        "farms": [
+          {
+            "empty_after_weed": 23,
+            "empty_before_weed": 23,
+            "new_weeds": 0,
+            "weed_rng_calls": 23
+          },
+          {
+            "empty_after_weed": 23,
+            "empty_before_weed": 23,
+            "new_weeds": 0,
+            "weed_rng_calls": 23
+          }
+        ],
+        "new_shops": [],
+        "seed": 7040,
+        "shops_after": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP"
+        ],
+        "shops_before": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP"
+        ],
+        "step": 335,
+        "weed_rng_calls": 46
+      },
+      {
+        "day": 14,
+        "farms": [
+          {
+            "empty_after_weed": 23,
+            "empty_before_weed": 23,
+            "new_weeds": 0,
+            "weed_rng_calls": 23
+          },
+          {
+            "empty_after_weed": 23,
+            "empty_before_weed": 23,
+            "new_weeds": 0,
+            "weed_rng_calls": 23
+          }
+        ],
+        "new_shops": [
+          "FARMERS_MARKET"
+        ],
+        "seed": 7040,
+        "shops_after": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET"
+        ],
+        "shops_before": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP"
+        ],
+        "step": 359,
+        "weed_rng_calls": 46
+      },
+      {
+        "day": 15,
+        "farms": [
+          {
+            "empty_after_weed": 23,
+            "empty_before_weed": 23,
+            "new_weeds": 0,
+            "weed_rng_calls": 23
+          },
+          {
+            "empty_after_weed": 23,
+            "empty_before_weed": 23,
+            "new_weeds": 0,
+            "weed_rng_calls": 23
+          }
+        ],
+        "new_shops": [],
+        "seed": 7040,
+        "shops_after": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET"
+        ],
+        "shops_before": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET"
+        ],
+        "step": 383,
+        "weed_rng_calls": 46
+      },
+      {
+        "day": 16,
+        "farms": [
+          {
+            "empty_after_weed": 23,
+            "empty_before_weed": 23,
+            "new_weeds": 0,
+            "weed_rng_calls": 23
+          },
+          {
+            "empty_after_weed": 23,
+            "empty_before_weed": 23,
+            "new_weeds": 0,
+            "weed_rng_calls": 23
+          }
+        ],
+        "new_shops": [],
+        "seed": 7040,
+        "shops_after": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET"
+        ],
+        "shops_before": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET"
+        ],
+        "step": 407,
+        "weed_rng_calls": 46
+      },
+      {
+        "day": 17,
+        "farms": [
+          {
+            "empty_after_weed": 22,
+            "empty_before_weed": 23,
+            "new_weeds": 1,
+            "weed_rng_calls": 23
+          },
+          {
+            "empty_after_weed": 23,
+            "empty_before_weed": 23,
+            "new_weeds": 0,
+            "weed_rng_calls": 23
+          }
+        ],
+        "new_shops": [
+          "PIZZA_SHOP"
+        ],
+        "seed": 7040,
+        "shops_after": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PIZZA_SHOP"
+        ],
+        "shops_before": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET"
+        ],
+        "step": 431,
+        "weed_rng_calls": 46
+      },
+      {
+        "day": 18,
+        "farms": [
+          {
+            "empty_after_weed": 22,
+            "empty_before_weed": 22,
+            "new_weeds": 0,
+            "weed_rng_calls": 22
+          },
+          {
+            "empty_after_weed": 23,
+            "empty_before_weed": 23,
+            "new_weeds": 0,
+            "weed_rng_calls": 23
+          }
+        ],
+        "new_shops": [],
+        "seed": 7040,
+        "shops_after": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PIZZA_SHOP"
+        ],
+        "shops_before": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PIZZA_SHOP"
+        ],
+        "step": 455,
+        "weed_rng_calls": 45
+      },
+      {
+        "day": 19,
+        "farms": [
+          {
+            "empty_after_weed": 22,
+            "empty_before_weed": 22,
+            "new_weeds": 0,
+            "weed_rng_calls": 22
+          },
+          {
+            "empty_after_weed": 22,
+            "empty_before_weed": 23,
+            "new_weeds": 1,
+            "weed_rng_calls": 23
+          }
+        ],
+        "new_shops": [],
+        "seed": 7040,
+        "shops_after": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PIZZA_SHOP"
+        ],
+        "shops_before": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PIZZA_SHOP"
+        ],
+        "step": 479,
+        "weed_rng_calls": 45
+      },
+      {
+        "day": 20,
+        "farms": [
+          {
+            "empty_after_weed": 21,
+            "empty_before_weed": 22,
+            "new_weeds": 1,
+            "weed_rng_calls": 22
+          },
+          {
+            "empty_after_weed": 22,
+            "empty_before_weed": 22,
+            "new_weeds": 0,
+            "weed_rng_calls": 22
+          }
+        ],
+        "new_shops": [
+          "FARMERS_MARKET"
+        ],
+        "seed": 7040,
+        "shops_after": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET"
+        ],
+        "shops_before": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PIZZA_SHOP"
+        ],
+        "step": 503,
+        "weed_rng_calls": 44
+      },
+      {
+        "day": 21,
+        "farms": [
+          {
+            "empty_after_weed": 21,
+            "empty_before_weed": 21,
+            "new_weeds": 0,
+            "weed_rng_calls": 21
+          },
+          {
+            "empty_after_weed": 22,
+            "empty_before_weed": 22,
+            "new_weeds": 0,
+            "weed_rng_calls": 22
+          }
+        ],
+        "new_shops": [],
+        "seed": 7040,
+        "shops_after": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET"
+        ],
+        "shops_before": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET"
+        ],
+        "step": 527,
+        "weed_rng_calls": 43
+      },
+      {
+        "day": 22,
+        "farms": [
+          {
+            "empty_after_weed": 21,
+            "empty_before_weed": 21,
+            "new_weeds": 0,
+            "weed_rng_calls": 21
+          },
+          {
+            "empty_after_weed": 22,
+            "empty_before_weed": 22,
+            "new_weeds": 0,
+            "weed_rng_calls": 22
+          }
+        ],
+        "new_shops": [],
+        "seed": 7040,
+        "shops_after": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET"
+        ],
+        "shops_before": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET"
+        ],
+        "step": 551,
+        "weed_rng_calls": 43
+      },
+      {
+        "day": 23,
+        "farms": [
+          {
+            "empty_after_weed": 21,
+            "empty_before_weed": 21,
+            "new_weeds": 0,
+            "weed_rng_calls": 21
+          },
+          {
+            "empty_after_weed": 22,
+            "empty_before_weed": 22,
+            "new_weeds": 0,
+            "weed_rng_calls": 22
+          }
+        ],
+        "new_shops": [
+          "PET_CAFE"
+        ],
+        "seed": 7040,
+        "shops_after": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PET_CAFE"
+        ],
+        "shops_before": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET"
+        ],
+        "step": 575,
+        "weed_rng_calls": 43
+      },
+      {
+        "day": 24,
+        "farms": [
+          {
+            "empty_after_weed": 21,
+            "empty_before_weed": 21,
+            "new_weeds": 0,
+            "weed_rng_calls": 21
+          },
+          {
+            "empty_after_weed": 22,
+            "empty_before_weed": 22,
+            "new_weeds": 0,
+            "weed_rng_calls": 22
+          }
+        ],
+        "new_shops": [],
+        "seed": 7040,
+        "shops_after": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PET_CAFE"
+        ],
+        "shops_before": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PET_CAFE"
+        ],
+        "step": 599,
+        "weed_rng_calls": 43
+      },
+      {
+        "day": 25,
+        "farms": [
+          {
+            "empty_after_weed": 21,
+            "empty_before_weed": 21,
+            "new_weeds": 0,
+            "weed_rng_calls": 21
+          },
+          {
+            "empty_after_weed": 22,
+            "empty_before_weed": 22,
+            "new_weeds": 0,
+            "weed_rng_calls": 22
+          }
+        ],
+        "new_shops": [],
+        "seed": 7040,
+        "shops_after": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PET_CAFE"
+        ],
+        "shops_before": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PET_CAFE"
+        ],
+        "step": 623,
+        "weed_rng_calls": 43
+      },
+      {
+        "day": 26,
+        "farms": [
+          {
+            "empty_after_weed": 21,
+            "empty_before_weed": 21,
+            "new_weeds": 0,
+            "weed_rng_calls": 21
+          },
+          {
+            "empty_after_weed": 22,
+            "empty_before_weed": 22,
+            "new_weeds": 0,
+            "weed_rng_calls": 22
+          }
+        ],
+        "new_shops": [],
+        "seed": 7040,
+        "shops_after": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PET_CAFE"
+        ],
+        "shops_before": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PET_CAFE"
+        ],
+        "step": 647,
+        "weed_rng_calls": 43
+      },
+      {
+        "day": 27,
+        "farms": [
+          {
+            "empty_after_weed": 19,
+            "empty_before_weed": 21,
+            "new_weeds": 2,
+            "weed_rng_calls": 21
+          },
+          {
+            "empty_after_weed": 22,
+            "empty_before_weed": 22,
+            "new_weeds": 0,
+            "weed_rng_calls": 22
+          }
+        ],
+        "new_shops": [],
+        "seed": 7040,
+        "shops_after": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PET_CAFE"
+        ],
+        "shops_before": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PET_CAFE"
+        ],
+        "step": 671,
+        "weed_rng_calls": 43
+      },
+      {
+        "day": 28,
+        "farms": [
+          {
+            "empty_after_weed": 19,
+            "empty_before_weed": 19,
+            "new_weeds": 0,
+            "weed_rng_calls": 19
+          },
+          {
+            "empty_after_weed": 20,
+            "empty_before_weed": 22,
+            "new_weeds": 2,
+            "weed_rng_calls": 22
+          }
+        ],
+        "new_shops": [],
+        "seed": 7040,
+        "shops_after": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PET_CAFE"
+        ],
+        "shops_before": [
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PIZZA_SHOP",
+          "FARMERS_MARKET",
+          "PET_CAFE"
+        ],
+        "step": 695,
+        "weed_rng_calls": 41
+      }
+    ]
+  },
+  "nonclaims": [
+    "No TITAN gameplay gain measured",
+    "No hidden-seed input to an online agent",
+    "No production runtime/default/archive/entrypoint changed",
+    "No V4 branch created",
+    "No Slack send, GitHub commit, merge, or Kaggle submission executed"
+  ],
+  "panel_scope": {
+    "cells": 1024,
+    "kind": "One-turn midgame fixtures, NOT full games or independent replicas",
+    "unique_seeds": 256
+  },
+  "planting_shop_flip_panel": [
+    {
+      "paired_trials": 256,
+      "seat": 0,
+      "shop_flips": 164,
+      "weed_chance": 0.0
+    },
+    {
+      "paired_trials": 256,
+      "seat": 1,
+      "shop_flips": 164,
+      "weed_chance": 0.0
+    },
+    {
+      "paired_trials": 256,
+      "seat": 0,
+      "shop_flips": 164,
+      "weed_chance": 0.005
+    },
+    {
+      "paired_trials": 256,
+      "seat": 1,
+      "shop_flips": 164,
+      "weed_chance": 0.005
+    }
+  ],
+  "prior_work": {
+    "rng_map_donor": "36a90365add6757d8e0896e2ef7de031d46d4c49",
+    "scope": "Adds real-engine state-dependent offset witnesses; does not replace the existing RNG3 map or counterfactual harness"
+  },
+  "source": {
+    "artifact_id": 10285621024,
+    "engine_git_blob": "3c202c7ee921da239356789e266b694635103fc4",
+    "engine_sha256": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
+    "python": "3.13.5",
+    "source_checkout": "8250aec877974e9a1feba2b8e33fcd51000857d4"
+  },
+  "witness": {
+    "PASS": {
+      "day": 2,
+      "farms": [
+        {
+          "empty_after_weed": 25,
+          "empty_before_weed": 25,
+          "new_weeds": 0,
+          "weed_rng_calls": 25
+        },
+        {
+          "empty_after_weed": 25,
+          "empty_before_weed": 25,
+          "new_weeds": 0,
+          "weed_rng_calls": 25
+        }
+      ],
+      "new_shops": [
+        "YARN_STORE"
+      ],
+      "seed": 0,
+      "shops_after": [
+        "YARN_STORE"
+      ],
+      "shops_before": [],
+      "step": 71,
+      "weed_rng_calls": 50
+    },
+    "PLANT_TOMATO": {
+      "day": 2,
+      "farms": [
+        {
+          "empty_after_weed": 24,
+          "empty_before_weed": 24,
+          "new_weeds": 0,
+          "weed_rng_calls": 24
+        },
+        {
+          "empty_after_weed": 25,
+          "empty_before_weed": 25,
+          "new_weeds": 0,
+          "weed_rng_calls": 25
+        }
+      ],
+      "new_shops": [
+        "ICE_CREAM_SHOP"
+      ],
+      "seed": 0,
+      "shops_after": [
+        "ICE_CREAM_SHOP"
+      ],
+      "shops_before": [],
+      "step": 71,
+      "weed_rng_calls": 49
+    },
+    "comparison": {
+      "days_compared": 1,
+      "first_shop_divergence": {
+        "day": 2,
+        "left_rng_calls": 50,
+        "left_shops": [
+          "YARN_STORE"
+        ],
+        "right_rng_calls": 49,
+        "right_shops": [
+          "ICE_CREAM_SHOP"
+        ],
+        "step": 71
+      },
+      "interpretation": "Total policy effect remains valid; this is not a direct-crop-profit decomposition",
+      "same_shop_path": false
+    },
+    "same_immediate_cash": true,
+    "same_immediate_market": true,
+    "seat": 0,
+    "seed": 0,
+    "step": 71,
+    "weed_chance": 0.0
+  }
+}

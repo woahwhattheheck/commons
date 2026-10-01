@@ -1,0 +1,17 @@
+{
+  "schema": "titan-v4-reconciliation-receipt/v1",
+  "recorded_on": "2026-10-01",
+  "authority_main": "81fd42cc49868f40a83f6a2465bbd3e29f57f825",
+  "source_pr": 14550,
+  "source_head": "47c18c57029e2ed175a269cc7dec40497b4d25e0",
+  "finding": "closed-unmerged results artifact absent from active workspace and salvage custody",
+  "action": "preserve exact source blobs under quarantine on the existing salvage carrier",
+  "exact_blobs": [
+    "cfacda10843836e2ba2f87ec5bad539286fe3fcd",
+    "c1ec04795729a3dc28f6790b70194fd466b028cd"
+  ],
+  "disposition": "research evidence only; do not remint",
+  "queue_edge": false,
+  "promotion": false,
+  "runtime_activation": false
+}
