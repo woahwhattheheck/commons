@@ -14,7 +14,7 @@ Updated 2026-10-01. Sole submission owner for this issue.
 | BountyHub claim | `claims: []`, `claimed:false`, `solved:false`. No claim by us. |
 | GitHub issue | OPEN, label `Status: Unconfirmed`, no maintainer response. |
 | Competing upstream PRs (all open) | #37648 (xyjk0511), #37654 (Jr-kenny), #37694 (theworker02), #37705 (sidshehria). #37694 and #37705 have byte-identical reconciler diffs. |
-| Our PR | NOT OPENED. READY-TO-SUBMIT. Blocked on the fork (see blockers). |
+| Our PR | NOT OPENED yet. Fork woahwhattheheck/react exists (root, repo 1399995923, main 7c6ac13). Branch `fix-ssr-fallback-remount-browser-only` pushed to the fork (c7b6d2a+9e31598). Revision 6a8c0d3 committed locally, under final checks before push + PR. |
 | Merge state | none |
 | Payment state | none |
 
@@ -69,6 +69,26 @@ The fix is local to the one boundary and adds no root-level commit delay, which 
 ## AI-use / disclosure
 
 facebook/react's CONTRIBUTING and PR template contain no AI-use policy or disclosure question (checked `.github/PULL_REQUEST_TEMPLATE.md` and `CONTRIBUTING.md` at 7c6ac13). The PR body states only technical content.
+
+## 2026-10-01 update: fork live, adversarial check, revision
+
+- Fork access: `add_repo woahwhattheheck/react push` succeeded; `git push fork fix-ssr-fallback-remount-browser-only` succeeded.
+- Multi-agent adversarial check of c7b6d2a (5 lenses, 2 skeptical verifiers per finding, 57 agents) confirmed real defects vs main:
+  1. Flow `invalid-compare` in fabric/test renderer configs (CI Flow jobs would fail).
+  2. Kept boundary retried at OffscreenLane (idle). Content could wait behind any unrelated suspended transition.
+  3. ScheduleRetry ignored in the dehydrated completion path. Precedence-stylesheet content was stuck on the server fallback forever, and sibling prerender was lost.
+  4. Context changes (new and legacy) did not reach a kept boundary. The fallback went stale, and content unblocked by context stayed hidden.
+  5. The deletion-undo code was dead and left a stale ChildDeletion flag.
+- Revision 6a8c0d3 (local) fixes 1-5:
+  - a fresh SuspenseState with retryLane NoLane
+  - scheduleRetryEffect for kept `$!` boundaries in completeDehydratedSuspenseBoundary
+  - gate `!didReceiveUpdate && !includesSomeLane(renderLanes, current.childLanes)`, with context propagation before the client attempt
+  - an early-bailout context retry for dehydrated `$!` boundaries
+  - FlowFixMe
+  - 5 new regression tests
+  The 5 new tests fail on c7b6d2a and pass on 6a8c0d3. 12 hydration/Fizz/Float/form suites pass: 568 passed / 1 skipped in each of experimental, stable, www-modern true/false, --prod and www-classic.
+- Documented limits (shared with #24236's design and with pending `<!--$?-->` boundaries): the kept server fallback is not hydrated, so it is inert to events while kept; a new Suspense props object or any parent context change falls back to today's single remount; server-error fallbacks are unchanged.
+- dot's Slack-posted harness: running it (and building packages for it) was blocked by this environment's code-from-external policy, so it was not run here.
 
 ## Next action
 
