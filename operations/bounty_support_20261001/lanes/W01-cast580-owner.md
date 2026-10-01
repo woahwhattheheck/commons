@@ -132,4 +132,32 @@ Fork of GmsCore does not exist yet. Until it does, each lane publishes `git form
 
 ## Integration log
 
-- 2026-10-01: base cloned, current-state survey above. Next: `./gradlew :play-services-core:assembleDebug` baseline build in VM.
+- 2026-10-01: base cloned, current-state survey above.
+- 2026-10-01: VM toolchain: OpenJDK 21, Android cmdline-tools, platform 35 and build-tools 35.0.0 under `/home/user/android-sdk`. Baseline `:play-services-cast-core:compileReleaseJavaWithJavac :play-services-cast-framework-core:compileReleaseJavaWithJavac` on master exit 0. The VM has no `/dev/kvm`, so no emulator; every runtime check needs a real phone and Chromecast.
+- 2026-10-01: **Binder ground truth** from Google's `com.google.android.gms:play-services-cast:22.3.1` client (`classes.jar`, read with `javap`; proxy `cast.internal.zzah`, stub `cast.internal.zzai`). AIDL `= N` gives transaction code N+1.
+  - `ICastDeviceController` codes:
+
+    | Code | Method |
+    |---|---|
+    | 1 | disconnect |
+    | 4 | no-arg call, unidentified (possibly leaveApplication) |
+    | 5 | stopApplication(String) |
+    | 6 | no-arg call, unidentified (possibly requestStatus) |
+    | 7 | setVolume(double, double, boolean) |
+    | 8 | setMute(boolean, double, boolean) |
+    | 9 | sendMessage(String, String, long) |
+    | 11 | registerNamespace |
+    | 12 | unregisterNamespace |
+    | 13 | launchApplication(String, LaunchOptions) |
+    | 14 | joinApplication(String, String, JoinOptions) |
+    | 17 | connect() (connectionless) |
+    | 18 | setListener(listener) |
+    | 19 | unregisterListener() |
+
+    Every 22.3.1 call also appends a trailing `ApiMetadata` parcelable.
+  - `ICastDeviceControllerListener` codes 1–15. Codes 1–13 match master's AIDL. Code 14 is an int callback, which #3570 maps to `onConnectedWithResult` (`= 13`). Code 15 is an int callback that no PR implements. Codes 7 and 8 are int callbacks, still TODO on master.
+  - Each PR's `ICastDeviceController.aidl`:
+    - **#3570 and #3781:** connect/setListener/unregisterListener at `= 16/17/18`, which is correct.
+    - **#3802:** off by one. It puts `stopApplication` at `= 3` (code 4), removes `sendMessage`, and moves connect to code 18. Excluded from integration.
+  - **Gaps for W03:** setVolume `= 6`, setMute `= 7`, codes 4 and 6, listener codes 7, 8 and 15.
+- 2026-10-01: Integration branch `cast/integration` in the VM clone, built from master + #3570 (peterhel, merge, includes #3567) + #3577 + #3554 (cherry-picks). No conflicts. `:play-services-core:assembleVtmDefaultDebug` running.
