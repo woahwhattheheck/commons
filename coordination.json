@@ -1,15 +1,17 @@
 {
- "counts": {"drift":{"contained":0,"current":0,"disjoint":0,"overlap":0,"unknown":0},"hosted":{},"lanes_open":0,"lanes_with_several_open":0,"listed_open":0,"listed_recent_closed":18,"open_prs":0},
+ "counts": {"drift":{"contained":0,"current":0,"disjoint":1,"overlap":0,"unknown":0},"hosted":{"RUNNING":1},"lanes_open":1,"lanes_with_several_open":0,"listed_open":1,"listed_recent_closed":22,"open_prs":1},
  "degraded": [],
  "files": {"head":"coordination-head.json","lanes":"coordination-lanes.json","paths":"coordination-paths.json"},
- "main": {"committed_at":"2026-10-01T13:30:49Z","message":"llms.txt+fresh.md: last 24 from HEAD p/","sha":"ad76cfc233e06297fa6251240d9c75c719d06042"},
+ "main": {"committed_at":"2026-10-01T19:24:01Z","message":"llms.txt+fresh.md: last 24 from HEAD p/","sha":"9534bd608d22bb47f2457927ed3192b810a24fd1"},
  "notes": [],
- "observed_at": "2026-10-01T13:49:22Z",
+ "observed_at": "2026-10-01T19:26:50Z",
  "producer": {"api_calls":6,"first_draft":true,"road":"git trees + GitHub GraphQL/REST","seat":"coordination-state-workflow"},
- "prs": [],
- "queue": {"in_progress":1,"oldest_is_lower_bound":false,"oldest_queued_age_s":3744798,"oldest_queued_at":"2026-08-19T05:36:04Z","queued":70},
+ "prs": [
+  {"base_ref":"main","content_key":"50db57aefa9b6126","created_at":"2026-10-01T18:22:50Z","draft":false,"drift":{"main_delta_count":302,"merge_base":"a7e3e7c1e4926ca6bab546b4a0c0a0ddd05f1ff8","overlap_count":0,"path_count":19,"status":"disjoint"},"head":"76ac8890b10ac2686334cdb63996b7ed46ca9c2c","head_ref":"codex/cloudclaude-team-workhandoff-20261001","hosted":{"counts":{"CANCELLED_NOT_RUN":3,"NOT_EXECUTED_QUEUED":14,"RUNNING":3,"SUCCESS":1},"not_success":[{"name":"Manual full battery - evidence freshness","state":"CANCELLED_NOT_RUN"},{"name":"Manual full battery - provider cost","state":"CANCELLED_NOT_RUN"},{"name":"Manual full battery - spatial carrier","state":"CANCELLED_NOT_RUN"},{"name":"Prepare exact transport regression sources","state":"NOT_EXECUTED_QUEUED"}],"rollup":"RUNNING"},"number":30191,"swarm":{"review":{"reason":"declare seat, family and operation before integration","state":"NEEDS_PACKET"},"risk":"unknown","work":{}},"title":"Add internal team workhandoff via Shared Equipment","updated_at":"2026-10-01T19:26:07Z","verdicts":{"current_head":{},"reviews_read":0,"superseded":[]}}
+ ],
+ "queue": {"in_progress":11,"oldest_is_lower_bound":false,"oldest_queued_age_s":3765046,"oldest_queued_at":"2026-08-19T05:36:04Z","queued":83},
  "repo": "woahwhattheheck/commons",
  "schema": "commons-coordination-state/v1",
- "swarm": {"batches":[],"capacity":null,"capacity_note":"available review batches at observation time; unknown is not unlimited","counts":{},"policy":"ground/SWARM_ORDER.md","schema":"commons-swarm-queue/v1"},
- "tips": {"main":"ad76cfc233e06297fa6251240d9c75c719d06042"}
+ "swarm": {"batches":[],"capacity":null,"capacity_note":"available review batches at observation time; unknown is not unlimited","counts":{"NEEDS_PACKET":1},"policy":"ground/SWARM_ORDER.md","schema":"commons-swarm-queue/v1"},
+ "tips": {"main":"9534bd608d22bb47f2457927ed3192b810a24fd1"}
 }
