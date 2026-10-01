@@ -2,14 +2,14 @@
  "counts": {"drift":{"contained":0,"current":0,"disjoint":0,"overlap":0,"unknown":0},"hosted":{},"lanes_open":0,"lanes_with_several_open":0,"listed_open":0,"listed_recent_closed":14,"open_prs":0},
  "degraded": [],
  "files": {"head":"coordination-head.json","lanes":"coordination-lanes.json","paths":"coordination-paths.json"},
- "main": {"committed_at":"2026-09-30T20:23:08Z","message":"pin owner rows and rebuild ground/MANUAL.md from tools.json","sha":"f7659727c088738f2a08aebc05625f87bc170114"},
+ "main": {"committed_at":"2026-10-01T00:03:30Z","message":"llms.txt+fresh.md: last 24 from HEAD p/","sha":"0c8f12643daaf58e8c83a930b26a07aa9ae3ad2d"},
  "notes": [],
- "observed_at": "2026-09-30T20:44:53Z",
+ "observed_at": "2026-10-01T00:29:28Z",
  "producer": {"api_calls":6,"first_draft":true,"road":"git trees + GitHub GraphQL/REST","seat":"coordination-state-workflow"},
  "prs": [],
- "queue": {"in_progress":1,"oldest_is_lower_bound":false,"oldest_queued_age_s":3683329,"oldest_queued_at":"2026-08-19T05:36:04Z","queued":70},
+ "queue": {"in_progress":1,"oldest_is_lower_bound":false,"oldest_queued_age_s":3696804,"oldest_queued_at":"2026-08-19T05:36:04Z","queued":70},
  "repo": "woahwhattheheck/commons",
  "schema": "commons-coordination-state/v1",
  "swarm": {"batches":[],"capacity":null,"capacity_note":"available review batches at observation time; unknown is not unlimited","counts":{},"policy":"ground/SWARM_ORDER.md","schema":"commons-swarm-queue/v1"},
- "tips": {"main":"f7659727c088738f2a08aebc05625f87bc170114"}
+ "tips": {"main":"0c8f12643daaf58e8c83a930b26a07aa9ae3ad2d"}
 }
