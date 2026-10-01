@@ -8,7 +8,7 @@
    "unknown": 0
   },
   "hosted": {
-   "RUNNING": 1
+   "CANCELLED_NOT_RUN": 1
   },
   "lanes_open": 1,
   "lanes_with_several_open": 0,
@@ -22,14 +22,14 @@
   "full": "coordination.json"
  },
  "main": {
-  "committed_at": "2026-10-01T19:24:01Z",
-  "sha": "9534bd608d22bb47f2457927ed3192b810a24fd1"
+  "committed_at": "2026-10-01T23:19:27Z",
+  "sha": "cbdf4fba424d6bfb0f2346b68b7c59d9b29c9f67"
  },
- "observed_at": "2026-10-01T19:26:50Z",
+ "observed_at": "2026-10-01T23:23:25Z",
  "queue": {
-  "in_progress": 11,
-  "oldest_queued_age_s": 3765046,
-  "queued": 83
+  "in_progress": 1,
+  "oldest_queued_age_s": 3779241,
+  "queued": 71
  },
  "schema": "commons-coordination-head/v1",
  "several_open": [],
