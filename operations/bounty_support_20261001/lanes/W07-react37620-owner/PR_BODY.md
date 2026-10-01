@@ -1,41 +1,47 @@
-Title: Keep server fallback when browser-only content suspends on the client
+Title: Keep the server Suspense fallback when browser-only content suspends on the client
 
 ## Summary
 
 Fixes #37620.
 
-When a component calls `use(browser())`, Fizz emits its Suspense boundary as a client-rendered fallback (`<!--$!-->`). On the client, `updateDehydratedSuspenseComponent` retries the content without hydrating (`retrySuspenseComponentWithoutHydrating`). If that render suspends again, for example on a promise created on the client (`setTimeout`, `localStorage`, IndexedDB), the second pass goes to `mountSuspenseFallbackAfterRetryWithoutHydrating`. That deletes the dehydrated fragment, which holds the server fallback DOM, and inserts a freshly created, identical fallback. The fallback DOM is recreated, so CSS animations restart and any DOM state is lost. `/server-promise` doesn't hit this because the client render doesn't suspend.
+When a component calls `use(browser())`, Fizz emits its Suspense boundary as a client-rendered fallback (`<!--$!-->`). On the client, `updateDehydratedSuspenseComponent` retries the content without hydrating (`retrySuspenseComponentWithoutHydrating`). If that render suspends again, for example on a promise created on the client (`setTimeout`, `localStorage`, IndexedDB), the second pass goes to `mountSuspenseFallbackAfterRetryWithoutHydrating`. That deletes the dehydrated fragment, which holds the server fallback DOM, and inserts a newly created, identical client fallback, so CSS animations restart and DOM state is lost. `/server-promise` in the issue's repro doesn't hit this because the client render doesn't suspend.
 
-This change adds a branch to that second pass. If the boundary is a client-render fallback from a `browser()` bailout (recoverable digest) and its props haven't changed, we:
+This change keeps the boundary in the dehydrated state instead, leaving the server fallback in place until the content can render. The dehydrated state is the one pending boundaries already use: the rest of the tree commits normally and the retry listener is attached in the commit phase. Only this one boundary is affected. #24236 (reverted in #24434) took a different route: it held back the whole commit for non-urgent lanes.
 
-- remove the dehydrated fragment from the pending deletions,
-- restore the dehydrated `SuspenseState`, and
-- complete it the same way as a dehydrated boundary that suspended during hydration.
+The server fallback is kept in the second pass only when all of these hold:
+- The boundary is a client-render fallback from a `browser()` bailout (recoverable digest).
+- Neither the props, legacy context nor any context propagated into the boundary changed (`!didReceiveUpdate`, and no context lanes on the boundary). To make the context check work, the first pass propagates parent context changes before it drops the dehydrated fragment.
+- The content didn't spawn a deferred render (`useDeferredValue`). That lane is only scheduled by the regular fallback path.
 
-That state already exists and is handled throughout the work loop. The rest of the tree commits normally, the retry listener is attached in the commit phase, and when the promise resolves the boundary is retried and the content replaces the server fallback.
+If any of these fails, the existing path is used: the client fallback is rendered and replaces the server one.
 
-How this differs from #24236 (reverted in #24434): that PR held back the whole commit with `renderDidSuspendDelayIfPossible` for non-urgent lanes. This change only affects the one boundary and never delays the root commit. It also doesn't depend on lanes, because the client render of a `<!--$!-->` boundary is scheduled at `DefaultLane`.
+Making the kept boundary behave like other boundaries showing a fallback:
+- It gets a new `SuspenseState` with `retryLane: NoLane`. Once unblocked, it's retried at a normal retry lane, not at the hydration `OffscreenLane` (idle). Otherwise the content could wait behind an unrelated suspended transition.
+- `completeDehydratedSuspenseBoundary` calls `scheduleRetryEffect` for kept `<!--$!-->` boundaries, so `ScheduleRetry` is honored. Skipped siblings are prerendered, and content that suspends the commit on a stylesheet is retried. Ordinary dehydrated boundaries are unchanged.
+- `attemptEarlyBailoutIfNoScheduledUpdate` retries a dehydrated `<!--$!-->` boundary when a parent context changed. This mirrors what it already does for a client-rendered boundary showing its fallback, so a fallback that reads context, or content unblocked by it, isn't left stale.
 
 Scope and limits:
-- If the fallback props change (for example a parent re-renders with a new fallback), the current behavior is kept: the client fallback is rendered and replaces the server one. There's a test for this.
-- Boundaries whose fallback came from a server error (non-recoverable digest) also keep the current behavior. Each client retry queues the "switched to client rendering" recoverable error again, so staying dehydrated would report it more than once. I left a TODO. When I locally ungated the three `@gate FIXME` tests from #24236 with the boundary condition broadened to all `<!--$!-->` boundaries, this is exactly what failed: the error was reported twice. Their expected error message is also out of date.
-- While suspended, the server fallback stays as server HTML (not hydrated), the same as a pending `<!--$?-->` boundary today.
+- While the server fallback is kept it is not hydrated, the same as a pending `<!--$?-->` boundary. Event handlers and effects in the fallback don't run until the content renders, and a discrete event on it triggers a synchronous attempt to render the content. Hydrating the fallback itself would be a larger change.
+- A re-render that creates a new Suspense props object, or any parent context change, falls back to the current behavior (one client fallback).
+- Fallbacks from server errors (non-recoverable digest) keep the current behavior. Each client retry queues the "switched to client rendering" error again, so keeping them would report it more than once. I left a TODO.
+- When the content finally mounts, it goes through `retrySuspenseComponentWithoutHydrating`. That is the same path browser-only content uses today when it doesn't suspend on the client.
 
 ## How did you test this change?
 
-Added `ReactDOMFizzSuspenseFallbackHydration-test.js`, which mirrors the issue: `use(browser())`, then `use()` on a promise created only on the client. It captures the server `<p>` and uses a MutationObserver to assert that the node is never removed and is the same node after hydration. After the promise resolves, it asserts the content renders and no recoverable error is reported. It fails on `main` with `Expected: <p>Loading...</p> Received: serializes to the same string` and passes with this change on experimental, stable, `www-modern --variant=true` and `--prod`.
+Added tests to `ReactDOMFizzServer-test.js`, next to the existing `browser()` test:
+- `keeps the server fallback if browser-only content suspends on the client`: the issue's shape. `use(browser())`, then `use()` of a promise created on the client. Asserts that the server `<p>` is the same node after hydration and is never removed (MutationObserver), and that the content replaces it once the promise resolves, with no recoverable errors.
+- `replaces the server fallback if its props change while browser-only content is suspended`
+- `updates the server fallback if a context it reads changes while browser-only content is suspended`
+- `renders browser-only content if a context change unblocks it while the server fallback is kept`
+- `reveals browser-only content without waiting on an unrelated suspended transition`
+- `prerenders siblings of browser-only content while keeping the server fallback`
+- `reveals browser-only content that renders a stylesheet while keeping the server fallback`
+- `reveals browser-only content that only suspends on its deferred initial value`
 
-Also added two tests to `ReactDOMFizzServer-test.js` next to the existing `browser()` test:
-- `keeps the server fallback if browser-only content suspends on the client`: server renders the fallback because of `browser()`. The client then suspends on a promise created on the client. The test asserts the server `<p>` is the same node after hydration, and that it is removed and replaced by the content once the promise resolves, with no recoverable errors.
-- `replaces the server fallback if its props change while browser-only content is suspended`.
+On `main` without the reconciler change, the first six fail on the fallback node identity: `Expected: <p>Loading...</p> Received: serializes to the same string`, which is this bug. The last two pass on `main` and guard against regressing those cases. Each of the follow-ups listed above was added because one of these tests failed on an earlier version of this change.
 
-Without the change to `ReactFiberBeginWork.js`, the first test fails: the fallback `<p>` is a different node with the same content ("serializes to the same string"). With the change, both pass.
-
-Commands run:
-- `yarn test -r=experimental` and `yarn test -r=stable` on `ReactDOMFizzServer-test.js`, `ReactDOMServerPartialHydration-test.internal.js`, `ReactDOMServerSelectiveHydration-test.internal.js`, `ReactDOMFizzShellHydration-test.js`, `ReactDOMFizzSuspenseList-test.js`, `ReactDOMServerPartialHydrationActivity-test.internal.js`: 561 passed on each channel.
-- `yarn test -r=www-modern --variant=true` and `--variant=false` on the Fizz, PartialHydration and SelectiveHydration suites: 276 passed each.
-- `yarn test --prod -r=experimental` on the same three suites: 276 passed.
-- `yarn test -r=experimental packages/react-reconciler/src/__tests__/ReactSuspense`: 10 suites, 220 passed.
-- `yarn test -r=experimental` and `-r=stable` on `ReactDOMHydrationDiff-test.js`: 39 passed each. `-r=www-modern --variant=false` on `ReactDOMHydrationDiff` + `ReactDOMFizzServer-test`: 225 passed.
-- `yarn lint` and `yarn linc`: passed. `yarn prettier`: no changes.
-- `yarn flow dom-node` / `yarn flow-ci dom-node`: the only error reported is `Internal error: check job timed out after 100 seconds` in `packages/react-client/src/ReactFlightClient.js`. Unmodified `main` reports the same error on the same machine, and no type errors were reported.
+Commands run on this branch:
+- `yarn test` with `-r=experimental`, `-r=stable`, `-r=www-modern --variant=true`, `-r=www-modern --variant=false`, `-r=experimental --prod` and `-r=www-classic`. The suites run were `ReactDOMFizzServer`, `ReactDOMServerPartialHydration` (+`Activity`), `ReactDOMServerSelectiveHydration` (+`Activity`), `ReactDOMFizzShellHydration`, `ReactDOMFizzSuspenseList`, `ReactDOMHydrationDiff`, `ReactDOMFizzForm`, `ReactDOMFloat`, `ReactDOMSuspensePlaceholder`, `ReactDOMFizzDeferredValue` and `ReactDeferredValue`. Each configuration: 13 suites, 591 passed, 1 skipped.
+- FULL_RUN_PLACEHOLDER
+- `yarn linc`: passed. `yarn prettier`: applied.
+- FLOW_PLACEHOLDER
