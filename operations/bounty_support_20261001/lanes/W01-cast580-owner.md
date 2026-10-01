@@ -224,5 +224,37 @@ Fork of GmsCore does not exist yet. Until it does, each lane publishes `git form
   All six apply cleanly.
   - **W03 0003 (drop chromecast-java-api-v2) is held.** It conflicts with W02's `CastMediaRouteController`, which still uses `su.litvak.ChromeCast`. A port to W03's `CastDeviceSession` was requested from W02 via the coordinator; W03 0003 goes in after that, minus its controller hunk.
   - **Cross-lane contract checked.** W02's provider adds each requested `CATEGORY_CAST/...` string verbatim to every route's control filter (e.g. YouTube's `CATEGORY_CAST/233637DE///ALLOW_IPV6`), which is what W04's session lookup and MediaRouter matching need.
-  - Full APK build of the series: running.
+- 2026-10-01: **Series build.**
+  - `:play-services-core:assembleVtmDefaultDebug` on `cast/series` exit 0, giving `com.google.android.gms-252432035.apk` (107 MB).
+  - dexdump shows every lane's classes: W03 `CastChannel`, `CastDeviceSession`, `CastServiceImpl`, `CastChannelRegistry` and the Wire `CastMessage`; W02 `CastMediaRouteProvider` and `CastMediaRouteController`; W04 `CastContextImpl`, `SessionManagerImpl`, `ReconnectionServiceImpl`, `FetchBitmapTaskImpl` and the cast-framework dynamite `ModuleDescriptor`.
+  - `su.litvak.*` is still bundled, which is expected while W03 0003 is held.
+- 2026-10-01: **Compiled binder codes** (javap on the generated `Stub.TRANSACTION_*` of the combined series) all match the 22.3.1 client map:
+  - `ICastDeviceController`: 1, 4–14, 17–19
+  - `ICastDeviceControllerListener`: 1–3, 5–15
+  - `ICastSession` 1–6, with `onConnectionFailed(ConnectionResult)`
+  - `ICastDynamiteModule` 1–8
+  - `IMediaRouterCallback` 1–10
+  - `ISession` 1–18
+- 2026-10-01: **Lint**, CI parity: `:play-services-cast{,-core}:lintDebug :play-services-cast-framework{,-core}:lintDebug` exit 0. Errors are 0 in all four modules; warnings are 4, 12, 9 and 3.
+- 2026-10-01: The community-PR patches formerly in `patches/W01/` moved to `patches/W01/reference-community-prs/`. They are reference only and not part of any submission (authors peterhel, paulcakeface, Jorel97).
+
+## Submission set (READY except the items under "Owner blockers")
+
+Apply with `git am` in this order onto microg/GmsCore `32bc8954`:
+1. `operations/bounty_support_20261001/lanes/W02-patches/0001-Cast-Keep-status-in-CastDevice-and-skip-icon-without.patch` (branch `claude/bh-20261001-w02-cast580-discovery`)
+2. `operations/bounty_support_20261001/lanes/W02-patches/0002-Cast-Fix-device-discovery-and-route-publication.patch`
+3. `operations/bounty_support_20261001/patches/W03/0001-Cast-Add-CastV2-channel-to-talk-to-receivers-directl.patch` (branch `claude/bh-20261001-w03-cast580-channel`)
+4. `operations/bounty_support_20261001/patches/W03/0002-Cast-Implement-the-device-controller-on-the-CastV2-c.patch`
+5. `operations/bounty_support_20261001/lanes/W04-cast580-framework/0001-Cast-implement-cast-framework-session-lifecycle.patch` (branch `claude/bh-20261001-w04-cast580-framework`)
+6. `operations/bounty_support_20261001/lanes/W04-cast580-framework/0002-Cast-fix-categoryForCast-with-namespaces.patch`
+
+Pending: W02 0003 (route controller on `CastDeviceSession`), then W03 0003 minus its `CastMediaRouteController` hunk.
+
+**Open item for Bryce.** The VM branch `cast/series` was assembled with `git am` under this clone's earlier local git identity, so its committer metadata is not the GitHub noreply identity. The session's permission system refused rewriting that metadata. The branch must not be pushed as it is; how the submission branch is produced is left to Bryce.
+
+## Next action
+
+- W02 port → re-apply → build.
+- Then submission, once Bryce decides on blocker 1 and the fork exists.
+- Device run on a Chromecast (YouTube/ReVanced, Crunchyroll, Netflix) before or with submission.
 
