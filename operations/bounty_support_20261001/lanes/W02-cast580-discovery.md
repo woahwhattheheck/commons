@@ -1,12 +1,43 @@
 # W02 CAST580-DISCOVERY — support lane for W01 (microg/GmsCore#580)
 
-Updated 2026-10-01 (round 3). Support lane: no PR, BountyHub claim, or upstream comment from here. W01 integrates and submits. The fork woahwhattheheck/GmsCore now exists (per root); this lane still hands over patches only.
+Updated 2026-10-01 (round 4). Support lane: no PR, BountyHub claim, or upstream comment from here. W01 integrates and submits. The fork woahwhattheheck/GmsCore now exists (per root); this lane still hands over patches only.
 
 ## State per listing
 
 | Listing | Advertised / funded / promised (from SWE sweep in the orders thread) | GitHub issue | PR | Claim | Merge | Payment |
 |---|---|---|---|---|---|---|
 | 27c3cfe0 and ef91cb1e (#580; the thread names them A = $250 promised, emeitner, and B = $50 escrowed + $100 promised, olofmogren; I did not map the ids to A and B) | A $250 / $0 / $250; B $150 / $50 / $100 | microg/GmsCore#580 OPEN | none from this team (W01 owns submission) | none | none | none |
+
+## Round 4 (2026-10-01): (A) rebased onto W01's submit tree
+
+W01's submit tree already covers most of round 3's 0005/0006. That tree is commons `claude/bh-20261001-w01-cast580-owner` @ `1b72e8be8`, `operations/bounty_support_20261001/patches/W01/submit/`: `git am` 0001-0008, then `git apply` 0009 and 0010. It already has:
+- the getAttributes guard;
+- the resolve timeout and de-dup;
+- route expiry;
+- the stop-failed restart;
+- a controller-count "in use" check;
+- F1-F4, and W02's notes (i)-(iii).
+
+As W01 asked, (A) is therefore cut down to the three items it does not cover, delivered as a plain diff on top of 0010:
+- `W02-patches/on-w01-submit/0011-Cast-Keep-route-state-per-client-retry-discovery-keep-group-bit.diff`: the plain diff for `git apply`.
+- `W02-patches/on-w01-submit/0001-Cast-Keep-route-state-per-client-retry-discovery-kee.patch`: the same change as a `git am` patch.
+
+What it changes (`CastMediaRouteProvider.java`, plus 7 call sites in `CastMediaRouteController.java`):
+1. **Per-client connection state.** The provider keeps each controller's connection state, so one app's unselect no longer publishes the route as disconnected while another app's controller is still connected. `onRouteStateChanged` and `onRouteControllerReleased` now take the controller as their first argument, and the controller passes `CastMediaRouteController.this` at all 7 call sites.
+2. **Discovery start retry.** A failed discovery start (from `onStartDiscoveryFailed` or an exception) is retried with 1-60 s backoff while discovery is wanted. The backoff resets once discovery has started.
+3. **Group bit.** The multizone group bit (`ca` & 32) is kept in the `CastDevice` capabilities.
+
+Runs (W02 VM, Google Maven Central mirror via init script):
+- Applied onto a clean `32bc8954` in a fresh worktree: `git am` 0001-0008, then `git apply` of 0009, 0010 and this 0011, exit 0. The tree is identical to W02's local commit `f350258f` (`diff -r` is empty).
+- At `f350258f`: `./gradlew :play-services-cast-core:compileDebugJavaWithJavac :play-services-cast-core:lintDebug` exit 0; cast-core lint 0 errors, 9 warnings.
+- At `f350258f`: `./gradlew :play-services-core:assembleVtmDefaultDebug` plus the four cast `lintDebug` tasks, exit 0. APK `com.google.android.gms-252432035.apk` is 106,829,308 bytes. Lint errors are 0 in every module; warnings are cast 4, cast-core 9, cast-framework 9 and cast-framework-core 3.
+- No device run.
+
+Round 3's `0005`/`0006` are superseded by this for the PR. They stay in the directory as the record.
+
+The follow-up stack (`followup/0001`, `followup/0002`) is unchanged:
+- `followup/0002` (remote playback fixes) also applies on the original 0004 `8f133286` with `git am --3way`, exit 0.
+- A version of 0004 + 0002 rebased onto the submit tree with 0011 comes next, because 0004 and W01's 0009 both rewrite `CastMediaRouteController`.
 
 ## Round 3 (2026-10-01): verification results and incremental fixes
 

@@ -1,0 +1,233 @@
+From f350258f611f25963ca7e6ebc0733dbbabdaf6d8 Mon Sep 17 00:00:00 2001
+From: woahwhattheheck <293286387+woahwhattheheck@users.noreply.github.com>
+Date: Thu, 1 Oct 2026 16:21:17 +0000
+Subject: [PATCH] Cast: Keep route state per client, retry discovery, keep
+ group bit
+
+- MediaRouteProviderService creates one route controller per client and
+  route, so two apps that select the same Cast device each have their own
+  controller. The route's connection state was the last state any of them
+  reported, so one app unselecting published the route as disconnected
+  while the other was still connected. The provider now keeps the state
+  of each controller and publishes the route as connected while any is
+  connected, connecting while any is connecting.
+- Retry a failed start of discovery with backoff (1 s up to 60 s) while
+  discovery is wanted. It was not started again until the discovery
+  request changed.
+- Keep the multizone group bit of the "ca" record in the CastDevice
+  capabilities (CastDevice.CAPABILITY_MULTIZONE_GROUP).
+---
+ .../gms/cast/CastMediaRouteController.java    | 14 ++---
+ .../gms/cast/CastMediaRouteProvider.java      | 54 ++++++++++++++++---
+ 2 files changed, 55 insertions(+), 13 deletions(-)
+
+diff --git a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java
+index 5b98927b..00db1171 100644
+--- a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java
++++ b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java
+@@ -87,7 +87,7 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+         callbacks.session = newSession;
+         session = newSession;
+         sessionConnected = false;
+-        provider.onRouteStateChanged(routeId, MediaRouter.RouteInfo.CONNECTION_STATE_CONNECTING, -1);
++        provider.onRouteStateChanged(CastMediaRouteController.this, routeId, MediaRouter.RouteInfo.CONNECTION_STATE_CONNECTING, -1);
+         return newSession;
+     }
+ 
+@@ -108,7 +108,7 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+             released = true;
+         }
+         closeSession();
+-        provider.onRouteControllerReleased(routeId);
++        provider.onRouteControllerReleased(CastMediaRouteController.this, routeId);
+     }
+ 
+     private void closeSession() {
+@@ -119,7 +119,7 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+             session = null;
+             sessionConnected = false;
+             if (oldSession != null) {
+-                provider.onRouteStateChanged(routeId, MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED, -1);
++                provider.onRouteStateChanged(CastMediaRouteController.this, routeId, MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED, -1);
+             }
+         }
+         if (oldSession != null) oldSession.disconnect();
+@@ -131,7 +131,7 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+         this.volume = newVolume;
+         requestedVolume = newVolume;
+         requestedVolumeAt = SystemClock.elapsedRealtime();
+-        provider.onRouteStateChanged(routeId, -1, newVolume);
++        provider.onRouteStateChanged(CastMediaRouteController.this, routeId, -1, newVolume);
+ 
+         // Volume is a device setting, so any open connection to the receiver can change it. Prefer
+         // the route's own connection, then one an app opened through the device controller.
+@@ -183,7 +183,7 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+                 if (CastMediaRouteController.this.session != session) return;
+                 CastMediaRouteController.this.session = null;
+                 sessionConnected = false;
+-                provider.onRouteStateChanged(routeId, MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED, -1);
++                provider.onRouteStateChanged(CastMediaRouteController.this, routeId, MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED, -1);
+             }
+             Log.d(TAG, "Connection to " + routeId + " ended: " + statusCode);
+             session.disconnect();
+@@ -194,7 +194,7 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+             synchronized (CastMediaRouteController.this) {
+                 if (CastMediaRouteController.this.session != session) return;
+                 sessionConnected = true;
+-                provider.onRouteStateChanged(routeId, MediaRouter.RouteInfo.CONNECTION_STATE_CONNECTED, -1);
++                provider.onRouteStateChanged(CastMediaRouteController.this, routeId, MediaRouter.RouteInfo.CONNECTION_STATE_CONNECTED, -1);
+             }
+         }
+ 
+@@ -218,7 +218,7 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+             volumeKnown = true;
+             if (deviceVolume != requestedVolume && SystemClock.elapsedRealtime() - requestedVolumeAt < LOCAL_VOLUME_HOLD_MS) return;
+             volume = deviceVolume;
+-            provider.onRouteStateChanged(routeId, -1, deviceVolume);
++            provider.onRouteStateChanged(CastMediaRouteController.this, routeId, -1, deviceVolume);
+         }
+ 
+         @Override
+diff --git a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteProvider.java b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteProvider.java
+index 7239045b..b241ed87 100644
+--- a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteProvider.java
++++ b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteProvider.java
+@@ -61,11 +61,14 @@ public class CastMediaRouteProvider extends MediaRouteProvider {
+     private static final int TXT_CAPABILITY_AUDIO_OUT = 4;
+     private static final int TXT_CAPABILITY_AUDIO_IN = 8;
+     private static final int TXT_CAPABILITY_MULTIZONE_GROUP = 32;
+-    private static final int CAPABILITY_MASK = TXT_CAPABILITY_VIDEO_OUT | TXT_CAPABILITY_VIDEO_IN | TXT_CAPABILITY_AUDIO_OUT | TXT_CAPABILITY_AUDIO_IN;
++    // CastDevice.CAPABILITY_* values are the same bits; the group bit is CAPABILITY_MULTIZONE_GROUP.
++    private static final int CAPABILITY_MASK = TXT_CAPABILITY_VIDEO_OUT | TXT_CAPABILITY_VIDEO_IN | TXT_CAPABILITY_AUDIO_OUT | TXT_CAPABILITY_AUDIO_IN | TXT_CAPABILITY_MULTIZONE_GROUP;
+ 
+     static final int VOLUME_MAX = 20;
+     private static final int RESOLVE_RETRY_DELAY_MS = 500;
+     private static final int RESOLVE_TIMEOUT_MS = 15000;
++    private static final int DISCOVERY_RETRY_MIN_DELAY_MS = 1000;
++    private static final int DISCOVERY_RETRY_MAX_DELAY_MS = 60000;
+ 
+     private static class CastRoute {
+         CastDevice device;
+@@ -76,6 +79,19 @@ public class CastMediaRouteProvider extends MediaRouteProvider {
+         // while its own connection to the device is down, so this, not the connection state, tells
+         // whether the route is still in use.
+         int controllers;
++        // Connection state reported by each route controller that is not disconnected. Each client
++        // of the provider has its own controller for a route.
++        final Map<Object, Integer> controllerStates = new HashMap<Object, Integer>();
++    }
++
++    /** Connected while any controller is connected, connecting while any is connecting. */
++    private static void updateConnectionState(CastRoute route) {
++        route.connectionState = MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED;
++        for (int state : route.controllerStates.values()) {
++            if (state == MediaRouter.RouteInfo.CONNECTION_STATE_CONNECTED || route.connectionState == MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED) {
++                route.connectionState = state;
++            }
++        }
+     }
+ 
+     private static boolean isInUse(CastRoute route) {
+@@ -97,6 +113,8 @@ public class CastMediaRouteProvider extends MediaRouteProvider {
+     private NsdManager mNsdManager;
+     private DiscoveryListener discoveryListener;
+     private boolean discoveryWanted = false;
++    private int discoveryRetryDelay = DISCOVERY_RETRY_MIN_DELAY_MS;
++    private final Runnable retryDiscovery = this::updateDiscovery;
+ 
+     private static final ArrayList<IntentFilter> BASE_CONTROL_FILTERS = new ArrayList<IntentFilter>();
+     static {
+@@ -240,6 +258,7 @@ public class CastMediaRouteProvider extends MediaRouteProvider {
+     @SuppressLint("NewApi")
+     private void updateDiscovery() {
+         if (mNsdManager == null) return;
++        handler.removeCallbacks(retryDiscovery);
+         if (discoveryWanted && discoveryListener == null) {
+             discoveryListener = new DiscoveryListener();
+             Log.d(TAG, "Starting discovery of " + SERVICE_TYPE);
+@@ -248,6 +267,7 @@ public class CastMediaRouteProvider extends MediaRouteProvider {
+             } catch (RuntimeException e) {
+                 Log.w(TAG, "Failed to start discovery", e);
+                 discoveryListener = null;
++                scheduleDiscoveryRetry();
+             }
+         } else if (!discoveryWanted && discoveryListener != null && discoveryListener.state == DiscoveryListener.STARTED) {
+             Log.d(TAG, "Stopping discovery of " + SERVICE_TYPE);
+@@ -262,6 +282,14 @@ public class CastMediaRouteProvider extends MediaRouteProvider {
+         }
+     }
+ 
++    /** Try to start discovery again later, with backoff, while it is still wanted. */
++    private void scheduleDiscoveryRetry() {
++        if (!discoveryWanted) return;
++        handler.removeCallbacks(retryDiscovery);
++        handler.postDelayed(retryDiscovery, discoveryRetryDelay);
++        discoveryRetryDelay = Math.min(discoveryRetryDelay * 2, DISCOVERY_RETRY_MAX_DELAY_MS);
++    }
++
+     @SuppressLint("NewApi")
+     private class DiscoveryListener implements NsdManager.DiscoveryListener {
+         static final int STARTING = 0;
+@@ -274,6 +302,7 @@ public class CastMediaRouteProvider extends MediaRouteProvider {
+             handler.post(() -> {
+                 if (discoveryListener != this) return;
+                 state = STARTED;
++                discoveryRetryDelay = DISCOVERY_RETRY_MIN_DELAY_MS;
+                 // Stop again if the request went away while starting.
+                 updateDiscovery();
+             });
+@@ -283,7 +312,10 @@ public class CastMediaRouteProvider extends MediaRouteProvider {
+         public void onStartDiscoveryFailed(String serviceType, int errorCode) {
+             Log.w(TAG, "Starting discovery failed. Error code " + errorCode);
+             handler.post(() -> {
+-                if (discoveryListener == this) discoveryListener = null;
++                if (discoveryListener != this) return;
++                discoveryListener = null;
++                // E.g. while the network is changing: discovery stays wanted, so try again.
++                scheduleDiscoveryRetry();
+             });
+         }
+ 
+@@ -525,11 +557,15 @@ public class CastMediaRouteProvider extends MediaRouteProvider {
+     /**
+      * Called by a route controller, from any thread, when MediaRouter released it.
+      */
+-    void onRouteControllerReleased(final String routeId) {
++    void onRouteControllerReleased(final Object controller, final String routeId) {
+         handler.post(() -> {
+             CastRoute route = routes.get(routeId);
+             if (route == null) return;
+             if (route.controllers > 0) route.controllers--;
++            if (route.controllerStates.remove(controller) != null) {
++                updateConnectionState(route);
++                publishRoutes();
++            }
+             if (!isInUse(route) && !serviceCastIds.containsValue(routeId)) {
+                 // The device was lost while it was in use.
+                 routes.remove(routeId);
+@@ -541,13 +577,19 @@ public class CastMediaRouteProvider extends MediaRouteProvider {
+     /**
+      * Called by route controllers, from any thread, to reflect connection and volume state of a
+      * route in the published descriptor. A negative connection state or volume keeps the current
+-     * value.
++     * value. When several apps selected the route, each through its own controller, the route
++     * stays connected until all of them disconnected.
+      */
+-    void onRouteStateChanged(final String routeId, final int connectionState, final int volume) {
++    void onRouteStateChanged(final Object controller, final String routeId, final int connectionState, final int volume) {
+         handler.post(() -> {
+             CastRoute route = routes.get(routeId);
+             if (route == null) return;
+-            if (connectionState >= 0) route.connectionState = connectionState;
++            if (connectionState == MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED) {
++                route.controllerStates.remove(controller);
++            } else if (connectionState >= 0) {
++                route.controllerStates.put(controller, connectionState);
++            }
++            updateConnectionState(route);
+             if (volume >= 0) route.volume = Math.max(0, Math.min(VOLUME_MAX, volume));
+             if (!isInUse(route) && !serviceCastIds.containsValue(routeId)) {
+                 // The device was lost while it was in use.
+-- 
+2.43.0
+
