@@ -1,0 +1,36 @@
+{
+  "schema": "titan-v4-research-custody/v1",
+  "source_pr": 12354,
+  "source_head": "cb88083922d548fb5ace2ea775683a759affd9a8",
+  "source_base": "d5eca5b1230258ec583f8026f6a3b422ed15cde0",
+  "source_title": "[REJECTED ECONOMICS] TITAN V3.1 H9: make shipped E20 HIRE guard reachable on R04",
+  "source_blobs": {
+    ".github/workflows/titan-v31-h9-r04-e20.yml": "af621ae05a72af85ba4e48ee0e4a8dc8c1368566",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/H9-R04-E20-REACHABILITY.md": "196b5109b0778498f7427727d920502c43def624",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h9_e20/candidate.py": "5ebe41fed83155fdd378272f12aa92939ee61d35",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h9_r04_e20_hire_guard.py": "ec6eaedab225ef5dcfe000ca3e7c415f1b329c38",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_h9_r04_e20_hire_guard.py": "e7b62e92aed291206ed43ab3cfd6f16de392049c"
+  },
+  "disposition": "rejected_catastrophic_negative_economics_quarantine",
+  "queue_edge": false,
+  "promotion": false,
+  "direct_merge": false,
+  "economic_kill": {
+    "cells": 4,
+    "negative_cells": 4,
+    "mean_paired_delta_m": -29423.5,
+    "range_paired_delta_m": [-37905, -15061],
+    "failures": 0,
+    "causal_activation": "step_1_day_0_drops_two_opening_hires_from_coupled_animal_bundle"
+  },
+  "final_head_workflows": {
+    "h9_r04_e20": {"run": 34580974252, "conclusion": "success"},
+    "muhlnickel_spec_guard": {"run": 34580974224, "conclusion": "success"},
+    "open_door_guard": {"run": 34580974223, "conclusion": "success"},
+    "source_parses": {"run": 34580974250, "conclusion": "success"},
+    "titan_selected_projection": {"run": 34580974266, "conclusion": "success"},
+    "path_manifest": {"run": 34580974261, "conclusion": "success"},
+    "tests": {"run": 34580974248, "conclusion": "failure"}
+  },
+  "note": "Preserve exact bytes and causal negative evidence only. Any successor requires a materially narrower current-ABI predicate and fresh economics."
+}

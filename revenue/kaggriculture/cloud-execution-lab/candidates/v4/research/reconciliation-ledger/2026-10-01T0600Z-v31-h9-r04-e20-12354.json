@@ -1,0 +1,33 @@
+{
+  "schema": "titan-v4-reconciliation-receipt/v1",
+  "authority_main": "068999240e9b9bcfa6636bd05678ae38fd867643",
+  "carrier_before": "eb0b80a98fe5d3b6b2c58967c65b411c3eaa7443",
+  "source_pr": 12354,
+  "source_head": "cb88083922d548fb5ace2ea775683a759affd9a8",
+  "canonical": "00142be0ff2314dcb23068c8133b34d290661923",
+  "integration": "4e3207af1332266852530ec8494db8969edc1115",
+  "composition": "32dc1e6963702f7e013cd609053d52c434e42158",
+  "preserved_blobs": [
+    "af621ae05a72af85ba4e48ee0e4a8dc8c1368566",
+    "196b5109b0778498f7427727d920502c43def624",
+    "5ebe41fed83155fdd378272f12aa92939ee61d35",
+    "ec6eaedab225ef5dcfe000ca3e7c415f1b329c38",
+    "e7b62e92aed291206ed43ab3cfd6f16de392049c"
+  ],
+  "disposition": "rejected_catastrophic_negative_economics_quarantine_no_queue_edge",
+  "action": "exact_blob_custody_only",
+  "dedicated_gate_success": 34580974252,
+  "generic_tests_failure": 34580974248,
+  "mean_paired_delta_m": -29423.5,
+  "semantic_promotion": false,
+  "runtime_changed": false,
+  "defaults_changed": false,
+  "current_pointer_changed": false,
+  "canonical_changed": false,
+  "integration_changed": false,
+  "composition_changed": false,
+  "archive_or_release_changed": false,
+  "kaggle_state_changed": false,
+  "sibling_v4_root_created": false,
+  "recovered_not_yet_composed": []
+}
