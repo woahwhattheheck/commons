@@ -169,9 +169,17 @@ Fork of GmsCore does not exist yet. Until it does, each lane publishes `git form
 
 ## Owner blockers
 
-- Fork `woahwhattheheck/GmsCore` does not exist, and the session hook blocks `fork_repository`. The upstream PR waits on the fork; submission is GO once it exists.
-- BountyHub sponsor intake for both listings (RULES 29).
-- No real Chromecast, Tizen TV or Roku reachable from the cloud VM; device verification needs Bryce's LAN (e/OS phone + Chromecast).
+1. **Submission decision: maintainer practice on AI-created PRs.**
+   - microG's label "AI slop" has the description "Pull requests that have been created using AI" (https://github.com/microg/GmsCore/labels?q=slop).
+   - It was applied to the two earlier BountyHub cast PRs, which were then closed:
+     - https://github.com/microg/GmsCore/pull/3417 — mar-v-in, 2026-04-26: "What did you expect from AI slop?"
+     - https://github.com/microg/GmsCore/pull/3767 — closed 2026-09-09.
+   - The series in this lane was written by agent lanes (W01–W04). GmsCore has no written CONTRIBUTING or AI-use policy file, but this label is the maintainer's stated category, and every PR so labelled has been closed.
+   - Any question about how the code was made gets a truthful answer, and no human authorship is attested.
+   - Whether and how to submit is Bryce's call. Recorded state: **BLOCKED-ON-OWNER-DECISION** for the upstream PR.
+2. **Fork.** `woahwhattheheck/GmsCore` does not exist, and the session hook blocks `fork_repository`. Opening the PR also needs the fork.
+3. **Sponsor intake.** BountyHub sponsor intake for both listings (RULES 29).
+4. **Device run.** No Chromecast, Tizen TV or Roku is reachable from the cloud VM. A device run needs Bryce's LAN: e/OS phone + Chromecast, then YouTube/ReVanced, Crunchyroll and Netflix.
 
 ## Integration log
 
@@ -204,3 +212,17 @@ Fork of GmsCore does not exist yet. Until it does, each lane publishes `git form
     - **#3802:** off by one. It puts `stopApplication` at `= 3` (code 4), removes `sendMessage`, and moves connect to code 18. Excluded from integration.
   - **Gaps for W03:** setVolume `= 6`, setMute `= 7`, codes 4 and 6, listener codes 7, 8 and 15.
 - 2026-10-01: Integration branch `cast/integration` in the VM clone, built from master + #3570 (peterhel, merge, includes #3567) + #3577 + #3554 (cherry-picks). No conflicts. `:play-services-core:assembleVtmDefaultDebug` running.
+- 2026-10-01: The community-PR integration branch (`cast/integration`) built: `:play-services-core:assembleVtmDefaultDebug` exit 0, `com.google.android.gms-252432035.apk` (107 MB). dexdump shows the cast dynamite `ModuleDescriptor`, `CastDynamiteModuleImpl`, `CastDeviceControllerImpl` and `CastMediaRouteProvider`. The manifest has `CastMediaRouteProviderService` and `CastDeviceControllerService`. Maven Central returned 429 through the proxy, so it was built via `w01/tools/central-mirror.gradle` (Google's Maven Central mirror; no repo change). **Superseded by `cast/series`**: the upstream series is built from this team's own lane work, not from other contributors' open PRs.
+- 2026-10-01: **Series `cast/series`** (VM clone, base `32bc8954`), applied with `git am --3way` in this order:
+  1. W02 0001 Keep status in CastDevice and skip icon without path
+  2. W02 0002 Fix device discovery and route publication
+  3. W03 0001 Add CastV2 channel to talk to receivers directly
+  4. W03 0002 Implement the device controller on the CastV2 channel
+  5. W04 0001 Implement cast framework session lifecycle (includes the `ICastSession.onConnectionFailed(ConnectionResult)` fix)
+  6. W04 0002 Fix categoryForCast with namespaces
+
+  All six apply cleanly.
+  - **W03 0003 (drop chromecast-java-api-v2) is held.** It conflicts with W02's `CastMediaRouteController`, which still uses `su.litvak.ChromeCast`. A port to W03's `CastDeviceSession` was requested from W02 via the coordinator; W03 0003 goes in after that, minus its controller hunk.
+  - **Cross-lane contract checked.** W02's provider adds each requested `CATEGORY_CAST/...` string verbatim to every route's control filter (e.g. YouTube's `CATEGORY_CAST/233637DE///ALLOW_IPV6`), which is what W04's session lookup and MediaRouter matching need.
+  - Full APK build of the series: running.
+
