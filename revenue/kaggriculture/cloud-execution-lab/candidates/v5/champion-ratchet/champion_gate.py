@@ -16,7 +16,7 @@ EXPECTED_TARGETS = 41
 EXPECTED_REPLAYS_PER_TARGET = 3
 EXPECTED_CALLBACKS = 719
 REPO_GIT_BLOBS = {
-    "cloud-execution-lab/reference/evaluator/evaluate.py": "1fb6b655bb4ca1e1684be165a8ef513e2e6c2325",
+    "cloud-execution-lab/reference/evaluator/evaluate.py": "6d9edcc4ec5eeee22c8a6faec6ddd208a9a2e9e7",
     "20260907-offline-agent/evaluate.py": "387712c7b85dae4e624a3aab11df96f1ddb5b451",
     "cloud-pack/pack.py": "2407c7467fc60eda8864283d736c743a886bc549",
 }
