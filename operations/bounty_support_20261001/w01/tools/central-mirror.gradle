@@ -1,0 +1,21 @@
+// Maven Central returns HTTP 429 through this VM's proxy; resolve it from Google's mirror instead.
+def mirror = 'https://maven-central.storage-download.googleapis.com/maven2/'
+def redirect = { RepositoryHandler repos ->
+    repos.configureEach { repo ->
+        if (repo instanceof MavenArtifactRepository) {
+            def u = repo.url.toString()
+            if (u.startsWith('https://repo.maven.apache.org/maven2') || u.startsWith('https://repo1.maven.org/maven2')) {
+                repo.url = mirror
+            }
+        }
+    }
+}
+beforeSettings { settings ->
+    redirect(settings.pluginManagement.repositories)
+    redirect(settings.buildscript.repositories)
+    redirect(settings.dependencyResolutionManagement.repositories)
+}
+allprojects { p ->
+    redirect(p.buildscript.repositories)
+    redirect(p.repositories)
+}

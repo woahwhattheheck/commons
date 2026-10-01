@@ -97,6 +97,38 @@ Binder transaction codes and listener codes in every AIDL above must match Play 
 3. **Route volume (W02 → W03).** `CastMediaRouteController.onSetVolume/onUpdateVolume` call W03's `org.microg.gms.cast.CastChannelRegistry` (new, W03) `get(deviceId)?.setVolume(level)`; if no open channel, no-op. W03 publishes this one class; W02 calls only it.
 4. **Session (W04 → W03).** W04 never opens sockets. Session start/end goes through the app's own `CastSession` → `ICastDeviceController`. W04's `CastSessionImpl` relays state (`onConnected`, `onConnectionSuspended`, `onConnectionFailed`, `disconnectFromDevice`) between the app and `SessionImpl`.
 
+### Parcel and framework-binder ground truth (Google `play-services-cast{,-framework}:22.3.1`)
+
+Tools: `operations/bounty_support_20261001/w01/tools/sp_fields.py` (SafeParcel field id → reader) and `aidl_codes.py` (proxy/stub transaction codes), both run with `javap` on the AAR's `classes.jar`. Full framework dump: `operations/bounty_support_20261001/w01/cast-framework-22.3.1-binder-codes.txt`.
+
+**Parcelables (W01-owned files).** microG's `CastDevice` (2–11), `LaunchOptions` (2–5), `ApplicationMetadata` (2–7), `JoinOptions` (2), `ApplicationStatus` (2) and `CastDeviceStatus` (2–6) use the same field ids and types as Google's creators. Google's extra fields are optional and default when absent: `CastDevice` 12–21, `ApplicationMetadata` 8–12, device status 7 (equalizer) and 8 (volume step). No parcelable change is needed for launch/session/media flows.
+
+**Dynamite load path.** The client calls `DynamiteModule.load(ctx, PREFER_REMOTE, "com.google.android.gms.cast.framework.dynamite")` and then `instantiate("com.google.android.gms.cast.framework.internal.CastDynamiteModuleImpl")`. The module runs **inside the app's process**, so everything W04 writes there must reach GmsCore over IPC. `newCastContextImpl` has no version gate.
+
+**`ICastDynamiteModule`.**
+- Codes 1, 2, 3, 5 and 6 match microG.
+- Code 7 is `newFetchBitmapTaskImpl` with an extra `IObjectWrapper`. Code 8 is `int` module API version. Neither exists in microG.
+- The client calls code 7 only when code 8 returns ≥ 233700000. An unimplemented code returns 0, so the client falls back to code 6.
+
+**Other framework interfaces.** These match microG's AIDL codes:
+- `ICastContext` (client calls 1, 3, 5, 6, 11)
+- `ISessionManager` 1–9
+- `ISession` 1–16
+- `IDiscoveryManager` 5
+- `IReconnectionService` 1–4
+- `IMediaRouter` 1–11
+- `IMediaRouterCallback` 1–4 and 6
+- `ISessionProxy` 1–8, `ISessionProvider` 1–4, `ISessionManagerListener` 1–11, `ICastStateListener` 1–3, `ICastConnectionController` 1–5, `IAppVisibilityListener` 1–4
+
+Newer codes not in microG, all of which fall back when they return 0:
+- `ISession` 17, 18 (int)
+- `IMediaRouterCallback` 7 (int version), 8–10 (two-route-id variants)
+- `IMediaRouter` 12–14
+- `ISessionProxy` 9
+
+**Mismatch, W04 to fix: `ICastSession` code 3.** The client sends `onConnectionFailed(ConnectionResult)`. microG declares `onConnectionFailed(in Status status) = 2`. `Status` has fields 1 = statusCode, 2 = message, 4 = ConnectionResult. `ConnectionResult` has fields 1 = versionCode, 2 = statusCode, 4 = message. Unparcelling one as the other gives a wrong status code and tries to read field 4's string as a parcelable, all inside the app process.
+Fix: `void onConnectionFailed(in ConnectionResult connectionResult) = 2;` in `play-services-cast-framework/src/main/aidl/com/google/android/gms/cast/framework/ICastSession.aidl`, plus the matching signature in `CastSessionImpl`.
+
 ## Lane boundaries (exact files)
 
 ### W02 — discovery / MediaRouteProvider
