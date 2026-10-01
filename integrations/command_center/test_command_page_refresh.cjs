@@ -69,6 +69,7 @@ function page(seats,repo,opts){
       return {ok:true,status:200,json:async()=>JSON.parse(JSON.stringify(body))};
     }
   },opts.location?{location:opts.location}:{}));
+  context.window=context;
   vm.runInContext(inline[0],context);
   const settle=async()=>{for(let i=0;i<25;i++) await new Promise(r=>setImmediate(r));};
   return {
