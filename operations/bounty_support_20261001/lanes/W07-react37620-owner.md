@@ -14,7 +14,7 @@ Updated 2026-10-01. Sole submission owner for this issue.
 | BountyHub claim | `claims: []`, `claimed:false`, `solved:false`. No claim by us. |
 | GitHub issue | OPEN, label `Status: Unconfirmed`, no maintainer response. |
 | Competing upstream PRs (all open) | #37648 (xyjk0511), #37654 (Jr-kenny), #37694 (theworker02), #37705 (sidshehria). #37694 and #37705 have byte-identical reconciler diffs. |
-| Our PR | NOT OPENED yet. Fork woahwhattheheck/react exists (root, repo 1399995923, main 7c6ac13). Branch `fix-ssr-fallback-remount-browser-only` pushed to the fork (c7b6d2a+9e31598). Revision 6a8c0d3 committed locally, under final checks before push + PR. |
+| Our PR | NOT OPENED. READY TO PUBLISH via the central publication road (see HANDOFF). Head `woahwhattheheck:fix-ssr-fallback-remount-browser-only` @ 8fce8b7d2a3d03f7b054abdc0413f87a1ce2ce78 is on the fork. `mcp__github__create_pull_request` to facebook/react was rejected by this session's PreToolUse publication hook: PUBLICATION_BLOCKED, rule unfavorable_finding. |
 | Merge state | none |
 | Payment state | none |
 
@@ -90,6 +90,27 @@ facebook/react's CONTRIBUTING and PR template contain no AI-use policy or disclo
 - Documented limits (shared with #24236's design and with pending `<!--$?-->` boundaries): the kept server fallback is not hydrated, so it is inert to events while kept; a new Suspense props object or any parent context change falls back to today's single remount; server-error fallbacks are unchanged.
 - dot's Slack-posted harness: running it (and building packages for it) was blocked by this environment's code-from-external policy, so it was not run here.
 
+## HANDOFF FOR PUBLICATION (2026-10-01)
+
+- Upstream: facebook/react (react/react redirects), base `main` @ 7c6ac13e19fef500b7f669a16bbd01ecc95965ca.
+- Head: `woahwhattheheck:fix-ssr-fallback-remount-browser-only` @ 8fce8b7d2a3d03f7b054abdc0413f87a1ce2ce78. Verified with `git ls-remote https://github.com/woahwhattheheck/react`.
+- Commits (author woahwhattheheck <293286387+woahwhattheheck@users.noreply.github.com>, no trailers):
+  - c7b6d2a Keep server fallback when browser-only content suspends on the client
+  - 9e31598 Add regression test for Suspense fallback remount on hydration (#37620)
+  - 6a8c0d3 Retry kept server fallbacks like other suspended boundaries
+  - 8fce8b7 Don't keep the server fallback if the content spawned a deferred render
+- Net diff vs main: packages/react-reconciler/src/ReactFiberBeginWork.js (+72), packages/react-reconciler/src/ReactFiberCompleteWork.js (+13), packages/react-dom/src/__tests__/ReactDOMFizzServer-test.js (+492; 8 new tests). The interim test file from 9e31598 is folded into ReactDOMFizzServer-test.js by 8fce8b7, so the net diff has no new file.
+- Patch series: `W07-react37620-owner/0001..0004-*.patch` (`git am` on main 7c6ac13).
+- PR title + body (follows .github/PULL_REQUEST_TEMPLATE.md; every test statement matches a completed run): `W07-react37620-owner/PR_BODY.md` (first line = title).
+- Options: maintainer_can_modify true, not draft.
+- Publication blocker, exact: the hook returned `{"state":"PUBLICATION_BLOCKED","delivered":false,"matched_fields":["title","body","head","base"],"matched_terms":[]}`. A local dry run of `check_publication(body, title)` gives rule `unfavorable_finding`. The matched sentences are the PR template's required test evidence:
+  - fail-before results on main
+  - the server-error scope limit
+  - test-run and Flow result lines (pattern words: error(s), fail(s), timeout)
+  I did not reword the PR to defeat the classifier, and I did not route around the hook. Removing that evidence would misrepresent the change to the maintainers. Root/team publishes through the checked central road, which can map this concrete software fix report.
+- Final checks on 8fce8b7: 13 focused suites pass in experimental, stable, www-modern true/false, --prod and www-classic (591 passed, 1 skipped each); full react-reconciler+react-dom stable 225/225 suites (5387 passed); Flow full-check 0 errors in dom-node and fabric (and 9 renderer configs on 6a8c0d3); `yarn linc` passed. The full experimental rerun result is recorded in PR_BODY.md.
+- Second adversarial check of 6a8c0d3: 17 prior findings confirmed fixed, 6 are the documented limits (unchanged). One new blocker (useDeferredValue initial value: loop, then stuck) was confirmed by 2 verifiers and fixed in 8fce8b7, with a regression test that fails on 6a8c0d3 (RangeError: potential infinite loop) and passes on main and on 8fce8b7.
+
 ## Next action
 
-Once the fork exists: `git ls-remote` the fork, add_repo push, push branch `fix-ssr-fallback-remount-browser-only`, open the PR with PR_BODY.md, subscribe_pr_activity, answer review.
+Root/team: open the PR from the HANDOFF block above through the central publication road and post its URL. The submission owner (this lane) then subscribes to PR activity and handles review on the branch. Bryce: CLA (https://code.facebook.com/cla) if the meta-cla bot reports it unsigned. Root/team: the BountyHub assignment request. The listing stays exclusive with `assignee: null` (no claim eligibility until accepted).

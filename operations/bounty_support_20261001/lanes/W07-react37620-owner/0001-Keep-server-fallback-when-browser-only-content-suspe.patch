@@ -1,7 +1,7 @@
 From c7b6d2a8915ecea4562000d81aafa3c7f56e3e21 Mon Sep 17 00:00:00 2001
 From: woahwhattheheck <293286387+woahwhattheheck@users.noreply.github.com>
 Date: Thu, 1 Oct 2026 12:11:47 +0000
-Subject: [PATCH 1/2] Keep server fallback when browser-only content suspends
+Subject: [PATCH 1/4] Keep server fallback when browser-only content suspends
  on the client
 
 When `use(browser())` bails out on the server, Fizz emits the boundary as a

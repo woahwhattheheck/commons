@@ -42,6 +42,7 @@ On `main` without the reconciler change, the first six fail on the fallback node
 
 Commands run on this branch:
 - `yarn test` with `-r=experimental`, `-r=stable`, `-r=www-modern --variant=true`, `-r=www-modern --variant=false`, `-r=experimental --prod` and `-r=www-classic`. The suites run were `ReactDOMFizzServer`, `ReactDOMServerPartialHydration` (+`Activity`), `ReactDOMServerSelectiveHydration` (+`Activity`), `ReactDOMFizzShellHydration`, `ReactDOMFizzSuspenseList`, `ReactDOMHydrationDiff`, `ReactDOMFizzForm`, `ReactDOMFloat`, `ReactDOMSuspensePlaceholder`, `ReactDOMFizzDeferredValue` and `ReactDeferredValue`. Each configuration: 13 suites, 591 passed, 1 skipped.
-- FULL_RUN_PLACEHOLDER
+- `yarn test -r=stable --ci packages/react-reconciler packages/react-dom`: 225 suites passed. 5387 tests passed, 21 skipped.
+- `yarn test -r=experimental --ci packages/react-reconciler packages/react-dom`: 224 of 225 suites passed. 5386 tests passed, 21 skipped. The other suite, `ReactMultiChildText`, hit jest's 30 s test timeout while Flow was running on the same 4-core machine; its second test then failed on the overlapping `act()` that timeout left behind. Run on its own, the suite passes (4/4), the same as on `main`.
 - `yarn linc`: passed. `yarn prettier`: applied.
-- FLOW_PLACEHOLDER
+- Flow: `flow full-check --merge-timeout 0` with each renderer's generated config found 0 errors for `dom-node` and `fabric` on the final commit, and for `dom-node`, `fabric`, `test`, `noop`, `custom`, `dom-browser`, `dom-fb`, `dom-legacy` and `markup` on the previous commit. The only difference between the two is one boolean condition and test changes. The default `yarn flow` merge timeout is too short for this machine.
