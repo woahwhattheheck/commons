@@ -52,6 +52,7 @@ function page(seats,repo,opts){
   const context=vm.createContext(Object.assign({
     document,console,Math,JSON,Promise,Number,String,Array,Object,Error,isFinite,encodeURIComponent,
     crypto:require('node:crypto').webcrypto,
+    AbortSignal,TextEncoder:require('node:util').TextEncoder,TextDecoder:require('node:util').TextDecoder,
     navigator:{clipboard:{writeText:async()=>{}}},
     setTimeout:()=>0,
     setInterval:(fn,ms)=>{const id=world.nextId++;world.intervals.set(id,{fn,ms});return id;},
