@@ -118,15 +118,15 @@
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1790763938.566989",
+  "slack_ts": "1790816833.034959",
   "snapshot": {
-    "base_main_sha": "5d970f59f876dbab71e359253477e53db50e448b",
-    "observed_at": "2026-09-30T10:26:49Z",
+    "base_main_sha": "bd2286512a7611898cb586b8a2949604226b21cd",
+    "observed_at": "2026-10-01T01:15:47Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-slack-full-body-catalog-runtime-resource-activation-20260930-01",
+  "source_id": "codex-private-chargeback-defense-desk-resource-activation-20261001-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -2745,6 +2745,28 @@
       "last_used_at": "2026-09-29T01:03:50Z",
       "stale_after": "fresh noncolliding current-main source, explicit authority, source-tree, source-blob, artifact-format, output-custody or Titan-mutation-policy change",
       "priority": 0
+    },
+    {
+      "name": "private-chargeback-defense-desk",
+      "kind": "ON_DEMAND_PRIVATE_SIGNED_PAYMENT_EVENT_LEDGER_EVIDENCE_PACKET_AND_PRICING_DESK",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / authorized TJLabs payment-defense operators",
+      "authority": "SHARED_ALL_CARRIERS_PUBLIC_CURRENT_MAIN_READ_RUN_AND_ADAPT; EXACT_PR30175_HEAD_587E083DE8A71F609DA01F2DC5922769997E3DD4_MERGE_BD2286512A7611898CB586B8A2949604226B21CD_AND_SEVEN_SOURCE_BLOBS_REQUIRED; PRIVATE_STORAGE_OUTSIDE_REPOSITORY_REQUIRED; DOCUMENT_SOURCE_AND_EXPLICIT_ASSUMPTION_OUTPUTS_ONLY_UNTIL_A_REAL_SIGNED_EVENT_IS_DURABLY_OBSERVED; LIVE_SIGNED_EVENT_FALSE; DEPLOYMENT_FALSE; PROVIDER_CONFIGURATION_FALSE; REFUND_CAPTURE_DISPUTE_SUBMISSION_PROVIDER_CONTACT_PRICE_CHANGE_PAYMENT_REVENUE_AND_CASH_FALSE",
+      "consumer": "Authorized TJLabs payment operators preparing bounded dispute evidence packets, liquidity scenarios, and assumption-labeled pricing decisions.",
+      "value": "A standard-library private local ledger verifies signed event bytes, deduplicates provider event IDs, produces observed-only summaries and redacted evidence packets, and makes explicit break-even and dispute-liquidity assumptions without storing secrets in the repository.",
+      "next_action": "Use the landed CLIs on demand with a private absolute store for document-source packets and explicitly labeled pricing scenarios. The delegated receiver adapter may compose this into a service boundary; owner/operator must separately select private hosting, reauthenticate Stripe, create endpoint secrets, deploy, and observe a real signed event before any live-monitor claim.",
+      "source": "PR #30175; source head 587e083de8a71f609da01f2dc5922769997e3dd4; source tree cad9b57a22551b920e9889015d754e2dbc6db0d7; merge bd2286512a7611898cb586b8a2949604226b21cd; host/chargeback_defense.py; host/chargeback_pricing.py; revenue/chargeback_defense/README.md; revenue/chargeback_defense/operating-plan.md; revenue/chargeback_defense/swarm_roles.json; features/registry/payment-chargeback-defense-20261001-01.json; diagnostic.html",
+      "evidence_ts": "2026-10-01T01:15:47Z",
+      "auth_surface": "Public current-main source and synthetic/document-only local probes run without Commons login, customer data, provider account access or repeated approval. Real ingestion requires a private absolute store, live endpoint signing secret and provider event delivery outside the repository.",
+      "exact_safe_probe": "Current main bd2286512a7611898cb586b8a2949604226b21cd retains seven exact source blobs. Normal and optimized compile, private-store initialization, empty summary/export, document-source packet generation, two assumption-labeled quote scenarios, one stress scenario, relative-path refusal and unobserved-charge refusal all passed. The packet contains zero verified provider events and provider_submission=false.",
+      "rate_plan_boundary": "The exercised activation used local standard-library compute, public documents and supplied assumptions and made zero provider calls. Source presence, a signed-event implementation, document packet, pricing scenario or passing probe does not establish deployment, a live endpoint, delivered provider event, buyer acceptance, dispute success, refund, payment, revenue or cash.",
+      "assigned_backlog": "Live as an on-demand private local desk for authorized payment operators. HTTP ingress composition is delegated once at https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1790817200749509. Private backend/storage selection, Stripe reauthentication, endpoint-secret creation, deployment and first real event remain owner/operator actions.",
+      "last_receipt": "codex-private-chargeback-defense-desk-resource-activation-20261001-01",
+      "last_used_at": "2026-10-01T01:15:47Z",
+      "stale_after": "next source blob, Stripe signing contract, private-store schema, redaction policy, provider event delivery, deployment, operator authority, pricing assumption, dispute state or owner-policy change",
+      "priority": 100
     }
   ],
   "titan": "NOT_WRITTEN"

@@ -1,0 +1,57 @@
+{
+  "schema": "titan-v4-salvage-reconciliation/v1",
+  "observed_at": "2026-10-01T01:48:22Z",
+  "authority": {
+    "canonical_branch": "main",
+    "main": "f408aaf43e42c56c465bab211b5a6c279c8799f5",
+    "prior_salvage": "e0417cbea4cbd54a455311c78c98caab0479324b",
+    "prior_merge_base": "bd2286512a7611898cb586b8a2949604226b21cd"
+  },
+  "control_plane": {
+    "CANONICAL_json_blob": "00142be0ff2314dcb23068c8133b34d290661923",
+    "INTEGRATION_json_blob": "4e3207af1332266852530ec8494db8969edc1115",
+    "COMPOSITION_json_blob": "32dc1e6963702f7e013cd609053d52c434e42158",
+    "canonical_branch": "main",
+    "recovered_not_yet_composed": []
+  },
+  "open_pr_census": {
+    "TITAN V4": 0,
+    "TITAN V3.1": 0,
+    "TITAN V3": 0
+  },
+  "main_drift": {
+    "commits_ahead": 13,
+    "commits_behind": 0,
+    "kaggriculture_paths_changed": [],
+    "paths": [
+      "challenge.json",
+      "change.md",
+      "fresh.md",
+      "ground/RESOURCE_LEDGER.json",
+      "head.json",
+      "host/chargeback_defense_receiver.py",
+      "host/test_chargeback_defense_receiver.py",
+      "inventory/resources/records/codex-private-chargeback-defense-desk-resource-activation-20261001-01.json",
+      "llms.txt",
+      "p/codex-private-chargeback-defense-desk-resource-activation-20261001-01.md",
+      "peers.md",
+      "pulse.json",
+      "resources.html",
+      "revenue/chargeback_defense/private-receiver-adapter.md"
+    ]
+  },
+  "backward_history": {
+    "exhausted_to_existing_history_floor_receipt": "f341bc71b6ed8791041fbe48606fbdd79530c543",
+    "earliest_kaggriculture_pr_previously_reconciled": 9553,
+    "new_unlanded_semantic_donor": false
+  },
+  "disposition": {
+    "action": "merge-forward existing salvage carrier to exact current main; add this ledger receipt",
+    "queue_edge": false,
+    "promotion": false,
+    "sibling_v4_root": false,
+    "runtime_or_default_change": false,
+    "canonical_or_release_change": false,
+    "kaggle_change": false
+  }
+}

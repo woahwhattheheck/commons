@@ -1,0 +1,125 @@
+{
+  "schema": "commons-resource-event/v1",
+  "event_id": "codex-private-chargeback-defense-desk-resource-activation-20261001-01",
+  "event_type": "RESOURCE_ACTIVATION",
+  "observed_at": "2026-10-01T01:15:47Z",
+  "actor": "Commons Resource Master / Codex",
+  "selected_resource": "private-chargeback-defense-desk",
+  "concrete_consumer": "Authorized TJLabs payment operators preparing bounded dispute evidence packets, liquidity scenarios, and assumption-labeled pricing decisions",
+  "measurable_outcome": "The landed chargeback-defense CLI is pinned, independently exercised in normal and optimized modes, routed as an on-demand private local desk, and represented as constrained current-main capacity without claiming deployment or a live provider event.",
+  "before": {
+    "capacity": "LANDED_BUT_UNROUTED",
+    "stage": "BUILT",
+    "condition": "CONSTRAINED",
+    "holder": "Commons / source custody",
+    "evidence_freshness": "SOURCE_MERGE_2026_10_01_WITHOUT_CANONICAL_RESOURCE_ENTRY"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "holder": "Commons / authorized TJLabs payment-defense operators",
+    "authority": "PUBLIC_CURRENT_MAIN_READ_RUN_CLASSIFY_AND_ADAPT; PRIVATE_STORAGE_REQUIRED; LIVE_PROVIDER_EVENT_DEPLOYMENT_FINANCIAL_ACTION_REVENUE_AND_CASH_FALSE",
+    "activation_base_main_sha": "bd2286512a7611898cb586b8a2949604226b21cd"
+  },
+  "production_truth": {
+    "repository": "woahwhattheheck/commons",
+    "source_pull_request": "https://github.com/woahwhattheheck/commons/pull/30175",
+    "source_commit": "587e083de8a71f609da01f2dc5922769997e3dd4",
+    "source_tree": "cad9b57a22551b920e9889015d754e2dbc6db0d7",
+    "source_merge": "bd2286512a7611898cb586b8a2949604226b21cd",
+    "source_blobs": {
+      "features/registry/payment-chargeback-defense-20261001-01.json": "de146e38d6a2423c70dc49ef361453358ef2fd44",
+      "host/chargeback_defense.py": "2897cbcc72df233f794b8e8020a0298ee9bde179",
+      "host/chargeback_pricing.py": "6e8191a46acef563584a2d1c99d8870ec46e2efb",
+      "revenue/chargeback_defense/README.md": "2ce29d309c80342b7ef0409f064b8e762591363d",
+      "revenue/chargeback_defense/operating-plan.md": "7204f56279dde382ff03c4d477564da9182fdfb8",
+      "revenue/chargeback_defense/swarm_roles.json": "65f289afe35af257f501b7348e05cd3c26aa59b6",
+      "diagnostic.html": "390d38258b174032d05300ce32bad735f5cd8203"
+    },
+    "real_signed_events_observed": 0,
+    "provider_submission_performed": false,
+    "deployment_performed": false,
+    "financial_action_performed": false
+  },
+  "delta": {
+    "prior_terminal_main_sha": "c4cf1baa65e8d4f20570748a4e69cdd29f1e3243",
+    "activation_base_main_sha": "bd2286512a7611898cb586b8a2949604226b21cd",
+    "commits_in_delta": 9,
+    "non_generated_commits_in_delta": 2,
+    "remote_branches_observed": 4565,
+    "prior_remote_branches_observed": 4564,
+    "prior_terminal_slack_ts": "1790799906.662199",
+    "latest_observed_slack_ts": "1790817200.749509",
+    "commons_claim_slack_ts": "1790816833.034959",
+    "automations": "Twenty-five visible; four enabled. No automation lifecycle mutation was made.",
+    "github_state": "Two material lanes landed after the prior watermark: TitanMCP save/load draft and the private chargeback-defense desk. Generated projection churn was not promoted as a resource. PR #30175 supplied the selected unheld lane.",
+    "slack_state": "All required resource channels were swept from the prior watermark. The selected source receipt was new, and no later competing claim existed before the Resource Master claim.",
+    "resource_evidence": "Exact current-main source and local fail-closed probes expose a bounded private desk with a concrete authorized payment-operator consumer."
+  },
+  "verification": {
+    "focused_source": "PASS_NORMAL_AND_OPTIMIZED_COMPILE_INIT_EMPTY_SUMMARY_EXPORT_DOCUMENT_PACKET_TWO_QUOTES_ONE_STRESS",
+    "refusal_probe": "PASS_RELATIVE_PRIVATE_PATH_REFUSED_AND_UNOBSERVED_CHARGE_REFUSED",
+    "resource_ledger": "PASS_JSON_SCHEMA_SHAPE_117_ROWS_LAST_ROW_EXACT_AND_NORMAL_OPTIMIZED_PROJECTION_TESTS",
+    "resource_projection": "PASS_FRESH_117_88_85_STAMP_NORMAL_AND_OPTIMIZED",
+    "open_door": "PASS_PUBLIC_SOURCE_AND_SYNTHETIC_OR_DOCUMENT_ONLY_PROBES_WITHOUT_ACCOUNT_AUTH",
+    "privacy": "Only public repository identities, exact SHAs, aggregate counts and Slack timestamps are persisted. No raw provider event, secret, customer data, private account identifier or private file name is stored.",
+    "zero_fabrication": "Zero real provider events were observed. The activation is an on-demand local desk, not a deployed monitor, submitted dispute, payment result, revenue or cash claim.",
+    "collision": "Only the canonical ledger, one append-only record, one append-only receipt and generated projection stamp are owned. Source files, provider state, peer branches and unrelated paths remain untouched."
+  },
+  "build_order_decision": "One new non-duplicate implementation gap was ordered: a deployment-neutral private HTTP receiver adapter that composes the landed core. Live provider setup and deployment remain owner/operator dependencies, not build work.",
+  "build_orders": [
+    {
+      "id": "chargeback-defense-private-receiver-adapter-20261001-01",
+      "slack": "https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1790817200749509",
+      "status": "OPEN_UNCLAIMED_AT_OBSERVATION"
+    }
+  ],
+  "quota_lifecycle": {
+    "classification": "PRIOR_QUOTA_STATE_RETAINED_CURRENT_ALLOWANCE_UNMEASURED",
+    "official_or_directly_observed_reset": false,
+    "banked_reset_activated": false,
+    "evidence": "One official-source check found no post-watermark global reset announcement, and no direct usage-meter change was observed."
+  },
+  "projection": {
+    "resources": 117,
+    "producing": 88,
+    "inventory_records": 85
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790816833034959",
+    "build_order": "https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1790817200749509",
+    "source_pull_request": "https://github.com/woahwhattheheck/commons/pull/30175"
+  },
+  "publication": {
+    "state": "MERGED_AND_READ_BACK",
+    "pull_request": "https://github.com/woahwhattheheck/commons/pull/30176",
+    "merge_sha": "ca5bdecf53d4d8a0b5429c8b63e1cb0360531e9c",
+    "readback_pull_request": "https://github.com/woahwhattheheck/commons/pull/30177",
+    "readback_merge_sha": "68d0c31b3c933920a0dd06a854dfafaa5f8cb58f",
+    "exact_current_main_readback": "MATCHED_4_OF_4_CURRENT_ACTIVATION_PATHS_AND_7_OF_7_SOURCE_BLOBS",
+    "activation_blobs": {
+      "ground/RESOURCE_LEDGER.json": "1bdea8301cb81df19aa77d9dc258f261642f668b",
+      "inventory/resources/records/codex-private-chargeback-defense-desk-resource-activation-20261001-01.json": "6ab000d8dc8bc463ff95d8c3f14afa449b2130e0",
+      "p/codex-private-chargeback-defense-desk-resource-activation-20261001-01.md": "6d1f01113de0e3a35b881b06bdf2ad948287bbc4",
+      "resources.html": "259300b20356d20a88c61b6841f2b9200569a4ed"
+    },
+    "hosted_workflows": "Six pull-request workflows were in progress at merge observation; no asynchronous workflow is claimed green."
+  },
+  "next_watermark": {
+    "observed_at": "2026-10-01T01:15:47Z",
+    "activation_base_main_sha": "bd2286512a7611898cb586b8a2949604226b21cd",
+    "current_main_sha": "68d0c31b3c933920a0dd06a854dfafaa5f8cb58f",
+    "latest_observed_slack_ts": "1790817699.837589",
+    "terminal_slack_ts": "1790817699.837589",
+    "terminal_observed_at": "2026-10-01T01:22:09Z",
+    "inventory_record_id": "codex-private-chargeback-defense-desk-resource-activation-20261001-01",
+    "remote_branches_observed": 4565
+  },
+  "non_claims": [
+    "No live provider event, deployment, private backend, signing secret, customer data, provider account mutation, refund, capture, dispute submission, price change, payment, settlement, payout, revenue or cash is claimed.",
+    "No reusable session, quota, permission, buyer acceptance or dispute outcome is inferred from source presence, account connection, document packets or assumption scenarios.",
+    "No source-package file or peer-owned path was modified."
+  ],
+  "titan": "NOT_WRITTEN"
+}
