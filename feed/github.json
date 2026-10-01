@@ -1,6 +1,6 @@
 {
   "counts": {
-    "open_issues": 7734,
+    "open_issues": 7708,
     "open_pull_requests": 0,
     "runs_in_progress": 1,
     "runs_queued": 70
@@ -13,6 +13,84 @@
   "pulls_listing": "UNKNOWN",
   "queue_depth_per_runner": 70.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "codex/chargeback-defense-private-receiver-adapter-20261001-01",
+      "closed_at": "2026-10-01T01:37:41Z",
+      "head_sha": "39299e0d98f0f6f2a5402c279727605dac34224b",
+      "merge_commit_sha": "f408aaf43e42c56c465bab211b5a6c279c8799f5",
+      "merged_at": "2026-10-01T01:37:41Z",
+      "number": 30180,
+      "state": "MERGED",
+      "title": "Private chargeback-defense receiver adapter (synthetic-only ingress surface)",
+      "updated_at": "2026-10-01T01:37:52Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "codex/private-chargeback-defense-desk-freshness-correction-20261001-01",
+      "closed_at": "2026-10-01T01:29:43Z",
+      "head_sha": "181f3d7a13f62c799d44f56107060f5e45e45562",
+      "merge_commit_sha": "36ffff33edc951ae54f443d48b4b4c73352c3cae",
+      "merged_at": "2026-10-01T01:29:43Z",
+      "number": 30179,
+      "state": "MERGED",
+      "title": "Correct exact resource projection freshness bytes",
+      "updated_at": "2026-10-01T01:32:59Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "codex/private-chargeback-defense-desk-terminal-watermark-20261001-01",
+      "closed_at": "2026-10-01T01:23:14Z",
+      "head_sha": "b1af839d1ec5b93cd96af87036ab1ab731c02449",
+      "merge_commit_sha": "bf53ecb6e92077587208163baa77de1a0337a166",
+      "merged_at": "2026-10-01T01:23:14Z",
+      "number": 30178,
+      "state": "MERGED",
+      "title": "Persist chargeback defense terminal watermark",
+      "updated_at": "2026-10-01T01:25:04Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "codex/private-chargeback-defense-desk-resource-readback-20261001-01",
+      "closed_at": "2026-10-01T01:21:14Z",
+      "head_sha": "4c2e77500400e8e7657f75bd2b5cb72acdeffa90",
+      "merge_commit_sha": "68d0c31b3c933920a0dd06a854dfafaa5f8cb58f",
+      "merged_at": "2026-10-01T01:21:14Z",
+      "number": 30177,
+      "state": "MERGED",
+      "title": "Record private chargeback defense activation readback",
+      "updated_at": "2026-10-01T01:23:58Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "codex/private-chargeback-defense-desk-resource-activation-20261001-01",
+      "closed_at": "2026-10-01T01:19:50Z",
+      "head_sha": "615a1560ce98df97656c04a307b9c9989be6dbb7",
+      "merge_commit_sha": "ca5bdecf53d4d8a0b5429c8b63e1cb0360531e9c",
+      "merged_at": "2026-10-01T01:19:50Z",
+      "number": 30176,
+      "state": "MERGED",
+      "title": "Activate private chargeback defense desk resource",
+      "updated_at": "2026-10-01T01:20:41Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "codex/payment-defense-20261001",
+      "closed_at": "2026-10-01T00:34:36Z",
+      "head_sha": "587e083de8a71f609da01f2dc5922769997e3dd4",
+      "merge_commit_sha": "bd2286512a7611898cb586b8a2949604226b21cd",
+      "merged_at": "2026-10-01T00:34:36Z",
+      "number": 30175,
+      "state": "MERGED",
+      "title": "Add private chargeback defense desk and pricing scenarios",
+      "updated_at": "2026-10-01T00:35:36Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -129,87 +207,9 @@
       "state": "MERGED",
       "title": "Activate TitanMCP setup-schema resource",
       "updated_at": "2026-09-29T07:13:13Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "resource-master/muhlnickel-workbench-lifecycle-readback-20260929-01",
-      "closed_at": "2026-09-29T04:08:46Z",
-      "head_sha": "7159c20cbf28dd3fd07346ed4f4dd76b4bc92682",
-      "merge_commit_sha": "6c8e2a58e846f60f63aaafe5a39cce107e990e1f",
-      "merged_at": "2026-09-29T04:08:46Z",
-      "number": 30160,
-      "state": "MERGED",
-      "title": "Pin Muhlnickel workbench lifecycle readback",
-      "updated_at": "2026-09-29T04:09:31Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "resource-master/muhlnickel-workbench-lifecycle-20260929-01",
-      "closed_at": "2026-09-29T04:06:35Z",
-      "head_sha": "72c246f44b0d1417289bfaf7b28d50df37051f59",
-      "merge_commit_sha": "e6351941a6c9c63df8a8a493fda3fd4dec754c44",
-      "merged_at": "2026-09-29T04:06:35Z",
-      "number": 30159,
-      "state": "MERGED",
-      "title": "Reconcile deleted Muhlnickel workbench lifecycle",
-      "updated_at": "2026-09-29T04:06:44Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "resource-master/muhlnickel-titan-readonly-workbench-watermark-20260928-01",
-      "closed_at": "2026-09-29T01:16:16Z",
-      "head_sha": "61f5df109bc41e74d75c68193182e3499de34105",
-      "merge_commit_sha": "56cd10f31a447b3af10a9736155742474d85cbd6",
-      "merged_at": "2026-09-29T01:16:16Z",
-      "number": 30153,
-      "state": "MERGED",
-      "title": "Persist Muhlnickel workbench terminal watermark",
-      "updated_at": "2026-09-29T01:18:23Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "resource-master/muhlnickel-titan-readonly-workbench-readback-20260928-01",
-      "closed_at": "2026-09-29T01:14:52Z",
-      "head_sha": "bfe526cafa25ce31f568a1bf2050c91293b0004b",
-      "merge_commit_sha": "c67d31e0882676178d894c2be26e50f325260f68",
-      "merged_at": "2026-09-29T01:14:51Z",
-      "number": 30152,
-      "state": "MERGED",
-      "title": "Record Muhlnickel workbench activation readback",
-      "updated_at": "2026-09-29T01:17:03Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "resource-master/muhlnickel-titan-readonly-workbench-activation-20260928-01",
-      "closed_at": "2026-09-29T01:13:09Z",
-      "head_sha": "f712685d6568ae44357f0e6ed0d5e5cc9a5d9063",
-      "merge_commit_sha": "da05002600fb429af9e9ab4327e41bc376e559d4",
-      "merged_at": "2026-09-29T01:13:09Z",
-      "number": 30151,
-      "state": "MERGED",
-      "title": "Activate Muhlnickel Titan read-only workbench",
-      "updated_at": "2026-09-29T01:13:40Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "resource-master/uiowa-rfq18649-workshare-watermark-20260928-01",
-      "closed_at": "2026-09-28T22:10:19Z",
-      "head_sha": "66f19a16fd0034d370bfd8e84c56c5ac5ddb84fb",
-      "merge_commit_sha": "12d5b0655a2617ea0824016c49b6e5e66e1c7ee4",
-      "merged_at": "2026-09-28T22:10:19Z",
-      "number": 30139,
-      "state": "MERGED",
-      "title": "Pin Iowa workshare terminal watermark",
-      "updated_at": "2026-09-28T22:11:36Z"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-30T23:53:03Z"
+  "unchanged_since": "2026-10-01T02:36:19Z"
 }

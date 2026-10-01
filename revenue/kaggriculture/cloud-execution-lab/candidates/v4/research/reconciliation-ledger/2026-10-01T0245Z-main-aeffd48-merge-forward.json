@@ -1,0 +1,23 @@
+{
+  "schema": "titan-v4-reconciliation-receipt/v1",
+  "timestamp_utc": "2026-10-01T02:45:09Z",
+  "main": "aeffd48fa081145d28128a586c7030858b8766eb",
+  "previous_carrier": "a45fd00b848c564853da18f7615476d4c1e14ba8",
+  "control_blobs": {
+    "canonical": "00142be0ff2314dcb23068c8133b34d290661923",
+    "integration": "4e3207af1332266852530ec8494db8969edc1115",
+    "composition": "32dc1e6963702f7e013cd609053d52c434e42158"
+  },
+  "recovered_not_yet_composed": [],
+  "open_census": {
+    "v4": 0,
+    "v31": 0,
+    "v3": 0
+  },
+  "main_drift": {
+    "commits": 4,
+    "changed_paths": 268,
+    "kaggriculture_paths": 0
+  },
+  "disposition": "safe merge-forward of existing research-only carrier; no new queue edge"
+}
