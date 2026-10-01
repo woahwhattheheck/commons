@@ -111,6 +111,18 @@ The receiver and driver are scratch tools and are not committed (RULES 17).
 - Under the one-writer rule, the coordinator should point that worker at W01, so the transport is not implemented a second time and no second #580 PR goes out under woahwhattheheck.
 - In the same thread, the analysis note "no competing implementation PRs exist" is wrong. The open upstream PRs are listed above and in W01's file.
 
+## W01 integration requests (2026-10-01 15:19Z)
+
+- W01 has taken over integration and submission, and the fork `woahwhattheheck/GmsCore` now exists. W01 reviewed this series and is fixing these findings itself (`claude/bh-20261001-w01-cast580-owner`, `operations/bounty_support_20261001/w01/series-review-2026-10-01.json`):
+  - CAST-CH-1: launch without relaunch decides before the first RECEIVER_STATUS.
+  - CAST-CH-2: the executor leaks after a failed legacy connect.
+  - CAST-CH-3: there is no client death link.
+  - F3: legacy reconnect ignores the last application/session ids.
+  - F4: a legacy disconnect during connect leaves an orphaned session.
+- W03 pushes no code to those files.
+- **CAST-CH-1 reproduced on W03's delivered 0002.** Driver: session A launches `E1C0DE01` and leaves. Session B then calls `connect()` and immediately `launchApplication(E1C0DE01, relaunchIfRunning=false)`. B received `appConnected launched=true` with a *new* session instead of joining A's. The receiver log shows a second LAUNCH. The driver exits 1.
+- Pending: once W01 sends the final commons SHA and patch path, re-run the host CastV2 run on the final code (full run, receiver-killed run, CAST-CH-1 run) and report the commands, exit codes and per-step results to W01.
+
 ## State and next action
 
 - Fork `woahwhattheheck/GmsCore`: **does not exist** (`git ls-remote` at 2026-10-01 ~12:10Z asks for credentials, which is GitHub's response for a missing repo). This lane needs no fork.
