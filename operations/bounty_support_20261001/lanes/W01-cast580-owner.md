@@ -332,4 +332,8 @@ After those, `mcp__github__create_pull_request` from `woahwhattheheck:cast-frame
   - The planned fork commit 2 ("Fix device discovery and route publication") carries these provider/controller contents.
 - 2026-10-01: PR text testing section updated with the JVM receiver run. The binder layer, the framework module and device runs are stated as not run.
 - Follow-up PR stack: W02 is rebasing 0004 (remote playback) + its fixes onto `cast/submit` + 0011. W02 host run at its tip: 63/63 PASS, 3 of 3 runs.
+- 2026-10-01: **Follow-up PR (remote playback) ready from W02**: commons `claude/bh-20261001-w02-cast580-discovery@6420ca08a`, `lanes/W02-patches/on-w01-submit/0012-Cast-Implement-remote-playback-control-requests.diff` (plain diff on submit 0011; `0002-...patch` is the same change with a message).
+  - Apply chain `git am` 0001-0008 + `git apply` 0009-0012 exits 0.
+  - W02 runs: `assembleVtmDefaultDebug` + 4 lint tasks exit 0, 0 errors. Host protocol run 63/63 PASS, 5 of 5.
+  - To be opened after the first PR exists, on the same blocked publish route.
 
