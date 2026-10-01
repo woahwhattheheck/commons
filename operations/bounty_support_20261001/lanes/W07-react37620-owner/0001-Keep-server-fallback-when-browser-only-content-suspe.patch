@@ -1,0 +1,229 @@
+From c7b6d2a8915ecea4562000d81aafa3c7f56e3e21 Mon Sep 17 00:00:00 2001
+From: woahwhattheheck <293286387+woahwhattheheck@users.noreply.github.com>
+Date: Thu, 1 Oct 2026 12:11:47 +0000
+Subject: [PATCH] Keep server fallback when browser-only content suspends on
+ the client
+
+When `use(browser())` bails out on the server, Fizz emits the boundary as a
+client-rendered fallback (`<!--$!-->`). On the client we retry the content
+without hydrating. If that render suspends again, e.g. on a promise created
+on the client (setTimeout, localStorage, IndexedDB), we used to delete the
+dehydrated server fallback and mount an identical client fallback in its
+place. That recreates the fallback DOM and restarts CSS animations.
+
+Instead, if the client render suspends and the boundary's props didn't
+change, stay in the dehydrated state and leave the server fallback in place
+until the content can render. The work loop already supports this state for
+pending boundaries: the rest of the tree commits and the boundary is retried
+when the promise resolves. This is limited to browser-only bailouts. Server
+errors keep the current behavior, because each retry would report the
+server error again.
+
+Fixes #37620
+---
+ .../src/__tests__/ReactDOMFizzServer-test.js  | 140 ++++++++++++++++++
+ .../src/ReactFiberBeginWork.js                |  37 +++++
+ 2 files changed, 177 insertions(+)
+
+diff --git a/packages/react-dom/src/__tests__/ReactDOMFizzServer-test.js b/packages/react-dom/src/__tests__/ReactDOMFizzServer-test.js
+index 446483c..a9ff71a 100644
+--- a/packages/react-dom/src/__tests__/ReactDOMFizzServer-test.js
++++ b/packages/react-dom/src/__tests__/ReactDOMFizzServer-test.js
+@@ -497,6 +497,146 @@ describe('ReactDOMFizzServer', () => {
+     );
+   });
+ 
++  // @gate enableBrowserAPI
++  it('keeps the server fallback if browser-only content suspends on the client', async () => {
++    let clientPromise = null;
++    let resolveClientText;
++    function getClientText() {
++      if (clientPromise === null) {
++        clientPromise = new Promise(resolve => {
++          resolveClientText = resolve;
++        });
++      }
++      return clientPromise;
++    }
++    const browserOnly = ReactDOM.browser();
++
++    function BrowserOnly() {
++      use(browserOnly);
++      const text = use(getClientText());
++      Scheduler.log(text);
++      return <span>{text}</span>;
++    }
++
++    function App() {
++      return (
++        <div>
++          <Suspense fallback={<p>Loading...</p>}>
++            <BrowserOnly />
++          </Suspense>
++        </div>
++      );
++    }
++
++    await act(() => {
++      const {pipe} = renderToPipeableStream(<App />);
++      pipe(writable);
++    });
++    expect(clientPromise).toBe(null);
++    const serverFallback = container.getElementsByTagName('p')[0];
++    expect(serverFallback.textContent).toBe('Loading...');
++
++    const recoverableErrors = [];
++    ReactDOMClient.hydrateRoot(container, <App />, {
++      onRecoverableError(error) {
++        recoverableErrors.push(error);
++      },
++    });
++    await waitForAll([]);
++    jest.runAllTimers();
++
++    // The client render suspended on a promise created on the client. The
++    // fallback that was rendered by the server should stay in place instead
++    // of being replaced by an identical client fallback.
++    expect(clientPromise).not.toBe(null);
++    expect(getVisibleChildren(container)).toEqual(
++      <div>
++        <p>Loading...</p>
++      </div>,
++    );
++    expect(container.getElementsByTagName('p')[0]).toBe(serverFallback);
++
++    await clientAct(() => {
++      resolveClientText('Loaded');
++    });
++    assertLog(['Loaded']);
++
++    expect(recoverableErrors).toEqual([]);
++    expect(serverFallback.isConnected).toBe(false);
++    expect(getVisibleChildren(container)).toEqual(
++      <div>
++        <span>Loaded</span>
++      </div>,
++    );
++  });
++
++  // @gate enableBrowserAPI
++  it('replaces the server fallback if its props change while browser-only content is suspended', async () => {
++    let clientPromise = null;
++    let resolveClientText;
++    function getClientText() {
++      if (clientPromise === null) {
++        clientPromise = new Promise(resolve => {
++          resolveClientText = resolve;
++        });
++      }
++      return clientPromise;
++    }
++    const browserOnly = ReactDOM.browser();
++
++    function BrowserOnly() {
++      use(browserOnly);
++      const text = use(getClientText());
++      Scheduler.log(text);
++      return <span>{text}</span>;
++    }
++
++    function App({fallbackText}) {
++      return (
++        <div>
++          <Suspense fallback={<p>{fallbackText}</p>}>
++            <BrowserOnly />
++          </Suspense>
++        </div>
++      );
++    }
++
++    await act(() => {
++      const {pipe} = renderToPipeableStream(<App fallbackText="Loading..." />);
++      pipe(writable);
++    });
++    const serverFallback = container.getElementsByTagName('p')[0];
++
++    const root = ReactDOMClient.hydrateRoot(
++      container,
++      <App fallbackText="Loading..." />,
++    );
++    await waitForAll([]);
++    jest.runAllTimers();
++    expect(container.getElementsByTagName('p')[0]).toBe(serverFallback);
++
++    // The fallback changed, so the server fallback is no longer up to date.
++    await clientAct(() => {
++      root.render(<App fallbackText="More loading..." />);
++    });
++    expect(getVisibleChildren(container)).toEqual(
++      <div>
++        <p>More loading...</p>
++      </div>,
++    );
++    expect(serverFallback.isConnected).toBe(false);
++
++    await clientAct(() => {
++      resolveClientText('Loaded');
++    });
++    assertLog(['Loaded']);
++    expect(getVisibleChildren(container)).toEqual(
++      <div>
++        <span>Loaded</span>
++      </div>,
++    );
++  });
++
+   // @gate enableBrowserAPI
+   it('can opt a component into browser-only rendering after streaming the fallback', async () => {
+     let resolveServerReady;
+diff --git a/packages/react-reconciler/src/ReactFiberBeginWork.js b/packages/react-reconciler/src/ReactFiberBeginWork.js
+index 2de9437..060d962 100644
+--- a/packages/react-reconciler/src/ReactFiberBeginWork.js
++++ b/packages/react-reconciler/src/ReactFiberBeginWork.js
+@@ -3185,6 +3185,43 @@ function updateDehydratedSuspenseComponent(
+       // but the normal suspense pass doesn't.
+       workInProgress.flags |= DidCapture;
+       return null;
++    } else if (
++      isSuspenseInstanceFallback(suspenseInstance) &&
++      current.memoizedProps === nextProps &&
++      getSuspenseInstanceFallbackErrorDetails(suspenseInstance).digest ===
++        REACT_RECOVERABLE_DIGEST
++    ) {
++      // The server rendered the fallback because the content is browser-only
++      // and we tried to client render the content, but that suspended.
++      // Committing would replace the server fallback with an identical client
++      // fallback, which recreates the DOM and restarts animations etc. Since
++      // the props didn't change, the server fallback is still up to date, so
++      // stay in dehydrated mode and keep it in place until we can render the
++      // content. Unlike delaying the whole commit, this only affects this
++      // boundary.
++      // TODO: Do the same for boundaries that errored on the server. That
++      // requires not reporting the server error again on every retry.
++      pushFallbackTreeSuspenseHandler(workInProgress);
++
++      // Undo the deletion of the dehydrated fragment that the client render
++      // attempt scheduled.
++      const dehydratedFragment = current.child;
++      const deletions = workInProgress.deletions;
++      if (deletions !== null) {
++        const index = deletions.indexOf(dehydratedFragment as any);
++        if (index !== -1) {
++          deletions.splice(index, 1);
++        }
++        if (deletions.length === 0) {
++          workInProgress.deletions = null;
++          workInProgress.flags &= ~ChildDeletion;
++        }
++      }
++      workInProgress.child = dehydratedFragment;
++      workInProgress.memoizedState = suspenseState;
++      // The dehydrated completion pass expects this flag to be there.
++      workInProgress.flags |= DidCapture;
++      return null;
+     } else {
+       // Suspended but we should no longer be in dehydrated mode.
+       // Therefore we now have to render the fallback.
+-- 
+2.43.0
+
