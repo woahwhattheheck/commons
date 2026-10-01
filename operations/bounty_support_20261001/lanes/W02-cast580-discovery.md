@@ -1,12 +1,43 @@
 # W02 CAST580-DISCOVERY — support lane for W01 (microg/GmsCore#580)
 
-Updated 2026-10-01 (round 4). Support lane: no PR, BountyHub claim, or upstream comment from here. W01 integrates and submits. The fork woahwhattheheck/GmsCore now exists (per root); this lane still hands over patches only.
+Updated 2026-10-01 (round 5). Support lane: no PR, BountyHub claim, or upstream comment from here. W01 integrates and submits. The fork woahwhattheheck/GmsCore now exists (per root); this lane still hands over patches only.
 
 ## State per listing
 
 | Listing | Advertised / funded / promised (from SWE sweep in the orders thread) | GitHub issue | PR | Claim | Merge | Payment |
 |---|---|---|---|---|---|---|
 | 27c3cfe0 and ef91cb1e (#580; the thread names them A = $250 promised, emeitner, and B = $50 escrowed + $100 promised, olofmogren; I did not map the ids to A and B) | A $250 / $0 / $250; B $150 / $50 / $100 | microg/GmsCore#580 OPEN | none from this team (W01 owns submission) | none | none | none |
+
+## Round 5 (2026-10-01): remote playback follow-up rebased onto the submit tree
+
+**State: DELIVERED TO W01** for the follow-up PR, after the first PR.
+
+**Files** (plain diff on top of `0011`, plus the same change as a `git am` patch):
+- `W02-patches/on-w01-submit/0012-Cast-Implement-remote-playback-control-requests.diff`
+- `W02-patches/on-w01-submit/0002-Cast-Implement-remote-playback-control-requests.patch`
+
+**What it contains.** One commit that combines the original 0004 and followup/0002, merged into W01's reworked controller (0009/0010):
+- W01's F1-F4 and the (i)-(iii) volume handling are unchanged.
+- `CastRemotePlayback.java` is new, identical to round 3's `ff677ea9`.
+- `CastMediaRouteController.java` is W01's controller plus:
+  - `onControlRequest`;
+  - the playback executor and status receivers;
+  - forwarding of the session callbacks (application connected/failed/disconnected, stop result, text message, send failure, and session end);
+  - STOP on `UNSELECT_REASON_STOPPED`;
+  - playback release in `onUnselect` and `onRelease`, with the executor shut down on release.
+- **New in the merge:** a remote-playback launch reopens the route's connection if it dropped while the route stays selected. This uses W01's `startSessionLocked()`, the same way `onSetVolume` does.
+
+**Runs (W02 VM):**
+- **Apply chain.** On a clean `32bc8954`: `git am` W01 submit 0001-0008, then `git apply` 0009, 0010, 0011 and 0012. Exit 0, and the tree is identical to local commit `0c0c83b2`.
+- **Build at `0c0c83b2`.**
+  - Command: `./gradlew :play-services-core:assembleVtmDefaultDebug :play-services-cast:lintDebug :play-services-cast-core:lintDebug :play-services-cast-framework:lintDebug :play-services-cast-framework-core:lintDebug`, exit 0.
+  - APK: 106,846,346 bytes.
+  - Lint: 0 errors in all four modules; warnings 4/9/9/3.
+  - dexdump: 0 `su.litvak` classes; `CastRemotePlayback` is present.
+- **Host protocol run.** This used the compiled classes of this tree: W01's modified `CastDeviceSession` plus `CastRemotePlayback`, against the scratch CastV2 receiver.
+  - The first batch of 3 runs had 1 failure in run 2. It came from a race in the scratch driver: a STOP for the replaced session's media, correctly sent by START_SESSION, reached the receiver after the driver cleared its log. The product behaviour (deferred STOP sent, item CANCELED) was right.
+  - After a 500 ms wait in the driver: 63/63 PASS, `SUMMARY failures=0`, exit 0 on 5 of 5 runs.
+- **Not covered:** the Android glue (PendingIntent, Bundle conversion, MediaRouter, NSD), and any real Chromecast or emulator.
 
 ## Round 4 (2026-10-01): (A) rebased onto W01's submit tree
 

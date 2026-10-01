@@ -1,0 +1,1356 @@
+diff --git a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java
+index 00db1171..76b3ec90 100644
+--- a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java
++++ b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java
+@@ -16,23 +16,44 @@
+ 
+ package org.microg.gms.cast;
+ 
++import android.app.PendingIntent;
++import android.content.Context;
+ import android.content.Intent;
++import android.net.Uri;
++import android.os.Build;
++import android.os.Bundle;
++import android.os.Handler;
++import android.os.Looper;
++import android.os.Parcelable;
+ import android.os.SystemClock;
++import android.text.TextUtils;
+ import android.util.Log;
+ 
+ import androidx.annotation.NonNull;
++import androidx.mediarouter.media.MediaControlIntent;
++import androidx.mediarouter.media.MediaItemMetadata;
++import androidx.mediarouter.media.MediaItemStatus;
+ import androidx.mediarouter.media.MediaRouteProvider;
+ import androidx.mediarouter.media.MediaRouter;
++import androidx.mediarouter.media.MediaSessionStatus;
+ 
++import org.json.JSONArray;
++import org.json.JSONException;
++import org.json.JSONObject;
+ import org.microg.gms.cast.channel.CastChannel;
+ import org.microg.gms.cast.channel.CastDeviceSession;
+ import org.microg.gms.cast.channel.ReceiverApplication;
+ import org.microg.gms.cast.channel.ReceiverStatus;
+ 
++import java.util.concurrent.RejectedExecutionException;
++import java.util.concurrent.ScheduledThreadPoolExecutor;
++import java.util.concurrent.ThreadFactory;
++
+ public class CastMediaRouteController extends MediaRouteProvider.RouteController {
+     private static final String TAG = CastMediaRouteController.class.getSimpleName();
+ 
+     private final CastMediaRouteProvider provider;
++    private final Context context;
+     private final String routeId;
+     private final String host;
+     private final int port;
+@@ -53,22 +74,26 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+     private boolean selected;
+     private boolean released;
+ 
++    private final Handler mainHandler = new Handler(Looper.getMainLooper());
++    // Remote playback state, created on the first control request. Guarded by this; only used on
++    // the playback executor afterwards.
++    private ScheduledThreadPoolExecutor playbackExecutor;
++    private CastRemotePlayback playback;
++    // Only accessed on the playback executor
++    private PendingIntent itemStatusReceiver;
++    private PendingIntent sessionStatusReceiver;
++
+     public CastMediaRouteController(CastMediaRouteProvider provider, String routeId, String address, int port, int volume) {
+         super();
+ 
+         this.provider = provider;
++        this.context = provider.getContext();
+         this.routeId = routeId;
+         this.host = address;
+         this.port = port > 0 ? port : CastChannel.DEFAULT_PORT;
+         this.volume = volume;
+     }
+ 
+-    @Override
+-    public boolean onControlRequest(Intent intent, MediaRouter.ControlRequestCallback callback) {
+-        Log.d(TAG, "unimplemented Method: onControlRequest: " + this.routeId);
+-        return false;
+-    }
+-
+     @Override
+     public void onSelect() {
+         CastDeviceSession newSession;
+@@ -98,19 +123,44 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+ 
+     @Override
+     public void onUnselect(int reason) {
++        if (reason == MediaRouter.UNSELECT_REASON_STOPPED) {
++            // "Stop casting": also stop the receiver application remote playback runs, if any. This
++            // is queued on the session before the disconnect.
++            CastDeviceSession session = getSession();
++            if (session != null) session.stopApplication(null);
++        }
+         closeSession();
++        runPlayback(new PlaybackTask() {
++            @Override
++            public void run(CastRemotePlayback playback) {
++                playback.release();
++            }
++        });
+     }
+ 
+     @Override
+     public void onRelease() {
++        ScheduledThreadPoolExecutor executor;
+         synchronized (this) {
+             if (released) return;
+             released = true;
++            executor = playbackExecutor;
+         }
+         closeSession();
++        runPlayback(new PlaybackTask() {
++            @Override
++            public void run(CastRemotePlayback playback) {
++                playback.release();
++            }
++        });
++        if (executor != null) executor.shutdown();
+         provider.onRouteControllerReleased(CastMediaRouteController.this, routeId);
+     }
+ 
++    private synchronized CastDeviceSession getSession() {
++        return session;
++    }
++
+     private void closeSession() {
+         CastDeviceSession oldSession;
+         synchronized (this) {
+@@ -169,6 +219,348 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+         onSetVolume(volume + delta);
+     }
+ 
++    // Remote playback
++
++    @Override
++    public boolean onControlRequest(Intent intent, final MediaRouter.ControlRequestCallback callback) {
++        final String action = intent.getAction();
++        if (!intent.hasCategory(MediaControlIntent.CATEGORY_REMOTE_PLAYBACK) || action == null) return false;
++        final String sessionId = intent.getStringExtra(MediaControlIntent.EXTRA_SESSION_ID);
++        final String itemId = intent.getStringExtra(MediaControlIntent.EXTRA_ITEM_ID);
++        final long position = intent.getLongExtra(MediaControlIntent.EXTRA_ITEM_CONTENT_POSITION, 0);
++        final CastRemotePlayback.Callback resultCallback = new ResultCallback(action, callback);
++        final PlaybackTask task;
++        switch (action) {
++            case MediaControlIntent.ACTION_PLAY: {
++                final Uri uri = intent.getData();
++                if (uri == null) return false;
++                final String contentType = intent.getType();
++                final JSONObject metadata = toCastMetadata(intent.getBundleExtra(MediaControlIntent.EXTRA_ITEM_METADATA), contentType);
++                final PendingIntent receiver = getPendingIntentExtra(intent, MediaControlIntent.EXTRA_ITEM_STATUS_UPDATE_RECEIVER);
++                task = new PlaybackTask() {
++                    @Override
++                    public void run(CastRemotePlayback playback) {
++                        String previousItemId = playback.snapshot().itemId;
++                        playback.play(uri.toString(), contentType, metadata, position, sessionId, resultCallback);
++                        // The previous item's receiver was told about its replacement during play().
++                        if (!TextUtils.equals(previousItemId, playback.snapshot().itemId)) itemStatusReceiver = receiver;
++                    }
++                };
++                break;
++            }
++            case MediaControlIntent.ACTION_SEEK:
++                task = new PlaybackTask() {
++                    @Override
++                    public void run(CastRemotePlayback playback) {
++                        playback.seek(sessionId, itemId, position, resultCallback);
++                    }
++                };
++                break;
++            case MediaControlIntent.ACTION_GET_STATUS:
++                task = new PlaybackTask() {
++                    @Override
++                    public void run(CastRemotePlayback playback) {
++                        playback.getStatus(sessionId, itemId, resultCallback);
++                    }
++                };
++                break;
++            case MediaControlIntent.ACTION_PAUSE:
++                task = new PlaybackTask() {
++                    @Override
++                    public void run(CastRemotePlayback playback) {
++                        playback.pause(sessionId, resultCallback);
++                    }
++                };
++                break;
++            case MediaControlIntent.ACTION_RESUME:
++                task = new PlaybackTask() {
++                    @Override
++                    public void run(CastRemotePlayback playback) {
++                        playback.resume(sessionId, resultCallback);
++                    }
++                };
++                break;
++            case MediaControlIntent.ACTION_STOP:
++                task = new PlaybackTask() {
++                    @Override
++                    public void run(CastRemotePlayback playback) {
++                        playback.stop(sessionId, resultCallback);
++                    }
++                };
++                break;
++            case MediaControlIntent.ACTION_START_SESSION: {
++                final PendingIntent receiver = getPendingIntentExtra(intent, MediaControlIntent.EXTRA_SESSION_STATUS_UPDATE_RECEIVER);
++                task = new PlaybackTask() {
++                    @Override
++                    public void run(CastRemotePlayback playback) {
++                        // The replaced session, if any, is reported to its own receiver first.
++                        playback.startSession(resultCallback);
++                        sessionStatusReceiver = receiver;
++                        itemStatusReceiver = null;
++                    }
++                };
++                break;
++            }
++            case MediaControlIntent.ACTION_GET_SESSION_STATUS:
++                task = new PlaybackTask() {
++                    @Override
++                    public void run(CastRemotePlayback playback) {
++                        playback.getSessionStatus(sessionId, resultCallback);
++                    }
++                };
++                break;
++            case MediaControlIntent.ACTION_END_SESSION:
++                task = new PlaybackTask() {
++                    @Override
++                    public void run(CastRemotePlayback playback) {
++                        playback.endSession(sessionId, resultCallback);
++                    }
++                };
++                break;
++            default:
++                Log.d(TAG, "Unsupported control request " + action + " for " + routeId);
++                return false;
++        }
++        if (!runPlayback(task, true)) {
++            resultCallback.onError("Route released", MediaControlIntent.ERROR_UNKNOWN);
++        }
++        return true;
++    }
++
++    /** The PendingIntent extra, or null if missing or of another type. */
++    private static PendingIntent getPendingIntentExtra(Intent intent, String name) {
++        try {
++            Parcelable extra = intent.getParcelableExtra(name);
++            return extra instanceof PendingIntent ? (PendingIntent) extra : null;
++        } catch (RuntimeException e) {
++            // Extras the client sent that cannot be unparcelled here
++            Log.w(TAG, "Invalid " + name, e);
++            return null;
++        }
++    }
++
++    private interface PlaybackTask {
++        void run(CastRemotePlayback playback);
++    }
++
++    private boolean runPlayback(PlaybackTask task) {
++        return runPlayback(task, false);
++    }
++
++    /**
++     * Run a task on the playback executor.
++     *
++     * @param create whether to set up remote playback if no control request was handled yet
++     * @return false if the task was not run because the controller is released or remote playback is not set up
++     */
++    private boolean runPlayback(final PlaybackTask task, boolean create) {
++        final ScheduledThreadPoolExecutor executor;
++        final CastRemotePlayback playback;
++        synchronized (this) {
++            if (playbackExecutor == null) {
++                if (!create || released) return false;
++                playbackExecutor = new ScheduledThreadPoolExecutor(1, new ThreadFactory() {
++                    @Override
++                    public Thread newThread(@NonNull Runnable r) {
++                        Thread thread = new Thread(r, "CastRemotePlayback-" + routeId);
++                        thread.setDaemon(true);
++                        return thread;
++                    }
++                });
++                if (Build.VERSION.SDK_INT >= 21) playbackExecutor.setRemoveOnCancelPolicy(true);
++                this.playback = new CastRemotePlayback(new PlaybackConnection(), playbackExecutor, new PlaybackListener());
++            }
++            executor = playbackExecutor;
++            playback = this.playback;
++        }
++        try {
++            executor.execute(new Runnable() {
++                @Override
++                public void run() {
++                    try {
++                        task.run(playback);
++                    } catch (RuntimeException e) {
++                        Log.w(TAG, "Remote playback task failed", e);
++                    }
++                }
++            });
++            return true;
++        } catch (RejectedExecutionException e) {
++            return false;
++        }
++    }
++
++    private class PlaybackConnection implements CastRemotePlayback.Connection {
++        @Override
++        public void launchApplication(String applicationId) {
++            CastDeviceSession session;
++            CastDeviceSession started = null;
++            synchronized (CastMediaRouteController.this) {
++                session = CastMediaRouteController.this.session;
++                // If the connection dropped while the route stays selected, open it again.
++                if (session == null && selected && !released) session = started = startSessionLocked();
++            }
++            if (started != null) started.connect();
++            if (session == null) {
++                runPlayback(new PlaybackTask() {
++                    @Override
++                    public void run(CastRemotePlayback playback) {
++                        playback.onApplicationConnectionFailed(CastDeviceSession.STATUS_NETWORK_ERROR);
++                    }
++                });
++                return;
++            }
++            // Register first so no media status sent right after attaching is dropped.
++            session.registerNamespace(CastRemotePlayback.NAMESPACE_MEDIA);
++            session.launchApplication(applicationId, false, null);
++        }
++
++        @Override
++        public void sendMessage(String namespace, String message, final long requestId) {
++            CastDeviceSession session = getSession();
++            if (session != null) {
++                session.sendMessage(namespace, message, requestId);
++            } else {
++                runPlayback(new PlaybackTask() {
++                    @Override
++                    public void run(CastRemotePlayback playback) {
++                        playback.onSendMessageFailure(requestId);
++                    }
++                });
++            }
++        }
++
++        @Override
++        public void stopApplication() {
++            CastDeviceSession session = getSession();
++            if (session != null) {
++                session.stopApplication(null);
++            } else {
++                runPlayback(new PlaybackTask() {
++                    @Override
++                    public void run(CastRemotePlayback playback) {
++                        playback.onApplicationStopped();
++                    }
++                });
++            }
++        }
++    }
++
++    private class PlaybackListener implements CastRemotePlayback.Listener {
++        @Override
++        public void onStatusChanged(CastRemotePlayback.Status status) {
++            if (status.itemId != null && itemStatusReceiver != null) {
++                Intent update = new Intent()
++                        .putExtra(MediaControlIntent.EXTRA_SESSION_ID, status.sessionId)
++                        .putExtra(MediaControlIntent.EXTRA_SESSION_STATUS, toSessionStatusBundle(status))
++                        .putExtra(MediaControlIntent.EXTRA_ITEM_ID, status.itemId)
++                        .putExtra(MediaControlIntent.EXTRA_ITEM_STATUS, toItemStatusBundle(status));
++                if (!sendUpdate(itemStatusReceiver, update)) itemStatusReceiver = null;
++            }
++            if (status.sessionId != null && sessionStatusReceiver != null) {
++                Intent update = new Intent()
++                        .putExtra(MediaControlIntent.EXTRA_SESSION_ID, status.sessionId)
++                        .putExtra(MediaControlIntent.EXTRA_SESSION_STATUS, toSessionStatusBundle(status));
++                if (!sendUpdate(sessionStatusReceiver, update)) sessionStatusReceiver = null;
++            }
++        }
++
++        private boolean sendUpdate(PendingIntent receiver, Intent update) {
++            try {
++                receiver.send(context, 0, update);
++                return true;
++            } catch (PendingIntent.CanceledException e) {
++                return false;
++            }
++        }
++    }
++
++    private class ResultCallback implements CastRemotePlayback.Callback {
++        private final String action;
++        private final MediaRouter.ControlRequestCallback callback;
++
++        ResultCallback(String action, MediaRouter.ControlRequestCallback callback) {
++            this.action = action;
++            this.callback = callback;
++        }
++
++        @Override
++        public void onResult(CastRemotePlayback.Status status) {
++            final Bundle data = new Bundle();
++            if (status.sessionId != null) {
++                data.putString(MediaControlIntent.EXTRA_SESSION_ID, status.sessionId);
++                data.putBundle(MediaControlIntent.EXTRA_SESSION_STATUS, toSessionStatusBundle(status));
++            }
++            boolean itemAction = MediaControlIntent.ACTION_PLAY.equals(action) || MediaControlIntent.ACTION_SEEK.equals(action)
++                    || MediaControlIntent.ACTION_GET_STATUS.equals(action);
++            if (itemAction && status.itemId != null) {
++                data.putString(MediaControlIntent.EXTRA_ITEM_ID, status.itemId);
++                data.putBundle(MediaControlIntent.EXTRA_ITEM_STATUS, toItemStatusBundle(status));
++            }
++            if (callback == null) return;
++            mainHandler.post(new Runnable() {
++                @Override
++                public void run() {
++                    callback.onResult(data);
++                }
++            });
++        }
++
++        @Override
++        public void onError(final String message, int errorCode) {
++            Log.d(TAG, action + " on " + routeId + " failed: " + message);
++            final Bundle data = new Bundle();
++            data.putInt(MediaControlIntent.EXTRA_ERROR_CODE, errorCode);
++            if (callback == null) return;
++            mainHandler.post(new Runnable() {
++                @Override
++                public void run() {
++                    callback.onError(message, data);
++                }
++            });
++        }
++    }
++
++    private static Bundle toItemStatusBundle(CastRemotePlayback.Status status) {
++        MediaItemStatus.Builder builder = new MediaItemStatus.Builder(status.playbackState)
++                .setTimestamp(SystemClock.elapsedRealtime() - status.positionAge);
++        if (status.contentPosition >= 0) builder.setContentPosition(status.contentPosition);
++        if (status.contentDuration >= 0) builder.setContentDuration(status.contentDuration);
++        return builder.build().asBundle();
++    }
++
++    private static Bundle toSessionStatusBundle(CastRemotePlayback.Status status) {
++        return new MediaSessionStatus.Builder(status.sessionState)
++                .setTimestamp(SystemClock.elapsedRealtime())
++                .build().asBundle();
++    }
++
++    /** Media metadata in the format of the Cast media namespace, from MediaItemMetadata keys. */
++    private static JSONObject toCastMetadata(Bundle metadata, String contentType) {
++        if (metadata == null) return null;
++        String title = metadata.getString(MediaItemMetadata.KEY_TITLE);
++        String artist = metadata.getString(MediaItemMetadata.KEY_ARTIST);
++        if (artist == null) artist = metadata.getString(MediaItemMetadata.KEY_ALBUM_ARTIST);
++        String album = metadata.getString(MediaItemMetadata.KEY_ALBUM_TITLE);
++        String artwork = metadata.getString(MediaItemMetadata.KEY_ARTWORK_URI);
++        try {
++            JSONObject json = new JSONObject();
++            if (contentType != null && contentType.startsWith("audio/")) {
++                json.put("metadataType", 3); // MUSIC_TRACK
++                if (artist != null) json.put("artist", artist);
++                if (album != null) json.put("albumName", album);
++            } else {
++                json.put("metadataType", 0); // GENERIC
++                if (artist != null) json.put("subtitle", artist);
++            }
++            if (title != null) json.put("title", title);
++            if (artwork != null) json.put("images", new JSONArray().put(new JSONObject().put("url", artwork)));
++            return json;
++        } catch (JSONException e) {
++            return null;
++        }
++    }
++
+     private class SessionCallbacks implements CastDeviceSession.Callbacks {
+         CastDeviceSession session;
+ 
+@@ -178,7 +570,7 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+             }
+         }
+ 
+-        private void onSessionEnded(int statusCode) {
++        private void onSessionEnded(final int statusCode) {
+             synchronized (CastMediaRouteController.this) {
+                 if (CastMediaRouteController.this.session != session) return;
+                 CastMediaRouteController.this.session = null;
+@@ -187,6 +579,12 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+             }
+             Log.d(TAG, "Connection to " + routeId + " ended: " + statusCode);
+             session.disconnect();
++            runPlayback(new PlaybackTask() {
++                @Override
++                public void run(CastRemotePlayback playback) {
++                    playback.onApplicationDisconnected(statusCode);
++                }
++            });
+         }
+ 
+         @Override
+@@ -222,11 +620,25 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+         }
+ 
+         @Override
+-        public void onApplicationConnected(@NonNull ReceiverApplication application, boolean wasLaunched) {
++        public void onApplicationConnected(@NonNull final ReceiverApplication application, boolean wasLaunched) {
++            if (!isCurrent()) return;
++            runPlayback(new PlaybackTask() {
++                @Override
++                public void run(CastRemotePlayback playback) {
++                    playback.onApplicationConnected(application.getAppId());
++                }
++            });
+         }
+ 
+         @Override
+-        public void onApplicationConnectionFailed(int statusCode) {
++        public void onApplicationConnectionFailed(final int statusCode) {
++            if (!isCurrent()) return;
++            runPlayback(new PlaybackTask() {
++                @Override
++                public void run(CastRemotePlayback playback) {
++                    playback.onApplicationConnectionFailed(statusCode);
++                }
++            });
+         }
+ 
+         @Override
+@@ -234,11 +646,25 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+         }
+ 
+         @Override
+-        public void onApplicationDisconnected(int statusCode) {
++        public void onApplicationDisconnected(final int statusCode) {
++            if (!isCurrent()) return;
++            runPlayback(new PlaybackTask() {
++                @Override
++                public void run(CastRemotePlayback playback) {
++                    playback.onApplicationDisconnected(statusCode);
++                }
++            });
+         }
+ 
+         @Override
+         public void onStopApplicationResult(int statusCode) {
++            if (!isCurrent()) return;
++            runPlayback(new PlaybackTask() {
++                @Override
++                public void run(CastRemotePlayback playback) {
++                    playback.onApplicationStopped();
++                }
++            });
+         }
+ 
+         @Override
+@@ -246,7 +672,14 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+         }
+ 
+         @Override
+-        public void onTextMessage(@NonNull String namespace, @NonNull String message) {
++        public void onTextMessage(@NonNull final String namespace, @NonNull final String message) {
++            if (!isCurrent()) return;
++            runPlayback(new PlaybackTask() {
++                @Override
++                public void run(CastRemotePlayback playback) {
++                    playback.onMessage(namespace, message);
++                }
++            });
+         }
+ 
+         @Override
+@@ -258,7 +691,14 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+         }
+ 
+         @Override
+-        public void onSendMessageFailure(@NonNull String namespace, long requestId, int statusCode) {
++        public void onSendMessageFailure(@NonNull String namespace, final long requestId, int statusCode) {
++            if (!isCurrent()) return;
++            runPlayback(new PlaybackTask() {
++                @Override
++                public void run(CastRemotePlayback playback) {
++                    playback.onSendMessageFailure(requestId);
++                }
++            });
+         }
+     }
+ }
+diff --git a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastRemotePlayback.java b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastRemotePlayback.java
+new file mode 100644
+index 00000000..c9ea3155
+--- /dev/null
++++ b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastRemotePlayback.java
+@@ -0,0 +1,765 @@
++/*
++ * SPDX-FileCopyrightText: 2026 microG Project Team
++ * SPDX-License-Identifier: Apache-2.0
++ */
++
++package org.microg.gms.cast;
++
++import androidx.mediarouter.media.MediaControlIntent;
++import androidx.mediarouter.media.MediaItemStatus;
++import androidx.mediarouter.media.MediaSessionStatus;
++
++import org.json.JSONArray;
++import org.json.JSONException;
++import org.json.JSONObject;
++
++import java.util.ArrayList;
++import java.util.HashMap;
++import java.util.List;
++import java.util.Locale;
++import java.util.Map;
++import java.util.concurrent.RejectedExecutionException;
++import java.util.concurrent.ScheduledExecutorService;
++import java.util.concurrent.ScheduledFuture;
++import java.util.concurrent.TimeUnit;
++
++/**
++ * MediaRouter remote playback (MediaControlIntent.CATEGORY_REMOTE_PLAYBACK) on a Cast receiver, using the Default
++ * Media Receiver and the media namespace.
++ * <p>
++ * One remote playback session with at most one item at a time, like the Default Media Receiver itself. Not thread
++ * safe: every method, including the event methods, must be called on the thread of the executor passed to the
++ * constructor, and callbacks are invoked there.
++ */
++public class CastRemotePlayback {
++    public static final String DEFAULT_MEDIA_RECEIVER_APPLICATION_ID = "CC1AD845";
++    public static final String NAMESPACE_MEDIA = "urn:x-cast:com.google.cast.media";
++
++    static final long REQUEST_TIMEOUT_MILLIS = 10_000;
++    static final long LOAD_TIMEOUT_MILLIS = 30_000;
++
++    /** Access to the receiver connection. Results are reported through the event methods of this class. */
++    public interface Connection {
++        /** Register the media namespace and attach to (launching if needed) the given receiver application. */
++        void launchApplication(String applicationId);
++
++        /** Failures to send are reported through {@link #onSendMessageFailure(long)} with the same request id. */
++        void sendMessage(String namespace, String message, long requestId);
++
++        void stopApplication();
++    }
++
++    public interface Callback {
++        void onResult(Status status);
++
++        /** @param errorCode one of the MediaControlIntent.ERROR_* values */
++        void onError(String message, int errorCode);
++    }
++
++    public interface Listener {
++        /** The session or item status changed without a request, e.g. playback finished or the app was stopped. */
++        void onStatusChanged(Status status);
++    }
++
++    /** Snapshot of the session and item state. */
++    public static class Status {
++        public String sessionId;
++        /** One of the MediaSessionStatus.SESSION_STATE_* values. */
++        public int sessionState;
++        /** Null if no item was played in this session. */
++        public String itemId;
++        /** One of the MediaItemStatus.PLAYBACK_STATE_* values. */
++        public int playbackState;
++        /** Content position in milliseconds, -1 if unknown. */
++        public long contentPosition = -1;
++        /** Content duration in milliseconds, -1 if unknown. */
++        public long contentDuration = -1;
++        /** Milliseconds since the position was reported by the receiver. */
++        public long positionAge;
++
++        @Override
++        public String toString() {
++            return "Status{session=" + sessionId + "/" + sessionState + ", item=" + itemId + "/" + playbackState +
++                    ", position=" + contentPosition + "/" + contentDuration + "}";
++        }
++    }
++
++    private interface ReplyHandler {
++        /**
++         * @param reply   the receiver's reply, or null if there is none
++         * @param failure why there is no reply, e.g. "timed out", or null if there is one
++         */
++        void onReply(JSONObject reply, String failure);
++    }
++
++    private enum AppState {NONE, LAUNCHING, READY, STOPPING}
++
++    /** A player command that waits for the LOAD of the current item to complete. */
++    private static class DeferredCommand {
++        final boolean sessionCommand;
++        final Runnable retry;
++        final Callback callback;
++
++        DeferredCommand(boolean sessionCommand, Runnable retry, Callback callback) {
++            this.sessionCommand = sessionCommand;
++            this.retry = retry;
++            this.callback = callback;
++        }
++    }
++
++    private final Connection connection;
++    private final ScheduledExecutorService executor;
++    private final Listener listener;
++
++    private int nextSessionId = 1;
++    private int nextItemId = 1;
++    private long nextRequestId = 1;
++
++    private String sessionId;
++    private int sessionState = MediaSessionStatus.SESSION_STATE_ENDED;
++    private String itemId;
++    private int playbackState = MediaItemStatus.PLAYBACK_STATE_PENDING;
++    private long contentPosition = -1;
++    private long contentDuration = -1;
++    private long positionTimeNanos = System.nanoTime();
++    /** The receiver's media session of the current item, -1 if none. */
++    private int mediaSessionId = -1;
++    /** Request id of the LOAD whose reply names the media session of the current item, 0 if none. */
++    private long loadRequestId = 0;
++
++    private AppState appState = AppState.NONE;
++    /** The session ended while the application was launching; stop it once it is attached. */
++    private boolean stopAfterLaunch;
++    private final List<Runnable> waitingForApplication = new ArrayList<>();
++    private final List<DeferredCommand> waitingForLoad = new ArrayList<>();
++    private final List<Callback> waitingCallbacks = new ArrayList<>();
++    private final Map<Long, PendingRequest> pendingRequests = new HashMap<>();
++
++    private static class PendingRequest {
++        final ReplyHandler handler;
++        ScheduledFuture<?> timeout;
++
++        PendingRequest(ReplyHandler handler) {
++            this.handler = handler;
++        }
++    }
++
++    public CastRemotePlayback(Connection connection, ScheduledExecutorService executor, Listener listener) {
++        this.connection = connection;
++        this.executor = executor;
++        this.listener = listener;
++    }
++
++    // MediaRouter requests
++
++    public void startSession(Callback callback) {
++        if (isSessionActive()) {
++            // Only one session at a time: the previous one is replaced and its media stopped.
++            sessionState = MediaSessionStatus.SESSION_STATE_INVALIDATED;
++            if (itemId != null && !isFinalPlaybackState(playbackState)) {
++                playbackState = MediaItemStatus.PLAYBACK_STATE_CANCELED;
++            }
++            stopMediaSession(mediaSessionId);
++            notifyStatusChanged();
++            resetItem();
++        }
++        sessionId = Integer.toString(nextSessionId++);
++        sessionState = MediaSessionStatus.SESSION_STATE_ACTIVE;
++        // Commands for the replaced session fail now.
++        runWaitingForLoad(false);
++        callback.onResult(snapshot());
++    }
++
++    public void getSessionStatus(String requestedSessionId, Callback callback) {
++        if (!isCurrentSession(requestedSessionId)) {
++            callback.onError("Unknown session " + requestedSessionId, MediaControlIntent.ERROR_INVALID_SESSION_ID);
++            return;
++        }
++        callback.onResult(snapshot());
++    }
++
++    public void endSession(String requestedSessionId, final Callback callback) {
++        if (!isCurrentSession(requestedSessionId)) {
++            callback.onError("Unknown session " + requestedSessionId, MediaControlIntent.ERROR_INVALID_SESSION_ID);
++            return;
++        }
++        if (sessionState == MediaSessionStatus.SESSION_STATE_ACTIVE) {
++            sessionState = MediaSessionStatus.SESSION_STATE_ENDED;
++            if (itemId != null && !isFinalPlaybackState(playbackState)) {
++                playbackState = MediaItemStatus.PLAYBACK_STATE_CANCELED;
++            }
++            mediaSessionId = -1;
++            loadRequestId = 0;
++            // Stopping the receiver application also ends playback on the device.
++            if (appState == AppState.READY) {
++                // A launch requested before the receiver confirms the stop waits for it, so it does
++                // not attach to the application that is going away.
++                appState = AppState.STOPPING;
++                failPendingRequests("failed: session ended");
++                connection.stopApplication();
++            } else if (appState == AppState.LAUNCHING) {
++                stopAfterLaunch = true;
++                failWaiting(MediaControlIntent.ERROR_UNKNOWN, "Session ended");
++            }
++            notifyStatusChanged();
++            runWaitingForLoad(false);
++        }
++        callback.onResult(snapshot());
++    }
++
++    public void play(final String contentUrl, final String contentType, final JSONObject metadata, final long position,
++                     String requestedSessionId, final Callback callback) {
++        if (requestedSessionId != null && !requestedSessionId.equals(sessionId)) {
++            callback.onError("Unknown session " + requestedSessionId, MediaControlIntent.ERROR_INVALID_SESSION_ID);
++            return;
++        }
++        if (requestedSessionId != null && !isSessionActive()) {
++            callback.onError("Session " + requestedSessionId + " is not active", MediaControlIntent.ERROR_INVALID_SESSION_ID);
++            return;
++        }
++        if (!isSessionActive()) {
++            // Play without a session starts one implicitly.
++            sessionId = Integer.toString(nextSessionId++);
++            sessionState = MediaSessionStatus.SESSION_STATE_ACTIVE;
++        }
++        if (itemId != null && !isFinalPlaybackState(playbackState)) {
++            // The Default Media Receiver plays one item, a new item replaces the current one.
++            playbackState = MediaItemStatus.PLAYBACK_STATE_CANCELED;
++            notifyStatusChanged();
++        }
++        runWaitingForLoad(true);
++        final String newItemId = Integer.toString(nextItemId++);
++        itemId = newItemId;
++        playbackState = MediaItemStatus.PLAYBACK_STATE_PENDING;
++        contentPosition = position > 0 ? position : -1;
++        contentDuration = -1;
++        mediaSessionId = -1;
++        loadRequestId = 0;
++        final String playSessionId = sessionId;
++
++        withApplication(callback, new Runnable() {
++            @Override
++            public void run() {
++                if (!newItemId.equals(itemId) || !playSessionId.equals(sessionId)) {
++                    callback.onError("Replaced by another request", MediaControlIntent.ERROR_UNKNOWN);
++                    return;
++                }
++                JSONObject request = new JSONObject();
++                try {
++                    JSONObject media = new JSONObject()
++                            .put("contentId", contentUrl)
++                            .put("contentUrl", contentUrl)
++                            .put("streamType", "BUFFERED")
++                            .put("contentType", contentType != null ? contentType : guessContentType(contentUrl));
++                    if (metadata != null) media.put("metadata", metadata);
++                    request.put("type", "LOAD")
++                            .put("media", media)
++                            .put("autoplay", true)
++                            .put("currentTime", position > 0 ? position / 1000.0 : 0.0);
++                } catch (JSONException e) {
++                    callback.onError("Invalid request", MediaControlIntent.ERROR_UNKNOWN);
++                    return;
++                }
++                loadRequestId = sendMediaRequest(request, LOAD_TIMEOUT_MILLIS, new ReplyHandler() {
++                    @Override
++                    public void onReply(JSONObject reply, String failure) {
++                        if (!newItemId.equals(itemId)) {
++                            if (itemId == null && reply != null) {
++                                // The session was replaced while loading: don't leave the media playing.
++                                stopMediaSession(firstMediaSessionId(reply));
++                            }
++                            callback.onError("Replaced by another request", MediaControlIntent.ERROR_UNKNOWN);
++                            return;
++                        }
++                        loadRequestId = 0;
++                        String type = reply == null ? null : reply.optString("type");
++                        if ("MEDIA_STATUS".equals(type) && mediaSessionId != -1) {
++                            callback.onResult(snapshot());
++                        } else {
++                            // Keep a final state set meanwhile, e.g. CANCELED when the session ended.
++                            if (!isFinalPlaybackState(playbackState)) {
++                                playbackState = MediaItemStatus.PLAYBACK_STATE_ERROR;
++                                notifyStatusChanged();
++                            }
++                            callback.onError(describeFailure("Loading " + contentUrl, reply, failure), MediaControlIntent.ERROR_UNKNOWN);
++                        }
++                        runWaitingForLoad(false);
++                    }
++                });
++            }
++        });
++    }
++
++    public void seek(final String requestedSessionId, final String requestedItemId, final long position, final Callback callback) {
++        if (!checkItem(requestedSessionId, requestedItemId, callback)) return;
++        if (isLoading()) {
++            waitingForLoad.add(new DeferredCommand(false, new Runnable() {
++                @Override
++                public void run() {
++                    seek(requestedSessionId, requestedItemId, position, callback);
++                }
++            }, callback));
++            return;
++        }
++        try {
++            sendPlayerCommand(new JSONObject().put("type", "SEEK").put("currentTime", Math.max(0, position) / 1000.0), callback);
++        } catch (JSONException e) {
++            callback.onError("Invalid request", MediaControlIntent.ERROR_UNKNOWN);
++        }
++    }
++
++    public void getStatus(String requestedSessionId, String requestedItemId, Callback callback) {
++        if (!checkItem(requestedSessionId, requestedItemId, callback)) return;
++        if (mediaSessionId == -1) {
++            callback.onResult(snapshot());
++            return;
++        }
++        sendPlayerCommand(new JSONObject(), "GET_STATUS", callback);
++    }
++
++    public void pause(String requestedSessionId, Callback callback) {
++        sessionPlayerCommand(requestedSessionId, "PAUSE", callback);
++    }
++
++    public void resume(String requestedSessionId, Callback callback) {
++        sessionPlayerCommand(requestedSessionId, "PLAY", callback);
++    }
++
++    public void stop(String requestedSessionId, Callback callback) {
++        sessionPlayerCommand(requestedSessionId, "STOP", callback);
++    }
++
++    /** End everything without talking to the receiver, e.g. when the route is unselected. */
++    public void release() {
++        failPendingRequests("failed: route released");
++        failWaiting(MediaControlIntent.ERROR_UNKNOWN, "Route released");
++        appState = AppState.NONE;
++        stopAfterLaunch = false;
++        if (isSessionActive()) {
++            sessionState = MediaSessionStatus.SESSION_STATE_INVALIDATED;
++            if (itemId != null && !isFinalPlaybackState(playbackState)) {
++                playbackState = MediaItemStatus.PLAYBACK_STATE_INVALIDATED;
++            }
++            notifyStatusChanged();
++        }
++        mediaSessionId = -1;
++        loadRequestId = 0;
++        runWaitingForLoad(false);
++    }
++
++    // Events from the receiver connection
++
++    public void onApplicationConnected(String applicationId) {
++        if (appState != AppState.LAUNCHING) return;
++        if (!DEFAULT_MEDIA_RECEIVER_APPLICATION_ID.equals(applicationId)) {
++            onApplicationConnectionFailed(-1);
++            return;
++        }
++        if (stopAfterLaunch) {
++            // Nothing wants the application any more (a new request would have cleared the flag).
++            stopAfterLaunch = false;
++            appState = AppState.STOPPING;
++            connection.stopApplication();
++            return;
++        }
++        appState = AppState.READY;
++        List<Runnable> waiting = new ArrayList<>(waitingForApplication);
++        waitingForApplication.clear();
++        waitingCallbacks.clear();
++        for (Runnable runnable : waiting) {
++            runnable.run();
++        }
++    }
++
++    public void onApplicationConnectionFailed(int statusCode) {
++        if (appState != AppState.LAUNCHING) return;
++        appState = AppState.NONE;
++        stopAfterLaunch = false;
++        if (itemId != null && playbackState == MediaItemStatus.PLAYBACK_STATE_PENDING && mediaSessionId == -1) {
++            playbackState = MediaItemStatus.PLAYBACK_STATE_ERROR;
++            notifyStatusChanged();
++        }
++        failWaiting(MediaControlIntent.ERROR_UNKNOWN, "Launching the media receiver failed: " + statusCode);
++        runWaitingForLoad(false);
++    }
++
++    /** The stop requested through {@link Connection#stopApplication()} completed, successfully or not. */
++    public void onApplicationStopped() {
++        if (appState != AppState.STOPPING) return;
++        if (waitingForApplication.isEmpty()) {
++            appState = AppState.NONE;
++        } else {
++            appState = AppState.LAUNCHING;
++            connection.launchApplication(DEFAULT_MEDIA_RECEIVER_APPLICATION_ID);
++        }
++    }
++
++    /** The receiver application stopped or the connection to the device was lost. */
++    public void onApplicationDisconnected(int statusCode) {
++        // The application we stopped going away is the expected result of endSession().
++        if (appState == AppState.STOPPING && statusCode == 0) return;
++        boolean wasLaunching = appState == AppState.LAUNCHING || appState == AppState.STOPPING;
++        appState = AppState.NONE;
++        stopAfterLaunch = false;
++        mediaSessionId = -1;
++        loadRequestId = 0;
++        failPendingRequests("failed: connection to the media receiver lost");
++        if (wasLaunching) {
++            failWaiting(MediaControlIntent.ERROR_UNKNOWN, "Connection to the media receiver lost: " + statusCode);
++        }
++        if (isSessionActive()) {
++            // Another sender or the user replaced or stopped the application.
++            sessionState = MediaSessionStatus.SESSION_STATE_INVALIDATED;
++            if (itemId != null && !isFinalPlaybackState(playbackState)) {
++                playbackState = MediaItemStatus.PLAYBACK_STATE_INVALIDATED;
++            }
++            notifyStatusChanged();
++        }
++        runWaitingForLoad(false);
++    }
++
++    /** A media request could not be sent, e.g. because the receiver application is gone. */
++    public void onSendMessageFailure(long requestId) {
++        PendingRequest pending = pendingRequests.remove(requestId);
++        if (pending != null) {
++            if (pending.timeout != null) pending.timeout.cancel(false);
++            pending.handler.onReply(null, "could not be sent");
++        }
++    }
++
++    public void onMessage(String namespace, String message) {
++        if (!NAMESPACE_MEDIA.equals(namespace)) return;
++        JSONObject json;
++        try {
++            json = new JSONObject(message);
++        } catch (JSONException e) {
++            return;
++        }
++        boolean changed = false;
++        if ("MEDIA_STATUS".equals(json.optString("type"))) {
++            changed = handleMediaStatus(json);
++        }
++        long requestId = json.optLong("requestId", 0);
++        PendingRequest pending = requestId != 0 ? pendingRequests.remove(requestId) : null;
++        if (pending != null) {
++            if (pending.timeout != null) pending.timeout.cancel(false);
++            pending.handler.onReply(json, null);
++        }
++        // Also report changes caused by our own requests: status receivers expect every change.
++        if (changed) notifyStatusChanged();
++    }
++
++    // Internals
++
++    private boolean isSessionActive() {
++        return sessionId != null && sessionState == MediaSessionStatus.SESSION_STATE_ACTIVE;
++    }
++
++    private boolean isCurrentSession(String requestedSessionId) {
++        return requestedSessionId != null && requestedSessionId.equals(sessionId);
++    }
++
++    private static boolean isFinalPlaybackState(int state) {
++        return state == MediaItemStatus.PLAYBACK_STATE_FINISHED || state == MediaItemStatus.PLAYBACK_STATE_CANCELED
++                || state == MediaItemStatus.PLAYBACK_STATE_INVALIDATED || state == MediaItemStatus.PLAYBACK_STATE_ERROR;
++    }
++
++    private void resetItem() {
++        itemId = null;
++        playbackState = MediaItemStatus.PLAYBACK_STATE_PENDING;
++        contentPosition = -1;
++        contentDuration = -1;
++        mediaSessionId = -1;
++        loadRequestId = 0;
++    }
++
++    /** The current item is waiting for the application or for its LOAD reply. */
++    private boolean isLoading() {
++        return itemId != null && mediaSessionId == -1 && playbackState == MediaItemStatus.PLAYBACK_STATE_PENDING
++                && (loadRequestId != 0 || !waitingForApplication.isEmpty());
++    }
++
++    /**
++     * Run the commands that waited for the LOAD of the current item.
++     *
++     * @param superseded whether a new item replaced it: session commands then no longer apply and
++     *                   only report the status, item commands fail on the item id
++     */
++    private void runWaitingForLoad(boolean superseded) {
++        if (waitingForLoad.isEmpty()) return;
++        List<DeferredCommand> commands = new ArrayList<>(waitingForLoad);
++        waitingForLoad.clear();
++        for (DeferredCommand command : commands) {
++            if (superseded && command.sessionCommand) {
++                command.callback.onResult(snapshot());
++            } else {
++                command.retry.run();
++            }
++        }
++    }
++
++    /** Stop a media session of the receiver without waiting for the result. */
++    private void stopMediaSession(int id) {
++        if (id == -1 || appState != AppState.READY) return;
++        try {
++            sendMediaRequest(new JSONObject().put("type", "STOP").put("mediaSessionId", id), REQUEST_TIMEOUT_MILLIS, new ReplyHandler() {
++                @Override
++                public void onReply(JSONObject reply, String failure) {
++                }
++            });
++        } catch (JSONException e) {
++            // Not reached
++        }
++    }
++
++    private static int firstMediaSessionId(JSONObject mediaStatus) {
++        JSONArray statuses = mediaStatus.optJSONArray("status");
++        JSONObject status = statuses != null ? statuses.optJSONObject(0) : null;
++        return status != null ? status.optInt("mediaSessionId", -1) : -1;
++    }
++
++    private boolean checkItem(String requestedSessionId, String requestedItemId, Callback callback) {
++        if (!isCurrentSession(requestedSessionId) || !isSessionActive()) {
++            callback.onError("Unknown session " + requestedSessionId, MediaControlIntent.ERROR_INVALID_SESSION_ID);
++            return false;
++        }
++        if (requestedItemId == null || !requestedItemId.equals(itemId)) {
++            callback.onError("Unknown item " + requestedItemId, MediaControlIntent.ERROR_INVALID_ITEM_ID);
++            return false;
++        }
++        return true;
++    }
++
++    private void sessionPlayerCommand(final String requestedSessionId, final String type, final Callback callback) {
++        if (!isCurrentSession(requestedSessionId) || !isSessionActive()) {
++            callback.onError("Unknown session " + requestedSessionId, MediaControlIntent.ERROR_INVALID_SESSION_ID);
++            return;
++        }
++        if (isLoading()) {
++            // Applied once the media is loaded, so e.g. a STOP right after PLAY is not lost.
++            waitingForLoad.add(new DeferredCommand(true, new Runnable() {
++                @Override
++                public void run() {
++                    sessionPlayerCommand(requestedSessionId, type, callback);
++                }
++            }, callback));
++            return;
++        }
++        if (mediaSessionId == -1) {
++            // Nothing is loaded, so there is nothing to pause, resume or stop.
++            callback.onResult(snapshot());
++            return;
++        }
++        sendPlayerCommand(new JSONObject(), type, callback);
++    }
++
++    private void sendPlayerCommand(JSONObject request, String type, Callback callback) {
++        try {
++            request.put("type", type);
++        } catch (JSONException e) {
++            callback.onError("Invalid request", MediaControlIntent.ERROR_UNKNOWN);
++            return;
++        }
++        sendPlayerCommand(request, callback);
++    }
++
++    private void sendPlayerCommand(JSONObject request, final Callback callback) {
++        if (appState != AppState.READY || mediaSessionId == -1) {
++            callback.onError("No media loaded", MediaControlIntent.ERROR_INVALID_ITEM_ID);
++            return;
++        }
++        final String type = request.optString("type");
++        try {
++            request.put("mediaSessionId", mediaSessionId);
++        } catch (JSONException e) {
++            callback.onError("Invalid request", MediaControlIntent.ERROR_UNKNOWN);
++            return;
++        }
++        sendMediaRequest(request, REQUEST_TIMEOUT_MILLIS, new ReplyHandler() {
++            @Override
++            public void onReply(JSONObject reply, String failure) {
++                if (reply != null && "MEDIA_STATUS".equals(reply.optString("type"))) {
++                    callback.onResult(snapshot());
++                } else {
++                    callback.onError(describeFailure(type, reply, failure), MediaControlIntent.ERROR_UNKNOWN);
++                }
++            }
++        });
++    }
++
++    /** Run once the Default Media Receiver is attached, launching it if needed. */
++    private void withApplication(Callback callback, Runnable runnable) {
++        if (appState == AppState.READY) {
++            runnable.run();
++            return;
++        }
++        waitingForApplication.add(runnable);
++        waitingCallbacks.add(callback);
++        if (appState == AppState.NONE) {
++            appState = AppState.LAUNCHING;
++            connection.launchApplication(DEFAULT_MEDIA_RECEIVER_APPLICATION_ID);
++        } else if (appState == AppState.LAUNCHING) {
++            // Wanted again after the session ended during the launch
++            stopAfterLaunch = false;
++        }
++        // While STOPPING, onApplicationStopped() launches it again.
++    }
++
++    private void failWaiting(int errorCode, String message) {
++        List<Callback> callbacks = new ArrayList<>(waitingCallbacks);
++        waitingForApplication.clear();
++        waitingCallbacks.clear();
++        for (Callback callback : callbacks) {
++            callback.onError(message, errorCode);
++        }
++    }
++
++    /** @return the request id */
++    private long sendMediaRequest(JSONObject request, long timeoutMillis, ReplyHandler handler) {
++        final long requestId = nextRequestId++;
++        try {
++            request.put("requestId", requestId);
++        } catch (JSONException e) {
++            handler.onReply(null, "failed");
++            return requestId;
++        }
++        final PendingRequest pending = new PendingRequest(handler);
++        pendingRequests.put(requestId, pending);
++        try {
++            pending.timeout = executor.schedule(new Runnable() {
++                @Override
++                public void run() {
++                    if (pendingRequests.remove(requestId) == pending) pending.handler.onReply(null, "timed out");
++                }
++            }, timeoutMillis, TimeUnit.MILLISECONDS);
++        } catch (RejectedExecutionException e) {
++            // Released
++            pendingRequests.remove(requestId);
++            handler.onReply(null, "failed: route released");
++            return requestId;
++        }
++        connection.sendMessage(NAMESPACE_MEDIA, request.toString(), requestId);
++        return requestId;
++    }
++
++    private void failPendingRequests(String failure) {
++        List<PendingRequest> pending = new ArrayList<>(pendingRequests.values());
++        pendingRequests.clear();
++        for (PendingRequest request : pending) {
++            if (request.timeout != null) request.timeout.cancel(false);
++            request.handler.onReply(null, failure);
++        }
++    }
++
++    /** @return whether the item status changed */
++    private boolean handleMediaStatus(JSONObject json) {
++        if (itemId == null) return false;
++        if (mediaSessionId == -1) {
++            // Only the reply to our LOAD tells which media session belongs to the current item. Other
++            // statuses received meanwhile are about media loaded before.
++            if (loadRequestId == 0 || json.optLong("requestId", 0) != loadRequestId) return false;
++        }
++        JSONArray statuses = json.optJSONArray("status");
++        JSONObject status = null;
++        if (statuses != null) {
++            for (int i = 0; i < statuses.length(); i++) {
++                JSONObject candidate = statuses.optJSONObject(i);
++                if (candidate == null) continue;
++                if (mediaSessionId == -1 || candidate.optInt("mediaSessionId", -1) == mediaSessionId) {
++                    status = candidate;
++                    break;
++                }
++            }
++        }
++        if (status == null && mediaSessionId == -1) return false;
++        int oldState = playbackState;
++        long oldPosition = contentPosition;
++        long oldDuration = contentDuration;
++        if (status == null) {
++            // Our media session is gone without a final state, e.g. after STOP on an older receiver.
++            if (mediaSessionId != -1 && !isFinalPlaybackState(playbackState)) {
++                playbackState = MediaItemStatus.PLAYBACK_STATE_CANCELED;
++                mediaSessionId = -1;
++            }
++        } else {
++            mediaSessionId = status.optInt("mediaSessionId", mediaSessionId);
++            playbackState = toPlaybackState(status.optString("playerState"), status.optString("idleReason"), playbackState);
++            if (status.has("currentTime")) {
++                contentPosition = (long) (status.optDouble("currentTime", 0) * 1000);
++                positionTimeNanos = System.nanoTime();
++            }
++            JSONObject media = status.optJSONObject("media");
++            if (media != null && media.has("duration") && !media.isNull("duration")) {
++                double duration = media.optDouble("duration", -1);
++                contentDuration = duration >= 0 ? (long) (duration * 1000) : -1;
++            }
++            if (isFinalPlaybackState(playbackState)) {
++                // The receiver discards the media session after reporting a final state.
++                mediaSessionId = -1;
++            }
++        }
++        return oldState != playbackState || oldPosition != contentPosition || oldDuration != contentDuration;
++    }
++
++    static int toPlaybackState(String playerState, String idleReason, int current) {
++        switch (playerState) {
++            case "PLAYING":
++                return MediaItemStatus.PLAYBACK_STATE_PLAYING;
++            case "PAUSED":
++                return MediaItemStatus.PLAYBACK_STATE_PAUSED;
++            case "BUFFERING":
++            case "LOADING":
++                return MediaItemStatus.PLAYBACK_STATE_BUFFERING;
++            case "IDLE":
++                switch (idleReason) {
++                    case "FINISHED":
++                        return MediaItemStatus.PLAYBACK_STATE_FINISHED;
++                    case "CANCELLED":
++                        return MediaItemStatus.PLAYBACK_STATE_CANCELED;
++                    case "INTERRUPTED":
++                        return MediaItemStatus.PLAYBACK_STATE_INVALIDATED;
++                    case "ERROR":
++                        return MediaItemStatus.PLAYBACK_STATE_ERROR;
++                    default:
++                        return MediaItemStatus.PLAYBACK_STATE_PENDING;
++                }
++            default:
++                return current;
++        }
++    }
++
++    static String guessContentType(String url) {
++        String path = url.toLowerCase(Locale.ROOT);
++        int query = path.indexOf('?');
++        if (query >= 0) path = path.substring(0, query);
++        if (path.endsWith(".m3u8")) return "application/x-mpegurl";
++        if (path.endsWith(".mpd")) return "application/dash+xml";
++        if (path.endsWith(".mp3")) return "audio/mpeg";
++        if (path.endsWith(".jpg") || path.endsWith(".jpeg")) return "image/jpeg";
++        if (path.endsWith(".png")) return "image/png";
++        if (path.endsWith(".webm")) return "video/webm";
++        return "video/mp4";
++    }
++
++    private static String describeFailure(String what, JSONObject reply, String failure) {
++        if (reply == null) return what + " " + (failure != null ? failure : "failed");
++        String reason = reply.optString("reason");
++        return what + " failed: " + reply.optString("type") + (reason.isEmpty() ? "" : " (" + reason + ")");
++    }
++
++    private void notifyStatusChanged() {
++        listener.onStatusChanged(snapshot());
++    }
++
++    Status snapshot() {
++        Status status = new Status();
++        status.sessionId = sessionId;
++        status.sessionState = sessionState;
++        status.itemId = itemId;
++        status.playbackState = playbackState;
++        status.contentPosition = contentPosition;
++        status.contentDuration = contentDuration;
++        status.positionAge = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - positionTimeNanos);
++        return status;
++    }
++}
