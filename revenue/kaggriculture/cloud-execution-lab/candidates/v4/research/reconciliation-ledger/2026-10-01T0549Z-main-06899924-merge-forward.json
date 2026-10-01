@@ -1,0 +1,38 @@
+{
+  "schema": "titan-v4-reconciliation-receipt/v1",
+  "authority_main": "068999240e9b9bcfa6636bd05678ae38fd867643",
+  "authority_delta_from": "c2a61d56d0f019eaea4e430feeb2297f7d0ba308",
+  "authority_ahead": 9,
+  "authority_behind": 0,
+  "authority_kaggriculture_paths": 0,
+  "carrier_before": "dbfeb6f272e42d00029e6f0caac71ef708221284",
+  "control_blobs": {
+    "canonical": "00142be0ff2314dcb23068c8133b34d290661923",
+    "integration": "4e3207af1332266852530ec8494db8969edc1115",
+    "composition": "32dc1e6963702f7e013cd609053d52c434e42158"
+  },
+  "recovered_not_yet_composed": [],
+  "open_pr_census": {
+    "v4": 0,
+    "v31": 0,
+    "v3": 0
+  },
+  "newly_custodied": {
+    "source_pr": 15610,
+    "source_head": "b96a1c200e1c5cd4c8386929a86b86aacdc2602f",
+    "disposition": "superseded_negative_quarantine_no_queue_edge",
+    "exact_head_runs": {
+      "muhlnickel_spec_guard": "success",
+      "titan_selected_projection": "success",
+      "path_manifest": "cancelled",
+      "source_parses": "cancelled",
+      "titan_reset_invariance": "failure",
+      "open_door_guard": "cancelled"
+    },
+    "canonical_closure_pr": 15490
+  },
+  "queue_edge": false,
+  "promotion": false,
+  "sibling_v4_root_created": false,
+  "force_ref": false
+}

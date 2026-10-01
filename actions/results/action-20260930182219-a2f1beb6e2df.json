@@ -1,0 +1,13 @@
+{
+  "id": "action-20260930182219-a2f1beb6e2df",
+  "verb": "ACTION",
+  "target": "",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 2\n/bin/sh: 3: Inbound:: not found\n/bin/sh: 4: Subject:: not found\n/bin/sh: 6: Syntax error: newline unexpected\n",
+  "executed_at": "2026-10-01T04:55:07.441741Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

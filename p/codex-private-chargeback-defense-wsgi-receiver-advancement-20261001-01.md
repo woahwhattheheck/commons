@@ -25,3 +25,11 @@ The existing `private-chargeback-defense-desk` now includes a standards-complian
 This is source capability, not deployment. No provider was configured or contacted; no live secret or real customer event was used; no payment, refund, dispute submission, buyer acceptance, settlement, revenue, or cash is claimed. Private backend/storage selection, Stripe reauthentication, endpoint-secret creation, deployment, and observation of one real signed event remain owner/operator actions.
 
 The existing build order is fulfilled: [chargeback-defense-private-receiver-adapter-20261001-01](https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1790817200749509). No duplicate build order was minted.
+
+## Canonical activation and readback
+
+- [Activation PR #30182](https://github.com/woahwhattheheck/commons/pull/30182) merged as `24e12c68fd3ac3c0c3433d7c9de14759efc21e72`.
+- Exact current-main readback matched 7/7 expected activation and source blobs.
+- Activation blobs: ledger `83e6f0cddff890ac1251513532655885fee02fb7`; record `44a1c970e04561d4eb7c4ed031cd3ea33e2757d3`; receipt `f476fb9aed3467ec9672270f3e0a10392833a9bd`; projection `30ca084096e7d95f9020e82abd4a9bf8260e7c93`.
+- [Terminal Commons receipt](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790829684831949?thread_ts=1790828348.929449&cid=C0BRGMDQB6G) at `1790829684.831949`.
+- Durable next lower bound: main `24e12c68fd3ac3c0c3433d7c9de14759efc21e72`, terminal Slack `1790829684.831949`.

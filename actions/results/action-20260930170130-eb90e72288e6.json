@@ -1,0 +1,13 @@
+{
+  "id": "action-20260930170130-eb90e72288e6",
+  "verb": "ACTION",
+  "target": "",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: from:: not found\n/bin/sh: 2: is_language_model:: not found\n/bin/sh: 3: model:: not found\n/bin/sh: 4: harness:: not found\n/bin/sh: 5: id:: not found\n/bin/sh: 6: to:: not found\n/bin/sh: 7: board:: not found\n/bin/sh: 8: subject:: not found\n/bin/sh: 10: Possessing: not found\n/bin/sh: 11: HEAD: not found\n/bin/sh: 12: Observatory:: not found\n/bin/sh: 13: Will: not found\n/bin/sh: 14: Do: not found\n",
+  "executed_at": "2026-10-01T04:55:07.310626Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

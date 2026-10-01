@@ -53,6 +53,9 @@
     "prior_terminal_main_sha": "36ffff33edc951ae54f443d48b4b4c73352c3cae",
     "source_repair_base_main_sha": "5538a8ff87408842b8ac22a9f73a0dd98f3dbac9",
     "source_repair_current_main_sha": "42f86a421e99cac7b17b20c0396785e5254087ae",
+    "activation_pull_request": 30182,
+    "activation_head_sha": "49f50b651a7033d94bfcc3b19fdca8081e558cd0",
+    "activation_merge_sha": "24e12c68fd3ac3c0c3433d7c9de14759efc21e72",
     "commits_in_delta": 10,
     "remote_branches_observed_before_claim": 4565,
     "prior_terminal_slack_ts": "1790817699.837589",
@@ -101,18 +104,39 @@
     "source_pr": "https://github.com/woahwhattheheck/commons/pull/30180",
     "repair_pr": "https://github.com/woahwhattheheck/commons/pull/30181",
     "repair_merge": "https://github.com/woahwhattheheck/commons/commit/42f86a421e99cac7b17b20c0396785e5254087ae",
+    "activation_pull_request": "https://github.com/woahwhattheheck/commons/pull/30182",
+    "activation_merge": "https://github.com/woahwhattheheck/commons/commit/24e12c68fd3ac3c0c3433d7c9de14759efc21e72",
+    "terminal_slack": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790829684831949?thread_ts=1790828348.929449&cid=C0BRGMDQB6G",
     "fulfilled_build_order": "https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1790817200749509",
     "official_usage_guidance": "https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan",
     "official_status_history": "https://status.openai.com/history"
   },
   "next_watermark": {
-    "observed_at": "2026-10-01T04:25:48Z",
+    "observed_at": "2026-10-01T04:41:24Z",
     "activation_base_main_sha": "42f86a421e99cac7b17b20c0396785e5254087ae",
-    "current_main_sha": "42f86a421e99cac7b17b20c0396785e5254087ae",
+    "current_main_sha": "24e12c68fd3ac3c0c3433d7c9de14759efc21e72",
     "latest_external_delta_slack_ts": "1790817699.837589",
     "latest_commons_claim_slack_ts": "1790828348.929449",
+    "terminal_slack_ts": "1790829684.831949",
+    "terminal_observed_at": "2026-10-01T04:41:24Z",
     "remote_branches_observed_before_claim": 4565,
     "inventory_record_id": "codex-private-chargeback-defense-wsgi-receiver-advancement-20261001-01"
+  },
+  "activation_readback": {
+    "current_main_sha": "24e12c68fd3ac3c0c3433d7c9de14759efc21e72",
+    "matched_blobs": 7,
+    "expected_blobs": 7,
+    "activation_blobs": {
+      "ground/RESOURCE_LEDGER.json": "83e6f0cddff890ac1251513532655885fee02fb7",
+      "inventory/resources/records/codex-private-chargeback-defense-wsgi-receiver-advancement-20261001-01.json": "44a1c970e04561d4eb7c4ed031cd3ea33e2757d3",
+      "p/codex-private-chargeback-defense-wsgi-receiver-advancement-20261001-01.md": "f476fb9aed3467ec9672270f3e0a10392833a9bd",
+      "resources.html": "30ca084096e7d95f9020e82abd4a9bf8260e7c93"
+    },
+    "source_blobs": {
+      "host/chargeback_defense_receiver.py": "9c653371d6c4acad8812aafba4d65c1a33d44a59",
+      "host/test_chargeback_defense_receiver.py": "41efcade33086752edfedda91d75a6b7978d3ae5",
+      "revenue/chargeback_defense/private-receiver-adapter.md": "eace6ca81517467064d876d80d9c8287dec1a120"
+    }
   },
   "non_claims": [
     "No provider account was accessed and no live endpoint, secret, event, buyer, deployment, owner action, dispute submission, payment, settlement, payout, revenue or cash is claimed.",

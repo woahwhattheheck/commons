@@ -119,10 +119,10 @@
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1790828348.929449",
+  "slack_ts": "1790829684.831949",
   "snapshot": {
     "base_main_sha": "42f86a421e99cac7b17b20c0396785e5254087ae",
-    "observed_at": "2026-10-01T04:25:48Z",
+    "observed_at": "2026-10-01T04:41:24Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
@@ -2760,13 +2760,13 @@
       "value": "A standard-library private desk now includes a standards-compliant WSGI and HTTP receiver that preserves exact signed bytes, returns success only after a durable recorded or duplicate outcome, rejects event conflicts without overwriting the original, and exposes only public-safe operational metadata; the ledger, evidence packets, and pricing scenarios remain private and observed-only.",
       "next_action": "Owner/operator must select the private backend and storage, reauthenticate Stripe, create the endpoint secret, deploy behind a private network boundary, and observe one real signed event before any live-monitor claim. Until then, exercise only the landed synthetic loopback and private on-demand CLI/WSGI paths.",
       "source": "PR #30175; PR #30180 head 39299e0d98f0f6f2a5402c279727605dac34224b merge f408aaf43e42c56c465bab211b5a6c279c8799f5; PR #30181 head 066d8dacfef295071d9684ce1d49508eb2d312e3 merge 42f86a421e99cac7b17b20c0396785e5254087ae; host/chargeback_defense.py; host/chargeback_defense_receiver.py; host/test_chargeback_defense_receiver.py; revenue/chargeback_defense/private-receiver-adapter.md",
-      "evidence_ts": "2026-10-01T04:25:48Z",
+      "evidence_ts": "2026-10-01T04:41:24Z",
       "auth_surface": "Public current-main source plus normal, optimized, WSGI and synthetic loopback probes run without Commons login, customer data, provider account access or repeated approval. Real ingestion still requires a private absolute store, live endpoint signing secret, private deployment and provider event delivery outside the repository.",
       "exact_safe_probe": "Current main 42f86a421e99cac7b17b20c0396785e5254087ae retains repaired receiver blob 9c653371d6c4acad8812aafba4d65c1a33d44a59 and standards-compliant test blob 41efcade33086752edfedda91d75a6b7978d3ae5. All 28 focused tests passed under normal and optimized Python, the 9-check synthetic loopback passed with zero external calls, compile and secret-pattern scans passed, and the PEP 3333 CONTENT_LENGTH regression is covered.",
       "rate_plan_boundary": "The exercised activation used local standard-library compute, public documents and supplied assumptions and made zero provider calls. Source presence, a signed-event implementation, document packet, pricing scenario or passing probe does not establish deployment, a live endpoint, delivered provider event, buyer acceptance, dispute success, refund, payment, revenue or cash.",
       "assigned_backlog": "The single delegated ingress order at https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1790817200749509 is implemented by PR #30180 and its WSGI interoperability defect is repaired by PR #30181. Private backend/storage selection, Stripe reauthentication, endpoint-secret creation, deployment and first real signed event remain owner/operator actions, not a new build order.",
       "last_receipt": "codex-private-chargeback-defense-wsgi-receiver-advancement-20261001-01",
-      "last_used_at": "2026-10-01T04:25:48Z",
+      "last_used_at": "2026-10-01T04:41:24Z",
       "stale_after": "next source blob, Stripe signing contract, private-store schema, redaction policy, provider event delivery, deployment, operator authority, pricing assumption, dispute state or owner-policy change",
       "priority": 100
     }
