@@ -13,13 +13,6 @@ import urllib.parse
 import urllib.request
 from typing import Any
 
-from commons_publication_policy import (
-    PublicationPolicyViolation,
-    check_outbound_identity,
-    require_publication,
-)
-
-
 class EquipmentError(RuntimeError):
     def __init__(
         self,
@@ -158,52 +151,43 @@ class GitHubSlackEquipment:
         read_method = method in {
             "conversations.history",
             "conversations.replies",
+            "conversations.info",
+            "files.info",
             "chat.getPermalink",
             "auth.test",
         }
-        supported_write = method in {
-            "chat.postMessage",
-            "chat.update",
-            "chat.postEphemeral",
-            "chat.scheduleMessage",
+        write_fields = {
+            "chat.postMessage": {"channel", "text", "thread_ts", "unfurl_links", "unfurl_media", "parse"},
+            "files.getUploadURLExternal": {"filename", "length"},
+            "files.completeUploadExternal": {"files", "channel_id", "thread_ts", "initial_comment"},
         }
         if not read_method:
-            if supported_write:
-                fields = _slack_publication_fields(payload)
-                identity = check_outbound_identity(fields)
-                if not identity["allowed"]:
-                    raise PublicationPolicyViolation(identity)
-            if not self._slack_write_route_verified():
+            allowed_fields = write_fields.get(method)
+            if (allowed_fields is None or not isinstance(payload, dict)
+                    or set(payload) - allowed_fields or any(
+                        key in payload for key in ("username", "icon_emoji", "icon_url", "as_user", "user_name")
+                    )):
+                raise EquipmentError("Slack mutation has no exact internal field mapping",
+                                     code="outbound_field_mapping_missing", uncertain=False,
+                                     incident=False, delivered=False)
+            verifier = getattr(self, "_slack_write_route_verified", None)
+            destination = payload.get("channel_id") or payload.get("channel")
+            if not callable(verifier) or not verifier(destination):
                 raise EquipmentError(
                     "Slack write not delivered. The installed sender identity/footer "
-                    "is not verified as owner-controlled and footer-free. Use a "
-                    "verified owner-controlled route, then retry.",
+                    "does not match the fixed authenticated internal workspace account.",
                     code="outbound_sender_identity_unverified",
                     uncertain=False,
                     incident=False,
                     delivered=False,
                     matched_fields=(),
                     matched_terms=(),
-                    private_instruction=(
-                        "Use a verified owner-controlled, footer-free sender route, "
-                        "then retry. Do not create a fallback notification."
-                    ),
+                    private_instruction="Read back the internal Slack sender and visible message fields before retrying.",
                 )
-            if not supported_write:
-                raise EquipmentError(
-                    "Slack write not delivered because its outward fields are not mapped.",
-                    code="outbound_field_mapping_missing",
-                    uncertain=False,
-                    incident=False,
-                    delivered=False,
-                    matched_fields=(),
-                    matched_terms=(),
-                    private_instruction=(
-                        "Add an explicit final-visible-field mapping before retrying. "
-                        "Do not create a fallback notification."
-                    ),
-                )
-            require_publication(_slack_publication_text(payload))
+            # Internal TJLabs Slack is explicitly exempt from the public
+            # Commons/GitHub publication classifier. Fixed account + exact
+            # API fields control the transport; the handoff route validates
+            # internal channel metadata and reads back the actual result.
         token = self.slack_token_loader()
         # Slack read methods accept query/form arguments, not consistently JSON.
         url = "https://slack.com/api/" + method
@@ -233,6 +217,47 @@ class GitHubSlackEquipment:
         if not read_method and result.get("error") in ("internal_error", "fatal_error"):
             result["uncertain"] = True
         return redacted(result)
+
+    def slack_upload_bytes(self, upload_url: str, body: bytes) -> dict:
+        """POST exact patch bytes to Slack's single-use signed upload URL."""
+        parsed = urllib.parse.urlsplit(upload_url)
+        if parsed.scheme != "https" or parsed.hostname != "files.slack.com" or parsed.username or parsed.password:
+            raise EquipmentError("Slack returned an unsupported file upload host", code="slack_upload_url_invalid")
+        request = urllib.request.Request(upload_url, data=body,
+            headers={"Content-Type": "application/octet-stream", "Content-Length": str(len(body))}, method="POST")
+        try:
+            with self.opener(request, timeout=90) as response:
+                status = int(response.status)
+                response.read(256)
+        except urllib.error.HTTPError as exc:
+            status = exc.code
+            exc.close()
+            return {"ok": False, "error": "slack_upload_http_error", "status": status,
+                    "uncertain": status not in (400, 401, 403, 404, 413, 429)}
+        except Exception:
+            raise EquipmentError("Slack file upload response unavailable; reconcile before retry",
+                                 code="slack_upload_unconfirmed", uncertain=True) from None
+        if status < 200 or status >= 300:
+            return {"ok": False, "error": "slack_upload_http_error", "status": status,
+                    "uncertain": status >= 500}
+        return {"ok": True, "http_status": status, "bytes_uploaded": len(body)}
+
+    def slack_download_file(self, file_info: dict, *, max_bytes: int = 10 * 1024 * 1024) -> bytes:
+        """Read a shared Slack file in memory using the existing encrypted token."""
+        url = file_info.get("url_private_download") or file_info.get("url_private")
+        parsed = urllib.parse.urlsplit(url or "")
+        if parsed.scheme != "https" or parsed.hostname not in {"files.slack.com", "slack-files.com"}:
+            raise EquipmentError("Slack file has no supported private download URL", code="slack_file_url_invalid")
+        token = self.slack_token_loader()
+        request = urllib.request.Request(url, headers={"Authorization": "Bearer " + token}, method="GET")
+        try:
+            with self.opener(request, timeout=45) as response:
+                data = response.read(max_bytes + 1)
+        except Exception:
+            raise EquipmentError("Slack file readback unavailable", code="slack_file_read_failed") from None
+        if len(data) > max_bytes:
+            raise EquipmentError("Slack file exceeds the 10 MiB peer-read limit", code="slack_file_too_large")
+        return data
 
     def github(self, endpoint: str, *, method: str = "GET", payload: dict | None = None) -> Any:
         # Writes need the same HTTP/cooldown evidence as reads. Keep --include

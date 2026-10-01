@@ -101,7 +101,7 @@ class SlackEquipmentCarrier:
     def _write_route_verified(self) -> bool:
         services = getattr(self.catalog, "services", None)
         verifier = getattr(services, "_slack_write_route_verified", None)
-        return bool(callable(verifier) and verifier())
+        return bool(callable(verifier) and verifier(self.channel))
 
     def start(self):
         if not self._write_route_verified():

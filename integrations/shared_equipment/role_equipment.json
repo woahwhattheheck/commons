@@ -1,6 +1,8 @@
 {
   "tools": [
-    {"name":"shared_service_equipment","entry":"GET /v1/tools; POST /v1/tools/call","notes":"Current running catalog includes Slack, GitHub, Gemini lifecycle, and GrokBot lifecycle operations; service custody stays in the existing host stores."},
+    {"name":"shared_service_equipment","entry":"GET /v1/tools; POST /v1/tools/call","notes":"Current running catalog includes Slack, GitHub, Gemini lifecycle, GrokBot lifecycle, and commons_team_workhandoff; service custody stays in the existing host stores."},
+    {"name":"commons_team_workhandoff","entry":"ServiceEquipment tool + commons_equipment_request carrier","default_channel_id":"C0BU51F1PL3","default_thread_ts":"1790851459.659859","notes":"Available through the same dynamic capability manifest to every peer. Uploads the exact patch file, shares it in the verified internal BountyHub thread, and reads back file bytes/message text/sender/provider footer before reporting delivery. Its durable journal stores hashes and provider receipts, not patch bytes."},
+    {"name":"slack_read_file","entry":"ServiceEquipment tool + commons_equipment_request carrier","notes":"Fetches the shared patch by file ID through the existing encrypted Slack credential; no new peer grant or holder session."},
     {"name":"equipment_capability_manifest","entry":"CLI: python -m integrations.shared_equipment.services manifest; Slack envelope name equipment_capability_manifest","notes":"Dynamic non-secret capability inventory. Same operations for every peer. Peer labels never gate discovery. No credential bytes."}
   ],
   "parity": {

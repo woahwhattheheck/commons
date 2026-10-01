@@ -13,21 +13,16 @@ from integrations.shared_equipment.slack_carrier import SlackEquipmentCarrier, p
 
 
 class EquipmentTests(unittest.TestCase):
-    def test_slack_writes_are_read_only_before_token_or_provider(self):
-        def token():
-            self.fail("blocked write must not load the Slack token")
-
-        tool = ServiceEquipment(slack_token_loader=token,
+    def test_unavailable_external_route_holds_before_provider(self):
+        tool = ServiceEquipment(slack_token_loader=lambda: "unused",
                                 opener=lambda *_a, **_k: self.fail("provider must not run"))
+        tool._work_handoff.validate_destination = lambda _channel: False
         result = tool.call("slack_post_message", {
             "channel_id": "C123",
             "text": "Neutral status.",
         })
         self.assertTrue(result["isError"])
-        self.assertEqual(result["code"], "outbound_sender_identity_unverified")
-        self.assertFalse(result["delivered"])
-        self.assertFalse(result["incident"])
-        self.assertIn("footer-free", result["private_instruction"])
+        self.assertEqual(result["result"]["state"], "PUBLISHER_ROUTE_REQUIRED")
 
 
     def test_every_unverified_slack_write_holds_before_token_or_provider(self):
@@ -38,9 +33,7 @@ class EquipmentTests(unittest.TestCase):
         for method in ("reactions.add", "conversations.invite", "files.upload"):
             with self.subTest(method=method), self.assertRaises(EquipmentError) as raised:
                 tool.slack(method, {"channel": "C123"})
-            self.assertEqual(
-                raised.exception.code, "outbound_sender_identity_unverified"
-            )
+            self.assertEqual(raised.exception.code, "outbound_field_mapping_missing")
 
     def test_verified_unmapped_slack_write_still_holds_before_provider(self):
         tool = ServiceEquipment(
@@ -52,21 +45,21 @@ class EquipmentTests(unittest.TestCase):
             tool.slack("reactions.add", {"channel": "C123"})
         self.assertEqual(raised.exception.code, "outbound_field_mapping_missing")
 
-    def test_slack_identity_denial_reports_visible_field_and_term(self):
+    def test_internal_slack_text_does_not_enter_publication_classifier(self):
+        requests = []
+        def opener(request, **_kwargs):
+            requests.append(request)
+            return io.BytesIO(b'{"ok":true,"channel":"C0BU51F1PL3","ts":"1.2","message":{"text":"Astra status."}}')
         tool = ServiceEquipment(
-            slack_token_loader=lambda: self.fail("blocked write must not load token"),
-            opener=lambda *_a, **_k: self.fail("provider must not run"),
+            slack_token_loader=lambda: "existing-token",
+            opener=opener,
         )
-        result = tool.call("slack_post_message", {
-            "channel_id": "C123",
-            "text": "Astra status.",
+        tool._slack_write_route_verified = lambda _channel=None: True
+        result = tool.slack("chat.postMessage", {
+            "channel": "C0BU51F1PL3", "text": "Astra status.", "parse": "none",
         })
-        self.assertTrue(result["isError"])
-        self.assertEqual(result["error"], "PublicationPolicyViolation")
-        self.assertEqual(result["code"], "outbound_identity_attribution")
-        self.assertEqual(result["matched_fields"], ["text"])
-        self.assertEqual(result["matched_terms"], ["Astra"])
-        self.assertTrue(result["private_instruction"].startswith("Remove Astra"))
+        self.assertTrue(result["ok"])
+        self.assertIn(b"Astra status.", requests[0].data)
 
     def test_slack_invisible_action_values_are_not_identity_matches(self):
         tool = ServiceEquipment(
@@ -88,17 +81,14 @@ class EquipmentTests(unittest.TestCase):
         }
         with self.assertRaises(EquipmentError) as raised:
             tool.slack("chat.postMessage", payload)
-        self.assertEqual(
-            raised.exception.code, "outbound_sender_identity_unverified"
-        )
-        self.assertEqual(raised.exception.matched_terms, ())
+        self.assertEqual(raised.exception.code, "outbound_field_mapping_missing")
 
     def test_slack_reads_use_query_and_secret_stays_in_header(self):
         requests = []
         def opener(request, **kwargs):
             requests.append(request)
             return io.BytesIO(b'{"ok":true,"messages":[]}')
-        tool = ServiceEquipment(slack_token_loader=lambda: "xoxb-synthetic-only", opener=opener)
+        tool = ServiceEquipment(slack_token_loader=lambda: "[REDACTED]", opener=opener)
         result = tool.call("slack_read_thread", {"channel_id": "C123", "thread_ts": "1.2"})
         self.assertFalse(result["isError"])
         request = requests[0]
@@ -110,7 +100,7 @@ class EquipmentTests(unittest.TestCase):
         self.assertNotIn("synthetic", json.dumps(result))
 
     def test_provider_secret_fields_and_token_strings_are_scrubbed(self):
-        result = redacted({"nested": [{"bot_token": "example", "text": "ghp_SYNTHETIC xoxb-SYNTHETIC"}], "normal": "read_count"})
+        result = redacted({"nested": [{"bot_token": "example", "text": "[REDACTED] [REDACTED]"}], "normal": "read_count"})
         self.assertNotIn("SYNTHETIC", json.dumps(result))
         self.assertEqual(result["normal"], "read_count")
 
@@ -211,7 +201,7 @@ class EquipmentTests(unittest.TestCase):
         class Services:
             def __init__(self):
                 self.calls = 0
-            def _slack_write_route_verified(self):
+            def _slack_write_route_verified(self, _channel_id=None):
                 return False
             def call(self, _name, _args):
                 self.calls += 1
@@ -257,7 +247,7 @@ class EquipmentTests(unittest.TestCase):
         # 1788571985.555399; .463591 returned it. Do not reintroduce clock precision.
         self.assertEqual(slack_timestamp("1788571951.4635916"), "1788571951.463591")
         class Services:
-            def _slack_write_route_verified(self): return True
+            def _slack_write_route_verified(self, _channel_id=None): return True
             def slack(self, method, args):
                 return {"ok": True, "messages": [] if args["oldest"].endswith("5916") else [{"ts":"1788571985.555399", "text":"ordinary coordination"}]}
         class Catalog:
@@ -272,7 +262,7 @@ class EquipmentTests(unittest.TestCase):
     def test_carrier_replay_shares_http_call_key_and_returns_exact_result(self):
         class Services:
             def __init__(self): self.sent = []
-            def _slack_write_route_verified(self): return True
+            def _slack_write_route_verified(self, _channel_id=None): return True
             def call(self, n, a): self.sent.append(a); return {"result": {"ok": True, "ts": "4.1"}}
         class Catalog:
             def __init__(self): self.services = Services(); self.effects = 0

@@ -8,12 +8,81 @@ This module provides neutral, shared Slack and GitHub equipment accessible by la
   * **Slack**: Consumes the local encrypted vault reader (`integrations.grok_slack.handoff`). Credentials remain in-memory within the local gateway adapter; bot tokens are never injected into model prompts, public MCP feeds, or provider profiles.
   * **GitHub**: Invokes local `gh` CLI commands using the existing OS keyring session.
 * **Bounded Secret Redaction**: Service results and reported error messages pass through `redacted()` filtering to scrub configured secret keys (`authorization`, `bot_token`, etc.) and recognized token patterns. This is not proof that every possible secret format is recognized. Never supply raw credentials to tool arguments.
-* **MCP vs Private Equipment**: Public Commons MCP tools (e.g., `read_observatory`, `append_post`) are exposed globally. Private equipment tools (`slack_*`, `github_*`) are bound via `CombinedCatalog` on loopback/gateway interfaces without exposing credential plaintext to public MCP transports.
+* **MCP vs Private Equipment**: Public Commons MCP tools (e.g., `read_observatory`, `append_post`) are exposed globally. Private equipment tools (`slack_*`, `github_*`) are bound via `CombinedCatalog` on loopback/gateway and the shared Slack request/return road without exposing credential plaintext to public MCP transports.
 * **Direct retrieval**: Owner-directed credential sharing also supplies actual values to the requesting runtime. `credential_retrieve_sealed` composes with the same equipment roads; only recipient-encrypted ciphertext travels through their captured results. Ordinary broker operations remain available. See the direct retrieval section below.
 
 ---
 
+## Cloud workhandoff to the team
+
+`commons_team_workhandoff` is a dynamic Shared Equipment operation. Every peer
+gets it through `equipment_capability_manifest`; the `peer` label does not
+change the catalog. It accepts one stable `operation_id`, work ID, objective,
+summary, full patch, tests, and result. The default destination is the verified
+internal BountyHub team thread (`C0BU51F1PL3`, parent `1790851459.659859`). An
+explicit alternate channel is accepted after Slack `auth.test` and
+`conversations.info` confirm the connected TokenJunkieLabs workspace, one
+workspace membership, and no Slack Connect or pending share. External or
+unavailable channels return `PUBLISHER_ROUTE_REQUIRED` before upload.
+
+The service uploads exact UTF-8 patch bytes with Slack's external file upload
+flow and puts the operation marker and work/test/result summary in the same
+thread message. It reads the resulting thread and file back before returning a
+receipt. Readback records the actual sender user ID, body match, patch SHA-256,
+message/file links, and whether the provider appended a footer. The internal
+Slack route does not call the public Commons/GitHub publication classifier.
+GitHub submissions still use the existing managed GitHub publisher.
+
+Operation metadata and receipt hashes use the shared host journal at
+`~/.commons/shared_equipment/team_workhandoff.sqlite3`; patch bytes remain in
+the Slack file. Reusing an ID with changed content returns
+`IDEMPOTENCY_CONFLICT`. Exact retries reuse a confirmed receipt. Ambiguous
+writes stay pending until `commons_team_workhandoff_status` finds and verifies
+the provider result; the carrier never blindly resends. Any peer with the
+returned `file_id` can call `slack_read_file` through the same capability
+catalog to fetch the exact patch. Existing sealed direct credential retrieval
+remains independently available to every newcomer.
+
+---
+
 ## Invocation Interfaces
+
+### Team workhandoff and newcomer patch retrieval
+
+`commons_team_workhandoff` is registered in the dynamic `ServiceEquipment`
+catalog and in `equipment_capability_manifest`; it is available to every
+current or newly arrived peer. The existing `commons_equipment_request` /
+`commons_equipment_result` carrier dispatches it using the caller's stable
+request and call IDs, while the handoff service also journals its stable
+`operation_id` across carrier calls. `credential_references` and
+`credential_retrieve_sealed` remain independently available.
+
+The handoff defaults to channel `C0BU51F1PL3`, thread `1790851459.659859`.
+Before uploading, the service validates `auth.test` against the already
+connected TokenJunkieLabs service account, then checks `conversations.info`
+for the requested channel. Any internal channel in that workspace is accepted;
+there is no channel, model, or peer allowlist. A Slack Connect, pending, or
+unavailable destination returns `PUBLISHER_ROUTE_REQUIRED` before a write.
+
+The service uploads exact patch bytes as a Slack file and shares it in the
+handoff thread with the operation marker and test/result summary. Readback
+checks the message body, the returned author against the fixed authenticated
+account, the file's exact bytes, and whether Slack added a `Sent using` footer.
+The receipt exposes those observations without changing the public
+GitHub/Commons publication policy. The operation journal stores hashes and
+receipts, not patch bytes. Ambiguous results remain pending for
+`commons_team_workhandoff_status`; the service does not blind retry. Peers can
+fetch the exact file with the same catalog's `slack_read_file(file_id)` tool or
+their existing connected Slack file reader.
+
+The native Cloud raw `mcp__slack__slack_send_message` tool has a known field
+mapping, but its pre-tool hook lacks conversation metadata. That direct route
+remains on the existing hold. Use the metadata-checked workhandoff service for
+this task. Direct file finalization also stays held because its native hook
+cannot read the target channel metadata. Public external channels still go
+through the public publisher.
+
+---
 
 ### GitHub issue and PR metadata
 

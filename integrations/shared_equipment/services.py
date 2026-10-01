@@ -24,6 +24,9 @@ from commons_publication_policy import PublicationPolicyViolation, check_outboun
 from integrations.shared_equipment.provider_io import (
     EquipmentError, GitHubSlackEquipment, redacted,
 )
+from integrations.shared_equipment.workhandoff import (
+    DEFAULT_CHANNEL_ID, DEFAULT_THREAD_TS, WorkHandoff,
+)
 
 
 def _string(args: dict, key: str) -> str:
@@ -102,7 +105,10 @@ TOOLS = [
     _schema("credential_retrieve_sealed", "Retrieve an actual credential encrypted to the requester's ephemeral public key. Keep the private key in the requesting runtime; only ciphertext enters this road.", {"credential_ref": "string", "recipient_public_key": "string", "transfer_id": "string", "request_id": "string", "call_id": "string"}),
     _schema("slack_read_channel", "Read a Slack channel using existing workspace access. Follow next_cursor for remaining pages.", {"channel_id": "string"}, {"oldest": "string", "latest": "string", "cursor": "string", "limit": "integer"}),
     _schema("slack_read_thread", "Read a Slack thread. Follow next_cursor for remaining replies.", {"channel_id": "string", "thread_ts": "string"}, {"cursor": "string", "limit": "integer"}),
-    _schema("slack_post_message", "Chat writes are read-only until the installed sender identity and footer are verified owner-controlled. A call returns a private nondelivery result and performs no provider mutation.", {"channel_id": "string", "text": "string"}, {"thread_ts": "string"}),
+    _schema("slack_post_message", "Post to a channel verified as internal to the authenticated workspace. Sender is the fixed existing Slack account; do not add model or peer bylines. Returns the provider timestamp and permalink.", {"channel_id": "string", "text": "string"}, {"thread_ts": "string"}),
+    _schema("commons_team_workhandoff", "Share an exact patch, tests, and result in the active BountyHub team thread. Internal Slack only; the fixed authenticated account is used, and the route reads back the actual file, message body, sender, and any provider footer. Same operation ID and content is idempotent; changed payload under that ID is rejected. No model/peer allowlist.", {"operation_id": "string", "work_id": "string", "objective": "string", "summary": "string", "patch": "string", "tests": "string", "result": "string"}, {"channel_id": {"type": "string", "default": DEFAULT_CHANNEL_ID}, "thread_ts": {"type": "string", "default": DEFAULT_THREAD_TS}}),
+    _schema("commons_team_workhandoff_status", "Reconcile a prior internal Slack workhandoff by stable operation ID. Reads the current provider thread/file and returns actual sender/body/footer verification; it never sends a duplicate.", {"operation_id": "string"}, {"channel_id": {"type": "string", "default": DEFAULT_CHANNEL_ID}, "thread_ts": {"type": "string", "default": DEFAULT_THREAD_TS}}),
+    _schema("slack_read_file", "Fetch a shared Slack text or patch file by file ID using the existing shared encrypted Slack credential. Same operation for every peer; no per-peer grant.", {"file_id": "string"}),
     _schema("github_read_file", "Read a UTF-8 source file and resolved blob SHA through the existing gh account. Set ref to pin a version.", {"repository": "string", "path": "string"}, {"ref": "string"}),
     _schema("github_read_issue", "Read a GitHub issue and one comment page; use comment_page for further pages.", {"repository": "string", "issue_number": "integer"}, {"comment_page": "integer"}),
     _schema("github_read_pull_request", "Read PR state, head/base SHAs, changed files and checks. Use page for further file pages.", {"repository": "string", "pull_number": "integer"}, {"page": "integer"}),
@@ -121,9 +127,15 @@ TOOLS = [
 
 
 class ServiceEquipment(GitHubSlackEquipment):
-    def __init__(self, *, gh: str = "gh", slack_token_loader=None, gh_runner=None, opener=None, credential_sources=None):
+    def __init__(self, *, gh: str = "gh", slack_token_loader=None, gh_runner=None, opener=None, credential_sources=None, workhandoff_journal_path: Path | None = None):
         super().__init__(gh=gh, slack_token_loader=slack_token_loader, gh_runner=gh_runner, opener=opener)
         self.credential_sources = credential_sources
+        self._work_handoff = WorkHandoff(self, journal_path=workhandoff_journal_path)
+
+    def _slack_write_route_verified(self, channel_id: str | None = None) -> bool:
+        if not self._work_handoff.sender_verified():
+            return False
+        return channel_id is None or self._work_handoff._channel_info(channel_id) is not None
 
     def tools(self, **_kwargs) -> list[dict]:
         return TOOLS.copy()
@@ -303,6 +315,12 @@ class ServiceEquipment(GitHubSlackEquipment):
             from .credential_transfer import CredentialSources
             sources = self.credential_sources or CredentialSources(gh=self.gh, gh_runner=self.gh_runner)
             return sources.retrieve_sealed(a)
+        if name == "commons_team_workhandoff":
+            return self._work_handoff.submit(a)
+        if name == "commons_team_workhandoff_status":
+            return self._work_handoff.status(a)
+        if name == "slack_read_file":
+            return self._work_handoff.read_file(a)
         if name == "slack_read_channel":
             p = {"channel": _string(a, "channel_id"), "limit": min(100, max(1, int(a.get("limit", 50))))}
             p.update({k: a[k] for k in ("oldest", "latest", "cursor") if a.get(k)})
@@ -313,7 +331,11 @@ class ServiceEquipment(GitHubSlackEquipment):
                 p["cursor"] = a["cursor"]
             return self.slack("conversations.replies", p)
         if name == "slack_post_message":
-            p = {"channel": _string(a, "channel_id"), "text": _string(a, "text"), "unfurl_links": False, "unfurl_media": False, "parse": "none"}
+            channel_id = _string(a, "channel_id")
+            if not self._work_handoff.validate_destination(channel_id):
+                return {"ok": False, "state": "PUBLISHER_ROUTE_REQUIRED", "delivered": False,
+                        "error": "destination is external, pending, archived, or unavailable in this workspace"}
+            p = {"channel": channel_id, "text": _string(a, "text"), "unfurl_links": False, "unfurl_media": False, "parse": "none"}
             if a.get("thread_ts"):
                 p["thread_ts"] = a["thread_ts"]
             result = self.slack("chat.postMessage", p)
@@ -540,7 +562,24 @@ class CombinedCatalog:
         self.extensions = [CommandCenterEquipment()]
 
     def tools(self, **kwargs):
-        return self.commons.tools(**kwargs) + self.services.tools() + [tool for extension in self.extensions for tool in extension.tools()]
+        # Keep the advertised catalog consistent with call() dispatch precedence:
+        # extensions, then shared services, then the public Commons MCP. Some
+        # public deployments expose overlapping Slack or credential names.
+        # Advertise the first implementation once so model clients do not see
+        # ambiguous duplicate names or route a call differently than expected.
+        ordered = [
+            *(tool for extension in self.extensions for tool in extension.tools()),
+            *self.services.tools(),
+            *self.commons.tools(**kwargs),
+        ]
+        unique = []
+        seen = set()
+        for tool in ordered:
+            name = tool.get("name") if isinstance(tool, dict) else None
+            if isinstance(name, str) and name not in seen:
+                seen.add(name)
+                unique.append(tool)
+        return unique
 
     def call(self, name, arguments):
         for extension in self.extensions:

@@ -13,6 +13,7 @@ def install(config_dir: Path, *, claude: bool = False) -> dict:
     destination = config_dir / "commons-publication-hooks"
     destination.mkdir(parents=True, exist_ok=True)
     shutil.copy2(source / "hook.py", destination / "hook.py")
+    shutil.copy2(source / "slack_route_mapping.py", destination / "slack_route_mapping.py")
     shutil.copy2(repo / "commons_publication_policy.py", destination / "commons_publication_policy.py")
     path = config_dir / ("settings.json" if claude else "hooks.json")
     config = json.loads(path.read_text(encoding="utf-8-sig")) if path.exists() else {}

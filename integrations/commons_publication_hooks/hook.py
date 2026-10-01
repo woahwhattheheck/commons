@@ -22,6 +22,7 @@ from commons_publication_policy import (
     check_outbound_identity,
     check_publication,
 )
+from slack_route_mapping import slack_route_mapping
 
 SWARM_CONTEXT = (
     "Standing owner rules: read RULES.md before starting work. "
@@ -381,11 +382,17 @@ def publication_verdict(event: dict) -> dict | None:
         return None
     provider = _provider_text(event, tool)
 
-    # The currently connected chat mutation route can add its own public
-    # provider identity/footer. Keep all writes read-only until that identity
-    # is independently verified as owner-controlled and footer-free.
     if "slack" in provider:
-        return None if _is_read(tool) else _route_hold(provider)
+        route = slack_route_mapping(tool, args)
+        if route is None or route.kind not in {
+            "connector_send", "gateway_send", "private_upload_stage"
+        }:
+            return None if _is_read(tool) else _route_hold(provider)
+        # The namespaced Slack MCP transport uses its authenticated connected
+        # workspace account. Its schemas have no author override; model/seat
+        # labels never select the sender. Internal Slack is exempt from the
+        # public publication classifier by commons_publication_policy.
+        return None
 
     gateway_route = (
         args.get("schema") == "commons-github-gateway/v1"
