@@ -338,9 +338,12 @@ class WsgiTests(ReceiverTestBase):
         if "content-type" in headers:
             environ["CONTENT_TYPE"] = headers["content-type"]
         if length is None:
-            environ["CONTENT_length"] = str(len(body))
+            # PEP 3333 exposes Content-Length under this exact uppercase key.
+            # Keep the fixture standards-compliant so case regressions cannot
+            # be hidden by the test harness.
+            environ["CONTENT_LENGTH"] = str(len(body))
         elif length != "missing":
-            environ["CONTENT_length"] = length
+            environ["CONTENT_LENGTH"] = length
         return environ
 
     def _call(self, environ):

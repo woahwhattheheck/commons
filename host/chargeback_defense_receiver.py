@@ -283,8 +283,8 @@ def create_app(config: ReceiverConfig) -> Callable[..., Any]:
         if environ.get("CONTENT_TYPE") is not None:
             headers["content-type"] = str(environ["CONTENT_TYPE"])
         if environ.get("CONTENT_LENGTH") is not None:
-            headers["content-length"] = str(environ["CONTENT_length"])
-        raw_length = str(environ.get("CONTENT_length", "") or "")
+            headers["content-length"] = str(environ["CONTENT_LENGTH"])
+        raw_length = str(environ.get("CONTENT_LENGTH", "") or "")
         if (method.upper() != "POST" or path != config.route) and not raw_length:
             # Method/path mapping never needs a body; Content-Length is only
             # required for POST deliveries to the ingest route.
