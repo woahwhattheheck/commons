@@ -55,7 +55,16 @@ Two changes come out of that:
 ### Testing
 - `./gradlew :play-services-core:assembleVtmDefaultDebug :play-services-core:assembleVtmDefaultRelease` succeeds.
 - `lintDebug` on `play-services-cast`, `play-services-cast-core`, `play-services-cast-framework` and `play-services-cast-framework-core` reports 0 errors.
-- Not yet tested on a phone against a physical Chromecast.
+- The compiled `CastChannel` / `CastDeviceSession` classes were run on the JVM against a software CastV2 receiver. Every step passed:
+  - TLS, device authentication and virtual connections;
+  - heartbeat over 25 s idle;
+  - launch, join by app and by session id, and launch with `relaunchIfRunning=false` joining the running instance;
+  - leave, stop and relaunch;
+  - volume and mute;
+  - text, binary and media namespace messages, with unregistered namespaces filtered;
+  - the payload limit, a refused platform namespace, and an unknown app id;
+  - the receiver dying mid-session.
+- Not yet tested on a phone against a physical Chromecast. The binder layer and the cast framework module have not been run on a device.
 
 ### Known limitations
 - A dropped connection ends the cast session. Play services instead suspends it and reconnects.

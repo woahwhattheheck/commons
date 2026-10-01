@@ -322,4 +322,14 @@ Pending: W02 0003 (route controller on `CastDeviceSession`), then W03 0003 minus
 After those, `mcp__github__create_pull_request` from `woahwhattheheck:cast-framework-sessions` to `microg/GmsCore:master` with the drafted body.
 
 **Pending team inputs:** W03's host CastV2 run on the final code (requested), and W02's (A) diff (multizone bit, start retry, per-controller state).
+- 2026-10-01: **W03 host run on the final code**, report at commons `claude/bh-20261001-w03-cast580-channel@8e889067`, `lanes/W03-final-code-run-2026-10-01.md`. Tree: 0001-0008 `git am` + 0009/0010 `git apply`, identical to submit-full.diff.
+  - `Drive` (channel + receiver namespace + transports + heartbeat + limits): exit 0, all OK.
+  - `Drive2` (receiver killed): exit 0, disconnected 7.
+  - `Drive3` (CAST-CH-1: launch right after connect joins, 1 LAUNCH total): exit 0. The same driver exits 1 on W03's delivered 0002.
+- 2026-10-01: **W02 `0011`** (per-controller route state, discovery start retry with backoff, group bit) applied to `cast/submit`.
+  - Now `patches/W01/submit/0011-...diff`; `submit-full.diff` updated.
+  - Runs: W01 `:play-services-cast-core:compileDebugJavaWithJavac :play-services-cast-core:lintDebug` exit 0, 0 errors. W02 full `assembleVtmDefaultDebug` + 4 lint tasks exit 0.
+  - The planned fork commit 2 ("Fix device discovery and route publication") carries these provider/controller contents.
+- 2026-10-01: PR text testing section updated with the JVM receiver run. The binder layer, the framework module and device runs are stated as not run.
+- Follow-up PR stack: W02 is rebasing 0004 (remote playback) + its fixes onto `cast/submit` + 0011. W02 host run at its tip: 63/63 PASS, 3 of 3 runs.
 
