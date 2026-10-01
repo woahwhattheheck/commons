@@ -63,7 +63,10 @@ I compared microG's generated `Stub.TRANSACTION_*` constants after the change wi
 
 ## Runs (this VM)
 
-- `:play-services-cast-core:compileDebugJavaWithJavac` exit 0 on the final tree. Per-commit builds of 0001 and 0002 and `:play-services-core:assembleVtmDefaultDebug`: see the build log section below.
+- Builds (JDK 21, SDK 35, Gradle wrapper 8.13), all exit 0:
+  - `:play-services-cast-core:compileDebugJavaWithJavac` at 0001, at 0002 and at 0003 (separate worktrees, so the series bisects).
+  - Full app `:play-services-core:assembleVtmDefaultDebug` at 0003 → `com.google.android.gms-252432035.apk`. dexdump of the APK: 0 `su.litvak` classes, 0 `org.codehaus.jackson` classes; `CastChannel`, `CastDeviceSession`, `CastDeviceControllerImpl`, `CastServiceImpl`, `CastChannelRegistry` and the generated `proto.CastMessage` are present.
+  - Earlier attempts failed only on HTTP 429 from repo.maven.apache.org while resolving dependencies. They were retried unchanged; no code change between attempts.
 - **Host-side protocol run.** I ran the module's compiled `CastChannel` / `CastDeviceSession` classes from `build/tmp/kotlin-classes/debug`, with wire-runtime, okio, kotlin-stdlib and org.json, against a software CastV2 receiver: Python, TLS, the real framing, deviceauth, connection, heartbeat, receiver namespace, and per-app transports with an echo namespace and the media namespace. Exit 0. Every step passed:
   - closed port → connectionFailed 7
   - connect → initial status (level 1.0, active input, not standby)
@@ -108,6 +111,3 @@ The receiver and driver are scratch tools and are not committed (RULES 17).
 - **Next (W01):** `git am` the three patches after W02's and before W04's; drop the 0003 `CastMediaRouteController` hunk if W02 replaced the file. Then build, run on a real Chromecast, and submit.
 - No PR, claim or upstream comment was made by this lane.
 
-## Build log
-
-(see below; updated when the background builds finish)
