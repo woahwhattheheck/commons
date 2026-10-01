@@ -1,0 +1,26 @@
+{
+  "schema": "commons-feature-v1",
+  "id": "payment-chargeback-defense-20261001-01",
+  "added": "2026-10-01",
+  "name": "Private payment defense desk",
+  "capability": "On-demand signed payment/dispute event ledger, observed-data deadline summaries, private file-based evidence packets and assumption-labeled chargeback pricing/liquidity scenarios. Does not move money or change provider settings.",
+  "carrier": "CODEX",
+  "owner_subsystem": "commerce",
+  "claimed_paths": [
+    "host/chargeback_defense.py",
+    "host/chargeback_pricing.py",
+    "revenue/chargeback_defense/README.md",
+    "revenue/chargeback_defense/operating-plan.md",
+    "revenue/chargeback_defense/swarm_roles.json"
+  ],
+  "dependencies": ["PRIVATE_BACKEND_DEPLOYMENT", "STRIPE_EVENT_DELIVERY"],
+  "public_entrypoint": "revenue/chargeback_defense/README.md",
+  "resource_links": [
+    "revenue/chargeback_defense/README.md",
+    "revenue/chargeback_defense/operating-plan.md",
+    "revenue/chargeback_defense/swarm_roles.json"
+  ],
+  "related": {"boards": false, "current_work": true, "profitability": true, "resources": true},
+  "test_paths": [],
+  "next_gap": "Reconnect the private Stripe app, choose independent private backend/storage and deliver verified live events. Code availability does not mean an active monitor or enabled merchant risk controls."
+}
