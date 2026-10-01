@@ -1,0 +1,49 @@
+{
+  "schema": "titan.v31.h6.arlene-gate.v1",
+  "disposition": "REJECT_CURRENT_H6_ON_THIS_GATE",
+  "truth_boundary": "Exact post-transform H6 R04 router bytes were evaluated on the retained official engine/evaluator. H6-off direct router matched exact V3.1 main terminal scores on seed 2027 vs Arlene in both seats. H6-on direct router also matched the full transformed Titan runtime entrypoint on seed 2027 in both seats.",
+  "h6_router_sha256": "9b84d5b9e2c6012c9d97d6aacce056bf1e8d01508bfeecec8811870b2db25f8a",
+  "runtime_patch_sha256": "af206d3afc506e30b0ad933a72de072a6e266073c883c9baa176ec0085876e23",
+  "base_package_sha256": "e4e5a3acfe4984c89c22c7aa841b4ddd6efe4f4cd71e507d1dabecbb6e865849",
+  "evaluator_sha256": "e30b3108e0027477ab7ddbc057892a241c41a1f2b38f72caf267477877c4333c",
+  "loader_sha256": "cd113a94ae99b03492502e425bdcf09c3db17a2aa2a8fd866f0d78caec9e311e",
+  "opponent": {
+    "label": "arlene",
+    "sha256": "1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4"
+  },
+  "seeds": [2611151001,2611151002,2611151003,2611151004,2611151005,2611151006,2611151007,2611151008],
+  "both_seats": true,
+  "summary": {
+    "completed": 16,
+    "failures": 0,
+    "delta_own_mean": 206.125,
+    "delta_rival_mean": 924.625,
+    "delta_margin_mean": -718.5,
+    "delta_margin_median": -600.0,
+    "delta_margin_positive": 2,
+    "delta_margin_zero": 0,
+    "delta_margin_negative": 14,
+    "delta_margin_min": -2181.0,
+    "delta_margin_max": 69.0,
+    "lost_wins": 0,
+    "new_losses": 0
+  },
+  "cells": [
+    {"seed":2611151001,"seat":0,"delta_own":-131.0,"delta_rival":78.0,"delta_margin":-209.0},
+    {"seed":2611151001,"seat":1,"delta_own":-131.0,"delta_rival":78.0,"delta_margin":-209.0},
+    {"seed":2611151002,"seat":0,"delta_own":163.0,"delta_rival":2344.0,"delta_margin":-2181.0},
+    {"seed":2611151002,"seat":1,"delta_own":163.0,"delta_rival":2344.0,"delta_margin":-2181.0},
+    {"seed":2611151003,"seat":0,"delta_own":1930.0,"delta_rival":2714.0,"delta_margin":-784.0},
+    {"seed":2611151003,"seat":1,"delta_own":1930.0,"delta_rival":2714.0,"delta_margin":-784.0},
+    {"seed":2611151004,"seat":0,"delta_own":3.0,"delta_rival":-66.0,"delta_margin":69.0},
+    {"seed":2611151004,"seat":1,"delta_own":3.0,"delta_rival":-66.0,"delta_margin":69.0},
+    {"seed":2611151005,"seat":0,"delta_own":17.0,"delta_rival":1085.0,"delta_margin":-1068.0},
+    {"seed":2611151005,"seat":1,"delta_own":17.0,"delta_rival":1085.0,"delta_margin":-1068.0},
+    {"seed":2611151006,"seat":0,"delta_own":-55.0,"delta_rival":97.0,"delta_margin":-152.0},
+    {"seed":2611151006,"seat":1,"delta_own":-55.0,"delta_rival":97.0,"delta_margin":-152.0},
+    {"seed":2611151007,"seat":0,"delta_own":-197.0,"delta_rival":810.0,"delta_margin":-1007.0},
+    {"seed":2611151007,"seat":1,"delta_own":-197.0,"delta_rival":810.0,"delta_margin":-1007.0},
+    {"seed":2611151008,"seat":0,"delta_own":-81.0,"delta_rival":335.0,"delta_margin":-416.0},
+    {"seed":2611151008,"seat":1,"delta_own":-81.0,"delta_rival":335.0,"delta_margin":-416.0}
+  ]
+}

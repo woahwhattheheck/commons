@@ -1,0 +1,35 @@
+{
+  "schema": "titan-v4-research-custody/v1",
+  "source_pr": 12352,
+  "source_head": "5123b3384819b72eb8d4e9ebcf2cbba6e34d0517",
+  "source_base": "d5eca5b1230258ec583f8026f6a3b422ed15cde0",
+  "source_title": "REJECTED EXPERIMENT: H6/B7 MILK pacing on V3.1 R04",
+  "source_blobs": {
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py": "1ccc381a4ae8b3b5347d5d11f995cbb24604b432",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h6_milk_pace/H6-ARLENE-GATE-20260911.json": "ef356f8f11b7ea4aef20602f214ac7ec3552efed",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h6_milk_pace/H6-ARLENE-GATE-20260911.md": "55b08b02545bbceabb642fe33ba92bb5713580ff",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/h6_milk_pace.py": "a4cf03c5d2d89e81b3239628516348e3a6198ae4"
+  },
+  "disposition": "rejected_negative_economics_quarantine",
+  "queue_edge": false,
+  "promotion": false,
+  "direct_merge": false,
+  "evidence": {
+    "paired_cells_completed": 16,
+    "paired_cells_failed": 0,
+    "mean_delta_own": 206.125,
+    "mean_delta_rival": 924.625,
+    "mean_delta_competitive": -718.5,
+    "median_delta_competitive": -600,
+    "positive_tie_negative": [2, 0, 14],
+    "range_delta_competitive": [-2181, 69]
+  },
+  "final_head_workflows": {
+    "titan-selected-projection": 34580655169,
+    "muhlnickel-spec-guard": 34580654705,
+    "source-parses": 34580654687,
+    "path-manifest": 34580654682,
+    "open-door-guard": 34580654900
+  },
+  "note": "Exact completed-but-unmerged V3.1 bytes preserved as negative evidence only. Do not revive, direct-merge, remint, or infer promotion from own-value gain."
+}

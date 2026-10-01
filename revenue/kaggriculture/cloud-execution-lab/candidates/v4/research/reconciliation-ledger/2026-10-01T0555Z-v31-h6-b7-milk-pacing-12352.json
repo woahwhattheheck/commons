@@ -1,0 +1,36 @@
+{
+  "schema": "titan-v4-reconciliation-receipt/v1",
+  "authority_main": "068999240e9b9bcfa6636bd05678ae38fd867643",
+  "carrier_before": "ab67e704255493dfec1c927296c7985d13f9c59f",
+  "source_pr": 12352,
+  "source_head": "5123b3384819b72eb8d4e9ebcf2cbba6e34d0517",
+  "canonical": "00142be0ff2314dcb23068c8133b34d290661923",
+  "integration": "4e3207af1332266852530ec8494db8969edc1115",
+  "composition": "32dc1e6963702f7e013cd609053d52c434e42158",
+  "preserved_blobs": [
+    "1ccc381a4ae8b3b5347d5d11f995cbb24604b432",
+    "ef356f8f11b7ea4aef20602f214ac7ec3552efed",
+    "55b08b02545bbceabb642fe33ba92bb5713580ff",
+    "a4cf03c5d2d89e81b3239628516348e3a6198ae4"
+  ],
+  "workflow_runs_completed_success": [
+    34580655169,
+    34580654705,
+    34580654687,
+    34580654682,
+    34580654900
+  ],
+  "disposition": "rejected_negative_economics_quarantine_no_queue_edge",
+  "action": "exact_blob_custody_only",
+  "semantic_promotion": false,
+  "runtime_changed": false,
+  "defaults_changed": false,
+  "current_pointer_changed": false,
+  "canonical_changed": false,
+  "integration_changed": false,
+  "composition_changed": false,
+  "archive_or_release_changed": false,
+  "kaggle_state_changed": false,
+  "sibling_v4_root_created": false,
+  "recovered_not_yet_composed": []
+}
