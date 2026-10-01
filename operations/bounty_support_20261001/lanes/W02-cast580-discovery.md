@@ -1,12 +1,79 @@
 # W02 CAST580-DISCOVERY — support lane for W01 (microg/GmsCore#580)
 
-Updated 2026-10-01. Support lane: no PR, BountyHub claim, or upstream comment from here. W01 integrates and submits.
+Updated 2026-10-01 (round 2). Support lane: no PR, BountyHub claim, or upstream comment from here. W01 integrates and submits. The fork woahwhattheheck/GmsCore now exists (per root); this lane still hands over patches only.
 
 ## State per listing
 
 | Listing | Advertised / funded / promised (from SWE sweep in the orders thread) | GitHub issue | PR | Claim | Merge | Payment |
 |---|---|---|---|---|---|---|
 | 27c3cfe0 and ef91cb1e (#580; the thread names them A = $250 promised, emeitner, and B = $50 escrowed + $100 promised, olofmogren; I did not map the ids to A and B) | A $250 / $0 / $250; B $150 / $50 / $100 | microg/GmsCore#580 OPEN | none from this team (W01 owns submission) | none | none | none |
+
+## Integration handoff to W01 (2026-10-01, round 2): controller on CastDeviceSession + remote playback
+
+**State: DELIVERED (interim).** Verification is still running (a host protocol run against a software receiver, plus bug hunts). If it turns up fixes, they come as an updated 0003/0004 and series, recorded here.
+
+**Local branch.** `cast/series-w02` in `~/work/GmsCore` (W02 VM), HEAD `8f133286`. Parent chain:
+
+| # | Commit | Patch | Lane |
+|---|---|---|---|
+| base | `32bc8954` | microg/GmsCore master | - |
+| 1 | `a22a6af7` | W02 0001 Keep status in CastDevice and skip icon without path | W02 |
+| 2 | `94e9732e` | W02 0002 Fix device discovery and route publication | W02 |
+| 3 | `3b041680` | W03 0001 Add CastV2 channel to talk to receivers directly (`git am --3way`, unchanged) | W03 |
+| 4 | `4e44d92d` | W03 0002 Implement the device controller on the CastV2 channel (unchanged) | W03 |
+| 5 | `db991126` | W04 0001 implement cast framework session lifecycle (unchanged) | W04 |
+| 6 | `36e6bfda` | W04 0002 fix categoryForCast with namespaces (unchanged) | W04 |
+| 7 | `42964640` | **W02 0003** Run the media route controller on the CastV2 session | W02 |
+| 8 | `fda4a03b` | **W03 0003 minus its `CastMediaRouteController.java` hunk** (see below) | W03 |
+| 9 | `8f133286` | **W02 0004** Implement remote playback control requests | W02 |
+
+**Patch files** (in `operations/bounty_support_20261001/lanes/W02-patches/`):
+- `0003-Cast-Run-the-media-route-controller-on-the-CastV2-se.patch`: commit 7. Changes `play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java`.
+- `W03-0003-Cast-Drop-chromecast-java-api-v2-minus-controller-hunk.patch`: commit 8. This is W03's patch with its `CastMediaRouteController.java` hunk removed, because 0003 already rewrites that file without any `su.litvak` import. It also has a reworded commit message (the old one described the controller hunk), and its author is W03's placeholder. It changes:
+  - `play-services-cast/core/build.gradle` (drops `info.armills.chromecast-java-api-v2`);
+  - `play-services-core/src/main/java/org/microg/gms/ui/AboutFragment.java` (drops the library line).
+- `0004-Cast-Implement-remote-playback-control-requests.patch`: commit 9. Changes:
+  - `play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java`;
+  - new `play-services-cast/core/src/main/java/org/microg/gms/cast/CastRemotePlayback.java`.
+- `series/0001..0009`: the whole chain above as one `git format-patch 32bc8954..8f133286`.
+
+Apply either set onto `32bc8954` with `git am`:
+- `series/*`, or
+- W02 0001-0002, then W03 0001-0002, then W04 0001-0002, then W02 0003, then `W03-0003-...-minus-controller-hunk`, then W02 0004.
+
+Both orders exit 0, and the resulting tree is byte-identical to `8f133286` (checked with `git am` in a fresh worktree and a tree-hash compare).
+
+**What 0003 does (W01 interface 3)**
+- `onSelect` opens a W03 `CastDeviceSession(address, servicePort or 8009)`. The provider reports CONNECTING, then CONNECTED from `onConnected`, and DISCONNECTED on `onConnectionFailed`, `onDisconnected`, unselect or release.
+- It follows `RECEIVER_STATUS` volume (`level * 20`) into the route descriptor.
+- `onSetVolume` / `onUpdateVolume` send `SET_VOLUME` (`level = v / 20`):
+  - through the route's own session when it is connected;
+  - otherwise through `CastChannelRegistry.get(routeId)`;
+  - otherwise through the session that is still connecting (queued until it is up).
+- Callbacks from a replaced session are ignored.
+- No `su.litvak` import is left anywhere.
+
+**What 0004 does.** Before this patch, routes advertised remote-playback actions and `onControlRequest` returned false for all of them.
+- It implements `MediaControlIntent` PLAY, SEEK, GET_STATUS, PAUSE, RESUME, STOP, START_SESSION, GET_SESSION_STATUS and END_SESSION on the Default Media Receiver `CC1AD845`, over the route's session and the media namespace (`LOAD`/`SEEK`/`GET_STATUS`/`PAUSE`/`PLAY`/`STOP`).
+- Result bundles carry session and item ids and statuses as `RemotePlaybackClient` expects. Item and session status updates go to the client's PendingIntents.
+- Ending the session stops the receiver app.
+- Protocol logic lives in plain Java plus `org.json` (`CastRemotePlayback`) and runs on a per-route executor. Results are posted back to the main thread.
+- This is a separate patch, so W01 can leave it out of the first submission.
+
+**Runs (W02 VM, JDK 21, SDK 35 / build-tools 35.0.0, Gradle 8.13, Google Maven Central mirror via `~/.gradle/init.d`):**
+- `./gradlew :play-services-cast-core:compileDebugJavaWithJavac` at 42964640: exit 0. This is a separate worktree, so commit 7 compiles without commit 8.
+- `./gradlew :play-services-core:assembleVtmDefaultDebug :play-services-cast:lintDebug :play-services-cast-core:lintDebug :play-services-cast-framework:lintDebug :play-services-cast-framework-core:lintDebug` at fda4a03b: exit 0.
+  - APK `com.google.android.gms-252432035.apk` (106.8 MB).
+  - Lint errors are 0 in all four modules. Warnings: cast 4, cast-core 10, cast-framework 9, cast-framework-core 3.
+  - dexdump of the APK: 0 `Lsu/litvak` classes and 0 `Lorg/codehaus` classes. `CastMediaRouteController`, `CastMediaRouteProvider`, `CastChannelRegistry` and `channel/CastDeviceSession` are present.
+- `./gradlew :play-services-cast-core:compileDebugJavaWithJavac` at 8f133286: exit 0. The full APK and lint at 8f133286 come with the verification round.
+- **Not run on a device.** There is no Chromecast and no emulator (no `/dev/kvm`). The device run on Bryce's LAN stays W01's owner blocker.
+
+**Cross-lane notes**
+- dot's frame-harness finding (thread, `BH-CAST-580-FRAME-HARNESS`) is about the unbounded frame length in the old `chromecast-java-api-v2` `Channel.read`.
+  - W03 0003 removes that library from the build.
+  - W03's `CastChannel.kt:183-184` already rejects lengths below 0 or above `MAX_PAYLOAD_SIZE + 4096` before allocating, and reads the body with `readFully` (EOF raises `EOFException`).
+- `BH-CAST-IMPLEMENT-580` (Commons Grok worker) overlaps W01–W04. W03 already flagged it for the coordinator, and W01 remains the sole submitter.
 
 ## Deliverable: branch and patches
 

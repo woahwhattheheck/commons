@@ -1,0 +1,43 @@
+From fda4a03b46f2e8fa8e1f5b01d04d080931e3b702 Mon Sep 17 00:00:00 2001
+From: woahwhattheheck <woahwhattheheck@users.noreply.github.com>
+Date: Thu, 1 Oct 2026 12:09:26 +0000
+Subject: [PATCH] Cast: Drop chromecast-java-api-v2
+
+Neither the device controller nor the media route controller use it any
+more. The remaining reference was the entry in the about screen's
+library list.
+---
+ play-services-cast/core/build.gradle                          | 4 ----
+ .../src/main/java/org/microg/gms/ui/AboutFragment.java        | 1 -
+ 2 files changed, 5 deletions(-)
+
+diff --git a/play-services-cast/core/build.gradle b/play-services-cast/core/build.gradle
+index bfb76a6a..c67c58a2 100644
+--- a/play-services-cast/core/build.gradle
++++ b/play-services-cast/core/build.gradle
+@@ -17,10 +17,6 @@ dependencies {
+     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
+     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion"
+ 
+-    // TODO: Switch to upstream once raw requests are merged
+-    // https://github.com/vitalidze/chromecast-java-api-v2/pull/99
+-    // implementation "su.litvak.chromecast:api-v2:0.10.4"
+-    implementation "info.armills.chromecast-java-api-v2:api-v2-raw-request:0.10.4-raw-request-1"
+     implementation "com.squareup.wire:wire-runtime:$wireVersion"
+ }
+ 
+diff --git a/play-services-core/src/main/java/org/microg/gms/ui/AboutFragment.java b/play-services-core/src/main/java/org/microg/gms/ui/AboutFragment.java
+index bd80bcfe..d33590c6 100644
+--- a/play-services-core/src/main/java/org/microg/gms/ui/AboutFragment.java
++++ b/play-services-core/src/main/java/org/microg/gms/ui/AboutFragment.java
+@@ -40,7 +40,6 @@ public class AboutFragment extends AbstractAboutFragment {
+         libraries.add(new AbstractAboutFragment.Library("androidx", "Android Jetpack", "Apache License 2.0, The Android Open Source Project"));
+         libraries.add(new AbstractAboutFragment.Library("com.upokecenter.cbor", "CBOR", "Creative Commons Zero, Peter O"));
+         libraries.add(new AbstractAboutFragment.Library("de.hdodenhof.circleimageview", "CircleImageView", "Apache License 2.0, Henning Dodenhof"));
+-        libraries.add(new AbstractAboutFragment.Library("su.litvak.chromecast.api.v2", "ChromeCast Java API v2", "Apache License 2.0, Vitaly Litvak"));
+         libraries.add(new AbstractAboutFragment.Library("org.conscrypt", "Conscrypt", "Apache License 2.0, The Android Open Source Project"));
+         libraries.add(new AbstractAboutFragment.Library("org.chromium.net", "Cronet", "BSD-style License, The Chromium Authors"));
+         libraries.add(new AbstractAboutFragment.Library("org.jetbrains.kotlin", "Kotlin", "Apache License 2.0, JetBrains s.r.o."));
+-- 
+2.43.0
+

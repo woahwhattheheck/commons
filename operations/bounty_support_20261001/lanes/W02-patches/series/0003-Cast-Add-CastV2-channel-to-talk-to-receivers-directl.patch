@@ -1,0 +1,804 @@
+From 3b04168097864faf797869728c422e8170105137 Mon Sep 17 00:00:00 2001
+From: woahwhattheheck <woahwhattheheck@users.noreply.github.com>
+Date: Thu, 1 Oct 2026 12:09:08 +0000
+Subject: [PATCH 3/9] Cast: Add CastV2 channel to talk to receivers directly
+
+CastChannel speaks the Cast v2 control protocol on the receiver's TLS
+port: length-prefixed CastMessage frames (proto schema added, generated
+with Wire), the deviceauth challenge, virtual connections to receiver-0
+and to launched applications, and the heartbeat (PING every 5 s,
+answering the receiver's PINGs, closing after 20 s without traffic).
+
+CastDeviceSession builds the receiver namespace on top of it:
+GET_STATUS, LAUNCH (joining a running instance unless relaunch is
+requested), STOP, SET_VOLUME, joining by application id and/or session
+id, and leaving an application without stopping it. Receiver requests
+use their own request ids and only replies from receiver-0 on the
+receiver namespace are matched against them, so ids chosen by client
+applications for their own namespaces can not collide. Everything runs
+on one session thread so callbacks keep their order and no binder
+thread blocks on the network.
+---
+ play-services-cast/core/build.gradle          |   6 +
+ .../microg/gms/cast/channel/CastChannel.kt    | 263 ++++++++++++
+ .../gms/cast/channel/CastDeviceSession.kt     | 404 ++++++++++++++++++
+ .../core/src/main/proto/cast_channel.proto    |  55 +++
+ 4 files changed, 728 insertions(+)
+ create mode 100644 play-services-cast/core/src/main/kotlin/org/microg/gms/cast/channel/CastChannel.kt
+ create mode 100644 play-services-cast/core/src/main/kotlin/org/microg/gms/cast/channel/CastDeviceSession.kt
+ create mode 100644 play-services-cast/core/src/main/proto/cast_channel.proto
+
+diff --git a/play-services-cast/core/build.gradle b/play-services-cast/core/build.gradle
+index 787acccc..bfb76a6a 100644
+--- a/play-services-cast/core/build.gradle
++++ b/play-services-cast/core/build.gradle
+@@ -4,6 +4,7 @@
+  */
+ 
+ apply plugin: 'com.android.library'
++apply plugin: 'com.squareup.wire'
+ apply plugin: 'kotlin-android'
+ apply plugin: 'maven-publish'
+ apply plugin: 'signing'
+@@ -20,6 +21,7 @@ dependencies {
+     // https://github.com/vitalidze/chromecast-java-api-v2/pull/99
+     // implementation "su.litvak.chromecast:api-v2:0.10.4"
+     implementation "info.armills.chromecast-java-api-v2:api-v2-raw-request:0.10.4-raw-request-1"
++    implementation "com.squareup.wire:wire-runtime:$wireVersion"
+ }
+ 
+ android {
+@@ -56,6 +58,10 @@ android {
+     }
+ }
+ 
++wire {
++    kotlin {}
++}
++
+ apply from: '../../gradle/publish-android.gradle'
+ 
+ description = 'microG service implementation for play-services-cast'
+diff --git a/play-services-cast/core/src/main/kotlin/org/microg/gms/cast/channel/CastChannel.kt b/play-services-cast/core/src/main/kotlin/org/microg/gms/cast/channel/CastChannel.kt
+new file mode 100644
+index 00000000..64c1a7ea
+--- /dev/null
++++ b/play-services-cast/core/src/main/kotlin/org/microg/gms/cast/channel/CastChannel.kt
+@@ -0,0 +1,263 @@
++/*
++ * SPDX-FileCopyrightText: 2026 microG Project Team
++ * SPDX-License-Identifier: Apache-2.0
++ */
++
++package org.microg.gms.cast.channel
++
++import okio.ByteString
++import okio.ByteString.Companion.toByteString
++import org.microg.gms.cast.proto.AuthChallenge
++import org.microg.gms.cast.proto.CastMessage
++import org.microg.gms.cast.proto.DeviceAuthMessage
++import java.io.DataInputStream
++import java.io.DataOutputStream
++import java.io.EOFException
++import java.io.IOException
++import java.net.InetSocketAddress
++import java.net.SocketTimeoutException
++import java.security.SecureRandom
++import java.security.cert.X509Certificate
++import java.util.concurrent.Executors
++import java.util.concurrent.ScheduledExecutorService
++import java.util.concurrent.ScheduledFuture
++import java.util.concurrent.TimeUnit
++import javax.net.ssl.SSLContext
++import javax.net.ssl.SSLSocket
++import javax.net.ssl.X509TrustManager
++
++const val NAMESPACE_DEVICE_AUTH = "urn:x-cast:com.google.cast.tp.deviceauth"
++const val NAMESPACE_CONNECTION = "urn:x-cast:com.google.cast.tp.connection"
++const val NAMESPACE_HEARTBEAT = "urn:x-cast:com.google.cast.tp.heartbeat"
++const val NAMESPACE_RECEIVER = "urn:x-cast:com.google.cast.receiver"
++const val NAMESPACE_MEDIA = "urn:x-cast:com.google.cast.media"
++
++const val RECEIVER_ID = "receiver-0"
++const val BROADCAST_ID = "*"
++
++/** Largest payload a receiver accepts in one CastMessage. */
++const val MAX_PAYLOAD_SIZE = 64 * 1024
++
++class MessageTooLargeException(size: Int) : IOException("Cast message payload of $size bytes exceeds $MAX_PAYLOAD_SIZE")
++
++class DeviceAuthException(message: String) : IOException(message)
++
++/**
++ * One CastV2 control connection to a receiver: TLS socket, length-prefixed CastMessage frames, device authentication,
++ * virtual connections and heartbeat.
++ *
++ * [connect] blocks and must not be called on the main thread. Sending is thread safe. Received messages are handed to
++ * [Listener.onMessage] on the reader thread, except heartbeat traffic, which is answered here.
++ */
++class CastChannel(
++    private val host: String,
++    private val port: Int,
++    private val listener: Listener,
++    val senderId: String = "sender-0",
++) {
++    interface Listener {
++        fun onMessage(message: CastMessage)
++
++        /** The receiver closed the virtual connection to [transportId]. */
++        fun onTransportClosed(transportId: String) {}
++
++        /** The channel is gone. [error] is null if it was closed through [close]. */
++        fun onClosed(error: IOException?)
++    }
++
++    private val lock = Any()
++    private var socket: SSLSocket? = null
++    private var output: DataOutputStream? = null
++    private var reader: Thread? = null
++    private var heartbeat: ScheduledExecutorService? = null
++    private var heartbeatTask: ScheduledFuture<*>? = null
++    private val connectedTransports = HashSet<String>()
++
++    @Volatile
++    private var lastReceived = 0L
++
++    @Volatile
++    private var closed = false
++
++    val isConnected: Boolean
++        get() = synchronized(lock) { socket != null && !closed }
++
++    @Throws(IOException::class)
++    fun connect(timeoutMillis: Int = CONNECT_TIMEOUT_MILLIS) {
++        synchronized(lock) {
++            check(socket == null && !closed) { "connect() can only be called once" }
++            val context = SSLContext.getInstance("TLS")
++            // Receivers present self-signed certificates; the receiver is identified through device authentication.
++            context.init(null, arrayOf(TrustAllManager), SecureRandom())
++            val sslSocket = context.socketFactory.createSocket() as SSLSocket
++            try {
++                sslSocket.enabledProtocols = sslSocket.supportedProtocols.filter { it.startsWith("TLSv1") }.toTypedArray()
++                sslSocket.connect(InetSocketAddress(host, port), timeoutMillis)
++                sslSocket.soTimeout = timeoutMillis
++                sslSocket.startHandshake()
++                socket = sslSocket
++                output = DataOutputStream(sslSocket.outputStream.buffered())
++                val input = DataInputStream(sslSocket.inputStream.buffered())
++                authenticate(input)
++                sslSocket.soTimeout = 0
++                writeLocked(RECEIVER_ID, NAMESPACE_CONNECTION, CONNECT_PAYLOAD)
++                connectedTransports.add(RECEIVER_ID)
++                lastReceived = System.currentTimeMillis()
++                reader = Thread({ readLoop(input) }, "CastChannel-$host").apply { isDaemon = true; start() }
++                heartbeat = Executors.newSingleThreadScheduledExecutor { Thread(it, "CastHeartbeat-$host").apply { isDaemon = true } }.also {
++                    heartbeatTask = it.scheduleWithFixedDelay(::heartbeatTick, HEARTBEAT_INTERVAL_MILLIS, HEARTBEAT_INTERVAL_MILLIS, TimeUnit.MILLISECONDS)
++                }
++            } catch (e: Exception) {
++                socket = null
++                output = null
++                runCatching { sslSocket.close() }
++                closed = true
++                throw e as? IOException ?: IOException(e)
++            }
++        }
++    }
++
++    private fun authenticate(input: DataInputStream) {
++        val challenge = DeviceAuthMessage(challenge = AuthChallenge())
++        writeLocked(RECEIVER_ID, NAMESPACE_DEVICE_AUTH, challenge.encodeByteString())
++        while (true) {
++            val message = readMessage(input)
++            if (message.namespace != NAMESPACE_DEVICE_AUTH) continue
++            val reply = DeviceAuthMessage.ADAPTER.decode(message.payload_binary ?: ByteString.EMPTY)
++            reply.error?.let { throw DeviceAuthException("Device authentication failed: ${it.error_type}") }
++            if (reply.response == null) throw DeviceAuthException("Device authentication reply without response")
++            return
++        }
++    }
++
++    /** Opens the virtual connection to [transportId] (a launched application) if it is not open yet. */
++    @Throws(IOException::class)
++    fun connectTransport(transportId: String) {
++        synchronized(lock) {
++            if (connectedTransports.contains(transportId)) return
++            writeLocked(transportId, NAMESPACE_CONNECTION, CONNECT_PAYLOAD)
++            connectedTransports.add(transportId)
++        }
++    }
++
++    /** Closes the virtual connection to [transportId], the application keeps running on the receiver. */
++    @Throws(IOException::class)
++    fun closeTransport(transportId: String) {
++        synchronized(lock) {
++            if (!connectedTransports.remove(transportId)) return
++            writeLocked(transportId, NAMESPACE_CONNECTION, CLOSE_PAYLOAD)
++        }
++    }
++
++    @Throws(IOException::class)
++    fun send(destinationId: String, namespace: String, payload: String) {
++        val size = payload.toByteArray(Charsets.UTF_8).size
++        if (size > MAX_PAYLOAD_SIZE) throw MessageTooLargeException(size)
++        synchronized(lock) { writeLocked(destinationId, namespace, payload) }
++    }
++
++    @Throws(IOException::class)
++    fun send(destinationId: String, namespace: String, payload: ByteArray) {
++        if (payload.size > MAX_PAYLOAD_SIZE) throw MessageTooLargeException(payload.size)
++        synchronized(lock) { writeLocked(destinationId, namespace, payload.toByteString()) }
++    }
++
++    fun close() = shutdown(null)
++
++    private fun writeLocked(destinationId: String, namespace: String, payload: String) =
++        writeLocked(CastMessage(CastMessage.ProtocolVersion.CASTV2_1_0, senderId, destinationId, namespace, CastMessage.PayloadType.STRING, payload_utf8 = payload))
++
++    private fun writeLocked(destinationId: String, namespace: String, payload: ByteString) =
++        writeLocked(CastMessage(CastMessage.ProtocolVersion.CASTV2_1_0, senderId, destinationId, namespace, CastMessage.PayloadType.BINARY, payload_binary = payload))
++
++    private fun writeLocked(message: CastMessage) {
++        val out = output ?: throw IOException("Cast channel to $host is not connected")
++        if (closed) throw IOException("Cast channel to $host is closed")
++        val bytes = message.encode()
++        out.writeInt(bytes.size)
++        out.write(bytes)
++        out.flush()
++    }
++
++    private fun readMessage(input: DataInputStream): CastMessage {
++        val length = input.readInt()
++        if (length < 0 || length > MAX_FRAME_SIZE) throw IOException("Invalid Cast frame length $length")
++        val bytes = ByteArray(length)
++        input.readFully(bytes)
++        return CastMessage.ADAPTER.decode(bytes)
++    }
++
++    private fun readLoop(input: DataInputStream) {
++        try {
++            while (!closed) {
++                val message = readMessage(input)
++                lastReceived = System.currentTimeMillis()
++                when (message.namespace) {
++                    NAMESPACE_HEARTBEAT -> if (message.payload_utf8?.contains("\"PING\"") == true) {
++                        synchronized(lock) { writeLocked(message.source_id, NAMESPACE_HEARTBEAT, PONG_PAYLOAD) }
++                    }
++
++                    NAMESPACE_CONNECTION -> if (message.payload_utf8?.contains("\"CLOSE\"") == true) {
++                        val removed = synchronized(lock) { connectedTransports.remove(message.source_id) }
++                        if (message.source_id == RECEIVER_ID) throw EOFException("Receiver closed the connection")
++                        if (removed) listener.onTransportClosed(message.source_id)
++                    }
++
++                    else -> listener.onMessage(message)
++                }
++            }
++        } catch (e: IOException) {
++            shutdown(if (closed) null else e)
++        } catch (e: RuntimeException) {
++            shutdown(IOException("Cast channel reader failed", e))
++        }
++    }
++
++    private fun heartbeatTick() {
++        if (System.currentTimeMillis() - lastReceived > HEARTBEAT_TIMEOUT_MILLIS) {
++            shutdown(SocketTimeoutException("No message from $host for ${HEARTBEAT_TIMEOUT_MILLIS}ms"))
++            return
++        }
++        try {
++            synchronized(lock) { writeLocked(RECEIVER_ID, NAMESPACE_HEARTBEAT, PING_PAYLOAD) }
++        } catch (e: IOException) {
++            shutdown(e)
++        }
++    }
++
++    private fun shutdown(error: IOException?) {
++        synchronized(lock) {
++            if (closed && socket == null) return
++            if (error == null && !closed && output != null) {
++                for (transport in connectedTransports) runCatching { writeLocked(transport, NAMESPACE_CONNECTION, CLOSE_PAYLOAD) }
++            }
++            closed = true
++            connectedTransports.clear()
++            heartbeatTask?.cancel(false)
++            heartbeat?.shutdown()
++            runCatching { socket?.close() }
++            socket = null
++            output = null
++        }
++        listener.onClosed(error)
++    }
++
++    private object TrustAllManager : X509TrustManager {
++        override fun checkClientTrusted(chain: Array<out X509Certificate>?, authType: String?) = Unit
++        override fun checkServerTrusted(chain: Array<out X509Certificate>?, authType: String?) = Unit
++        override fun getAcceptedIssuers(): Array<X509Certificate> = emptyArray()
++    }
++
++    companion object {
++        const val DEFAULT_PORT = 8009
++        const val CONNECT_TIMEOUT_MILLIS = 10_000
++        const val HEARTBEAT_INTERVAL_MILLIS = 5_000L
++        const val HEARTBEAT_TIMEOUT_MILLIS = 20_000L
++        private const val MAX_FRAME_SIZE = MAX_PAYLOAD_SIZE + 4096
++
++        private const val CONNECT_PAYLOAD = """{"type":"CONNECT","origin":{}}"""
++        private const val CLOSE_PAYLOAD = """{"type":"CLOSE"}"""
++        private const val PING_PAYLOAD = """{"type":"PING"}"""
++        private const val PONG_PAYLOAD = """{"type":"PONG"}"""
++    }
++}
+diff --git a/play-services-cast/core/src/main/kotlin/org/microg/gms/cast/channel/CastDeviceSession.kt b/play-services-cast/core/src/main/kotlin/org/microg/gms/cast/channel/CastDeviceSession.kt
+new file mode 100644
+index 00000000..769c5c9d
+--- /dev/null
++++ b/play-services-cast/core/src/main/kotlin/org/microg/gms/cast/channel/CastDeviceSession.kt
+@@ -0,0 +1,404 @@
++/*
++ * SPDX-FileCopyrightText: 2026 microG Project Team
++ * SPDX-License-Identifier: Apache-2.0
++ */
++
++package org.microg.gms.cast.channel
++
++import org.json.JSONException
++import org.json.JSONObject
++import org.microg.gms.cast.proto.CastMessage
++import java.io.IOException
++import java.util.concurrent.RejectedExecutionException
++import java.util.concurrent.ScheduledFuture
++import java.util.concurrent.ScheduledThreadPoolExecutor
++import java.util.concurrent.TimeUnit
++import java.util.logging.Level
++import java.util.logging.Logger
++
++/** An application running on the receiver, as reported in RECEIVER_STATUS. */
++data class ReceiverApplication(
++    val appId: String,
++    val displayName: String?,
++    val sessionId: String,
++    val transportId: String,
++    val statusText: String?,
++    val iconUrl: String?,
++    val namespaces: List<String>,
++)
++
++data class ReceiverStatus(
++    val volumeLevel: Double,
++    val muted: Boolean,
++    val stepInterval: Double,
++    /** 1 if the receiver is the active input, 0 if not, -1 if unknown. */
++    val activeInput: Int,
++    /** 1 if the receiver is in standby, 0 if not, -1 if unknown. */
++    val standby: Int,
++    val applications: List<ReceiverApplication>,
++)
++
++/**
++ * Sender-side state for one receiver: the control channel, the receiver namespace (status, launch, join, stop, volume)
++ * and the virtual connection to the application the client is attached to.
++ *
++ * All methods return immediately; work and [Callbacks] run on one session thread, in call order.
++ */
++class CastDeviceSession(
++    private val host: String,
++    private val port: Int,
++    private val callbacks: Callbacks,
++) : CastChannel.Listener {
++
++    interface Callbacks {
++        fun onConnected()
++        fun onConnectionFailed(statusCode: Int)
++        fun onDisconnected(statusCode: Int)
++        fun onDeviceStatusChanged(status: ReceiverStatus)
++        fun onApplicationConnected(application: ReceiverApplication, wasLaunched: Boolean)
++        fun onApplicationConnectionFailed(statusCode: Int)
++        fun onApplicationStatusChanged(statusText: String?)
++        fun onApplicationDisconnected(statusCode: Int)
++        fun onStopApplicationResult(statusCode: Int)
++        fun onLeaveApplicationResult(statusCode: Int)
++        fun onTextMessage(namespace: String, message: String)
++        fun onBinaryMessage(namespace: String, data: ByteArray)
++        fun onSendMessageSuccess(namespace: String, requestId: Long)
++        fun onSendMessageFailure(namespace: String, requestId: Long, statusCode: Int)
++    }
++
++    private class PendingRequest(val onReply: (JSONObject?) -> Unit) {
++        var timeout: ScheduledFuture<*>? = null
++    }
++
++    private val executor = ScheduledThreadPoolExecutor(1) { Thread(it, "CastDeviceSession-$host").apply { isDaemon = true } }.apply {
++        executeExistingDelayedTasksAfterShutdownPolicy = false
++    }
++    private var channel: CastChannel? = null
++    private var nextRequestId = 1L
++    private val pendingRequests = HashMap<Long, PendingRequest>()
++    private val namespaces = LinkedHashSet<String>()
++    private var receiverStatus: ReceiverStatus? = null
++    private var application: ReceiverApplication? = null
++    private var disconnectRequested = false
++    private var stoppingSessionId: String? = null
++
++    fun connect() = post {
++        if (channel != null) {
++            if (channel?.isConnected == true) callbacks.onConnected() else callbacks.onConnectionFailed(STATUS_NETWORK_ERROR)
++            return@post
++        }
++        val newChannel = CastChannel(host, port, this)
++        channel = newChannel
++        try {
++            newChannel.connect()
++        } catch (e: IOException) {
++            Log.log(Level.WARNING, "Connecting to $host:$port failed", e)
++            channel = null
++            callbacks.onConnectionFailed(if (e is DeviceAuthException) STATUS_AUTHENTICATION_FAILED else STATUS_NETWORK_ERROR)
++            return@post
++        }
++        callbacks.onConnected()
++        requestReceiver(JSONObject().put("type", "GET_STATUS")) { }
++    }
++
++    fun disconnect() = post {
++        disconnectRequested = true
++        application = null
++        channel?.close()
++        channel = null
++        executor.shutdown()
++    }
++
++    fun requestStatus() = post {
++        requestReceiver(JSONObject().put("type", "GET_STATUS")) { }
++    }
++
++    fun launchApplication(appId: String, relaunchIfRunning: Boolean, language: String?) = post {
++        val running = receiverStatus?.applications?.firstOrNull { it.appId == appId }
++        if (running != null && !relaunchIfRunning) {
++            attachApplication(running, false)
++            return@post
++        }
++        val request = JSONObject().put("type", "LAUNCH").put("appId", appId)
++        if (!language.isNullOrEmpty()) request.put("language", language)
++        requestReceiver(request, LAUNCH_TIMEOUT_MILLIS) { reply ->
++            when (reply?.optString("type")) {
++                null -> callbacks.onApplicationConnectionFailed(STATUS_TIMEOUT)
++                "RECEIVER_STATUS" -> {
++                    val launched = receiverStatus?.applications?.firstOrNull { it.appId == appId }
++                    if (launched != null) attachApplication(launched, true)
++                    else callbacks.onApplicationConnectionFailed(STATUS_APPLICATION_NOT_RUNNING)
++                }
++
++                "LAUNCH_ERROR" -> callbacks.onApplicationConnectionFailed(launchErrorStatus(reply.optString("reason")))
++                else -> callbacks.onApplicationConnectionFailed(STATUS_INVALID_REQUEST)
++            }
++        }
++    }
++
++    /** Attach to a running application. A null [appId] or [sessionId] matches any. */
++    fun joinApplication(appId: String?, sessionId: String?) = post {
++        requestReceiver(JSONObject().put("type", "GET_STATUS")) { reply ->
++            if (reply == null) {
++                callbacks.onApplicationConnectionFailed(STATUS_TIMEOUT)
++                return@requestReceiver
++            }
++            val running = receiverStatus?.applications?.firstOrNull {
++                (appId.isNullOrEmpty() || it.appId == appId) && (sessionId.isNullOrEmpty() || it.sessionId == sessionId)
++            }
++            if (running != null) attachApplication(running, false)
++            else callbacks.onApplicationConnectionFailed(STATUS_APPLICATION_NOT_RUNNING)
++        }
++    }
++
++    fun leaveApplication() = post {
++        val app = application
++        if (app == null) {
++            callbacks.onLeaveApplicationResult(STATUS_INVALID_REQUEST)
++            return@post
++        }
++        application = null
++        try {
++            channel?.closeTransport(app.transportId)
++            callbacks.onLeaveApplicationResult(STATUS_SUCCESS)
++        } catch (e: IOException) {
++            callbacks.onLeaveApplicationResult(STATUS_NETWORK_ERROR)
++        }
++    }
++
++    fun stopApplication(sessionId: String?) = post {
++        val target = sessionId?.takeIf { it.isNotEmpty() } ?: application?.sessionId
++        if (target == null) {
++            callbacks.onStopApplicationResult(STATUS_INVALID_REQUEST)
++            return@post
++        }
++        stoppingSessionId = target
++        requestReceiver(JSONObject().put("type", "STOP").put("sessionId", target)) { reply ->
++            stoppingSessionId = null
++            when (reply?.optString("type")) {
++                null -> callbacks.onStopApplicationResult(STATUS_TIMEOUT)
++                "RECEIVER_STATUS" -> callbacks.onStopApplicationResult(STATUS_SUCCESS)
++                else -> callbacks.onStopApplicationResult(STATUS_INVALID_REQUEST)
++            }
++        }
++    }
++
++    fun setVolume(level: Double) = post {
++        requestReceiver(JSONObject().put("type", "SET_VOLUME").put("volume", JSONObject().put("level", level.coerceIn(0.0, 1.0)))) { }
++    }
++
++    fun setMute(muted: Boolean) = post {
++        requestReceiver(JSONObject().put("type", "SET_VOLUME").put("volume", JSONObject().put("muted", muted))) { }
++    }
++
++    fun registerNamespace(namespace: String) = post { namespaces.add(namespace) }
++
++    fun unregisterNamespace(namespace: String) = post { namespaces.remove(namespace) }
++
++    fun sendMessage(namespace: String, message: String, requestId: Long) = post {
++        sendToApplication(namespace, requestId) { channel, transportId -> channel.send(transportId, namespace, message) }
++    }
++
++    fun sendBinaryMessage(namespace: String, data: ByteArray, requestId: Long) = post {
++        sendToApplication(namespace, requestId) { channel, transportId -> channel.send(transportId, namespace, data) }
++    }
++
++    private fun sendToApplication(namespace: String, requestId: Long, send: (CastChannel, String) -> Unit) {
++        val channel = channel
++        val app = application
++        when {
++            isPlatformNamespace(namespace) -> callbacks.onSendMessageFailure(namespace, requestId, STATUS_INVALID_REQUEST)
++            channel == null || app == null -> callbacks.onSendMessageFailure(namespace, requestId, STATUS_APPLICATION_NOT_RUNNING)
++            else -> try {
++                send(channel, app.transportId)
++                callbacks.onSendMessageSuccess(namespace, requestId)
++            } catch (e: MessageTooLargeException) {
++                callbacks.onSendMessageFailure(namespace, requestId, STATUS_MESSAGE_TOO_LARGE)
++            } catch (e: IOException) {
++                callbacks.onSendMessageFailure(namespace, requestId, STATUS_NETWORK_ERROR)
++            }
++        }
++    }
++
++    private fun attachApplication(app: ReceiverApplication, wasLaunched: Boolean) {
++        try {
++            channel?.connectTransport(app.transportId) ?: throw IOException("Not connected")
++        } catch (e: IOException) {
++            callbacks.onApplicationConnectionFailed(STATUS_NETWORK_ERROR)
++            return
++        }
++        application = app
++        callbacks.onApplicationConnected(app, wasLaunched)
++    }
++
++    private fun requestReceiver(request: JSONObject, timeoutMillis: Long = REQUEST_TIMEOUT_MILLIS, onReply: (JSONObject?) -> Unit) {
++        val channel = channel
++        if (channel == null) {
++            onReply(null)
++            return
++        }
++        val requestId = nextRequestId++
++        val pending = PendingRequest(onReply)
++        pendingRequests[requestId] = pending
++        try {
++            channel.send(RECEIVER_ID, NAMESPACE_RECEIVER, request.put("requestId", requestId).toString())
++        } catch (e: IOException) {
++            pendingRequests.remove(requestId)
++            onReply(null)
++            return
++        }
++        pending.timeout = executor.schedule({
++            if (pendingRequests.remove(requestId) != null) onReply(null)
++        }, timeoutMillis, TimeUnit.MILLISECONDS)
++    }
++
++    private fun handleReceiverMessage(json: JSONObject) {
++        if (json.optString("type") != "RECEIVER_STATUS") return
++        val statusJson = json.optJSONObject("status") ?: return
++        val status = parseReceiverStatus(statusJson)
++        receiverStatus = status
++        val current = application
++        if (current != null) {
++            val updated = status.applications.firstOrNull { it.sessionId == current.sessionId }
++            if (updated == null) {
++                application = null
++                runCatching { channel?.closeTransport(current.transportId) }
++                callbacks.onApplicationDisconnected(if (current.sessionId == stoppingSessionId) STATUS_SUCCESS else STATUS_APPLICATION_NOT_RUNNING)
++            } else {
++                application = updated
++                if (updated.statusText != current.statusText) callbacks.onApplicationStatusChanged(updated.statusText)
++            }
++        }
++        callbacks.onDeviceStatusChanged(status)
++    }
++
++    // Called on the channel reader thread
++    override fun onMessage(message: CastMessage) = post {
++        if (message.namespace == NAMESPACE_RECEIVER && message.source_id == RECEIVER_ID) {
++            val json = try {
++                JSONObject(message.payload_utf8 ?: return@post)
++            } catch (e: JSONException) {
++                Log.warning("Invalid receiver message from $host")
++                return@post
++            }
++            handleReceiverMessage(json)
++            val requestId = json.optLong("requestId", 0)
++            val pending = if (requestId != 0L) pendingRequests.remove(requestId) else null
++            if (pending != null) {
++                pending.timeout?.cancel(false)
++                pending.onReply(json)
++            }
++            return@post
++        }
++        val app = application ?: return@post
++        if (message.source_id != app.transportId) return@post
++        if (message.destination_id != channel?.senderId && message.destination_id != BROADCAST_ID) return@post
++        // Like Play services, only deliver namespaces the client registered a callback for
++        if (message.namespace !in namespaces) return@post
++        when (message.payload_type) {
++            CastMessage.PayloadType.STRING -> callbacks.onTextMessage(message.namespace, message.payload_utf8 ?: "")
++            CastMessage.PayloadType.BINARY -> callbacks.onBinaryMessage(message.namespace, message.payload_binary?.toByteArray() ?: ByteArray(0))
++        }
++    }
++
++    override fun onTransportClosed(transportId: String) = post {
++        val current = application
++        if (current?.transportId == transportId) {
++            application = null
++            callbacks.onApplicationDisconnected(if (current.sessionId == stoppingSessionId) STATUS_SUCCESS else STATUS_APPLICATION_NOT_RUNNING)
++        }
++    }
++
++    override fun onClosed(error: IOException?) = post {
++        if (error != null) Log.log(Level.INFO, "Connection to $host closed", error)
++        channel = null
++        application = null
++        for (pending in pendingRequests.values) {
++            pending.timeout?.cancel(false)
++            pending.onReply(null)
++        }
++        pendingRequests.clear()
++        if (!disconnectRequested) callbacks.onDisconnected(if (error == null) STATUS_SUCCESS else STATUS_NETWORK_ERROR)
++    }
++
++    private fun post(block: () -> Unit) {
++        if (executor.isShutdown) return
++        try {
++            executor.execute {
++                try {
++                    block()
++                } catch (e: RuntimeException) {
++                    Log.log(Level.WARNING, "Cast session task failed", e)
++                }
++            }
++        } catch (e: RejectedExecutionException) {
++            // session already disconnected
++        }
++    }
++
++    companion object {
++        private val Log = Logger.getLogger("GmsCastSession")
++
++        // Values of CastStatusCodes / CommonStatusCodes
++        const val STATUS_SUCCESS = 0
++        const val STATUS_NETWORK_ERROR = 7
++        const val STATUS_TIMEOUT = 15
++        const val STATUS_AUTHENTICATION_FAILED = 2000
++        const val STATUS_INVALID_REQUEST = 2001
++        const val STATUS_CANCELED = 2002
++        const val STATUS_NOT_ALLOWED = 2003
++        const val STATUS_APPLICATION_NOT_FOUND = 2004
++        const val STATUS_APPLICATION_NOT_RUNNING = 2005
++        const val STATUS_MESSAGE_TOO_LARGE = 2006
++        const val STATUS_FAILED = 2100
++
++        const val REQUEST_TIMEOUT_MILLIS = 10_000L
++        const val LAUNCH_TIMEOUT_MILLIS = 30_000L
++
++        fun isPlatformNamespace(namespace: String) =
++            namespace.startsWith("urn:x-cast:com.google.cast.tp.") || namespace == NAMESPACE_RECEIVER
++
++        fun launchErrorStatus(reason: String?) = when (reason) {
++            "NOT_FOUND" -> STATUS_APPLICATION_NOT_FOUND
++            "CANCELLED" -> STATUS_CANCELED
++            "NOT_ALLOWED" -> STATUS_NOT_ALLOWED
++            "TIMEOUT" -> STATUS_TIMEOUT
++            else -> STATUS_FAILED
++        }
++
++        fun parseReceiverStatus(status: JSONObject): ReceiverStatus {
++            val volume = status.optJSONObject("volume")
++            val applications = ArrayList<ReceiverApplication>()
++            val apps = status.optJSONArray("applications")
++            if (apps != null) for (i in 0 until apps.length()) {
++                val app = apps.optJSONObject(i) ?: continue
++                val sessionId = app.optString("sessionId").takeIf { it.isNotEmpty() } ?: continue
++                val namespaces = ArrayList<String>()
++                val namespacesJson = app.optJSONArray("namespaces")
++                if (namespacesJson != null) for (j in 0 until namespacesJson.length()) {
++                    namespacesJson.optJSONObject(j)?.optString("name")?.takeIf { it.isNotEmpty() }?.let { namespaces.add(it) }
++                }
++                applications.add(
++                    ReceiverApplication(
++                        appId = app.optString("appId"),
++                        displayName = app.optString("displayName").takeIf { it.isNotEmpty() },
++                        sessionId = sessionId,
++                        transportId = app.optString("transportId").takeIf { it.isNotEmpty() } ?: sessionId,
++                        statusText = app.optString("statusText").takeIf { it.isNotEmpty() },
++                        iconUrl = app.optString("iconUrl").takeIf { it.isNotEmpty() },
++                        namespaces = namespaces,
++                    )
++                )
++            }
++            return ReceiverStatus(
++                volumeLevel = volume?.optDouble("level", 0.0) ?: 0.0,
++                muted = volume?.optBoolean("muted", false) ?: false,
++                stepInterval = volume?.optDouble("stepInterval", 0.05) ?: 0.05,
++                activeInput = if (status.has("isActiveInput")) (if (status.optBoolean("isActiveInput")) 1 else 0) else -1,
++                standby = if (status.has("isStandBy")) (if (status.optBoolean("isStandBy")) 1 else 0) else -1,
++                applications = applications,
++            )
++        }
++    }
++}
+diff --git a/play-services-cast/core/src/main/proto/cast_channel.proto b/play-services-cast/core/src/main/proto/cast_channel.proto
+new file mode 100644
+index 00000000..ada6c087
+--- /dev/null
++++ b/play-services-cast/core/src/main/proto/cast_channel.proto
+@@ -0,0 +1,55 @@
++/*
++ * SPDX-FileCopyrightText: 2026 microG Project Team
++ * SPDX-License-Identifier: Apache-2.0
++ */
++
++// Messages exchanged with a Cast receiver on its TLS control port (CastV2).
++// Each frame on the socket is a 4 byte big endian length followed by a serialized CastMessage.
++
++syntax = "proto2";
++
++option java_package = "org.microg.gms.cast.proto";
++
++message CastMessage {
++  enum ProtocolVersion {
++    CASTV2_1_0 = 0;
++  }
++  required ProtocolVersion protocol_version = 1;
++  required string source_id = 2;
++  required string destination_id = 3;
++  required string namespace = 4;
++
++  enum PayloadType {
++    STRING = 0;
++    BINARY = 1;
++  }
++  required PayloadType payload_type = 5;
++  optional string payload_utf8 = 6;
++  optional bytes payload_binary = 7;
++}
++
++// Payloads of the urn:x-cast:com.google.cast.tp.deviceauth namespace (always BINARY)
++
++message AuthChallenge {
++}
++
++message AuthResponse {
++  required bytes signature = 1;
++  required bytes client_auth_certificate = 2;
++  repeated bytes intermediate_certificate = 3;
++}
++
++message AuthError {
++  enum ErrorType {
++    INTERNAL_ERROR = 0;
++    NO_TLS = 1;
++    SIGNATURE_ALGORITHM_UNAVAILABLE = 2;
++  }
++  required ErrorType error_type = 1;
++}
++
++message DeviceAuthMessage {
++  optional AuthChallenge challenge = 1;
++  optional AuthResponse response = 2;
++  optional AuthError error = 3;
++}
+-- 
+2.43.0
+

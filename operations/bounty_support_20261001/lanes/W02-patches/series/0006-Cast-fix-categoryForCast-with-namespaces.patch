@@ -1,0 +1,26 @@
+From 36e6bfda5637be690064ce48c7746af12cba3d92 Mon Sep 17 00:00:00 2001
+From: woahwhattheheck <293286387+woahwhattheheck@users.noreply.github.com>
+Date: Thu, 1 Oct 2026 12:00:31 +0000
+Subject: [PATCH 6/9] Cast: fix categoryForCast with namespaces
+
+The application ID was appended to CATEGORY_CAST without a separator.
+---
+ .../com/google/android/gms/cast/CastMediaControlIntent.java     | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/play-services-cast/src/main/java/com/google/android/gms/cast/CastMediaControlIntent.java b/play-services-cast/src/main/java/com/google/android/gms/cast/CastMediaControlIntent.java
+index ca3a2871..c2112577 100644
+--- a/play-services-cast/src/main/java/com/google/android/gms/cast/CastMediaControlIntent.java
++++ b/play-services-cast/src/main/java/com/google/android/gms/cast/CastMediaControlIntent.java
+@@ -105,7 +105,7 @@ public final class CastMediaControlIntent {
+      * restrictions. See {@link #categoryForCast(Collection)} and {@link #categoryForCast(String)} for more details.
+      */
+     public static String categoryForCast(String applicationId, Collection<String> namespaces) {
+-        return CATEGORY_CAST + "" + applicationId + "/" + TextUtils.join(",", namespaces);
++        return CATEGORY_CAST + "/" + applicationId + "/" + TextUtils.join(",", namespaces);
+     }
+ 
+     /**
+-- 
+2.43.0
+

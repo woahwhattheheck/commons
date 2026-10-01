@@ -1,0 +1,836 @@
+From 94e9732eabe50e037e5ca9a0e662bbd31ae87016 Mon Sep 17 00:00:00 2001
+From: woahwhattheheck <293286387+woahwhattheheck@users.noreply.github.com>
+Date: Thu, 1 Oct 2026 11:47:23 +0000
+Subject: [PATCH 2/9] Cast: Fix device discovery and route publication
+
+CastMediaRouteProvider:
+- Discover on every valid discovery request that asks for a Cast or
+  remote playback category, not only on active scans. MediaRouter clients
+  such as the Cast framework request passive discovery, so no devices
+  were found until a route chooser forced an active scan.
+- Collect receiver application categories from every request without
+  duplicates and republish routes when they change, so routes match the
+  selector of apps using categoryForCast(appId).
+- Make NSD discovery start/stop transitions robust: requests arriving
+  while a start or stop is pending are applied from the listener
+  callbacks instead of being lost, and a fresh listener is used for each
+  discovery run.
+- Resolve found services one after the other. NsdManager rejects
+  concurrent resolves with FAILURE_ALREADY_ACTIVE, which dropped every
+  device but the first when several were on the network.
+- Tolerate missing TXT records (only "id" is required) and read device
+  capabilities from the "ca" record. Audio-only devices and multizone
+  groups are published as speakers.
+- Update known devices with the latest resolved record (address, port,
+  name, status) instead of keeping the first one.
+- Keep all state on the main thread; NSD callbacks previously modified
+  the device maps from binder threads while routes were published.
+- Publish variable volume and the connection state reported by the route
+  controller. Drop the duplicated ACTION_SYNC_STATUS filter.
+
+CastMediaRouteController:
+- Connect to the device on the announced service port (multizone groups
+  do not listen on 8009), off the main thread.
+- Implement select/unselect/release, report connecting/connected/
+  disconnected state, read the device volume on select and follow volume
+  changes made on the device.
+- Implement onSetVolume/onUpdateVolume.
+---
+ .../gms/cast/CastMediaRouteController.java    | 134 +++--
+ .../gms/cast/CastMediaRouteProvider.java      | 501 +++++++++++-------
+ 2 files changed, 413 insertions(+), 222 deletions(-)
+
+diff --git a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java
+index f8ca7a1a..d733a3cc 100644
+--- a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java
++++ b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteController.java
+@@ -16,50 +16,40 @@
+ 
+ package org.microg.gms.cast;
+ 
+-import android.content.Context;
+ import android.content.Intent;
+-import android.content.IntentFilter;
+-import android.net.Uri;
+-import android.os.Bundle;
+-import android.os.AsyncTask;
+-import android.os.Handler;
+ import android.util.Log;
+ 
+ import androidx.mediarouter.media.MediaRouteProvider;
+ import androidx.mediarouter.media.MediaRouter;
+ 
+-import com.google.android.gms.common.images.WebImage;
+-import com.google.android.gms.cast.CastDevice;
+-
+-import java.net.InetAddress;
+-import java.net.InetSocketAddress;
+-import java.net.Inet4Address;
+-import java.net.UnknownHostException;
+-import java.io.IOException;
+-import java.lang.Thread;
+-import java.lang.Runnable;
+-import java.util.ArrayList;
+-import java.util.Map;
+-import java.util.HashMap;
++import java.util.concurrent.ExecutorService;
++import java.util.concurrent.Executors;
+ 
+ import su.litvak.chromecast.api.v2.ChromeCast;
+-import su.litvak.chromecast.api.v2.ChromeCasts;
++import su.litvak.chromecast.api.v2.ChromeCastSpontaneousEvent;
++import su.litvak.chromecast.api.v2.ChromeCastSpontaneousEventListener;
+ import su.litvak.chromecast.api.v2.Status;
+-import su.litvak.chromecast.api.v2.ChromeCastsListener;
++import su.litvak.chromecast.api.v2.Volume;
+ 
+-public class CastMediaRouteController extends MediaRouteProvider.RouteController {
++public class CastMediaRouteController extends MediaRouteProvider.RouteController implements ChromeCastSpontaneousEventListener {
+     private static final String TAG = CastMediaRouteController.class.getSimpleName();
+ 
+-    private CastMediaRouteProvider provider;
+-    private String routeId;
+-    private ChromeCast chromecast;
++    private final CastMediaRouteProvider provider;
++    private final String routeId;
++    private final ChromeCast chromecast;
++    // Socket I/O must not run on the main thread, and requests must keep their order.
++    private final ExecutorService executor = Executors.newSingleThreadExecutor();
++
++    private volatile int volume;
++    private volatile boolean selected = false;
+ 
+-    public CastMediaRouteController(CastMediaRouteProvider provider, String routeId, String address) {
++    public CastMediaRouteController(CastMediaRouteProvider provider, String routeId, String address, int port, int volume) {
+         super();
+ 
+         this.provider = provider;
+         this.routeId = routeId;
+-        this.chromecast = new ChromeCast(address);
++        this.chromecast = port > 0 ? new ChromeCast(address, port) : new ChromeCast(address);
++        this.volume = volume;
+     }
+ 
+     public boolean onControlRequest(Intent intent, MediaRouter.ControlRequestCallback callback) {
+@@ -67,27 +57,97 @@ public class CastMediaRouteController extends MediaRouteProvider.RouteController
+         return false;
+     }
+ 
++    @Override
++    public void onSelect() {
++        if (selected || executor.isShutdown()) return;
++        selected = true;
++        provider.onRouteStateChanged(routeId, MediaRouter.RouteInfo.CONNECTION_STATE_CONNECTING, -1);
++        executor.execute(() -> {
++            try {
++                if (!chromecast.isConnected()) chromecast.connect();
++                chromecast.registerListener(this);
++                Status status = chromecast.getStatus();
++                int deviceVolume = status != null ? toRouteVolume(status.volume) : -1;
++                if (deviceVolume >= 0) volume = deviceVolume;
++                if (selected) {
++                    provider.onRouteStateChanged(routeId, MediaRouter.RouteInfo.CONNECTION_STATE_CONNECTED, deviceVolume);
++                }
++            } catch (Exception e) {
++                Log.w(TAG, "Failed to connect to " + routeId, e);
++                selected = false;
++                provider.onRouteStateChanged(routeId, MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED, -1);
++            }
++        });
++    }
++
++    @Override
++    public void onUnselect() {
++        onUnselect(MediaRouter.UNSELECT_REASON_UNKNOWN);
++    }
++
++    @Override
++    public void onUnselect(int reason) {
++        if (!selected || executor.isShutdown()) return;
++        selected = false;
++        executor.execute(this::disconnect);
++    }
++
++    @Override
+     public void onRelease() {
+-        Log.d(TAG, "unimplemented Method: onRelease: " + this.routeId);
++        if (executor.isShutdown()) return;
++        selected = false;
++        executor.execute(this::disconnect);
++        executor.shutdown();
+     }
+ 
+-    public void onSelect() {
+-        Log.d(TAG, "unimplemented Method: onSelect: " + this.routeId);
++    private void disconnect() {
++        chromecast.unregisterListener(this);
++        try {
++            if (chromecast.isConnected()) chromecast.disconnect();
++        } catch (Exception e) {
++            Log.w(TAG, "Failed to disconnect from " + routeId, e);
++        }
++        // The route may have been selected again while this was queued.
++        if (!selected) {
++            provider.onRouteStateChanged(routeId, MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED, -1);
++        }
+     }
+ 
++    @Override
+     public void onSetVolume(int volume) {
+-        Log.d(TAG, "unimplemented Method: onSetVolume: " + this.routeId);
++        final int newVolume = Math.max(0, Math.min(CastMediaRouteProvider.VOLUME_MAX, volume));
++        this.volume = newVolume;
++        provider.onRouteStateChanged(routeId, -1, newVolume);
++        if (executor.isShutdown()) return;
++        executor.execute(() -> {
++            try {
++                if (!chromecast.isConnected()) chromecast.connect();
++                chromecast.setVolume((float) newVolume / CastMediaRouteProvider.VOLUME_MAX);
++            } catch (Exception e) {
++                Log.w(TAG, "Failed to set volume of " + routeId, e);
++            }
++        });
+     }
+ 
+-    public void onUnselect() {
+-        Log.d(TAG, "unimplemented Method: onUnselect: " + this.routeId);
++    @Override
++    public void onUpdateVolume(int delta) {
++        onSetVolume(volume + delta);
+     }
+ 
+-    public void onUnselect(int reason) {
+-        Log.d(TAG, "unimplemented Method: onUnselect: " + this.routeId);
++    @Override
++    public void spontaneousEventReceived(ChromeCastSpontaneousEvent event) {
++        // Follow volume changes made on the device or by other senders.
++        if (event.getType() == ChromeCastSpontaneousEvent.SpontaneousEventType.STATUS) {
++            int deviceVolume = toRouteVolume(event.getData(Status.class).volume);
++            if (deviceVolume >= 0 && deviceVolume != volume && selected) {
++                volume = deviceVolume;
++                provider.onRouteStateChanged(routeId, MediaRouter.RouteInfo.CONNECTION_STATE_CONNECTED, deviceVolume);
++            }
++        }
+     }
+ 
+-    public void onUpdateVolume(int delta) {
+-        Log.d(TAG, "unimplemented Method: onUpdateVolume: " + this.routeId);
++    private static int toRouteVolume(Volume volume) {
++        if (volume == null || volume.level == null) return -1;
++        return Math.round(volume.level * CastMediaRouteProvider.VOLUME_MAX);
+     }
+ }
+diff --git a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteProvider.java b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteProvider.java
+index 89efb079..5c6c09db 100644
+--- a/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteProvider.java
++++ b/play-services-cast/core/src/main/java/org/microg/gms/cast/CastMediaRouteProvider.java
+@@ -19,12 +19,11 @@ package org.microg.gms.cast;
+ import android.annotation.SuppressLint;
+ import android.content.Context;
+ import android.content.IntentFilter;
+-import android.net.Uri;
+ import android.net.nsd.NsdManager;
+ import android.net.nsd.NsdServiceInfo;
+ import android.os.Bundle;
+-import android.os.AsyncTask;
+ import android.os.Handler;
++import android.os.Looper;
+ import android.util.Log;
+ 
+ import androidx.mediarouter.media.MediaControlIntent;
+@@ -34,41 +33,54 @@ import androidx.mediarouter.media.MediaRouteProvider;
+ import androidx.mediarouter.media.MediaRouteProviderDescriptor;
+ import androidx.mediarouter.media.MediaRouter;
+ 
+-import com.google.android.gms.common.images.WebImage;
+ import com.google.android.gms.cast.CastDevice;
+ import com.google.android.gms.cast.CastMediaControlIntent;
+ 
+-import java.net.InetAddress;
+-import java.net.InetSocketAddress;
+-import java.net.Inet4Address;
+-import java.net.UnknownHostException;
+-import java.io.IOException;
+ import java.io.UnsupportedEncodingException;
+-import java.lang.Thread;
+-import java.lang.Runnable;
+-import java.util.List;
++import java.net.InetAddress;
++import java.util.ArrayDeque;
+ import java.util.ArrayList;
+-import java.util.Map;
+ import java.util.HashMap;
++import java.util.LinkedHashMap;
++import java.util.LinkedHashSet;
++import java.util.Map;
++import java.util.Queue;
++import java.util.Set;
+ 
+ public class CastMediaRouteProvider extends MediaRouteProvider {
+     private static final String TAG = CastMediaRouteProvider.class.getSimpleName();
+ 
+-    private Map<String, CastDevice> castDevices = new HashMap<String, CastDevice>();
+-    private Map<String, String> serviceCastIds = new HashMap<String, String>();
++    private static final String SERVICE_TYPE = "_googlecast._tcp.";
+ 
+-    private NsdManager mNsdManager;
+-    private NsdManager.DiscoveryListener mDiscoveryListener;
++    // Capability bits announced in the "ca" TXT record of _googlecast._tcp services.
++    private static final int TXT_CAPABILITY_VIDEO_OUT = 1;
++    private static final int TXT_CAPABILITY_VIDEO_IN = 2;
++    private static final int TXT_CAPABILITY_AUDIO_OUT = 4;
++    private static final int TXT_CAPABILITY_AUDIO_IN = 8;
++    private static final int TXT_CAPABILITY_MULTIZONE_GROUP = 32;
++    private static final int CAPABILITY_MASK = TXT_CAPABILITY_VIDEO_OUT | TXT_CAPABILITY_VIDEO_IN | TXT_CAPABILITY_AUDIO_OUT | TXT_CAPABILITY_AUDIO_IN;
+ 
+-    private List<String> customCategories = new ArrayList<String>();
++    static final int VOLUME_MAX = 20;
++    private static final int RESOLVE_RETRY_DELAY_MS = 500;
+ 
+-    private enum State {
+-        NOT_DISCOVERING,
+-        DISCOVERY_REQUESTED,
+-        DISCOVERING,
+-        DISCOVERY_STOP_REQUESTED,
++    private static class CastRoute {
++        CastDevice device;
++        boolean group;
++        int volume = VOLUME_MAX / 2;
++        int connectionState = MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED;
+     }
+-    private State state = State.NOT_DISCOVERING;
++
++    // All mutable state below is only accessed on the main thread.
++    private final Handler handler = new Handler(Looper.getMainLooper());
++    private final Map<String, CastRoute> routes = new LinkedHashMap<String, CastRoute>();
++    private final Map<String, String> serviceCastIds = new HashMap<String, String>();
++    private final Set<String> customCategories = new LinkedHashSet<String>();
++    private final Queue<NsdServiceInfo> resolveQueue = new ArrayDeque<NsdServiceInfo>();
++    private boolean resolving = false;
++
++    private NsdManager mNsdManager;
++    private DiscoveryListener discoveryListener;
++    private boolean discoveryWanted = false;
+ 
+     private static final ArrayList<IntentFilter> BASE_CONTROL_FILTERS = new ArrayList<IntentFilter>();
+     static {
+@@ -123,50 +135,22 @@ public class CastMediaRouteProvider extends MediaRouteProvider {
+         }
+         BASE_CONTROL_FILTERS.add(filter);
+ 
+-        filter = new IntentFilter();
+-        filter.addCategory(MediaControlIntent.CATEGORY_REMOTE_PLAYBACK);
+-        filter.addAction(MediaControlIntent.ACTION_PAUSE);
+-        BASE_CONTROL_FILTERS.add(filter);
+-
+-        filter = new IntentFilter();
+-        filter.addCategory(MediaControlIntent.CATEGORY_REMOTE_PLAYBACK);
+-        filter.addAction(MediaControlIntent.ACTION_RESUME);
+-        BASE_CONTROL_FILTERS.add(filter);
+-
+-        filter = new IntentFilter();
+-        filter.addCategory(MediaControlIntent.CATEGORY_REMOTE_PLAYBACK);
+-        filter.addAction(MediaControlIntent.ACTION_STOP);
+-        BASE_CONTROL_FILTERS.add(filter);
+-
+-        filter = new IntentFilter();
+-        filter.addCategory(MediaControlIntent.CATEGORY_REMOTE_PLAYBACK);
+-        filter.addAction(MediaControlIntent.ACTION_SEEK);
+-        BASE_CONTROL_FILTERS.add(filter);
+-
+-        filter = new IntentFilter();
+-        filter.addCategory(MediaControlIntent.CATEGORY_REMOTE_PLAYBACK);
+-        filter.addAction(MediaControlIntent.ACTION_GET_STATUS);
+-        BASE_CONTROL_FILTERS.add(filter);
+-
+-        filter = new IntentFilter();
+-        filter.addCategory(MediaControlIntent.CATEGORY_REMOTE_PLAYBACK);
+-        filter.addAction(MediaControlIntent.ACTION_START_SESSION);
+-        BASE_CONTROL_FILTERS.add(filter);
+-
+-        filter = new IntentFilter();
+-        filter.addCategory(MediaControlIntent.CATEGORY_REMOTE_PLAYBACK);
+-        filter.addAction(MediaControlIntent.ACTION_GET_SESSION_STATUS);
+-        BASE_CONTROL_FILTERS.add(filter);
+-
+-        filter = new IntentFilter();
+-        filter.addCategory(MediaControlIntent.CATEGORY_REMOTE_PLAYBACK);
+-        filter.addAction(MediaControlIntent.ACTION_END_SESSION);
+-        BASE_CONTROL_FILTERS.add(filter);
+-
+-        filter = new IntentFilter();
+-        filter.addCategory(CastMediaControlIntent.CATEGORY_CAST_REMOTE_PLAYBACK);
+-        filter.addAction(CastMediaControlIntent.ACTION_SYNC_STATUS);
+-        BASE_CONTROL_FILTERS.add(filter);
++        String[] remotePlaybackActions = {
++            MediaControlIntent.ACTION_PAUSE,
++            MediaControlIntent.ACTION_RESUME,
++            MediaControlIntent.ACTION_STOP,
++            MediaControlIntent.ACTION_SEEK,
++            MediaControlIntent.ACTION_GET_STATUS,
++            MediaControlIntent.ACTION_START_SESSION,
++            MediaControlIntent.ACTION_GET_SESSION_STATUS,
++            MediaControlIntent.ACTION_END_SESSION,
++        };
++        for (String action : remotePlaybackActions) {
++            filter = new IntentFilter();
++            filter.addCategory(MediaControlIntent.CATEGORY_REMOTE_PLAYBACK);
++            filter.addAction(action);
++            BASE_CONTROL_FILTERS.add(filter);
++        }
+ 
+         filter = new IntentFilter();
+         filter.addCategory(CastMediaControlIntent.CATEGORY_CAST_REMOTE_PLAYBACK);
+@@ -174,7 +158,6 @@ public class CastMediaRouteProvider extends MediaRouteProvider {
+         BASE_CONTROL_FILTERS.add(filter);
+     }
+ 
+-    @SuppressLint("NewApi")
+     public CastMediaRouteProvider(Context context) {
+         super(context);
+ 
+@@ -183,176 +166,324 @@ public class CastMediaRouteProvider extends MediaRouteProvider {
+             return;
+         }
+ 
+-        mNsdManager = (NsdManager)context.getApplicationContext().getSystemService(Context.NSD_SERVICE);
+-
+-        mDiscoveryListener = new NsdManager.DiscoveryListener() {
++        mNsdManager = (NsdManager) context.getApplicationContext().getSystemService(Context.NSD_SERVICE);
++    }
+ 
+-            @Override
+-            public void onDiscoveryStarted(String regType) {
+-                CastMediaRouteProvider.this.state = State.DISCOVERING;
+-            }
++    /**
++     * Control categories that Cast routes can serve. Discovery only runs while a MediaRouter
++     * client asks for one of them.
++     */
++    private static boolean isCastCategory(String category) {
++        return category.equals(CastMediaControlIntent.CATEGORY_CAST)
++                || isAppSpecificCastCategory(category)
++                || category.equals(CastMediaControlIntent.CATEGORY_CAST_REMOTE_PLAYBACK)
++                || category.equals(MediaControlIntent.CATEGORY_REMOTE_PLAYBACK);
++    }
+ 
+-            @Override
+-            public void onServiceFound(NsdServiceInfo service) {
+-                mNsdManager.resolveService(service, new NsdManager.ResolveListener() {
+-                    @Override
+-                    public void onResolveFailed(NsdServiceInfo serviceInfo, int errorCode) {
+-                        if (errorCode == NsdManager.FAILURE_ALREADY_ACTIVE) {
+-                            return;
+-                        }
+-                        Log.e(TAG, "DiscoveryListener Resolve failed. Error code " + errorCode);
+-                    }
+-
+-                    @Override
+-                    public void onServiceResolved(NsdServiceInfo serviceInfo) {
+-                        String name = serviceInfo.getServiceName();
+-                        InetAddress host = serviceInfo.getHost();
+-                        int port = serviceInfo.getPort();
+-                        Map<String, byte[]> attributes = serviceInfo.getAttributes();
+-                        if (attributes == null) {
+-                            Log.e(TAG, "Error getting service attributes from DNS-SD response");
+-                            return;
+-                        }
+-                        try {
+-                            String id = new String(attributes.get("id"), "UTF-8");
+-                            String deviceVersion = new String(attributes.get("ve"), "UTF-8");
+-                            String friendlyName = new String(attributes.get("fn"), "UTF-8");
+-                            String modelName = new String(attributes.get("md"), "UTF-8");
+-                            String iconPath = new String(attributes.get("ic"), "UTF-8");
+-                            int status = Integer.parseInt(new String(attributes.get("st"), "UTF-8"));
+-
+-                            onChromeCastDiscovered(id, name, host, port, deviceVersion, friendlyName, modelName, iconPath, status);
+-                        } catch (UnsupportedEncodingException | NullPointerException ex) {
+-                            Log.e(TAG, "Error getting cast details from DNS-SD response", ex);
+-                            return;
+-                        }
+-                    }
+-                });
+-            }
++    /**
++     * Categories that carry a receiver application id or namespaces, as built by
++     * {@link CastMediaControlIntent#categoryForCast(String)} and
++     * {@link CastMediaControlIntent#categoryForRemotePlayback(String)}.
++     */
++    private static boolean isAppSpecificCastCategory(String category) {
++        return CastMediaControlIntent.isCategoryForCast(category)
++                || category.startsWith(CastMediaControlIntent.CATEGORY_CAST_REMOTE_PLAYBACK + "/");
++    }
+ 
+-            @Override
+-            public void onServiceLost(NsdServiceInfo serviceInfo) {
+-                String name = serviceInfo.getServiceName();
+-                onChromeCastLost(name);
++    @Override
++    public void onDiscoveryRequestChanged(MediaRouteDiscoveryRequest request) {
++        boolean wanted = false;
++        boolean categoriesChanged = false;
++        if (request != null && request.isValid()) {
++            for (String category : request.getSelector().getControlCategories()) {
++                if (isCastCategory(category)) {
++                    wanted = true;
++                }
++                // Every Cast device can launch any receiver application, so routes advertise all
++                // app specific categories requested so far. They are kept so routes already handed
++                // to an app keep matching its selector.
++                if (isAppSpecificCastCategory(category) && customCategories.add(category)) {
++                    categoriesChanged = true;
++                }
+             }
++        }
++        if (categoriesChanged) {
++            publishRoutes();
++        }
+ 
+-            @Override
+-            public void onDiscoveryStopped(String serviceType) {
+-                CastMediaRouteProvider.this.state = State.NOT_DISCOVERING;
+-            }
++        discoveryWanted = wanted;
++        updateDiscovery();
++    }
+ 
+-            @Override
+-            public void onStartDiscoveryFailed(String serviceType, int errorCode) {
+-                CastMediaRouteProvider.this.state = State.NOT_DISCOVERING;
++    /**
++     * Brings NSD discovery in line with {@link #discoveryWanted}. NsdManager accepts only one
++     * pending start or stop per listener, so changes requested while one is in flight are applied
++     * from the listener callbacks.
++     */
++    @SuppressLint("NewApi")
++    private void updateDiscovery() {
++        if (mNsdManager == null) return;
++        if (discoveryWanted && discoveryListener == null) {
++            discoveryListener = new DiscoveryListener();
++            Log.d(TAG, "Starting discovery of " + SERVICE_TYPE);
++            try {
++                mNsdManager.discoverServices(SERVICE_TYPE, NsdManager.PROTOCOL_DNS_SD, discoveryListener);
++            } catch (RuntimeException e) {
++                Log.w(TAG, "Failed to start discovery", e);
++                discoveryListener = null;
+             }
+-
+-            @Override
+-            public void onStopDiscoveryFailed(String serviceType, int errorCode) {
+-                CastMediaRouteProvider.this.state = State.DISCOVERING;
++        } else if (!discoveryWanted && discoveryListener != null && discoveryListener.state == DiscoveryListener.STARTED) {
++            Log.d(TAG, "Stopping discovery of " + SERVICE_TYPE);
++            discoveryListener.state = DiscoveryListener.STOPPING;
++            try {
++                mNsdManager.stopServiceDiscovery(discoveryListener);
++            } catch (RuntimeException e) {
++                Log.w(TAG, "Failed to stop discovery", e);
++                discoveryListener = null;
+             }
+-        };
++        }
+     }
+ 
+-    private void onChromeCastDiscovered(
+-            String id, String name, InetAddress host, int port, String
+-            deviceVersion, String friendlyName, String modelName, String
+-            iconPath, int status) {
+-        if (!this.castDevices.containsKey(id)) {
+-            // TODO: Capabilities
+-            int capabilities = CastDevice.CAPABILITY_VIDEO_OUT | CastDevice.CAPABILITY_AUDIO_OUT;
+-
+-            CastDevice castDevice = new CastDevice(id, name, host, port, deviceVersion, friendlyName, modelName, iconPath, status, capabilities);
+-            this.castDevices.put(id, castDevice);
+-            this.serviceCastIds.put(name, id);
++    @SuppressLint("NewApi")
++    private class DiscoveryListener implements NsdManager.DiscoveryListener {
++        static final int STARTING = 0;
++        static final int STARTED = 1;
++        static final int STOPPING = 2;
++        int state = STARTING;
++
++        @Override
++        public void onDiscoveryStarted(String serviceType) {
++            handler.post(() -> {
++                if (discoveryListener != this) return;
++                state = STARTED;
++                // Stop again if the request went away while starting.
++                updateDiscovery();
++            });
++        }
++
++        @Override
++        public void onStartDiscoveryFailed(String serviceType, int errorCode) {
++            Log.w(TAG, "Starting discovery failed. Error code " + errorCode);
++            handler.post(() -> {
++                if (discoveryListener == this) discoveryListener = null;
++            });
++        }
++
++        @Override
++        public void onDiscoveryStopped(String serviceType) {
++            handler.post(() -> {
++                if (discoveryListener != this) return;
++                discoveryListener = null;
++                // Start again if a new request arrived while stopping.
++                updateDiscovery();
++            });
++        }
++
++        @Override
++        public void onStopDiscoveryFailed(String serviceType, int errorCode) {
++            Log.w(TAG, "Stopping discovery failed. Error code " + errorCode);
++            handler.post(() -> {
++                if (discoveryListener == this) state = STARTED;
++            });
+         }
+ 
+-        publishRoutesInMainThread();
++        @Override
++        public void onServiceFound(NsdServiceInfo serviceInfo) {
++            handler.post(() -> {
++                resolveQueue.add(serviceInfo);
++                resolveNext();
++            });
++        }
++
++        @Override
++        public void onServiceLost(NsdServiceInfo serviceInfo) {
++            String name = serviceInfo.getServiceName();
++            handler.post(() -> onChromeCastLost(name));
++        }
+     }
+ 
+-    private void onChromeCastLost(String name) {
+-        String id = this.serviceCastIds.remove(name);
+-        if (id != null) {
+-            this.castDevices.remove(id);
++    /**
++     * NsdManager rejects concurrent resolves with FAILURE_ALREADY_ACTIVE, so services found in a
++     * burst (several Cast devices on the network) are resolved one after the other.
++     */
++    @SuppressLint("NewApi")
++    private void resolveNext() {
++        if (resolving || mNsdManager == null) return;
++        final NsdServiceInfo serviceInfo = resolveQueue.poll();
++        if (serviceInfo == null) return;
++        resolving = true;
++        try {
++            mNsdManager.resolveService(serviceInfo, new NsdManager.ResolveListener() {
++                @Override
++                public void onResolveFailed(NsdServiceInfo info, int errorCode) {
++                    handler.post(() -> {
++                        resolving = false;
++                        if (errorCode == NsdManager.FAILURE_ALREADY_ACTIVE) {
++                            // A resolve for another listener in this process is still running.
++                            resolveQueue.add(serviceInfo);
++                            handler.postDelayed(CastMediaRouteProvider.this::resolveNext, RESOLVE_RETRY_DELAY_MS);
++                            return;
++                        }
++                        Log.w(TAG, "Resolving " + info.getServiceName() + " failed. Error code " + errorCode);
++                        resolveNext();
++                    });
++                }
++
++                @Override
++                public void onServiceResolved(NsdServiceInfo info) {
++                    handler.post(() -> {
++                        resolving = false;
++                        onServiceResolvedInternal(info);
++                        resolveNext();
++                    });
++                }
++            });
++        } catch (RuntimeException e) {
++            Log.w(TAG, "Failed to resolve " + serviceInfo.getServiceName(), e);
++            resolving = false;
++            handler.post(this::resolveNext);
+         }
++    }
+ 
+-        publishRoutesInMainThread();
++    private static String getTxtString(Map<String, byte[]> attributes, String key) {
++        byte[] value = attributes.get(key);
++        if (value == null) return null;
++        try {
++            return new String(value, "UTF-8");
++        } catch (UnsupportedEncodingException e) {
++            return null;
++        }
++    }
++
++    private static int getTxtInt(Map<String, byte[]> attributes, String key, int defaultValue) {
++        String value = getTxtString(attributes, key);
++        if (value == null) return defaultValue;
++        try {
++            return Integer.parseInt(value.trim());
++        } catch (NumberFormatException e) {
++            return defaultValue;
++        }
+     }
+ 
+     @SuppressLint("NewApi")
+-    @Override
+-    public void onDiscoveryRequestChanged(MediaRouteDiscoveryRequest request) {
+-        if (android.os.Build.VERSION.SDK_INT < 16) {
++    private void onServiceResolvedInternal(NsdServiceInfo serviceInfo) {
++        String name = serviceInfo.getServiceName();
++        InetAddress host = serviceInfo.getHost();
++        int port = serviceInfo.getPort();
++        Map<String, byte[]> attributes = serviceInfo.getAttributes();
++        if (host == null || attributes == null) {
++            Log.w(TAG, "Incomplete DNS-SD response for " + name);
+             return;
+         }
+ 
+-        if (request != null && request.isValid() && request.isActiveScan()) {
+-            if (request.getSelector() != null) {
+-                for (String category : request.getSelector().getControlCategories()) {
+-                    if (CastMediaControlIntent.isCategoryForCast(category)) {
+-                        this.customCategories.add(category);
+-                    }
+-                }
+-            }
+-            if (this.state == State.NOT_DISCOVERING) {
+-                mNsdManager.discoverServices("_googlecast._tcp.", NsdManager.PROTOCOL_DNS_SD, mDiscoveryListener);
+-                this.state = State.DISCOVERY_REQUESTED;
+-            }
+-        } else {
+-            if (this.state == State.DISCOVERING) {
+-                mNsdManager.stopServiceDiscovery(mDiscoveryListener);
+-                this.state = State.DISCOVERY_STOP_REQUESTED;
+-            }
++        // Only the id is mandatory, older and third party receivers omit some of the other records.
++        String id = getTxtString(attributes, "id");
++        if (id == null || id.isEmpty()) {
++            Log.w(TAG, "No device id in DNS-SD response for " + name);
++            return;
++        }
++        String deviceVersion = getTxtString(attributes, "ve");
++        String friendlyName = getTxtString(attributes, "fn");
++        if (friendlyName == null || friendlyName.isEmpty()) friendlyName = name;
++        String modelName = getTxtString(attributes, "md");
++        String iconPath = getTxtString(attributes, "ic");
++        int status = getTxtInt(attributes, "st", 0);
++        int txtCapabilities = getTxtInt(attributes, "ca", TXT_CAPABILITY_VIDEO_OUT | TXT_CAPABILITY_AUDIO_OUT);
++
++        onChromeCastDiscovered(id, name, host, port, deviceVersion, friendlyName, modelName, iconPath, status, txtCapabilities);
++    }
++
++    private void onChromeCastDiscovered(
++            String id, String name, InetAddress host, int port, String
++            deviceVersion, String friendlyName, String modelName, String
++            iconPath, int status, int txtCapabilities) {
++        int capabilities = txtCapabilities & CAPABILITY_MASK;
++        CastDevice castDevice = new CastDevice(id, name, host, port, deviceVersion, friendlyName, modelName, iconPath, status, capabilities);
++
++        CastRoute route = routes.get(id);
++        if (route == null) {
++            route = new CastRoute();
++            routes.put(id, route);
++            Log.d(TAG, "Found Cast device " + castDevice);
++        }
++        // Always take the latest record: address, port, name and status change over time.
++        route.device = castDevice;
++        route.group = (txtCapabilities & TXT_CAPABILITY_MULTIZONE_GROUP) != 0;
++        serviceCastIds.put(name, id);
++
++        publishRoutes();
++    }
++
++    private void onChromeCastLost(String name) {
++        String id = serviceCastIds.remove(name);
++        if (id == null) return;
++        CastRoute route = routes.get(id);
++        // Keep a route that is in use; it is removed once its controller disconnects.
++        if (route != null && route.connectionState == MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED) {
++            routes.remove(id);
++            Log.d(TAG, "Lost Cast device " + id);
++            publishRoutes();
+         }
+     }
+ 
+     @Override
+     public RouteController onCreateRouteController(String routeId) {
+-        CastDevice castDevice = this.castDevices.get(routeId);
+-        if (castDevice == null) {
++        CastRoute route = routes.get(routeId);
++        if (route == null) {
+             return null;
+         }
+-        return new CastMediaRouteController(this, routeId, castDevice.getAddress());
++        return new CastMediaRouteController(this, routeId, route.device.getAddress(), route.device.getServicePort(), route.volume);
+     }
+ 
+-    private void publishRoutesInMainThread() {
+-        Handler mainHandler = new Handler(this.getContext().getMainLooper());
+-        mainHandler.post(new Runnable() {
+-            @Override
+-            public void run() {
+-                publishRoutes();
++    /**
++     * Called by route controllers, from any thread, to reflect connection and volume state of a
++     * route in the published descriptor. A negative connection state or volume keeps the current
++     * value.
++     */
++    void onRouteStateChanged(final String routeId, final int connectionState, final int volume) {
++        handler.post(() -> {
++            CastRoute route = routes.get(routeId);
++            if (route == null) return;
++            if (connectionState >= 0) route.connectionState = connectionState;
++            if (volume >= 0) route.volume = Math.max(0, Math.min(VOLUME_MAX, volume));
++            if (route.connectionState == MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED && !serviceCastIds.containsValue(routeId)) {
++                // The device was lost while it was in use.
++                routes.remove(routeId);
+             }
++            publishRoutes();
+         });
+     }
+ 
+     private void publishRoutes() {
+         MediaRouteProviderDescriptor.Builder builder = new MediaRouteProviderDescriptor.Builder();
+-        for (CastDevice castDevice : this.castDevices.values()) {
++        for (CastRoute route : routes.values()) {
++            CastDevice castDevice = route.device;
+             ArrayList<IntentFilter> controlFilters = new ArrayList<IntentFilter>(BASE_CONTROL_FILTERS);
+-            // Include any app-specific control filters that have been requested.
+-            // TODO: Do we need to check with the device?
+-            for (String category : this.customCategories) {
++            for (String category : customCategories) {
+                 IntentFilter filter = new IntentFilter();
+                 filter.addCategory(category);
+                 controlFilters.add(filter);
+             }
+ 
++            boolean video = castDevice.hasCapability(CastDevice.CAPABILITY_VIDEO_OUT);
++
+             Bundle extras = new Bundle();
+             castDevice.putInBundle(extras);
+-            MediaRouteDescriptor route = new MediaRouteDescriptor.Builder(
++            MediaRouteDescriptor descriptor = new MediaRouteDescriptor.Builder(
+                 castDevice.getDeviceId(),
+                 castDevice.getFriendlyName())
+                 .setDescription(castDevice.getModelName())
+                 .addControlFilters(controlFilters)
+-                .setDeviceType(MediaRouter.RouteInfo.DEVICE_TYPE_TV)
++                .setDeviceType(video && !route.group ? MediaRouter.RouteInfo.DEVICE_TYPE_TV : MediaRouter.RouteInfo.DEVICE_TYPE_SPEAKER)
+                 .setPlaybackType(MediaRouter.RouteInfo.PLAYBACK_TYPE_REMOTE)
+-                .setVolumeHandling(MediaRouter.RouteInfo.PLAYBACK_VOLUME_FIXED)
+-                .setVolumeMax(20)
+-                .setVolume(0)
++                .setVolumeHandling(MediaRouter.RouteInfo.PLAYBACK_VOLUME_VARIABLE)
++                .setVolumeMax(VOLUME_MAX)
++                .setVolume(route.volume)
+                 .setEnabled(true)
+                 .setExtras(extras)
+-                .setConnectionState(MediaRouter.RouteInfo.CONNECTION_STATE_DISCONNECTED)
++                .setConnectionState(route.connectionState)
+                 .build();
+-            builder.addRoute(route);
++            builder.addRoute(descriptor);
+         }
+         this.setDescriptor(builder.build());
+     }
+-- 
+2.43.0
+
