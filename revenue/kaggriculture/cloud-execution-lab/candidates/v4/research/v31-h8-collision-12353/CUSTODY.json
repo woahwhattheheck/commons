@@ -1,0 +1,19 @@
+{
+  "schema": "titan-v4-research-custody/v1",
+  "authority_main": "b76534774c3dd49d1a87a04a041a24feb5e7ea05",
+  "source_pr": 12353,
+  "source_head": "c8d9f4a95ad79e4ab62c8161b2df78fdf897cf56",
+  "source_base": "d5eca5b1230258ec583f8026f6a3b422ed15cde0",
+  "source_title": "[CLOSED: H8 collision] TITAN V3.1 flush-prefix row-arbitration research packet",
+  "source_blobs": {
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h8_flush_row_order.py": "9ced35d9602f892ee459270289d6840ccfbad3e6",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_h8_flush_row_order.py": "ab84b1b90f6241b4a5054232e48ae66c44cab212"
+  },
+  "disposition": "collision_only_research_provenance_no_economics_authority_quarantine",
+  "local_checks": "9/9 isolated predecessor checks reported by source PR; no promotion-grade economics",
+  "current_authority_note": "Current market composition owns the score-facing leading-SELL theorem through the combined row_order_shed authority; standalone flush-prefix sorting would duplicate ownership.",
+  "queue_edge": false,
+  "promotion": false,
+  "direct_merge": false,
+  "note": "Preserve exact donor bytes only; do not revive, direct-merge, remint, or create a sibling V4 root."
+}

@@ -1,0 +1,22 @@
+{
+  "schema": "titan-v4-research-custody/v1",
+  "authority_main": "b76534774c3dd49d1a87a04a041a24feb5e7ea05",
+  "source_pr": 12343,
+  "source_head": "b7c7e3dfa848ec929bf9faa96259498ab45ae431",
+  "source_base": "d5eca5b1230258ec583f8026f6a3b422ed15cde0",
+  "source_title": "[CLOSED: H5 collision] TITAN V3.1 terminal animal-capital ROI research packet",
+  "source_blobs": {
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h5_capital_roi.py": "b258b8c1cb81200015092773aa43979d571e2d3c",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_h5_capital_roi.py": "77b838c8e7179633f5c9ba0a34d2be6337fae942"
+  },
+  "disposition": "superseded_collision_provenance_consumed_then_historical_theorem_retired_quarantine",
+  "lineage": [
+    "#12471 consumed the collision packet with stricter custody",
+    "#12927 recovered the H5 family onto the single V4/main lineage",
+    "#13007 retired the maturity-only theorem in favor of the narrower callback-order/no-placement theorem"
+  ],
+  "queue_edge": false,
+  "promotion": false,
+  "direct_merge": false,
+  "note": "Preserve exact donor bytes only. Current H5 authority is on main; do not revive, cherry-pick, remint, or create a sibling V4 root."
+}

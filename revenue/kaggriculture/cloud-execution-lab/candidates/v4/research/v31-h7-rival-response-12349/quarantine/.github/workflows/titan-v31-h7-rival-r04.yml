@@ -1,0 +1,40 @@
+name: Titan V3.1 H7 R04 rival response
+
+on:
+  push:
+    branches:
+      - astra/v31-h7-rival-r04-port-20260911
+  pull_request:
+    branches:
+      - titan/v3.1-20260911
+
+permissions:
+  contents: read
+
+jobs:
+  focused-h7:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Focused H7 contract checks
+        run: |
+          python -m unittest -v revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_h7_r04_rival_response.py
+      - name: Syntax compile
+        run: |
+          python -m py_compile \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h7_r04_rival_response.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_h7_r04_rival_response.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/rival_model.py
+      - name: Prove experiment stays outside package source set
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        run: |
+          python - <<'PY'
+          import build_v3
+          shas = build_v3.source_shas()
+          assert not any(name.startswith('experiments/') for name in shas), sorted(shas)
+          assert 'h7_r04_rival_response.py' not in shas
+          print('H7 packaging-neutral source-set check OK:', len(shas), 'tracked V3 source inputs')
+          PY

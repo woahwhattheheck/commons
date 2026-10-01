@@ -1,0 +1,43 @@
+{
+  "schema": "titan-v4-reconciliation-receipt/v1",
+  "recorded_at": "2026-10-01T06:46:03Z",
+  "authority_main": "b76534774c3dd49d1a87a04a041a24feb5e7ea05",
+  "carrier_before": "1cec789d977d816097e75c635aa3d9c5860bb36c",
+  "canonical": "00142be0ff2314dcb23068c8133b34d290661923",
+  "integration": "4e3207af1332266852530ec8494db8969edc1115",
+  "composition": "32dc1e6963702f7e013cd609053d52c434e42158",
+  "main_forward_delta": {
+    "from": "068999240e9b9bcfa6636bd05678ae38fd867643",
+    "to": "b76534774c3dd49d1a87a04a041a24feb5e7ea05",
+    "commits": 1,
+    "kaggriculture_paths": 0
+  },
+  "custody_added": [
+    {
+      "pr": 12343,
+      "head": "b7c7e3dfa848ec929bf9faa96259498ab45ae431",
+      "disposition": "superseded collision provenance; consumed then theorem retired"
+    },
+    {
+      "pr": 12349,
+      "head": "b82eca6e6dc48882fd60ac8dbd459c81c11cab61",
+      "disposition": "zero-signal + execution-order safety hold"
+    },
+    {
+      "pr": 12353,
+      "head": "c8d9f4a95ad79e4ab62c8161b2df78fdf897cf56",
+      "disposition": "collision-only research provenance"
+    }
+  ],
+  "recovered_not_yet_composed": [],
+  "queue_edges_added": 0,
+  "semantic_promotions": 0,
+  "runtime_changed": false,
+  "defaults_changed": false,
+  "canonical_changed": false,
+  "integration_changed": false,
+  "composition_changed": false,
+  "archive_or_release_changed": false,
+  "kaggle_state_changed": false,
+  "sibling_v4_root_created": false
+}

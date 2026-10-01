@@ -1,0 +1,42 @@
+{
+  "schema": "titan-v4-research-custody/v1",
+  "authority_main": "b76534774c3dd49d1a87a04a041a24feb5e7ea05",
+  "source_pr": 12349,
+  "source_head": "b82eca6e6dc48882fd60ac8dbd459c81c11cab61",
+  "source_base": "d5eca5b1230258ec583f8026f6a3b422ed15cde0",
+  "source_title": "TITAN V3.1 H7: expose existing rival response on final R04 output",
+  "source_blobs": {
+    ".github/workflows/titan-v31-h7-rival-r04.yml": "61eb277dfab56b0e88f5c7b1ce07c2547a3495cb",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/H7-R04-RIVAL-RESPONSE.md": "a6dc6cf678545f2624767372a219f6f6411c3764",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h7_r04_rival_response.py": "b162f2b86e6fa3f03200ab8e11e90d0bac7479dd",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_h7_r04_rival_response.py": "c99d7ef09842740235e768ba8702dc1f3a1c3e90"
+  },
+  "disposition": "no_signal_frozen_panel_plus_execution_order_safety_hold_historical_evidence_only",
+  "exact_head_workflows": {
+    "h7": {
+      "run": 34579404948,
+      "conclusion": "success"
+    },
+    "tests": {
+      "run": 34579405078,
+      "conclusion": "failure"
+    }
+  },
+  "paired_economics": {
+    "cells": 16,
+    "mean_delta_m": 0,
+    "positive": 0,
+    "zero": 16,
+    "negative": 0
+  },
+  "activation": {
+    "callbacks": 11504,
+    "changed": 0,
+    "proposals": 0,
+    "confirmed_unlocks": 0
+  },
+  "queue_edge": false,
+  "promotion": false,
+  "direct_merge": false,
+  "note": "Do not revive. Any future rival-response lane needs current-ABI EARLY_EXPANDER engagement, confirmed unlock, execution-safe funding/order composition, and fresh economics on the sole main lineage."
+}
