@@ -115,7 +115,7 @@
   "next_watermark": {
     "observed_at": "2026-10-01T10:05:02Z",
     "activation_base_main_sha": "1d2ead9fca84f3e687369ec902b3e7b0bbed096a",
-    "current_main_sha": "PENDING_MERGE_AND_READBACK",
+    "current_main_sha": "6aaf4829c24573f4e11cbf470b4be3aa0e80f4ef",
     "latest_external_delta_slack_ts": "1790840389.242169",
     "latest_commons_claim_slack_ts": "1790848904.303439",
     "latest_delegations_build_order_ts": "1790848932.160439",
