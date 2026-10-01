@@ -243,8 +243,8 @@ class CredentialTransferTests(unittest.TestCase):
         self.addCleanup(calls.close)
         sent = []
         class Delivery:
-            def _slack_write_route_verified(self):
-                return True
+            def _slack_write_route_verified(self, channel):
+                return channel == "C-SYNTHETIC"
             def call(self, name, args):
                 sent.append(args["text"])
                 return {"result": {"ok": True, "ts": "2.1"}}

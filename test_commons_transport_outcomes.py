@@ -62,7 +62,11 @@ class CommonsTransportOutcomesTests(unittest.TestCase):
     @staticmethod
     def _verified_slack_equipment(**kwargs):
         equipment = ServiceEquipment(**kwargs)
-        equipment._slack_write_route_verified = lambda: True
+        equipment._verified_slack_route_checks = []
+        equipment._slack_write_route_verified = lambda channel: (
+            equipment._verified_slack_route_checks.append(channel) is None
+            and channel == "C-fixture"
+        )
         return equipment
 
     def test_native_failure_and_uncertainty_remain_distinct_from_job_status(self):
@@ -219,6 +223,7 @@ class CommonsTransportOutcomesTests(unittest.TestCase):
         equipment = self._verified_slack_equipment(slack_token_loader=lambda: "fixture", opener=opener)
         result = equipment.call("slack_post_message", {"channel_id": "C-fixture", "text": "Completed fixture operation."})
         self.assertFalse(result["isError"])
+        self.assertEqual(["C-fixture"], equipment._verified_slack_route_checks)
         self.assertEqual("1.2", result["result"]["ts"])
         self.assertEqual("permalink_unavailable", result["result"]["permalink_error"])
         self.assertEqual(["POST", "GET"], [request.get_method() for request in calls])
@@ -234,6 +239,7 @@ class CommonsTransportOutcomesTests(unittest.TestCase):
             result = equipment.call("slack_post_message", {"channel_id": "C-fixture",
                                      "text": "Completed fixture operation."})
             self.assertFalse(result["isError"])
+            self.assertEqual(["C-fixture"], equipment._verified_slack_route_checks)
             self.assertEqual("1.2", result["result"]["ts"])
             self.assertEqual("permalink_unavailable", result["result"]["permalink_error"])
 
@@ -247,6 +253,7 @@ class CommonsTransportOutcomesTests(unittest.TestCase):
             equipment = self._verified_slack_equipment(slack_token_loader=lambda: "fixture", opener=opener)
             result = equipment.call("slack_post_message", {"channel_id": "C-fixture", "text": "Completed fixture operation."})
             self.assertTrue(stream.closed)
+            self.assertEqual(["C-fixture"], equipment._verified_slack_route_checks)
             self.assertTrue(result["isError"])
             self.assertIs(result["uncertain"], uncertain)
             self.assertEqual("17", result["result"]["retry_after"])
