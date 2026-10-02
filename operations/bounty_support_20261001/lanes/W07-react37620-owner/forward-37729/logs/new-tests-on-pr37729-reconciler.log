@@ -1,0 +1,136 @@
+yarn run v1.22.22
+$ node ./scripts/jest/jest-cli.js -r=experimental --ci packages/react-dom/src/__tests__/ReactDOMFizzServer-test.js -t 'browser-only|server fallback'
+FAIL packages/react-dom/src/__tests__/ReactDOMFizzServer-test.js (9.591 s)
+  ● ReactDOMFizzServer › updates the server fallback if a context it reads changes while browser-only content is suspended
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 1
+
+      <div>
+        <p
+    -     class="dark"
+    +     class="light"
+        >
+          Loading...
+        </p>
+      </div>
+
+      705 |       setTheme('dark');
+      706 |     });
+    > 707 |     expect(getVisibleChildren(container)).toEqual(
+          |                                                   ^
+      708 |       <div>
+      709 |         <p class="dark">Loading...</p>
+      710 |       </div>,
+
+      at Object.<anonymous> (packages/react-dom/src/__tests__/ReactDOMFizzServer-test.js:707:63)
+
+  ● ReactDOMFizzServer › renders browser-only content if a context change unblocks it while the server fallback is kept
+
+
+    Expected sequence of events did not occur.
+
+    - Expected
+    + Received
+
+    - Array [
+    -   "Loaded",
+    - ]
+    + Array []
+
+      771 |       setSource('fast');
+      772 |     });
+    > 773 |     assertLog(['Loaded']);
+          |     ^
+      774 |     expect(getVisibleChildren(container)).toEqual(
+      775 |       <div>
+      776 |         <span>Loaded</span>
+
+      at Object.<anonymous> (packages/react-dom/src/__tests__/ReactDOMFizzServer-test.js:773:5)
+
+  ● ReactDOMFizzServer › reveals browser-only content without waiting on an unrelated suspended transition
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: "aLoaded"
+    Received: "aLoading..."
+
+      837 |       resolveClientText('Loaded');
+      838 |     });
+    > 839 |     expect(container.textContent).toBe('aLoaded');
+          |                                   ^
+      840 |
+      841 |     await clientAct(() => {
+      842 |       resolveSlowTab();
+
+      at Object.<anonymous> (packages/react-dom/src/__tests__/ReactDOMFizzServer-test.js:839:35)
+
+  ● ReactDOMFizzServer › prerenders siblings of browser-only content while keeping the server fallback
+
+
+    Expected sequence of events did not occur.
+
+    - Expected
+    + Received
+
+      Array [
+        "Fetch A",
+    -   "Fetch B",
+      ]
+
+      889 |     ReactDOMClient.hydrateRoot(container, <App />);
+      890 |     // Both requests start without waiting on each other.
+    > 891 |     await waitForAll(['Fetch A', 'Fetch B']);
+          |           ^
+      892 |     expect(container.getElementsByTagName('p')[0]).toBe(serverFallback);
+      893 |
+      894 |     await clientAct(() => {
+
+      at Object.<anonymous> (packages/react-dom/src/__tests__/ReactDOMFizzServer-test.js:891:11)
+
+  ● ReactDOMFizzServer › reveals browser-only content that renders a stylesheet while keeping the server fallback
+
+    TypeError: Cannot read properties of undefined (reading 'textContent')
+
+      946 |         .forEach(link => link.dispatchEvent(new window.Event('load')));
+      947 |     });
+    > 948 |     expect(container.getElementsByTagName('span')[0].textContent).toBe(
+          |                                                     ^
+      949 |       'Loaded',
+      950 |     );
+      951 |     expect(container.getElementsByTagName('p').length).toBe(0);
+
+      at Object.<anonymous> (packages/react-dom/src/__tests__/ReactDOMFizzServer-test.js:948:53)
+
+  ● ReactDOMFizzServer › reveals browser-only content that only suspends on its deferred initial value
+
+
+    Expected sequence of events did not occur.
+
+    - Expected
+    + Received
+
+    - Array [
+    -   "Final",
+    - ]
+    + Array []
+
+      982 |
+      983 |     ReactDOMClient.hydrateRoot(container, <App />);
+    > 984 |     await waitForAll(['Final']);
+          |           ^
+      985 |     expect(getVisibleChildren(container)).toEqual(
+      986 |       <div>
+      987 |         <span>Final</span>
+
+      at Object.<anonymous> (packages/react-dom/src/__tests__/ReactDOMFizzServer-test.js:984:11)
+
+Test Suites: 1 failed, 1 total
+Tests:       6 failed, 180 skipped, 6 passed, 192 total
+Snapshots:   0 total
+Time:        13.217 s, estimated 86 s
+Ran all test suites matching packages/react-dom/src/__tests__/ReactDOMFizzServer-test.js with tests matching "browser-only|server fallback".
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.

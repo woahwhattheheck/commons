@@ -1,0 +1,14 @@
+focused -r=experimental: Tests:       1 skipped, 591 passed, 592 total exit=0
+focused -r=stable: Tests:       1 skipped, 591 passed, 592 total exit=0
+focused -r=www-modern --variant=true: Tests:       1 skipped, 591 passed, 592 total exit=0
+focused -r=www-modern --variant=false: Tests:       1 skipped, 591 passed, 592 total exit=0
+focused -r=experimental --prod: Tests:       1 skipped, 591 passed, 592 total exit=0
+focused -r=www-classic: Tests:       1 skipped, 591 passed, 592 total exit=0
+linc exit=0
+full experimental exit=0 Test Suites: 225 passed, 225 total Tests:       21 skipped, 5388 passed, 5409 total
+full stable exit=0 Test Suites: 225 passed, 225 total Tests:       21 skipped, 5387 passed, 5408 total
+flow dom-node exit=0 Found 0 errors
+flow fabric exit=0 Found 0 errors
+flow test exit=0 Found 0 errors
+HEAD 24520824dc27405ccfae3e097f34b5d1e7235be4 status: 0 changes
+DONE

@@ -14,7 +14,7 @@ Updated 2026-10-01. Sole submission owner for this issue.
 | BountyHub claim | `claims: []`, `claimed:false`, `solved:false`. No claim by us. |
 | GitHub issue | OPEN, label `Status: Unconfirmed`, no maintainer response. |
 | Competing upstream PRs (all open) | #37648 (xyjk0511), #37654 (Jr-kenny), #37694 (theworker02), #37705 (sidshehria). #37694 and #37705 have byte-identical reconciler diffs. |
-| Our PR | NOT OPENED. READY TO PUBLISH via the central publication road (see HANDOFF). Head `woahwhattheheck:fix-ssr-fallback-remount-browser-only` @ 8fce8b7d2a3d03f7b054abdc0413f87a1ce2ce78 is on the fork. `mcp__github__create_pull_request` to facebook/react was rejected by this session's PreToolUse publication hook: PUBLICATION_BLOCKED, rule unfavorable_finding. |
+| Our PR | react/react#37729 (opened by root; head 04f17e0 = W07 9e31598 content with CRLF line endings). Forward commit 2452082 (LF; tree = 8fce8b7, all repairs incl. ReactFiberCompleteWork) is checked and handed to root to push through central controls: `W07-react37620-owner/forward-37729/`. |
 | Merge state | none |
 | Payment state | none |
 
@@ -110,6 +110,9 @@ facebook/react's CONTRIBUTING and PR template contain no AI-use policy or disclo
   I did not reword the PR to defeat the classifier, and I did not route around the hook. Removing that evidence would misrepresent the change to the maintainers. Root/team publishes through the checked central road, which can map this concrete software fix report.
 - Final checks on 8fce8b7: 13 focused suites pass in experimental, stable, www-modern true/false, --prod and www-classic (591 passed, 1 skipped each); full react-reconciler+react-dom stable 225/225 suites (5387 passed); Flow full-check 0 errors in dom-node and fabric (and 9 renderer configs on 6a8c0d3); `yarn linc` passed. Full react-reconciler+react-dom experimental (clean rerun on 8fce8b7): 225/225 suites, 5388 passed, 21 skipped, exit 0.
 - Second adversarial check of 6a8c0d3: 17 prior findings confirmed fixed, 6 are the documented limits (unchanged). One new blocker (useDeferredValue initial value: loop, then stuck) was confirmed by 2 verifiers and fixed in 8fce8b7, with a regression test that fails on 6a8c0d3 (RangeError: potential infinite loop) and passes on main and on 8fce8b7.
+
+## 2026-10-02 forward candidate for #37729
+See `W07-react37620-owner/forward-37729/PROVENANCE.md`. Forward commit 24520824dc27405ccfae3e097f34b5d1e7235be4 on 04f17e0 has tree 0316c28 (= 8fce8b7). All checks pass. Root submits; W07 continues review follow-through once the PR head is current.
 
 ## Next action
 

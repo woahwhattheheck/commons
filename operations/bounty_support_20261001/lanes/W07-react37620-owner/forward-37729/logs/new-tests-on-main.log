@@ -1,0 +1,124 @@
+yarn run v1.22.22
+$ node ./scripts/jest/jest-cli.js -r=experimental --ci packages/react-dom/src/__tests__/ReactDOMFizzServer-test.js -t 'browser-only|server fallback'
+FAIL packages/react-dom/src/__tests__/ReactDOMFizzServer-test.js (5.638 s)
+  ● ReactDOMFizzServer › keeps the server fallback if browser-only content suspends on the client
+
+    expect(received).toBe(expected) // Object.is equality
+
+    If it should pass with deep equality, replace "toBe" with "toStrictEqual"
+
+    Expected: <p>Loading...</p>
+    Received: serializes to the same string
+
+      562 |       </div>,
+      563 |     );
+    > 564 |     expect(container.getElementsByTagName('p')[0]).toBe(serverFallback);
+          |                                                    ^
+      565 |     observer.takeRecords().forEach(record => {
+      566 |       record.removedNodes.forEach(node => removedNodes.push(node));
+      567 |     });
+
+      at Object.<anonymous> (packages/react-dom/src/__tests__/ReactDOMFizzServer-test.js:564:52)
+
+  ● ReactDOMFizzServer › replaces the server fallback if its props change while browser-only content is suspended
+
+    expect(received).toBe(expected) // Object.is equality
+
+    If it should pass with deep equality, replace "toBe" with "toStrictEqual"
+
+    Expected: <p>Loading...</p>
+    Received: serializes to the same string
+
+      625 |     );
+      626 |     await waitForAll([]);
+    > 627 |     expect(container.getElementsByTagName('p')[0]).toBe(serverFallback);
+          |                                                    ^
+      628 |
+      629 |     // The fallback changed, so the server fallback is no longer up to date.
+      630 |     await clientAct(() => {
+
+      at Object.<anonymous> (packages/react-dom/src/__tests__/ReactDOMFizzServer-test.js:627:52)
+
+  ● ReactDOMFizzServer › updates the server fallback if a context it reads changes while browser-only content is suspended
+
+    expect(received).toBe(expected) // Object.is equality
+
+    If it should pass with deep equality, replace "toBe" with "toStrictEqual"
+
+    Expected: <p class="light">Loading...</p>
+    Received: serializes to the same string
+
+      699 |     ReactDOMClient.hydrateRoot(container, <ClientApp />);
+      700 |     await waitForAll([]);
+    > 701 |     expect(container.getElementsByTagName('p')[0]).toBe(serverFallback);
+          |                                                    ^
+      702 |
+      703 |     // The server fallback reads the context, so it's no longer up to date.
+      704 |     await clientAct(() => {
+
+      at Object.<anonymous> (packages/react-dom/src/__tests__/ReactDOMFizzServer-test.js:701:52)
+
+  ● ReactDOMFizzServer › renders browser-only content if a context change unblocks it while the server fallback is kept
+
+    expect(received).toBe(expected) // Object.is equality
+
+    If it should pass with deep equality, replace "toBe" with "toStrictEqual"
+
+    Expected: <p>Loading...</p>
+    Received: serializes to the same string
+
+      766 |     ReactDOMClient.hydrateRoot(container, <ClientApp />);
+      767 |     await waitForAll([]);
+    > 768 |     expect(container.getElementsByTagName('p')[0]).toBe(serverFallback);
+          |                                                    ^
+      769 |
+      770 |     await clientAct(() => {
+      771 |       setSource('fast');
+
+      at Object.<anonymous> (packages/react-dom/src/__tests__/ReactDOMFizzServer-test.js:768:52)
+
+  ● ReactDOMFizzServer › reveals browser-only content without waiting on an unrelated suspended transition
+
+    expect(received).toBe(expected) // Object.is equality
+
+    If it should pass with deep equality, replace "toBe" with "toStrictEqual"
+
+    Expected: <p>Loading...</p>
+    Received: serializes to the same string
+
+      826 |     ReactDOMClient.hydrateRoot(container, <App />);
+      827 |     await waitForAll([]);
+    > 828 |     expect(container.getElementsByTagName('p')[0]).toBe(serverFallback);
+          |                                                    ^
+      829 |
+      830 |     await clientAct(() => {
+      831 |       React.startTransition(() => setTab('b'));
+
+      at Object.<anonymous> (packages/react-dom/src/__tests__/ReactDOMFizzServer-test.js:828:52)
+
+  ● ReactDOMFizzServer › prerenders siblings of browser-only content while keeping the server fallback
+
+    expect(received).toBe(expected) // Object.is equality
+
+    If it should pass with deep equality, replace "toBe" with "toStrictEqual"
+
+    Expected: <p>Loading...</p>
+    Received: serializes to the same string
+
+      890 |     // Both requests start without waiting on each other.
+      891 |     await waitForAll(['Fetch A', 'Fetch B']);
+    > 892 |     expect(container.getElementsByTagName('p')[0]).toBe(serverFallback);
+          |                                                    ^
+      893 |
+      894 |     await clientAct(() => {
+      895 |       getData('A').resolve('A');
+
+      at Object.<anonymous> (packages/react-dom/src/__tests__/ReactDOMFizzServer-test.js:892:52)
+
+Test Suites: 1 failed, 1 total
+Tests:       6 failed, 180 skipped, 6 passed, 192 total
+Snapshots:   0 total
+Time:        7.141 s
+Ran all test suites matching packages/react-dom/src/__tests__/ReactDOMFizzServer-test.js with tests matching "browser-only|server fallback".
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.

@@ -1,0 +1,10 @@
+yarn run v1.22.22
+$ node ./scripts/tasks/linc.js
+Linting changed files...
+> git rev-parse --is-inside-work-tree
+> git merge-base HEAD main
+> git diff --name-only --diff-filter=ACMRTUB 7c6ac13e19fef500b7f669a16bbd01ecc95965ca
+> git ls-files --others --exclude-standard
+
+Lint passed for changed files.
+Done in 5.70s.

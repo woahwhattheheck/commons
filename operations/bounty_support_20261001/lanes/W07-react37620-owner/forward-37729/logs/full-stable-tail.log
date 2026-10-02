@@ -1,0 +1,8 @@
+$ node ./scripts/jest/jest-cli.js -r=stable --ci packages/react-reconciler packages/react-dom
+
+Test Suites: 225 passed, 225 total
+Tests:       21 skipped, 5387 passed, 5408 total
+Snapshots:   83 passed, 83 total
+Time:        200.835 s
+Ran all test suites matching packages/react-reconciler|packages/react-dom.
+Done in 201.78s.

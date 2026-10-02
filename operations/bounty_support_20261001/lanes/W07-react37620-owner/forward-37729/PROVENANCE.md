@@ -18,3 +18,10 @@
   - #37729 reconciler (04f17e0 files) with the new tests: 6 fail (context fallback, context unblock, unrelated transition, sibling prerender, stylesheet, useDeferredValue) and 2 pass.
   - main 7c6ac13 with the new tests: 6 fail on fallback node identity (the issue); the stylesheet and deferred tests pass.
   - Forward commit: 8 of 8 pass.
+
+## Final checks on 24520824dc27405ccfae3e097f34b5d1e7235be4 (clean tree; `logs/summary.txt`)
+- 13 focused suites (Fizz server, partial/selective hydration incl. Activity, shell hydration, SuspenseList, hydration diff, form, Float, placeholder, Fizz deferred value, deferred value) in experimental, stable, www-modern variant true/false, experimental --prod and www-classic: 591 passed, 1 skipped each
+- `yarn linc`: exit 0
+- `yarn test -r=experimental --ci packages/react-reconciler packages/react-dom`: 225/225 suites, 5388 passed, 21 skipped, exit 0
+- `yarn test -r=stable --ci packages/react-reconciler packages/react-dom`: 225/225 suites, 5387 passed, 21 skipped, exit 0
+- `flow full-check --merge-timeout 0` with the generated dom-node, fabric and test configs: 0 errors each, exit 0

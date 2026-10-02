@@ -1,0 +1,8 @@
+yarn run v1.22.22
+$ node ./scripts/jest/jest-cli.js -r=experimental --ci packages/react-dom/src/__tests__/ReactDOMFizzSuspenseFallbackHydration-test.js
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        1.46 s
+Ran all test suites matching packages/react-dom/src/__tests__/ReactDOMFizzSuspenseFallbackHydration-test.js.
+Done in 2.60s.
