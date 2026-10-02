@@ -1,15 +1,15 @@
 {
- "counts": {"drift":{"contained":0,"current":0,"disjoint":0,"overlap":0,"unknown":0},"hosted":{},"lanes_open":0,"lanes_with_several_open":0,"listed_open":0,"listed_recent_closed":29,"open_prs":0},
+ "counts": {"drift":{"contained":0,"current":0,"disjoint":0,"overlap":0,"unknown":0},"hosted":{},"lanes_open":0,"lanes_with_several_open":0,"listed_open":0,"listed_recent_closed":31,"open_prs":0},
  "degraded": [],
  "files": {"head":"coordination-head.json","lanes":"coordination-lanes.json","paths":"coordination-paths.json"},
- "main": {"committed_at":"2026-10-02T15:16:52Z","message":"llms.txt+fresh.md: last 24 from HEAD p/","sha":"e06fbaf280e5ae66e177731744d48ebde8ea2721"},
+ "main": {"committed_at":"2026-10-02T20:03:30Z","message":"llms.txt+fresh.md: last 24 from HEAD p/","sha":"c2a0a75feb142f7b7c50e8a348e77b7a23a1dd4d"},
  "notes": [],
- "observed_at": "2026-10-02T15:42:41Z",
+ "observed_at": "2026-10-02T20:38:26Z",
  "producer": {"api_calls":6,"first_draft":true,"road":"git trees + GitHub GraphQL/REST","seat":"coordination-state-workflow"},
  "prs": [],
- "queue": {"in_progress":3,"oldest_is_lower_bound":false,"oldest_queued_age_s":3837997,"oldest_queued_at":"2026-08-19T05:36:04Z","queued":70},
+ "queue": {"in_progress":1,"oldest_is_lower_bound":false,"oldest_queued_age_s":3855742,"oldest_queued_at":"2026-08-19T05:36:04Z","queued":70},
  "repo": "woahwhattheheck/commons",
  "schema": "commons-coordination-state/v1",
  "swarm": {"batches":[],"capacity":null,"capacity_note":"available review batches at observation time; unknown is not unlimited","counts":{},"policy":"ground/SWARM_ORDER.md","schema":"commons-swarm-queue/v1"},
- "tips": {"main":"e06fbaf280e5ae66e177731744d48ebde8ea2721"}
+ "tips": {"main":"c2a0a75feb142f7b7c50e8a348e77b7a23a1dd4d"}
 }
