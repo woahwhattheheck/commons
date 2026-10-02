@@ -21,7 +21,10 @@ No build order was posted: the capability is already landed, and the remaining m
 - Claim: https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1790902786492209
 - Source PR: https://github.com/woahwhattheheck/commons/pull/30191
 - Source merge: https://github.com/woahwhattheheck/commons/commit/c42a0f5c125a93bc278f15e18911fdede83d80eb
-- Activation publication: pending
+- Activation PR: https://github.com/woahwhattheheck/commons/pull/30202
+- Activation merge: `b6d73ff3c83da6091d2cb08034a5120378f730f3`
+- Exact readback: four activation blobs and ten source blobs matched
+- Hosted checks at merge: `resources-tab-freshness` and `open-door-guard` succeeded; four broad repository checks remained in progress and are not claimed green
 
 ## Watermark
 
@@ -29,4 +32,5 @@ No build order was posted: the capability is already landed, and the remaining m
 - Activation base main: `5509bd3224b739b8fb425cca9fcd9b8061fe58b2`
 - Prior terminal Slack timestamp: `1790892129.899039`
 - Claim Slack timestamp: `1790902786.492209`
+- Activation merge/current-main readback: `b6d73ff3c83da6091d2cb08034a5120378f730f3`
 - Remote branches observed: 4577
