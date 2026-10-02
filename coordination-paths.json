@@ -1,8 +1,6 @@
 {
  "note": "paths each open pull request changes since its merge-base (first 40; drift --pr N prints all)",
- "observed_at": "2026-10-01T23:23:25Z",
- "prs": [
-  {"number":30191,"path_count":19,"paths":["command.html","integrations/command_center/test_command_page_refresh.cjs","integrations/command_center/test_request_budget.py","integrations/command_center/test_work_integration.py","integrations/commons_publication_hooks/hook.py","integrations/commons_publication_hooks/install.py","integrations/commons_publication_hooks/slack_route_mapping.py","integrations/shared_equipment/README.md","integrations/shared_equipment/provider_io.py","integrations/shared_equipment/role_equipment.json","integrations/shared_equipment/services.py","integrations/shared_equipment/slack_carrier.py","integrations/shared_equipment/test_credential_transfer.py","integrations/shared_equipment/test_equipment.py","integrations/shared_equipment/test_shared_equipment_workhandoff.py","integrations/shared_equipment/workhandoff.py","test_commons_transport_outcomes.py","tests/test_slack_publication_hook.py","tests/test_slack_route_mapping.py"]}
- ],
+ "observed_at": "2026-10-02T02:31:39Z",
+ "prs": [],
  "schema": "commons-coordination-paths/v1"
 }

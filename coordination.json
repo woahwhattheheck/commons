@@ -1,17 +1,15 @@
 {
- "counts": {"drift":{"contained":0,"current":0,"disjoint":1,"overlap":0,"unknown":0},"hosted":{"CANCELLED_NOT_RUN":1},"lanes_open":1,"lanes_with_several_open":0,"listed_open":1,"listed_recent_closed":22,"open_prs":1},
+ "counts": {"drift":{"contained":0,"current":0,"disjoint":0,"overlap":0,"unknown":0},"hosted":{},"lanes_open":0,"lanes_with_several_open":0,"listed_open":0,"listed_recent_closed":25,"open_prs":0},
  "degraded": [],
  "files": {"head":"coordination-head.json","lanes":"coordination-lanes.json","paths":"coordination-paths.json"},
- "main": {"committed_at":"2026-10-01T23:19:27Z","message":"llms.txt+fresh.md: last 24 from HEAD p/","sha":"cbdf4fba424d6bfb0f2346b68b7c59d9b29c9f67"},
+ "main": {"committed_at":"2026-10-02T02:24:46Z","message":"llms.txt+fresh.md: last 24 from HEAD p/","sha":"ff02d575c9634fbce2e9fb8b4a2bdc886b395dbb"},
  "notes": [],
- "observed_at": "2026-10-01T23:23:25Z",
+ "observed_at": "2026-10-02T02:31:39Z",
  "producer": {"api_calls":6,"first_draft":true,"road":"git trees + GitHub GraphQL/REST","seat":"coordination-state-workflow"},
- "prs": [
-  {"base_ref":"main","content_key":"68be349ad8016cb3","created_at":"2026-10-01T18:22:50Z","draft":false,"drift":{"main_delta_count":386,"merge_base":"a7e3e7c1e4926ca6bab546b4a0c0a0ddd05f1ff8","overlap_count":0,"path_count":19,"status":"disjoint"},"head":"1517198b64035650226b9492030a7d77565bc5e3","head_ref":"codex/cloudclaude-team-workhandoff-20261001","hosted":{"counts":{"CANCELLED_NOT_RUN":3,"SUCCESS":21},"not_success":[{"name":"Manual full battery - evidence freshness","state":"CANCELLED_NOT_RUN"},{"name":"Manual full battery - provider cost","state":"CANCELLED_NOT_RUN"},{"name":"Manual full battery - spatial carrier","state":"CANCELLED_NOT_RUN"}],"rollup":"CANCELLED_NOT_RUN"},"number":30191,"swarm":{"review":{"reason":"declare seat, family and operation before integration","state":"NEEDS_PACKET"},"risk":"unknown","work":{}},"title":"Add internal team workhandoff via Shared Equipment","updated_at":"2026-10-01T19:49:23Z","verdicts":{"current_head":{},"reviews_read":0,"superseded":[]}}
- ],
- "queue": {"in_progress":1,"oldest_is_lower_bound":false,"oldest_queued_age_s":3779241,"oldest_queued_at":"2026-08-19T05:36:04Z","queued":71},
+ "prs": [],
+ "queue": {"in_progress":2,"oldest_is_lower_bound":false,"oldest_queued_age_s":3790535,"oldest_queued_at":"2026-08-19T05:36:04Z","queued":70},
  "repo": "woahwhattheheck/commons",
  "schema": "commons-coordination-state/v1",
- "swarm": {"batches":[],"capacity":null,"capacity_note":"available review batches at observation time; unknown is not unlimited","counts":{"NEEDS_PACKET":1},"policy":"ground/SWARM_ORDER.md","schema":"commons-swarm-queue/v1"},
- "tips": {"main":"cbdf4fba424d6bfb0f2346b68b7c59d9b29c9f67"}
+ "swarm": {"batches":[],"capacity":null,"capacity_note":"available review batches at observation time; unknown is not unlimited","counts":{},"policy":"ground/SWARM_ORDER.md","schema":"commons-swarm-queue/v1"},
+ "tips": {"main":"ff02d575c9634fbce2e9fb8b4a2bdc886b395dbb"}
 }
