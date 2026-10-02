@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.microg.gms.constellation.core.verification.MtSmsInboxScopeTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-10-02T01:57:02.380Z" hostname="vm" time="0.179">
+  <properties/>
+  <testcase name="dispose_disposesOwnInboxes_andIsIdempotent" classname="org.microg.gms.constellation.core.verification.MtSmsInboxScopeTest" time="0.167"/>
+  <testcase name="dispose_cannotEraseANewerRequest" classname="org.microg.gms.constellation.core.verification.MtSmsInboxScopeTest" time="0.001"/>
+  <testcase name="prepare_installsInboxes_andGetReturnsThem" classname="org.microg.gms.constellation.core.verification.MtSmsInboxScopeTest" time="0.001"/>
+  <testcase name="registry_resolvesInboxesFromTheCallingCoroutineScope" classname="org.microg.gms.constellation.core.verification.MtSmsInboxScopeTest" time="0.004"/>
+  <testcase name="registry_withoutScope_disposeIsNoOp_butGetAndPrepareFail" classname="org.microg.gms.constellation.core.verification.MtSmsInboxScopeTest" time="0.002"/>
+  <testcase name="get_beforePrepare_throws" classname="org.microg.gms.constellation.core.verification.MtSmsInboxScopeTest" time="0.001"/>
+  <testcase name="prepare_withNoSubIds_fallsBackToDefaultSubId" classname="org.microg.gms.constellation.core.verification.MtSmsInboxScopeTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

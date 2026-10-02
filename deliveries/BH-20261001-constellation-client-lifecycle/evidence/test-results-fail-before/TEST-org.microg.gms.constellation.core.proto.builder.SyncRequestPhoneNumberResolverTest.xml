@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.microg.gms.constellation.core.proto.builder.SyncRequestPhoneNumberResolverTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-10-02T01:59:31.383Z" hostname="vm" time="0.002">
+  <properties/>
+  <testcase name="fallsBackToRawNumberWhenHintBlank" classname="org.microg.gms.constellation.core.proto.builder.SyncRequestPhoneNumberResolverTest" time="0.001"/>
+  <testcase name="returnsEmptyWhenAllInputsMissing" classname="org.microg.gms.constellation.core.proto.builder.SyncRequestPhoneNumberResolverTest" time="0.0"/>
+  <testcase name="prefersFormattedE164" classname="org.microg.gms.constellation.core.proto.builder.SyncRequestPhoneNumberResolverTest" time="0.0"/>
+  <testcase name="skipsBlankE164ForHint" classname="org.microg.gms.constellation.core.proto.builder.SyncRequestPhoneNumberResolverTest" time="0.001"/>
+  <testcase name="fallsBackToPhoneNumberHintWhenE164Missing" classname="org.microg.gms.constellation.core.proto.builder.SyncRequestPhoneNumberResolverTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

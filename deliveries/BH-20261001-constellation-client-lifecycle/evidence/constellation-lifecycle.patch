@@ -1,0 +1,778 @@
+diff --git a/play-services-constellation/core/build.gradle b/play-services-constellation/core/build.gradle
+index 348cd20..4e24df9 100644
+--- a/play-services-constellation/core/build.gradle
++++ b/play-services-constellation/core/build.gradle
+@@ -70,6 +70,8 @@ dependencies {
+     implementation "androidx.preference:preference-ktx:$preferenceVersion"
+ 
+     testImplementation 'junit:junit:4.13.2'
++    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutineVersion"
++    testImplementation 'org.mockito:mockito-core:5.11.0'
+ 
+     androidTestImplementation 'androidx.test:runner:1.6.2'
+     androidTestImplementation 'junit:junit:4.13.2'
+diff --git a/play-services-constellation/core/src/main/kotlin/org/microg/gms/constellation/core/ConstellationApiService.kt b/play-services-constellation/core/src/main/kotlin/org/microg/gms/constellation/core/ConstellationApiService.kt
+index e0c76a4..6a8f967 100644
+--- a/play-services-constellation/core/src/main/kotlin/org/microg/gms/constellation/core/ConstellationApiService.kt
++++ b/play-services-constellation/core/src/main/kotlin/org/microg/gms/constellation/core/ConstellationApiService.kt
+@@ -18,7 +18,6 @@ import kotlinx.coroutines.CoroutineScope
+ import kotlinx.coroutines.Dispatchers
+ import kotlinx.coroutines.SupervisorJob
+ import kotlinx.coroutines.cancel
+-import kotlinx.coroutines.launch
+ import org.microg.gms.BaseService
+ import org.microg.gms.common.GmsService
+ import org.microg.gms.common.PackageUtils
+@@ -63,8 +62,10 @@ class ConstellationApiService : BaseService(TAG, GmsService.CONSTELLATION) {
+ class ConstellationApiServiceImpl(
+     private val context: Context,
+     private val packageName: String?,
+-    private val serviceScope: CoroutineScope
++    serviceScope: CoroutineScope
+ ) : IConstellationApiService.Stub() {
++    private val dispatcher = ConstellationRequestDispatcher(serviceScope)
++
+     override fun verifyPhoneNumberV1(
+         cb: IConstellationCallbacks?,
+         bundle: Bundle?,
+@@ -78,13 +79,8 @@ class ConstellationApiServiceImpl(
+         )
+         if (cb == null || bundle == null) return
+         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return
+-        serviceScope.launch {
+-            handleVerifyPhoneNumberV1(
+-                context,
+-                ConstellationCallbacksWrapper(cb),
+-                bundle,
+-                packageName
+-            )
++        dispatcher.dispatch(cb, "verifyPhoneNumberV1") { callbacks ->
++            handleVerifyPhoneNumberV1(context, callbacks, bundle, packageName)
+         }
+     }
+ 
+@@ -96,13 +92,8 @@ class ConstellationApiServiceImpl(
+         Log.i(TAG, "verifyPhoneNumberSingleUse()")
+         if (cb == null || bundle == null) return
+         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return
+-        serviceScope.launch {
+-            handleVerifyPhoneNumberSingleUse(
+-                context,
+-                ConstellationCallbacksWrapper(cb),
+-                bundle,
+-                packageName
+-            )
++        dispatcher.dispatch(cb, "verifyPhoneNumberSingleUse") { callbacks ->
++            handleVerifyPhoneNumberSingleUse(context, callbacks, bundle, packageName)
+         }
+     }
+ 
+@@ -117,13 +108,8 @@ class ConstellationApiServiceImpl(
+         )
+         if (cb == null || request == null) return
+         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return
+-        serviceScope.launch {
+-            handleVerifyPhoneNumberRequest(
+-                context,
+-                ConstellationCallbacksWrapper(cb),
+-                request,
+-                packageName
+-            )
++        dispatcher.dispatch(cb, "verifyPhoneNumber") { callbacks ->
++            handleVerifyPhoneNumberRequest(context, callbacks, request, packageName)
+         }
+     }
+ 
+@@ -134,12 +120,8 @@ class ConstellationApiServiceImpl(
+     ) {
+         Log.i(TAG, "getIidToken(): $request")
+         if (cb == null || request == null) return
+-        serviceScope.launch {
+-            handleGetIidToken(
+-                context,
+-                ConstellationCallbacksWrapper(cb),
+-                request
+-            )
++        dispatcher.dispatch(cb, "getIidToken") { callbacks ->
++            handleGetIidToken(context, callbacks, request)
+         }
+     }
+ 
+@@ -151,12 +133,8 @@ class ConstellationApiServiceImpl(
+         Log.i(TAG, "getPnvCapabilities(): $request")
+         if (cb == null || request == null) return
+         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP_MR1) return
+-        serviceScope.launch {
+-            handleGetPnvCapabilities(
+-                context,
+-                ConstellationCallbacksWrapper(cb),
+-                request
+-            )
++        dispatcher.dispatch(cb, "getPnvCapabilities") { callbacks ->
++            handleGetPnvCapabilities(context, callbacks, request)
+         }
+     }
+ }
+diff --git a/play-services-constellation/core/src/main/kotlin/org/microg/gms/constellation/core/ConstellationCallbacksWrapper.kt b/play-services-constellation/core/src/main/kotlin/org/microg/gms/constellation/core/ConstellationCallbacksWrapper.kt
+index 8fa0aa6..8310372 100644
+--- a/play-services-constellation/core/src/main/kotlin/org/microg/gms/constellation/core/ConstellationCallbacksWrapper.kt
++++ b/play-services-constellation/core/src/main/kotlin/org/microg/gms/constellation/core/ConstellationCallbacksWrapper.kt
+@@ -10,6 +10,7 @@ import com.google.android.gms.constellation.GetPnvCapabilitiesResponse
+ import com.google.android.gms.constellation.PhoneNumberInfo
+ import com.google.android.gms.constellation.VerifyPhoneNumberResponse
+ import com.google.android.gms.constellation.internal.IConstellationCallbacks
++import kotlin.coroutines.cancellation.CancellationException
+ 
+ class ConstellationCallbacksWrapper(
+     private val cb: IConstellationCallbacks
+@@ -52,8 +53,17 @@ class ConstellationCallbacksWrapper(
+     private inline fun runRemote(methodName: String, block: () -> Unit) {
+         try {
+             block()
++        } catch (e: CancellationException) {
++            // Never swallow cooperative cancellation of the surrounding request.
++            throw e
+         } catch (e: RemoteException) {
+             Log.w(TAG, "RemoteException in $methodName", e)
++        } catch (e: RuntimeException) {
++            // A caller's binder proxy can surface more than RemoteException when the client is dead
++            // or misbehaving (e.g. DeadObjectException is a RemoteException, but marshalling and
++            // already-dead paths can throw other RuntimeExceptions). Contain them so delivering a
++            // result to a broken caller cannot crash the request coroutine.
++            Log.w(TAG, "RuntimeException delivering $methodName to caller", e)
+         }
+     }
+ 
+diff --git a/play-services-constellation/core/src/main/kotlin/org/microg/gms/constellation/core/ConstellationRequestDispatcher.kt b/play-services-constellation/core/src/main/kotlin/org/microg/gms/constellation/core/ConstellationRequestDispatcher.kt
+new file mode 100644
+index 0000000..6057801
+--- /dev/null
++++ b/play-services-constellation/core/src/main/kotlin/org/microg/gms/constellation/core/ConstellationRequestDispatcher.kt
+@@ -0,0 +1,109 @@
++/*
++ * SPDX-FileCopyrightText: 2026, microG Project Team
++ * SPDX-License-Identifier: Apache-2.0
++ */
++
++package org.microg.gms.constellation.core
++
++import android.os.IBinder
++import android.os.RemoteException
++import android.util.Log
++import com.google.android.gms.constellation.internal.IConstellationCallbacks
++import kotlinx.coroutines.CancellationException
++import kotlinx.coroutines.CoroutineName
++import kotlinx.coroutines.CoroutineScope
++import kotlinx.coroutines.Job
++import kotlinx.coroutines.job
++import kotlinx.coroutines.launch
++import org.microg.gms.constellation.core.verification.MtSmsInboxScope
++import kotlin.coroutines.coroutineContext
++
++private const val TAG = "C11NRequest"
++
++/**
++ * Owns the lifetime of a single Constellation API request.
++ *
++ * Every request is launched as a cancellable child of the service [CoroutineScope] and is given:
++ *
++ *  * its own [MtSmsInboxScope], so the MT SMS inboxes it creates are isolated from (and cannot be
++ *    disposed by) any other concurrent request;
++ *  * a [IBinder.DeathRecipient] on the caller's callback binder, so that when the caller process
++ *    dies the request's coroutine — and therefore any in-flight gRPC call — is cancelled promptly
++ *    instead of running to completion against a client that is no longer listening;
++ *  * exception containment, so a failure in one request is logged rather than propagated to the
++ *    service scope where it could tear down unrelated requests or crash the process.
++ *
++ * Cancellation is propagated to the network layer purely through structured concurrency: Wire's
++ * suspending `GrpcCall.execute` registers `continuation.invokeOnCancellation { call.cancel() }`
++ * before it enqueues the OkHttp call, so cancelling this request's [Job] aborts the HTTP call
++ * synchronously. There is deliberately no late `Job.invokeOnCompletion { grpcCall.cancel() }` hook;
++ * the death recipient is unlinked in a `finally` block instead.
++ */
++internal class ConstellationRequestDispatcher(private val scope: CoroutineScope) {
++
++    /**
++     * Launches [block] for the request identified by [name], delivering results through a
++     * [ConstellationCallbacksWrapper] around [callbacks]. Returns the request [Job].
++     */
++    fun dispatch(
++        callbacks: IConstellationCallbacks,
++        name: String,
++        block: suspend (IConstellationCallbacks) -> Unit
++    ): Job {
++        val wrapper = ConstellationCallbacksWrapper(callbacks)
++        return scope.launch(MtSmsInboxScope() + CoroutineName("constellation-$name")) {
++            val requestJob = coroutineContext.job
++            val binder = callbacks.asBinder()
++            val recipient = CallerDeathRecipient(requestJob, name)
++            val linked = linkToDeath(binder, recipient, name, requestJob)
++            try {
++                block(wrapper)
++            } catch (e: CancellationException) {
++                Log.d(TAG, "$name request cancelled")
++                throw e
++            } catch (e: Exception) {
++                // Contain the failure: a single failing request must not propagate to the service
++                // scope. Errors (e.g. OutOfMemoryError) are intentionally left to propagate.
++                Log.e(TAG, "$name request failed", e)
++            } finally {
++                if (linked) unlinkToDeath(binder, recipient)
++            }
++        }
++    }
++
++    private fun linkToDeath(
++        binder: IBinder,
++        recipient: IBinder.DeathRecipient,
++        name: String,
++        requestJob: Job
++    ): Boolean = try {
++        binder.linkToDeath(recipient, 0)
++        true
++    } catch (e: RemoteException) {
++        // The caller is already gone; there is nothing to do for it.
++        Log.d(TAG, "Caller for $name already dead; cancelling request")
++        requestJob.cancel(CancellationException("Caller process already dead"))
++        false
++    } catch (e: RuntimeException) {
++        Log.w(TAG, "linkToDeath failed for $name", e)
++        false
++    }
++
++    private fun unlinkToDeath(binder: IBinder, recipient: IBinder.DeathRecipient) {
++        try {
++            binder.unlinkToDeath(recipient, 0)
++        } catch (e: Exception) {
++            // Binder already died or recipient already removed — nothing left to clean up.
++        }
++    }
++
++    private class CallerDeathRecipient(
++        private val requestJob: Job,
++        private val name: String
++    ) : IBinder.DeathRecipient {
++        override fun binderDied() {
++            Log.d(TAG, "Caller for $name died; cancelling request")
++            requestJob.cancel(CancellationException("Caller process died"))
++        }
++    }
++}
+diff --git a/play-services-constellation/core/src/main/kotlin/org/microg/gms/constellation/core/verification/MtSmsVerifier.kt b/play-services-constellation/core/src/main/kotlin/org/microg/gms/constellation/core/verification/MtSmsVerifier.kt
+index d4beb01..e9d6298 100644
+--- a/play-services-constellation/core/src/main/kotlin/org/microg/gms/constellation/core/verification/MtSmsVerifier.kt
++++ b/play-services-constellation/core/src/main/kotlin/org/microg/gms/constellation/core/verification/MtSmsVerifier.kt
+@@ -14,8 +14,10 @@ import kotlinx.coroutines.withTimeoutOrNull
+ import org.microg.gms.constellation.core.proto.ChallengeResponse
+ import org.microg.gms.constellation.core.proto.MTChallenge
+ import org.microg.gms.constellation.core.proto.MTChallengeResponseData
+-import java.util.concurrent.ConcurrentHashMap
+ import java.util.concurrent.TimeUnit
++import kotlin.coroutines.AbstractCoroutineContextElement
++import kotlin.coroutines.CoroutineContext
++import kotlin.coroutines.coroutineContext
+ import kotlin.coroutines.resume
+ 
+ private const val TAG = "MtSmsVerifier"
+@@ -47,29 +49,90 @@ suspend fun MTChallenge.verify(
+     )
+ }
+ 
++/**
++ * Handle to a per-request MT SMS inbox. Extracted as an interface so the request-scoping logic in
++ * [MtSmsInboxScope] can be unit tested without registering a real [BroadcastReceiver].
++ */
++internal interface MtSmsInboxHandle {
++    suspend fun awaitMatch(expectedBody: String): ReceivedSms?
++    fun dispose()
++}
++
++/**
++ * Per-request registry for [MtSmsInbox] instances.
++ *
++ * The inboxes are owned by an [MtSmsInboxScope] carried in the request's coroutine context, which
++ * the Constellation service installs when it dispatches a request. Because every request has its
++ * own scope, [dispose] only tears down the inboxes of the request that calls it. That is what makes
++ * the cleanup safe under concurrency: a slow or cancelled request running its `finally { dispose() }`
++ * can never unregister the SMS receivers of a newer request that started in the meantime.
++ */
+ internal object MtSmsInboxRegistry {
+-    private val inboxes = ConcurrentHashMap<Int, MtSmsInbox>()
++    suspend fun prepare(context: Context, subIds: Iterable<Int>) {
++        currentScope().prepare(context, subIds)
++    }
+ 
+-    fun prepare(context: Context, subIds: Iterable<Int>) {
+-        dispose()
++    suspend fun get(subId: Int): MtSmsInboxHandle = currentScope().get(subId)
++
++    suspend fun dispose() {
++        // Null-safe so it is a harmless no-op (never throws) when called from a finally block,
++        // including during cancellation unwinding.
++        coroutineContext[MtSmsInboxScope]?.dispose()
++    }
++
++    private suspend fun currentScope(): MtSmsInboxScope =
++        coroutineContext[MtSmsInboxScope] ?: error(
++            "No MtSmsInboxScope in the current coroutine context. Constellation requests must be " +
++                "dispatched through ConstellationRequestDispatcher so MT SMS inboxes are scoped per request."
++        )
++}
+ 
++/**
++ * Coroutine-context element that owns the MT SMS inboxes of a single Constellation request.
++ *
++ * Each dispatched request carries its own instance, so the registry operations above resolve to the
++ * inboxes of the calling request only. [inboxFactory] is overridable for tests; production uses the
++ * real [MtSmsInbox].
++ */
++internal class MtSmsInboxScope(
++    private val inboxFactory: (Context, Int) -> MtSmsInboxHandle = { context, subId ->
++        MtSmsInbox(context, subId)
++    }
++) : AbstractCoroutineContextElement(MtSmsInboxScope) {
++    companion object Key : CoroutineContext.Key<MtSmsInboxScope>
++
++    private val lock = Any()
++    private val inboxes = HashMap<Int, MtSmsInboxHandle>()
++    private var disposed = false
++
++    fun prepare(context: Context, subIds: Iterable<Int>) {
+         val effectiveSubIds = subIds.distinct().ifEmpty { listOf(-1) }
+-        for (subId in effectiveSubIds) {
+-            inboxes[subId] = MtSmsInbox(context.applicationContext, subId)
++        val replaced: List<MtSmsInboxHandle>
++        synchronized(lock) {
++            check(!disposed) { "MtSmsInboxScope already disposed" }
++            // Only ever touches THIS request's own inboxes.
++            replaced = inboxes.values.toList()
++            inboxes.clear()
++            for (subId in effectiveSubIds) {
++                inboxes[subId] = inboxFactory(context, subId)
++            }
+         }
++        replaced.forEach { it.dispose() }
+     }
+ 
+-    fun get(subId: Int): MtSmsInbox {
+-        return inboxes[subId]
+-            ?: error("MT SMS inbox for subId=$subId was not initialized")
++    fun get(subId: Int): MtSmsInboxHandle = synchronized(lock) {
++        inboxes[subId] ?: error("MT SMS inbox for subId=$subId was not initialized")
+     }
+ 
+     fun dispose() {
+-        val currentInboxes = inboxes.values.toList()
+-        inboxes.clear()
+-        for (inbox in currentInboxes) {
+-            inbox.dispose()
++        val current: List<MtSmsInboxHandle>
++        synchronized(lock) {
++            if (disposed) return
++            disposed = true
++            current = inboxes.values.toList()
++            inboxes.clear()
+         }
++        current.forEach { it.dispose() }
+     }
+ }
+ 
+@@ -86,7 +149,7 @@ private data class PendingMatch(
+ internal class MtSmsInbox(
+     context: Context,
+     private val subId: Int
+-) {
++) : MtSmsInboxHandle {
+     private val context = context.applicationContext
+     private val lock = Any()
+     private val bufferedMessages = mutableListOf<ReceivedSms>()
+@@ -118,7 +181,7 @@ internal class MtSmsInbox(
+         )
+     }
+ 
+-    suspend fun awaitMatch(expectedBody: String): ReceivedSms? {
++    override suspend fun awaitMatch(expectedBody: String): ReceivedSms? {
+         return suspendCancellableCoroutine { continuation ->
+             synchronized(lock) {
+                 bufferedMessages.firstOrNull { it.body.contains(expectedBody) }?.let {
+@@ -165,7 +228,7 @@ internal class MtSmsInbox(
+         }
+     }
+ 
+-    fun dispose() {
++    override fun dispose() {
+         synchronized(lock) {
+             pendingMatches.clear()
+             bufferedMessages.clear()
+diff --git a/play-services-constellation/core/src/test/kotlin/org/microg/gms/constellation/core/ConstellationCallbacksWrapperTest.kt b/play-services-constellation/core/src/test/kotlin/org/microg/gms/constellation/core/ConstellationCallbacksWrapperTest.kt
+new file mode 100644
+index 0000000..c842c04
+--- /dev/null
++++ b/play-services-constellation/core/src/test/kotlin/org/microg/gms/constellation/core/ConstellationCallbacksWrapperTest.kt
+@@ -0,0 +1,68 @@
++/*
++ * SPDX-FileCopyrightText: 2026, microG Project Team
++ * SPDX-License-Identifier: Apache-2.0
++ */
++
++package org.microg.gms.constellation.core
++
++import android.os.IBinder
++import android.os.RemoteException
++import com.google.android.gms.constellation.internal.IConstellationCallbacks
++import org.junit.Assert.assertSame
++import org.junit.Test
++import org.mockito.Mockito
++import kotlin.coroutines.cancellation.CancellationException
++
++class ConstellationCallbacksWrapperTest {
++
++    private val binder: IBinder = Mockito.mock(IBinder::class.java)
++
++    private fun delegate(): IConstellationCallbacks =
++        Mockito.mock(IConstellationCallbacks::class.java).also {
++            Mockito.`when`(it.asBinder()).thenReturn(binder)
++        }
++
++    @Test
++    fun remoteExceptionFromCaller_isContained() {
++        val delegate = delegate()
++        Mockito.doThrow(Mockito.mock(RemoteException::class.java))
++            .`when`(delegate).onPhoneNumberVerified(Mockito.any(), Mockito.any(), Mockito.any())
++
++        // Must not propagate: a dead caller cannot be allowed to crash the request coroutine.
++        ConstellationCallbacksWrapper(delegate).onPhoneNumberVerified(null, null, null)
++    }
++
++    @Test
++    fun runtimeExceptionFromCaller_isContained() {
++        val delegate = delegate()
++        Mockito.doThrow(IllegalStateException("caller proxy is dead"))
++            .`when`(delegate).onIidTokenGenerated(Mockito.any(), Mockito.any(), Mockito.any())
++
++        // The old wrapper only caught RemoteException; this would have escaped and failed the request.
++        ConstellationCallbacksWrapper(delegate).onIidTokenGenerated(null, null, null)
++    }
++
++    @Test(expected = CancellationException::class)
++    fun cancellation_isNotSwallowed() {
++        val delegate = delegate()
++        Mockito.doThrow(CancellationException("cancelled"))
++            .`when`(delegate).onGetPnvCapabilitiesCompleted(Mockito.any(), Mockito.any(), Mockito.any())
++
++        ConstellationCallbacksWrapper(delegate).onGetPnvCapabilitiesCompleted(null, null, null)
++    }
++
++    @Test
++    fun successfulDelivery_passesThroughToCaller() {
++        val delegate = delegate()
++        ConstellationCallbacksWrapper(delegate).onPhoneNumberVerificationsCompleted(null, null, null)
++
++        Mockito.verify(delegate)
++            .onPhoneNumberVerificationsCompleted(Mockito.any(), Mockito.any(), Mockito.any())
++    }
++
++    @Test
++    fun asBinder_delegatesToWrappedCallback() {
++        val delegate = delegate()
++        assertSame(binder, ConstellationCallbacksWrapper(delegate).asBinder())
++    }
++}
+diff --git a/play-services-constellation/core/src/test/kotlin/org/microg/gms/constellation/core/ConstellationRequestDispatcherTest.kt b/play-services-constellation/core/src/test/kotlin/org/microg/gms/constellation/core/ConstellationRequestDispatcherTest.kt
+new file mode 100644
+index 0000000..5ced068
+--- /dev/null
++++ b/play-services-constellation/core/src/test/kotlin/org/microg/gms/constellation/core/ConstellationRequestDispatcherTest.kt
+@@ -0,0 +1,146 @@
++/*
++ * SPDX-FileCopyrightText: 2026, microG Project Team
++ * SPDX-License-Identifier: Apache-2.0
++ */
++
++package org.microg.gms.constellation.core
++
++import android.os.IBinder
++import android.os.RemoteException
++import com.google.android.gms.constellation.internal.IConstellationCallbacks
++import kotlinx.coroutines.CancellationException
++import kotlinx.coroutines.CoroutineScope
++import kotlinx.coroutines.ExperimentalCoroutinesApi
++import kotlinx.coroutines.Job
++import kotlinx.coroutines.SupervisorJob
++import kotlinx.coroutines.awaitCancellation
++import kotlinx.coroutines.cancel
++import kotlinx.coroutines.test.UnconfinedTestDispatcher
++import kotlinx.coroutines.test.advanceUntilIdle
++import kotlinx.coroutines.test.runTest
++import org.junit.Assert.assertFalse
++import org.junit.Assert.assertTrue
++import org.junit.Test
++import org.mockito.Mockito
++
++@OptIn(ExperimentalCoroutinesApi::class)
++class ConstellationRequestDispatcherTest {
++
++    /** A caller whose callback binder records its death recipients and can be "killed" on demand. */
++    private class FakeCaller(linkThrows: Boolean = false) {
++        private val recipients = mutableListOf<IBinder.DeathRecipient>()
++        val binder: IBinder = Mockito.mock(IBinder::class.java)
++        val callbacks: IConstellationCallbacks = Mockito.mock(IConstellationCallbacks::class.java)
++
++        init {
++            Mockito.`when`(callbacks.asBinder()).thenReturn(binder)
++            if (linkThrows) {
++                Mockito.doThrow(Mockito.mock(RemoteException::class.java))
++                    .`when`(binder).linkToDeath(Mockito.any(), Mockito.anyInt())
++            } else {
++                Mockito.doAnswer { invocation ->
++                    recipients += invocation.getArgument<IBinder.DeathRecipient>(0)
++                    Unit
++                }.`when`(binder).linkToDeath(Mockito.any(), Mockito.anyInt())
++            }
++            Mockito.doAnswer { invocation ->
++                recipients.remove(invocation.getArgument<IBinder.DeathRecipient>(0))
++            }.`when`(binder).unlinkToDeath(Mockito.any(), Mockito.anyInt())
++        }
++
++        fun hasDeathRecipient(): Boolean = recipients.isNotEmpty()
++
++        fun killCaller() = recipients.toList().forEach { it.binderDied() }
++    }
++
++    @Test
++    fun callerDeath_cancelsTheRunningRequest_andUnlinks() = runTest {
++        val scope = CoroutineScope(SupervisorJob() + UnconfinedTestDispatcher(testScheduler))
++        try {
++            val caller = FakeCaller()
++            val dispatcher = ConstellationRequestDispatcher(scope)
++            var sawCancellation = false
++
++            val job: Job = dispatcher.dispatch(caller.callbacks, "verifyPhoneNumber") {
++                try {
++                    awaitCancellation()
++                } catch (e: CancellationException) {
++                    sawCancellation = true
++                    throw e
++                }
++            }
++            // Eager dispatch has already linked death and parked at awaitCancellation().
++            assertTrue("request should have linked to caller death", caller.hasDeathRecipient())
++            assertFalse(job.isCompleted)
++
++            caller.killCaller()
++            advanceUntilIdle()
++
++            assertTrue("request job should be cancelled when caller dies", job.isCancelled)
++            assertTrue("request body should observe cancellation", sawCancellation)
++            assertFalse("death recipient should be unlinked after completion", caller.hasDeathRecipient())
++        } finally {
++            scope.cancel()
++        }
++    }
++
++    @Test
++    fun callerAlreadyDead_cancelsRequestImmediately() = runTest {
++        val scope = CoroutineScope(SupervisorJob() + UnconfinedTestDispatcher(testScheduler))
++        try {
++            val caller = FakeCaller(linkThrows = true)
++            val dispatcher = ConstellationRequestDispatcher(scope)
++
++            val job = dispatcher.dispatch(caller.callbacks, "verifyPhoneNumber") {
++                awaitCancellation()
++            }
++            advanceUntilIdle()
++
++            assertTrue("request job should be cancelled when the caller is already dead", job.isCancelled)
++        } finally {
++            scope.cancel()
++        }
++    }
++
++    @Test
++    fun failureInRequest_isContained_notPropagatedAsJobFailure() = runTest {
++        val scope = CoroutineScope(SupervisorJob() + UnconfinedTestDispatcher(testScheduler))
++        try {
++            val caller = FakeCaller()
++            val dispatcher = ConstellationRequestDispatcher(scope)
++
++            val job = dispatcher.dispatch(caller.callbacks, "verifyPhoneNumber") {
++                throw IllegalStateException("boom")
++            }
++            advanceUntilIdle()
++
++            assertTrue("request job should complete", job.isCompleted)
++            // Contained: a caught failure completes the coroutine normally. If it were NOT contained,
++            // the launched coroutine would fail and the job would be in the cancelled state.
++            assertFalse("a contained failure must not surface as a job failure", job.isCancelled)
++            assertFalse("death recipient should be unlinked after completion", caller.hasDeathRecipient())
++        } finally {
++            scope.cancel()
++        }
++    }
++
++    @Test
++    fun normalCompletion_unlinksDeathRecipient() = runTest {
++        val scope = CoroutineScope(SupervisorJob() + UnconfinedTestDispatcher(testScheduler))
++        try {
++            val caller = FakeCaller()
++            val dispatcher = ConstellationRequestDispatcher(scope)
++
++            val job = dispatcher.dispatch(caller.callbacks, "getIidToken") {
++                // completes immediately
++            }
++            advanceUntilIdle()
++
++            assertTrue(job.isCompleted)
++            assertFalse(job.isCancelled)
++            assertFalse("death recipient should be unlinked after completion", caller.hasDeathRecipient())
++        } finally {
++            scope.cancel()
++        }
++    }
++}
+diff --git a/play-services-constellation/core/src/test/kotlin/org/microg/gms/constellation/core/verification/MtSmsInboxScopeTest.kt b/play-services-constellation/core/src/test/kotlin/org/microg/gms/constellation/core/verification/MtSmsInboxScopeTest.kt
+new file mode 100644
+index 0000000..d887eb9
+--- /dev/null
++++ b/play-services-constellation/core/src/test/kotlin/org/microg/gms/constellation/core/verification/MtSmsInboxScopeTest.kt
+@@ -0,0 +1,140 @@
++/*
++ * SPDX-FileCopyrightText: 2026, microG Project Team
++ * SPDX-License-Identifier: Apache-2.0
++ */
++
++package org.microg.gms.constellation.core.verification
++
++import android.content.Context
++import kotlinx.coroutines.test.runTest
++import kotlinx.coroutines.withContext
++import org.junit.Assert.assertEquals
++import org.junit.Assert.assertFalse
++import org.junit.Assert.assertSame
++import org.junit.Assert.assertTrue
++import org.junit.Assert.fail
++import org.junit.Test
++import org.mockito.Mockito
++
++class MtSmsInboxScopeTest {
++
++    /** Context is only ever handed to the inbox factory, which ignores it, so a bare mock is fine. */
++    private val context: Context = Mockito.mock(Context::class.java)
++
++    private class FakeInbox(val subId: Int) : MtSmsInboxHandle {
++        var disposed = false
++            private set
++
++        override suspend fun awaitMatch(expectedBody: String): ReceivedSms? = null
++
++        override fun dispose() {
++            disposed = true
++        }
++    }
++
++    private fun recordingScope(): Pair<MtSmsInboxScope, MutableList<FakeInbox>> {
++        val created = mutableListOf<FakeInbox>()
++        val scope = MtSmsInboxScope { _, subId -> FakeInbox(subId).also { created += it } }
++        return scope to created
++    }
++
++    @Test
++    fun prepare_installsInboxes_andGetReturnsThem() {
++        val (scope, created) = recordingScope()
++        scope.prepare(context, listOf(1, 2))
++
++        assertEquals(2, created.size)
++        assertSame(created.first { it.subId == 1 }, scope.get(1))
++        assertSame(created.first { it.subId == 2 }, scope.get(2))
++    }
++
++    @Test
++    fun prepare_withNoSubIds_fallsBackToDefaultSubId() {
++        val (scope, _) = recordingScope()
++        scope.prepare(context, emptyList())
++
++        // Preserves the original behaviour: an empty sub-id list maps to the "-1" inbox.
++        assertEquals(-1, (scope.get(-1) as FakeInbox).subId)
++    }
++
++    @Test
++    fun get_beforePrepare_throws() {
++        val (scope, _) = recordingScope()
++        try {
++            scope.get(1)
++            fail("Expected get() to throw before prepare()")
++        } catch (e: IllegalStateException) {
++            // expected
++        }
++    }
++
++    @Test
++    fun dispose_disposesOwnInboxes_andIsIdempotent() {
++        val (scope, created) = recordingScope()
++        scope.prepare(context, listOf(7))
++        val inbox = created.single()
++
++        scope.dispose()
++        assertTrue(inbox.disposed)
++
++        // Second dispose must not throw and must not touch anything new.
++        scope.dispose()
++    }
++
++    /**
++     * The regression this whole change exists for. A request's `finally { dispose() }` must only
++     * clean up its own MT SMS inboxes; it must never dispose the inboxes of a newer, concurrently
++     * running request. With the old process-global singleton, `requestB.prepare()` tore down
++     * request A, and `requestA.dispose()` then tore down request B. Per-request scopes make both
++     * impossible.
++     */
++    @Test
++    fun dispose_cannotEraseANewerRequest() {
++        val (requestA, createdA) = recordingScope()
++        val (requestB, createdB) = recordingScope()
++
++        // Request A starts and begins waiting on its inbox.
++        requestA.prepare(context, listOf(1))
++        val inboxA = createdA.single()
++
++        // Request B starts while A is still in flight.
++        requestB.prepare(context, listOf(1))
++        val inboxB = createdB.single()
++
++        // B starting must not have disposed A's inbox.
++        assertFalse("A's inbox was disposed when B started", inboxA.disposed)
++        assertSame(inboxA, requestA.get(1))
++
++        // A finishes and runs its cleanup. This must not touch B.
++        requestA.dispose()
++        assertTrue("A's own inbox should be disposed", inboxA.disposed)
++        assertFalse("A's cleanup disposed a newer request's inbox", inboxB.disposed)
++        assertSame("B's inbox is still usable after A's cleanup", inboxB, requestB.get(1))
++    }
++
++    @Test
++    fun registry_resolvesInboxesFromTheCallingCoroutineScope() = runTest {
++        val created = mutableListOf<FakeInbox>()
++        withContext(MtSmsInboxScope { _, subId -> FakeInbox(subId).also { created += it } }) {
++            MtSmsInboxRegistry.prepare(context, listOf(5))
++            val handle = MtSmsInboxRegistry.get(5)
++            assertSame(created.single(), handle)
++
++            MtSmsInboxRegistry.dispose()
++            assertTrue(created.single().disposed)
++        }
++    }
++
++    @Test
++    fun registry_withoutScope_disposeIsNoOp_butGetAndPrepareFail() = runTest {
++        // dispose() is called from finally blocks, so it must be safe even with no scope installed.
++        MtSmsInboxRegistry.dispose()
++
++        try {
++            MtSmsInboxRegistry.prepare(context, listOf(1))
++            fail("Expected prepare() to require an MtSmsInboxScope")
++        } catch (e: IllegalStateException) {
++            // expected
++        }
++    }
++}

@@ -1,0 +1,15 @@
+# Provenance
+
+Fork: nwinkelman2/GmsCore  branch: integration/rcs-current-upstream
+Fork HEAD: 0266edd1694cbeac340b59d9287a50112465e0a4
+Fork HEAD subject: fix: keep DroidGuard on the platform class loader (nwinkelman2, Wed Sep 2 10:44:19 2026 -0400)
+
+microG PR 3360 head: 2a680646cbfaf3a4a484bd4dc8f53c21404c8c4b
+PR 3360 head subject: Update constellation base for asterism (Opstic, Sat Aug 1 23:39:11 2026 -0400)
+
+VerifyPhoneNumber.kt blob at fork HEAD:        9154d33134f3b0534e049bccb7a1c73060b9168e
+VerifyPhoneNumber.kt blob at PR 3360 head:     9154d33134f3b0534e049bccb7a1c73060b9168e
+VerifyPhoneNumber.kt blob after this work:     9154d33134f3b0534e049bccb7a1c73060b9168e
+Expected (unchanged):                          9154d33134f3b0534e049bccb7a1c73060b9168e
+
+Wire source for cancellation proof: square/wire tag 6.2.0, commit 49cbae32085ec586b72a447945cafe1b09a08cfd

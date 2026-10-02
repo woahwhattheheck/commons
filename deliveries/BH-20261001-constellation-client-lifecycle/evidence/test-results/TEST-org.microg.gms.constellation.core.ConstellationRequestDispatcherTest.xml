@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.microg.gms.constellation.core.ConstellationRequestDispatcherTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-10-02T01:57:01.185Z" hostname="vm" time="1.173">
+  <properties/>
+  <testcase name="failureInRequest_isContained_notPropagatedAsJobFailure" classname="org.microg.gms.constellation.core.ConstellationRequestDispatcherTest" time="1.099"/>
+  <testcase name="normalCompletion_unlinksDeathRecipient" classname="org.microg.gms.constellation.core.ConstellationRequestDispatcherTest" time="0.004"/>
+  <testcase name="callerDeath_cancelsTheRunningRequest_andUnlinks" classname="org.microg.gms.constellation.core.ConstellationRequestDispatcherTest" time="0.006"/>
+  <testcase name="callerAlreadyDead_cancelsRequestImmediately" classname="org.microg.gms.constellation.core.ConstellationRequestDispatcherTest" time="0.062"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (/root/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.14.12/be4984cb6fd1ef1d11f218a648889dfda44b8a15/byte-buddy-agent-1.14.12.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>

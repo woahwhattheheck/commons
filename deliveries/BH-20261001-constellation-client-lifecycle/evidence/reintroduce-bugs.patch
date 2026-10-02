@@ -1,0 +1,63 @@
+# Fixed -> buggy delta used for the fail-before run.
+# Applying this to the fixed sources reintroduces the three defects; the discriminating tests then fail.
+
+--- a/ConstellationRequestDispatcher.kt	2026-10-02 01:58:16.126469455 +0000
++++ b/play-services-constellation/core/src/main/kotlin/org/microg/gms/constellation/core/ConstellationRequestDispatcher.kt	2026-10-02 01:58:23.817542923 +0000
+@@ -55,16 +55,15 @@
+             val requestJob = coroutineContext.job
+             val binder = callbacks.asBinder()
+             val recipient = CallerDeathRecipient(requestJob, name)
+-            val linked = linkToDeath(binder, recipient, name, requestJob)
++            @Suppress("UNUSED_VARIABLE")
++            val linked = false // BUG(fail-before): caller Binder-death linking disabled
+             try {
+                 block(wrapper)
+             } catch (e: CancellationException) {
+                 Log.d(TAG, "$name request cancelled")
+                 throw e
+             } catch (e: Exception) {
+-                // Contain the failure: a single failing request must not propagate to the service
+-                // scope. Errors (e.g. OutOfMemoryError) are intentionally left to propagate.
+-                Log.e(TAG, "$name request failed", e)
++                throw e // BUG(fail-before): exception containment disabled
+             } finally {
+                 if (linked) unlinkToDeath(binder, recipient)
+             }
+--- a/ConstellationCallbacksWrapper.kt	2026-10-02 01:58:16.128635795 +0000
++++ b/play-services-constellation/core/src/main/kotlin/org/microg/gms/constellation/core/ConstellationCallbacksWrapper.kt	2026-10-02 01:58:30.089543296 +0000
+@@ -58,13 +58,7 @@
+             throw e
+         } catch (e: RemoteException) {
+             Log.w(TAG, "RemoteException in $methodName", e)
+-        } catch (e: RuntimeException) {
+-            // A caller's binder proxy can surface more than RemoteException when the client is dead
+-            // or misbehaving (e.g. DeadObjectException is a RemoteException, but marshalling and
+-            // already-dead paths can throw other RuntimeExceptions). Contain them so delivering a
+-            // result to a broken caller cannot crash the request coroutine.
+-            Log.w(TAG, "RuntimeException delivering $methodName to caller", e)
+-        }
++        } // BUG(fail-before): RuntimeException containment removed
+     }
+ 
+     companion object {
+--- a/MtSmsVerifier.kt	2026-10-02 01:58:16.130715655 +0000
++++ b/play-services-constellation/core/src/main/kotlin/org/microg/gms/constellation/core/verification/MtSmsVerifier.kt	2026-10-02 01:58:35.829543637 +0000
+@@ -99,10 +99,15 @@
+         MtSmsInbox(context, subId)
+     }
+ ) : AbstractCoroutineContextElement(MtSmsInboxScope) {
+-    companion object Key : CoroutineContext.Key<MtSmsInboxScope>
++    companion object Key : CoroutineContext.Key<MtSmsInboxScope> {
++        // BUG(fail-before): process-global inbox state shared across all requests
++        // (the original singleton behaviour this change removes).
++        internal val GLOBAL_LOCK = Any()
++        internal val GLOBAL_INBOXES = HashMap<Int, MtSmsInboxHandle>()
++    }
+ 
+-    private val lock = Any()
+-    private val inboxes = HashMap<Int, MtSmsInboxHandle>()
++    private val lock = GLOBAL_LOCK
++    private val inboxes = GLOBAL_INBOXES
+     private var disposed = false
+ 
+     fun prepare(context: Context, subIds: Iterable<Int>) {

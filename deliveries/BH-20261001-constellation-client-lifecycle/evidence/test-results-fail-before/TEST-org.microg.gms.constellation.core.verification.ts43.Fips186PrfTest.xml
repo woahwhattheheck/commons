@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.microg.gms.constellation.core.verification.ts43.Fips186PrfTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-10-02T01:59:31.583Z" hostname="vm" time="0.006">
+  <properties/>
+  <testcase name="deriveKeys_isDeterministic" classname="org.microg.gms.constellation.core.verification.ts43.Fips186PrfTest" time="0.003"/>
+  <testcase name="deriveKeys_returnsExpectedKeyLengths" classname="org.microg.gms.constellation.core.verification.ts43.Fips186PrfTest" time="0.001"/>
+  <testcase name="deriveKeys_changesWhenIdentityChanges" classname="org.microg.gms.constellation.core.verification.ts43.Fips186PrfTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

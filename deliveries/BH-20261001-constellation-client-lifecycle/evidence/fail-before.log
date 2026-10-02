@@ -1,0 +1,235 @@
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38639 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.13/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :
+Starting build for GMS version v0.0.0.252432 (252432000)...
+
+> Configure project :vending-app
+WARNING: BuildType 'debug' is both debuggable and has 'isMinifyEnabled' set to true.
+All code optimizations and obfuscation are disabled for debuggable builds.
+WARNING: BuildType 'debug' is both debuggable and has 'isMinifyEnabled' set to true.
+All code optimizations and obfuscation are disabled for debuggable builds.
+
+> Task :play-services-auth-base:preBuild UP-TO-DATE
+> Task :play-services-auth-base:preDebugBuild UP-TO-DATE
+> Task :play-services-base:preBuild UP-TO-DATE
+> Task :play-services-base:preDebugBuild UP-TO-DATE
+> Task :play-services-basement:preBuild UP-TO-DATE
+> Task :play-services-basement:preDebugBuild UP-TO-DATE
+> Task :play-services-basement:compileDebugAidl UP-TO-DATE
+> Task :play-services-base:compileDebugAidl UP-TO-DATE
+> Task :play-services-auth-base:compileDebugAidl UP-TO-DATE
+> Task :play-services-auth-base:generateDebugResValues UP-TO-DATE
+> Task :play-services-auth-base:generateDebugResources UP-TO-DATE
+> Task :play-services-auth-base:packageDebugResources UP-TO-DATE
+> Task :play-services-auth-base:processDebugNavigationResources UP-TO-DATE
+> Task :play-services-auth-base:parseDebugLocalResources UP-TO-DATE
+> Task :play-services-auth-base:generateDebugRFile UP-TO-DATE
+> Task :safe-parcel-processor:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :safe-parcel-processor:compileKotlin UP-TO-DATE
+> Task :safe-parcel-processor:compileJava NO-SOURCE
+> Task :safe-parcel-processor:processResources UP-TO-DATE
+> Task :safe-parcel-processor:classes UP-TO-DATE
+> Task :safe-parcel-processor:jar UP-TO-DATE
+> Task :play-services-auth-base:javaPreCompileDebug UP-TO-DATE
+> Task :play-services-base:generateDebugResValues UP-TO-DATE
+> Task :play-services-base:generateDebugResources UP-TO-DATE
+> Task :play-services-base:packageDebugResources UP-TO-DATE
+> Task :play-services-base:processDebugNavigationResources UP-TO-DATE
+> Task :play-services-base:parseDebugLocalResources UP-TO-DATE
+> Task :play-services-base:generateDebugRFile UP-TO-DATE
+> Task :play-services-base:javaPreCompileDebug UP-TO-DATE
+> Task :play-services-basement:generateDebugBuildConfig UP-TO-DATE
+> Task :play-services-basement:generateDebugResValues UP-TO-DATE
+> Task :play-services-basement:generateDebugResources UP-TO-DATE
+> Task :play-services-basement:packageDebugResources UP-TO-DATE
+> Task :play-services-basement:processDebugNavigationResources UP-TO-DATE
+> Task :play-services-basement:parseDebugLocalResources UP-TO-DATE
+> Task :play-services-basement:generateDebugRFile UP-TO-DATE
+> Task :play-services-basement:javaPreCompileDebug UP-TO-DATE
+> Task :play-services-basement:compileDebugJavaWithJavac UP-TO-DATE
+> Task :play-services-basement:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :play-services-tasks:preBuild UP-TO-DATE
+> Task :play-services-tasks:preDebugBuild UP-TO-DATE
+> Task :play-services-tasks:generateDebugResValues UP-TO-DATE
+> Task :play-services-tasks:generateDebugResources UP-TO-DATE
+> Task :play-services-tasks:packageDebugResources UP-TO-DATE
+> Task :play-services-tasks:processDebugNavigationResources UP-TO-DATE
+> Task :play-services-tasks:parseDebugLocalResources UP-TO-DATE
+> Task :play-services-tasks:generateDebugRFile UP-TO-DATE
+> Task :play-services-tasks:javaPreCompileDebug UP-TO-DATE
+> Task :play-services-tasks:compileDebugJavaWithJavac UP-TO-DATE
+> Task :play-services-tasks:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :play-services-base:compileDebugJavaWithJavac UP-TO-DATE
+> Task :play-services-base:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :play-services-auth-base:compileDebugJavaWithJavac UP-TO-DATE
+> Task :play-services-auth-base:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :play-services-auth-base:processDebugJavaRes UP-TO-DATE
+> Task :play-services-base:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :play-services-base:processDebugJavaRes UP-TO-DATE
+> Task :play-services-base-core:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :play-services-base-core:preBuild UP-TO-DATE
+> Task :play-services-base-core:preDebugBuild UP-TO-DATE
+> Task :play-services-base-core:dataBindingMergeDependencyArtifactsDebug UP-TO-DATE
+> Task :play-services-base-core:generateDebugResValues UP-TO-DATE
+> Task :play-services-base-core:generateDebugResources UP-TO-DATE
+> Task :play-services-base-core:packageDebugResources UP-TO-DATE
+> Task :play-services-base-core:processDebugNavigationResources UP-TO-DATE
+> Task :play-services-base-core:parseDebugLocalResources UP-TO-DATE
+> Task :play-services-basement-ktx:preBuild UP-TO-DATE
+> Task :play-services-basement-ktx:preDebugBuild UP-TO-DATE
+> Task :play-services-basement-ktx:generateDebugResValues UP-TO-DATE
+> Task :play-services-basement-ktx:generateDebugResources UP-TO-DATE
+> Task :play-services-basement-ktx:packageDebugResources UP-TO-DATE
+> Task :play-services-basement-ktx:processDebugNavigationResources UP-TO-DATE
+> Task :play-services-basement-ktx:parseDebugLocalResources UP-TO-DATE
+> Task :play-services-basement-ktx:generateDebugRFile UP-TO-DATE
+> Task :play-services-base-core:dataBindingGenBaseClassesDebug UP-TO-DATE
+> Task :play-services-base-core:dataBindingTriggerDebug UP-TO-DATE
+> Task :play-services-base-core:generateDebugBuildConfig UP-TO-DATE
+> Task :play-services-base-core:generateDebugRFile UP-TO-DATE
+> Task :play-services-basement-ktx:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :play-services-basement-ktx:compileDebugKotlin UP-TO-DATE
+> Task :play-services-basement-ktx:javaPreCompileDebug UP-TO-DATE
+> Task :play-services-basement-ktx:compileDebugJavaWithJavac NO-SOURCE
+> Task :play-services-basement-ktx:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :play-services-base-core:compileDebugKotlin UP-TO-DATE
+> Task :play-services-base-core:javaPreCompileDebug UP-TO-DATE
+> Task :play-services-base-core:compileDebugJavaWithJavac UP-TO-DATE
+> Task :play-services-base-core:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :play-services-base-core:processDebugJavaRes UP-TO-DATE
+> Task :play-services-basement:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :play-services-basement:processDebugJavaRes UP-TO-DATE
+> Task :play-services-basement-ktx:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :play-services-basement-ktx:processDebugJavaRes UP-TO-DATE
+> Task :play-services-constellation:preBuild UP-TO-DATE
+> Task :play-services-constellation:preDebugBuild UP-TO-DATE
+> Task :play-services-constellation:compileDebugAidl UP-TO-DATE
+> Task :play-services-constellation:generateDebugResValues UP-TO-DATE
+> Task :play-services-constellation:generateDebugResources UP-TO-DATE
+> Task :play-services-constellation:packageDebugResources UP-TO-DATE
+> Task :play-services-constellation:processDebugNavigationResources UP-TO-DATE
+> Task :play-services-constellation:parseDebugLocalResources UP-TO-DATE
+> Task :play-services-constellation:generateDebugRFile UP-TO-DATE
+> Task :play-services-constellation:javaPreCompileDebug UP-TO-DATE
+> Task :play-services-constellation:compileDebugJavaWithJavac UP-TO-DATE
+> Task :play-services-constellation:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :play-services-constellation:processDebugJavaRes UP-TO-DATE
+> Task :play-services-auth-base:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :play-services-base-core:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :play-services-constellation:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :play-services-constellation-core:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :play-services-constellation-core:generateDebugProtos UP-TO-DATE
+> Task :play-services-constellation-core:preBuild UP-TO-DATE
+> Task :play-services-constellation-core:preDebugBuild UP-TO-DATE
+> Task :play-services-constellation-core:generateDebugResValues UP-TO-DATE
+> Task :play-services-constellation-core:generateDebugResources UP-TO-DATE
+> Task :play-services-constellation-core:packageDebugResources UP-TO-DATE
+> Task :play-services-constellation-core:processDebugNavigationResources UP-TO-DATE
+> Task :play-services-constellation-core:parseDebugLocalResources UP-TO-DATE
+> Task :play-services-constellation-core:generateDebugRFile UP-TO-DATE
+> Task :play-services-droidguard:preBuild UP-TO-DATE
+> Task :play-services-droidguard:preDebugBuild UP-TO-DATE
+> Task :play-services-droidguard:compileDebugAidl UP-TO-DATE
+> Task :play-services-droidguard:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :play-services-droidguard:generateDebugResValues UP-TO-DATE
+> Task :play-services-droidguard:generateDebugResources UP-TO-DATE
+> Task :play-services-droidguard:packageDebugResources UP-TO-DATE
+> Task :play-services-droidguard:processDebugNavigationResources UP-TO-DATE
+> Task :play-services-droidguard:parseDebugLocalResources UP-TO-DATE
+> Task :play-services-droidguard:generateDebugRFile UP-TO-DATE
+> Task :play-services-droidguard:compileDebugKotlin UP-TO-DATE
+> Task :play-services-droidguard:javaPreCompileDebug UP-TO-DATE
+> Task :play-services-droidguard:compileDebugJavaWithJavac UP-TO-DATE
+> Task :play-services-droidguard:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :play-services-iid:preBuild UP-TO-DATE
+> Task :play-services-iid:preDebugBuild UP-TO-DATE
+> Task :play-services-iid:compileDebugAidl UP-TO-DATE
+> Task :play-services-iid:generateDebugResValues UP-TO-DATE
+> Task :play-services-iid:generateDebugResources UP-TO-DATE
+> Task :play-services-iid:packageDebugResources UP-TO-DATE
+> Task :play-services-iid:processDebugNavigationResources UP-TO-DATE
+> Task :play-services-iid:parseDebugLocalResources UP-TO-DATE
+> Task :play-services-iid:generateDebugRFile UP-TO-DATE
+> Task :play-services-iid:javaPreCompileDebug UP-TO-DATE
+> Task :play-services-iid:compileDebugJavaWithJavac UP-TO-DATE
+> Task :play-services-iid:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :play-services-tasks-ktx:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :play-services-tasks-ktx:preBuild UP-TO-DATE
+> Task :play-services-tasks-ktx:preDebugBuild UP-TO-DATE
+> Task :play-services-tasks-ktx:generateDebugResValues UP-TO-DATE
+> Task :play-services-tasks-ktx:generateDebugResources UP-TO-DATE
+> Task :play-services-tasks-ktx:packageDebugResources UP-TO-DATE
+> Task :play-services-tasks-ktx:processDebugNavigationResources UP-TO-DATE
+> Task :play-services-tasks-ktx:parseDebugLocalResources UP-TO-DATE
+> Task :play-services-tasks-ktx:generateDebugRFile UP-TO-DATE
+> Task :play-services-tasks-ktx:compileDebugKotlin UP-TO-DATE
+> Task :play-services-tasks-ktx:javaPreCompileDebug UP-TO-DATE
+> Task :play-services-tasks-ktx:compileDebugJavaWithJavac NO-SOURCE
+> Task :play-services-tasks-ktx:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :play-services-constellation-core:compileDebugKotlin
+> Task :play-services-constellation-core:javaPreCompileDebug UP-TO-DATE
+> Task :play-services-constellation-core:compileDebugJavaWithJavac NO-SOURCE
+> Task :play-services-constellation-core:bundleLibRuntimeToJarDebug
+> Task :play-services-constellation-core:bundleLibCompileToJarDebug
+> Task :play-services-constellation-core:preDebugUnitTestBuild UP-TO-DATE
+> Task :play-services-constellation-core:generateDebugUnitTestStubRFile UP-TO-DATE
+> Task :play-services-constellation-core:compileDebugUnitTestKotlin
+> Task :play-services-constellation-core:javaPreCompileDebugUnitTest UP-TO-DATE
+> Task :play-services-constellation-core:compileDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :play-services-constellation-core:processDebugJavaRes UP-TO-DATE
+> Task :play-services-constellation-core:processDebugUnitTestJavaRes UP-TO-DATE
+> Task :play-services-droidguard:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :play-services-droidguard:processDebugJavaRes UP-TO-DATE
+> Task :play-services-iid:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :play-services-iid:processDebugJavaRes NO-SOURCE
+> Task :play-services-tasks:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :play-services-tasks:processDebugJavaRes NO-SOURCE
+> Task :play-services-tasks-ktx:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :play-services-tasks-ktx:processDebugJavaRes UP-TO-DATE
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+
+> Task :play-services-constellation-core:testDebugUnitTest
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38639 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+
+ConstellationCallbacksWrapperTest > runtimeExceptionFromCaller_isContained FAILED
+    java.lang.IllegalStateException at ConstellationCallbacksWrapperTest.kt:42
+
+ConstellationRequestDispatcherTest > failureInRequest_isContained_notPropagatedAsJobFailure FAILED
+    java.lang.AssertionError at ConstellationRequestDispatcherTest.kt:106
+
+ConstellationRequestDispatcherTest > callerDeath_cancelsTheRunningRequest_andUnlinks FAILED
+    java.lang.AssertionError at ConstellationRequestDispatcherTest.kt:57
+
+ConstellationRequestDispatcherTest > callerAlreadyDead_cancelsRequestImmediately FAILED
+    java.lang.AssertionError at ConstellationRequestDispatcherTest.kt:88
+
+MtSmsInboxScopeTest > dispose_cannotEraseANewerRequest FAILED
+    java.lang.AssertionError at MtSmsInboxScopeTest.kt:105
+
+24 tests completed, 5 failed
+
+> Task :play-services-constellation-core:testDebugUnitTest FAILED
+
+[Incubating] Problems report is available at: file:///home/user/nwinkelman2/gmscore/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':play-services-constellation-core:testDebugUnitTest'.
+> There were failing tests. See the report at: file:///home/user/nwinkelman2/gmscore/play-services-constellation/core/build/reports/tests/testDebugUnitTest/index.html
+
+* Try:
+> Run with --scan to get full insights.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.13/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 32s
+141 actionable tasks: 5 executed, 136 up-to-date
+FINAL_ATTEMPT=1
+GRADLE_EXIT=1

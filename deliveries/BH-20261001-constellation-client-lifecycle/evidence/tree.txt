@@ -1,0 +1,30 @@
+# Delivery tree
+
+  README.md
+  evidence/RECEIPTS.md
+  evidence/constellation-lifecycle.patch
+  evidence/fail-before.log
+  evidence/pass-after.log
+  evidence/provenance.txt
+  evidence/reintroduce-bugs.patch
+  evidence/test-results-fail-before/TEST-org.microg.gms.constellation.core.ConstellationCallbacksWrapperTest.xml
+  evidence/test-results-fail-before/TEST-org.microg.gms.constellation.core.ConstellationRequestDispatcherTest.xml
+  evidence/test-results-fail-before/TEST-org.microg.gms.constellation.core.proto.builder.SyncRequestPhoneNumberResolverTest.xml
+  evidence/test-results-fail-before/TEST-org.microg.gms.constellation.core.verification.MtSmsInboxScopeTest.xml
+  evidence/test-results-fail-before/TEST-org.microg.gms.constellation.core.verification.ts43.Fips186PrfTest.xml
+  evidence/test-results/TEST-org.microg.gms.constellation.core.ConstellationCallbacksWrapperTest.xml
+  evidence/test-results/TEST-org.microg.gms.constellation.core.ConstellationRequestDispatcherTest.xml
+  evidence/test-results/TEST-org.microg.gms.constellation.core.proto.builder.SyncRequestPhoneNumberResolverTest.xml
+  evidence/test-results/TEST-org.microg.gms.constellation.core.verification.MtSmsInboxScopeTest.xml
+  evidence/test-results/TEST-org.microg.gms.constellation.core.verification.ts43.Fips186PrfTest.xml
+  evidence/toolchain.txt
+  evidence/tree.txt
+  evidence/wire-6.2.0-cancellation-proof.md
+  whole-files/play-services-constellation/core/build.gradle
+  whole-files/play-services-constellation/core/src/main/kotlin/org/microg/gms/constellation/core/ConstellationApiService.kt
+  whole-files/play-services-constellation/core/src/main/kotlin/org/microg/gms/constellation/core/ConstellationCallbacksWrapper.kt
+  whole-files/play-services-constellation/core/src/main/kotlin/org/microg/gms/constellation/core/ConstellationRequestDispatcher.kt
+  whole-files/play-services-constellation/core/src/main/kotlin/org/microg/gms/constellation/core/verification/MtSmsVerifier.kt
+  whole-files/play-services-constellation/core/src/test/kotlin/org/microg/gms/constellation/core/ConstellationCallbacksWrapperTest.kt
+  whole-files/play-services-constellation/core/src/test/kotlin/org/microg/gms/constellation/core/ConstellationRequestDispatcherTest.kt
+  whole-files/play-services-constellation/core/src/test/kotlin/org/microg/gms/constellation/core/verification/MtSmsInboxScopeTest.kt
