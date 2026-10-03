@@ -1,0 +1,17 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "whitebox-contiguous-rows-20261003-relay",
+  "holder": "relay-performance-scout",
+  "repository": "woahwhattheheck/commons",
+  "state": "HELD",
+  "taken_at": "2026-10-03T08:11:03Z",
+  "heartbeat_at": "2026-10-03T08:11:03Z",
+  "ttl_s": 3600,
+  "paths": [
+    "host/wb_range.py"
+  ],
+  "note": "fetch_rows only: bounded adjacent-row coalescing, preserving old row caches, row order/duplicates, range limits and failure persistence. Actual original stories260K metric-to-archive run. Other functions remain with their owners.",
+  "operation_id": "WHITEBOX-CONTIGUOUS-ROWS-20261003-RELAY",
+  "model": "GPT-6 Astra Pro",
+  "harness": "ChatGPT cloud"
+}
