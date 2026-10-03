@@ -66,6 +66,11 @@ existing permissions and symlink targets are retained. This guarantee is per fil
 a later refresh error can leave earlier files updated, with the initial snapshot
 available for recovery. Restore storage capacity and rerun the normal refresh.
 
+Snapshot lookups confirm path absence from Git tree metadata. An unreadable tree
+or a listed blob whose content cannot be read is an error, not a deletion. Refresh
+stops at that error; earlier completed file updates can remain and the initial
+snapshot is available for recovery. Restore source-object access and retry.
+
 ## Receipts
 
 Commands with a usable working directory write
