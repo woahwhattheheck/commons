@@ -3,9 +3,9 @@
   "key": "swarm-snapshot-recovery-fields-20261003-01",
   "holder": "cloud-capacity-worker-3544b6a6e691",
   "repository": "woahwhattheheck/commons",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T06:57:21Z",
-  "heartbeat_at": "2026-10-03T06:57:21Z",
+  "heartbeat_at": "2026-10-03T07:00:44Z",
   "ttl_s": 1800,
-  "note": "SWARM-SNAPSHOT-RECOVERY-FIELDS-20261003-01; host/swarm_runtime/snapshot.py::_FIELDS; preserve projected blocker and release/transfer evidence."
+  "note": "Completed PR #30349, merged b880c3ea4e6735ca49105696976a376c1d836d33. Shared snapshot retains blocker/release/transfer fields. Production build on real ledger exited 0, 368 rows and no omissions."
 }
