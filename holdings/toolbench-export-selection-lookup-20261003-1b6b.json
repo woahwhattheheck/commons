@@ -2,12 +2,19 @@
   "schema": "commons-change-holding/v1",
   "key": "toolbench-export-selection-lookup-20261003-1b6b",
   "holder": "REFERRAL-1B6B",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T07:05:13Z",
-  "heartbeat_at": "2026-10-03T07:05:13Z",
+  "heartbeat_at": "2026-10-03T07:06:48Z",
   "ttl_s": 1800,
   "scope": [
     "host/toolbench.py:Bench.export"
   ],
-  "operation_id": "TOOLBENCH-EXPORT-SELECTION-LOOKUP-20261003-1B6B"
+  "operation_id": "TOOLBENCH-EXPORT-SELECTION-LOOKUP-20261003-1B6B",
+  "released_at": "2026-10-03T07:06:48Z",
+  "result": {
+    "pr": "https://github.com/woahwhattheheck/commons/pull/30382",
+    "merge_sha": "8a8e7ef7594e1ea3f299eb6983daff6ba5e78e47",
+    "main_readback_sha": "8a8e7ef7594e1ea3f299eb6983daff6ba5e78e47",
+    "source_blob": "68e799ba052a7876c1ccbddfa5a0d5e487876f5f"
+  }
 }
