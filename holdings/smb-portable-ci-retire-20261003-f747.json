@@ -2,10 +2,11 @@
   "schema": "commons-change-holding/v1",
   "key": "smb-portable-ci-retire-20261003-f747",
   "holder": "ci-retire-f74713d5f3bf",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T07:24:33Z",
   "heartbeat_at": "2026-10-03T07:24:33Z",
   "ttl_s": 3600,
   "repository": "woahwhattheheck/smb-showcase-inventory",
-  "note": "Resume #1381: retire ci/portable-ci-profile.json and ci/verify_portable_ci_profile.py; update only ci/README.md and docs/PRIVATE_CI_PORTABLE_PROOF.md. Preserve product, historical records and workflow definitions."
+  "note": "Completed in smb-showcase-inventory PR #1878, merge 6f6ed58f5b7c963841fc125717ed9e7002d8b03a. Retired source absent and both guide pages exact on current main; four-path scope released.",
+  "released_at": "2026-10-03T07:35:00Z"
 }
