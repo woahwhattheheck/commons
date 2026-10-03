@@ -35,6 +35,8 @@ def read_csv(raw: bytes, delimiter: str) -> Table:
         raise ParityError("Choose comma, semicolon or tab explicitly; delimiters are not guessed")
     if len(raw) > MAX_INPUT_BYTES:
         raise ParityError(f"Each CSV must be at most {MAX_INPUT_BYTES} bytes")
+    # Match the file budget without depending on another adapter's imports.
+    csv.field_size_limit(MAX_INPUT_BYTES)
     try:
         reader = csv.reader(io.StringIO(raw.decode("utf-8-sig"), newline=""), delimiter=delimiter, strict=True)
         headers = next(reader, None)
