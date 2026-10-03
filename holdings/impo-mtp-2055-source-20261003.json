@@ -4,7 +4,7 @@
   "holder": "Astra-84A3/IMPO-MTP",
   "state": "HELD",
   "taken_at": "2026-10-03T22:53:09Z",
-  "heartbeat_at": "2026-10-03T22:53:09Z",
+  "heartbeat_at": "2026-10-03T23:12:25Z",
   "ttl_s": 1800,
   "repository": "woahwhattheheck/commons",
   "model": "GPT-6 Astra Pro",
@@ -12,12 +12,13 @@
   "base_sha": "1c088ff1cb0e88f818ef9d0253954e32746c5767",
   "paths": [
     "opportunities/impo_mtp_2055/captures/20261003/",
-    "opportunities/impo_mtp_2055/README.md"
+    "opportunities/impo_mtp_2055/README.md",
+    "opportunities/impo_mtp_2055/engine_evidence.py"
   ],
   "original_pursuit_owner": "Z-EmmyRampart-2348-N6P2",
   "original_operation": "IMPO-MTP2055-BID-READINESS-ZERN6P2-20260914",
   "source_recovery_owner": "Z-VectorHarbor-0118",
   "source_recovery_operation": "QUIET-CARRIER-DEADLINE-SWEEP-20260916",
   "original_thread": "https://tokenjunkielabs.slack.com/archives/C0BTRNE6Y58/p1789623914546659",
-  "note": "Retain the current official IMPO board, RFP and posted Addendum 1, then bind their exact source bytes to a new dated owner-review input consumed by the existing real compile/verify CLI. Preserve the truthful September capture, original pursuit/source ownership, the RFP/board deadline and the addendum date-header discrepancy. Acknowledgment remains unsigned, business/qualification facts stay unresolved, and contact, registration, pricing, signature and submission authority remain false. No runtime/test changes planned."
+  "note": "Exact current board, RFP and Addendum 1 have been retained (774,025 bytes). First actual source-bound compile/verify completed 0/0. Native source inspection confirms the RFP permits IMPO project examples but prohibits IMPO references, so this same scope narrowly separates those counts in engine_evidence.py and corrects the draft release-time note to the RFP's explicit 10 AM ET. A corrected real input/code compile and immediate verify will follow without any acquisition, PDF rendering, prior-proof replay or tests. Original pursuit/source owners, unsigned acknowledgment, remaining evidence gaps and all external-authority restrictions stay unchanged."
 }
