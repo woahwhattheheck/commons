@@ -298,11 +298,12 @@ def select(index, limit=DEFAULT_LIMIT, offset=0, query="", owner="", provider=""
         if any(filters[key] and row["_exact_filters"][key].casefold() != filters[key]
                for key in ("owner", "provider", "kind", "status")):
             continue
-        searchable = " ".join(str(row.get(key) or "") for key in
-                              ("source_id", "item_id", "provider", "kind", "status",
-                               "title", "project", "owner", "assigned_owner", "next_action"))
-        if filters["query"] and filters["query"] not in searchable.casefold():
-            continue
+        if filters["query"]:
+            searchable = " ".join(str(row.get(key) or "") for key in
+                                  ("source_id", "item_id", "provider", "kind", "status",
+                                   "title", "project", "owner", "assigned_owner", "next_action"))
+            if filters["query"] not in searchable.casefold():
+                continue
         matches.append(row)
     if order != "priority":
         matches.sort(key=lambda row: _discovery_key(row, order, seat))
