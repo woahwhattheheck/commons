@@ -1,0 +1,13 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "toolbench-export-selection-lookup-20261003-1b6b",
+  "holder": "REFERRAL-1B6B",
+  "state": "HELD",
+  "taken_at": "2026-10-03T07:05:13Z",
+  "heartbeat_at": "2026-10-03T07:05:13Z",
+  "ttl_s": 1800,
+  "scope": [
+    "host/toolbench.py:Bench.export"
+  ],
+  "operation_id": "TOOLBENCH-EXPORT-SELECTION-LOOKUP-20261003-1B6B"
+}
