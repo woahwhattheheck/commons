@@ -14,6 +14,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import subprocess
 import sys
 from collections import defaultdict
@@ -23,6 +24,7 @@ from typing import Any, Iterable
 
 SCHEMA = "commons-resource-alias-index/v1"
 TREE_SCHEMA = "commons-resource-alias-index/tree-v1"
+OBJECT_ID_RE = re.compile(r"[0-9a-f]{40}(?:[0-9a-f]{24})?")
 
 
 class AliasIndexError(ValueError):
@@ -78,16 +80,14 @@ def build_alias_index(
         mode = str(raw.get("mode") or "100644")
         if path in seen_paths:
             raise AliasIndexError(f"duplicate tracked path: {path}")
-        if len(oid) not in {40, 64} or any(ch not in "0123456789abcdef" for ch in oid):
+        if not OBJECT_ID_RE.fullmatch(oid):
             raise AliasIndexError(f"invalid Git object id: {oid}")
         seen_paths.add(path)
         blob_count += 1
         by_oid[oid].append({"mode": mode, "path": path, "size": size})
 
     groups: list[dict[str, Any]] = []
-    for oid, members in sorted(by_oid.items()):
-        if len(members) < 2:
-            continue
+    for oid, members in sorted((oid, members) for oid, members in by_oid.items() if len(members) > 1):
         sizes = {member["size"] for member in members}
         if len(sizes) != 1:
             raise AliasIndexError(f"content address {oid} has inconsistent sizes")
@@ -217,3 +217,4 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
