@@ -329,6 +329,14 @@ def handler(store):
                 key, action = match.groups()
                 if method == 'GET':
                     pack = store.get(key)
+                    if action in ('export', 'preview'):
+                        query = parse_qs(parsed.query, keep_blank_values=True)
+                        if 'version' in query:
+                            versions = query['version']
+                            if len(versions) != 1 or not re.fullmatch(r'[1-9][0-9]*', versions[0]):
+                                raise Problem('version: supply one positive integer revision')
+                            if versions[0] != str(pack['version']):
+                                raise Problem('A newer revision exists. Reopen it before previewing or exporting.', 409)
                     if action == 'history':
                         return self.reply(200, store.history(key))
                     if action == 'export':

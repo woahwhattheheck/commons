@@ -22,7 +22,7 @@ Keep `newsletter.sqlite3` and its live SQLite sidecars on durable storage to ret
 1. Load the clearly labeled fictional example, or supply your own interview. Add 4–80 sections in editorial order, each with a heading, exact excerpt and optional private research notes.
 2. Set publication name, voice guide, footer, call to action and first planning date. Create a four-issue pack. Every supplied section belongs to exactly one issue; no external model invents text. The voice guide is editorial guidance, not an automatic style transformation.
 3. Choose each week and edit its subject, preheader, opening, body, closing and private production notes. Save a revision. Original source excerpts are immutable and remain alongside the editable body; research and production notes are excluded from the email HTML/text.
-4. Preview the saved email, record a handoff state, and export the month. Content/date edits return that issue to draft; a template change returns all issues to draft. Previous states and references remain in revision history. A stale save reports HTTP 409 and does not overwrite the saved revision.
+4. Preview the saved email, record a handoff state, and export the month. Content/date edits return that issue to draft; a template change returns all issues to draft. Previous states and references remain in revision history. Saves, previews and exports use the revision opened in the editor. If another tab saves first, the stale action reports HTTP 409 and keeps the unsaved editor text. Retain those edits before reopening the latest revision.
 5. Import HTML/text into the client's existing email platform. Configure its sender, audience, preference/unsubscribe merge fields and time zone there. Complete the platform's preview and scheduling steps there. Record its existing job/message reference in Fourfold only after that action occurs.
 
 Fourfold never sends email, creates a provider job, verifies delivery, changes a provider account or charges a payment. Calendar entries are all-day planning items, not scheduled messages. `scheduled_externally` and `sent_externally` are operator-entered records, not provider verification. No live customer interview or customer-platform fulfillment is claimed.
@@ -47,6 +47,8 @@ Private production/research notes are present in the source/pack JSON handoff, t
 
 Persist and send the exact integer version returned by the server. Updates are serialized with a real SQLite transaction; conflicting revisions do not silently compose. Retain unsaved edits before reopening after a conflict. This version does not import HAZEL's root schema or claim interoperability with an unseen producer; that adaptation can consume these explicit functions without replacing either implementation.
 
+Programmatic preview and export requests can append `version=<opened revision>` to reject stale reads with HTTP 409. The version must be one positive integer; malformed or repeated pins return HTTP 400. Omitting it preserves the current-revision API behavior. The browser supplies the pin for both actions and reports a rejected export in place instead of leaving the editor.
+
 ## Tests
 
 ```sh
@@ -63,6 +65,8 @@ python browser_check.py --offline-dom --out /tmp/fourfold-layout
 ```
 
 The first command exercises the full browser/network workflow. This session's managed Chromium returned `net::ERR_BLOCKED_BY_ADMINISTRATOR` on loopback navigation, so that full-browser run is **not claimed passed**. No browser policy was modified. The second command renders a real SQLite pack snapshot without navigation: four checks passed for issue/body rendering, sources, 390px overflow and week navigation, with no JavaScript errors. Backend HTTP and offline DOM checks are separate observations, not a substitute claim of end-to-end browser delivery.
+
+A later native handoff on 2026-10-03 used Chromium 153 with the retained fictional demo and actual HTTP navigation. It completed four edited/ready issues, saved previews, a verified 14-file ZIP, ten-revision history, stale save/preview/export rejection with unsaved text retained, 390px layout and process restart with identical export bytes. This used the ordinary workflow rather than replaying the optional check suite; no provider action or customer delivery was performed.
 ## Live cash
 
 Verified product pages only — no invented Stripe links.
