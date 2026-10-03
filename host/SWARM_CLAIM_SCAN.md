@@ -81,11 +81,13 @@ codes and performs no additional source reads.
   verbs with `/`, as in `DONE / RELEASE OPERATION_ID` or
   `DONE / RELEASE — OPERATION_ID`; its first verb remains the reported kind.
   The exact operation ID and existing quote/condition handling are preserved.
-  The observed primary `DONE SOURCE / RELEASE OPERATION_ID` header retains the
-  actual operation ID and the first terminal kind. Conditional or proposal
-  wording on that header line leaves it unparsed; secondary clauses do not
-  reinterpret that source-release form. Terminal identifiers must
-  contain a hyphen or colon, matching declaration identifiers; ordinary words
+  The observed primary `DONE SOURCE / RELEASE OPERATION_ID` and
+  `SHIP / RELEASE · OPERATION_ID` headers retain the actual operation ID and
+  the first terminal kind. `SHIPPED` and `RELEASED` spellings are also accepted
+  in the latter form; a bare `SHIP` header does not supply a terminal observation.
+  Conditional or proposal wording on that header line leaves it unparsed;
+  secondary clauses do not reinterpret these source-release forms. Terminal
+  identifiers must contain a hyphen or colon, matching declaration identifiers; ordinary words
   such as `SOURCE` never become operation IDs. Unsupported headers remain in
   `coverage.unparsed_statement_headers` when the message has no recognized
   statement.

@@ -29,7 +29,7 @@ LABELED_OPERATION = re.compile(
     + r")`?(?=\s|$|[—–])", re.I | re.M)
 STATEMENT_HEADER = re.compile(
     r"^[ \t*`]*(?:CLAIM|TAKE|RESUME|RESUMING|TAKING|CONTINUE|CONTINUING|"
-    r"LANDED|DONE|COMPLETED?|RELEASED?)\b[^\n]*", re.I | re.M)
+    r"LANDED|DONE|COMPLETED?|RELEASED?|SHIP(?:PED)?)\b[^\n]*", re.I | re.M)
 TERMINAL = re.compile(
     r"^(LANDED|DONE|COMPLETED?|RELEASED?)"
     r"(?:\s*/\s*(?:LANDED|DONE|COMPLETED?|RELEASED?)(?:\s+[—–])?)?"
@@ -37,6 +37,9 @@ TERMINAL = re.compile(
 TERMINAL_AFTER = re.compile(r"^(" + OPERATION + r")\s+(?:is\s+)?(LANDED|DONE|COMPLETED?|RELEASED?)\b", re.I)
 SOURCE_TERMINAL = re.compile(
     r"^(DONE)[ \t]+SOURCE[ \t]*/[ \t]*RELEASED?"
+    r"(?:[ \t]*[:·—–][ \t]*|[ \t]+)(" + OPERATION + r")(?=\s|$|[—–])", re.I)
+SHIP_RELEASE_TERMINAL = re.compile(
+    r"^(SHIP(?:PED)?)[ \t]*/[ \t]*RELEASED?"
     r"(?:[ \t]*[:·—–][ \t]*|[ \t]+)(" + OPERATION + r")(?=\s|$|[—–])", re.I)
 HEADER = re.compile(
     r"^(?:=== THREAD PARENT MESSAGE ===|--- Reply [0-9]+ of [0-9]+ ---|"
@@ -291,11 +294,11 @@ def _statement(text, *, source_release=False):
             operation = next(iter(operations))
             if "-" in operation or ":" in operation:
                 return "declaration", operation
-    match = SOURCE_TERMINAL.match(first)
+    match = SOURCE_TERMINAL.match(first) or SHIP_RELEASE_TERMINAL.match(first)
     if match:
         if not source_release:
             return None
-        # This observed source-release form must not turn a proposed or
+        # These observed source-release forms must not turn a proposed or
         # conditional header into a completed operation.
         if re.search(r"\b(?:if|when|unless|until|pending|awaiting|proposed|planned)\b",
                      first.split("\n", 1)[0], re.I):
