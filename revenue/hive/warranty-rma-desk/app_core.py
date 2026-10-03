@@ -610,7 +610,7 @@ class Store:
             row = self._get_case(case_id)
             self._assert_customer_token(row, token)
             events = self.conn.execute(
-                "SELECT kind,public_message,created_at FROM events WHERE case_id=? AND public_message<>'' ORDER BY created_at,event_id",
+                "SELECT kind,public_message,created_at FROM events WHERE case_id=? AND public_message<>'' ORDER BY created_at,rowid",
                 (case_id,),
             ).fetchall()
             public = self._public_case_row(row)
@@ -685,7 +685,7 @@ class Store:
                 (case_id,),
             ).fetchall()
             events = self.conn.execute(
-                "SELECT event_id,op_key,kind,public_message,internal_note,payload_json,created_at FROM events WHERE case_id=? ORDER BY created_at,event_id",
+                "SELECT event_id,op_key,kind,public_message,internal_note,payload_json,created_at FROM events WHERE case_id=? ORDER BY created_at,rowid",
                 (case_id,),
             ).fetchall()
         return {
