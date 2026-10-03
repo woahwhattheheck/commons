@@ -342,8 +342,29 @@ def read_file_bytes(root, rel):
 def write_file_bytes(root, rel, data):
     path = os.path.join(root, rel)
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
-    with open(path, "wb") as handle:
-        handle.write(data if data is not None else b"")
+    # Keep the existing link and write its target, as open(path, "wb") did.
+    target = os.path.realpath(path)
+    try:
+        mode = stat.S_IMODE(os.stat(target).st_mode)
+    except FileNotFoundError:
+        mode = None
+    staging = os.path.join(os.path.dirname(target), ".commons-write-" + uuid.uuid4().hex)
+    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, "O_BINARY", 0)
+    # New files retain the ordinary creation mode under the current umask.
+    descriptor = os.open(staging, flags, 0o666)
+    try:
+        with os.fdopen(descriptor, "wb") as handle:
+            if mode is not None:
+                os.chmod(staging, mode)
+            handle.write(data if data is not None else b"")
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(staging, target)
+    finally:
+        try:
+            os.unlink(staging)
+        except FileNotFoundError:
+            pass
 
 
 def write_refreshed_file(root, rel, data, base_mode, origin_mode):
