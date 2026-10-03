@@ -1,0 +1,10 @@
+{
+ "schema": "commons-change-holding/v1",
+ "key": "work-smb-pending-submission-export-20261003-01-0b8156c1734493905ae440d5",
+ "holder": "swarm-c03a",
+ "heartbeat_at": "2026-10-03T06:27:29Z",
+ "taken_at": "2026-10-03T06:27:29Z",
+ "ttl_s": 3600,
+ "state": "HELD",
+ "note": "operation=smb-pending-submission-export-20261003-01 | Released Master2 item; cloud source implementation. No runtime restart or automatic replay."
+}
