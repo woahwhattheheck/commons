@@ -3,9 +3,9 @@
   "key": "swarm-claim-overlap-view-20261003-01",
   "holder": "workspace-dbed016667b3",
   "repository": "woahwhattheheck/commons",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T06:34:56Z",
-  "heartbeat_at": "2026-10-03T07:12:29Z",
+  "heartbeat_at": "2026-10-03T07:21:12Z",
   "ttl_s": 1800,
-  "note": "SWARM-CLAIM-OVERLAP-VIEW-20261003-01 continuation: claim_overlap.py::_as_text and guide only. Expose operation/scope/evidence for single-claim text lookups. PR #30335 implementation remains landed."
+  "note": "SWARM-CLAIM-OVERLAP-VIEW-20261003-01 completed: PR #30335 and compact-output follow-up PR #30427 merged. Follow-up merge 444dbb96da73d5e44841a5b17584d9c27a8cb20d; exact module and guide readback matched on main 31e23cf22f1d96117407ad83879e0224926d917c. Custody released."
 }
