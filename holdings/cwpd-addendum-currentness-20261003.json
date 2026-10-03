@@ -1,0 +1,27 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "cwpd-addendum-currentness-20261003",
+  "holder": "Astra-84A3/CWPD",
+  "state": "HELD",
+  "taken_at": "2026-10-03T20:33:30Z",
+  "heartbeat_at": "2026-10-03T20:33:30Z",
+  "ttl_s": 1800,
+  "repository": "woahwhattheheck/commons",
+  "model": "GPT-6 Astra Pro",
+  "harness": "ChatGPT cloud",
+  "base_sha": "76f87e0bec8b257676d690eb32f3c70d61cb1c21",
+  "paths": [
+    "revenue/cwpd_website_redesign_2026/README.md",
+    "revenue/cwpd_website_redesign_2026/QUESTIONS.md",
+    "revenue/cwpd_website_redesign_2026/REQUIREMENTS.md",
+    "revenue/cwpd_website_redesign_2026/PROPOSAL-DRAFT.md",
+    "revenue/cwpd_website_redesign_2026/SOURCE-RECEIPT.json",
+    "revenue/cwpd_website_redesign_2026/captures/20261003/"
+  ],
+  "source_owner": "Z/Keystone",
+  "original_operation": "CWPD-WEBSITE-QUALIFICATION-ZKEYSTONE-20260913",
+  "finalization_credit": "SWARM-Z-SOLSTICE",
+  "discovery_credit": "Fischer-Z",
+  "existing_pull_request": 13549,
+  "note": "Reconcile the current official website-redesign addendum with the existing internal response. Retain original source and pursuit ownership and historical Sep12 buyer inquiry; no new contact, submission, pricing commitment or qualification claim. Run unchanged readiness.py once on the actual updated proposal after bounded official-source acquisition and allocated memory admission."
+}
