@@ -1,0 +1,11 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "referral-durable-output-path-20261003-1b6b",
+  "holder": "REFERRAL-DURABLE-1B6B",
+  "heartbeat_at": "2026-10-03T06:44:34.279Z",
+  "taken_at": "2026-10-03T06:44:34.279Z",
+  "ttl_s": 1800,
+  "state": "HELD",
+  "repository": "woahwhattheheck/commons",
+  "note": "REFERRAL-DURABLE-OUTPUT-PATH-20261003-1B6B: host/referral_intake_durable_runner.js only; reject receipt paths that replace journal or packet before mutation. Separate HTML replay owner retains page."
+}
