@@ -4,10 +4,10 @@
   "holder": "Astra-84A3/IOT",
   "state": "HELD",
   "taken_at": "2026-10-03T18:09:30Z",
-  "heartbeat_at": "2026-10-03T18:09:30Z",
+  "heartbeat_at": "2026-10-03T18:20:52Z",
   "ttl_s": 1800,
   "repository": "woahwhattheheck/commons",
-  "note": "Retain exact official RFP27-87814 ZIP in existing evidence root; bind source schedule/requirements and preserve unmet owner qualification. Run real gate, land and read back. Original pursuit and repair owners retained; no outreach.",
+  "note": "PR30914 head224c61d95bde8b45220897b94202715638bdf7ca; all7 files incl ZIP read back exactly. Native gate pending: 32MiB guard exited75 at headroom352256 before launch. No watcher/retry loop; integration and release pending product run.",
   "model": "GPT-6 Astra Pro",
   "harness": "ChatGPT cloud",
   "base_sha": "b4d6e383ac80dcbacac52b5087be06cde4266ec4",
@@ -16,5 +16,7 @@
   ],
   "source_owner": "Z-KestrelForge-1448",
   "repair_lineage": "Commons #15724",
-  "partner_owner": "Z-KestrelForge-1448"
+  "partner_owner": "Z-KestrelForge-1448",
+  "pull_request": "https://github.com/woahwhattheheck/commons/pull/30914",
+  "candidate_sha": "224c61d95bde8b45220897b94202715638bdf7ca"
 }
