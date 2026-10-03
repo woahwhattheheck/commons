@@ -69,7 +69,7 @@
       "show-due", "show-all", "queue-summary", "no-cards", "no-cards-copy", "card-stage", "card-kind", "source-link",
       "card-prompt", "tutor-editor", "edit-card-form", "edit-prompt", "edit-answer", "edit-aliases", "edit-explanation",
       "review-form", "review-answer", "check-answer", "feedback", "feedback-title", "feedback-schedule", "feedback-message",
-      "feedback-answer", "feedback-quote", "feedback-source", "next-card"
+      "feedback-answer", "feedback-quote", "feedback-explanation", "feedback-source", "next-card"
     ].forEach(id => { el[id] = byId(id); });
   }
 
@@ -425,6 +425,7 @@
     el["feedback-message"].textContent = result.feedback;
     el["feedback-answer"].textContent = result.answer;
     el["feedback-quote"].textContent = result.quote;
+    el["feedback-explanation"].textContent = result.explanation;
     el["feedback-source"].href = result.source_url;
     el["review-form"].hidden = true;
     el.feedback.focus();

@@ -90,6 +90,14 @@ Input errors use 400 with `{message}`; missing objects/routes use 404; concurren
 revision or operation conflicts use 409; storage errors use 503. The HTTP consumer
 must surface these messages and preserve pending data for transient failures.
 
+## Browser handoff
+
+The browser displays the stored tutor explanation with each review result, beside the unchanged answer key and exact source quotation. Hidden review and retry panels stay hidden after recovery or deletion; source provenance wraps within narrow screens.
+
+On 2026-10-03, Chromium 153 exercised the actual loopback server and its existing CSP with the original CEDAR starter lesson (two-page PDF and editable notes, each yielding 16 cards). The lesson walkthrough covered tutor alias/explanation editing, mismatched-answer feedback, completing the due set, and the accepted `response delay` alias. A real server stop before an answer submission retained the exact pending request in localStorage; restarting at the same address and reloading restored it, and explicit retry produced one review row and one attempt. This run does not establish committed-response-loss behavior; the earlier bridge acceptance remains separate evidence.
+
+Native browser downloads preserved the 3,871-byte PDF and 1,170-byte notes exactly. The final 32,025-byte JSON export matched the native exporter byte for byte. Exact reimport and server restart preserved keys and all 18 intentional review rows; deleting both local study sets removed their active documents, cards and reviews plus selected/pending browser references. Desktop, 390-pixel feedback, cited source and empty-state views were visually inspected. Source width changed from 533 to 390 pixels; final continuation had no page/console errors or external requests. The earlier deliberate server-stop step produced the expected connection-refused console entry. Backend, scheduler, source parsing and previous acceptance are unchanged; no tests, dependencies, student records or external services were added.
+
 ## Tests
 
 From this directory: `python -B -m unittest -v test_study test_export_snapshot`.

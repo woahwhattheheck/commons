@@ -1,3 +1,4 @@
+[hidden] { display: none !important; }
 :root {
   color-scheme: light dark;
   --bg: #f3f5f4;
@@ -112,12 +113,13 @@ button:disabled { cursor: not-allowed; opacity: .52; }
 .feedback-topline, .feedback-actions { display: flex; align-items: center; justify-content: space-between; gap: .7rem; }
 .feedback dl { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
 .feedback dl div { border: 1px solid var(--line); border-radius: .75rem; padding: .75rem; }
+.feedback .feedback-explanation { grid-column: 1 / -1; }
 .feedback dt { color: var(--muted); font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
 .feedback dd { margin: .35rem 0 0; white-space: pre-wrap; line-height: 1.4; overflow-wrap: anywhere; }
 .boundary-note { color: var(--muted); padding: .8rem 1rem; border-left: 3px solid var(--line); font-size: .85rem; line-height: 1.5; }
 .boundary-note strong { color: var(--ink); }
 .boundary-note p { margin: .25rem 0 0; }
-.source-main { max-width: 900px; margin: 0 auto; padding: 2rem; }
+.source-main { max-width: 900px; margin: 0 auto; padding: 2rem; overflow-wrap: anywhere; }
 .source-main section { border-top: 1px solid var(--line); margin-top: 1.5rem; }
 .source-lines { padding-left: 3.5rem; }
 .source-lines li { padding: .15rem .5rem; scroll-margin-top: 3rem; }
