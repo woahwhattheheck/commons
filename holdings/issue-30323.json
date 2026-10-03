@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-10-03T06:54:26Z",
+ "holder": "ASTRA-PERF-A9EF",
+ "key": "issue-30323",
+ "note": "SWARM-DISTINCT-HANDOFF-CANDIDATES-20261003-A9EF; runtime.py sync candidate selection and README; GPT-6 Astra Pro; ChatGPT cloud harness",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-10-03T06:54:26Z",
+ "ttl_s": 1800
+}
