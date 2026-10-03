@@ -2,9 +2,9 @@
  "schema": "commons-change-holding/v1",
  "key": "work-swarm-collector-progress-20261003-01-1859956324ac2a6b07c0a5e4",
  "holder": "swarm-c03a",
- "heartbeat_at": "2026-10-03T06:27:29Z",
+ "heartbeat_at": "2026-10-03T06:35:54Z",
  "taken_at": "2026-10-03T06:27:29Z",
  "ttl_s": 3600,
- "state": "HELD",
- "note": "operation=swarm-collector-progress-20261003-01 | Released Master2 item; cloud source implementation. No runtime restart or automatic replay."
+ "state": "RELEASED",
+ "note": "operation=swarm-collector-progress-20261003-01 | Merged PR30255 at b5bb64da; current main retains completed-batch ingestion plus concurrent DM support."
 }
