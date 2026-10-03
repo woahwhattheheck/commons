@@ -2,13 +2,23 @@
   "schema": "commons-change-holding/v1",
   "key": "product-refusal-before-replay-20261003-1b6b",
   "holder": "REFERRAL-1B6B",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T06:56:13Z",
-  "heartbeat_at": "2026-10-03T06:56:13Z",
+  "heartbeat_at": "2026-10-03T07:02:35Z",
   "ttl_s": 1800,
   "scope": [
     "dealer-service-lead-rescue.js:processLead",
     "plant-downtime-handoff.js:processFault"
   ],
-  "operation_id": "PRODUCT-REFUSAL-BEFORE-REPLAY-20261003-1B6B"
+  "operation_id": "PRODUCT-REFUSAL-BEFORE-REPLAY-20261003-1B6B",
+  "released_at": "2026-10-03T07:02:35Z",
+  "result": {
+    "pr": "https://github.com/woahwhattheheck/commons/pull/30368",
+    "merge_sha": "1e8c88331f8f1f6c51a49d56ebd93b2119b0a2b5",
+    "main_readback_sha": "4e2b2a5fd89e6f137e4f6b538e57e3a85a423b95",
+    "source_blobs": {
+      "dealer-service-lead-rescue.js": "1c7a136532297995da0f8f51f3b9582cc1e6c685",
+      "plant-downtime-handoff.js": "6cf035e32ee771ca89cd1e7ae214c665bd310115"
+    }
+  }
 }
