@@ -349,6 +349,10 @@ def measure_tree(root, main_sha=""):
 
 def write_projection(root, main_sha=""):
     out = measure_tree(root, main_sha)
+    # Keep the last usable task view when source loading or validation fails.
+    # The caller still receives the error and reports a nonzero exit status.
+    if out.get("error") or out.get("problems"):
+        return out
     # KEEP tip live_cash across unbuilt-items remints (newbot-05 doors;
     # --write rebuilds wipe tip doors otherwise).
     out = _preserve_live_cash(_load_prev_tip_json(root, JSON_OUT), out, root)
