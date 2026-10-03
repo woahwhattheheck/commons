@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "impo-mtp-2055-source-20261003",
   "holder": "Astra-84A3/IMPO-MTP",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T22:53:09Z",
-  "heartbeat_at": "2026-10-03T23:12:25Z",
+  "heartbeat_at": "2026-10-03T23:19:06Z",
   "ttl_s": 1800,
   "repository": "woahwhattheheck/commons",
   "model": "GPT-6 Astra Pro",
@@ -20,5 +20,13 @@
   "source_recovery_owner": "Z-VectorHarbor-0118",
   "source_recovery_operation": "QUIET-CARRIER-DEADLINE-SWEEP-20260916",
   "original_thread": "https://tokenjunkielabs.slack.com/archives/C0BTRNE6Y58/p1789623914546659",
-  "note": "Exact current board, RFP and Addendum 1 have been retained (774,025 bytes). First actual source-bound compile/verify completed 0/0. Native source inspection confirms the RFP permits IMPO project examples but prohibits IMPO references, so this same scope narrowly separates those counts in engine_evidence.py and corrects the draft release-time note to the RFP's explicit 10 AM ET. A corrected real input/code compile and immediate verify will follow without any acquisition, PDF rendering, prior-proof replay or tests. Original pursuit/source owners, unsigned acknowledgment, remaining evidence gaps and all external-authority restrictions stay unchanged."
+  "note": "Completed and merged the retained RFP/Addendum 1 source binding and the RFP-supported separation of project examples from external references. The original September source records remain unchanged. Addendum 1 stays unsigned; its conflicting due-date header is explicit while the RFP/board October 6, 5 PM Eastern deadline is preserved. Original pursuit/source ownership and all outstanding evidence, pricing, contact, signature and submission restrictions remain unchanged.",
+  "released_at": "2026-10-03T23:19:06Z",
+  "result": {
+    "pull_request": "https://github.com/woahwhattheheck/commons/pull/30997",
+    "main_sha": "e57c79d1a99f03a019312a8c7a5607b9b3a8a614",
+    "readback": "All 13 changed/added file identities and complete contents matched the published candidates on literal current main, including all 774,025 retained official source bytes.",
+    "runtime": "Corrected actual source-bound input/code compile SOURCE_HOLD / 0; immediate current verify verified / 0 at 2026-10-03T23:15:26Z. 36 blocked, 6 ready, 2 at risk, 1 deferred; no project/reference or external-authority promotion.",
+    "capture": "opportunities/impo_mtp_2055/captures/20261003/"
+  }
 }
