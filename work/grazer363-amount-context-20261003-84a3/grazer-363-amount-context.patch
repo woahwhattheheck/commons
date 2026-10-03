@@ -1,0 +1,339 @@
+diff --git a/README.md b/README.md
+index 053ae93ca4b42ec6f434ebfe3bac40b9aa5b2d74..8f26ddd15a7c737e63edf834aef8e6f1c3a2f826 100644
+--- a/README.md
++++ b/README.md
+@@ -233,6 +233,7 @@ export GRAZER_BACKOFF_BASE_MS=2000
+ ### 🔍 Discovery
+ - **Trending content** across all platforms
+ - **Opportunity discovery** on Moltbook with `--bounties-only` or `--intent opportunities`; concrete bounty/reward/paid/hiring/commission signals rank first, while generic scheduler/job/task orchestration chatter is suppressed
++  Amounts that only describe exploit losses or per-token prices do not qualify on their own; explicit offers and separate offered amounts remain eligible.
+ - **Topic-based search** with AI-powered relevance
+ - **Category filtering** (BoTTube: 21 categories)
+ - **Submolt browsing** (Moltbook: 50+ communities)
+diff --git a/grazer/opportunities.py b/grazer/opportunities.py
+index 4bbc1472d70a73a770327f855045cea2efb24dba..03d597801a22a9f7de40578f520b69ed31306ded 100644
+--- a/grazer/opportunities.py
++++ b/grazer/opportunities.py
+@@ -29,6 +29,29 @@ _AMOUNT_RE = re.compile(
+     re.IGNORECASE,
+ )
+ 
++# These expressions describe a loss or a token unit price, not compensation.
++# Remove only their amount spans so a separate offered amount remains eligible.
++_NON_COMPENSATION_AMOUNTS_RE = re.compile(
++    r"\b(?:recent|reported|previous|estimated|alleged)\s+"
++    rf"{_AMOUNT_RE.pattern}"
++    r"(?:\s*(?:[kmb]|thousand|million|billion))?\s+"
++    r"(?:exploit|hack|loss(?:es)?|(?:liquidity\s+)?extraction)\b"
++    r"|\b(?:lost|stole|stolen|drained|loss(?:es)?\s+of)\s+"
++    rf"{_AMOUNT_RE.pattern}"
++    rf"|{_AMOUNT_RE.pattern}"
++    rf"(?:\s*[-–—]\s*{_AMOUNT_RE.pattern})?"
++    r"\s*(?:/|per\s+)\s*"
++    r"(?:(?:\d+(?:[.,]\d+)?\s*[kmb]?|[kmb]|thousand|million|billion)\s*)?"
++    r"(?:input\s+|output\s+)?tokens?\b",
++    re.IGNORECASE,
++)
++
++_PAY_STATEMENT_RE = re.compile(
++    r"\b(?:i|we)(?:['’]ll|\s+will|\s+can)?\s+pay\b"
++    r"|\bpay\s+(?:you|whoever|anyone)\b",
++    re.IGNORECASE,
++)
++
+ _NOISE_PATTERNS: Sequence[Tuple[str, re.Pattern[str]]] = (
+     ("scheduler noise", re.compile(r"\b(?:cron|scheduled|background) (?:job|task)s?\b", re.IGNORECASE)),
+     ("queue noise", re.compile(r"\b(?:job|task|worker) queues?\b|\bqueue(?:d|ing)? (?:job|task)s?\b", re.IGNORECASE)),
+@@ -66,7 +89,12 @@ def score_moltbook_opportunity(post: Dict) -> Tuple[int, List[str]]:
+             score += weight
+             signals.append(label)
+ 
+-    if _AMOUNT_RE.search(text):
++    has_amount = bool(_AMOUNT_RE.search(text))
++    if has_amount and not signals and not _PAY_STATEMENT_RE.search(text):
++        has_amount = bool(
++            _AMOUNT_RE.search(_NON_COMPENSATION_AMOUNTS_RE.sub("", text))
++        )
++    if has_amount:
+         score += 5
+         signals.append("amount")
+ 
+diff --git a/src/opportunities.ts b/src/opportunities.ts
+index 573a92c86e7ffbb394039312a11c64905030ff86..b6251280d9813979a293888aa862daa911cc4896 100644
+--- a/src/opportunities.ts
++++ b/src/opportunities.ts
+@@ -22,6 +22,22 @@ const SIGNALS: Array<[string, number, RegExp]> = [
+ ];
+ 
+ const AMOUNT = /(?:\$\s*\d+(?:[.,]\d+)?|\b\d+(?:[.,]\d+)?\s*(?:USD|USDC|RTC|XLM|EUR|GBP)\b)/i;
++// Strip only loss/price amounts; keep separate offered amounts in mixed posts.
++const NON_COMPENSATION_AMOUNTS = new RegExp(
++  [
++    '\\b(?:recent|reported|previous|estimated|alleged)\\s+' + AMOUNT.source +
++      '(?:\\s*(?:[kmb]|thousand|million|billion))?\\s+' +
++      '(?:exploit|hack|loss(?:es)?|(?:liquidity\\s+)?extraction)\\b',
++    '\\b(?:lost|stole|stolen|drained|loss(?:es)?\\s+of)\\s+' + AMOUNT.source,
++    AMOUNT.source +
++      '(?:\\s*[-–—]\\s*' + AMOUNT.source + ')?' +
++      '\\s*(?:/|per\\s+)\\s*' +
++      '(?:(?:\\d+(?:[.,]\\d+)?\\s*[kmb]?|[kmb]|thousand|million|billion)\\s*)?' +
++      '(?:input\\s+|output\\s+)?tokens?\\b',
++  ].join('|'),
++  'gi',
++);
++const PAY_STATEMENT = /\b(?:i|we)(?:['’]ll|\s+will|\s+can)?\s+pay\b|\bpay\s+(?:you|whoever|anyone)\b/i;
+ const NOISE = [
+   /\b(?:cron|scheduled|background) (?:job|task)s?\b/i,
+   /\b(?:job|task|worker) queues?\b|\bqueue(?:d|ing)? (?:job|task)s?\b/i,
+@@ -51,7 +67,11 @@ export function scoreMoltbookOpportunity(post: Record<string, any>): Opportunity
+       signals.push(label);
+     }
+   }
+-  if (AMOUNT.test(text)) {
++  let hasAmount = AMOUNT.test(text);
++  if (hasAmount && signals.length === 0 && !PAY_STATEMENT.test(text)) {
++    hasAmount = AMOUNT.test(text.replace(NON_COMPENSATION_AMOUNTS, ''));
++  }
++  if (hasAmount) {
+     score += 5;
+     signals.push('amount');
+   }
+diff --git a/tests-ts/opportunity-amounts.test.ts b/tests-ts/opportunity-amounts.test.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..3252fe59008b30bc370e31534e7ea13f4477f28f
+--- /dev/null
++++ b/tests-ts/opportunity-amounts.test.ts
+@@ -0,0 +1,44 @@
++import test from 'node:test';
++import assert from 'node:assert/strict';
++import { readFileSync } from 'node:fs';
++import {
++  rankMoltbookOpportunities,
++  scoreMoltbookOpportunity,
++} from '../src/opportunities.ts';
++
++const cases = JSON.parse(
++  readFileSync(
++    new URL('../tests/fixtures/opportunity_amount_cases.json', import.meta.url),
++    'utf8',
++  ),
++);
++
++for (const fixture of cases) {
++  test(fixture.name, () => {
++    const original = { ...fixture.post };
++    for (let attempt = 0; attempt < 2; attempt += 1) {
++      assert.deepEqual(scoreMoltbookOpportunity(fixture.post), {
++        score: fixture.score,
++        signals: fixture.signals,
++      });
++      assert.equal(
++        rankMoltbookOpportunities([fixture.post]).length > 0,
++        fixture.score >= 3,
++      );
++    }
++    assert.deepEqual(fixture.post, original);
++  });
++}
++
++test('ranking filters prices and preserves ties and limit', () => {
++  const posts = [
++    { id: 'price', content: '$2.50–$15.00/M tokens', upvotes: 999 },
++    { id: 'first', content: '100 USDC for a logo', upvotes: 7 },
++    { id: 'second', content: '100 USDC for a logo', upvotes: 7 },
++    { id: 'bounty', content: 'Bounty: review this parser', upvotes: 0 },
++  ];
++  assert.deepEqual(
++    rankMoltbookOpportunities(posts, 2).map((post) => post.id),
++    ['bounty', 'first'],
++  );
++});
+diff --git a/tests/fixtures/opportunity_amount_cases.json b/tests/fixtures/opportunity_amount_cases.json
+new file mode 100644
+index 0000000000000000000000000000000000000000..e2cc46aa2790855cea6b59eb7ac17a2b6ff8be2f
+--- /dev/null
++++ b/tests/fixtures/opportunity_amount_cases.json
+@@ -0,0 +1,132 @@
++[
++  {
++    "name": "exploit amount",
++    "post": {"title": "Validator incident", "content": "The reported $3.8M exploit exposed a broken validator."},
++    "score": 0, "signals": []
++  },
++  {
++    "name": "liquidity extraction amount",
++    "post": {"title": "Deposit logic analysis", "content": "The recent $3.8 million liquidity extraction exposed missing state checks."},
++    "score": 0, "signals": []
++  },
++  {
++    "name": "token price range",
++    "post": {"title": "Compute economics", "content": "Routing costs $2.50–$15.00/M tokens."},
++    "score": 0, "signals": []
++  },
++  {
++    "name": "loss before amount",
++    "post": {"content": "The bridge lost 20000000 USD."},
++    "score": 0, "signals": []
++  },
++  {
++    "name": "token unit price in words",
++    "post": {"content": "API prices are 2 USD per million input tokens."},
++    "score": 0, "signals": []
++  },
++  {
++    "name": "numeric token unit",
++    "post": {"content": "An API charges $0.50 / 1M output tokens."},
++    "score": 0, "signals": []
++  },
++  {
++    "name": "pay verb",
++    "post": {"content": "I'll pay $100 to fix this parser."},
++    "score": 5, "signals": ["amount"]
++  },
++  {
++    "name": "recipient conditional",
++    "post": {"content": "$100 to whoever fixes issue #42."},
++    "score": 5, "signals": ["amount"]
++  },
++  {
++    "name": "request followed by budget",
++    "post": {"content": "Need someone to translate our README. Budget: 100 USDC."},
++    "score": 5, "signals": ["amount"]
++  },
++  {
++    "name": "completion conditional",
++    "post": {"content": "Build the integration — 250 USD on acceptance."},
++    "score": 5, "signals": ["amount"]
++  },
++  {
++    "name": "accepted contribution",
++    "post": {"content": "50 RTC for the first accepted pull request."},
++    "score": 5, "signals": ["amount"]
++  },
++  {
++    "name": "terse deliverable",
++    "post": {"content": "100 USDC for a logo."},
++    "score": 5, "signals": ["amount"]
++  },
++  {
++    "name": "role solicitation",
++    "post": {"title": "Python developer needed — 100 USD"},
++    "score": 5, "signals": ["amount"]
++  },
++  {
++    "name": "request and budget in separate fields",
++    "post": {"title": "Need someone to translate our README", "body": "Budget: 100 USDC."},
++    "score": 5, "signals": ["amount"]
++  },
++  {
++    "name": "offer before token price",
++    "post": {"content": "$100 to optimize a service currently costing $15/M tokens."},
++    "score": 5, "signals": ["amount"]
++  },
++  {
++    "name": "offer after token price",
++    "post": {"content": "Current costs are $15/M tokens. Build a cheaper router for 100 USDC."},
++    "score": 5, "signals": ["amount"]
++  },
++  {
++    "name": "offer after exploit loss",
++    "post": {"content": "The previous $3.8M exploit needs analysis. 100 USDC for a reproduction."},
++    "score": 5, "signals": ["amount"]
++  },
++  {
++    "name": "offer before exploit loss",
++    "post": {"content": "$100 to investigate the $3.8 million liquidity extraction."},
++    "score": 5, "signals": ["amount"]
++  },
++  {
++    "name": "priced exploit reproduction",
++    "post": {"content": "Looking for someone to prepare a $100 exploit reproduction."},
++    "score": 5, "signals": ["amount"]
++  },
++  {
++    "name": "priced exploit reproduction job",
++    "post": {"title": "$100 exploit reproduction job — need someone to reproduce issue #42."},
++    "score": 6, "signals": ["amount"]
++  },
++  {
++    "name": "explicit pay at a token rate",
++    "post": {"content": "We'll pay $15/M tokens to annotate this dataset."},
++    "score": 5, "signals": ["amount"]
++  },
++  {
++    "name": "explicit bounty keeps original weight",
++    "post": {"title": "Bounty: investigate the $3.8M exploit."},
++    "score": 13, "signals": ["bounty", "amount"]
++  },
++  {
++    "name": "explicit hiring without amount",
++    "post": {"title": "We're hiring a Python developer"},
++    "score": 5, "signals": ["hiring"]
++  },
++  {
++    "name": "weak words still cannot qualify",
++    "post": {"title": "A job and a task scheduler"},
++    "score": 2, "signals": []
++  },
++  {
++    "name": "queue penalty remains intact",
++    "post": {"title": "Fix a job queue for $100"},
++    "score": 2, "signals": ["amount"]
++  },
++  {
++    "name": "explicit queue bounty remains intact",
++    "post": {"title": "Bounty: fix a job queue for $100"},
++    "score": 10, "signals": ["bounty", "amount"]
++  }
++]
+diff --git a/tests/test_opportunity_amounts.py b/tests/test_opportunity_amounts.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..6fcb027df6646b6966112dd6ceb76dc9b9346e89
+--- /dev/null
++++ b/tests/test_opportunity_amounts.py
+@@ -0,0 +1,45 @@
++"""Shared amount-context regressions for both opportunity rankers."""
++
++import json
++from pathlib import Path
++import unittest
++
++from grazer.opportunities import (
++    rank_moltbook_opportunities,
++    score_moltbook_opportunity,
++)
++
++
++CASES = json.loads(
++    (Path(__file__).parent / "fixtures" / "opportunity_amount_cases.json").read_text(
++        encoding="utf-8"
++    )
++)
++
++
++class OpportunityAmountTests(unittest.TestCase):
++    def test_amount_context_and_existing_scores(self):
++        for case in CASES:
++            with self.subTest(case=case["name"]):
++                original = dict(case["post"])
++                for _ in range(2):
++                    score, signals = score_moltbook_opportunity(case["post"])
++                    self.assertEqual(score, case["score"])
++                    self.assertEqual(signals, case["signals"])
++                    ranked = rank_moltbook_opportunities([case["post"]])
++                    self.assertEqual(bool(ranked), case["score"] >= 3)
++                self.assertEqual(case["post"], original)
++
++    def test_ranking_filters_prices_and_preserves_ties_and_limit(self):
++        posts = [
++            {"id": "price", "content": "$2.50–$15.00/M tokens", "upvotes": 999},
++            {"id": "first", "content": "100 USDC for a logo", "upvotes": 7},
++            {"id": "second", "content": "100 USDC for a logo", "upvotes": 7},
++            {"id": "bounty", "content": "Bounty: review this parser", "upvotes": 0},
++        ]
++        ranked = rank_moltbook_opportunities(posts, limit=2)
++        self.assertEqual([post["id"] for post in ranked], ["bounty", "first"])
++
++
++if __name__ == "__main__":
++    unittest.main()

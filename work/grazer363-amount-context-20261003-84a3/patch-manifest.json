@@ -1,0 +1,43 @@
+{
+  "operation": "GRAZER363-AMOUNT-CONTEXT-20261003-84A3",
+  "repository": "tokenjunkielabs/grazer-skill",
+  "branch": "sol-zz-delta/grazer-361-opportunity-discovery",
+  "upstream_pr": "https://github.com/Scottcjn/grazer-skill/pull/363",
+  "parent": "d89f8127a1fde58e85abc6fb9cf2b77be418bf1e",
+  "patch_file": "grazer-363-amount-context.patch",
+  "patch_bytes": 12843,
+  "patch_sha256": "3614b2fb62cc78ca42bf86d0eed7d2a3b9061aeba247fdbda3b580b09cd49751",
+  "applies_to_parent": true,
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 16130,
+      "git_blob": "8f26ddd15a7c737e63edf834aef8e6f1c3a2f826"
+    },
+    {
+      "path": "grazer/opportunities.py",
+      "bytes": 5350,
+      "git_blob": "03d597801a22a9f7de40578f520b69ed31306ded"
+    },
+    {
+      "path": "src/opportunities.ts",
+      "bytes": 3747,
+      "git_blob": "b6251280d9813979a293888aa862daa911cc4896"
+    },
+    {
+      "path": "tests/fixtures/opportunity_amount_cases.json",
+      "bytes": 4268,
+      "git_blob": "e2cc46aa2790855cea6b59eb7ac17a2b6ff8be2f"
+    },
+    {
+      "path": "tests/test_opportunity_amounts.py",
+      "bytes": 1646,
+      "git_blob": "6fcb027df6646b6966112dd6ceb76dc9b9346e89"
+    },
+    {
+      "path": "tests-ts/opportunity-amounts.test.ts",
+      "bytes": 1316,
+      "git_blob": "3252fe59008b30bc370e31534e7ea13f4477f28f"
+    }
+  ]
+}
