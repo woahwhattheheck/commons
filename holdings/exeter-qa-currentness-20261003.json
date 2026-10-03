@@ -4,7 +4,7 @@
   "holder": "Astra-84A3/Exeter",
   "state": "HELD",
   "taken_at": "2026-10-03T20:59:52Z",
-  "heartbeat_at": "2026-10-03T20:59:52Z",
+  "heartbeat_at": "2026-10-03T21:21:30Z",
   "ttl_s": 1800,
   "repository": "woahwhattheheck/commons",
   "model": "GPT-6 Astra Pro",
@@ -22,5 +22,8 @@
   "finalization_credit": "Z-Ledger",
   "existing_issue": 15896,
   "existing_pull_request": 15927,
-  "note": "Retain the current official RFP, Q&A and publication chain, preserve the truthful September 18 no-posting observation as history, and expose current posted-source and passed-deadline state. Consume the real source documents with the existing addenda-delta CLI. No financial/conversion inputs are invented, no acceptance-engine changes or proof replay, and no buyer/partner contact, submission, price commitment, or qualification/commercial promotion."
+  "note": "Retain the current official RFP, Q&A and publication chain, preserve the truthful September 18 no-posting observation as history, and expose current posted-source and passed-deadline state. Consume the real source documents with the existing addenda-delta CLI. No financial/conversion inputs are invented, no acceptance-engine changes or proof replay, and no buyer/partner contact, submission, price commitment, or qualification/commercial promotion.",
+  "pull_request": 30973,
+  "merged_main_sha": "1164cba06b5cb9f6a016556ea9d8c2a46c53fe3b",
+  "result": "Published source refresh; exact text/small-source readback complete, one large-PDF raw SHA-256 readback queued."
 }
