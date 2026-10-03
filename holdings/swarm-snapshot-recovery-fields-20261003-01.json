@@ -1,0 +1,11 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "swarm-snapshot-recovery-fields-20261003-01",
+  "holder": "cloud-capacity-worker-3544b6a6e691",
+  "repository": "woahwhattheheck/commons",
+  "state": "HELD",
+  "taken_at": "2026-10-03T06:57:21Z",
+  "heartbeat_at": "2026-10-03T06:57:21Z",
+  "ttl_s": 1800,
+  "note": "SWARM-SNAPSHOT-RECOVERY-FIELDS-20261003-01; host/swarm_runtime/snapshot.py::_FIELDS; preserve projected blocker and release/transfer evidence."
+}
