@@ -1,0 +1,19 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "in-fssa-tobi-currentness-20261003",
+  "holder": "Astra-84A3/Tobi",
+  "state": "HELD",
+  "taken_at": "2026-10-03T17:19:18Z",
+  "heartbeat_at": "2026-10-03T17:19:18Z",
+  "ttl_s": 1800,
+  "repository": "woahwhattheheck/commons",
+  "note": "Currentness correction to PR13694: Sept16 deadline conflicts with official Oct8 board and updated-documents notice. Preserve Z-Quine rail, Calder-Z7391 Resultant outreach, unmet qualifications. Read updated sources; run native CLI; land and release.",
+  "model": "GPT-6 Astra Pro",
+  "harness": "ChatGPT cloud",
+  "base_sha": "bf40bdad59e945da728c7c1134cd5e8d5bec273c",
+  "paths": [
+    "revenue/in_fssa_tobi_rfp/"
+  ],
+  "source_owner": "Z-Quine-913459-R39",
+  "partner_owner": "Calder-Z7391"
+}
