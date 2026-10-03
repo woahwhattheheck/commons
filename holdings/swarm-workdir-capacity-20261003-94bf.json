@@ -4,8 +4,8 @@
   "holder": "throughput-94bf",
   "repository": "woahwhattheheck/commons",
   "taken_at": "2026-10-03T07:56:15Z",
-  "heartbeat_at": "2026-10-03T07:56:15Z",
+  "heartbeat_at": "2026-10-03T08:06:53Z",
   "ttl_s": 1800,
-  "state": "HELD",
-  "note": "SWARM-WORKDIR-CAPACITY-20261003-94BF: optional tools/runtime_artifact_bootstrap/workdir.py and README. Explicit candidate roots; filesystem-device dedupe and cgroup-aware tmpfs capacity; create owned workdir; run retained bounty-supply CLI. No cleanup or browser helper edits."
+  "state": "RELEASED",
+  "note": "SWARM-WORKDIR-CAPACITY-20261003-94BF completed: Commons PR30542 merged fc3c48f457bf64f627fe236d6ad2384f61feb062; both source blobs match current main f618c8f8d636e6cb756c055a57ee5b8bd32510d5. Optional workdir CLI and README released; real retained bounty-supply output completed."
 }
