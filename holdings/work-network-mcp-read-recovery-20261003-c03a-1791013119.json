@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "work-network-mcp-read-recovery-20261003-c03a-1791013119",
   "holder": "swarm-c03a-network",
-  "heartbeat_at": "2026-10-03T07:38:39.038Z",
+  "heartbeat_at": "2026-10-03T07:46:33.087Z",
   "taken_at": "2026-10-03T07:38:39.038Z",
   "ttl_s": 3600,
-  "state": "HELD",
-  "note": "operation=COMMONS-MCP-READ-THROUGHPUT-RECOVERY-20261003-01 | recover published read-transport.mjs and server.mjs read scheduling only"
+  "state": "RELEASED",
+  "note": "operation=COMMONS-MCP-READ-THROUGHPUT-RECOVERY-20261003-01 | merged PR30498 dd7cf4468629a366688d12a5378528f7e21ce699; both runtime blobs read back on main"
 }
