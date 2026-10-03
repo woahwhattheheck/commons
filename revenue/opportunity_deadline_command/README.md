@@ -154,6 +154,15 @@ partial bundle. Final creation remains exclusive. Unexpected I/O failures or
 concurrent filesystem changes during publication can still leave already-written
 artifacts; the CLI reports those failures with exit code 2.
 
+## Native Work export
+
+`python -m revenue.opportunity_deadline_command.work_snapshot` prepares selected
+deadline-review metadata for the existing command-center Work ingest format.
+It preserves partial coverage, separate owner directions, and the underlying
+source capture times. Review rows do not count as new work. See
+[the native export guide](NATIVE_WORK_EXPORT.md) for the CLI, local ingestion,
+exact-payload retry, and retained-selection workflow.
+
 ## Authority ceiling
 
 Every state, queue row, Markdown line, and calendar event is **owner-review decision support only**. Nothing here authorizes buyer/partner/sponsor contact, portal login/registration, question submission, conference registration, proposal/RFI/bid submission, signature/certification, pricing/staffing commitment, contract acceptance, spend, payment/provider mutation, award assertion, cash assertion, or revenue recognition.
