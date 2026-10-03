@@ -18,6 +18,7 @@ import fnmatch
 import json
 import os
 import re
+import subprocess
 import sys
 
 
@@ -76,7 +77,9 @@ def _load_prev_tip_json(root, name):
     return prev if isinstance(prev, dict) else {}
 
 
-def _read(root, rel):
+def _read(root, rel, snapshot=None):
+    if snapshot and snapshot.get("main_paths_complete"):
+        return snapshot["source_documents"].get(rel.replace(os.sep, "/"), "")
     path = os.path.join(root, rel)
     try:
         with open(path, encoding="utf-8") as handle:
@@ -95,15 +98,23 @@ def load_json(text):
     return data
 
 
-def path_exists(root, rel):
+def path_exists(root, rel, snapshot=None):
     if not isinstance(rel, str) or not rel or rel.startswith("/") or ".." in rel.split("/"):
         return False
+    if snapshot and snapshot.get("main_paths_complete"):
+        return bool(snapshot["main_paths"].get(rel.replace(os.sep, "/").rstrip("/")))
     target = os.path.join(root, rel)
     return os.path.isfile(target) or os.path.isdir(target)
 
 
-def glob_receipts(root, pattern):
+def glob_receipts(root, pattern, snapshot=None):
     hits = []
+    if snapshot and snapshot.get("main_paths_complete"):
+        return sorted(
+            path for path in snapshot["main_paths"]
+            if path.startswith("p/") and "/" not in path[2:]
+            and path.endswith(".md") and fnmatch.fnmatch(path, pattern)
+        )
     folder = os.path.join(root, "p")
     if not os.path.isdir(folder):
         return hits
@@ -191,12 +202,12 @@ def reconcile_item(item, root, snapshot):
     present = []
     missing = []
     for path in claimed:
-        exists = bool(main_paths[path]) if path in main_paths else path_exists(root, path)
+        exists = bool(main_paths[path]) if path in main_paths else path_exists(root, path, snapshot)
         (present if exists else missing).append(path)
     receipt_hits = []
     pattern = str(item.get("receipt_glob") or "")
     if pattern:
-        receipt_hits = glob_receipts(root, pattern)
+        receipt_hits = glob_receipts(root, pattern, snapshot)
     result = {
         "id": job_id,
         "title": item.get("title"),
@@ -220,9 +231,9 @@ def reconcile_item(item, root, snapshot):
         result["status"] = "NEEDS_OWNER"
         return result
     if item.get("stay_unclosed_until_receipt"):
-        if receipt_hits:
+        if receipt_hits and SHA_RE.fullmatch(main_sha):
             result["status"] = "LANDED"
-            result["main_sha"] = main_sha if SHA_RE.match(main_sha) else ""
+            result["main_sha"] = main_sha
         else:
             result["status"] = "UNBUILT"
         return result
@@ -235,9 +246,10 @@ def reconcile_item(item, root, snapshot):
 
 
 def harvest_claimed(root, rel, source, snapshot):
+    snapshot = snapshot or {}
     rows = []
-    if rel.endswith(".json") and os.path.isfile(os.path.join(root, rel)):
-        data = load_json(_read(root, rel))
+    if rel.endswith(".json") and path_exists(root, rel, snapshot):
+        data = load_json(_read(root, rel, snapshot))
         items = data.get("items") if isinstance(data, dict) else []
         if not isinstance(items, list):
             items = []
@@ -247,7 +259,7 @@ def harvest_claimed(root, rel, source, snapshot):
             claimed = [p for p in (item.get("claimed_paths") or []) if isinstance(p, str) and p]
             if not claimed:
                 continue
-            missing = [p for p in claimed if not path_exists(root, p)]
+            missing = [p for p in claimed if not path_exists(root, p, snapshot)]
             if not missing:
                 continue
             rows.append(
@@ -266,16 +278,22 @@ def harvest_claimed(root, rel, source, snapshot):
             )
         return rows
     folder = os.path.join(root, rel)
-    if not os.path.isdir(folder):
-        return rows
-    for name in sorted(os.listdir(folder)):
+    if snapshot.get("main_paths_complete"):
+        prefix = rel.replace(os.sep, "/").rstrip("/") + "/"
+        names = [path[len(prefix):] for path in snapshot["source_documents"]
+                 if path.startswith(prefix) and "/" not in path[len(prefix):]]
+    else:
+        if not os.path.isdir(folder):
+            return rows
+        names = os.listdir(folder)
+    for name in sorted(names):
         if not name.endswith(".json"):
             continue
-        data = load_json(_read(root, os.path.join(rel, name)))
+        data = load_json(_read(root, os.path.join(rel, name), snapshot))
         if not isinstance(data, dict):
             continue
         claimed = [p for p in (data.get("claimed_paths") or []) if isinstance(p, str) and p]
-        missing = [p for p in claimed if not path_exists(root, p)]
+        missing = [p for p in claimed if not path_exists(root, p, snapshot)]
         if not claimed or not missing:
             continue
         rows.append(
@@ -336,14 +354,77 @@ def project(catalog, root, snapshot):
     }
 
 
+def _git_snapshot(root, main_sha):
+    """Read definitions and path evidence from one existing Git commit."""
+    git_env = dict(os.environ, GIT_NO_LAZY_FETCH="1", GIT_NO_REPLACE_OBJECTS="1")
+    for key in (
+        "GIT_DIR", "GIT_COMMON_DIR", "GIT_WORK_TREE", "GIT_OBJECT_DIRECTORY",
+        "GIT_ALTERNATE_OBJECT_DIRECTORIES", "GIT_NAMESPACE", "GIT_INDEX_FILE",
+        "GIT_SHALLOW_FILE", "GIT_QUARANTINE_PATH", "GIT_GRAFT_FILE",
+        "GIT_LITERAL_PATHSPECS", "GIT_GLOB_PATHSPECS", "GIT_NOGLOB_PATHSPECS",
+        "GIT_ICASE_PATHSPECS",
+    ):
+        git_env.pop(key, None)
+
+    def git(*args, input=None):
+        return subprocess.run(
+            ["git", "--literal-pathspecs", "-C", os.fspath(root), *args],
+            input=input, capture_output=True, check=True, timeout=30, env=git_env,
+        ).stdout
+
+    resolved = git("rev-parse", "--verify", main_sha + "^{commit}").decode().strip()
+    if resolved != main_sha:
+        raise ValueError("main SHA does not name a commit")
+    objects = {}
+    for entry in git("ls-tree", "-r", "-t", "-z", "--full-tree", main_sha).split(b"\0"):
+        if entry:
+            metadata, path = entry.split(b"\t", 1)
+            objects[path.decode("utf-8", "surrogateescape")] = metadata.split()[2]
+    paths = dict.fromkeys(objects, True)
+    seed = SEED_REL.replace(os.sep, "/")
+    current = CURRENT_WORK_REL.replace(os.sep, "/")
+    prefix = FEATURE_REG_REL.replace(os.sep, "/") + "/"
+    documents = [seed]
+    if current in paths:
+        documents.append(current)
+    documents.extend(sorted(path for path in paths if path.startswith(prefix)
+                            and "/" not in path[len(prefix):] and path.endswith(".json")))
+    if seed not in objects:
+        raise ValueError("source catalog is absent from the requested commit")
+    # Read exact blobs together without checkout or archive attribute filters.
+    payload = git("cat-file", "--batch", input=b"".join(objects[path] + b"\n" for path in documents))
+    sources = {}
+    offset = 0
+    for path in documents:
+        line_end = payload.find(b"\n", offset)
+        header = payload[offset:line_end].split() if line_end >= 0 else []
+        if len(header) != 3 or header[0] != objects[path] or header[1] != b"blob":
+            raise ValueError("definition blob is unavailable at the requested commit: " + path)
+        start, size = line_end + 1, int(header[2])
+        end = start + size
+        if payload[end:end + 1] != b"\n":
+            raise ValueError("incomplete definition blob at the requested commit: " + path)
+        sources[path] = payload[start:end].decode("utf-8")
+        offset = end + 1
+    return {"main_sha": main_sha, "main_paths": paths,
+            "main_paths_complete": True, "source_documents": sources}
+
+
 def measure_tree(root, main_sha=""):
-    catalog = load_json(_read(root, SEED_REL))
+    if main_sha and not SHA_RE.fullmatch(str(main_sha)):
+        return {"error": "main SHA must be 40 lowercase hex characters", "items": [], "unbuilt": []}
+    try:
+        snapshot = (_git_snapshot(root, main_sha) if main_sha else
+                    {"main_sha": "", "main_paths": {}})
+        catalog = load_json(_read(root, SEED_REL, snapshot))
+    except (OSError, subprocess.SubprocessError, ValueError) as exc:
+        detail = getattr(exc, "stderr", "") or str(exc)
+        if isinstance(detail, bytes):
+            detail = detail.decode("utf-8", "replace")
+        return {"error": "cannot read the requested catalog snapshot: " + detail.strip(),
+                "items": [], "unbuilt": []}
     if catalog.get("error"):
         return {"error": catalog["error"], "items": [], "unbuilt": []}
-    snapshot = {"main_sha": str(main_sha or ""), "main_paths": {}}
-    for item in catalog.get("items") or []:
-        for path in item.get("claimed_paths") or []:
-            snapshot["main_paths"][path] = path_exists(root, path)
     return project(catalog, root, snapshot)
 
 
