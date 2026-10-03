@@ -2,7 +2,7 @@
 
 Turn supplied SRT or WebVTT captions into an editable, source-preserving transcript handoff. Python 3.10 or newer is required. No network service, model, or provider account is used by the converter.
 
-For browser-based batch intake, run `python workbench.py` and open the printed local address. The [workbench guide](WORKBENCH.md) covers multiple files, per-file options, source-linked previews, and individual or batch ZIP downloads. The browser companion reuses `caption_intake.py`; it does not replace the podcast workspace or transcribe recordings.
+For browser-based batch intake, run `python workbench.py` and open the printed local address. The [workbench guide](WORKBENCH.md) covers multiple files, per-file options, source-linked previews, individual or batch ZIP downloads, and reopening those saved handoffs with their original caption bytes and retained options. The browser companion reuses `caption_intake.py`; it does not replace the podcast workspace or transcribe recordings.
 
 ## Command-line use
 
@@ -85,7 +85,7 @@ An existing local HTTP client may POST the unmodified `episode-import.json` byte
 
 The same `episode-import.json` is accepted by `../managed-clipping/managed_clipping.py` through `--transcript-json`. The caption companion does not edit, fork, or import the managed-clipping package.
 
-The bundled fictional demo has exactly six eligible caption segments. Request exactly six moments or fewer:
+The bundled fictional demo has six caption segments. Request six moments or fewer after confirming that the source duration and any supplied keep ranges admit those cues:
 
 ```sh
 python caption_intake.py examples/demo.vtt \
@@ -105,7 +105,9 @@ python ../managed-clipping/managed_clipping.py handoff \
 
 The source video must be authorized media whose duration and cue boundaries correspond to the supplied captions. The clipping project records the source byte hash and refuses work if the source later changes.
 
-Do not request more transcript-derived moments than eligible segments and describe the results as distinct transcript moments. The current managed-clipping selector repeats eligible segments when asked to fill a larger count. The six-cue example therefore uses `--moments 6`, corresponding to `c00001` through `c00006`. Choose and document another clipping source for additional non-transcript clips rather than presenting repeated transcript references as new moments.
+The managed-clipping selector uses each eligible transcript cue at most once. A cue must fit entirely inside the source and, when keep ranges are supplied, inside one keep range; its 150 ms padding is bounded by that same range. If fewer cues fit than `--moments`, `init` exits with an actionable shortfall error before saving a project. It does not repeat cues or fill the gap with generic footage. The six-cue example uses `--moments 6`, corresponding to `c00001` through `c00006` only when all six cues are eligible. Request fewer moments or revise the explicitly supplied source/keep selection when fewer cues fit.
+
+Omit `--cedar-keeps-json` to allow the whole source. An explicitly empty keep collection means no eligible footage and is refused; a supplied JSON `null` is invalid. Omitting the transcript input selects the separate generic-window workflow and does not create additional transcript-derived moments.
 
 After rendering, the managed-clipping handoff preserves source-linked boundaries and source hash together with playable MP4s, editable SRT captions, `clips.csv`, `project.json`, and its hash manifest. Make edits before rendering, or rerender a changed clip before handoff; an earlier render does not acquire later edits automatically.
 
@@ -124,3 +126,4 @@ Verified product pages only — no invented Stripe links.
 ## Contest product (titanmcp)
 
 Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.
+

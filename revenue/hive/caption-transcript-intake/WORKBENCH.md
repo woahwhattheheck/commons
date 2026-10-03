@@ -34,7 +34,7 @@ Leave duration empty for the generic handoff, which preserves overlaps. Supply t
 
 The fictional-demonstration checkbox labels the optional episode import; it does not verify audio or alter the original caption file. The retained `examples/demo.vtt` is an explicitly fictional six-cue example. A supplied demonstration duration of 65 seconds fits it; this is not evidence of a recorded interview.
 
-Import the exported document deliberately through the existing podcast or managed-clipping workflow described in [README.md](README.md#consumer-integration). This workbench never writes to their databases or creates repeated episodes behind the scenes.
+Import the exported document deliberately through the existing [podcast workspace](README.md#podcast-workspace-integration) or [managed-clipping workflow](README.md#managed-clipping-integration). This workbench never writes to their databases or creates repeated episodes behind the scenes.
 
 ## Preservation and limits
 
