@@ -248,6 +248,16 @@ that refresh does not silently rebase a stale observation and a changed SKU
 clears its version. The same native-browser-network limitation described above
 still applies; these results do not claim an external installation or full-suite
 hosted acceptance.
+## Native operator handoff
+
+On 2026-10-03, a native Chromium 153.0.8010.0 session opened this desk through its actual Python HTTP server using a separate disposable SQLite database. The unchanged `sample_catalog.json` supplied fictional BAG-01. The operator imported it through the file input, received ten units, reserved and fulfilled a four-unit sale, recorded two restocked and one non-restocked returned unit, and reserved and fulfilled a one-unit creator sample. The ledger finished with seven on hand, zero reserved and seven available. Source description, ready state and 2400 USD minor-unit price stayed intact; the two order lines retained that price/currency.
+
+The count form loaded the current ledger version and recorded seven with an explicit note that this was fictional quantity review, not an observed physical inventory. Its audit row retained the prior amount/version and the seventh movement recorded a zero adjustment. Two fulfilled allocations, their distinct fictional handoff references, two return records and three returned units persisted. No physical shipment, customer transaction, creator contact, refund or count occurred.
+
+Seven actual CSV downloads covered products, orders, lines, stocktakes, movements, returns and return lines. The native JSON snapshot exactly matched the existing CLI export. Page reload and a real server stop/restart with the same database preserved the full snapshot. The 390-pixel mobile page remained 390 pixels wide and downloaded JSON bytes identical to desktop and after restart. No fetch, storage or UUID adapter was injected; browser execution recorded no page/console errors, failed HTTP responses or external requests.
+
+Visual inspection exposed white inherited text on the white header reference panel. A scoped text color repairs that panel while preserving its links/content and the rest of the header. This acceptance continues the original ROWAN delivery and the subsequent shipment-reference repair without changing the backend, retained catalog or stock/retry contracts. Existing suites were not rerun or expanded, no dependency was installed, and the temporary browser/server were closed. JSON remains an operational export with the backup limits described above; this is not a connected marketplace or customer installation.
+
 ## Live cash
 
 Verified product pages only — no invented Stripe links.
