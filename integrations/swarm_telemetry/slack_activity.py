@@ -10,6 +10,7 @@ from __future__ import annotations
 import hashlib
 import base64
 import json
+import math
 import re
 import time
 from datetime import datetime, timezone
@@ -90,6 +91,44 @@ class SourceReadError(RuntimeError):
     def __init__(self, code):
         super().__init__(code)
         self.code = code if re.fullmatch(r"[A-Za-z0-9_:-]{1,120}", code) else "source_read_failed"
+
+
+def _provider_retry_seconds(value):
+    """Retain numeric provider retry hints across native transport envelopes."""
+    delays = []
+    for _ in range(12):
+        if not isinstance(value, Mapping):
+            break
+        for metadata in (value, value.get("error_data")):
+            if not isinstance(metadata, Mapping):
+                continue
+            for fields in (metadata, metadata.get("headers")):
+                if not isinstance(fields, Mapping):
+                    continue
+                for key in ("retry_after_seconds", "retry_after", "Retry-After", "retry-after"):
+                    hint = fields.get(key)
+                    if isinstance(hint, bool):
+                        continue
+                    try:
+                        seconds = float(hint)
+                    except (TypeError, ValueError, OverflowError):
+                        continue
+                    if math.isfinite(seconds) and seconds >= 0:
+                        delays.append(seconds)
+        if isinstance(value.get("structuredContent"), Mapping):
+            value = value["structuredContent"]
+        elif isinstance(value.get("result"), Mapping):
+            value = value["result"]
+        elif isinstance(value.get("content"), list):
+            texts = [block["text"] for block in value["content"]
+                     if isinstance(block, Mapping) and block.get("type") == "text" and isinstance(block.get("text"), str)]
+            try:
+                value = json.loads(texts[0]) if texts else None
+            except (ValueError, RecursionError):
+                break
+        else:
+            break
+    return max(delays) if delays else None
 
 
 def _page(value):
@@ -465,7 +504,10 @@ def collect_slack_activity(config=None, state=None, sources=None, read_page=None
             code = getattr(error, "code", type(error).__name__)
             if raw is not None:
                 events.append(_base_event(job, "slack_source_read_failure", _digest(raw), at, raw, "Slack source read requires recovery", {"error": code}))
-            job.update(status="pending_recovery", complete=False, error=code, next_attempt_epoch=time.time() + float(config.get("slack_retry_seconds", 120)),
+            retry_seconds = _provider_retry_seconds(raw)
+            if retry_seconds is None:
+                retry_seconds = float(config.get("slack_retry_seconds", 120))
+            job.update(status="pending_recovery", complete=False, error=code, next_attempt_epoch=time.time() + retry_seconds,
                        restore_point={"tool_name": tool, "arguments": arguments, "account_ref": job["account_ref"], "cursor": job.get("cursor"), "file_id": job.get("file_id")})
             if job["kind"] == "file":
                 job["alternate_reader"] = {"mode": "read_only_stream", "scope": "all file bytes through another existing direct source road", "account_ref": job["account_ref"], "file_id": job["file_id"], "native_limit_bytes": 10 * 1024 * 1024}
