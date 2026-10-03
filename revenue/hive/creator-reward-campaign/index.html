@@ -36,6 +36,8 @@
   table { width: 100%; border-collapse: collapse; font-size: 13px; }
   th, td { text-align: left; padding: 4px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
   td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .table-scroll { max-width: 100%; overflow-x: auto; }
+  .table-scroll:focus-visible { outline: 2px solid #2b3a55; outline-offset: 3px; }
   @media (max-width: 480px) { main { padding: 12px; } }
 </style>
 </head>
@@ -109,7 +111,7 @@
   </section>
 
   <section style="grid-column: 1 / -1">
-    <h2>Submissions</h2>
+    <h2 id="submissionsHeading">Submissions</h2>
     <form id="submissionForm" class="row">
       <label>Campaign <select name="campaign_id" id="campaignSelect" required></select></label>
       <label>Creator <select name="creator_id" id="creatorSelect" required></select></label>
@@ -120,12 +122,12 @@
       <label><input type="checkbox" name="rights_accepted" style="width:auto"> Creator accepted rights terms</label>
       <button>Record submission</button>
     </form>
-    <div id="submissions"></div>
+    <div id="submissions" class="table-scroll" role="region" aria-labelledby="submissionsHeading" tabindex="0"></div>
   </section>
 
   <section style="grid-column: 1 / -1">
-    <h2>Payables</h2>
-    <div id="payables"></div>
+    <h2 id="payablesHeading">Payables</h2>
+    <div id="payables" class="table-scroll" role="region" aria-labelledby="payablesHeading" tabindex="0"></div>
   </section>
 </main>
 <script>
