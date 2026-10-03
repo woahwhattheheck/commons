@@ -45,8 +45,23 @@ function settings(input) {
   if (typeof input.ref !== "string" || !input.ref || /[\0\r\n]/.test(input.ref)) {
     throw new TypeError("ref must be a nonempty observed branch, tag, or commit");
   }
-  if (!component(input.filename)) {
-    throw new TypeError("filename must be one exact basename");
+  let filenames;
+  if (input.filenames !== undefined) {
+    if (input.filename !== undefined) {
+      throw new TypeError("provide filename or filenames, not both");
+    }
+    if (!Array.isArray(input.filenames) || input.filenames.length === 0) {
+      throw new TypeError("filenames must be a nonempty array of exact basenames");
+    }
+    filenames = [...new Set(input.filenames)];
+    if (!filenames.every(component)) {
+      throw new TypeError("filenames must contain only exact basenames");
+    }
+  } else {
+    if (!component(input.filename)) {
+      throw new TypeError("filename must be one exact basename");
+    }
+    filenames = [input.filename];
   }
   if (!Array.isArray(input.prefixes) || input.prefixes.length === 0) {
     throw new TypeError('prefixes must be a nonempty array; use [""] for the root');
@@ -63,13 +78,14 @@ function settings(input) {
     if (!prefixes.includes(prefix)) prefixes.push(prefix);
   }
   // Check URI encodability before any native call, including lone surrogates.
-  for (const value of [input.ref, input.filename, ...prefixes]) {
+  for (const value of [input.ref, ...filenames, ...prefixes]) {
     encodeURIComponent(value);
   }
   return {
     repository_full_name: repository,
     ref: input.ref,
     filename: input.filename,
+    filenames,
     prefixes,
     stop_after_first: input.stop_after_first === undefined ? true : input.stop_after_first,
     max_calls: integer(input.max_calls, 32, 1, "max_calls"),
@@ -111,6 +127,7 @@ async function findGitHubPaths(tools, input) {
   const api = "https://api.github.com/repos/" +
     repository.split("/").map(encodeURIComponent).join("/");
   const web = "https://github.com/" + repository;
+  const requestedFilenames = new Set(options.filenames);
   const counts = {
     calls: 0, tree_reads: 0, tree_cache_hits: 0,
     entries_received: 0, entries_examined: 0, directories_scanned: 0,
@@ -277,7 +294,7 @@ async function findGitHubPaths(tools, input) {
           }
           names.add(item.path);
           const path = joined(location, item.path);
-          if (item.type === "blob" && item.path === options.filename) {
+          if (item.type === "blob" && requestedFilenames.has(item.path)) {
             if (!matches.has(path)) {
               matches.set(path, {
                 path, blob_sha: item.sha.toLowerCase(), mode: item.mode,
@@ -340,7 +357,8 @@ async function findGitHubPaths(tools, input) {
     requested_ref: options.ref,
     commit_sha: commitSha,
     root_tree_sha: rootTreeSha,
-    filename: options.filename,
+    ...(options.filename === undefined ?
+      { filenames: options.filenames } : { filename: options.filename }),
     matches: [...matches.values()].sort((a, b) => a.path < b.path ? -1 : a.path > b.path ? 1 : 0),
     coverage: {
       complete, scopes, directories,

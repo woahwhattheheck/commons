@@ -1,7 +1,7 @@
 # Find repository paths through connected GitHub trees
 
-[connected_github_paths.cjs](connected_github_paths.cjs) finds an exact filename
-under selected directory prefixes through the native GitHub fetch tool. It
+[connected_github_paths.cjs](connected_github_paths.cjs) finds one or more exact
+filenames under selected directory prefixes through the native GitHub fetch tool. It
 resolves one commit and follows that commit's Git trees. It returns paths and
 blob metadata without downloading file bodies or creating a checkout.
 
@@ -76,13 +76,43 @@ The existing [source importer](CONNECTED_GITHUB_SOURCE.md) can materialize that
 full native response with its blob check. The existing
 [publisher](CONNECTED_GITHUB_PUBLISH.md) remains the write road.
 
+## Find several filenames in one walk
+
+Use `filenames` when the next source step needs several known entry points.
+The helper checks the whole name set while visiting each directory, sharing
+commit resolution, tree responses and the existing budgets across the lookup.
+
+```javascript
+const entries = await moduleBox.exports.findGitHubPaths(tools, {
+  repository_full_name: "woahwhattheheck/smb-showcase-inventory",
+  ref: "e1a8ed74fc1f7d318be58932a102893458f726ab",
+  filenames: ["README.md", "cli.mjs"],
+  prefixes: [
+    "apps/retainer_drawdown_desk",
+    "apps/sales_commission_desk",
+    "apps/license_seat_trueup_desk",
+  ],
+  stop_after_first: false,
+  max_depth: 0,
+});
+text(entries);
+```
+
+Supply either `filename` or a nonempty `filenames` array. Each array entry
+has the same exact-basename rules as the single option. Duplicate names are
+removed while preserving their first occurrence. Name order does not change
+traversal priority: directory and provider entry order still determine the
+first match. With the default `stop_after_first: true`, the lookup returns
+after the first match for **any** requested name, not one match per name.
+
 ## Options
 
 | Option | Meaning | Default |
 |---|---|---|
 | `repository_full_name` | One GitHub repository in owner/name form | Required |
 | `ref` | An observed branch, tag, or full commit SHA | Required |
-| `filename` | One exact, case-sensitive basename | Required |
+| `filename` | One exact, case-sensitive basename | Required unless `filenames` is supplied |
+| `filenames` | Nonempty array of exact, case-sensitive basenames | Alternative to `filename` |
 | `prefixes` | Ordered relative directory paths to search | Required |
 | `stop_after_first` | Return as soon as the first matching blob entry is found | `true` |
 | `max_calls` | Maximum native fetch calls, including commit resolution | `32` |
@@ -154,7 +184,9 @@ Inspections of cached entries still count against `max_entries`.
 
 ## Match status and coverage
 
-The result schema is `commons-connected-github-paths/v1`.
+The result schema is `commons-connected-github-paths/v1`. A single-name
+request retains the existing `filename` result field and shape. An array
+request instead returns `filenames` with its deduplicated names.
 
 | `status` | Meaning |
 |---|---|
@@ -165,6 +197,12 @@ The result schema is `commons-connected-github-paths/v1`.
 A `FOUND` result can have `coverage.complete: false`. The default first-match
 lookup intentionally does. This says the located path exists at the recorded
 commit; it does not say that it is the only matching path.
+
+For a `filenames` request, `FOUND` means at least one requested name has a
+match; it does not mean every requested name was found. `NOT_FOUND_IN_SCOPE`
+means none of the requested names matched in complete selected coverage.
+Compare the requested names with returned paths when each name matters.
+A requested name with no match remains unresolved while coverage is partial.
 
 `coverage` includes:
 
