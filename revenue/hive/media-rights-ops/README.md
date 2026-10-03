@@ -31,7 +31,7 @@ python rights_ops.py export desk.sqlite3 bundle --as-of 2026-12-10T00:00:00Z
 python rights_ops.py serve desk.sqlite3 --host 127.0.0.1 --port 8765
 ```
 
-The desk page also accepts a bounded CSV (`asset_id,channel,territory,starts_at,ends_at`, at most 500 data rows). `POST /api/batch` with `{"csv":"..."}` evaluates every row on one read-only SQLite snapshot. READY, HOLD, and invalid rows all stay in the result; blank or malformed rows are numbered and are not dropped or repaired. The page can filter that result and download the same rows as JSON or CSV. Batch review does not record a placement and does not invent a `request_id`.
+The desk page also accepts a bounded CSV (`asset_id,channel,territory,starts_at,ends_at`, at most 500 data rows). `POST /api/batch` with `{"csv":"..."}` evaluates every row on one read-only SQLite snapshot. READY, HOLD, and invalid rows all stay in the result; blank or malformed rows are numbered by their original starting CSV line and are not dropped or repaired. Quoted fields may span lines; following records retain their actual source line numbers rather than a parsed-record index. The page can filter that result and download the same rows as JSON or CSV. Batch review does not record a placement and does not invent a `request_id`.
 
 To record a placement, add a stable `request_id` to the intent and use CLI `place --at ...`. The same request and content replay without duplication; the same request ID with changed content fails closed. CLI `revoke <grant_id> --at ...` is immutable: a revocation can be replayed exactly but not silently rewritten. A recorded placement affected by revocation enters the retraction-review queue; the desk does not remove it from any provider.
 

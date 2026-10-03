@@ -34,12 +34,21 @@ def review_csv(path, csv_text):
     raw = csv_text.encode("utf-8")
     require(len(raw) <= MAX_INPUT_BYTES, "csv exceeds 8 MiB")
     require("\x00" not in csv_text, "csv contains NUL")
+    rows = []
+    reader = csv.reader(io.StringIO(csv_text, newline=""))
     try:
-        rows = list(csv.reader(io.StringIO(csv_text, newline="")))
+        while True:
+            # line_num advances to the record end; retain its start first.
+            source_line = reader.line_num + 1
+            try:
+                columns = next(reader)
+            except StopIteration:
+                break
+            rows.append((source_line, columns))
     except csv.Error as exc:
-        raise RightsError(f"csv could not be parsed: {exc}") from exc
+        raise RightsError(f"csv could not be parsed at row {source_line}: {exc}") from exc
     require(rows, "csv needs a header and at least one data row")
-    header = [cell.strip() for cell in rows[0]]
+    header = [cell.strip() for cell in rows[0][1]]
     require(
         tuple(header) == COLUMNS,
         "csv header must be exactly asset_id,channel,territory,starts_at,ends_at",
@@ -49,7 +58,7 @@ def review_csv(path, csv_text):
     require(len(data) <= MAX_BATCH_ROWS, f"csv exceeds {MAX_BATCH_ROWS} data rows")
 
     prepared = []
-    for offset, cols in enumerate(data, start=2):
+    for offset, cols in data:
         if len(cols) == 0 or (len(cols) == 1 and cols[0].strip() == ""):
             prepared.append({"row": offset, "normalized": None, "errors": ["blank row"]})
             continue
