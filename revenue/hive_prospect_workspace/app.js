@@ -273,7 +273,11 @@
         const selectCell = doc.createElement('td');
         const checkbox = doc.createElement('input');
         checkbox.type = 'checkbox'; checkbox.checked = selected.has(account.id); checkbox.setAttribute('aria-label', 'Select ' + account.company);
-        checkbox.addEventListener('change', () => checkbox.checked ? selected.add(account.id) : selected.delete(account.id));
+        checkbox.addEventListener('change', () => {
+          if (checkbox.checked) selected.add(account.id);
+          else selected.delete(account.id);
+          doc.getElementById('merge-selected').disabled = [...selected].filter(id => visibleIds.has(id)).length < 2;
+        });
         selectCell.appendChild(checkbox); tr.appendChild(selectCell);
 
         const companyCell = doc.createElement('td');
@@ -302,7 +306,7 @@
         tbody.appendChild(tr);
       }
       count.textContent = `${accounts.length} shown · ${state.accounts.length} total`;
-      doc.getElementById('merge-selected').disabled = [...selected].filter(id => visibleIds.has(id) || state.accounts.some(a => a.id === id)).length < 2;
+      doc.getElementById('merge-selected').disabled = [...selected].filter(id => visibleIds.has(id)).length < 2;
     }
 
     function beginEdit(id) {

@@ -16,7 +16,7 @@
     .muted { opacity: .68; font-size: .9rem; }
     .status { padding: 8px 12px; border: 1px solid color-mix(in srgb, CanvasText 20%, transparent); border-radius: 999px; font-size: .82rem; max-width: 390px; }
     .grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; }
-    section, .panel { border: 1px solid color-mix(in srgb, CanvasText 18%, transparent); border-radius: 16px; padding: 18px; background: color-mix(in srgb, Canvas 96%, CanvasText 4%); }
+    section, .panel { min-width: 0; border: 1px solid color-mix(in srgb, CanvasText 18%, transparent); border-radius: 16px; padding: 18px; background: color-mix(in srgb, Canvas 96%, CanvasText 4%); }
     .wide { grid-column: 1 / -1; }
     .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: end; }
     label { display: grid; gap: 5px; font-size: .88rem; min-width: 150px; flex: 1; }
@@ -45,7 +45,7 @@
     #editor[hidden] { display: none; }
     #editor { margin-top: 14px; }
     .privacy { border-left: 4px solid CanvasText; padding-left: 12px; }
-    @media (max-width: 760px) { main { padding: 14px; } header { display: block; } .grid { grid-template-columns: 1fr; } .wide { grid-column: auto; } .status { margin-top: 12px; } }
+    @media (max-width: 760px) { main { padding: 14px; } header { display: block; } .grid { grid-template-columns: minmax(0, 1fr); } .wide { grid-column: auto; } .status { margin-top: 12px; } }
   </style>
 </head>
 <body>
@@ -97,7 +97,7 @@
         <div><h2 style="margin-bottom:2px">3. Accounts</h2><div id="account-count" class="muted"></div></div>
         <button id="merge-selected" type="button" class="quiet" disabled>Merge selected</button>
       </div>
-      <div class="table-wrap" style="margin-top:12px">
+      <div class="table-wrap" style="margin-top:12px" tabindex="0" role="region" aria-label="Accounts table, scroll horizontally for all columns">
         <table>
           <thead><tr><th></th><th>Company & sources</th><th>Contacts</th><th>Stage</th><th>Tags</th><th></th></tr></thead>
           <tbody id="accounts-body"></tbody>
