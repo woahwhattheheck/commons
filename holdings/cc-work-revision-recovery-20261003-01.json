@@ -3,9 +3,9 @@
   "key": "cc-work-revision-recovery-20261003-01",
   "holder": "command-center-recovery",
   "taken_at": "2026-10-03T06:27:10Z",
-  "heartbeat_at": "2026-10-03T06:27:10Z",
+  "heartbeat_at": "2026-10-03T06:38:32Z",
   "ttl_s": 1800,
-  "state": "HELD",
+  "state": "RELEASED",
   "repository": "woahwhattheheck/commons",
-  "note": "Recover definite work revision conflicts while preserving the draft; workstreams/server and existing web editor."
+  "note": "Merged PR 30269; exact five-file main readback. Work revision conflicts retain the draft and show the saved direction."
 }
