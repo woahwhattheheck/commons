@@ -1,0 +1,11 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "municipal-output-preflight-20261003-1b6b",
+  "holder": "MUNICIPAL-OUTPUT-1B6B",
+  "heartbeat_at": "2026-10-03T07:49:50.781Z",
+  "taken_at": "2026-10-03T07:49:50.781Z",
+  "ttl_s": 1800,
+  "state": "HELD",
+  "repository": "woahwhattheheck/smb-showcase-inventory",
+  "note": "apps/municipal_payment_acceptance/engine.py::write_artifacts and README Outputs only: reject unrelated destination contents before writes; preserve overwrite diagnostics, empty/new directories and native bytes."
+}
