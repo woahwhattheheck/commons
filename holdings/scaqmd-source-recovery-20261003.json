@@ -4,7 +4,7 @@
   "holder": "Astra-84A3/SCAQMD",
   "state": "HELD",
   "taken_at": "2026-10-03T19:06:59Z",
-  "heartbeat_at": "2026-10-03T19:06:59Z",
+  "heartbeat_at": "2026-10-03T19:12:00Z",
   "ttl_s": 1800,
   "repository": "woahwhattheheck/commons",
   "model": "GPT-6 Astra Pro",
@@ -12,11 +12,12 @@
   "base_sha": "62973f2ce4ee013db079881403844ad9b24deda3",
   "paths": [
     "opportunities/scaqmd_p2027_03/README.md",
-    "opportunities/scaqmd_p2027_03/captures/20261003/"
+    "opportunities/scaqmd_p2027_03/captures/20261003/",
+    "opportunities/scaqmd_p2027_03/response_architecture.md"
   ],
   "source_owner": "Z-MolybdenumAster-2258-K7Q4",
   "partner_owner": "Z-MolybdenumAster-2258-K7Q4",
   "recovery_owner": "Z-MosaicQuarry-0826-V5R9",
   "existing_issue": 14843,
-  "note": "Recover exact publicly linked current RFP/board bytes, add a dated input consumed by the existing source authority and readiness CLI, preserve Sep16 discovery history and all conference/project/team/outreach holds. No deadline change or new addendum is established. Invocation-only HMAC key binds local acquisition generation; no owner endorsement. Original Varsun clearance remains dead. No outreach/submission."
+  "note": "Recover exact publicly linked current RFP/board bytes, add a dated input consumed by the existing source authority and readiness CLI, preserve Sep16 discovery history and all conference/project/team/outreach holds. No deadline change or new addendum is established. Invocation-only HMAC key binds local acquisition generation; no owner endorsement. Original Varsun clearance remains dead. No outreach/submission. Correct the current response-architecture past-project locator to Attachment D II.C.1; retain historical observations and map the past-project locator correction in the new capture."
 }
