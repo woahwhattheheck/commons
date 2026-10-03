@@ -227,19 +227,34 @@
       status.textContent = note || (data.state + " · " + data.decision.status + " · approval requests " + data.approval_request_count);
     }
 
+    function processCurrentInput(options, note) {
+      var raw = input();
+      var current = normalize(raw);
+      var existing = load(storage).records[keyFor(current)];
+      if (existing) {
+        var saved = normalize(existing.decision.input);
+        var changed = REQUIRED.filter(function (field) { return clean(current[field]) !== clean(saved[field]); });
+        if (changed.length) {
+          render(receipt(existing, true), "Input differs from saved invoice/PO fields: " + changed.join(", ") + ". Showing the saved receipt; no ledger change. Restore saved values, use new IDs, or reset local demo for a new scenario.");
+          return;
+        }
+      }
+      render(processInvoice(storage, raw, options), note);
+    }
+
     form.addEventListener("submit", function (event) {
       event.preventDefault();
-      render(processInvoice(storage, input()), "Completed without moving money.");
+      processCurrentInput({}, "Completed without moving money.");
     });
     doc.getElementById("force-crash").addEventListener("click", function () {
-      try { render(processInvoice(storage, input(), { forceCrashAfterIntent: true })); }
+      try { processCurrentInput({ forceCrashAfterIntent: true }); }
       catch (error) { render(error.receipt, "Forced crash landed after durable intent. Retry or roll back."); }
     });
     doc.getElementById("retry-run").addEventListener("click", function () {
-      render(processInvoice(storage, input()), "Retry reconciled the existing intent; no duplicate request.");
+      processCurrentInput({}, "Retry reconciled the existing intent; no duplicate request.");
     });
     doc.getElementById("duplicate-run").addEventListener("click", function () {
-      render(processInvoice(storage, input()), "Duplicate replay returned the existing receipt.");
+      processCurrentInput({}, "Duplicate replay returned the existing receipt.");
     });
     doc.getElementById("rollback-run").addEventListener("click", function () {
       render(rollback(storage, lastKey || keyFor(normalize(input()))), "Rollback recorded without inventing an undo.");
