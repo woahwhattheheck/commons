@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "exeter-qa-currentness-20261003",
   "holder": "Astra-84A3/Exeter",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T20:59:52Z",
-  "heartbeat_at": "2026-10-03T21:21:30Z",
+  "heartbeat_at": "2026-10-03T21:26:08Z",
   "ttl_s": 1800,
   "repository": "woahwhattheheck/commons",
   "model": "GPT-6 Astra Pro",
@@ -25,5 +25,33 @@
   "note": "Retain the current official RFP, Q&A and publication chain, preserve the truthful September 18 no-posting observation as history, and expose current posted-source and passed-deadline state. Consume the real source documents with the existing addenda-delta CLI. No financial/conversion inputs are invented, no acceptance-engine changes or proof replay, and no buyer/partner contact, submission, price commitment, or qualification/commercial promotion.",
   "pull_request": 30973,
   "merged_main_sha": "1164cba06b5cb9f6a016556ea9d8c2a46c53fe3b",
-  "result": "Published source refresh; exact text/small-source readback complete, one large-PDF raw SHA-256 readback queued."
+  "result": "Complete: current official source chain retained, earlier no-posting observation preserved as history, passed deadline maintained, and actual addenda CLI source result published. All 17 changed paths read back exactly, including the large RFP's streamed raw SHA-256. Original finance engine, owners and commercial boundaries remain unchanged.",
+  "released_at": "2026-10-03T21:26:08Z",
+  "candidate_sha": "5e1c67e1fa64f49411f1b14dee4a3c0722b819e6",
+  "merged_sha": "1164cba06b5cb9f6a016556ea9d8c2a46c53fe3b",
+  "current_main_readback_sha": "1164cba06b5cb9f6a016556ea9d8c2a46c53fe3b",
+  "actual_cli": {
+    "compile_exit": 3,
+    "state": "SOURCE_REFRESH_REQUIRED",
+    "verify_exit": 0,
+    "verify_stdout": "VALID",
+    "observed_at": "2026-10-03T21:16:27Z",
+    "max_child_rss_kib": 13256
+  },
+  "raw_readback": {
+    "files": 5,
+    "bytes": 8178030,
+    "method": "EXACT_BASE64_FOR_FOUR_SMALL_SOURCES_AND_PINNED_MAIN_STREAM_HASH_FOR_RFP",
+    "large_pdf": {
+      "source_url": "https://raw.githubusercontent.com/woahwhattheheck/commons/1164cba06b5cb9f6a016556ea9d8c2a46c53fe3b/revenue/exeter_ca_finance_2026_06/captures/20261003/raw/rfp.pdf",
+      "pinned_main": "1164cba06b5cb9f6a016556ea9d8c2a46c53fe3b",
+      "checked_at": "2026-10-03T21:25:13+00:00",
+      "bytes": 7195314,
+      "sha256": "f53977f8d4ec86d88b99067006202c790b50682704e0b759461b1a41bbcacc19",
+      "git_blob": "19ddb0b637b31f7f1b9d7e616c43dd6fa9e69486",
+      "matched": true,
+      "elapsed_seconds": 6.025795
+    },
+    "exact": true
+  }
 }
