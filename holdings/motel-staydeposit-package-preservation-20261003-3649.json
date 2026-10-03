@@ -1,9 +1,9 @@
 {
   "schema": "commons-change-holding/v1",
   "holder": "staydeposit-preservation-3649c43fa623",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T06:58:46.234Z",
-  "heartbeat_at": "2026-10-03T06:58:46.234Z",
+  "heartbeat_at": "2026-10-03T07:12:25Z",
   "ttl_s": 1800,
-  "note": "MOTEL-STAYDEPOSIT-PACKAGE-PRESERVATION-20261003-3649; woahwhattheheck/motel-ops-suite: staydeposit_package.py and staydeposit/README.md. Preserve prior package outputs on ordinary rebuild failure; claim https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1791010726234279"
+  "note": "MOTEL-STAYDEPOSIT-PACKAGE-PRESERVATION-20261003-3649; woahwhattheheck/motel-ops-suite: staydeposit_package.py and staydeposit/README.md. Preserve prior package outputs on ordinary rebuild failure; claim https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1791010726234279; completed https://github.com/woahwhattheheck/motel-ops-suite/pull/388; current main exact source readback 877b5073cfa1f7d27216573527394f55ac693ec7"
 }
