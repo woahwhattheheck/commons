@@ -3,9 +3,9 @@
   "key": "swarm-claim-overlap-view-20261003-01",
   "holder": "workspace-dbed016667b3",
   "repository": "woahwhattheheck/commons",
-  "state": "RELEASED",
+  "state": "HELD",
   "taken_at": "2026-10-03T06:34:56Z",
-  "heartbeat_at": "2026-10-03T07:21:12Z",
+  "heartbeat_at": "2026-10-03T07:59:01Z",
   "ttl_s": 1800,
-  "note": "SWARM-CLAIM-OVERLAP-VIEW-20261003-01 completed: PR #30335 and compact-output follow-up PR #30427 merged. Follow-up merge 444dbb96da73d5e44841a5b17584d9c27a8cb20d; exact module and guide readback matched on main 31e23cf22f1d96117407ad83879e0224926d917c. Custody released."
+  "note": "SWARM-CLAIM-OVERLAP-VIEW-20261003-01 continuation: _as_text and guide only. Show supplied-message coverage, page state and filters for compact lookups, including zero matches. No parser or projection changes."
 }
