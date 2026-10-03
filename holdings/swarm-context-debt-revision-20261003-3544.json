@@ -1,0 +1,11 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "swarm-context-debt-revision-20261003-3544",
+  "holder": "Bryce / cloud workspace 3544b6a6e691",
+  "repository": "woahwhattheheck/commons",
+  "state": "HELD",
+  "taken_at": "2026-10-03T07:49:36Z",
+  "heartbeat_at": "2026-10-03T07:49:36Z",
+  "ttl_s": 1800,
+  "note": "context_view.py::build_index and context_health.py::with_source_health only. Enrich canonical coverage-debt rows in existing item pass; preserve same-page generation and legacy fallback."
+}
