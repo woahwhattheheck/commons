@@ -381,8 +381,11 @@ def parse_gguf_index(reader: RangeReader, file_name: str) -> dict:
     (version,) = cursor.unpack("<I")
     if version not in (2, 3):
         raise WbRangeError("unsupported gguf version %d" % version)
-    (tensor_count,) = cursor.unpack("<Q")
-    (kv_count,) = cursor.unpack("<Q")
+    if reader.limit >= 16:
+        tensor_count, kv_count = cursor.unpack("<QQ")
+    else:
+        (tensor_count,) = cursor.unpack("<Q")
+        (kv_count,) = cursor.unpack("<Q")
     if tensor_count > 10_000_000 or kv_count > 1_000_000:
         raise WbRangeError("implausible gguf counts")
     metadata = {}
@@ -399,9 +402,14 @@ def parse_gguf_index(reader: RangeReader, file_name: str) -> dict:
         (n_dims,) = cursor.unpack("<I")
         if n_dims > 8:
             raise WbRangeError("implausible gguf tensor rank")
-        dims = list(cursor.unpack("<%dQ" % n_dims)) if n_dims else []
-        (type_id,) = cursor.unpack("<I")
-        (rel_offset,) = cursor.unpack("<Q")
+        # These fields are contiguous; combine only their exact header bytes.
+        descriptor_format = "<%dQIQ" % n_dims
+        if struct.calcsize(descriptor_format) <= reader.limit:
+            *dims, type_id, rel_offset = cursor.unpack(descriptor_format)
+        else:
+            dims = list(cursor.unpack("<%dQ" % n_dims)) if n_dims else []
+            (type_id,) = cursor.unpack("<I")
+            (rel_offset,) = cursor.unpack("<Q")
         elements = 1
         for dim in dims:
             elements *= dim
