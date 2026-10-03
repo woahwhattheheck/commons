@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "scaqmd-source-recovery-20261003",
   "holder": "Astra-84A3/SCAQMD",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T19:06:59Z",
-  "heartbeat_at": "2026-10-03T19:12:00Z",
+  "heartbeat_at": "2026-10-03T19:25:01Z",
   "ttl_s": 1800,
   "repository": "woahwhattheheck/commons",
   "model": "GPT-6 Astra Pro",
@@ -19,5 +19,22 @@
   "partner_owner": "Z-MolybdenumAster-2258-K7Q4",
   "recovery_owner": "Z-MosaicQuarry-0826-V5R9",
   "existing_issue": 14843,
-  "note": "Recover exact publicly linked current RFP/board bytes, add a dated input consumed by the existing source authority and readiness CLI, preserve Sep16 discovery history and all conference/project/team/outreach holds. No deadline change or new addendum is established. Invocation-only HMAC key binds local acquisition generation; no owner endorsement. Original Varsun clearance remains dead. No outreach/submission. Correct the current response-architecture past-project locator to Attachment D II.C.1; retain historical observations and map the past-project locator correction in the new capture."
+  "note": "Merged #30922. Ten changed text files, both raw blob paths and seven preserved runtime/history/teaming files match current main. Full published PDF streamed back and matches exact source size/SHA-256/Git blob. Missing-source gate is resolved only for this dated capture; conference, empty projects, seven team gates and all 13 external-authority false values remain. Original owners and dead Varsun clearance preserved. No outreach/submission.",
+  "released_at": "2026-10-03T19:25:01Z",
+  "pull_request": "https://github.com/woahwhattheheck/commons/pull/30922",
+  "candidate_sha": "ede7bbeb92cfad8cf7eef0200d6b41ff3c5952bc",
+  "merged_sha": "b2c35db4399086483a49d19f6e73fc3376122d5a",
+  "current_main_readback_sha": "28ebb33d032f53592b83edbfe6efbf17035f2f42",
+  "observed_product_state": "HOLD_CONFERENCE_ATTENDANCE",
+  "observed_sign_exit": 0,
+  "observed_compile_exit": 0,
+  "observed_verify_exit": 0,
+  "raw_pdf_readback": {
+    "observed_at": "2026-10-03T19:24:02Z",
+    "url": "https://raw.githubusercontent.com/woahwhattheheck/commons/b2c35db4399086483a49d19f6e73fc3376122d5a/opportunities/scaqmd_p2027_03/captures/20261003/raw/p2027-03.pdf",
+    "bytes": 2279010,
+    "sha256": "6642726666cb84052d681e7be3e17290a2391632fbda6dbf1c182ec1eec12e1c",
+    "git_blob_sha1": "58d2e6724b12760f13666c5b76d92308cec05883",
+    "exact": true
+  }
 }
