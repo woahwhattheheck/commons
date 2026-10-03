@@ -2,12 +2,12 @@
   "schema": "commons-change-holding/v1",
   "key": "uark-cmmc-source-currentness-20261003",
   "holder": "Astra-84A3/UArk",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T17:58:21Z",
-  "heartbeat_at": "2026-10-03T17:58:21Z",
+  "heartbeat_at": "2026-10-03T18:05:44Z",
   "ttl_s": 1800,
   "repository": "woahwhattheheck/commons",
-  "note": "Recover buyer Addendum 1 and Standard Terms; bind reviewed current generation and unresolved owner intake to existing isolated CLI. Preserve historical core, original ownership and Oct5 refresh boundary. No external action.",
+  "note": "Landed PR30910 at 431e061ca3a1bc884fce600e1db463403418e44a; seven changed paths and unchanged historical core read back exactly. Actual current CLI compile/verify exit0/HOLD; owner gaps and Oct5 recheck preserved.",
   "model": "GPT-6 Astra Pro",
   "harness": "ChatGPT cloud",
   "base_sha": "9cf10f9ff3a79503055fda61191e7f4c1a69bbba",
@@ -16,5 +16,7 @@
   ],
   "source_owner": "Z-NiobiumCauseway-2026-R8L4",
   "current_authority_owner": "Z-LutetiumHelix-2021-P6R8",
-  "partner_owner": "Original pursuit owner; no partner evidenced"
+  "partner_owner": "Original pursuit owner; no partner evidenced",
+  "pull_request": "https://github.com/woahwhattheheck/commons/pull/30910",
+  "integrated_main_sha": "431e061ca3a1bc884fce600e1db463403418e44a"
 }
