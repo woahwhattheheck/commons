@@ -42,9 +42,9 @@ def _write_export_bundle(out: Path, prefix: str, object_id: str, exports: dict[s
     try:
         for kind, target, text in planned:
             with target.open("x", encoding="utf-8", newline="") as handle:
+                created_paths.append(target)
                 handle.write(text)
                 handle.flush()
-            created_paths.append(target)
             created[kind] = str(target)
     except BaseException:
         for target in reversed(created_paths):

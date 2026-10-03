@@ -180,6 +180,11 @@ use a new intentionally selected directory for a later snapshot. Exporting a
 bundle does not transmit it, post it into accounting, charge a customer, or
 make it customer-authorized.
 
+An ordinary export write or flush failure removes the files created by that
+attempt, including the unfinished file, so the same destination can be retried
+after resolving the storage problem. Existing files remain protected. A process
+or machine interruption can still leave partial output; inspect it before retrying.
+
 ## Read receipts correctly
 
 `APPLIED` means this operation appended its native event. `REPLAYED` means an
