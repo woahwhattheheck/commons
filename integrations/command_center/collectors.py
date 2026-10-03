@@ -530,7 +530,7 @@ class LiveCollectors:
             self._document_heads.clear()
         results, tasks, deferred = [], [], []
         for channel in self.slack_config.get("channels", []):
-            if not isinstance(channel, dict) or not re.fullmatch(r"[CG][A-Z0-9]+", str(channel.get("id", ""))):
+            if not isinstance(channel, dict) or not re.fullmatch(r"[CDG][A-Z0-9]+", str(channel.get("id", ""))):
                 raise ValueError("Slack channels need an existing provider id.")
             source = self._source("slack:" + channel["id"], "Slack", channel.get("label", channel["id"]), {"channel_id": channel["id"]})
             tasks.append((source, lambda channel=channel: self._slack(channel)))
