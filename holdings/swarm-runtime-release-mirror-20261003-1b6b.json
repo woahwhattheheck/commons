@@ -1,0 +1,13 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "swarm-runtime-release-mirror-20261003-1b6b",
+  "holder": "SWARM-1B6B-INTEGRITY",
+  "state": "HELD",
+  "taken_at": "2026-10-03T06:33:42Z",
+  "heartbeat_at": "2026-10-03T06:33:42Z",
+  "ttl_s": 1800,
+  "scope": [
+    "host/swarm_runtime/store.py:GitStore._holding_updates"
+  ],
+  "operation_id": "SWARM-RUNTIME-RELEASE-MIRROR-20261003-1B6B"
+}
