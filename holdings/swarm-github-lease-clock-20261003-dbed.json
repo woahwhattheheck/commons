@@ -3,9 +3,9 @@
   "key": "swarm-github-lease-clock-20261003-dbed",
   "holder": "workspace-dbed016667b3/swarm_scan",
   "repository": "woahwhattheheck/commons",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T08:38:17Z",
-  "heartbeat_at": "2026-10-03T08:38:17Z",
+  "heartbeat_at": "2026-10-03T08:41:56Z",
   "ttl_s": 1800,
-  "note": "SWARM-GITHUB-LEASE-CLOCK-20261003-DBED: tools/github_read_coordinator/broker.py acquire/finish transaction decision clocks and README only. Actual retained GitHub response plus SQLite contention reproduces expired acquire and stale accepted finish. Claim https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1791016611806289 . Existing gateway/provider/runtime and Slack coordinator owners retained."
+  "note": "SWARM-GITHUB-LEASE-CLOCK-20261003-DBED complete. Commons PR30570 merged at 86e8b77bc4e6ab148ef4ce22f80625ef26cdd980; broker7324e02a and README911cf0b0 match current main exactly. Actual SQLite contention with retained GitHub payload now grants a usable lease and rejects expired completion; ordinary FETCHED/CACHED preserves payload. Scope released, no runtime activation."
 }
