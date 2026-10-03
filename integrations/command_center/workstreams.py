@@ -199,6 +199,7 @@ class WorkstreamStore:
             items.append(item)
         failed = str(source.get("status", "")).lower() in ERROR_STATUSES or bool(source.get("error"))
         now = _now()
+        ceiling = _stamp(now, "now") + CLOCK_SKEW_SECONDS
         with self._db() as db:
             db.execute("BEGIN IMMEDIATE")
             operation_id, digest, replay = self._operation(db, payload, "ingest")
@@ -220,13 +221,12 @@ class WorkstreamStore:
                 clocks = [previous_observed]
                 if previous["last_good_observed_at"]:
                     clocks.append(_stamp(previous["last_good_observed_at"], "last_good_observed_at"))
-                ceiling = _stamp(now, "now") + CLOCK_SKEW_SECONDS
                 usable_clocks = [stamp for stamp in clocks if stamp <= ceiling]
                 if usable_clocks and observed < max(usable_clocks):
                     raise CoreError(409, "Older source snapshots cannot replace newer observations.")
             # Reconcile in SQLite instead of copying every historical payload
             # into Python for each small page or failed provider observation.
-            changed = removed = retained = 0
+            changed = removed = retained = older_items_retained = 0
             if failed:
                 retained = db.execute(
                     "SELECT COUNT(*) FROM work_items WHERE source_id=?",
@@ -240,6 +240,30 @@ class WorkstreamStore:
                 """)
                 db.executemany("INSERT INTO incoming_work_items VALUES(?,?)",
                                ((item["id"], _json(item)) for item in items))
+                # A later read can contain an older provider revision. Preserve
+                # newer item state while recording that its ID was seen again.
+                # Only decode overlapping items, never the whole source history.
+                incoming_by_id = {item["id"]: item for item in items}
+                older_items = []
+                for row in db.execute("""
+                    SELECT incoming.item_id, existing.payload
+                    FROM incoming_work_items AS incoming
+                    LEFT JOIN work_items AS existing
+                      ON existing.source_id=? AND existing.item_id=incoming.item_id
+                """, (source_id,)):
+                    if row["payload"] is None:
+                        continue
+                    incoming_clock = _stamp(incoming_by_id[row["item_id"]].get("updated_at"),
+                                            "item.updated_at", nullable=True)
+                    existing_clock = _stamp(json.loads(row["payload"]).get("updated_at"),
+                                            "stored item.updated_at", nullable=True)
+                    # Equal or unknown clocks may enrich a record. A stored
+                    # future clock must remain correctable, as source clocks do.
+                    if (incoming_clock is not None and existing_clock is not None
+                            and incoming_clock < existing_clock <= ceiling):
+                        older_items.append((row["payload"], row["item_id"]))
+                db.executemany("UPDATE incoming_work_items SET payload=? WHERE item_id=?", older_items)
+                older_items_retained = len(older_items)
                 changed = db.execute("""
                     SELECT COUNT(*) FROM incoming_work_items AS incoming
                     LEFT JOIN work_items AS existing
@@ -279,7 +303,8 @@ class WorkstreamStore:
             result = {"ok": True, "operation_id": operation_id, "source_id": source_id,
                       "status": "source_error" if failed else "ingested",
                       "received": len(items), "changed": changed, "removed": removed,
-                      "retained": retained, "coverage": coverage, "replayed": False}
+                      "retained": retained, "older_items_retained": older_items_retained,
+                      "coverage": coverage, "replayed": False}
             return self._finish(db, operation_id, "ingest", digest, result, now)
 
     def update_work(self, payload):
