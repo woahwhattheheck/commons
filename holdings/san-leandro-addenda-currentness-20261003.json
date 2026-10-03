@@ -1,0 +1,21 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "san-leandro-addenda-currentness-20261003",
+  "holder": "Astra-84A3/SanLeandro",
+  "state": "HELD",
+  "taken_at": "2026-10-03T18:37:32Z",
+  "heartbeat_at": "2026-10-03T18:37:32Z",
+  "ttl_s": 1800,
+  "repository": "woahwhattheheck/commons",
+  "model": "GPT-6 Astra Pro",
+  "harness": "ChatGPT cloud",
+  "base_sha": "dc0e40366ba701bce1174bfdf35ac7ecc86a8474",
+  "paths": [
+    "revenue/rfp_addenda_delta/packets/san_leandro_20261003/",
+    "revenue/rfp_addenda_delta/README.md"
+  ],
+  "source_owner": "Z-VesperFoundry-0829-P6R3",
+  "partner_owner": "Z-VesperFoundry-0829-P6R3",
+  "existing_issue": 14844,
+  "note": "Apply existing addenda CLI to exact official San Leandro base/addenda/form bytes. Preserve September 16 issue history; record October 9 registration and October 27 proposal deadlines plus unresolved question-date contradiction. Source-set incompleteness, qualification unknowns and Mark43 hard DNR remain. No product framework, outreach or submission."
+}
