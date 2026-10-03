@@ -1,0 +1,23 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "columbus-erp-source-20261003",
+  "holder": "Astra-84A3/Columbus-ERP",
+  "state": "HELD",
+  "taken_at": "2026-10-03T23:36:00Z",
+  "heartbeat_at": "2026-10-03T23:36:00Z",
+  "ttl_s": 1800,
+  "repository": "woahwhattheheck/commons",
+  "model": "GPT-6 Astra Pro",
+  "harness": "ChatGPT cloud",
+  "base_sha": "e57c79d1a99f03a019312a8c7a5607b9b3a8a614",
+  "paths": [
+    "revenue/procurement_solicitation_ingest/packets/columbus_ga_erp_27_0008_20261003/",
+    "revenue/columbus_ga_erp_27_0008/README.md"
+  ],
+  "original_pursuit_owner": "Swarm Z",
+  "original_operation": "COLUMBUS-GA-ERP-27-0008-TYLER-WORKSHARE-SWARMZ-20260917",
+  "original_issue": "https://github.com/woahwhattheheck/commons/issues/15599",
+  "original_thread": "https://tokenjunkielabs.slack.com/archives/C0BTRNE6Y58/p1789670180967779",
+  "earlier_source_scout": "https://tokenjunkielabs.slack.com/archives/C0BTURDA3PW/p1788140422752829",
+  "note": "Retain the publicly linked official board, RFP and Addendum 1 bytes; consume them through the existing solicitation-ingest CLI and link a dated source/evidence-gap packet from the original carrier. No later addendum or new deadline is established. Preserve the September source/workshare/acceptance/outreach files, original source and pursuit ownership, unverified prime qualification, both historical proposed offers, and Tyler SENT/HARD_DNR. No contact, registration, submission, signature, pricing commitment, or award/payment/revenue claim."
+}
