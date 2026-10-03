@@ -2,13 +2,23 @@
   "schema": "commons-change-holding/v1",
   "key": "vendor-instruction-historical-cli-20261003-1b6b",
   "holder": "INTEGRITY-1B6B",
-  "state": "HELD",
-  "taken_at": "2026-10-03T07:30:00Z",
-  "heartbeat_at": "2026-10-03T07:30:00Z",
+  "state": "RELEASED",
+  "taken_at": "2026-10-03T07:28:57Z",
+  "heartbeat_at": "2026-10-03T07:31:32Z",
   "ttl_s": 1800,
   "scope": [
     "smb-showcase-inventory/apps/vendor_payment_instruction_change/cli.mjs:historical command dispatch",
     "smb-showcase-inventory/apps/vendor_payment_instruction_change/README.md:historical CLI usage"
   ],
-  "operation_id": "VENDOR-INSTRUCTION-HISTORICAL-CLI-20261003-1B6B"
+  "operation_id": "VENDOR-INSTRUCTION-HISTORICAL-CLI-20261003-1B6B",
+  "released_at": "2026-10-03T07:31:32Z",
+  "result": {
+    "pr": "https://github.com/woahwhattheheck/smb-showcase-inventory/pull/1876",
+    "merge_sha": "f7cc480d509748cf8cdd5d2b7336bcd51f5dc83f",
+    "main_readback_sha": "f7cc480d509748cf8cdd5d2b7336bcd51f5dc83f",
+    "source_blobs": {
+      "apps/vendor_payment_instruction_change/cli.mjs": "abb384a7b7f31f36fd8056a94cc7988633fb948b",
+      "apps/vendor_payment_instruction_change/README.md": "a4a2dbd8231a0ec9bd0c8ba1ad66f12896379bbf"
+    }
+  }
 }
