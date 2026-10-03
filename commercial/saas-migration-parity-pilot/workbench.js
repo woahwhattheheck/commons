@@ -268,6 +268,7 @@ $("intake-mode").addEventListener("change", () => {
 $("plan-file").addEventListener("change", async (event) => {
   event.stopPropagation(); changed();
   const file = $("plan-file").files[0]; if (!file) return;
+  $("plan-file").value = ""; // Allow an explicit reload of the same saved plan.
   const sequence = ++planSequence, submitted = generation;
   try {
     if (file.size > 100000) throw new Error("Plan exceeds 100,000 bytes.");

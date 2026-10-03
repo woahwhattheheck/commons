@@ -42,9 +42,15 @@ Unchecked completeness, stale/future snapshots, duplicate keys, missing/unexpect
 
 **Load a saved plan** accepts a UTF-8 JSON file up to 100,000 bytes. The server uses the existing strict JSON parser before the browser applies the bounded metadata. Duplicate keys, unsupported schemas, unsafe numeric metadata and malformed plan fields are rejected. Selecting a plan changes the mode explicitly and reinspects any already selected exports through that adapter. Missing mapped columns remain blank and require repair; there is no guessed substitute.
 
-A plan can be loaded before or after selecting exports. Its mappings wait for both inspected inputs. Selecting a different file still clears that side's capture time and completeness, even when a plan supplied them; explicitly update those facts. Loading a saved plan after selecting files restores its recorded metadata, which the operator must review and reconfirm. Importing a plan never attests that an old capture time or completeness claim applies to new records.
+A plan can be loaded before or after selecting exports. The plan picker resets after taking a file, so choosing that same saved plan again explicitly reloads it. Its mappings wait for both inspected inputs. Selecting a different file still clears that side's capture time and completeness, even when a plan supplied them; explicitly update those facts. Loading a saved plan after selecting files restores its recorded metadata, which the operator must review and reconfirm. Importing a plan never attests that an old capture time or completeness claim applies to new records.
 
 General plans have the same top-level metadata, mapping and source/target snapshot structure as the CSV plan, but use their own schema and a `format` (`csv` or `json`) in each snapshot instead of `delimiter`. Neither plan embeds source text. The full legacy CSV plan and batch examples remain in [CSV_INTAKE.md](CSV_INTAKE.md).
+
+## Native browser handoff
+
+The retained fictional 500-source/500-target example has been exercised through the actual loopback workbench in Chromium 153. Both intake modes retain 505 union keys: 490 parity, five missing, five unexpected and five mismatched. Explicit saved-plan reuse after restarting the server reproduces the original report bytes; replacing source files still clears their capture and completeness declarations. The general and CSV plans retain their distinct schemas and original-name versus selected-alias manifests.
+
+Native downloads of each five-file private replay bundle match the separate manifest, JSON/Markdown report, plan and column-map downloads. The unchanged `parity.py verify` accepts both downloaded manifest/report pairs. The portable HTML returns the exact report JSON, keeps all 505 rows available without JavaScript, and prints all rows while screen filters show only the five mismatches. Workbench and offline pages fit a 390 px viewport; wide tables remain within their existing scroll containers. These are fictional local operator observations, not live-source, production-cutover, hosted-deployment or customer acceptance.
 
 ## Export formats
 
