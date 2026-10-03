@@ -26,7 +26,7 @@ class Handler(BaseHTTPRequestHandler):
             if self.path == "/":
                 rows = list_workspaces(conn)
                 lis = "".join(f"<li><code>{html.escape(r['workspaceId'])}</code> — {html.escape(r['kickoffState'])} — {html.escape(r['handoffState'])}</li>" for r in rows)
-                body = ("<!doctype html><meta charset=utf-8><title>Client implementation onboarding</title>"
+                body = ("<!doctype html><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><title>Client implementation onboarding</title>"
                         "<style>body{font:16px system-ui;max-width:920px;margin:3rem auto;padding:0 1rem}code{background:#eee;padding:.1rem .25rem}</style>"
                         "<h1>Client implementation onboarding</h1><p><strong>Read-only browser view.</strong> Mutations require the local CLI.</p><ul>" + lis + "</ul>").encode()
                 return self._send(200, body, "text/html; charset=utf-8")
