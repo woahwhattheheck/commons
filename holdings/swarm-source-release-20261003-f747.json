@@ -2,10 +2,10 @@
   "schema": "commons-change-holding/v1",
   "key": "swarm-source-release-20261003-f747",
   "holder": "source-release-f74713d5f3bf",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T06:29:31Z",
-  "heartbeat_at": "2026-10-03T06:29:31Z",
+  "heartbeat_at": "2026-10-03T06:33:40Z",
   "ttl_s": 1800,
   "repository": "woahwhattheheck/commons",
-  "note": "host/swarm_runtime/sources.py explicit RELEASE normalization and existing lifecycle preconditions only."
+  "note": "Completed in PR #30253; merge 73646c2fa00c4a4b0823f1260c7e1d84d5856126. Exact main source readback matched. host/swarm_runtime/sources.py available."
 }
