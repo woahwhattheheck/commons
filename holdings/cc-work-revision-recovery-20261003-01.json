@@ -1,0 +1,11 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "cc-work-revision-recovery-20261003-01",
+  "holder": "command-center-recovery",
+  "taken_at": "2026-10-03T06:27:10Z",
+  "heartbeat_at": "2026-10-03T06:27:10Z",
+  "ttl_s": 1800,
+  "state": "HELD",
+  "repository": "woahwhattheheck/commons",
+  "note": "Recover definite work revision conflicts while preserving the draft; workstreams/server and existing web editor."
+}
