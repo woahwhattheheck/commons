@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "work-native-hook-file-put-map-20261003-01-79c76a2006ea244c9122813e",
+  "holder": "native-file-put-mapping",
+  "heartbeat_at": "2026-10-03T07:05:23Z",
+  "ttl_s": 1800,
+  "taken_at": "2026-10-03T07:05:23Z",
+  "state": "HELD",
+  "note": "operation=native-hook-file-put-map-20261003-01 | integrations/commons_publication_hooks/hook.py _GATEWAY_FIELDS file.put; existing README"
+}
