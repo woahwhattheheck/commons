@@ -3,9 +3,9 @@
   "key": "cloud-capacity-observation-20261003-01",
   "holder": "cloud-capacity-worker-3544b6a6e691",
   "repository": "woahwhattheheck/commons",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T06:37:20Z",
-  "heartbeat_at": "2026-10-03T06:45:45Z",
+  "heartbeat_at": "2026-10-03T06:49:38Z",
   "ttl_s": 1800,
-  "note": "CLOUD-CAPACITY-OBSERVATION-20261003-01; telemetry.py plus web/app.js renderFleet; effective cgroup CPU/RAM ceilings and headroom, preserve host observations."
+  "note": "Completed PR #30309, merged 4d38c7cda062b097d34dd269efa8d53b212a8162. telemetry.py and renderFleet display observed CPU/RAM ceilings with exact cgroup headroom; real observation exit 0."
 }
