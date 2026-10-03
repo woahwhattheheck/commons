@@ -82,7 +82,7 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#050706;padding:1rem;
   function run(failAt){try{show(FleetWorkOrder.process(store,event(),failAt?{fail_at:failAt}:{}));}catch(error){status.textContent=error.message;output.textContent=JSON.stringify(store.load(),null,2);}}
   $("event-form").addEventListener("submit",e=>{e.preventDefault();run();});
   $("replay").onclick=()=>run(); $("crash-prepare").onclick=()=>run("after_prepare"); $("crash-effects").onclick=()=>run("after_effects"); $("resume").onclick=()=>run();
-  $("rollback").onclick=()=>show(FleetWorkOrder.rollback(store,event().event_id));
+  $("rollback").onclick=()=>show(FleetWorkOrder.rollback(store,event().event_id.trim()));
   $("reset").onclick=()=>{store.clear();status.textContent="RESET";output.textContent=JSON.stringify(store.load(),null,2);};
   output.textContent=JSON.stringify(store.load(),null,2);
 })();
