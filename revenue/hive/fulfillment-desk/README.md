@@ -22,11 +22,23 @@ The handoff tab provides editable-order JSON, deployment JSON, Markdown handoff,
 
 ## Storage and handoff
 
-The desk attempts to save the workspace under `parcel.workspace.v1` in browser local storage. This is one browser profile/origin, not shared server storage. Browser data removal can erase it; export private backups regularly. Native local-storage persistence was not exercised in this build environment because browser navigation was administrator-blocked. See `VALIDATION.md` for the separate embedded DOM checks.
+The desk attempts to save the workspace under `parcel.workspace.v1` in browser local storage. This is one browser profile/origin, not shared server storage. Browser data removal can erase it; export private backups regularly. The original build used separate embedded DOM checks because native browser navigation was blocked; see `VALIDATION.md`. A subsequent native handoff on 2026-10-03 exercised actual browser storage, downloads and package execution as described below.
 
 When storage is unavailable, the page labels memory-only mode and keeps export available. Corrupt saved content is not silently overwritten. Importing a workspace replaces the current in-memory workspace only after confirmation; validation runs before replacement. Keep the original export until the imported records have been checked. Sequential stale-tab writes are detected by revision, and an unsaved draft remains exportable; this is a best-effort check, **not atomic cross-tab or multi-user concurrency control**. Use one active editing tab.
 
 Client briefs, support details, exported workspaces and installation packages may contain private customer information. Keep them in the customer's intended private environment. No actual customer information is included in the source or examples.
+
+## Native browser and package handoff
+
+A 2026-10-03 operator walkthrough used Chromium 153.0.8010.0 against a temporary local HTTP server and the built-in fictional agency/client example. It saved all three presets, exported each saved order, deployment JSON and Markdown handoff, and left all five installation checks unrecorded. An unchecked installation note explicitly identified the exercise as local synthetic review. No storage adapter was injected.
+
+The three-order workspace survived page reload and a complete browser-profile close/reopen with exact saved data. The native workspace backup was byte identical at desktop and 390-pixel mobile width; the populated mobile document remained 390 pixels wide. Native order CSV download also completed. In a separate browser context, canceling replacement retained the prior brief, accepting replacement preserved every imported order/check/note, and each imported deployment export matched its original bytes. Importing an empty exported workspace returned to the catalog, and importing the saved workspace into it restored all three briefs. Workspace import intentionally updates workspace revision/time; order records are preserved.
+
+That walkthrough exposed a replacement-import defect: the backup was saved, but rendering the removed, previously selected brief reported “Order not found.” The controller now commits the imported selection together with the new workspace before rendering, after the existing stale-tab check. This also makes empty replacement render the catalog immediately.
+
+Each of the three actual browser-downloaded deployment files was composed with retained, byte-verified upstream runner source. Every packaged manifest member was checked, and the ordinary packaged `configure` → two identical `ingest` calls → `work --limit 20` → `export` sequence completed in a separate disposable database. Each preset retained one customer, one intake, one job, exactly its three task titles, one delivered outbox event and one local notification; no task was marked complete. Receiver configuration remained blank. The packaged runner bytes were unchanged, and the manifest correctly continued to label its source revision as caller-supplied rather than independently verified by the composer.
+
+Browser execution recorded no page/console errors or external HTTP requests. Temporary browser/server processes were closed. This is native operator acceptance using fictional inputs, not a customer installation, provider delivery, completed quote/service task, sale or payment. Existing automated suites were not rerun or expanded for this walkthrough.
 
 ## Build a runnable installation package
 

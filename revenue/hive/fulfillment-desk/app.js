@@ -9,7 +9,7 @@
   function saved(){if(!storage)return null;const s=storage.getItem(KEY);return s===null?null:M.validateState(JSON.parse(s));}
   function load(){try{state=saved()||M.empty();corrupt=false;}catch(e){corrupt=true;notice('Saved data could not be read. It has not been overwritten. Use a known backup or export this working copy. '+e.message,true);}
     $('storage-status').textContent=storage&&!corrupt?'Browser-local workspace':'Memory only — export to keep changes';}
-  function persist(next){
+  function persist(next,nextSelected=selected){
     if(storage&&!corrupt){
       let current=null;
       try{current=saved();}catch(e){notice('Browser storage is unavailable. Changes remain in memory; export a workspace file now.',true);storage=null;$('storage-status').textContent='Memory only — export to keep changes';}
@@ -18,7 +18,7 @@
         try{storage.setItem(KEY,JSON.stringify(next));}catch(e){notice('Browser storage is unavailable. Changes remain in memory; export a workspace file now.',true);storage=null;$('storage-status').textContent='Memory only — export to keep changes';}
       }
     }
-    state=next;dirty=false;render();
+    state=next;selected=nextSelected;dirty=false;render();
   }
   function el(tag,cls,value){const n=document.createElement(tag);if(cls)n.className=cls;if(value!==undefined)n.textContent=value;return n;}
   function active(){return M.find(state,selected);}
@@ -55,7 +55,7 @@
   $('backup').onclick=()=>safely(()=>{download('parcel-workspace.json',exportDraft());notice(dirty?'Workspace exported with your unsaved draft; browser storage is unchanged.':'Workspace backup exported. Keep it in your intended private workspace.');});
   $('csv').onclick=()=>safely(()=>download('parcel-orders.csv',M.exportCSV(state),'text/csv;charset=utf-8'));
   $('restore').onclick=()=>{if(leaveDraft())$('restore-file').click();};
-  $('restore-file').onchange=async e=>{const file=e.target.files[0];if(!file)return;try{if(file.size>12000000)throw Error('Import is limited to 12 MB.');const raw=JSON.parse(await file.text());let next;if(raw.format==='parcel.order'&&raw.version===1){const o=M.validateOrder(raw.order);if(state.orders.some(x=>x.id===o.id))throw Error('This order ID is already present. Import a workspace backup to replace it, or remove the existing copy first.');next=M.addOrder(state,o);}else{next=M.validateState(raw);if(state.orders.length&&!window.confirm('Replace the current workspace with this backup? Export your current workspace first to keep both.'))return;next.revision=state.revision+1;next.updatedAt=new Date().toISOString();}persist(next);selected=next.orders[0]?.id||null;dirty=false;render();notice('Import complete. Imported installation checks are user records, not an independent installation result.');}catch(err){notice(err.message,true);}finally{e.target.value='';}};
+  $('restore-file').onchange=async e=>{const file=e.target.files[0];if(!file)return;try{if(file.size>12000000)throw Error('Import is limited to 12 MB.');const raw=JSON.parse(await file.text());let next;if(raw.format==='parcel.order'&&raw.version===1){const o=M.validateOrder(raw.order);if(state.orders.some(x=>x.id===o.id))throw Error('This order ID is already present. Import a workspace backup to replace it, or remove the existing copy first.');next=M.addOrder(state,o);}else{next=M.validateState(raw);if(state.orders.length&&!window.confirm('Replace the current workspace with this backup? Export your current workspace first to keep both.'))return;next.revision=state.revision+1;next.updatedAt=new Date().toISOString();}persist(next,next.orders[0]?.id||null);notice('Import complete. Imported installation checks are user records, not an independent installation result.');}catch(err){notice(err.message,true);}finally{e.target.value='';}};
   $('duplicate').onclick=()=>{if(!leaveDraft())return;safely(()=>{const old=active(),o=M.newOrder({...old,title:old.title+' (copy)',stage:'draft'});persist(M.addOrder(state,o));selected=o.id;render();notice('Duplicate created with installation checks reset.');});};
   $('delete').onclick=()=>{if(!leaveDraft()||!window.confirm('Remove this brief? Export an editable order file first to keep a copy.'))return;safely(()=>{const old=active(),next=M.removeOrder(state,old.id,old.revision);selected=null;persist(next);notice('Brief removed from this workspace.');});};
   $('reload').onclick=()=>{if(!leaveDraft())return;selected=null;dirty=false;load();render();};
