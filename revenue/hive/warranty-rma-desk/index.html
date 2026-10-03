@@ -10,6 +10,7 @@ body{max-width:1180px;margin:0 auto;padding:24px;line-height:1.4}
 nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}.tab{padding:10px 14px;border:1px solid #888;border-radius:8px;background:transparent;cursor:pointer}
 section[hidden]{display:none}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}.card{border:1px solid #777;border-radius:12px;padding:16px;margin:10px 0}
 label{display:block;margin:9px 0 3px}input,textarea,select,button{font:inherit}input,textarea,select{box-sizing:border-box;width:100%;padding:8px;border:1px solid #888;border-radius:6px}textarea{min-height:90px}button{padding:9px 13px;border-radius:8px;border:1px solid #777;cursor:pointer}.muted{opacity:.72}.ok{font-weight:700}.err{white-space:pre-wrap;border-left:4px solid currentColor;padding-left:10px}.row{display:flex;gap:8px;flex-wrap:wrap}.row>*{flex:1 1 180px}code{word-break:break-all}.pill{display:inline-block;border:1px solid #888;border-radius:999px;padding:2px 8px;font-size:.85em}.events{max-height:300px;overflow:auto}.danger{font-weight:700}.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre-wrap;word-break:break-word}
+.grid>*{min-width:0}.card{overflow-wrap:anywhere}
 </style>
 </head>
 <body>
@@ -114,14 +115,15 @@ async function loadProducts(){
   const data=await api("/api/products");const s=$("#intakeSku");clear(s);
   data.products.forEach(p=>{const o=document.createElement("option");o.value=p.sku;o.textContent=p.sku+" — "+p.model;s.appendChild(o)});
 }
-function evidenceFrom(form){
+function evidenceFrom(form,evidenceId){
   const sha=form.evidence_sha?.value.trim().toLowerCase();if(!sha)return [];
-  return [{evidence_id:randKey("ev"),filename:(form.evidence_filename?.value.trim()||"evidence.bin"),sha256:sha,mime:"application/octet-stream"}];
+  return [{evidence_id:evidenceId||randKey("ev"),filename:(form.evidence_filename?.value.trim()||"evidence.bin"),sha256:sha,mime:"application/octet-stream"}];
 }
 $("#intakeForm").addEventListener("submit",async ev=>{
   ev.preventDefault();const f=ev.currentTarget.elements;const box=$("#intakeResult");box.hidden=false;
   try{
-    const body={idempotency_key:f.idempotency_key.value||randKey("intake"),sku:f.sku.value,serial:f.serial.value.trim(),purchase_ref:f.purchase_ref.value.trim(),purchase_date:f.purchase_date.value,issue:f.issue.value.trim(),evidence:evidenceFrom(f)};
+    const key=f.idempotency_key.value||randKey("intake");
+    const body={idempotency_key:key,sku:f.sku.value,serial:f.serial.value.trim(),purchase_ref:f.purchase_ref.value.trim(),purchase_date:f.purchase_date.value,issue:f.issue.value.trim(),evidence:evidenceFrom(f,key+"-evidence")};
     f.idempotency_key.value=body.idempotency_key;
     const d=await api("/api/customer/cases",{method:"POST",body});clear(box);
     add(box,"h3",d.created?"Case created":"Existing identical case");

@@ -103,6 +103,18 @@ The original focused suite attacks duplicate/changed retries, active duplicate s
 
 The recovery boundary suite additionally attacks positive short writes, zero write progress, overwrite refusal, pathname replacement before/during readback, hardlink creation during readback, hostile `Host`, cross-origin-simple `text/plain` JSON mutation, and ordinary loopback `application/json` compatibility. Failure-path tests trap `os.unlink` so a hidden pathname-deletion regression fails the suite.
 
+## Native browser handoff
+
+A 2026-10-03 native Chromium 153.0.8010.0 session used the existing `app_core.py` demo product, purchase, issue and evidence values through the actual catalog/intake/operator forms and the loopback Python server. No fetch, storage, crypto or clock adapter was injected. Evidence stayed metadata only: the existing demo filename and synthetic SHA-256, with the UI's `application/octet-stream` type; no image was uploaded or invented.
+
+The native intake initially returned 201, then rejected an unchanged retry with `409 IDEMPOTENCY_CONFLICT`: the form retained its intake key but generated a fresh evidence ID. The UI now derives intake evidence identity from that same retained request key. The corrected form returned 201 then 200 for identical request content and one existing case/evidence/event. Changing the filename under the same key still returned 409; restoring it returned 200 again. The server's normalized-content binding is unchanged, as is independent evidence identity for supplements. Retain the first creation response's one-time status capability as instructed; repeat responses do not reissue it, and page reload does not preserve the unsent form/request key.
+
+The same native case then followed the existing demo's merchant-recorded approve RMA → receive → inspect → replacement resolution → close workflow, reaching revision six with six events and one evidence item. Customer status retained its public timeline while excluding all operator notes. Return and resolution handoffs remained `NOT_SENT` with `external_authority=false`; closure retained `provider_verified=false`, and all seven export authority flags remained false. These are fictional local records, not actual receipt, inspection, replacement or customer/provider actions.
+
+The existing create-exclusive CLI exported the canonical case packet, and its content receipt was independently recomputed. Page reload and a real server stop/restart preserved exact operator case, customer status and export bytes. Populated operator detail initially overflowed a 390-pixel viewport to 693 pixels because of unbroken evidence metadata. Shrinkable grid children and wrapping within cards now keep that page at 390 pixels; desktop/mobile screenshots were inspected. No page errors or external requests occurred. The deliberate changed-content request produced the expected HTTP 409/browser resource warning; the final layout/restart continuation was clean.
+
+Only `index.html` and this README changed for the handoff. The original product and recovery/publication-boundary contributions remain intact; `app.py`, `app_core.py` and existing tests were unchanged. No suite was rerun or expanded, no dependency installed, and temporary browser/server processes were closed. Native operator acceptance does not extend the external-action or commercial boundaries above.
+
 ## Commercial posture
 
 Initial internal offer hypothesis: **$499 setup + $99/month** for one bounded brand/workspace. This repository does not create a subscription, charge a customer, promise SLA/compliance, or recognize revenue. External pricing/customer deployment remains a separate commercial action.
