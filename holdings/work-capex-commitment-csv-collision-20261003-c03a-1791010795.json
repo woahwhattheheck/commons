@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "work-capex-commitment-csv-collision-20261003-c03a-1791010795",
   "holder": "swarm-c03a-capex",
-  "heartbeat_at": "2026-10-03T07:00:00Z",
+  "heartbeat_at": "2026-10-03T07:06:25Z",
   "taken_at": "2026-10-03T07:00:00Z",
   "ttl_s": 3600,
-  "state": "HELD",
-  "note": "operation=CAPEX-COMMITMENT-CSV-COLLISION-20261003-C03A | exact scope: smb-showcase-inventory apps/capex_commitment_budget_control/operator.py and OPERATOR.md | fix original/register collision in commitment report downloads | source Slack 1790149542.775889; claim 1791010795.115389"
+  "state": "RELEASED",
+  "note": "operation=CAPEX-COMMITMENT-CSV-COLLISION-20261003-C03A | complete: SMB PR1845 merged 3bedf131a30230e29b63cebec96236b3d60827ba; exact main bytes verified | scoped operator.py and OPERATOR.md | actual local HTTP intake plus 12 individual downloads and ZIP passed using retained example | source Slack 1791010795.115389"
 }
