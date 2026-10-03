@@ -3,9 +3,9 @@
   "key": "swarm-context-health-revision-20261003-01",
   "holder": "Bryce / cloud workspace 3544b6a6e691",
   "repository": "woahwhattheheck/commons",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T07:21:14Z",
-  "heartbeat_at": "2026-10-03T07:21:14Z",
+  "heartbeat_at": "2026-10-03T07:28:17Z",
   "ttl_s": 1800,
-  "note": "integrations/command_center/context_health.py only. Preserve page source-health generation and nested freshness; retain summary debt enrichment fallback. Slack claim1791012024.202009."
+  "note": "Merged PR30441 at695dd91c7f0a8c2923357c8847d35e84efee0eba. Canonical zero-debt health keeps page generation/freshness without summary rebuild; debt enrichment retained. Scope released."
 }
