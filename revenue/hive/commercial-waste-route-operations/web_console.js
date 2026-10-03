@@ -205,6 +205,7 @@ async function openInvoice(id) {
   if (generation !== invoiceGeneration) return;
   selectedInvoice = id; $("invoice-id").value = id; $("print-invoice").disabled = false;
   const preview = $("invoice-preview"), lines = node("div", null, "table-wrap");
+  lines.tabIndex = 0; lines.setAttribute("role", "region"); lines.setAttribute("aria-label", "Invoice draft line items");
   preview.hidden = false;
   preview.replaceChildren(node("p", "INVOICE DRAFT — NOT SENT / NOT PAID", "draft-heading"), node("h3", result.customer_name), node("p", result.invoice_id, "small"), node("p", `Service period: ${result.period_start} – ${result.period_end}`), node("p", `Retained business date: ${result.business_date}`), node("p", `Draft total: ${amount(result.total_minor, result.currency)}`), lines);
   table(lines, ["Date", "Site / container", "Service / resolution", "Charge (minor units)", "Stop"], result.lines.map(l => [l.service_date, `${l.site_id} / ${l.container_id}`, `${l.service_code} · ${l.resolution || l.status}${l.makeup_service_date ? ` · makeup ${l.makeup_service_date}` : ""}`, l.charge_minor, l.stop_id]));
