@@ -1,0 +1,11 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "aquatrace-leak-browser-20261003-f747",
+  "holder": "leak-browser-f74713d5f3bf",
+  "state": "HELD",
+  "taken_at": "2026-10-03T06:36:55Z",
+  "heartbeat_at": "2026-10-03T06:36:55Z",
+  "ttl_s": 3600,
+  "repository": "woahwhattheheck/aquatrace-lims",
+  "note": "Complete existing browser-delivery handoff: leak_to_action/web.py, web/index.html, web/app.js, web/style.css and README only."
+}
