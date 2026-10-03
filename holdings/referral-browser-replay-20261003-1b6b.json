@@ -2,12 +2,20 @@
   "schema": "commons-change-holding/v1",
   "key": "referral-browser-replay-20261003-1b6b",
   "holder": "REFERRAL-1B6B",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T06:43:50Z",
-  "heartbeat_at": "2026-10-03T06:43:50Z",
+  "heartbeat_at": "2026-10-03T06:57:28Z",
   "ttl_s": 1800,
   "scope": [
     "referral-intake-completeness.html:packet"
   ],
-  "operation_id": "REFERRAL-BROWSER-REPLAY-20261003-1B6B"
+  "operation_id": "REFERRAL-BROWSER-REPLAY-20261003-1B6B",
+  "released_at": "2026-10-03T06:57:28Z",
+  "result": {
+    "pr": "https://github.com/woahwhattheheck/commons/pull/30311",
+    "merge_sha": "927d0c0caf935caf723e24c2f0942a6aa592ae2d",
+    "main_readback_sha": "3cf57c1281b2ede1c92ab90ffb00122fbd5e2e5c",
+    "source_blob": "41eac331878de35320f42d24ae24d367916c6514",
+    "public_page": "prior_version_still_served_2026-10-03T06:57Z"
+  }
 }
