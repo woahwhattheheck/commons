@@ -75,6 +75,15 @@ site/item is rejected by the existing engine.
 Weekdays run from Monday `0` through Sunday `6`. Stop sequence identifies route
 order; this records the operator's plan, not a navigation recommendation.
 
+A site appears once per daily route. For the same route and weekday, plans may
+not overlap in their inclusive date ranges when they use the same site or stop
+sequence. Changing the sequence does not make a second visit to the same site
+representable. A later nonoverlapping plan, another weekday, or another route
+may still use that site. A rejected plan records no event and does not consume
+its operation key. If older stored plans already repeat a site for a route/date,
+manifesting reports that conflict before creating a route; inspect the retained
+plans instead of retrying the same manifest under another operation key.
+
 ### manifest.json — `manifest`
 
 ```json

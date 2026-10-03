@@ -510,6 +510,13 @@ class LaundryDesk:
             ).fetchone()
             if conflict:
                 raise StateConflict("route sequence overlaps an existing active service plan")
+            site_conflict = conn.execute(
+                "SELECT 1 FROM service_plans WHERE route_code=? AND weekday=? AND site_id=? "
+                "AND active_from <= ? AND COALESCE(active_to,'9999-12-31') >= ?",
+                (route_code, weekday, site_id, active_to or "9999-12-31", active_from),
+            ).fetchone()
+            if site_conflict:
+                raise StateConflict("site overlaps an existing active service plan for route and weekday")
             conn.execute(
                 "INSERT INTO service_plans(plan_id,site_id,route_code,weekday,stop_sequence,active_from,active_to) VALUES (?,?,?,?,?,?,?)",
                 (plan_id, site_id, route_code, weekday, stop_sequence, active_from, active_to),
@@ -537,6 +544,8 @@ class LaundryDesk:
             ).fetchall()
             if not plans:
                 raise ValidationError("no active service plans for route/date")
+            if len({row["site_id"] for row in plans}) != len(plans):
+                raise StateConflict("active service plans repeat a site for route/date; inspect existing plans")
             conn.execute(
                 "INSERT INTO routes(route_id,service_date,route_code,state) VALUES (?,?,?,'MANIFESTED')",
                 (route_id, service_date, route_code),
