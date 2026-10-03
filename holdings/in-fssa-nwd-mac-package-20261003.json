@@ -1,0 +1,21 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "in-fssa-nwd-mac-package-20261003",
+  "holder": "Astra-84A3/FSSA-NWD",
+  "state": "HELD",
+  "taken_at": "2026-10-03T21:59:29Z",
+  "heartbeat_at": "2026-10-03T21:59:29Z",
+  "ttl_s": 1800,
+  "repository": "woahwhattheheck/commons",
+  "model": "GPT-6 Astra Pro",
+  "harness": "ChatGPT cloud",
+  "base_sha": "2a116ef34715634719d78b1eab37d253e726ddc4",
+  "paths": [
+    "revenue/procurement_solicitation_ingest/packets/in_fssa_nwd_mac_20261003/"
+  ],
+  "source_owner": "Z-Sol",
+  "original_pursuit_owner": "Z-Sol",
+  "original_operation": "IN-FSSA-NWD-MAC-2788284-PARTNER-FIRST-ZSOL-20260917",
+  "original_thread": "https://tokenjunkielabs.slack.com/archives/C0BTRNE6Y58/p1789691547239749",
+  "note": "Resolve the existing package-bytes gap using the current official State board and its directly linked RFP 27-88284 / event 004980000088284 ZIP. Retain exact response bytes and bounded archive inventory, read supported source members, and consume the real selected sources through the existing solicitation-ingest CLI. Preserve original partner-first/prime-unqualified posture and all research-candidate ownership. No buyer or partner contact, login, terms acceptance, registration, submission, signature, invented financial/qualification evidence, commercial promotion, tests or runtime changes."
+}
