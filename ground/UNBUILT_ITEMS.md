@@ -14,6 +14,15 @@ This instrument measures `claimed_paths` against current main. It does not remin
 
 A row lands only when official main is a 40-character SHA and every `claimed_paths` entry exists on that SHA. Empty `claimed_paths` cannot close. `stay_unclosed` rows stay `OPEN_ALIAS`.
 
+With `--main-sha`, the reader takes the seed catalog, current-work and feature
+definitions, claimed paths, and receipt names from that exact Git commit.
+Sparse checkout omissions, local edits, and untracked files do not change its
+result. Fetch official main and the definition blobs before running it; the
+reader does not contact the remote or infer freshness. An unavailable commit
+or definition produces a clear error and exit 1. `--write` preserves the last
+usable projection when generation fails. Without `--main-sha`, the reader
+reports local inventory without closing items from local receipts.
+
 ## Do not
 
 - Remint a landed `p/{id}.md`
