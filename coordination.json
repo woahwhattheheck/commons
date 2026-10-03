@@ -2,14 +2,14 @@
  "counts": {"drift":{"contained":0,"current":0,"disjoint":0,"overlap":0,"unknown":0},"hosted":{},"lanes_open":0,"lanes_with_several_open":0,"listed_open":0,"listed_recent_closed":400,"open_prs":0},
  "degraded": ["closed-listing-partial"],
  "files": {"head":"coordination-head.json","lanes":"coordination-lanes.json","paths":"coordination-paths.json"},
- "main": {"committed_at":"2026-10-03T11:28:58Z","message":"Merge pull request #30829 from woahwhattheheck/road-ocr-checkout-2026…","sha":"40895ac523bdf47477eb1302de3e297d62413e6c"},
+ "main": {"committed_at":"2026-10-03T15:10:55Z","message":"Merge pull request #30863 from woahwhattheheck/work/connected-github-…","sha":"e73eb661710fc8950083ee4a58b01e939f817cd8"},
  "notes": [],
- "observed_at": "2026-10-03T11:32:57Z",
+ "observed_at": "2026-10-03T15:13:14Z",
  "producer": {"api_calls":13,"first_draft":true,"road":"git trees + GitHub GraphQL/REST","seat":"coordination-state-workflow"},
  "prs": [],
- "queue": {"in_progress":1,"oldest_is_lower_bound":false,"oldest_queued_age_s":3909413,"oldest_queued_at":"2026-08-19T05:36:04Z","queued":70},
+ "queue": {"in_progress":2,"oldest_is_lower_bound":false,"oldest_queued_age_s":3922630,"oldest_queued_at":"2026-08-19T05:36:04Z","queued":70},
  "repo": "woahwhattheheck/commons",
  "schema": "commons-coordination-state/v1",
  "swarm": {"batches":[],"capacity":null,"capacity_note":"available review batches at observation time; unknown is not unlimited","counts":{},"policy":"ground/SWARM_ORDER.md","schema":"commons-swarm-queue/v1"},
- "tips": {"main":"40895ac523bdf47477eb1302de3e297d62413e6c"}
+ "tips": {"main":"e73eb661710fc8950083ee4a58b01e939f817cd8"}
 }
