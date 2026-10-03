@@ -243,12 +243,12 @@ def _observation(raw: Any) -> dict:
               "accession": _matches(r["accn"], _ACCESSION, "accession"),
               "form": _text(r["form"], "form", 32), "filed": _date(r["filed"], "filed")}
     if "fy" in r:
-        if type(r["fy"]) is not int or not 0 <= r["fy"] <= 9999:
-            raise InputError("fy must be an integer from 0 to 9999")
+        if r["fy"] is not None and (type(r["fy"]) is not int or not 0 <= r["fy"] <= 9999):
+            raise InputError("fy must be null or an integer from 0 to 9999")
         result["fy"] = r["fy"]
     for field in ("fp", "frame"):
         if field in r:
-            result[field] = _text(r[field], field, 80)
+            result[field] = None if field == "fp" and r[field] is None else _text(r[field], field, 80)
     return result
 
 

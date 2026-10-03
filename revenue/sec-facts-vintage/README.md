@@ -19,13 +19,46 @@ python sec_facts_vintage.py verify \
   --source examples/companyfacts.synthetic.json \
   --plan examples/plan.synthetic.json \
   --bundle /tmp/sec-facts-review-NEW
-python -B -m unittest -v test_sec_facts_vintage
-python -O -B -m unittest -v test_sec_facts_vintage
 ```
 
 Use a new directory name for each compilation. Existing output is never overwritten. Open `review.html` locally; it has no remote assets, scripts, analytics, external forms, or network dependency. `inventory` lists available taxonomy/concept/unit combinations in the supplied snapshot; it does not select mappings for you.
 
 The six-query example produces three `CHANGED` results, one `AMBIGUOUS_LATEST`, and two `NO_ELIGIBLE_FACT` results. In particular, a six-month YTD revenue observation is **not** silently treated as the second quarter, a later filing beyond the cutoff does **not** replace the earlier value, and two different observations filed on the same date do **not** acquire an invented chronological order.
+
+## Compile a multi-company handoff
+
+`batch.py` runs the same compiler for an explicit list of retained source/plan pairs. It writes each unchanged native four-file bundle under `companies/<job-id>/`, plus a combined CSV, an HTML index linking to every company review, a machine-readable `batch.json` summary, and a final batch manifest. All query outcomes remain visible, including missing, ambiguous and conflicted results. Outcome counts are query counts; financial values are never added across companies, currencies or plans.
+
+Save a job manifest beside your retained files, for example:
+
+```json
+{
+  "schema": "sec-facts-vintage-batch/v1",
+  "jobs": [
+    {"id": "company-a", "source": "company-a.json", "plan": "company-a.plan.json"},
+    {"id": "company-b", "source": "company-b.json", "plan": "company-b.plan.json"}
+  ]
+}
+```
+
+These are example filenames, not supplied issuer records. Each plan has the existing extraction-plan schema below and explicitly chooses that source's CIK, concepts, units, actual periods, forms and filing cutoff. Relative input paths resolve from the job manifest's directory, regardless of the shell's working directory; absolute paths also work. The batch does not download files, generate mappings or select a common cutoff. A company may appear in several distinctly named jobs when the operator explicitly wants different retained sources or plans.
+
+From the repository root:
+
+```sh
+python revenue/sec-facts-vintage/batch.py compile \
+  --batch /path/retained/jobs.json --bundle /path/new-batch-review
+python revenue/sec-facts-vintage/batch.py verify \
+  --batch /path/retained/jobs.json --bundle /path/new-batch-review
+```
+
+Open the top-level `review.html` for the complete outcome table and company links. `review.csv` prepends `job_id` to the native CSV columns while preserving decimal strings and spreadsheet text protection. `batch.json` records every job's CIK, cutoff, forms, query count, status counts, source/plan digests and native manifest digest. The batch manifest binds all index files and each native company manifest. Local input paths are not copied into these reports.
+
+Keep the exact job manifest and original source/plan files with the delivery: the generated bundle does **not** embed those originals. Relocating the entire retained-input folder preserves relative paths. Changing even whitespace in a retained input changes its digest. To replay, `verify` reads those original files, recompiles every native bundle and index, and compares every output byte. Missing or extra files/directories, altered company reviews and altered indexes fail with exit `2`; hashes alone cannot make an edited report valid. Each company bundle also remains independently usable with the existing single-company `verify` command.
+
+All jobs are compiled before a new output directory is created, so an invalid later job produces no partial new delivery. Existing output directories are never overwritten. Publication uses the native exclusive-write behavior, writes the batch manifest last and reads back all members before returning success. An interrupted or failed filesystem write can leave an incomplete directory; keep it for inspection and use a new name for the next compilation. Trusted, stable parent directories are required, as for the single-company tool.
+
+Batch limits are 256 KiB of job-manifest JSON, 1–100 jobs and 256 MiB of total rendered output; the existing source/plan/history limits apply to every job. IDs use 1–64 ASCII letters, digits, hyphens or underscores, begin with a letter or digit, and must be unique even when letter case is ignored. Jobs and queries are rendered in deterministic ID order. `compile --require-unambiguous` still publishes and verifies every review, then returns `3` if any query is missing, ambiguous or conflicted. Ordinary successful compile/verify returns `0`; malformed input, I/O and replay failures return `2` with an error message. A current public SEC download remains a current retained observation, not a historical intraday archive.
 
 ## Extraction plan
 
@@ -80,7 +113,7 @@ The [SEC API documentation](https://www.sec.gov/search-filings/edgar-application
 
 This toolkit filters `filed` **dates**, not filing acceptance timestamps, dissemination times or actual data-vendor availability. A currently downloaded file with a historical date cutoff is not proof of the precise information available at a past intraday instant, nor of an unmodified complete historical dataset. Do not advertise backtest look-ahead elimination beyond the explicit filing-date filter. The full filing remains the interpretive source; this toolkit does not replace it.
 
-Input structure is the retained Company Facts JSON shape: root `cik`, `entityName`, and `facts`; then taxonomy → concept → `units` → observation array. Selected observation fields are `end`, `val`, `accn`, `form`, `filed`, with optional `start`, `fy`, `fp`, `frame`. Unsupported selected observation fields fail explicitly. Unrequested concept content is not semantically validated. A future SEC schema change may require a reviewed adapter.
+Input structure is the retained Company Facts JSON shape: root `cik`, `entityName`, and `facts`; then taxonomy → concept → `units` → observation array. Selected observation fields are `end`, `val`, `accn`, `form`, `filed`, with optional `start`, `fy`, `fp`, `frame`. SEC records may explicitly set optional `fy` and `fp` to null; those values remain unknown provenance in the report, not invented fiscal labels. Non-null fiscal labels retain their type and range checks. Unsupported selected observation fields fail explicitly. Unrequested concept content is not semantically validated. A future SEC schema change may require a reviewed adapter.
 
 ## Resource and file boundaries
 
@@ -96,10 +129,10 @@ A concrete route to revenue is a **paid financial-data QA and integration pilot*
 
 Candidate scope: one research/data team; up to ten CIKs, twelve exact periods and twenty explicitly mapped metrics per CIK; supplied retained standard Company Facts files; one reviewed mapping plan; per-company exception bundles; a machine-readable consolidated handoff; and a documented sample of manual source checks. Proposed delivery target is five business days after complete agreed inputs, not a present commitment.
 
-Acceptance requires the buyer to approve the concept/unit/period mapping, provide an expected comparison sample, and resolve the exceptions they choose to use. Missing/custom/dimensional disclosures, live connectors, quarter derivations, complete point-in-time archives, audit opinions and trading signals are outside this implementation. A consolidated multi-company adapter is a follow-on, not claimed shipped here.
+Acceptance requires the buyer to approve the concept/unit/period mapping, provide an expected comparison sample, and resolve the exceptions they choose to use. Missing/custom/dimensional disclosures, live connectors, quarter derivations, complete point-in-time archives, audit opinions and trading signals are outside this implementation. The batch command supplies the consolidated multi-company handoff while preserving those explicit mappings and each native exception review.
 
 Before outreach, the swarm must establish the buyer's actual problem, confirm no conflicting offer, obtain Muse single-writer adjudication and applicable owner approval, and use an approved standalone non-GitHub customer surface. GitHub/Commons links are internal evidence only. This change sends nothing and asserts no commercial outcome.
 
 ## Maintenance
 
-`VALIDATION.md` records the exact local proof and its limits. Run both normal and real optimized test modes after source changes. Preserve the distinction between reported changes, source conflicts, absent coverage and investment conclusions. Do not weaken explicit ambiguity just to populate an output table.
+`VALIDATION.md` records the original local proof and its limits. After source changes, run the affected actual inventory/compile/verify commands on retained input and inspect their exit codes and reports. Preserve the distinction between reported changes, source conflicts, absent coverage and investment conclusions. Do not weaken explicit ambiguity just to populate an output table. The batch handoff continues the original #15847/#15872 operation and reuses its compiler and comparison rules; the fiscal-label compatibility change preserves explicit unknown labels from retained SEC records.
