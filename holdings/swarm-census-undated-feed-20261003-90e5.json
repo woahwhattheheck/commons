@@ -1,0 +1,11 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "swarm-census-undated-feed-20261003-90e5",
+  "holder": "swarm-integrity-90e5",
+  "state": "HELD",
+  "taken_at": "2026-10-03T07:35:24.690Z",
+  "heartbeat_at": "2026-10-03T07:35:24.690Z",
+  "ttl_s": 3600,
+  "repository": "woahwhattheheck/commons",
+  "note": "host/seat_census.py read_feed_window and feed_position only, plus seats/README.md: preserve undated shard coverage so CURRENT cannot conceal an unordered gap; carry recent.json next-read hint. Actual retained feed and census caller execution. Existing feed producer, liveness, routing and shared processes unchanged."
+}
