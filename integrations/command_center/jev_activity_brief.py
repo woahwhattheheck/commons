@@ -10,11 +10,14 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import sys
 from collections import Counter
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Any
+from uuid import uuid4
 
 from integrations.command_center.jev_event_ledger import REPORT_SCHEMA as LEDGER_SCHEMA
 from integrations.command_center.jev_event_ledger import MAX_BYTES, LedgerError, verify_report
@@ -545,6 +548,24 @@ def _read_json(path: str) -> Any:
     return json.loads(data.decode("utf-8"), object_pairs_hook=pairs, parse_constant=constant)
 
 
+def _create_output(path: str, output: str) -> None:
+    """Publish a complete new file without replacing an existing destination."""
+    destination = Path(path)
+    staging = destination.parent / (".jev-brief-" + uuid4().hex + ".tmp")
+    created = False
+    try:
+        with open(staging, "x", encoding="utf-8", newline="\n") as handle:
+            created = True
+            handle.write(output)
+            handle.flush()
+            os.fsync(handle.fileno())
+        # Atomic create-only publication also preserves a concurrent writer.
+        os.link(staging, destination)
+    finally:
+        if created:
+            staging.unlink(missing_ok=True)
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("report", help="existing compiled event-ledger report JSON")
@@ -553,7 +574,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--attention-limit", type=int, default=MAX_ATTENTION)
     parser.add_argument("--attention-cursor", help="continuation from this same ledger snapshot")
     parser.add_argument("--format", choices=("json", "markdown"), default="json")
-    parser.add_argument("--output", help="create a new file; default is standard output")
+    parser.add_argument("--output", help="atomically create a new file; default is standard output")
     args = parser.parse_args(argv)
     try:
         record = compile_brief(
@@ -566,8 +587,7 @@ def main(argv: list[str] | None = None) -> int:
             record, ensure_ascii=False, sort_keys=True, indent=2, allow_nan=False
         ) + "\n"
         if args.output:
-            with open(args.output, "x", encoding="utf-8", newline="\n") as handle:
-                handle.write(output)
+            _create_output(args.output, output)
         else:
             sys.stdout.write(output)
         return 0
