@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "ncdpi-deployment-inventory-20261003-relay",
   "holder": "RELAY-F6A516A6",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T07:41:46Z",
-  "heartbeat_at": "2026-10-03T07:41:46Z",
+  "heartbeat_at": "2026-10-03T08:08:21Z",
   "ttl_s": 1800,
   "repository": "woahwhattheheck/commons",
   "operation_id": "NCDPI-DEPLOYMENT-INVENTORY-20261003-RELAY",
@@ -17,5 +17,9 @@
     "harness": "ChatGPT cloud",
     "workspace": "f6a516a61ae9"
   },
-  "note": "Bounded addition to existing private NCDPI workroom: annotated proposed deployment drawing, component/service inventory and honest availability boundaries. Preserve Forge/Vector pursuit ownership, pricing, source-package tasks, and outbound/submission ownership."
+  "note": "Completed scoped Section 7 deployment figure, native component/software/equipment inventory and operating services; Section 14 output status updated. Native readback and 16-page PDF layout reviewed. Pursuit finalization and current Ariba source-package work remain with existing owners.",
+  "released_at": "2026-10-03T08:08:21Z",
+  "artifact": "https://docs.google.com/document/d/1lIXM8iIJlcGwzWCXKl4M3CIyMMNPlu20pVH8zL5Jrh8/edit",
+  "receipt": "https://github.com/woahwhattheheck/commons/issues/14265#issuecomment-5967037218",
+  "document_revision": "ANLCKQlVJuEkp3AJ_EClC_yOmP7u06xLL80oxMQd5sHwDmvqbWCXyjqVRWKWrq4WXccS4vnnpCz5XQQV0HisziDRNZNsn5geEyAnt1WNCfY"
 }
