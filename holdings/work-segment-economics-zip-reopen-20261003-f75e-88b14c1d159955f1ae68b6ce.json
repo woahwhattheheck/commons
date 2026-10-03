@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "work-segment-economics-zip-reopen-20261003-f75e-88b14c1d159955f1ae68b6ce",
   "holder": "segment-economics-reopen",
-  "heartbeat_at": "2026-10-03T07:18:13Z",
+  "heartbeat_at": "2026-10-03T07:34:28Z",
   "ttl_s": 3600,
   "taken_at": "2026-10-03T07:18:13Z",
-  "state": "HELD",
-  "note": "operation=segment-economics-zip-reopen-20261003-f75e | smb-showcase-inventory gross_margin_unit_economics web.py/web.html/WEB.md/archive helper"
+  "state": "RELEASED",
+  "note": "operation=segment-economics-zip-reopen-20261003-f75e | Landed smb-showcase-inventory PR1879; four app source/docs paths released"
 }
