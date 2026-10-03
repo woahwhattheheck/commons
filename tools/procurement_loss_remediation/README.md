@@ -18,6 +18,8 @@ The plan filename and review directory must be **new**, in an existing operator-
 
 Open `review-new/report.html` locally. It provides searchable tables for every supplied gap version, separately labeled internal hypotheses, retained statement diagnostics, source evidence and native authority fields. Global status and holds stay visible during filtering; printing includes all rows. All displayed input text is escaped. No server, external script, analytics, account or new dependency is required.
 
+The three download links save the exact native report, gap CSV and retained input without leaving the page, including when JavaScript is disabled. Their bytes are embedded in the generated HTML so local-file browser restrictions do not turn JSON downloads into navigation. **The HTML itself therefore contains the complete private input**, as well as the separately saved `input.json`; treat both as private. Opening the report does not send these bytes anywhere. Long hold identifiers wrap within narrow screens.
+
 The directory contains:
 
 - `input.json`: the exact input bytes used for that review, including the complete private packet;
@@ -69,6 +71,14 @@ python3 -m tools.procurement_loss_remediation verify /private/plan.json /private
 ```
 
 The shell redirection in the legacy compile command can overwrite its target; use the new-directory review command for non-overwriting delivery. Verification recomputes packet binding and semantics, not buyer authenticity. All buyer/debrief/outbound/provider/contract/payment/cash/revenue/causal-inference authority fields remain false.
+
+## Operator execution receipt (2026-10-03)
+
+Python 3.12.14 and Chromium 153.0.8010.0 exercised the actual preparation, review build, native compile/verify and saved `file://` report. Inputs came from the existing synthetic `procurement_win_loss/fixtures.json`: loss with unknown rationale, the retained stated award rationale, and conflicting current terminal evidence. Explicit illustrative plan edits added one separately labeled internal hypothesis with two gap versions, and one buyer-reason gap to observe its required authentication hold. No real buyer record was used.
+
+All four states (`NO_ACTIONABLE_GAP`, `ACTIONABLE_GAPS`, `HOLD_CONTRADICTION`, `HOLD_SOURCE`) verified. Their native JSON, retained input and CSV stayed byte-identical through the renderer repair. Every authority remained false, and the recorded packet time stayed `2026-09-17T03:00:00Z`. Existing plan/output destinations refused overwrite.
+
+Actual desktop and 390-pixel browser flows covered filtering, clearing the search, visible global holds, complete printing and JavaScript-disabled content. Twelve artifact downloads matched the corresponding files exactly; three additional downloads with JavaScript disabled also matched and kept the page open. Before the repair, all eight JSON clicks navigated away instead of downloading, and the two hold pages widened to 474 and 394 pixels. Afterward all four pages stayed at 390 pixels. Print PDFs retained status, holds, actions, rationale and complete digests despite an active no-match filter; returning to screen preserved that filter. No page/console errors or HTTP requests occurred. This is local operator execution evidence, not buyer authentication, live source currentness or authorization to perform the proposed actions.
 
 ## Recovery lineage
 

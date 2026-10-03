@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import base64
 import csv
 import io
 import json
@@ -104,9 +105,26 @@ def _table(title: str, headings: list[str], rows: list[list[Any]]) -> str:
             "<thead><tr>" + header + "</tr></thead><tbody>" + body + "</tbody></table></div></section>")
 
 
-def render_html(receipt: dict[str, Any]) -> str:
+def render_html(receipt: dict[str, Any], *, retained_input: bytes | None = None) -> str:
     """Render an output from compile_plan; never promote or reclassify it."""
     e = lambda value: escape(_text(value))
+    # Chromium may navigate to file:// JSON despite the download attribute.
+    # Data links retain exact native bytes and also work with JavaScript off.
+    downloads = [("report.json", "Native report JSON", _json_bytes(receipt)),
+                 ("gaps.csv", "All gap rows CSV", gaps_csv(receipt)),
+                 ("input.json", "Private retained input", retained_input)]
+    links = []
+    for name, label, payload in downloads:
+        href = name if payload is None else (
+            "data:application/octet-stream;base64," + base64.b64encode(payload).decode("ascii")
+        )
+        links.append(f'<a href="{e(href)}" download="{e(name)}">{e(label)}</a>')
+    download_links = "".join(links)
+    private_input_note = (
+        "This HTML and its download directory include the complete private input. Do not publish them by default."
+        if retained_input is not None else
+        "The download directory includes the complete private input. Do not publish it by default."
+    )
     holds = receipt["source_hold_reasons"] + receipt["hold_reasons"]
     held = receipt["status"].startswith("HOLD_")
     hold_box = ("<section class=\"notice\"><h2>Source and plan holds</h2><ul>" +
@@ -148,19 +166,19 @@ def render_html(receipt: dict[str, Any]) -> str:
 <style>
 :root{font-family:system-ui,sans-serif;color:#15202b;background:#f5f7f9}body{max-width:1200px;margin:auto;padding:24px}
 h1{font-size:2rem}h2{font-size:1.2rem}section,header{background:white;padding:20px;margin:18px 0;border:1px solid #d5dce2;border-radius:8px}
-p{line-height:1.6}.notice{border-left:6px solid #965d00}.status{font-weight:700;font-size:1.25rem}
+p{line-height:1.6}.notice{border-left:6px solid #965d00;overflow-wrap:anywhere}.status{font-weight:700;font-size:1.25rem}
 .table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:10px;border-bottom:1px solid #d5dce2;overflow-wrap:anywhere}th{background:#edf2f6}td{min-width:80px;white-space:pre-wrap}
 input,button{font:inherit;padding:10px}input{width:min(600px,90%)}nav{display:flex;gap:16px;flex-wrap:wrap}a{color:#174c77}code{overflow-wrap:anywhere}
-@media print{body{max-width:none;padding:0;background:white}.search,nav{display:none}section,header{border:0;padding:8px;margin:8px 0}.table-wrap{overflow:visible}table{font-size:8pt}td{min-width:0}tr[hidden]{display:table-row}thead{display:table-header-group}tr{break-inside:avoid}}
+@media print{body{max-width:none;padding:0;background:white}.search,nav{display:none}section,header{border:0;padding:8px;margin:8px 0}h2{break-after:avoid}.table-wrap{overflow:visible}table{font-size:8pt}td{min-width:0}tr[hidden]{display:table-row}thead{display:table-header-group}tr{break-inside:avoid}}
 </style></head><body><header><p>PRIVATE • OFFLINE • INTERNAL REVIEW</p><h1>Procurement remediation</h1>
 """ + f"""<p class="status">{e(receipt['status'])}</p><p>{e(explanation)}</p>
 <p><strong>Opportunity:</strong> {e(receipt['opportunity_id'])}<br><strong>Recorded outcome:</strong> {e(receipt['source_outcome'])}<br>
 <strong>Packet compiled at:</strong> {e(receipt['compiled_at'])}</p>
 <p>Opening or rebuilding this report does not refresh evidence. Currentness is evaluated against the supplied packet's clock and labels, not a live buyer or provider read. All supplied gap versions are retained; this page does not select the latest version.</p>
-<nav aria-label="Local report downloads"><a href="report.json" download>Native report JSON</a><a href="gaps.csv" download>All gap rows CSV</a><a href="input.json" download>Private retained input</a></nav>
+<nav aria-label="Local report downloads">{download_links}</nav>
 </header>""" + hold_box + """<section class="search"><label for="query">Filter table rows</label><p><input id="query" type="search" placeholder="Search IDs, actions, rails or evidence" autocomplete="off"></p>
 <p id="visible" role="status" aria-live="polite"></p><button id="print" type="button">Print complete report</button><p>Filtering never hides the global status or holds. Printing includes every row.</p></section>""" + gaps + hypotheses + reasons + sources + authority + f"""<footer><p>Native report digest: <code>{e(receipt['receipt_sha256'])}</code><br>
-Upstream receipt digest: <code>{e(receipt['source_receipt_sha256'])}</code></p><p>Hashes bind the supplied packet; they do not authenticate its author or prove a buyer's intent. The download directory includes the complete private input. Do not publish it by default.</p></footer>""" + """
+Upstream receipt digest: <code>{e(receipt['source_receipt_sha256'])}</code></p><p>Hashes bind the supplied packet; they do not authenticate its author or prove a buyer's intent. {e(private_input_note)}</p></footer>""" + """
 <script>
 const query=document.getElementById('query'),rows=Array.from(document.querySelectorAll('tr[data-row]'));
 function filter(){const needle=query.value.toLocaleLowerCase();let visible=0;for(const row of rows){row.hidden=!row.textContent.toLocaleLowerCase().includes(needle);if(!row.hidden)visible++;}document.getElementById('visible').textContent=visible+' of '+rows.length+' table rows shown';}
@@ -174,7 +192,8 @@ def build(source: Path, destination: Path) -> dict[str, Any]:
     receipt = compile_plan(plan)
     # Finish compilation/serialization before reserving a new output directory.
     payloads = [("input.json", raw), ("report.json", _json_bytes(receipt)),
-                ("gaps.csv", gaps_csv(receipt)), ("report.html", render_html(receipt).encode("utf-8"))]
+                ("gaps.csv", gaps_csv(receipt)),
+                ("report.html", render_html(receipt, retained_input=raw).encode("utf-8"))]
     destination.mkdir(mode=0o700, parents=False, exist_ok=False)
     try:
         # The human entrypoint is last. On I/O failure keep already-written
