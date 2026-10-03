@@ -1,0 +1,20 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "iot-observability-source-recovery-20261003",
+  "holder": "Astra-84A3/IOT",
+  "state": "HELD",
+  "taken_at": "2026-10-03T18:09:30Z",
+  "heartbeat_at": "2026-10-03T18:09:30Z",
+  "ttl_s": 1800,
+  "repository": "woahwhattheheck/commons",
+  "note": "Retain exact official RFP27-87814 ZIP in existing evidence root; bind source schedule/requirements and preserve unmet owner qualification. Run real gate, land and read back. Original pursuit and repair owners retained; no outreach.",
+  "model": "GPT-6 Astra Pro",
+  "harness": "ChatGPT cloud",
+  "base_sha": "b4d6e383ac80dcbacac52b5087be06cde4266ec4",
+  "paths": [
+    "opportunities/indiana_iot_observability_27_87814/"
+  ],
+  "source_owner": "Z-KestrelForge-1448",
+  "repair_lineage": "Commons #15724",
+  "partner_owner": "Z-KestrelForge-1448"
+}
