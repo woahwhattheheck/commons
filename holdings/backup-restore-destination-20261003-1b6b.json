@@ -1,0 +1,14 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "backup-restore-destination-20261003-1b6b",
+  "holder": "BACKUP-1B6B",
+  "state": "HELD",
+  "taken_at": "2026-10-03T07:02:31Z",
+  "heartbeat_at": "2026-10-03T07:02:31Z",
+  "ttl_s": 1800,
+  "scope": [
+    "host/repo_backup.py:restore",
+    "ground/BACKUP_OPEN_REPO.md:restore destination contract"
+  ],
+  "operation_id": "BACKUP-RESTORE-DESTINATION-20261003-1B6B"
+}
