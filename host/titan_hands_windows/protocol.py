@@ -78,6 +78,12 @@ class DeltaTracker:
     def current_meta(self) -> dict[str, Any]:
         return self._meta
 
+    def current_nodes(self) -> dict[str, dict[str, Any]]:
+        return self._nodes
+
+    def current_meta(self) -> dict[str, Any]:
+        return self._meta
+
     def observe(self, snapshot: Mapping[str, Any]) -> dict[str, Any]:
         if not isinstance(snapshot, Mapping):
             raise ProtocolError("snapshot must be an object")
@@ -135,3 +141,5 @@ def failure(reason: str, message: str, **evidence: Any) -> dict[str, Any]:
     if evidence:
         result["evidence"] = evidence
     return result
+
+

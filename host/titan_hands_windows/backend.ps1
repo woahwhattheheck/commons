@@ -40,6 +40,7 @@ public static class TitanNativeInput {
     [DllImport("user32.dll")] public static extern bool SetCursorPos(Int32 x, Int32 y);
     [DllImport("user32.dll")] public static extern bool SetForegroundWindow(IntPtr hwnd);
     [DllImport("user32.dll")] public static extern IntPtr GetForegroundWindow();
+    [DllImport("user32.dll")] static extern UInt32 GetWindowThreadProcessId(IntPtr hwnd, out UInt32 processId);
     [DllImport("user32.dll")] public static extern bool GetWindowRect(IntPtr hwnd, out RECT rect);
     [DllImport("user32.dll")] public static extern bool PrintWindow(IntPtr hwnd, IntPtr hdc, UInt32 flags);
 
@@ -59,6 +60,13 @@ public static class TitanNativeInput {
             throw new System.ComponentModel.Win32Exception(Marshal.GetLastWin32Error());
     }
 
+    public static UInt32 WindowProcessId(IntPtr hwnd) {
+        if (hwnd == IntPtr.Zero) return 0;
+        UInt32 processId = 0;
+        GetWindowThreadProcessId(hwnd, out processId);
+        return processId;
+    }
+
     public static void Click(Int32 x, Int32 y) {
         SetCursorPos(x, y);
         INPUT down = new INPUT { type = INPUT_MOUSE, U = new InputUnion { mi = new MOUSEINPUT { dwFlags = MOUSEEVENTF_LEFTDOWN } } };
@@ -76,18 +84,34 @@ public static class TitanNativeInput {
         Send(new INPUT[] { key });
     }
 
-    public static void UnicodeText(string text) {
-        foreach (char ch in text ?? "") {
-            INPUT down = new INPUT { type = INPUT_KEYBOARD, U = new InputUnion { ki = new KEYBDINPUT { wScan = ch, dwFlags = KEYEVENTF_UNICODE } } };
-            INPUT up = new INPUT { type = INPUT_KEYBOARD, U = new InputUnion { ki = new KEYBDINPUT { wScan = ch, dwFlags = KEYEVENTF_UNICODE | KEYEVENTF_KEYUP } } };
-            Send(new INPUT[] { down, up });
+    public static void KeyChord(UInt16[] keys) {
+        if (keys == null || keys.Length == 0) throw new ArgumentException("key chord is empty", "keys");
+        INPUT[] inputs = new INPUT[keys.Length * 2];
+        for (int i = 0; i < keys.Length; i++) {
+            inputs[i] = new INPUT { type = INPUT_KEYBOARD, U = new InputUnion { ki = new KEYBDINPUT { wVk = keys[i] } } };
+            inputs[keys.Length + (keys.Length - i - 1)] = new INPUT { type = INPUT_KEYBOARD, U = new InputUnion { ki = new KEYBDINPUT { wVk = keys[i], dwFlags = KEYEVENTF_KEYUP } } };
         }
+        Send(inputs);
+    }
+
+    public static void UnicodeText(string text) {
+        text = text ?? "";
+        if (text.Length > 32768) throw new ArgumentOutOfRangeException("text", "text exceeds the 32768 UTF-16 code-unit atomic batch limit");
+        if (text.Length == 0) return;
+        INPUT[] inputs = new INPUT[text.Length * 2];
+        for (int i = 0; i < text.Length; i++) {
+            UInt16 codeUnit = (UInt16)text[i];
+            inputs[i * 2] = new INPUT { type = INPUT_KEYBOARD, U = new InputUnion { ki = new KEYBDINPUT { wScan = codeUnit, dwFlags = KEYEVENTF_UNICODE } } };
+            inputs[i * 2 + 1] = new INPUT { type = INPUT_KEYBOARD, U = new InputUnion { ki = new KEYBDINPUT { wScan = codeUnit, dwFlags = KEYEVENTF_UNICODE | KEYEVENTF_KEYUP } } };
+        }
+        Send(inputs);
     }
 }
 '@
 
 $script:Elements = @{}
 $script:Walker = [System.Windows.Automation.TreeWalker]::ControlViewWalker
+. (Join-Path $PSScriptRoot "input_guard.ps1")
 
 function Json-Line($Value) {
     $Value | ConvertTo-Json -Compress -Depth 14
@@ -300,6 +324,49 @@ function Need-Element($Action) {
     return $script:Elements[$id]
 }
 
+function Invoke-ScopedInput($Mode, $Action, $Element, $Pattern = $null, $Text = "", $KeyCodes = @()) {
+    $id = [string](Get-Field $Action "id" "")
+    if (-not $id) { return Fail "INPUT_TARGET_REQUIRED" "input requires a scoped control id" }
+    $targetProcessId = [int](Try-Value { $Element.Current.ProcessId } 0)
+    $targetProcessName = ""
+    if ($targetProcessId -gt 0) {
+        $targetProcessName = [string](Try-Value { (Get-Process -Id $targetProcessId -ErrorAction Stop).ProcessName } "")
+    }
+    $foregroundHwnd = [TitanNativeInput]::GetForegroundWindow()
+    $foregroundProcessId = [int][TitanNativeInput]::WindowProcessId($foregroundHwnd)
+    $focusedElement = Try-Value { [System.Windows.Automation.AutomationElement]::FocusedElement } $null
+    $focusedControlId = if (Same-Element $Element $focusedElement) { $id } else { "" }
+    $role = [string](Try-Value { $Element.Current.ControlType.ProgrammaticName } "ControlType.Unknown") -replace '^ControlType\.', ''
+    $focusable = [bool](Try-Value { $Element.Current.IsKeyboardFocusable } $false)
+    $hasValuePattern = $null -ne $Pattern
+    $valueWriter = $null
+    if ($hasValuePattern) { $valueWriter = { param($value) $Pattern.SetValue([string]$value) }.GetNewClosure() }
+    $keyboardWriter = $null
+    if ($Mode -eq "key") {
+        $keyboardWriter = { param($codes) [TitanNativeInput]::KeyChord([UInt16[]]$codes) }.GetNewClosure()
+    } elseif ($Mode -eq "type_text") {
+        $keyboardWriter = { param($value) [TitanNativeInput]::UnicodeText([string]$value) }.GetNewClosure()
+    }
+    $result = Invoke-TitanBoundInput `
+        -Mode ([string]$Mode) `
+        -ControlId $id `
+        -TargetProcessId $targetProcessId `
+        -TargetProcessName $targetProcessName `
+        -ForegroundProcessId $foregroundProcessId `
+        -FocusedControlId $focusedControlId `
+        -Role $role `
+        -Focusable $focusable `
+        -HasValuePattern $hasValuePattern `
+        -Text ([string]$Text) `
+        -KeyCodes ([UInt16[]]$KeyCodes) `
+        -ValueWriter $valueWriter `
+        -KeyboardWriter $keyboardWriter
+    if (-not $result.ok) {
+        return Fail $result.failure_reason $result.message @{ id = $id; target_process_id = $targetProcessId; foreground_process_id = $foregroundProcessId }
+    }
+    return $null
+}
+
 function Key-Code([string]$Name) {
     $key = $Name.Trim().ToLowerInvariant()
     $named = @{
@@ -342,8 +409,8 @@ function Do-Action($Action) {
             "set_value" {
                 $element = Need-Element $Action
                 $pattern = Pattern $element ([System.Windows.Automation.ValuePattern]::Pattern)
-                if ($null -eq $pattern) { return Fail "PATTERN_UNAVAILABLE" "value pattern is unavailable" @{ id = $Action.id } }
-                $pattern.SetValue([string](Get-Field $Action "value" ""))
+                $inputFailure = Invoke-ScopedInput "set_value" $Action $element $pattern ([string](Get-Field $Action "value" ""))
+                if ($null -ne $inputFailure) { return $inputFailure }
             }
             "toggle" {
                 $element = Need-Element $Action
@@ -372,17 +439,19 @@ function Do-Action($Action) {
             "focus" { (Need-Element $Action).SetFocus() }
             "click" { Click-Element (Need-Element $Action) }
             "type_text" {
-                $id = [string](Get-Field $Action "id" "")
-                if ($id) { (Need-Element $Action).SetFocus() }
-                [TitanNativeInput]::UnicodeText([string](Get-Field $Action "text" ""))
+                $element = Need-Element $Action
+                $pattern = Pattern $element ([System.Windows.Automation.ValuePattern]::Pattern)
+                $inputFailure = Invoke-ScopedInput "type_text" $Action $element $pattern ([string](Get-Field $Action "text" ""))
+                if ($null -ne $inputFailure) { return $inputFailure }
             }
             "key" {
                 $parts = @(([string](Get-Field $Action "key" "")).Split("+") | Where-Object { $_.Trim() })
                 if (-not $parts.Count) { throw "key action requires key" }
+                if ($parts.Count -gt 8) { return Fail "INPUT_CHORD_TOO_LARGE" "key chord exceeds the 8-key atomic batch limit" @{ id = [string](Get-Field $Action "id" "") } }
                 $codes = @($parts | ForEach-Object { Key-Code $_ })
-                foreach ($code in $codes) { [TitanNativeInput]::Key($code, $true) }
-                [array]::Reverse($codes)
-                foreach ($code in $codes) { [TitanNativeInput]::Key($code, $false) }
+                $element = Need-Element $Action
+                $inputFailure = Invoke-ScopedInput "key" $Action $element $null "" ([UInt16[]]$codes)
+                if ($null -ne $inputFailure) { return $inputFailure }
             }
             "scroll" {
                 $delta = [int](Get-Field $Action "delta" -120)
@@ -504,3 +573,5 @@ while ($null -ne ($line = [Console]::In.ReadLine())) {
     [Console]::Out.Flush()
     if ([string](Get-Field $request "op" "") -eq "shutdown") { break }
 }
+
+
