@@ -19,6 +19,7 @@ import zipfile
 
 from caption_intake import (MAX_BYTES, MAX_CUES, IntakeError, canonical_episode,
                             create_bundle, json_bytes, parse_captions)
+from saved_handoff import MAX_ARCHIVE_BYTES, reopen_handoff
 
 MAX_FILES = 20
 MAX_BATCH_BYTES = 20_000_000
@@ -211,26 +212,31 @@ class WorkbenchHandler(BaseHTTPRequestHandler):
         elif path == '/api/info':
             self.reply(200, json_bytes({'service': 'caption-workbench', 'max_files': MAX_FILES,
                                        'max_file_bytes': MAX_BYTES, 'max_batch_bytes': MAX_BATCH_BYTES,
-                                       'max_batch_cues': MAX_BATCH_CUES, 'page_size': PAGE_SIZE}))
+                                       'max_batch_cues': MAX_BATCH_CUES, 'max_archive_bytes': MAX_ARCHIVE_BYTES,
+                                       'page_size': PAGE_SIZE}))
         elif path == '/favicon.ico':
             self.reply(204, b'')
         else:
             self.reply(404, json_bytes({'error': 'route not found'}))
 
-    def read_document(self) -> object:
+    def read_body(self, content_type: str, maximum: int) -> bytes:
         if self.headers.get('Transfer-Encoding'):
-            raise IntakeError('send a Content-Length JSON request; chunked bodies are not supported')
-        if self.headers.get('Content-Type', '').split(';')[0].strip().lower() != 'application/json':
-            raise IntakeError('Content-Type must be application/json')
+            raise IntakeError('send a Content-Length request; chunked bodies are not supported')
+        if self.headers.get('Content-Type', '').split(';')[0].strip().lower() != content_type:
+            raise IntakeError(f'Content-Type must be {content_type}')
         lengths = self.headers.get_all('Content-Length', [])
-        if len(lengths) != 1 or not lengths[0].isdigit():
+        if len(lengths) != 1 or not lengths[0].isdigit() or len(lengths[0]) > 9:
             raise IntakeError('one integer Content-Length is required')
         length = int(lengths[0])
-        if not 0 < length <= MAX_REQUEST_BYTES:
-            raise IntakeError(f'JSON request exceeds {MAX_REQUEST_BYTES} bytes or is empty')
+        if not 0 < length <= maximum:
+            raise IntakeError(f'request exceeds {maximum} bytes or is empty')
         payload = self.rfile.read(length)
         if len(payload) != length:
             raise IntakeError('incomplete request; original files were not stored')
+        return payload
+
+    def read_document(self) -> object:
+        payload = self.read_body('application/json', MAX_REQUEST_BYTES)
         try:
             return json.loads(payload.decode('utf-8'), parse_constant=reject_constant)
         except (ValueError, UnicodeError, RecursionError) as exc:
@@ -238,10 +244,20 @@ class WorkbenchHandler(BaseHTTPRequestHandler):
 
     def do_POST(self) -> None:
         path = urlsplit(self.path).path
-        if path not in ('/api/preview', '/api/export', '/api/batch'):
+        if path not in ('/api/preview', '/api/export', '/api/batch', '/api/reopen'):
             self.reply(404, json_bytes({'error': 'route not found'}))
             return
         try:
+            if path == '/api/reopen':
+                files = reopen_handoff(self.read_body('application/zip', MAX_ARCHIVE_BYTES),
+                                       max_files=MAX_FILES, max_source_bytes=MAX_BATCH_BYTES,
+                                       max_cues=MAX_BATCH_CUES)
+                results, _ = process_files({'files': files})
+                if not all(row['ok'] for row in results):
+                    raise IntakeError('saved handoff options cannot be restored by this workbench')
+                self.reply(200, json_bytes({'ok': True, 'files': files, 'results': results,
+                                           'media_verified': False}))
+                return
             document = self.read_document()
             if path == '/api/export' and (not isinstance(document, dict)
                                          or not isinstance(document.get('files'), list)

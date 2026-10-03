@@ -16,8 +16,9 @@
 <div id="global-status" class="message" role="status" aria-live="polite">Starting the local workbench…</div>
 <fieldset id="workspace">
 <section id="drop" class="drop" aria-label="Add caption files">
-<div class="toolbar"><label class="file-button" for="files">Choose caption files</label><input class="visually-hidden" id="files" type="file" accept=".srt,.vtt" multiple><span>or drop files here</span><span class="grow"></span><button id="clear" type="button">Clear selection</button></div>
+<div class="toolbar"><label class="file-button" for="files">Choose caption files</label><input class="visually-hidden" id="files" type="file" accept=".srt,.vtt" multiple><span>or drop caption files here</span><label class="file-button" for="handoff-file">Reopen saved handoff</label><input class="visually-hidden" id="handoff-file" type="file" accept=".zip"><span class="grow"></span><button id="clear" type="button">Clear selection</button></div>
 <p>Up to 20 files · 2 MB each · 20 MB per batch · 50,000 cues per batch. Files stay in this tab and the local server’s request memory.</p>
+<p>Reopen an individual or complete batch ZIP from this converter to restore its originals, retained options and cue previews. Saved ZIP limit: 64 MB.</p>
 </section>
 <div class="toolbar"><button id="preview-all" class="primary" type="button">Preview selected</button><button id="export-batch" type="button">Download selected batch</button><span class="grow"></span><span id="selection-count" class="quiet">No files selected</span></div>
 <div class="layout">

@@ -10,13 +10,23 @@ From this directory with Python 3.10 or newer:
 python workbench.py
 ```
 
-Open the printed `http://127.0.0.1:8766/` address. Use `--port 8767` to choose another port, or `--port 0` to select an available one. Ctrl+C stops the server. No dependencies, build command, account, or database are required. Keep `workbench.py`, `workbench.html`, `workbench.js`, and the existing `caption_intake.py` together. Open the local address rather than opening the HTML file directly.
+Open the printed `http://127.0.0.1:8766/` address. Use `--port 8767` to choose another port, or `--port 0` to select an available one. Ctrl+C stops the server. No dependencies, build command, account, or database are required. Keep `workbench.py`, `workbench.html`, `workbench.js`, `saved_handoff.py`, and the existing `caption_intake.py` together. Open the local address rather than opening the HTML file directly.
 
 Select or drop caption files. Click a filename to change its title, explicit format, known encoding, default speaker label, or optional known recording duration. The file's original bytes remain unchanged. Checkmarks choose the batch; duplicate filenames remain separate entries. Removing an entry or clearing the selection affects only this browser tab.
 
 **Preview selected** reports each file separately. Click a file to inspect the normalized captions alongside their original source IDs, line numbers, timing and markup. Search by text, speaker or cue ID and page through all matching cues. The last caption timestamp is displayed as a caption boundary, never as the recording's duration.
 
 **Download this handoff** returns the existing converter's ZIP. **Download selected batch** returns one outer ZIP containing an individual handoff for each selected entry and a batch manifest. An invalid selected file prevents the whole batch download: fix its options or explicitly deselect it. Valid selected files are never silently substituted for an incomplete batch. Downloads parse the current source/options again; old previews cannot authorize a different export.
+
+## Reopen a saved handoff
+
+Choose **Reopen saved handoff** and select an individual converter ZIP or a complete workbench batch ZIP. The workbench reads it in memory, checks its complete member set and manifests, reparses each exact original with its retained options, and compares the retained transcript and optional episode import with the existing converter's output. Every handoff in a batch must match before any entry is added to the selection. A malformed archive, missing member, changed transcript or mismatched manifest leaves the current selection unchanged with an error.
+
+Successful reopening restores the ordinary editable entries and source-linked previews. The exact original caption bytes, title, normalized encoding, default speaker, and any saved episode duration/demonstration flag are retained. Batch manifests also retain original filenames, including duplicates. An individual ZIP does not store the original filename: its entry is shown as the actual archived `source.srt` or `source.vtt`. Search, paging, selection and encoding-alias spelling are not saved options. A generic handoff has no recorded duration or demonstration flag to restore.
+
+Reopened files are appended within the existing 20-file/20-MB selection limit. Clear or remove entries first if necessary. Editing a restored option invalidates its preview and the usual preview/export path recompiles it. The supplied archive stays unchanged. Its manifests and replay comparison establish consistency among the supplied files; they do not authenticate the author, verify a recording, or import an episode into another application.
+
+Saved ZIP uploads are limited to 64,000,000 bytes. Expanded members are bounded to 32,000,000 bytes per individual handoff and 256,000,000 bytes across both archive layers, with the ordinary source-byte and cue limits still applied. Only the converter's own complete individual or batch format is accepted; arbitrary media ZIPs, edited output artifacts, encrypted members, links, directories and duplicate archive member names are refused. No file is extracted to disk.
 
 ## Optional podcast/clipping import
 
@@ -38,7 +48,7 @@ All source bytes and parsed documents are transient request data; the server doe
 
 ## Local API
 
-`GET /api/info` reports limits. POST JSON to `/api/preview`, `/api/export` (exactly one file), or `/api/batch` (one or more files):
+`GET /api/info` reports limits, including `max_archive_bytes`. POST JSON to `/api/preview`, `/api/export` (exactly one file), or `/api/batch` (one or more files):
 
 ```json
 {
@@ -58,5 +68,7 @@ All source bytes and parsed documents are transient request data; the server doe
 ```
 
 The preview returns HTTP 200 with `ok` and one indexed result per input, including errors. `parsed:true, ok:false` means generic parsing succeeded but the requested export needs attention. Invalid export entries return HTTP 422 and JSON diagnostics, **not a partial ZIP**. Malformed/oversized requests return HTTP 400; unexpected runtime errors return HTTP 500 and a terminal traceback. Successful exports return `application/zip`. Supply Content-Length and application/json; chunked request bodies are not supported. An unreadable UI asset or failed port bind exits the CLI nonzero with a diagnostic.
+
+To reopen, POST the original ZIP bytes to `/api/reopen` with `Content-Type: application/zip` and Content-Length. Success returns HTTP 200 with `ok:true`, ordinary upload `files`, corresponding preview `results`, and `media_verified:false`. Invalid or inconsistent archives return HTTP 400 without a partial selection. This route uses the same caption parser and optional episode adapter as exports.
 
 This implementation composes the existing caption intake and keeps its supported syntax, provenance semantics, and consumer adapters unchanged. It adds no test suite, CI workflow, retained execution transcript or media fixture.

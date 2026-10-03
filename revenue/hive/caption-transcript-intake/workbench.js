@@ -1,7 +1,7 @@
 'use strict';
 const $ = (id) => document.getElementById(id);
 const state = {rows: [], active: null, busy: false, next: 1};
-const limits = {max_files: 20, max_file_bytes: 2000000, max_batch_bytes: 20000000};
+const limits = {max_files: 20, max_file_bytes: 2000000, max_batch_bytes: 20000000, max_archive_bytes: 64000000};
 
 function node(tag, text, cls) {
   const result = document.createElement(tag);
@@ -57,7 +57,7 @@ function renderDetail() {
   $('empty-detail').hidden = !!row; $('detail').hidden = !row;
   if (!row) return;
   $('file-name').textContent = row.file.name;
-  $('file-size').textContent = `${row.file.size.toLocaleString()} original bytes · original file is not edited`;
+  $('file-size').textContent = `${row.file.size.toLocaleString()} original bytes · original file is not edited${row.reopened ? ' · restored from a saved handoff' : ''}`;
   for (const field of ['title', 'format', 'encoding', 'speaker', 'duration']) $(field).value = row[field];
   $('synthetic').checked = row.synthetic;
   $('query').value = row.query;
@@ -133,6 +133,26 @@ async function addFiles(files) {
   });
   $('files').value = '';
 }
+async function reopen(file) {
+  if (!file) return;
+  await busy(async () => {
+    if (!file.size || file.size > limits.max_archive_bytes) throw new Error('Saved handoff ZIP must contain 1–64,000,000 bytes. Selection is unchanged.');
+    status(`Reopening ${file.name} and comparing its retained artifacts…`);
+    const response = await fetch('/api/reopen', {method: 'POST', headers: {'Content-Type': 'application/zip'}, body: file});
+    const result = await response.json();
+    if (!response.ok || !result.ok) throw new Error(`${result.error || 'Unable to reopen this saved handoff.'} Selection is unchanged.`);
+    const bytes = state.rows.reduce((total, row) => total + row.file.size, 0) + result.results.reduce((total, row) => total + row.source_bytes, 0);
+    if (result.files.length + state.rows.length > limits.max_files || bytes > limits.max_batch_bytes) throw new Error('Reopened originals exceed the current selection limit. Clear or remove files, then reopen the handoff. Selection is unchanged.');
+    const additions = result.files.map((row, index) => ({id: state.next++, file: {name: row.name, size: result.results[index].source_bytes},
+      source: row.source_base64, selected: true, title: row.title, format: row.format, encoding: row.encoding,
+      speaker: row.speaker, duration: row.duration_seconds ?? '', synthetic: row.synthetic_demo,
+      query: '', result: result.results[index], reopened: true}));
+    state.rows.push(...additions); state.active = additions[0].id;
+    renderList(); renderDetail();
+    status(`Reopened ${additions.length} handoff(s). Retained artifacts match the supplied originals; recording and authorship remain unverified. Options and complete captions are ready to review or export.`);
+  });
+  $('handoff-file').value = '';
+}
 function requestRow(row, offset = 0) {
   return {name: row.file.name, source_base64: row.source, title: row.title, format: row.format,
     encoding: row.encoding, speaker: row.speaker, duration_seconds: row.duration || null,
@@ -179,6 +199,7 @@ $('synthetic').addEventListener('change', () => {
   row.synthetic = $('synthetic').checked; row.result = null; renderList(); renderResult();
 });
 $('files').addEventListener('change', () => addFiles($('files').files));
+$('handoff-file').addEventListener('change', () => reopen($('handoff-file').files[0]));
 $('drop').addEventListener('dragover', event => { event.preventDefault(); if (!state.busy) $('drop').classList.add('drag'); });
 $('drop').addEventListener('dragleave', () => $('drop').classList.remove('drag'));
 $('drop').addEventListener('drop', event => { event.preventDefault(); $('drop').classList.remove('drag'); if (!state.busy) addFiles(event.dataTransfer.files); });
