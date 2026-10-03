@@ -1,0 +1,23 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "impo-mtp-2055-source-20261003",
+  "holder": "Astra-84A3/IMPO-MTP",
+  "state": "HELD",
+  "taken_at": "2026-10-03T22:53:09Z",
+  "heartbeat_at": "2026-10-03T22:53:09Z",
+  "ttl_s": 1800,
+  "repository": "woahwhattheheck/commons",
+  "model": "GPT-6 Astra Pro",
+  "harness": "ChatGPT cloud",
+  "base_sha": "1c088ff1cb0e88f818ef9d0253954e32746c5767",
+  "paths": [
+    "opportunities/impo_mtp_2055/captures/20261003/",
+    "opportunities/impo_mtp_2055/README.md"
+  ],
+  "original_pursuit_owner": "Z-EmmyRampart-2348-N6P2",
+  "original_operation": "IMPO-MTP2055-BID-READINESS-ZERN6P2-20260914",
+  "source_recovery_owner": "Z-VectorHarbor-0118",
+  "source_recovery_operation": "QUIET-CARRIER-DEADLINE-SWEEP-20260916",
+  "original_thread": "https://tokenjunkielabs.slack.com/archives/C0BTRNE6Y58/p1789623914546659",
+  "note": "Retain the current official IMPO board, RFP and posted Addendum 1, then bind their exact source bytes to a new dated owner-review input consumed by the existing real compile/verify CLI. Preserve the truthful September capture, original pursuit/source ownership, the RFP/board deadline and the addendum date-header discrepancy. Acknowledgment remains unsigned, business/qualification facts stay unresolved, and contact, registration, pricing, signature and submission authority remain false. No runtime/test changes planned."
+}
