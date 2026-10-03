@@ -64,7 +64,7 @@ def resolve_thread_root(message, channel_id=None):
                     or any(ord(c) < 33 for c in link)):
                 raise ValueError
             url = urlsplit(link)
-            path = re.fullmatch(r"/archives/([CG][A-Z0-9]+)/p([0-9]{7,18})", url.path)
+            path = re.fullmatch(r"/archives/([CDG][A-Z0-9]+)/p([0-9]{7,18})", url.path)
             if (url.scheme != "https" or not url.hostname
                     or not re.fullmatch(r"[A-Za-z0-9-]+[.]slack[.]com", url.netloc)
                     or not path or url.fragment):
@@ -150,7 +150,7 @@ def read_thread_context(read, channel_id, message, *, page_size=100, max_pages=2
     for name, value, high in (("page_size", page_size, 100), ("max_pages", max_pages, 10)):
         if type(value) is not int or not 1 <= value <= high:
             raise ValueError(name + " is outside its integer bounds.")
-    if not isinstance(channel_id, str) or not re.fullmatch(r"[CG][A-Z0-9]+", channel_id):
+    if not isinstance(channel_id, str) or not re.fullmatch(r"[CDG][A-Z0-9]+", channel_id):
         raise ValueError("channel_id must be an existing provider ID.")
     _page({"ok": True, "messages": [message]}, 1)
     message = deepcopy(message)
