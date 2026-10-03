@@ -1,6 +1,6 @@
 # Creator App Studio — Hive016
 
-A working local studio for a creator-branded **workshop kit and materials planner**.
+A working local studio for a creator-branded **workshop kit and shared-supplies planner**.
 It saves versioned briefs in SQLite and exports a standalone browser app plus
 editable launch assets. This is the reusable delivery slice of Hive demand016,
 not a claim that a creator has been interviewed, partnered with, or sold an app.
@@ -59,8 +59,8 @@ counts and their computed total:
 
 **Total kits = Attendees + Demo kits + Spare kits.**
 
-Each material's **Per kit** quantity is multiplied by that total. The material's
-reserve percentage is applied afterward, followed by rounding the purchase up
+For materials with **Per kit** selected, the entered quantity is multiplied by
+that total. The material's reserve percentage is applied afterward, followed by rounding the purchase up
 to whole packs. A spare kit is an extra complete kit; the reserve percentage is
 an additional allowance on each material's resulting quantity.
 
@@ -75,15 +75,41 @@ change only attendance to 13, save, and reopen again. The expected results are:
 | 13 | 1 | 2 | 16 | 32 | 80 |
 
 The saved plan retains the separate counts. CSV download includes **Demo kits**,
-**Spare kits**, and **Total kits**, and labels the material quantity **Per kit**.
+**Spare kits**, **Total kits**, **Quantity basis**, and the entered **Quantity**.
 Use JSON download/import to retain and move the saved plans themselves. Leave
 both extra counts at zero for the original attendance-only workflow above.
 
-Every material row still represents a quantity for each kit. Shared or fixed
-tools need a separate planning model; entering them as per-kit materials scales
-them with the total kit count. For compatibility, editable material-default JSON
-and saved-plan JSON retain the existing `per_attendee` field name; its value is
-the quantity displayed as **Per kit** in this planner.
+## Fixed shared supplies
+
+Each material has a **Quantity basis** selector. Choose **Per kit** for quantities
+used by every attendee, demonstration and spare kit. Choose **Once per workshop**
+for a fixed shared-supply quantity, such as the total reusable brushes you want
+ready for the event. Enter that workshop total directly; the planner does not
+infer how many attendees can share a tool.
+
+| Quantity basis | Base required quantity |
+| --- | --- |
+| Per kit | Entered quantity × total kits |
+| Once per workshop | Entered quantity once |
+
+The same reserve percentage and upward whole-pack rounding apply after this
+calculation in both modes. Changing attendance, demo kits or spare kits changes
+per-kit quantities while fixed workshop quantities stay unchanged. The results
+and CSV identify each row's basis explicitly.
+
+Continue the 15-to-16-kit walkthrough above with the existing **Brush** material:
+select **Once per workshop**, quantity one, reserve zero and pack size one. It
+requires one brush before and after the kit-count change, while pens change
+from 30 to 32 and sheets from 75 to 80. Save and reopen the mixed plan, export its
+CSV and JSON, then restore its JSON in the downloaded standalone app to keep the
+same basis and quantities.
+
+For creator defaults, the editable material JSON accepts an optional
+`quantity_basis` of `per_kit` or `per_workshop`; omitted values preserve the
+original per-kit behavior. These defaults persist with the brief revision and
+travel in the launch ZIP. For compatibility, material-default and saved-plan
+JSON retain the existing `per_attendee` field name for the entered **Quantity**;
+the selected basis determines whether it is per kit or once per workshop.
 
 ## Persistence and privacy
 
@@ -96,13 +122,15 @@ Export backups first. Unreadable storage is not overwritten or exported as a
 successful empty backup. Use one editing tab per project; cross-tab simultaneous
 editing is not a transactional collaboration feature.
 
-The updated planner reads existing browser plans and schema 1 JSON backups;
-missing `demo_kits` or `spare_kits` values default to zero. New JSON backups use
-schema 2 and include both counts for every plan. Import accepts schema 1 or
-schema 2, and schema 2 requires both counts. Project IDs and the existing
-duplicate/conflicting-plan behavior are preserved. Use the updated app for
-schema 2 backups: an older app rejects that schema rather than importing a plan
-while losing its extra kit counts.
+The updated planner reads existing browser plans and schema 1 or 2 JSON backups.
+Missing material `quantity_basis` values default to `per_kit`. Schema 1 may omit
+`demo_kits` and `spare_kits`, which default to zero; schema 2 and 3 require both
+counts. New JSON backups use **schema 3**, with an explicit quantity basis for
+every material. Schema 3 imports require those bases, so missing or unsupported
+values do not silently change a fixed supply into a per-kit quantity. Project
+IDs and duplicate/conflicting-plan behavior are preserved. Use the updated app
+for schema 3 backups: an older app rejects the version instead of importing a
+plan while losing its fixed quantities.
 
 Pricing and launch copy are drafts. Support is operator-provided text. There is
 no checkout, paid-plan enforcement, outbound messaging, analytics, deployment or

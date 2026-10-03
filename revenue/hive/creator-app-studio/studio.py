@@ -75,13 +75,21 @@ def validate_brief(data):
     for i, row in enumerate(materials, 1):
         if not isinstance(row, dict):
             raise InputError(f"material {i} must be an object")
-        result["materials"].append({
+        basis = row.get("quantity_basis", "per_kit")
+        if basis not in ("per_kit", "per_workshop"):
+            raise InputError(f"material {i} quantity_basis must be per_kit or per_workshop")
+        material = {
             "name": text(row.get("name"), f"material {i} name", limit=100),
             "unit": text(row.get("unit"), f"material {i} unit", limit=40),
             "per_attendee": number(row.get("per_attendee"), "per_attendee", 0, 1000000),
             "pack_size": number(row.get("pack_size"), "pack_size", 0.000001, 1000000),
             "buffer_percent": number(row.get("buffer_percent", "0"), "buffer_percent", 0, 100),
-        })
+        }
+        # Leave older brief bytes normalized as before so create retries keep
+        # their saved request identity. Missing basis means per-kit quantities.
+        if "quantity_basis" in row:
+            material["quantity_basis"] = basis
+        result["materials"].append(material)
     return result
 
 
@@ -202,6 +210,8 @@ def build_package(project, history=None):
             "storage may remove access to saved plans. Export JSON backups before moving; import restores them. "
             "Storage unavailability is shown explicitly and never reported as a successful save.\n\n"
             "Usage targets are advisory, not paid-plan enforcement. No billing or identity system is present. "
+            "Choose Per kit to multiply a material by attendee, demonstration and spare kits. "
+            "Choose Once per workshop for a fixed shared-supply quantity. Reserve applies in both modes. "
             "Material quantities do not convert between different units. Pack counts round upward.\n\n"
             "## Audience discovery\nThe studio does not independently verify demand evidence, partnership, sales, "
             "or customer fulfillment. The supplied example is synthetic. Replace the brief with an actual "
