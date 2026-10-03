@@ -86,7 +86,7 @@ The policy is SHA-bound into every result. `critical_window_minutes` must be les
 
 Each opportunity receives exactly one conservative state:
 
-- `SOURCE_RECOVERY_REQUIRED` — official authority is missing, stale, incomplete, or a declared deadline is secondary-only.
+- `SOURCE_RECOVERY_REQUIRED` — official authority is missing, stale, incomplete, a declared deadline is secondary-only, or no deadline has been supplied. Missing dates carry `NO_DECLARED_DEADLINE`; no closing date is inferred.
 - `ADDENDA_REVIEW_REQUIRED` — a bound addenda check is due or addenda remain unchecked near a live response deadline.
 - `QUESTION_WINDOW_OPEN` — the next official deadline is a question cutoff.
 - `CONFERENCE_ACTION_REVIEW` — the next official deadline is a conference milestone.
@@ -94,7 +94,7 @@ Each opportunity receives exactly one conservative state:
 - `RESPONSE_DUE_SOON` — the next official response/market-engagement deadline is inside the critical window.
 - `RESPONSE_WINDOW_OPEN` — a verified official response/market-engagement deadline is live outside the critical window.
 - `NOT_YET_OPEN` — the next official deadline carries a future `opens_at`.
-- `EXPIRED` — no declared future deadline remains.
+- `EXPIRED` — declared deadlines exist, but none remain in the future after the source-quality checks.
 - `TERMINAL_NO_BID` — owner route state is explicitly `NO_BID`.
 - `HOLD` — route evidence itself is `HOLD` or `UNKNOWN`.
 

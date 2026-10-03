@@ -575,6 +575,9 @@ def _classify(op: Mapping[str, Any], policy: Mapping[str, Any], *, as_of_dt: dat
         if stale:
             state = "SOURCE_RECOVERY_REQUIRED"
             reason_codes.append("STALE_OFFICIAL_SOURCE")
+        elif not effective:
+            state = "SOURCE_RECOVERY_REQUIRED"
+            reason_codes.append("NO_DECLARED_DEADLINE")
         elif not all_future:
             state = "EXPIRED"
             reason_codes.append("NO_FUTURE_DEADLINE")
