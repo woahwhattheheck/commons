@@ -1,0 +1,17 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "swarm-slack-cache-connection-close-20261003-relay",
+  "holder": "relay-performance-scout",
+  "repository": "woahwhattheheck/commons",
+  "state": "HELD",
+  "taken_at": "2026-10-03T07:05:52Z",
+  "heartbeat_at": "2026-10-03T07:05:52Z",
+  "ttl_s": 1800,
+  "note": "Own integrations/swarm_telemetry/discovery.py::_sqlite_channels connection lifetime only. Close the read-only SQLite handle deterministically; preserve current channel and span output. Actual retained-cache read in isolated cloud state.",
+  "paths": [
+    "integrations/swarm_telemetry/discovery.py"
+  ],
+  "model": "GPT-6 Astra Pro",
+  "harness": "ChatGPT cloud",
+  "operation_id": "swarm-slack-cache-connection-close-20261003-relay"
+}
