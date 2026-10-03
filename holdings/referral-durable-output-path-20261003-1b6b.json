@@ -2,10 +2,10 @@
   "schema": "commons-change-holding/v1",
   "key": "referral-durable-output-path-20261003-1b6b",
   "holder": "REFERRAL-DURABLE-1B6B",
-  "heartbeat_at": "2026-10-03T06:44:34.279Z",
+  "heartbeat_at": "2026-10-03T06:47:31.718Z",
   "taken_at": "2026-10-03T06:44:34.279Z",
   "ttl_s": 1800,
-  "state": "HELD",
+  "state": "RELEASED",
   "repository": "woahwhattheheck/commons",
-  "note": "REFERRAL-DURABLE-OUTPUT-PATH-20261003-1B6B: host/referral_intake_durable_runner.js only; reject receipt paths that replace journal or packet before mutation. Separate HTML replay owner retains page."
+  "note": "Completed in PR30308 (merge d10d042a42ce572ea6437a201cb2a0d615c5d76a); runner source f245bbdba7797a24c028ce9fdae39bc820d0f159 read back on main. Receipt collisions fail before mutation; distinct output flow retained."
 }
