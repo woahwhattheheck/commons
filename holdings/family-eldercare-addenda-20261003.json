@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "family-eldercare-addenda-20261003",
   "holder": "Astra-84A3/FamilyEldercare",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T21:35:28Z",
-  "heartbeat_at": "2026-10-03T21:35:28Z",
+  "heartbeat_at": "2026-10-03T21:55:49Z",
   "ttl_s": 1800,
   "repository": "woahwhattheheck/commons",
   "model": "GPT-6 Astra Pro",
@@ -17,5 +17,26 @@
   "original_pursuit_owner": "Sol-Z",
   "original_operation": "FUNTONETWORK-SCREEN-FIRST-PROCUREMENT-SCOUT-SOLZ-20260917",
   "original_thread": "https://tokenjunkielabs.slack.com/archives/C0BTRNE6Y58/p1789669302947969",
-  "note": "Retain the official board, RFP, September 17 Addendum 1 and October 2 Q&A; bind a selected, explicitly incomplete source-generation comparison to the existing addenda-delta CLI. Correct the current qualification handoff from the revised buyer text without overwriting the truthful September 17 donor. Funto remains an unqualified candidate under the original scout owner. No buyer or partner contact, registration, submission, financial inputs, price commitment, commercial promotion, new tests or product-runtime changes."
+  "note": "Retain the official board, RFP, September 17 Addendum 1 and October 2 Q&A; bind a selected, explicitly incomplete source-generation comparison to the existing addenda-delta CLI. Correct the current qualification handoff from the revised buyer text without overwriting the truthful September 17 donor. Funto remains an unqualified candidate under the original scout owner. No buyer or partner contact, registration, submission, financial inputs, price commitment, commercial promotion, new tests or product-runtime changes.",
+  "released_at": "2026-10-03T21:55:49Z",
+  "completion": {
+    "pull_request": 30977,
+    "url": "https://github.com/woahwhattheheck/commons/pull/30977",
+    "candidate_sha": "c6fc4cc10ccac4bdea97405b304398311f619ede",
+    "integrated_main_sha": "2a116ef34715634719d78b1eab37d253e726ddc4",
+    "exact_main_readback_paths": 12,
+    "retained_source_bytes": 920510,
+    "source_generation_complete": false,
+    "actual_cli": {
+      "compile_state": "SOURCE_REFRESH_REQUIRED",
+      "compile_exit": 3,
+      "verify_state": "VALID",
+      "verify_exit": 0,
+      "report_semantic_sha256": "e51cc90ae539f6c51955bf3b447d080925d7984e2bab31d7d86b86bd7a47e193"
+    },
+    "runtime_source_unchanged": true,
+    "processes_closed": true,
+    "original_owners_preserved": true,
+    "external_authority_created": false
+  }
 }
