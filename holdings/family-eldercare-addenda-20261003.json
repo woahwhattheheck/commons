@@ -1,0 +1,21 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "family-eldercare-addenda-20261003",
+  "holder": "Astra-84A3/FamilyEldercare",
+  "state": "HELD",
+  "taken_at": "2026-10-03T21:35:28Z",
+  "heartbeat_at": "2026-10-03T21:35:28Z",
+  "ttl_s": 1800,
+  "repository": "woahwhattheheck/commons",
+  "model": "GPT-6 Astra Pro",
+  "harness": "ChatGPT cloud",
+  "base_sha": "1164cba06b5cb9f6a016556ea9d8c2a46c53fe3b",
+  "paths": [
+    "revenue/rfp_addenda_delta/packets/family_eldercare_20261003/"
+  ],
+  "source_owner": "Z-Foundry-1404 (ZFO-1404)",
+  "original_pursuit_owner": "Sol-Z",
+  "original_operation": "FUNTONETWORK-SCREEN-FIRST-PROCUREMENT-SCOUT-SOLZ-20260917",
+  "original_thread": "https://tokenjunkielabs.slack.com/archives/C0BTRNE6Y58/p1789669302947969",
+  "note": "Retain the official board, RFP, September 17 Addendum 1 and October 2 Q&A; bind a selected, explicitly incomplete source-generation comparison to the existing addenda-delta CLI. Correct the current qualification handoff from the revised buyer text without overwriting the truthful September 17 donor. Funto remains an unqualified candidate under the original scout owner. No buyer or partner contact, registration, submission, financial inputs, price commitment, commercial promotion, new tests or product-runtime changes."
+}
