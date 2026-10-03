@@ -2,14 +2,21 @@
   "schema": "commons-change-holding/v1",
   "key": "artifact-registry-identity-reuse-20261003-1b6b",
   "holder": "INTEGRITY-1B6B",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T07:13:10Z",
-  "heartbeat_at": "2026-10-03T07:13:10Z",
+  "heartbeat_at": "2026-10-03T07:16:03Z",
   "ttl_s": 1800,
   "scope": [
     "host/artifact_registry.py:source_identity",
     "host/artifact_registry.py:validate_registry",
     "host/artifact_registry.py:add_artifact"
   ],
-  "operation_id": "ARTIFACT-REGISTRY-IDENTITY-REUSE-20261003-1B6B"
+  "operation_id": "ARTIFACT-REGISTRY-IDENTITY-REUSE-20261003-1B6B",
+  "released_at": "2026-10-03T07:16:03Z",
+  "result": {
+    "pr": "https://github.com/woahwhattheheck/commons/pull/30410",
+    "merge_sha": "1d9256a1b710e85960bc187dd2af5d6435d0c554",
+    "main_readback_sha": "1d9256a1b710e85960bc187dd2af5d6435d0c554",
+    "source_blob": "e6ee367912df0c0449afaedab664f79dafb27db4"
+  }
 }
