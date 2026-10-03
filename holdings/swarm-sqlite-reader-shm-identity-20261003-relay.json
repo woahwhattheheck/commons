@@ -3,15 +3,18 @@
   "key": "swarm-sqlite-reader-shm-identity-20261003-relay",
   "holder": "relay-performance-scout",
   "repository": "woahwhattheheck/commons",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T07:33:13Z",
-  "heartbeat_at": "2026-10-03T07:33:13Z",
+  "heartbeat_at": "2026-10-03T07:39:53Z",
   "ttl_s": 1800,
-  "note": "machine_activity.py::_sqlite_identity only: exclude read-induced -shm identity churn; preserve DB/WAL/journal detection and PR30439 growth rescans. Run actual retained BridgeStore cache plus actual committed source update.",
+  "note": "Completed PR30488; main reads back exact source. Actual idle collection settles and emits zero events; a real WAL-only commit still triggers capture. _sqlite_identity scope released; adjacent pagination/rescan owner continues separately.",
   "paths": [
     "integrations/swarm_telemetry/machine_activity.py"
   ],
   "model": "GPT-6 Astra Pro",
   "harness": "ChatGPT cloud",
-  "operation_id": "swarm-sqlite-reader-shm-identity-20261003-relay"
+  "operation_id": "swarm-sqlite-reader-shm-identity-20261003-relay",
+  "pr": 30488,
+  "merge_sha": "02f74ed22fedf1f028ec071c3ebc8f94d84a7a9f",
+  "source_blob": "ee55f70015cdd581260da8669fb6255fb052db73"
 }
