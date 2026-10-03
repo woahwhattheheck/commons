@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "work-local-browser-runtime-20261003-c03a-1791011962",
+  "holder": "swarm-c03a-local-browser",
+  "heartbeat_at": "2026-10-03T07:19:03Z",
+  "taken_at": "2026-10-03T07:19:03Z",
+  "ttl_s": 3600,
+  "state": "HELD",
+  "note": "operation=LOCAL-BROWSER-RUNTIME-20261003-C03A | tools/runtime_artifact_bootstrap/local_browser.cjs and README.md | reusable isolated local product browser context with existing executable and Playwright | source Slack 1789714857.316859; claim1791011962.453389"
+}
