@@ -359,6 +359,9 @@ class Broker:
                 "DELETE FROM cache WHERE rowid IN (SELECT rowid FROM cache ORDER BY fetched DESC,namespace,key LIMIT -1 OFFSET ?)",
                 (self.max_entries,),
             )
+            # Persist the completed response before decoding its return value,
+            # so JSON parsing does not hold the shared write transaction.
+            db.commit()
             return self.envelope("FETCHED", fetched_at=now, age_seconds=0, data=loads(payload_text))
 
     def read(self, route: str, params: dict, provider: Callable, max_age_seconds: int = 30):
