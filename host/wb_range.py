@@ -981,15 +981,20 @@ def load_vocab(index: dict, cache_dir: Path, *, limit: int = DEFAULT_LIMIT_BYTES
 def word_row_map(index: dict, cache_dir: Path, tensor_name: str, vocab: list,
                  words: list[str], *, limit: int = DEFAULT_LIMIT_BYTES) -> dict:
     """word -> decoded embedding row; tries surface, ▁-prefixed, capitalized."""
+    forms_by_word = [
+        (word, (word, "▁" + word, word.capitalize(),
+                "▁" + word.capitalize(), " " + word))
+        for word in words
+    ]
+    wanted = {form for _, forms in forms_by_word for form in forms if form}
     lookup = {}
     for i, token in enumerate(vocab):
         for form in (token, token.lstrip("▁"), token.replace("▁", " ").strip()):
-            if form and form not in lookup:
+            if form in wanted and form not in lookup:
                 lookup[form] = i
     targets = {}
-    for word in words:
-        for form in (word, "▁" + word, word.capitalize(),
-                     "▁" + word.capitalize(), " " + word):
+    for word, forms in forms_by_word:
+        for form in forms:
             if form in lookup:
                 targets[word] = lookup[form]
                 break
