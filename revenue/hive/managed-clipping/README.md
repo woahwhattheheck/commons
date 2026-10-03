@@ -23,6 +23,8 @@ A supplied transcript produces one clip per chosen cue. Each cue is used at most
 
 With no transcript, clips are distinct non-overlapping windows inside the keep ranges, or inside the whole source when no keep is given. Ranges that are too short to hold that many windows are an error.
 
+An explicitly empty keep selection (`[]`, `{"keep":[]}`, or `{"kept":[]}`, including a nested timeline) means no footage is eligible. `init` exits 2 without saving a project. Omit `--cedar-keeps-json` to allow the whole source. Supplied keep/transcript files containing JSON `null` are invalid; omitting an optional file is the way to leave that input unspecified.
+
 `summary` reports `selection_mode` (`transcript` or `generic`) and `distinct_moments`.
 
 ## CLI

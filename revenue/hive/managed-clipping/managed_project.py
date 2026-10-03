@@ -21,6 +21,11 @@ def create_project(
     source_info = probe_source(source)
     segments = normalize_kestrel_segments(transcript_document) if transcript_document is not None else []
     keeps = normalize_cedar_keeps(cedar_keeps) if cedar_keeps is not None else []
+    if cedar_keeps is not None and not keeps:
+        raise ManagedClippingError(
+            "CEDAR keep selection contains no ranges; no footage is eligible. "
+            "Omit keep input to use the whole source."
+        )
     for start, end in keeps:
         if end > source_info["duration_ms"] + 50:
             raise ManagedClippingError("CEDAR keep range exceeds source duration")
@@ -119,4 +124,3 @@ def edit_moment(
     project["edit_revision"] += 1
     save_project(project_path, project)
     return project
-

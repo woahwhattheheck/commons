@@ -29,9 +29,12 @@ def project_summary(project_path: Path) -> dict[str, Any]:
 
 
 def _read_json(path: str | None) -> Any | None:
-    if not path:
+    if path is None:
         return None
-    return json.loads(Path(path).read_text(encoding="utf-8"))
+    value = json.loads(Path(path).read_text(encoding="utf-8"))
+    if value is None:
+        raise ManagedClippingError(f"{path}: input JSON cannot be null; supply a document or list")
+    return value
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -102,4 +105,3 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
