@@ -7,10 +7,11 @@
 :root{color-scheme:dark;--bg:#07111f;--card:#102238;--ink:#eff7ff;--muted:#9fc2df;--ok:#4ee0a0;--line:#274866}
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#07111f,#142943);color:var(--ink);font:16px/1.45 system-ui,sans-serif}
 main{max-width:1080px;margin:auto;padding:42px 20px}h1{font-size:clamp(2rem,6vw,4rem);line-height:1;margin:.2em 0}.eyebrow{color:var(--ok);font-weight:800;letter-spacing:.14em}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.card{background:#102238dd;border:1px solid var(--line);border-radius:18px;padding:20px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.card{min-width:0;background:#102238dd;border:1px solid var(--line);border-radius:18px;padding:20px}
 textarea,pre{width:100%;min-height:420px;background:#07111f;color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:14px;overflow:auto}
 button{background:var(--ok);color:#04140d;border:0;border-radius:999px;padding:12px 20px;font-weight:900;cursor:pointer}.truth{color:var(--muted)}
-@media(max-width:760px){.grid{grid-template-columns:1fr}}
+#output:focus-visible{outline:3px solid var(--ok);outline-offset:3px}
+@media(max-width:760px){.grid{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
 <body><main>
@@ -36,8 +37,8 @@ button{background:var(--ok);color:#04140d;border:0;border-radius:999px;padding:1
   </ul>
 <p class="note"><strong>Larger fixed engagements</strong> (separate product pages; checkout/intent stays there): <a href="./diagnostic.html">GGUF diagnostic · $12,000 / 10 days</a> · <a href="./commercial.html">White Box pilot · $30,000 / 30 days</a>. Not remints of tip SKUs.</p>
 </section>
-<div class="grid"><section class="card"><h2>Synthetic events</h2><textarea id="input"></textarea><p><button id="run">Run preflight</button></p></section>
-<section class="card"><h2>Receipt</h2><pre id="output">Ready.</pre></section></div>
+<div class="grid"><section class="card"><h2 id="events-heading">Synthetic events</h2><textarea id="input" aria-labelledby="events-heading"></textarea><p><button id="run">Run preflight</button></p></section>
+<section class="card"><h2 id="receipt-heading">Receipt</h2><pre id="output" role="region" aria-labelledby="receipt-heading" tabindex="0">Ready.</pre></section></div>
 <p class="foot-cta"><a class="buy" href="https://buy.stripe.com/4gM8wO4SxbnrdKV9h043S0m" target="_blank" rel="noopener noreferrer">Start the $199 diagnostic</a> <span class="small">Secure Stripe checkout opens in a new tab.</span></p>
 </main>
 <script src="salesforce-contact-preflight.js"></script>
