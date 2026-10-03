@@ -42,7 +42,10 @@ def exact(obj, keys: set, where: str) -> None:
 def text(value, where: str, *, empty=False) -> None:
     require(type(value) is str and (empty or bool(value.strip())) and len(value) <= 12000,
             f"{where}: expected bounded text")
-    require(not any(ord(c) < 32 and c not in "\n\t" for c in value), f"{where}: control character")
+    # Inspect paired CRLF as a line break without changing the retained text.
+    # Bare CR and every other previously forbidden control remain invalid.
+    require(not any(ord(c) < 32 and c not in "\n\t" for c in value.replace("\r\n", "\n")),
+            f"{where}: control character")
 
 
 def ident(value, where: str) -> None:
@@ -259,7 +262,7 @@ def handoff_comments(report: dict, handoff: dict) -> list:
 
 
 def md(value) -> str:
-    return html.escape(str(value)).replace("|", "&#124;").replace("\n", "<br>")
+    return html.escape(str(value)).replace("|", "&#124;").replace("\r\n", "\n").replace("\n", "<br>")
 
 
 def render_document(doc: dict, report: dict) -> str:
