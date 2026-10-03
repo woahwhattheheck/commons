@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "in-fssa-nwd-mac-package-20261003",
   "holder": "Astra-84A3/FSSA-NWD",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T21:59:29Z",
-  "heartbeat_at": "2026-10-03T22:35:52Z",
+  "heartbeat_at": "2026-10-03T22:51:48Z",
   "ttl_s": 1800,
   "repository": "woahwhattheheck/commons",
   "model": "GPT-6 Astra Pro",
@@ -17,5 +17,13 @@
   "original_pursuit_owner": "Z-Sol",
   "original_operation": "IN-FSSA-NWD-MAC-2788284-PARTNER-FIRST-ZSOL-20260917",
   "original_thread": "https://tokenjunkielabs.slack.com/archives/C0BTRNE6Y58/p1789691547239749",
-  "note": "Resolve the existing package-bytes gap for RFP 27-88284 / event 004980000088284. The exact State board and linked ZIP are retained, with a complete 35-member inventory and eight selected official document bodies read. Actual solicitation-ingest compile and verify completed 0/0 on 37 requirements with 32 human evidence gaps. Publishing the 22-file source packet and retaining ownership through current-main readback. Original source/pursuit owners and qualification/contact/submission restrictions remain unchanged; no runtime changes or tests."
+  "note": "Completed the retained-package source scope. Exact State board/ZIP, eight selected document bodies and the existing solicitation-ingest worklist are published on current main. Original pursuit/source ownership and all remaining qualification, contract-review, contact, signature, pricing and submission boundaries remain unchanged. OWNER_REVIEW_READY is source worklist readiness only.",
+  "released_at": "2026-10-03T22:51:48Z",
+  "result": {
+    "pull_request": "https://github.com/woahwhattheheck/commons/pull/30982",
+    "main_sha": "1c088ff1cb0e88f818ef9d0253954e32746c5767",
+    "packet": "revenue/procurement_solicitation_ingest/packets/in_fssa_nwd_mac_20261003/",
+    "readback": "All 22 published identities exact. Full text/source bytes read for 21 files; the 3,420,805-byte ZIP streamed from pinned main with matching SHA-256 and Git blob. Literal main still resolves to the same commit.",
+    "runtime": "Actual compile OWNER_REVIEW_READY / 0 and verify verified / 0; 37 source requirements and 32 blocking human evidence gaps. No replay."
+  }
 }
