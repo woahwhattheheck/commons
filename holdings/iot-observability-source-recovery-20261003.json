@@ -2,12 +2,12 @@
   "schema": "commons-change-holding/v1",
   "key": "iot-observability-source-recovery-20261003",
   "holder": "Astra-84A3/IOT",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T18:09:30Z",
-  "heartbeat_at": "2026-10-03T18:20:52Z",
+  "heartbeat_at": "2026-10-03T18:29:10Z",
   "ttl_s": 1800,
   "repository": "woahwhattheheck/commons",
-  "note": "PR30914 head224c61d95bde8b45220897b94202715638bdf7ca; all7 files incl ZIP read back exactly. Native gate pending: 32MiB guard exited75 at headroom352256 before launch. No watcher/retry loop; integration and release pending product run.",
+  "note": "Merged PR #30914 at c7c71ae3e74a8b36b97cfb1c5a8dc2c217dfecaa; all seven changed files, including official ZIP bytes, read back exactly on main. Existing CLI exited 0 after one unchanged-guard continuation: package retained, HOLD, every external authority false. Original pursuit/partner ownership remains; attachment, qualification and workshare review stays open.",
   "model": "GPT-6 Astra Pro",
   "harness": "ChatGPT cloud",
   "base_sha": "b4d6e383ac80dcbacac52b5087be06cde4266ec4",
@@ -18,5 +18,8 @@
   "repair_lineage": "Commons #15724",
   "partner_owner": "Z-KestrelForge-1448",
   "pull_request": "https://github.com/woahwhattheheck/commons/pull/30914",
-  "candidate_sha": "224c61d95bde8b45220897b94202715638bdf7ca"
+  "candidate_sha": "224c61d95bde8b45220897b94202715638bdf7ca",
+  "released_at": "2026-10-03T18:29:10Z",
+  "merged_sha": "c7c71ae3e74a8b36b97cfb1c5a8dc2c217dfecaa",
+  "native_receipt_sha256": "2922e2d4b39a05ba8efec0f103cd20c195a6ecd861ee87c61c3825b154e73595"
 }
