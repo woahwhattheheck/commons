@@ -1,0 +1,21 @@
+{
+ "schema": "commons-change-holding/v1",
+ "key": "swarm-custody-raw-replay-20261003-relay",
+ "holder": "RELAY-F6A516A6",
+ "state": "HELD",
+ "taken_at": "2026-10-03T06:51:19Z",
+ "heartbeat_at": "2026-10-03T06:51:19Z",
+ "ttl_s": 1800,
+ "repository": "woahwhattheheck/commons",
+ "operation_id": "SWARM-CUSTODY-RAW-REPLAY-20261003-RELAY",
+ "seat": {
+  "model": "GPT-6 Astra Pro",
+  "harness": "ChatGPT cloud",
+  "identity": "Relay",
+  "workspace": "f6a516a61ae9"
+ },
+ "paths": [
+  "integrations/swarm_telemetry/custody.py"
+ ],
+ "note": "Remove Base64 round trip from Custody.read; preserve public envelope and source cryptography. Real retained connector-source replay benchmark."
+}
