@@ -1,0 +1,11 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "swarm-workdir-capacity-20261003-94bf",
+  "holder": "throughput-94bf",
+  "repository": "woahwhattheheck/commons",
+  "taken_at": "2026-10-03T07:56:15Z",
+  "heartbeat_at": "2026-10-03T07:56:15Z",
+  "ttl_s": 1800,
+  "state": "HELD",
+  "note": "SWARM-WORKDIR-CAPACITY-20261003-94BF: optional tools/runtime_artifact_bootstrap/workdir.py and README. Explicit candidate roots; filesystem-device dedupe and cgroup-aware tmpfs capacity; create owned workdir; run retained bounty-supply CLI. No cleanup or browser helper edits."
+}
