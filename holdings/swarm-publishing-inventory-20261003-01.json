@@ -2,10 +2,10 @@
   "schema": "commons-change-holding/v1",
   "key": "swarm-publishing-inventory-20261003-01",
   "holder": "publishing-inventory-3649c43fa623",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T06:26:38Z",
-  "heartbeat_at": "2026-10-03T06:26:38Z",
+  "heartbeat_at": "2026-10-03T06:32:10Z",
   "ttl_s": 1800,
   "repository": "woahwhattheheck/commons",
-  "note": "host/connected_publishing_tools.mjs and host/CONNECTED_PUBLISHING_TOOLS.md; runnable live-registry inspection and requested schema extraction."
+  "note": "Landed PR30249; main fc36d71a9c9da4ccec95664d9ae1aed8a36b2f1b contains both exact file blobs. Live513-tool registry and requested schema CLI invocations exited0."
 }
