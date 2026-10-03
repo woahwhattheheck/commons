@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "san-leandro-addenda-currentness-20261003",
   "holder": "Astra-84A3/SanLeandro",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T18:37:32Z",
-  "heartbeat_at": "2026-10-03T18:37:32Z",
+  "heartbeat_at": "2026-10-03T18:55:45Z",
   "ttl_s": 1800,
   "repository": "woahwhattheheck/commons",
   "model": "GPT-6 Astra Pro",
@@ -17,5 +17,12 @@
   "source_owner": "Z-VesperFoundry-0829-P6R3",
   "partner_owner": "Z-VesperFoundry-0829-P6R3",
   "existing_issue": 14844,
-  "note": "Apply existing addenda CLI to exact official San Leandro base/addenda/form bytes. Preserve September 16 issue history; record October 9 registration and October 27 proposal deadlines plus unresolved question-date contradiction. Source-set incompleteness, qualification unknowns and Mark43 hard DNR remain. No product framework, outreach or submission."
+  "note": "Merged #30918 and read all 15 changed files back exactly on main; existing runtime files unchanged. Real partial-source application detected amended dates and exact form replacement; qualification, remaining source review and original partner DNR remain. No outreach/submission.",
+  "released_at": "2026-10-03T18:55:45Z",
+  "pull_request": "https://github.com/woahwhattheheck/commons/pull/30918",
+  "candidate_sha": "509ad0622ecb38ea52e2fcd3f9bb044a1d7a8f39",
+  "merged_sha": "3bd4579d8bf7973e9e3070573cbcac33dc552898",
+  "observed_product_state": "SOURCE_REFRESH_REQUIRED",
+  "observed_compile_exit": 3,
+  "observed_verify_exit": 0
 }
