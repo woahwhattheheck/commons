@@ -3,15 +3,20 @@
   "key": "whitebox-contiguous-rows-20261003-relay",
   "holder": "relay-performance-scout",
   "repository": "woahwhattheheck/commons",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T08:11:03Z",
-  "heartbeat_at": "2026-10-03T08:11:03Z",
+  "heartbeat_at": "2026-10-03T08:26:27Z",
   "ttl_s": 3600,
   "paths": [
     "host/wb_range.py"
   ],
-  "note": "fetch_rows only: bounded adjacent-row coalescing, preserving old row caches, row order/duplicates, range limits and failure persistence. Actual original stories260K metric-to-archive run. Other functions remain with their owners.",
+  "note": "Merged Commons PR30564; fetch_rows scope released. Actual original-model metric-to-archive cold median 1020.207 ms to 405.595 ms; 576 to 65 requests; identical 175104 response body bytes and archived metric payload. Old row-cache reuse and warmed subset both zero network requests. Additional retained group: 131072 bytes.",
   "operation_id": "WHITEBOX-CONTIGUOUS-ROWS-20261003-RELAY",
   "model": "GPT-6 Astra Pro",
-  "harness": "ChatGPT cloud"
+  "harness": "ChatGPT cloud",
+  "released_at": "2026-10-03T08:26:27Z",
+  "pull_request": 30564,
+  "merge_sha": "7967c0ca33df7bbe6a4f31a6d2ec3021481893b6",
+  "source_commit": "8488c2f693a7e14bb1cbef1f70547302aaaeabc5",
+  "source_blob": "125612caacd6ef5b852028bee4680f7c5d1cd6cb"
 }
