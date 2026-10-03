@@ -398,14 +398,23 @@ class _Refresh:
 
 
 def _cached(path, keys, stamp):
-    if not path.exists():
+    if not keys or not path.exists():
         return {}
     try:
         db = sqlite3.connect(f"file:{path}?mode=ro", uri=True, timeout=0)
         try:
             result = {}
-            for key, encoded, expiry in db.execute("SELECT task_key,value,expires_at FROM facts"):
-                if key in keys:
+            # Use the task-key index instead of scanning every retained fact
+            # for each bounded dispatch refresh. Keep each query below SQLite's
+            # historical 999-variable limit even for a full fleet snapshot.
+            requested = sorted(keys)
+            for start in range(0, len(requested), 500):
+                batch = requested[start:start + 500]
+                placeholders = ",".join("?" for _ in batch)
+                rows = db.execute(
+                    "SELECT task_key,value,expires_at FROM facts "
+                    f"WHERE task_key IN ({placeholders})", batch)
+                for key, encoded, expiry in rows:
                     fact = _decode(encoded, {})
                     for field in ("equivalent", "superseded_by"):
                         if field in fact:
