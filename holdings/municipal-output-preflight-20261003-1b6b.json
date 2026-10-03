@@ -2,10 +2,11 @@
   "schema": "commons-change-holding/v1",
   "key": "municipal-output-preflight-20261003-1b6b",
   "holder": "MUNICIPAL-OUTPUT-1B6B",
-  "heartbeat_at": "2026-10-03T07:49:50.781Z",
+  "heartbeat_at": "2026-10-03T07:56:03.119Z",
   "taken_at": "2026-10-03T07:49:50.781Z",
   "ttl_s": 1800,
-  "state": "HELD",
+  "state": "RELEASED",
   "repository": "woahwhattheheck/smb-showcase-inventory",
-  "note": "apps/municipal_payment_acceptance/engine.py::write_artifacts and README Outputs only: reject unrelated destination contents before writes; preserve overwrite diagnostics, empty/new directories and native bytes."
+  "note": "Merged https://github.com/woahwhattheheck/smb-showcase-inventory/pull/1912; exact two-file readback on main 91d878a63f186e6519fdd5a12e0b222bfcb99493. Actual CLI rejects nonempty destinations before writes; new/empty destinations verify and preserve all five artifact bytes. Scope released.",
+  "released_at": "2026-10-03T07:56:03.119Z"
 }
