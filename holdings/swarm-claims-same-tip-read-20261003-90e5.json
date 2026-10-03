@@ -2,10 +2,10 @@
   "schema": "commons-change-holding/v1",
   "key": "swarm-claims-same-tip-read-20261003-90e5",
   "holder": "swarm-integrity-90e5",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T06:54:37Z",
-  "heartbeat_at": "2026-10-03T06:54:37Z",
+  "heartbeat_at": "2026-10-03T07:03:35Z",
   "ttl_s": 3600,
   "repository": "woahwhattheheck/commons",
-  "note": "GitStore._read and README cache note: reuse a snapshot after fresh remote confirmation of the same immutable claims tip."
+  "note": "Completed in Commons PR #30359; same-tip fresh reads retain remote checks and skip repeated Git parsing/cache writes after one canonical read per process."
 }
