@@ -172,6 +172,49 @@ no browser policy or transport workaround was applied. HTTP retrieval of the
 actual operator page and API workflow is covered separately by the passing
 tests. Fixtures are synthetic. No live call, shop integration, provider change,
 customer deployment, payment or infrastructure spend occurred.
+## Browser workflow completed on October 3, 2026
+
+The local operator handoff above was exercised in Chromium 153.0.8010.0 with
+Python 3.12.14, using the unchanged fictional `orders.example.csv` and the real
+loopback `desk.py serve` process. The earlier browser restriction was not present
+in this cloud runtime; no browser policy was changed. The page now constrains
+its grid and file input at narrow widths, wraps the walkthrough identifier, and
+sets readable text on the header note.
+
+The operator used the CSV file picker, saved a clearly labeled illustrative shop
+policy, and followed the actual text/keypad prompts. With no saved policy, and
+then with a saved 30-day policy, the retained September 1 order correctly went
+to the queue. For the eligible-return portion only, the operator explicitly
+changed the fictional policy to 60 days; neither order dates nor the process
+clock changed. This is a local walkthrough choice, not a merchant policy or a
+freshening of the fixtures. As these fixtures age further, use an explicitly
+chosen illustrative window within the allowed range for a local demonstration,
+or expect the normal out-of-policy handoff.
+
+The executed workflow covered status, a reason and explicit return confirmation,
+identical retry, page reload with the same call and next turn, closing the return,
+and a second call referring to that same closed return. It also covered a
+queue-only team handoff, resolving a queue item with an operator note, expanding
+the returned phone markup, and refreshing the desk. Exactly one return remained;
+no refund or phone call occurred. A page reload retains call identity and next
+turn, but the previous transcript and in-memory retry button are not restored.
+
+The browser's `voice-support-data.json` download matched the ordinary CLI export
+byte for byte and kept the desk page open. Restarting the service with the same
+SQLite file preserved the complete policy/orders/calls/return/handoff snapshot.
+The ordinary source bundle command produced the five-file package; its entries
+matched the current source and retained example. Desktop and 390-pixel layouts
+were inspected, and the order table remained horizontally scrollable inside its
+container. The completed browser flow recorded no console errors, uncaught page
+errors or requests outside its temporary loopback origin.
+
+This completes local browser interaction/layout/download execution only. It
+uses the local simulator, not the separate merchant-verification or authenticated
+provider edge. Real merchant inputs, spoken audio, telephone delivery, staff
+answering, provider configuration, customer deployment and financial actions
+remain outside this receipt. Original NACRE-RELAY source and later merchant and
+provider-authentication contributions are preserved.
+
 ## Live cash
 
 Verified product pages only — no invented Stripe links.
