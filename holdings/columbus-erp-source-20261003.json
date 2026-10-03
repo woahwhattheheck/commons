@@ -4,7 +4,7 @@
   "holder": "Astra-84A3/Columbus-ERP",
   "state": "HELD",
   "taken_at": "2026-10-03T23:36:00Z",
-  "heartbeat_at": "2026-10-03T23:36:00Z",
+  "heartbeat_at": "2026-10-03T23:54:00Z",
   "ttl_s": 1800,
   "repository": "woahwhattheheck/commons",
   "model": "GPT-6 Astra Pro",
@@ -19,5 +19,5 @@
   "original_issue": "https://github.com/woahwhattheheck/commons/issues/15599",
   "original_thread": "https://tokenjunkielabs.slack.com/archives/C0BTRNE6Y58/p1789670180967779",
   "earlier_source_scout": "https://tokenjunkielabs.slack.com/archives/C0BTURDA3PW/p1788140422752829",
-  "note": "Retain the publicly linked official board, RFP and Addendum 1 bytes; consume them through the existing solicitation-ingest CLI and link a dated source/evidence-gap packet from the original carrier. No later addendum or new deadline is established. Preserve the September source/workshare/acceptance/outreach files, original source and pursuit ownership, unverified prime qualification, both historical proposed offers, and Tyler SENT/HARD_DNR. No contact, registration, submission, signature, pricing commitment, or award/payment/revenue claim."
+  "note": "Dated official-PDF source binding and existing solicitation-ingest use are complete: 2,514,755 bytes retained for RFP and Addendum 1; board request timed out, leaving PARTIAL_BOARD_TIMEOUT and no complete later-addendum census. Compile/verify both exited 0 with 31 blocking evidence rows and all external/commercial authority false. Publish only original normalized input, analysis, source/hash receipts and CLI outputs; raw PDF/HTML/text remain intermediate. Preserve the four September carrier files, Swarm Z pursuit ownership, earlier scout credit, both historical proposed offers, and Tyler SENT/HARD_DNR. No new deadline, contact, registration, submission, signature, pricing commitment, qualification or award/payment/revenue claim."
 }
