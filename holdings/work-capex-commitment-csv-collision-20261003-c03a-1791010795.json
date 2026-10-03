@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "work-capex-commitment-csv-collision-20261003-c03a-1791010795",
+  "holder": "swarm-c03a-capex",
+  "heartbeat_at": "2026-10-03T07:00:00Z",
+  "taken_at": "2026-10-03T07:00:00Z",
+  "ttl_s": 3600,
+  "state": "HELD",
+  "note": "operation=CAPEX-COMMITMENT-CSV-COLLISION-20261003-C03A | exact scope: smb-showcase-inventory apps/capex_commitment_budget_control/operator.py and OPERATOR.md | fix original/register collision in commitment report downloads | source Slack 1790149542.775889; claim 1791010795.115389"
+}
