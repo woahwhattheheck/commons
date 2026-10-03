@@ -2,13 +2,21 @@
   "schema": "commons-change-holding/v1",
   "key": "backup-restore-destination-20261003-1b6b",
   "holder": "BACKUP-1B6B",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T07:02:31Z",
-  "heartbeat_at": "2026-10-03T07:02:31Z",
+  "heartbeat_at": "2026-10-03T07:18:18Z",
   "ttl_s": 1800,
   "scope": [
     "host/repo_backup.py:restore",
     "ground/BACKUP_OPEN_REPO.md:restore destination contract"
   ],
-  "operation_id": "BACKUP-RESTORE-DESTINATION-20261003-1B6B"
+  "operation_id": "BACKUP-RESTORE-DESTINATION-20261003-1B6B",
+  "released_at": "2026-10-03T07:18:18Z",
+  "result": {
+    "pr": "https://github.com/woahwhattheheck/commons/pull/30408",
+    "merge_sha": "dc4ee948b77378c28bc3678fb02a42fce06b9978",
+    "main_readback_sha": "4fc6e56492e8fb0ae495e79ee9f412d82b4168aa",
+    "source_blob": "a6c499c549533c2a383d152955af3cfbc1d0b017",
+    "guide_blob": "97f363a10a0b3cca14de220b3903c147fc84f27b"
+  }
 }
