@@ -2,10 +2,10 @@
   "schema": "commons-change-holding/v1",
   "key": "csv-batch-input-allocation-20261003-1b6b",
   "holder": "CSV-BATCH-1B6B",
-  "heartbeat_at": "2026-10-03T07:12:34.184Z",
+  "heartbeat_at": "2026-10-03T07:15:50.011Z",
   "taken_at": "2026-10-03T07:12:34.184Z",
   "ttl_s": 1800,
-  "state": "HELD",
+  "state": "RELEASED",
   "repository": "woahwhattheheck/smb-showcase-inventory",
-  "note": "apps/csv_intake_workbench/batch.mjs::readBounded only: size read buffer from observed file size plus growth byte; preserve limits/generation checks. Separate from #1850 cli.mjs owner."
+  "note": "Merged smb-showcase-inventory#1856; exact batch.mjs source read back on main bb3dd63a9210b776e174f1933c10cf26ee722fd2. Native outputs unchanged; observed-size input allocation complete."
 }
