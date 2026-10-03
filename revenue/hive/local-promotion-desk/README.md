@@ -9,6 +9,10 @@ python3 -m unittest -v test_promotion_desk.py
 
 `out/` contains web landing pages, social/print SVGs, QR SVGs, `expiry-calendar.csv`, and a source-hash manifest explicitly marked `LOCAL_EXPORT_ONLY_UNSENT`. Keep source files outside `out/`; the generator replaces only its own output tree after a complete staged build.
 
+Set `--base-url` to the public URL where `out/site/` will be served. For example, `https://offers.example.test` produces a QR destination of `https://offers.example.test/offers/weekday-lunch.html`, matching the landing page linked from `out/site/index.html`. A site hosted under a path can use that path in the base URL. For a local preview, serve `out/site/` and use that server's origin as the base URL when rebuilding.
+
+Keep `social/`, `print/`, and `qr/` together with their relative paths when previewing or exporting the SVG cards: the cards reference `../qr/<offer_id>.svg`. Open the print SVG in a browser with those files accessible and print at Letter size with backgrounds enabled. Expiry is applied when this command runs with the chosen `--as-of` date; the package does not install a scheduler or publish changes to customer channels.
+
 The fixtures are fictional. No customer channel, provider, sale, payment, or deployment is represented.
 ## Live cash
 

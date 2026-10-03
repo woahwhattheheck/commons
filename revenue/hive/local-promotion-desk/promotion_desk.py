@@ -109,7 +109,7 @@ def build(brand_path,offers_path,day,base_url,out):
         assets=[];items=[]
         for o in offers:
             if status(o,day)!="ACTIVE":continue
-            oid,slug=o["offer_id"],o["slug"];url=f'{base_url.rstrip("/")}/{slug}.html'
+            oid,slug=o["offer_id"],o["slug"];url=f'{base_url.rstrip("/")}/offers/{slug}.html'
             (stage/f"qr/{oid}.svg").write_text(qr_svg(url))
             landing=f'''<!doctype html><meta charset="utf-8"><title>{html.escape(o["headline"])}</title><h1>{html.escape(o["headline"])}</h1><p>{html.escape(o["detail"])}</p><strong>{money(o)}</strong><p>Valid through {o["expires_on"]}</p><small>{html.escape(o["terms"])}</small>\n'''
             (stage/f"site/offers/{slug}.html").write_text(landing)
