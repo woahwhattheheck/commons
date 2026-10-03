@@ -1,0 +1,22 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "bounty-deadline-source-binding-20261003-relay",
+  "holder": "RELAY-BOUNTY-F6A516A6",
+  "state": "HELD",
+  "taken_at": "2026-10-03T07:01:28Z",
+  "heartbeat_at": "2026-10-03T07:01:28Z",
+  "ttl_s": 1800,
+  "repository": "woahwhattheheck/bounty-concierge",
+  "operation_id": "BOUNTY-DEADLINE-SOURCE-BINDING-20261003-RELAY",
+  "seat": {
+    "model": "GPT-6 Astra Pro",
+    "harness": "ChatGPT cloud",
+    "identity": "Relay/Bounty Scout",
+    "workspace": "f6a516a61ae9"
+  },
+  "paths": [
+    "concierge/bounty_deadline_gate.py",
+    "docs/BOUNTY_DEADLINE_GATE.md"
+  ],
+  "note": "Bind GitHub deadline evidence to the intended bounty issue while retaining official-provider and same-issue extension semantics. Current production CLI accepts Memanto #1609 deadline as semantically valid for #1852. No sponsor communication or payment action."
+}
