@@ -95,12 +95,26 @@ GitHub still enforces the connected account's rights at the destination.
 
 Use these operations when the task is authorized and the installed GitHub
 integration reports `Resource not accessible by integration` for that write.
+Choose a reachable transport from its returned capability and runtime status;
+the operation's catalog entry alone does not establish Slack carrier readiness.
+The [Slack transport section](#4-private-slack-channel-envelope-protocol)
+describes the existing sender-verification state and execution evidence.
 Read the current issue/PR and existing comments first. Pass a stable
 `operation_id` in arguments, in addition to the carrier's request/call IDs.
 An unchanged retry reaches the service's stored result even through the direct
 CLI. Changed content requires a new logical operation. An uncertain result
 requires provider readback and same-ID reconciliation, not a different carrier
 or new ID. No browser or credential-holder session is required.
+
+The [direct tool endpoint](#2-direct-tool-execution-endpoints-v1tools--v1toolscall)
+and [local CLI](#3-local-python-cli-module) invoke the same metadata operations
+without the Slack carrier. The [account publisher adapter](github_publication.py)
+uses the existing `~/.commons/tjlabs-publication/publish.py publish` client,
+passing its operation envelope through stdin and retaining its publication
+receipt. Use the existing installed client and shared account custody in the
+calling runtime. If that installation or the carrier needs recovery, retain
+the original operation/request/call IDs and use the existing publisher runtime
+recovery thread; every peer keeps direct access to the available account route.
 
 PR metadata updates require `expected_head`. This is a pre-publication check,
 not an atomic branch lock; successful results include a second head readback
@@ -235,7 +249,41 @@ do not blindly repeat a possible mutation. Invalid JSON or request shape is
 reported before tool dispatch.
 
 ### 4. Private Slack Channel Envelope Protocol
-The worker (`SlackEquipmentCarrier`) is attached to the existing gateway. It monitors a configured Slack workspace channel/thread. The current route is thread `1788567066.179399` in `C0BU51F1PL3`; this channel is public within the workspace, not on the public internet. A cloud harness uses its existing Slack connector to send an envelope and read the threaded result. No cloud caller needs the local account credentials.
+The existing gateway can attach `SlackEquipmentCarrier` to a configured Slack
+workspace channel/thread. The configured route is thread `1788567066.179399`
+in `C0BU51F1PL3`; this channel is public within the workspace, not on the public
+internet. A cloud harness can post an envelope through its existing Slack
+connector. A posted message establishes transport submission only; it does
+not establish that the carrier dispatched the equipment call.
+
+Read the returned `equipment_capability_manifest` road and the deployed
+gateway's `GET /health` carrier status before relying on this transport. The
+current source card for `workspace_shared_equipment` reports `call: null`,
+`available: false`, `write_disabled: true`, and
+`code: outbound_sender_identity_unverified`. `SlackEquipmentCarrier.start()`
+returns `phase: read_only` while its installed `_write_route_verified()` check
+is false; `process()` and `once()` retain the same sender check. In that state
+the worker does not dispatch queued envelopes or publish their results. A
+catalog response or source revision does not establish the state of a deployed
+host; retain its actual returned sender-verification status.
+
+For a GitHub metadata request, report the observed stage:
+
+| Observed stage | Evidence | Meaning |
+| --- | --- | --- |
+| Request posted | Slack message timestamp/link carrying the original request/call IDs | The envelope exists; carrier dispatch remains unconfirmed. |
+| Carrier dispatched | The tool journal or matching result records execution under those IDs | The tool ran or began running; inspect its outcome for failure or uncertainty. |
+| Provider confirmed | Matching publication receipt and readback of the intended GitHub title/body and head | The requested provider change is confirmed. |
+
+For pending requests, reconcile the original IDs in the carrier/tool and
+publication journals before another dispatch. A missing result is unresolved;
+retain the existing envelope and payload. The current publisher runtime
+recovery owner continues host and sender verification through the
+[existing Account Chad recovery thread](https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1791011573896179).
+Use a currently available direct HTTP or local account-client route for
+authorized operations after reconciling any prior attempt. Those routes retain
+their existing publication handling and are independently available to peers.
+No cloud caller needs credentials merely to post a Slack envelope.
 
 The nonsecret local configuration is `~/.commons/equipment.json` (override with `--equipment-config`):
 
@@ -283,7 +331,7 @@ The nonsecret local configuration is `~/.commons/equipment.json` (override with 
   </commons_equipment_request>
   ```
 * **Threaded Execution Result**:
-  Worker posts execution results back into the target thread. `<commons_equipment_result>` identifies `request_id`, `call_id`, `part="1/N"`, and a SHA-256 of the complete JSON. Join the content between wrappers in part order and verify that digest. Read pagination when the Slack connector returns more replies. The exact request must begin the message; a connector footer after its closing tag is supported.
+  When the deployed carrier is running with its sender route verified, it posts execution results back into the target thread. `<commons_equipment_result>` identifies `request_id`, `call_id`, `part="1/N"`, and a SHA-256 of the complete JSON. Join the content between wrappers in part order and verify that digest, then read the tool outcome and provider receipt. Read pagination when the Slack connector returns more replies. The exact request must begin the message; a connector footer after its closing tag is supported. Parsing that footer does not verify the carrier's outbound sender or activate dispatch.
 
 ### 5. Shared Gemini lifecycle equipment
 
