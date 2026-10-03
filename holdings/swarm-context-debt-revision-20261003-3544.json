@@ -3,9 +3,9 @@
   "key": "swarm-context-debt-revision-20261003-3544",
   "holder": "Bryce / cloud workspace 3544b6a6e691",
   "repository": "woahwhattheheck/commons",
-  "state": "RELEASED",
+  "state": "HELD",
   "taken_at": "2026-10-03T07:49:36Z",
-  "heartbeat_at": "2026-10-03T07:56:57Z",
+  "heartbeat_at": "2026-10-03T07:49:36Z",
   "ttl_s": 1800,
-  "note": "Merged PR30521 at618762a676628fe8bee063d80a138c0797ddce8f. Canonical debt fields remain on their page generation; actual reader/legacy fallback succeeded. Both source files read back exactly. Scope released."
+  "note": "Merged PR #30521 at 618762a676628fe8bee063d80a138c0797ddce8f. Canonical debt fields remain on their page generation; actual reader and legacy fallback succeeded. Both source files read back exactly. Scope released."
 }
