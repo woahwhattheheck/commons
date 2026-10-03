@@ -213,6 +213,7 @@ def reconcile_observations(observations: list[dict[str, Any]]) -> dict[str, Any]
     """Reconcile one provider resource without replaying stale/uncertain state.
 
     Provider event time, not connector arrival order, controls chronology.
+    Repeated reads of one unchanged event collapse to its latest observation.
     DELIVERY_UNCERTAIN/UNKNOWN never overwrite a later known provider state.
     Definitive transitions remain chronological (for example a closed PR may
     reopen and a failed CI run may enter a rerun). A merged GitHub PR cannot
@@ -230,8 +231,15 @@ def reconcile_observations(observations: list[dict[str, Any]]) -> dict[str, Any]
     for row in rows:
         ekey = event_key(row)
         previous = exact_events.get(ekey)
-        if previous is not None and _canonical(previous) != _canonical(row):
-            raise ActionLoopError("observations: provider event identity collision")
+        if previous is not None:
+            # A provider event may be read repeatedly. Observation time is
+            # receipt metadata; only changes to the event itself are collisions.
+            prior_event = {key: value for key, value in previous.items() if key != "observed_at"}
+            current_event = {key: value for key, value in row.items() if key != "observed_at"}
+            if _canonical(prior_event) != _canonical(current_event):
+                raise ActionLoopError("observations: provider event identity collision")
+            if _stamp(row["observed_at"], "observed_at") <= _stamp(previous["observed_at"], "observed_at"):
+                continue
         exact_events[ekey] = row
     rows = list(exact_events.values())
 
