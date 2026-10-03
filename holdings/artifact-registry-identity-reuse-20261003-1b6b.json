@@ -1,0 +1,15 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "artifact-registry-identity-reuse-20261003-1b6b",
+  "holder": "INTEGRITY-1B6B",
+  "state": "HELD",
+  "taken_at": "2026-10-03T07:13:10Z",
+  "heartbeat_at": "2026-10-03T07:13:10Z",
+  "ttl_s": 1800,
+  "scope": [
+    "host/artifact_registry.py:source_identity",
+    "host/artifact_registry.py:validate_registry",
+    "host/artifact_registry.py:add_artifact"
+  ],
+  "operation_id": "ARTIFACT-REGISTRY-IDENTITY-REUSE-20261003-1B6B"
+}
