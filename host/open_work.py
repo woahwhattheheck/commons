@@ -7,14 +7,18 @@ on the existing board. Not a second queue. Not a Slack dump-scan.
 LANDED only when p/{id}.md exists at the official current main SHA.
 Slack CLAIMED, pulse, Pages, and ntfy 200 are not a land.
 The default snapshot is origin/main, never an arbitrary feature-branch HEAD.
-An unmeasured snapshot exits 1 and --write preserves existing projection files.
+Candidates include the selected commit's posts and wake jobs even in a sparse
+checkout, plus local post hints. Local wake state supersedes the committed copy
+of the same job. Only the selected commit supplies LANDED receipts.
+Fetch the candidate blobs before an offline run in a partial clone. Unread Git
+source exits 1 and --write preserves existing projection files.
 
 Inputs are structured and incremental:
   - id: header lines on work records
   - WORK ORDER / OWNER LAND ORDER marker lines
   - kind: ACTION
-  - existing p/*.md on HEAD (truth test only)
-  - wake_jobs/*.json status
+  - p/*.md on the selected commit and in the working directory
+  - wake_jobs/*.json status from the working directory or selected commit
 
 Owner directives: is_language_model: NO, from: BRYCE,
 OWNER LAND ORDER, WORK ORDER.
@@ -191,6 +195,82 @@ def _git_receipt_index(root, sha):
         for name in output.split(b"\0")
         if name.startswith(b"p/") and name.endswith(b".md")
     )
+
+
+class CandidateSourceError(RuntimeError):
+    def __init__(self, path, detail):
+        super().__init__(detail)
+        self.path = path
+
+
+def _git_candidate_records(root, sha):
+    """Stream committed source through one size-framed Git batch reader."""
+    try:
+        output = subprocess.check_output(
+            ["git", "ls-tree", "-z", sha, "--", "p/", "wake_jobs/"],
+            cwd=root, stderr=subprocess.DEVNULL, env=_git_env(),
+        )
+    except (OSError, subprocess.CalledProcessError) as exc:
+        raise CandidateSourceError("", "candidate tree could not be read") from exc
+    entries = []
+    for entry in output.split(b"\0"):
+        if not entry:
+            continue
+        metadata, path = entry.split(b"\t", 1)
+        _mode, kind, oid = metadata.split()
+        # Match the existing flat source directories; nested files and the
+        # watchdog's underscore-prefixed tick files are not candidate records.
+        if kind != b"blob" or path.count(b"/") != 1:
+            continue
+        folder, name = path.split(b"/", 1)
+        post = folder == b"p" and name.endswith(b".md")
+        wake = folder == b"wake_jobs" and name.endswith(b".json") and not name.startswith(b"_")
+        if post or wake:
+            entries.append((path.decode("utf-8", "surrogateescape"), oid, post))
+    if not entries:
+        return
+    try:
+        process = subprocess.Popen(
+            ["git", "cat-file", "--batch"], cwd=root,
+            stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+            stderr=subprocess.DEVNULL, env=_git_env(),
+        )
+    except OSError as exc:
+        raise CandidateSourceError("", "candidate blob reader could not start") from exc
+    path = ""
+    try:
+        for path, oid, post in entries:
+            process.stdin.write(oid + b"\n")
+            process.stdin.flush()
+            header = process.stdout.readline().split()
+            if len(header) != 3 or header[:2] != [oid, b"blob"]:
+                raise CandidateSourceError(path, "committed candidate blob is unavailable; fetch source blobs")
+            size = int(header[2])
+            keep = min(size, PREFIX_BYTES) if post else size
+            raw = process.stdout.read(keep)
+            if len(raw) != keep:
+                raise CandidateSourceError(path, "committed candidate blob was truncated")
+            remaining = size - keep
+            while remaining:
+                chunk = process.stdout.read(min(remaining, 65536))
+                if not chunk:
+                    raise CandidateSourceError(path, "committed candidate blob was truncated")
+                remaining -= len(chunk)
+            if process.stdout.read(1) != b"\n":
+                raise CandidateSourceError(path, "candidate blob framing is incomplete")
+            yield path, raw.decode("utf-8", errors="replace")
+        process.stdin.close()
+        if process.wait() != 0:
+            raise CandidateSourceError(path, "candidate blob reader failed")
+    except (OSError, ValueError) as exc:
+        raise CandidateSourceError(path, "candidate blob could not be read: %s" % exc) from exc
+    finally:
+        if not process.stdin.closed:
+            process.stdin.close()
+        process.stdout.close()
+        if process.poll() is None:
+            process.terminate()
+            process.wait()
 
 
 def _indexed_receipt(names, ident):
@@ -415,17 +495,21 @@ def _walk_strings(value, out):
             _walk_strings(item, out)
 
 
-def collect_wake_jobs(root):
+def collect_wake_jobs(root, committed=None):
     rows = []
+    records = dict(committed or {})
     folder = os.path.join(root, "wake_jobs")
-    if not os.path.isdir(folder):
-        return rows
-    for name in sorted(os.listdir(folder)):
-        if not name.endswith(".json") or name.startswith("_"):
-            continue
-        rel = os.path.join("wake_jobs", name)
+    if os.path.isdir(folder):
+        for name in sorted(os.listdir(folder)):
+            if not name.endswith(".json") or name.startswith("_"):
+                continue
+            rel = "wake_jobs/" + name
+            # This store is live working state. A newer local transition wins
+            # for the same job, while jobs omitted by sparse checkout survive.
+            records[rel] = _read(root, rel)
+    for rel in sorted(records):
         try:
-            data = json.loads(_read(root, rel) or "{}")
+            data = json.loads(records[rel] or "{}")
         except ValueError:
             continue
         if not isinstance(data, dict):
@@ -460,54 +544,59 @@ def collect_wake_jobs(root):
     return rows
 
 
+def _post_candidates(text, include_salon=False):
+    rows = []
+    parsed = parse_structured_record(text)
+    if parsed["salon"]:
+        if include_salon and parsed["id"]:
+            rows.append(parsed)
+        return rows
+    if parsed["action"] and parsed["id"]:
+        rows.append(
+            {
+                "id": parsed["id"],
+                "work": True,
+                "action": True,
+                "work_ids": list(parsed["work_ids"]),
+                "owner_directive": parsed["owner_directive"],
+            }
+        )
+    for ident in parsed["work_ids"]:
+        rows.append(
+            {
+                "id": ident,
+                "work": True,
+                "work_ids": [ident],
+                "owner_directive": parsed["owner_directive"],
+                "action": parsed["action"],
+            }
+        )
+    if (
+        parsed["owner_directive"]
+        and parsed["id"]
+        and (parsed["action"] or parsed["work_ids"])
+    ):
+        rows.append(
+            {
+                "id": parsed["id"],
+                "work": True,
+                "owner_directive": True,
+                "work_ids": list(parsed["work_ids"]),
+                "action": parsed["action"],
+            }
+        )
+    return rows
+
+
 def collect_posts(root, include_salon=False):
     rows = []
     folder = os.path.join(root, "p")
     if not os.path.isdir(folder):
         return rows
     for name in sorted(os.listdir(folder)):
-        if not name.endswith(".md"):
-            continue
-        rel = os.path.join("p", name)
-        parsed = parse_structured_record(_read(root, rel, max_bytes=PREFIX_BYTES))
-        if parsed["salon"]:
-            if include_salon and parsed["id"]:
-                rows.append(parsed)
-            continue
-        if parsed["action"] and parsed["id"]:
-            rows.append(
-                {
-                    "id": parsed["id"],
-                    "work": True,
-                    "action": True,
-                    "work_ids": list(parsed["work_ids"]),
-                    "owner_directive": parsed["owner_directive"],
-                }
-            )
-        for ident in parsed["work_ids"]:
-            rows.append(
-                {
-                    "id": ident,
-                    "work": True,
-                    "work_ids": [ident],
-                    "owner_directive": parsed["owner_directive"],
-                    "action": parsed["action"],
-                }
-            )
-        if (
-            parsed["owner_directive"]
-            and parsed["id"]
-            and (parsed["action"] or parsed["work_ids"])
-        ):
-            rows.append(
-                {
-                    "id": parsed["id"],
-                    "work": True,
-                    "owner_directive": True,
-                    "work_ids": list(parsed["work_ids"]),
-                    "action": parsed["action"],
-                }
-            )
+        if name.endswith(".md"):
+            rel = os.path.join("p", name)
+            rows.extend(_post_candidates(_read(root, rel, max_bytes=PREFIX_BYTES), include_salon))
     return rows
 
 
@@ -565,8 +654,22 @@ def project(root, main_sha="", extra=None, include_salon=False):
     if measured and receipts is None:
         errors.append({"code": "MAIN_TREE_UNMEASURED", "main_sha": sha})
     extra = extra if isinstance(extra, dict) else {}
-    rows = collect_posts(root, include_salon=include_salon)
-    rows.extend(collect_wake_jobs(root))
+    rows = []
+    wake_records = {}
+    if measured:
+        try:
+            for rel, text in _git_candidate_records(root, sha):
+                if rel.startswith("p/"):
+                    rows.extend(_post_candidates(text, include_salon))
+                else:
+                    wake_records[rel] = text
+        except CandidateSourceError as exc:
+            errors.append({
+                "code": "MAIN_SOURCE_UNMEASURED", "main_sha": sha,
+                "path": exc.path, "detail": str(exc),
+            })
+    rows.extend(collect_posts(root, include_salon=include_salon))
+    rows.extend(collect_wake_jobs(root, committed=wake_records))
     by_id = merge_candidates(rows, extra)
     items = []
     for ident in sorted(by_id):
@@ -865,7 +968,10 @@ def self_test():
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Structured open-work projector")
     parser.add_argument("--root", default=DEFAULT_ROOT)
-    parser.add_argument("--main-sha", default="")
+    parser.add_argument(
+        "--main-sha", default="",
+        help="official commit for candidate sources and receipts (default: origin/main); source blobs must be local",
+    )
     parser.add_argument("--write", action="store_true")
     parser.add_argument("--include-salon", action="store_true")
     parser.add_argument("--self-test", action="store_true")
@@ -890,11 +996,10 @@ def main(argv=None):
     json.dump(snapshot, sys.stdout, indent=2)
     sys.stdout.write("\n")
     if snapshot.get("errors"):
-        sys.stderr.write("Official main was not measured; existing projection files were preserved.\n")
+        sys.stderr.write("Official main or candidate source was not measured; existing projection files were preserved.\n")
         return 1
     return 0
 
 
 if __name__ == "__main__":
     sys.exit(main())
-
