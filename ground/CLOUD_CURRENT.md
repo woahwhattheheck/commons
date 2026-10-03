@@ -60,6 +60,12 @@ Mode `clone` (default) is an isolated clone — no shared index lock. Mode
 
 Busy main is not a stopping point. Stale origin is a measured fact.
 
+Working-file replacements are staged and flushed beside their destination before
+an atomic rename. A failure before replacement keeps the previous file intact;
+existing permissions and symlink targets are retained. This guarantee is per file:
+a later refresh error can leave earlier files updated, with the initial snapshot
+available for recovery. Restore storage capacity and rerun the normal refresh.
+
 ## Receipts
 
 Every command writes `.commons-worktree/receipts/<id>/receipt.json`.
