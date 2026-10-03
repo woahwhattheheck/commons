@@ -111,6 +111,36 @@ def export_handoff(project_path: Path, destination: Path) -> dict[str, Any]:
     verify_source(project)
     if destination.exists():
         raise ManagedClippingError(f"handoff destination already exists: {destination}")
+    selected = []
+    for moment in project["moments"]:
+        if not moment.get("enabled", True):
+            continue
+        render = _latest_render(moment)
+        if render is None:
+            raise ManagedClippingError(f"clip has no rendered video: {moment['id']}")
+        expected = {
+            "clip_id": moment["id"],
+            "source_filename": moment["source_filename"],
+            "source_sha256": project["source"]["sha256"],
+            "start_ms": moment["start_ms"],
+            "end_ms": moment["end_ms"],
+            "caption": moment["caption"],
+            "crop": moment["crop"],
+        }
+        changed = [key for key, value in expected.items() if render.get(key) != value]
+        if changed:
+            raise ManagedClippingError(
+                f"clip {moment['id']} render is stale ({', '.join(changed)}); "
+                "rerender that clip before handoff"
+            )
+        src_video = Path(render["video_path"])
+        src_caption = Path(render["caption_path"])
+        if not src_video.is_file() or not src_caption.is_file():
+            raise ManagedClippingError(f"render artifact missing for {moment['id']}")
+        selected.append((moment, render, src_video, src_caption))
+    if not selected:
+        raise ManagedClippingError("no enabled clips selected for handoff")
+
     destination.mkdir(parents=True)
     videos_dir = destination / "videos"
     captions_dir = destination / "captions"
@@ -118,14 +148,7 @@ def export_handoff(project_path: Path, destination: Path) -> dict[str, Any]:
     captions_dir.mkdir()
     rows: list[dict[str, Any]] = []
     manifest_clips: list[dict[str, Any]] = []
-    for moment in project["moments"]:
-        render = _latest_render(moment)
-        if render is None:
-            raise ManagedClippingError(f"clip has no rendered video: {moment['id']}")
-        src_video = Path(render["video_path"])
-        src_caption = Path(render["caption_path"])
-        if not src_video.is_file() or not src_caption.is_file():
-            raise ManagedClippingError(f"render artifact missing for {moment['id']}")
+    for moment, render, src_video, src_caption in selected:
         video_dst = videos_dir / f"{moment['id']}.mp4"
         caption_dst = captions_dir / f"{moment['id']}.srt"
         shutil.copy2(src_video, video_dst)
@@ -179,4 +202,3 @@ def export_handoff(project_path: Path, destination: Path) -> dict[str, Any]:
         encoding="utf-8",
     )
     return manifest
-

@@ -48,6 +48,8 @@ python managed_clipping.py summary project.json
 
 `ffmpeg` and `ffprobe` are required for media probing and rendering. Captions are delivered as editable SRT sidecars; caption text is not burned into the source or silently flattened.
 
+Before creating a handoff directory, the command checks every enabled clip's retained render against its current source, boundaries, caption and crop. A stale or missing render returns exit 2 with the clip ID so it can be rerendered. Unchanged clips can retain renders from earlier project revisions; a hook-only edit does not require new media. Disabled clips are excluded from the video/caption handoff, and a project with no enabled clips produces an explicit error. The full editable project remains included in successful handoffs.
+
 ## Acceptance exercised by the test suite
 
 The real-media acceptance test creates a clearly labeled synthetic 24-second A/V source, imports 20 KESTREL-shaped transcript moments and a CEDAR-shaped keep range, renders **20 distinct playable MP4 clips**, then changes clip 007 boundaries/caption/hook/crop and rerenders only that clip into a new revision. It reopens the saved project, verifies the original source SHA-256, confirms old renders were unchanged, and exports a 20-video/20-caption customer handoff with CSV + project + hash manifest.
