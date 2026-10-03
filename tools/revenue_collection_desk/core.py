@@ -158,7 +158,10 @@ def _instant(value: Any, label: str) -> tuple[datetime, str]:
         raise ContractError(f"{label} must be ISO-8601") from exc
     if parsed.tzinfo is None:
         raise ContractError(f"{label} must include timezone")
-    utc = parsed.astimezone(timezone.utc)
+    try:
+        utc = parsed.astimezone(timezone.utc)
+    except OverflowError as exc:
+        raise ContractError(f"{label} is outside the supported UTC range") from exc
     rendered = utc.isoformat(timespec="microseconds").replace("+00:00", "Z")
     return utc, rendered
 

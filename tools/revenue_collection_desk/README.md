@@ -69,6 +69,9 @@ fields fail closed; amounts are exact positive decimal strings; event timestamps
 must be strictly increasing within a claim; source references are opaque bounded
 identifiers plus SHA-256 digests, never email bodies or secrets.
 
+Timestamp offsets must normalize to a UTC date in years 1 through 9999. Values
+outside that range are invalid input and return the CLI's documented exit 2.
+
 The report sorts claims by `claim_id`, so claim-list order does not change the
 receipt. Event order is evidence chronology and is intentionally validated rather
 than reordered.
