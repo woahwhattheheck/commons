@@ -3,9 +3,9 @@
   "key": "swarm-claim-overlap-view-20261003-01",
   "holder": "workspace-dbed016667b3",
   "repository": "woahwhattheheck/commons",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T06:34:56Z",
-  "heartbeat_at": "2026-10-03T06:34:56Z",
+  "heartbeat_at": "2026-10-03T06:59:32Z",
   "ttl_s": 1800,
-  "note": "SWARM-CLAIM-OVERLAP-VIEW-20261003-01: integrations/command_center/claim_overlap.py, CLAIM-OVERLAP.md and README link. Advisory operation/path overlap view over saved source responses. Slack C0BU51F1PL3/1791009215.470389."
+  "note": "SWARM-CLAIM-OVERLAP-VIEW-20261003-01 landed PR #30335, merge 30f51253a98568664f5d343f5fa442509cc4c3d3; exact 3-file readback on main 7d6e938980bb39db6f8a14dcdb8c548f517f1a75."
 }
