@@ -57,7 +57,7 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#070a0d;border:1px so
 (function(){
  var api=window.PermitIntakeReceipt,journal=api.createJournal(),last=null;
  function v(id){return document.getElementById(id).value}
- function application(){var keys=["applicant","parcelId","siteAddress","scope","estimatedCost","ownerConsent","planSet","occupancyType","contractorLicense","signDimensions","sitePlan","utilityDisconnects","asbestosSurvey"],items={};keys.forEach(function(k){items[k]=v(k)});return{applicationId:v("applicationId"),permitType:v("permitType"),submittedAt:new Date().toISOString(),items:items}}
+ function application(){var keys=["applicant","parcelId","siteAddress","scope","estimatedCost","ownerConsent","planSet","occupancyType","contractorLicense","signDimensions","sitePlan","utilityDisconnects","asbestosSurvey"],items={};keys.forEach(function(k){items[k]=v(k)});var applicationId=v("applicationId"),prior=journal.applications[applicationId.trim()];return{applicationId:applicationId,permitType:v("permitType"),submittedAt:prior&&prior.input?prior.input.submittedAt:new Date().toISOString(),items:items}}
  function show(r){last=r;document.getElementById("output").textContent=JSON.stringify(r,null,2);document.getElementById("status").textContent=r.status||"UNKNOWN"}
  function run(crashAt){show(api.processApplication(application(),journal,{crashAt:crashAt||"",now:new Date().toISOString()}))}
  document.getElementById("run").onclick=function(){run("")};document.getElementById("crashChecklist").onclick=function(){run("after_checklist")};document.getElementById("crashNotice").onclick=function(){run("after_notice")};document.getElementById("replay").onclick=function(){run("")};
