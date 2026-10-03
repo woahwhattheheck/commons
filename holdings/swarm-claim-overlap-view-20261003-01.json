@@ -3,9 +3,9 @@
   "key": "swarm-claim-overlap-view-20261003-01",
   "holder": "workspace-dbed016667b3",
   "repository": "woahwhattheheck/commons",
-  "state": "RELEASED",
+  "state": "HELD",
   "taken_at": "2026-10-03T06:34:56Z",
-  "heartbeat_at": "2026-10-03T06:59:32Z",
+  "heartbeat_at": "2026-10-03T07:12:29Z",
   "ttl_s": 1800,
-  "note": "SWARM-CLAIM-OVERLAP-VIEW-20261003-01 landed PR #30335, merge 30f51253a98568664f5d343f5fa442509cc4c3d3; exact 3-file readback on main 7d6e938980bb39db6f8a14dcdb8c548f517f1a75."
+  "note": "SWARM-CLAIM-OVERLAP-VIEW-20261003-01 continuation: claim_overlap.py::_as_text and guide only. Expose operation/scope/evidence for single-claim text lookups. PR #30335 implementation remains landed."
 }
