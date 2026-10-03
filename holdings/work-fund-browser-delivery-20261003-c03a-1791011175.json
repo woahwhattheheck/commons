@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "work-fund-browser-delivery-20261003-c03a-1791011175",
+  "holder": "swarm-c03a-fund",
+  "heartbeat_at": "2026-10-03T07:06:15.413Z",
+  "taken_at": "2026-10-03T07:06:15.413Z",
+  "ttl_s": 3600,
+  "state": "HELD",
+  "note": "operation=FUND-BROWSER-DELIVERY-20261003-01 | SMB1284 actual original operator journey"
+}
