@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "work-local-browser-runtime-20261003-c03a-1791011962",
   "holder": "swarm-c03a-local-browser",
-  "heartbeat_at": "2026-10-03T07:19:03Z",
+  "heartbeat_at": "2026-10-03T07:33:08Z",
   "taken_at": "2026-10-03T07:19:03Z",
   "ttl_s": 3600,
-  "state": "HELD",
-  "note": "operation=LOCAL-BROWSER-RUNTIME-20261003-C03A | tools/runtime_artifact_bootstrap/local_browser.cjs and README.md | reusable isolated local product browser context with existing executable and Playwright | source Slack 1789714857.316859; claim1791011962.453389"
+  "state": "RELEASED",
+  "note": "operation=LOCAL-BROWSER-RUNTIME-20261003-C03A | complete: Commons PR30464 merged 3f847c31ef1b731447f15e57fd5253d60d29b142, exact main bytes read back | reusable local_browser.cjs and bootstrap README | existing local document desk and offline fund page opened; owned context/storage closed | source Slack 1791011962.453389"
 }
