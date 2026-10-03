@@ -1,0 +1,14 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "vendor-instruction-historical-cli-20261003-1b6b",
+  "holder": "INTEGRITY-1B6B",
+  "state": "HELD",
+  "taken_at": "2026-10-03T07:30:00Z",
+  "heartbeat_at": "2026-10-03T07:30:00Z",
+  "ttl_s": 1800,
+  "scope": [
+    "smb-showcase-inventory/apps/vendor_payment_instruction_change/cli.mjs:historical command dispatch",
+    "smb-showcase-inventory/apps/vendor_payment_instruction_change/README.md:historical CLI usage"
+  ],
+  "operation_id": "VENDOR-INSTRUCTION-HISTORICAL-CLI-20261003-1B6B"
+}
