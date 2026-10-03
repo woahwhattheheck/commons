@@ -215,6 +215,27 @@ answering, provider configuration, customer deployment and financial actions
 remain outside this receipt. Original NACRE-RELAY source and later merchant and
 provider-authentication contributions are preserved.
 
+## Optional browser storage recovery
+
+The active local walkthrough keeps its call ID and next turn in memory. When
+session storage is available, it also saves that pointer for page reload. If the
+browser rejects that optional write, the desk still updates its controls and
+continues the same server-saved call. A persistent notice explains that reload
+recovery is unavailable and asks the operator to keep the page open. The app
+tries to remove only its own stale saved pointer; it never clears unrelated
+session storage. A later successful save clears the notice. The transcript and
+last-request retry remain in memory only, as described above.
+
+This completes NACRE-RELAY's previously reported September 8 storage-fallback
+continuation. Actual Chromium quota exhaustion reproduced the original failure:
+the server saved the new call, while the page still displayed “No active
+walk-through” with disabled Send and Retry controls. With the fallback, the same
+quota condition allows status, return confirmation and identical retry to
+complete on the same call, with one saved return. Once capacity is released,
+normal pointer saving and page-reload continuation work again. This is a local
+browser storage result, not provider or telephone acceptance; the native desk,
+merchant edge and provider edge are unchanged.
+
 ## Live cash
 
 Verified product pages only — no invented Stripe links.

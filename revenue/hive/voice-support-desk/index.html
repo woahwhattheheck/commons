@@ -16,6 +16,7 @@
 <main>
 <p class="note">This desk runs locally. The call walk-through below uses text and keypad inputs, not a telephone call. Connect the webhook to the shop's existing voice service separately. Returns are requests for review, never automatic refunds.</p>
 <p id="notice" role="status" aria-live="polite"></p>
+<p id="storage-status" class="note" role="status" hidden></p>
 <div class="grid">
 <section><h2>1. Shop policy and transfer destination</h2>
 <p id="policy-status" class="muted"></p>
@@ -50,11 +51,12 @@
 'use strict';
 const $=id=>document.getElementById(id);
 let call=null,last=null;
-try{call=JSON.parse(sessionStorage.getItem('voice-desk-call')||'null')}catch{}
+try{call=JSON.parse(sessionStorage.getItem('voice-desk-call')||'null')}catch{storageStatus(true)}
 function notice(message,error=false){$('notice').textContent=message;$('notice').className=error?'error':''}
 async function api(path,body,raw=false){const opts=body===undefined?{}:{method:'POST',headers:{'Content-Type':raw?'text/csv; charset=utf-8':'application/json'},body:raw?body:JSON.stringify(body)};const r=await fetch(path,opts);const data=await r.json();if(!r.ok)throw new Error(data.error||`Request failed (${r.status})`);return data}
 function node(tag,content,parent){const e=document.createElement(tag);e.textContent=content;parent.append(e);return e}
-function remember(result){call={id:result.call_id,next:result.next_turn,ended:result.state==='ended'};sessionStorage.setItem('voice-desk-call',JSON.stringify(call));updateCall()}
+function storageStatus(unavailable){$('storage-status').hidden=!unavailable;$('storage-status').textContent=unavailable?'Walk-through reload recovery is unavailable. Keep this page open to continue; saved desk records remain on the server.':''}
+function remember(result){call={id:result.call_id,next:result.next_turn,ended:result.state==='ended'};try{sessionStorage.setItem('voice-desk-call',JSON.stringify(call));storageStatus(false)}catch{try{sessionStorage.removeItem('voice-desk-call')}catch{}storageStatus(true)}updateCall()}
 function updateCall(){$('call-info').textContent=call?`${call.id} · ${call.ended?'ended':`next turn ${call.next}`}`:'No active walk-through';$('send-turn').disabled=!call||call.ended;$('repeat').disabled=!last}
 function show(result,replay=false){node('p',(replay?'Identical retry: ':'Desk: ')+result.message,$('transcript'));$('xml').textContent=result.twiml;remember(result)}
 function renderRequests(items,kind){const target=$(kind);target.replaceChildren();if(!items.length){node('p','No requests yet.',target);return}for(const item of items){const card=document.createElement('article');target.append(card);node('h3',item.id,card);node('p',`${item.order_ref||'No matched order'} · ${item.reason}`,card);node('p',kind==='returns'?`Status: ${item.status} · policy revision ${item.policy_revision}`:`Dial: ${item.dial_status} · team: ${item.operator_status} · call ${item.call_id}`,card);const select=document.createElement('select');select.setAttribute('aria-label',`Status for ${item.id}`);for(const s of kind==='returns'?['requested','reviewed','closed']:['open','resolved']){const option=node('option',s,select);option.value=s}select.value=kind==='returns'?item.status:item.operator_status;card.append(select);const note=document.createElement('textarea');note.setAttribute('aria-label',`Team note for ${item.id}`);note.value=item.note;note.placeholder='Record the team action; this does not execute a refund.';note.maxLength=2000;card.append(note);const save=node('button','Save team review',card);save.addEventListener('click',async()=>{save.disabled=true;try{await api('/api/review',{kind,id:item.id,status:select.value,note:note.value});await refresh();notice('Team review saved.')}catch(e){notice(e.message,true);save.disabled=false}})}}
