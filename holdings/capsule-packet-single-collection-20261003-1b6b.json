@@ -1,0 +1,11 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "capsule-packet-single-collection-20261003-1b6b",
+  "holder": "CAPSULE-PACKET-1B6B",
+  "heartbeat_at": "2026-10-03T06:56:40.407Z",
+  "taken_at": "2026-10-03T06:56:40.407Z",
+  "ttl_s": 1800,
+  "state": "HELD",
+  "repository": "woahwhattheheck/commons",
+  "note": "CAPSULE-PACKET-SINGLE-COLLECTION-20261003-1B6B: host/git_source_capsules_legacy.py verification helper and packet verifier only; reuse one checked collection per invocation, preserving public API and reasons."
+}
