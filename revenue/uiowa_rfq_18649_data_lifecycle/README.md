@@ -28,10 +28,48 @@ or raw diagnostic logs into this packet. Category labels and controlled record
 locators are sufficient. A closed schema prevents extra payload fields, but the
 kit is not a sensitive-data detector: the facilitator must inspect free text.
 
+## Portable review page
+
+Create a new standalone HTML file from the same strict packet, using only Python's
+standard library. From the repository root:
+
+```sh
+python revenue/uiowa_rfq_18649_data_lifecycle/review_html.py \
+  revenue/uiowa_rfq_18649_data_lifecycle/example.json \
+  --output /tmp/lifecycle-059-review.html
+```
+
+Open that file directly in a browser; no server, network, assets or dependencies
+are required. The parent directory must exist, and an existing output is never
+overwritten. Invalid packets are rejected before output creation. An I/O failure
+while writing may leave a partial file; use a new output path when retrying.
+
+The page verifies the complete native assessment before rendering. It retains
+all copies, applicable checks, observation/documentation timestamps and IDs,
+findings, historical evidence and native digests. Search and group/disposition
+filters select whole copy sections. Following a copy or evidence link restores
+visibility if filters concealed its target. Downloads always contain the full
+native `report.json` and `follow-ups.csv`, including the existing CSV formula
+escaping. They are byte-identical to the original CLI outputs for the same packet.
+
+All substantive content and downloads remain available with JavaScript disabled.
+With JavaScript enabled, **Print full review** temporarily restores every copy and
+opens all record sections, then restores the screen state after printing. Browser
+Print also includes the complete review. The page uses no external resources and
+escapes supplied strings; its fixed interaction script is hash-bound by a content
+security policy. Source references remain literal text, not executable links.
+
+This is an authored portable-view continuation, not a replacement assessment or
+an authenticity/compliance/deletion claim. `render_html(packet, report)` refuses a
+report that fails the existing `verify_report`. The HTML digest identifies the
+presentation bytes; the native report digest still covers only the native report.
+The original engine, CLI and three output formats retain their behavior.
+
 ## Files and outputs
 
 - `lifecycle.py`: reusable validation, assessment, rendering and semantic verification.
 - `cli.py`: local-file CLI; no network or provider client.
+- `review_html.py`: verified standalone review page and create-exclusive HTML CLI.
 - `schema.json`: structural JSON Schema; the Python validator additionally checks
   IDs, lineage, chronology, and other cross-record conditions.
 - `template.json`: valid unknown-state catalog starter with no evidence.
