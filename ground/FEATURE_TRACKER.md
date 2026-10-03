@@ -24,6 +24,10 @@ Status is derived. Author prose, chat, Slack, ntfy 200, an open PR, a Pages card
 
 Source-built and live stay separate columns. Never collapse them.
 
+Sparse checkouts retain the committed catalog: omitted `features/registry/*.json` and `features/evidence/*.json` records are read together from the resolved `HEAD` commit. Materialized files and local additions keep their current contents, including edits awaiting commit. A committed record remains available until its deletion is committed. Plain directories and repositories without an initial commit continue to read local records.
+
+The projector does not fetch missing Git objects automatically. If the committed catalog or an omitted record's bytes cannot be read, JSON reports `source_errors`, the command exits 1, and `--write` preserves the previous JSON and HTML. Hydrate those source objects or materialize the catalog, then rerun the same command. Record-shape problems retain their existing diagnostics and behavior.
+
 The `test_status` and rollup value `TESTS_PRESENT` replaces the former `TESTED` label, which incorrectly suggested execution from file existence. JSON keys and registry/evidence schemas remain unchanged. No declared tests still produces `UNTESTED`; missing declared test paths still produces `DEGRADED`. Historical evidence is preserved. Consumers should use `TESTS_PRESENT` for file-presence filtering, and use actual run/version/result evidence for claims that tests passed.
 
 ## Append-only
