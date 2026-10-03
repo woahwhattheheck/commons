@@ -1,0 +1,11 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "swarm-github-lease-clock-20261003-dbed",
+  "holder": "workspace-dbed016667b3/swarm_scan",
+  "repository": "woahwhattheheck/commons",
+  "state": "HELD",
+  "taken_at": "2026-10-03T08:38:17Z",
+  "heartbeat_at": "2026-10-03T08:38:17Z",
+  "ttl_s": 1800,
+  "note": "SWARM-GITHUB-LEASE-CLOCK-20261003-DBED: tools/github_read_coordinator/broker.py acquire/finish transaction decision clocks and README only. Actual retained GitHub response plus SQLite contention reproduces expired acquire and stale accepted finish. Claim https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1791016611806289 . Existing gateway/provider/runtime and Slack coordinator owners retained."
+}
