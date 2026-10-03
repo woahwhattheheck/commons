@@ -20,6 +20,18 @@ Each output directory must be new and its parent must already exist. No pip inst
 
 The filesystem CLI requires POSIX directory descriptors and O_NOFOLLOW. The pure byte functions `reconcile(raw)` and `bundle(raw)` do not need those filesystem features.
 
+## CSV intake and replay
+
+The additive CSV adapter assembles explicit batch, transaction, tender, allocation, deposit, and deposit-assignment tables into this engine's existing input contract. Start with a retained example, then compile and replay a handoff that includes the original source bytes, row lineage, and the native review bundle:
+
+```sh
+python -m cashiering_lab.csv_intake split examples/clean.json --out /tmp/cashiering-csv-source-new
+python -m cashiering_lab.csv_intake compile /tmp/cashiering-csv-source-new --out /tmp/cashiering-csv-handoff-new
+python -m cashiering_lab.csv_intake verify /tmp/cashiering-csv-handoff-new
+```
+
+See [CSV_INTAKE.md](docs/CSV_INTAKE.md) for exact headers, null and integer rules, explicit joins, limits, and the exception-example sequence. `compile` preserves the existing 0/1/2 exit meanings; `split` and `verify` return 0 on success or 2 on error. Source mapping remains an upstream responsibility, and broader pursuit ownership and original donor credits are unchanged.
+
 ## Implemented controls
 
 The engine checks original plus rounding against collected amounts, split-tender and accounting-component conservation, signed receipt/refund/reversal semantics, original-linked cumulative refund caps and exact full reversals, batch windows and declarations, counted drawer differences, complete batch/tender deposit assignments, six-field scope/currency isolation, declared evidence reuse and missing evidence. Inconsistent economic rows remain visible in candidate totals rather than being silently dropped.
