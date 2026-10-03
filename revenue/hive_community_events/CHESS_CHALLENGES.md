@@ -14,6 +14,32 @@ python3 chess_challenge.py --db /private/path/events.sqlite3 --port 8765
 
 Open `http://127.0.0.1:8765/chess`. The ordinary Lantern UI remains at `/`; both use the same event database. Use the chess launcher when creating/rendering board-aware questions. Existing trivia events and question packs remain compatible.
 
+## Host and participant handoff
+
+Creating an event in `/chess` retains the core event's one-time host capability
+under the same separate `lantern-host:<event>` browser key used by `/`.
+Expand **Host controls**, then **Host recovery key** to keep a private copy.
+The participant event URL never includes that key. If browser storage is
+unavailable, the page explicitly says the key is available only in the current
+tab; copy it before leaving.
+
+On another browser, open the same event URL, expand **Host controls**, paste
+the saved key and select **Restore host controls**. The existing server verifies
+it before the page retains it. **Finish event** asks for confirmation and uses
+that capability. Events created before host protection retain the core's
+explicitly labelled legacy shared-finish behavior.
+
+Participants join with a display name or reconnect with their saved participant
+reference. Click an occupied board square and an authored destination, or choose
+the ordinary radio answer, then select **Save answer**. The board never infers
+chess legality. Answers retain the core's first-answer-wins behavior. Finishing
+reveals the authored answer and the same persisted non-cash leaderboard.
+
+The native browser handoff has been exercised with the page's shipped two-question
+demonstration, ordinary HTTP, browser storage, host recovery, participant reload,
+and database restart. The main homepage and its separate recovery-persistence
+work remain independent source scope.
+
 ## Authoring schema
 
 A normal Lantern question may add a `chess` object:
