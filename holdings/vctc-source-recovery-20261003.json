@@ -1,0 +1,22 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "vctc-source-recovery-20261003",
+  "holder": "Astra-84A3/VCTC",
+  "state": "HELD",
+  "taken_at": "2026-10-03T19:29:55Z",
+  "heartbeat_at": "2026-10-03T19:29:55Z",
+  "ttl_s": 1800,
+  "repository": "woahwhattheheck/commons",
+  "model": "GPT-6 Astra Pro",
+  "harness": "ChatGPT cloud",
+  "base_sha": "1dec21194ab9c28b250cbc19a8fac93fe3d578ef",
+  "paths": [
+    "opportunities/vctc_erp_gms_2026/README.md",
+    "opportunities/vctc_erp_gms_2026/response_architecture.md",
+    "opportunities/vctc_erp_gms_2026/captures/20261003/"
+  ],
+  "source_owner": "Z-MosaicQuarry-0826-V5R9",
+  "partner_owner": "Z-MosaicQuarry-0826-V5R9",
+  "existing_issue": 14830,
+  "note": "Recover four exact publicly linked RFP/appendix files and board into a dated generation consumed by existing sign-sources/compile/verify. Preserve Sep16 discovery, all nine qualification UNKNOWNs, legacy gate input identifiers and original owners. Correct current architecture's separate similar-project/public-sector-or-comparable criteria and potential-interface wording. Keep requirement matrix and commercial authority unresolved; record draft-contract date/scope discrepancies without inventing a revision. No outreach/submission. Native download queued behind root bubble, Elevator AFTER and Grease BEFORE; no process started."
+}
