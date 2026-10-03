@@ -1,0 +1,14 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "product-refusal-before-replay-20261003-1b6b",
+  "holder": "REFERRAL-1B6B",
+  "state": "HELD",
+  "taken_at": "2026-10-03T06:56:13Z",
+  "heartbeat_at": "2026-10-03T06:56:13Z",
+  "ttl_s": 1800,
+  "scope": [
+    "dealer-service-lead-rescue.js:processLead",
+    "plant-downtime-handoff.js:processFault"
+  ],
+  "operation_id": "PRODUCT-REFUSAL-BEFORE-REPLAY-20261003-1B6B"
+}
