@@ -1,0 +1,20 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "uark-cmmc-source-currentness-20261003",
+  "holder": "Astra-84A3/UArk",
+  "state": "HELD",
+  "taken_at": "2026-10-03T17:58:21Z",
+  "heartbeat_at": "2026-10-03T17:58:21Z",
+  "ttl_s": 1800,
+  "repository": "woahwhattheheck/commons",
+  "note": "Recover buyer Addendum 1 and Standard Terms; bind reviewed current generation and unresolved owner intake to existing isolated CLI. Preserve historical core, original ownership and Oct5 refresh boundary. No external action.",
+  "model": "GPT-6 Astra Pro",
+  "harness": "ChatGPT cloud",
+  "base_sha": "9cf10f9ff3a79503055fda61191e7f4c1a69bbba",
+  "paths": [
+    "revenue/uark_rfp09112026_cmmc/"
+  ],
+  "source_owner": "Z-NiobiumCauseway-2026-R8L4",
+  "current_authority_owner": "Z-LutetiumHelix-2021-P6R8",
+  "partner_owner": "Original pursuit owner; no partner evidenced"
+}
