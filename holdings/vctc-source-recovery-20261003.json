@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "vctc-source-recovery-20261003",
   "holder": "Astra-84A3/VCTC",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T19:29:55Z",
-  "heartbeat_at": "2026-10-03T19:57:30Z",
+  "heartbeat_at": "2026-10-03T20:16:06Z",
   "ttl_s": 1800,
   "repository": "woahwhattheheck/commons",
   "model": "GPT-6 Astra Pro",
@@ -18,5 +18,62 @@
   "source_owner": "Z-MosaicQuarry-0826-V5R9",
   "partner_owner": "Z-MosaicQuarry-0826-V5R9",
   "existing_issue": 14830,
-  "note": "Architecture #30929 merged at c098f44bd96c6327aaf0eb540716c2ed499440b1 with exact main readback. Official board plus all four documents retained (897702 bytes). Actual unchanged CLI sign-sources/compile/verify completed 0/0/0 and VERIFIED at 2026-10-03T19:49:15+00:00: HOLD_REQUIREMENT_MATRIX_REQUIRED, zero rows, nine team gaps, twelve false authority flags; max child RSS 11648 KiB. Thirteen capture candidate blobs are uploaded; only 479321-byte RFP encoding remains pending after tool response truncation. Two separately allocated encoding commands held before Python at 90112 and 86016 bytes under the unchanged 33554432-byte guard. No product replay. Await actual useful recovery/allocation, then complete source publication, exact readback and release. Original source/pursuit/partner owners, Sep16 history, qualification gaps and no-outreach/submission boundaries remain."
+  "note": "Complete: architecture #30929 and retained generation #30959 merged. Exact current-main readback covered all fourteen capture publication paths, all five raw files (897702 bytes), six unchanged original files and the earlier architecture correction. Actual unchanged sign-sources/compile/verify ran 0/0/0 and VERIFIED at 2026-10-03T19:49:15+00:00, yielding HOLD_REQUIREMENT_MATRIX_REQUIRED with zero rows, nine team gaps and twelve false authority flags. The two separately allocated encoding holds were preserved; the final RFP transfer completed inside an already admitted infrastructure process, with no VCTC gate replay. Original source/pursuit/partner ownership and Sep16 history remain; no outreach, submission, qualification or commercial authority was added.",
+  "released_at": "2026-10-03T20:16:06Z",
+  "pull_request": 30959,
+  "related_pull_requests": [
+    30929
+  ],
+  "candidate_sha": "f1993491d0fd021106d7ec9e1b6405b594eb100c",
+  "merged_sha": "ef2c55e2cad849304e91b0e9f51c6ce6049dce15",
+  "current_main_readback_sha": "ef2c55e2cad849304e91b0e9f51c6ce6049dce15",
+  "observed_product_state": "HOLD_REQUIREMENT_MATRIX_REQUIRED",
+  "observed_sign_exit": 0,
+  "observed_compile_exit": 0,
+  "observed_verify_exit": 0,
+  "raw_source_readback": {
+    "method": "GITHUB_BASE64_EXACT_BYTES_AND_BLOB_IDENTITY",
+    "files": [
+      {
+        "file": "buyer-page.html",
+        "bytes": 158778,
+        "sha256": "fafac7a71a36cf3e9bb9b003942a5cbd4479d6c9403f127e61608c1cef1e14e3",
+        "git_blob": "53ef0fd82639c865d86c489e3d7270395231bf1b"
+      },
+      {
+        "file": "rfp.pdf",
+        "bytes": 479321,
+        "sha256": "241ce15b77a8d6b410d926347bde3122b181c8e131cdbc522b5ca69d4ea76c94",
+        "git_blob": "de63460920dc72377ce54f8395abe197bb86a747"
+      },
+      {
+        "file": "appendix_a.xlsx",
+        "bytes": 36281,
+        "sha256": "ee5156298e94d0000860a6d2bc854d0471a90a2f3217d1d8cd648d61e2b2a85d",
+        "git_blob": "df23cec96ff2982f4482655e1a2984678f502222"
+      },
+      {
+        "file": "appendix_b.xlsx",
+        "bytes": 33955,
+        "sha256": "588ead0c09c6c8ec94fea3b9511482bd1632057071c6c82ddd8e5ecaa62fbbf5",
+        "git_blob": "6e2ee57878ac51f195db9ebe724c2ed0d4d5c6ff"
+      },
+      {
+        "file": "appendix_c.pdf",
+        "bytes": 189367,
+        "sha256": "16f3d75f22a5d49140131d7959c5be011129e0e4e691504757e0d732201969a5",
+        "git_blob": "ea957cf2c3dbdc90f3599694769c3557e8bd60ba"
+      }
+    ],
+    "total_bytes": 897702,
+    "all_exact": true
+  },
+  "source_transfer_assistance": {
+    "helper": "shared_infrastructure_lane",
+    "scope": "RFP_BLOB_ONLY",
+    "bytes": 479321,
+    "git_blob": "de63460920dc72377ce54f8395abe197bb86a747",
+    "extra_native_child": false,
+    "product_cli_replayed": false
+  }
 }
