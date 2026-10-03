@@ -38,6 +38,12 @@ MCP arguments, provider context, Slack blocks, and direct Commons GitHub
 issue/comment arguments are supported. The adapter never opens transcripts,
 stores submitted text, launches a model, or calls another service.
 
+Typed `commons-github-gateway/v1` `file.put` operations select `args.message`
+and optional `args.branch` as outward metadata, matching direct GitHub file
+updates. File contents, paths, operation IDs, and routing data stay outside that
+field set. This mapping runs in the native client hook; direct HTTP publication
+uses the receiving service's own field selection.
+
 The native installer retains all existing event entries, disable flags and
 disabled-hook lists. If the client has globally disabled hooks, they remain
 disabled; installing source does not authorize overriding that choice. The

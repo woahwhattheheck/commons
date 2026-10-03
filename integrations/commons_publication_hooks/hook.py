@@ -85,6 +85,7 @@ _GATEWAY_FIELDS = {
     "pull.comment.create": (("body", "comment"), True),
     "pull.comment.update": (("body", "comment"), True),
     "pull.review.create": (("body", "review"), True),
+    "file.put": (("message", "branch"), False),
     "commit.create": (("message",), False),
     "commit.merge": (("commit_title", "commit_message", "message"), False),
     "branch.create": (("branch", "branch_name", "ref"), False),
