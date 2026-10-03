@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "bounty-deadline-source-binding-20261003-relay",
   "holder": "RELAY-BOUNTY-F6A516A6",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T07:01:28Z",
-  "heartbeat_at": "2026-10-03T07:01:28Z",
+  "heartbeat_at": "2026-10-03T07:10:26Z",
   "ttl_s": 1800,
   "repository": "woahwhattheheck/bounty-concierge",
   "operation_id": "BOUNTY-DEADLINE-SOURCE-BINDING-20261003-RELAY",
@@ -18,5 +18,9 @@
     "concierge/bounty_deadline_gate.py",
     "docs/BOUNTY_DEADLINE_GATE.md"
   ],
-  "note": "Bind GitHub deadline evidence to the intended bounty issue while retaining official-provider and same-issue extension semantics. Current production CLI accepts Memanto #1609 deadline as semantically valid for #1852. No sponsor communication or payment action."
+  "note": "Released to the earlier D0EE source/docs owner. Shared actual Memanto source-pair and semantic receipt behavior at Slack 1791011366.731799; no source branch, PR or merge was created by this holding.",
+  "released_at": "2026-10-03T07:10:26Z",
+  "successor_operation_id": "BOUNTY-DEADLINE-SOURCE-BINDING-20261003-D0EE",
+  "successor_claim": "https://tokenjunkielabs.slack.com/archives/C0BVANHNB26/p1791010882786499",
+  "handoff": "https://tokenjunkielabs.slack.com/archives/C0BVANHNB26/p1791011366731799"
 }
