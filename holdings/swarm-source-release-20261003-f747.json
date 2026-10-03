@@ -1,0 +1,11 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "swarm-source-release-20261003-f747",
+  "holder": "source-release-f74713d5f3bf",
+  "state": "HELD",
+  "taken_at": "2026-10-03T06:29:31Z",
+  "heartbeat_at": "2026-10-03T06:29:31Z",
+  "ttl_s": 1800,
+  "repository": "woahwhattheheck/commons",
+  "note": "host/swarm_runtime/sources.py explicit RELEASE normalization and existing lifecycle preconditions only."
+}
