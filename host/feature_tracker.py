@@ -136,9 +136,9 @@ def _read(path):
         return ""
 
 
-def _load_json_file(path):
+def _load_json_file(path, fallback=None):
     try:
-        text = _read(path)
+        text = fallback if fallback is not None and not os.path.lexists(path) else _read(path)
     except UnicodeDecodeError as exc:
         return None, ["not UTF-8: %s" % exc]
     if not text.strip():
@@ -163,6 +163,69 @@ def _list_json(root, rel):
     names = [n for n in os.listdir(folder) if n.endswith(".json") and not n.startswith(".")]
     names.sort()
     return names
+
+
+def _committed_catalog(root):
+    """Load committed catalog records omitted from this working tree."""
+    if not os.path.lexists(os.path.join(root, ".git")):
+        return {}
+    env = dict(os.environ, GIT_NO_LAZY_FETCH="1", GIT_NO_REPLACE_OBJECTS="1")
+    for key in (
+        "GIT_DIR", "GIT_COMMON_DIR", "GIT_WORK_TREE", "GIT_OBJECT_DIRECTORY",
+        "GIT_ALTERNATE_OBJECT_DIRECTORIES", "GIT_NAMESPACE", "GIT_INDEX_FILE",
+        "GIT_SHALLOW_FILE", "GIT_QUARANTINE_PATH", "GIT_GRAFT_FILE",
+        "GIT_LITERAL_PATHSPECS", "GIT_GLOB_PATHSPECS", "GIT_NOGLOB_PATHSPECS",
+        "GIT_ICASE_PATHSPECS",
+    ):
+        env.pop(key, None)
+
+    def git(*args, input=None, check=True):
+        return subprocess.run(
+            ["git", "--literal-pathspecs", "-C", os.fspath(root), *args],
+            input=input, capture_output=True, check=check, timeout=30, env=env,
+        )
+
+    head = git("rev-parse", "--verify", "HEAD^{commit}", check=False)
+    if head.returncode:
+        # An ordinary new repository has local drafts but no committed catalog.
+        branch = git("symbolic-ref", "--quiet", "HEAD", check=False)
+        if branch.returncode == 0 and git(
+            "show-ref", "--verify", "--quiet", branch.stdout.decode().strip(), check=False
+        ).returncode == 1:
+            return {}
+        raise ValueError("cannot resolve the committed catalog: " + head.stderr.decode("utf-8", "replace").strip())
+    revision = head.stdout.decode("ascii").strip()
+    folders = {REGISTRY_DIR.replace(os.sep, "/"), EVIDENCE_DIR.replace(os.sep, "/")}
+    objects = {}
+    tree = git("ls-tree", "-r", "-z", "--full-tree", revision, "--", *sorted(folders)).stdout
+    for entry in tree.split(b"\0"):
+        if not entry:
+            continue
+        metadata, raw_path = entry.split(b"\t", 1)
+        path = os.fsdecode(raw_path)
+        folder, name = path.rsplit("/", 1)
+        if folder not in folders or name.startswith(".") or not name.endswith(".json"):
+            continue
+        if not os.path.lexists(os.path.join(root, path)):
+            objects[path] = metadata.split()[2]
+    if not objects:
+        return {}
+    # One batch avoids a subprocess for every omitted registry/evidence file.
+    payload = git("cat-file", "--batch", input=b"".join(oid + b"\n" for oid in objects.values())).stdout
+    sources = {}
+    offset = 0
+    for path, oid in objects.items():
+        line_end = payload.find(b"\n", offset)
+        header = payload[offset:line_end].split() if line_end >= 0 else []
+        if len(header) != 3 or header[:2] != [oid, b"blob"]:
+            raise ValueError("committed catalog blob is unavailable: " + path)
+        start, size = line_end + 1, int(header[2])
+        end = start + size
+        if size < 0 or payload[end:end + 1] != b"\n":
+            raise ValueError("committed catalog blob is incomplete: " + path)
+        sources[path] = payload[start:end].decode("utf-8")
+        offset = end + 1
+    return sources
 
 
 def path_exists(root, rel):
@@ -331,9 +394,24 @@ def load_registry(root):
     seen = {}
     conflicts = []
     invalid = []
-    for name in _list_json(root, REGISTRY_DIR):
+    try:
+        committed = _committed_catalog(root)
+    except (OSError, subprocess.SubprocessError, ValueError) as exc:
+        detail = getattr(exc, "stderr", None) or str(exc)
+        if isinstance(detail, bytes):
+            detail = detail.decode("utf-8", "replace")
+        invalid.append({"_file": "committed catalog", "_kind": "source", "_invalid": [detail.strip()]})
+        committed = {}
+
+    def names(rel):
+        prefix = rel.replace(os.sep, "/") + "/"
+        return sorted(set(_list_json(root, rel)) | {
+            path[len(prefix):] for path in committed if path.startswith(prefix)
+        })
+
+    for name in names(REGISTRY_DIR):
         path = os.path.join(root, REGISTRY_DIR, name)
-        rec, errs = _load_json_file(path)
+        rec, errs = _load_json_file(path, committed.get(REGISTRY_DIR.replace(os.sep, "/") + "/" + name))
         if rec is None:
             invalid.append({"_file": name, "_invalid": errs})
             continue
@@ -357,9 +435,9 @@ def load_registry(root):
         features.append(rec)
     evidence = []
     evid_seen = {}
-    for name in _list_json(root, EVIDENCE_DIR):
+    for name in names(EVIDENCE_DIR):
         path = os.path.join(root, EVIDENCE_DIR, name)
-        rec, errs = _load_json_file(path)
+        rec, errs = _load_json_file(path, committed.get(EVIDENCE_DIR.replace(os.sep, "/") + "/" + name))
         if rec is None:
             invalid.append({"_file": name, "_invalid": errs, "_kind": "evidence"})
             continue
@@ -582,6 +660,8 @@ def project(root, snapshot=None):
         "n_features": len(rows),
         "n_invalid": len(invalid),
         "problems": problems,
+        "source_errors": [item for rec in invalid if rec.get("_kind") == "source"
+                          for item in rec.get("_invalid") or []],
         "features": rows,
         "add_feature": {
             "id_pattern": ID_RE.pattern,
@@ -794,6 +874,8 @@ def render_html(projection):
 
 
 def write_projection(root, projection):
+    if projection.get("source_errors"):
+        raise ValueError("cannot publish an incomplete source catalog: " + "; ".join(projection["source_errors"]))
     json_path = os.path.join(root, JSON_OUT)
     html_path = os.path.join(root, HTML_OUT)
     # KEEP tip live_cash across feature-tracker remints (newbot-05 doors;
@@ -918,12 +1000,13 @@ def main(argv=None):
     if args.self_test:
         return self_test()
     out = project(args.root)
-    if args.write:
+    if args.write and not out.get("source_errors"):
         write_projection(args.root, out)
         # Projection files may themselves be claimed_paths. Rebuild once so
         # SOURCE_BUILT includes the files this instrument just wrote.
         out = project(args.root)
-        write_projection(args.root, out)
+        if not out.get("source_errors"):
+            write_projection(args.root, out)
     json.dump(out, sys.stdout, indent=2, sort_keys=True)
     sys.stdout.write("\n")
     return 1 if out.get("problems") else 0
