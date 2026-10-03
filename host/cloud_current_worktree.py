@@ -265,13 +265,16 @@ def unique_ahead(cwd, tip="HEAD", base="origin/main"):
 
 
 def show_at(cwd, rev, rel):
-    spec = "%s:%s" % (rev, rel.replace(os.sep, "/"))
-    rc, _, _ = git(["cat-file", "-e", spec], cwd=cwd, check=False)
-    if rc != 0:
+    path = rel.replace(os.sep, "/")
+    # Tree presence is independent of whether the referenced blob can be read.
+    # An unreadable tracked blob must not look like an upstream deletion.
+    _, listing, _ = git(
+        ["--literal-pathspecs", "ls-tree", "-z", "--full-tree", rev, "--", path],
+        cwd=cwd,
+    )
+    if not listing:
         return None
-    rc, out, _ = git(["show", spec], cwd=cwd, check=False)
-    if rc != 0:
-        return None
+    _, out, _ = git(["show", "%s:%s" % (rev, path)], cwd=cwd)
     return out
 
 
