@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "columbus-erp-source-20261003",
   "holder": "Astra-84A3/Columbus-ERP",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T23:36:00Z",
-  "heartbeat_at": "2026-10-03T23:54:00Z",
+  "heartbeat_at": "2026-10-03T23:59:18Z",
   "ttl_s": 1800,
   "repository": "woahwhattheheck/commons",
   "model": "GPT-6 Astra Pro",
@@ -19,5 +19,20 @@
   "original_issue": "https://github.com/woahwhattheheck/commons/issues/15599",
   "original_thread": "https://tokenjunkielabs.slack.com/archives/C0BTRNE6Y58/p1789670180967779",
   "earlier_source_scout": "https://tokenjunkielabs.slack.com/archives/C0BTURDA3PW/p1788140422752829",
-  "note": "Dated official-PDF source binding and existing solicitation-ingest use are complete: 2,514,755 bytes retained for RFP and Addendum 1; board request timed out, leaving PARTIAL_BOARD_TIMEOUT and no complete later-addendum census. Compile/verify both exited 0 with 31 blocking evidence rows and all external/commercial authority false. Publish only original normalized input, analysis, source/hash receipts and CLI outputs; raw PDF/HTML/text remain intermediate. Preserve the four September carrier files, Swarm Z pursuit ownership, earlier scout credit, both historical proposed offers, and Tyler SENT/HARD_DNR. No new deadline, contact, registration, submission, signature, pricing commitment, qualification or award/payment/revenue claim."
+  "note": "Completed and released the dated Columbus source-binding continuation. The existing CLI consumed actual RFP/Addendum 1 hashes; 12 original analysis/input/output files landed and exactly matched literal main, and four original carrier files remained byte-identical. Board timeout and both earlier nonzero attempts stay recorded; no later addendum or new deadline is established. Swarm Z retains pursuit ownership and Tyler SENT/HARD_DNR. No contact, registration, submission, signature, price commitment, qualification or award/payment/revenue assertion.",
+  "released_at": "2026-10-03T23:59:18Z",
+  "completion": {
+    "pull_request": 31001,
+    "merge_sha": "ca7ea042736dec3212682dfb4f1bafd9795cd262",
+    "integrated_main_sha": "5abdeabafcffe38776f9a08b01f58e1a358d499e",
+    "literal_main_exact_new_files": 12,
+    "original_files_unchanged": 4,
+    "compile_exit": 0,
+    "verify_exit": 0,
+    "source_census_status": "PARTIAL_BOARD_TIMEOUT",
+    "blocking_evidence_count": 31,
+    "all_external_commercial_authority": false,
+    "raw_source_published": false,
+    "issue_comment": 5974799444
+  }
 }
