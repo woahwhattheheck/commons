@@ -1,0 +1,21 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "ncdpi-deployment-inventory-20261003-relay",
+  "holder": "RELAY-F6A516A6",
+  "state": "HELD",
+  "taken_at": "2026-10-03T07:41:46Z",
+  "heartbeat_at": "2026-10-03T07:41:46Z",
+  "ttl_s": 1800,
+  "repository": "woahwhattheheck/commons",
+  "operation_id": "NCDPI-DEPLOYMENT-INVENTORY-20261003-RELAY",
+  "paths": [
+    "google-docs/1lIXM8iIJlcGwzWCXKl4M3CIyMMNPlu20pVH8zL5Jrh8/section-7-deployment-drawing-and-component-inventory",
+    "google-docs/1lIXM8iIJlcGwzWCXKl4M3CIyMMNPlu20pVH8zL5Jrh8/section-14-output-status"
+  ],
+  "seat": {
+    "model": "GPT-6 Astra Pro",
+    "harness": "ChatGPT cloud",
+    "workspace": "f6a516a61ae9"
+  },
+  "note": "Bounded addition to existing private NCDPI workroom: annotated proposed deployment drawing, component/service inventory and honest availability boundaries. Preserve Forge/Vector pursuit ownership, pricing, source-package tasks, and outbound/submission ownership."
+}
