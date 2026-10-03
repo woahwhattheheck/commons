@@ -1,6 +1,6 @@
 # Creator App Studio — Hive016
 
-A working local studio for a creator-branded **materials-per-attendee planner**.
+A working local studio for a creator-branded **workshop kit and materials planner**.
 It saves versioned briefs in SQLite and exports a standalone browser app plus
 editable launch assets. This is the reusable delivery slice of Hive demand016,
 not a claim that a creator has been interviewed, partnered with, or sold an app.
@@ -32,8 +32,9 @@ just changing its name.
 
 ## Complete reference workflow
 
-Enter 12 attendees, two card sheets each, a ten-percent reserve, and ten sheets
-per pack. The actual planner calculates 26.4 required sheets, three packs, and
+Enter 12 attendees, leave Demo kits and Spare kits at zero, and enter two card
+sheets per kit, a ten-percent reserve, and ten sheets per pack. The actual
+planner calculates 26.4 required sheets, three packs, and
 30 purchased sheets. Edit the attendee count to 20, save a named plan, reload,
 and reopen it: the result becomes 44 required sheets, five packs, and 50 purchased.
 Export CSV for editing or JSON for portable saved-plan backup. Re-importing an
@@ -44,9 +45,45 @@ actually succeeds.
 Material quantities use exact scaled-integer arithmetic, including fractional
 pack boundaries such as three times 0.1 fitting one 0.3 pack. Every quantity is in
 the explicitly entered unit; there is no implicit unit conversion. Reserve can
-range from zero to 100 percent. Resource bounds are 1–1,000,000 attendees, 1–50
-materials, six decimal places per input and 10,000 saved plans. Suggested usage
+range from zero to 100 percent. Resource bounds are 1–1,000,000 attendees,
+0–1,000,000 demo kits, 0–1,000,000 spare kits, 1–50 materials, six decimal places
+per material input and 10,000 saved plans. All three kit counts must be whole
+numbers. Suggested usage
 targets remain advisory; reaching a pricing-plan target does not lock the app.
+
+## Demo kits and spare kits
+
+Keep participant attendance separate from the instructor's demonstration kits
+and the extra complete kits you want ready. The planner displays all three
+counts and their computed total:
+
+**Total kits = Attendees + Demo kits + Spare kits.**
+
+Each material's **Per kit** quantity is multiplied by that total. The material's
+reserve percentage is applied afterward, followed by rounding the purchase up
+to whole packs. A spare kit is an extra complete kit; the reserve percentage is
+an additional allowance on each material's resulting quantity.
+
+For a workshop walkthrough, enter 12 attendees, one demo kit and two spare kits.
+Add pens at two per kit and sheets at five per kit. Set both materials' reserve
+to zero and pack size to one. Save a named plan, reload, and reopen it. Then
+change only attendance to 13, save, and reopen again. The expected results are:
+
+| Attendees | Demo kits | Spare kits | Total kits | Pens | Sheets |
+| --- | --- | --- | --- | --- | --- |
+| 12 | 1 | 2 | 15 | 30 | 75 |
+| 13 | 1 | 2 | 16 | 32 | 80 |
+
+The saved plan retains the separate counts. CSV download includes **Demo kits**,
+**Spare kits**, and **Total kits**, and labels the material quantity **Per kit**.
+Use JSON download/import to retain and move the saved plans themselves. Leave
+both extra counts at zero for the original attendance-only workflow above.
+
+Every material row still represents a quantity for each kit. Shared or fixed
+tools need a separate planning model; entering them as per-kit materials scales
+them with the total kit count. For compatibility, editable material-default JSON
+and saved-plan JSON retain the existing `per_attendee` field name; its value is
+the quantity displayed as **Per kit** in this planner.
 
 ## Persistence and privacy
 
@@ -58,6 +95,14 @@ using another browser, or clearing browser data may remove access to old plans.
 Export backups first. Unreadable storage is not overwritten or exported as a
 successful empty backup. Use one editing tab per project; cross-tab simultaneous
 editing is not a transactional collaboration feature.
+
+The updated planner reads existing browser plans and schema 1 JSON backups;
+missing `demo_kits` or `spare_kits` values default to zero. New JSON backups use
+schema 2 and include both counts for every plan. Import accepts schema 1 or
+schema 2, and schema 2 requires both counts. Project IDs and the existing
+duplicate/conflicting-plan behavior are preserved. Use the updated app for
+schema 2 backups: an older app rejects that schema rather than importing a plan
+while losing its extra kit counts.
 
 Pricing and launch copy are drafts. Support is operator-provided text. There is
 no checkout, paid-plan enforcement, outbound messaging, analytics, deployment or
