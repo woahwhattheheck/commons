@@ -72,7 +72,7 @@ function renderRows(rows) {
   $("rows").querySelectorAll("tr").forEach((row) => {
     const open = () => showDetail(state.all.find((item) => item.id === row.dataset.id));
     row.addEventListener("click", open);
-    row.addEventListener("keydown", (event) => { if (event.key === "Enter" || event.key === " ") open(); });
+    row.addEventListener("keydown", (event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); open(); } });
   });
 }
 
@@ -91,7 +91,7 @@ function applyFilters() {
 function showDetail(row) {
   if (!row) return;
   $("detail-title").textContent = row.id;
-  const excursion = row.current_temp_c > row.max_temp_c;
+  const excursion = row.current_temp_c < row.min_temp_c || row.current_temp_c > row.max_temp_c;
   $("detail-body").innerHTML = `
     <section><h3>Request</h3><dl><dt>Customer</dt><dd>${esc(row.customer)}</dd><dt>Status</dt><dd><span class="badge ${slug(row.status)}">${esc(row.status)}</span></dd><dt>Received</dt><dd>${fmtDate(row.received_at, true)}</dd><dt>Dispatcher</dt><dd>${esc(row.dispatcher)}</dd></dl></section>
     <section><h3>Route</h3><dl><dt>Origin</dt><dd>${esc(row.origin)}</dd><dt>Destination</dt><dd>${esc(row.destination)}</dd><dt>Carrier</dt><dd>${esc(row.carrier)}</dd><dt>ETA</dt><dd>${fmtDate(row.eta, true)}</dd></dl></section>

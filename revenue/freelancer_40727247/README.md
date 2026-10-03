@@ -14,7 +14,10 @@ python3 -m http.server 4173 --directory revenue/freelancer_40727247
 Open `http://127.0.0.1:4173/`. The app loads `sample_requests.json`, renders
 summary cards, a seven-day trend, status mix, filters, a responsive request
 history table and a detail dialog. Search, status, location and received-date
-filters compose. “Reset” restores the full sample.
+filters compose. “Reset” restores the full sample. Tab to a request row and use
+Enter or Space to open its detail dialog; Escape or Close returns to the row.
+A reading below the declared minimum or above the maximum is displayed as a
+temperature excursion; both exact endpoints remain within the supplied range.
 
 ## Delivery boundary
 
