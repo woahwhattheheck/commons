@@ -2,10 +2,11 @@
   "schema": "commons-change-holding/v1",
   "key": "aquatrace-leak-browser-20261003-f747",
   "holder": "leak-browser-f74713d5f3bf",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T06:36:55Z",
   "heartbeat_at": "2026-10-03T06:36:55Z",
   "ttl_s": 3600,
   "repository": "woahwhattheheck/aquatrace-lims",
-  "note": "Complete existing browser-delivery handoff: leak_to_action/web.py, web/index.html, web/app.js, web/style.css and README only."
+  "note": "Completed and merged aquatrace-lims PR #227 at 8362d61b6184d883190ef9be105e4bf52b236561. Five source/guide files match current main; scope released.",
+  "released_at": "2026-10-03T07:10:22Z"
 }
