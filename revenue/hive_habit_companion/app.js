@@ -32,6 +32,7 @@ const ui = {
 let state = null;
 let csrfToken = '';
 let focusRenderEpoch = performance.now();
+let reminderRefreshInFlight = false;
 const notified = new Set();
 
 function operationId(prefix) {
@@ -236,6 +237,34 @@ function maybeNotify(reminder) {
   });
 }
 
+async function refreshReminders() {
+  if (!state || document.hidden || reminderRefreshInFlight) return;
+  const current = state;
+  const token = csrfToken;
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 10000);
+  reminderRefreshInFlight = true;
+  try {
+    const response = await fetch('/api/state', {cache: 'no-store', signal: controller.signal});
+    if (!response.ok) return;
+    const next = await response.json();
+    // Do not mix a newer workspace with controls the user is still editing.
+    if (document.hidden || state !== current || csrfToken !== token ||
+        next.csrf_token !== token || next.revision !== current.revision ||
+        next.workspace_created_at !== current.workspace_created_at ||
+        !Array.isArray(next.reminders)) return;
+    if (JSON.stringify(next.reminders) !== JSON.stringify(current.reminders)) {
+      current.reminders = next.reminders;
+      renderReminders();
+    }
+  } catch {
+    // Background availability must not erase an actionable mutation error or a draft.
+  } finally {
+    clearTimeout(timeout);
+    reminderRefreshInFlight = false;
+  }
+}
+
 function sessionElapsed(session) {
   const extra = session.state === 'RUNNING' ? Math.floor((performance.now() - focusRenderEpoch) / 1000) : 0;
   return session.elapsed_seconds + extra;
@@ -438,5 +467,10 @@ setInterval(() => {
     if (session && timer) timer.textContent = duration(sessionElapsed(session));
   }
 }, 1000);
+
+setInterval(refreshReminders, 15000);
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden) refreshReminders();
+});
 
 run(fetchState);

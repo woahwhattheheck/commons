@@ -17,7 +17,7 @@ This is the published recovery of Hive demand `bm-hive-20260908-018`. Original A
 - replace the workspace from a verified Paceboard backup;
 - delete individual items or erase all local user content.
 
-The browser can optionally display an operating-system notification **only after the user grants browser permission and only while the local app is open**. There is no external notification provider.
+The browser can optionally display an operating-system notification **only after the user grants browser permission and only while the local app is open**. There is no external notification provider. The visible page checks its current workspace reminders about every 15 seconds and when returning to the tab, so a reminder becoming due appears without a reload. This background refresh updates only reminders and preserves unsaved fields and keyboard focus. A changed workspace revision or restarted server still uses the ordinary full refresh path.
 
 ## Run
 
