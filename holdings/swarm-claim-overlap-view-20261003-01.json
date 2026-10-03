@@ -3,9 +3,9 @@
   "key": "swarm-claim-overlap-view-20261003-01",
   "holder": "workspace-dbed016667b3",
   "repository": "woahwhattheheck/commons",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T06:34:56Z",
-  "heartbeat_at": "2026-10-03T07:59:01Z",
+  "heartbeat_at": "2026-10-03T08:02:30Z",
   "ttl_s": 1800,
-  "note": "SWARM-CLAIM-OVERLAP-VIEW-20261003-01 continuation: _as_text and guide only. Show supplied-message coverage, page state and filters for compact lookups, including zero matches. No parser or projection changes."
+  "note": "SWARM-CLAIM-OVERLAP-VIEW-20261003-01 completed: main implementation PR30335, operation details PR30427, and coverage output PR30532 merged. Coverage merge 7157dc0e416d94be70cd57102b21081c2c706d70; exact module/guide readback matched main 77ee3d529a54a2d31d432fccad840b4e4d748834. Custody released."
 }
