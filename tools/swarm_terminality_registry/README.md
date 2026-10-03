@@ -28,6 +28,8 @@ python -m tools.swarm_terminality_registry.cli compile snapshot.json out
 python -m tools.swarm_terminality_registry.cli verify snapshot.json out.report.json out.report.md out.receipt.json
 ```
 
-Outputs are create-exclusive mode `0600`. Inputs are bounded regular files opened with `O_NOFOLLOW` when available.
+Outputs are create-exclusive mode `0600`. Each file is fully written and synced in a private sibling staging directory before an exclusive hard link publishes its final name. A handled write failure removes that staging directory and leaves the failed destination available for retry; existing files and symlinks remain unchanged. The destination filesystem must support hard links.
+
+Publication is per file. If a later output fails after an earlier file has completed, retain the completed file and use a new output prefix for another full compile. Inputs are bounded regular files opened with `O_NOFOLLOW` when available.
 
 `example.json` is synthetic and demonstrates merged, superseded, active, recovery-eligible, and incomplete-evidence items.

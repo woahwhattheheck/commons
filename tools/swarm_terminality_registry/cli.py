@@ -5,6 +5,7 @@ import argparse
 import os
 import stat
 import sys
+import tempfile
 from pathlib import Path
 
 from .core import RegistryError, compile_snapshot, load_strict_json, verify_bundle
@@ -34,15 +35,23 @@ def _write_exclusive(path: Path, text: str) -> None:
     flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
     if hasattr(os, "O_NOFOLLOW"):
         flags |= os.O_NOFOLLOW
-    fd = os.open(path, flags, 0o600)
-    try:
-        data = text.encode("utf-8")
-        offset = 0
-        while offset < len(data):
-            offset += os.write(fd, data[offset:])
-        os.fsync(fd)
-    finally:
-        os.close(fd)
+    with tempfile.TemporaryDirectory(prefix=".terminality-", dir=path.parent) as directory:
+        staged = Path(directory) / "output"
+        fd = os.open(staged, flags, 0o600)
+        try:
+            data = text.encode("utf-8")
+            offset = 0
+            while offset < len(data):
+                written = os.write(fd, data[offset:])
+                if written == 0:
+                    raise OSError("report output write did not advance")
+                offset += written
+            os.fsync(fd)
+        finally:
+            os.close(fd)
+        # The sibling staging directory keeps publication on one filesystem.
+        # link creates the final name exclusively, including for symlink targets.
+        os.link(staged, path)
 
 
 def main(argv=None) -> int:
