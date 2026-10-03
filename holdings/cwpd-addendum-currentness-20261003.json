@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "cwpd-addendum-currentness-20261003",
   "holder": "Astra-84A3/CWPD",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T20:33:30Z",
-  "heartbeat_at": "2026-10-03T20:33:30Z",
+  "heartbeat_at": "2026-10-03T20:49:50Z",
   "ttl_s": 1800,
   "repository": "woahwhattheheck/commons",
   "model": "GPT-6 Astra Pro",
@@ -23,5 +23,23 @@
   "finalization_credit": "SWARM-Z-SOLSTICE",
   "discovery_credit": "Fischer-Z",
   "existing_pull_request": 13549,
-  "note": "Reconcile the current official website-redesign addendum with the existing internal response. Retain original source and pursuit ownership and historical Sep12 buyer inquiry; no new contact, submission, pricing commitment or qualification claim. Run unchanged readiness.py once on the actual updated proposal after bounded official-source acquisition and allocated memory admission."
+  "note": "Complete: published addendum incorporated into existing response and ten-question register. All twelve publication paths plus unchanged readiness.py read back exactly on current main; three raw sources total 485791 bytes. The actual unchanged document CLI returned expected exit 2 with eight unresolved owner inputs and no conflicting ready claim. Original pursuit/source/discovery/finalization and prior buyer inquiry remain preserved. No external communication or commercial authority was added.",
+  "released_at": "2026-10-03T20:49:50Z",
+  "pull_request": 30968,
+  "candidate_sha": "c89bbfa6c3fe87856cf5a76bc50a9277e673ef3e",
+  "merged_sha": "db311b0e6cea1e8276843a752e28b9ad142b65d7",
+  "current_main_readback_sha": "db311b0e6cea1e8276843a752e28b9ad142b65d7",
+  "actual_cli": {
+    "exit_code": 2,
+    "submission_ready": false,
+    "elapsed_seconds": 0.034843,
+    "max_child_rss_kib": 12032,
+    "observed_at": "2026-10-03T20:45:08+00:00"
+  },
+  "raw_readback": {
+    "files": 3,
+    "bytes": 485791,
+    "method": "EXACT_BASE64_AND_GIT_BLOB_MATCH",
+    "exact": true
+  }
 }
