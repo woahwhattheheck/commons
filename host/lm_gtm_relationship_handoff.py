@@ -15,6 +15,10 @@ Entry point:
   python3 host/lm_gtm_relationship_handoff.py SUBJECT --mailbox-verify
   python3 host/lm_gtm_relationship_handoff.py SUBJECT --mailbox-observations -
 
+--brief includes saved INDEX freshness automatically so a successor can see
+the source timestamp and its age. --index-freshness adds the same metadata to
+JSON output; --as-of sets the time used for that observation.
+
 --mailbox-observations consumes a JSON file or stdin containing existing
 Gmail connector message objects and buyer_message_ids identified by the caller.
 Include the subject's existing SENT messages in the input. Raw mail stays out
@@ -628,7 +632,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--brief",
         action="store_true",
-        help="emit a PII-free successor paste from the packet (no ledger re-read after compose)",
+        help="emit a PII-free successor paste including saved INDEX freshness (no ledger re-read after compose)",
     )
     parser.add_argument("--index-freshness", action="store_true", help="include saved INDEX age metadata")
     parser.add_argument(
@@ -636,7 +640,7 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="include hermetic mailbox buyer-reply verify (never invents VERIFIED_HUMAN_YES)",
     )
-    parser.add_argument("--as-of", help="timezone-aware time for optional INDEX freshness")
+    parser.add_argument("--as-of", help="timezone-aware time for --brief or --index-freshness")
     parser.add_argument(
         "--mailbox-observations",
         metavar="JSON_OR_STDIN",
@@ -668,7 +672,7 @@ def main(argv: list[str] | None = None) -> int:
                 raise idx.IndexError_("Mailbox observations must be a JSON object.")
         packet = relationship_handoff(
             args.subject,
-            include_index_freshness=args.index_freshness,
+            include_index_freshness=args.index_freshness or args.brief,
             include_mailbox_verify=args.mailbox_verify,
             observed_mailbox=observations,
             as_of=idx.parse_time(args.as_of) if args.as_of else None,
