@@ -262,6 +262,10 @@ class Broker:
             db.execute("DELETE FROM flight WHERE expires<=?", (now,))
             row = db.execute("SELECT fetched,payload FROM cache WHERE namespace=? AND key=?", (self.namespace, key)).fetchone()
             if row and max_age_seconds > 0 and 0 <= now - row["fetched"] <= max_age_seconds:
+                # The selected bytes belong to this completed read. Release the
+                # write transaction before decoding so independent cache readers
+                # do not serialize on JSON parsing.
+                db.commit()
                 return self.envelope("CACHED", fetched_at=row["fetched"], age_seconds=now-row["fetched"], data=loads(row["payload"]))
             flight = db.execute("SELECT expires FROM flight WHERE namespace=? AND key=?", (self.namespace, key)).fetchone()
             if flight:
