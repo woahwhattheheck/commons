@@ -33,8 +33,10 @@ scripts, stylesheets, fonts, analytics, translation/model calls, or storefront c
 3. Edit only `name`, `description`, `ingredients`, and `specifications` on the target
    side. SKU, unit, price, currency, source ingredients/specifications, and every other
    protected commerce/source field are never editable through the desk.
-4. Adjust glossary or locale display settings when needed. The canonical core validates
-   both before the workspace is accepted.
+4. Adjust glossary or locale display settings when needed. **Validate & apply settings**
+   also collects and validates the visible target text before refreshing the editor, so
+   applying settings preserves targets entered since the last validation. The canonical
+   core validates both settings before the workspace is accepted.
 5. Use **Build pack**. The canonical core decides readiness:
    - unresolved/missing/unsafe locale text => `DRAFT-REVIEW-REQUIRED` ZIP and review issues;
    - zero review issues => `STORE-READY` ZIP.
@@ -42,6 +44,7 @@ scripts, stylesheets, fonts, analytics, translation/model calls, or storefront c
 6. Save the portable workspace at any time and reopen it later. Reopen revalidates the
    catalog digest, SKU set, core source fingerprint, every source snapshot, glossary,
    locale profile, and translation schema before edits or publication continue.
+   Status and pack digests wrap on narrow screens without shortening their text.
 7. For controlled post-review edits, use a revision ID plus exact `sku`, target `field`,
    expected old value, new value, and reason. The unchanged core emits the revision
    receipt and rejects stale expected values, no-ops, duplicates, protected fields, and

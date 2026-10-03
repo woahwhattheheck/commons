@@ -13,7 +13,7 @@ h1{margin:.2rem 0} .sub{opacity:.76;margin:0 0 18px}
 label{display:block;font-weight:650;margin:8px 0 4px} input,textarea,button{font:inherit}
 input[type=text],textarea{width:100%;padding:8px;border:1px solid #7778;border-radius:7px;background:transparent}
 textarea{min-height:120px;resize:vertical} button{padding:8px 12px;border-radius:8px;border:1px solid #7778;cursor:pointer}
-.actions{display:flex;flex-wrap:wrap;gap:8px}.status{white-space:pre-wrap;padding:10px;border-radius:8px;background:#7771}
+.actions{display:flex;flex-wrap:wrap;gap:8px}.status{white-space:pre-wrap;overflow-wrap:anywhere;padding:10px;border-radius:8px;background:#7771}
 .product{border:1px solid #7776;border-radius:10px;padding:12px;margin:10px 0}
 .compare{display:grid;grid-template-columns:1fr 1fr;gap:10px}.source{white-space:pre-wrap;padding:8px;background:#7771;border-radius:6px;min-height:2.5em}
 .field-title{font-size:.86rem;opacity:.72}.badge{display:inline-block;padding:3px 7px;border:1px solid #7778;border-radius:999px;font-size:.8rem}
@@ -157,7 +157,7 @@ $("openBtn").onclick=async()=>{
     const data=await api("/api/open",{workspace:parseJson(await f.text(),"Workspace JSON")});workspace=data.workspace;renderWorkspace();
   }catch(e){note("ERROR: "+e.message)}
 };
-$("settingsBtn").onclick=async()=>{try{const d=await api("/api/settings",{workspace,glossary:parseJson($("glossary").value,"Glossary JSON"),locale_profile:parseJson($("profile").value,"Profile JSON")});workspace=d.workspace;renderWorkspace();note("Locale settings validated.")}catch(e){note("ERROR: "+e.message)}};
+$("settingsBtn").onclick=async()=>{try{await syncEdits();note("Locale settings and visible target edits validated.")}catch(e){note("ERROR: "+e.message)}};
 $("syncBtn").onclick=async()=>{try{await syncEdits();note("Target edits validated; protected source remains bound.")}catch(e){note("ERROR: "+e.message)}};
 $("saveBtn").onclick=async()=>{try{await syncEdits();const d=await api("/api/export",{workspace});downloadBytes(b64ToBytes(d.workspace_b64),"catalog-workspace-"+workspace.translations.target_locale+".json","application/json");note("Portable workspace exported · SHA-256 "+d.sha256)}catch(e){note("ERROR: "+e.message)}};
 $("publishBtn").onclick=async()=>{try{await syncEdits();const d=await api("/api/publish",{workspace});renderResult(d);note(d.ready?"Canonical publisher reports STORE-READY.":"Canonical publisher reports REVIEW REQUIRED; draft only.")}catch(e){note("ERROR: "+e.message)}};
