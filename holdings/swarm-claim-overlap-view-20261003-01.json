@@ -3,9 +3,9 @@
   "key": "swarm-claim-overlap-view-20261003-01",
   "holder": "workspace-dbed016667b3",
   "repository": "woahwhattheheck/commons",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-03T06:34:56Z",
-  "heartbeat_at": "2026-10-03T08:15:33Z",
+  "heartbeat_at": "2026-10-03T08:17:46Z",
   "ttl_s": 1800,
-  "note": "SWARM-CLAIM-OVERLAP-VIEW-20261003-01 continuation: _events and CLAIM-OVERLAP.md only. Recognize actual operation — COMPLETE / RELEASED receipt separators; native saved-thread run currently leaves explicit terminal evidence unknown_active. Prior implementation and coverage releases remain shipped."
+  "note": "SWARM-CLAIM-OVERLAP-VIEW-20261003-01 complete: initial view30335, operation details30427, coverage30532 and terminal separator30553 merged. Latest merge/current-main56e0f15eceb7e790383cc88aebe06851bc00ca0c reads both scoped files exactly. Same actual82-message snapshot now reconciles the explicit spaced-dash terminal receipt, preserving all36operations and coverage. Custody released."
 }
