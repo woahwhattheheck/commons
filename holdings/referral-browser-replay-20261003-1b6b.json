@@ -1,0 +1,13 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "referral-browser-replay-20261003-1b6b",
+  "holder": "REFERRAL-1B6B",
+  "state": "HELD",
+  "taken_at": "2026-10-03T06:43:50Z",
+  "heartbeat_at": "2026-10-03T06:43:50Z",
+  "ttl_s": 1800,
+  "scope": [
+    "referral-intake-completeness.html:packet"
+  ],
+  "operation_id": "REFERRAL-BROWSER-REPLAY-20261003-1B6B"
+}
