@@ -414,6 +414,25 @@ def _summary(manifest, output):
     }
 
 
+def capture_summary(manifest, output, *, include_response_metadata=False):
+    """Summarize retained observations without requests, body reads, or writes."""
+    if not isinstance(include_response_metadata, bool):
+        raise CaptureInputError("include_response_metadata must be a boolean")
+    summary = _summary(manifest, output)
+    if include_response_metadata:
+        for item, record in zip(summary["sources"], manifest["sources"]):
+            item["response_metadata"] = {
+                "requested_url": record.get("requested_url"),
+                "response_url": record.get("response_url"),
+                "started_at": record.get("started_at"),
+                "completed_at": record.get("completed_at"),
+                "elapsed_seconds": record.get("elapsed_seconds"),
+                "locations": list(record.get("headers", {}).get("Location", [])),
+                "location_truncation": record.get("truncated_header_lengths", {}).get("Location"),
+            }
+    return summary
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--sources", required=True, help="bounded JSON request specification")
@@ -421,6 +440,8 @@ def main(argv=None):
     parser.add_argument("--max-source-bytes", type=int, default=8388608)
     parser.add_argument("--max-total-bytes", type=int, default=8388608)
     parser.add_argument("--io-timeout", type=float, default=20.0)
+    parser.add_argument("--response-metadata", action="store_true",
+                        help="include retained response URLs, times and bounded Location metadata in stdout")
     args = parser.parse_args(argv)
     try:
         spec = _read_spec(args.sources)
@@ -437,7 +458,9 @@ def main(argv=None):
     except (OSError, ValueError) as exc:
         print("public_http_capture: " + type(exc).__name__ + ": " + str(exc), file=sys.stderr)
         return 1
-    print(json.dumps(_summary(manifest, args.out), ensure_ascii=False, allow_nan=False))
+    print(json.dumps(capture_summary(
+        manifest, args.out, include_response_metadata=args.response_metadata,
+    ), ensure_ascii=False, allow_nan=False))
     if not manifest["capture_complete"]:
         print("public_http_capture: incomplete capture; inspect acquisition.json", file=sys.stderr)
         return 3
