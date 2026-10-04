@@ -535,3 +535,83 @@ creation path, create a replacement PR, force the branch, or infer successful
 maintainer checks from source publication. Reconciliation can finish a known
 source/readback outcome; it cannot establish deployment, sponsor acceptance or
 test execution.
+
+## Observe only the remaining contribution heads
+
+`observeGitHubContributionHead` reads the current PR and original branch ref
+without repeating an accepted immutable source comparison. Use it when the
+caller retains the earlier commit/tree/full-file verification and write result
+and needs only these remaining observations. It is also a read-only view of a
+specified existing PR/branch; it never infers that any prior publication occurred.
+
+```javascript
+const {observeGitHubContributionHead} = require('./host/connected_github_publish.cjs');
+const observation = await observeGitHubContributionHead(tools, {
+  repository_full_name: retainedContribution.repository_full_name,
+  pull_request_repository_full_name: retainedContribution.pull_request_repository_full_name,
+  pull_request_number: retainedContribution.pull_request_number,
+  branch_name: retainedContribution.branch_name,
+  base_branch: retainedContribution.base_branch,
+  expected_commit_sha: retainedContribution.commit_sha,
+  expected_base_sha: retainedContribution.expected_base_sha,
+}, {onProgress: state => retainHeadObservation(state)});
+
+retainHeadObservation(observation);
+// Keep the native response bodies privately; print only the needed projection.
+show({
+  status: observation.status,
+  source_verification: observation.source_verification,
+  heads_agree: observation.heads_agree,
+  base_changed: observation.base_changed,
+  pull_request: observation.observations.pull_request,
+  branch_ref: observation.observations.branch_ref,
+  errors: observation.errors,
+});
+```
+
+All seven target fields are required. `expected_commit_sha` is the prepared
+commit whose current visibility is being checked, rather than the old
+`expected_head_sha` used to authorize an advancement. The repositories, PR
+number, branches and lowercase 40-character SHAs are validated before any
+provider call. Extra target fields, including source files or retained writer
+state, are refused so they cannot be mistaken for evidence this reader checked.
+
+The reader starts exactly two concurrent native `fetch` calls after validation:
+the upstream PR resource and the contribution repository's branch-ref resource.
+It reuses the publisher's native-error decoder and contribution PR identity
+checks. It requires the ref response to identify the requested short branch
+and a commit object. Both outcomes are consumed even when one fails.
+
+| Status | Meaning |
+|---|---|
+| `expected_head_observed` | Both valid resource responses identify `expected_commit_sha`. |
+| `not_converged` | Both responses are valid, but at least one identifies another commit. Their actual SHAs are retained; no cause is inferred. |
+| `incomplete` | At least one fetch, response decode, or resource-identity check failed. Successful independent observations and per-resource errors remain available. |
+
+`source_verification` and `publication_verification` are always `not_performed`;
+`writes` is always zero. The function does not return the full publisher's
+success status, alter the retained publication record, or prove commit
+parentage, tree contents, file bytes, authorization, CI, merge or acceptance.
+A matching head can accompany a closed/merged PR or a changed base. The observed
+PR state and `base_changed` flag remain explicit; base movement does not change
+the meaning of the head comparison. The base flag is retained even when only
+the PR read succeeds; agreement flags remain null until both resources are valid.
+
+`requests` records the two exact URLs. `responses.pull_request` and
+`responses.branch_ref` preserve each original returned tool envelope, including
+a returned native error; a thrown call has no invented response. `observations`
+contains only validated resource identities, and `errors` records the failed
+resource separately. The raw PR response can contain a long body, so two calls
+are an operation-count bound, not a response-byte limit. `snapshot: false`
+records that independent GitHub reads are not an atomic snapshot.
+
+Only `options.bindings.fetch` and `options.onProgress` are supported. There is
+no writer binding, retry, sleep, poll, local process or new timeout policy;
+native connector deadlines apply. Invalid targets/options or a missing binding
+throw `GitHubPublishError` with zero-call progress. Read/identity failures return
+`incomplete` after both outcomes settle. Progress callback errors are retained
+without changing the read result.
+
+Keep using `reconcileGitHubContribution` when the immutable source comparison
+itself is missing, uncertain, or needs to be established again. Its complete
+source/tree reconciliation remains unchanged.

@@ -995,8 +995,124 @@ async function reconcileGitHubContribution(tools, change, previousProgress, opti
   return contributionOperation(tools, change, options, true, previousProgress);
 }
 
+
+function validateContributionHeadTarget(input) {
+  object(input, 'head observation target');
+  const keys = ['repository_full_name', 'pull_request_repository_full_name',
+    'pull_request_number', 'branch_name', 'base_branch',
+    'expected_commit_sha', 'expected_base_sha'];
+  for (const key of Object.keys(input)) {
+    if (!keys.includes(key)) throw new TypeError('Unsupported head observation field: ' + key);
+  }
+  const result = {};
+  for (const key of ['repository_full_name', 'pull_request_repository_full_name']) {
+    const value = text(input[key], key);
+    if (!/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(value)
+        || value.split('/').some(part => part === '.' || part === '..')) {
+      throw new TypeError(key + ' must be owner/repository');
+    }
+    result[key] = value;
+  }
+  if (!Number.isSafeInteger(input.pull_request_number) || input.pull_request_number < 1) {
+    throw new TypeError('pull_request_number must identify the existing pull request');
+  }
+  return {...result, pull_request_number: input.pull_request_number,
+    branch_name: branch(input.branch_name, 'branch_name'),
+    base_branch: branch(input.base_branch, 'base_branch'),
+    expected_commit_sha: sha(input.expected_commit_sha, 'expected_commit_sha'),
+    expected_base_sha: sha(input.expected_base_sha, 'expected_base_sha')};
+}
+
+/** Observe two current head resources; never verify source or repeat a write. */
+async function observeGitHubContributionHead(tools, target, options = {}) {
+  const progress = {operation: 'contribution_head_observation', status: 'incomplete',
+    stage: 'validate', source_verification: 'not_performed',
+    publication_verification: 'not_performed', snapshot: false, writes: 0,
+    calls: {}, requests: {}, responses: {}, observations: {}, errors: {},
+    expected_head_observed: null, heads_agree: null, base_changed: null,
+    progress_callback_errors: []};
+  let announce = async () => {};
+  try {
+    const spec = validateContributionHeadTarget(target);
+    object(options, 'head observation options');
+    for (const key of Object.keys(options)) {
+      if (!['bindings', 'onProgress'].includes(key)) {
+        throw new TypeError('Unsupported head observation option: ' + key);
+      }
+    }
+    if (options.bindings !== undefined) {
+      object(options.bindings, 'head observation bindings');
+      for (const key of Object.keys(options.bindings)) {
+        if (key !== 'fetch') throw new TypeError('Only the fetch binding is used for head observation');
+      }
+    }
+    const binding = text(options.bindings?.fetch ?? 'mcp__codex_apps__github_fetch', 'fetch binding');
+    if (typeof tools?.[binding] !== 'function') {
+      throw new Error('Binding not present: ' + binding + '. Repeat discovery alongside independent work.');
+    }
+    if (options.onProgress !== undefined && typeof options.onProgress !== 'function') {
+      throw new TypeError('onProgress must be a function');
+    }
+    progress.target = spec;
+    announce = async () => {
+      if (options.onProgress === undefined) return;
+      try { await options.onProgress(JSON.parse(JSON.stringify(progress))); }
+      catch (error) { progress.progress_callback_errors.push(String(error.message ?? error)); }
+    };
+    progress.requests.pull_request = {url: 'https://api.github.com/repos/'
+      + spec.pull_request_repository_full_name + '/pulls/' + spec.pull_request_number};
+    progress.requests.branch_ref = {url: 'https://api.github.com/repos/'
+      + spec.repository_full_name + '/git/ref/heads/'
+      + spec.branch_name.split('/').map(encodeURIComponent).join('/')};
+    progress.stage = 'read_current_head';
+    await announce();
+    const names = ['pull_request', 'branch_ref'];
+    const outcomes = await Promise.allSettled(names.map(async name => {
+      progress.calls.fetch = (progress.calls.fetch ?? 0) + 1;
+      const response = await tools[binding](progress.requests[name]);
+      progress.responses[name] = response;
+      const payload = unpack(response, 'fetch');
+      const data = typeof payload.content === 'string'
+        ? object(JSON.parse(payload.content), 'GitHub resource') : object(payload, 'GitHub resource');
+      if (name === 'pull_request') return contributionPR(data, spec);
+      if (data.ref !== 'refs/heads/' + spec.branch_name || data.object?.type !== 'commit') {
+        throw new Error('The reference response does not identify the requested branch');
+      }
+      return {ref: data.ref, type: 'commit', sha: sha(data.object.sha, 'Contribution branch ref')};
+    }));
+    for (let index = 0; index < outcomes.length; index++) {
+      const name = names[index], outcome = outcomes[index];
+      if (outcome.status === 'fulfilled') {
+        progress.observations[name] = outcome.value;
+      } else {
+        const error = outcome.reason;
+        progress.errors[name] = {message: String(error?.message ?? error),
+          ...(error?.tool_error ? {tool_error: error.tool_error} : {})};
+      }
+    }
+    if (progress.observations.pull_request) {
+      progress.base_changed = progress.observations.pull_request.base_sha !== spec.expected_base_sha;
+    }
+    if (Object.keys(progress.errors).length === 0) {
+      const pr = progress.observations.pull_request;
+      const ref = progress.observations.branch_ref;
+      progress.heads_agree = pr.head_sha === ref.sha;
+      progress.expected_head_observed = pr.head_sha === spec.expected_commit_sha
+        && ref.sha === spec.expected_commit_sha;
+      progress.status = progress.expected_head_observed ? 'expected_head_observed' : 'not_converged';
+    }
+    progress.stage = 'complete';
+    await announce();
+    return progress;
+  } catch (error) {
+    progress.error = String(error.message ?? error);
+    await announce();
+    throw new GitHubPublishError(progress.error, progress, error);
+  }
+}
+
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = {GitHubPublishError, publishGitHubChange, continueGitHubMerge,
-    advanceGitHubContribution, reconcileGitHubContribution,
+    advanceGitHubContribution, reconcileGitHubContribution, observeGitHubContributionHead,
     inspectReadback, resolveReadback, inspectToolError};
 }
