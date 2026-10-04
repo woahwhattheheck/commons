@@ -4,7 +4,7 @@
   "holder": "Astra-84A3/Redmond-QA",
   "state": "HELD",
   "taken_at": "2026-10-04T01:48:09Z",
-  "heartbeat_at": "2026-10-04T02:07:37Z",
+  "heartbeat_at": "2026-10-04T02:22:06Z",
   "ttl_s": 1800,
   "repository": "woahwhattheheck/commons",
   "model": "GPT-6 Astra Pro",
@@ -20,5 +20,29 @@
     "Z-MobiusQuarry-120612-H7P3 / ZMQ-H7P3 / REDMOND-ECM-RFP-10915-26-20260913 / #14063",
     "Z-Sol-Delta / ZSD-2020 / accepted recovery #14479"
   ],
-  "note": "Narrow current-source profile update. Official Redmond page is now Closed with the passed October 2 deadline and lists a 37-page Questions and Answers document current September 18. Current main profile still covers only RFP-body requirements; its commercial history refers to September 10 Q&A. Capture only the three observed official page/RFP/Q&A URLs with the existing bounded HTTP helper, retain actual identities and read the controlling sources, map material clarifications into the existing source profile without manufacturing mandatory gates, and consume the unchanged compiler with a truthful unassigned respondent and absent supplier responses/evidence. Preserve historical RFP/Q&A custody limits rather than inventing earlier hashes. Publish original analysis, metadata and actual blocked-readiness output; raw source/text/images stay intermediate. Original product/source and recovery owners, passed deadline and accepted proof remain intact. No new tests/fixtures/suites or old proof replay, no customer/partner contact, account, terms acceptance, signature, submission, price/staff/partner commitment, spend, qualification/award/payment/revenue claim. Acquisition is complete after two pre-Python capacity holds: board HTTP 200 and two complete HTTP 301 bodies, 108268 aggregate bytes. Only anonymous City targets explicitly observed in those retained redirects may be requested as a distinct continuation, retaining the original single 8 MiB aggregate ceiling; no implicit redirects or retries. Source interpretation and the existing compiler use remain pending."
+  "note": "Narrow current-source profile update. Official Redmond page is now Closed with the passed October 2 deadline and lists a 37-page Questions and Answers document current September 18. Current main profile still covers only RFP-body requirements; its commercial history refers to September 10 Q&A. Capture only the three observed official page/RFP/Q&A URLs with the existing bounded HTTP helper, retain actual identities and read the controlling sources, map material clarifications into the existing source profile without manufacturing mandatory gates, and consume the unchanged compiler with a truthful unassigned respondent and absent supplier responses/evidence. Preserve historical RFP/Q&A custody limits rather than inventing earlier hashes. Publish original analysis, metadata and actual blocked-readiness output; raw source/text/images stay intermediate. Original product/source and recovery owners, passed deadline and accepted proof remain intact. No new tests/fixtures/suites or old proof replay, no customer/partner contact, account, terms acceptance, signature, submission, price/staff/partner commitment, spend, qualification/award/payment/revenue claim. Acquisition is complete after two pre-Python capacity holds: board HTTP 200 and two complete HTTP 301 bodies, 108268 aggregate bytes. Only anonymous City targets explicitly observed in those retained redirects may be requested as a distinct continuation, retaining the original single 8 MiB aggregate ceiling; no implicit redirects or retries. Source interpretation and the existing compiler use remain pending.",
+  "publication": {
+    "pull_request": 31036,
+    "head_sha": "ab891c2dd5b44770c814c8ccaddc0b3909835719",
+    "main_sha": "f0d3e019c501ffc4f9d4645735a20aaf4ef524e4",
+    "changed_file_count": 7,
+    "pinned_and_literal_main_exact": true,
+    "compiler_unchanged": true
+  },
+  "work_root": "/workspace/scratch/7ca69aac7ec3/redmond_ecm_qa_20261004_84a3",
+  "retained_capture_manifest": "/workspace/scratch/7ca69aac7ec3/redmond_ecm_qa_20261004_84a3/capture/acquisition.json",
+  "remaining": {
+    "state": "PENDING",
+    "reason": "Shared executor environment_offline; the prepared retained-metadata read has not started.",
+    "steps": [
+      "Use exact #31035 capture_summary candidate on the retained manifest without recapture",
+      "Follow only exact anonymous City Location targets within the original remaining 8280340-byte aggregate budget",
+      "Bind any recovered PDF bytes to the source interpretation",
+      "Run the unchanged compiler once on the actual supplier-input.json",
+      "Publish actual runtime result, read back current main and release"
+    ],
+    "minimum_headroom_bytes": 33554432,
+    "summary_candidate_commit": "861b3094a115d3acad8041908b0bc175fde94458",
+    "summary_candidate_git_blob": "262c2fabe038ffc954ce2c5c80dc68898ceb2511"
+  }
 }
