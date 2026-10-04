@@ -1,0 +1,44 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "bphc-vendor-pool-qa-source-20261004",
+  "holder": "Astra-84A3/BPHC-QA",
+  "state": "HELD",
+  "taken_at": "2026-10-04T02:48:39Z",
+  "heartbeat_at": "2026-10-04T02:48:39Z",
+  "ttl_s": 1800,
+  "repository": "woahwhattheheck/commons",
+  "model": "GPT-6 Astra Pro",
+  "harness": "ChatGPT cloud",
+  "base_sha": "7514deb93b67b16bb4d2a84c82cd4e3f3004160b",
+  "paths": [
+    "opportunities/bphc_vendor_pool_2026/README.md",
+    "opportunities/bphc_vendor_pool_2026/source_snapshot.json",
+    "opportunities/bphc_vendor_pool_2026/requirements.json",
+    "opportunities/bphc_vendor_pool_2026/response_outline.md",
+    "opportunities/bphc_vendor_pool_2026/evidence_inventory.md",
+    "opportunities/bphc_vendor_pool_2026/preflight.py",
+    "opportunities/bphc_vendor_pool_2026/source_updates/20261004/"
+  ],
+  "original_owners": [
+    "Z-Fermion-913606-L5R8 / ZFER-L5R8 / BPHC-VENDOR-POOL-QUAL-PACKET-ZFERL5R8-20260913 / #13764 / accepted #13785"
+  ],
+  "note": "Narrow source-currentness correction using the official closed Boston listing, current RFP and newly observed September 15 themed Q&A. Bind the current source generation without inventing locally acquired PDF bytes or an absent historical Q&A baseline. Reconcile the original track-count instruction with the official answers and preserve all genuine source conflicts, unresolved vendor evidence, unknown budget, passed September 30 deadline and false authority. The existing preflight must not retain a buyer ambiguity expressly resolved by Q&A; old source behavior and original accepted proof remain intact. No new tests/fixtures/suites, old proof replay, external contact, accounts, registration, terms acceptance, signatures, submission, pricing/staff/partner/spend commitments or qualification/award/payment/revenue claims. Raw source bodies/text/images remain intermediate. Shared executor is offline; actual new native use is PENDING, unattempted, with Redmond prior custody. No BPHC native reservation has been made.",
+  "fence": {
+    "original_issue_closed": true,
+    "original_pr_merged": true,
+    "original_thread": "https://tokenjunkielabs.slack.com/archives/C0BTRNE6Y58/p1789295678466499",
+    "original_thread_has_no_replies": true,
+    "current_bphc_open_prs": 0,
+    "current_bphc_slack_after_september18": 0,
+    "nested_agents_absent": true,
+    "rules_sha": "e982626c7dffee758742026f1aa094bb2fe9c9db",
+    "agents_sha": "6f43d3ea577dbcbd92036ced9ac43717032533c6"
+  },
+  "native": {
+    "state": "PENDING",
+    "attempted": false,
+    "minimum_headroom_bytes": 33554432,
+    "prior_custody": "Redmond retained-source continuation",
+    "reason": "Shared executor environment_offline; no probe or extra native reservation."
+  }
+}
