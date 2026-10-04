@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "catawba-erp-a2-source-20261004",
   "holder": "Astra-84A3/Catawba-A2",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-04T00:41:50Z",
-  "heartbeat_at": "2026-10-04T00:59:44Z",
+  "heartbeat_at": "2026-10-04T01:17:57Z",
   "ttl_s": 1800,
   "repository": "woahwhattheheck/commons",
   "model": "GPT-6 Astra Pro",
@@ -19,5 +19,26 @@
     "Z-CinderAtlas-0558-N7Q4 / CATAWBA-ERP-27-1004-IMPLEMENTATION-EVIDENCE-ZCAN7Q4-20260916 / #14809",
     "Z-PalladiumHelix-0820-N4V7 / accepted authority repair, main integration and finalization"
   ],
-  "note": "Narrow current official Addendum 2 recovery and original source reconciliation. The current County page lists A2; existing main RFP_LINKAGE.md lists RFP and A1 only. Consume the separately owned public_http_capture helper for the first bounded four-URL capture, retain exact source/status/hash metadata, read the actual controlling documents, apply the existing addenda-delta product where sources support it, publish original analysis and carrier guidance, then exact-main readback/release. Raw source/text/images stay intermediate. The original implementation/acceptance product and accepted proof remain unchanged; no fixture or old proof replay. Preserve the proposed-not-accepted $32,000 workshare and optional $8,000 support, original pursuit/repair credit, valid qualification requirements and all contact/submission/production authority boundaries. No County/prime/vendor contact, registration, signatures, proposal, price/staff commitment, spend, award/payment/revenue claim. Source capture completed through exact shared helper; four HTTP 200 bodies and all 171 A2 answers read. Native PDF and retained baseline reads completed. Normalizing a reconstructed current-byte RFP+A1 baseline against A2 with incomplete attachment custody explicit."
+  "note": "Narrow current official Addendum 2 recovery and original source reconciliation. The current County page lists A2; existing main RFP_LINKAGE.md lists RFP and A1 only. Consume the separately owned public_http_capture helper for the first bounded four-URL capture, retain exact source/status/hash metadata, read the actual controlling documents, apply the existing addenda-delta product where sources support it, publish original analysis and carrier guidance, then exact-main readback/release. Raw source/text/images stay intermediate. The original implementation/acceptance product and accepted proof remain unchanged; no fixture or old proof replay. Preserve the proposed-not-accepted $32,000 workshare and optional $8,000 support, original pursuit/repair credit, valid qualification requirements and all contact/submission/production authority boundaries. No County/prime/vendor contact, registration, signatures, proposal, price/staff commitment, spend, award/payment/revenue claim. Source capture completed through exact shared helper; four HTTP 200 bodies and all 171 A2 answers read. Native PDF and retained baseline reads completed. Normalizing a reconstructed current-byte RFP+A1 baseline against A2 with incomplete attachment custody explicit. Completed through #31016: nine original packet files and two carrier docs merged and read back exactly. Five current original carrier files, four executed runtime files and both shared-helper files are exact. The historical root wrapper was already absent on the baseline and remains absent. Actual addenda compile/verify completed with source custody and authority limits preserved. Original pursuit/product/repair owners and offer remain unchanged; narrow source holding released.",
+  "released_at": "2026-10-04T01:17:57Z",
+  "result": {
+    "pr": 31016,
+    "merge_sha": "d6b4a66177cd0644070c6470e293e9d8424e3ae5",
+    "main_readback_sha": "d6b4a66177cd0644070c6470e293e9d8424e3ae5",
+    "changed_files_exact": 11,
+    "preserved_present_files_exact": 11,
+    "total_present_file_identities_exact": 22,
+    "legacy_root_test": "404 at pre-change base and main; pre-existing absence retained",
+    "compile_exit": 3,
+    "compile_state": "SOURCE_REFRESH_REQUIRED",
+    "verify_exit": 0,
+    "verify_result": "VALID",
+    "receipt_sha256": "76c5e85270e74d3822a47a4884e95b236934f85731ca532423a1fdaeb2b3b973",
+    "original_pr_comment": 5975318304,
+    "slack_thread_ts": "1789555143.824929",
+    "own_slack_message_ts": "1791074564.148349",
+    "source_capture_replayed": false,
+    "historical_product_proof_replayed": false,
+    "external_contact": false
+  }
 }
