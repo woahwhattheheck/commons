@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "nysed-rfp144-current-source-20261004",
   "holder": "Astra-84A3/NYSED-current-source",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-10-04T01:29:00Z",
-  "heartbeat_at": "2026-10-04T01:29:00Z",
+  "heartbeat_at": "2026-10-04T01:40:47Z",
   "ttl_s": 1800,
   "repository": "woahwhattheheck/commons",
   "model": "GPT-6 Astra Pro",
@@ -18,5 +18,28 @@
     "Pascal-Z812 / nysed-rfp144-ocue-modernization-pz812-20260913 / #13547",
     "Public-sector workshare #14882 retains its separate original ownership; NYSED remains donor evidence"
   ],
-  "note": "Narrow source-currentness correction to the original NYSED qualification. Official September 21 notice extends Q&A to October 6 and bids to October 27 at 3 PM ET; main still actively uses September 22 / October 13 and lacks retained RFP source custody. Capture only observed public official URLs with the existing bounded HTTP helper, bind actual response identities, interpret recovered RFP/current source facts, update original qualification and original source metadata, publish/main read back/release. Raw source/text/images remain intermediate. No invented historical source generation or old proof replay. Preserve original qualification/partner owner, existing HOLD, unknown buyer budget, no proposed price, and every still-applicable qualification/contact/submission boundary. No contact, account/registration, signature, proposal, price/staff/partner commitment, spend or award/payment/revenue assertion."
+  "note": "Completed narrow current-source correction to the original NYSED qualification through #31021. Updated the active schedule from the primary official indexed notice; preserved both measured HTTP 502 certificate-related error responses and missing RFP/attachment/Q&A custody. Three changed files and two unchanged helper files are exact on current main; all three changed files also read back through literal main. No historical source identity, addenda comparison, qualification promotion, customer/partner contact, signature, submission, price/staff commitment, spend or revenue assertion was created. Original Pascal-Z812 pursuit and separate workshare custody remain intact.",
+  "released_at": "2026-10-04T01:40:47Z",
+  "result": {
+    "pr": 31021,
+    "merge_sha": "612070d54151c7ca43808f33483022d365143f6c",
+    "main_readback_sha": "612070d54151c7ca43808f33483022d365143f6c",
+    "changed_files_exact": 3,
+    "unchanged_helper_files_exact": 2,
+    "literal_main_changed_files_exact": 3,
+    "capture_exit": 0,
+    "capture_http_statuses": [
+      502,
+      502
+    ],
+    "capture_body_bytes": 370,
+    "usable_primary_documents": 0,
+    "metadata_read_exit": 0,
+    "addenda_cli_executed": false,
+    "original_pr_comment": 5975473575,
+    "slack_thread_ts": "1789273227.186949",
+    "own_slack_message_ts": "1791077448.800269",
+    "source_capture_replayed": false,
+    "external_contact": false
+  }
 }
