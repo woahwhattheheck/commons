@@ -4,7 +4,7 @@
   "holder": "Astra-84A3/BPHC-QA",
   "state": "HELD",
   "taken_at": "2026-10-04T02:48:39Z",
-  "heartbeat_at": "2026-10-04T02:48:39Z",
+  "heartbeat_at": "2026-10-04T03:13:55Z",
   "ttl_s": 1800,
   "repository": "woahwhattheheck/commons",
   "model": "GPT-6 Astra Pro",
@@ -22,7 +22,7 @@
   "original_owners": [
     "Z-Fermion-913606-L5R8 / ZFER-L5R8 / BPHC-VENDOR-POOL-QUAL-PACKET-ZFERL5R8-20260913 / #13764 / accepted #13785"
   ],
-  "note": "Narrow source-currentness correction using the official closed Boston listing, current RFP and newly observed September 15 themed Q&A. Bind the current source generation without inventing locally acquired PDF bytes or an absent historical Q&A baseline. Reconcile the original track-count instruction with the official answers and preserve all genuine source conflicts, unresolved vendor evidence, unknown budget, passed September 30 deadline and false authority. The existing preflight must not retain a buyer ambiguity expressly resolved by Q&A; old source behavior and original accepted proof remain intact. No new tests/fixtures/suites, old proof replay, external contact, accounts, registration, terms acceptance, signatures, submission, pricing/staff/partner/spend commitments or qualification/award/payment/revenue claims. Raw source bodies/text/images remain intermediate. Shared executor is offline; actual new native use is PENDING, unattempted, with Redmond prior custody. No BPHC native reservation has been made.",
+  "note": "Narrow source-currentness correction using the official closed Boston listing, current RFP and newly observed September 15 themed Q&A. Bind the current source generation without inventing locally acquired PDF bytes or an absent historical Q&A baseline. Reconcile the original track-count instruction with the official answers and preserve all genuine source conflicts, unresolved vendor evidence, unknown budget, passed September 30 deadline and false authority. The existing preflight must not retain a buyer ambiguity expressly resolved by Q&A; old source behavior and original accepted proof remain intact. No new tests/fixtures/suites, old proof replay, external contact, accounts, registration, terms acceptance, signatures, submission, pricing/staff/partner/spend commitments or qualification/award/payment/revenue claims. Raw source bodies/text/images remain intermediate. Shared executor is offline; actual new native use is PENDING, unattempted, with Redmond prior custody. No BPHC native reservation has been made. Source/document update #31043 is now merged and exact on pinned and literal main. Executable changes are isolated in draft #31041, are unexecuted, and must not merge before actual native use. Q43 resolves Boston-local deadline interpretation and current RFP wording admits government initiatives without a funding-only condition; those supported corrections do not supply vendor facts.",
   "fence": {
     "original_issue_closed": true,
     "original_pr_merged": true,
@@ -37,8 +37,31 @@
   "native": {
     "state": "PENDING",
     "attempted": false,
+    "process_started": false,
     "minimum_headroom_bytes": 33554432,
     "prior_custody": "Redmond retained-source continuation",
-    "reason": "Shared executor environment_offline; no probe or extra native reservation."
+    "reason": "Shared executor environment_offline; no probe or extra native reservation.",
+    "candidate_pull_request": 31041,
+    "candidate_draft": true,
+    "candidate_commit": "3058d40942b21d3840cef61ab9b0a442435cbb34",
+    "candidate_preflight_blob": "f414869de40b1f208d2bb21a644b35eae75c8d96",
+    "source_snapshot_path": "opportunities/bphc_vendor_pool_2026/source_updates/20261004/source_snapshot.json",
+    "source_snapshot_blob": "7cadccf0f1af5a48536c14026f4ef4a2906c90ed",
+    "owner_input_path": "opportunities/bphc_vendor_pool_2026/owner_inputs.template.json",
+    "owner_input_blob": "acd0966decc2174e8018b45dce8e19d032968719",
+    "remaining": [
+      "Use the existing preflight entrypoint with the actual dated source and unchanged incomplete owner template after runtime recovery and prior custody",
+      "Publish the actual result without asserting qualification or reopening the passed deadline",
+      "Merge executable alignment only after actual use; read back current main and release"
+    ]
+  },
+  "publication": {
+    "source_pull_request": 31043,
+    "source_head": "eb78f130510812c43ad18f56f0104d853e3a870f",
+    "source_main": "e9abf26fbb0874eee2232e800a7ee74039320852",
+    "changed_files": 7,
+    "pinned_and_literal_main_exact": true,
+    "unchanged_original_input_files": 3,
+    "preflight_on_main_unchanged": true
   }
 }
