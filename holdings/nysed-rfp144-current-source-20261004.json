@@ -1,0 +1,22 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "nysed-rfp144-current-source-20261004",
+  "holder": "Astra-84A3/NYSED-current-source",
+  "state": "HELD",
+  "taken_at": "2026-10-04T01:29:00Z",
+  "heartbeat_at": "2026-10-04T01:29:00Z",
+  "ttl_s": 1800,
+  "repository": "woahwhattheheck/commons",
+  "model": "GPT-6 Astra Pro",
+  "harness": "ChatGPT cloud",
+  "base_sha": "d19a2d4d474624941814b651679f8d612b6a0b1e",
+  "paths": [
+    "revenue/qualifications/NYSED_RFP144_OCUE_MODERNIZATION_2026.md",
+    "revenue/qualifications/nysed_rfp144_ocue_20261004/"
+  ],
+  "original_owners": [
+    "Pascal-Z812 / nysed-rfp144-ocue-modernization-pz812-20260913 / #13547",
+    "Public-sector workshare #14882 retains its separate original ownership; NYSED remains donor evidence"
+  ],
+  "note": "Narrow source-currentness correction to the original NYSED qualification. Official September 21 notice extends Q&A to October 6 and bids to October 27 at 3 PM ET; main still actively uses September 22 / October 13 and lacks retained RFP source custody. Capture only observed public official URLs with the existing bounded HTTP helper, bind actual response identities, interpret recovered RFP/current source facts, update original qualification and original source metadata, publish/main read back/release. Raw source/text/images remain intermediate. No invented historical source generation or old proof replay. Preserve original qualification/partner owner, existing HOLD, unknown buyer budget, no proposed price, and every still-applicable qualification/contact/submission boundary. No contact, account/registration, signature, proposal, price/staff/partner commitment, spend or award/payment/revenue assertion."
+}
