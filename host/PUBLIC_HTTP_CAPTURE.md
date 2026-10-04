@@ -102,6 +102,26 @@ Each checkpoint is written completely, flushed and atomically replaced within th
 
 Normal capture results go to stdout as JSON. Incomplete capture and fatal diagnostics go to stderr. The summary gives the manifest path, totals and each source's status/state/body identity without printing captured body content.
 
+### Optional response metadata
+
+Add `--response-metadata` to a capture command when the next source step needs the observed redirect targets or capture times. Each existing `sources[]` item then also contains `response_metadata`: the requested and response URLs, recorded start/completion times and elapsed seconds, retained `locations`, and any `location_truncation` record. The default stdout JSON and its existing fields remain unchanged.
+
+The Location list preserves the capture's header limits: up to four values of up to 2,048 characters each. A truncation record means the retained values are incomplete; do not treat a clipped target as an exact URL. Missing observations are `null`, and an unrecorded Location list is empty. This output neither follows a target nor interprets source usability.
+
+An existing capture can use the same public summary function without another request:
+
+```python
+from public_http_capture import capture_summary
+
+summary = capture_summary(
+    retained_manifest,
+    "/absolute/path/existing-capture",
+    include_response_metadata=True,
+)
+```
+
+Pass a manifest returned by `capture_sources` or loaded from its retained `acquisition.json` under the caller's existing read bounds. This function projects the recorded values only. It does not open the manifest or body files, verify their present bytes, sample a new capture time, or perform network I/O. Its default result is the same compact summary used by the existing CLI.
+
 ## Python use and composition
 
 ```python
