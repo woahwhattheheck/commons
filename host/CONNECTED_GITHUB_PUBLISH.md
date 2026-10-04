@@ -1,7 +1,7 @@
 # Publish a source change with native GitHub tools
 
 `host/connected_github_publish.cjs` packages the connected-tool publication path
-used by cloud sessions: current base → exact file-version comparison → optional binary blobs →
+used by cloud sessions: current base → exact file-version comparison → optional source blobs →
 tree → commit → new branch → pull request → optional merge → source readback.
 It needs no Git checkout, shell command, credential export, package install, or
 network client. The caller supplies the actual discovered GitHub tool bindings.
@@ -18,8 +18,9 @@ Read the current native tool definitions before first use. The shipped adapter
 uses the installed `mcp__codex_apps__github_*` schemas for `fetch`, `fetch_file`,
 `create_blob`, `create_tree`, `create_commit`, `create_branch`,
 `create_pull_request`, and optionally `merge_pull_request` and `fetch_blob`. `create_blob` is
-required only when the change contains base64 input; UTF-8 files use the native
-tree writer's inline `content` field together in one request. A caller may supply
+required when the change contains base64 input or an `expected_new_blob_sha` pin.
+Unpinned UTF-8 files use the native tree writer's inline `content` field together
+in one request. A caller may supply
 `options.bindings` to map these action names to equivalent observed bindings;
 their argument and result contracts must remain the same. A partial discovery
 is not an account-permission verdict: keep doing useful independent work and
@@ -56,13 +57,14 @@ const result = await publishGitHubChange(tools, {
 | `content` | Complete UTF-8 source string, or base64-encoded binary bytes. |
 | `encoding` | `utf-8` by default; `base64` is also supported. |
 | `expected_blob_sha` | Exact Git blob SHA read before editing; explicitly `null` for a new file. |
-| `expected_new_blob_sha` | Optional independently observed Git blob SHA for base64 source; checked against the native blob result before tree creation. |
+| `expected_new_blob_sha` | Optional independently observed Git blob SHA for UTF-8 or base64 source; checked against the native blob result before tree creation. |
 | `mode` | Optional `100644` or `100755`; otherwise retain the existing mode, or use `100644` for a new file. |
 
 Pass actual prepared source, not excerpts. The expected SHA identifies the
 **previous** file. For UTF-8 files the helper confirms the complete published
-content, then records the native SHA returned by readback. The native blob
-writer supplies new SHAs for base64 files. Base64 input
+content, then records the native SHA returned by readback. With a new-source pin,
+UTF-8 also requires that returned SHA to match the pin. The native blob writer
+supplies new SHAs before tree creation for base64 and pinned UTF-8 files. Base64 input
 must use ordinary padded encoding without line breaks. UTF-8 input rejects
 unpaired surrogate characters instead of silently changing them.
 
@@ -74,13 +76,21 @@ identify different versions. A producer-reported hash alone does not establish
 independent source identity.
 
 The optional new-source pin must be a lowercase 40-character Git SHA and is
-accepted only with base64 input. A mismatch throws `GitHubPublishError` at
+accepted with UTF-8 or base64 input. Pinned UTF-8 uses one native `create_blob`
+call per file, then places the verified blob SHA in the tree request. A mismatch
+throws `GitHubPublishError` at
 `create_blobs`, with the expected and actual SHA and `source_pin_matches: false`
 in the affected progress entry. Native blob objects may already have been
 created, but no tree, commit, branch or PR is created by that invocation. The
 check also precedes the unchanged-source return. Matching entries record
 `source_pin_matches: true`; an unattempted check remains `null`. Omitting the
 field preserves the existing behavior, including UTF-8 batching.
+
+For complete UTF-8 source already retained in the caller's runtime, keep the
+default encoding and set `expected_new_blob_sha` to the independently observed
+Git blob of those accepted bytes. No base64 conversion or local exporter is
+needed. Keep the previous-version pin in `expected_blob_sha`; supplying a new
+pin does not replace source execution or establish the correctness of the code.
 
 `merge` defaults to `false`, leaving a normal open PR when that is the requested
 outcome. For Commons work that is already authorized to land under `RULES.md`,
@@ -117,17 +127,19 @@ expected/observed SHA; read the changed source and compose deliberately.
 All provider writes are sequential. The commit has the observed base as its
 parent. Existing file modes are retained. The branch primitive creates a new
 branch; use a unique operation name. There is no force-update or overwrite path
-for an existing branch. UTF-8 entries share one tree request, saving a separate
-blob call per text file. Identical source/mode changes return
+for an existing branch. Unpinned UTF-8 entries share one tree request, saving a
+separate blob call per text file. Identical source/mode changes return
 `status: no_source_changes` without a commit, branch, or PR. An unchanged UTF-8
-batch is recognized by the returned tree SHA matching the observed base tree;
-an unchanged binary-only batch also skips the tree request.
+batch with unpinned text is recognized by the returned tree SHA matching the
+observed base tree; an unchanged batch containing only base64 or pinned UTF-8
+files also skips the tree request after its blob checks.
 
 Readback compares every submitted UTF-8 file's complete source with the returned
 UTF-8 content at the merge commit, or at the published commit when the PR stays
-open. Text outcomes have `content_matches` and `expected_blob_sha: null`; their
-native `observed_blob_sha` becomes the corresponding file's `blob_sha` only
-after the content matches. In a mixed batch this also checks submitted text
+open. Text outcomes have `content_matches`; `expected_blob_sha` is the requested
+new-source pin, or `null` for unpinned text. Both the complete content and any
+requested pin must match before `matches: true` or before the returned native
+`observed_blob_sha` replaces the corresponding file's `blob_sha`. In a mixed batch this also checks submitted text
 files that ultimately remained unchanged. Binary files retain base64 readback
 and comparison with their created blob SHA, and are never decoded as UTF-8
 merely to check their identity. `readback_ref` names that exact source
@@ -148,7 +160,7 @@ complete-tree reads must have established every parent prefix as a tree.
 Only the native structured `NOT_FOUND` response with HTTP 404 and `Not Found`
 establishes absence in this context. A caller's `expected_blob_sha: null` then
 matches normally, and its requested new-file mode applies as usual. The new
-file may be UTF-8 or pinned base64; source-pin checks and all remaining base
+file may be UTF-8 (pinned or unpinned) or base64; source-pin checks and all remaining base
 version checks still finish before the relevant tree, commit, branch and PR
 writes. An explicit absence conflicts with an expected existing blob.
 
@@ -206,7 +218,8 @@ For read-only continuation, the exported `inspectReadback(file, source, data)`
 uses the same comparison as publication. Pass the retained `progress.files`
 entry, its prepared source entry (including `encoding`), and the unpacked
 native file response at `readback_ref`. It performs no provider operation; it
-records a text `blob_sha` on that file entry only after full content matches.
+records a text `blob_sha` on that file entry only after full content and any
+requested new-source pin match.
 
 The exported async `resolveReadback(file, source, data, readBlob)` applies the
 same optional recovery used during publication. The first three arguments match
@@ -270,7 +283,7 @@ this text continuation as evidence that binary bytes were retrieved.
 No provider error is automatically retried. The helper throws
 `GitHubPublishError` with `progress`, the original `cause`, and the last native
 `response` when one is available. Progress records the stage, call counts,
-previous/new file SHAs (text SHAs become available at readback), tree/commit,
+previous/new file SHAs (unpinned text SHAs become available at readback), tree/commit,
 branch creation, PR, merge result, and all
 readback outcomes. `publication_status` records a confirmed `pull_request_open`
 or `merged` independently of `status`, which stays `incomplete` when readback
@@ -343,13 +356,15 @@ requires the same head commit, base branch, and source branch in that repository
 An already-merged PR goes directly to its actual merge commit's source readback,
 recording `merge_skipped: already_merged`; no merge binding or call is needed.
 
-For pinned base64 source, continuation compares the retained binary SHA with
-`expected_new_blob_sha` before any native call. A retained pin cannot be changed
-or removed. Older unpinned progress remains supported: an optional new pin can
-be added only when it matches the retained blob. That checks identity for this
-continuation; it does not assert that the original publication checked a pin
-before creating its tree. The check compares SHA values directly, without
-trusting a saved match flag.
+For pinned UTF-8 or base64 source, continuation compares the retained blob SHA
+with `expected_new_blob_sha` before any native call. A retained pin cannot be
+changed or removed. Older unpinned progress remains supported: an optional new
+pin can be added only when a valid retained blob SHA exists and matches. For
+unpinned UTF-8, that SHA becomes available after complete content readback; an
+omitted or failed earlier readback does not establish the missing identity.
+Adding a pin checks identity for this continuation; it does not assert that the
+original publication checked a pin before creating its tree. The check compares
+SHA values directly, without trusting a saved match flag.
 
 For an open PR, it reads the current base and its exact nonrecursive trees,
 using the same bounded new-leaf absence fallback if eligible, then compares
